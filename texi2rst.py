@@ -525,7 +525,19 @@ def fixup_examples(tree):
     class ExampleFixer(NoopVisitor):
         def previsit_element(self, element):
             if element.kind in ('example', 'smallexample'):
-                element.rst_kind = LiteralBlock()
+                pre = element.first_element_named('pre')
+                if pre:
+                    text = pre.get_sole_text()
+                    if text:
+                        lang = self.guess_language(text.data)
+                        element.rst_kind = Directive('code-block', lang)
+
+        def guess_language(self, data):
+            if 'DO ' in data:
+                return 'fortran'
+            if data.startswith('gcc '):
+                return 'bash'
+            return 'c++'
 
     v = ExampleFixer()
     v.visit(tree)
@@ -572,14 +584,6 @@ class InlineMarkup(RstKind):
 
     def after(self, w):
         w.write('`')
-
-class LiteralBlock(RstKind):
-    def before(self, w):
-        w.write('\n.. code-block:: c++\n') # FIXME: language
-        w.indent += 1
-
-    def after(self, w):
-        w.indent -= 1
 
 class Title(RstKind):
     def __init__(self, element, underline):
@@ -802,7 +806,7 @@ This warning is enabled by <option>-Wall</option>.
             out)
 
 class CodeFragmentTests(Texi2RstTests):
-    def test_valid_option(self):
+    def test_smallexample_option(self):
         xml_src = ('''
 <texinfo>An example:
 <smallexample endspaces=" ">
@@ -820,11 +824,57 @@ test (int i)
 
 .. code-block:: c++
 
+
   static int
   test (int i)
   {
     return i * i;
   }
+  '''),
+            out)
+
+    def test_fortran(self):
+        xml_src = ('''
+<smallexample endspaces=" ">
+<pre xml:space="preserve">DO J = 1, M
+  DO I = 1, N
+    A(J, I) = A(J, I) * C
+  ENDDO
+ENDDO
+</pre></smallexample>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_examples(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(
+            (u'''
+.. code-block:: fortran
+
+
+  DO J = 1, M
+    DO I = 1, N
+      A(J, I) = A(J, I) * C
+    ENDDO
+  ENDDO
+  '''),
+            out)
+
+    def test_shell(self):
+        xml_src = ('''<smallexample endspaces=" ">
+<pre xml:space="preserve">gcc -c -Q -O3 --help=optimizers &gt; /tmp/O3-opts
+gcc -c -Q -O2 --help=optimizers &gt; /tmp/O2-opts
+diff /tmp/O2-opts /tmp/O3-opts | grep enabled
+</pre></smallexample>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_examples(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(
+            (u'''
+.. code-block:: bash
+
+
+  gcc -c -Q -O3 --help=optimizers > /tmp/O3-opts
+  gcc -c -Q -O2 --help=optimizers > /tmp/O2-opts
+  diff /tmp/O2-opts /tmp/O3-opts | grep enabled
   '''),
             out)
 

@@ -153,6 +153,21 @@ class RstInclude(RstNode):
     def write(self, f_out, depth=0):
         f_out.write ('.. include:: %s\n\n' % self.doc.name)
 
+class RstComment(RstNode):
+    def __init__(self, data):
+        RstNode.__init__(self)
+        self.data = data
+
+    def __repr__(self):
+        return 'RstComment(%r)' % self.data
+
+    def write(self, f_out, depth=0):
+        lines = self.data.splitlines()
+        f_out.write('\n.. %s\n' % lines[0])
+        for line in lines[1:]:
+            f_out.write('   %s\n' % line)
+        f_out.write('\n')
+
 class RstTitle(RstNode):
     def __init__(self, underline):
         RstNode.__init__(self)
@@ -223,6 +238,29 @@ class Texi2Rst(NoopVisitor):
 
     def postvisit_element(self, node):
         self.stack.pop()
+
+    def visit_comment(self, node):
+        data = node.data
+        print(repr(data))
+        if data.startswith(' c '):
+            data = data[3:]
+        # Attempt to merge
+        #   COMMENT(x) WHITESPACE(y) COMMENT(z)
+        # into
+        #   COMMENT(x + y + z)
+        if len(self.stack[-1].children) >= 2:
+            last = self.stack[-1].children[-1]
+            penult = self.stack[-1].children[-2]
+            print(penult)
+            print(last)
+            if isinstance(penult, RstComment):
+                if isinstance(last, RstText):
+                    if last.data.isspace():
+                        self.stack[-1].children.pop()
+                        penult.data = penult.data + last.data + data
+                        return
+        child = RstComment(data)
+        self.stack[-1].children.append(child)
 
     def visit_text(self, node):
         child = RstText(node.data)

@@ -1,5 +1,8 @@
+from collections import OrderedDict
 import os
+import StringIO
 import sys
+import unittest
 import xml.dom.minidom
 
 """
@@ -11,136 +14,153 @@ TODO:
   map back to the include structure of the underlying .texi files
 """
 
+# A minimal IR for transforming texinfo XML into rst
+
+class Node:
+    def __repr__(self):
+        return 'Node()'
+
+    def dump(self, f_out, depth=0):
+        f_out.write('%s%r\n' %  (' ' * depth, self))
+
+class Element(Node):
+    def __init__(self, kind, attrs):
+        self.kind = kind
+        self.attrs = attrs
+        self.children = []
+
+    def __repr__(self):
+        return 'Element(%r, %r)' % (self.kind, self.attrs, )
+
+    def dump(self, f_out, depth=0):
+        f_out.write('%s%r\n' %  (' ' * depth, self))
+        for child in self.children:
+            child.dump(f_out, depth + 1)
+
+    def first_element_named(self, name):
+        for child in self.children:
+            if isinstance(child, Element):
+                if child.kind == name:
+                    return child
+
+    def get_sole_text(self):
+        if len(self.children) == 1:
+            child = self.children[0]
+            if isinstance(child, Text):
+                return child
+
+class Comment(Node):
+    def __init__(self, data):
+        self.data = data
+
+    def __repr__(self):
+        return 'Comment(%r)' % self.data
+
+class Text(Node):
+    def __init__(self, data):
+        self.data = data
+
+    def __repr__(self):
+        return 'Text(%r)' % self.data
+
+
+# Convert from XML nodes to our easier-to-work-with data structure
+
+def convert_attrs_from_xml(namednodemap):
+    result = OrderedDict()
+    if namednodemap:
+        for i in range(namednodemap.length):
+            attr = namednodemap.item(i)
+            result[attr.name] = attr.value
+    return result
+
+def convert_from_xml(xmlnode):
+    kind = xmlnode.nodeType
+    if kind == xmlnode.ELEMENT_NODE:
+        new_node = Element(xmlnode.tagName,
+                           convert_attrs_from_xml(xmlnode.attributes))
+    elif kind == xmlnode.ATTRIBUTE_NODE:
+        pass
+    elif kind == xmlnode.TEXT_NODE:
+        new_node = Text(xmlnode.data)
+    elif kind == xmlnode.CDATA_SECTION_NODE:
+        return None
+    elif kind == xmlnode.ENTITY_NODE:
+        # FIXME: xml.dom.minidom appears to be discarding entities,
+        # which is a problem since the texinfo xml contains numerous
+        # &lbrace; and &brace; in code examples
+        raise ValueError()
+    elif kind == xmlnode.PROCESSING_INSTRUCTION_NODE:
+        raise ValueError()
+    elif kind == xmlnode.COMMENT_NODE:
+        new_node = Comment(xmlnode.data)
+    elif kind == xmlnode.DOCUMENT_NODE:
+        new_node = Element('document',
+                           convert_attrs_from_xml(xmlnode.attributes))
+    elif kind == xmlnode.DOCUMENT_TYPE_NODE:
+        return None
+    elif kind == xmlnode.NOTATION_NODE:
+        raise ValueError()
+
+    if xmlnode.hasChildNodes():
+        for child_xmlnode in xmlnode.childNodes:
+            child = convert_from_xml(child_xmlnode)
+            if child:
+                new_node.children.append(child)
+    return new_node
+
+def from_xml_string(xml_src):
+    # Hack: not sure how to correctly handle entities using
+    # xml.dom.minidom (if it is indeed possible), so do a textual
+    # substitution first:
+    xml_src = xml_src.replace('&lbrace;', '{')
+    xml_src = xml_src.replace('&rbrace;', '}')
+    dom = xml.dom.minidom.parseString(xml_src)
+    tree = convert_from_xml(dom)
+    return tree
+
+# Visitor base class
+
 class Visitor:
-    def visit(self, node, depth=0):
-        #print('%s%s' %  (' ' * depth, node))
-        if node.nodeType == node.ELEMENT_NODE:
-            self.visit_element(node)
-        elif node.nodeType == node.ATTRIBUTE_NODE:
-            self.visit_attribute(node)
-        elif node.nodeType == node.TEXT_NODE:
-            self.visit_text(node)
-        elif node.nodeType == node.CDATA_SECTION_NODE:
-            self.visit_cdata_section(node)
-        elif node.nodeType == node.ENTITY_NODE:
-            # FIXME: xml.dom.minidom appears to be discarding entities,
-            # which is a problem since the texinfo xml contains numerous
-            # &lbrace; and &brace; in code examples
-            self.visit_entity(node)
-        elif node.nodeType == node.PROCESSING_INSTRUCTION_NODE:
-            self.visit_pi(node)
-        elif node.nodeType == node.COMMENT_NODE:
-            self.visit_comment(node)
-        elif node.nodeType == node.DOCUMENT_NODE:
-            self.visit_document(node)
-        elif node.nodeType == node.DOCUMENT_TYPE_NODE:
-            self.visit_document_type(node)
-        elif node.nodeType == node.NOTATION_NODE:
-            self.visit_notation(node)
-        if node.hasChildNodes():
-            for child in node.childNodes:
-                self.visit(child, depth + 1)
-
-        if node.nodeType == node.ELEMENT_NODE:
+    def visit(self, node):
+        if isinstance(node, Element):
+            self.previsit_element(node)
+            for child in node.children:
+                self.visit(child)
             self.postvisit_element(node)
+        elif isinstance(node, Comment):
+            self.visit_comment(node)
+        elif  isinstance(node, Text):
+            self.visit_text(node)
+        else:
+            raise ValueError('unknown node: %r' % (node, ))
 
-    def visit_element(self, node):
+    def previsit_element(self, element):
         raise NotImplementedError
 
-    def postvisit_element(self, node):
+    def postvisit_element(self, element):
         raise NotImplementedError
 
-    def visit_attribute(self, node):
+    def visit_comment(self, comment):
         raise NotImplementedError
 
-    def visit_text(self, node):
-        raise NotImplementedError
-
-    def visit_cdata_section(self, node):
-        raise NotImplementedError
-
-    def visit_entity(self, node):
-        raise NotImplementedError
-
-    def visit_pi(self, node):
-        raise NotImplementedError
-
-    def visit_comment(self, node):
-        raise NotImplementedError
-
-    def visit_document(self, node):
-        raise NotImplementedError
-
-    def visit_document_type(self, node):
-        raise NotImplementedError
-
-    def visit_notation(self, node):
+    def visit_text(self, text):
         raise NotImplementedError
 
 class NoopVisitor(Visitor):
-    def visit_element(self, node):
+    def previsit_element(self, element):
         pass
 
-    def postvisit_element(self, node):
+    def postvisit_element(self, element):
         pass
 
-    def visit_attribute(self, node):
+    def visit_comment(self, comment):
         pass
 
-    def visit_text(self, node):
+    def visit_text(self, text):
         pass
 
-    def visit_cdata_section(self, node):
-        pass
-
-    def visit_entity(self, node):
-        pass
-
-    def visit_pi(self, node):
-        pass
-
-    def visit_comment(self, node):
-        pass
-
-    def visit_document(self, node):
-        pass
-
-    def visit_document_type(self, node):
-        pass
-
-    def visit_notation(self, node):
-        pass
-
-class Writer:
-    def __init__(self, f_out):
-        self.f_out = f_out
-        self.indent = 0
-
-    def write(self, text):
-        text = text.replace('\n',
-                            '\n%s' % ('  ' * self.indent))
-        self.f_out.write(text)
-
-class RstNode:
-    def __init__(self):
-        self.children = []
-
-    def write(self, w, depth=0):
-        #f_out.write('%s%r\n' %  (' ' * depth, self))
-        self.pre_write(w, depth)
-        for child in self.children:
-            child.write(w, depth + 1)
-        self.post_write(w, depth)
-
-    def pre_write(self, w, depth=0):
-        pass
-
-    def post_write(self, w, depth=0):
-        pass
-
-    def __repr__(self):
-        return 'RstNode()'
-
+'''
 class RstDocument(RstNode):
     def __init__(self, name):
         RstNode.__init__(self)
@@ -160,35 +180,6 @@ class RstInclude(RstNode):
     def write(self, w, depth=0):
         w.write ('.. include:: %s\n\n' % self.doc.name)
 
-class RstComment(RstNode):
-    def __init__(self, data):
-        RstNode.__init__(self)
-        self.data = data
-
-    def __repr__(self):
-        return 'RstComment(%r)' % self.data
-
-    def write(self, w, depth=0):
-        lines = self.data.splitlines()
-        w.write('\n.. %s\n' % lines[0])
-        for line in lines[1:]:
-            w.write('   %s\n' % line)
-        w.write('\n')
-
-class RstTitle(RstNode):
-    def __init__(self, underline):
-        RstNode.__init__(self)
-        self.underline = underline
-
-    def pre_write(self, w, depth=0):
-        w.write('\n\n')
-
-    def post_write(self, w, depth=0):
-        if len(self.children) == 1:
-            if isinstance(self.children[0], RstText):
-                len_ = len(self.children[0].data)
-                w.write('\n%s\n' % (self.underline * len_))
-
 class RstInlineMarkup(RstNode):
     def __init__(self, prefix, suffix):
         RstNode.__init__(self)
@@ -205,6 +196,20 @@ class RstLiteralBlock(RstNode):
     def pre_write(self, w, depth=0):
         w.write('\n.. code-block:: c++\n') # FIXME: language
         w.indent += 1
+
+    def post_write(self, w, depth=0):
+        w.indent -= 1
+
+class RstBlock(RstNode):
+    def __init__(self, name, args):
+        RstNode.__init__(self)
+        self.name = name
+        self.args = args
+
+    def pre_write(self, w, depth=0):
+        w.write('\n.. %s:: %s' % (self.name, self.args))
+        w.indent += 1
+        w.write('\n')
 
     def post_write(self, w, depth=0):
         w.indent -= 1
@@ -242,24 +247,10 @@ class Texi2Rst(NoopVisitor):
                 self.stack[-1].children.append(child)
                 self.stack.append(new_doc)
 
-        if node.tagName == 'sectiontitle':
-            child = RstTitle('=')
-        elif node.tagName in ('smallexample', 'example'):
-            child = RstLiteralBlock()
-        elif node.tagName == 'option':
-            child = RstNode()
-            # Prefer to use "option", but Sphinx requires that the option
-            # have a leading dash:
-            if node.firstChild:
-                if node.firstChild.nodeType == node.TEXT_NODE:
-                    if node.firstChild.data.startswith('-'):
-                        child = RstInlineMarkup(':option:`', '`')
-        elif node.tagName == 'command':
-            child = RstInlineMarkup(':command:`', '`')
-        elif node.tagName == 'var':
-            child = RstInlineMarkup('``', '``')
-        elif node.tagName == 'code':
-            child = RstInlineMarkup('``', '``')
+        elif node.tagName == 'indexterm':
+            # Assume this the definition of an option, for now.
+            # Though we really want to put the subsequent text inside this node
+            child = RstBlock('option', 'FIXME')
         else:
             child = RstNode()
         self.stack[-1].children.append(child)
@@ -267,37 +258,7 @@ class Texi2Rst(NoopVisitor):
 
     def postvisit_element(self, node):
         self.stack.pop()
-
-    def visit_comment(self, node):
-        data = node.data
-        if data.startswith(' c '):
-            data = data[3:]
-        # Attempt to merge
-        #   COMMENT(x) WHITESPACE(y) COMMENT(z)
-        # into
-        #   COMMENT(x + y + z)
-        if len(self.stack[-1].children) >= 2:
-            last = self.stack[-1].children[-1]
-            penult = self.stack[-1].children[-2]
-            if isinstance(penult, RstComment):
-                if isinstance(last, RstText):
-                    if last.data.isspace():
-                        self.stack[-1].children.pop()
-                        penult.data = penult.data + last.data + data
-                        return
-        child = RstComment(data)
-        self.stack[-1].children.append(child)
-
-    def visit_text(self, node):
-        child = RstText(node.data)
-        self.stack[-1].children.append(child)
-
-    def write_output(self, output_dir):
-        for doc in self.documents:
-            path = os.path.join(output_dir, doc.name)
-            with open(path, 'w') as f_out:
-                w = Writer(f_out)
-                doc.write(w)
+'''
 
 class Uninclusions:
     """
@@ -393,7 +354,495 @@ sourcebuild.texi:284:@include makefile.texi
 inputfile = 'gcc.xml'
 output_dir = 'output'
 
-dom = xml.dom.minidom.parse(inputfile)
-v = Texi2Rst(GccUninclusions())
-v.visit(dom)
-v.write_output(output_dir = 'output')
+#dom = xml.dom.minidom.parse(inputfile)
+
+#tree = convert_from_xml(dom)
+#tree.dump(sys.stdout)
+
+#tree = texi2rst(tree)
+
+#v = Texi2Rst(GccUninclusions())
+#v.visit(dom)
+#v.write_output(output_dir = 'output')
+
+# Conversion pipeline
+
+def convert_comments(tree):
+    class CommentConverter(NoopVisitor):
+        def visit_comment(self, comment):
+            if comment.data.startswith(' c '):
+                comment.data = comment.data[3:]
+    CommentConverter().visit(tree)
+    return tree
+
+def combine_commments(tree):
+    class CommentCombiner(NoopVisitor):
+        def previsit_element(self, element):
+            # Attempt to merge
+            #   COMMENT(x) WHITESPACE(y) COMMENT(z)
+            # into
+            #   COMMENT(x + y + z)
+            new_children = []
+            for child in element.children:
+                if isinstance(child, Comment):
+                    if len(new_children) >= 2:
+                        last = new_children[-1]
+                        penult = new_children[-2]
+                        if isinstance(penult, Comment):
+                            if isinstance(last, Text):
+                                if last.data.isspace():
+                                    element.children.pop()
+                                    penult.data = penult.data + last.data + child.data
+                                    continue
+                new_children.append(child)
+            element.children = new_children
+
+    v = CommentCombiner()
+    v.visit(tree)
+    return tree
+
+def fixup_comments(tree):
+    tree = convert_comments(tree)
+    tree = combine_commments(tree)
+    return tree
+
+def prune(tree):
+    class Pruner(NoopVisitor):
+        def previsit_element(self, element):
+            new_children = []
+            for child in element.children:
+                if self.should_strip(child):
+                    continue
+                new_children.append(child)
+            element.children = new_children
+
+        def should_strip(self, child):
+            if not isinstance(child, Element):
+                return False
+            if child.kind in ('filename', 'preamble', 'setfilename', 'clear',
+                              'set', 'macro', 'settitle',
+                              'defcodeindex', 'syncodeindex',
+                              'paragraphindent'):
+                return True
+            else:
+                return False
+
+    v = Pruner()
+    v.visit(tree)
+    return tree
+
+def fixup_option_refs(tree):
+    class OptionRefFixer(NoopVisitor):
+        # We'd like to handle texinfo "<option>" using sphinx's
+        # inline ":option:" markup but Sphinx requires that the option
+        # have a leading dash.
+        # Conditionally retain options (or else they will be
+        # stripped at output)
+        def previsit_element(self, element):
+            if element.kind == 'option':
+                firstchild = element.children[0]
+                if isinstance(firstchild, Text):
+                    if firstchild.data.startswith('-'):
+                        element.rst_kind = InlineMarkup('option')
+
+    v = OptionRefFixer()
+    v.visit(tree)
+    return tree
+
+def fixup_option_descriptions(tree):
+    """
+    Options come in the form:
+
+       <tableentry>
+         <tableterm>
+           <item>
+             <itemformat command="code">NAME OF OPTION</itemformat>
+           </item>
+         </tableterm>
+         <tableitem>
+           <indexcommand command="opindex" index="op" spaces=" ">
+             <indexterm index="op" number="260" incode="1">NAME OF OPTION WITHOUT DASH</indexterm>
+           </indexcommand>
+           (...and more <indexcommand> for variant versions of the option...)
+           <para>...</para><para>...</para>
+         </tableitem>
+       </tableentry>
+
+    Transform this so that we can emit it as a .rst "option" directive.
+    (see http://sphinx-doc.org/domains.html#directive-option)
+    """
+    class OptionDescFixer(NoopVisitor):
+        def previsit_element(self, element):
+            if element.kind == 'tableentry':
+                tableterm = element.first_element_named('tableterm')
+                tableitem = element.first_element_named('tableitem')
+                if tableterm and tableitem:
+                    item = tableterm.first_element_named('item')
+                    if item:
+                        itemformat = item.first_element_named('itemformat')
+                        if itemformat:
+                            text = itemformat.get_sole_text()
+                            if text:
+                                self.convert_to_directive(element,
+                                                          tableitem,
+                                                          text.data)
+
+        def convert_to_directive(self, tableentry, tableitem, itemformat_text):
+            # Start with a dummy value for "args":
+            tableentry.rst_kind = Directive('option', None)
+
+            options = [itemformat_text]
+
+            # Strip away tableterm, adding content to
+            # the directive, and gathering options:
+            new_children = []
+            for child in tableitem.children:
+                if isinstance(child, Element):
+                    if child.kind == 'indexcommand':
+                        indexterm = child.first_element_named('indexterm')
+                        if indexterm:
+                            text = indexterm.get_sole_text()
+                            if text:
+                                option = text.data
+                                if not option.startswith('-'):
+                                    option = '-' + option
+                                if option not in options:
+                                    options.append(option)
+                                # Drop this <indexcommand>
+                                continue
+                new_children.append(child)
+
+            # Update the directive args to include all the options found:
+            tableentry.rst_kind.args = ', '.join(options)
+
+            tableentry.children = new_children
+
+    v = OptionDescFixer()
+    v.visit(tree)
+    return tree
+
+def fixup_examples(tree):
+    class ExampleFixer(NoopVisitor):
+        def previsit_element(self, element):
+            if element.kind in ('example', 'smallexample'):
+                element.rst_kind = LiteralBlock()
+
+    v = ExampleFixer()
+    v.visit(tree)
+    return tree
+
+def fixup_titles(tree):
+    class TitleFixer(NoopVisitor):
+        def previsit_element(self, element):
+            if element.kind == 'sectiontitle':
+                element.rst_kind = Title(element, '=')
+            elif element.kind == 'subsubheading':
+                element.rst_kind = Title(element, '^')
+
+    v = TitleFixer()
+    v.visit(tree)
+    return tree
+
+# Top-level conversion routine
+
+def convert_to_rst(tree):
+    tree = fixup_comments(tree)
+    tree = prune(tree)
+    tree = fixup_option_refs(tree)
+    tree = fixup_option_descriptions(tree)
+    tree = fixup_examples(tree)
+    tree = fixup_titles(tree)
+    return tree
+
+# Policies for converting elements to rst (element.rst_kind):
+
+class RstKind:
+    def before(self, w):
+        pass
+
+    def after(self, w):
+        pass
+
+class InlineMarkup(RstKind):
+    def __init__(self, name):
+        self.name = name
+
+    def before(self, w):
+        w.write(':%s:`' % self.name)
+
+    def after(self, w):
+        w.write('`')
+
+class LiteralBlock(RstKind):
+    def before(self, w):
+        w.write('\n.. code-block:: c++\n') # FIXME: language
+        w.indent += 1
+
+    def after(self, w):
+        w.indent -= 1
+
+class Title(RstKind):
+    def __init__(self, element, underline):
+        self.element = element
+        self.underline = underline
+
+    def before(self, w):
+        w.write('\n')
+
+    def after(self, w):
+        if len(self.element.children) == 1:
+            if isinstance(self.element.children[0], Text):
+                len_ = len(self.element.children[0].data)
+                w.write('\n%s\n\n' % (self.underline * len_))
+
+class Directive(RstKind):
+    def __init__(self, name, args):
+        self.name = name
+        self.args = args
+
+    def before(self, w):
+        w.write('\n.. %s:: %s\n\n' % (self.name, self.args))
+        w.indent += 1
+
+    def after(self, w):
+        w.indent -= 1
+
+# Output of a converted tree to .rst file
+
+class RstWriter(Visitor):
+    def __init__(self, f_out):
+        self.f_out = f_out
+        self.indent = 0
+
+    def write(self, text):
+        text = text.replace('\n',
+                            '\n%s' % ('  ' * self.indent))
+        self.f_out.write(text)
+
+    def previsit_element(self, element):
+        if hasattr(element, 'rst_kind'):
+            element.rst_kind.before(self)
+        elif element.kind == 'document':
+            pass
+        elif element.kind == 'texinfo':
+            pass
+        elif element.kind == 'command':
+            self.write(':command:`')
+        elif element.kind == 'var':
+            self.write('``')
+        elif element.kind == 'code':
+            self.write('``')
+        else:
+            pass
+            #raise ValueError('unhandled element: %r' % (element, ))
+
+    def postvisit_element(self, element):
+        if hasattr(element, 'rst_kind'):
+            element.rst_kind.after(self)
+        if element.kind == 'command':
+            self.write('`')
+        elif element.kind == 'var':
+            self.write('``')
+        elif element.kind == 'code':
+            self.write('``')
+
+    def visit_comment(self, comment):
+        lines = comment.data.splitlines()
+        self.write('\n.. %s\n' % lines[0])
+        for line in lines[1:]:
+            self.write('   %s\n' % line)
+        self.write('\n')
+
+    def visit_text(self, text):
+        self.write(text.data)
+
+# Unit tests
+
+class Texi2RstTests(unittest.TestCase):
+    def make_rst_string(self, doc):
+        w = RstWriter(StringIO.StringIO())
+        w.visit(doc)
+        return w.f_out.getvalue()
+
+class CommentTests(Texi2RstTests):
+    xml_src = (
+'''<texinfo>
+<!-- c First line -->
+<!-- c Second line -->
+</texinfo>''')
+
+    def test_parsing(self):
+        doc = from_xml_string(self.xml_src)
+        self.assertIsInstance(doc, Element)
+        self.assertEqual(len(doc.children), 1)
+        texinfo = doc.children[0]
+        self.assertIsInstance(texinfo, Element)
+        self.assertEqual(texinfo.kind, 'texinfo')
+        self.assertEqual(len(texinfo.children), 5)
+        self.assertIsInstance(texinfo.children[0], Text)
+        self.assertEqual(texinfo.children[0].data, u'\n')
+        self.assertIsInstance(texinfo.children[1], Comment)
+        self.assertEqual(texinfo.children[1].data, u' c First line ')
+        self.assertIsInstance(texinfo.children[2], Text)
+        self.assertIsInstance(texinfo.children[3], Comment)
+        self.assertIsInstance(texinfo.children[4], Text)
+
+    def test_comment_converter(self):
+        doc = from_xml_string(self.xml_src)
+        doc = convert_comments(doc)
+        texinfo = doc.children[0]
+        self.assertEqual(len(texinfo.children), 5)
+        self.assertEqual(texinfo.children[1].data, u'First line ')
+
+    def test_comment_combining(self):
+        doc = from_xml_string(self.xml_src)
+        doc = fixup_comments(doc)
+        texinfo = doc.children[0]
+        self.assertEqual(len(texinfo.children), 3)
+        self.assertIsInstance(texinfo.children[0], Text)
+        self.assertIsInstance(texinfo.children[1], Comment)
+        self.assertEqual(texinfo.children[1].data, u'First line \nSecond line ')
+        self.assertIsInstance(texinfo.children[2], Text)
+
+    def test_rst_output(self):
+        doc = from_xml_string(self.xml_src)
+        doc = fixup_comments(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'\n\n.. First line \n   Second line \n\n\n', out)
+
+class PruningTests(Texi2RstTests):
+    def test_command(self):
+        xml_src = '<texinfo><filename/></texinfo>'
+        doc = from_xml_string(xml_src)
+        texinfo = doc.children[0]
+        self.assertEqual(len(texinfo.children), 1)
+        doc = prune(doc)
+        self.assertEqual(len(texinfo.children), 0)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'', out)
+
+class InlineMarkupTests(Texi2RstTests):
+    def test_command(self):
+        xml_src = '<texinfo>Before <command>gcc</command> after</texinfo>'
+        doc = from_xml_string(xml_src)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'Before :command:`gcc` after', out)
+
+    def test_var(self):
+        xml_src = '<texinfo>Before <var>gcc</var> after</texinfo>'
+        doc = from_xml_string(xml_src)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'Before ``gcc`` after', out)
+
+    def test_code(self):
+        xml_src = '<texinfo>Before <code>gcc</code> after</texinfo>'
+        doc = from_xml_string(xml_src)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'Before ``gcc`` after', out)
+
+class TitleTests(Texi2RstTests):
+    def test_section_title(self):
+        xml_src = ('<texinfo><sectiontitle>A section title</sectiontitle>'
+                   + '<para>some text</para></texinfo>')
+        doc = from_xml_string(xml_src)
+        doc = fixup_titles(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'\nA section title\n===============\n\nsome text',
+                         out)
+
+    def test_subsubheading(self):
+        xml_src = ('<texinfo><subsubheading>A sub-sub-heading</subsubheading>'
+                   + '<para>some text</para></texinfo>')
+        doc = from_xml_string(xml_src)
+        doc = fixup_titles(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'\nA sub-sub-heading\n^^^^^^^^^^^^^^^^^\n\nsome text',
+                         out)
+
+class OptionTests(Texi2RstTests):
+    def test_valid_option_ref(self):
+        xml_src = ('<texinfo><option>--some-opt</option></texinfo>')
+        doc = from_xml_string(xml_src)
+        doc = fixup_option_refs(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u':option:`--some-opt`', out)
+
+    def test_invalid_option_ref(self):
+        xml_src = ('<texinfo><option>some-opt</option></texinfo>')
+        doc = from_xml_string(xml_src)
+        doc = fixup_option_refs(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'some-opt', out)
+
+    def test_option_description(self):
+        xml_src = ('''<texinfo>
+<tableentry><tableterm><item spaces=" "><itemformat command="code">-Wunused-label</itemformat></item>
+</tableterm><tableitem><indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="260" incode="1">Wunused-label</indexterm></indexcommand>
+<indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="261" incode="1">Wno-unused-label</indexterm></indexcommand>
+<para>Warn whenever a label is declared but not used.
+This warning is enabled by <option>-Wall</option>.
+</para>
+<para>To suppress this warning use the <code>unused</code> attribute.</para>
+</tableitem></tableentry></texinfo>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_option_descriptions(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(
+            u'''
+
+.. option:: -Wunused-label, -Wno-unused-label
+
+
+  
+  Warn whenever a label is declared but not used.
+  This warning is enabled by -Wall.
+  
+  To suppress this warning use the ``unused`` attribute.
+  ''',
+            out)
+
+class CodeFragmentTests(Texi2RstTests):
+    def test_valid_option(self):
+        xml_src = ('''
+<texinfo>An example:
+<smallexample endspaces=" ">
+<pre xml:space="preserve">static int
+test (int i)
+&lbrace;
+  return i * i;
+&rbrace;
+</pre></smallexample></texinfo>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_examples(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(
+            (u'''An example:
+
+.. code-block:: c++
+
+  static int
+  test (int i)
+  {
+    return i * i;
+  }
+  '''),
+            out)
+
+
+# Entrypoint
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        unittest.main()
+    else:
+        with open(sys.argv[1]) as f_in:
+            xml_src = f_in.read()
+            tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree)
+        if 1:
+            with open('output/gcc.rst', 'w') as f_out:
+                w = RstWriter(f_out)
+                w.visit(tree)
+        else:
+            w = RstWriter(sys.stdout)
+            w.visit(tree)

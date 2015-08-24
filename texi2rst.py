@@ -247,10 +247,14 @@ class Texi2Rst(NoopVisitor):
 
         if node.tagName == 'sectiontitle':
             child = RstTitle('=')
-        elif node.tagName == 'smallexample':
+        elif node.tagName in ('smallexample', 'example'):
             child = RstLiteralBlock()
         elif node.tagName == 'command':
             child = RstInlineMarkup(':command:`', '`')
+        elif node.tagName == 'var':
+            child = RstInlineMarkup('``', '``')
+        elif node.tagName == 'code':
+            child = RstInlineMarkup('``', '``')
         else:
             child = RstNode()
         self.stack[-1].children.append(child)

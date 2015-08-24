@@ -11,12 +11,6 @@ TODO:
   map back to the include structure of the underlying .texi files
 """
 
-#tree = ET.parse('gcc.xml')
-# can't handle 
-# I get:
-# xml.etree.ElementTree.ParseError: undefined entity &copyright;: line 97, column 16
-#print(tree)
-
 class Visitor:
     def visit(self, node, depth=0):
         #print('%s%s' %  (' ' * depth, node))
@@ -29,6 +23,9 @@ class Visitor:
         elif node.nodeType == node.CDATA_SECTION_NODE:
             self.visit_cdata_section(node)
         elif node.nodeType == node.ENTITY_NODE:
+            # FIXME: xml.dom.minidom appears to be discarding entities,
+            # which is a problem since the texinfo xml contains numerous
+            # &lbrace; and &brace; in code examples
             self.visit_entity(node)
         elif node.nodeType == node.PROCESSING_INSTRUCTION_NODE:
             self.visit_pi(node)
@@ -249,6 +246,14 @@ class Texi2Rst(NoopVisitor):
             child = RstTitle('=')
         elif node.tagName in ('smallexample', 'example'):
             child = RstLiteralBlock()
+        elif node.tagName == 'option':
+            child = RstNode()
+            # Prefer to use "option", but Sphinx requires that the option
+            # have a leading dash:
+            if node.firstChild:
+                if node.firstChild.nodeType == node.TEXT_NODE:
+                    if node.firstChild.data.startswith('-'):
+                        child = RstInlineMarkup(':option:`', '`')
         elif node.tagName == 'command':
             child = RstInlineMarkup(':command:`', '`')
         elif node.tagName == 'var':

@@ -261,7 +261,6 @@ class Texi2Rst(NoopVisitor):
 
     def visit_comment(self, node):
         data = node.data
-        print(repr(data))
         if data.startswith(' c '):
             data = data[3:]
         # Attempt to merge
@@ -271,8 +270,6 @@ class Texi2Rst(NoopVisitor):
         if len(self.stack[-1].children) >= 2:
             last = self.stack[-1].children[-1]
             penult = self.stack[-1].children[-2]
-            print(penult)
-            print(last)
             if isinstance(penult, RstComment):
                 if isinstance(last, RstText):
                     if last.data.isspace():

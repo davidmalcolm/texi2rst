@@ -114,21 +114,31 @@ class NoopVisitor(Visitor):
     def visit_notation(self, node):
         pass
 
+class Writer:
+    def __init__(self, f_out):
+        self.f_out = f_out
+        self.indent = 0
+
+    def write(self, text):
+        text = text.replace('\n',
+                            '\n%s' % ('  ' * self.indent))
+        self.f_out.write(text)
+
 class RstNode:
     def __init__(self):
         self.children = []
 
-    def write(self, f_out, depth=0):
+    def write(self, w, depth=0):
         #f_out.write('%s%r\n' %  (' ' * depth, self))
-        self.pre_write(f_out, depth)
+        self.pre_write(w, depth)
         for child in self.children:
-            child.write(f_out, depth + 1)
-        self.post_write(f_out, depth)
+            child.write(w, depth + 1)
+        self.post_write(w, depth)
 
-    def pre_write(self, f_out, depth=0):
+    def pre_write(self, w, depth=0):
         pass
 
-    def post_write(self, f_out, depth=0):
+    def post_write(self, w, depth=0):
         pass
 
     def __repr__(self):
@@ -150,8 +160,8 @@ class RstInclude(RstNode):
     def __repr__(self):
         return 'RstInclude(%r)' % self.doc.name
 
-    def write(self, f_out, depth=0):
-        f_out.write ('.. include:: %s\n\n' % self.doc.name)
+    def write(self, w, depth=0):
+        w.write ('.. include:: %s\n\n' % self.doc.name)
 
 class RstComment(RstNode):
     def __init__(self, data):
@@ -161,26 +171,26 @@ class RstComment(RstNode):
     def __repr__(self):
         return 'RstComment(%r)' % self.data
 
-    def write(self, f_out, depth=0):
+    def write(self, w, depth=0):
         lines = self.data.splitlines()
-        f_out.write('\n.. %s\n' % lines[0])
+        w.write('\n.. %s\n' % lines[0])
         for line in lines[1:]:
-            f_out.write('   %s\n' % line)
-        f_out.write('\n')
+            w.write('   %s\n' % line)
+        w.write('\n')
 
 class RstTitle(RstNode):
     def __init__(self, underline):
         RstNode.__init__(self)
         self.underline = underline
 
-    def pre_write(self, f_out, depth=0):
-        f_out.write('\n\n')
+    def pre_write(self, w, depth=0):
+        w.write('\n\n')
 
-    def post_write(self, f_out, depth=0):
+    def post_write(self, w, depth=0):
         if len(self.children) == 1:
             if isinstance(self.children[0], RstText):
                 len_ = len(self.children[0].data)
-                f_out.write('\n%s\n' % (self.underline * len_))
+                w.write('\n%s\n' % (self.underline * len_))
 
 class RstInlineMarkup(RstNode):
     def __init__(self, prefix, suffix):
@@ -188,11 +198,19 @@ class RstInlineMarkup(RstNode):
         self.prefix = prefix
         self.suffix = suffix
 
-    def pre_write(self, f_out, depth=0):
-        f_out.write(self.prefix)
+    def pre_write(self, w, depth=0):
+        w.write(self.prefix)
 
-    def post_write(self, f_out, depth=0):
-        f_out.write(self.suffix)
+    def post_write(self, w, depth=0):
+        w.write(self.suffix)
+
+class RstLiteralBlock(RstNode):
+    def pre_write(self, w, depth=0):
+        w.write('\n.. code-block:: c++\n') # FIXME: language
+        w.indent += 1
+
+    def post_write(self, w, depth=0):
+        w.indent -= 1
 
 class RstText(RstNode):
     def __init__(self, data):
@@ -202,8 +220,8 @@ class RstText(RstNode):
     def __repr__(self):
         return 'RstText(%r)' % self.data
 
-    def write(self, f_out, depth=0):
-        f_out.write(self.data)
+    def write(self, w, depth=0):
+        w.write(self.data)
 
 class Texi2Rst(NoopVisitor):
     def __init__(self, uninclusions):
@@ -229,6 +247,8 @@ class Texi2Rst(NoopVisitor):
 
         if node.tagName == 'sectiontitle':
             child = RstTitle('=')
+        elif node.tagName == 'smallexample':
+            child = RstLiteralBlock()
         elif node.tagName == 'command':
             child = RstInlineMarkup(':command:`', '`')
         else:
@@ -270,7 +290,8 @@ class Texi2Rst(NoopVisitor):
         for doc in self.documents:
             path = os.path.join(output_dir, doc.name)
             with open(path, 'w') as f_out:
-                doc.write(f_out)
+                w = Writer(f_out)
+                doc.write(w)
 
 class Uninclusions:
     """

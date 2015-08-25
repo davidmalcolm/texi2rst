@@ -1,5 +1,6 @@
 from collections import OrderedDict
 import os
+import re
 import StringIO
 import sys
 import unittest
@@ -651,6 +652,9 @@ def fixup_examples(tree):
       </smallexample>
 
     Also, there could be a <group> wrapping the <pre>.
+
+    We special-case where <smallexample> has been used to
+    list a set of options (e.g. to describe "-O2").
     """
     class ExampleFixer(NoopVisitor):
         def previsit_element(self, element):
@@ -664,6 +668,9 @@ def fixup_examples(tree):
                 if pre:
                     text = pre.get_first_text()
                     if text:
+                        if text.data.startswith('-'):
+                            self.handle_option_listing(element, pre)
+                            return
                         lang = self.guess_language(text.data)
                         example.rst_kind = Directive('code-block', lang)
 
@@ -675,6 +682,33 @@ def fixup_examples(tree):
             if data.startswith('--'):
                 return 'bash'
             return 'c++'
+
+        def handle_option_listing(self, element, pre):
+            class OptionWrappingVisitor(NoopVisitor):
+                def postvisit_element(self, element):
+                    new_children = []
+                    for child in element.children:
+                        if isinstance(child, Text):
+                            new_children += self.split_text(child)
+                        else:
+                            new_children.append(child)
+                    element.children = new_children
+                def split_text(self, text):
+                    result = []
+                    last_idx = 0
+                    for m in re.finditer('(-\S+)', text.data):
+                        if m.start(1) > 0:
+                            result.append(Text(text.data[last_idx:m.start(1)]))
+                        option = Element('option', {})
+                        option.rst_kind = InlineMarkup('option')
+                        option.children = [Text(m.group(1))]
+                        last_idx = m.end(1)
+                        result.append(option)
+                    # Any trailing content?
+                    if last_idx or not result:
+                        result.append(Text(text.data[last_idx:]))
+                    return result
+            OptionWrappingVisitor().visit(pre)
 
     v = ExampleFixer()
     v.visit(tree)
@@ -1110,6 +1144,86 @@ types.)
   argument types.  (An old-style function definition is permitted without
   a warning if preceded by a declaration that specifies the argument
   types.)
+
+''',
+            out)
+
+    def test_option_listing(self):
+        xml_src = ('''<texinfo>
+<para><option>-Wall</option> turns on the following warning flags:
+</para>
+<smallexample endspaces=" ">
+<pre xml:space="preserve">-Waddress   
+-Warray-bounds=1 <r>(only with</r> <option>-O2</option><r>)</r>  
+-Wc++11-compat  -Wc++14-compat
+-Wchar-subscripts  
+-Wenum-compare <r>(in C/ObjC; this is on by default in C++)</r> 
+-Wimplicit-int <r>(C and Objective-C only)</r> 
+-Wimplicit-function-declaration <r>(C and Objective-C only)</r> 
+-Wcomment  
+-Wformat   
+-Wmain <r>(only for C/ObjC and unless</r> <option>-ffreestanding</option><r>)</r>  
+-Wmaybe-uninitialized 
+-Wmissing-braces <r>(only for C/ObjC)</r> 
+-Wnonnull  
+-Wopenmp-simd 
+-Wparentheses  
+-Wpointer-sign  
+-Wreorder   
+-Wreturn-type  
+-Wsequence-point  
+-Wsign-compare <r>(only in C++)</r>  
+-Wstrict-aliasing  
+-Wstrict-overflow=1  
+-Wswitch  
+-Wtrigraphs  
+-Wuninitialized  
+-Wunknown-pragmas  
+-Wunused-function  
+-Wunused-label     
+-Wunused-value     
+-Wunused-variable  
+-Wvolatile-register-var 
+
+</pre></smallexample></texinfo>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_examples(doc)
+        out = self.make_rst_string(doc)
+        self.maxDiff = 5000
+        self.assertEqual(
+            u'''-Wall turns on the following warning flags:
+
+:option:`-Waddress`   
+:option:`-Warray-bounds=1` (only with :option:`-O2`)  
+:option:`-Wc++11-compat`  :option:`-Wc++14-compat`
+:option:`-Wchar-subscripts`  
+:option:`-Wenum-compare` (in C/ObjC; this is on by default in C++) 
+:option:`-Wimplicit-int` (C and Objective:option:`-C` only) 
+:option:`-Wimplicit-function-declaration` (C and Objective:option:`-C` only) 
+:option:`-Wcomment`  
+:option:`-Wformat`   
+:option:`-Wmain` (only for C/ObjC and unless :option:`-ffreestanding`)  
+:option:`-Wmaybe-uninitialized` 
+:option:`-Wmissing-braces` (only for C/ObjC) 
+:option:`-Wnonnull`  
+:option:`-Wopenmp-simd` 
+:option:`-Wparentheses`  
+:option:`-Wpointer-sign`  
+:option:`-Wreorder`   
+:option:`-Wreturn-type`  
+:option:`-Wsequence-point`  
+:option:`-Wsign-compare` (only in C++)  
+:option:`-Wstrict-aliasing`  
+:option:`-Wstrict-overflow=1`  
+:option:`-Wswitch`  
+:option:`-Wtrigraphs`  
+:option:`-Wuninitialized`  
+:option:`-Wunknown-pragmas`  
+:option:`-Wunused-function`  
+:option:`-Wunused-label`     
+:option:`-Wunused-value`     
+:option:`-Wunused-variable`  
+:option:`-Wvolatile-register-var` 
 
 ''',
             out)

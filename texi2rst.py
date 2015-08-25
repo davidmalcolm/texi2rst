@@ -115,6 +115,7 @@ def from_xml_string(xml_src):
     # substitution first:
     xml_src = xml_src.replace('&lbrace;', '{')
     xml_src = xml_src.replace('&rbrace;', '}')
+    xml_src = xml_src.replace('&bullet;', '*')
     dom = xml.dom.minidom.parseString(xml_src)
     tree = convert_from_xml(dom)
     return tree
@@ -555,6 +556,40 @@ def fixup_titles(tree):
     v.visit(tree)
     return tree
 
+def fixup_lists(tree):
+    class ListFixer(NoopVisitor):
+        """
+        Convert:
+          <listitem>
+             <prepend>&bullet;</prepend>
+             ...ELEMENTS...
+          </listitem>
+        to:
+          <listitem rst_kind=ListItem(BULLET)>
+             ...ELEMENTS...
+          </listitem>
+        """
+        def previsit_element(self, element):
+            if element.kind == 'listitem':
+                new_children = []
+                element.rst_kind = ListItem('*')
+                skip_ws = True
+                for child in element.children:
+                    if isinstance(child, Element):
+                        if child.kind == 'prepend':
+                            continue
+                    if isinstance(child, Text):
+                        if child.data.isspace():
+                            if skip_ws:
+                                continue
+                    skip_ws = False
+                    new_children.append(child)
+                element.children = new_children
+
+    v = ListFixer()
+    v.visit(tree)
+    return tree
+
 # Top-level conversion routine
 
 def convert_to_rst(tree):
@@ -564,6 +599,7 @@ def convert_to_rst(tree):
     tree = fixup_option_descriptions(tree)
     tree = fixup_examples(tree)
     tree = fixup_titles(tree)
+    tree = fixup_lists(tree)
     return tree
 
 # Policies for converting elements to rst (element.rst_kind):
@@ -606,6 +642,17 @@ class Directive(RstKind):
 
     def before(self, w):
         w.write('\n.. %s:: %s\n\n' % (self.name, self.args))
+        w.indent += 1
+
+    def after(self, w):
+        w.indent -= 1
+
+class ListItem(RstKind):
+    def __init__(self, bullet):
+        self.bullet = bullet
+
+    def before(self, w):
+        w.write('%s ' % (self.bullet, ))
         w.indent += 1
 
     def after(self, w):
@@ -877,6 +924,49 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
   diff /tmp/O2-opts /tmp/O3-opts | grep enabled
   '''),
             out)
+
+class ListTests(Texi2RstTests):
+    def test_bulleted(self):
+        xml_src = ("""
+<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
+<listitem><prepend>&bullet;</prepend>
+<para>Empty.  Empty attributes are ignored.</para>
+</listitem>
+<listitem><prepend>&bullet;</prepend>
+<para>An attribute name
+(which may be an identifier such as <code>unused</code>, or a reserved
+word such as <code>const</code>).
+</para>
+</listitem>
+<listitem><prepend>&bullet;</prepend>
+<para>An attribute name followed by a parenthesized list of
+parameters for the attribute.
+These parameters take one of the following forms:
+</para>
+</listitem>
+</itemize>
+""")
+        doc = from_xml_string(xml_src)
+        doc = fixup_lists(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(
+            (u'''
+* Empty.  Empty attributes are ignored.
+  
+* An attribute name
+  (which may be an identifier such as ``unused``, or a reserved
+  word such as ``const``).
+  
+  
+* An attribute name followed by a parenthesized list of
+  parameters for the attribute.
+  These parameters take one of the following forms:
+  
+  
+'''),
+            out)
+
+
 
 
 # Entrypoint

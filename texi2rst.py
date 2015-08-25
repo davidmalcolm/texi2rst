@@ -812,11 +812,27 @@ class RstWriter(Visitor):
     def __init__(self, f_out):
         self.f_out = f_out
         self.indent = 0
+        self.curline = ''
+
+    def finish(self):
+        self._flush_line()
 
     def write(self, text):
         text = text.replace('\n',
                             '\n%s' % ('  ' * self.indent))
-        self.f_out.write(text)
+        for ch in text:
+            if ch == '\n':
+                self._flush_line()
+                self.f_out.write('\n')
+            else:
+                self.curline += ch
+
+    def _flush_line(self):
+        # Don't print lines containing purely whitespace
+        # (just print their newlines)
+        if not self.curline.isspace():
+            self.f_out.write(self.curline)
+        self.curline = ''
 
     def previsit_element(self, element):
         if hasattr(element, 'rst_kind'):
@@ -861,6 +877,7 @@ class Texi2RstTests(unittest.TestCase):
     def make_rst_string(self, doc):
         w = RstWriter(StringIO.StringIO())
         w.visit(doc)
+        w.finish()
         return w.f_out.getvalue()
 
 class CommentTests(Texi2RstTests):
@@ -948,7 +965,7 @@ class MenuTests(Texi2RstTests):
   How GCC implements the ISO C++ specification. <c++-implementation>
   GNU extensions to the C language family. <c-extensions>
   GNU extensions to the C++ language. <c++-extensions>
-  ''',
+''',
                          out)
 
     def test_nodename(self):
@@ -1031,12 +1048,12 @@ This warning is enabled by <option>-Wall</option>.
 .. option:: -Wunused-label, -Wno-unused-label
 
 
-  
+
   Warn whenever a label is declared but not used.
   This warning is enabled by -Wall.
-  
+
   To suppress this warning use the ``unused`` attribute.
-  ''',
+''',
             out)
 
 class CodeFragmentTests(Texi2RstTests):
@@ -1064,7 +1081,7 @@ test (int i)
   {
     return i * i;
   }
-  '''),
+'''),
             out)
 
     def test_fortran(self):
@@ -1089,7 +1106,7 @@ ENDDO
       A(J, I) = A(J, I) * C
     ENDDO
   ENDDO
-  '''),
+'''),
             out)
 
     def test_shell(self):
@@ -1109,7 +1126,7 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
   gcc -c -Q -O3 --help=optimizers > /tmp/O3-opts
   gcc -c -Q -O2 --help=optimizers > /tmp/O2-opts
   diff /tmp/O2-opts /tmp/O3-opts | grep enabled
-  '''),
+'''),
             out)
 
     def test_group_and_ellipsis(self):
@@ -1148,7 +1165,7 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
 .. code-block:: c++
 
 
-  
+
   bar (int *array, int offset, int size)
   {
     __label__ failure;
@@ -1164,14 +1181,14 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
       /* ... */ access (array, i) /* ... */
     /* ... */
     return 0;
-  
+
    /* Control comes here from ``access``
       if it detects an error.  */
    failure:
     return -1;
   }
-  
-  ''',
+
+''',
                          out)
 
 
@@ -1202,17 +1219,17 @@ These parameters take one of the following forms:
         self.assertEqual(
             (u'''
 * Empty.  Empty attributes are ignored.
-  
+
 * An attribute name
   (which may be an identifier such as ``unused``, or a reserved
   word such as ``const``).
-  
-  
+
+
 * An attribute name followed by a parenthesized list of
   parameters for the attribute.
   These parameters take one of the following forms:
-  
-  
+
+
 '''),
             out)
 
@@ -1245,20 +1262,20 @@ These parameters take one of the following forms:
         out = self.make_rst_string(doc)
         self.assertEqual(
             (u'''
-  
+
   * Outer list's first item.
-    
+
   * A nested list
-      
-        
+
+
         * Nested list's first item.
-          
+
         * Nested list's second item.
-          
-      
-    
+
+
+
   * Outer list's 3rd item.
-    
+
 '''),
             out)
 

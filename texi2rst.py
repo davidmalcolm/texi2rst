@@ -556,6 +556,22 @@ def fixup_titles(tree):
     v.visit(tree)
     return tree
 
+def fixup_index(tree):
+    class IndexFixer(NoopVisitor):
+        """
+        Look for <cindex><indexterm>TEXT</indexterm></cindex>
+        """
+        def previsit_element(self, element):
+            if isinstance(element, Element):
+                if element.kind == 'indexterm':
+                    text = element.get_sole_text()
+                    if text:
+                        element.rst_kind = Directive('index', text.data)
+                        element.children = []
+    v = IndexFixer()
+    v.visit(tree)
+    return tree
+
 def fixup_lists(tree):
     class ListFixer(NoopVisitor):
         """
@@ -599,6 +615,7 @@ def convert_to_rst(tree):
     tree = fixup_option_descriptions(tree)
     tree = fixup_examples(tree)
     tree = fixup_titles(tree)
+    tree = fixup_index(tree)
     tree = fixup_lists(tree)
     return tree
 
@@ -1012,6 +1029,63 @@ These parameters take one of the following forms:
 '''),
             out)
 
+
+class IndexTests(Texi2RstTests):
+    def test_cindex(self):
+        xml_src = ('''<node>
+<sectiontitle>GCC Command Options</sectiontitle>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="61">GCC command options</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="62">command options</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="63">options, GCC command</indexterm></cindex>
+<para>Some text about GCC command options.</para>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="64">C compilation options</indexterm></cindex>
+<para>Some text about C compilation options.</para>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="66">grouping options</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="67">options, grouping</indexterm></cindex>
+<para>Some text about grouping options.
+</para>
+</node>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_titles(doc)
+        doc = fixup_index(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(
+            (u'''
+
+GCC Command Options
+===================
+
+
+
+.. index:: GCC command options
+
+
+
+.. index:: command options
+
+
+
+.. index:: options, GCC command
+
+
+Some text about GCC command options.
+
+.. index:: C compilation options
+
+
+Some text about C compilation options.
+
+.. index:: grouping options
+
+
+
+.. index:: options, grouping
+
+
+Some text about grouping options.
+
+'''),
+        out)
 
 # Entrypoint
 

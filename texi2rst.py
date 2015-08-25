@@ -49,6 +49,11 @@ class Element(Node):
             if isinstance(child, Text):
                 return child
 
+    def get_first_text(self):
+        for child in self.children:
+            if isinstance(child, Text):
+                return child
+
 class Comment(Node):
     def __init__(self, data):
         self.data = data
@@ -116,6 +121,7 @@ def from_xml_string(xml_src):
     xml_src = xml_src.replace('&lbrace;', '{')
     xml_src = xml_src.replace('&rbrace;', '}')
     xml_src = xml_src.replace('&bullet;', '*')
+    xml_src = xml_src.replace('&dots;', '...')
     dom = xml.dom.minidom.parseString(xml_src)
     tree = convert_from_xml(dom)
     return tree
@@ -523,15 +529,36 @@ def fixup_option_descriptions(tree):
     return tree
 
 def fixup_examples(tree):
+    """
+    Handle:
+      <example>
+        <pre>
+          CODE EXAMPLE
+        </pre>
+      </example>
+    and:
+      <smallexample>
+        <pre>
+          CODE EXAMPLE
+        </pre>
+      </smallexample>
+
+    Also, there could be a <group> wrapping the <pre>.
+    """
     class ExampleFixer(NoopVisitor):
         def previsit_element(self, element):
             if element.kind in ('example', 'smallexample'):
+                example = element
+                # There could be a "group" holding the "pre"
+                group = element.first_element_named('group')
+                if group:
+                    element = group
                 pre = element.first_element_named('pre')
                 if pre:
-                    text = pre.get_sole_text()
+                    text = pre.get_first_text()
                     if text:
                         lang = self.guess_language(text.data)
-                        element.rst_kind = Directive('code-block', lang)
+                        example.rst_kind = Directive('code-block', lang)
 
         def guess_language(self, data):
             if 'DO ' in data:
@@ -943,6 +970,69 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
   diff /tmp/O2-opts /tmp/O3-opts | grep enabled
   '''),
             out)
+
+    def test_group_and_ellipsis(self):
+        # Example of a <group> wrapping the <pre>, with "&dots;"
+        # entity and embedded markup.
+        xml_src = ('''<smallexample endspaces=" ">
+<group endspaces=" ">
+<pre xml:space="preserve">bar (int *array, int offset, int size)
+&lbrace;
+  __label__ failure;
+  int access (int *array, int index)
+    &lbrace;
+      if (index &gt; size)
+        goto failure;
+      return array[index + offset];
+    &rbrace;
+  int i;
+  /* <r>&dots;</r> */
+  for (i = 0; i &lt; size; i++)
+    /* <r>&dots;</r> */ access (array, i) /* <r>&dots;</r> */
+  /* <r>&dots;</r> */
+  return 0;
+
+ /* <r>Control comes here from <code>access</code>
+    if it detects an error.</r>  */
+ failure:
+  return -1;
+&rbrace;
+</pre></group>
+</smallexample>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_examples(doc)
+        out = self.make_rst_string(doc)
+        self.maxDiff = 2000
+        self.assertEqual(u'''
+.. code-block:: c++
+
+
+  
+  bar (int *array, int offset, int size)
+  {
+    __label__ failure;
+    int access (int *array, int index)
+      {
+        if (index > size)
+          goto failure;
+        return array[index + offset];
+      }
+    int i;
+    /* ... */
+    for (i = 0; i < size; i++)
+      /* ... */ access (array, i) /* ... */
+    /* ... */
+    return 0;
+  
+   /* Control comes here from ``access``
+      if it detects an error.  */
+   failure:
+    return -1;
+  }
+  
+  ''',
+                         out)
+
 
 class ListTests(Texi2RstTests):
     def test_bulleted(self):

@@ -23,6 +23,11 @@ class Node:
     def dump(self, f_out, depth=0):
         f_out.write('%s%r\n' %  (' ' * depth, self))
 
+    def is_element(self, kind):
+        if isinstance(self, Element):
+            if self.kind == kind:
+                return True
+
 class Element(Node):
     def __init__(self, kind, attrs):
         self.kind = kind
@@ -571,6 +576,25 @@ def fixup_option_descriptions(tree):
                     if item:
                         itemformat = item.first_element_named('itemformat')
                         if itemformat:
+                            # Detect:
+                            #   <itemformat>
+                            #     TEXT
+                            #     <r>TEXT</r>
+                            #   </itemformat>
+                            # and move the <r>TEXT</r> to be a ".. note::"
+                            # within the <tableitem>
+                            if len(itemformat.children) == 2:
+                                if itemformat.children[1].is_element('r'):
+                                    r = itemformat.children[1]
+                                    itemformat.children = \
+                                        itemformat.children[:-1]
+                                    note = Element('note', {})
+                                    note.rst_kind = Directive('note', None)
+                                    note.children = [r]
+
+                                    tableitem.children = \
+                                        [note] + tableitem.children
+
                             text = itemformat.get_sole_text()
                             if text:
                                 self.convert_to_directive(element,
@@ -775,8 +799,8 @@ class Directive(RstKind):
         w.write('\n.. %s::' % (self.name, ))
         if self.args:
             w.write(' %s' % (self.args, ))
-        w.write('\n\n')
         w.indent += 1
+        w.write('\n\n')
 
     def after(self, w):
         w.indent -= 1
@@ -1058,6 +1082,35 @@ This warning is enabled by <option>-Wall</option>.
   This warning is enabled by -Wall.
 
   To suppress this warning use the ``unused`` attribute.
+''',
+            out)
+
+    def test_option_description_with_r(self):
+        xml_src = ('''<texinfo>
+<tableentry><tableterm><item spaces=" "><itemformat command="code">-Wstrict-prototypes <r>(C and Objective-C only)</r></itemformat></item>
+</tableterm><tableitem><indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="417" incode="1">Wstrict-prototypes</indexterm></indexcommand>
+<indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="418" incode="1">Wno-strict-prototypes</indexterm></indexcommand>
+<para>Warn if a function is declared or defined without specifying the
+argument types.  (An old-style function definition is permitted without
+a warning if preceded by a declaration that specifies the argument
+types.)
+</para>
+</tableitem></tableentry></texinfo>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_option_descriptions(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(
+            u'''.. option:: -Wstrict-prototypes , -Wstrict-prototypes, -Wno-strict-prototypes
+
+  .. note::
+
+    (C and Objective-C only)
+
+  Warn if a function is declared or defined without specifying the
+  argument types.  (An old-style function definition is permitted without
+  a warning if preceded by a declaration that specifies the argument
+  types.)
+
 ''',
             out)
 

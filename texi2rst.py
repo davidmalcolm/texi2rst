@@ -1480,6 +1480,14 @@ Some text about grouping options.
 '''),
         out)
 
+class IntegrationTests(Texi2RstTests):
+    def test_empty(self):
+        xml_src = '''<texinfo/>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree)
+        out = self.make_rst_string(tree)
+        self.assertEqual(u'', out)
+
 # Entrypoint
 
 if __name__ == '__main__':

@@ -536,7 +536,9 @@ def fixup_examples(tree):
         def guess_language(self, data):
             if 'DO ' in data:
                 return 'fortran'
-            if data.startswith('gcc '):
+            if data.startswith('gcc ') or data.startswith('% gcc '):
+                return 'bash'
+            if data.startswith('--'):
                 return 'bash'
             return 'c++'
 

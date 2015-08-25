@@ -966,7 +966,51 @@ These parameters take one of the following forms:
 '''),
             out)
 
-
+    def test_nested(self):
+        xml_src = ("""
+<itemize commandarg="bullet" spaces=" " endspaces=" ">
+  <itemprepend><formattingcommand command="bullet"/></itemprepend>
+  <listitem><prepend>&bullet;</prepend>
+    <para>Outer list's first item.</para>
+  </listitem>
+  <listitem><prepend>&bullet;</prepend>
+    <para>A nested list</para>
+    <itemize commandarg="bullet" spaces=" " endspaces=" ">
+      <itemprepend><formattingcommand command="bullet"/></itemprepend>
+      <listitem><prepend>&bullet;</prepend>
+        <para>Nested list's first item.</para>
+      </listitem>
+      <listitem><prepend>&bullet;</prepend>
+        <para>Nested list's second item.</para>
+      </listitem>
+    </itemize>
+  </listitem>
+  <listitem><prepend>&bullet;</prepend>
+    <para>Outer list's 3rd item.</para>
+  </listitem>
+</itemize>
+""")
+        doc = from_xml_string(xml_src)
+        doc = fixup_lists(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(
+            (u'''
+  
+  * Outer list's first item.
+    
+  * A nested list
+      
+        
+        * Nested list's first item.
+          
+        * Nested list's second item.
+          
+      
+    
+  * Outer list's 3rd item.
+    
+'''),
+            out)
 
 
 # Entrypoint

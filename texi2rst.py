@@ -167,6 +167,13 @@ class NoopVisitor(Visitor):
     def visit_text(self, text):
         pass
 
+def for_each_node_below(node):
+    if isinstance(node, Element):
+        for child in node.children:
+            yield child
+            for node in for_each_node_below(child):
+                yield node
+
 '''
 class RstDocument(RstNode):
     def __init__(self, name):
@@ -429,12 +436,88 @@ def prune(tree):
             if child.kind in ('filename', 'preamble', 'setfilename', 'clear',
                               'set', 'macro', 'settitle',
                               'defcodeindex', 'syncodeindex',
-                              'paragraphindent'):
+                              'paragraphindent',
+                              'nodenext', 'nodeprev', 'nodeup'):
                 return True
             else:
                 return False
 
     v = Pruner()
+    v.visit(tree)
+    return tree
+
+def convert_text_to_label(data):
+    data = data.replace(' ', '-')
+    data = data.lower()
+    return data
+
+def fixup_menus(tree):
+    """
+    Given:
+      <menu endspaces=" ">
+         <menuentry leadingtext="* ">
+            <menunode separator="::     ">TEXT</menunode>
+            <menudescription><pre xml:space="preserve">TEXT</pre></menudescription>
+         </menuentry>
+         [... more menuentry ...]
+      </menu>
+    convert as follows:
+      * the <menu> becomes a "toctree" .rst directive
+        (http://sphinx-doc.org/markup/toctree.html#directive-toctree)
+      * the <menuentry> elements are pruned and tagged with ToctreeEntry, to
+        be rendered using the given descriptions.
+    """
+    class MenuFixer(NoopVisitor):
+        def previsit_element(self, element):
+            if element.kind == 'menu':
+                element.rst_kind = Directive('toctree', None)
+
+            if element.kind == 'menuentry':
+                menunode = element.first_element_named('menunode')
+                menudescription = element.first_element_named('menudescription')
+                if menunode and menudescription:
+                    # Prune the menuentry, giving it an explicit title.
+                    element.rst_kind = ToctreeEntry()
+                    element.children = menudescription.children
+                    for node in for_each_node_below(element):
+                        if isinstance(node, Text):
+                            if node.data.endswith('\n'):
+                                node.data = node.data[:-1]
+                    # FIXME: express this cross-reference at the Node level:
+                    data = menunode.get_first_text().data
+                    label = convert_text_to_label(data)
+                    element.children += [Text(' <%s>' % label)]
+
+    v = MenuFixer()
+    v.visit(tree)
+    return tree
+
+def fixup_nodes(tree):
+    """
+    Given:
+      <node name="C-Implementation" spaces=" ">
+         <nodename>C Implementation</nodename>
+         <nodenext automatic="on">C++ Implementation</nodenext>
+         <nodeprev automatic="on">Invoking GCC</nodeprev>
+         <nodeup automatic="on">Top</nodeup>
+      </node>'''
+    convert the <node> into a label for use by a ref:
+
+       :: _c-implementation
+
+    (see http://sphinx-doc.org/markup/inline.html#role-ref)
+    """
+    class MenuFixer(NoopVisitor):
+        def previsit_element(self, element):
+            if element.kind == 'node':
+                nodename = element.first_element_named('nodename')
+                text = nodename.get_sole_text()
+                if nodename and text:
+                    element.children = []
+                    label = convert_text_to_label(text.data)
+                    element.rst_kind = Label(label)
+
+    v = MenuFixer()
     v.visit(tree)
     return tree
 
@@ -640,6 +723,8 @@ def fixup_lists(tree):
 def convert_to_rst(tree):
     tree = fixup_comments(tree)
     tree = prune(tree)
+    tree = fixup_menus(tree)
+    tree = fixup_nodes(tree)
     tree = fixup_option_refs(tree)
     tree = fixup_option_descriptions(tree)
     tree = fixup_examples(tree)
@@ -687,7 +772,10 @@ class Directive(RstKind):
         self.args = args
 
     def before(self, w):
-        w.write('\n.. %s:: %s\n\n' % (self.name, self.args))
+        w.write('\n.. %s::' % (self.name, ))
+        if self.args:
+            w.write(' %s' % (self.args, ))
+        w.write('\n\n')
         w.indent += 1
 
     def after(self, w):
@@ -703,6 +791,20 @@ class ListItem(RstKind):
 
     def after(self, w):
         w.indent -= 1
+
+class ToctreeEntry(RstKind):
+    def __init__(self):
+        pass
+
+    def after(self, w):
+        w.write('\n')
+
+class Label(RstKind):
+    def __init__(self, title):
+        self.title = title
+
+    def before(self, w):
+        w.write(':: _%s:\n' % (self.title, ))
 
 # Output of a converted tree to .rst file
 
@@ -817,6 +919,45 @@ class PruningTests(Texi2RstTests):
         self.assertEqual(len(texinfo.children), 0)
         out = self.make_rst_string(doc)
         self.assertEqual(u'', out)
+
+class MenuTests(Texi2RstTests):
+    def test_menu(self):
+        xml_src = u'''
+<menu endspaces=" ">
+<menuentry leadingtext="* "><menunode separator="::     ">G++ and GCC</menunode><menudescription><pre xml:space="preserve">You can compile C or C++ programs.
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::       ">Standards</menunode><menudescription><pre xml:space="preserve">Language standards supported by GCC.
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::    ">Invoking GCC</menunode><menudescription><pre xml:space="preserve">Command options supported by <samp>gcc</samp>.
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator=":: ">C Implementation</menunode><menudescription><pre xml:space="preserve">How GCC implements the ISO C specification.
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator=":: ">C++ Implementation</menunode><menudescription><pre xml:space="preserve">How GCC implements the ISO C++ specification.
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::    ">C Extensions</menunode><menudescription><pre xml:space="preserve">GNU extensions to the C language family.
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::  ">C++ Extensions</menunode><menudescription><pre xml:space="preserve">GNU extensions to the C++ language.
+</pre></menudescription></menuentry></menu>
+        '''
+        doc = from_xml_string(xml_src)
+        doc = fixup_menus(doc)
+        out = self.make_rst_string(doc)
+        self.maxDiff = 2000
+        self.assertEqual(u'''
+.. toctree::
+
+
+  You can compile C or C++ programs. <g++-and-gcc>
+  Language standards supported by GCC. <standards>
+  Command options supported by gcc. <invoking-gcc>
+  How GCC implements the ISO C specification. <c-implementation>
+  How GCC implements the ISO C++ specification. <c++-implementation>
+  GNU extensions to the C language family. <c-extensions>
+  GNU extensions to the C++ language. <c++-extensions>
+  ''',
+                         out)
+
+    def test_nodename(self):
+        xml_src = u'''<node name="C-Implementation" spaces=" "><nodename>C Implementation</nodename><nodenext automatic="on">C++ Implementation</nodenext><nodeprev automatic="on">Invoking GCC</nodeprev><nodeup automatic="on">Top</nodeup></node>'''
+        doc = from_xml_string(xml_src)
+        doc = fixup_nodes(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u':: _c-implementation:\n',
+                         out)
 
 class InlineMarkupTests(Texi2RstTests):
     def test_command(self):

@@ -813,6 +813,7 @@ class RstWriter(Visitor):
         self.f_out = f_out
         self.indent = 0
         self.curline = ''
+        self.had_nonempty_line = False
 
     def finish(self):
         self._flush_line()
@@ -822,17 +823,27 @@ class RstWriter(Visitor):
                             '\n%s' % ('  ' * self.indent))
         for ch in text:
             if ch == '\n':
-                self._flush_line()
-                self.f_out.write('\n')
+                nonempty_line = self._flush_line()
+                # Avoid repeated blank lines:
+                if nonempty_line or self.had_nonempty_line:
+                    self.f_out.write('\n')
+                self.had_nonempty_line = nonempty_line
             else:
                 self.curline += ch
 
     def _flush_line(self):
         # Don't print lines containing purely whitespace
         # (just print their newlines)
-        if not self.curline.isspace():
-            self.f_out.write(self.curline)
+        if not self.curline:
+            return False
+
+        if self.curline.isspace():
+            self.curline = ''
+            return False
+
+        self.f_out.write(self.curline)
         self.curline = ''
+        return True
 
     def previsit_element(self, element):
         if hasattr(element, 'rst_kind'):
@@ -924,7 +935,7 @@ class CommentTests(Texi2RstTests):
         doc = from_xml_string(self.xml_src)
         doc = fixup_comments(doc)
         out = self.make_rst_string(doc)
-        self.assertEqual(u'\n\n.. First line \n   Second line \n\n\n', out)
+        self.assertEqual(u'.. First line \n   Second line \n\n', out)
 
 class PruningTests(Texi2RstTests):
     def test_command(self):
@@ -954,9 +965,7 @@ class MenuTests(Texi2RstTests):
         doc = fixup_menus(doc)
         out = self.make_rst_string(doc)
         self.maxDiff = 2000
-        self.assertEqual(u'''
-.. toctree::
-
+        self.assertEqual(u'''.. toctree::
 
   You can compile C or C++ programs. <g++-and-gcc>
   Language standards supported by GCC. <standards>
@@ -1002,7 +1011,7 @@ class TitleTests(Texi2RstTests):
         doc = from_xml_string(xml_src)
         doc = fixup_titles(doc)
         out = self.make_rst_string(doc)
-        self.assertEqual(u'\nA section title\n===============\n\nsome text',
+        self.assertEqual(u'A section title\n===============\n\nsome text',
                          out)
 
     def test_subsubheading(self):
@@ -1011,7 +1020,7 @@ class TitleTests(Texi2RstTests):
         doc = from_xml_string(xml_src)
         doc = fixup_titles(doc)
         out = self.make_rst_string(doc)
-        self.assertEqual(u'\nA sub-sub-heading\n^^^^^^^^^^^^^^^^^\n\nsome text',
+        self.assertEqual(u'A sub-sub-heading\n^^^^^^^^^^^^^^^^^\n\nsome text',
                          out)
 
 class OptionTests(Texi2RstTests):
@@ -1043,11 +1052,7 @@ This warning is enabled by <option>-Wall</option>.
         doc = fixup_option_descriptions(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            u'''
-
-.. option:: -Wunused-label, -Wno-unused-label
-
-
+            u'''.. option:: -Wunused-label, -Wno-unused-label
 
   Warn whenever a label is declared but not used.
   This warning is enabled by -Wall.
@@ -1075,7 +1080,6 @@ test (int i)
 
 .. code-block:: c++
 
-
   static int
   test (int i)
   {
@@ -1097,9 +1101,7 @@ ENDDO
         doc = fixup_examples(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            (u'''
-.. code-block:: fortran
-
+            (u'''.. code-block:: fortran
 
   DO J = 1, M
     DO I = 1, N
@@ -1119,9 +1121,7 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
         doc = fixup_examples(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            (u'''
-.. code-block:: bash
-
+            (u'''.. code-block:: bash
 
   gcc -c -Q -O3 --help=optimizers > /tmp/O3-opts
   gcc -c -Q -O2 --help=optimizers > /tmp/O2-opts
@@ -1161,10 +1161,7 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
         doc = fixup_examples(doc)
         out = self.make_rst_string(doc)
         self.maxDiff = 2000
-        self.assertEqual(u'''
-.. code-block:: c++
-
-
+        self.assertEqual(u'''.. code-block:: c++
 
   bar (int *array, int offset, int size)
   {
@@ -1217,18 +1214,15 @@ These parameters take one of the following forms:
         doc = fixup_lists(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            (u'''
-* Empty.  Empty attributes are ignored.
+            (u'''* Empty.  Empty attributes are ignored.
 
 * An attribute name
   (which may be an identifier such as ``unused``, or a reserved
   word such as ``const``).
 
-
 * An attribute name followed by a parenthesized list of
   parameters for the attribute.
   These parameters take one of the following forms:
-
 
 '''),
             out)
@@ -1261,18 +1255,13 @@ These parameters take one of the following forms:
         doc = fixup_lists(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            (u'''
-
-  * Outer list's first item.
+            (u'''  * Outer list's first item.
 
   * A nested list
-
 
         * Nested list's first item.
 
         * Nested list's second item.
-
-
 
   * Outer list's 3rd item.
 
@@ -1300,37 +1289,24 @@ class IndexTests(Texi2RstTests):
         doc = fixup_index(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            (u'''
-
-GCC Command Options
+            (u'''GCC Command Options
 ===================
-
-
 
 .. index:: GCC command options
 
-
-
 .. index:: command options
 
-
-
 .. index:: options, GCC command
-
 
 Some text about GCC command options.
 
 .. index:: C compilation options
 
-
 Some text about C compilation options.
 
 .. index:: grouping options
 
-
-
 .. index:: options, grouping
-
 
 Some text about grouping options.
 

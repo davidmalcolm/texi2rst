@@ -1532,7 +1532,7 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
 
 class ListTests(Texi2RstTests):
     def test_bulleted(self):
-        xml_src = ("""
+        xml_src = ('''
 <itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
 <listitem><prepend>&bullet;</prepend>
 <para>Empty.  Empty attributes are ignored.</para>
@@ -1550,7 +1550,7 @@ These parameters take one of the following forms:
 </para>
 </listitem>
 </itemize>
-""")
+''')
         doc = from_xml_string(xml_src)
         doc = fixup_lists(doc)
         doc = fixup_inline_markup(doc)
@@ -1570,7 +1570,7 @@ These parameters take one of the following forms:
             out)
 
     def test_nested(self):
-        xml_src = ("""
+        xml_src = ('''
 <itemize commandarg="bullet" spaces=" " endspaces=" ">
   <itemprepend><formattingcommand command="bullet"/></itemprepend>
   <listitem><prepend>&bullet;</prepend>
@@ -1592,7 +1592,7 @@ These parameters take one of the following forms:
     <para>Outer list's 3rd item.</para>
   </listitem>
 </itemize>
-""")
+''')
         doc = from_xml_string(xml_src)
         doc = fixup_lists(doc)
         out = self.make_rst_string(doc)

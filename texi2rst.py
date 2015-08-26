@@ -129,6 +129,7 @@ def from_xml_string(xml_src):
     xml_src = xml_src.replace('&rbrace;', '}')
     xml_src = xml_src.replace('&bullet;', '*')
     xml_src = xml_src.replace('&dots;', '...')
+    xml_src = xml_src.replace('&eosperiod;', '.')
     dom = xml.dom.minidom.parseString(xml_src)
     tree = convert_from_xml(dom)
     return tree
@@ -180,6 +181,27 @@ def for_each_node_below(node):
             yield child
             for node in for_each_node_below(child):
                 yield node
+
+def fixup_whitespace(tree):
+    class WhitespaceFixer(NoopVisitor):
+        """
+        Strip redundant Text nodes
+        """
+        def previsit_element(self, element):
+            if element.kind in ('pre', 'para'):
+                return
+
+            new_children = []
+            for child in element.children:
+                if isinstance(child, Text):
+                    if child.data.isspace():
+                        continue
+                new_children.append(child)
+            element.children = new_children
+
+    v = WhitespaceFixer()
+    v.visit(tree)
+    return tree
 
 '''
 class RstDocument(RstNode):
@@ -546,9 +568,11 @@ def fixup_option_refs(tree):
     v.visit(tree)
     return tree
 
-def fixup_option_descriptions(tree):
+def fixup_table_entry(tree):
     """
-    Options come in the form:
+    Fixup <tableentry> elements.
+
+    They can be used for descriptions of options, in this form:
 
        <tableentry>
          <tableterm>
@@ -567,8 +591,26 @@ def fixup_option_descriptions(tree):
 
     Transform this so that we can emit it as a .rst "option" directive.
     (see http://sphinx-doc.org/domains.html#directive-option)
+
+    Alternatively, <tableentry> can be used to make lists of items, e.g.:
+
+    <table commandarg="code" spaces=" " endspaces=" ">
+      <tableentry>
+        <tableterm>
+          <item spaces=" ">
+            <itemformat command="code"><var>file</var>.c</itemformat>
+          </item>
+        </tableterm>
+        <tableitem>
+          <para>C source code that must be preprocessed.</para>
+        </tableitem>
+      </tableentry>
+      ... more <tableentry> elements ...
+    </table>
+
+    Transform this to a definition list.
     """
-    class OptionDescFixer(NoopVisitor):
+    class TableEntryFixer(NoopVisitor):
         def previsit_element(self, element):
             if element.kind == 'tableentry':
                 tableterm = element.first_element_named('tableterm')
@@ -602,19 +644,25 @@ def fixup_option_descriptions(tree):
                                 self.convert_to_directive(element,
                                                           tableitem,
                                                           text.data)
+                            else:
+                                tableterm.rst_kind = DefinitionListHeader()
+                                tableitem.rst_kind = DefinitionListBody()
+                                tableterm = fixup_whitespace(tableterm)
 
-        def convert_to_directive(self, tableentry, tableitem, itemformat_text):
-            # Start with a dummy value for "args":
-            tableentry.rst_kind = Directive('option', None)
-
+        def convert_to_directive(self, tableentry, tableitem,
+                                        itemformat_text):
             options = [itemformat_text]
 
-            # Strip away tableterm, adding content to
-            # the directive, and gathering options:
+            # This might be a description of an option.
+            # Scan below <tableitem> looking for <indexcommand>,
+            # gathering options, and preparing a list of children
+            # with the <indexcommand> instances purged.
             new_children = []
+            found_indexcommand = False
             for child in tableitem.children:
                 if isinstance(child, Element):
                     if child.kind == 'indexcommand':
+                        found_indexcommand = True
                         indexterm = child.first_element_named('indexterm')
                         if indexterm:
                             text = indexterm.get_sole_text()
@@ -628,12 +676,15 @@ def fixup_option_descriptions(tree):
                                 continue
                 new_children.append(child)
 
-            # Update the directive args to include all the options found:
-            tableentry.rst_kind.args = ', '.join(options)
+            if found_indexcommand:
+                # Then it is a description of an option, mark it as such,
+                # using all the option names found, and purge the
+                # <indexcommand> instances:
+                tableentry.rst_kind = Directive('option',
+                                                ', '.join(options))
+                tableentry.children = new_children
 
-            tableentry.children = new_children
-
-    v = OptionDescFixer()
+    v = TableEntryFixer()
     v.visit(tree)
     return tree
 
@@ -807,7 +858,7 @@ def convert_to_rst(tree):
     tree = fixup_menus(tree)
     tree = fixup_nodes(tree)
     tree = fixup_option_refs(tree)
-    tree = fixup_option_descriptions(tree)
+    tree = fixup_table_entry(tree)
     tree = fixup_examples(tree)
     tree = fixup_titles(tree)
     tree = fixup_index(tree)
@@ -898,6 +949,33 @@ class ListItem(RstKind):
     def before(self, w):
         w.write('%s ' % (self.bullet, ))
         w.indent += 1
+
+    def after(self, w):
+        w.indent -= 1
+
+class DefinitionListHeader(RstKind):
+    """
+    http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#definition-lists
+    """
+    def __repr__(self):
+        return 'DefinitionListHeader()'
+
+    def before(self, w):
+        w.write('\n')
+
+    def after(self, w):
+        pass
+
+class DefinitionListBody(RstKind):
+    """
+    http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#definition-lists
+    """
+    def __repr__(self):
+        return 'DefinitionListBody()'
+
+    def before(self, w):
+        w.indent += 1
+        w.write('\n')
 
     def after(self, w):
         w.indent -= 1
@@ -1149,7 +1227,7 @@ This warning is enabled by <option>-Wall</option>.
 <para>To suppress this warning use the <code>unused</code> attribute.</para>
 </tableitem></tableentry></texinfo>''')
         doc = from_xml_string(xml_src)
-        doc = fixup_option_descriptions(doc)
+        doc = fixup_table_entry(doc)
         doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
@@ -1174,7 +1252,7 @@ types.)
 </para>
 </tableitem></tableentry></texinfo>''')
         doc = from_xml_string(xml_src)
-        doc = fixup_option_descriptions(doc)
+        doc = fixup_table_entry(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
             u'''.. option:: -Wstrict-prototypes , -Wstrict-prototypes, -Wno-strict-prototypes
@@ -1267,6 +1345,40 @@ types.)
 :option:`-Wunused-value`     
 :option:`-Wunused-variable`  
 :option:`-Wvolatile-register-var` 
+
+''',
+            out)
+
+class TableEntryTests(Texi2RstTests):
+    def test_generating_definition_list(self):
+        xml_src = u'''
+<table commandarg="code" spaces=" " endspaces=" ">
+<tableentry><tableterm><item spaces=" "><itemformat command="code"><var>file</var>.c</itemformat></item>
+</tableterm><tableitem><para>C source code that must be preprocessed.
+</para>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="code"><var>file</var>.i</itemformat></item>
+</tableterm><tableitem><para>C source code that should not be preprocessed.
+</para>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="code"><var>file</var>.ii</itemformat></item>
+</tableterm><tableitem><para>C++ source code that should not be preprocessed.
+</para>
+</tableitem></tableentry>
+</table>
+'''
+        doc = from_xml_string(xml_src)
+        doc = fixup_table_entry(doc)
+        doc = fixup_inline_markup(doc)
+        out = self.make_rst_string(doc)
+        self.maxDiff = 3000
+        self.assertEqual(
+            u'''``file``.c
+  C source code that must be preprocessed.
+
+``file``.i
+  C source code that should not be preprocessed.
+
+``file``.ii
+  C++ source code that should not be preprocessed.
 
 ''',
             out)

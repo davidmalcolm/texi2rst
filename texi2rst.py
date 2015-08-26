@@ -70,6 +70,14 @@ class Element(Node):
                 result += child.get_all_text()
         return result
 
+    def delete_children_named(self, name):
+        new_children = []
+        for child in self.children:
+            if child.is_element(name):
+                continue
+            new_children.append(child)
+        self.children = new_children
+
 class Comment(Node):
     def __init__(self, data):
         self.data = data
@@ -602,6 +610,9 @@ def fixup_table_entry(tree):
     Transform this so that we can emit it as a .rst "option" directive.
     (see http://sphinx-doc.org/domains.html#directive-option)
 
+    Alternatively, it can be a .rst "envvar" directive
+    (see http://sphinx-doc.org/domains.html#directive-envvar)
+
     Alternatively, <tableentry> can be used to make lists of items, e.g.:
 
     <table commandarg="code" spaces=" " endspaces=" ">
@@ -702,6 +713,16 @@ def fixup_table_entry(tree):
                 tableentry.rst_kind = Directive('option',
                                                 ', '.join(options))
                 tableentry.children = new_children
+                return True
+
+            # Otherwise, if it's all uppercase/underscores, make it
+            # an "envvar" directive.
+            if text and len(text) > 3 and re.match('^[A-Z][_A-Z]+$', text):
+                tableentry.rst_kind = Directive('envvar', text)
+                tableentry.children = new_children
+                # The "envvar" directive will add it to the index; strip
+                # any <findex> element below <tableitem>.
+                tableentry.delete_children_named('findex')
                 return True
 
     v = TableEntryFixer()
@@ -859,6 +880,7 @@ def fixup_inline_markup(tree):
         <var>TEXT</var>            ``TEXT``
         <code>TEXT</code>          ``TEXT``
         <dfn>TEXT</dfn>            :dfn:`TEXT`
+        <env>TEXT</env>            :envvar:`TEXT`
         =========================  ==================
         """
         def previsit_element(self, element):
@@ -870,6 +892,8 @@ def fixup_inline_markup(tree):
                 element.rst_kind = MatchedInlineMarkup('``')
             elif element.kind == 'dfn':
                 element.rst_kind = InlineMarkup('dfn')
+            elif element.kind == 'env':
+                element.rst_kind = InlineMarkup('envvar')
 
     v = InlineMarkupFixer()
     v.visit(tree)
@@ -1214,6 +1238,13 @@ class InlineMarkupTests(Texi2RstTests):
         out = self.make_rst_string(doc)
         self.assertEqual(u'An :dfn:`attribute specifier list` is...', out)
 
+    def test_env(self):
+        xml_src = u'<para>The default <env>GCC_COLORS</env> is...</para>'
+        doc = from_xml_string(xml_src)
+        doc = fixup_inline_markup(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'The default :envvar:`GCC_COLORS` is...', out)
+
 class TitleTests(Texi2RstTests):
     def test_section_title(self):
         xml_src = ('<texinfo><sectiontitle>A section title</sectiontitle>'
@@ -1429,6 +1460,31 @@ class TableEntryTests(Texi2RstTests):
 
 ''',
             out)
+
+    def test_generating_envvar_directive(self):
+        xml_src = u'''<tableentry><tableterm><item spaces=" "><itemformat command="env">TMPDIR</itemformat></item>
+</tableterm><tableitem><findex index="fn" spaces=" "><indexterm index="fn" number="8" mergedindex="cp">TMPDIR</indexterm></findex>
+<para>If <env>TMPDIR</env> is set, it specifies the directory to use for temporary
+files.  GCC uses temporary files to hold the output of one stage of
+compilation which is to be used as input to the next stage: for example,
+the output of the preprocessor, which is the input to the compiler
+proper.
+</para>
+</tableitem></tableentry>'''
+        doc = from_xml_string(xml_src)
+        doc = fixup_table_entry(doc)
+        doc = fixup_inline_markup(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'''.. envvar:: TMPDIR
+
+  If :envvar:`TMPDIR` is set, it specifies the directory to use for temporary
+  files.  GCC uses temporary files to hold the output of one stage of
+  compilation which is to be used as input to the next stage: for example,
+  the output of the preprocessor, which is the input to the compiler
+  proper.
+
+''',
+                         out)
 
 class CodeFragmentTests(Texi2RstTests):
     def test_smallexample_option(self):

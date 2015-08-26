@@ -34,9 +34,10 @@ class Element(Node):
         self.kind = kind
         self.attrs = attrs
         self.children = []
+        self.rst_kind = None
 
     def __repr__(self):
-        return 'Element(%r, %r)' % (self.kind, self.attrs, )
+        return 'Element(%r, %r, %r)' % (self.kind, self.attrs, self.rst_kind)
 
     def dump(self, f_out, depth=0):
         f_out.write('%s%r\n' %  (' ' * depth, self))
@@ -827,6 +828,9 @@ class InlineMarkup(RstKind):
     def __init__(self, name):
         self.name = name
 
+    def __repr__(self):
+        return 'InlineMarkup(%r)' % self.name
+
     def before(self, w):
         w.write(':%s:`' % self.name)
 
@@ -840,6 +844,9 @@ class MatchedInlineMarkup(RstKind):
     def __init__(self, tag):
         self.tag = tag
 
+    def __repr__(self):
+        return 'MatchedInlineMarkup(%r)' % self.tag
+
     def before(self, w):
         w.write(self.tag)
 
@@ -850,6 +857,9 @@ class Title(RstKind):
     def __init__(self, element, underline):
         self.element = element
         self.underline = underline
+
+    def __repr__(self):
+        return 'Title(element, %r)' % (self.underline, )
 
     def before(self, w):
         w.write('\n')
@@ -865,6 +875,9 @@ class Directive(RstKind):
         self.name = name
         self.args = args
 
+    def __repr__(self):
+        return 'Directive(%r, %r)' % (self.name, self.args)
+
     def before(self, w):
         w.write('\n.. %s::' % (self.name, ))
         if self.args:
@@ -878,6 +891,9 @@ class Directive(RstKind):
 class ListItem(RstKind):
     def __init__(self, bullet):
         self.bullet = bullet
+
+    def __repr__(self):
+        return 'ListItem(%r)' % self.bullet
 
     def before(self, w):
         w.write('%s ' % (self.bullet, ))
@@ -896,6 +912,9 @@ class ToctreeEntry(RstKind):
 class Label(RstKind):
     def __init__(self, title):
         self.title = title
+
+    def __repr__(self):
+        return 'Label(%r)' % self.title
 
     def before(self, w):
         w.write(':: _%s:\n' % (self.title, ))
@@ -940,14 +959,14 @@ class RstWriter(Visitor):
         return True
 
     def previsit_element(self, element):
-        if hasattr(element, 'rst_kind'):
+        if element.rst_kind:
             element.rst_kind.before(self)
         else:
             if 0:
                 print('unhandled element: %r' % (element, ))
 
     def postvisit_element(self, element):
-        if hasattr(element, 'rst_kind'):
+        if element.rst_kind:
             element.rst_kind.after(self)
 
     def visit_comment(self, comment):

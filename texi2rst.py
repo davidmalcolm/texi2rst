@@ -776,6 +776,28 @@ def fixup_lists(tree):
     v.visit(tree)
     return tree
 
+def fixup_inline_markup(tree):
+    class InlineMarkupFixer(NoopVisitor):
+        """
+        Inline markup conversions:
+        =========================  ==================
+        XML INPUT                  .rst OUTPUT
+        =========================  ==================
+        <command>TEXT</command>    :command:`TEXT`
+        =========================  ==================
+        """
+        def previsit_element(self, element):
+            if element.kind == 'command':
+                element.rst_kind = InlineMarkup('command')
+            elif element.kind == 'var':
+                element.rst_kind = MatchedInlineMarkup('``')
+            elif element.kind == 'code':
+                element.rst_kind = MatchedInlineMarkup('``')
+
+    v = InlineMarkupFixer()
+    v.visit(tree)
+    return tree
+
 # Top-level conversion routine
 
 def convert_to_rst(tree):
@@ -789,6 +811,7 @@ def convert_to_rst(tree):
     tree = fixup_titles(tree)
     tree = fixup_index(tree)
     tree = fixup_lists(tree)
+    tree = fixup_inline_markup(tree)
     return tree
 
 # Policies for converting elements to rst (element.rst_kind):
@@ -809,6 +832,19 @@ class InlineMarkup(RstKind):
 
     def after(self, w):
         w.write('`')
+
+class MatchedInlineMarkup(RstKind):
+    """
+    For handling '*foo*', '**foo**' and '``foo``'.
+    """
+    def __init__(self, tag):
+        self.tag = tag
+
+    def before(self, w):
+        w.write(self.tag)
+
+    def after(self, w):
+        w.write(self.tag)
 
 class Title(RstKind):
     def __init__(self, element, underline):
@@ -906,29 +942,13 @@ class RstWriter(Visitor):
     def previsit_element(self, element):
         if hasattr(element, 'rst_kind'):
             element.rst_kind.before(self)
-        elif element.kind == 'document':
-            pass
-        elif element.kind == 'texinfo':
-            pass
-        elif element.kind == 'command':
-            self.write(':command:`')
-        elif element.kind == 'var':
-            self.write('``')
-        elif element.kind == 'code':
-            self.write('``')
         else:
-            pass
-            #raise ValueError('unhandled element: %r' % (element, ))
+            if 0:
+                print('unhandled element: %r' % (element, ))
 
     def postvisit_element(self, element):
         if hasattr(element, 'rst_kind'):
             element.rst_kind.after(self)
-        if element.kind == 'command':
-            self.write('`')
-        elif element.kind == 'var':
-            self.write('``')
-        elif element.kind == 'code':
-            self.write('``')
 
     def visit_comment(self, comment):
         lines = comment.data.splitlines()
@@ -1047,18 +1067,21 @@ class InlineMarkupTests(Texi2RstTests):
     def test_command(self):
         xml_src = '<texinfo>Before <command>gcc</command> after</texinfo>'
         doc = from_xml_string(xml_src)
+        doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(u'Before :command:`gcc` after', out)
 
     def test_var(self):
         xml_src = '<texinfo>Before <var>gcc</var> after</texinfo>'
         doc = from_xml_string(xml_src)
+        doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(u'Before ``gcc`` after', out)
 
     def test_code(self):
         xml_src = '<texinfo>Before <code>gcc</code> after</texinfo>'
         doc = from_xml_string(xml_src)
+        doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(u'Before ``gcc`` after', out)
 
@@ -1108,6 +1131,7 @@ This warning is enabled by <option>-Wall</option>.
 </tableitem></tableentry></texinfo>''')
         doc = from_xml_string(xml_src)
         doc = fixup_option_descriptions(doc)
+        doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
             u'''.. option:: -Wunused-label, -Wno-unused-label
@@ -1326,6 +1350,7 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
 </smallexample>''')
         doc = from_xml_string(xml_src)
         doc = fixup_examples(doc)
+        doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
         self.maxDiff = 2000
         self.assertEqual(u'''.. code-block:: c++
@@ -1379,6 +1404,7 @@ These parameters take one of the following forms:
 """)
         doc = from_xml_string(xml_src)
         doc = fixup_lists(doc)
+        doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
             (u'''* Empty.  Empty attributes are ignored.

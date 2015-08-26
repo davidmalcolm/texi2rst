@@ -349,7 +349,38 @@ def split(tree):
                     text = text.replace('/', '-')
                     element.rst_kind = OutputFile(text)
 
+    class ToctreeAdder(NoopVisitor):
+        """
+        Add toctree directives referencing the split content
+        """
+        def previsit_element(self, element):
+            new_children = []
+            toctree = None
+            for child in element.children:
+                if isinstance(child, Element):
+                    if child.kind == 'toctree':
+                        toctree = child
+                    if isinstance(child.rst_kind, OutputFile):
+                        toctree_element = Element('toctree-element', {})
+                        toctree_element.rst_kind = ToctreeEntry()
+                        toctree_element.children = [Text(child.rst_kind.name)]
+                        # Try to consolidate all toctree entries into one
+                        # toctree:
+                        if toctree:
+                            toctree.children.append(toctree_element)
+                        else:
+                            toctree = Element('toctree', {})
+                            toctree.rst_kind = Directive('toctree', None)
+                            toctree.children = [toctree_element]
+                            new_children.append(toctree)
+
+                new_children.append(child)
+            element.children = new_children
+
     v = Splitter()
+    v.visit(tree)
+
+    v = ToctreeAdder()
     v.visit(tree)
     return tree
 
@@ -1699,20 +1730,36 @@ class IntegrationTests(Texi2RstTests):
         tree = convert_to_rst(tree)
         dict_ = self.make_rst_strings(tree)
         self.assertEqual(
-            dict_[u'gcc'],
             (u'Top-level title\n' +
              u'===============\n' +
              u'\n' +
-             u'   Top-level text.\n\n')) # FIXME < this indentation is wrong
+             u'   Top-level text.' +  # FIXME < this indentation is wrong
+             u'''
+
+.. toctree::
+
+  chapter-1-title
+  chapter-2-title
+'''),
+            dict_[u'gcc'])
         self.assertEqual(
-            dict_[u'chapter-1-title'],
-            (u'Chapter 1 title\n---------------\n\n' +
-             u'  Chapter 1 text.\n\n\n')) # FIXME < this indentation is wrong
+            (u'\nChapter 1 title\n---------------\n\n' +
+             u'  Chapter 1 text.' + # FIXME < this indentation is wrong
+             u'''
+
+.. toctree::
+
+  chapter-1-section-1-title
+  chapter-1-section-2-title
+
+
+'''),
+            dict_[u'chapter-1-title'])
         self.assertEqual(
-            dict_[u'chapter-2-section-2-title'],
             (u'Chapter 2 Section 2 title\n*************************\n\n' +
-             '     Chapter 2 Section 2 text.\n'))
-        # FIXME and the above indentation is also wrong
+             '     Chapter 2 Section 2 text.\n'),
+            # FIXME and the above indentation is also wrong
+            dict_[u'chapter-2-section-2-title'])
 
         if 0:
             for k in dict_:

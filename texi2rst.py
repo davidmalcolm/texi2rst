@@ -61,6 +61,15 @@ class Element(Node):
             if isinstance(child, Text):
                 return child
 
+    def get_all_text(self):
+        result = ''
+        for child in self.children:
+            if isinstance(child, Text):
+                result += child.data
+            elif isinstance(child, Element):
+                result += child.get_all_text()
+        return result
+
 class Comment(Node):
     def __init__(self, data):
         self.data = data
@@ -130,6 +139,7 @@ def from_xml_string(xml_src):
     xml_src = xml_src.replace('&bullet;', '*')
     xml_src = xml_src.replace('&dots;', '...')
     xml_src = xml_src.replace('&eosperiod;', '.')
+    xml_src = xml_src.replace('&textndash;', '-')
     dom = xml.dom.minidom.parseString(xml_src)
     tree = convert_from_xml(dom)
     return tree
@@ -639,19 +649,21 @@ def fixup_table_entry(tree):
                                     tableitem.children = \
                                         [note] + tableitem.children
 
-                            text = itemformat.get_sole_text()
-                            if text:
-                                self.convert_to_directive(element,
-                                                          tableitem,
-                                                          text.data)
+                            if self.convert_to_option(element, tableitem,
+                                                      itemformat):
+                                return
                             else:
                                 tableterm.rst_kind = DefinitionListHeader()
                                 tableitem.rst_kind = DefinitionListBody()
                                 tableterm = fixup_whitespace(tableterm)
 
-        def convert_to_directive(self, tableentry, tableitem,
-                                        itemformat_text):
-            options = [itemformat_text]
+        def convert_to_option(self, tableentry, tableitem,
+                              itemformat):
+            text = itemformat.get_all_text()
+            if text:
+                options = [text]
+            else:
+                options = []
 
             # This might be a description of an option.
             # Scan below <tableitem> looking for <indexcommand>,
@@ -676,6 +688,13 @@ def fixup_table_entry(tree):
                                 continue
                 new_children.append(child)
 
+            # If the initial option (from "text") is of the form
+            # "-option=value", then don't add all the extra options
+            # from the <indexcommand>.
+            if len(options) > 1:
+                if '=' in options[0]:
+                    options = [options[0]]
+
             if found_indexcommand:
                 # Then it is a description of an option, mark it as such,
                 # using all the option names found, and purge the
@@ -683,6 +702,7 @@ def fixup_table_entry(tree):
                 tableentry.rst_kind = Directive('option',
                                                 ', '.join(options))
                 tableentry.children = new_children
+                return True
 
     v = TableEntryFixer()
     v.visit(tree)
@@ -1267,6 +1287,21 @@ types.)
   types.)
 
 ''',
+            out)
+
+    def test_option_with_var(self):
+        # Ensure that the <var> within <iterformat> doesn't confuse the option-finder
+        xml_src = (u'<tableentry><tableterm><item spaces=" ">'
+                   + u'<itemformat command="code">-fabi-version=<var>n</var></itemformat></item>'
+                   + u'</tableterm><tableitem><indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="52" incode="1">fabi-version</indexterm></indexcommand>'
+                   + u'<para>DESCRIPTION WOULD GO HERE</para></tableitem></tableentry>')
+        doc = from_xml_string(xml_src)
+        doc = fixup_table_entry(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(
+            u'''.. option:: -fabi-version=n
+
+  DESCRIPTION WOULD GO HERE''',
             out)
 
     def test_option_listing(self):

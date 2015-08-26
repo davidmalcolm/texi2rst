@@ -856,6 +856,9 @@ def fixup_inline_markup(tree):
         XML INPUT                  .rst OUTPUT
         =========================  ==================
         <command>TEXT</command>    :command:`TEXT`
+        <var>TEXT</var>            ``TEXT``
+        <code>TEXT</code>          ``TEXT``
+        <dfn>TEXT</dfn>            :dfn:`TEXT`
         =========================  ==================
         """
         def previsit_element(self, element):
@@ -865,6 +868,8 @@ def fixup_inline_markup(tree):
                 element.rst_kind = MatchedInlineMarkup('``')
             elif element.kind == 'code':
                 element.rst_kind = MatchedInlineMarkup('``')
+            elif element.kind == 'dfn':
+                element.rst_kind = InlineMarkup('dfn')
 
     v = InlineMarkupFixer()
     v.visit(tree)
@@ -1201,6 +1206,13 @@ class InlineMarkupTests(Texi2RstTests):
         doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(u'Before ``gcc`` after', out)
+
+    def test_dfn(self):
+        xml_src = (u'<para>An <dfn>attribute specifier list</dfn> is...</para>')
+        doc = from_xml_string(xml_src)
+        doc = fixup_inline_markup(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'An :dfn:`attribute specifier list` is...', out)
 
 class TitleTests(Texi2RstTests):
     def test_section_title(self):

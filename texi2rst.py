@@ -539,6 +539,25 @@ def fixup_menus(tree):
     v.visit(tree)
     return tree
 
+def split(tree):
+    class Splitter(NoopVisitor):
+        def __init__(self):
+            self.split_kinds = ('chapter', 'section', )
+
+        def previsit_element(self, element):
+            if element.kind in self.split_kinds:
+                sectiontitle = element.first_element_named('sectiontitle')
+                if sectiontitle:
+                    text = sectiontitle.get_all_text()
+                    text = text.lower()
+                    text = text.replace(' ', '-')
+                    text = text.replace('/', '-')
+                    element.rst_kind = OutputFile(text)
+
+    v = Splitter()
+    v.visit(tree)
+    return tree
+
 def fixup_nodes(tree):
     """
     Given:
@@ -924,6 +943,7 @@ def convert_to_rst(tree):
     tree = fixup_comments(tree)
     tree = prune(tree)
     tree = fixup_menus(tree)
+    tree = split(tree)
     tree = fixup_nodes(tree)
     tree = fixup_option_refs(tree)
     tree = fixup_table_entry(tree)
@@ -1065,14 +1085,31 @@ class Label(RstKind):
     def before(self, w):
         w.write(':: _%s:\n' % (self.title, ))
 
+class OutputFile(RstKind):
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return 'OutputFile(%r)' % self.name
+
+    def before(self, w):
+        w.push_output_file(self)
+
+    def after(self, w):
+        w.pop_output_file(self)
+
 # Output of a converted tree to .rst file
 
 class RstWriter(Visitor):
-    def __init__(self, f_out):
+    def __init__(self, f_out, opener=None):
         self.f_out = f_out
         self.indent = 0
         self.curline = ''
         self.had_nonempty_line = False
+        self.opener = opener
+        if self.f_out is None:
+            self.f_out = self.opener.open(None)
+        self.output_file_stack = [self.f_out]
 
     def finish(self):
         self._flush_line()
@@ -1125,6 +1162,24 @@ class RstWriter(Visitor):
     def visit_text(self, text):
         self.write(text.data)
 
+    def push_output_file(self, output_file):
+        self.f_out = self.opener.open(output_file)
+        self.output_file_stack.append(self.f_out)
+
+    def pop_output_file(self, output_file):
+        self.opener.close(self.f_out)
+        self.output_file_stack.pop()
+        self.f_out = self.output_file_stack[-1]
+
+class RstOpener:
+    """
+    Policy for how RstWriter should handle OutputFile instances
+    """
+    def open(self, output_file):
+        raise NotImplementedError
+    def close(self, f_out):
+        raise NotImplementedError
+
 # Unit tests
 
 class Texi2RstTests(unittest.TestCase):
@@ -1133,6 +1188,30 @@ class Texi2RstTests(unittest.TestCase):
         w.visit(doc)
         w.finish()
         return w.f_out.getvalue()
+
+    def make_rst_strings(self, doc):
+        class StringOpener(RstOpener):
+            def __init__(self):
+                self.dict_ = OrderedDict()
+            def open(self, output_file):
+                f_out = StringIO.StringIO()
+                self.dict_[output_file] = f_out
+                return f_out
+            def close(self, f_out):
+                pass # don't close; we need to call getvalue on it
+
+        opener = StringOpener()
+        w = RstWriter(None, opener)
+        w.visit(doc)
+        w.finish()
+        result = OrderedDict()
+        for k in opener.dict_:
+            if k:
+                name = k.name
+            else:
+                name = 'gcc' # FIXME
+            result[name] = opener.dict_[k].getvalue()
+        return result
 
 class CommentTests(Texi2RstTests):
     xml_src = (
@@ -1789,6 +1868,79 @@ class IntegrationTests(Texi2RstTests):
         out = self.make_rst_string(tree)
         self.assertEqual(u'', out)
 
+    def test_splitting(self):
+        xml_src = u'''<texinfo>
+<top>
+   <sectiontitle>Top-level title</sectiontitle>
+   <para>Top-level text.</para>
+</top>
+<chapter>
+  <sectiontitle>Chapter 1 title</sectiontitle>
+  <para>Chapter 1 text.</para>
+  <section spaces=" ">
+     <sectiontitle>Chapter 1 Section 1 title</sectiontitle>
+     <para>Chapter 1 Section 1 text.</para>
+  </section>
+  <section spaces=" ">
+     <sectiontitle>Chapter 1 Section 2 title</sectiontitle>
+     <para>Chapter 1 Section 2 text.</para>
+  </section>
+</chapter>
+<chapter>
+  <sectiontitle>Chapter 2 title</sectiontitle>
+  <para>Chapter 2 text.</para>
+  <section spaces=" ">
+     <sectiontitle>Chapter 2 Section 1 title</sectiontitle>
+     <para>Chapter 2 Section 1 text.</para>
+  </section>
+  <section spaces=" ">
+     <sectiontitle>Chapter 2 Section 2 title</sectiontitle>
+     <para>Chapter 2 Section 2 text.</para>
+  </section>
+</chapter>
+</texinfo>
+'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree)
+        dict_ = self.make_rst_strings(tree)
+        self.assertEqual(
+            dict_[u'gcc'],
+            (u'Top-level title\n' +
+             u'===============\n' +
+             u'\n' +
+             u'   Top-level text.\n\n')) # FIXME < this indentation is wrong
+        self.assertEqual(
+            dict_[u'chapter-1-title'],
+            (u'Chapter 1 title\n---------------\n\n' +
+             u'  Chapter 1 text.\n\n\n')) # FIXME < this indentation is wrong
+        self.assertEqual(
+            dict_[u'chapter-2-section-2-title'],
+            (u'Chapter 2 Section 2 title\n*************************\n\n' +
+             '     Chapter 2 Section 2 text.\n'))
+        # FIXME and the above indentation is also wrong
+
+        if 0:
+            for k in dict_:
+                print(repr(k))
+                print(repr(dict_[k]))
+                print(dict_[k])
+
+#
+
+class FileOpener(RstOpener):
+    def __init__(self, output_dir):
+        self.output_dir = output_dir
+
+    def open(self, output_file):
+        path = os.path.join(self.output_dir, '%s.rst' % output_file.name)
+        print('opening: %s' % path)
+        f_out = open(path, 'w')
+        return f_out
+
+    def close(self, f_out):
+        print('closing')
+        f_out.close()
+
 # Entrypoint
 
 if __name__ == '__main__':
@@ -1801,7 +1953,7 @@ if __name__ == '__main__':
         tree = convert_to_rst(tree)
         if 1:
             with open('output/gcc.rst', 'w') as f_out:
-                w = RstWriter(f_out)
+                w = RstWriter(f_out, FileOpener('output'))
                 w.visit(tree)
         else:
             w = RstWriter(sys.stdout)

@@ -809,9 +809,28 @@ def fixup_examples(tree):
 
 def fixup_titles(tree):
     class TitleFixer(NoopVisitor):
+        def __init__(self):
+            self.cur_section_level = None
+            self.section_kinds = {
+                'top'           : '=',
+                'chapter'       : '-',
+                'section'       : '*',
+                'subsection'    : '^',
+                'subsubsection' : '~',
+                'unnumbered'    : '=',
+                'unnumberedsec' : '='}
+
         def previsit_element(self, element):
+            if element.kind in self.section_kinds:
+                self.cur_section_level = element.kind
+
             if element.kind == 'sectiontitle':
-                element.rst_kind = Title(element, '=')
+                if self.cur_section_level:
+                    underline = self.section_kinds[self.cur_section_level]
+                else:
+                    underline = '='
+                element.rst_kind = Title(element, underline)
+
             elif element.kind == 'subsubheading':
                 element.rst_kind = Title(element, '^')
 
@@ -1253,6 +1272,28 @@ class TitleTests(Texi2RstTests):
         doc = fixup_titles(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(u'A section title\n===============\n\nsome text',
+                         out)
+
+    def test_nested_section_titles(self):
+        xml_src = (u'''<texinfo>
+<top><sectiontitle>A top-level title</sectiontitle>
+<para>some top text</para></top>
+<chapter><sectiontitle>A chapter title</sectiontitle>
+<para>some chapter text</para></chapter>
+</texinfo>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_titles(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'''A top-level title
+=================
+
+some top text
+
+A chapter title
+---------------
+
+some chapter text
+''',
                          out)
 
     def test_subsubheading(self):

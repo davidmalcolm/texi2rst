@@ -1,0 +1,99 @@
+C++ Interface and Implementation Pragmas
+****************************************
+
+.. index:: interface and implementation headers, C++
+
+.. index:: C++ interface and implementation headers
+
+.. index:: pragmas, interface and implementation
+
+``#pragma interface`` and ``#pragma implementation`` provide the
+user with a way of explicitly directing the compiler to emit entities
+with vague linkage (and debugging information) in a particular
+translation unit.
+
+Note: These ``#pragma``s have been superceded as of GCC 2.7.2
+by COMDAT support and the key method heuristic
+mentioned in Vague Linkage.  Using them can actually cause your
+program to grow due to unnecessary out-of-line copies of inline
+functions.
+
+#pragma interface#pragma interface "``subdir``/``objects``.h"
+
+  .. index:: #pragma interface
+
+  Use this directive in header files that define object classes, to save
+  space in most of the object files that use those classes.  Normally,
+  local copies of certain information (backup copies of inline member
+  functions, debugging information, and the internal tables that implement
+  virtual functions) must be kept in each object file that includes class
+  definitions.  You can use this pragma to avoid such duplication.  When a
+  header file containing #pragma interface is included in a
+  compilation, this auxiliary information is not generated (unless
+  the main input source file itself uses #pragma implementation).
+  Instead, the object files contain references to be resolved at link
+  time.
+
+  The second form of this directive is useful for the case where you have
+  multiple headers with the same name in different directories.  If you
+  use this form, you must specify the same string to #pragma
+  implementation.
+
+#pragma implementation#pragma implementation "``objects``.h"
+
+  .. index:: #pragma implementation
+
+  Use this pragma in a main input file, when you want full output from
+  included header files to be generated (and made globally visible).  The
+  included header file, in turn, should use #pragma interface.
+  Backup copies of inline member functions, debugging information, and the
+  internal tables used to implement virtual functions are all generated in
+  implementation files.
+
+  implied ``#pragma implementation``
+  ``#pragma implementation``, implied
+
+  .. index:: naming convention, implementation headers
+
+  If you use #pragma implementation with no argument, it applies to
+  an include file with the same basenameA files :dfn:`basename`
+  is the name stripped of all leading path information and of trailing
+  suffixes, such as .h or .C or .cc. as your source
+  file.  For example, in allclass.cc, giving just
+  #pragma implementation
+  by itself is equivalent to #pragma implementation "allclass.h".
+
+  Use the string argument if you want a single implementation file to
+  include code from multiple header files.  (You must also use
+  #include to include the header file; #pragma
+  implementation only specifies how to use the fileit doesnt actually
+  include it.)
+
+  There is no way to split up the contents of a single header file into
+  multiple implementation files.
+
+.. index:: inlining and C++ pragmas
+
+.. index:: C++ pragmas, effect on inlining
+
+.. index:: pragmas in C++, effect on inlining
+
+#pragma implementation and #pragma interface also have an
+effect on function inlining.
+
+If you define a class in a header file marked with #pragma
+interface, the effect on an inline function defined in that class is
+similar to an explicit ``extern`` declarationthe compiler emits
+no code at all to define an independent version of the function.  Its
+definition is used only for inlining with its callers.
+
+.. index:: fno-implement-inlines
+
+Conversely, when you include the same header file in a main source file
+that declares it as #pragma implementation, the compiler emits
+code for the function itself; this defines a version of the function
+that can be found via pointers (or by callers compiled without
+inlining).  If all calls to the function can be inlined, you can avoid
+emitting the function by compiling with :option:`-fno-implement-inlines`.
+If any calls are not inlined, you will get linker errors.
+

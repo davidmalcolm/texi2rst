@@ -216,7 +216,7 @@ In the same fashion, GCC provides <tt class="docutils literal"><span class="pre"
 <tt class="docutils literal"><span class="pre">isinf_sign</span></tt> and <tt class="docutils literal"><span class="pre">isnormal</span></tt> built-ins used with
 <tt class="docutils literal"><span class="pre">__builtin_</span></tt> prefixed.  The <tt class="docutils literal"><span class="pre">isinf</span></tt> and <tt class="docutils literal"><span class="pre">isnan</span></tt>
 built-in functions appear both with and without the <tt class="docutils literal"><span class="pre">__builtin_</span></tt> prefix.</p>
-<p>You can use the built-in function <tt class="docutils literal"><span class="pre">__builtin_types_compatible_p</span></tt> to
+<p id="index-397">Built-in Functionint__builtin_types_compatible_p(<tt class="docutils literal"><span class="pre">type1</span></tt>,``type2``)You can use the built-in function <tt class="docutils literal"><span class="pre">__builtin_types_compatible_p</span></tt> to
 determine whether two types are the same.</p>
 <p>This built-in function returns 1 if the unqualified versions of the
 types <tt class="docutils literal"><span class="pre">type1</span></tt> and <tt class="docutils literal"><span class="pre">type2</span></tt> (which are types, not expressions) are
@@ -255,13 +255,13 @@ depending on the arguments&#8217; types.  For example:</p>
 </pre></div>
 </div>
 <p>Note: This construct is only available for C.</p>
-<p>The <tt class="docutils literal"><span class="pre">call_exp</span></tt> expression must be a function call, and the
+<p id="index-398">Built-in Function``type``__builtin_call_with_static_chain(<tt class="docutils literal"><span class="pre">call_exp</span></tt>,``pointer_exp``)The <tt class="docutils literal"><span class="pre">call_exp</span></tt> expression must be a function call, and the
 <tt class="docutils literal"><span class="pre">pointer_exp</span></tt> expression must be a pointer.  The <tt class="docutils literal"><span class="pre">pointer_exp</span></tt>
 is passed to the function call in the target&#8217;s static chain location.
 The result of builtin is the result of the function call.</p>
 <p>Note: This builtin is only available for C.
 This builtin can be used to call Go closures from C.</p>
-<p>You can use the built-in function <tt class="docutils literal"><span class="pre">__builtin_choose_expr</span></tt> to
+<p id="index-399">Built-in Function``type``__builtin_choose_expr(<tt class="docutils literal"><span class="pre">const_exp</span></tt>,``exp1``,``exp2``)You can use the built-in function <tt class="docutils literal"><span class="pre">__builtin_choose_expr</span></tt> to
 evaluate code depending on the value of a constant expression.  This
 built-in function returns <tt class="docutils literal"><span class="pre">exp1</span></tt> if <tt class="docutils literal"><span class="pre">const_exp</span></tt>, which is an
 integer constant expression, is nonzero.  Otherwise it returns <tt class="docutils literal"><span class="pre">exp2</span></tt>.</p>
@@ -292,14 +292,14 @@ as <tt class="docutils literal"><span class="pre">exp2</span></tt>.</p>
 unused expression (<tt class="docutils literal"><span class="pre">exp1</span></tt> or <tt class="docutils literal"><span class="pre">exp2</span></tt> depending on the value of
 <tt class="docutils literal"><span class="pre">const_exp</span></tt>) may still generate syntax errors.  This may change in
 future revisions.</p>
-<p>The built-in function <tt class="docutils literal"><span class="pre">__builtin_complex</span></tt> is provided for use in
+<p id="index-400">Built-in Function``type``__builtin_complex(<tt class="docutils literal"><span class="pre">real</span></tt>,``imag``)The built-in function <tt class="docutils literal"><span class="pre">__builtin_complex</span></tt> is provided for use in
 implementing the ISO C11 macros <tt class="docutils literal"><span class="pre">CMPLXF</span></tt>, <tt class="docutils literal"><span class="pre">CMPLX</span></tt> and
 <tt class="docutils literal"><span class="pre">CMPLXL</span></tt>.  <tt class="docutils literal"><span class="pre">real</span></tt> and <tt class="docutils literal"><span class="pre">imag</span></tt> must have the same type, a
 real binary floating-point type, and the result has the corresponding
 complex type with real and imaginary parts <tt class="docutils literal"><span class="pre">real</span></tt> and <tt class="docutils literal"><span class="pre">imag</span></tt>.
 Unlike <tt class="docutils literal"><span class="pre">real</span></tt> + I * <tt class="docutils literal"><span class="pre">imag</span></tt>, this works even when
 infinities, NaNs and negative zeros are involved.</p>
-<p>You can use the built-in function <tt class="docutils literal"><span class="pre">__builtin_constant_p</span></tt> to
+<p id="index-401">Built-in Functionint__builtin_constant_p(<tt class="docutils literal"><span class="pre">exp</span></tt>)You can use the built-in function <tt class="docutils literal"><span class="pre">__builtin_constant_p</span></tt> to
 determine if a value is known to be constant at compile time and hence
 that GCC can perform constant-folding on expressions involving that
 value.  The argument of the function is the value to test.  The function
@@ -340,7 +340,9 @@ not otherwise permitted in a static initializer (for example,
 <tt class="docutils literal"><span class="pre">0</span> <span class="pre">&amp;&amp;</span> <span class="pre">foo</span> <span class="pre">()</span></tt>).  GCC must be more conservative about evaluating the
 built-in in this case, because it has no opportunity to perform
 optimization.</p>
-<p id="index-397">You may use <tt class="docutils literal"><span class="pre">__builtin_expect</span></tt> to provide the compiler with
+<p id="index-402">Built-in Functionlong__builtin_expect(long``exp``,long``c``)
+.. index:: fprofile-arcs</p>
+<p>You may use <tt class="docutils literal"><span class="pre">__builtin_expect</span></tt> to provide the compiler with
 branch prediction information.  In general, you should prefer to
 use actual profile feedback for this (<a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-fprofile-arcs"><em class="xref std std-option">-fprofile-arcs</em></a>), as
 programmers are notoriously bad at predicting how their programs
@@ -361,12 +363,12 @@ expressions for <tt class="docutils literal"><span class="pre">exp</span></tt>, 
 </pre></div>
 </div>
 <p>when testing pointer or floating-point values.</p>
-<p>This function causes the program to exit abnormally.  GCC implements
+<p id="index-403">Built-in Functionvoid__builtin_trap(void)This function causes the program to exit abnormally.  GCC implements
 this function by using a target-dependent mechanism (such as
 intentionally executing an illegal instruction) or by calling
 <tt class="docutils literal"><span class="pre">abort</span></tt>.  The mechanism used may vary from release to release so
 you should not rely on any particular implementation.</p>
-<p>If control flow reaches the point of the <tt class="docutils literal"><span class="pre">__builtin_unreachable</span></tt>,
+<p id="index-404">Built-in Functionvoid__builtin_unreachable(void)If control flow reaches the point of the <tt class="docutils literal"><span class="pre">__builtin_unreachable</span></tt>,
 the program is undefined.  It is useful in situations where the
 compiler cannot deduce the unreachability of the code.</p>
 <p>One such case is immediately following an <tt class="docutils literal"><span class="pre">asm</span></tt> statement that
@@ -412,7 +414,7 @@ function that never returns but that is not declared
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This function returns its first argument, and allows the compiler
+<p id="index-405">Built-in Functionvoid*__builtin_assume_aligned(constvoid*``exp``,size_t``align``,...)This function returns its first argument, and allows the compiler
 to assume that the returned pointer is at least <tt class="docutils literal"><span class="pre">align</span></tt> bytes
 aligned.  This built-in can have either two or three arguments,
 if it has three, the third argument should have integer type, and
@@ -427,17 +429,17 @@ if it is nonzero means misalignment offset.  For example:</p>
 </div>
 <p>means that the compiler can assume for <tt class="docutils literal"><span class="pre">x</span></tt>, set to <tt class="docutils literal"><span class="pre">arg</span></tt>, that
 <tt class="docutils literal"><span class="pre">(char</span> <span class="pre">*)</span> <span class="pre">x</span> <span class="pre">-</span> <span class="pre">8</span></tt> is 32-byte aligned.</p>
-<p>This function is the equivalent to the preprocessor <tt class="docutils literal"><span class="pre">__LINE__</span></tt>
+<p id="index-406">Built-in Functionint__builtin_LINE()This function is the equivalent to the preprocessor <tt class="docutils literal"><span class="pre">__LINE__</span></tt>
 macro and returns the line number of the invocation of the built-in.
 In a C++ default argument for a function <tt class="docutils literal"><span class="pre">F</span></tt>, it gets the line number of
 the call to <tt class="docutils literal"><span class="pre">F</span></tt>.</p>
-<p>This function is the equivalent to the preprocessor <tt class="docutils literal"><span class="pre">__FUNCTION__</span></tt>
+<p id="index-407">Built-in Functionconst char <a href="#id1"><span class="problematic" id="id2">*</span></a>__builtin_FUNCTION()This function is the equivalent to the preprocessor <tt class="docutils literal"><span class="pre">__FUNCTION__</span></tt>
 macro and returns the function name the invocation of the built-in is in.</p>
-<p>This function is the equivalent to the preprocessor <tt class="docutils literal"><span class="pre">__FILE__</span></tt>
+<p id="index-408">Built-in Functionconst char <a href="#id3"><span class="problematic" id="id4">*</span></a>__builtin_FILE()This function is the equivalent to the preprocessor <tt class="docutils literal"><span class="pre">__FILE__</span></tt>
 macro and returns the file name the invocation of the built-in is in.
 In a C++ default argument for a function <tt class="docutils literal"><span class="pre">F</span></tt>, it gets the file name of
 the call to <tt class="docutils literal"><span class="pre">F</span></tt>.</p>
-<p>This function is used to flush the processor&#8217;s instruction cache for
+<p id="index-409">Built-in Functionvoid__builtin___clear_cache(char*``begin``,char*``end``)This function is used to flush the processor&#8217;s instruction cache for
 the region of memory between <tt class="docutils literal"><span class="pre">begin</span></tt> inclusive and <tt class="docutils literal"><span class="pre">end</span></tt>
 exclusive.  Some targets require that the instruction cache be
 flushed, after modifying memory containing code, in order to obtain
@@ -446,7 +448,7 @@ deterministic behavior.</p>
 <tt class="docutils literal"><span class="pre">__builtin___clear_cache</span></tt> has no effect.  Otherwise either
 instructions are emitted in-line to clear the instruction cache or a
 call to the <tt class="docutils literal"><span class="pre">__clear_cache</span></tt> function in libgcc is made.</p>
-<p>This function is used to minimize cache-miss latency by moving data into
+<p id="index-410">Built-in Functionvoid__builtin_prefetch(constvoid*``addr``,...)This function is used to minimize cache-miss latency by moving data into
 a cache before it is accessed.
 You can insert calls to <tt class="docutils literal"><span class="pre">__builtin_prefetch</span></tt> into code for which
 you know addresses of data in memory that is likely to be accessed soon.
@@ -481,13 +483,13 @@ address, but evaluation faults if <tt class="docutils literal"><span class="pre"
 <p>If the target does not support data prefetch, the address expression
 is evaluated if it includes side effects but no other code is generated
 and GCC does not issue a warning.</p>
-<p>Returns a positive infinity, if supported by the floating-point format,
+<p id="index-411">Built-in Functiondouble__builtin_huge_val(void)Returns a positive infinity, if supported by the floating-point format,
 else <tt class="docutils literal"><span class="pre">DBL_MAX</span></tt>.  This function is suitable for implementing the
 ISO C macro <tt class="docutils literal"><span class="pre">HUGE_VAL</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except the return
+<p id="index-412">Built-in Functionfloat__builtin_huge_valf(void)Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
+<p id="index-413">Built-in Functionlong double__builtin_huge_vall(void)Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except the return
 type is <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
-<p>This built-in implements the C99 fpclassify functionality.  The first
+<p id="index-414">Built-in Functionint__builtin_fpclassify(int,int,int,int,int,...)This built-in implements the C99 fpclassify functionality.  The first
 five int arguments should be the target library&#8217;s notion of the
 possible FP classes and are used for return values.  They must be
 constant values and they must appear in this order: <tt class="docutils literal"><span class="pre">FP_NAN</span></tt>,
@@ -495,22 +497,22 @@ constant values and they must appear in this order: <tt class="docutils literal"
 <tt class="docutils literal"><span class="pre">FP_ZERO</span></tt>.  The ellipsis is for exactly one floating-point value
 to classify.  GCC treats the last argument as type-generic, which
 means it does not do default promotion from float to double.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except a warning is generated
+<p id="index-415">Built-in Functiondouble__builtin_inf(void)Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except a warning is generated
 if the target floating-point format does not support infinities.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal32</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal64</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal128</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.
+<p id="index-416">Built-in Function_Decimal32__builtin_infd32(void)Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal32</span></tt>.</p>
+<p id="index-417">Built-in Function_Decimal64__builtin_infd64(void)Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal64</span></tt>.</p>
+<p id="index-418">Built-in Function_Decimal128__builtin_infd128(void)Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal128</span></tt>.</p>
+<p id="index-419">Built-in Functionfloat__builtin_inff(void)Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.
 This function is suitable for implementing the ISO C99 macro <tt class="docutils literal"><span class="pre">INFINITY</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return
+<p id="index-420">Built-in Functionlong double__builtin_infl(void)Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return
 type is <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">isinf</span></tt>, except the return value is -1 for
+<p id="index-421">Built-in Functionint__builtin_isinf_sign(...)Similar to <tt class="docutils literal"><span class="pre">isinf</span></tt>, except the return value is -1 for
 an argument of <tt class="docutils literal"><span class="pre">-Inf</span></tt> and 1 for an argument of <tt class="docutils literal"><span class="pre">+Inf</span></tt>.
 Note while the parameter list is an
 ellipsis, this function only accepts exactly one floating-point
 argument.  GCC treats this parameter as type-generic, which means it
 does not do default promotion from float to double.</p>
-<p>This is an implementation of the ISO C99 function <tt class="docutils literal"><span class="pre">nan</span></tt>.</p>
+<p id="index-422">Built-in Functiondouble__builtin_nan(constchar*str)This is an implementation of the ISO C99 function <tt class="docutils literal"><span class="pre">nan</span></tt>.</p>
 <p>Since ISO C99 defines this function in terms of <tt class="docutils literal"><span class="pre">strtod</span></tt>, which we
 do not implement, a description of the parsing is in order.  The string
 is parsed as by <tt class="docutils literal"><span class="pre">strtol</span></tt>; that is, the base is recognized by
@@ -522,64 +524,64 @@ forced to be a quiet NaN.</p>
 <p>This function, if given a string literal all of which would have been
 consumed by <tt class="docutils literal"><span class="pre">strtol</span></tt>, is evaluated early enough that it is considered a
 compile-time constant.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal32</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal64</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal128</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the significand is forced
+<p id="index-423">Built-in Function_Decimal32__builtin_nand32(constchar*str)Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal32</span></tt>.</p>
+<p id="index-424">Built-in Function_Decimal64__builtin_nand64(constchar*str)Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal64</span></tt>.</p>
+<p id="index-425">Built-in Function_Decimal128__builtin_nand128(constchar*str)Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal128</span></tt>.</p>
+<p id="index-426">Built-in Functionfloat__builtin_nanf(constchar*str)Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
+<p id="index-427">Built-in Functionlong double__builtin_nanl(constchar*str)Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
+<p id="index-428">Built-in Functiondouble__builtin_nans(constchar*str)Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the significand is forced
 to be a signaling NaN.  The <tt class="docutils literal"><span class="pre">nans</span></tt> function is proposed by
 <a class="reference external" href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n965.htmWG14">http://www.open-std.org/jtc1/sc22/wg14/www/docs/n965.htmWG14</a> N965.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nans</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nans</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
-<p>Returns one plus the index of the least significant 1-bit of <tt class="docutils literal"><span class="pre">x</span></tt>, or
+<p id="index-429">Built-in Functionfloat__builtin_nansf(constchar*str)Similar to <tt class="docutils literal"><span class="pre">__builtin_nans</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
+<p id="index-430">Built-in Functionlong double__builtin_nansl(constchar*str)Similar to <tt class="docutils literal"><span class="pre">__builtin_nans</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
+<p id="index-431">Built-in Functionint__builtin_ffs(intx)Returns one plus the index of the least significant 1-bit of <tt class="docutils literal"><span class="pre">x</span></tt>, or
 if <tt class="docutils literal"><span class="pre">x</span></tt> is zero, returns zero.</p>
-<p>Returns the number of leading 0-bits in <tt class="docutils literal"><span class="pre">x</span></tt>, starting at the most
+<p id="index-432">Built-in Functionint__builtin_clz(unsignedintx)Returns the number of leading 0-bits in <tt class="docutils literal"><span class="pre">x</span></tt>, starting at the most
 significant bit position.  If <tt class="docutils literal"><span class="pre">x</span></tt> is 0, the result is undefined.</p>
-<p>Returns the number of trailing 0-bits in <tt class="docutils literal"><span class="pre">x</span></tt>, starting at the least
+<p id="index-433">Built-in Functionint__builtin_ctz(unsignedintx)Returns the number of trailing 0-bits in <tt class="docutils literal"><span class="pre">x</span></tt>, starting at the least
 significant bit position.  If <tt class="docutils literal"><span class="pre">x</span></tt> is 0, the result is undefined.</p>
-<p>Returns the number of leading redundant sign bits in <tt class="docutils literal"><span class="pre">x</span></tt>, i.e. the
+<p id="index-434">Built-in Functionint__builtin_clrsb(intx)Returns the number of leading redundant sign bits in <tt class="docutils literal"><span class="pre">x</span></tt>, i.e. the
 number of bits following the most significant bit that are identical
 to it.  There are no special cases for 0 or other values.</p>
-<p>Returns the number of 1-bits in <tt class="docutils literal"><span class="pre">x</span></tt>.</p>
-<p>Returns the parity of <tt class="docutils literal"><span class="pre">x</span></tt>, i.e. the number of 1-bits in <tt class="docutils literal"><span class="pre">x</span></tt>
+<p id="index-435">Built-in Functionint__builtin_popcount(unsignedintx)Returns the number of 1-bits in <tt class="docutils literal"><span class="pre">x</span></tt>.</p>
+<p id="index-436">Built-in Functionint__builtin_parity(unsignedintx)Returns the parity of <tt class="docutils literal"><span class="pre">x</span></tt>, i.e. the number of 1-bits in <tt class="docutils literal"><span class="pre">x</span></tt>
 modulo 2.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_ffs</span></tt>, except the argument type is
+<p id="index-437">Built-in Functionint__builtin_ffsl(long)Similar to <tt class="docutils literal"><span class="pre">__builtin_ffs</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">long</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_clz</span></tt>, except the argument type is
+<p id="index-438">Built-in Functionint__builtin_clzl(unsignedlong)Similar to <tt class="docutils literal"><span class="pre">__builtin_clz</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_ctz</span></tt>, except the argument type is
+<p id="index-439">Built-in Functionint__builtin_ctzl(unsignedlong)Similar to <tt class="docutils literal"><span class="pre">__builtin_ctz</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_clrsb</span></tt>, except the argument type is
+<p id="index-440">Built-in Functionint__builtin_clrsbl(long)Similar to <tt class="docutils literal"><span class="pre">__builtin_clrsb</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">long</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_popcount</span></tt>, except the argument type is
+<p id="index-441">Built-in Functionint__builtin_popcountl(unsignedlong)Similar to <tt class="docutils literal"><span class="pre">__builtin_popcount</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_parity</span></tt>, except the argument type is
+<p id="index-442">Built-in Functionint__builtin_parityl(unsignedlong)Similar to <tt class="docutils literal"><span class="pre">__builtin_parity</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_ffs</span></tt>, except the argument type is
+<p id="index-443">Built-in Functionint__builtin_ffsll(longlong)Similar to <tt class="docutils literal"><span class="pre">__builtin_ffs</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_clz</span></tt>, except the argument type is
+<p id="index-444">Built-in Functionint__builtin_clzll(unsignedlonglong)Similar to <tt class="docutils literal"><span class="pre">__builtin_clz</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_ctz</span></tt>, except the argument type is
+<p id="index-445">Built-in Functionint__builtin_ctzll(unsignedlonglong)Similar to <tt class="docutils literal"><span class="pre">__builtin_ctz</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_clrsb</span></tt>, except the argument type is
+<p id="index-446">Built-in Functionint__builtin_clrsbll(longlong)Similar to <tt class="docutils literal"><span class="pre">__builtin_clrsb</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_popcount</span></tt>, except the argument type is
+<p id="index-447">Built-in Functionint__builtin_popcountll(unsignedlonglong)Similar to <tt class="docutils literal"><span class="pre">__builtin_popcount</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_parity</span></tt>, except the argument type is
+<p id="index-448">Built-in Functionint__builtin_parityll(unsignedlonglong)Similar to <tt class="docutils literal"><span class="pre">__builtin_parity</span></tt>, except the argument type is
 <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt>.</p>
-<p>Returns the first argument raised to the power of the second.  Unlike the
+<p id="index-449">Built-in Functiondouble__builtin_powi(double,int)Returns the first argument raised to the power of the second.  Unlike the
 <tt class="docutils literal"><span class="pre">pow</span></tt> function no guarantees about precision and rounding are made.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_powi</span></tt>, except the argument and return types
+<p id="index-450">Built-in Functionfloat__builtin_powif(float,int)Similar to <tt class="docutils literal"><span class="pre">__builtin_powi</span></tt>, except the argument and return types
 are <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_powi</span></tt>, except the argument and return types
+<p id="index-451">Built-in Functionlong double__builtin_powil(longdouble,int)Similar to <tt class="docutils literal"><span class="pre">__builtin_powi</span></tt>, except the argument and return types
 are <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
-<p>Returns <tt class="docutils literal"><span class="pre">x</span></tt> with the order of the bytes reversed; for example,
+<p id="index-452">Built-in Functionuint16_t__builtin_bswap16(uint16_tx)Returns <tt class="docutils literal"><span class="pre">x</span></tt> with the order of the bytes reversed; for example,
 <tt class="docutils literal"><span class="pre">0xaabb</span></tt> becomes <tt class="docutils literal"><span class="pre">0xbbaa</span></tt>.  Byte here always means
 exactly 8 bits.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_bswap16</span></tt>, except the argument and return types
+<p id="index-453">Built-in Functionuint32_t__builtin_bswap32(uint32_tx)Similar to <tt class="docutils literal"><span class="pre">__builtin_bswap16</span></tt>, except the argument and return types
 are 32 bit.</p>
-<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_bswap32</span></tt>, except the argument and return types
+<p id="index-454">Built-in Functionuint64_t__builtin_bswap64(uint64_tx)Similar to <tt class="docutils literal"><span class="pre">__builtin_bswap32</span></tt>, except the argument and return types
 are 64 bit.</p>
 </div>
 

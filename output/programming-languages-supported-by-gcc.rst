@@ -1,4 +1,3 @@
-
 Programming Languages Supported by GCC
 --------------------------------------
 
@@ -77,8 +76,9 @@ sort of preprocessor should not be confused with the :dfn:`C
 preprocessor`, which is an integral feature of the C, C++, Objective-C
 and Objective-C++ languages.
 
-.. Copyright (C) 2000-2015 Free Software Foundation, Inc. 
-   This is part of the GCC manual. 
+.. Copyright (C) 2000-2015 Free Software Foundation, Inc.
 
-.. For copying conditions, see the file gcc.texi. 
+.. This is part of the GCC manual.
+
+.. For copying conditions, see the file gcc.texi.
 

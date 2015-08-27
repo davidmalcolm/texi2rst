@@ -1,3 +1,4 @@
+
 How To Get Help with GCC
 ------------------------
 
@@ -11,15 +12,16 @@ ways to find it:
   a bug in GCC, please report it following the instructions at
   Bug Reporting.
 
-  * Look in the service directory for someone who might help you for a fee.
+* Look in the service directory for someone who might help you for a fee.
   The service directory is found at
   http://www.fsf.org/resources/service.
 
 For further information, see
 http://gcc.gnu.org/faq.html#support.
 
-.. Copyright (C) 1988-2015 Free Software Foundation, Inc. 
-   This is part of the GCC manual. 
+.. Copyright (C) 1988-2015 Free Software Foundation, Inc.
 
-.. For copying conditions, see the file gcc.texi. 
+.. This is part of the GCC manual.
+
+.. For copying conditions, see the file gcc.texi.
 

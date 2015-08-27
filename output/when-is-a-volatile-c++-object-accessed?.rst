@@ -1,4 +1,3 @@
-
 When is a Volatile C++ Object Accessed?
 ***************************************
 

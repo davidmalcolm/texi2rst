@@ -86,7 +86,7 @@
 <h1>Getting the Return or Frame Address of a Function<a class="headerlink" href="#getting-the-return-or-frame-address-of-a-function" title="Permalink to this headline">¶</a></h1>
 <p>These functions may be used to get information about the callers of a
 function.</p>
-<p>This function returns the return address of the current function, or of
+<p id="index-0">Built-in Functionvoid <a href="#id1"><span class="problematic" id="id2">*</span></a>__builtin_return_address(unsignedint``level``)This function returns the return address of the current function, or of
 one of its callers.  The <tt class="docutils literal"><span class="pre">level</span></tt> argument is number of frames to
 scan up the call stack.  A value of <tt class="docutils literal"><span class="pre">0</span></tt> yields the return address
 of the current function, a value of <tt class="docutils literal"><span class="pre">1</span></tt> yields the return address
@@ -104,14 +104,14 @@ to determine if the top of the stack has been reached.</p>
 <tt class="docutils literal"><span class="pre">__builtin_extract_return_addr</span></tt>.</p>
 <p>This function should only be used with a nonzero argument for debugging
 purposes.</p>
-<p>The address as returned by <tt class="docutils literal"><span class="pre">__builtin_return_address</span></tt> may have to be fed
+<p id="index-1">Built-in Functionvoid <a href="#id3"><span class="problematic" id="id4">*</span></a>__builtin_extract_return_addr(void*``addr``)The address as returned by <tt class="docutils literal"><span class="pre">__builtin_return_address</span></tt> may have to be fed
 through this function to get the actual encoded address.  For example, on the
 31-bit S/390 platform the highest bit has to be masked out, or on SPARC
 platforms an offset has to be added for the true next instruction to be
 executed.</p>
 <p>If no fixup is needed, this function simply passes through <tt class="docutils literal"><span class="pre">addr</span></tt>.</p>
-<p>This function does the reverse of <tt class="docutils literal"><span class="pre">__builtin_extract_return_addr</span></tt>.</p>
-<p>This function is similar to <tt class="docutils literal"><span class="pre">__builtin_return_address</span></tt>, but it
+<p id="index-2">Built-in Functionvoid <a href="#id5"><span class="problematic" id="id6">*</span></a>__builtin_frob_return_address(void*``addr``)This function does the reverse of <tt class="docutils literal"><span class="pre">__builtin_extract_return_addr</span></tt>.</p>
+<p id="index-3">Built-in Functionvoid <a href="#id7"><span class="problematic" id="id8">*</span></a>__builtin_frame_address(unsignedint``level``)This function is similar to <tt class="docutils literal"><span class="pre">__builtin_return_address</span></tt>, but it
 returns the address of the function frame rather than the return address
 of the function.  Calling <tt class="docutils literal"><span class="pre">__builtin_frame_address</span></tt> with a value of
 <tt class="docutils literal"><span class="pre">0</span></tt> yields the frame address of the current function, a value of

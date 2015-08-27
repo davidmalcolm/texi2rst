@@ -1,3 +1,4 @@
+
 Options That Control Optimization
 *********************************
 
@@ -87,7 +88,6 @@ Overall Options, for examples.
   :option:`-ftree-pta` 
   :option:`-ftree-ter` 
   :option:`-funit-at-a-time`
-
   :option:`-O` also turns on :option:`-fomit-frame-pointer` on machines
   where doing so does not interfere with debugging.
 
@@ -134,7 +134,6 @@ Overall Options, for examples.
   :option:`-ftree-pre` 
   :option:`-ftree-vrp` 
   :option:`-fipa-ra`
-
   Please note the warning under :option:`-fgcse` about
   invoking :option:`-O2` on programs that use computed gotos.
 
@@ -347,7 +346,7 @@ optimizations to be performed is desired.
   max-inline-insns-auto
     is set to ``n``/2.
 
-  See below for a documentation of the individual
+    See below for a documentation of the individual
   parameters controlling inlining and for the defaults of these parameters.
 
   Note: there may be no value to :option:`-finline-limit` that results
@@ -636,7 +635,7 @@ optimizations to be performed is desired.
   for programs that depend on that behavior.
 
   This option is enabled by default on most targets.  On Nios II ELF, it
-  defaults to off.  On AVR and CR16, this option is completely disabled.  
+  defaults to off.  On AVR and CR16, this option is completely disabled.
 
   Passes that use the dataflow information
   are enabled independently at different optimization levels.
@@ -3061,17 +3060,14 @@ section includes experimental options that may produce broken code.
     The default probability of 90 is obtained empirically.
 
   align-threshold
-
     Select fraction of the maximal frequency of executions of a basic block in
     a function to align the basic block.
 
   align-loop-iterations
-
     A loop expected to iterate at least the selected number of iterations is
     aligned.
 
   tracer-dynamic-coveragetracer-dynamic-coverage-feedback
-
     This value is used to limit superblock formation once the given percentage of
     executed instructions is covered.  This limits unnecessary code size
     expansion.
@@ -3088,12 +3084,10 @@ section includes experimental options that may produce broken code.
     growth.
 
   tracer-min-branch-ratio
-
     Stop reverse growth when the reverse probability of best edge is less than this
     threshold (in percent).
 
   tracer-min-branch-ratiotracer-min-branch-ratio-feedback
-
     Stop forward growth if the best edge has probability lower than this
     threshold.
 
@@ -3103,7 +3097,6 @@ section includes experimental options that may produce broken code.
     order to make tracer effective.
 
   max-cse-path-length
-
     The maximum number of basic blocks on path that CSE considers.
     The default is 10.
 
@@ -3112,7 +3105,6 @@ section includes experimental options that may produce broken code.
     The default is 1000.
 
   ggc-min-expand
-
     GCC uses a garbage collector to manage its own memory allocation.  This
     parameter specifies the minimum percentage by which the garbage
     collector's heap should be allowed to expand between collections.
@@ -3129,7 +3121,6 @@ section includes experimental options that may produce broken code.
     debugging.
 
   ggc-min-heapsize
-
     Minimum size of the garbage collector's heap before it begins bothering
     to collect garbage.  The first collection occurs after the heap expands
     by ggc-min-expand% beyond ggc-min-heapsize.  Again,
@@ -3157,7 +3148,6 @@ section includes experimental options that may produce broken code.
     increase with probably slightly better performance.  The default value is 500.
 
   reorder-blocks-duplicatereorder-blocks-duplicate-feedback
-
     Used by the basic block reordering pass to decide whether to use unconditional
     branch or duplicate the code on its destination.  Code is duplicated when its
     estimated size is smaller than this value multiplied by the estimated size of
@@ -3406,7 +3396,6 @@ section includes experimental options that may produce broken code.
     pointer parameter.
 
     sra-max-scalarization-size-Ospeed
-
   sra-max-scalarization-size-Osize
     The two Scalar Reduction of Aggregates passes (SRA and IPA-SRA) aim to
     replace scalar parts of aggregates with uses of independent scalar

@@ -1,3 +1,4 @@
+
 Known Causes of Trouble with GCC
 --------------------------------
 
@@ -44,19 +45,12 @@ where people's opinions differ as to what is best.
   common-misunderstandings-with-gnu-c++
   certain-changes-we-don't-want-to-make
   warning-messages-and-error-messages
+
 :: _interoperation:
-
 :: _incompatibilities:
-
 :: _fixed-headers:
-
 :: _standard-libraries:
-
 :: _disappointments:
-
 :: _c++-misunderstandings:
-
 :: _non-bugs:
-
 :: _warnings-and-errors:
-

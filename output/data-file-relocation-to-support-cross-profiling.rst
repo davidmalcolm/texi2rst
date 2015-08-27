@@ -1,3 +1,4 @@
+
 Data File Relocation to Support Cross-Profiling
 ***********************************************
 
@@ -15,7 +16,7 @@ can relocate the data files based on two environment variables:
   in the object file. Prefix can be absolute, or relative.  The
   default is no prefix.
 
-  * GCOV_PREFIX_STRIP indicates the how many initial directory names to strip off
+* GCOV_PREFIX_STRIP indicates the how many initial directory names to strip off
   the hardwired absolute paths. Default value is 0.
 
   Note: If GCOV_PREFIX_STRIP is set without GCOV_PREFIX is undefined,
@@ -33,10 +34,11 @@ You must move the data files to the expected directory tree in order to
 use them for profile directed optimizations (:option:`--use-profile`), or to
 use the :command:`gcov` tool.
 
-.. Copyright (C) 2014-2015 Free Software Foundation, Inc. 
-   This is part of the GCC manual. 
+.. Copyright (C) 2014-2015 Free Software Foundation, Inc.
 
-.. For copying conditions, see the file gcc.texi. 
+.. This is part of the GCC manual.
+
+.. For copying conditions, see the file gcc.texi.
 
 @c man begin COPYRIGHT
 Copyright @copyright{} 2014-2015 Free Software Foundation, Inc.
@@ -62,4 +64,3 @@ included in the gfdl(7) man page.
 @c Set file name and title for the man page.
 @setfilename gcov-tool
 @settitle offline gcda profile processing tool
-

@@ -1,3 +1,4 @@
+
 Arrays of Length Zero
 *********************
 
@@ -33,14 +34,14 @@ slightly different in syntax and semantics:
 * Flexible array members are written as ``contents[]`` without
   the ``0``.
 
-  * Flexible array members have incomplete type, and so the ``sizeof``
+* Flexible array members have incomplete type, and so the ``sizeof``
   operator may not be applied.  As a quirk of the original implementation
   of zero-length arrays, ``sizeof`` evaluates to zero.
 
-  * Flexible array members may only appear as the last member of a
+* Flexible array members may only appear as the last member of a
   ``struct`` that is otherwise non-empty.
 
-  * A structure containing a flexible array member, or a union containing
+* A structure containing a flexible array member, or a union containing
   such a structure (possibly recursively), may not be a member of a
   structure or an element of an array.  (However, these uses are
   permitted by GCC as extensions.)

@@ -87,10 +87,7 @@
 <p>Some attributes only make sense for C++ programs.</p>
 <dl class="docutils">
 <dt>abi_tag (&#8220;<tt class="docutils literal"><span class="pre">tag</span></tt>&#8221;, ...)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">abi_tag</span></tt> function attribute
-<tt class="docutils literal"><span class="pre">abi_tag</span></tt> variable attribute
-<tt class="docutils literal"><span class="pre">abi_tag</span></tt> type attribute
-The <tt class="docutils literal"><span class="pre">abi_tag</span></tt> attribute can be applied to a function, variable, or class
+<dd><p class="first"><tt class="docutils literal"><span class="pre">abi_tag</span></tt> function attribute``abi_tag`` variable attribute``abi_tag`` type attributeThe <tt class="docutils literal"><span class="pre">abi_tag</span></tt> attribute can be applied to a function, variable, or class
 declaration.  It modifies the mangled name of the entity to
 incorporate the tag name, in order to distinguish the function or
 class from an earlier version with a different ABI; perhaps the class
@@ -123,8 +120,7 @@ situation; this warning can be avoided by explicitly tagging the
 variable or function or moving it into a tagged inline namespace.</p>
 </dd>
 <dt>init_priority (<tt class="docutils literal"><span class="pre">priority</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">init_priority</span></tt> variable attribute</p>
-<p>In Standard C++, objects defined at namespace scope are guaranteed to be
+<dd><p class="first"><tt class="docutils literal"><span class="pre">init_priority</span></tt> variable attributeIn Standard C++, objects defined at namespace scope are guaranteed to be
 initialized in an order in strict accordance with that of their definitions
 in a given translation unit.  No guarantee is made for initializations
 across translation units.  However, GNU C++ allows users to control the
@@ -142,15 +138,12 @@ inclusive.  Lower numbers indicate a higher priority.</p>
 relative ordering.</p>
 </dd>
 <dt>java_interface</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">java_interface</span></tt> type attribute</p>
-<p class="last">This type attribute informs C++ that the class is a Java interface.  It may
+<dd><tt class="docutils literal"><span class="pre">java_interface</span></tt> type attributeThis type attribute informs C++ that the class is a Java interface.  It may
 only be applied to classes declared within an <tt class="docutils literal"><span class="pre">extern</span> <span class="pre">&quot;Java&quot;</span></tt> block.
 Calls to methods declared in this interface are dispatched using GCJ&#8217;s
-interface table mechanism, instead of regular virtual table dispatch.</p>
-</dd>
+interface table mechanism, instead of regular virtual table dispatch.</dd>
 <dt>warn_unused</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">warn_unused</span></tt> type attribute</p>
-<p>For C++ types with non-trivial constructors and/or destructors it is
+<dd><p class="first"><tt class="docutils literal"><span class="pre">warn_unused</span></tt> type attributeFor C++ types with non-trivial constructors and/or destructors it is
 impossible for the compiler to determine whether a variable of this
 type is truly unused if it is not referenced. This type attribute
 informs the compiler that variables of this type should be warned
@@ -159,11 +152,11 @@ types.</p>
 <p>This attribute is appropriate for types which just represent a value,
 such as <tt class="docutils literal"><span class="pre">std::string</span></tt>; it is not appropriate for types which
 control a resource, such as <tt class="docutils literal"><span class="pre">std::mutex</span></tt>.</p>
-<p class="last">This attribute is also accepted in C, but it is unnecessary because C
+<p>This attribute is also accepted in C, but it is unnecessary because C
 does not have constructors or destructors.</p>
+<p class="last">See also Namespace Association.</p>
 </dd>
 </dl>
-<p>See also Namespace Association.</p>
 </div>
 
 

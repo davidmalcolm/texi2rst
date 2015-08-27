@@ -94,19 +94,16 @@ in the same file as the called function, following the definition.  The
 only way to check all calls reliably is to add a prototype for the
 function.  But adding a prototype eliminates the motivation for this
 feature.  So the feature is not worthwhile.</p>
-<ul class="simple">
-<li>Warning about using an expression whose type is signed as a shift count.</li>
-</ul>
+</li>
+<li><p class="first">Warning about using an expression whose type is signed as a shift count.</p>
 <p>Shift count operands are probably signed more often than unsigned.
 Warning about this would cause far more annoyance than good.</p>
-<ul class="simple">
-<li>Warning about assigning a signed value to an unsigned variable.</li>
-</ul>
+</li>
+<li><p class="first">Warning about assigning a signed value to an unsigned variable.</p>
 <p>Such assignments must be very common; warning about them would cause
 more annoyance than good.</p>
-<ul class="simple">
-<li>Warning when a non-void function value is ignored.</li>
-</ul>
+</li>
+<li><p class="first">Warning when a non-void function value is ignored.</p>
 <p>C contains many standard functions that return a value that most
 programs choose to ignore.  One obvious example is <tt class="docutils literal"><span class="pre">printf</span></tt>.
 Warning about this practice only leads the defensive programmer to
@@ -117,19 +114,16 @@ information about the intentions of the programmer.  For functions
 where the return value should never be ignored, use the
 <tt class="docutils literal"><span class="pre">warn_unused_result</span></tt> function attribute (Function
 Attributes).</p>
-<ul class="simple">
-<li></li>
-</ul>
-<p id="index-0">Making <a class="reference internal" href="specifying-attributes-of-types.html#cmdoption-fshort-enums"><em class="xref std std-option">-fshort-enums</em></a> the default.</p>
+</li>
+<li><p id="index-0">Making <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fshort-enums"><em class="xref std std-option">-fshort-enums</em></a> the default.</p>
 <p>This would cause storage layout to be incompatible with most other C
 compilers.  And it doesn&#8217;t seem very important, given that you can get
 the same result in other ways.  The case where it matters most is when
 the enumeration-valued object is inside a structure, and in that case
 you can specify a field width explicitly.</p>
-<ul class="simple">
-<li>Making bit-fields unsigned by default on particular machines where &#8216;the</li>
-</ul>
-<p>ABI standard&#8217; says to do so.</p>
+</li>
+<li><p class="first">Making bit-fields unsigned by default on particular machines where &#8216;the
+ABI standard&#8217; says to do so.</p>
 <p>The ISO C standard leaves it up to the implementation whether a bit-field
 declared plain <tt class="docutils literal"><span class="pre">int</span></tt> is signed or not.  This in effect creates two
 alternative dialects of C.</p>
@@ -172,10 +166,8 @@ to be considered in the future.</p>
 <p>(Of course, users strongly concerned about portability should indicate
 explicitly in each bit-field whether it is signed or not.  In this way,
 they write programs which have the same meaning in both C dialects.)</p>
-<ul class="simple">
-<li></li>
-</ul>
-<span class="target" id="index-3"></span><p id="index-4">Undefining <tt class="docutils literal"><span class="pre">__STDC__</span></tt> when <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> is not used.</p>
+</li>
+<li><span class="target" id="index-3"></span><p id="index-4">Undefining <tt class="docutils literal"><span class="pre">__STDC__</span></tt> when <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> is not used.</p>
 <p>Currently, GCC defines <tt class="docutils literal"><span class="pre">__STDC__</span></tt> unconditionally.  This provides
 good results in practice.</p>
 <p>Programmers normally use conditionals on <tt class="docutils literal"><span class="pre">__STDC__</span></tt> to ask whether
@@ -200,15 +192,14 @@ is relevant to the design of plain <strong class="command">gcc</strong> without 
 for pragmatic reasons, not as a requirement.</p>
 <p>GCC normally defines <tt class="docutils literal"><span class="pre">__STDC__</span></tt> to be 1, and in addition
 defines <tt class="docutils literal"><span class="pre">__STRICT_ANSI__</span></tt> if you specify the <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> option,
-or a <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option for strict conformance to some version of ISO C.
+or a <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option for strict conformance to some version of ISO C.
 On some hosts, system include files use a different convention, where
 <tt class="docutils literal"><span class="pre">__STDC__</span></tt> is normally 0, but is 1 if the user specifies strict
 conformance to the C Standard.  GCC follows the host convention when
 processing system include files, but when processing user files it follows
 the usual GNU C convention.</p>
-<ul class="simple">
-<li>Undefining <tt class="docutils literal"><span class="pre">__STDC__</span></tt> in C++.</li>
-</ul>
+</li>
+<li><p class="first">Undefining <tt class="docutils literal"><span class="pre">__STDC__</span></tt> in C++.</p>
 <p>Programs written to compile with C++-to-C translators get the
 value of <tt class="docutils literal"><span class="pre">__STDC__</span></tt> that goes with the C compiler that is
 subsequently used.  These programs must test <tt class="docutils literal"><span class="pre">__STDC__</span></tt>
@@ -222,9 +213,8 @@ C but not in traditional C.  Many of these header files can work without
 change in C++ provided <tt class="docutils literal"><span class="pre">__STDC__</span></tt> is defined.  If <tt class="docutils literal"><span class="pre">__STDC__</span></tt>
 is not defined, they will all fail, and will all need to be changed to
 test explicitly for C++ as well.</p>
-<ul class="simple">
-<li>Deleting &#8216;empty&#8217; loops.</li>
-</ul>
+</li>
+<li><p class="first">Deleting &#8216;empty&#8217; loops.</p>
 <p>Historically, GCC has not deleted &#8216;empty&#8217; loops under the
 assumption that the most likely reason you would put one in a program is
 to have a delay, so deleting them will not make real programs run any
@@ -251,9 +241,8 @@ following loop can be completely removed, provided
 </div>
 <p>Even though <tt class="docutils literal"><span class="pre">sum</span></tt> is accumulated in the loop, no use is made of
 that summation, so the accumulation can be removed.</p>
-<ul class="simple">
-<li>Making side effects happen in the same order as in some other compiler.</li>
-</ul>
+</li>
+<li><p class="first">Making side effects happen in the same order as in some other compiler.</p>
 <span class="target" id="index-5"></span><p id="index-6">It is never safe to depend on the order of evaluation of side effects.
 For example, a function call like this may very well behave differently
 from one compiler to another:</p>
@@ -267,9 +256,8 @@ from one compiler to another:</p>
 definitions) that the increments will be evaluated in any particular
 order.  Either increment might happen first.  <tt class="docutils literal"><span class="pre">func</span></tt> might get the
 arguments 2, 3, or it might get 3, 2, or even 2, 2.</p>
-<ul class="simple">
-<li>Making certain warnings into errors by default.</li>
-</ul>
+</li>
+<li><p class="first">Making certain warnings into errors by default.</p>
 <p>Some ISO C testsuites report failure when the compiler does not produce
 an error message for a certain program.</p>
 <p id="index-7">ISO C requires a &#8216;diagnostic&#8217; message for certain kinds of invalid

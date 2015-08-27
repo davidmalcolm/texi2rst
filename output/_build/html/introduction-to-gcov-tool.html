@@ -82,53 +82,41 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <p>Introduction to <strong class="command">gcov-tool</strong></p>
+  <p>Introduction to <strong class="command">gcov-tool</strong>
+.. man begin DESCRIPTION</p>
 <p><strong class="command">gcov-tool</strong> is an offline tool to process gcc&#8217;s gcda profile files.</p>
 <p>Current gcov-tool supports the following functionalities:</p>
-<ul>
-<li><p class="first">merge two sets of profiles with weights.</p>
 <ul class="simple">
-<li>read one set of profile and rewrite profile contents. One can scale or</li>
-</ul>
-<p>normalize the count values.</p>
-</li>
+<li>merge two sets of profiles with weights.</li>
+<li>read one set of profile and rewrite profile contents. One can scale or
+normalize the count values.</li>
 </ul>
 <p>Examples of the use cases for this tool are:</p>
-<ul>
-<li><p class="first">Collect the profiles for different set of inputs, and use this tool to merge
+<ul class="simple">
+<li>Collect the profiles for different set of inputs, and use this tool to merge
 them. One can specify the weight to factor in the relative importance of
-each input.</p>
-<ul class="simple">
-<li>Rewrite the profile after removing a subset of the gcda files, while maintaining</li>
-</ul>
-<p>the consistency of the summary and the histogram.</p>
-<ul class="simple">
-<li>It can also be used to debug or libgcov code as the tools shares the majority</li>
-</ul>
-<p>code as the runtime library.</p>
-</li>
+each input.</li>
+<li>Rewrite the profile after removing a subset of the gcda files, while maintaining
+the consistency of the summary and the histogram.</li>
+<li>It can also be used to debug or libgcov code as the tools shares the majority
+code as the runtime library.</li>
 </ul>
 <p>Note that for the merging operation, this profile generated offline may
 contain slight different values from the online merged profile. Here are
 a list of typical differences:</p>
-<ul>
-<li><p class="first">histogram difference: This offline tool recomputes the histogram after merging
+<ul class="simple">
+<li>histogram difference: This offline tool recomputes the histogram after merging
 the counters. The resulting histogram, therefore, is precise. The online
 merging does not have this capability - the histogram is merged from two
-histograms and the result is an approximation.</p>
-<ul class="simple">
-<li>summary checksum difference: Summary checksum uses a CRC32 operation. The value</li>
-</ul>
-<p>depends on the link list order of gcov-info objects. This order is different in
+histograms and the result is an approximation.</li>
+<li>summary checksum difference: Summary checksum uses a CRC32 operation. The value
+depends on the link list order of gcov-info objects. This order is different in
 gcov-tool from that in the online merge. It&#8217;s expected to have different
 summary checksums. It does not really matter as the compiler does not use this
-checksum anywhere.</p>
-<ul class="simple">
-<li>value profile counter values difference: Some counter values for value profile</li>
-</ul>
-<p>are runtime dependent, like heap addresses. It&#8217;s normal to see some difference
-in these kind of counters.</p>
-</li>
+checksum anywhere.</li>
+<li>value profile counter values difference: Some counter values for value profile
+are runtime dependent, like heap addresses. It&#8217;s normal to see some difference
+in these kind of counters.</li>
 </ul>
 
 

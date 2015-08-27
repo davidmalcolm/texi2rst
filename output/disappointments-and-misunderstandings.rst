@@ -1,3 +1,4 @@
+
 Disappointments and Misunderstandings
 *************************************
 
@@ -20,7 +21,7 @@ way around them.
 
   .. index:: scope of declaration
 
-  * Users often think it is a bug when GCC reports an error for code
+* Users often think it is a bug when GCC reports an error for code
   like this:
 
   .. code-block:: c++
@@ -48,7 +49,7 @@ way around them.
   being incompatible with ISO C just to avoid an error for the example
   shown above.
 
-  * Accesses to bit-fields even in volatile objects works by accessing larger
+* Accesses to bit-fields even in volatile objects works by accessing larger
   objects, such as a byte or a word.  You cannot rely on what size of
   object is accessed in order to read or write the bit-field; it may even
   vary for a given bit-field according to the precise usage.
@@ -56,7 +57,7 @@ way around them.
   If you care about controlling the amount of memory that is accessed, use
   volatile but do not use bit-fields.
 
-  * GCC comes with shell scripts to fix certain known problems in system
+* GCC comes with shell scripts to fix certain known problems in system
   header files.  They install corrected copies of various header files in
   a special directory where only GCC will normally look for them.  The
   scripts adapt to various systems by searching all the system header
@@ -67,7 +68,7 @@ way around them.
   :command:`mkheaders` script installed in
   ``libexecdir``/gcc/``target``/``version``/install-tools/.
 
-  * 
+* 
   .. index:: floating point precision
 
   On 68000 and x86 systems, for instance, you can get paradoxical results
@@ -83,11 +84,11 @@ way around them.
   You can partially avoid this problem by using the :option:`-ffloat-store`
   option (Optimize Options).
 
-  * On AIX and other platforms without weak symbol support, templates
+* On AIX and other platforms without weak symbol support, templates
   need to be instantiated explicitly and symbols for static members
   of templates will not be generated.
 
-  * On AIX, GCC scans object files and library archives for static
+* On AIX, GCC scans object files and library archives for static
   constructors and destructors when linking an application before the
   linker prunes unreferenced symbols.  This is necessary to prevent the
   AIX linker from mistakenly assuming that static constructor or

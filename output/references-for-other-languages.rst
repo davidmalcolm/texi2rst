@@ -10,10 +10,11 @@ of standards supported by GNU Fortran.
 CompatibilityCompatibility with the Java PlatformgcjGNU gcj,
 for details of compatibility between :command:`gcj` and the Java Platform.
 
-.. Copyright (C) 1988-2015 Free Software Foundation, Inc. 
-   This is part of the GCC manual. 
+.. Copyright (C) 1988-2015 Free Software Foundation, Inc.
 
-.. For copying conditions, see the file gcc.texi. 
+.. This is part of the GCC manual.
+
+.. For copying conditions, see the file gcc.texi.
 
 @c man begin INCLUDE
 @include gcc-vers.texi
@@ -70,4 +71,3 @@ See the Info entry for @command{gcc}, or
 @w{@uref{http://gcc.gnu.org/onlinedocs/gcc/Contributors.html}},
 for contributors to GCC@.
 @c man end
-

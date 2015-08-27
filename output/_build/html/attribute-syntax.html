@@ -117,31 +117,21 @@ applying to labels.</p>
 <tt class="docutils literal"><span class="pre">__attribute__</span> <span class="pre">((``attribute-list</span></tt>))``.  An <em class="dfn">attribute list</em>
 is a possibly empty comma-separated sequence of <em class="dfn">attributes</em>, where
 each attribute is one of the following:</p>
-<ul>
-<li><p class="first">Empty.  Empty attributes are ignored.</p>
 <ul class="simple">
-<li>An attribute name</li>
-</ul>
-<p>(which may be an identifier such as <tt class="docutils literal"><span class="pre">unused</span></tt>, or a reserved
-word such as <tt class="docutils literal"><span class="pre">const</span></tt>).</p>
-<ul class="simple">
-<li>An attribute name followed by a parenthesized list of</li>
-</ul>
-<p>parameters for the attribute.
-These parameters take one of the following forms:</p>
-<ul>
-<li><p class="first">An identifier.  For example, <tt class="docutils literal"><span class="pre">mode</span></tt> attributes use this form.</p>
-<ul class="simple">
-<li>An identifier followed by a comma and a non-empty comma-separated list</li>
-</ul>
-<p>of expressions.  For example, <tt class="docutils literal"><span class="pre">format</span></tt> attributes use this form.</p>
-<ul class="simple">
-<li>A possibly empty comma-separated list of expressions.  For example,</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">format_arg</span></tt> attributes use this form with the list being a single
+<li>Empty.  Empty attributes are ignored.</li>
+<li>An attribute name
+(which may be an identifier such as <tt class="docutils literal"><span class="pre">unused</span></tt>, or a reserved
+word such as <tt class="docutils literal"><span class="pre">const</span></tt>).</li>
+<li>An attribute name followed by a parenthesized list of
+parameters for the attribute.
+These parameters take one of the following forms:<ul>
+<li>An identifier.  For example, <tt class="docutils literal"><span class="pre">mode</span></tt> attributes use this form.</li>
+<li>An identifier followed by a comma and a non-empty comma-separated list
+of expressions.  For example, <tt class="docutils literal"><span class="pre">format</span></tt> attributes use this form.</li>
+<li>A possibly empty comma-separated list of expressions.  For example,
+<tt class="docutils literal"><span class="pre">format_arg</span></tt> attributes use this form with the list being a single
 integer constant expression, and <tt class="docutils literal"><span class="pre">alias</span></tt> attributes use this form
-with the list being a single string constant.</p>
-</li>
+with the list being a single string constant.</li>
 </ul>
 </li>
 </ul>

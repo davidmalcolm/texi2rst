@@ -1,3 +1,4 @@
+
 When is a Volatile Object Accessed?
 ***********************************
 

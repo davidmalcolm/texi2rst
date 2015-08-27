@@ -121,9 +121,7 @@
             
   <div class="section" id="declaring-attributes-of-functions">
 <h1>Declaring Attributes of Functions<a class="headerlink" href="#declaring-attributes-of-functions" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="index-0"></span><p id="index-1"><tt class="docutils literal"><span class="pre">volatile</span></tt> applied to function
-<tt class="docutils literal"><span class="pre">const</span></tt> applied to function</p>
-<p>In GNU C, you can use function attributes to declare certain things
+<span class="target" id="index-0"></span><p id="index-1"><tt class="docutils literal"><span class="pre">volatile</span></tt> applied to function``const`` applied to functionIn GNU C, you can use function attributes to declare certain things
 about functions called in your program which help the compiler
 optimize calls and check your code more carefully.  For example, you
 can use attributes to declare that a function never returns
@@ -164,8 +162,7 @@ GCC plugins may provide their own attributes.</p>
 <p>The following attributes are supported on most targets.</p>
 <dl class="docutils">
 <dt>alias (&#8220;<tt class="docutils literal"><span class="pre">target</span></tt>&#8221;)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">alias</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">alias</span></tt> attribute causes the declaration to be emitted as an
+<dd><p class="first"><tt class="docutils literal"><span class="pre">alias</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">alias</span></tt> attribute causes the declaration to be emitted as an
 alias for another symbol, which must be specified.  For instance,</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">__f</span> <span class="p">()</span> <span class="p">{</span> <span class="cm">/* Do something. */</span><span class="p">;</span> <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">f</span> <span class="p">()</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">weak</span><span class="p">,</span> <span class="n">alias</span> <span class="p">(</span><span class="s">&quot;__f&quot;</span><span class="p">)));</span>
@@ -178,8 +175,7 @@ is not defined in the same translation unit.</p>
 and may not be available on all targets.</p>
 </dd>
 <dt>aligned (<tt class="docutils literal"><span class="pre">alignment</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">aligned</span></tt> function attribute
-This attribute specifies a minimum alignment for the function,
+<dd><p class="first"><tt class="docutils literal"><span class="pre">aligned</span></tt> function attributeThis attribute specifies a minimum alignment for the function,
 measured in bytes.</p>
 <p>You cannot use this attribute to decrease the alignment of a function,
 only to increase it.  However, when you explicitly specify a function
@@ -196,8 +192,7 @@ further information.</p>
 (Variable Attributes.)</p>
 </dd>
 <dt>alloc_align</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">alloc_align</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">alloc_align</span></tt> attribute is used to tell the compiler that the
+<dd><p class="first"><tt class="docutils literal"><span class="pre">alloc_align</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">alloc_align</span></tt> attribute is used to tell the compiler that the
 function return value points to memory, where the returned pointer minimum
 alignment is given by one of the functions parameters.  GCC uses this
 information to improve pointer alignment analysis.</p>
@@ -212,8 +207,7 @@ Argument numbering starts at one.</p>
 given by parameter 1.</p>
 </dd>
 <dt>alloc_size</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">alloc_size</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">alloc_size</span></tt> attribute is used to tell the compiler that the
+<dd><p class="first"><tt class="docutils literal"><span class="pre">alloc_size</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">alloc_size</span></tt> attribute is used to tell the compiler that the
 function return value points to memory, where the size is given by
 one or two of the functions parameters.  GCC uses this
 information to improve the correctness of <tt class="docutils literal"><span class="pre">__builtin_object_size</span></tt>.</p>
@@ -232,8 +226,7 @@ the product of parameter 1 and 2 and that <tt class="docutils literal"><span cla
 of the size given by parameter 2.</p>
 </dd>
 <dt>always_inline</dt>
-<dd><tt class="docutils literal"><span class="pre">always_inline</span></tt> function attribute
-Generally, functions are not inlined unless optimization is specified.
+<dd><tt class="docutils literal"><span class="pre">always_inline</span></tt> function attributeGenerally, functions are not inlined unless optimization is specified.
 For functions declared inline, this attribute inlines the function
 independent of any restrictions that otherwise apply to inlining.
 Failure to inline such a function is diagnosed as an error.
@@ -241,15 +234,13 @@ Note that if such a function is called indirectly the compiler may
 or may not inline it depending on optimization level and a failure
 to inline an indirect call may or may not be diagnosed.</dd>
 <dt>artificial</dt>
-<dd><tt class="docutils literal"><span class="pre">artificial</span></tt> function attribute
-This attribute is useful for small inline wrappers that if possible
+<dd><tt class="docutils literal"><span class="pre">artificial</span></tt> function attributeThis attribute is useful for small inline wrappers that if possible
 should appear during debugging as a unit.  Depending on the debug
 info format it either means marking the function as artificial
 or using the caller location for all instructions within the inlined
 body.</dd>
 <dt>assume_aligned</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">assume_aligned</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">assume_aligned</span></tt> attribute is used to tell the compiler that the
+<dd><p class="first"><tt class="docutils literal"><span class="pre">assume_aligned</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">assume_aligned</span></tt> attribute is used to tell the compiler that the
 function return value points to memory, where the returned pointer minimum
 alignment is given by the first argument.
 If the attribute has two arguments, the second argument is misalignment offset.</p>
@@ -263,19 +254,18 @@ that <tt class="docutils literal"><span class="pre">my_alloc2</span></tt> return
 to 8.</p>
 </dd>
 <dt>bnd_instrument</dt>
-<dd><tt class="docutils literal"><span class="pre">bnd_instrument</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">bnd_instrument</span></tt> attribute on functions is used to inform the
+<dd><tt class="docutils literal"><span class="pre">bnd_instrument</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">bnd_instrument</span></tt> attribute on functions is used to inform the
 compiler that the function should be instrumented when compiled
 with the <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-fchkp-instrument-marked-only"><em class="xref std std-option">-fchkp-instrument-marked-only</em></a> option.</dd>
 <dt>bnd_legacy</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">bnd_legacy</span></tt> function attribute</p>
-<p class="last" id="index-2">The <tt class="docutils literal"><span class="pre">bnd_legacy</span></tt> attribute on functions is used to inform the
+<dd><p class="first"><tt class="docutils literal"><span class="pre">bnd_legacy</span></tt> function attribute
+.. index:: Pointer Bounds Checker attributes</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">bnd_legacy</span></tt> attribute on functions is used to inform the
 compiler that the function should not be instrumented when compiled
 with the <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-fcheck-pointer-bounds"><em class="xref std std-option">-fcheck-pointer-bounds</em></a> option.</p>
 </dd>
 <dt>cold</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">cold</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">cold</span></tt> attribute on functions is used to inform the compiler that
+<dd><p class="first"><tt class="docutils literal"><span class="pre">cold</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">cold</span></tt> attribute on functions is used to inform the compiler that
 the function is unlikely to be executed.  The function is optimized for
 size rather than speed and on many targets it is placed into a special
 subsection of the text section so all cold functions appear close together,
@@ -288,21 +278,20 @@ of hot functions that do call marked functions in rare occasions.</p>
 are automatically detected and this attribute is ignored.</p>
 </dd>
 <dt>const</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">const</span></tt> function attribute</p>
-<p id="index-3">Many functions do not examine any values except their arguments, and
+<dd><p class="first"><tt class="docutils literal"><span class="pre">const</span></tt> function attribute
+.. index:: functions that have no side effects</p>
+<p>Many functions do not examine any values except their arguments, and
 have no effects except the return value.  Basically this is just slightly
 more strict class than the <tt class="docutils literal"><span class="pre">pure</span></tt> attribute below, since function is not
 allowed to read global memory.</p>
-<p class="last" id="index-4">Note that a function that has pointer arguments and examines the data
+<p class="last" id="index-2">Note that a function that has pointer arguments and examines the data
 pointed to must not be declared <tt class="docutils literal"><span class="pre">const</span></tt>.  Likewise, a
 function that calls a non-<tt class="docutils literal"><span class="pre">const</span></tt> function usually must not be
 <tt class="docutils literal"><span class="pre">const</span></tt>.  It does not make sense for a <tt class="docutils literal"><span class="pre">const</span></tt> function to
 return <tt class="docutils literal"><span class="pre">void</span></tt>.</p>
 </dd>
 <dt>constructordestructorconstructor (<tt class="docutils literal"><span class="pre">priority</span></tt>)destructor (<tt class="docutils literal"><span class="pre">priority</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">constructor</span></tt> function attribute
-<tt class="docutils literal"><span class="pre">destructor</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">constructor</span></tt> attribute causes the function to be called
+<dd><p class="first"><tt class="docutils literal"><span class="pre">constructor</span></tt> function attribute``destructor`` function attributeThe <tt class="docutils literal"><span class="pre">constructor</span></tt> attribute causes the function to be called
 automatically before execution enters <tt class="docutils literal"><span class="pre">main</span> <span class="pre">()</span></tt>.  Similarly, the
 <tt class="docutils literal"><span class="pre">destructor</span></tt> attribute causes the function to be called
 automatically after <tt class="docutils literal"><span class="pre">main</span> <span class="pre">()</span></tt> completes or <tt class="docutils literal"><span class="pre">exit</span> <span class="pre">()</span></tt> is
@@ -321,8 +310,7 @@ objects (C++ Attributes).</p>
 <p class="last">These attributes are not currently implemented for Objective-C.</p>
 </dd>
 <dt>deprecateddeprecated (<tt class="docutils literal"><span class="pre">msg</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">deprecated</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute results in a warning if the function
+<dd><p class="first"><tt class="docutils literal"><span class="pre">deprecated</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute results in a warning if the function
 is used anywhere in the source file.  This is useful when identifying
 functions that are expected to be removed in a future version of a
 program.  The warning also includes the location of the declaration
@@ -341,9 +329,7 @@ present.</p>
 types (Variable Attributes, Type Attributes.)</p>
 </dd>
 <dt>error (&#8220;<tt class="docutils literal"><span class="pre">message</span></tt>&#8221;)warning (&#8220;<tt class="docutils literal"><span class="pre">message</span></tt>&#8221;)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">error</span></tt> function attribute
-<tt class="docutils literal"><span class="pre">warning</span></tt> function attribute
-If the <tt class="docutils literal"><span class="pre">error</span></tt> or <tt class="docutils literal"><span class="pre">warning</span></tt> attribute
+<dd><p class="first"><tt class="docutils literal"><span class="pre">error</span></tt> function attribute``warning`` function attributeIf the <tt class="docutils literal"><span class="pre">error</span></tt> or <tt class="docutils literal"><span class="pre">warning</span></tt> attribute
 is used on a function declaration and a call to such a function
 is not eliminated through dead code elimination or other optimizations,
 an error or warning (respectively) that includes <tt class="docutils literal"><span class="pre">message</span></tt> is diagnosed.
@@ -359,8 +345,7 @@ earlier and with exact location of the call even in presence of inline
 functions or when not emitting debugging information.</p>
 </dd>
 <dt>externally_visible</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">externally_visible</span></tt> function attribute
-This attribute, attached to a global variable or function, nullifies
+<dd><p class="first"><tt class="docutils literal"><span class="pre">externally_visible</span></tt> function attributeThis attribute, attached to a global variable or function, nullifies
 the effect of the <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fwhole-program"><em class="xref std std-option">-fwhole-program</em></a> command-line option, so the
 object remains visible outside the current compilation unit.</p>
 <p class="last">If <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fwhole-program"><em class="xref std std-option">-fwhole-program</em></a> is used together with <a class="reference internal" href="options-that-control-optimization.html#cmdoption-flto"><em class="xref std std-option">-flto</em></a> and
@@ -373,8 +358,7 @@ For other linkers that cannot generate resolution file,
 explicit <tt class="docutils literal"><span class="pre">externally_visible</span></tt> attributes are still necessary.</p>
 </dd>
 <dt>flatten</dt>
-<dd><tt class="docutils literal"><span class="pre">flatten</span></tt> function attribute
-Generally, inlining into a function is limited.  For a function marked with
+<dd><tt class="docutils literal"><span class="pre">flatten</span></tt> function attributeGenerally, inlining into a function is limited.  For a function marked with
 this attribute, every call inside this function is inlined, if possible.
 Whether the function itself is considered for inlining depends on its size and
 the current inlining parameters.</dd>
@@ -382,9 +366,7 @@ the current inlining parameters.</dd>
 <dl class="option">
 <dt id="cmdoption-index">
 <tt class="descname">-index</tt><tt class="descclassname">, first-to-check)</tt><tt class="descclassname">, </tt><tt class="descname">-Wformat</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-ffreestanding</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-fno-builtin</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-index" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">format</span></tt> function attribute
-functions with <tt class="docutils literal"><span class="pre">printf</span></tt>, <tt class="docutils literal"><span class="pre">scanf</span></tt>, <tt class="docutils literal"><span class="pre">strftime</span></tt> or <tt class="docutils literal"><span class="pre">strfmon</span></tt> style arguments</p>
-<p>The <tt class="docutils literal"><span class="pre">format</span></tt> attribute specifies that a function takes <tt class="docutils literal"><span class="pre">printf</span></tt>,
+<dd><p><tt class="docutils literal"><span class="pre">format</span></tt> function attributefunctions with <tt class="docutils literal"><span class="pre">printf</span></tt>, <tt class="docutils literal"><span class="pre">scanf</span></tt>, <tt class="docutils literal"><span class="pre">strftime</span></tt> or <tt class="docutils literal"><span class="pre">strfmon</span></tt> style argumentsThe <tt class="docutils literal"><span class="pre">format</span></tt> attribute specifies that a function takes <tt class="docutils literal"><span class="pre">printf</span></tt>,
 <tt class="docutils literal"><span class="pre">scanf</span></tt>, <tt class="docutils literal"><span class="pre">strftime</span></tt> or <tt class="docutils literal"><span class="pre">strfmon</span></tt> style arguments that
 should be type-checked against a format string.  For example, the
 declaration:</p>
@@ -451,8 +433,7 @@ Target Machines.</p>
 <dl class="option">
 <dt id="cmdoption-index">
 <tt class="descname">-index</tt><tt class="descclassname">)</tt><tt class="descclassname">, </tt><tt class="descname">-Wformat-nonliteral</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-index" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">format_arg</span></tt> function attribute</p>
-<p>The <tt class="docutils literal"><span class="pre">format_arg</span></tt> attribute specifies that a function takes a format
+<dd><p><tt class="docutils literal"><span class="pre">format_arg</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">format_arg</span></tt> attribute specifies that a function takes a format
 string for a <tt class="docutils literal"><span class="pre">printf</span></tt>, <tt class="docutils literal"><span class="pre">scanf</span></tt>, <tt class="docutils literal"><span class="pre">strftime</span></tt> or
 <tt class="docutils literal"><span class="pre">strfmon</span></tt> style function and modifies it (for example, to translate
 it into another language), so the result can be passed to a
@@ -484,7 +465,7 @@ calls to <tt class="docutils literal"><span class="pre">printf</span></tt>, <tt 
 type function whose operands are a call to one of your own function.
 The compiler always treats <tt class="docutils literal"><span class="pre">gettext</span></tt>, <tt class="docutils literal"><span class="pre">dgettext</span></tt>, and
 <tt class="docutils literal"><span class="pre">dcgettext</span></tt> in this manner except when strict ISO C support is
-requested by <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or an appropriate <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option, or
+requested by <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or an appropriate <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option, or
 <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ffreestanding"><em class="xref std std-option">-ffreestanding</em></a> or <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fno-builtin"><em class="xref std std-option">-fno-builtin</em></a>
 is used.  C Dialect OptionsOptions
 Controlling C Dialect.</p>
@@ -498,8 +479,7 @@ Target Machines.</p>
 
 <dl class="docutils">
 <dt>gnu_inline</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">gnu_inline</span></tt> function attribute
-This attribute should be used with a function that is also declared
+<dd><p class="first"><tt class="docutils literal"><span class="pre">gnu_inline</span></tt> function attributeThis attribute should be used with a function that is also declared
 with the <tt class="docutils literal"><span class="pre">inline</span></tt> keyword.  It directs GCC to treat the function
 as if it were defined in gnu90 mode even when compiling in C99 or
 gnu99 mode.</p>
@@ -532,8 +512,7 @@ but it still requires the <tt class="docutils literal"><span class="pre">inline<
 behavior.</p>
 </dd>
 <dt>hot</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">hot</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">hot</span></tt> attribute on a function is used to inform the compiler that
+<dd><p class="first"><tt class="docutils literal"><span class="pre">hot</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">hot</span></tt> attribute on a function is used to inform the compiler that
 the function is a hot spot of the compiled program.  The function is
 optimized more aggressively and on many targets it is placed into a special
 subsection of the text section so all hot functions appear close together,
@@ -542,8 +521,9 @@ improving locality.</p>
 are automatically detected and this attribute is ignored.</p>
 </dd>
 <dt>ifunc (&#8220;<tt class="docutils literal"><span class="pre">resolver</span></tt>&#8221;)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">ifunc</span></tt> function attribute</p>
-<span class="target" id="index-5"></span><p id="index-6">The <tt class="docutils literal"><span class="pre">ifunc</span></tt> attribute is used to mark a function as an indirect
+<dd><p class="first"><tt class="docutils literal"><span class="pre">ifunc</span></tt> function attribute
+.. index:: indirect functions</p>
+<p id="index-3">The <tt class="docutils literal"><span class="pre">ifunc</span></tt> attribute is used to mark a function as an indirect
 function using the STT_GNU_IFUNC symbol type extension to the ELF
 standard.  This allows the resolution of the symbol value to be
 determined dynamically at load time, and an optimized version of the
@@ -587,8 +567,7 @@ entry and exit sequences that differ from those from regular
 functions.  The exact syntax and behavior are target-specific;
 refer to the following subsections for details.</dd>
 <dt>leaf</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">leaf</span></tt> function attribute
-Calls to external functions with this attribute must return to the current
+<dd><p class="first"><tt class="docutils literal"><span class="pre">leaf</span></tt> function attributeCalls to external functions with this attribute must return to the current
 compilation unit only by return or by exception handling.  In particular, leaf
 functions are not allowed to call callback function passed to it from the current
 compilation unit or directly call functions exported by the unit or longjmp
@@ -609,8 +588,9 @@ for example, by using the link-time optimization.  For this reason the
 attribute is not allowed on types to annotate indirect calls.</p>
 </dd>
 <dt>malloc</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">malloc</span></tt> function attribute</p>
-<p id="index-7">This tells the compiler that a function is <tt class="docutils literal"><span class="pre">malloc</span></tt>-like, i.e.,
+<dd><p class="first"><tt class="docutils literal"><span class="pre">malloc</span></tt> function attribute
+.. index:: functions that behave like malloc</p>
+<p>This tells the compiler that a function is <tt class="docutils literal"><span class="pre">malloc</span></tt>-like, i.e.,
 that the pointer <tt class="docutils literal"><span class="pre">P</span></tt> returned by the function cannot alias any
 other pointer valid when the function returns, and moreover no
 pointers to valid objects occur in any storage addressed by <tt class="docutils literal"><span class="pre">P</span></tt>.</p>
@@ -621,23 +601,20 @@ like <tt class="docutils literal"><span class="pre">realloc</span></tt> do not h
 pointer to storage containing pointers.</p>
 </dd>
 <dt>no_icf</dt>
-<dd><tt class="docutils literal"><span class="pre">no_icf</span></tt> function attribute
-This function attribute prevents a functions from being merged with another
+<dd><tt class="docutils literal"><span class="pre">no_icf</span></tt> function attributeThis function attribute prevents a functions from being merged with another
 semantically equivalent function.</dd>
 </dl>
 <dl class="option">
 <dt id="cmdoption-finstrument-functions">
 <tt class="descname">-finstrument-functions</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-finstrument-functions" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">no_instrument_function</span></tt> function attribute</p>
-<p>If <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-finstrument-functions"><em class="xref std std-option">-finstrument-functions</em></a> is given, profiling function calls are
+<dd><p><tt class="docutils literal"><span class="pre">no_instrument_function</span></tt> function attributeIf <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-finstrument-functions"><em class="xref std std-option">-finstrument-functions</em></a> is given, profiling function calls are
 generated at entry and exit of most user-compiled functions.
 Functions with this attribute are not so instrumented.</p>
 </dd></dl>
 
 <dl class="docutils">
 <dt>no_reorder</dt>
-<dd><tt class="docutils literal"><span class="pre">no_reorder</span></tt> function attribute
-Do not reorder functions or variables marked <tt class="docutils literal"><span class="pre">no_reorder</span></tt>
+<dd><tt class="docutils literal"><span class="pre">no_reorder</span></tt> function attributeDo not reorder functions or variables marked <tt class="docutils literal"><span class="pre">no_reorder</span></tt>
 against each other or top level assembler statements the executable.
 The actual order in the program will depend on the linker command
 line. Static variables marked like this are also not removed.
@@ -645,29 +622,25 @@ This has a similar effect
 as the <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fno-toplevel-reorder"><em class="xref std std-option">-fno-toplevel-reorder</em></a> option, but only applies to the
 marked symbols.</dd>
 <dt>no_sanitize_addressno_address_safety_analysis</dt>
-<dd><tt class="docutils literal"><span class="pre">no_sanitize_address</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">no_sanitize_address</span></tt> attribute on functions is used
+<dd><tt class="docutils literal"><span class="pre">no_sanitize_address</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">no_sanitize_address</span></tt> attribute on functions is used
 to inform the compiler that it should not instrument memory accesses
 in the function when compiling with the <em class="xref std std-option">-fsanitize=address</em> option.
 The <tt class="docutils literal"><span class="pre">no_address_safety_analysis</span></tt> is a deprecated alias of the
 <tt class="docutils literal"><span class="pre">no_sanitize_address</span></tt> attribute, new code should use
 <tt class="docutils literal"><span class="pre">no_sanitize_address</span></tt>.</dd>
 <dt>no_sanitize_thread</dt>
-<dd><tt class="docutils literal"><span class="pre">no_sanitize_thread</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">no_sanitize_thread</span></tt> attribute on functions is used
+<dd><tt class="docutils literal"><span class="pre">no_sanitize_thread</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">no_sanitize_thread</span></tt> attribute on functions is used
 to inform the compiler that it should not instrument memory accesses
 in the function when compiling with the <em class="xref std std-option">-fsanitize=thread</em> option.</dd>
 <dt>no_sanitize_undefined</dt>
-<dd><tt class="docutils literal"><span class="pre">no_sanitize_undefined</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">no_sanitize_undefined</span></tt> attribute on functions is used
+<dd><tt class="docutils literal"><span class="pre">no_sanitize_undefined</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">no_sanitize_undefined</span></tt> attribute on functions is used
 to inform the compiler that it should not check for undefined behavior
 in the function when compiling with the <em class="xref std std-option">-fsanitize=undefined</em> option.</dd>
 </dl>
 <dl class="option">
 <dt id="cmdoption-fsplit-stack">
 <tt class="descname">-fsplit-stack</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fsplit-stack" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">no_split_stack</span></tt> function attribute</p>
-<p>If <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fsplit-stack"><em class="xref std std-option">-fsplit-stack</em></a> is given, functions have a small
+<dd><p><tt class="docutils literal"><span class="pre">no_split_stack</span></tt> function attributeIf <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fsplit-stack"><em class="xref std std-option">-fsplit-stack</em></a> is given, functions have a small
 prologue which decides whether to split the stack.  Functions with the
 <tt class="docutils literal"><span class="pre">no_split_stack</span></tt> attribute do not have that prologue, and thus
 may run with only a small amount of stack space available.</p>
@@ -675,15 +648,17 @@ may run with only a small amount of stack space available.</p>
 
 <dl class="docutils">
 <dt>noclone</dt>
-<dd><tt class="docutils literal"><span class="pre">noclone</span></tt> function attribute
-This function attribute prevents a function from being considered for
+<dd><tt class="docutils literal"><span class="pre">noclone</span></tt> function attributeThis function attribute prevents a function from being considered for
 cloning-a mechanism that produces specialized copies of functions
 and which is (currently) performed by interprocedural constant
 propagation.</dd>
 <dt>noinline</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">noinline</span></tt> function attribute
-This function attribute prevents a function from being considered for
+<dd><p class="first"><tt class="docutils literal"><span class="pre">noinline</span></tt> function attributeThis function attribute prevents a function from being considered for
 inlining.</p>
+<p>If the function does not have side-effects, there are optimizations
+other than inlining that cause function calls to be optimized away,
+although the function call is live.  To keep such calls from being
+optimized away, put</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">asm</span> <span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -691,8 +666,9 @@ inlining.</p>
 side-effect.</p>
 </dd>
 <dt>nonnull (<tt class="docutils literal"><span class="pre">arg-index</span></tt>, ...)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">nonnull</span></tt> function attribute</p>
-<p id="index-8">The <tt class="docutils literal"><span class="pre">nonnull</span></tt> attribute specifies that some function parameters should
+<dd><p class="first"><tt class="docutils literal"><span class="pre">nonnull</span></tt> function attribute
+.. index:: functions with non-null pointer arguments</p>
+<p>The <tt class="docutils literal"><span class="pre">nonnull</span></tt> attribute specifies that some function parameters should
 be non-null pointers.  For instance, the declaration:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="kt">void</span> <span class="o">*</span>
 <span class="nf">my_memcpy</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span>
@@ -715,8 +691,9 @@ following declaration is equivalent to the previous example:</p>
 </div>
 </dd>
 <dt>noreturn</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">noreturn</span></tt> function attribute</p>
-<p id="index-9">A few standard library functions, such as <tt class="docutils literal"><span class="pre">abort</span></tt> and <tt class="docutils literal"><span class="pre">exit</span></tt>,
+<dd><p class="first"><tt class="docutils literal"><span class="pre">noreturn</span></tt> function attribute
+.. index:: functions that never return</p>
+<p>A few standard library functions, such as <tt class="docutils literal"><span class="pre">abort</span></tt> and <tt class="docutils literal"><span class="pre">exit</span></tt>,
 cannot return.  GCC knows this automatically.  Some programs define
 their own functions that never return.  You can declare them
 <tt class="docutils literal"><span class="pre">noreturn</span></tt> to tell the compiler this fact.  For example,</p>
@@ -744,15 +721,13 @@ restored before calling the <tt class="docutils literal"><span class="pre">noret
 type other than <tt class="docutils literal"><span class="pre">void</span></tt>.</p>
 </dd>
 <dt>nothrow</dt>
-<dd><tt class="docutils literal"><span class="pre">nothrow</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">nothrow</span></tt> attribute is used to inform the compiler that a
+<dd><tt class="docutils literal"><span class="pre">nothrow</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">nothrow</span></tt> attribute is used to inform the compiler that a
 function cannot throw an exception.  For example, most functions in
 the standard C library can be guaranteed not to throw an exception
 with the notable exceptions of <tt class="docutils literal"><span class="pre">qsort</span></tt> and <tt class="docutils literal"><span class="pre">bsearch</span></tt> that
 take function pointer arguments.</dd>
 <dt>optimize</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">optimize</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">optimize</span></tt> attribute is used to specify that a function is to
+<dd><p class="first"><tt class="docutils literal"><span class="pre">optimize</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">optimize</span></tt> attribute is used to specify that a function is to
 be compiled with different optimization options than specified on the
 command line.  Arguments can either be numbers or strings.  Numbers
 are assumed to be an optimization level.  Strings that begin with
@@ -768,8 +743,9 @@ and larger code, while other functions can be compiled with less
 aggressive options.</p>
 </dd>
 <dt>pure</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">pure</span></tt> function attribute</p>
-<p id="index-10">Many functions have no effects except the return value and their
+<dd><p class="first"><tt class="docutils literal"><span class="pre">pure</span></tt> function attribute
+.. index:: functions that have no side effects</p>
+<p>Many functions have no effects except the return value and their
 return value depends only on the parameters and/or global variables.
 Such a function can be subject
 to common subexpression elimination and loop optimization just as an
@@ -786,8 +762,7 @@ depending on volatile memory or other system resource, that may change between
 two consecutive calls (such as <tt class="docutils literal"><span class="pre">feof</span></tt> in a multithreading environment).</p>
 </dd>
 <dt>returns_nonnull</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">returns_nonnull</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">returns_nonnull</span></tt> attribute specifies that the function
+<dd><p class="first"><tt class="docutils literal"><span class="pre">returns_nonnull</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">returns_nonnull</span></tt> attribute specifies that the function
 return value should be a non-null pointer.  For instance, the declaration:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="kt">void</span> <span class="o">*</span>
 <span class="nf">mymalloc</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">returns_nonnull</span><span class="p">));</span>
@@ -797,8 +772,9 @@ return value should be a non-null pointer.  For instance, the declaration:</p>
 that the return value will never be null.</p>
 </dd>
 <dt>returns_twice</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">returns_twice</span></tt> function attribute</p>
-<p class="last" id="index-11">The <tt class="docutils literal"><span class="pre">returns_twice</span></tt> attribute tells the compiler that a function may
+<dd><p class="first"><tt class="docutils literal"><span class="pre">returns_twice</span></tt> function attribute
+.. index:: functions that return more than once</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">returns_twice</span></tt> attribute tells the compiler that a function may
 return more than one time.  The compiler ensures that all registers
 are dead before calling such a function and emits a warning about
 the variables that may be clobbered after the second return from the
@@ -807,8 +783,9 @@ The <tt class="docutils literal"><span class="pre">longjmp</span></tt>-like coun
 to be marked with the <tt class="docutils literal"><span class="pre">noreturn</span></tt> attribute.</p>
 </dd>
 <dt>section (&#8220;<tt class="docutils literal"><span class="pre">section-name</span></tt>&#8221;)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">section</span></tt> function attribute</p>
-<p id="index-12">Normally, the compiler places the code it generates in the <tt class="docutils literal"><span class="pre">text</span></tt> section.
+<dd><p class="first"><tt class="docutils literal"><span class="pre">section</span></tt> function attribute
+.. index:: functions in arbitrary sections</p>
+<p>Normally, the compiler places the code it generates in the <tt class="docutils literal"><span class="pre">text</span></tt> section.
 Sometimes, however, you need additional sections, or you need certain
 particular functions to appear in special sections.  The <tt class="docutils literal"><span class="pre">section</span></tt>
 attribute specifies that a function lives in a particular section.
@@ -823,8 +800,7 @@ If you need to map the entire contents of a module to a particular
 section, consider using the facilities of the linker instead.</p>
 </dd>
 <dt>sentinel</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">sentinel</span></tt> function attribute
-This function attribute ensures that a parameter in a function call is
+<dd><p class="first"><tt class="docutils literal"><span class="pre">sentinel</span></tt> function attributeThis function attribute ensures that a parameter in a function call is
 an explicit <tt class="docutils literal"><span class="pre">NULL</span></tt>.  The attribute is only valid on variadic
 functions.  By default, the sentinel is located at position zero, the
 last parameter of the function call.  If an optional integer position
@@ -846,13 +822,11 @@ with a copy that redefines NULL appropriately.</p>
 <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a>.</p>
 </dd>
 <dt>stack_protect</dt>
-<dd><tt class="docutils literal"><span class="pre">stack_protect</span></tt> function attribute
-This function attribute make a stack protection of the function if
+<dd><tt class="docutils literal"><span class="pre">stack_protect</span></tt> function attributeThis function attribute make a stack protection of the function if
 flags fstack-protector or fstack-protector-strong
 or fstack-protector-explicit are set.</dd>
 <dt>target (<tt class="docutils literal"><span class="pre">options</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">target</span></tt> function attribute
-Multiple target back ends implement the <tt class="docutils literal"><span class="pre">target</span></tt> attribute
+<dd><p class="first"><tt class="docutils literal"><span class="pre">target</span></tt> function attributeMultiple target back ends implement the <tt class="docutils literal"><span class="pre">target</span></tt> attribute
 to specify that a function is to
 be compiled with different target options than specified on the
 command line.  This can be used for instance to have functions
@@ -883,13 +857,11 @@ Function Attributes, PowerPC Function Attributes, and
 Nios II Function Attributes, for details.</p>
 </dd>
 <dt>unused</dt>
-<dd><tt class="docutils literal"><span class="pre">unused</span></tt> function attribute
-This attribute, attached to a function, means that the function is meant
+<dd><tt class="docutils literal"><span class="pre">unused</span></tt> function attributeThis attribute, attached to a function, means that the function is meant
 to be possibly unused.  GCC does not produce a warning for this
 function.</dd>
 <dt>used</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">used</span></tt> function attribute
-This attribute, attached to a function, means that code must be emitted
+<dd><p class="first"><tt class="docutils literal"><span class="pre">used</span></tt> function attributeThis attribute, attached to a function, means that code must be emitted
 for the function even if it appears that the function is not referenced.
 This is useful, for example, when the function is referenced only in
 inline assembly.</p>
@@ -898,8 +870,7 @@ attribute also means that the function is instantiated if the
 class itself is instantiated.</p>
 </dd>
 <dt>visibility (&#8220;<tt class="docutils literal"><span class="pre">visibility_type</span></tt>&#8221;)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">visibility</span></tt> function attribute
-This attribute affects the linkage of the declaration to which it is attached.
+<dd><p class="first"><tt class="docutils literal"><span class="pre">visibility</span></tt> function attributeThis attribute affects the linkage of the declaration to which it is attached.
 There are four supported <tt class="docutils literal"><span class="pre">visibility_type</span></tt> values: default,
 hidden, protected or internal visibility.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">visibility</span> <span class="p">(</span><span class="s">&quot;protected&quot;</span><span class="p">)))</span>
@@ -937,13 +908,14 @@ indicating that a function cannot be called from outside the module,
 GCC may for instance omit the load of a PIC register since it is known
 that the calling function loaded the correct value.</dd>
 <dt>protected</dt>
-<dd>Protected visibility is like default visibility except that it
+<dd><p class="first">Protected visibility is like default visibility except that it
 indicates that references within the defining module bind to the
 definition in that module.  That is, the declared entity cannot be
-overridden by another module.</dd>
+overridden by another module.</p>
+<p class="last">All visibilities are supported on many, but not all, ELF targets</p>
+</dd>
 </dl>
-<p>All visibilities are supported on many, but not all, ELF targets
-(supported when the assembler supports the .visibility
+<p>(supported when the assembler supports the .visibility
 pseudo-op).  Default visibility is supported everywhere.  Hidden
 visibility is supported on Darwin targets.</p>
 <p>The visibility attribute should be applied only to declarations that
@@ -980,8 +952,7 @@ visibility of their template.</p>
 visibility from the template is used.</p>
 </dd>
 <dt>warn_unused_result</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">warn_unused_result</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">warn_unused_result</span></tt> attribute causes a warning to be emitted
+<dd><p class="first"><tt class="docutils literal"><span class="pre">warn_unused_result</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">warn_unused_result</span></tt> attribute causes a warning to be emitted
 if a caller of the function with this attribute does not use its
 return value.  This is useful for functions where not checking
 the result is either a security problem or always a bug, such as
@@ -998,16 +969,14 @@ the result is either a security problem or always a bug, such as
 <p class="last">results in warning on line 5.</p>
 </dd>
 <dt>weak</dt>
-<dd><tt class="docutils literal"><span class="pre">weak</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">weak</span></tt> attribute causes the declaration to be emitted as a weak
+<dd><tt class="docutils literal"><span class="pre">weak</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">weak</span></tt> attribute causes the declaration to be emitted as a weak
 symbol rather than a global.  This is primarily useful in defining
 library functions that can be overridden in user code, though it can
 also be used with non-function declarations.  Weak symbols are supported
 for ELF targets, and also for a.out targets when using the GNU assembler
 and linker.</dd>
 <dt>weakrefweakref (&#8220;<tt class="docutils literal"><span class="pre">target</span></tt>&#8221;)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">weakref</span></tt> function attribute
-The <tt class="docutils literal"><span class="pre">weakref</span></tt> attribute marks a declaration as a weak reference.
+<dd><p class="first"><tt class="docutils literal"><span class="pre">weakref</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">weakref</span></tt> attribute marks a declaration as a weak reference.
 Without arguments, it should be accompanied by an <tt class="docutils literal"><span class="pre">alias</span></tt> attribute
 naming the target symbol.  Optionally, the <tt class="docutils literal"><span class="pre">target</span></tt> may be given as
 an argument to <tt class="docutils literal"><span class="pre">weakref</span></tt> itself.  In either case, <tt class="docutils literal"><span class="pre">weakref</span></tt>
@@ -1038,7 +1007,7 @@ only be <tt class="docutils literal"><span class="pre">static</span></tt>.</p>
 </dl>
 <p>loweruppereither</p>
 <blockquote>
-<div><span class="target" id="index-13"></span><span class="target" id="index-14"></span><p id="index-15">On the MSP430 target these attributes can be used to specify whether
+<div><span class="target" id="index-4"></span><span class="target" id="index-5"></span><p id="index-6">On the MSP430 target these attributes can be used to specify whether
 the function or variable should be placed into low memory, high
 memory, or the placement should be left to the linker to decide.  The
 attributes are only significant if compiling for the MSP430X
@@ -1069,8 +1038,7 @@ easier to pack regions.</p>
 <p>These function attributes are supported by the ARC back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, ARC
-Use this attribute to indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, ARCUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.</p>
@@ -1083,14 +1051,13 @@ in a parameter to the interrupt attribute like this:</p>
 <tt class="docutils literal"><span class="pre">ilink2</span></tt>.</p>
 </dd>
 <dt>long_callmedium_callshort_call</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, ARC
-<tt class="docutils literal"><span class="pre">medium_call</span></tt> function attribute, ARC
-<tt class="docutils literal"><span class="pre">short_call</span></tt> function attribute, ARC</p>
-<p id="index-16">These attributes specify how a particular function is called.
+<dd><p class="first"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, ARC``medium_call`` function attribute, ARC``short_call`` function attribute, ARC
+.. index:: indirect calls, ARC</p>
+<p>These attributes specify how a particular function is called.
 These attributes override the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> and <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmedium-calls"><em class="xref std std-option">-mmedium-calls</em></a> (ARC Options)
 command-line switches and <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">long_calls</span></tt> settings.</p>
-<p class="last">For ARC, a function marked with the <tt class="docutils literal"><span class="pre">long_call</span></tt> attribute is
+<p>For ARC, a function marked with the <tt class="docutils literal"><span class="pre">long_call</span></tt> attribute is
 always called using register-indirect jump-and-link instructions,
 thereby enabling the called function to be placed anywhere within the
 32-bit address space.  A function marked with the <tt class="docutils literal"><span class="pre">medium_call</span></tt>
@@ -1100,17 +1067,16 @@ the call site.  A function marked with the <tt class="docutils literal"><span cl
 attribute will always be close enough to be called with a conditional
 branch-and-link instruction, which has a 21-bit offset from
 the call site.</p>
+<p class="last">:: _arm-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _arm-function-attributes:</p>
 </div>
 <div class="section" id="arm-function-attributes">
 <h2>ARM Function Attributes<a class="headerlink" href="#arm-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported for ARM targets:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, ARM
-Use this attribute to indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, ARMUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.</p>
@@ -1125,13 +1091,12 @@ adding an optional parameter to the interrupt attribute like this:</p>
 may be called with a word-aligned stack pointer.</p>
 </dd>
 <dt>isr</dt>
-<dd><tt class="docutils literal"><span class="pre">isr</span></tt> function attribute, ARM
-Use this attribute on ARM to write Interrupt Service Routines. This is an
+<dd><tt class="docutils literal"><span class="pre">isr</span></tt> function attribute, ARMUse this attribute on ARM to write Interrupt Service Routines. This is an
 alias to the <tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute above.</dd>
 <dt>long_callshort_call</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, ARM
-<tt class="docutils literal"><span class="pre">short_call</span></tt> function attribute, ARM</p>
-<p class="last" id="index-17">These attributes specify how a particular function is called.
+<dd><p class="first"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, ARM``short_call`` function attribute, ARM
+.. index:: indirect calls, ARM</p>
+<p class="last">These attributes specify how a particular function is called.
 These attributes override the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (ARM Options)
 command-line switch and <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">long_calls</span></tt> settings.  For ARM, the
@@ -1142,8 +1107,7 @@ the offset to the function from the call site into the BL
 instruction directly.</p>
 </dd>
 <dt>naked</dt>
-<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, ARM
-This attribute allows the compiler to construct the
+<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, ARMThis attribute allows the compiler to construct the
 requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
@@ -1152,8 +1116,7 @@ prologue/epilogue sequences generated by the compiler. Only basic
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</dd>
 <dt>pcs</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">pcs</span></tt> function attribute, ARM</p>
-<p>The <tt class="docutils literal"><span class="pre">pcs</span></tt> attribute can be used to control the calling convention
+<dd><p class="first"><tt class="docutils literal"><span class="pre">pcs</span></tt> function attribute, ARMThe <tt class="docutils literal"><span class="pre">pcs</span></tt> attribute can be used to control the calling convention
 used for a function on ARM.  The attribute takes an argument that specifies
 the calling convention to use.</p>
 <p>When compiling using the AAPCS ABI (or a variant of it) then valid
@@ -1166,19 +1129,18 @@ For example,</p>
 <span class="kt">double</span> <span class="nf">f2d</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">pcs</span><span class="p">(</span><span class="s">&quot;aapcs&quot;</span><span class="p">)));</span>
 </pre></div>
 </div>
-<p class="last">Variadic functions always use the <tt class="docutils literal"><span class="pre">&quot;aapcs&quot;</span></tt> calling convention and
+<p>Variadic functions always use the <tt class="docutils literal"><span class="pre">&quot;aapcs&quot;</span></tt> calling convention and
 the compiler rejects attempts to specify an alternative.</p>
+<p class="last">:: _avr-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _avr-function-attributes:</p>
 </div>
 <div class="section" id="avr-function-attributes">
 <h2>AVR Function Attributes<a class="headerlink" href="#avr-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the AVR back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, AVR
-Use this attribute to indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, AVRUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.</p>
@@ -1191,8 +1153,7 @@ that does not insert a <tt class="docutils literal"><span class="pre">SEI</span>
 is silently ignored.</p>
 </dd>
 <dt>naked</dt>
-<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, AVR
-This attribute allows the compiler to construct the
+<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, AVRThis attribute allows the compiler to construct the
 requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
@@ -1201,9 +1162,7 @@ prologue/epilogue sequences generated by the compiler. Only basic
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</dd>
 <dt>OS_mainOS_task</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">OS_main</span></tt> function attribute, AVR
-<tt class="docutils literal"><span class="pre">OS_task</span></tt> function attribute, AVR
-On AVR, functions with the <tt class="docutils literal"><span class="pre">OS_main</span></tt> or <tt class="docutils literal"><span class="pre">OS_task</span></tt> attribute
+<dd><p class="first"><tt class="docutils literal"><span class="pre">OS_main</span></tt> function attribute, AVR``OS_task`` function attribute, AVROn AVR, functions with the <tt class="docutils literal"><span class="pre">OS_main</span></tt> or <tt class="docutils literal"><span class="pre">OS_task</span></tt> attribute
 do not save/restore any call-saved register in their prologue/epilogue.</p>
 <p>The <tt class="docutils literal"><span class="pre">OS_main</span></tt> attribute can be used when there is
 guarantee that interrupts are disabled at the time when the function
@@ -1218,15 +1177,14 @@ guarded by save/clear/restore of the global interrupt enable flag.</p>
 <ul class="last simple">
 <li><tt class="docutils literal"><span class="pre">naked</span></tt> functions do not have a return instruction whereas
 <tt class="docutils literal"><span class="pre">OS_main</span></tt> and <tt class="docutils literal"><span class="pre">OS_task</span></tt> functions have a <tt class="docutils literal"><span class="pre">RET</span></tt> or
-<tt class="docutils literal"><span class="pre">RETI</span></tt> return instruction.
-* <tt class="docutils literal"><span class="pre">naked</span></tt> functions do not set up a frame for local variables
+<tt class="docutils literal"><span class="pre">RETI</span></tt> return instruction.</li>
+<li><tt class="docutils literal"><span class="pre">naked</span></tt> functions do not set up a frame for local variables
 or a frame pointer whereas <tt class="docutils literal"><span class="pre">OS_main</span></tt> and <tt class="docutils literal"><span class="pre">OS_task</span></tt> do this
 as needed.</li>
 </ul>
 </dd>
 <dt>signal</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">signal</span></tt> function attribute, AVR
-Use this attribute on the AVR to indicate that the specified
+<dd><p class="first"><tt class="docutils literal"><span class="pre">signal</span></tt> function attribute, AVRUse this attribute on the AVR to indicate that the specified
 function is an interrupt handler.  The compiler generates function
 entry and exit sequences suitable for use in an interrupt handler when this
 attribute is present.</p>
@@ -1237,53 +1195,50 @@ do not re-enable interrupts.  It is save to enable interrupts in a
 <tt class="docutils literal"><span class="pre">signal</span></tt> handler.  This &#8216;save&#8217; only applies to the code
 generated by the compiler and not to the IRQ layout of the
 application which is responsibility of the application.</p>
-<p class="last">If both <tt class="docutils literal"><span class="pre">signal</span></tt> and <tt class="docutils literal"><span class="pre">interrupt</span></tt> are specified for the same
+<p>If both <tt class="docutils literal"><span class="pre">signal</span></tt> and <tt class="docutils literal"><span class="pre">interrupt</span></tt> are specified for the same
 function, <tt class="docutils literal"><span class="pre">signal</span></tt> is silently ignored.</p>
+<p class="last">:: _blackfin-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _blackfin-function-attributes:</p>
 </div>
 <div class="section" id="blackfin-function-attributes">
 <h2>Blackfin Function Attributes<a class="headerlink" href="#blackfin-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the Blackfin back end:</p>
 <dl class="docutils">
 <dt>exception_handler</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">exception_handler</span></tt> function attribute</p>
-<p class="last" id="index-18">Use this attribute on the Blackfin to indicate that the specified function
+<dd><p class="first"><tt class="docutils literal"><span class="pre">exception_handler</span></tt> function attribute
+.. index:: exception handler functions, Blackfin</p>
+<p class="last">Use this attribute on the Blackfin to indicate that the specified function
 is an exception handler.  The compiler generates function entry and
 exit sequences suitable for use in an exception handler when this
 attribute is present.</p>
 </dd>
 <dt>interrupt_handler</dt>
-<dd><tt class="docutils literal"><span class="pre">interrupt_handler</span></tt> function attribute, Blackfin
-Use this attribute to
+<dd><tt class="docutils literal"><span class="pre">interrupt_handler</span></tt> function attribute, BlackfinUse this attribute to
 indicate that the specified function is an interrupt handler.  The compiler
 generates function entry and exit sequences suitable for use in an
 interrupt handler when this attribute is present.</dd>
 <dt>kspisusp</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">kspisusp</span></tt> function attribute, Blackfin</p>
-<p class="last" id="index-19">When used together with <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>, <tt class="docutils literal"><span class="pre">exception_handler</span></tt>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">kspisusp</span></tt> function attribute, Blackfin
+.. index:: User stack pointer in interrupts on the Blackfin</p>
+<p class="last">When used together with <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>, <tt class="docutils literal"><span class="pre">exception_handler</span></tt>
 or <tt class="docutils literal"><span class="pre">nmi_handler</span></tt>, code is generated to load the stack pointer
 from the USP register in the function prologue.</p>
 </dd>
 <dt>l1_text</dt>
-<dd><tt class="docutils literal"><span class="pre">l1_text</span></tt> function attribute, Blackfin
-This attribute specifies a function to be placed into L1 Instruction
+<dd><tt class="docutils literal"><span class="pre">l1_text</span></tt> function attribute, BlackfinThis attribute specifies a function to be placed into L1 Instruction
 SRAM. The function is put into a specific section named <tt class="docutils literal"><span class="pre">.l1.text</span></tt>.
 With <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mfdpic"><em class="xref std std-option">-mfdpic</em></a>, function calls with a such function as the callee
 or caller uses inlined PLT.</dd>
 <dt>l2</dt>
-<dd><tt class="docutils literal"><span class="pre">l2</span></tt> function attribute, Blackfin
-This attribute specifies a function to be placed into L2
+<dd><tt class="docutils literal"><span class="pre">l2</span></tt> function attribute, BlackfinThis attribute specifies a function to be placed into L2
 SRAM. The function is put into a specific section named
 <tt class="docutils literal"><span class="pre">.l2.text</span></tt>. With <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mfdpic"><em class="xref std std-option">-mfdpic</em></a>, callers of such functions use
 an inlined PLT.</dd>
 </dl>
 <p>longcallshortcall</p>
 <blockquote>
-<div><p id="index-20"><tt class="docutils literal"><span class="pre">longcall</span></tt> function attribute, Blackfin
-<tt class="docutils literal"><span class="pre">shortcall</span></tt> function attribute, Blackfin
-The <tt class="docutils literal"><span class="pre">longcall</span></tt> attribute
+<div><p id="index-7"><tt class="docutils literal"><span class="pre">longcall</span></tt> function attribute, Blackfin``shortcall`` function attribute, BlackfinThe <tt class="docutils literal"><span class="pre">longcall</span></tt> attribute
 indicates that the function might be far away from the call site and
 require a different (more expensive) calling sequence.  The
 <tt class="docutils literal"><span class="pre">shortcall</span></tt> attribute indicates that the function is always close
@@ -1292,59 +1247,59 @@ override the <a class="reference internal" href="hardware-models-and-configurati
 </div></blockquote>
 <dl class="docutils">
 <dt>nesting</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">nesting</span></tt> function attribute, Blackfin</p>
-<p class="last" id="index-21">Use this attribute together with <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>,
+<dd><p class="first"><tt class="docutils literal"><span class="pre">nesting</span></tt> function attribute, Blackfin
+.. index:: Allow nesting in an interrupt handler on the Blackfin processor</p>
+<p class="last">Use this attribute together with <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>,
 <tt class="docutils literal"><span class="pre">exception_handler</span></tt> or <tt class="docutils literal"><span class="pre">nmi_handler</span></tt> to indicate that the function
 entry code should enable nested interrupts or exceptions.</p>
 </dd>
 <dt>nmi_handler</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">nmi_handler</span></tt> function attribute, Blackfin</p>
-<p class="last" id="index-22">Use this attribute on the Blackfin to indicate that the specified function
+<dd><p class="first"><tt class="docutils literal"><span class="pre">nmi_handler</span></tt> function attribute, Blackfin
+.. index:: NMI handler functions on the Blackfin processor</p>
+<p class="last">Use this attribute on the Blackfin to indicate that the specified function
 is an NMI handler.  The compiler generates function entry and
 exit sequences suitable for use in an NMI handler when this
 attribute is present.</p>
 </dd>
 <dt>saveall</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">saveall</span></tt> function attribute, Blackfin</p>
-<p class="last" id="index-23">Use this attribute to indicate that
+<dd><p class="first"><tt class="docutils literal"><span class="pre">saveall</span></tt> function attribute, Blackfin
+.. index:: save all registers on the Blackfin</p>
+<p>Use this attribute to indicate that
 all registers except the stack pointer should be saved in the prologue
 regardless of whether they are used or not.</p>
+<p class="last">:: _cr16-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _cr16-function-attributes:</p>
 </div>
 <div class="section" id="cr16-function-attributes">
 <h2>CR16 Function Attributes<a class="headerlink" href="#cr16-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the CR16 back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
-<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, CR16
-Use this attribute to indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, CR16Use this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
-when this attribute is present.</dd>
+when this attribute is present.</p>
+<p class="last">:: _epiphany-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _epiphany-function-attributes:</p>
 </div>
 <div class="section" id="epiphany-function-attributes">
 <h2>Epiphany Function Attributes<a class="headerlink" href="#epiphany-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the Epiphany back end:</p>
 <dl class="docutils">
 <dt>disinterrupt</dt>
-<dd><tt class="docutils literal"><span class="pre">disinterrupt</span></tt> function attribute, Epiphany
-This attribute causes the compiler to emit
+<dd><tt class="docutils literal"><span class="pre">disinterrupt</span></tt> function attribute, EpiphanyThis attribute causes the compiler to emit
 instructions to disable interrupts for the duration of the given
 function.</dd>
 <dt>forwarder_section</dt>
-<dd><tt class="docutils literal"><span class="pre">forwarder_section</span></tt> function attribute, Epiphany
-This attribute modifies the behavior of an interrupt handler.
+<dd><tt class="docutils literal"><span class="pre">forwarder_section</span></tt> function attribute, EpiphanyThis attribute modifies the behavior of an interrupt handler.
 The interrupt handler may be in external memory which cannot be
 reached by a branch instruction, so generate a local memory trampoline
 to transfer control.  The single parameter identifies the section where
 the trampoline is placed.</dd>
 <dt>interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, Epiphany
-Use this attribute to indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, EpiphanyUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.  It may also generate
@@ -1379,86 +1334,80 @@ Epiphany targets:</p>
 </div>
 </dd>
 <dt>long_callshort_call</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, Epiphany
-<tt class="docutils literal"><span class="pre">short_call</span></tt> function attribute, Epiphany</p>
-<p class="last" id="index-24">These attributes specify how a particular function is called.
+<dd><p class="first"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, Epiphany``short_call`` function attribute, Epiphany
+.. index:: indirect calls, Epiphany</p>
+<p>These attributes specify how a particular function is called.
 These attributes override the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (Adapteva Epiphany Options)
 command-line switch and <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">long_calls</span></tt> settings.</p>
+<p class="last">:: _h8/300-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _h8/300-function-attributes:</p>
 </div>
 <div class="section" id="h8-300-function-attributes">
 <h2>H8/300 Function Attributes<a class="headerlink" href="#h8-300-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are available for H8/300 targets:</p>
 <dl class="docutils">
 <dt>function_vector</dt>
-<dd><tt class="docutils literal"><span class="pre">function_vector</span></tt> function attribute, H8/300
-Use this attribute on the H8/300, H8/300H, and H8S to indicate
+<dd><tt class="docutils literal"><span class="pre">function_vector</span></tt> function attribute, H8/300Use this attribute on the H8/300, H8/300H, and H8S to indicate
 that the specified function should be called through the function vector.
 Calling a function through the function vector reduces code size; however,
 the function vector has a limited size (maximum 128 entries on the H8/300
 and 64 entries on the H8/300H and H8S)
 and shares space with the interrupt vector.</dd>
 <dt>interrupt_handler</dt>
-<dd><tt class="docutils literal"><span class="pre">interrupt_handler</span></tt> function attribute, H8/300
-Use this attribute on the H8/300, H8/300H, and H8S to
+<dd><tt class="docutils literal"><span class="pre">interrupt_handler</span></tt> function attribute, H8/300Use this attribute on the H8/300, H8/300H, and H8S to
 indicate that the specified function is an interrupt handler.  The compiler
 generates function entry and exit sequences suitable for use in an
 interrupt handler when this attribute is present.</dd>
 <dt>saveall</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">saveall</span></tt> function attribute, H8/300</p>
-<p class="last" id="index-25">Use this attribute on the H8/300, H8/300H, and H8S to indicate that
+<dd><p class="first"><tt class="docutils literal"><span class="pre">saveall</span></tt> function attribute, H8/300
+.. index:: save all registers on the H8/300, H8/300H, and H8S</p>
+<p>Use this attribute on the H8/300, H8/300H, and H8S to indicate that
 all registers except the stack pointer should be saved in the prologue
 regardless of whether they are used or not.</p>
+<p class="last">:: _ia-64-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _ia-64-function-attributes:</p>
 </div>
 <div class="section" id="ia-64-function-attributes">
 <h2>IA-64 Function Attributes<a class="headerlink" href="#ia-64-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported on IA-64 targets:</p>
 <dl class="docutils">
 <dt>syscall_linkage</dt>
-<dd><tt class="docutils literal"><span class="pre">syscall_linkage</span></tt> function attribute, IA-64
-This attribute is used to modify the IA-64 calling convention by marking
+<dd><tt class="docutils literal"><span class="pre">syscall_linkage</span></tt> function attribute, IA-64This attribute is used to modify the IA-64 calling convention by marking
 all input registers as live at all function exits.  This makes it possible
 to restart a system call after an interrupt without having to save/restore
 the input registers.  This also prevents kernel data from leaking into
 application code.</dd>
 <dt>version_id</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">version_id</span></tt> function attribute, IA-64
-This IA-64 HP-UX attribute, attached to a global variable or function, renames a
+<dd><p class="first"><tt class="docutils literal"><span class="pre">version_id</span></tt> function attribute, IA-64This IA-64 HP-UX attribute, attached to a global variable or function, renames a
 symbol to contain a version string, thus allowing for function level
 versioning.  HP-UX system header files may use function level versioning
 for some system calls.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="kt">int</span> <span class="nf">foo</span> <span class="p">()</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">version_id</span> <span class="p">(</span><span class="s">&quot;20040821&quot;</span><span class="p">)));</span>
 </pre></div>
 </div>
-<p class="last">Calls to <tt class="docutils literal"><span class="pre">foo</span></tt> are mapped to calls to <tt class="docutils literal"><span class="pre">foo{20040821}</span></tt>.</p>
+<p>Calls to <tt class="docutils literal"><span class="pre">foo</span></tt> are mapped to calls to <tt class="docutils literal"><span class="pre">foo{20040821}</span></tt>.</p>
+<p class="last">:: _m32c-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _m32c-function-attributes:</p>
 </div>
 <div class="section" id="m32c-function-attributes">
 <h2>M32C Function Attributes<a class="headerlink" href="#m32c-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the M32C back end:</p>
 <dl class="docutils">
 <dt>bank_switch</dt>
-<dd><tt class="docutils literal"><span class="pre">bank_switch</span></tt> function attribute, M32C
-When added to an interrupt handler with the M32C port, causes the
+<dd><tt class="docutils literal"><span class="pre">bank_switch</span></tt> function attribute, M32CWhen added to an interrupt handler with the M32C port, causes the
 prologue and epilogue to use bank switching to preserve the registers
 rather than saving them on the stack.</dd>
 <dt>fast_interrupt</dt>
-<dd><tt class="docutils literal"><span class="pre">fast_interrupt</span></tt> function attribute, M32C
-Use this attribute on the M32C port to indicate that the specified
+<dd><tt class="docutils literal"><span class="pre">fast_interrupt</span></tt> function attribute, M32CUse this attribute on the M32C port to indicate that the specified
 function is a fast interrupt handler.  This is just like the
 <tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute, except that <tt class="docutils literal"><span class="pre">freit</span></tt> is used to return
 instead of <tt class="docutils literal"><span class="pre">reit</span></tt>.</dd>
 <dt>function_vector</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">function_vector</span></tt> function attribute, M16C/M32C
-On M16C/M32C targets, the <tt class="docutils literal"><span class="pre">function_vector</span></tt> attribute declares a
+<dd><p class="first"><tt class="docutils literal"><span class="pre">function_vector</span></tt> function attribute, M16C/M32COn M16C/M32C targets, the <tt class="docutils literal"><span class="pre">function_vector</span></tt> attribute declares a
 special page subroutine call function. Use of this attribute reduces
 the code size by 2 bytes for each call generated to the
 subroutine. The argument to the attribute is the vector number entry
@@ -1489,27 +1438,27 @@ then be sure to write this declaration in both files.</p>
 <p class="last">This attribute is ignored for R8C target.</p>
 </dd>
 <dt>interrupt</dt>
-<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, M32C
-Use this attribute to indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, M32CUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
-when this attribute is present.</dd>
+when this attribute is present.</p>
+<p class="last">:: _m32r/d-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _m32r/d-function-attributes:</p>
 </div>
 <div class="section" id="m32r-d-function-attributes">
 <h2>M32R/D Function Attributes<a class="headerlink" href="#m32r-d-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the M32R/D back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
-<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, M32R/D
-Use this attribute to indicate
+<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, M32R/DUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.</dd>
 <dt>model (<tt class="docutils literal"><span class="pre">model-name</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">model</span></tt> function attribute, M32R/D</p>
-<p id="index-26">On the M32R/D, use this attribute to set the addressability of an
+<dd><p class="first"><tt class="docutils literal"><span class="pre">model</span></tt> function attribute, M32R/D
+.. index:: function addressability on the M32R/D</p>
+<p>On the M32R/D, use this attribute to set the addressability of an
 object, and of the code generated for a function.  The identifier
 <tt class="docutils literal"><span class="pre">model-name</span></tt> is one of <tt class="docutils literal"><span class="pre">small</span></tt>, <tt class="docutils literal"><span class="pre">medium</span></tt>, or
 <tt class="docutils literal"><span class="pre">large</span></tt>, representing each of the code models.</p>
@@ -1519,110 +1468,104 @@ callable with the <tt class="docutils literal"><span class="pre">bl</span></tt> 
 <p>Medium model objects may live anywhere in the 32-bit address space (the
 compiler generates <tt class="docutils literal"><span class="pre">seth/add3</span></tt> instructions to load their addresses),
 and are callable with the <tt class="docutils literal"><span class="pre">bl</span></tt> instruction.</p>
-<p class="last">Large model objects may live anywhere in the 32-bit address space (the
+<p>Large model objects may live anywhere in the 32-bit address space (the
 compiler generates <tt class="docutils literal"><span class="pre">seth/add3</span></tt> instructions to load their addresses),
 and may not be reachable with the <tt class="docutils literal"><span class="pre">bl</span></tt> instruction (the compiler
 generates the much slower <tt class="docutils literal"><span class="pre">seth/add3/jl</span></tt> instruction sequence).</p>
+<p class="last">:: _m68k-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _m68k-function-attributes:</p>
 </div>
 <div class="section" id="m68k-function-attributes">
 <h2>m68k Function Attributes<a class="headerlink" href="#m68k-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the m68k back end:</p>
 <dl class="docutils">
 <dt>interruptinterrupt_handler</dt>
-<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, m68k
-<tt class="docutils literal"><span class="pre">interrupt_handler</span></tt> function attribute, m68k
-Use this attribute to
+<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, m68k``interrupt_handler`` function attribute, m68kUse this attribute to
 indicate that the specified function is an interrupt handler.  The compiler
 generates function entry and exit sequences suitable for use in an
 interrupt handler when this attribute is present.  Either name may be used.</dd>
 <dt>interrupt_thread</dt>
-<dd><tt class="docutils literal"><span class="pre">interrupt_thread</span></tt> function attribute, fido
-Use this attribute on fido, a subarchitecture of the m68k, to indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt_thread</span></tt> function attribute, fidoUse this attribute on fido, a subarchitecture of the m68k, to indicate
 that the specified function is an interrupt handler that is designed
 to run as a thread.  The compiler omits generate prologue/epilogue
 sequences and replaces the return instruction with a <tt class="docutils literal"><span class="pre">sleep</span></tt>
-instruction.  This attribute is available only on fido.</dd>
+instruction.  This attribute is available only on fido.</p>
+<p class="last">:: _mcore-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _mcore-function-attributes:</p>
 </div>
 <div class="section" id="mcore-function-attributes">
 <h2>MCORE Function Attributes<a class="headerlink" href="#mcore-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the MCORE back end:</p>
 <dl class="docutils">
 <dt>naked</dt>
-<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, MCORE
-This attribute allows the compiler to construct the
+<dd><p class="first"><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, MCOREThis attribute allows the compiler to construct the
 requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
 (Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
-depended upon to work reliably and are not supported.</dd>
+depended upon to work reliably and are not supported.</p>
+<p class="last">:: _mep-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _mep-function-attributes:</p>
 </div>
 <div class="section" id="mep-function-attributes">
 <h2>MeP Function Attributes<a class="headerlink" href="#mep-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the MeP back end:</p>
 <dl class="docutils">
 <dt>disinterrupt</dt>
-<dd><tt class="docutils literal"><span class="pre">disinterrupt</span></tt> function attribute, MeP
-On MeP targets, this attribute causes the compiler to emit
+<dd><tt class="docutils literal"><span class="pre">disinterrupt</span></tt> function attribute, MePOn MeP targets, this attribute causes the compiler to emit
 instructions to disable interrupts for the duration of the given
 function.</dd>
 <dt>interrupt</dt>
-<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, MeP
-Use this attribute to indicate
+<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, MePUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.</dd>
 <dt>near</dt>
-<dd><tt class="docutils literal"><span class="pre">near</span></tt> function attribute, MeP
-This attribute causes the compiler to assume the called
+<dd><tt class="docutils literal"><span class="pre">near</span></tt> function attribute, MePThis attribute causes the compiler to assume the called
 function is close enough to use the normal calling convention,
 overriding the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mtf"><em class="xref std std-option">-mtf</em></a> command-line option.</dd>
 <dt>far</dt>
-<dd><tt class="docutils literal"><span class="pre">far</span></tt> function attribute, MeP
-On MeP targets this causes the compiler to use a calling convention
+<dd><tt class="docutils literal"><span class="pre">far</span></tt> function attribute, MePOn MeP targets this causes the compiler to use a calling convention
 that assumes the called function is too far away for the built-in
 addressing modes.</dd>
 <dt>vliw</dt>
-<dd><tt class="docutils literal"><span class="pre">vliw</span></tt> function attribute, MeP
-The <tt class="docutils literal"><span class="pre">vliw</span></tt> attribute tells the compiler to emit
+<dd><p class="first"><tt class="docutils literal"><span class="pre">vliw</span></tt> function attribute, MePThe <tt class="docutils literal"><span class="pre">vliw</span></tt> attribute tells the compiler to emit
 instructions in VLIW mode instead of core mode.  Note that this
 attribute is not allowed unless a VLIW coprocessor has been configured
-and enabled through command-line options.</dd>
+and enabled through command-line options.</p>
+<p class="last">:: _microblaze-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _microblaze-function-attributes:</p>
 </div>
 <div class="section" id="microblaze-function-attributes">
 <h2>MicroBlaze Function Attributes<a class="headerlink" href="#microblaze-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported on MicroBlaze targets:</p>
 <dl class="docutils">
 <dt>save_volatiles</dt>
-<dd><tt class="docutils literal"><span class="pre">save_volatiles</span></tt> function attribute, MicroBlaze
-Use this attribute to indicate that the function is
+<dd><tt class="docutils literal"><span class="pre">save_volatiles</span></tt> function attribute, MicroBlazeUse this attribute to indicate that the function is
 an interrupt handler.  All volatile registers (in addition to non-volatile
 registers) are saved in the function prologue.  If the function is a leaf
 function, only volatiles used by the function are saved.  A normal function
 return is generated instead of a return from interrupt.</dd>
 <dt>break_handler</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">break_handler</span></tt> function attribute, MicroBlaze</p>
-<p id="index-27">Use this attribute to indicate that
+<dd><p class="first"><tt class="docutils literal"><span class="pre">break_handler</span></tt> function attribute, MicroBlaze
+.. index:: break handler functions</p>
+<p>Use this attribute to indicate that
 the specified function is a break handler.  The compiler generates function
 entry and exit sequences suitable for use in an break handler when this
 attribute is present. The return from <tt class="docutils literal"><span class="pre">break_handler</span></tt> is done through
 the <tt class="docutils literal"><span class="pre">rtbd</span></tt> instead of <tt class="docutils literal"><span class="pre">rtsd</span></tt>.</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">f</span> <span class="p">()</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">break_handler</span><span class="p">));</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">f</span> <span class="p">()</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">break_handler</span><span class="p">));</span>
 </pre></div>
 </div>
+<p class="last">:: _microsoft-windows-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _microsoft-windows-function-attributes:</p>
 </div>
 <div class="section" id="microsoft-windows-function-attributes">
 <h2>Microsoft Windows Function Attributes<a class="headerlink" href="#microsoft-windows-function-attributes" title="Permalink to this headline">¶</a></h2>
@@ -1630,9 +1573,7 @@ the <tt class="docutils literal"><span class="pre">rtbd</span></tt> instead of <
 targets.</p>
 <dl class="docutils">
 <dt>dllexport</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">dllexport</span></tt> function attribute
-<tt class="docutils literal"><span class="pre">__declspec(dllexport)</span></tt>
-On Microsoft Windows targets and Symbian OS targets the
+<dd><p class="first"><tt class="docutils literal"><span class="pre">dllexport</span></tt> function attribute``__declspec(dllexport)``On Microsoft Windows targets and Symbian OS targets the
 <tt class="docutils literal"><span class="pre">dllexport</span></tt> attribute causes the compiler to provide a global
 pointer to a pointer in a DLL, so that it can be referenced with the
 <tt class="docutils literal"><span class="pre">dllimport</span></tt> attribute.  On Microsoft Windows targets, the pointer
@@ -1660,9 +1601,7 @@ including the symbol in the DLL&#8217;s export table such as using a
 the <em class="xref std std-option">--export-all</em> linker flag.</p>
 </dd>
 <dt>dllimport</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">dllimport</span></tt> function attribute
-<tt class="docutils literal"><span class="pre">__declspec(dllimport)</span></tt>
-On Microsoft Windows and Symbian OS targets, the <tt class="docutils literal"><span class="pre">dllimport</span></tt>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">dllimport</span></tt> function attribute``__declspec(dllimport)``On Microsoft Windows and Symbian OS targets, the <tt class="docutils literal"><span class="pre">dllimport</span></tt>
 attribute causes the compiler to reference a function or variable via
 a global pointer to a pointer that is set up by the DLL exporting the
 symbol.  The attribute implies <tt class="docutils literal"><span class="pre">extern</span></tt>.  On Microsoft Windows
@@ -1698,24 +1637,23 @@ performance benefit by eliminating a thunk in the DLL.  The use of the
 <em class="xref std std-option">--enable-auto-import</em> switch to the GNU linker.  As with
 functions, using the attribute for a variable eliminates a thunk in
 the DLL.</p>
-<p class="last">One drawback to using this attribute is that a pointer to a
+<p>One drawback to using this attribute is that a pointer to a
 variable marked as <tt class="docutils literal"><span class="pre">dllimport</span></tt> cannot be used as a constant
 address. However, a pointer to a function with the
 <tt class="docutils literal"><span class="pre">dllimport</span></tt> attribute can be used as a constant initializer; in
 this case, the address of a stub function in the import lib is
 referenced.  On Microsoft Windows targets, the attribute can be disabled
 for functions by setting the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mnop-fun-dllimport"><em class="xref std std-option">-mnop-fun-dllimport</em></a> flag.</p>
+<p class="last">:: _mips-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _mips-function-attributes:</p>
 </div>
 <div class="section" id="mips-function-attributes">
 <h2>MIPS Function Attributes<a class="headerlink" href="#mips-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the MIPS back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, MIPS
-Use this attribute to indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, MIPSUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.</p>
@@ -1723,19 +1661,17 @@ when this attribute is present.</p>
 of an interrupt handler:</p>
 <dl class="docutils">
 <dt>use_shadow_register_set</dt>
-<dd><tt class="docutils literal"><span class="pre">use_shadow_register_set</span></tt> function attribute, MIPS
-Assume that the handler uses a shadow register set, instead of
+<dd><tt class="docutils literal"><span class="pre">use_shadow_register_set</span></tt> function attribute, MIPSAssume that the handler uses a shadow register set, instead of
 the main general-purpose registers.</dd>
 <dt>keep_interrupts_masked</dt>
-<dd><tt class="docutils literal"><span class="pre">keep_interrupts_masked</span></tt> function attribute, MIPS
-Keep interrupts masked for the whole function.  Without this attribute,
+<dd><tt class="docutils literal"><span class="pre">keep_interrupts_masked</span></tt> function attribute, MIPSKeep interrupts masked for the whole function.  Without this attribute,
 GCC tries to reenable interrupts for as much of the function as it can.</dd>
 <dt>use_debug_exception_return</dt>
-<dd><tt class="docutils literal"><span class="pre">use_debug_exception_return</span></tt> function attribute, MIPS
-Return using the <tt class="docutils literal"><span class="pre">deret</span></tt> instruction.  Interrupt handlers that don&#8217;t
-have this attribute return using <tt class="docutils literal"><span class="pre">eret</span></tt> instead.</dd>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">use_debug_exception_return</span></tt> function attribute, MIPSReturn using the <tt class="docutils literal"><span class="pre">deret</span></tt> instruction.  Interrupt handlers that don&#8217;t
+have this attribute return using <tt class="docutils literal"><span class="pre">eret</span></tt> instead.</p>
+<p class="last">You can use any combination of these attributes, as shown below:</p>
+</dd>
 </dl>
-<p>You can use any combination of these attributes, as shown below:</p>
 <div class="last highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">interrupt</span><span class="p">))</span> <span class="n">v0</span> <span class="p">();</span>
 <span class="kt">void</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">interrupt</span><span class="p">,</span> <span class="n">use_shadow_register_set</span><span class="p">))</span> <span class="n">v1</span> <span class="p">();</span>
 <span class="kt">void</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">interrupt</span><span class="p">,</span> <span class="n">keep_interrupts_masked</span><span class="p">))</span> <span class="n">v2</span> <span class="p">();</span>
@@ -1755,10 +1691,7 @@ have this attribute return using <tt class="docutils literal"><span class="pre">
 </dl>
 <p>long_callnearfar</p>
 <blockquote>
-<div><p id="index-28"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, MIPS
-<tt class="docutils literal"><span class="pre">near</span></tt> function attribute, MIPS
-<tt class="docutils literal"><span class="pre">far</span></tt> function attribute, MIPS
-These attributes specify how a particular function is called on MIPS.
+<div><p id="index-8"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, MIPS``near`` function attribute, MIPS``far`` function attribute, MIPSThese attributes specify how a particular function is called on MIPS.
 The attributes override the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (MIPS Options)
 command-line switch.  The <tt class="docutils literal"><span class="pre">long_call</span></tt> and <tt class="docutils literal"><span class="pre">far</span></tt> attributes are
 synonyms, and cause the compiler to always call
@@ -1769,9 +1702,7 @@ efficient <tt class="docutils literal"><span class="pre">jal</span></tt> instruc
 </div></blockquote>
 <dl class="docutils">
 <dt>mips16nomips16</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">mips16</span></tt> function attribute, MIPS
-<tt class="docutils literal"><span class="pre">nomips16</span></tt> function attribute, MIPS</p>
-<p>On MIPS targets, you can use the <tt class="docutils literal"><span class="pre">mips16</span></tt> and <tt class="docutils literal"><span class="pre">nomips16</span></tt>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">mips16</span></tt> function attribute, MIPS``nomips16`` function attribute, MIPSOn MIPS targets, you can use the <tt class="docutils literal"><span class="pre">mips16</span></tt> and <tt class="docutils literal"><span class="pre">nomips16</span></tt>
 function attributes to locally select or turn off MIPS16 code generation.
 A function with the <tt class="docutils literal"><span class="pre">mips16</span></tt> attribute is emitted as MIPS16 code,
 while MIPS16 code generation is disabled for functions with the
@@ -1785,9 +1716,7 @@ may interact badly with some GCC extensions such as <tt class="docutils literal"
 (Constructing Calls).</p>
 </dd>
 <dt>micromips, MIPSnomicromips, MIPS</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">micromips</span></tt> function attribute
-<tt class="docutils literal"><span class="pre">nomicromips</span></tt> function attribute</p>
-<p>On MIPS targets, you can use the <tt class="docutils literal"><span class="pre">micromips</span></tt> and <tt class="docutils literal"><span class="pre">nomicromips</span></tt>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">micromips</span></tt> function attribute``nomicromips`` function attributeOn MIPS targets, you can use the <tt class="docutils literal"><span class="pre">micromips</span></tt> and <tt class="docutils literal"><span class="pre">nomicromips</span></tt>
 function attributes to locally select or turn off microMIPS code generation.
 A function with the <tt class="docutils literal"><span class="pre">micromips</span></tt> attribute is emitted as microMIPS code,
 while microMIPS code generation is disabled for functions with the
@@ -1802,27 +1731,25 @@ may interact badly with some GCC extensions such as <tt class="docutils literal"
 (Constructing Calls).</p>
 </dd>
 <dt>nocompression</dt>
-<dd><tt class="docutils literal"><span class="pre">nocompression</span></tt> function attribute, MIPS
-On MIPS targets, you can use the <tt class="docutils literal"><span class="pre">nocompression</span></tt> function attribute
+<dd><p class="first"><tt class="docutils literal"><span class="pre">nocompression</span></tt> function attribute, MIPSOn MIPS targets, you can use the <tt class="docutils literal"><span class="pre">nocompression</span></tt> function attribute
 to locally turn off MIPS16 and microMIPS code generation.  This attribute
 overrides the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mips16"><em class="xref std std-option">-mips16</em></a> and <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmicromips"><em class="xref std std-option">-mmicromips</em></a> options on the
-command line (MIPS Options).</dd>
+command line (MIPS Options).</p>
+<p class="last">:: _msp430-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _msp430-function-attributes:</p>
 </div>
 <div class="section" id="msp430-function-attributes">
 <h2>MSP430 Function Attributes<a class="headerlink" href="#msp430-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the MSP430 back end:</p>
 <dl class="docutils">
 <dt>critical</dt>
-<dd><tt class="docutils literal"><span class="pre">critical</span></tt> function attribute, MSP430
-Critical functions disable interrupts upon entry and restore the
+<dd><tt class="docutils literal"><span class="pre">critical</span></tt> function attribute, MSP430Critical functions disable interrupts upon entry and restore the
 previous interrupt state upon exit.  Critical functions cannot also
 have the <tt class="docutils literal"><span class="pre">naked</span></tt> or <tt class="docutils literal"><span class="pre">reentrant</span></tt> attributes.  They can have
 the <tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute.</dd>
 <dt>interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, MSP430
-Use this attribute to indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, MSP430Use this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.</p>
@@ -1836,8 +1763,7 @@ the names <tt class="docutils literal"><span class="pre">watchdog</span></tt> fo
 <tt class="docutils literal"><span class="pre">reset</span></tt> for vector 31 are recognized.</p>
 </dd>
 <dt>naked</dt>
-<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, MSP430
-This attribute allows the compiler to construct the
+<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, MSP430This attribute allows the compiler to construct the
 requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
@@ -1846,61 +1772,54 @@ prologue/epilogue sequences generated by the compiler. Only basic
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</dd>
 <dt>reentrant</dt>
-<dd><tt class="docutils literal"><span class="pre">reentrant</span></tt> function attribute, MSP430
-Reentrant functions disable interrupts upon entry and enable them
+<dd><tt class="docutils literal"><span class="pre">reentrant</span></tt> function attribute, MSP430Reentrant functions disable interrupts upon entry and enable them
 upon exit.  Reentrant functions cannot also have the <tt class="docutils literal"><span class="pre">naked</span></tt>
 or <tt class="docutils literal"><span class="pre">critical</span></tt> attributes.  They can have the <tt class="docutils literal"><span class="pre">interrupt</span></tt>
 attribute.</dd>
 <dt>wakeup</dt>
-<dd><tt class="docutils literal"><span class="pre">wakeup</span></tt> function attribute, MSP430
-This attribute only applies to interrupt functions.  It is silently
+<dd><p class="first"><tt class="docutils literal"><span class="pre">wakeup</span></tt> function attribute, MSP430This attribute only applies to interrupt functions.  It is silently
 ignored if applied to a non-interrupt function.  A wakeup interrupt
 function will rouse the processor from any low-power state that it
-might be in when the function exits.</dd>
+might be in when the function exits.</p>
+<p class="last">:: _nds32-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _nds32-function-attributes:</p>
 </div>
 <div class="section" id="nds32-function-attributes">
 <h2>NDS32 Function Attributes<a class="headerlink" href="#nds32-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the NDS32 back end:</p>
 <dl class="docutils">
 <dt>exception</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">exception</span></tt> function attribute</p>
-<p class="last" id="index-29">Use this attribute on the NDS32 target to indicate that the specified function
+<dd><p class="first"><tt class="docutils literal"><span class="pre">exception</span></tt> function attribute
+.. index:: exception handler functions, NDS32</p>
+<p class="last">Use this attribute on the NDS32 target to indicate that the specified function
 is an exception handler.  The compiler will generate corresponding sections
 for use in an exception handler.</p>
 </dd>
 <dt>interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, NDS32
-On NDS32 target, this attribute indicates that the specified function
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, NDS32On NDS32 target, this attribute indicates that the specified function
 is an interrupt handler.  The compiler generates corresponding sections
 for use in an interrupt handler.  You can use the following attributes
 to modify the behavior:</p>
 <dl class="last docutils">
 <dt>nested</dt>
-<dd><tt class="docutils literal"><span class="pre">nested</span></tt> function attribute, NDS32
-This interrupt service routine is interruptible.</dd>
+<dd><tt class="docutils literal"><span class="pre">nested</span></tt> function attribute, NDS32This interrupt service routine is interruptible.</dd>
 <dt>not_nested</dt>
-<dd><tt class="docutils literal"><span class="pre">not_nested</span></tt> function attribute, NDS32
-This interrupt service routine is not interruptible.</dd>
+<dd><tt class="docutils literal"><span class="pre">not_nested</span></tt> function attribute, NDS32This interrupt service routine is not interruptible.</dd>
 <dt>nested_ready</dt>
-<dd><tt class="docutils literal"><span class="pre">nested_ready</span></tt> function attribute, NDS32
-This interrupt service routine is interruptible after <tt class="docutils literal"><span class="pre">PSW.GIE</span></tt>
+<dd><tt class="docutils literal"><span class="pre">nested_ready</span></tt> function attribute, NDS32This interrupt service routine is interruptible after <tt class="docutils literal"><span class="pre">PSW.GIE</span></tt>
 (global interrupt enable) is set.  This allows interrupt service routine to
 finish some short critical code before enabling interrupts.</dd>
 <dt>save_all</dt>
-<dd><tt class="docutils literal"><span class="pre">save_all</span></tt> function attribute, NDS32
-The system will help save all registers into stack before entering
+<dd><tt class="docutils literal"><span class="pre">save_all</span></tt> function attribute, NDS32The system will help save all registers into stack before entering
 interrupt handler.</dd>
 <dt>partial_save</dt>
-<dd><tt class="docutils literal"><span class="pre">partial_save</span></tt> function attribute, NDS32
-The system will help save caller registers into stack before entering
+<dd><tt class="docutils literal"><span class="pre">partial_save</span></tt> function attribute, NDS32The system will help save caller registers into stack before entering
 interrupt handler.</dd>
 </dl>
 </dd>
 <dt>naked</dt>
-<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, NDS32
-This attribute allows the compiler to construct the
+<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, NDS32This attribute allows the compiler to construct the
 requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
@@ -1909,37 +1828,34 @@ prologue/epilogue sequences generated by the compiler. Only basic
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</dd>
 <dt>reset</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">reset</span></tt> function attribute, NDS32</p>
-<p id="index-30">Use this attribute on the NDS32 target to indicate that the specified function
+<dd><p class="first"><tt class="docutils literal"><span class="pre">reset</span></tt> function attribute, NDS32
+.. index:: reset handler functions</p>
+<p>Use this attribute on the NDS32 target to indicate that the specified function
 is a reset handler.  The compiler will generate corresponding sections
 for use in a reset handler.  You can use the following attributes
 to provide extra exception handling:</p>
 <dl class="last docutils">
 <dt>nmi</dt>
-<dd><tt class="docutils literal"><span class="pre">nmi</span></tt> function attribute, NDS32
-Provide a user-defined function to handle NMI exception.</dd>
+<dd><tt class="docutils literal"><span class="pre">nmi</span></tt> function attribute, NDS32Provide a user-defined function to handle NMI exception.</dd>
 <dt>warm</dt>
-<dd><tt class="docutils literal"><span class="pre">warm</span></tt> function attribute, NDS32
-Provide a user-defined function to handle warm reset exception.</dd>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">warm</span></tt> function attribute, NDS32Provide a user-defined function to handle warm reset exception.</p>
+<p class="last">:: _nios-ii-function-attributes:</p>
+</dd>
 </dl>
 </dd>
 </dl>
-<p>:: _nios-ii-function-attributes:</p>
 </div>
 <div class="section" id="nios-ii-function-attributes">
 <h2>Nios II Function Attributes<a class="headerlink" href="#nios-ii-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the Nios II back end:</p>
 <dl class="docutils">
 <dt>target (<tt class="docutils literal"><span class="pre">options</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">target</span></tt> function attribute
-As discussed in Common Function Attributes, this attribute
+<dd><p class="first"><tt class="docutils literal"><span class="pre">target</span></tt> function attributeAs discussed in Common Function Attributes, this attribute
 allows specification of target-specific compilation options.</p>
 <p>When compiling for Nios II, the following options are allowed:</p>
 <dl class="last docutils">
 <dt>custom-<tt class="docutils literal"><span class="pre">insn``=``N``no-custom-``insn</span></tt></dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;custom-``insn``=``N</span></tt>&#8221;)`` function attribute, Nios II
-<tt class="docutils literal"><span class="pre">target(&quot;no-custom-``insn</span></tt>&#8221;)`` function attribute, Nios II
-Each custom-<tt class="docutils literal"><span class="pre">insn``=``N</span></tt> attribute locally enables use of a
+<dd><tt class="docutils literal"><span class="pre">target(&quot;custom-``insn``=``N</span></tt>&#8221;)`` function attribute, Nios II``target(&#8220;no-custom-<tt class="docutils literal"><span class="pre">insn</span></tt>&#8221;)`` function attribute, Nios IIEach custom-<tt class="docutils literal"><span class="pre">insn``=``N</span></tt> attribute locally enables use of a
 custom instruction with encoding <tt class="docutils literal"><span class="pre">N</span></tt> when generating code that uses
 <tt class="docutils literal"><span class="pre">insn</span></tt>.  Similarly, no-custom-<tt class="docutils literal"><span class="pre">insn</span></tt> locally inhibits use of
 the custom instruction <tt class="docutils literal"><span class="pre">insn</span></tt>.
@@ -1948,24 +1864,22 @@ These target attributes correspond to the
 command-line options, and support the same set of <tt class="docutils literal"><span class="pre">insn</span></tt> keywords.
 Nios II Options, for more information.</dd>
 <dt>custom-fpu-cfg=``name``</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;custom-fpu-cfg=``name</span></tt>&#8221;)`` function attribute, Nios II
-This attribute corresponds to the <em class="xref std std-option">-mcustom-fpu-cfg=``name``</em>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">target(&quot;custom-fpu-cfg=``name</span></tt>&#8221;)`` function attribute, Nios IIThis attribute corresponds to the <em class="xref std std-option">-mcustom-fpu-cfg=``name``</em>
 command-line option, to select a predefined set of custom instructions
 named <tt class="docutils literal"><span class="pre">name</span></tt>.
-Nios II Options, for more information.</dd>
+Nios II Options, for more information.</p>
+<p class="last">:: _powerpc-function-attributes:</p>
+</dd>
 </dl>
 </dd>
 </dl>
-<p>:: _powerpc-function-attributes:</p>
 </div>
 <div class="section" id="powerpc-function-attributes">
 <h2>PowerPC Function Attributes<a class="headerlink" href="#powerpc-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the PowerPC back end:</p>
 <p>longcallshortcall</p>
 <blockquote>
-<div><p id="index-31"><tt class="docutils literal"><span class="pre">longcall</span></tt> function attribute, PowerPC
-<tt class="docutils literal"><span class="pre">shortcall</span></tt> function attribute, PowerPC
-The <tt class="docutils literal"><span class="pre">longcall</span></tt> attribute
+<div><p id="index-9"><tt class="docutils literal"><span class="pre">longcall</span></tt> function attribute, PowerPC``shortcall`` function attribute, PowerPCThe <tt class="docutils literal"><span class="pre">longcall</span></tt> attribute
 indicates that the function might be far away from the call site and
 require a different (more expensive) calling sequence.  The
 <tt class="docutils literal"><span class="pre">shortcall</span></tt> attribute indicates that the function is always close
@@ -1977,149 +1891,123 @@ calls are necessary.</p>
 </div></blockquote>
 <dl class="docutils">
 <dt>target (<tt class="docutils literal"><span class="pre">options</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">target</span></tt> function attribute
-As discussed in Common Function Attributes, this attribute
+<dd><p class="first"><tt class="docutils literal"><span class="pre">target</span></tt> function attributeAs discussed in Common Function Attributes, this attribute
 allows specification of target-specific compilation options.</p>
 <p>On the PowerPC, the following options are allowed:</p>
 <dl class="docutils">
 <dt>altivecno-altivec</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;altivec&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) AltiVec instructions.  In
+<dd><tt class="docutils literal"><span class="pre">target(&quot;altivec&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) AltiVec instructions.  In
 32-bit code, you cannot enable AltiVec instructions unless
 <em class="xref std std-option">-mabi=altivec</em> is used on the command line.</dd>
 <dt>cmpbno-cmpb</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;cmpb&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the compare bytes instruction
+<dd><tt class="docutils literal"><span class="pre">target(&quot;cmpb&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the compare bytes instruction
 implemented on the POWER6 processor and other processors that support
 the PowerPC V2.05 architecture.</dd>
 <dt>dlmzbno-dlmzb</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;dlmzb&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the string-search dlmzb
+<dd><tt class="docutils literal"><span class="pre">target(&quot;dlmzb&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the string-search dlmzb
 instruction on the IBM 405, 440, 464 and 476 processors.  This instruction is
 generated by default when targeting those processors.</dd>
 <dt>fprndno-fprnd</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;fprnd&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the FP round to integer
+<dd><tt class="docutils literal"><span class="pre">target(&quot;fprnd&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the FP round to integer
 instructions implemented on the POWER5+ processor and other processors
 that support the PowerPC V2.03 architecture.</dd>
 <dt>hard-dfpno-hard-dfp</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;hard-dfp&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the decimal floating-point
+<dd><tt class="docutils literal"><span class="pre">target(&quot;hard-dfp&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the decimal floating-point
 instructions implemented on some POWER processors.</dd>
 <dt>iselno-isel</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;isel&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) ISEL instruction.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;isel&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) ISEL instruction.</dd>
 <dt>mfcrfno-mfcrf</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;mfcrf&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the move from condition
+<dd><tt class="docutils literal"><span class="pre">target(&quot;mfcrf&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the move from condition
 register field instruction implemented on the POWER4 processor and
 other processors that support the PowerPC V2.01 architecture.</dd>
 <dt>mfpgprno-mfpgpr</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;mfpgpr&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the FP move to/from general
+<dd><tt class="docutils literal"><span class="pre">target(&quot;mfpgpr&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the FP move to/from general
 purpose register instructions implemented on the POWER6X processor and
 other processors that support the extended PowerPC V2.05 architecture.</dd>
 <dt>mulhwno-mulhw</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;mulhw&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the half-word multiply and
+<dd><tt class="docutils literal"><span class="pre">target(&quot;mulhw&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the half-word multiply and
 multiply-accumulate instructions on the IBM 405, 440, 464 and 476 processors.
 These instructions are generated by default when targeting those
 processors.</dd>
 <dt>multipleno-multiple</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;multiple&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the load multiple word
+<dd><tt class="docutils literal"><span class="pre">target(&quot;multiple&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the load multiple word
 instructions and the store multiple word instructions.</dd>
 <dt>updateno-update</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;update&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the load or store instructions
+<dd><tt class="docutils literal"><span class="pre">target(&quot;update&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the load or store instructions
 that update the base register to the address of the calculated memory
 location.</dd>
 <dt>popcntbno-popcntb</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;popcntb&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the popcount and double-precision
+<dd><tt class="docutils literal"><span class="pre">target(&quot;popcntb&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the popcount and double-precision
 FP reciprocal estimate instruction implemented on the POWER5
 processor and other processors that support the PowerPC V2.02
 architecture.</dd>
 <dt>popcntdno-popcntd</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;popcntd&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the popcount instruction
+<dd><tt class="docutils literal"><span class="pre">target(&quot;popcntd&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the popcount instruction
 implemented on the POWER7 processor and other processors that support
 the PowerPC V2.06 architecture.</dd>
 <dt>powerpc-gfxoptno-powerpc-gfxopt</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;powerpc-gfxopt&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the optional PowerPC
+<dd><tt class="docutils literal"><span class="pre">target(&quot;powerpc-gfxopt&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the optional PowerPC
 architecture instructions in the Graphics group, including
 floating-point select.</dd>
 <dt>powerpc-gpoptno-powerpc-gpopt</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;powerpc-gpopt&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the optional PowerPC
+<dd><tt class="docutils literal"><span class="pre">target(&quot;powerpc-gpopt&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the optional PowerPC
 architecture instructions in the General Purpose group, including
 floating-point square root.</dd>
 <dt>recip-precisionno-recip-precision</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;recip-precision&quot;)</span></tt> function attribute, PowerPC
-Assume (do not assume) that the reciprocal estimate instructions
+<dd><tt class="docutils literal"><span class="pre">target(&quot;recip-precision&quot;)</span></tt> function attribute, PowerPCAssume (do not assume) that the reciprocal estimate instructions
 provide higher-precision estimates than is mandated by the PowerPC
 ABI.</dd>
 <dt>stringno-string</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;string&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the load string instructions
+<dd><tt class="docutils literal"><span class="pre">target(&quot;string&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the load string instructions
 and the store string word instructions to save multiple registers and
 do small block moves.</dd>
 <dt>vsxno-vsx</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;vsx&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) vector/scalar (VSX)
+<dd><tt class="docutils literal"><span class="pre">target(&quot;vsx&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) vector/scalar (VSX)
 instructions, and also enable the use of built-in functions that allow
 more direct access to the VSX instruction set.  In 32-bit code, you
 cannot enable VSX or AltiVec instructions unless
 <em class="xref std std-option">-mabi=altivec</em> is used on the command line.</dd>
 <dt>frizno-friz</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;friz&quot;)</span></tt> function attribute, PowerPC
-Generate (do not generate) the <tt class="docutils literal"><span class="pre">friz</span></tt> instruction when the
+<dd><tt class="docutils literal"><span class="pre">target(&quot;friz&quot;)</span></tt> function attribute, PowerPCGenerate (do not generate) the <tt class="docutils literal"><span class="pre">friz</span></tt> instruction when the
 <a class="reference internal" href="options-that-control-optimization.html#cmdoption-funsafe-math-optimizations"><em class="xref std std-option">-funsafe-math-optimizations</em></a> option is used to optimize
 rounding a floating-point value to 64-bit integer and back to floating
 point.  The <tt class="docutils literal"><span class="pre">friz</span></tt> instruction does not return the same value if
 the floating-point number is too large to fit in an integer.</dd>
 <dt>avoid-indexed-addressesno-avoid-indexed-addresses</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;avoid-indexed-addresses&quot;)</span></tt> function attribute, PowerPC
-Generate code that tries to avoid (not avoid) the use of indexed load
+<dd><tt class="docutils literal"><span class="pre">target(&quot;avoid-indexed-addresses&quot;)</span></tt> function attribute, PowerPCGenerate code that tries to avoid (not avoid) the use of indexed load
 or store instructions.</dd>
 <dt>pairedno-paired</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;paired&quot;)</span></tt> function attribute, PowerPC
-Generate code that uses (does not use) the generation of PAIRED simd
+<dd><tt class="docutils literal"><span class="pre">target(&quot;paired&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the generation of PAIRED simd
 instructions.</dd>
 <dt>longcallno-longcall</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;longcall&quot;)</span></tt> function attribute, PowerPC
-Generate code that assumes (does not assume) that all calls are far
+<dd><tt class="docutils literal"><span class="pre">target(&quot;longcall&quot;)</span></tt> function attribute, PowerPCGenerate code that assumes (does not assume) that all calls are far
 away so that a longer more expensive calling sequence is required.</dd>
 <dt>cpu=``CPU``</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;cpu=``CPU</span></tt>&#8221;)`` function attribute, PowerPC
-Specify the architecture to generate code for when compiling the
+<dd><tt class="docutils literal"><span class="pre">target(&quot;cpu=``CPU</span></tt>&#8221;)`` function attribute, PowerPCSpecify the architecture to generate code for when compiling the
 function.  If you select the <tt class="docutils literal"><span class="pre">target(&quot;cpu=power7&quot;)</span></tt> attribute when
 generating 32-bit code, VSX and AltiVec instructions are not generated
 unless you use the <em class="xref std std-option">-mabi=altivec</em> option on the command line.</dd>
 <dt>tune=``TUNE``</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;tune=``TUNE</span></tt>&#8221;)`` function attribute, PowerPC
-Specify the architecture to tune for when compiling the function.  If
+<dd><p class="first"><tt class="docutils literal"><span class="pre">target(&quot;tune=``TUNE</span></tt>&#8221;)`` function attribute, PowerPCSpecify the architecture to tune for when compiling the function.  If
 you do not specify the <tt class="docutils literal"><span class="pre">target(&quot;tune=``TUNE</span></tt>&#8221;)`` attribute and
 you do specify the <tt class="docutils literal"><span class="pre">target(&quot;cpu=``CPU</span></tt>&#8221;)`` attribute,
 compilation tunes for the <tt class="docutils literal"><span class="pre">CPU</span></tt> architecture, and not the
-default tuning specified on the command line.</dd>
-</dl>
-<p class="last">On the PowerPC, the inliner does not inline a
-function that has different target options than the caller, unless the
-callee has a subset of the target options of the caller.</p>
+default tuning specified on the command line.</p>
+<p class="last">On the PowerPC, the inliner does not inline a</p>
 </dd>
 </dl>
-<p>:: _rl78-function-attributes:</p>
+<p>function that has different target options than the caller, unless the
+callee has a subset of the target options of the caller.</p>
+<p class="last">:: _rl78-function-attributes:</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="rl78-function-attributes">
 <h2>RL78 Function Attributes<a class="headerlink" href="#rl78-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the RL78 back end:</p>
 <dl class="docutils">
 <dt>interruptbrk_interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, RL78
-<tt class="docutils literal"><span class="pre">brk_interrupt</span></tt> function attribute, RL78
-These attributes indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, RL78``brk_interrupt`` function attribute, RL78These attributes indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.</p>
@@ -2128,31 +2016,29 @@ handlers intended to be used with the <tt class="docutils literal"><span class="
 that must end with <tt class="docutils literal"><span class="pre">RETB</span></tt> instead of <tt class="docutils literal"><span class="pre">RETI</span></tt>).</p>
 </dd>
 <dt>naked</dt>
-<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, RL78
-This attribute allows the compiler to construct the
+<dd><p class="first"><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, RL78This attribute allows the compiler to construct the
 requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
 (Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
-depended upon to work reliably and are not supported.</dd>
+depended upon to work reliably and are not supported.</p>
+<p class="last">:: _rx-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _rx-function-attributes:</p>
 </div>
 <div class="section" id="rx-function-attributes">
 <h2>RX Function Attributes<a class="headerlink" href="#rx-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the RX back end:</p>
 <dl class="docutils">
 <dt>fast_interrupt</dt>
-<dd><tt class="docutils literal"><span class="pre">fast_interrupt</span></tt> function attribute, RX
-Use this attribute on the RX port to indicate that the specified
+<dd><tt class="docutils literal"><span class="pre">fast_interrupt</span></tt> function attribute, RXUse this attribute on the RX port to indicate that the specified
 function is a fast interrupt handler.  This is just like the
 <tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute, except that <tt class="docutils literal"><span class="pre">freit</span></tt> is used to return
 instead of <tt class="docutils literal"><span class="pre">reit</span></tt>.</dd>
 <dt>interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, RX
-Use this attribute to indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, RXUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.</p>
@@ -2177,8 +2063,7 @@ for the <tt class="docutils literal"><span class="pre">dct</span></tt> table:</p
 </div>
 </dd>
 <dt>naked</dt>
-<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, RX
-This attribute allows the compiler to construct the
+<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, RXThis attribute allows the compiler to construct the
 requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
@@ -2187,21 +2072,20 @@ prologue/epilogue sequences generated by the compiler. Only basic
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</dd>
 <dt>vector</dt>
-<dd><tt class="docutils literal"><span class="pre">vector</span></tt> function attribute, RX
-This RX attribute is similar to the <tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute, including its
+<dd><p class="first"><tt class="docutils literal"><span class="pre">vector</span></tt> function attribute, RXThis RX attribute is similar to the <tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute, including its
 parameters, but does not make the function an interrupt-handler type
 function (i.e. it retains the normal C function calling ABI).  See the
-<tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute for a description of its arguments.</dd>
+<tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute for a description of its arguments.</p>
+<p class="last">:: _s/390-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _s/390-function-attributes:</p>
 </div>
 <div class="section" id="s-390-function-attributes">
 <h2>S/390 Function Attributes<a class="headerlink" href="#s-390-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported on the S/390:</p>
 <dl class="docutils">
 <dt>hotpatch (<tt class="docutils literal"><span class="pre">halfwords-before-function-label</span></tt>,``halfwords-after-function-label``)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">hotpatch</span></tt> function attribute, S/390</p>
-<p>On S/390 System z targets, you can use this function attribute to
+<dd><p class="first"><tt class="docutils literal"><span class="pre">hotpatch</span></tt> function attribute, S/390On S/390 System z targets, you can use this function attribute to
 make GCC generate a &#8216;hot-patching&#8217; function prologue.  If the
 <em class="xref std std-option">-mhotpatch=</em> command-line option is used at the same time,
 the <tt class="docutils literal"><span class="pre">hotpatch</span></tt> attribute takes precedence.  The first of the
@@ -2209,18 +2093,19 @@ two arguments specifies the number of halfwords to be added before
 the function label.  A second argument can be used to specify the
 number of halfwords to be added after the function label.  For
 both arguments the maximum allowed value is 1000000.</p>
-<p class="last">If both arguments are zero, hotpatching is disabled.</p>
+<p>If both arguments are zero, hotpatching is disabled.</p>
+<p class="last">:: _sh-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _sh-function-attributes:</p>
 </div>
 <div class="section" id="sh-function-attributes">
 <h2>SH Function Attributes<a class="headerlink" href="#sh-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported on the SH family of processors:</p>
 <dl class="docutils">
 <dt>function_vector</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">function_vector</span></tt> function attribute, SH</p>
-<p id="index-32">On SH2A targets, this attribute declares a function to be called using the
+<dd><p class="first"><tt class="docutils literal"><span class="pre">function_vector</span></tt> function attribute, SH
+.. index:: calling functions through the function vector on SH2A</p>
+<p>On SH2A targets, this attribute declares a function to be called using the
 TBR relative addressing mode.  The argument to this attribute is the entry
 number of the same function in a vector table containing all the TBR
 relative addressable functions.  For correct operation the TBR must be setup
@@ -2236,24 +2121,20 @@ made to the same function, it saves 2 bytes of code per each of these
 calls.</p>
 </dd>
 <dt>interrupt_handler</dt>
-<dd><tt class="docutils literal"><span class="pre">interrupt_handler</span></tt> function attribute, SH
-Use this attribute to
+<dd><tt class="docutils literal"><span class="pre">interrupt_handler</span></tt> function attribute, SHUse this attribute to
 indicate that the specified function is an interrupt handler.  The compiler
 generates function entry and exit sequences suitable for use in an
 interrupt handler when this attribute is present.</dd>
 <dt>nosave_low_regs</dt>
-<dd><tt class="docutils literal"><span class="pre">nosave_low_regs</span></tt> function attribute, SH
-Use this attribute on SH targets to indicate that an <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>
+<dd><tt class="docutils literal"><span class="pre">nosave_low_regs</span></tt> function attribute, SHUse this attribute on SH targets to indicate that an <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>
 function should not save and restore registers R0..R7.  This can be used on SH3*
 and SH4* targets that have a second R0..R7 register bank for non-reentrant
 interrupt handlers.</dd>
 <dt>renesas</dt>
-<dd><tt class="docutils literal"><span class="pre">renesas</span></tt> function attribute, SH
-On SH targets this attribute specifies that the function or struct follows the
+<dd><tt class="docutils literal"><span class="pre">renesas</span></tt> function attribute, SHOn SH targets this attribute specifies that the function or struct follows the
 Renesas ABI.</dd>
 <dt>resbank</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">resbank</span></tt> function attribute, SH
-On the SH2A target, this attribute enables the high-speed register
+<dd><p class="first"><tt class="docutils literal"><span class="pre">resbank</span></tt> function attribute, SHOn the SH2A target, this attribute enables the high-speed register
 saving and restoration using a register bank for <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>
 routines.  Saving to the bank is performed automatically after the CPU
 accepts an interrupt that uses a register bank.</p>
@@ -2264,8 +2145,7 @@ banks are stacked in first-in last-out (FILO) sequence.  Restoration
 from the bank is executed by issuing a RESBANK instruction.</p>
 </dd>
 <dt>sp_switch</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">sp_switch</span></tt> function attribute, SH
-Use this attribute on the SH to indicate an <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">sp_switch</span></tt> function attribute, SHUse this attribute on the SH to indicate an <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>
 function should switch to an alternate stack.  It expects a string
 argument that names a global variable holding the address of the
 alternate stack.</p>
@@ -2276,33 +2156,32 @@ alternate stack.</p>
 </div>
 </dd>
 <dt>trap_exit</dt>
-<dd><tt class="docutils literal"><span class="pre">trap_exit</span></tt> function attribute, SH
-Use this attribute on the SH for an <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt> to return using
+<dd><tt class="docutils literal"><span class="pre">trap_exit</span></tt> function attribute, SHUse this attribute on the SH for an <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt> to return using
 <tt class="docutils literal"><span class="pre">trapa</span></tt> instead of <tt class="docutils literal"><span class="pre">rte</span></tt>.  This attribute expects an integer
 argument specifying the trap number to be used.</dd>
 <dt>trapa_handler</dt>
-<dd><tt class="docutils literal"><span class="pre">trapa_handler</span></tt> function attribute, SH
-On SH targets this function attribute is similar to <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>
-but it does not save and restore all registers.</dd>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">trapa_handler</span></tt> function attribute, SHOn SH targets this function attribute is similar to <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>
+but it does not save and restore all registers.</p>
+<p class="last">:: _spu-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _spu-function-attributes:</p>
 </div>
 <div class="section" id="spu-function-attributes">
 <h2>SPU Function Attributes<a class="headerlink" href="#spu-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the SPU back end:</p>
 <dl class="docutils">
 <dt>naked</dt>
-<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, SPU
-This attribute allows the compiler to construct the
+<dd><p class="first"><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, SPUThis attribute allows the compiler to construct the
 requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
 (Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
-depended upon to work reliably and are not supported.</dd>
+depended upon to work reliably and are not supported.</p>
+<p class="last">:: _symbian-os-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _symbian-os-function-attributes:</p>
 </div>
 <div class="section" id="symbian-os-function-attributes">
 <h2>Symbian OS Function Attributes<a class="headerlink" href="#symbian-os-function-attributes" title="Permalink to this headline">¶</a></h2>
@@ -2315,13 +2194,13 @@ depended upon to work reliably and are not supported.</dd>
 <p>These function attributes are supported by the Visium back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
-<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, Visium
-Use this attribute to indicate
+<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, VisiumUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
-when this attribute is present.</dd>
+when this attribute is present.</p>
+<p class="last">:: _x86-function-attributes:</p>
+</dd>
 </dl>
-<p>:: _x86-function-attributes:</p>
 </div>
 <div class="section" id="x86-function-attributes">
 <h2>x86 Function Attributes<a class="headerlink" href="#x86-function-attributes" title="Permalink to this headline">¶</a></h2>
@@ -2329,8 +2208,9 @@ when this attribute is present.</dd>
 <dl class="option">
 <dt id="cmdoption-mrtd">
 <tt class="descname">-mrtd</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mrtd" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">cdecl</span></tt> function attribute, x86-32</p>
-<p id="index-33">On the x86-32 targets, the <tt class="docutils literal"><span class="pre">cdecl</span></tt> attribute causes the compiler to
+<dd><p><tt class="docutils literal"><span class="pre">cdecl</span></tt> function attribute, x86-32
+.. index:: functions that pop the argument stack on x86-32</p>
+<p>On the x86-32 targets, the <tt class="docutils literal"><span class="pre">cdecl</span></tt> attribute causes the compiler to
 assume that the calling function pops off the stack space used to
 pass arguments.  This is
 useful to override the effects of the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mrtd"><em class="xref std std-option">-mrtd</em></a> switch.</p>
@@ -2338,8 +2218,9 @@ useful to override the effects of the <a class="reference internal" href="hardwa
 
 <dl class="docutils">
 <dt>fastcall</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">fastcall</span></tt> function attribute, x86-32</p>
-<p class="last" id="index-34">On x86-32 targets, the <tt class="docutils literal"><span class="pre">fastcall</span></tt> attribute causes the compiler to
+<dd><p class="first"><tt class="docutils literal"><span class="pre">fastcall</span></tt> function attribute, x86-32
+.. index:: functions that pop the argument stack on x86-32</p>
+<p class="last">On x86-32 targets, the <tt class="docutils literal"><span class="pre">fastcall</span></tt> attribute causes the compiler to
 pass the first argument (if of integral type) in the register ECX and
 the second argument (if of integral type) in the register EDX.  Subsequent
 and other typed arguments are passed on the stack.  The called function
@@ -2347,8 +2228,9 @@ pops the arguments off the stack.  If the number of arguments is variable all
 arguments are pushed on the stack.</p>
 </dd>
 <dt>thiscall</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">thiscall</span></tt> function attribute, x86-32</p>
-<p class="last" id="index-35">On x86-32 targets, the <tt class="docutils literal"><span class="pre">thiscall</span></tt> attribute causes the compiler to
+<dd><p class="first"><tt class="docutils literal"><span class="pre">thiscall</span></tt> function attribute, x86-32
+.. index:: functions that pop the argument stack on x86-32</p>
+<p class="last">On x86-32 targets, the <tt class="docutils literal"><span class="pre">thiscall</span></tt> attribute causes the compiler to
 pass the first argument (if of integral type) in the register ECX.
 Subsequent and other typed arguments are passed on the stack. The called
 function pops the arguments off the stack.
@@ -2359,9 +2241,7 @@ As a GCC extension, this calling convention can be used for C functions
 and for static member methods.</p>
 </dd>
 <dt>ms_abisysv_abi</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">ms_abi</span></tt> function attribute, x86
-<tt class="docutils literal"><span class="pre">sysv_abi</span></tt> function attribute, x86</p>
-<p>On 32-bit and 64-bit x86 targets, you can use an ABI attribute
+<dd><p class="first"><tt class="docutils literal"><span class="pre">ms_abi</span></tt> function attribute, x86``sysv_abi`` function attribute, x86On 32-bit and 64-bit x86 targets, you can use an ABI attribute
 to indicate which calling convention should be used for a function.  The
 <tt class="docutils literal"><span class="pre">ms_abi</span></tt> attribute tells the compiler to use the Microsoft ABI,
 while the <tt class="docutils literal"><span class="pre">sysv_abi</span></tt> attribute tells the compiler to use the ABI
@@ -2371,8 +2251,7 @@ when targeting Windows.  On all other systems, the default is the x86/AMD ABI.</
 requires the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-maccumulate-outgoing-args"><em class="xref std std-option">-maccumulate-outgoing-args</em></a> option.</p>
 </dd>
 <dt>callee_pop_aggregate_return (<tt class="docutils literal"><span class="pre">number</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">callee_pop_aggregate_return</span></tt> function attribute, x86</p>
-<p>On x86-32 targets, you can use this attribute to control how
+<dd><p class="first"><tt class="docutils literal"><span class="pre">callee_pop_aggregate_return</span></tt> function attribute, x86On x86-32 targets, you can use this attribute to control how
 aggregates are returned in memory.  If the caller is responsible for
 popping the hidden pointer together with the rest of the arguments, specify
 <tt class="docutils literal"><span class="pre">number</span></tt> equal to zero.  If callee is responsible for popping the
@@ -2383,15 +2262,14 @@ the compiler assumes that the
 caller pops the stack for hidden pointer.</p>
 </dd>
 <dt>ms_hook_prologue</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">ms_hook_prologue</span></tt> function attribute, x86</p>
-<p class="last">On 32-bit and 64-bit x86 targets, you can use
+<dd><tt class="docutils literal"><span class="pre">ms_hook_prologue</span></tt> function attribute, x86On 32-bit and 64-bit x86 targets, you can use
 this function attribute to make GCC generate the &#8216;hot-patching&#8217; function
 prologue used in Win32 API functions in Microsoft Windows XP Service Pack 2
-and newer.</p>
-</dd>
+and newer.</dd>
 <dt>regparm (<tt class="docutils literal"><span class="pre">number</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">regparm</span></tt> function attribute, x86</p>
-<p id="index-36">On x86-32 targets, the <tt class="docutils literal"><span class="pre">regparm</span></tt> attribute causes the compiler to
+<dd><p class="first"><tt class="docutils literal"><span class="pre">regparm</span></tt> function attribute, x86
+.. index:: functions that are passed arguments in registers on x86-32</p>
+<p>On x86-32 targets, the <tt class="docutils literal"><span class="pre">regparm</span></tt> attribute causes the compiler to
 pass arguments number one to <tt class="docutils literal"><span class="pre">number</span></tt> if they are of integral type
 in registers EAX, EDX, and ECX instead of on the stack.  Functions that
 take a variable number of arguments continue to be passed all of their
@@ -2408,141 +2286,111 @@ disabled with the linker or the loader if desired, to avoid the
 problem.)</p>
 </dd>
 <dt>sseregparm</dt>
-<dd><tt class="docutils literal"><span class="pre">sseregparm</span></tt> function attribute, x86
-On x86-32 targets with SSE support, the <tt class="docutils literal"><span class="pre">sseregparm</span></tt> attribute
+<dd><tt class="docutils literal"><span class="pre">sseregparm</span></tt> function attribute, x86On x86-32 targets with SSE support, the <tt class="docutils literal"><span class="pre">sseregparm</span></tt> attribute
 causes the compiler to pass up to 3 floating-point arguments in
 SSE registers instead of on the stack.  Functions that take a
 variable number of arguments continue to pass all of their
 floating-point arguments on the stack.</dd>
 <dt>force_align_arg_pointer</dt>
-<dd><tt class="docutils literal"><span class="pre">force_align_arg_pointer</span></tt> function attribute, x86
-On x86 targets, the <tt class="docutils literal"><span class="pre">force_align_arg_pointer</span></tt> attribute may be
+<dd><tt class="docutils literal"><span class="pre">force_align_arg_pointer</span></tt> function attribute, x86On x86 targets, the <tt class="docutils literal"><span class="pre">force_align_arg_pointer</span></tt> attribute may be
 applied to individual function definitions, generating an alternate
 prologue and epilogue that realigns the run-time stack if necessary.
 This supports mixing legacy codes that run with a 4-byte aligned stack
 with modern codes that keep a 16-byte stack for SSE compatibility.</dd>
 <dt>stdcall</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">stdcall</span></tt> function attribute, x86-32</p>
-<p class="last" id="index-37">On x86-32 targets, the <tt class="docutils literal"><span class="pre">stdcall</span></tt> attribute causes the compiler to
+<dd><p class="first"><tt class="docutils literal"><span class="pre">stdcall</span></tt> function attribute, x86-32
+.. index:: functions that pop the argument stack on x86-32</p>
+<p class="last">On x86-32 targets, the <tt class="docutils literal"><span class="pre">stdcall</span></tt> attribute causes the compiler to
 assume that the called function pops off the stack space used to
 pass arguments, unless it takes a variable number of arguments.</p>
 </dd>
 <dt>target (<tt class="docutils literal"><span class="pre">options</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">target</span></tt> function attribute
-As discussed in Common Function Attributes, this attribute
+<dd><p class="first"><tt class="docutils literal"><span class="pre">target</span></tt> function attributeAs discussed in Common Function Attributes, this attribute
 allows specification of target-specific compilation options.</p>
 <p>On the x86, the following options are allowed:</p>
 <dl class="docutils">
 <dt>abmno-abm</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;abm&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the advanced bit instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;abm&quot;)</span></tt> function attribute, x86Enable/disable the generation of the advanced bit instructions.</dd>
 <dt>aesno-aes</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;aes&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the AES instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;aes&quot;)</span></tt> function attribute, x86Enable/disable the generation of the AES instructions.</dd>
 <dt>default</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;default&quot;)</span></tt> function attribute, x86
-Function Multiversioning, where it is used to specify the
+<dd><tt class="docutils literal"><span class="pre">target(&quot;default&quot;)</span></tt> function attribute, x86Function Multiversioning, where it is used to specify the
 default function version.</dd>
 <dt>mmxno-mmx</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;mmx&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the MMX instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;mmx&quot;)</span></tt> function attribute, x86Enable/disable the generation of the MMX instructions.</dd>
 <dt>pclmulno-pclmul</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;pclmul&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the PCLMUL instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;pclmul&quot;)</span></tt> function attribute, x86Enable/disable the generation of the PCLMUL instructions.</dd>
 <dt>popcntno-popcnt</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;popcnt&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the POPCNT instruction.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;popcnt&quot;)</span></tt> function attribute, x86Enable/disable the generation of the POPCNT instruction.</dd>
 <dt>sseno-sse</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;sse&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the SSE instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;sse&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSE instructions.</dd>
 <dt>sse2no-sse2</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;sse2&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the SSE2 instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;sse2&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSE2 instructions.</dd>
 <dt>sse3no-sse3</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;sse3&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the SSE3 instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;sse3&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSE3 instructions.</dd>
 <dt>sse4no-sse4</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;sse4&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the SSE4 instructions (both SSE4.1
+<dd><tt class="docutils literal"><span class="pre">target(&quot;sse4&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSE4 instructions (both SSE4.1
 and SSE4.2).</dd>
 <dt>sse4.1no-sse4.1</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;sse4.1&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the sse4.1 instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;sse4.1&quot;)</span></tt> function attribute, x86Enable/disable the generation of the sse4.1 instructions.</dd>
 <dt>sse4.2no-sse4.2</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;sse4.2&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the sse4.2 instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;sse4.2&quot;)</span></tt> function attribute, x86Enable/disable the generation of the sse4.2 instructions.</dd>
 <dt>sse4ano-sse4a</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;sse4a&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the SSE4A instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;sse4a&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSE4A instructions.</dd>
 <dt>fma4no-fma4</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;fma4&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the FMA4 instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;fma4&quot;)</span></tt> function attribute, x86Enable/disable the generation of the FMA4 instructions.</dd>
 <dt>xopno-xop</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;xop&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the XOP instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;xop&quot;)</span></tt> function attribute, x86Enable/disable the generation of the XOP instructions.</dd>
 <dt>lwpno-lwp</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;lwp&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the LWP instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;lwp&quot;)</span></tt> function attribute, x86Enable/disable the generation of the LWP instructions.</dd>
 <dt>ssse3no-ssse3</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;ssse3&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the SSSE3 instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;ssse3&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSSE3 instructions.</dd>
 <dt>cldno-cld</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;cld&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the CLD before string moves.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;cld&quot;)</span></tt> function attribute, x86Enable/disable the generation of the CLD before string moves.</dd>
 <dt>fancy-math-387no-fancy-math-387</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;fancy-math-387&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the <tt class="docutils literal"><span class="pre">sin</span></tt>, <tt class="docutils literal"><span class="pre">cos</span></tt>, and
+<dd><tt class="docutils literal"><span class="pre">target(&quot;fancy-math-387&quot;)</span></tt> function attribute, x86Enable/disable the generation of the <tt class="docutils literal"><span class="pre">sin</span></tt>, <tt class="docutils literal"><span class="pre">cos</span></tt>, and
 <tt class="docutils literal"><span class="pre">sqrt</span></tt> instructions on the 387 floating-point unit.</dd>
 <dt>fused-maddno-fused-madd</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;fused-madd&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the fused multiply/add instructions.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;fused-madd&quot;)</span></tt> function attribute, x86Enable/disable the generation of the fused multiply/add instructions.</dd>
 <dt>ieee-fpno-ieee-fp</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;ieee-fp&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of floating point that depends on IEEE arithmetic.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;ieee-fp&quot;)</span></tt> function attribute, x86Enable/disable the generation of floating point that depends on IEEE arithmetic.</dd>
 <dt>inline-all-stringopsno-inline-all-stringops</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;inline-all-stringops&quot;)</span></tt> function attribute, x86
-Enable/disable inlining of string operations.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;inline-all-stringops&quot;)</span></tt> function attribute, x86Enable/disable inlining of string operations.</dd>
 <dt>inline-stringops-dynamicallyno-inline-stringops-dynamically</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;inline-stringops-dynamically&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of the inline code to do small string
+<dd><tt class="docutils literal"><span class="pre">target(&quot;inline-stringops-dynamically&quot;)</span></tt> function attribute, x86Enable/disable the generation of the inline code to do small string
 operations and calling the library routines for large operations.</dd>
 <dt>align-stringopsno-align-stringops</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;align-stringops&quot;)</span></tt> function attribute, x86
-Do/do not align destination of inlined string operations.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;align-stringops&quot;)</span></tt> function attribute, x86Do/do not align destination of inlined string operations.</dd>
 <dt>recipno-recip</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;recip&quot;)</span></tt> function attribute, x86
-Enable/disable the generation of RCPSS, RCPPS, RSQRTSS and RSQRTPS
+<dd><tt class="docutils literal"><span class="pre">target(&quot;recip&quot;)</span></tt> function attribute, x86Enable/disable the generation of RCPSS, RCPPS, RSQRTSS and RSQRTPS
 instructions followed an additional Newton-Raphson step instead of
 doing a floating-point division.</dd>
 <dt>arch=``ARCH``</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;arch=``ARCH</span></tt>&#8221;)`` function attribute, x86
-Specify the architecture to generate code for in compiling the function.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;arch=``ARCH</span></tt>&#8221;)`` function attribute, x86Specify the architecture to generate code for in compiling the function.</dd>
 <dt>tune=``TUNE``</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;tune=``TUNE</span></tt>&#8221;)`` function attribute, x86
-Specify the architecture to tune for in compiling the function.</dd>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;tune=``TUNE</span></tt>&#8221;)`` function attribute, x86Specify the architecture to tune for in compiling the function.</dd>
 <dt>fpmath=``FPMATH``</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;fpmath=``FPMATH</span></tt>&#8221;)`` function attribute, x86
-Specify which floating-point unit to use.  You must specify the
+<dd><p class="first"><tt class="docutils literal"><span class="pre">target(&quot;fpmath=``FPMATH</span></tt>&#8221;)`` function attribute, x86Specify which floating-point unit to use.  You must specify the
 <tt class="docutils literal"><span class="pre">target(&quot;fpmath=sse,387&quot;)</span></tt> option as
 <tt class="docutils literal"><span class="pre">target(&quot;fpmath=sse+387&quot;)</span></tt> because the comma would separate
-different options.</dd>
+different options.</p>
+<p class="last">On the x86, the inliner does not inline a</p>
+</dd>
 </dl>
-<p class="last">On the x86, the inliner does not inline a
-function that has different target options than the caller, unless the
+<p>function that has different target options than the caller, unless the
 callee has a subset of the target options of the caller.  For example
 a function declared with <tt class="docutils literal"><span class="pre">target(&quot;sse3&quot;)</span></tt> can inline a function
 with <tt class="docutils literal"><span class="pre">target(&quot;sse2&quot;)</span></tt>, since <tt class="docutils literal"><span class="pre">-msse3</span></tt> implies <tt class="docutils literal"><span class="pre">-msse2</span></tt>.</p>
+<p class="last">:: _xstormy16-function-attributes:</p>
 </dd>
 </dl>
-<p>:: _xstormy16-function-attributes:</p>
 </div>
 <div class="section" id="xstormy16-function-attributes">
 <h2>Xstormy16 Function Attributes<a class="headerlink" href="#xstormy16-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the Xstormy16 back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
-<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, Xstormy16
-Use this attribute to indicate
+<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, Xstormy16Use this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.</dd>

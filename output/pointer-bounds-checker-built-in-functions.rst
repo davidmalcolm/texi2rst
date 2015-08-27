@@ -1,3 +1,4 @@
+
 Pointer Bounds Checker Built-in Functions
 *****************************************
 
@@ -33,9 +34,7 @@ The behavior may differ in such case as documented below.
 
 .. index:: __builtin___bnd_set_ptr_bounds
 
-  Built-in Function void * __builtin___bnd_set_ptr_bounds (const void *``q``, size_t ``size``)
-
-This built-in function returns a new pointer with the value of ``q``, and
+Built-in Functionvoid *__builtin___bnd_set_ptr_bounds(constvoid*``q``,size_t``size``)This built-in function returns a new pointer with the value of ``q``, and
 associate it with the bounds [``q``, ``q``+``size``-1].  With Pointer
 Bounds Checker off, the built-in function just returns the first argument.
 
@@ -50,9 +49,7 @@ Bounds Checker off, the built-in function just returns the first argument.
 
 .. index:: __builtin___bnd_narrow_ptr_bounds
 
-  Built-in Function void * __builtin___bnd_narrow_ptr_bounds (const void *``p``, const void *``q``, size_t  ``size``)
-
-This built-in function returns a new pointer with the value of ``p``
+Built-in Functionvoid *__builtin___bnd_narrow_ptr_bounds(constvoid*``p``,constvoid*``q``,size_t``size``)This built-in function returns a new pointer with the value of ``p``
 and associates it with the narrowed bounds formed by the intersection
 of bounds associated with ``q`` and the bounds
 [``p``, ``p`` + ``size`` - 1].
@@ -73,9 +70,7 @@ argument.
 
 .. index:: __builtin___bnd_copy_ptr_bounds
 
-  Built-in Function void * __builtin___bnd_copy_ptr_bounds (const void *``q``, const void *``r``)
-
-This built-in function returns a new pointer with the value of ``q``,
+Built-in Functionvoid *__builtin___bnd_copy_ptr_bounds(constvoid*``q``,constvoid*``r``)This built-in function returns a new pointer with the value of ``q``,
 and associates it with the bounds already associated with pointer ``r``.
 With Pointer Bounds Checker off, the built-in function just returns the first
 argument.
@@ -89,25 +84,19 @@ argument.
 
 .. index:: __builtin___bnd_init_ptr_bounds
 
-  Built-in Function void * __builtin___bnd_init_ptr_bounds (const void *``q``)
-
-This built-in function returns a new pointer with the value of ``q``, and
+Built-in Functionvoid *__builtin___bnd_init_ptr_bounds(constvoid*``q``)This built-in function returns a new pointer with the value of ``q``, and
 associates it with INIT (allowing full memory access) bounds. With Pointer
 Bounds Checker off, the built-in function just returns the first argument.
 
 .. index:: __builtin___bnd_null_ptr_bounds
 
-  Built-in Function void * __builtin___bnd_null_ptr_bounds (const void *``q``)
-
-This built-in function returns a new pointer with the value of ``q``, and
+Built-in Functionvoid *__builtin___bnd_null_ptr_bounds(constvoid*``q``)This built-in function returns a new pointer with the value of ``q``, and
 associates it with NULL (allowing no memory access) bounds. With Pointer
 Bounds Checker off, the built-in function just returns the first argument.
 
 .. index:: __builtin___bnd_store_ptr_bounds
 
-  Built-in Function void __builtin___bnd_store_ptr_bounds (const void **``ptr_addr``, const void *``ptr_val``)
-
-This built-in function stores the bounds associated with pointer ``ptr_val``
+Built-in Functionvoid__builtin___bnd_store_ptr_bounds(constvoid**``ptr_addr``,constvoid*``ptr_val``)This built-in function stores the bounds associated with pointer ``ptr_val``
 and location ``ptr_addr`` into Bounds Table.  This can be useful to propagate
 bounds from legacy code without touching the associated pointer's memory when
 pointers are copied as integers.  With Pointer Bounds Checker off, the built-in
@@ -115,9 +104,7 @@ function call is ignored.
 
 .. index:: __builtin___bnd_chk_ptr_lbounds
 
-  Built-in Function void __builtin___bnd_chk_ptr_lbounds (const void *``q``)
-
-This built-in function checks if the pointer ``q`` is within the lower
+Built-in Functionvoid__builtin___bnd_chk_ptr_lbounds(constvoid*``q``)This built-in function checks if the pointer ``q`` is within the lower
 bound of its associated bounds.  With Pointer Bounds Checker off, the built-in
 function call is ignored.
 
@@ -136,17 +123,13 @@ function call is ignored.
 
 .. index:: __builtin___bnd_chk_ptr_ubounds
 
-  Built-in Function void __builtin___bnd_chk_ptr_ubounds (const void *``q``)
-
-This built-in function checks if the pointer ``q`` is within the upper
+Built-in Functionvoid__builtin___bnd_chk_ptr_ubounds(constvoid*``q``)This built-in function checks if the pointer ``q`` is within the upper
 bound of its associated bounds.  With Pointer Bounds Checker off, the built-in
 function call is ignored.
 
 .. index:: __builtin___bnd_chk_ptr_bounds
 
-  Built-in Function void __builtin___bnd_chk_ptr_bounds (const void *``q``, size_t ``size``)
-
-This built-in function checks if [``q``, ``q`` + ``size`` - 1] is within
+Built-in Functionvoid__builtin___bnd_chk_ptr_bounds(constvoid*``q``,size_t``size``)This built-in function checks if [``q``, ``q`` + ``size`` - 1] is within
 the lower and upper bounds associated with ``q``.  With Pointer Bounds Checker
 off, the built-in function call is ignored.
 
@@ -165,9 +148,7 @@ off, the built-in function call is ignored.
 
 .. index:: __builtin___bnd_get_ptr_lbound
 
-  Built-in Function const void * __builtin___bnd_get_ptr_lbound (const void *``q``)
-
-This built-in function returns the lower bound associated
+Built-in Functionconst void *__builtin___bnd_get_ptr_lbound(constvoid*``q``)This built-in function returns the lower bound associated
 with the pointer ``q``, as a pointer value.  
 This is useful for debugging using ``printf``.
 With Pointer Bounds Checker off, the built-in function returns 0.
@@ -180,9 +161,7 @@ With Pointer Bounds Checker off, the built-in function returns 0.
 
 .. index:: __builtin___bnd_get_ptr_ubound
 
-  Built-in Function const void * __builtin___bnd_get_ptr_ubound (const void *``q``)
-
-This built-in function returns the upper bound (which is a pointer) associated
+Built-in Functionconst void *__builtin___bnd_get_ptr_ubound(constvoid*``q``)This built-in function returns the upper bound (which is a pointer) associated
 with the pointer ``q``.  With Pointer Bounds Checker off,
 the built-in function returns -1.
 

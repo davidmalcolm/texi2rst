@@ -1,3 +1,4 @@
+
 Built-in Functions for Memory Model Aware Atomic Operations
 ***********************************************************
 
@@ -66,7 +67,7 @@ __ATOMIC_SEQ_CST
   Barrier in both directions and synchronizes with acquire loads and
   release stores in all threads.
 
-Note that the scope of a C++11 memory model depends on whether or not
+  Note that the scope of a C++11 memory model depends on whether or not
 the function being called is a fence (such as
 __atomic_thread_fence).  In a fence, all memory accesses are
 subject to the restrictions of the memory model.  When the function is
@@ -105,8 +106,7 @@ ensures proper usage.
 
 .. index:: __atomic_load_n
 
-  Built-in Function ``type`` __atomic_load_n (``type`` *ptr, int memmodel)
-This built-in function implements an atomic load operation.  It returns the
+Built-in Function``type``__atomic_load_n(``type``*ptr,intmemmodel)This built-in function implements an atomic load operation.  It returns the
 contents of ``*``ptr````.
 
 The valid memory model variants are
@@ -115,14 +115,12 @@ and ``__ATOMIC_CONSUME``.
 
 .. index:: __atomic_load
 
-  Built-in Function void __atomic_load (``type`` *ptr, ``type`` *ret, int memmodel)
-This is the generic version of an atomic load.  It returns the
+Built-in Functionvoid__atomic_load(``type``*ptr,``type``*ret,intmemmodel)This is the generic version of an atomic load.  It returns the
 contents of ``*``ptr```` in ``*``ret````.
 
 .. index:: __atomic_store_n
 
-  Built-in Function void __atomic_store_n (``type`` *ptr, ``type`` val, int memmodel)
-This built-in function implements an atomic store operation.  It writes 
+Built-in Functionvoid__atomic_store_n(``type``*ptr,``type``val,intmemmodel)This built-in function implements an atomic store operation.  It writes 
 ````val```` into ``*``ptr````.  
 
 The valid memory model variants are
@@ -130,14 +128,12 @@ The valid memory model variants are
 
 .. index:: __atomic_store
 
-  Built-in Function void __atomic_store (``type`` *ptr, ``type`` *val, int memmodel)
-This is the generic version of an atomic store.  It stores the value
+Built-in Functionvoid__atomic_store(``type``*ptr,``type``*val,intmemmodel)This is the generic version of an atomic store.  It stores the value
 of ``*``val```` into ``*``ptr````.
 
 .. index:: __atomic_exchange_n
 
-  Built-in Function ``type`` __atomic_exchange_n (``type`` *ptr, ``type`` val, int memmodel)
-This built-in function implements an atomic exchange operation.  It writes
+Built-in Function``type``__atomic_exchange_n(``type``*ptr,``type``val,intmemmodel)This built-in function implements an atomic exchange operation.  It writes
 ``val`` into ``*``ptr````, and returns the previous contents of
 ``*``ptr````.
 
@@ -147,15 +143,13 @@ The valid memory model variants are
 
 .. index:: __atomic_exchange
 
-  Built-in Function void __atomic_exchange (``type`` *ptr, ``type`` *val, ``type`` *ret, int memmodel)
-This is the generic version of an atomic exchange.  It stores the
+Built-in Functionvoid__atomic_exchange(``type``*ptr,``type``*val,``type``*ret,intmemmodel)This is the generic version of an atomic exchange.  It stores the
 contents of ``*``val```` into ``*``ptr````. The original value
 of ``*``ptr```` is copied into ``*``ret````.
 
 .. index:: __atomic_compare_exchange_n
 
-  Built-in Function bool __atomic_compare_exchange_n (``type`` *ptr, ``type`` *expected, ``type`` desired, bool weak, int success_memmodel, int failure_memmodel)
-This built-in function implements an atomic compare and exchange operation.
+Built-in Functionbool__atomic_compare_exchange_n(``type``*ptr,``type``*expected,``type``desired,boolweak,intsuccess_memmodel,intfailure_memmodel)This built-in function implements an atomic compare and exchange operation.
 This compares the contents of ``*``ptr```` with the contents of
 ``*``expected````. If equal, the operation is a read-modify-write
 which writes ``desired`` into ``*``ptr````.  If they are not
@@ -177,36 +171,29 @@ stronger model than that specified by ``success_memmodel``.
 
 .. index:: __atomic_compare_exchange
 
-  Built-in Function bool __atomic_compare_exchange (``type`` *ptr, ``type`` *expected, ``type`` *desired, bool weak, int success_memmodel, int failure_memmodel)
-This built-in function implements the generic version of
+Built-in Functionbool__atomic_compare_exchange(``type``*ptr,``type``*expected,``type``*desired,boolweak,intsuccess_memmodel,intfailure_memmodel)This built-in function implements the generic version of
 ``__atomic_compare_exchange``.  The function is virtually identical to
 ``__atomic_compare_exchange_n``, except the desired value is also a
 pointer.
 
 .. index:: __atomic_add_fetch
 
-  Built-in Function ``type`` __atomic_add_fetch (``type`` *ptr, ``type`` val, int memmodel)
-
+Built-in Function``type``__atomic_add_fetch(``type``*ptr,``type``val,intmemmodel)
 .. index:: __atomic_sub_fetch
 
-  Built-in Function ``type`` __atomic_sub_fetch (``type`` *ptr, ``type`` val, int memmodel)
-
+Built-in Function``type``__atomic_sub_fetch(``type``*ptr,``type``val,intmemmodel)
 .. index:: __atomic_and_fetch
 
-  Built-in Function ``type`` __atomic_and_fetch (``type`` *ptr, ``type`` val, int memmodel)
-
+Built-in Function``type``__atomic_and_fetch(``type``*ptr,``type``val,intmemmodel)
 .. index:: __atomic_xor_fetch
 
-  Built-in Function ``type`` __atomic_xor_fetch (``type`` *ptr, ``type`` val, int memmodel)
-
+Built-in Function``type``__atomic_xor_fetch(``type``*ptr,``type``val,intmemmodel)
 .. index:: __atomic_or_fetch
 
-  Built-in Function ``type`` __atomic_or_fetch (``type`` *ptr, ``type`` val, int memmodel)
-
+Built-in Function``type``__atomic_or_fetch(``type``*ptr,``type``val,intmemmodel)
 .. index:: __atomic_nand_fetch
 
-  Built-in Function ``type`` __atomic_nand_fetch (``type`` *ptr, ``type`` val, int memmodel)
-These built-in functions perform the operation suggested by the name, and
+Built-in Function``type``__atomic_nand_fetch(``type``*ptr,``type``val,intmemmodel)These built-in functions perform the operation suggested by the name, and
 return the result of the operation. That is,
 
 .. code-block:: c++
@@ -217,28 +204,22 @@ All memory models are valid.
 
 .. index:: __atomic_fetch_add
 
-  Built-in Function ``type`` __atomic_fetch_add (``type`` *ptr, ``type`` val, int memmodel)
-
+Built-in Function``type``__atomic_fetch_add(``type``*ptr,``type``val,intmemmodel)
 .. index:: __atomic_fetch_sub
 
-  Built-in Function ``type`` __atomic_fetch_sub (``type`` *ptr, ``type`` val, int memmodel)
-
+Built-in Function``type``__atomic_fetch_sub(``type``*ptr,``type``val,intmemmodel)
 .. index:: __atomic_fetch_and
 
-  Built-in Function ``type`` __atomic_fetch_and (``type`` *ptr, ``type`` val, int memmodel)
-
+Built-in Function``type``__atomic_fetch_and(``type``*ptr,``type``val,intmemmodel)
 .. index:: __atomic_fetch_xor
 
-  Built-in Function ``type`` __atomic_fetch_xor (``type`` *ptr, ``type`` val, int memmodel)
-
+Built-in Function``type``__atomic_fetch_xor(``type``*ptr,``type``val,intmemmodel)
 .. index:: __atomic_fetch_or
 
-  Built-in Function ``type`` __atomic_fetch_or (``type`` *ptr, ``type`` val, int memmodel)
-
+Built-in Function``type``__atomic_fetch_or(``type``*ptr,``type``val,intmemmodel)
 .. index:: __atomic_fetch_nand
 
-  Built-in Function ``type`` __atomic_fetch_nand (``type`` *ptr, ``type`` val, int memmodel)
-These built-in functions perform the operation suggested by the name, and
+Built-in Function``type``__atomic_fetch_nand(``type``*ptr,``type``val,intmemmodel)These built-in functions perform the operation suggested by the name, and
 return the value that had previously been in ``*``ptr````.  That is,
 
 .. code-block:: c++
@@ -249,9 +230,7 @@ All memory models are valid.
 
 .. index:: __atomic_test_and_set
 
-  Built-in Function bool __atomic_test_and_set (void *ptr, int memmodel)
-
-This built-in function performs an atomic test-and-set operation on
+Built-in Functionbool__atomic_test_and_set(void*ptr,intmemmodel)This built-in function performs an atomic test-and-set operation on
 the byte at ``*``ptr````.  The byte is set to some implementation
 defined nonzero 'set' value and the return value is ``true`` if and only
 if the previous contents were 'set'.
@@ -262,9 +241,7 @@ All memory models are valid.
 
 .. index:: __atomic_clear
 
-  Built-in Function void __atomic_clear (bool *ptr, int memmodel)
-
-This built-in function performs an atomic clear operation on
+Built-in Functionvoid__atomic_clear(bool*ptr,intmemmodel)This built-in function performs an atomic clear operation on
 ``*``ptr````.  After the operation, ``*``ptr```` contains 0.
 It should be only used for operands of type ``bool`` or ``char`` and 
 in conjunction with ``__atomic_test_and_set``.
@@ -277,27 +254,21 @@ The valid memory model variants are
 
 .. index:: __atomic_thread_fence
 
-  Built-in Function void __atomic_thread_fence (int memmodel)
-
-This built-in function acts as a synchronization fence between threads
+Built-in Functionvoid__atomic_thread_fence(intmemmodel)This built-in function acts as a synchronization fence between threads
 based on the specified memory model.
 
 All memory orders are valid.
 
 .. index:: __atomic_signal_fence
 
-  Built-in Function void __atomic_signal_fence (int memmodel)
-
-This built-in function acts as a synchronization fence between a thread
+Built-in Functionvoid__atomic_signal_fence(intmemmodel)This built-in function acts as a synchronization fence between a thread
 and signal handlers based in the same thread.
 
 All memory orders are valid.
 
 .. index:: __atomic_always_lock_free
 
-  Built-in Function bool __atomic_always_lock_free (size_t size,  void *ptr)
-
-This built-in function returns true if objects of ``size`` bytes always
+Built-in Functionbool__atomic_always_lock_free(size_tsize,void*ptr)This built-in function returns true if objects of ``size`` bytes always
 generate lock free atomic instructions for the target architecture.  
 ``size`` must resolve to a compile-time constant and the result also
 resolves to a compile-time constant.
@@ -312,9 +283,7 @@ compiler may also ignore this parameter.
 
 .. index:: __atomic_is_lock_free
 
-  Built-in Function bool __atomic_is_lock_free (size_t size, void *ptr)
-
-This built-in function returns true if objects of ``size`` bytes always
+Built-in Functionbool__atomic_is_lock_free(size_tsize,void*ptr)This built-in function returns true if objects of ``size`` bytes always
 generate lock free atomic instructions for the target architecture.  If
 it is not known to be lock free a call is made to a runtime routine named
 ``__atomic_is_lock_free``.

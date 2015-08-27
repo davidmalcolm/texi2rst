@@ -1,4 +1,3 @@
-
 Have You Found a Bug?
 *********************
 
@@ -17,7 +16,7 @@ If you are not sure whether you have found a bug, here are some guidelines:
 
   .. index:: assembly code, invalid
 
-  * If the compiler produces invalid assembly code, for any input whatever
+* If the compiler produces invalid assembly code, for any input whatever
   (except an ``asm`` statement), that is a compiler bug, unless the
   compiler reports errors (not just warnings) which would ordinarily
   prevent the assembler from being run.
@@ -28,7 +27,7 @@ If you are not sure whether you have found a bug, here are some guidelines:
 
   .. index:: increment operators
 
-  * If the compiler produces valid assembly code that does not correctly
+* If the compiler produces valid assembly code that does not correctly
   execute the input source code, that is a compiler bug.
 
   However, you must double-check to make sure, because you may have a
@@ -50,16 +49,16 @@ If you are not sure whether you have found a bug, here are some guidelines:
   be easy to check for these things.  If your program is correct and
   well defined, you have found a compiler bug.
 
-  * If the compiler produces an error message for valid input, that is a
+* If the compiler produces an error message for valid input, that is a
   compiler bug.
 
   .. index:: invalid input
 
-  * If the compiler does not produce an error message for invalid input,
+* If the compiler does not produce an error message for invalid input,
   that is a compiler bug.  However, you should note that your idea of
   'invalid input' might be someone else's idea of 'an extension' or
   'support for traditional practice'.
 
-  * If you are an experienced user of one of the languages GCC supports, your
+* If you are an experienced user of one of the languages GCC supports, your
   suggestions for improvement of GCC are welcome in any case.
 

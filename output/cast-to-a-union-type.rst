@@ -1,3 +1,4 @@
+
 Cast to a Union Type
 ********************
 

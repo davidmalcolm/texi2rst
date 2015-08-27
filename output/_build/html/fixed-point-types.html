@@ -84,42 +84,7 @@
             
   <div class="section" id="fixed-point-types">
 <h1>Fixed-Point Types<a class="headerlink" href="#fixed-point-types" title="Permalink to this headline">¶</a></h1>
-<p id="index-0"><tt class="docutils literal"><span class="pre">_Fract</span></tt> data type
-<tt class="docutils literal"><span class="pre">_Accum</span></tt> data type
-<tt class="docutils literal"><span class="pre">_Sat</span></tt> data type
-<tt class="docutils literal"><span class="pre">hr</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">r</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">lr</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">llr</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">uhr</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">ur</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">ulr</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">ullr</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">hk</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">k</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">lk</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">llk</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">uhk</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">uk</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">ulk</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">ullk</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">HR</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">R</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">LR</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">LLR</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">UHR</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">UR</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">ULR</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">ULLR</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">HK</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">K</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">LK</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">LLK</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">UHK</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">UK</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">ULK</span></tt> fixed-suffix
-<tt class="docutils literal"><span class="pre">ULLK</span></tt> fixed-suffix</p>
-<p>As an extension, GNU C supports fixed-point types as
+<p id="index-0"><tt class="docutils literal"><span class="pre">_Fract</span></tt> data type``_Accum`` data type``_Sat`` data type``hr`` fixed-suffix``r`` fixed-suffix``lr`` fixed-suffix``llr`` fixed-suffix``uhr`` fixed-suffix``ur`` fixed-suffix``ulr`` fixed-suffix``ullr`` fixed-suffix``hk`` fixed-suffix``k`` fixed-suffix``lk`` fixed-suffix``llk`` fixed-suffix``uhk`` fixed-suffix``uk`` fixed-suffix``ulk`` fixed-suffix``ullk`` fixed-suffix``HR`` fixed-suffix``R`` fixed-suffix``LR`` fixed-suffix``LLR`` fixed-suffix``UHR`` fixed-suffix``UR`` fixed-suffix``ULR`` fixed-suffix``ULLR`` fixed-suffix``HK`` fixed-suffix``K`` fixed-suffix``LK`` fixed-suffix``LLK`` fixed-suffix``UHK`` fixed-suffix``UK`` fixed-suffix``ULK`` fixed-suffix``ULLK`` fixed-suffixAs an extension, GNU C supports fixed-point types as
 defined in the N1169 draft of ISO/IEC DTR 18037.  Support for fixed-point
 types in GCC will evolve as the draft technical report changes.
 Calling conventions for any target might also change.  Not all targets
@@ -161,47 +126,47 @@ support fixed-point types.</p>
 The format of fixed-point data varies and depends on the target machine.</p>
 <p>Support for fixed-point types includes:</p>
 <ul class="simple">
-<li>prefix and postfix increment and decrement operators (<tt class="docutils literal"><span class="pre">++</span></tt>, <tt class="docutils literal"><span class="pre">--</span></tt>)
-* unary arithmetic operators (<tt class="docutils literal"><span class="pre">+</span></tt>, <tt class="docutils literal"><span class="pre">-</span></tt>, <tt class="docutils literal"><span class="pre">!</span></tt>)
-* binary arithmetic operators (<tt class="docutils literal"><span class="pre">+</span></tt>, <tt class="docutils literal"><span class="pre">-</span></tt>, <tt class="docutils literal"><span class="pre">*</span></tt>, <tt class="docutils literal"><span class="pre">/</span></tt>)
-* binary shift operators (<tt class="docutils literal"><span class="pre">&lt;&lt;</span></tt>, <tt class="docutils literal"><span class="pre">&gt;&gt;</span></tt>)
-* relational operators (<tt class="docutils literal"><span class="pre">&lt;</span></tt>, <tt class="docutils literal"><span class="pre">&lt;=</span></tt>, <tt class="docutils literal"><span class="pre">&gt;=</span></tt>, <tt class="docutils literal"><span class="pre">&gt;</span></tt>)
-* equality operators (<tt class="docutils literal"><span class="pre">==</span></tt>, <tt class="docutils literal"><span class="pre">!=</span></tt>)
-* assignment operators (<tt class="docutils literal"><span class="pre">+=</span></tt>, <tt class="docutils literal"><span class="pre">-=</span></tt>, <tt class="docutils literal"><span class="pre">*=</span></tt>, <tt class="docutils literal"><span class="pre">/=</span></tt>,
-<tt class="docutils literal"><span class="pre">&lt;&lt;=</span></tt>, <tt class="docutils literal"><span class="pre">&gt;&gt;=</span></tt>)
-* conversions to and from integer, floating-point, or fixed-point types</li>
+<li>prefix and postfix increment and decrement operators (<tt class="docutils literal"><span class="pre">++</span></tt>, <tt class="docutils literal"><span class="pre">--</span></tt>)</li>
+<li>unary arithmetic operators (<tt class="docutils literal"><span class="pre">+</span></tt>, <tt class="docutils literal"><span class="pre">-</span></tt>, <tt class="docutils literal"><span class="pre">!</span></tt>)</li>
+<li>binary arithmetic operators (<tt class="docutils literal"><span class="pre">+</span></tt>, <tt class="docutils literal"><span class="pre">-</span></tt>, <tt class="docutils literal"><span class="pre">*</span></tt>, <tt class="docutils literal"><span class="pre">/</span></tt>)</li>
+<li>binary shift operators (<tt class="docutils literal"><span class="pre">&lt;&lt;</span></tt>, <tt class="docutils literal"><span class="pre">&gt;&gt;</span></tt>)</li>
+<li>relational operators (<tt class="docutils literal"><span class="pre">&lt;</span></tt>, <tt class="docutils literal"><span class="pre">&lt;=</span></tt>, <tt class="docutils literal"><span class="pre">&gt;=</span></tt>, <tt class="docutils literal"><span class="pre">&gt;</span></tt>)</li>
+<li>equality operators (<tt class="docutils literal"><span class="pre">==</span></tt>, <tt class="docutils literal"><span class="pre">!=</span></tt>)</li>
+<li>assignment operators (<tt class="docutils literal"><span class="pre">+=</span></tt>, <tt class="docutils literal"><span class="pre">-=</span></tt>, <tt class="docutils literal"><span class="pre">*=</span></tt>, <tt class="docutils literal"><span class="pre">/=</span></tt>,
+<tt class="docutils literal"><span class="pre">&lt;&lt;=</span></tt>, <tt class="docutils literal"><span class="pre">&gt;&gt;=</span></tt>)</li>
+<li>conversions to and from integer, floating-point, or fixed-point types</li>
 </ul>
 <p>Use a suffix in a fixed-point literal constant:</p>
 <ul class="simple">
 <li>hr or HR for <tt class="docutils literal"><span class="pre">short</span> <span class="pre">_Fract</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt>
-* r or R for <tt class="docutils literal"><span class="pre">_Fract</span></tt> and <tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">_Fract</span></tt>
-* lr or LR for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">_Fract</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>
-* llr or LLR for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>
-* uhr or UHR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt>
-* ur or UR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">_Fract</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">_Fract</span></tt>
-* ulr or ULR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>
-* ullr or ULLR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>
-and <tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>
-* hk or HK for <tt class="docutils literal"><span class="pre">short</span> <span class="pre">_Accum</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt>
-* k or K for <tt class="docutils literal"><span class="pre">_Accum</span></tt> and <tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">_Accum</span></tt>
-* lk or LK for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">_Accum</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>
-* llk or LLK for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>
-* uhk or UHK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt>
-* uk or UK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">_Accum</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">_Accum</span></tt>
-* ulk or ULK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt> and
-<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>
-* ullk or ULLK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt></li>
+<li>r or R for <tt class="docutils literal"><span class="pre">_Fract</span></tt> and <tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">_Fract</span></tt></li>
+<li>lr or LR for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">_Fract</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt></li>
+<li>llr or LLR for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt></li>
+<li>uhr or UHR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt></li>
+<li>ur or UR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">_Fract</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">_Fract</span></tt></li>
+<li>ulr or ULR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt></li>
+<li>ullr or ULLR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>
+and <tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt></li>
+<li>hk or HK for <tt class="docutils literal"><span class="pre">short</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt></li>
+<li>k or K for <tt class="docutils literal"><span class="pre">_Accum</span></tt> and <tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">_Accum</span></tt></li>
+<li>lk or LK for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt></li>
+<li>llk or LLK for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt></li>
+<li>uhk or UHK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt></li>
+<li>uk or UK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">_Accum</span></tt></li>
+<li>ulk or ULK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt></li>
+<li>ullk or ULLK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>
 and <tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt></li>
 </ul>
 <p>GCC support of fixed-point types as specified by the draft technical report

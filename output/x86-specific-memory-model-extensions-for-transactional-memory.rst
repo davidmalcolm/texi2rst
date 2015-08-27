@@ -1,3 +1,4 @@
+
 x86-Specific Memory Model Extensions for Transactional Memory
 *************************************************************
 
@@ -14,7 +15,7 @@ __ATOMIC_HLE_RELEASE
   End lock elision on a lock variable.
   Memory model must be ``__ATOMIC_RELEASE`` or stronger.
 
-When a lock acquire fails it is required for good performance to abort
+  When a lock acquire fails it is required for good performance to abort
 the transaction quickly. This can be done with a ``_mm_pause``
 
 .. code-block:: c++

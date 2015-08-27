@@ -1,3 +1,4 @@
+
 Specifying Subprocesses and the Switches to Pass to Them
 ********************************************************
 
@@ -24,18 +25,15 @@ character on the line, which can be one of the following:
   appear here are:
 
   %include <``file``>
-    ``%include``
-    Search for ``file`` and insert its text at the current point in the
+    ``%include``Search for ``file`` and insert its text at the current point in the
     specs file.
 
   %include_noerr <``file``>
-    ``%include_noerr``
-    Just like %include, but do not generate an error message if the include
+    ``%include_noerr``Just like %include, but do not generate an error message if the include
     file cannot be found.
 
   %rename ``old_name````new_name``
-    ``%rename``
-    Rename the spec string ``old_name`` to ``new_name``.
+    ``%rename``Rename the spec string ``old_name`` to ``new_name``.
 
 *[``spec_name``]:
   This tells the compiler to create, override or delete the named spec
@@ -87,12 +85,12 @@ character on the line, which can be one of the following:
 
       ``name`` compiler not installed on this system.
 
-  GCC already has an extensive list of suffixes built into it.
+    GCC already has an extensive list of suffixes built into it.
   This directive adds an entry to the end of the list of suffixes, but
   since the list is searched from the end backwards, it is effectively
   possible to override earlier entries using this technique.
 
-GCC has the following spec strings built into it.  Spec files can
+  GCC has the following spec strings built into it.  Spec files can
 override these strings or create their own.  Note that individual
 targets can also add their own spec strings to this list.
 
@@ -520,13 +518,12 @@ together or combine them with constant text in a single argument.
     -d jim.d      -bar -baz -boggle
 
 %{S:X; T:Y; :D}
-
   If ``S`` is given to GCC, substitutes ``X``; else if ``T`` is
   given to GCC, substitutes ``Y``; else substitutes ``D``.  There can
   be as many clauses as you need.  This may be combined with ``.``,
   ``,``, ``!``, ``|``, and ``*`` as needed.
 
-The conditional text ``X`` in a %{``S``:``X``} or similar
+  The conditional text ``X`` in a %{``S``:``X``} or similar
 construct may contain other nested % constructs or spaces, or
 even newlines.  They are processed as usual, as described above.
 Trailing white space in ``X`` is ignored.  White space may also
@@ -556,5 +553,5 @@ GCC also knows implicitly that arguments starting in :option:`-l` are to be
 treated as compiler output files, and passed to the linker in their
 proper position among the other output files.
 
-.. man begin OPTIONS 
+.. man begin OPTIONS
 

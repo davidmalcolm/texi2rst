@@ -1,3 +1,4 @@
+
 Options for Code Generation Conventions
 ***************************************
 
@@ -469,7 +470,6 @@ it.
   For example:
 
   :option:`-finstrument-functions-exclude-file-list=/bits/stl,include/sys`
-
   excludes any inline function defined in files whose pathnames
   contain /bits/stl or include/sys.
 
@@ -513,11 +513,11 @@ it.
   * Modified allocation strategy for large objects: they are always
     allocated dynamically if their size exceeds a fixed threshold.
 
-    * Fixed limit on the size of the static frame of functions: when it is
+  * Fixed limit on the size of the static frame of functions: when it is
     topped by a particular function, stack checking is not reliable and
     a warning is issued by the compiler.
 
-    * Inefficiency: because of both the modified allocation strategy and the
+  * Inefficiency: because of both the modified allocation strategy and the
     generic implementation, code performance is hampered.
 
   Note that old-style stack checking is also the fallback method for
@@ -686,5 +686,5 @@ it.
   of the option is :option:`-fno-sync-libcalls`.  This option is used in
   the implementation of the libatomic runtime library.
 
-.. man end 
+.. man end
 

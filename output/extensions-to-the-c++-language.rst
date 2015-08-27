@@ -1,3 +1,4 @@
+
 Extensions to the C++ Language
 ------------------------------
 
@@ -48,27 +49,16 @@ test specifically for GNU C++ (Common Predefined MacrosPredefined MacroscppThe G
   java-exceptions
   deprecated-features
   backwards-compatibility
+
 :: _restricted-pointers:
-
 :: _vague-linkage:
-
 :: _c++-interface:
-
 :: _template-instantiation:
-
 :: _bound-member-functions:
-
 :: _c++-attributes:
-
 :: _function-multiversioning:
-
 :: _namespace-association:
-
 :: _type-traits:
-
-:: _java-exceptions:
-
+  :: _java-exceptions:
 :: _deprecated-features:
-
 :: _backwards-compatibility:
-

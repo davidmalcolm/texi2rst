@@ -1,3 +1,4 @@
+
 C++ Interface and Implementation Pragmas
 ****************************************
 
@@ -50,15 +51,15 @@ functions.
   internal tables used to implement virtual functions are all generated in
   implementation files.
 
-  implied ``#pragma implementation``
-  ``#pragma implementation``, implied
-
+  implied ``#pragma implementation````#pragma implementation``, implied
   .. index:: naming convention, implementation headers
 
   If you use #pragma implementation with no argument, it applies to
   an include file with the same basenameA file's :dfn:`basename`
   is the name stripped of all leading path information and of trailing
-  suffixes, such as .h or .C or .cc. as your source
+  suffixes, such as .h or .C or .cc.
+
+   as your source
   file.  For example, in allclass.cc, giving just
   #pragma implementation
   by itself is equivalent to #pragma implementation "allclass.h".

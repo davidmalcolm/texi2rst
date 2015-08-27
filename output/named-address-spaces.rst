@@ -1,3 +1,4 @@
+
 Named Address Spaces
 ********************
 
@@ -15,7 +16,6 @@ qualifier (e.g., ``const`` or ``volatile``).  See the N1275
 document for more details.
 
 AVR Named Address Spaces
-
 AVR Named Address Spaces
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -31,26 +31,19 @@ and to generate the right instructions to access this data
 without using (inline) assembler code.
 
 __flash
-  ``__flash`` AVR Named Address Spaces
-  The ``__flash`` qualifier locates data in the
+  ``__flash`` AVR Named Address SpacesThe ``__flash`` qualifier locates data in the
   ``.progmem.data`` section. Data is read using the ``LPM``
   instruction. Pointers to this address space are 16 bits wide.
 
 __flash1__flash2__flash3__flash4__flash5
-  ``__flash1`` AVR Named Address Spaces
-  ``__flash2`` AVR Named Address Spaces
-  ``__flash3`` AVR Named Address Spaces
-  ``__flash4`` AVR Named Address Spaces
-  ``__flash5`` AVR Named Address Spaces
-  These are 16-bit address spaces locating data in section
+  ``__flash1`` AVR Named Address Spaces``__flash2`` AVR Named Address Spaces``__flash3`` AVR Named Address Spaces``__flash4`` AVR Named Address Spaces``__flash5`` AVR Named Address SpacesThese are 16-bit address spaces locating data in section
   ``.progmem``N``.data`` where ``N`` refers to
   address space ``__flash``N````.
   The compiler sets the ``RAMPZ`` segment register appropriately 
   before reading data by means of the ``ELPM`` instruction.
 
 __memx
-  ``__memx`` AVR Named Address Spaces
-  This is a 24-bit address space that linearizes flash and RAM:
+  ``__memx`` AVR Named Address SpacesThis is a 24-bit address space that linearizes flash and RAM:
   If the high bit of the address is set, data is read from
   RAM using the lower two bytes as RAM address.
   If the high bit of the address is clear, data is read from flash
@@ -59,7 +52,7 @@ __memx
 
   Objects in this address space are located in ``.progmemx.data``.
 
-Example
+  Example
 
 .. code-block:: c++
 
@@ -125,11 +118,11 @@ Limitations and caveats
   supports reading across the 64 KiB flash segment boundaries is
   ``__memx``.
 
-  * If you use one of the ``__flash``N```` address spaces
+* If you use one of the ``__flash``N```` address spaces
   you must arrange your linker script to locate the
   ``.progmem``N``.data`` sections according to your needs.
 
-  * Any data or pointers to the non-generic address spaces must
+* Any data or pointers to the non-generic address spaces must
   be qualified as ``const``, i.e. as read-only data.
   This still applies if the data in one of these address
   spaces like software version number or calibration lookup table are intended to
@@ -138,7 +131,7 @@ Limitations and caveats
   must not optimize away known values or insert them
   as immediates into operands of instructions.
 
-  * The following code initializes a variable ``pfoo``
+* The following code initializes a variable ``pfoo``
   located in static storage with a 24-bit address:
 
   .. code-block:: c++
@@ -152,9 +145,7 @@ Limitations and caveats
 M32C Named Address Spaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``__far`` M32C Named Address Spaces
-
-On the M32C target, with the R8C and M16C CPU variants, variables
+``__far`` M32C Named Address SpacesOn the M32C target, with the R8C and M16C CPU variants, variables
 qualified with ``__far`` are accessed using 32-bit addresses in
 order to access memory beyond the first 64 Ki bytes.  If
 ``__far`` is used with the M32CM or M32C CPU variants, it has no
@@ -163,9 +154,7 @@ effect.
 RL78 Named Address Spaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``__far`` RL78 Named Address Spaces
-
-On the RL78 target, variables qualified with ``__far`` are accessed
+``__far`` RL78 Named Address SpacesOn the RL78 target, variables qualified with ``__far`` are accessed
 with 32-bit pointers (20-bit addresses) rather than the default 16-bit
 addresses.  Non-far variables are assumed to appear in the topmost
 64 KiB of the address space.
@@ -173,9 +162,7 @@ addresses.  Non-far variables are assumed to appear in the topmost
 SPU Named Address Spaces
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-``__ea`` SPU Named Address Spaces
-
-On the SPU target variables may be declared as
+``__ea`` SPU Named Address SpacesOn the SPU target variables may be declared as
 belonging to another address space by qualifying the type with the
 ``__ea`` address space identifier:
 

@@ -53,7 +53,6 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Named Address Spaces</a><ul>
-<li><a class="reference internal" href="#avr-named-address-spaces">AVR Named Address Spaces</a></li>
 <li><a class="reference internal" href="#m32c-named-address-spaces">M32C Named Address Spaces</a></li>
 <li><a class="reference internal" href="#rl78-named-address-spaces">RL78 Named Address Spaces</a></li>
 <li><a class="reference internal" href="#spu-named-address-spaces">SPU Named Address Spaces</a></li>
@@ -104,9 +103,9 @@ spaces other than the generic address space.</p>
 <p>Address space identifiers may be used exactly like any other C type
 qualifier (e.g., <tt class="docutils literal"><span class="pre">const</span></tt> or <tt class="docutils literal"><span class="pre">volatile</span></tt>).  See the N1275
 document for more details.</p>
-<p>AVR Named Address Spaces</p>
-<div class="section" id="avr-named-address-spaces">
-<h2>AVR Named Address Spaces<a class="headerlink" href="#avr-named-address-spaces" title="Permalink to this headline">¶</a></h2>
+<p>AVR Named Address Spaces
+AVR Named Address Spaces
+^^^^^^^^^^^^^^^^^^^^^^^^</p>
 <p>On the AVR target, there are several address spaces that can be used
 in order to put read-only data into the flash memory and access that
 data by means of the special instructions <tt class="docutils literal"><span class="pre">LPM</span></tt> or <tt class="docutils literal"><span class="pre">ELPM</span></tt>
@@ -118,33 +117,26 @@ and to generate the right instructions to access this data
 without using (inline) assembler code.</p>
 <dl class="docutils">
 <dt>__flash</dt>
-<dd><tt class="docutils literal"><span class="pre">__flash</span></tt> AVR Named Address Spaces
-The <tt class="docutils literal"><span class="pre">__flash</span></tt> qualifier locates data in the
+<dd><tt class="docutils literal"><span class="pre">__flash</span></tt> AVR Named Address SpacesThe <tt class="docutils literal"><span class="pre">__flash</span></tt> qualifier locates data in the
 <tt class="docutils literal"><span class="pre">.progmem.data</span></tt> section. Data is read using the <tt class="docutils literal"><span class="pre">LPM</span></tt>
 instruction. Pointers to this address space are 16 bits wide.</dd>
 <dt>__flash1__flash2__flash3__flash4__flash5</dt>
-<dd><tt class="docutils literal"><span class="pre">__flash1</span></tt> AVR Named Address Spaces
-<tt class="docutils literal"><span class="pre">__flash2</span></tt> AVR Named Address Spaces
-<tt class="docutils literal"><span class="pre">__flash3</span></tt> AVR Named Address Spaces
-<tt class="docutils literal"><span class="pre">__flash4</span></tt> AVR Named Address Spaces
-<tt class="docutils literal"><span class="pre">__flash5</span></tt> AVR Named Address Spaces
-These are 16-bit address spaces locating data in section
+<dd><tt class="docutils literal"><span class="pre">__flash1</span></tt> AVR Named Address Spaces``__flash2`` AVR Named Address Spaces``__flash3`` AVR Named Address Spaces``__flash4`` AVR Named Address Spaces``__flash5`` AVR Named Address SpacesThese are 16-bit address spaces locating data in section
 <tt class="docutils literal"><span class="pre">.progmem``N</span></tt>.data`` where <tt class="docutils literal"><span class="pre">N</span></tt> refers to
 address space <tt class="docutils literal"><span class="pre">__flash``N``</span></tt>.
 The compiler sets the <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> segment register appropriately
 before reading data by means of the <tt class="docutils literal"><span class="pre">ELPM</span></tt> instruction.</dd>
 <dt>__memx</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">__memx</span></tt> AVR Named Address Spaces
-This is a 24-bit address space that linearizes flash and RAM:
+<dd><p class="first"><tt class="docutils literal"><span class="pre">__memx</span></tt> AVR Named Address SpacesThis is a 24-bit address space that linearizes flash and RAM:
 If the high bit of the address is set, data is read from
 RAM using the lower two bytes as RAM address.
 If the high bit of the address is clear, data is read from flash
 with <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> set according to the high byte of the address.
 AVR Built-in Functions``__builtin_avr_flash_segment``.</p>
-<p class="last">Objects in this address space are located in <tt class="docutils literal"><span class="pre">.progmemx.data</span></tt>.</p>
+<p>Objects in this address space are located in <tt class="docutils literal"><span class="pre">.progmemx.data</span></tt>.</p>
+<p class="last">Example</p>
 </dd>
 </dl>
-<p>Example</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">char</span> <span class="nf">my_read</span> <span class="p">(</span><span class="k">const</span> <span class="n">__flash</span> <span class="kt">char</span> <span class="o">**</span> <span class="n">p</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="cm">/* p is a pointer to RAM that points to a pointer to flash.</span>
@@ -204,25 +196,22 @@ the <tt class="docutils literal"><span class="pre">__flash</span></tt> or <tt cl
 shows undefined behavior. The only address space that
 supports reading across the 64 KiB flash segment boundaries is
 <tt class="docutils literal"><span class="pre">__memx</span></tt>.</p>
-<ul class="simple">
-<li>If you use one of the <tt class="docutils literal"><span class="pre">__flash``N``</span></tt> address spaces</li>
-</ul>
-<p>you must arrange your linker script to locate the
+</li>
+<li><p class="first">If you use one of the <tt class="docutils literal"><span class="pre">__flash``N``</span></tt> address spaces
+you must arrange your linker script to locate the
 <tt class="docutils literal"><span class="pre">.progmem``N</span></tt>.data`` sections according to your needs.</p>
-<ul class="simple">
-<li>Any data or pointers to the non-generic address spaces must</li>
-</ul>
-<p>be qualified as <tt class="docutils literal"><span class="pre">const</span></tt>, i.e. as read-only data.
+</li>
+<li><p class="first">Any data or pointers to the non-generic address spaces must
+be qualified as <tt class="docutils literal"><span class="pre">const</span></tt>, i.e. as read-only data.
 This still applies if the data in one of these address
 spaces like software version number or calibration lookup table are intended to
 be changed after load time by, say, a boot loader. In this case
 the right qualification is <tt class="docutils literal"><span class="pre">const</span></tt> <tt class="docutils literal"><span class="pre">volatile</span></tt> so that the compiler
 must not optimize away known values or insert them
 as immediates into operands of instructions.</p>
-<ul class="simple">
-<li>The following code initializes a variable <tt class="docutils literal"><span class="pre">pfoo</span></tt></li>
-</ul>
-<p>located in static storage with a 24-bit address:</p>
+</li>
+<li><p class="first">The following code initializes a variable <tt class="docutils literal"><span class="pre">pfoo</span></tt>
+located in static storage with a 24-bit address:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="k">const</span> <span class="n">__memx</span> <span class="kt">char</span> <span class="n">foo</span><span class="p">;</span>
 <span class="k">const</span> <span class="n">__memx</span> <span class="kt">void</span> <span class="o">*</span><span class="n">pfoo</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">foo</span><span class="p">;</span>
 </pre></div>
@@ -231,11 +220,9 @@ as immediates into operands of instructions.</p>
 <a class="reference external" href="http://sourceware.org/PR13503PR13503">http://sourceware.org/PR13503PR13503</a>.</p>
 </li>
 </ul>
-</div>
 <div class="section" id="m32c-named-address-spaces">
 <h2>M32C Named Address Spaces<a class="headerlink" href="#m32c-named-address-spaces" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">__far</span></tt> M32C Named Address Spaces</p>
-<p>On the M32C target, with the R8C and M16C CPU variants, variables
+<p><tt class="docutils literal"><span class="pre">__far</span></tt> M32C Named Address SpacesOn the M32C target, with the R8C and M16C CPU variants, variables
 qualified with <tt class="docutils literal"><span class="pre">__far</span></tt> are accessed using 32-bit addresses in
 order to access memory beyond the first 64 Ki bytes.  If
 <tt class="docutils literal"><span class="pre">__far</span></tt> is used with the M32CM or M32C CPU variants, it has no
@@ -243,16 +230,14 @@ effect.</p>
 </div>
 <div class="section" id="rl78-named-address-spaces">
 <h2>RL78 Named Address Spaces<a class="headerlink" href="#rl78-named-address-spaces" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">__far</span></tt> RL78 Named Address Spaces</p>
-<p>On the RL78 target, variables qualified with <tt class="docutils literal"><span class="pre">__far</span></tt> are accessed
+<p><tt class="docutils literal"><span class="pre">__far</span></tt> RL78 Named Address SpacesOn the RL78 target, variables qualified with <tt class="docutils literal"><span class="pre">__far</span></tt> are accessed
 with 32-bit pointers (20-bit addresses) rather than the default 16-bit
 addresses.  Non-far variables are assumed to appear in the topmost
 64 KiB of the address space.</p>
 </div>
 <div class="section" id="spu-named-address-spaces">
 <h2>SPU Named Address Spaces<a class="headerlink" href="#spu-named-address-spaces" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">__ea</span></tt> SPU Named Address Spaces</p>
-<p>On the SPU target variables may be declared as
+<p><tt class="docutils literal"><span class="pre">__ea</span></tt> SPU Named Address SpacesOn the SPU target variables may be declared as
 belonging to another address space by qualifying the type with the
 <tt class="docutils literal"><span class="pre">__ea</span></tt> address space identifier:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="kt">int</span> <span class="n">__ea</span> <span class="n">i</span><span class="p">;</span>

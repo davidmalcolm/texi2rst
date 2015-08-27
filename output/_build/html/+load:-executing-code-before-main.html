@@ -82,8 +82,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <p><tt class="docutils literal"><span class="pre">+load</span></tt>: Executing Code before <tt class="docutils literal"><span class="pre">main</span></tt></p>
-<p>This section is specific for the GNU Objective-C runtime.  If you are
+  <p><tt class="docutils literal"><span class="pre">+load</span></tt>: Executing Code before <a href="#id1"><span class="problematic" id="id2">``</span></a>main``This section is specific for the GNU Objective-C runtime.  If you are
 using a different runtime, you can skip it.</p>
 <p>The GNU Objective-C runtime provides a way that allows you to execute
 code before the execution of the program enters the <tt class="docutils literal"><span class="pre">main</span></tt>
@@ -148,43 +147,30 @@ instead of <tt class="docutils literal"><span class="pre">+initialize</span></tt
 </ul>
 </div>
 <p>:: _what-you-can-and-what-you-cannot-do-in-+load:</p>
-<p>What You Can and Cannot Do in <tt class="docutils literal"><span class="pre">+load</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">+load</span></tt> is to be used only as a last resort.  Because it is
+<p>What You Can and Cannot Do in <tt class="docutils literal"><span class="pre">+load````+load</span></tt> is to be used only as a last resort.  Because it is
 executed very early, most of the Objective-C runtime machinery will
 not be ready when <tt class="docutils literal"><span class="pre">+load</span></tt> is executed; hence <tt class="docutils literal"><span class="pre">+load</span></tt> works
 best for executing C code that is independent on the Objective-C
 runtime.</p>
 <p>The <tt class="docutils literal"><span class="pre">+load</span></tt> implementation in the GNU runtime guarantees you the
 following things:</p>
-<ul>
-<li><p class="first">you can write whatever C code you like;</p>
 <ul class="simple">
-<li>you can allocate and send messages to objects whose class is implemented</li>
-</ul>
-<p>in the same file;</p>
-<ul class="simple">
-<li>the <tt class="docutils literal"><span class="pre">+load</span></tt> implementation of all super classes of a class are</li>
-</ul>
-<p>executed before the <tt class="docutils literal"><span class="pre">+load</span></tt> of that class is executed;</p>
-<ul class="simple">
-<li>the <tt class="docutils literal"><span class="pre">+load</span></tt> implementation of a class is executed before the</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">+load</span></tt> implementation of any category.</p>
-</li>
+<li>you can write whatever C code you like;</li>
+<li>you can allocate and send messages to objects whose class is implemented
+in the same file;</li>
+<li>the <tt class="docutils literal"><span class="pre">+load</span></tt> implementation of all super classes of a class are
+executed before the <tt class="docutils literal"><span class="pre">+load</span></tt> of that class is executed;</li>
+<li>the <tt class="docutils literal"><span class="pre">+load</span></tt> implementation of a class is executed before the
+<tt class="docutils literal"><span class="pre">+load</span></tt> implementation of any category.</li>
 </ul>
 <p>In particular, the following things, even if they can work in a
 particular case, are not guaranteed:</p>
-<ul>
-<li><p class="first">allocation of or sending messages to arbitrary objects;</p>
 <ul class="simple">
-<li>allocation of or sending messages to objects whose classes have a</li>
-</ul>
-<p>category implemented in the same file;</p>
-<ul class="simple">
-<li>sending messages to Objective-C constant strings (<a href="#id1"><span class="problematic" id="id2">``</span></a>&#64;&#8221;this is a</li>
-</ul>
-<p>constant string&#8221;<a href="#id3"><span class="problematic" id="id4">``</span></a>);</p>
-</li>
+<li>allocation of or sending messages to arbitrary objects;</li>
+<li>allocation of or sending messages to objects whose classes have a
+category implemented in the same file;</li>
+<li>sending messages to Objective-C constant strings (<tt class="docutils literal"><span class="pre">&#64;&quot;this</span> <span class="pre">is</span> <span class="pre">a</span>
+<span class="pre">constant</span> <span class="pre">string&quot;</span></tt>);</li>
 </ul>
 <p>You should make no assumptions about receiving <tt class="docutils literal"><span class="pre">+load</span></tt> in sibling
 classes when you write <tt class="docutils literal"><span class="pre">+load</span></tt> of a class.  The order in which

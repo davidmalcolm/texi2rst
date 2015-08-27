@@ -1,3 +1,4 @@
+
 Object Size Checking Built-in Functions
 ***************************************
 
@@ -42,8 +43,7 @@ that can prevent some buffer overflow attacks.
 
 .. index:: __builtin_object_size
 
-  Built-in Function size_t __builtin_object_size (void * ``ptr``, int ``type``)
-is a built-in construct that returns a constant number of bytes from
+Built-in Functionsize_t__builtin_object_size(void*``ptr``,int``type``)is a built-in construct that returns a constant number of bytes from
 ``ptr`` to the end of the object ``ptr`` pointer points to
 (if known at compile time).  ``__builtin_object_size`` never evaluates
 its arguments for side-effects.  If there are any side-effects in them, it

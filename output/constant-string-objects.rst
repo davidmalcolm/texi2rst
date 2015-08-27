@@ -1,3 +1,4 @@
+
 Constant String Objects
 ***********************
 
@@ -56,5 +57,5 @@ is possible to have multiple compilation units referring to different
 constant string classes, neither the compiler nor the linker impose any
 restrictions in doing this.
 
-.. ========================================================================= 
+.. =========================================================================
 

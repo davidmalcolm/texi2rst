@@ -303,7 +303,7 @@ Use it to conform to a non-default application binary interface.</p>
 <dd><p>Allocate to an <tt class="docutils literal"><span class="pre">enum</span></tt> type only as many bytes as it needs for the
 declared range of possible values.  Specifically, the <tt class="docutils literal"><span class="pre">enum</span></tt> type
 is equivalent to the smallest integer type that has enough room.</p>
-<p>Warning: the <a class="reference internal" href="specifying-attributes-of-types.html#cmdoption-fshort-enums"><em class="xref std std-option">-fshort-enums</em></a> switch causes GCC to generate
+<p>Warning: the <a class="reference internal" href="#cmdoption-fshort-enums"><em class="xref std std-option">-fshort-enums</em></a> switch causes GCC to generate
 code that is not binary compatible with code generated without that switch.
 Use it to conform to a non-default application binary interface.</p>
 </dd></dl>
@@ -567,8 +567,8 @@ that function is not instrumented.  The match is done on substrings:
 if the <tt class="docutils literal"><span class="pre">file</span></tt> parameter is a substring of the file name, it is
 considered to be a match.</p>
 <p>For example:</p>
-<p><em class="xref std std-option">-finstrument-functions-exclude-file-list=/bits/stl,include/sys</em></p>
-<p>excludes any inline function defined in files whose pathnames
+<p><em class="xref std std-option">-finstrument-functions-exclude-file-list=/bits/stl,include/sys</em>
+excludes any inline function defined in files whose pathnames
 contain /bits/stl or include/sys.</p>
 <p>If, for some reason, you want to include letter , in one of
 <tt class="docutils literal"><span class="pre">sym</span></tt>, write ,. For example,
@@ -607,19 +607,14 @@ specific means use the best checking method and is equivalent
 to bare <a class="reference internal" href="#cmdoption-fstack-check"><em class="xref std std-option">-fstack-check</em></a>.</p>
 <p>Old-style checking is a generic mechanism that requires no specific
 target support in the compiler but comes with the following drawbacks:</p>
-<ul>
-<li><p class="first">Modified allocation strategy for large objects: they are always
-allocated dynamically if their size exceeds a fixed threshold.</p>
 <ul class="simple">
-<li>Fixed limit on the size of the static frame of functions: when it is</li>
-</ul>
-<p>topped by a particular function, stack checking is not reliable and
-a warning is issued by the compiler.</p>
-<ul class="simple">
-<li>Inefficiency: because of both the modified allocation strategy and the</li>
-</ul>
-<p>generic implementation, code performance is hampered.</p>
-</li>
+<li>Modified allocation strategy for large objects: they are always
+allocated dynamically if their size exceeds a fixed threshold.</li>
+<li>Fixed limit on the size of the static frame of functions: when it is
+topped by a particular function, stack checking is not reliable and
+a warning is issued by the compiler.</li>
+<li>Inefficiency: because of both the modified allocation strategy and the
+generic implementation, code performance is hampered.</li>
 </ul>
 <p>Note that old-style stack checking is also the fallback method for
 specific if no target support has been added in the compiler.</p>

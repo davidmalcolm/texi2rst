@@ -1,3 +1,4 @@
+
 Arrays of Variable Length
 *************************
 
@@ -49,8 +50,7 @@ a structure or a union.  For example:
     struct S { int x[n]; };
   }
 
-``alloca`` vs variable-length arrays
-You can use the function ``alloca`` to get an effect much like
+``alloca`` vs variable-length arraysYou can use the function ``alloca`` to get an effect much like
 variable-length arrays.  The function ``alloca`` is available in
 many other C implementations (but not in all).  On the other hand,
 variable-length arrays are more elegant.

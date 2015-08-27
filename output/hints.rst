@@ -1,3 +1,4 @@
+
 Hints
 *****
 
@@ -9,17 +10,17 @@ Hints
   * When used as part of the register variable extension, see
     Explicit Reg Vars.
 
-    * When :option:`-O0` is in use, the compiler allocates distinct stack
+  * When :option:`-O0` is in use, the compiler allocates distinct stack
     memory for all variables that do not have the ``register``
     storage-class specifier; if ``register`` is specified, the variable
     may have a shorter lifespan than the code would indicate and may never
     be placed in memory.
 
-    * On some rare x86 targets, ``setjmp`` doesn't save the registers in
+  * On some rare x86 targets, ``setjmp`` doesn't save the registers in
     all circumstances.  In those cases, GCC doesn't allocate any variables
     in registers unless they are marked ``register``.
 
-  * The extent to which suggestions made by using the inline function
+* The extent to which suggestions made by using the inline function
   specifier are effective (C99 and C11 6.7.4).
 
   GCC will not inline any functions if the :option:`-fno-inline` option is

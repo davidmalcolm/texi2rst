@@ -1,3 +1,4 @@
+
 Compiling C++ Programs
 **********************
 
@@ -27,8 +28,7 @@ precompiling a C header file with a .h extension for use in C++
 compilations.  On many systems, :command:`g++` is also installed with
 the name :command:`c++`.
 
-invoking :command:`g++`
-When you compile C++ programs, you may specify many of the same
+invoking :command:`g++`When you compile C++ programs, you may specify many of the same
 command-line options that you use for compiling programs in any
 language; or command-line options meaningful for C and related
 languages; or options that are meaningful only for C++ programs.

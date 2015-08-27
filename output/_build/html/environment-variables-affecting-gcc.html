@@ -89,7 +89,7 @@ operates.  Some of them work by specifying directories or prefixes to use
 when searching for various kinds of files.  Some are used to specify other
 aspects of the compilation environment.</p>
 <p>Note that you can also specify places to search using options such as
-<em class="xref std std-option">-B</em>, <em class="xref std std-option">-I</em> and <em class="xref std std-option">-L</em> (Directory Options).  These
+<em class="xref std std-option">-B</em>, <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a> and <em class="xref std std-option">-L</em> (Directory Options).  These
 take precedence over places specified using environment variables, which
 in turn take precedence over those specified by the configuration of GCC.
 DriverControlling the Compilation Driver gccgccintGNU Compiler Collection (GCC) Internals.</p>
@@ -201,15 +201,67 @@ the following values for <span class="target" id="index-26"></span><a class="ref
 <dt>C-SJIS</dt>
 <dd>Recognize SJIS characters.</dd>
 <dt>C-EUCJP</dt>
-<dd>Recognize EUCJP characters.</dd>
+<dd><p class="first">Recognize EUCJP characters.</p>
+<p class="last">If <span class="target" id="index-27"></span><a class="reference internal" href="#envvar-LANG"><tt class="xref std std-envvar docutils literal"><span class="pre">LANG</span></tt></a> is not defined, or if it has some other value, then the</p>
+</dd>
 </dl>
-<p>If <span class="target" id="index-27"></span><a class="reference internal" href="#envvar-LANG"><tt class="xref std std-envvar docutils literal"><span class="pre">LANG</span></tt></a> is not defined, or if it has some other value, then the
-compiler uses <tt class="docutils literal"><span class="pre">mblen</span></tt> and <tt class="docutils literal"><span class="pre">mbtowc</span></tt> as defined by the default locale to
+<p>compiler uses <tt class="docutils literal"><span class="pre">mblen</span></tt> and <tt class="docutils literal"><span class="pre">mbtowc</span></tt> as defined by the default locale to
 recognize and translate multibyte characters.</p>
 </dd></dl>
 
 <p>Some additional environment variables affect the behavior of the
 preprocessor.</p>
+<dl class="envvar">
+<dt id="envvar-CPATHCPATH">
+<tt class="descname">CPATHCPATH</tt><a class="headerlink" href="#envvar-CPATHCPATH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Each variable&#8217;s value is a list of directories separated by a special
+character, much like <span class="target" id="index-28"></span><tt class="xref std std-envvar docutils literal"><span class="pre">PATH</span></tt>, in which to look for header files.
+The special character, <tt class="docutils literal"><span class="pre">PATH_SEPARATOR</span></tt>, is target-dependent and
+determined at GCC build time.  For Microsoft Windows-based targets it is a
+semicolon, and for almost all other targets it is a colon.</p>
+<p><span class="target" id="index-29"></span><tt class="xref std std-envvar docutils literal"><span class="pre">CPATH</span></tt> specifies a list of directories to be searched as if
+specified with <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a>, but after any paths given with <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a>
+options on the command line.  This environment variable is used
+regardless of which language is being preprocessed.</p>
+<p>The remaining environment variables apply only when preprocessing the
+particular language indicated.  Each specifies a list of directories
+to be searched as if specified with <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-isystem"><em class="xref std std-option">-isystem</em></a>, but after any
+paths given with <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-isystem"><em class="xref std std-option">-isystem</em></a> options on the command line.</p>
+<p>In all these variables, an empty element instructs the compiler to
+search its current working directory.  Empty elements can appear at the
+beginning or end of a path.  For instance, if the value of
+<span class="target" id="index-30"></span><tt class="xref std std-envvar docutils literal"><span class="pre">CPATH</span></tt> is <tt class="docutils literal"><span class="pre">:/special/include</span></tt>, that has the same
+effect as -I. -I/special/include.</p>
+</dd></dl>
+
+<dl class="envvar">
+<dt id="envvar-DEPENDENCIES_OUTPUTDEPENDENCIES_OUTPUT">
+<tt class="descname">DEPENDENCIES_OUTPUTDEPENDENCIES_OUTPUT</tt><a class="headerlink" href="#envvar-DEPENDENCIES_OUTPUTDEPENDENCIES_OUTPUT" title="Permalink to this definition">¶</a></dt>
+<dd><p id="index-31">If this variable is set, its value specifies how to output
+dependencies for Make based on the non-system header files processed
+by the compiler.  System header files are ignored in the dependency
+output.</p>
+<p>The value of <span class="target" id="index-32"></span><tt class="xref std std-envvar docutils literal"><span class="pre">DEPENDENCIES_OUTPUT</span></tt> can be just a file name, in
+which case the Make rules are written to that file, guessing the target
+name from the source file name.  Or the value can have the form
+<tt class="docutils literal"><span class="pre">file````target</span></tt>, in which case the rules are written to
+file <tt class="docutils literal"><span class="pre">file</span></tt> using <tt class="docutils literal"><span class="pre">target</span></tt> as the target name.</p>
+<p>In other words, this environment variable is equivalent to combining
+the options <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-MM"><em class="xref std std-option">-MM</em></a> and <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-MF"><em class="xref std std-option">-MF</em></a>
+(Preprocessor Options),
+with an optional <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-MT"><em class="xref std std-option">-MT</em></a> switch too.</p>
+</dd></dl>
+
+<dl class="envvar">
+<dt id="envvar-SUNPRO_DEPENDENCIESSUNPRO_DEPENDENCIES">
+<tt class="descname">SUNPRO_DEPENDENCIESSUNPRO_DEPENDENCIES</tt><a class="headerlink" href="#envvar-SUNPRO_DEPENDENCIESSUNPRO_DEPENDENCIES" title="Permalink to this definition">¶</a></dt>
+<dd><p id="index-33">This variable is the same as <span class="target" id="index-34"></span><tt class="xref std std-envvar docutils literal"><span class="pre">DEPENDENCIES_OUTPUT</span></tt> (see above),
+except that system header files are not ignored, so it implies
+<a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-M"><em class="xref std std-option">-M</em></a> rather than <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-MM"><em class="xref std std-option">-MM</em></a>.  However, the dependence on the
+main input file is omitted.
+Preprocessor Options.</p>
+</dd></dl>
+
 </div>
 
 

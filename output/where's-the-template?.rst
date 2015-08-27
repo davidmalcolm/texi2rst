@@ -1,3 +1,4 @@
+
 Where's the Template?
 *********************
 
@@ -41,7 +42,7 @@ Cfront model
   of non-inline member templates into a separate file, which should be
   compiled separately.
 
-When used with GNU ld version 2.8 or later on an ELF system such as
+  When used with GNU ld version 2.8 or later on an ELF system such as
 GNU/Linux or Solaris 2, or on Microsoft Windows, G++ supports the
 Borland model.  On other systems, G++ implements neither automatic
 model.
@@ -74,7 +75,7 @@ You have the following options for dealing with template instantiations:
   For greater control, use explicit instantiation as described in the next
   option.
 
-  * 
+* 
   .. index:: fno-implicit-templates
 
   Compile your code with :option:`-fno-implicit-templates` to disable the
@@ -124,7 +125,7 @@ You have the following options for dealing with template instantiations:
     inline template class Foo<int>;
     static template class Foo<int>;
 
-  * Do nothing.  Pretend G++ does implement automatic instantiation
+* Do nothing.  Pretend G++ does implement automatic instantiation
   management.  Code written for the Borland model works fine, but
   each translation unit contains instances of each of the templates it
   uses.  In a large program, this can lead to an unacceptable amount of code

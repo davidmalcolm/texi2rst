@@ -1,3 +1,4 @@
+
 Options Controlling C++ Dialect
 *******************************
 
@@ -380,9 +381,9 @@ Here is a list of options that are only for compiling C++ programs:
   * It sets the default visibility to ``hidden``, like
     :option:`-fvisibility=hidden`.
 
-    * Types, but not their members, are not hidden by default.
+  * Types, but not their members, are not hidden by default.
 
-    * The One Definition Rule is relaxed for types without explicit
+  * The One Definition Rule is relaxed for types without explicit
     visibility specifications that are defined in more than one
     shared object: those declarations are permitted if they are
     permitted when this option is not used.
@@ -515,18 +516,18 @@ have meanings only for C++ programs:
 
     This was fixed in :option:`-fabi-version=3`.
 
-    * SIMD vector types declared using ``__attribute ((vector_size))`` were
+  * SIMD vector types declared using ``__attribute ((vector_size))`` were
     mangled in a non-standard way that does not allow for overloading of
     functions taking vectors of different sizes.
 
     The mangling was changed in :option:`-fabi-version=4`.
 
-    * ``__attribute ((const))`` and ``noreturn`` were mangled as type
+  * ``__attribute ((const))`` and ``noreturn`` were mangled as type
     qualifiers, and ``decltype`` of a plain declaration was folded away.
 
     These mangling issues were fixed in :option:`-fabi-version=5`.
 
-    * Scoped enumerators passed as arguments to a variadic function are
+  * Scoped enumerators passed as arguments to a variadic function are
     promoted like unscoped enumerators, causing ``va_arg`` to complain.
     On most targets this does not actually affect the parameter passing
     ABI, as there is no way to pass an argument smaller than ``int``.
@@ -537,12 +538,12 @@ have meanings only for C++ programs:
 
     These issues were corrected in :option:`-fabi-version=6`.
 
-    * Lambdas in default argument scope were mangled incorrectly, and the
+  * Lambdas in default argument scope were mangled incorrectly, and the
     ABI changed the mangling of ``nullptr_t``.
 
     These issues were corrected in :option:`-fabi-version=7`.
 
-    * When mangling a function type with function-cv-qualifiers, the
+  * When mangling a function type with function-cv-qualifiers, the
     un-qualified function type was incorrectly treated as a substitution
     candidate.
 
@@ -722,16 +723,16 @@ The following :option:`-W...` options are not affected by :option:`-Wall`.
   * Define a copy constructor and an assignment operator for classes
     with dynamically-allocated memory.
 
-    * Prefer initialization to assignment in constructors.
+  * Prefer initialization to assignment in constructors.
 
-    * Have ``operator=`` return a reference to ``*this``.
+  * Have ``operator=`` return a reference to ``*this``.
 
-    * Don't try to return a reference when you must return an object.
+  * Don't try to return a reference when you must return an object.
 
-    * Distinguish between prefix and postfix forms of increment and
+  * Distinguish between prefix and postfix forms of increment and
     decrement operators.
 
-    * Never overload ``&&``, ``||``, or ``,``.
+  * Never overload ``&&``, ``||``, or ``,``.
 
   This option also enables :option:`-Wnon-virtual-dtor`, which is also
   one of the effective C++ recommendations.  However, the check is

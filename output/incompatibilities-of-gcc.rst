@@ -1,3 +1,4 @@
+
 Incompatibilities of GCC
 ************************
 
@@ -18,15 +19,11 @@ There are several noteworthy incompatibilities between GNU C and K&R
   identical-looking string constants are used, GCC stores only one
   copy of the string.
 
-  ``mktemp``, and constant strings
-  One consequence is that you cannot call ``mktemp`` with a string
+  ``mktemp``, and constant stringsOne consequence is that you cannot call ``mktemp`` with a string
   constant argument.  The function ``mktemp`` always alters the
   string its argument points to.
 
-  ``sscanf``, and constant strings
-  ``fscanf``, and constant strings
-  ``scanf``, and constant strings
-  Another consequence is that ``sscanf`` does not work on some very
+  ``sscanf``, and constant strings``fscanf``, and constant strings``scanf``, and constant stringsAnother consequence is that ``sscanf`` does not work on some very
   old systems when passed a string constant as its format control string
   or input.  This is because ``sscanf`` incorrectly tries to write
   into the string constant.  Likewise ``fscanf`` and ``scanf``.
@@ -35,13 +32,13 @@ There are several noteworthy incompatibilities between GNU C and K&R
   ``char``-array variables with initialization strings for these
   purposes instead of string constants.
 
-  * ``-2147483648`` is positive.
+* ``-2147483648`` is positive.
 
   This is because 2147483648 cannot fit in the type ``int``, so
   (following the ISO C rules) its data type is ``unsigned long int``.
   Negating this value yields 2147483648 again.
 
-  * GCC does not substitute macro arguments when they appear inside of
+* GCC does not substitute macro arguments when they appear inside of
   string constants.  For example, the following macro in GCC
 
   .. code-block:: c++
@@ -50,9 +47,9 @@ There are several noteworthy incompatibilities between GNU C and K&R
 
   will produce output ``"a"`` regardless of what the argument ``a`` is.
 
-  ``setjmp`` incompatibilities
-  ``longjmp`` incompatibilities
-  * When you use ``setjmp`` and ``longjmp``, the only automatic
+  ``setjmp`` incompatibilities``longjmp`` incompatibilities
+
+* When you use ``setjmp`` and ``longjmp``, the only automatic
   variables guaranteed to remain valid are those declared
   ``volatile``.  This is a consequence of automatic register
   allocation.  Consider this function:
@@ -84,7 +81,7 @@ There are several noteworthy incompatibilities between GNU C and K&R
   If you use the :option:`-W` option with the :option:`-O` option, you will
   get a warning when GCC thinks such a problem might be possible.
 
-  * Programs that use preprocessing directives in the middle of macro
+* Programs that use preprocessing directives in the middle of macro
   arguments do not work with GCC.  For example, a program like this
   will not work:
 
@@ -96,7 +93,7 @@ There are several noteworthy incompatibilities between GNU C and K&R
 
   ISO C does not permit such a construct.
 
-  * K&R compilers allow comments to cross over an inclusion boundary
+* K&R compilers allow comments to cross over an inclusion boundary
   (i.e. started in an include file and ended in the including file).
 
   .. index:: external declaration scope
@@ -105,14 +102,14 @@ There are several noteworthy incompatibilities between GNU C and K&R
 
   .. index:: declaration scope
 
-  * Declarations of external variables and functions within a block apply
+* Declarations of external variables and functions within a block apply
   only to the block containing the declaration.  In other words, they
   have the same scope as any other declaration in the same place.
 
   In some other C compilers, an ``extern`` declaration affects all the
   rest of the file even if it happens within a block.
 
-  * In traditional C, you can combine ``long``, etc., with a typedef name,
+* In traditional C, you can combine ``long``, etc., with a typedef name,
   as shown here:
 
   .. code-block:: c++
@@ -125,9 +122,9 @@ There are several noteworthy incompatibilities between GNU C and K&R
 
   .. index:: typedef names as function parameters
 
-  * PCC allows typedef names to be used as function parameters.
+* PCC allows typedef names to be used as function parameters.
 
-  * Traditional C allows the following erroneous pair of declarations to
+* Traditional C allows the following erroneous pair of declarations to
   appear together in a given scope:
 
   .. code-block:: c++
@@ -135,7 +132,7 @@ There are several noteworthy incompatibilities between GNU C and K&R
     typedef int foo;
     typedef foo foo;
 
-  * GCC treats all characters of identifiers as significant.  According to
+* GCC treats all characters of identifiers as significant.  According to
   K&R-1 (2.2), 'No more than the first eight characters are significant,
   although more may be used.'.  Also according to K&R-1 (2.2), 'An
   identifier is a sequence of letters and digits; the first character must
@@ -144,14 +141,15 @@ There are several noteworthy incompatibilities between GNU C and K&R
 
   .. index:: whitespace
 
-  * PCC allows whitespace in the middle of compound assignment operators
+* PCC allows whitespace in the middle of compound assignment operators
   such as +=.  GCC, following the ISO standard, does not
   allow this.
 
   .. index:: apostrophes
 
   ``'``
-  * GCC complains about unterminated character constants inside of
+
+* GCC complains about unterminated character constants inside of
   preprocessing conditionals that fail.  Some programs have English
   comments enclosed in conditionals that are guaranteed to fail; if these
   comments contain apostrophes, GCC will probably report an error.  For
@@ -166,7 +164,7 @@ There are several noteworthy incompatibilities between GNU C and K&R
   The best solution to such a problem is to put the text into an actual
   C comment delimited by /*...*/.
 
-  * Many user programs contain the declaration long time ();.  In the
+* Many user programs contain the declaration long time ();.  In the
   past, the system header files on many systems did not actually declare
   ``time``, so it did not matter what type your program declared it to
   return.  But in systems with ISO C headers, ``time`` is declared to
@@ -179,7 +177,8 @@ There are several noteworthy incompatibilities between GNU C and K&R
   use ``time_t`` as the return type of ``time``.
 
   ``float`` as function value type
-  * When compiling functions that return ``float``, PCC converts it to
+
+* When compiling functions that return ``float``, PCC converts it to
   a double.  GCC actually returns a ``float``.  If you are concerned
   with PCC compatibility, you should declare your functions to return
   ``double``; you might as well say what you mean.
@@ -188,7 +187,7 @@ There are several noteworthy incompatibilities between GNU C and K&R
 
   .. index:: unions
 
-  * When compiling functions that return structures or unions, GCC
+* When compiling functions that return structures or unions, GCC
   output code normally uses a method different from that used on most
   versions of Unix.  As a result, code compiled with GCC cannot call
   a structure-returning function compiled with PCC, and vice versa.
@@ -221,7 +220,7 @@ There are several noteworthy incompatibilities between GNU C and K&R
 
   .. index:: preprocessing numbers
 
-  * GCC complains about program fragments such as 0x74ae-0x4000
+* GCC complains about program fragments such as 0x74ae-0x4000
   which appear to be two hexadecimal constants separated by the minus
   operator.  Actually, this string is a single :dfn:`preprocessing token`.
   Each such token must correspond to one token in C.  Since this does not,

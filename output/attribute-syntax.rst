@@ -1,3 +1,4 @@
+
 Attribute Syntax
 ****************
 
@@ -32,20 +33,20 @@ each attribute is one of the following:
 
 * Empty.  Empty attributes are ignored.
 
-  * An attribute name
+* An attribute name
   (which may be an identifier such as ``unused``, or a reserved
   word such as ``const``).
 
-  * An attribute name followed by a parenthesized list of
+* An attribute name followed by a parenthesized list of
   parameters for the attribute.
   These parameters take one of the following forms:
 
   * An identifier.  For example, ``mode`` attributes use this form.
 
-    * An identifier followed by a comma and a non-empty comma-separated list
+  * An identifier followed by a comma and a non-empty comma-separated list
     of expressions.  For example, ``format`` attributes use this form.
 
-    * A possibly empty comma-separated list of expressions.  For example,
+  * A possibly empty comma-separated list of expressions.  For example,
     ``format_arg`` attributes use this form with the list being a single
     integer constant expression, and ``alias`` attributes use this form
     with the list being a single string constant.
@@ -83,11 +84,15 @@ to relate to the structure, union or enumerated type defined, not to any
 enclosing declaration the type specifier appears in, and the type
 defined is not complete until after the attribute specifiers.
 
-.. Otherwise, there would be the following problems: a shift/reduce 
-   conflict between attributes binding the struct/union/enum and 
+.. Otherwise, there would be the following problems: a shift/reduce
 
-.. binding to the list of specifiers/qualifiers; and "aligned" 
-   attributes could use sizeof for the structure, but the size could be 
+.. conflict between attributes binding the struct/union/enum and
+
+.. binding to the list of specifiers/qualifiers; and "aligned"
+
+.. attributes could use sizeof for the structure, but the size could be
+
+.. changed later by "packed" attributes.
 
 All other attributes
 ^^^^^^^^^^^^^^^^^^^^

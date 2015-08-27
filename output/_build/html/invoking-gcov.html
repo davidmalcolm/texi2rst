@@ -82,9 +82,10 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <p>Invoking <strong class="command">gcov</strong></p>
-<div class="highlight-c++"><pre>gcov [``options``] ``files``</pre>
-</div>
+  <p>Invoking <strong class="command">gcov</strong>
+.. code-block:: c++</p>
+<blockquote>
+<div>gcov [<tt class="docutils literal"><span class="pre">options</span></tt>] <tt class="docutils literal"><span class="pre">files</span></tt></div></blockquote>
 <p><strong class="command">gcov</strong> accepts the following options:</p>
 <p>&#64;c man begin SYNOPSIS
 gcov [&#64;option{<a class="reference external" href="mailto:-v}|&#37;&#52;&#48;option{--version">-v}|<span>&#64;</span>option{--version</a>}] [&#64;option{<a class="reference external" href="mailto:-h}|&#37;&#52;&#48;option{--help">-h}|<span>&#64;</span>option{--help</a>}]</p>
@@ -206,11 +207,12 @@ until the next ``file`` entry.</pre>
 </div>
 </dd>
 <dt>-m&#8211;demangled-names</dt>
-<dd>Display demangled function names in output. The default is to show
-mangled function names.</dd>
+<dd><p class="first">Display demangled function names in output. The default is to show
+mangled function names.</p>
+<p class="last"><strong class="command">gcov</strong> should be run with the current directory the same as that</p>
+</dd>
 </dl>
-<p><strong class="command">gcov</strong> should be run with the current directory the same as that
-when you invoked the compiler.  Otherwise it will not be able to locate
+<p>when you invoked the compiler.  Otherwise it will not be able to locate
 the source files.  <strong class="command">gcov</strong> produces files called
 <tt class="docutils literal"><span class="pre">mangledname</span></tt>.gcov in the current directory.  These contain
 the coverage information of the source file they correspond to.
@@ -235,8 +237,8 @@ non-exceptional paths or only exceptional paths such as C++ exception
 handlers, respectively.</p>
 <p>Some lines of information at the start have <tt class="docutils literal"><span class="pre">line_number</span></tt> of zero.
 These preamble lines are of the form</p>
-<p><em class="xref std std-option">-:0:```tag`</em>:<tt class="docutils literal"><span class="pre">value</span></tt></p>
-<p>The ordering and number of these preamble lines will be augmented as
+<p><em class="xref std std-option">-:0:```tag`</em>:<tt class="docutils literal"><span class="pre">value</span></tt>
+The ordering and number of these preamble lines will be augmented as
 <strong class="command">gcov</strong> development progresses - do not rely on them remaining
 unchanged.  Use <tt class="docutils literal"><span class="pre">tag</span></tt> to locate a particular preamble line.</p>
 <p>The additional block information is of the form</p>

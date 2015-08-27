@@ -1,3 +1,4 @@
+
 Deprecated Features
 *******************
 
@@ -24,7 +25,7 @@ that are now deprecated:
   parameters, as C++ demands.  This feature has been removed, except where
   it is required for backwards compatibility.   Backwards Compatibility.
 
-G++ allows a virtual function returning void * to be overridden
+  G++ allows a virtual function returning void * to be overridden
 by one returning a different pointer type.  This extension to the
 covariant return type rules is now deprecated and will be removed from a
 future version.

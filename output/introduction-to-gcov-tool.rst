@@ -1,7 +1,5 @@
-
 Introduction to :command:`gcov-tool`
-
-.. man begin DESCRIPTION 
+.. man begin DESCRIPTION
 
 :command:`gcov-tool` is an offline tool to process gcc's gcda profile files.
 
@@ -9,7 +7,7 @@ Current gcov-tool supports the following functionalities:
 
 * merge two sets of profiles with weights.
 
-  * read one set of profile and rewrite profile contents. One can scale or
+* read one set of profile and rewrite profile contents. One can scale or
   normalize the count values.
 
 Examples of the use cases for this tool are:
@@ -18,10 +16,10 @@ Examples of the use cases for this tool are:
   them. One can specify the weight to factor in the relative importance of
   each input.
 
-  * Rewrite the profile after removing a subset of the gcda files, while maintaining
+* Rewrite the profile after removing a subset of the gcda files, while maintaining
   the consistency of the summary and the histogram.
 
-  * It can also be used to debug or libgcov code as the tools shares the majority
+* It can also be used to debug or libgcov code as the tools shares the majority
   code as the runtime library.
 
 Note that for the merging operation, this profile generated offline may
@@ -33,15 +31,15 @@ a list of typical differences:
   merging does not have this capability - the histogram is merged from two
   histograms and the result is an approximation.
 
-  * summary checksum difference: Summary checksum uses a CRC32 operation. The value
+* summary checksum difference: Summary checksum uses a CRC32 operation. The value
   depends on the link list order of gcov-info objects. This order is different in
   gcov-tool from that in the online merge. It's expected to have different
   summary checksums. It does not really matter as the compiler does not use this
   checksum anywhere.
 
-  * value profile counter values difference: Some counter values for value profile
+* value profile counter values difference: Some counter values for value profile
   are runtime dependent, like heap addresses. It's normal to see some difference
   in these kind of counters.
 
-.. man end 
+.. man end
 

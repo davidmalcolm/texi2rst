@@ -1,19 +1,10 @@
+
 Decimal Floating Types
 **********************
 
 .. index:: decimal floating types
 
-``_Decimal32`` data type
-``_Decimal64`` data type
-``_Decimal128`` data type
-``df`` integer suffix
-``dd`` integer suffix
-``dl`` integer suffix
-``DF`` integer suffix
-``DD`` integer suffix
-``DL`` integer suffix
-
-As an extension, GNU C supports decimal floating types as
+``_Decimal32`` data type``_Decimal64`` data type``_Decimal128`` data type``df`` integer suffix``dd`` integer suffix``dl`` integer suffix``DF`` integer suffix``DD`` integer suffix``DL`` integer suffixAs an extension, GNU C supports decimal floating types as
 defined in the N1312 draft of ISO/IEC WDTR24732.  Support for decimal
 floating types in GCC will evolve as the draft technical report changes.
 Calling conventions for any target might also change.  Not all targets
@@ -39,7 +30,7 @@ is incomplete:
   integer type to which it is being converted, the result is undefined
   rather than the result value specified by the draft technical report.
 
-  * GCC does not provide the C library functionality associated with
+* GCC does not provide the C library functionality associated with
   math.h, fenv.h, stdio.h, stdlib.h, and
   wchar.h, which must come from a separate C library implementation.
   Because of this the GNU C compiler does not define macro

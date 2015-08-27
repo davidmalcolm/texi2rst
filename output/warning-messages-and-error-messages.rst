@@ -1,3 +1,4 @@
+
 Warning Messages and Error Messages
 ***********************************
 
@@ -14,7 +15,7 @@ warnings.  Each kind has a different purpose:
   program.  GCC reports errors with the source file name and line
   number where the problem is apparent.
 
-  * :dfn:`Warnings` report other unusual conditions in your code that
+* :dfn:`Warnings` report other unusual conditions in your code that
   may indicate a problem, although compilation can (and does)
   proceed.  Warning messages also report the source file name and line
   number, but include the text warning: to distinguish them
@@ -44,8 +45,9 @@ or errors.
 Warning OptionsOptions to Request or Suppress Warnings, for
 more detail on these and related command-line options.
 
-.. Copyright (C) 1988-2015 Free Software Foundation, Inc. 
-   This is part of the GCC manual. 
+.. Copyright (C) 1988-2015 Free Software Foundation, Inc.
 
-.. For copying conditions, see the file gcc.texi. 
+.. This is part of the GCC manual.
+
+.. For copying conditions, see the file gcc.texi.
 

@@ -103,7 +103,7 @@ Code written for this model tends to include definitions of all
 templates in the header file, since they must be seen to be
 instantiated.</dd>
 <dt>Cfront model</dt>
-<dd>The AT&amp;T C++ translator, Cfront, solved the template instantiation
+<dd><p class="first">The AT&amp;T C++ translator, Cfront, solved the template instantiation
 problem by creating the notion of a template repository, an
 automatically maintained place where template instances are stored.  A
 more modern version of the repository works as follows: As individual
@@ -119,10 +119,11 @@ just as transparent, but in practice it can been very difficult to build
 multiple programs in one directory and one program in multiple
 directories.  Code written for this model tends to separate definitions
 of non-inline member templates into a separate file, which should be
-compiled separately.</dd>
+compiled separately.</p>
+<p class="last">When used with GNU ld version 2.8 or later on an ELF system such as</p>
+</dd>
 </dl>
-<p>When used with GNU ld version 2.8 or later on an ELF system such as
-GNU/Linux or Solaris 2, or on Microsoft Windows, G++ supports the
+<p>GNU/Linux or Solaris 2, or on Microsoft Windows, G++ supports the
 Borland model.  On other systems, G++ implements neither automatic
 model.</p>
 <p>You have the following options for dealing with template instantiations:</p>
@@ -147,10 +148,8 @@ generated as a side effect.  Be warned, however, that this may cause
 conflicts if multiple libraries try to provide the same instantiations.
 For greater control, use explicit instantiation as described in the next
 option.</p>
-<ul class="simple">
-<li></li>
-</ul>
-<p id="index-2">Compile your code with <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fno-implicit-templates"><em class="xref std std-option">-fno-implicit-templates</em></a> to disable the
+</li>
+<li><p id="index-2">Compile your code with <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fno-implicit-templates"><em class="xref std std-option">-fno-implicit-templates</em></a> to disable the
 implicit generation of template instances, and explicitly instantiate
 all the ones you use.  This approach requires more knowledge of exactly
 which instances you need than do the others, but it&#8217;s less
@@ -190,10 +189,9 @@ functions (with <tt class="docutils literal"><span class="pre">static</span></tt
 <span class="k">static</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">Foo</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>Do nothing.  Pretend G++ does implement automatic instantiation</li>
-</ul>
-<p>management.  Code written for the Borland model works fine, but
+</li>
+<li><p class="first">Do nothing.  Pretend G++ does implement automatic instantiation
+management.  Code written for the Borland model works fine, but
 each translation unit contains instances of each of the templates it
 uses.  In a large program, this can lead to an unacceptable amount of code
 duplication.</p>

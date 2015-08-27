@@ -1,8 +1,8 @@
+
 C++ Style Comments
 ******************
 
 ``//``
-
 .. index:: C++ comments
 
 .. index:: comments, C++ style

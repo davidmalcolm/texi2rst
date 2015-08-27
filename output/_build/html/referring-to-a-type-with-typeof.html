@@ -82,8 +82,9 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <p>Referring to a Type with <tt class="docutils literal"><span class="pre">typeof</span></tt></p>
-<span class="target" id="index-0"></span><span class="target" id="index-1"></span><p id="index-2">Another way to refer to the type of an expression is with <tt class="docutils literal"><span class="pre">typeof</span></tt>.
+  <p>Referring to a Type with <tt class="docutils literal"><span class="pre">typeof</span></tt>
+.. index:: typeof</p>
+<span class="target" id="index-0"></span><p id="index-1">Another way to refer to the type of an expression is with <tt class="docutils literal"><span class="pre">typeof</span></tt>.
 The syntax of using of this keyword looks like <tt class="docutils literal"><span class="pre">sizeof</span></tt>, but the
 construct acts semantically like a type name defined with <tt class="docutils literal"><span class="pre">typedef</span></tt>.</p>
 <p>There are two ways of writing the argument to <tt class="docutils literal"><span class="pre">typeof</span></tt>: with an
@@ -118,8 +119,9 @@ arithmetic type and evaluates each of its arguments exactly once:</p>
 <span class="cp">    _a &gt; _b ? _a : _b; })</span>
 </pre></div>
 </div>
-<p id="index-3">_ in variables in macros</p>
-<span class="target" id="index-4"></span><span class="target" id="index-5"></span><p id="index-6">The reason for using names that start with underscores for the local
+<p id="index-2">_ in variables in macros
+.. index:: local variables in macros</p>
+<span class="target" id="index-3"></span><p id="index-4">The reason for using names that start with underscores for the local
 variables is to avoid conflicts with variable names that occur within the
 expressions that are substituted for <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt>.  Eventually we
 hope to design a new form of declaration syntax that allows you to declare
@@ -131,15 +133,13 @@ more reliable way to prevent such conflicts.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">typeof</span> <span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>This declares <tt class="docutils literal"><span class="pre">y</span></tt> as an array of such values.</li>
-</ul>
+</li>
+<li><p class="first">This declares <tt class="docutils literal"><span class="pre">y</span></tt> as an array of such values.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">typeof</span> <span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>This declares <tt class="docutils literal"><span class="pre">y</span></tt> as an array of pointers to characters:</li>
-</ul>
+</li>
+<li><p class="first">This declares <tt class="docutils literal"><span class="pre">y</span></tt> as an array of pointers to characters:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">typeof</span> <span class="p">(</span><span class="n">typeof</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)[</span><span class="mi">4</span><span class="p">])</span> <span class="n">y</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -176,17 +176,14 @@ scope until after the initializer.  (In C++, you should use C++11
 </pre></div>
 </div>
 <p>Using <tt class="docutils literal"><span class="pre">__auto_type</span></tt> instead of <tt class="docutils literal"><span class="pre">typeof</span></tt> has two advantages:</p>
-<ul>
-<li><p class="first">Each argument to the macro appears only once in the expansion of
+<ul class="simple">
+<li>Each argument to the macro appears only once in the expansion of
 the macro.  This prevents the size of the macro expansion growing
 exponentially when calls to such macros are nested inside arguments of
-such macros.</p>
-<ul class="simple">
-<li>If the argument to the macro has variably modified type, it is</li>
-</ul>
-<p>evaluated only once when using <tt class="docutils literal"><span class="pre">__auto_type</span></tt>, but twice if
-<tt class="docutils literal"><span class="pre">typeof</span></tt> is used.</p>
-</li>
+such macros.</li>
+<li>If the argument to the macro has variably modified type, it is
+evaluated only once when using <tt class="docutils literal"><span class="pre">__auto_type</span></tt>, but twice if
+<tt class="docutils literal"><span class="pre">typeof</span></tt> is used.</li>
 </ul>
 
 

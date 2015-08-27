@@ -1,6 +1,5 @@
-Legacy ``__sync`` Built-in Functions for Atomic Memory Access
 
-The following built-in functions
+Legacy ``__sync`` Built-in Functions for Atomic Memory AccessThe following built-in functions
 are intended to be compatible with those described
 in the Intel Itanium Processor-specific Application Binary Interface,
 section 7.4.  As such, they depart from normal GCC practice by not using
@@ -23,10 +22,9 @@ function carries the same name as the built-in version,
 with an additional suffix
 _``n`` where ``n`` is the size of the data type.
 
-.. ??? Should we have a mechanism to suppress this warning?  This is almost 
-   useful for implementing the operation under the control of an external 
-
-.. mutex. 
+.. ??? Should we have a mechanism to suppress this warning?  This is almost
+   useful for implementing the operation under the control of an external
+   mutex.
 
 In most cases, these built-in functions are considered a :dfn:`full barrier`.
 That is,
@@ -150,3 +148,4 @@ void __sync_lock_release (``type`` *ptr, ...)
   This means that all previous memory stores are globally visible, and all
   previous memory loads have been satisfied, but following memory reads
   are not prevented from being speculated to before the barrier.
+

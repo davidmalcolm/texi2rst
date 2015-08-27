@@ -1,4 +1,3 @@
-
 Statements and Declarations in Expressions
 ******************************************
 
@@ -10,8 +9,8 @@ Statements and Declarations in Expressions
 
 .. index:: macros, statements in expressions
 
-.. the above section title wrapped and causes an underfull hbox.. i 
-   changed it from "within" to "in". -mew 4feb93 
+.. the above section title wrapped and causes an underfull hbox.. i
+   changed it from "within" to "in". -mew 4feb93
 
 A compound statement enclosed in parentheses may appear as an expression
 in GNU C.  This allows you to use loops, switches, and local variables
@@ -131,3 +130,4 @@ parts of the containing expression.  For example,
 calls ``foo`` and ``bar1`` and does not call ``baz`` but
 may or may not call ``bar2``.  If ``bar2`` is called, it is
 called after ``foo`` and before ``bar1``.
+

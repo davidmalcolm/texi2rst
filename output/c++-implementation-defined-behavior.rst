@@ -1,3 +1,4 @@
+
 C++ Implementation-Defined Behavior
 -----------------------------------
 
@@ -33,5 +34,5 @@ environment); refer to their documentation for details.
 
   conditionally-supported-behavior
   exception-handling
-:: _exception-handling:
 
+:: _exception-handling:

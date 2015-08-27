@@ -1,5 +1,5 @@
-Referring to a Type with ``typeof``
 
+Referring to a Type with ``typeof``
 .. index:: typeof
 
 .. index:: sizeof
@@ -56,7 +56,6 @@ arithmetic type and evaluates each of its arguments exactly once:
 .. index:: underscores in variables in macros
 
 _ in variables in macros
-
 .. index:: local variables in macros
 
 .. index:: variables, local, in macros
@@ -78,13 +77,13 @@ Some more examples of the use of ``typeof``:
 
     typeof (*x) y;
 
-  * This declares ``y`` as an array of such values.
+* This declares ``y`` as an array of such values.
 
   .. code-block:: c++
 
     typeof (*x) y[4];
 
-  * This declares ``y`` as an array of pointers to characters:
+* This declares ``y`` as an array of pointers to characters:
 
   .. code-block:: c++
 
@@ -136,7 +135,7 @@ Using ``__auto_type`` instead of ``typeof`` has two advantages:
   exponentially when calls to such macros are nested inside arguments of
   such macros.
 
-  * If the argument to the macro has variably modified type, it is
+* If the argument to the macro has variably modified type, it is
   evaluated only once when using ``__auto_type``, but twice if
   ``typeof`` is used.
 

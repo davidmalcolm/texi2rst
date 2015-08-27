@@ -172,6 +172,7 @@ def from_xml_string(xml_src):
 
     dom = xml.dom.minidom.parseString(xml_src)
     tree = convert_from_xml(dom)
+    tree = fixup_whitespace(tree)
     return tree
 
 # Visitor base class
@@ -228,9 +229,18 @@ def fixup_whitespace(tree):
         Strip redundant Text nodes
         """
         def previsit_element(self, element):
-            if element.kind in ('pre', 'para'):
+            if element.kind == 'pre':
                 return
 
+            if element.kind == 'para':
+                # Strip trailing whitespace within <para>
+                text = element.get_sole_text()
+                if text:
+                    text.data = text.data.rstrip()
+                return
+
+            # Within other kinds of element, fully strip
+            # pure-whitespace text nodes.
             new_children = []
             for child in element.children:
                 if isinstance(child, Text):
@@ -238,6 +248,9 @@ def fixup_whitespace(tree):
                         continue
                 new_children.append(child)
             element.children = new_children
+
+        def visit_comment(self, comment):
+            comment.data = comment.data.rstrip()
 
     v = WhitespaceFixer()
     v.visit(tree)
@@ -257,21 +270,17 @@ def combine_commments(tree):
     class CommentCombiner(NoopVisitor):
         def previsit_element(self, element):
             # Attempt to merge
-            #   COMMENT(x) WHITESPACE(y) COMMENT(z)
+            #   COMMENT(x) COMMENT(y)
             # into
-            #   COMMENT(x + y + z)
+            #   COMMENT(x + '\n' + y)
             new_children = []
             for child in element.children:
                 if isinstance(child, Comment):
-                    if len(new_children) >= 2:
+                    if len(new_children) >= 1:
                         last = new_children[-1]
-                        penult = new_children[-2]
-                        if isinstance(penult, Comment):
-                            if isinstance(last, Text):
-                                if last.data.isspace():
-                                    element.children.pop()
-                                    penult.data = penult.data + last.data + child.data
-                                    continue
+                        if isinstance(last, Comment):
+                            last.data = last.data + '\n' + child.data
+                            continue
                 new_children.append(child)
             element.children = new_children
 
@@ -874,6 +883,7 @@ class Directive(RstKind):
 
     def after(self, w):
         w.indent -= 1
+        w.write('\n\n')
 
 class ListItem(RstKind):
     def __init__(self, bullet):
@@ -888,6 +898,7 @@ class ListItem(RstKind):
 
     def after(self, w):
         w.indent -= 1
+        w.write('\n\n')
 
 class DefinitionListHeader(RstKind):
     """
@@ -999,6 +1010,8 @@ class RstWriter(Visitor):
     def postvisit_element(self, element):
         if element.rst_kind:
             element.rst_kind.after(self)
+        if element.kind == 'para':
+            self.write('\n\n')
 
     def visit_comment(self, comment):
         lines = comment.data.splitlines()
@@ -1075,37 +1088,32 @@ class CommentTests(Texi2RstTests):
         texinfo = doc.children[0]
         self.assertIsInstance(texinfo, Element)
         self.assertEqual(texinfo.kind, 'texinfo')
-        self.assertEqual(len(texinfo.children), 5)
-        self.assertIsInstance(texinfo.children[0], Text)
-        self.assertEqual(texinfo.children[0].data, u'\n')
+        self.assertEqual(len(texinfo.children), 2)
+        self.assertIsInstance(texinfo.children[0], Comment)
+        self.assertEqual(texinfo.children[0].data, u' c First line')
         self.assertIsInstance(texinfo.children[1], Comment)
-        self.assertEqual(texinfo.children[1].data, u' c First line ')
-        self.assertIsInstance(texinfo.children[2], Text)
-        self.assertIsInstance(texinfo.children[3], Comment)
-        self.assertIsInstance(texinfo.children[4], Text)
+        self.assertEqual(texinfo.children[1].data, u' c Second line')
 
     def test_comment_converter(self):
         doc = from_xml_string(self.xml_src)
         doc = convert_comments(doc)
         texinfo = doc.children[0]
-        self.assertEqual(len(texinfo.children), 5)
-        self.assertEqual(texinfo.children[1].data, u'First line ')
+        self.assertEqual(len(texinfo.children), 2)
+        self.assertEqual(texinfo.children[0].data, u'First line')
 
     def test_comment_combining(self):
         doc = from_xml_string(self.xml_src)
         doc = fixup_comments(doc)
         texinfo = doc.children[0]
-        self.assertEqual(len(texinfo.children), 3)
-        self.assertIsInstance(texinfo.children[0], Text)
-        self.assertIsInstance(texinfo.children[1], Comment)
-        self.assertEqual(texinfo.children[1].data, u'First line \nSecond line ')
-        self.assertIsInstance(texinfo.children[2], Text)
+        self.assertEqual(len(texinfo.children), 1)
+        self.assertIsInstance(texinfo.children[0], Comment)
+        self.assertEqual(texinfo.children[0].data, u'First line\nSecond line')
 
     def test_rst_output(self):
         doc = from_xml_string(self.xml_src)
         doc = fixup_comments(doc)
         out = self.make_rst_string(doc)
-        self.assertEqual(u'.. First line \n   Second line \n\n', out)
+        self.assertEqual(u'.. First line\n   Second line\n\n', out)
 
 class PruningTests(Texi2RstTests):
     def test_command(self):
@@ -1144,6 +1152,7 @@ class MenuTests(Texi2RstTests):
   How GCC implements the ISO C++ specification. <c++-implementation>
   GNU extensions to the C language family. <c-extensions>
   GNU extensions to the C++ language. <c++-extensions>
+
 ''',
                          out)
 
@@ -1182,14 +1191,14 @@ class InlineMarkupTests(Texi2RstTests):
         doc = from_xml_string(xml_src)
         doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
-        self.assertEqual(u'An :dfn:`attribute specifier list` is...', out)
+        self.assertEqual(u'An :dfn:`attribute specifier list` is...\n\n', out)
 
     def test_env(self):
         xml_src = u'<para>The default <env>GCC_COLORS</env> is...</para>'
         doc = from_xml_string(xml_src)
         doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
-        self.assertEqual(u'The default :envvar:`GCC_COLORS` is...', out)
+        self.assertEqual(u'The default :envvar:`GCC_COLORS` is...\n\n', out)
 
 class TitleTests(Texi2RstTests):
     def test_section_title(self):
@@ -1198,7 +1207,7 @@ class TitleTests(Texi2RstTests):
         doc = from_xml_string(xml_src)
         doc = fixup_titles(doc)
         out = self.make_rst_string(doc)
-        self.assertEqual(u'A section title\n===============\n\nsome text',
+        self.assertEqual(u'A section title\n===============\n\nsome text\n\n',
                          out)
 
     def test_nested_section_titles(self):
@@ -1220,6 +1229,7 @@ A chapter title
 ---------------
 
 some chapter text
+
 ''',
                          out)
 
@@ -1229,7 +1239,7 @@ some chapter text
         doc = from_xml_string(xml_src)
         doc = fixup_titles(doc)
         out = self.make_rst_string(doc)
-        self.assertEqual(u'A sub-sub-heading\n^^^^^^^^^^^^^^^^^\n\nsome text',
+        self.assertEqual(u'A sub-sub-heading\n^^^^^^^^^^^^^^^^^\n\nsome text\n\n',
                          out)
 
 class OptionTests(Texi2RstTests):
@@ -1268,6 +1278,7 @@ This warning is enabled by <option>-Wall</option>.
   This warning is enabled by -Wall.
 
   To suppress this warning use the ``unused`` attribute.
+
 ''',
             out)
 
@@ -1312,7 +1323,9 @@ types.)
         self.assertEqual(
             u'''.. option:: -fabi-version=n
 
-  DESCRIPTION WOULD GO HERE''',
+  DESCRIPTION WOULD GO HERE
+
+''',
             out)
 
     def test_option_listing(self):
@@ -1478,6 +1491,7 @@ test (int i)
   {
     return i * i;
   }
+
 '''),
             out)
 
@@ -1501,6 +1515,7 @@ ENDDO
       A(J, I) = A(J, I) * C
     ENDDO
   ENDDO
+
 '''),
             out)
 
@@ -1519,6 +1534,7 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
   gcc -c -Q -O3 --help=optimizers > /tmp/O3-opts
   gcc -c -Q -O2 --help=optimizers > /tmp/O2-opts
   diff /tmp/O2-opts /tmp/O3-opts | grep enabled
+
 '''),
             out)
 
@@ -1650,19 +1666,56 @@ These parameters take one of the following forms:
         doc = fixup_lists(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            (u'''  * Outer list's first item.
+            (u'''* Outer list's first item.
 
-  * A nested list
+* A nested list
 
-        * Nested list's first item.
+  * Nested list's first item.
 
-        * Nested list's second item.
+  * Nested list's second item.
 
-  * Outer list's 3rd item.
+* Outer list's 3rd item.
 
 '''),
             out)
 
+    def test_issue_3(self):
+        xml_src = (u'''<texinfo><para>There is no formal written standard for Objective-C or Objective-C++&eosperiod;
+The authoritative manual on traditional Objective-C (1.0) is
+&textldquo;Object-Oriented Programming and the Objective-C Language&textrdquo;,
+available at a number of web sites:
+</para><itemize commandarg="bullet" endspaces=" ">
+<listitem><prepend>&bullet;</prepend>
+<para><uref><urefurl>http://www.gnustep.org/&slashbreak;resources/&slashbreak;documentation/&slashbreak;ObjectivCBook.pdf</urefurl></uref>
+is the original NeXTstep document;
+</para></listitem><listitem><prepend>&bullet;</prepend>
+<para><uref><urefurl>http://objc.toodarkpark.net</urefurl></uref>
+is the same document in another format;
+</para></listitem><listitem><prepend>&bullet;</prepend>
+<para><uref><urefurl>http://developer.apple.com/&slashbreak;mac/&slashbreak;library/&slashbreak;documentation/&slashbreak;Cocoa/&slashbreak;Conceptual/&slashbreak;ObjectiveC/</urefurl></uref>
+has an updated version but make sure you search for &textldquo;Object Oriented Programming and the Objective-C Programming Language 1.0&textrdquo;,
+not documentation on the newer &textldquo;Objective-C 2.0&textrdquo; language
+</para></listitem></itemize></texinfo>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_lists(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(
+            (u'''There is no formal written standard for Objective-C or Objective-C++.
+The authoritative manual on traditional Objective-C (1.0) is
+'Object-Oriented Programming and the Objective-C Language',
+available at a number of web sites:
+
+* http://www.gnustep.org//resources//documentation//ObjectivCBook.pdf
+  is the original NeXTstep document;
+
+* http://objc.toodarkpark.net
+  is the same document in another format;
+
+* http://developer.apple.com//mac//library//documentation//Cocoa//Conceptual//ObjectiveC/
+  has an updated version but make sure you search for 'Object Oriented Programming and the Objective-C Programming Language 1.0',
+  not documentation on the newer 'Objective-C 2.0' language
+
+'''), out)
 
 class IndexTests(Texi2RstTests):
     def test_cindex(self):
@@ -1755,18 +1808,19 @@ class IntegrationTests(Texi2RstTests):
             (u'Top-level title\n' +
              u'===============\n' +
              u'\n' +
-             u'   Top-level text.' +  # FIXME < this indentation is wrong
+             u'Top-level text.' +
              u'''
 
 .. toctree::
 
   chapter-1-title
   chapter-2-title
+
 '''),
             dict_[u'gcc'])
         self.assertEqual(
-            (u'\nChapter 1 title\n---------------\n\n' +
-             u'  Chapter 1 text.' + # FIXME < this indentation is wrong
+            (u'Chapter 1 title\n---------------\n\n' +
+             u'Chapter 1 text.' +
              u'''
 
 .. toctree::
@@ -1774,13 +1828,11 @@ class IntegrationTests(Texi2RstTests):
   chapter-1-section-1-title
   chapter-1-section-2-title
 
-
 '''),
             dict_[u'chapter-1-title'])
         self.assertEqual(
             (u'Chapter 2 Section 2 title\n*************************\n\n' +
-             '     Chapter 2 Section 2 text.\n'),
-            # FIXME and the above indentation is also wrong
+             'Chapter 2 Section 2 text.\n\n'),
             dict_[u'chapter-2-section-2-title'])
 
         if 0:

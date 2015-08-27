@@ -1,5 +1,5 @@
-Invoking :command:`gcov`
 
+Invoking :command:`gcov`
 .. code-block:: c++
 
   gcov [``options``] ``files``
@@ -28,7 +28,7 @@ gcov [@option{-v}|@option{--version}] [@option{-h}|@option{--help}]
 gpl(7), gfdl(7), fsf-funding(7), gcc(1) and the Info entry for @file{gcc}.
 @c man end
 
-.. man begin OPTIONS 
+.. man begin OPTIONS
 
 -h--help
   Display help about using :command:`gcov` (on the standard output), and
@@ -149,7 +149,7 @@ gpl(7), gfdl(7), fsf-funding(7), gcc(1) and the Info entry for @file{gcc}.
   Display demangled function names in output. The default is to show
   mangled function names.
 
-:command:`gcov` should be run with the current directory the same as that
+  :command:`gcov` should be run with the current directory the same as that
 when you invoked the compiler.  Otherwise it will not be able to locate
 the source files.  :command:`gcov` produces files called
 ``mangledname``.gcov in the current directory.  These contain
@@ -183,7 +183,6 @@ Some lines of information at the start have ``line_number`` of zero.
 These preamble lines are of the form
 
 :option:`-:0:```tag``:``value``
-
 The ordering and number of these preamble lines will be augmented as
 :command:`gcov` development progresses - do not rely on them remaining
 unchanged.  Use ``tag`` to locate a particular preamble line.

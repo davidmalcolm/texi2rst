@@ -1,3 +1,4 @@
+
 Contributing to GCC Development
 -------------------------------
 
@@ -24,4 +25,3 @@ http://gcc.gnu.org/projects/.
 @c man begin SEEALSO
 gpl(7), gfdl(7).
 @c man end
-

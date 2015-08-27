@@ -89,7 +89,7 @@ instrumentation.  Note that all Pointer Bounds Checker builtins can be used
 even if you compile with Pointer Bounds Checker off
 (<em class="xref std std-option">-fno-check-pointer-bounds</em>).
 The behavior may differ in such case as documented below.</p>
-<p>This built-in function returns a new pointer with the value of <tt class="docutils literal"><span class="pre">q</span></tt>, and
+<p id="index-12">Built-in Functionvoid <a href="#id1"><span class="problematic" id="id2">*</span></a>__builtin___bnd_set_ptr_bounds(constvoid*``q``,size_t``size``)This built-in function returns a new pointer with the value of <tt class="docutils literal"><span class="pre">q</span></tt>, and
 associate it with the bounds [<tt class="docutils literal"><span class="pre">q</span></tt>, <tt class="docutils literal"><span class="pre">q``+``size</span></tt>-1].  With Pointer
 Bounds Checker off, the built-in function just returns the first argument.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="kt">void</span> <span class="o">*</span><span class="nf">__wrap_malloc</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span>
@@ -100,7 +100,7 @@ Bounds Checker off, the built-in function just returns the first argument.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This built-in function returns a new pointer with the value of <tt class="docutils literal"><span class="pre">p</span></tt>
+<p id="index-13">Built-in Functionvoid <a href="#id3"><span class="problematic" id="id4">*</span></a>__builtin___bnd_narrow_ptr_bounds(constvoid*``p``,constvoid*``q``,size_t``size``)This built-in function returns a new pointer with the value of <tt class="docutils literal"><span class="pre">p</span></tt>
 and associates it with the narrowed bounds formed by the intersection
 of bounds associated with <tt class="docutils literal"><span class="pre">q</span></tt> and the bounds
 [<tt class="docutils literal"><span class="pre">p</span></tt>, <tt class="docutils literal"><span class="pre">p</span></tt> + <tt class="docutils literal"><span class="pre">size</span></tt> - 1].
@@ -117,7 +117,7 @@ argument.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This built-in function returns a new pointer with the value of <tt class="docutils literal"><span class="pre">q</span></tt>,
+<p id="index-14">Built-in Functionvoid <a href="#id5"><span class="problematic" id="id6">*</span></a>__builtin___bnd_copy_ptr_bounds(constvoid*``q``,constvoid*``r``)This built-in function returns a new pointer with the value of <tt class="docutils literal"><span class="pre">q</span></tt>,
 and associates it with the bounds already associated with pointer <tt class="docutils literal"><span class="pre">r</span></tt>.
 With Pointer Bounds Checker off, the built-in function just returns the first
 argument.</p>
@@ -127,18 +127,18 @@ argument.</p>
                                                   <span class="n">objptr</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>This built-in function returns a new pointer with the value of <tt class="docutils literal"><span class="pre">q</span></tt>, and
+<p id="index-15">Built-in Functionvoid <a href="#id7"><span class="problematic" id="id8">*</span></a>__builtin___bnd_init_ptr_bounds(constvoid*``q``)This built-in function returns a new pointer with the value of <tt class="docutils literal"><span class="pre">q</span></tt>, and
 associates it with INIT (allowing full memory access) bounds. With Pointer
 Bounds Checker off, the built-in function just returns the first argument.</p>
-<p>This built-in function returns a new pointer with the value of <tt class="docutils literal"><span class="pre">q</span></tt>, and
+<p id="index-16">Built-in Functionvoid <a href="#id9"><span class="problematic" id="id10">*</span></a>__builtin___bnd_null_ptr_bounds(constvoid*``q``)This built-in function returns a new pointer with the value of <tt class="docutils literal"><span class="pre">q</span></tt>, and
 associates it with NULL (allowing no memory access) bounds. With Pointer
 Bounds Checker off, the built-in function just returns the first argument.</p>
-<p>This built-in function stores the bounds associated with pointer <tt class="docutils literal"><span class="pre">ptr_val</span></tt>
+<p id="index-17">Built-in Functionvoid__builtin___bnd_store_ptr_bounds(constvoid**``ptr_addr``,constvoid*``ptr_val``)This built-in function stores the bounds associated with pointer <tt class="docutils literal"><span class="pre">ptr_val</span></tt>
 and location <tt class="docutils literal"><span class="pre">ptr_addr</span></tt> into Bounds Table.  This can be useful to propagate
 bounds from legacy code without touching the associated pointer&#8217;s memory when
 pointers are copied as integers.  With Pointer Bounds Checker off, the built-in
 function call is ignored.</p>
-<p>This built-in function checks if the pointer <tt class="docutils literal"><span class="pre">q</span></tt> is within the lower
+<p id="index-18">Built-in Functionvoid__builtin___bnd_chk_ptr_lbounds(constvoid*``q``)This built-in function checks if the pointer <tt class="docutils literal"><span class="pre">q</span></tt> is within the lower
 bound of its associated bounds.  With Pointer Bounds Checker off, the built-in
 function call is ignored.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="kt">void</span> <span class="o">*</span><span class="nf">__wrap_memset</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span>
@@ -153,10 +153,10 @@ function call is ignored.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This built-in function checks if the pointer <tt class="docutils literal"><span class="pre">q</span></tt> is within the upper
+<p id="index-19">Built-in Functionvoid__builtin___bnd_chk_ptr_ubounds(constvoid*``q``)This built-in function checks if the pointer <tt class="docutils literal"><span class="pre">q</span></tt> is within the upper
 bound of its associated bounds.  With Pointer Bounds Checker off, the built-in
 function call is ignored.</p>
-<p>This built-in function checks if [<tt class="docutils literal"><span class="pre">q</span></tt>, <tt class="docutils literal"><span class="pre">q</span></tt> + <tt class="docutils literal"><span class="pre">size</span></tt> - 1] is within
+<p id="index-20">Built-in Functionvoid__builtin___bnd_chk_ptr_bounds(constvoid*``q``,size_t``size``)This built-in function checks if [<tt class="docutils literal"><span class="pre">q</span></tt>, <tt class="docutils literal"><span class="pre">q</span></tt> + <tt class="docutils literal"><span class="pre">size</span></tt> - 1] is within
 the lower and upper bounds associated with <tt class="docutils literal"><span class="pre">q</span></tt>.  With Pointer Bounds Checker
 off, the built-in function call is ignored.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="kt">void</span> <span class="o">*</span><span class="nf">__wrap_memcpy</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span>
@@ -171,7 +171,7 @@ off, the built-in function call is ignored.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This built-in function returns the lower bound associated
+<p id="index-21">Built-in Functionconst void <a href="#id11"><span class="problematic" id="id12">*</span></a>__builtin___bnd_get_ptr_lbound(constvoid*``q``)This built-in function returns the lower bound associated
 with the pointer <tt class="docutils literal"><span class="pre">q</span></tt>, as a pointer value.
 This is useful for debugging using <tt class="docutils literal"><span class="pre">printf</span></tt>.
 With Pointer Bounds Checker off, the built-in function returns 0.</p>
@@ -180,7 +180,7 @@ With Pointer Bounds Checker off, the built-in function returns 0.</p>
 <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;q = %p  lb(q) = %p  ub(q) = %p&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>This built-in function returns the upper bound (which is a pointer) associated
+<p id="index-22">Built-in Functionconst void <a href="#id13"><span class="problematic" id="id14">*</span></a>__builtin___bnd_get_ptr_ubound(constvoid*``q``)This built-in function returns the upper bound (which is a pointer) associated
 with the pointer <tt class="docutils literal"><span class="pre">q</span></tt>.  With Pointer Bounds Checker off,
 the built-in function returns -1.</p>
 </div>

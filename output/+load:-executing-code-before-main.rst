@@ -1,6 +1,5 @@
-``+load``: Executing Code before ``main``
 
-This section is specific for the GNU Objective-C runtime.  If you are
+``+load``: Executing Code before ``main``This section is specific for the GNU Objective-C runtime.  If you are
 using a different runtime, you can skip it.
 
 The GNU Objective-C runtime provides a way that allows you to execute
@@ -78,9 +77,7 @@ instead of ``+initialize``.
 
 :: _what-you-can-and-what-you-cannot-do-in-+load:
 
-What You Can and Cannot Do in ``+load``
-
-``+load`` is to be used only as a last resort.  Because it is
+What You Can and Cannot Do in ``+load````+load`` is to be used only as a last resort.  Because it is
 executed very early, most of the Objective-C runtime machinery will
 not be ready when ``+load`` is executed; hence ``+load`` works
 best for executing C code that is independent on the Objective-C
@@ -91,13 +88,13 @@ following things:
 
 * you can write whatever C code you like;
 
-  * you can allocate and send messages to objects whose class is implemented
+* you can allocate and send messages to objects whose class is implemented
   in the same file;
 
-  * the ``+load`` implementation of all super classes of a class are
+* the ``+load`` implementation of all super classes of a class are
   executed before the ``+load`` of that class is executed;
 
-  * the ``+load`` implementation of a class is executed before the
+* the ``+load`` implementation of a class is executed before the
   ``+load`` implementation of any category.
 
 In particular, the following things, even if they can work in a
@@ -105,10 +102,10 @@ particular case, are not guaranteed:
 
 * allocation of or sending messages to arbitrary objects;
 
-  * allocation of or sending messages to objects whose classes have a
+* allocation of or sending messages to objects whose classes have a
   category implemented in the same file;
 
-  * sending messages to Objective-C constant strings (``@"this is a
+* sending messages to Objective-C constant strings (``@"this is a
   constant string"``);
 
 You should make no assumptions about receiving ``+load`` in sibling

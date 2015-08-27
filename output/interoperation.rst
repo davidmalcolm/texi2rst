@@ -1,3 +1,4 @@
+
 Interoperation
 **************
 
@@ -20,11 +21,11 @@ libraries and debuggers on certain systems.
   run.  Incompatible libraries are then detected at link time, rather than
   at run time.
 
-  * On some BSD systems, including some versions of Ultrix, use of profiling
+* On some BSD systems, including some versions of Ultrix, use of profiling
   causes static variable destructors (currently used only in C++) not to
   be run.
 
-  * On a SPARC, GCC aligns all values of type ``double`` on an 8-byte
+* On a SPARC, GCC aligns all values of type ``double`` on an 8-byte
   boundary, and it expects every ``double`` to be so aligned.  The Sun
   compiler usually gives ``double`` values 8-byte alignment, with one
   exception: function arguments of type ``double`` may not be aligned.
@@ -59,7 +60,7 @@ libraries and debuggers on certain systems.
 
   Storing into the pointer can be done likewise with the same union.
 
-  * On Solaris, the ``malloc`` function in the libmalloc.a library
+* On Solaris, the ``malloc`` function in the libmalloc.a library
   may allocate memory that is only 4 byte aligned.  Since GCC on the
   SPARC assumes that doubles are 8 byte aligned, this may result in a
   fatal signal if doubles are stored in memory allocated by the
@@ -69,30 +70,30 @@ libraries and debuggers on certain systems.
   ``malloc`` and related functions from libc.a; they do not have
   this problem.
 
-  * On the HP PA machine, ADB sometimes fails to work on functions compiled
+* On the HP PA machine, ADB sometimes fails to work on functions compiled
   with GCC.  Specifically, it fails to work on functions that use
   ``alloca`` or variable-size arrays.  This is because GCC doesn't
   generate HP-UX unwind descriptors for such functions.  It may even be
   impossible to generate them.
 
-  * Debugging (:option:`-g`) is not supported on the HP PA machine, unless you use
+* Debugging (:option:`-g`) is not supported on the HP PA machine, unless you use
   the preliminary GNU tools.
 
-  * Taking the address of a label may generate errors from the HP-UX
+* Taking the address of a label may generate errors from the HP-UX
   PA assembler.  GAS for the PA does not have this problem.
 
-  * Using floating point parameters for indirect calls to static functions
+* Using floating point parameters for indirect calls to static functions
   will not work when using the HP assembler.  There simply is no way for GCC
   to specify what registers hold arguments for static functions when using
   the HP assembler.  GAS for the PA does not have this problem.
 
-  * In extremely rare cases involving some very large functions you may
+* In extremely rare cases involving some very large functions you may
   receive errors from the HP linker complaining about an out of bounds
   unconditional branch offset.  This used to occur more often in previous
   versions of GCC, but is now exceptionally rare.  If you should run
   into it, you can work around by making your function smaller.
 
-  * GCC compiled code sometimes emits warnings from the HP-UX assembler of
+* GCC compiled code sometimes emits warnings from the HP-UX assembler of
   the form:
 
   .. code-block:: c++
@@ -102,12 +103,12 @@ libraries and debuggers on certain systems.
 
   These warnings are harmless and can be safely ignored.
 
-  * In extremely rare cases involving some very large functions you may
+* In extremely rare cases involving some very large functions you may
   receive errors from the AIX Assembler complaining about a displacement
   that is too large.  If you should run into it, you can work around by
   making your function smaller.
 
-  * The libstdc++.a library in GCC relies on the SVR4 dynamic
+* The libstdc++.a library in GCC relies on the SVR4 dynamic
   linker semantics which merges global symbols between libraries and
   applications, especially necessary for C++ streams functionality.
   This is not the default behavior of AIX shared libraries and dynamic
@@ -122,13 +123,13 @@ libraries and debuggers on certain systems.
   libstdc++.a library which is not dependent on the symbol
   merging semantics will continue to function correctly.
 
-  * An application can interpose its own definition of functions for
+* An application can interpose its own definition of functions for
   functions invoked by libstdc++.a with 'runtime-linking'
   enabled on AIX.  To accomplish this the application must be linked
   with 'runtime-linking' option and the functions explicitly must be
   exported by the application (:option:`-Wl,-brtl,-bE:exportfile`).
 
-  * AIX on the RS/6000 provides support (NLS) for environments outside of
+* AIX on the RS/6000 provides support (NLS) for environments outside of
   the United States.  Compilers and assemblers use NLS to support
   locale-specific representations of various objects including
   floating-point numbers (. vs , for separating decimal
@@ -137,7 +138,7 @@ libraries and debuggers on certain systems.
   assembler accepts.  If you have this problem, set the :envvar:`LANG`
   environment variable to C or En_US.
 
-  * 
+* 
   .. index:: fdollars-in-identifiers
 
   Even if you specify :option:`-fdollars-in-identifiers`,

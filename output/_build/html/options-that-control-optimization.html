@@ -156,8 +156,8 @@ compilation time.</p>
 <a class="reference internal" href="#cmdoption-ftree-sra"><em class="xref std std-option">-ftree-sra</em></a>
 <a class="reference internal" href="#cmdoption-ftree-pta"><em class="xref std std-option">-ftree-pta</em></a>
 <a class="reference internal" href="#cmdoption-ftree-ter"><em class="xref std std-option">-ftree-ter</em></a>
-<a class="reference internal" href="#cmdoption-funit-at-a-time"><em class="xref std std-option">-funit-at-a-time</em></a></p>
-<p><a class="reference internal" href="#cmdoption-O"><em class="xref std std-option">-O</em></a> also turns on <a class="reference internal" href="#cmdoption-fomit-frame-pointer"><em class="xref std std-option">-fomit-frame-pointer</em></a> on machines
+<a class="reference internal" href="#cmdoption-funit-at-a-time"><em class="xref std std-option">-funit-at-a-time</em></a>
+<a class="reference internal" href="#cmdoption-O"><em class="xref std std-option">-O</em></a> also turns on <a class="reference internal" href="#cmdoption-fomit-frame-pointer"><em class="xref std std-option">-fomit-frame-pointer</em></a> on machines
 where doing so does not interfere with debugging.</p>
 </dd></dl>
 
@@ -202,8 +202,8 @@ also turns on the following optimization flags:</p>
 <a class="reference internal" href="#cmdoption-ftree-switch-conversion"><em class="xref std std-option">-ftree-switch-conversion</em></a> <a class="reference internal" href="#cmdoption-ftree-tail-merge"><em class="xref std std-option">-ftree-tail-merge</em></a>
 <a class="reference internal" href="#cmdoption-ftree-pre"><em class="xref std std-option">-ftree-pre</em></a>
 <a class="reference internal" href="#cmdoption-ftree-vrp"><em class="xref std std-option">-ftree-vrp</em></a>
-<a class="reference internal" href="#cmdoption-fipa-ra"><em class="xref std std-option">-fipa-ra</em></a></p>
-<p>Please note the warning under <a class="reference internal" href="#cmdoption-fgcse"><em class="xref std std-option">-fgcse</em></a> about
+<a class="reference internal" href="#cmdoption-fipa-ra"><em class="xref std std-option">-fipa-ra</em></a>
+Please note the warning under <a class="reference internal" href="#cmdoption-fgcse"><em class="xref std std-option">-fgcse</em></a> about
 invoking <a class="reference internal" href="#cmdoption-O2"><em class="xref std std-option">-O2</em></a> on programs that use computed gotos.</p>
 </dd></dl>
 
@@ -428,10 +428,11 @@ as follows:</p>
 <dt>max-inline-insns-single</dt>
 <dd>is set to <tt class="docutils literal"><span class="pre">n</span></tt>/2.</dd>
 <dt>max-inline-insns-auto</dt>
-<dd>is set to <tt class="docutils literal"><span class="pre">n</span></tt>/2.</dd>
+<dd><p class="first">is set to <tt class="docutils literal"><span class="pre">n</span></tt>/2.</p>
+<p class="last">See below for a documentation of the individual</p>
+</dd>
 </dl>
-<p>See below for a documentation of the individual
-parameters controlling inlining and for the defaults of these parameters.</p>
+<p>parameters controlling inlining and for the defaults of these parameters.</p>
 <p>Note: there may be no value to <a class="reference internal" href="#cmdoption-finline-limit"><em class="xref std std-option">-finline-limit</em></a> that results
 in default behavior.</p>
 <p>Note: pseudo instruction represents, in this particular context, an
@@ -3280,62 +3281,50 @@ loop without bounds appears artificially cold relative to the other one.</dd>
 <dd>Control the probability of the expression having the specified value. This
 parameter takes a percentage (i.e. 0 ... 100) as input.
 The default probability of 90 is obtained empirically.</dd>
-</dl>
-<p>align-threshold</p>
-<blockquote>
-<div>Select fraction of the maximal frequency of executions of a basic block in
-a function to align the basic block.</div></blockquote>
-<p>align-loop-iterations</p>
-<blockquote>
-<div>A loop expected to iterate at least the selected number of iterations is
-aligned.</div></blockquote>
-<p>tracer-dynamic-coveragetracer-dynamic-coverage-feedback</p>
-<blockquote>
-<div><p>This value is used to limit superblock formation once the given percentage of
+<dt>align-threshold</dt>
+<dd>Select fraction of the maximal frequency of executions of a basic block in
+a function to align the basic block.</dd>
+<dt>align-loop-iterations</dt>
+<dd>A loop expected to iterate at least the selected number of iterations is
+aligned.</dd>
+<dt>tracer-dynamic-coveragetracer-dynamic-coverage-feedback</dt>
+<dd><p class="first">This value is used to limit superblock formation once the given percentage of
 executed instructions is covered.  This limits unnecessary code size
 expansion.</p>
-<p>The tracer-dynamic-coverage-feedback parameter
+<p class="last">The tracer-dynamic-coverage-feedback parameter
 is used only when profile
 feedback is available.  The real profiles (as opposed to statically estimated
 ones) are much less balanced allowing the threshold to be larger value.</p>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>tracer-max-code-growth</dt>
 <dd>Stop tail duplication once code growth has reached given percentage.  This is
 a rather artificial limit, as most of the duplicates are eliminated later in
 cross jumping, so it may be set to much higher values than is the desired code
 growth.</dd>
-</dl>
-<p>tracer-min-branch-ratio</p>
-<blockquote>
-<div>Stop reverse growth when the reverse probability of best edge is less than this
-threshold (in percent).</div></blockquote>
-<p>tracer-min-branch-ratiotracer-min-branch-ratio-feedback</p>
-<blockquote>
-<div><p>Stop forward growth if the best edge has probability lower than this
+<dt>tracer-min-branch-ratio</dt>
+<dd>Stop reverse growth when the reverse probability of best edge is less than this
+threshold (in percent).</dd>
+<dt>tracer-min-branch-ratiotracer-min-branch-ratio-feedback</dt>
+<dd><p class="first">Stop forward growth if the best edge has probability lower than this
 threshold.</p>
-<p>Similarly to tracer-dynamic-coverage two values are present, one for
+<p class="last">Similarly to tracer-dynamic-coverage two values are present, one for
 compilation for profile feedback and one for compilation without.  The value
 for compilation with profile feedback needs to be more conservative (higher) in
 order to make tracer effective.</p>
-</div></blockquote>
-<p>max-cse-path-length</p>
-<blockquote>
-<div>The maximum number of basic blocks on path that CSE considers.
-The default is 10.</div></blockquote>
-<dl class="docutils">
+</dd>
+<dt>max-cse-path-length</dt>
+<dd>The maximum number of basic blocks on path that CSE considers.
+The default is 10.</dd>
 <dt>max-cse-insns</dt>
 <dd>The maximum number of instructions CSE processes before flushing.
 The default is 1000.</dd>
-</dl>
-<p>ggc-min-expand</p>
-<blockquote>
-<div><p>GCC uses a garbage collector to manage its own memory allocation.  This
+<dt>ggc-min-expand</dt>
+<dd><p class="first">GCC uses a garbage collector to manage its own memory allocation.  This
 parameter specifies the minimum percentage by which the garbage
 collector&#8217;s heap should be allowed to expand between collections.
 Tuning this may improve compilation speed; it has no effect on code
 generation.</p>
-<p>The default is 30% + 70% * (RAM/1GB) with an upper bound of 100% when
+<p class="last">The default is 30% + 70% * (RAM/1GB) with an upper bound of 100% when
 RAM &gt;= 1GB.  If <tt class="docutils literal"><span class="pre">getrlimit</span></tt> is available, the notion of &#8216;RAM&#8217; is
 the smallest of actual RAM and <tt class="docutils literal"><span class="pre">RLIMIT_DATA</span></tt> or <tt class="docutils literal"><span class="pre">RLIMIT_AS</span></tt>.  If
 GCC is not able to calculate RAM on a particular platform, the lower
@@ -3343,15 +3332,14 @@ bound of 30% is used.  Setting this parameter and
 ggc-min-heapsize to zero causes a full collection to occur at
 every opportunity.  This is extremely slow, but can be useful for
 debugging.</p>
-</div></blockquote>
-<p>ggc-min-heapsize</p>
-<blockquote>
-<div><p>Minimum size of the garbage collector&#8217;s heap before it begins bothering
+</dd>
+<dt>ggc-min-heapsize</dt>
+<dd><p class="first">Minimum size of the garbage collector&#8217;s heap before it begins bothering
 to collect garbage.  The first collection occurs after the heap expands
 by ggc-min-expand% beyond ggc-min-heapsize.  Again,
 tuning this may improve compilation speed, and has no effect on code
 generation.</p>
-<p>The default is the smaller of RAM/8, RLIMIT_RSS, or a limit that
+<p class="last">The default is the smaller of RAM/8, RLIMIT_RSS, or a limit that
 tries to ensure that RLIMIT_DATA or RLIMIT_AS are not exceeded, but
 with a lower bound of 4096 (four megabytes) and an upper bound of
 131072 (128 megabytes).  If GCC is not able to calculate RAM on a
@@ -3359,8 +3347,7 @@ particular platform, the lower bound is used.  Setting this parameter
 very large effectively disables garbage collection.  Setting this
 parameter and ggc-min-expand to zero causes a full collection
 to occur at every opportunity.</p>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>max-reload-search-insns</dt>
 <dd>The maximum number of instruction reload should look backward for equivalent
 register.  Increasing values mean more aggressive optimization, making the
@@ -3370,20 +3357,17 @@ The default value is 100.</dd>
 <dd>The maximum number of memory locations cselib should take into account.
 Increasing values mean more aggressive optimization, making the compilation time
 increase with probably slightly better performance.  The default value is 500.</dd>
-</dl>
-<p>reorder-blocks-duplicatereorder-blocks-duplicate-feedback</p>
-<blockquote>
-<div><p>Used by the basic block reordering pass to decide whether to use unconditional
+<dt>reorder-blocks-duplicatereorder-blocks-duplicate-feedback</dt>
+<dd><p class="first">Used by the basic block reordering pass to decide whether to use unconditional
 branch or duplicate the code on its destination.  Code is duplicated when its
 estimated size is smaller than this value multiplied by the estimated size of
 unconditional jump in the hot spots of the program.</p>
-<p>The reorder-block-duplicate-feedback parameter
+<p class="last">The reorder-block-duplicate-feedback parameter
 is used only when profile
 feedback is available.  It may be set to higher values than
 reorder-block-duplicate since information about the hot spots is more
 accurate.</p>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>max-sched-ready-insns</dt>
 <dd>The maximum number of instructions ready to be issued the scheduler should
 consider at any given time during the first scheduling pass.  Increasing

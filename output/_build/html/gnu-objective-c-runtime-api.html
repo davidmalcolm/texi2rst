@@ -116,15 +116,13 @@ to the GNU Objective-C runtime API to define new classes or methods.</p>
 one provided by the &#8216;Objective-C 2.0&#8217; Apple/NeXT Objective-C
 runtime.  The API is documented in the public header files of the GNU
 Objective-C runtime:</p>
-<ul>
-<li><p class="first">objc/objc.h: this is the basic Objective-C header file,
+<ul class="simple">
+<li>objc/objc.h: this is the basic Objective-C header file,
 defining the basic Objective-C types such as <tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="docutils literal"><span class="pre">Class</span></tt>
 and <tt class="docutils literal"><span class="pre">BOOL</span></tt>.  You have to include this header to do almost
-anything with Objective-C.</p>
-<ul class="simple">
-<li>objc/runtime.h: this header declares most of the public runtime</li>
-</ul>
-<p>API functions allowing you to inspect and manipulate the Objective-C
+anything with Objective-C.</li>
+<li>objc/runtime.h: this header declares most of the public runtime
+API functions allowing you to inspect and manipulate the Objective-C
 runtime data structures.  These functions are fairly standardized
 across Objective-C runtimes and are almost identical to the Apple/NeXT
 Objective-C runtime ones.  It does not declare functions in some
@@ -132,33 +130,24 @@ specialized areas (constructing and forwarding message invocations,
 threading) which are in the other headers below.  You have to include
 objc/objc.h and objc/runtime.h to use any of the
 functions, such as <tt class="docutils literal"><span class="pre">class_getName()</span></tt>, declared in
-objc/runtime.h.</p>
-<ul class="simple">
-<li>objc/message.h: this header declares public functions used to</li>
-</ul>
-<p>construct, deconstruct and forward message invocations.  Because
+objc/runtime.h.</li>
+<li>objc/message.h: this header declares public functions used to
+construct, deconstruct and forward message invocations.  Because
 messaging is done in quite a different way on different runtimes,
 functions in this header are specific to the GNU Objective-C runtime
-implementation.</p>
-<ul class="simple">
-<li>objc/objc-exception.h: this header declares some public</li>
-</ul>
-<p>functions related to Objective-C exceptions.  For example functions in
+implementation.</li>
+<li>objc/objc-exception.h: this header declares some public
+functions related to Objective-C exceptions.  For example functions in
 this header allow you to throw an Objective-C exception from plain
-C/C++ code.</p>
-<ul class="simple">
-<li>objc/objc-sync.h: this header declares some public functions</li>
-</ul>
-<p>related to the Objective-C <tt class="docutils literal"><span class="pre">&#64;synchronized()</span></tt> syntax, allowing
+C/C++ code.</li>
+<li>objc/objc-sync.h: this header declares some public functions
+related to the Objective-C <tt class="docutils literal"><span class="pre">&#64;synchronized()</span></tt> syntax, allowing
 you to emulate an Objective-C <tt class="docutils literal"><span class="pre">&#64;synchronized()</span></tt> block in plain
-C/C++ code.</p>
-<ul class="simple">
-<li>objc/thr.h: this header declares a public runtime API threading</li>
-</ul>
-<p>layer that is only provided by the GNU Objective-C runtime.  It
+C/C++ code.</li>
+<li>objc/thr.h: this header declares a public runtime API threading
+layer that is only provided by the GNU Objective-C runtime.  It
 declares functions such as <tt class="docutils literal"><span class="pre">objc_mutex_lock()</span></tt>, which provide a
-platform-independent set of threading functions.</p>
-</li>
+platform-independent set of threading functions.</li>
 </ul>
 <p>The header files contain detailed documentation for each function in
 the GNU Objective-C runtime API.</p>

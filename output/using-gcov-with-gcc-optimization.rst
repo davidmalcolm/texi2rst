@@ -1,6 +1,5 @@
-Using :command:`gcov` with GCC Optimization
 
-If you plan to use :command:`gcov` to help optimize your code, you must
+Using :command:`gcov` with GCC OptimizationIf you plan to use :command:`gcov` to help optimize your code, you must
 first compile your program with two special GCC options:
 -fprofile-arcs -ftest-coverage.  Aside from that, you can use any
 other GCC options; but if you want to prove that every single line
@@ -62,5 +61,5 @@ interest. Calling ``_gcov_reset(void)`` will clear all profile counters
 to zero, and calling ``_gcov_dump(void)`` will cause the profile information
 collected at that point to be dumped to .gcda output files.
 
-.. man end 
+.. man end
 

@@ -96,14 +96,14 @@ that data type).</p>
 sophisticated features or other extensions of the language.  It
 is, therefore, not recommended to use them outside very simple
 functions acting as mere forwarders for their arguments.</p>
-<p>This built-in function returns a pointer to data
+<p id="index-2">Built-in Functionvoid <a href="#id1"><span class="problematic" id="id2">*</span></a>__builtin_apply_args()This built-in function returns a pointer to data
 describing how to perform a call with the same arguments as are passed
 to the current function.</p>
 <p>The function saves the arg pointer register, structure value address,
 and all registers that might be used to pass arguments to a function
 into a block of memory allocated on the stack.  Then it returns the
 address of that block.</p>
-<p>This built-in function invokes <tt class="docutils literal"><span class="pre">function</span></tt>
+<p id="index-3">Built-in Functionvoid <a href="#id3"><span class="problematic" id="id4">*</span></a>__builtin_apply(void(<a href="#id5"><span class="problematic" id="id6">*</span></a><tt class="docutils literal"><span class="pre">function</span></tt>)(),void*``arguments``,size_t``size``)This built-in function invokes <tt class="docutils literal"><span class="pre">function</span></tt>
 with a copy of the parameters described by <tt class="docutils literal"><span class="pre">arguments</span></tt>
 and <tt class="docutils literal"><span class="pre">size</span></tt>.</p>
 <p>The value of <tt class="docutils literal"><span class="pre">arguments</span></tt> should be the value returned by
@@ -116,10 +116,10 @@ is saved in a block of memory allocated on the stack.</p>
 value is used by <tt class="docutils literal"><span class="pre">__builtin_apply</span></tt> to compute the amount of data
 that should be pushed on the stack and copied from the incoming argument
 area.</p>
-<p>This built-in function returns the value described by <tt class="docutils literal"><span class="pre">result</span></tt> from
+<p id="index-4">Built-in Functionvoid__builtin_return(void*``result``)This built-in function returns the value described by <tt class="docutils literal"><span class="pre">result</span></tt> from
 the containing function.  You should specify, for <tt class="docutils literal"><span class="pre">result</span></tt>, a value
 returned by <tt class="docutils literal"><span class="pre">__builtin_apply</span></tt>.</p>
-<p>This built-in function represents all anonymous arguments of an inline
+<p id="index-5">Built-in Function__builtin_va_arg_pack()This built-in function represents all anonymous arguments of an inline
 function.  It can be used only in inline functions that are always
 inlined, never compiled as a separate function, such as those using
 <tt class="docutils literal"><span class="pre">__attribute__</span> <span class="pre">((__always_inline__))</span></tt> or
@@ -142,7 +142,7 @@ macros is undesirable.  For example:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This built-in function returns the number of anonymous arguments of
+<p id="index-6">Built-in Functionsize_t__builtin_va_arg_pack_len()This built-in function returns the number of anonymous arguments of
 an inline function.  It can be used only in inline functions that
 are always inlined, never compiled as a separate function, such
 as those using <tt class="docutils literal"><span class="pre">__attribute__</span> <span class="pre">((__always_inline__))</span></tt> or

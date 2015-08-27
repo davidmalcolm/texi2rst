@@ -1,3 +1,4 @@
+
 Architecture
 ************
 
@@ -7,7 +8,7 @@ Architecture
 
   Determined by ABI.
 
-  * The result of attempting to indirectly access an object with
+* The result of attempting to indirectly access an object with
   automatic or thread storage duration from a thread other than the one
   with which it is associated (C11 6.2.4).
 
@@ -15,13 +16,13 @@ Architecture
   synchronization for concurrent accesses as for concurrent accesses to
   any object.
 
-  * The number, order, and encoding of bytes in any object
+* The number, order, and encoding of bytes in any object
   (when not explicitly specified in this International Standard) (C99
   and C11 6.2.6.1).
 
   Determined by ABI.
 
-  * Whether any extended alignments are supported and the contexts
+* Whether any extended alignments are supported and the contexts
   in which they are supported (C11 6.2.8).
 
   Extended alignments up to 2^{28} (bytes) are supported for
@@ -29,12 +30,12 @@ Architecture
   objects of static and thread storage duration are determined by the
   ABI.
 
-  * Valid alignment values other than those returned by an _Alignof
+* Valid alignment values other than those returned by an _Alignof
   expression for fundamental types, if any (C11 6.2.8).
 
   Valid alignments are powers of 2 up to and including 2^{28}.
 
-  * The value of the result of the ``sizeof`` and ``_Alignof``
+* The value of the result of the ``sizeof`` and ``_Alignof``
   operators (C90 6.3.3.4, C99 and C11 6.5.3.4).
 
   Determined by ABI.

@@ -1,5 +1,5 @@
-Invoking :command:`gcov-tool`
 
+Invoking :command:`gcov-tool`
 .. code-block:: c++
 
   gcov-tool [``global-options``] SUB_COMMAND [``sub_command-options``] ``profile_dir``
@@ -34,7 +34,7 @@ gpl(7), gfdl(7), fsf-funding(7), gcc(1), gcov(1) and the Info entry for
 @file{gcc}.
 @c man end
 
-.. man begin OPTIONS 
+.. man begin OPTIONS
 
 -h--help
   Display help about using :command:`gcov-tool` (on the standard output), and
@@ -101,9 +101,8 @@ overlap
   -t ``float``--hot_threshold <float>
     Set the threshold for hot counter value.
 
-.. man end 
-   Copyright (C) 1988-2015 Free Software Foundation, Inc. 
-
-.. This is part of the GCC manual. 
-   For copying conditions, see the file gcc.texi. 
+.. man end
+   Copyright (C) 1988-2015 Free Software Foundation, Inc.
+   This is part of the GCC manual.
+   For copying conditions, see the file gcc.texi.
 

@@ -1,3 +1,4 @@
+
 Options to Control Diagnostic Messages Formatting
 *************************************************
 
@@ -41,8 +42,7 @@ honor these options.
 
   .. index:: highlight, color, colour
 
-  GCC_COLORS environment variable
-  Use color in diagnostics.  ``WHEN`` is never, always,
+  GCC_COLORS environment variableUse color in diagnostics.  ``WHEN`` is never, always,
   or auto.  The default depends on how the compiler has been configured,
   it can be any of the above ``WHEN`` options or also never
   if :envvar:`GCC_COLORS` environment variable isn't present in the environment,
@@ -88,29 +88,23 @@ honor these options.
   Supported capabilities are as follows.
 
   error=
-    error GCC_COLORS capability
-    SGR substring for error: markers.
+    error GCC_COLORS capabilitySGR substring for error: markers.
 
   warning=
-    warning GCC_COLORS capability
-    SGR substring for warning: markers.
+    warning GCC_COLORS capabilitySGR substring for warning: markers.
 
   note=
-    note GCC_COLORS capability
-    SGR substring for note: markers.
+    note GCC_COLORS capabilitySGR substring for note: markers.
 
   caret=
-    caret GCC_COLORS capability
-    SGR substring for caret line.
+    caret GCC_COLORS capabilitySGR substring for caret line.
 
   locus=
-    locus GCC_COLORS capability
-    SGR substring for location information, file:line or
+    locus GCC_COLORS capabilitySGR substring for location information, file:line or
     file:line:column etc.
 
   quote=
-    quote GCC_COLORS capability
-    SGR substring for information printed within quotes.
+    quote GCC_COLORS capabilitySGR substring for information printed within quotes.
 
 .. option:: -fno-diagnostics-show-option, -fdiagnostics-show-option
 

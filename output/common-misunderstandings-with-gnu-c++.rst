@@ -1,3 +1,4 @@
+
 Common Misunderstandings with GNU C++
 *************************************
 
@@ -23,7 +24,6 @@ give rise to questions of this sort.
 :: _static-definitions:
 
 Declare and Define Static Members
-
 .. index:: C++ static data, declaring and defining
 
 .. index:: static data in C++, declaring and defining
@@ -77,7 +77,9 @@ template parameters are bound to their present definitions when parsing
 a template function or class.The C++ standard just uses the
 term 'dependent' for names that depend on the type or value of
 template parameters.  This shorter term will also be used in the rest of
-this section.  Only names that are dependent are looked up at the point
+this section.
+
+  Only names that are dependent are looked up at the point
 of instantiation.  For example, consider
 
 .. code-block:: c++

@@ -1,3 +1,4 @@
+
 Options for Directory Search
 ****************************
 
@@ -152,5 +153,5 @@ libraries and for parts of the compiler:
   for header files.  Thus, :option:`-I-` and :option:`-nostdinc` are
   independent.
 
-.. man end 
+.. man end
 

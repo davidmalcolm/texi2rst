@@ -127,30 +127,23 @@ This will happen regardless of whether any exceptions are thrown,
 caught or rethrown inside the <tt class="docutils literal"><span class="pre">&#64;try</span> <span class="pre">...</span> <span class="pre">&#64;catch</span></tt> section,
 analogously to the behavior of the <tt class="docutils literal"><span class="pre">finally</span></tt> clause in Java.</p>
 <p>There are several caveats to using the new exception mechanism:</p>
-<ul>
-<li><p class="first">The <a class="reference internal" href="options-controlling-objective-c-and-objective-c++-dialects.html#cmdoption-fobjc-exceptions"><em class="xref std std-option">-fobjc-exceptions</em></a> command line option must be used when
-compiling Objective-C files that use exceptions.</p>
 <ul class="simple">
-<li>With the GNU runtime, exceptions are always implemented as &#8216;native&#8217;</li>
-</ul>
-<p>exceptions and it is recommended that the <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fexceptions"><em class="xref std std-option">-fexceptions</em></a> and
-<a class="reference internal" href="options-for-linking.html#cmdoption-shared-libgcc"><em class="xref std std-option">-shared-libgcc</em></a> options are used when linking.</p>
-<ul class="simple">
-<li>With the NeXT runtime, although currently designed to be binary</li>
-</ul>
-<p>compatible with <tt class="docutils literal"><span class="pre">NS_HANDLER</span></tt>-style idioms provided by the
+<li>The <a class="reference internal" href="options-controlling-objective-c-and-objective-c++-dialects.html#cmdoption-fobjc-exceptions"><em class="xref std std-option">-fobjc-exceptions</em></a> command line option must be used when
+compiling Objective-C files that use exceptions.</li>
+<li>With the GNU runtime, exceptions are always implemented as &#8216;native&#8217;
+exceptions and it is recommended that the <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fexceptions"><em class="xref std std-option">-fexceptions</em></a> and
+<a class="reference internal" href="options-for-linking.html#cmdoption-shared-libgcc"><em class="xref std std-option">-shared-libgcc</em></a> options are used when linking.</li>
+<li>With the NeXT runtime, although currently designed to be binary
+compatible with <tt class="docutils literal"><span class="pre">NS_HANDLER</span></tt>-style idioms provided by the
 <tt class="docutils literal"><span class="pre">NSException</span></tt> class, the new exceptions can only be used on Mac
 OS X 10.3 (Panther) and later systems, due to additional functionality
-needed in the NeXT Objective-C runtime.</p>
-<ul class="simple">
-<li>As mentioned above, the new exceptions do not support handling</li>
-</ul>
-<p>types other than Objective-C objects.   Furthermore, when used from
+needed in the NeXT Objective-C runtime.</li>
+<li>As mentioned above, the new exceptions do not support handling
+types other than Objective-C objects.   Furthermore, when used from
 Objective-C++, the Objective-C exception model does not interoperate with C++
 exceptions at this time.  This means you cannot <tt class="docutils literal"><span class="pre">&#64;throw</span></tt> an exception
 from Objective-C and <tt class="docutils literal"><span class="pre">catch</span></tt> it in C++, or vice versa
-(i.e., <tt class="docutils literal"><span class="pre">throw</span> <span class="pre">...</span> <span class="pre">&#64;catch</span></tt>).</p>
-</li>
+(i.e., <tt class="docutils literal"><span class="pre">throw</span> <span class="pre">...</span> <span class="pre">&#64;catch</span></tt>).</li>
 </ul>
 </div>
 

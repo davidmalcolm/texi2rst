@@ -97,7 +97,7 @@ standard, but not the ISO standard, also came with a Rationale
 document.  To select this standard in GCC, use one of the options
 <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>, <em class="xref std std-option">-std=c90</em> or <em class="xref std std-option">-std=iso9899:1990</em>; to obtain
 all the diagnostics required by the standard, you should also specify
-<em class="xref std std-option">-pedantic</em> (or <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-pedantic-errors"><em class="xref std std-option">-pedantic-errors</em></a> if you want them to be
+<a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-pedantic"><em class="xref std std-option">-pedantic</em></a> (or <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-pedantic-errors"><em class="xref std std-option">-pedantic-errors</em></a> if you want them to be
 errors rather than warnings).  C Dialect OptionsOptions
 Controlling C Dialect.</p>
 <p>Errors in the 1990 ISO C standard were corrected in two Technical
@@ -109,7 +109,7 @@ but otherwise concerned the library.  This amendment is commonly known
 as <em class="dfn">AMD1</em>; the amended standard is sometimes known as <em class="dfn">C94</em> or
 <em class="dfn">C95</em>.  To select this standard in GCC, use the option
 <em class="xref std std-option">-std=iso9899:199409</em> (with, as for other standard versions,
-<em class="xref std std-option">-pedantic</em> to receive all required diagnostics).</p>
+<a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-pedantic"><em class="xref std std-option">-pedantic</em></a> to receive all required diagnostics).</p>
 <p>A new edition of the ISO C standard was published in 1999 as ISO/IEC
 9899:1999, and is commonly known as <em class="dfn">C99</em>.  GCC has substantially
 complete support for this standard version; see
@@ -128,7 +128,7 @@ standard version were referred to as <em class="dfn">C1X</em>.)</p>
 <p>By default, GCC provides some extensions to the C language that on
 rare occasions conflict with the C standard.  C
 ExtensionsExtensions to the C Language Family.  Use of the
-<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> options listed above will disable these extensions where
+<a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> options listed above will disable these extensions where
 they conflict with the C standard version selected.  You may also
 select an extended version of the C language explicitly with
 <em class="xref std std-option">-std=gnu90</em> (for C90 with GNU extensions), <em class="xref std std-option">-std=gnu99</em>

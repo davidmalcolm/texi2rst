@@ -90,50 +90,43 @@ different type (C90 6.3.2.3).</p>
 <p>The relevant bytes of the representation of the object are treated as
 an object of the type used for the access.  Type-punning.  This
 may be a trap representation.</p>
-<ul class="simple">
-<li>Whether a &#8216;plain&#8217; <tt class="docutils literal"><span class="pre">int</span></tt> bit-field is treated as a</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">signed</span> <span class="pre">int</span></tt> bit-field or as an <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt> bit-field
+</li>
+<li><p class="first">Whether a &#8216;plain&#8217; <tt class="docutils literal"><span class="pre">int</span></tt> bit-field is treated as a
+<tt class="docutils literal"><span class="pre">signed</span> <span class="pre">int</span></tt> bit-field or as an <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt> bit-field
 (C90 6.5.2, C90 6.5.2.1, C99 and C11 6.7.2, C99 and C11 6.7.2.1).</p>
 <p id="index-0">By default it is treated as <tt class="docutils literal"><span class="pre">signed</span> <span class="pre">int</span></tt> but this may be changed
 by the <em class="xref std std-option">-funsigned-bitfields</em> option.</p>
-<ul class="simple">
-<li>Allowable bit-field types other than <tt class="docutils literal"><span class="pre">_Bool</span></tt>, <tt class="docutils literal"><span class="pre">signed</span> <span class="pre">int</span></tt>,</li>
-</ul>
-<p>and <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt> (C99 and C11 6.7.2.1).</p>
+</li>
+<li><p class="first">Allowable bit-field types other than <tt class="docutils literal"><span class="pre">_Bool</span></tt>, <tt class="docutils literal"><span class="pre">signed</span> <span class="pre">int</span></tt>,
+and <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt> (C99 and C11 6.7.2.1).</p>
 <p>Other integer types, such as <tt class="docutils literal"><span class="pre">long</span> <span class="pre">int</span></tt>, and enumerated types are
 permitted even in strictly conforming mode.</p>
-<ul class="simple">
-<li>Whether atomic types are permitted for bit-fields (C11 6.7.2.1).</li>
-</ul>
+</li>
+<li><p class="first">Whether atomic types are permitted for bit-fields (C11 6.7.2.1).</p>
 <p>Atomic types are not permitted for bit-fields.</p>
-<ul class="simple">
-<li>Whether a bit-field can straddle a storage-unit boundary (C90</li>
-</ul>
-<p>6.5.2.1, C99 and C11 6.7.2.1).</p>
+</li>
+<li><p class="first">Whether a bit-field can straddle a storage-unit boundary (C90
+6.5.2.1, C99 and C11 6.7.2.1).</p>
 <p>Determined by ABI.</p>
-<ul class="simple">
-<li>The order of allocation of bit-fields within a unit (C90</li>
-</ul>
-<p>6.5.2.1, C99 and C11 6.7.2.1).</p>
+</li>
+<li><p class="first">The order of allocation of bit-fields within a unit (C90
+6.5.2.1, C99 and C11 6.7.2.1).</p>
 <p>Determined by ABI.</p>
-<ul class="simple">
-<li>The alignment of non-bit-field members of structures (C90</li>
-</ul>
-<p>6.5.2.1, C99 and C11 6.7.2.1).</p>
+</li>
+<li><p class="first">The alignment of non-bit-field members of structures (C90
+6.5.2.1, C99 and C11 6.7.2.1).</p>
 <p>Determined by ABI.</p>
-<ul class="simple">
-<li>The integer type compatible with each enumerated type (C90</li>
-</ul>
-<p>6.5.2.2, C99 and C11 6.7.2.2).</p>
+</li>
+<li><p class="first">The integer type compatible with each enumerated type (C90
+6.5.2.2, C99 and C11 6.7.2.2).</p>
 <p id="index-1">Normally, the type is <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt> if there are no negative
 values in the enumeration, otherwise <tt class="docutils literal"><span class="pre">int</span></tt>.  If
-<a class="reference internal" href="specifying-attributes-of-types.html#cmdoption-fshort-enums"><em class="xref std std-option">-fshort-enums</em></a> is specified, then if there are negative values
+<a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fshort-enums"><em class="xref std std-option">-fshort-enums</em></a> is specified, then if there are negative values
 it is the first of <tt class="docutils literal"><span class="pre">signed</span> <span class="pre">char</span></tt>, <tt class="docutils literal"><span class="pre">short</span></tt> and <tt class="docutils literal"><span class="pre">int</span></tt>
 that can represent all the values, otherwise it is the first of
 <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">char</span></tt>, <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span></tt> and <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt>
 that can represent all the values.</p>
-<p>On some targets, <a class="reference internal" href="specifying-attributes-of-types.html#cmdoption-fshort-enums"><em class="xref std std-option">-fshort-enums</em></a> is the default; this is
+<p>On some targets, <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fshort-enums"><em class="xref std std-option">-fshort-enums</em></a> is the default; this is
 determined by the ABI.</p>
 </li>
 </ul>

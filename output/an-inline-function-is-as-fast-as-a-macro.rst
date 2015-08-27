@@ -1,3 +1,4 @@
+
 An Inline Function is As Fast As a Macro
 ****************************************
 
@@ -88,11 +89,7 @@ and nested functions (Nested Functions).  Using :option:`-Winline`
 warns when a function marked ``inline`` could not be substituted,
 and gives the reason for the failure.
 
-automatic ``inline`` for C++ member fns
-``inline`` automatic for C++ member fns
-member fns, automatically ``inline``
-C++ member fns, automatically ``inline``
-
+automatic ``inline`` for C++ member fns``inline`` automatic for C++ member fnsmember fns, automatically ``inline``C++ member fns, automatically ``inline``
 .. index:: fno-default-inline
 
 As required by ISO C++, GCC considers member functions defined within

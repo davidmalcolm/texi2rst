@@ -104,19 +104,16 @@ character on the line, which can be one of the following:</p>
 appear here are:</p>
 <dl class="last docutils">
 <dt>%include &lt;<tt class="docutils literal"><span class="pre">file</span></tt>&gt;</dt>
-<dd><tt class="docutils literal"><span class="pre">%include</span></tt>
-Search for <tt class="docutils literal"><span class="pre">file</span></tt> and insert its text at the current point in the
+<dd><tt class="docutils literal"><span class="pre">%include``Search</span> <span class="pre">for</span> <span class="pre">``file</span></tt> and insert its text at the current point in the
 specs file.</dd>
 <dt>%include_noerr &lt;<tt class="docutils literal"><span class="pre">file</span></tt>&gt;</dt>
-<dd><tt class="docutils literal"><span class="pre">%include_noerr</span></tt>
-Just like %include, but do not generate an error message if the include
+<dd><a href="#id1"><span class="problematic" id="id2">``</span></a>%include_noerr``Just like %include, but do not generate an error message if the include
 file cannot be found.</dd>
 <dt>%rename <tt class="docutils literal"><span class="pre">old_name````new_name</span></tt></dt>
-<dd><tt class="docutils literal"><span class="pre">%rename</span></tt>
-Rename the spec string <tt class="docutils literal"><span class="pre">old_name</span></tt> to <tt class="docutils literal"><span class="pre">new_name</span></tt>.</dd>
+<dd><tt class="docutils literal"><span class="pre">%rename``Rename</span> <span class="pre">the</span> <span class="pre">spec</span> <span class="pre">string</span> <span class="pre">``old_name</span></tt> to <tt class="docutils literal"><span class="pre">new_name</span></tt>.</dd>
 </dl>
 </dd>
-<dt><a href="#id1"><span class="problematic" id="id2">*</span></a>[<tt class="docutils literal"><span class="pre">spec_name</span></tt>]:</dt>
+<dt><a href="#id3"><span class="problematic" id="id4">*</span></a>[<tt class="docutils literal"><span class="pre">spec_name</span></tt>]:</dt>
 <dd>This tells the compiler to create, override or delete the named spec
 string.  All lines after this directive up to the next directive or
 blank line are considered to be the text for the spec string.  If this
@@ -145,7 +142,7 @@ suffix directive can be one of the following:</p>
 <dl class="docutils">
 <dt>&#64;``language``</dt>
 <dd><p class="first">This says that the suffix is an alias for a known <tt class="docutils literal"><span class="pre">language</span></tt>.  This is
-similar to using the <em class="xref std std-option">-x</em> command-line switch to GCC to specify a
+similar to using the <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-x"><em class="xref std std-option">-x</em></a> command-line switch to GCC to specify a
 language explicitly.  For example:</p>
 <div class="highlight-c++"><pre>.ZZ:
 @c++</pre>
@@ -154,18 +151,18 @@ language explicitly.  For example:</p>
 </dd>
 <dt>#``name``</dt>
 <dd><p class="first">This causes an error messages saying:</p>
-<div class="last highlight-c++"><pre>``name`` compiler not installed on this system.</pre>
+<div class="highlight-c++"><pre>``name`` compiler not installed on this system.</pre>
 </div>
+<p class="last">GCC already has an extensive list of suffixes built into it.</p>
 </dd>
 </dl>
-<p class="last">GCC already has an extensive list of suffixes built into it.
-This directive adds an entry to the end of the list of suffixes, but
+<p>This directive adds an entry to the end of the list of suffixes, but
 since the list is searched from the end backwards, it is effectively
 possible to override earlier entries using this technique.</p>
+<p class="last">GCC has the following spec strings built into it.  Spec files can</p>
 </dd>
 </dl>
-<p>GCC has the following spec strings built into it.  Spec files can
-override these strings or create their own.  Note that individual
+<p>override these strings or create their own.  Note that individual
 targets can also add their own spec strings to this list.</p>
 <div class="highlight-c++"><pre>asm          Options to pass to the assembler
 asm_final    Options to pass to the assembler post-processor
@@ -290,10 +287,10 @@ predefined macro, except for macros that start with __ or with
 <span class="target" id="l">`L`</span>, where <tt class="docutils literal"><span class="pre">L</span></tt> is an uppercase letter.  This is for ISO
 C.</dd>
 <dt>%I</dt>
-<dd>Substitute any of <em class="xref std std-option">-iprefix</em> (made from <span class="target" id="index-1"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_EXEC_PREFIX"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_EXEC_PREFIX</span></tt></a>),
-<em class="xref std std-option">-isysroot</em> (made from <span class="target" id="index-2"></span><tt class="xref std std-envvar docutils literal"><span class="pre">TARGET_SYSTEM_ROOT</span></tt>),
-<em class="xref std std-option">-isystem</em> (made from <span class="target" id="index-3"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-COMPILER_PATH"><tt class="xref std std-envvar docutils literal"><span class="pre">COMPILER_PATH</span></tt></a> and <em class="xref std std-option">-B</em> options)
-and <em class="xref std std-option">-imultilib</em> as necessary.</dd>
+<dd>Substitute any of <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-iprefix"><em class="xref std std-option">-iprefix</em></a> (made from <span class="target" id="index-1"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_EXEC_PREFIX"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_EXEC_PREFIX</span></tt></a>),
+<a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-isysroot"><em class="xref std std-option">-isysroot</em></a> (made from <span class="target" id="index-2"></span><tt class="xref std std-envvar docutils literal"><span class="pre">TARGET_SYSTEM_ROOT</span></tt>),
+<a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-isystem"><em class="xref std std-option">-isystem</em></a> (made from <span class="target" id="index-3"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-COMPILER_PATH"><tt class="xref std std-envvar docutils literal"><span class="pre">COMPILER_PATH</span></tt></a> and <em class="xref std std-option">-B</em> options)
+and <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-imultilib"><em class="xref std std-option">-imultilib</em></a> as necessary.</dd>
 <dt>%s</dt>
 <dd>Current argument is the name of a library or startup file of some sort.
 Search for that file in a standard list of directories and substitute
@@ -458,14 +455,14 @@ and outputs the command-line option <em class="xref std std-option">-foo</em>.</
 <dt>%W{<tt class="docutils literal"><span class="pre">S</span></tt>}</dt>
 <dd>Like %{<tt class="docutils literal"><span class="pre">S</span></tt>} but mark last argument supplied within as a file to be
 deleted on failure.</dd>
-<dt>%{<a href="#id3"><span class="problematic" id="id4">``</span></a>S``*}</dt>
+<dt>%{<a href="#id5"><span class="problematic" id="id6">``</span></a>S``*}</dt>
 <dd>Substitutes all the switches specified to GCC whose names start
 with <tt class="docutils literal"><span class="pre">-S</span></tt>, but which also take an argument.  This is used for
-switches like <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-o"><em class="xref std std-option">-o</em></a>, <em class="xref std std-option">-D</em>, <em class="xref std std-option">-I</em>, etc.
+switches like <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-o"><em class="xref std std-option">-o</em></a>, <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-D"><em class="xref std std-option">-D</em></a>, <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a>, etc.
 GCC considers <em class="xref std std-option">-o foo</em> as being
 one switch whose name starts with o.  %{o*} substitutes this
 text, including the space.  Thus two arguments are generated.</dd>
-<dt>%{<a href="#id5"><span class="problematic" id="id6">``</span></a>S``*&amp;``T``*}</dt>
+<dt>%{<a href="#id7"><span class="problematic" id="id8">``</span></a>S``*&amp;``T``*}</dt>
 <dd>Like %{<tt class="docutils literal"><span class="pre">S``*},</span> <span class="pre">but</span> <span class="pre">preserve</span> <span class="pre">order</span> <span class="pre">of</span> <span class="pre">``S</span></tt> and <tt class="docutils literal"><span class="pre">T</span></tt> options
 (the order of <tt class="docutils literal"><span class="pre">S</span></tt> and <tt class="docutils literal"><span class="pre">T</span></tt> in the spec is not significant).
 There can be any number of ampersand-separated variables; for each the
@@ -503,7 +500,7 @@ string.  For example, a spec string like this:</p>
 <dd><p class="first">Substitutes <tt class="docutils literal"><span class="pre">X</span></tt> if either <tt class="docutils literal"><span class="pre">-S</span></tt> or <tt class="docutils literal"><span class="pre">-P</span></tt> is given to
 GCC.  This may be combined with !, ., ,, and
 <tt class="docutils literal"><span class="pre">*</span></tt> sequences as well, although they have a stronger binding than
-the <a href="#id7"><span class="problematic" id="id8">|</span></a>.  If <tt class="docutils literal"><span class="pre">%*</span></tt> appears in <tt class="docutils literal"><span class="pre">X</span></tt>, all of the
+the <a href="#id9"><span class="problematic" id="id10">|</span></a>.  If <tt class="docutils literal"><span class="pre">%*</span></tt> appears in <tt class="docutils literal"><span class="pre">X</span></tt>, all of the
 alternatives must be starred, and only the first matching alternative
 is substituted.</p>
 <p>For example, a spec string like this:</p>
@@ -519,15 +516,15 @@ command-line options:</p>
 </pre></div>
 </div>
 </dd>
-</dl>
-<p>%{S:X; T:Y; :D}</p>
-<blockquote>
-<div>If <tt class="docutils literal"><span class="pre">S</span></tt> is given to GCC, substitutes <tt class="docutils literal"><span class="pre">X</span></tt>; else if <tt class="docutils literal"><span class="pre">T</span></tt> is
+<dt>%{S:X; T:Y; :D}</dt>
+<dd><p class="first">If <tt class="docutils literal"><span class="pre">S</span></tt> is given to GCC, substitutes <tt class="docutils literal"><span class="pre">X</span></tt>; else if <tt class="docutils literal"><span class="pre">T</span></tt> is
 given to GCC, substitutes <tt class="docutils literal"><span class="pre">Y</span></tt>; else substitutes <tt class="docutils literal"><span class="pre">D</span></tt>.  There can
 be as many clauses as you need.  This may be combined with <tt class="docutils literal"><span class="pre">.</span></tt>,
-<tt class="docutils literal"><span class="pre">,</span></tt>, <tt class="docutils literal"><span class="pre">!</span></tt>, <tt class="docutils literal"><span class="pre">|</span></tt>, and <tt class="docutils literal"><span class="pre">*</span></tt> as needed.</div></blockquote>
-<p>The conditional text <tt class="docutils literal"><span class="pre">X</span></tt> in a %{<tt class="docutils literal"><span class="pre">S</span></tt>:<tt class="docutils literal"><span class="pre">X</span></tt>} or similar
-construct may contain other nested % constructs or spaces, or
+<tt class="docutils literal"><span class="pre">,</span></tt>, <tt class="docutils literal"><span class="pre">!</span></tt>, <tt class="docutils literal"><span class="pre">|</span></tt>, and <tt class="docutils literal"><span class="pre">*</span></tt> as needed.</p>
+<p class="last">The conditional text <tt class="docutils literal"><span class="pre">X</span></tt> in a %{<tt class="docutils literal"><span class="pre">S</span></tt>:<tt class="docutils literal"><span class="pre">X</span></tt>} or similar</p>
+</dd>
+</dl>
+<p>construct may contain other nested % constructs or spaces, or
 even newlines.  They are processed as usual, as described above.
 Trailing white space in <tt class="docutils literal"><span class="pre">X</span></tt> is ignored.  White space may also
 appear anywhere on the left side of the colon in these constructs,

@@ -101,25 +101,18 @@ object:</p>
 means either you waste space or complicate the argument to <tt class="docutils literal"><span class="pre">malloc</span></tt>.</p>
 <p>In ISO C99, you would use a <em class="dfn">flexible array member</em>, which is
 slightly different in syntax and semantics:</p>
-<ul>
-<li><p class="first">Flexible array members are written as <tt class="docutils literal"><span class="pre">contents[]</span></tt> without
-the <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 <ul class="simple">
-<li>Flexible array members have incomplete type, and so the <tt class="docutils literal"><span class="pre">sizeof</span></tt></li>
-</ul>
-<p>operator may not be applied.  As a quirk of the original implementation
-of zero-length arrays, <tt class="docutils literal"><span class="pre">sizeof</span></tt> evaluates to zero.</p>
-<ul class="simple">
-<li>Flexible array members may only appear as the last member of a</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">struct</span></tt> that is otherwise non-empty.</p>
-<ul class="simple">
-<li>A structure containing a flexible array member, or a union containing</li>
-</ul>
-<p>such a structure (possibly recursively), may not be a member of a
+<li>Flexible array members are written as <tt class="docutils literal"><span class="pre">contents[]</span></tt> without
+the <tt class="docutils literal"><span class="pre">0</span></tt>.</li>
+<li>Flexible array members have incomplete type, and so the <tt class="docutils literal"><span class="pre">sizeof</span></tt>
+operator may not be applied.  As a quirk of the original implementation
+of zero-length arrays, <tt class="docutils literal"><span class="pre">sizeof</span></tt> evaluates to zero.</li>
+<li>Flexible array members may only appear as the last member of a
+<tt class="docutils literal"><span class="pre">struct</span></tt> that is otherwise non-empty.</li>
+<li>A structure containing a flexible array member, or a union containing
+such a structure (possibly recursively), may not be a member of a
 structure or an element of an array.  (However, these uses are
-permitted by GCC as extensions.)</p>
-</li>
+permitted by GCC as extensions.)</li>
 </ul>
 <p>Non-empty initialization of zero-length
 arrays is treated like any case where there are more initializer

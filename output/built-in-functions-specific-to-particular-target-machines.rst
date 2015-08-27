@@ -1,3 +1,4 @@
+
 Built-in Functions Specific to Particular Target Machines
 *********************************************************
 
@@ -186,7 +187,7 @@ f
 p
   ``void *`` for return type and parameter type
 
-And the function names are:
+  And the function names are:
 
 .. code-block:: c++
 
@@ -262,8 +263,7 @@ error may be generated.
 
 .. index:: __builtin_arc_aligned
 
-  Built-in Function int __builtin_arc_aligned (void *``val``, int ``alignval``)
-Return 1 if ``val`` is known to have the byte alignment given
+Built-in Functionint__builtin_arc_aligned(void*``val``,int``alignval``)Return 1 if ``val`` is known to have the byte alignment given
 by ``alignval``, otherwise return 0.
 Note that this is different from
 
@@ -278,8 +278,7 @@ The information available will depend on optimization level.
 
 .. index:: __builtin_arc_brk
 
-  Built-in Function void __builtin_arc_brk (void)
-Generates
+Built-in Functionvoid__builtin_arc_brk(void)Generates
 
 .. code-block:: c++
 
@@ -287,8 +286,7 @@ Generates
 
 .. index:: __builtin_arc_core_read
 
-  Built-in Function unsigned int __builtin_arc_core_read (unsigned int ``regno``)
-The operand is the number of a register to be read.  Generates:
+Built-in Functionunsigned int__builtin_arc_core_read(unsignedint``regno``)The operand is the number of a register to be read.  Generates:
 
 .. code-block:: c++
 
@@ -299,8 +297,7 @@ built-in.
 
 .. index:: __builtin_arc_core_write
 
-  Built-in Function void __builtin_arc_core_write (unsigned int ``regno``, unsigned int ``val``)
-The first operand is the number of a register to be written, the
+Built-in Functionvoid__builtin_arc_core_write(unsignedint``regno``,unsignedint``val``)The first operand is the number of a register to be written, the
 second operand is a compile time constant to write into that
 register.  Generates:
 
@@ -310,8 +307,7 @@ register.  Generates:
 
 .. index:: __builtin_arc_divaw
 
-  Built-in Function int __builtin_arc_divaw (int ``a``, int ``b``)
-Only available if either :option:`-mcpu=ARC700` or :option:`-meA` is set.
+Built-in Functionint__builtin_arc_divaw(int``a``,int``b``)Only available if either :option:`-mcpu=ARC700` or :option:`-meA` is set.
 Generates:
 
 .. code-block:: c++
@@ -323,8 +319,7 @@ built-in.
 
 .. index:: __builtin_arc_flag
 
-  Built-in Function void __builtin_arc_flag (unsigned int ``a``)
-Generates
+Built-in Functionvoid__builtin_arc_flag(unsignedint``a``)Generates
 
 .. code-block:: c++
 
@@ -332,8 +327,7 @@ Generates
 
 .. index:: __builtin_arc_lr
 
-  Built-in Function unsigned int __builtin_arc_lr (unsigned int ``auxr``)
-The operand, ``auxv``, is the address of an auxiliary register and
+Built-in Functionunsigned int__builtin_arc_lr(unsignedint``auxr``)The operand, ``auxv``, is the address of an auxiliary register and
 must be a compile time constant.  Generates:
 
 .. code-block:: c++
@@ -345,8 +339,7 @@ built-in.
 
 .. index:: __builtin_arc_mul64
 
-  Built-in Function void __builtin_arc_mul64 (int ``a``, int ``b``)
-Only available with :option:`-mmul64`.  Generates:
+Built-in Functionvoid__builtin_arc_mul64(int``a``,int``b``)Only available with :option:`-mmul64`.  Generates:
 
 .. code-block:: c++
 
@@ -354,8 +347,7 @@ Only available with :option:`-mmul64`.  Generates:
 
 .. index:: __builtin_arc_mulu64
 
-  Built-in Function void __builtin_arc_mulu64 (unsigned int ``a``, unsigned int ``b``)
-Only available with :option:`-mmul64`.  Generates:
+Built-in Functionvoid__builtin_arc_mulu64(unsignedint``a``,unsignedint``b``)Only available with :option:`-mmul64`.  Generates:
 
 .. code-block:: c++
 
@@ -363,8 +355,7 @@ Only available with :option:`-mmul64`.  Generates:
 
 .. index:: __builtin_arc_nop
 
-  Built-in Function void __builtin_arc_nop (void)
-Generates:
+Built-in Functionvoid__builtin_arc_nop(void)Generates:
 
 .. code-block:: c++
 
@@ -372,8 +363,7 @@ Generates:
 
 .. index:: __builtin_arc_norm
 
-  Built-in Function int __builtin_arc_norm (int ``src``)
-Only valid if the norm instruction is available through the
+Built-in Functionint__builtin_arc_norm(int``src``)Only valid if the norm instruction is available through the
 :option:`-mnorm` option or by default with :option:`-mcpu=ARC700`.
 Generates:
 
@@ -386,8 +376,7 @@ built-in.
 
 .. index:: __builtin_arc_normw
 
-  Built-in Function  short int __builtin_arc_normw (short int ``src``)
-Only valid if the normw instruction is available through the
+Built-in Functionshort int__builtin_arc_normw(shortint``src``)Only valid if the normw instruction is available through the
 :option:`-mnorm` option or by default with :option:`-mcpu=ARC700`.
 Generates:
 
@@ -400,8 +389,7 @@ built-in.
 
 .. index:: __builtin_arc_rtie
 
-  Built-in Function  void __builtin_arc_rtie (void)
-Generates:
+Built-in Functionvoid__builtin_arc_rtie(void)Generates:
 
 .. code-block:: c++
 
@@ -409,8 +397,7 @@ Generates:
 
 .. index:: __builtin_arc_sleep
 
-  Built-in Function  void __builtin_arc_sleep (int ``a``
-Generates:
+Built-in Functionvoid__builtin_arc_sleep(int``a``Generates:
 
 .. code-block:: c++
 
@@ -418,8 +405,7 @@ Generates:
 
 .. index:: __builtin_arc_sr
 
-  Built-in Function  void __builtin_arc_sr (unsigned int ``auxr``, unsigned int ``val``)
-The first argument, ``auxv``, is the address of an auxiliary
+Built-in Functionvoid__builtin_arc_sr(unsignedint``auxr``,unsignedint``val``)The first argument, ``auxv``, is the address of an auxiliary
 register, the second argument, ``val``, is a compile time constant
 to be written to the register.  Generates:
 
@@ -429,8 +415,7 @@ to be written to the register.  Generates:
 
 .. index:: __builtin_arc_swap
 
-  Built-in Function  int __builtin_arc_swap (int ``src``)
-Only valid with :option:`-mswap`.  Generates:
+Built-in Functionint__builtin_arc_swap(int``src``)Only valid with :option:`-mswap`.  Generates:
 
 .. code-block:: c++
 
@@ -441,8 +426,7 @@ built-in.
 
 .. index:: __builtin_arc_swi
 
-  Built-in Function  void __builtin_arc_swi (void)
-Generates:
+Built-in Functionvoid__builtin_arc_swi(void)Generates:
 
 .. code-block:: c++
 
@@ -450,8 +434,7 @@ Generates:
 
 .. index:: __builtin_arc_sync
 
-  Built-in Function  void __builtin_arc_sync (void)
-Only available with :option:`-mcpu=ARC700`.  Generates:
+Built-in Functionvoid__builtin_arc_sync(void)Only available with :option:`-mcpu=ARC700`.  Generates:
 
 .. code-block:: c++
 
@@ -459,8 +442,7 @@ Only available with :option:`-mcpu=ARC700`.  Generates:
 
 .. index:: __builtin_arc_trap_s
 
-  Built-in Function  void __builtin_arc_trap_s (unsigned int ``c``)
-Only available with :option:`-mcpu=ARC700`.  Generates:
+Built-in Functionvoid__builtin_arc_trap_s(unsignedint``c``)Only available with :option:`-mcpu=ARC700`.  Generates:
 
 .. code-block:: c++
 
@@ -468,8 +450,7 @@ Only available with :option:`-mcpu=ARC700`.  Generates:
 
 .. index:: __builtin_arc_unimp_s
 
-  Built-in Function  void __builtin_arc_unimp_s (void)
-Only available with :option:`-mcpu=ARC700`.  Generates:
+Built-in Functionvoid__builtin_arc_unimp_s(void)Only available with :option:`-mcpu=ARC700`.  Generates:
 
 .. code-block:: c++
 
@@ -985,10 +966,10 @@ performed: Let ``X`` be the ``n``-th nibble of ``map``
 * If ``X`` is ``0xf``,
   then the ``n``-th bit of ``val`` is returned unaltered.
 
-  * If X is in the range 0...7,
+* If X is in the range 0...7,
   then the ``n``-th result bit is set to the ``X``-th bit of ``bits``
 
-  * If X is in the range 8...``0xe``,
+* If X is in the range 8...``0xe``,
   then the ``n``-th result bit is undefined.
 
 One typical use case for this built-in is adjusting input and
@@ -1070,16 +1051,77 @@ register numbers, compile-time constants and run-time values.  In order
 to make this classification clear at a glance, the arguments and return
 values are given the following pseudo types:
 
-Pseudo type Real C type Constant? Description
-``uh`` ``unsigned short`` No an unsigned halfword
-``uw1`` ``unsigned int`` No an unsigned word
-``sw1`` ``int`` No a signed word
-``uw2`` ``unsigned long long`` No
+Pseudo type
+
+Real C type
+
+Constant?
+
+Description
+
+``uh`` 
+
+``unsigned short`` 
+
+No
+
+an unsigned halfword
+
+``uw1`` 
+
+``unsigned int`` 
+
+No
+
+an unsigned word
+
+``sw1`` 
+
+``int`` 
+
+No
+
+a signed word
+
+``uw2`` 
+
+``unsigned long long`` 
+
+No
+
 an unsigned doubleword
-``sw2`` ``long long`` No a signed doubleword
-``const`` ``int`` Yes an integer constant
-``acc`` ``int`` Yes an ACC register number
-``iacc`` ``int`` Yes an IACC register number
+
+``sw2`` 
+
+``long long`` 
+
+No
+
+a signed doubleword
+
+``const`` 
+
+``int`` 
+
+Yes
+
+an integer constant
+
+``acc`` 
+
+``int`` 
+
+Yes
+
+an ACC register number
+
+``iacc`` 
+
+``int`` 
+
+Yes
+
+an IACC register number
 
 These pseudo types are not defined by GCC, they are simply a notational
 convenience used in this manual.
@@ -1106,36 +1148,70 @@ Directly-Mapped Integer Functions
 
 The functions listed below map directly to FR-V I-type instructions.
 
-Function prototype Example usage Assembly output
+Function prototype
+
+Example usage
+
+Assembly output
+
 ``sw1 __ADDSS (sw1, sw1)``
+
 ````c`` = __ADDSS (``a``, ``b``)``
+
 ``ADDSS ``a``,``b``,``c````
+
 ``sw1 __SCAN (sw1, sw1)``
+
 ````c`` = __SCAN (``a``, ``b``)``
+
 ``SCAN ``a``,``b``,``c````
+
 ``sw1 __SCUTSS (sw1)``
+
 ````b`` = __SCUTSS (``a``)``
+
 ``SCUTSS ``a``,``b````
+
 ``sw1 __SLASS (sw1, sw1)``
+
 ````c`` = __SLASS (``a``, ``b``)``
+
 ``SLASS ``a``,``b``,``c````
+
 ``void __SMASS (sw1, sw1)``
+
 ``__SMASS (``a``, ``b``)``
+
 ``SMASS ``a``,``b````
+
 ``void __SMSSS (sw1, sw1)``
+
 ``__SMSSS (``a``, ``b``)``
+
 ``SMSSS ``a``,``b````
+
 ``void __SMU (sw1, sw1)``
+
 ``__SMU (``a``, ``b``)``
+
 ``SMU ``a``,``b````
+
 ``sw2 __SMUL (sw1, sw1)``
+
 ````c`` = __SMUL (``a``, ``b``)``
+
 ``SMUL ``a``,``b``,``c````
+
 ``sw1 __SUBSS (sw1, sw1)``
+
 ````c`` = __SUBSS (``a``, ``b``)``
+
 ``SUBSS ``a``,``b``,``c````
+
 ``uw2 __UMUL (uw1, uw1)``
+
 ````c`` = __UMUL (``a``, ``b``)``
+
 ``UMUL ``a``,``b``,``c````
 
 :: _directly-mapped-media-functions:
@@ -1145,270 +1221,538 @@ Directly-Mapped Media Functions
 
 The functions listed below map directly to FR-V M-type instructions.
 
-Function prototype Example usage Assembly output
+Function prototype
+
+Example usage
+
+Assembly output
+
 ``uw1 __MABSHS (sw1)``
+
 ````b`` = __MABSHS (``a``)``
+
 ``MABSHS ``a``,``b````
+
 ``void __MADDACCS (acc, acc)``
+
 ``__MADDACCS (``b``, ``a``)``
+
 ``MADDACCS ``a``,``b````
+
 ``sw1 __MADDHSS (sw1, sw1)``
+
 ````c`` = __MADDHSS (``a``, ``b``)``
+
 ``MADDHSS ``a``,``b``,``c````
+
 ``uw1 __MADDHUS (uw1, uw1)``
+
 ````c`` = __MADDHUS (``a``, ``b``)``
+
 ``MADDHUS ``a``,``b``,``c````
+
 ``uw1 __MAND (uw1, uw1)``
+
 ````c`` = __MAND (``a``, ``b``)``
+
 ``MAND ``a``,``b``,``c````
+
 ``void __MASACCS (acc, acc)``
+
 ``__MASACCS (``b``, ``a``)``
+
 ``MASACCS ``a``,``b````
+
 ``uw1 __MAVEH (uw1, uw1)``
+
 ````c`` = __MAVEH (``a``, ``b``)``
+
 ``MAVEH ``a``,``b``,``c````
+
 ``uw2 __MBTOH (uw1)``
+
 ````b`` = __MBTOH (``a``)``
+
 ``MBTOH ``a``,``b````
+
 ``void __MBTOHE (uw1 *, uw1)``
+
 ``__MBTOHE (&``b``, ``a``)``
+
 ``MBTOHE ``a``,``b````
+
 ``void __MCLRACC (acc)``
+
 ``__MCLRACC (``a``)``
+
 ``MCLRACC ``a````
+
 ``void __MCLRACCA (void)``
+
 ``__MCLRACCA ()``
+
 ``MCLRACCA``
+
 ``uw1 __Mcop1 (uw1, uw1)``
+
 ````c`` = __Mcop1 (``a``, ``b``)``
+
 ``Mcop1 ``a``,``b``,``c````
+
 ``uw1 __Mcop2 (uw1, uw1)``
+
 ````c`` = __Mcop2 (``a``, ``b``)``
+
 ``Mcop2 ``a``,``b``,``c````
+
 ``uw1 __MCPLHI (uw2, const)``
+
 ````c`` = __MCPLHI (``a``, ``b``)``
+
 ``MCPLHI ``a``,#``b``,``c````
+
 ``uw1 __MCPLI (uw2, const)``
+
 ````c`` = __MCPLI (``a``, ``b``)``
+
 ``MCPLI ``a``,#``b``,``c````
+
 ``void __MCPXIS (acc, sw1, sw1)``
+
 ``__MCPXIS (``c``, ``a``, ``b``)``
+
 ``MCPXIS ``a``,``b``,``c````
+
 ``void __MCPXIU (acc, uw1, uw1)``
+
 ``__MCPXIU (``c``, ``a``, ``b``)``
+
 ``MCPXIU ``a``,``b``,``c````
+
 ``void __MCPXRS (acc, sw1, sw1)``
+
 ``__MCPXRS (``c``, ``a``, ``b``)``
+
 ``MCPXRS ``a``,``b``,``c````
+
 ``void __MCPXRU (acc, uw1, uw1)``
+
 ``__MCPXRU (``c``, ``a``, ``b``)``
+
 ``MCPXRU ``a``,``b``,``c````
+
 ``uw1 __MCUT (acc, uw1)``
+
 ````c`` = __MCUT (``a``, ``b``)``
+
 ``MCUT ``a``,``b``,``c````
+
 ``uw1 __MCUTSS (acc, sw1)``
+
 ````c`` = __MCUTSS (``a``, ``b``)``
+
 ``MCUTSS ``a``,``b``,``c````
+
 ``void __MDADDACCS (acc, acc)``
+
 ``__MDADDACCS (``b``, ``a``)``
+
 ``MDADDACCS ``a``,``b````
+
 ``void __MDASACCS (acc, acc)``
+
 ``__MDASACCS (``b``, ``a``)``
+
 ``MDASACCS ``a``,``b````
+
 ``uw2 __MDCUTSSI (acc, const)``
+
 ````c`` = __MDCUTSSI (``a``, ``b``)``
+
 ``MDCUTSSI ``a``,#``b``,``c````
+
 ``uw2 __MDPACKH (uw2, uw2)``
+
 ````c`` = __MDPACKH (``a``, ``b``)``
+
 ``MDPACKH ``a``,``b``,``c````
+
 ``uw2 __MDROTLI (uw2, const)``
+
 ````c`` = __MDROTLI (``a``, ``b``)``
+
 ``MDROTLI ``a``,#``b``,``c````
+
 ``void __MDSUBACCS (acc, acc)``
+
 ``__MDSUBACCS (``b``, ``a``)``
+
 ``MDSUBACCS ``a``,``b````
+
 ``void __MDUNPACKH (uw1 *, uw2)``
+
 ``__MDUNPACKH (&``b``, ``a``)``
+
 ``MDUNPACKH ``a``,``b````
+
 ``uw2 __MEXPDHD (uw1, const)``
+
 ````c`` = __MEXPDHD (``a``, ``b``)``
+
 ``MEXPDHD ``a``,#``b``,``c````
+
 ``uw1 __MEXPDHW (uw1, const)``
+
 ````c`` = __MEXPDHW (``a``, ``b``)``
+
 ``MEXPDHW ``a``,#``b``,``c````
+
 ``uw1 __MHDSETH (uw1, const)``
+
 ````c`` = __MHDSETH (``a``, ``b``)``
+
 ``MHDSETH ``a``,#``b``,``c````
+
 ``sw1 __MHDSETS (const)``
+
 ````b`` = __MHDSETS (``a``)``
+
 ``MHDSETS #``a``,``b````
+
 ``uw1 __MHSETHIH (uw1, const)``
+
 ````b`` = __MHSETHIH (``b``, ``a``)``
+
 ``MHSETHIH #``a``,``b````
+
 ``sw1 __MHSETHIS (sw1, const)``
+
 ````b`` = __MHSETHIS (``b``, ``a``)``
+
 ``MHSETHIS #``a``,``b````
+
 ``uw1 __MHSETLOH (uw1, const)``
+
 ````b`` = __MHSETLOH (``b``, ``a``)``
+
 ``MHSETLOH #``a``,``b````
+
 ``sw1 __MHSETLOS (sw1, const)``
+
 ````b`` = __MHSETLOS (``b``, ``a``)``
+
 ``MHSETLOS #``a``,``b````
+
 ``uw1 __MHTOB (uw2)``
+
 ````b`` = __MHTOB (``a``)``
+
 ``MHTOB ``a``,``b````
+
 ``void __MMACHS (acc, sw1, sw1)``
+
 ``__MMACHS (``c``, ``a``, ``b``)``
+
 ``MMACHS ``a``,``b``,``c````
+
 ``void __MMACHU (acc, uw1, uw1)``
+
 ``__MMACHU (``c``, ``a``, ``b``)``
+
 ``MMACHU ``a``,``b``,``c````
+
 ``void __MMRDHS (acc, sw1, sw1)``
+
 ``__MMRDHS (``c``, ``a``, ``b``)``
+
 ``MMRDHS ``a``,``b``,``c````
+
 ``void __MMRDHU (acc, uw1, uw1)``
+
 ``__MMRDHU (``c``, ``a``, ``b``)``
+
 ``MMRDHU ``a``,``b``,``c````
+
 ``void __MMULHS (acc, sw1, sw1)``
+
 ``__MMULHS (``c``, ``a``, ``b``)``
+
 ``MMULHS ``a``,``b``,``c````
+
 ``void __MMULHU (acc, uw1, uw1)``
+
 ``__MMULHU (``c``, ``a``, ``b``)``
+
 ``MMULHU ``a``,``b``,``c````
+
 ``void __MMULXHS (acc, sw1, sw1)``
+
 ``__MMULXHS (``c``, ``a``, ``b``)``
+
 ``MMULXHS ``a``,``b``,``c````
+
 ``void __MMULXHU (acc, uw1, uw1)``
+
 ``__MMULXHU (``c``, ``a``, ``b``)``
+
 ``MMULXHU ``a``,``b``,``c````
+
 ``uw1 __MNOT (uw1)``
+
 ````b`` = __MNOT (``a``)``
+
 ``MNOT ``a``,``b````
+
 ``uw1 __MOR (uw1, uw1)``
+
 ````c`` = __MOR (``a``, ``b``)``
+
 ``MOR ``a``,``b``,``c````
+
 ``uw1 __MPACKH (uh, uh)``
+
 ````c`` = __MPACKH (``a``, ``b``)``
+
 ``MPACKH ``a``,``b``,``c````
+
 ``sw2 __MQADDHSS (sw2, sw2)``
+
 ````c`` = __MQADDHSS (``a``, ``b``)``
+
 ``MQADDHSS ``a``,``b``,``c````
+
 ``uw2 __MQADDHUS (uw2, uw2)``
+
 ````c`` = __MQADDHUS (``a``, ``b``)``
+
 ``MQADDHUS ``a``,``b``,``c````
+
 ``void __MQCPXIS (acc, sw2, sw2)``
+
 ``__MQCPXIS (``c``, ``a``, ``b``)``
+
 ``MQCPXIS ``a``,``b``,``c````
+
 ``void __MQCPXIU (acc, uw2, uw2)``
+
 ``__MQCPXIU (``c``, ``a``, ``b``)``
+
 ``MQCPXIU ``a``,``b``,``c````
+
 ``void __MQCPXRS (acc, sw2, sw2)``
+
 ``__MQCPXRS (``c``, ``a``, ``b``)``
+
 ``MQCPXRS ``a``,``b``,``c````
+
 ``void __MQCPXRU (acc, uw2, uw2)``
+
 ``__MQCPXRU (``c``, ``a``, ``b``)``
+
 ``MQCPXRU ``a``,``b``,``c````
+
 ``sw2 __MQLCLRHS (sw2, sw2)``
+
 ````c`` = __MQLCLRHS (``a``, ``b``)``
+
 ``MQLCLRHS ``a``,``b``,``c````
+
 ``sw2 __MQLMTHS (sw2, sw2)``
+
 ````c`` = __MQLMTHS (``a``, ``b``)``
+
 ``MQLMTHS ``a``,``b``,``c````
+
 ``void __MQMACHS (acc, sw2, sw2)``
+
 ``__MQMACHS (``c``, ``a``, ``b``)``
+
 ``MQMACHS ``a``,``b``,``c````
+
 ``void __MQMACHU (acc, uw2, uw2)``
+
 ``__MQMACHU (``c``, ``a``, ``b``)``
+
 ``MQMACHU ``a``,``b``,``c````
+
 ``void __MQMACXHS (acc, sw2, sw2)``
+
 ``__MQMACXHS (``c``, ``a``, ``b``)``
+
 ``MQMACXHS ``a``,``b``,``c````
+
 ``void __MQMULHS (acc, sw2, sw2)``
+
 ``__MQMULHS (``c``, ``a``, ``b``)``
+
 ``MQMULHS ``a``,``b``,``c````
+
 ``void __MQMULHU (acc, uw2, uw2)``
+
 ``__MQMULHU (``c``, ``a``, ``b``)``
+
 ``MQMULHU ``a``,``b``,``c````
+
 ``void __MQMULXHS (acc, sw2, sw2)``
+
 ``__MQMULXHS (``c``, ``a``, ``b``)``
+
 ``MQMULXHS ``a``,``b``,``c````
+
 ``void __MQMULXHU (acc, uw2, uw2)``
+
 ``__MQMULXHU (``c``, ``a``, ``b``)``
+
 ``MQMULXHU ``a``,``b``,``c````
+
 ``sw2 __MQSATHS (sw2, sw2)``
+
 ````c`` = __MQSATHS (``a``, ``b``)``
+
 ``MQSATHS ``a``,``b``,``c````
+
 ``uw2 __MQSLLHI (uw2, int)``
+
 ````c`` = __MQSLLHI (``a``, ``b``)``
+
 ``MQSLLHI ``a``,``b``,``c````
+
 ``sw2 __MQSRAHI (sw2, int)``
+
 ````c`` = __MQSRAHI (``a``, ``b``)``
+
 ``MQSRAHI ``a``,``b``,``c````
+
 ``sw2 __MQSUBHSS (sw2, sw2)``
+
 ````c`` = __MQSUBHSS (``a``, ``b``)``
+
 ``MQSUBHSS ``a``,``b``,``c````
+
 ``uw2 __MQSUBHUS (uw2, uw2)``
+
 ````c`` = __MQSUBHUS (``a``, ``b``)``
+
 ``MQSUBHUS ``a``,``b``,``c````
+
 ``void __MQXMACHS (acc, sw2, sw2)``
+
 ``__MQXMACHS (``c``, ``a``, ``b``)``
+
 ``MQXMACHS ``a``,``b``,``c````
+
 ``void __MQXMACXHS (acc, sw2, sw2)``
+
 ``__MQXMACXHS (``c``, ``a``, ``b``)``
+
 ``MQXMACXHS ``a``,``b``,``c````
+
 ``uw1 __MRDACC (acc)``
+
 ````b`` = __MRDACC (``a``)``
+
 ``MRDACC ``a``,``b````
+
 ``uw1 __MRDACCG (acc)``
+
 ````b`` = __MRDACCG (``a``)``
+
 ``MRDACCG ``a``,``b````
+
 ``uw1 __MROTLI (uw1, const)``
+
 ````c`` = __MROTLI (``a``, ``b``)``
+
 ``MROTLI ``a``,#``b``,``c````
+
 ``uw1 __MROTRI (uw1, const)``
+
 ````c`` = __MROTRI (``a``, ``b``)``
+
 ``MROTRI ``a``,#``b``,``c````
+
 ``sw1 __MSATHS (sw1, sw1)``
+
 ````c`` = __MSATHS (``a``, ``b``)``
+
 ``MSATHS ``a``,``b``,``c````
+
 ``uw1 __MSATHU (uw1, uw1)``
+
 ````c`` = __MSATHU (``a``, ``b``)``
+
 ``MSATHU ``a``,``b``,``c````
+
 ``uw1 __MSLLHI (uw1, const)``
+
 ````c`` = __MSLLHI (``a``, ``b``)``
+
 ``MSLLHI ``a``,#``b``,``c````
+
 ``sw1 __MSRAHI (sw1, const)``
+
 ````c`` = __MSRAHI (``a``, ``b``)``
+
 ``MSRAHI ``a``,#``b``,``c````
+
 ``uw1 __MSRLHI (uw1, const)``
+
 ````c`` = __MSRLHI (``a``, ``b``)``
+
 ``MSRLHI ``a``,#``b``,``c````
+
 ``void __MSUBACCS (acc, acc)``
+
 ``__MSUBACCS (``b``, ``a``)``
+
 ``MSUBACCS ``a``,``b````
+
 ``sw1 __MSUBHSS (sw1, sw1)``
+
 ````c`` = __MSUBHSS (``a``, ``b``)``
+
 ``MSUBHSS ``a``,``b``,``c````
+
 ``uw1 __MSUBHUS (uw1, uw1)``
+
 ````c`` = __MSUBHUS (``a``, ``b``)``
+
 ``MSUBHUS ``a``,``b``,``c````
+
 ``void __MTRAP (void)``
+
 ``__MTRAP ()``
+
 ``MTRAP``
+
 ``uw2 __MUNPACKH (uw1)``
+
 ````b`` = __MUNPACKH (``a``)``
+
 ``MUNPACKH ``a``,``b````
+
 ``uw1 __MWCUT (uw2, uw1)``
+
 ````c`` = __MWCUT (``a``, ``b``)``
+
 ``MWCUT ``a``,``b``,``c````
+
 ``void __MWTACC (acc, uw1)``
+
 ``__MWTACC (``b``, ``a``)``
+
 ``MWTACC ``a``,``b````
+
 ``void __MWTACCG (acc, uw1)``
+
 ``__MWTACCG (``b``, ``a``)``
+
 ``MWTACCG ``a``,``b````
+
 ``uw1 __MXOR (uw1, uw1)``
+
 ````c`` = __MXOR (``a``, ``b``)``
+
 ``MXOR ``a``,``b``,``c````
 
 :: _raw-read/write-functions:
@@ -1421,18 +1765,9 @@ instructions to access memory.  These functions generate
 ``membar`` instructions to flush the I/O load and stores where
 appropriate, as described in Fujitsu's manual described above.
 
-unsigned char __builtin_read8 (void *``data``)
-unsigned short __builtin_read16 (void *``data``)
-unsigned long __builtin_read32 (void *``data``)
-
+unsigned char __builtin_read8 (void *``data``)unsigned short __builtin_read16 (void *``data``)unsigned long __builtin_read32 (void *``data``)
 unsigned long long __builtin_read64 (void *``data``)
-
-  void __builtin_write8 (void *``data``, unsigned char ``datum``)
-void __builtin_write16 (void *``data``, unsigned short ``datum``)
-void __builtin_write32 (void *``data``, unsigned long ``datum``)
-void __builtin_write64 (void *``data``, unsigned long long ``datum``)
-
-:: _other-built-in-functions:
+  void __builtin_write8 (void *``data``, unsigned char ``datum``)void __builtin_write16 (void *``data``, unsigned short ``datum``)void __builtin_write32 (void *``data``, unsigned long ``datum``)void __builtin_write64 (void *``data``, unsigned long long ``datum``):: _other-built-in-functions:
 
 Other Built-in Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1464,7 +1799,7 @@ void __data_prefetch (const void *``x``)
   Use the ``nldub`` instruction to load the contents of address ``x``
   into the data cache.  The instruction is issued in slot I1.
 
-:: _mips-dsp-built-in-functions:
+  :: _mips-dsp-built-in-functions:
 
 MIPS DSP Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1537,18 +1872,37 @@ The table below lists the ``v4i8`` and ``v2q15`` operations for which
 hardware support exists.  ``a`` and ``b`` are ``v4i8`` values,
 and ``c`` and ``d`` are ``v2q15`` values.
 
-C code MIPS instruction
-``a + b`` ``addu.qb``
-``c + d`` ``addq.ph``
-``a - b`` ``subu.qb``
-``c - d`` ``subq.ph``
+C code
+
+MIPS instruction
+
+``a + b`` 
+
+``addu.qb``
+
+``c + d`` 
+
+``addq.ph``
+
+``a - b`` 
+
+``subu.qb``
+
+``c - d`` 
+
+``subq.ph``
 
 The table below lists the ``v2i16`` operation for which
 hardware support exists for the DSP ASE REV 2.  ``e`` and ``f`` are
 ``v2i16`` values.
 
-C code MIPS instruction
-``e * f`` ``mul.ph``
+C code
+
+MIPS instruction
+
+``e * f`` 
+
+``mul.ph``
 
 It is easier to describe the DSP built-in functions if we first define
 the following types:
@@ -1804,11 +2158,16 @@ available after inclusion of the ``loongson.h`` header file,
 operate on the following 64-bit vector types:
 
 * ``uint8x8_t``, a vector of eight unsigned 8-bit integers;
-  * ``uint16x4_t``, a vector of four unsigned 16-bit integers;
-  * ``uint32x2_t``, a vector of two unsigned 32-bit integers;
-  * ``int8x8_t``, a vector of eight signed 8-bit integers;
-  * ``int16x4_t``, a vector of four signed 16-bit integers;
-  * ``int32x2_t``, a vector of two signed 32-bit integers.
+
+* ``uint16x4_t``, a vector of four unsigned 16-bit integers;
+
+* ``uint32x2_t``, a vector of two unsigned 32-bit integers;
+
+* ``int8x8_t``, a vector of eight signed 8-bit integers;
+
+* ``int16x4_t``, a vector of four signed 16-bit integers;
+
+* ``int32x2_t``, a vector of two signed 32-bit integers.
 
 The intrinsics provided are listed below; each is named after the
 machine instruction to which it corresponds, with suffixes added as
@@ -1934,16 +2293,45 @@ The table below lists the ``v2sf`` operations for which hardware
 support exists.  ``a``, ``b`` and ``c`` are ``v2sf``
 values and ``x`` is an integral value.
 
-C code MIPS instruction
-``a + b`` ``add.ps``
-``a - b`` ``sub.ps``
-``-a`` ``neg.ps``
-``a * b`` ``mul.ps``
-``a * b + c`` ``madd.ps``
-``a * b - c`` ``msub.ps``
-``-(a * b + c)`` ``nmadd.ps``
-``-(a * b - c)`` ``nmsub.ps``
-``x ? a : b`` ``movn.ps``/``movz.ps``
+C code
+
+MIPS instruction
+
+``a + b`` 
+
+``add.ps``
+
+``a - b`` 
+
+``sub.ps``
+
+``-a`` 
+
+``neg.ps``
+
+``a * b`` 
+
+``mul.ps``
+
+``a * b + c`` 
+
+``madd.ps``
+
+``a * b - c`` 
+
+``msub.ps``
+
+``-(a * b + c)`` 
+
+``nmadd.ps``
+
+``-(a * b - c)`` 
+
+``nmsub.ps``
+
+``x ? a : b`` 
+
+``movn.ps``/``movz.ps``
 
 Note that the multiply-accumulate instructions can be disabled
 using the command-line option ``-mno-fused-madd``.
@@ -1988,7 +2376,7 @@ v2sf __builtin_mips_alnv_ps (v2sf, v2sf, int)
   modulo 8, otherwise the result is unpredictable.  Please read the
   instruction description for details.
 
-The following multi-instruction functions are also available.
+  The following multi-instruction functions are also available.
 In each case, ``cond`` can be any of the 16 floating-point conditions:
 ``f``, ``un``, ``eq``, ``ueq``, ``olt``, ``ult``,
 ``ole``, ``ule``, ``sf``, ``ngle``, ``seq``, ``ngl``,
@@ -2029,7 +2417,7 @@ int __builtin_mips_upper_c_``cond``_ps (v2sf ``a``, v2sf ``b``)int __builtin_mip
     else
       lower_halves_are_unequal ();
 
-:: _mips-3d-built-in-functions:
+  :: _mips-3d-built-in-functions:
 
 MIPS-3D Built-in Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2069,7 +2457,7 @@ float __builtin_mips_rsqrt2_s (float, float)double __builtin_mips_rsqrt2_d (doub
   Reduced-precision reciprocal square root (sequence step 2)
   (``rsqrt2.``fmt````).
 
-The following multi-instruction functions are also available.
+  The following multi-instruction functions are also available.
 In each case, ``cond`` can be any of the 16 floating-point conditions:
 ``f``, ``un``, ``eq``, ``ueq``, ``olt``, ``ult``,
 ``ole``, ``ule``, ``sf``, ``ngle``, ``seq``,
@@ -2173,7 +2561,7 @@ int __builtin_mips_any_c_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf `
     else
       some_are_false ();
 
-:: _other-mips-built-in-functions:
+  :: _other-mips-built-in-functions:
 
 Other MIPS Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2193,7 +2581,7 @@ unsigned int __builtin_mips_get_fcsr (void)void __builtin_mips_set_fcsr (unsigne
   ``__builtin_mips_set_fcsr`` can be used to change any bit of the
   register except the condition codes, which GCC assumes are preserved.
 
-:: _msp430-built-in-functions:
+  :: _msp430-built-in-functions:
 
 MSP430 Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2222,7 +2610,7 @@ __delay_cycles (long long ``cycles``)
   optimized to a constant later.  The number of cycles delayed by this
   builtin is exact.
 
-:: _nds32-built-in-functions:
+  :: _nds32-built-in-functions:
 
 NDS32 Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2231,44 +2619,36 @@ These built-in functions are available for the NDS32 target:
 
 .. index:: __builtin_nds32_isync
 
-  Built-in Function void __builtin_nds32_isync (int *``addr``)
-Insert an ISYNC instruction into the instruction stream where
+Built-in Functionvoid__builtin_nds32_isync(int*``addr``)Insert an ISYNC instruction into the instruction stream where
 ``addr`` is an instruction address for serialization.
 
 .. index:: __builtin_nds32_isb
 
-  Built-in Function void __builtin_nds32_isb (void)
-Insert an ISB instruction into the instruction stream.
+Built-in Functionvoid__builtin_nds32_isb(void)Insert an ISB instruction into the instruction stream.
 
 .. index:: __builtin_nds32_mfsr
 
-  Built-in Function int __builtin_nds32_mfsr (int ``sr``)
-Return the content of a system register which is mapped by ``sr``.
+Built-in Functionint__builtin_nds32_mfsr(int``sr``)Return the content of a system register which is mapped by ``sr``.
 
 .. index:: __builtin_nds32_mfusr
 
-  Built-in Function int __builtin_nds32_mfusr (int ``usr``)
-Return the content of a user space register which is mapped by ``usr``.
+Built-in Functionint__builtin_nds32_mfusr(int``usr``)Return the content of a user space register which is mapped by ``usr``.
 
 .. index:: __builtin_nds32_mtsr
 
-  Built-in Function void __builtin_nds32_mtsr (int ``value``, int ``sr``)
-Move the ``value`` to a system register which is mapped by ``sr``.
+Built-in Functionvoid__builtin_nds32_mtsr(int``value``,int``sr``)Move the ``value`` to a system register which is mapped by ``sr``.
 
 .. index:: __builtin_nds32_mtusr
 
-  Built-in Function void __builtin_nds32_mtusr (int ``value``, int ``usr``)
-Move the ``value`` to a user space register which is mapped by ``usr``.
+Built-in Functionvoid__builtin_nds32_mtusr(int``value``,int``usr``)Move the ``value`` to a user space register which is mapped by ``usr``.
 
 .. index:: __builtin_nds32_setgie_en
 
-  Built-in Function void __builtin_nds32_setgie_en (void)
-Enable global interrupt.
+Built-in Functionvoid__builtin_nds32_setgie_en(void)Enable global interrupt.
 
 .. index:: __builtin_nds32_setgie_dis
 
-  Built-in Function void __builtin_nds32_setgie_dis (void)
-Disable global interrupt.
+Built-in Functionvoid__builtin_nds32_setgie_dis(void)Disable global interrupt.
 
 :: _picochip-built-in-functions:
 
@@ -2305,7 +2685,7 @@ void __builtin_halt (void)
   Halt.  The processor stops execution.  This built-in is useful for
   implementing assertions.
 
-:: _powerpc-built-in-functions:
+  :: _powerpc-built-in-functions:
 
 PowerPC Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2441,24 +2821,24 @@ C and C++ code differs from Motorola's documentation in several ways.
 
 * A vector constant is a list of constant expressions within curly braces.
 
-  * A vector initializer requires no cast if the vector constant is of the
+* A vector initializer requires no cast if the vector constant is of the
   same type as the variable it is initializing.
 
-  * If ``signed`` or ``unsigned`` is omitted, the signedness of the
+* If ``signed`` or ``unsigned`` is omitted, the signedness of the
   vector type is the default signedness of the base type.  The default
   varies depending on the operating system, so a portable program should
   always specify the signedness.
 
-  * Compiling with :option:`-maltivec` adds keywords ``__vector``,
+* Compiling with :option:`-maltivec` adds keywords ``__vector``,
   ``vector``, ``__pixel``, ``pixel``, ``__bool`` and
   ``bool``.  When compiling ISO C, the context-sensitive substitution
   of the keywords ``vector``, ``pixel`` and ``bool`` is
   disabled.  To use them, you must include ``<altivec.h>`` instead.
 
-  * GCC allows using a ``typedef`` name as the type specifier for a
+* GCC allows using a ``typedef`` name as the type specifier for a
   vector type.
 
-  * For C, overloaded functions are implemented with macros so the following
+* For C, overloaded functions are implemented with macros so the following
   does not work:
 
   .. code-block:: c++
@@ -5190,133 +5570,112 @@ following functions are supported:
 
 .. index:: __builtin_rx_brk
 
-  Built-in Function  void __builtin_rx_brk (void)
-Generates the ``brk`` machine instruction.
+Built-in Functionvoid__builtin_rx_brk(void)Generates the ``brk`` machine instruction.
 
 .. index:: __builtin_rx_clrpsw
 
-  Built-in Function  void __builtin_rx_clrpsw (int)
-Generates the ``clrpsw`` machine instruction to clear the specified
+Built-in Functionvoid__builtin_rx_clrpsw(int)Generates the ``clrpsw`` machine instruction to clear the specified
 bit in the processor status word.
 
 .. index:: __builtin_rx_int
 
-  Built-in Function  void __builtin_rx_int (int)
-Generates the ``int`` machine instruction to generate an interrupt
+Built-in Functionvoid__builtin_rx_int(int)Generates the ``int`` machine instruction to generate an interrupt
 with the specified value.
 
 .. index:: __builtin_rx_machi
 
-  Built-in Function  void __builtin_rx_machi (int, int)
-Generates the ``machi`` machine instruction to add the result of
+Built-in Functionvoid__builtin_rx_machi(int,int)Generates the ``machi`` machine instruction to add the result of
 multiplying the top 16 bits of the two arguments into the
 accumulator.
 
 .. index:: __builtin_rx_maclo
 
-  Built-in Function  void __builtin_rx_maclo (int, int)
-Generates the ``maclo`` machine instruction to add the result of
+Built-in Functionvoid__builtin_rx_maclo(int,int)Generates the ``maclo`` machine instruction to add the result of
 multiplying the bottom 16 bits of the two arguments into the
 accumulator.
 
 .. index:: __builtin_rx_mulhi
 
-  Built-in Function  void __builtin_rx_mulhi (int, int)
-Generates the ``mulhi`` machine instruction to place the result of
+Built-in Functionvoid__builtin_rx_mulhi(int,int)Generates the ``mulhi`` machine instruction to place the result of
 multiplying the top 16 bits of the two arguments into the
 accumulator.
 
 .. index:: __builtin_rx_mullo
 
-  Built-in Function  void __builtin_rx_mullo (int, int)
-Generates the ``mullo`` machine instruction to place the result of
+Built-in Functionvoid__builtin_rx_mullo(int,int)Generates the ``mullo`` machine instruction to place the result of
 multiplying the bottom 16 bits of the two arguments into the
 accumulator.
 
 .. index:: __builtin_rx_mvfachi
 
-  Built-in Function  int  __builtin_rx_mvfachi (void)
-Generates the ``mvfachi`` machine instruction to read the top
+Built-in Functionint__builtin_rx_mvfachi(void)Generates the ``mvfachi`` machine instruction to read the top
 32 bits of the accumulator.
 
 .. index:: __builtin_rx_mvfacmi
 
-  Built-in Function  int  __builtin_rx_mvfacmi (void)
-Generates the ``mvfacmi`` machine instruction to read the middle
+Built-in Functionint__builtin_rx_mvfacmi(void)Generates the ``mvfacmi`` machine instruction to read the middle
 32 bits of the accumulator.
 
 .. index:: __builtin_rx_mvfc
 
-  Built-in Function  int __builtin_rx_mvfc (int)
-Generates the ``mvfc`` machine instruction which reads the control
+Built-in Functionint__builtin_rx_mvfc(int)Generates the ``mvfc`` machine instruction which reads the control
 register specified in its argument and returns its value.
 
 .. index:: __builtin_rx_mvtachi
 
-  Built-in Function  void __builtin_rx_mvtachi (int)
-Generates the ``mvtachi`` machine instruction to set the top
+Built-in Functionvoid__builtin_rx_mvtachi(int)Generates the ``mvtachi`` machine instruction to set the top
 32 bits of the accumulator.
 
 .. index:: __builtin_rx_mvtaclo
 
-  Built-in Function  void __builtin_rx_mvtaclo (int)
-Generates the ``mvtaclo`` machine instruction to set the bottom
+Built-in Functionvoid__builtin_rx_mvtaclo(int)Generates the ``mvtaclo`` machine instruction to set the bottom
 32 bits of the accumulator.
 
 .. index:: __builtin_rx_mvtc
 
-  Built-in Function  void __builtin_rx_mvtc (int reg, int val)
-Generates the ``mvtc`` machine instruction which sets control
+Built-in Functionvoid__builtin_rx_mvtc(intreg,intval)Generates the ``mvtc`` machine instruction which sets control
 register number ``reg`` to ``val``.
 
 .. index:: __builtin_rx_mvtipl
 
-  Built-in Function  void __builtin_rx_mvtipl (int)
-Generates the ``mvtipl`` machine instruction set the interrupt
+Built-in Functionvoid__builtin_rx_mvtipl(int)Generates the ``mvtipl`` machine instruction set the interrupt
 priority level.
 
 .. index:: __builtin_rx_racw
 
-  Built-in Function  void __builtin_rx_racw (int)
-Generates the ``racw`` machine instruction to round the accumulator
+Built-in Functionvoid__builtin_rx_racw(int)Generates the ``racw`` machine instruction to round the accumulator
 according to the specified mode.
 
 .. index:: __builtin_rx_revw
 
-  Built-in Function  int __builtin_rx_revw (int)
-Generates the ``revw`` machine instruction which swaps the bytes in
+Built-in Functionint__builtin_rx_revw(int)Generates the ``revw`` machine instruction which swaps the bytes in
 the argument so that bits 0-7 now occupy bits 8-15 and vice versa,
 and also bits 16-23 occupy bits 24-31 and vice versa.
 
 .. index:: __builtin_rx_rmpa
 
-  Built-in Function  void __builtin_rx_rmpa (void)
-Generates the ``rmpa`` machine instruction which initiates a
+Built-in Functionvoid__builtin_rx_rmpa(void)Generates the ``rmpa`` machine instruction which initiates a
 repeated multiply and accumulate sequence.
 
 .. index:: __builtin_rx_round
 
-  Built-in Function  void __builtin_rx_round (float)
-Generates the ``round`` machine instruction which returns the
+Built-in Functionvoid__builtin_rx_round(float)Generates the ``round`` machine instruction which returns the
 floating-point argument rounded according to the current rounding mode
 set in the floating-point status word register.
 
 .. index:: __builtin_rx_sat
 
-  Built-in Function  int __builtin_rx_sat (int)
-Generates the ``sat`` machine instruction which returns the
+Built-in Functionint__builtin_rx_sat(int)Generates the ``sat`` machine instruction which returns the
 saturated value of the argument.
 
 .. index:: __builtin_rx_setpsw
 
-  Built-in Function  void __builtin_rx_setpsw (int)
-Generates the ``setpsw`` machine instruction to set the specified
+Built-in Functionvoid__builtin_rx_setpsw(int)Generates the ``setpsw`` machine instruction to set the specified
 bit in the processor status word.
 
 .. index:: __builtin_rx_wait
 
-  Built-in Function  void __builtin_rx_wait (void)
-Generates the ``wait`` machine instruction.
+Built-in Functionvoid__builtin_rx_wait(void)Generates the ``wait`` machine instruction.
 
 :: _s/390-system-z-built-in-functions:
 
@@ -5325,8 +5684,7 @@ S/390 System z Built-in Functions
 
 .. index:: __builtin_tbegin
 
-  Built-in Function int __builtin_tbegin (void*)
-Generates the ``tbegin`` machine instruction starting a
+Built-in Functionint__builtin_tbegin(void*)Generates the ``tbegin`` machine instruction starting a
 non-constraint hardware transaction.  If the parameter is non-NULL the
 memory area is used to store the transaction diagnostic buffer and
 will be passed as first operand to ``tbegin``.  This buffer can be
@@ -5368,30 +5726,26 @@ _HTM_TBEGIN_PERSISTENT
 
 .. index:: _HTM_FIRST_USER_ABORT_CODE
 
-  Macro _HTM_FIRST_USER_ABORT_CODE
-The ``_HTM_FIRST_USER_ABORT_CODE`` defined in ``htmintrin.h``
+Macro_HTM_FIRST_USER_ABORT_CODEThe ``_HTM_FIRST_USER_ABORT_CODE`` defined in ``htmintrin.h``
 specifies the first abort code which can be used for
 ``__builtin_tabort``.  Values below this threshold are reserved for
 machine use.
 
 .. index:: struct __htm_tdb
 
-  Data type struct __htm_tdb
-The ``struct __htm_tdb`` defined in ``htmintrin.h`` describes
+Data typestruct __htm_tdbThe ``struct __htm_tdb`` defined in ``htmintrin.h`` describes
 the structure of the transaction diagnostic block as specified in the
 Principles of Operation manual chapter 5-91.
 
 .. index:: __builtin_tbegin_nofloat
 
-  Built-in Function int __builtin_tbegin_nofloat (void*)
-Same as ``__builtin_tbegin`` but without FPR saves and restores.
+Built-in Functionint__builtin_tbegin_nofloat(void*)Same as ``__builtin_tbegin`` but without FPR saves and restores.
 Using this variant in code making use of FPRs will leave the FPRs in
 undefined state when entering the transaction abort handler code.
 
 .. index:: __builtin_tbegin_retry
 
-  Built-in Function int __builtin_tbegin_retry (void*, int)
-In addition to ``__builtin_tbegin`` a loop for transient failures
+Built-in Functionint__builtin_tbegin_retry(void*,int)In addition to ``__builtin_tbegin`` a loop for transient failures
 is generated.  If tbegin returns a condition code of 2 the transaction
 will be retried as often as specified in the second argument.  The
 perform processor assist instruction is used to tell the CPU about the
@@ -5399,52 +5753,44 @@ number of fails so far.
 
 .. index:: __builtin_tbegin_retry_nofloat
 
-  Built-in Function int __builtin_tbegin_retry_nofloat (void*, int)
-Same as ``__builtin_tbegin_retry`` but without FPR saves and
+Built-in Functionint__builtin_tbegin_retry_nofloat(void*,int)Same as ``__builtin_tbegin_retry`` but without FPR saves and
 restores.  Using this variant in code making use of FPRs will leave
 the FPRs in undefined state when entering the transaction abort
 handler code.
 
 .. index:: __builtin_tbeginc
 
-  Built-in Function void __builtin_tbeginc (void)
-Generates the ``tbeginc`` machine instruction starting a constraint
+Built-in Functionvoid__builtin_tbeginc(void)Generates the ``tbeginc`` machine instruction starting a constraint
 hardware transaction.  The second operand is set to ``0xff08``.
 
 .. index:: __builtin_tend
 
-  Built-in Function int __builtin_tend (void)
-Generates the ``tend`` machine instruction finishing a transaction
+Built-in Functionint__builtin_tend(void)Generates the ``tend`` machine instruction finishing a transaction
 and making the changes visible to other threads.  The condition code
 generated by tend is returned as integer value.
 
 .. index:: __builtin_tabort
 
-  Built-in Function void __builtin_tabort (int)
-Generates the ``tabort`` machine instruction with the specified
+Built-in Functionvoid__builtin_tabort(int)Generates the ``tabort`` machine instruction with the specified
 abort code.  Abort codes from 0 through 255 are reserved and will
 result in an error message.
 
 .. index:: __builtin_tx_assist
 
-  Built-in Function void __builtin_tx_assist (int)
-Generates the ``ppa rX,rY,1`` machine instruction.  Where the
+Built-in Functionvoid__builtin_tx_assist(int)Generates the ``ppa rX,rY,1`` machine instruction.  Where the
 integer parameter is loaded into rX and a value of zero is loaded into
 rY.  The integer parameter specifies the number of times the
 transaction repeatedly aborted.
 
 .. index:: __builtin_tx_nesting_depth
 
-  Built-in Function int __builtin_tx_nesting_depth (void)
-Generates the ``etnd`` machine instruction.  The current nesting
+Built-in Functionint__builtin_tx_nesting_depth(void)Generates the ``etnd`` machine instruction.  The current nesting
 depth is returned as integer value.  For a nesting depth of 0 the code
 is not executed as part of an transaction.
 
 .. index:: __builtin_non_tx_store
 
-  Built-in Function void __builtin_non_tx_store (uint64_t *, uint64_t)
-
-Generates the ``ntstg`` machine instruction.  The second argument
+Built-in Functionvoid__builtin_non_tx_store(uint64_t*,uint64_t)Generates the ``ntstg`` machine instruction.  The second argument
 is written to the first arguments location.  The store operation will
 not be rolled-back in case of an transaction abort.
 
@@ -5458,8 +5804,7 @@ families of processors:
 
 .. index:: __builtin_set_thread_pointer
 
-  Built-in Function void __builtin_set_thread_pointer (void *``ptr``)
-Sets the GBR register to the specified value ``ptr``.  This is usually
+Built-in Functionvoid__builtin_set_thread_pointer(void*``ptr``)Sets the GBR register to the specified value ``ptr``.  This is usually
 used by system code that manages threads and execution contexts.  The compiler
 normally does not generate code that modifies the contents of GBR and
 thus the value is preserved across function calls.  Changing the GBR
@@ -5468,8 +5813,7 @@ GBR in order to access thread local variables.
 
 .. index:: __builtin_thread_pointer
 
-  Built-in Function void * __builtin_thread_pointer (void)
-Returns the value that is currently set in the GBR register.
+Built-in Functionvoid *__builtin_thread_pointer(void)Returns the value that is currently set in the GBR register.
 Memory loads and stores that use the thread pointer as a base address are
 turned into GBR based displacement loads and stores, if possible.
 For example:
@@ -5489,13 +5833,11 @@ For example:
 
 .. index:: __builtin_sh_get_fpscr
 
-  Built-in Function unsigned int __builtin_sh_get_fpscr (void)
-Returns the value that is currently set in the FPSCR register.
+Built-in Functionunsigned int__builtin_sh_get_fpscr(void)Returns the value that is currently set in the FPSCR register.
 
 .. index:: __builtin_sh_set_fpscr
 
-  Built-in Function void __builtin_sh_set_fpscr (unsigned int ``val``)
-Sets the FPSCR register to the specified value ``val``, while
+Built-in Functionvoid__builtin_sh_set_fpscr(unsignedint``val``)Sets the FPSCR register to the specified value ``val``, while
 preserving the current values of the FR, SZ and PR bits.
 
 :: _sparc-vis-built-in-functions:
@@ -5657,22 +5999,22 @@ implementation differs in several ways.
 * The optional extension of specifying vector constants in parentheses is
   not supported.
 
-  * A vector initializer requires no cast if the vector constant is of the
+* A vector initializer requires no cast if the vector constant is of the
   same type as the variable it is initializing.
 
-  * If ``signed`` or ``unsigned`` is omitted, the signedness of the
+* If ``signed`` or ``unsigned`` is omitted, the signedness of the
   vector type is the default signedness of the base type.  The default
   varies depending on the operating system, so a portable program should
   always specify the signedness.
 
-  * By default, the keyword ``__vector`` is added. The macro
+* By default, the keyword ``__vector`` is added. The macro
   ``vector`` is defined in ``<spu_intrinsics.h>`` and can be
   undefined.
 
-  * GCC allows using a ``typedef`` name as the type specifier for a
+* GCC allows using a ``typedef`` name as the type specifier for a
   vector type.
 
-  * For C, overloaded functions are implemented with macros so the following
+* For C, overloaded functions are implemented with macros so the following
   does not work:
 
   .. code-block:: c++
@@ -5683,7 +6025,7 @@ implementation differs in several ways.
   is treated as four separate arguments.  Wrap the entire argument in
   parentheses for this to work.
 
-  * The extended version of ``__builtin_expect`` is not supported.
+* The extended version of ``__builtin_expect`` is not supported.
 
 Note: Only the interface described in the aforementioned
 specification is supported. Internally, GCC uses built-in functions to
@@ -5846,7 +6188,7 @@ void __builtin_ia32_pause (void)
   Generates the ``pause`` machine instruction with a compiler memory
   barrier.
 
-The following floating-point built-in functions are made available in the
+  The following floating-point built-in functions are made available in the
 64-bit mode.
 
 __float128 __builtin_infq (void)
@@ -5859,13 +6201,12 @@ __float128 __builtin_huge_valq (void)
 
   .. index:: __builtin_huge_valq
 
-The following built-in functions are always available and can be used to
+  The following built-in functions are always available and can be used to
 check the target platform type.
 
 .. index:: __builtin_cpu_init
 
-  Built-in Function void __builtin_cpu_init (void)
-This function runs the CPU detection code to check the type of CPU and the
+Built-in Functionvoid__builtin_cpu_init(void)This function runs the CPU detection code to check the type of CPU and the
 features supported.  This built-in function needs to be invoked along with the built-in functions
 to check CPU type and features, ``__builtin_cpu_is`` and
 ``__builtin_cpu_supports``, only when used in a function that is
@@ -5895,8 +6236,7 @@ don't support constructor priority.
 
 .. index:: __builtin_cpu_is
 
-  Built-in Function int __builtin_cpu_is (const char *``cpuname``)
-This function returns a positive integer if the run-time CPU
+Built-in Functionint__builtin_cpu_is(constchar*``cpuname``)This function returns a positive integer if the run-time CPU
 is of type ``cpuname``
 and returns ``0`` otherwise. The following CPU names can be detected:
 
@@ -5957,7 +6297,7 @@ bdver4
 btver2
   AMD Family 16h CPU.
 
-Here is an example:
+  Here is an example:
 
 .. code-block:: c++
 
@@ -5972,8 +6312,7 @@ Here is an example:
 
 .. index:: __builtin_cpu_supports
 
-  Built-in Function int __builtin_cpu_supports (const char *``feature``)
-This function returns a positive integer if the run-time CPU
+Built-in Functionint__builtin_cpu_supports(constchar*``feature``)This function returns a positive integer if the run-time CPU
 supports ``feature``
 and returns ``0`` otherwise. The following features can be detected:
 
@@ -6013,7 +6352,7 @@ avx2
 avx512f
   AVX512F instructions.
 
-Here is an example:
+  Here is an example:
 
 .. code-block:: c++
 
@@ -6201,7 +6540,7 @@ void __builtin_ia32_storehps (v2sf *, v4sf)
 void __builtin_ia32_storelps (v2sf *, v4sf)
   Generates the ``movlps`` machine instruction as a store to memory.
 
-The following built-in functions are available when :option:`-msse2` is used.
+  The following built-in functions are available when :option:`-msse2` is used.
 All of them generate the machine instruction that is part of the name.
 
 .. code-block:: c++
@@ -6491,7 +6830,7 @@ v4si __builtin_ia32_vec_set_v4si (v4si, int, const int)
 v2di __builtin_ia32_vec_set_v2di (v2di, long long, const int)
   Generates the ``pinsrq`` machine instruction in 64bit mode.
 
-The following built-in functions are changed to generate new SSE4.1
+  The following built-in functions are changed to generate new SSE4.1
 instructions when :option:`-msse4.1` is used.
 
 float __builtin_ia32_vec_ext_v4sf (v4sf, const int)
@@ -6503,7 +6842,7 @@ int __builtin_ia32_vec_ext_v4si (v4si, const int)
 long long __builtin_ia32_vec_ext_v2di (v2di, const int)
   Generates the ``pextrq`` machine instruction in 64bit mode.
 
-The following built-in functions are available when :option:`-msse4.2` is
+  The following built-in functions are available when :option:`-msse4.2` is
 used.  All of them generate the machine instruction that is part of the
 name.
 
@@ -6540,7 +6879,7 @@ unsigned int __builtin_ia32_crc32si (unsigned int, unsigned int)
 unsigned long long __builtin_ia32_crc32di (unsigned long long, unsigned long long)
   Generates the ``crc32q`` machine instruction.
 
-The following built-in functions are changed to generate new SSE4.2
+  The following built-in functions are changed to generate new SSE4.2
 instructions when :option:`-msse4.2` is used.
 
 int __builtin_popcount (unsigned int)
@@ -6553,7 +6892,7 @@ int __builtin_popcountl (unsigned long)
 int __builtin_popcountll (unsigned long long)
   Generates the ``popcntq`` machine instruction.
 
-The following built-in functions are available when :option:`-mavx` is
+  The following built-in functions are available when :option:`-mavx` is
 used. All of them generate the machine instruction that is part of the
 name.
 
@@ -6885,7 +7224,7 @@ used.
 v2di __builtin_ia32_pclmulqdq128 (v2di, v2di, const int)
   Generates the ``pclmulqdq`` machine instruction.
 
-The following built-in function is available when :option:`-mfsgsbase` is
+  The following built-in function is available when :option:`-mfsgsbase` is
 used.  All of them generate the machine instruction that is part of the
 name.
 
@@ -7241,8 +7580,7 @@ and suitable fallback code always needs to be supplied.
 
 .. index:: _xbegin
 
-  RTM Function unsigned _xbegin ()
-Start a RTM (Restricted Transactional Memory) transaction. 
+RTM Functionunsigned_xbegin()Start a RTM (Restricted Transactional Memory) transaction. 
 Returns ``_XBEGIN_STARTED`` when the transaction
 started successfully (note this is not 0, so the constant has to be 
 explicitly tested).  
@@ -7270,26 +7608,23 @@ _XABORT_DEBUG
 _XABORT_NESTED
   Transaction abort in an inner nested transaction.
 
-There is no guarantee
+  There is no guarantee
 any transaction ever succeeds, so there always needs to be a valid
 fallback path.
 
 .. index:: _xend
 
-  RTM Function void _xend ()
-Commit the current transaction. When no transaction is active this faults.
+RTM Functionvoid_xend()Commit the current transaction. When no transaction is active this faults.
 All memory side-effects of the transaction become visible
 to other threads in an atomic manner.
 
 .. index:: _xtest
 
-  RTM Function int _xtest ()
-Return a nonzero value if a transaction is currently active, otherwise 0.
+RTM Functionint_xtest()Return a nonzero value if a transaction is currently active, otherwise 0.
 
 .. index:: _xabort
 
-  RTM Function void _xabort (status)
-Abort the current transaction. When no transaction is active this is a no-op.
+RTM Functionvoid_xabort(status)Abort the current transaction. When no transaction is active this is a no-op.
 The ``status`` is an 8-bit constant; its value is encoded in the return 
 value from ``_xbegin``.
 

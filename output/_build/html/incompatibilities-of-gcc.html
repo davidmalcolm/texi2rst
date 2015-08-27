@@ -90,37 +90,31 @@
 <li><p class="first">GCC normally makes string constants read-only.  If several
 identical-looking string constants are used, GCC stores only one
 copy of the string.</p>
-<p><tt class="docutils literal"><span class="pre">mktemp</span></tt>, and constant strings
-One consequence is that you cannot call <tt class="docutils literal"><span class="pre">mktemp</span></tt> with a string
+<p><tt class="docutils literal"><span class="pre">mktemp</span></tt>, and constant stringsOne consequence is that you cannot call <tt class="docutils literal"><span class="pre">mktemp</span></tt> with a string
 constant argument.  The function <tt class="docutils literal"><span class="pre">mktemp</span></tt> always alters the
 string its argument points to.</p>
-<p><tt class="docutils literal"><span class="pre">sscanf</span></tt>, and constant strings
-<tt class="docutils literal"><span class="pre">fscanf</span></tt>, and constant strings
-<tt class="docutils literal"><span class="pre">scanf</span></tt>, and constant strings
-Another consequence is that <tt class="docutils literal"><span class="pre">sscanf</span></tt> does not work on some very
+<p><tt class="docutils literal"><span class="pre">sscanf</span></tt>, and constant strings``fscanf``, and constant strings``scanf``, and constant stringsAnother consequence is that <tt class="docutils literal"><span class="pre">sscanf</span></tt> does not work on some very
 old systems when passed a string constant as its format control string
 or input.  This is because <tt class="docutils literal"><span class="pre">sscanf</span></tt> incorrectly tries to write
 into the string constant.  Likewise <tt class="docutils literal"><span class="pre">fscanf</span></tt> and <tt class="docutils literal"><span class="pre">scanf</span></tt>.</p>
 <p>The solution to these problems is to change the program to use
 <tt class="docutils literal"><span class="pre">char</span></tt>-array variables with initialization strings for these
 purposes instead of string constants.</p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">-2147483648</span></tt> is positive.</li>
-</ul>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">-2147483648</span></tt> is positive.</p>
 <p>This is because 2147483648 cannot fit in the type <tt class="docutils literal"><span class="pre">int</span></tt>, so
 (following the ISO C rules) its data type is <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">int</span></tt>.
 Negating this value yields 2147483648 again.</p>
-<ul class="simple">
-<li>GCC does not substitute macro arguments when they appear inside of</li>
-</ul>
-<p>string constants.  For example, the following macro in GCC</p>
+</li>
+<li><p class="first">GCC does not substitute macro arguments when they appear inside of
+string constants.  For example, the following macro in GCC</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define foo(a) &quot;a&quot;</span>
 </pre></div>
 </div>
 <p>will produce output <tt class="docutils literal"><span class="pre">&quot;a&quot;</span></tt> regardless of what the argument <tt class="docutils literal"><span class="pre">a</span></tt> is.</p>
-<p><tt class="docutils literal"><span class="pre">setjmp</span></tt> incompatibilities
-<tt class="docutils literal"><span class="pre">longjmp</span></tt> incompatibilities
-* When you use <tt class="docutils literal"><span class="pre">setjmp</span></tt> and <tt class="docutils literal"><span class="pre">longjmp</span></tt>, the only automatic
+<p><tt class="docutils literal"><span class="pre">setjmp</span></tt> incompatibilities``longjmp`` incompatibilities</p>
+</li>
+<li><p class="first">When you use <tt class="docutils literal"><span class="pre">setjmp</span></tt> and <tt class="docutils literal"><span class="pre">longjmp</span></tt>, the only automatic
 variables guaranteed to remain valid are those declared
 <tt class="docutils literal"><span class="pre">volatile</span></tt>.  This is a consequence of automatic register
 allocation.  Consider this function:</p>
@@ -146,10 +140,9 @@ its first value is restored; otherwise, it keeps the last value stored
 in it.</p>
 <p id="index-5">If you use the <em class="xref std std-option">-W</em> option with the <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O"><em class="xref std std-option">-O</em></a> option, you will
 get a warning when GCC thinks such a problem might be possible.</p>
-<ul class="simple">
-<li>Programs that use preprocessing directives in the middle of macro</li>
-</ul>
-<p>arguments do not work with GCC.  For example, a program like this
+</li>
+<li><p class="first">Programs that use preprocessing directives in the middle of macro
+arguments do not work with GCC.  For example, a program like this
 will not work:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">foobar</span> <span class="p">(</span>
 <span class="cp">#define luser</span>
@@ -157,51 +150,47 @@ will not work:</p>
 </pre></div>
 </div>
 <p>ISO C does not permit such a construct.</p>
-<ul class="simple">
-<li>K&amp;R compilers allow comments to cross over an inclusion boundary</li>
-</ul>
-<p>(i.e. started in an include file and ended in the including file).</p>
-<span class="target" id="index-6"></span><span class="target" id="index-7"></span><ul class="simple" id="index-8">
-<li>Declarations of external variables and functions within a block apply</li>
-</ul>
-<p>only to the block containing the declaration.  In other words, they
+</li>
+<li><p class="first">K&amp;R compilers allow comments to cross over an inclusion boundary
+(i.e. started in an include file and ended in the including file).</p>
+<span class="target" id="index-6"></span><span class="target" id="index-7"></span></li>
+<li id="index-8"><p class="first">Declarations of external variables and functions within a block apply
+only to the block containing the declaration.  In other words, they
 have the same scope as any other declaration in the same place.</p>
 <p>In some other C compilers, an <tt class="docutils literal"><span class="pre">extern</span></tt> declaration affects all the
 rest of the file even if it happens within a block.</p>
-<ul class="simple">
-<li>In traditional C, you can combine <tt class="docutils literal"><span class="pre">long</span></tt>, etc., with a typedef name,</li>
-</ul>
-<p>as shown here:</p>
+</li>
+<li><p class="first">In traditional C, you can combine <tt class="docutils literal"><span class="pre">long</span></tt>, etc., with a typedef name,
+as shown here:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">foo</span><span class="p">;</span>
 <span class="k">typedef</span> <span class="kt">long</span> <span class="n">foo</span> <span class="n">bar</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>In ISO C, this is not allowed: <tt class="docutils literal"><span class="pre">long</span></tt> and other type modifiers
 require an explicit <tt class="docutils literal"><span class="pre">int</span></tt>.</p>
-<ul class="simple" id="index-9">
-<li>PCC allows typedef names to be used as function parameters.</li>
-<li>Traditional C allows the following erroneous pair of declarations to</li>
-</ul>
-<p>appear together in a given scope:</p>
+</li>
+<li id="index-9"><p class="first">PCC allows typedef names to be used as function parameters.</p>
+</li>
+<li><p class="first">Traditional C allows the following erroneous pair of declarations to
+appear together in a given scope:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">foo</span><span class="p">;</span>
 <span class="k">typedef</span> <span class="n">foo</span> <span class="n">foo</span><span class="p">;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>GCC treats all characters of identifiers as significant.  According to</li>
-</ul>
-<p>K&amp;R-1 (2.2), &#8216;No more than the first eight characters are significant,
+</li>
+<li><p class="first">GCC treats all characters of identifiers as significant.  According to
+K&amp;R-1 (2.2), &#8216;No more than the first eight characters are significant,
 although more may be used.&#8217;.  Also according to K&amp;R-1 (2.2), &#8216;An
 identifier is a sequence of letters and digits; the first character must
 be a letter.  The underscore _ counts as a letter.&#8217;, but GCC also
 allows dollar signs in identifiers.</p>
-<ul class="simple" id="index-10">
-<li>PCC allows whitespace in the middle of compound assignment operators</li>
-</ul>
-<p>such as +=.  GCC, following the ISO standard, does not
+</li>
+<li id="index-10"><p class="first">PCC allows whitespace in the middle of compound assignment operators
+such as +=.  GCC, following the ISO standard, does not
 allow this.</p>
-<p id="index-11"><tt class="docutils literal"><span class="pre">'</span></tt>
-* GCC complains about unterminated character constants inside of
+<p id="index-11"><tt class="docutils literal"><span class="pre">'</span></tt></p>
+</li>
+<li><p class="first">GCC complains about unterminated character constants inside of
 preprocessing conditionals that fail.  Some programs have English
 comments enclosed in conditionals that are guaranteed to fail; if these
 comments contain apostrophes, GCC will probably report an error.  For
@@ -213,10 +202,9 @@ example, this code would produce an error:</p>
 </div>
 <p>The best solution to such a problem is to put the text into an actual
 C comment delimited by /<em>...</em>/.</p>
-<ul class="simple">
-<li>Many user programs contain the declaration long time ();.  In the</li>
-</ul>
-<p>past, the system header files on many systems did not actually declare
+</li>
+<li><p class="first">Many user programs contain the declaration long time ();.  In the
+past, the system header files on many systems did not actually declare
 <tt class="docutils literal"><span class="pre">time</span></tt>, so it did not matter what type your program declared it to
 return.  But in systems with ISO C headers, <tt class="docutils literal"><span class="pre">time</span></tt> is declared to
 return <tt class="docutils literal"><span class="pre">time_t</span></tt>, and if that is not the same as <tt class="docutils literal"><span class="pre">long</span></tt>, then
@@ -225,15 +213,15 @@ long time (); is erroneous.</p>
 (<tt class="docutils literal"><span class="pre">&lt;time.h&gt;</span></tt> on systems with ISO C headers) and not to declare
 <tt class="docutils literal"><span class="pre">time</span></tt> if the system header files declare it, or failing that to
 use <tt class="docutils literal"><span class="pre">time_t</span></tt> as the return type of <tt class="docutils literal"><span class="pre">time</span></tt>.</p>
-<p><tt class="docutils literal"><span class="pre">float</span></tt> as function value type
-* When compiling functions that return <tt class="docutils literal"><span class="pre">float</span></tt>, PCC converts it to
+<p><tt class="docutils literal"><span class="pre">float</span></tt> as function value type</p>
+</li>
+<li><p class="first">When compiling functions that return <tt class="docutils literal"><span class="pre">float</span></tt>, PCC converts it to
 a double.  GCC actually returns a <tt class="docutils literal"><span class="pre">float</span></tt>.  If you are concerned
 with PCC compatibility, you should declare your functions to return
 <tt class="docutils literal"><span class="pre">double</span></tt>; you might as well say what you mean.</p>
-<span class="target" id="index-12"></span><ul class="simple" id="index-13">
-<li>When compiling functions that return structures or unions, GCC</li>
-</ul>
-<p>output code normally uses a method different from that used on most
+<span class="target" id="index-12"></span></li>
+<li id="index-13"><p class="first">When compiling functions that return structures or unions, GCC
+output code normally uses a method different from that used on most
 versions of Unix.  As a result, code compiled with GCC cannot call
 a structure-returning function compiled with PCC, and vice versa.</p>
 <p>The method used by GCC is as follows: a structure or union which is
@@ -254,10 +242,9 @@ compatible convention when returning structures and unions in memory,
 but still returns small structures and unions in registers.</p>
 <p id="index-14">You can tell GCC to use a compatible convention for all structure and
 union returning with the option <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fpcc-struct-return"><em class="xref std std-option">-fpcc-struct-return</em></a>.</p>
-<span class="target" id="index-15"></span><ul class="simple" id="index-16">
-<li>GCC complains about program fragments such as 0x74ae-0x4000</li>
-</ul>
-<p>which appear to be two hexadecimal constants separated by the minus
+<span class="target" id="index-15"></span></li>
+<li id="index-16"><p class="first">GCC complains about program fragments such as 0x74ae-0x4000
+which appear to be two hexadecimal constants separated by the minus
 operator.  Actually, this string is a single <em class="dfn">preprocessing token</em>.
 Each such token must correspond to one token in C.  Since this does not,
 GCC prints an error message.  Although it may appear obvious that what

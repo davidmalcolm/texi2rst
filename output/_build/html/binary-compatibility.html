@@ -120,27 +120,28 @@ features are normally covered by a platform&#8217;s ABI and others are not.
 The features that are not covered by an ABI generally affect how a
 program behaves, but not intercallability.</dd>
 <dt>compatibility</dt>
-<dd>Conformance to the same ABI and the same behavior of implementation-defined
-features are both relevant for compatibility.</dd>
+<dd><p class="first">Conformance to the same ABI and the same behavior of implementation-defined
+features are both relevant for compatibility.</p>
+<p class="last">The application binary interface implemented by a C or C++ compiler</p>
+</dd>
 </dl>
-<p>The application binary interface implemented by a C or C++ compiler
-affects code generation and runtime support for:</p>
+<p>affects code generation and runtime support for:</p>
 <ul class="simple">
-<li>size and alignment of data types
-* layout of structured types
-* calling conventions
-* register usage conventions
-* interfaces for runtime arithmetic support
-* object file formats</li>
+<li>size and alignment of data types</li>
+<li>layout of structured types</li>
+<li>calling conventions</li>
+<li>register usage conventions</li>
+<li>interfaces for runtime arithmetic support</li>
+<li>object file formats</li>
 </ul>
 <p>In addition, the application binary interface implemented by a C++ compiler
 affects code generation and runtime support for:</p>
 <ul class="simple">
-<li>name mangling
-* exception handling
-* invoking constructors and destructors
-* layout, alignment, and padding of classes
-* layout and alignment of virtual tables</li>
+<li>name mangling</li>
+<li>exception handling</li>
+<li>invoking constructors and destructors</li>
+<li>layout, alignment, and padding of classes</li>
+<li>layout and alignment of virtual tables</li>
 </ul>
 <p>Some GCC compilation options cause the compiler to generate code that
 does not conform to the platform&#8217;s default ABI.  Other options cause
@@ -178,7 +179,7 @@ those compilers can be used in the same program only if they use the same
 C++ library.  This requires specifying the location of the C++ library
 header files when invoking the compiler whose usual library is not being
 used.  The location of GCC&#8217;s C++ header files depends on how the GCC
-build was configured, but can be seen by using the G++ <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-v"><em class="xref std std-option">-v</em></a> option.
+build was configured, but can be seen by using the G++ <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-v"><em class="xref std std-option">-v</em></a> option.
 With default configuration options for G++ 3.3 the compile line for a
 different C++ compiler needs to include</p>
 <div class="highlight-c++"><pre>-I``gcc_install_directory``/include/c++/3.3</pre>

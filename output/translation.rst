@@ -1,4 +1,3 @@
-
 Translation
 ***********
 
@@ -7,7 +6,7 @@ Translation
 
   Diagnostics consist of all the output sent to stderr by GCC.
 
-  * Whether each nonempty sequence of white-space characters other than
+* Whether each nonempty sequence of white-space characters other than
   new-line is retained or replaced by one space character in translation
   phase 3 (C90, C99 and C11 5.1.1.2).
 

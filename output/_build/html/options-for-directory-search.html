@@ -94,17 +94,17 @@ searched for header files.  This can be used to override a system header
 file, substituting your own version, since these directories are
 searched before the system header file directories.  However, you should
 not use this option to add directories that contain vendor-supplied
-system header files (use <em class="xref std std-option">-isystem</em> for that).  If you use more than
-one <em class="xref std std-option">-I</em> option, the directories are scanned in left-to-right
+system header files (use <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-isystem"><em class="xref std std-option">-isystem</em></a> for that).  If you use more than
+one <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a> option, the directories are scanned in left-to-right
 order; the standard system directories come after.</p>
 <p>If a standard system include directory, or a directory specified with
-<em class="xref std std-option">-isystem</em>, is also specified with <em class="xref std std-option">-I</em>, the <em class="xref std std-option">-I</em>
+<a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-isystem"><em class="xref std std-option">-isystem</em></a>, is also specified with <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a>, the <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a>
 option is ignored.  The directory is still searched but as a
 system directory at its normal position in the system include chain.
 This is to ensure that GCC&#8217;s procedure to fix buggy system headers and
 the ordering for the <tt class="docutils literal"><span class="pre">include_next</span></tt> directive are not inadvertently changed.
 If you really need to change the search order for system directories,
-use the <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-nostdinc"><em class="xref std std-option">-nostdinc</em></a> and/or <em class="xref std std-option">-isystem</em> options.</p>
+use the <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-nostdinc"><em class="xref std std-option">-nostdinc</em></a> and/or <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-isystem"><em class="xref std std-option">-isystem</em></a> options.</p>
 </dd></dl>
 
 <dl class="option">
@@ -122,7 +122,7 @@ to be used by the user, but only passed by the driver.</p>
 <dd><p>Add the directory <tt class="docutils literal"><span class="pre">dir</span></tt> to the head of the list of directories to
 be searched for header files only for the case of <tt class="docutils literal"><span class="pre">#include</span>
 <span class="pre">&quot;``file</span></tt>&#8220;<tt class="docutils literal"><span class="pre">;</span> <span class="pre">they</span> <span class="pre">are</span> <span class="pre">not</span> <span class="pre">searched</span> <span class="pre">for</span> <span class="pre">``#include</span> <span class="pre">&lt;``file</span></tt>&gt;``,
-otherwise just like <em class="xref std std-option">-I</em>.</p>
+otherwise just like <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -155,7 +155,7 @@ separator character at the end of the path.</p>
 to libraries in the linker, because the compiler translates these
 options into <em class="xref std std-option">-L</em> options for the linker.  They also apply to
 include files in the preprocessor, because the compiler translates these
-options into <em class="xref std std-option">-isystem</em> options for the preprocessor.  In this case,
+options into <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-isystem"><em class="xref std std-option">-isystem</em></a> options for the preprocessor.  In this case,
 the compiler appends include to the prefix.</p>
 <p>The runtime support file libgcc.a can also be searched for using
 the <em class="xref std std-option">-B</em> prefix, if needed.  If it is not found there, the two
@@ -188,9 +188,9 @@ are processed in order, from left to right.</p>
 For example, if the compiler normally searches for headers in
 /usr/include and libraries in /usr/lib, it instead
 searches <tt class="docutils literal"><span class="pre">dir</span></tt>/usr/include and <tt class="docutils literal"><span class="pre">dir</span></tt>/usr/lib.</p>
-<p>If you use both this option and the <em class="xref std std-option">-isysroot</em> option, then
+<p>If you use both this option and the <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-isysroot"><em class="xref std std-option">-isysroot</em></a> option, then
 the <a class="reference internal" href="#cmdoption--sysroot"><em class="xref std std-option">--sysroot</em></a> option applies to libraries, but the
-<em class="xref std std-option">-isysroot</em> option applies to header files.</p>
+<a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-isysroot"><em class="xref std std-option">-isysroot</em></a> option applies to header files.</p>
 <p>The GNU linker (beginning with version 2.16) has the necessary support
 for this option.  If your linker does not support this option, the
 header file aspect of <a class="reference internal" href="#cmdoption--sysroot"><em class="xref std std-option">--sysroot</em></a> still works, but the
@@ -211,15 +211,15 @@ such a suffix.</p>
 <dl class="option">
 <dt id="cmdoption-I-">
 <tt class="descname">-I-</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-I-" title="Permalink to this definition">¶</a></dt>
-<dd><p>This option has been deprecated.  Please use <em class="xref std std-option">-iquote</em> instead for
-<em class="xref std std-option">-I</em> directories before the <a class="reference internal" href="#cmdoption-I-"><em class="xref std std-option">-I-</em></a> and remove the <a class="reference internal" href="#cmdoption-I-"><em class="xref std std-option">-I-</em></a>
+<dd><p>This option has been deprecated.  Please use <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-iquote"><em class="xref std std-option">-iquote</em></a> instead for
+<a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a> directories before the <a class="reference internal" href="#cmdoption-I-"><em class="xref std std-option">-I-</em></a> and remove the <a class="reference internal" href="#cmdoption-I-"><em class="xref std std-option">-I-</em></a>
 option.
-Any directories you specify with <em class="xref std std-option">-I</em> options before the <a class="reference internal" href="#cmdoption-I-"><em class="xref std std-option">-I-</em></a>
+Any directories you specify with <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a> options before the <a class="reference internal" href="#cmdoption-I-"><em class="xref std std-option">-I-</em></a>
 option are searched only for the case of <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;``file</span></tt>&#8220;<tt class="docutils literal"><span class="pre">;</span>
 <span class="pre">they</span> <span class="pre">are</span> <span class="pre">not</span> <span class="pre">searched</span> <span class="pre">for</span> <span class="pre">``#include</span> <span class="pre">&lt;``file</span></tt>&gt;``.</p>
-<p>If additional directories are specified with <em class="xref std std-option">-I</em> options after
+<p>If additional directories are specified with <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a> options after
 the <a class="reference internal" href="#cmdoption-I-"><em class="xref std std-option">-I-</em></a> option, these directories are searched for all <tt class="docutils literal"><span class="pre">#include</span></tt>
-directives.  (Ordinarily all <em class="xref std std-option">-I</em> directories are used
+directives.  (Ordinarily all <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a> directories are used
 this way.)</p>
 <p>In addition, the <a class="reference internal" href="#cmdoption-I-"><em class="xref std std-option">-I-</em></a> option inhibits the use of the current
 directory (where the current input file came from) as the first search
@@ -229,7 +229,7 @@ searching the directory that is current when the compiler is
 invoked.  That is not exactly the same as what the preprocessor does
 by default, but it is often satisfactory.</p>
 <p><a class="reference internal" href="#cmdoption-I-"><em class="xref std std-option">-I-</em></a> does not inhibit the use of the standard system directories
-for header files.  Thus, <a class="reference internal" href="#cmdoption-I-"><em class="xref std std-option">-I-</em></a> and <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-nostdinc"><em class="xref std std-option">-nostdinc</em></a> are
+for header files.  Thus, <a class="reference internal" href="#cmdoption-I-"><em class="xref std std-option">-I-</em></a> and <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-nostdinc"><em class="xref std std-option">-nostdinc</em></a> are
 independent.</p>
 </dd></dl>
 

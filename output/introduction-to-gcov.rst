@@ -1,7 +1,5 @@
-
 Introduction to :command:`gcov`
-
-.. man begin DESCRIPTION 
+.. man begin DESCRIPTION
 
 :command:`gcov` is a test coverage program.  Use it in concert with GCC
 to analyze your programs to help create more efficient, faster running
@@ -18,9 +16,9 @@ basic performance statistics, such as:
 
 * how often each line of code executes
 
-  * what lines of code are actually executed
+* what lines of code are actually executed
 
-  * how much computing time each section of code uses
+* how much computing time each section of code uses
 
 Once you know these things about how your code works when compiled, you
 can look at each module to see which modules should be optimized.
@@ -56,5 +54,5 @@ timing information you can use along with the information you get from
 :command:`gcov` works only on code compiled with GCC.  It is not
 compatible with any other profiling or test coverage mechanism.
 
-.. man end 
+.. man end
 

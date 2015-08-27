@@ -131,6 +131,852 @@ perform additional processing of the program source between
 normal preprocessing and compilation.</p>
 </dd></dl>
 
+<dl class="option">
+<dt id="cmdoption-D">
+<tt class="descname">-D</tt><tt class="descclassname"> name</tt><tt class="descclassname">, </tt><tt class="descname">-D</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predefine <tt class="docutils literal"><span class="pre">name</span></tt> as a macro, with definition <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+</dd></dl>
+
+<dl class="docutils">
+<dt>-D <tt class="docutils literal"><span class="pre">name``=``definition</span></tt></dt>
+<dd><p class="first">The contents of <tt class="docutils literal"><span class="pre">definition</span></tt> are tokenized and processed as if
+they appeared during translation phase three in a #define
+directive.  In particular, the definition will be truncated by
+embedded newline characters.</p>
+<p>If you are invoking the preprocessor from a shell or shell-like
+program you may need to use the shell&#8217;s quoting syntax to protect
+characters such as spaces that have a meaning in the shell syntax.</p>
+<p>If you wish to define a function-like macro on the command line, write
+its argument list with surrounding parentheses before the equals sign
+(if any).  Parentheses are meaningful to most shells, so you will need
+to quote the option.  With <strong class="command">sh</strong> and <strong class="command">csh</strong>,
+<em class="xref std std-option">-D'``name``(``args...`</em>)=``definition``&#8217;` works.</p>
+<p class="last"><a class="reference internal" href="#cmdoption-D"><em class="xref std std-option">-D</em></a> and <a class="reference internal" href="#cmdoption-U"><em class="xref std std-option">-U</em></a> options are processed in the order they
+are given on the command line.  All <em class="xref std std-option">-imacros ``file``</em> and
+<em class="xref std std-option">-include ``file``</em> options are processed after all
+<a class="reference internal" href="#cmdoption-D"><em class="xref std std-option">-D</em></a> and <a class="reference internal" href="#cmdoption-U"><em class="xref std std-option">-U</em></a> options.</p>
+</dd>
+</dl>
+<dl class="option">
+<dt id="cmdoption-U">
+<tt class="descname">-U</tt><tt class="descclassname"> name</tt><tt class="descclassname">, </tt><tt class="descname">-U</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-U" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel any previous definition of <tt class="docutils literal"><span class="pre">name</span></tt>, either built in or
+provided with a <a class="reference internal" href="#cmdoption-D"><em class="xref std std-option">-D</em></a> option.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-undef">
+<tt class="descname">-undef</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-undef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not predefine any system-specific or GCC-specific macros.  The
+standard predefined macros remain defined.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-I">
+<tt class="descname">-I</tt><tt class="descclassname"> dir</tt><tt class="descclassname">, </tt><tt class="descname">-I</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-I" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the directory <tt class="docutils literal"><span class="pre">dir</span></tt> to the list of directories to be searched
+for header files.
+Directories named by <a class="reference internal" href="#cmdoption-I"><em class="xref std std-option">-I</em></a> are searched before the standard
+system include directories.  If the directory <tt class="docutils literal"><span class="pre">dir</span></tt> is a standard
+system include directory, the option is ignored to ensure that the
+default search order for system directories and the special treatment
+of system headers are not defeated
+.
+If <tt class="docutils literal"><span class="pre">dir</span></tt> begins with <tt class="docutils literal"><span class="pre">=</span></tt>, then the <tt class="docutils literal"><span class="pre">=</span></tt> will be replaced
+by the sysroot prefix; see <a class="reference internal" href="options-for-directory-search.html#cmdoption--sysroot"><em class="xref std std-option">--sysroot</em></a> and <a class="reference internal" href="#cmdoption-isysroot"><em class="xref std std-option">-isysroot</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-o">
+<tt class="descname">-o</tt><tt class="descclassname"> file</tt><tt class="descclassname">, </tt><tt class="descname">-o</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write output to <tt class="docutils literal"><span class="pre">file</span></tt>.  This is the same as specifying <tt class="docutils literal"><span class="pre">file</span></tt>
+as the second non-option argument to <strong class="command">cpp</strong>.  <strong class="command">gcc</strong> has a
+different interpretation of a second non-option argument, so you must
+use <a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o</em></a> to specify the output file.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wall">
+<tt class="descname">-Wall</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turns on all optional warnings which are desirable for normal code.
+At present this is <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wcomment"><em class="xref std std-option">-Wcomment</em></a>, <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wtrigraphs"><em class="xref std std-option">-Wtrigraphs</em></a>,
+<em class="xref std std-option">-Wmultichar</em> and a warning about integer promotion causing a
+change of sign in <tt class="docutils literal"><span class="pre">#if</span></tt> expressions.  Note that many of the
+preprocessor&#8217;s warnings are on by default and have no options to
+control them.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wcomment">
+<tt class="descname">-Wcomment</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wcomments</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wcomment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a comment-start sequence /* appears in a /*
+comment, or whenever a backslash-newline appears in a // comment.
+(Both forms have the same effect.)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wtrigraphs">
+<tt class="descname">-Wtrigraphs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wtrigraphs" title="Permalink to this definition">¶</a></dt>
+<dd><p>WtrigraphsMost trigraphs in comments cannot affect the meaning of the program.
+However, a trigraph that would form an escaped newline (??/ at
+the end of a line) can, by changing where the comment begins or ends.
+Therefore, only trigraphs that would form escaped newlines produce
+warnings inside a comment.</p>
+<p>This option is implied by <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.  If <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> is not
+given, this option is still enabled unless trigraphs are enabled.  To
+get trigraph conversion without warnings, but get the other
+<a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> warnings, use -trigraphs -Wall -Wno-trigraphs.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wtraditional">
+<tt class="descname">-Wtraditional</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wtraditional" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about certain constructs that behave differently in traditional and
+ISO C.  Also warn about ISO C constructs that have no traditional C
+equivalent, and problematic constructs which should be avoided.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wundef">
+<tt class="descname">-Wundef</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wundef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever an identifier which is not a macro is encountered in an
+#if directive, outside of defined.  Such identifiers are
+replaced with zero.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunused-macros">
+<tt class="descname">-Wunused-macros</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunused-macros" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about macros defined in the main file that are unused.  A macro
+is <em class="dfn">used</em> if it is expanded or tested for existence at least once.
+The preprocessor will also warn if the macro has not been used at the
+time it is redefined or undefined.</p>
+<p>Built-in macros, macros defined on the command line, and macros
+defined in include files are not warned about.</p>
+<p>Note: If a macro is actually used, but only used in skipped
+conditional blocks, then CPP will report it as unused.  To avoid the
+warning in such a case, you might improve the scope of the macro&#8217;s
+definition by, for example, moving it into the first skipped block.
+Alternatively, you could provide a dummy use with something like:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#if defined the_macro_causing_the_warning</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wendif-labels">
+<tt class="descname">-Wendif-labels</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wendif-labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever an #else or an #endif are followed by text.
+This usually happens in code of the form</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#if FOO</span>
+<span class="p">...</span>
+<span class="cp">#else FOO</span>
+<span class="p">...</span>
+<span class="cp">#endif FOO</span>
+</pre></div>
+</div>
+<p>The second and third <tt class="docutils literal"><span class="pre">FOO</span></tt> should be in comments, but often are not
+in older programs.  This warning is on by default.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Werror">
+<tt class="descname">-Werror</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Werror" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make all warnings into hard errors.  Source code which triggers warnings
+will be rejected.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsystem-headers">
+<tt class="descname">-Wsystem-headers</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsystem-headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Issue warnings for code in system headers.  These are normally unhelpful
+in finding bugs in your own code, therefore suppressed.  If you are
+responsible for the system library, you may want to see them.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-w">
+<tt class="descname">-w</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-w" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suppress all warnings, including those which GNU CPP issues by default.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pedantic">
+<tt class="descname">-pedantic</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pedantic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Issue all the mandatory diagnostics listed in the C standard.  Some of
+them are left out by default, since they trigger frequently on harmless
+code.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pedantic-errors">
+<tt class="descname">-pedantic-errors</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pedantic-errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Issue all the mandatory diagnostics, and make all mandatory diagnostics
+into errors.  This includes mandatory diagnostics that GCC issues
+without -pedantic but treats as warnings.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-M">
+<tt class="descname">-M</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-M" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong class="command">make`dependencies, :command:`make`Instead of outputting the result of preprocessing, output a rule
+suitable for :command:`make</strong> describing the dependencies of the main
+source file.  The preprocessor outputs one <strong class="command">make</strong> rule containing
+the object file name for that source file, a colon, and the names of all
+the included files, including those coming from <a class="reference internal" href="#cmdoption-include"><em class="xref std std-option">-include</em></a> or
+<a class="reference internal" href="#cmdoption-imacros"><em class="xref std std-option">-imacros</em></a> command-line options.</p>
+<p>Unless specified explicitly (with <a class="reference internal" href="#cmdoption-MT"><em class="xref std std-option">-MT</em></a> or <a class="reference internal" href="#cmdoption-MQ"><em class="xref std std-option">-MQ</em></a>), the
+object file name consists of the name of the source file with any
+suffix replaced with object file suffix and with any leading directory
+parts removed.  If there are many included files then the rule is
+split into several lines using -newline.  The rule has no
+commands.</p>
+<p>This option does not suppress the preprocessor&#8217;s debug output, such as
+<a class="reference internal" href="#cmdoption-dM"><em class="xref std std-option">-dM</em></a>.  To avoid mixing such debug output with the dependency
+rules you should explicitly specify the dependency output file with
+<a class="reference internal" href="#cmdoption-MF"><em class="xref std std-option">-MF</em></a>, or use an environment variable like
+<span class="target" id="index-2"></span><tt class="xref std std-envvar docutils literal"><span class="pre">DEPENDENCIES_OUTPUT</span></tt> (Environment Variables).  Debug output
+will still be sent to the regular output stream as normal.</p>
+<p>Passing <a class="reference internal" href="#cmdoption-M"><em class="xref std std-option">-M</em></a> to the driver implies <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>, and suppresses
+warnings with an implicit <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-w"><em class="xref std std-option">-w</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-MM">
+<tt class="descname">-MM</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-MM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like <a class="reference internal" href="#cmdoption-M"><em class="xref std std-option">-M</em></a> but do not mention header files that are found in
+system header directories, nor header files that are included,
+directly or indirectly, from such a header.</p>
+<p>This implies that the choice of angle brackets or double quotes in an
+#include directive does not in itself determine whether that
+header will appear in <a class="reference internal" href="#cmdoption-MM"><em class="xref std std-option">-MM</em></a> dependency output.  This is a
+slight change in semantics from GCC versions 3.0 and earlier.</p>
+<p>dashMF</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-MF">
+<tt class="descname">-MF</tt><tt class="descclassname"> file</tt><tt class="descclassname">, </tt><tt class="descname">-MF</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-MF" title="Permalink to this definition">¶</a></dt>
+<dd><p>When used with <a class="reference internal" href="#cmdoption-M"><em class="xref std std-option">-M</em></a> or <a class="reference internal" href="#cmdoption-MM"><em class="xref std std-option">-MM</em></a>, specifies a
+file to write the dependencies to.  If no <a class="reference internal" href="#cmdoption-MF"><em class="xref std std-option">-MF</em></a> switch is given
+the preprocessor sends the rules to the same place it would have sent
+preprocessed output.</p>
+<p>When used with the driver options <a class="reference internal" href="#cmdoption-MD"><em class="xref std std-option">-MD</em></a> or <a class="reference internal" href="#cmdoption-MMD"><em class="xref std std-option">-MMD</em></a>,
+<a class="reference internal" href="#cmdoption-MF"><em class="xref std std-option">-MF</em></a> overrides the default dependency output file.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-MG">
+<tt class="descname">-MG</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-MG" title="Permalink to this definition">¶</a></dt>
+<dd><p>In conjunction with an option such as <a class="reference internal" href="#cmdoption-M"><em class="xref std std-option">-M</em></a> requesting
+dependency generation, <a class="reference internal" href="#cmdoption-MG"><em class="xref std std-option">-MG</em></a> assumes missing header files are
+generated files and adds them to the dependency list without raising
+an error.  The dependency filename is taken directly from the
+<tt class="docutils literal"><span class="pre">#include</span></tt> directive without prepending any path.  <a class="reference internal" href="#cmdoption-MG"><em class="xref std std-option">-MG</em></a>
+also suppresses preprocessed output, as a missing header file renders
+this useless.</p>
+<p>This feature is used in automatic updating of makefiles.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-MP">
+<tt class="descname">-MP</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-MP" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option instructs CPP to add a phony target for each dependency
+other than the main file, causing each to depend on nothing.  These
+dummy rules work around errors <strong class="command">make</strong> gives if you remove header
+files without updating the Makefile to match.</p>
+<p>This is typical output:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">test</span><span class="p">.</span><span class="n">o</span><span class="o">:</span> <span class="n">test</span><span class="p">.</span><span class="n">c</span> <span class="n">test</span><span class="p">.</span><span class="n">h</span>
+
+<span class="n">test</span><span class="p">.</span><span class="n">h</span><span class="o">:</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-MT">
+<tt class="descname">-MT</tt><tt class="descclassname"> target</tt><tt class="descclassname">, </tt><tt class="descname">-MT</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-MT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the target of the rule emitted by dependency generation.  By
+default CPP takes the name of the main input file, deletes any
+directory components and any file suffix such as .c, and
+appends the platform&#8217;s usual object suffix.  The result is the target.</p>
+<p>An <a class="reference internal" href="#cmdoption-MT"><em class="xref std std-option">-MT</em></a> option will set the target to be exactly the string you
+specify.  If you want multiple targets, you can specify them as a single
+argument to <a class="reference internal" href="#cmdoption-MT"><em class="xref std std-option">-MT</em></a>, or use multiple <a class="reference internal" href="#cmdoption-MT"><em class="xref std std-option">-MT</em></a> options.</p>
+<p>For example, -MT &#8216;$(objpfx)foo.o&#8217; might give</p>
+<div class="highlight-c++"><pre>$(objpfx)foo.o: foo.c</pre>
+</div>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-MQ">
+<tt class="descname">-MQ</tt><tt class="descclassname"> target</tt><tt class="descclassname">, </tt><tt class="descname">-MQ</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-MQ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <a class="reference internal" href="#cmdoption-MT"><em class="xref std std-option">-MT</em></a>, but it quotes any characters which are special to
+Make.  -MQ &#8216;$(objpfx)foo.o&#8217; gives</p>
+<div class="highlight-c++"><pre>$$(objpfx)foo.o: foo.c</pre>
+</div>
+<p>The default target is automatically quoted, as if it were given with
+<a class="reference internal" href="#cmdoption-MQ"><em class="xref std std-option">-MQ</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-MD">
+<tt class="descname">-MD</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-MD" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#cmdoption-MD"><em class="xref std std-option">-MD</em></a> is equivalent to <em class="xref std std-option">-M -MF ``file``</em>, except that
+<a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a> is not implied.  The driver determines <tt class="docutils literal"><span class="pre">file</span></tt> based on
+whether an <a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o</em></a> option is given.  If it is, the driver uses its
+argument but with a suffix of .d, otherwise it takes the name
+of the input file, removes any directory components and suffix, and
+applies a .d suffix.</p>
+<p>If <a class="reference internal" href="#cmdoption-MD"><em class="xref std std-option">-MD</em></a> is used in conjunction with <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>, any
+<a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o</em></a> switch is understood to specify the dependency output file
+(dashMF-MF), but if used without <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>, each <a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o</em></a>
+is understood to specify a target object file.</p>
+<p>Since <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a> is not implied, <a class="reference internal" href="#cmdoption-MD"><em class="xref std std-option">-MD</em></a> can be used to generate
+a dependency output file as a side-effect of the compilation process.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-MMD">
+<tt class="descname">-MMD</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-MMD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like <a class="reference internal" href="#cmdoption-MD"><em class="xref std std-option">-MD</em></a> except mention only user header files, not system
+header files.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fpch-deps">
+<tt class="descname">-fpch-deps</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fpch-deps" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using precompiled headers (Precompiled Headers), this flag
+will cause the dependency-output flags to also list the files from the
+precompiled header&#8217;s dependencies.  If not specified only the
+precompiled header would be listed and not the files that were used to
+create it because those files are not consulted when a precompiled
+header is used.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fpch-preprocess">
+<tt class="descname">-fpch-preprocess</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fpch-preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option allows use of a precompiled header (Precompiled
+Headers) together with <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>.  It inserts a special <tt class="docutils literal"><span class="pre">#pragma</span></tt>,
+<tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">pch_preprocess</span> <span class="pre">&quot;``filename</span></tt>&#8220;`` in the output to mark
+the place where the precompiled header was found, and its <tt class="docutils literal"><span class="pre">filename</span></tt>.
+When <a class="reference internal" href="#cmdoption-fpreprocessed"><em class="xref std std-option">-fpreprocessed</em></a> is in use, GCC recognizes this <tt class="docutils literal"><span class="pre">#pragma</span></tt>
+and loads the PCH.</p>
+<p>This option is off by default, because the resulting preprocessed output
+is only really suitable as input to GCC.  It is switched on by
+<a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-save-temps"><em class="xref std std-option">-save-temps</em></a>.</p>
+<p>You should not write this <tt class="docutils literal"><span class="pre">#pragma</span></tt> in your own code, but it is
+safe to edit the filename if the PCH file is available in a different
+location.  The filename may be absolute or it may be relative to GCC&#8217;s
+current directory.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-x">
+<tt class="descname">-x</tt><tt class="descclassname"> c</tt><tt class="descclassname">, </tt><tt class="descname">-x</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the source language: C, C++, Objective-C, or assembly.  This has
+nothing to do with standards conformance or extensions; it merely
+selects which base syntax to expect.  If you give none of these options,
+cpp will deduce the language from the extension of the source file:
+.c, .cc, .m, or .S.  Some other common
+extensions for C++ and assembly are also recognized.  If cpp does not
+recognize the extension, it will treat the file as C; this is the most
+generic mode.</p>
+<p>Note: Previous versions of cpp accepted a <em class="xref std std-option">-lang</em> option
+which selected both the language and the standards conformance level.
+This option has been removed, because it conflicts with the <em class="xref std std-option">-l</em>
+option.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-std">
+<tt class="descname">-std</tt><tt class="descclassname">=standard</tt><a class="headerlink" href="#cmdoption-std" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the standard to which the code should conform.  Currently CPP
+knows about C and C++ standards; others may be added in the future.</p>
+<p><tt class="docutils literal"><span class="pre">standard</span></tt>
+may be one of:</p>
+<dl class="docutils">
+<dt>c90c89iso9899:1990</dt>
+<dd><p class="first">The ISO C standard from 1990.  c90 is the customary shorthand for
+this version of the standard.</p>
+<p class="last">The <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> option is equivalent to <em class="xref std std-option">-std=c90</em>.</p>
+</dd>
+<dt>iso9899:199409</dt>
+<dd>The 1990 C standard, as amended in 1994.</dd>
+<dt>iso9899:1999c99iso9899:199xc9x</dt>
+<dd>The revised ISO C standard, published in December 1999.  Before
+publication, this was known as C9X.</dd>
+<dt>iso9899:2011c11c1x</dt>
+<dd>The revised ISO C standard, published in December 2011.  Before
+publication, this was known as C1X.</dd>
+<dt>gnu90gnu89</dt>
+<dd>The 1990 C standard plus GNU extensions.  This is the default.</dd>
+<dt>gnu99gnu9x</dt>
+<dd>The 1999 C standard plus GNU extensions.</dd>
+<dt>gnu11gnu1x</dt>
+<dd>The 2011 C standard plus GNU extensions.</dd>
+<dt>c++98</dt>
+<dd>The 1998 ISO C++ standard plus amendments.</dd>
+<dt>gnu++98</dt>
+<dd>The same as <em class="xref std std-option">-std=c++98</em> plus GNU extensions.  This is the
+default for C++ code.</dd>
+</dl>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-I-">
+<tt class="descname">-I-</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-I-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split the include path.  Any directories specified with <a class="reference internal" href="#cmdoption-I"><em class="xref std std-option">-I</em></a>
+options before <a class="reference internal" href="options-for-directory-search.html#cmdoption-I-"><em class="xref std std-option">-I-</em></a> are searched only for headers requested with
+<tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;``file</span></tt>&#8220;<tt class="docutils literal"><span class="pre">;</span> <span class="pre">they</span> <span class="pre">are</span> <span class="pre">not</span> <span class="pre">searched</span> <span class="pre">for</span>
+<span class="pre">``#include</span> <span class="pre">&lt;``file</span></tt>&gt;``.  If additional directories are
+specified with <a class="reference internal" href="#cmdoption-I"><em class="xref std std-option">-I</em></a> options after the <a class="reference internal" href="options-for-directory-search.html#cmdoption-I-"><em class="xref std std-option">-I-</em></a>, those
+directories are searched for all #include directives.</p>
+<p>In addition, <a class="reference internal" href="options-for-directory-search.html#cmdoption-I-"><em class="xref std std-option">-I-</em></a> inhibits the use of the directory of the current
+file directory as the first search directory for <tt class="docutils literal"><span class="pre">#include</span>
+<span class="pre">&quot;``file</span></tt>&#8220;<a href="#id1"><span class="problematic" id="id2">``</span></a>.
+This option has been deprecated.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-nostdinc">
+<tt class="descname">-nostdinc</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-nostdinc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not search the standard system directories for header files.
+Only the directories you have specified with <a class="reference internal" href="#cmdoption-I"><em class="xref std std-option">-I</em></a> options
+(and the directory of the current file, if appropriate) are searched.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-nostdinc">
+<tt class="descname">-nostdinc</tt><tt class="descclassname">++</tt><a class="headerlink" href="#cmdoption-nostdinc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not search for header files in the C++-specific standard directories,
+but do still search the other standard directories.  (This option is
+used when building the C++ library.)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-include">
+<tt class="descname">-include</tt><tt class="descclassname"> file</tt><tt class="descclassname">, </tt><tt class="descname">-include</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-include" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process <tt class="docutils literal"><span class="pre">file</span></tt> as if <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;file&quot;</span></tt> appeared as the first
+line of the primary source file.  However, the first directory searched
+for <tt class="docutils literal"><span class="pre">file</span></tt> is the preprocessor&#8217;s working directory instead of
+the directory containing the main source file.  If not found there, it
+is searched for in the remainder of the <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;...&quot;</span></tt> search
+chain as normal.</p>
+<p>If multiple <a class="reference internal" href="#cmdoption-include"><em class="xref std std-option">-include</em></a> options are given, the files are included
+in the order they appear on the command line.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-imacros">
+<tt class="descname">-imacros</tt><tt class="descclassname"> file</tt><tt class="descclassname">, </tt><tt class="descname">-imacros</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-imacros" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exactly like <a class="reference internal" href="#cmdoption-include"><em class="xref std std-option">-include</em></a>, except that any output produced by
+scanning <tt class="docutils literal"><span class="pre">file</span></tt> is thrown away.  Macros it defines remain defined.
+This allows you to acquire all the macros from a header without also
+processing its declarations.</p>
+<p>All files specified by <a class="reference internal" href="#cmdoption-imacros"><em class="xref std std-option">-imacros</em></a> are processed before all files
+specified by <a class="reference internal" href="#cmdoption-include"><em class="xref std std-option">-include</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-idirafter">
+<tt class="descname">-idirafter</tt><tt class="descclassname"> dir</tt><tt class="descclassname">, </tt><tt class="descname">-idirafter</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-idirafter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search <tt class="docutils literal"><span class="pre">dir</span></tt> for header files, but do it after all
+directories specified with <a class="reference internal" href="#cmdoption-I"><em class="xref std std-option">-I</em></a> and the standard system directories
+have been exhausted.  <tt class="docutils literal"><span class="pre">dir</span></tt> is treated as a system include directory.
+If <tt class="docutils literal"><span class="pre">dir</span></tt> begins with <tt class="docutils literal"><span class="pre">=</span></tt>, then the <tt class="docutils literal"><span class="pre">=</span></tt> will be replaced
+by the sysroot prefix; see <a class="reference internal" href="options-for-directory-search.html#cmdoption--sysroot"><em class="xref std std-option">--sysroot</em></a> and <a class="reference internal" href="#cmdoption-isysroot"><em class="xref std std-option">-isysroot</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-iprefix">
+<tt class="descname">-iprefix</tt><tt class="descclassname"> prefix</tt><tt class="descclassname">, </tt><tt class="descname">-iprefix</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-iprefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify <tt class="docutils literal"><span class="pre">prefix</span></tt> as the prefix for subsequent <a class="reference internal" href="#cmdoption-iwithprefix"><em class="xref std std-option">-iwithprefix</em></a>
+options.  If the prefix represents a directory, you should include the
+final /.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-iwithprefix">
+<tt class="descname">-iwithprefix</tt><tt class="descclassname"> dir</tt><tt class="descclassname">, </tt><tt class="descname">-iwithprefix</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-iwithprefixbefore</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-iwithprefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append <tt class="docutils literal"><span class="pre">dir</span></tt> to the prefix specified previously with
+<a class="reference internal" href="#cmdoption-iprefix"><em class="xref std std-option">-iprefix</em></a>, and add the resulting directory to the include search
+path.  <em class="xref std std-option">-iwithprefixbefore</em> puts it in the same place <a class="reference internal" href="#cmdoption-I"><em class="xref std std-option">-I</em></a>
+would; <a class="reference internal" href="#cmdoption-iwithprefix"><em class="xref std std-option">-iwithprefix</em></a> puts it where <a class="reference internal" href="#cmdoption-idirafter"><em class="xref std std-option">-idirafter</em></a> would.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-isysroot">
+<tt class="descname">-isysroot</tt><tt class="descclassname"> dir</tt><tt class="descclassname">, </tt><tt class="descname">-isysroot</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-isysroot" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option is like the <a class="reference internal" href="options-for-directory-search.html#cmdoption--sysroot"><em class="xref std std-option">--sysroot</em></a> option, but applies only to
+header files (except for Darwin targets, where it applies to both header
+files and libraries).  See the <a class="reference internal" href="options-for-directory-search.html#cmdoption--sysroot"><em class="xref std std-option">--sysroot</em></a> option for more
+information.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-imultilib">
+<tt class="descname">-imultilib</tt><tt class="descclassname"> dir</tt><tt class="descclassname">, </tt><tt class="descname">-imultilib</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-imultilib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use <tt class="docutils literal"><span class="pre">dir</span></tt> as a subdirectory of the directory containing
+target-specific C++ headers.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-isystem">
+<tt class="descname">-isystem</tt><tt class="descclassname"> dir</tt><tt class="descclassname">, </tt><tt class="descname">-isystem</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-isystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search <tt class="docutils literal"><span class="pre">dir</span></tt> for header files, after all directories specified by
+<a class="reference internal" href="#cmdoption-I"><em class="xref std std-option">-I</em></a> but before the standard system directories.  Mark it
+as a system directory, so that it gets the same special treatment as
+is applied to the standard system directories.
+If <tt class="docutils literal"><span class="pre">dir</span></tt> begins with <tt class="docutils literal"><span class="pre">=</span></tt>, then the <tt class="docutils literal"><span class="pre">=</span></tt> will be replaced
+by the sysroot prefix; see <a class="reference internal" href="options-for-directory-search.html#cmdoption--sysroot"><em class="xref std std-option">--sysroot</em></a> and <a class="reference internal" href="#cmdoption-isysroot"><em class="xref std std-option">-isysroot</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-iquote">
+<tt class="descname">-iquote</tt><tt class="descclassname"> dir</tt><tt class="descclassname">, </tt><tt class="descname">-iquote</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-iquote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search <tt class="docutils literal"><span class="pre">dir</span></tt> only for header files requested with
+<tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;``file</span></tt>&#8220;<tt class="docutils literal"><span class="pre">;</span> <span class="pre">they</span> <span class="pre">are</span> <span class="pre">not</span> <span class="pre">searched</span> <span class="pre">for</span>
+<span class="pre">``#include</span> <span class="pre">&lt;``file</span></tt>&gt;``, before all directories specified by
+<a class="reference internal" href="#cmdoption-I"><em class="xref std std-option">-I</em></a> and before the standard system directories.
+If <tt class="docutils literal"><span class="pre">dir</span></tt> begins with <tt class="docutils literal"><span class="pre">=</span></tt>, then the <tt class="docutils literal"><span class="pre">=</span></tt> will be replaced
+by the sysroot prefix; see <a class="reference internal" href="options-for-directory-search.html#cmdoption--sysroot"><em class="xref std std-option">--sysroot</em></a> and <a class="reference internal" href="#cmdoption-isysroot"><em class="xref std std-option">-isysroot</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fdirectives-only">
+<tt class="descname">-fdirectives-only</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fdirectives-only" title="Permalink to this definition">¶</a></dt>
+<dd><p>When preprocessing, handle directives, but do not expand macros.</p>
+<p>The option&#8217;s behavior depends on the <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a> and <a class="reference internal" href="#cmdoption-fpreprocessed"><em class="xref std std-option">-fpreprocessed</em></a>
+options.</p>
+<p>With <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>, preprocessing is limited to the handling of directives
+such as <tt class="docutils literal"><span class="pre">#define</span></tt>, <tt class="docutils literal"><span class="pre">#ifdef</span></tt>, and <tt class="docutils literal"><span class="pre">#error</span></tt>.  Other
+preprocessor operations, such as macro expansion and trigraph
+conversion are not performed.  In addition, the <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-dD"><em class="xref std std-option">-dD</em></a> option is
+implicitly enabled.</p>
+<p>With <a class="reference internal" href="#cmdoption-fpreprocessed"><em class="xref std std-option">-fpreprocessed</em></a>, predefinition of command line and most
+builtin macros is disabled.  Macros such as <tt class="docutils literal"><span class="pre">__LINE__</span></tt>, which are
+contextually dependent, are handled normally.  This enables compilation of
+files previously preprocessed with <tt class="docutils literal"><span class="pre">-E</span> <span class="pre">-fdirectives-only</span></tt>.</p>
+<p>With both <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a> and <a class="reference internal" href="#cmdoption-fpreprocessed"><em class="xref std std-option">-fpreprocessed</em></a>, the rules for
+<a class="reference internal" href="#cmdoption-fpreprocessed"><em class="xref std std-option">-fpreprocessed</em></a> take precedence.  This enables full preprocessing of
+files previously preprocessed with <tt class="docutils literal"><span class="pre">-E</span> <span class="pre">-fdirectives-only</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fdollars-in-identifiers">
+<tt class="descname">-fdollars-in-identifiers</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fdollars-in-identifiers" title="Permalink to this definition">¶</a></dt>
+<dd><p>fdollars-in-identifiersAccept $ in identifiers.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fextended-identifiers">
+<tt class="descname">-fextended-identifiers</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fextended-identifiers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accept universal character names in identifiers.  This option is
+enabled by default for C99 (and later C standard versions) and C++.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fno-canonical-system-headers">
+<tt class="descname">-fno-canonical-system-headers</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-canonical-system-headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>When preprocessing, do not shorten system header paths with canonicalization.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fpreprocessed">
+<tt class="descname">-fpreprocessed</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fpreprocessed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicate to the preprocessor that the input file has already been
+preprocessed.  This suppresses things like macro expansion, trigraph
+conversion, escaped newline splicing, and processing of most directives.
+The preprocessor still recognizes and removes comments, so that you can
+pass a file preprocessed with <a class="reference internal" href="#cmdoption-C"><em class="xref std std-option">-C</em></a> to the compiler without
+problems.  In this mode the integrated preprocessor is little more than
+a tokenizer for the front ends.</p>
+<p><a class="reference internal" href="#cmdoption-fpreprocessed"><em class="xref std std-option">-fpreprocessed</em></a> is implicit if the input file has one of the
+extensions .i, .ii or .mi.  These are the
+extensions that GCC uses for preprocessed files created by
+<a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-save-temps"><em class="xref std std-option">-save-temps</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ftabstop">
+<tt class="descname">-ftabstop</tt><tt class="descclassname">=width</tt><a class="headerlink" href="#cmdoption-ftabstop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the distance between tab stops.  This helps the preprocessor report
+correct column numbers in warnings or errors, even if tabs appear on the
+line.  If the value is less than 1 or greater than 100, the option is
+ignored.  The default is 8.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fdebug-cpp">
+<tt class="descname">-fdebug-cpp</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fdebug-cpp" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option is only useful for debugging GCC.  When used with
+<a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>, dumps debugging information about location maps.  Every
+token in the output is preceded by the dump of the map its location
+belongs to.  The dump of the map holding the location of a token would
+be:</p>
+<div class="highlight-c++"><pre>{P:/file/path;F:/includer/path;L:``line_num``;C:``col_num``;S:``system_header_p``;M:``map_address``;E:``macro_expansion_p``,loc:``location``}</pre>
+</div>
+<p>When used without <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>, this option has no effect.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ftrack-macro-expansion">
+<tt class="descname">-ftrack-macro-expansion</tt><tt class="descclassname">[=level]</tt><a class="headerlink" href="#cmdoption-ftrack-macro-expansion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Track locations of tokens across macro expansions. This allows the
+compiler to emit diagnostic about the current macro expansion stack
+when a compilation error occurs in a macro expansion. Using this
+option makes the preprocessor and the compiler consume more
+memory. The <tt class="docutils literal"><span class="pre">level</span></tt> parameter can be used to choose the level of
+precision of token location tracking thus decreasing the memory
+consumption if necessary. Value 0 of <tt class="docutils literal"><span class="pre">level</span></tt> de-activates
+this option just as if no <a class="reference internal" href="#cmdoption-ftrack-macro-expansion"><em class="xref std std-option">-ftrack-macro-expansion</em></a> was present
+on the command line. Value 1 tracks tokens locations in a
+degraded mode for the sake of minimal memory overhead. In this mode
+all tokens resulting from the expansion of an argument of a
+function-like macro have the same location. Value 2 tracks
+tokens locations completely. This value is the most memory hungry.
+When this option is given no argument, the default parameter value is
+2.</p>
+<p>Note that <tt class="docutils literal"><span class="pre">-ftrack-macro-expansion=2</span></tt> is activated by default.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fexec-charset">
+<tt class="descname">-fexec-charset</tt><tt class="descclassname">=charset</tt><a class="headerlink" href="#cmdoption-fexec-charset" title="Permalink to this definition">¶</a></dt>
+<dd><p id="index-3">Set the execution character set, used for string and character
+constants.  The default is UTF-8.  <tt class="docutils literal"><span class="pre">charset</span></tt> can be any encoding
+supported by the system&#8217;s <tt class="docutils literal"><span class="pre">iconv</span></tt> library routine.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fwide-exec-charset">
+<tt class="descname">-fwide-exec-charset</tt><tt class="descclassname">=charset</tt><a class="headerlink" href="#cmdoption-fwide-exec-charset" title="Permalink to this definition">¶</a></dt>
+<dd><p id="index-4">Set the wide execution character set, used for wide string and
+character constants.  The default is UTF-32 or UTF-16, whichever
+corresponds to the width of <tt class="docutils literal"><span class="pre">wchar_t</span></tt>.  As with
+<a class="reference internal" href="#cmdoption-fexec-charset"><em class="xref std std-option">-fexec-charset</em></a>, <tt class="docutils literal"><span class="pre">charset</span></tt> can be any encoding supported
+by the system&#8217;s <tt class="docutils literal"><span class="pre">iconv</span></tt> library routine; however, you will have
+problems with encodings that do not fit exactly in <tt class="docutils literal"><span class="pre">wchar_t</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-finput-charset">
+<tt class="descname">-finput-charset</tt><tt class="descclassname">=charset</tt><a class="headerlink" href="#cmdoption-finput-charset" title="Permalink to this definition">¶</a></dt>
+<dd><p id="index-5">Set the input character set, used for translation from the character
+set of the input file to the source character set used by GCC.  If the
+locale does not specify, or GCC cannot get this information from the
+locale, the default is UTF-8.  This can be overridden by either the locale
+or this command-line option.  Currently the command-line option takes
+precedence if there&#8217;s a conflict.  <tt class="docutils literal"><span class="pre">charset</span></tt> can be any encoding
+supported by the system&#8217;s <tt class="docutils literal"><span class="pre">iconv</span></tt> library routine.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fworking-directory">
+<tt class="descname">-fworking-directory</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-fno-working-directory</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fworking-directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable generation of linemarkers in the preprocessor output that will
+let the compiler know the current working directory at the time of
+preprocessing.  When this option is enabled, the preprocessor will
+emit, after the initial linemarker, a second linemarker with the
+current working directory followed by two slashes.  GCC will use this
+directory, when it&#8217;s present in the preprocessed input, as the
+directory emitted as the current working directory in some debugging
+information formats.  This option is implicitly enabled if debugging
+information is enabled, but this can be inhibited with the negated
+form <em class="xref std std-option">-fno-working-directory</em>.  If the <a class="reference internal" href="#cmdoption-P"><em class="xref std std-option">-P</em></a> flag is
+present in the command line, this option has no effect, since no
+<tt class="docutils literal"><span class="pre">#line</span></tt> directives are emitted whatsoever.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fno-show-column">
+<tt class="descname">-fno-show-column</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-show-column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not print column numbers in diagnostics.  This may be necessary if
+diagnostics are being scanned by a program that does not understand the
+column numbers, such as <strong class="command">dejagnu</strong>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-A">
+<tt class="descname">-A</tt><tt class="descclassname"> predicate=answer</tt><a class="headerlink" href="#cmdoption-A" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make an assertion with the predicate <tt class="docutils literal"><span class="pre">predicate</span></tt> and answer
+<tt class="docutils literal"><span class="pre">answer</span></tt>.  This form is preferred to the older form <em class="xref std std-option">-A
+``predicate``(``answer`</em>)`, which is still supported, because
+it does not use shell special characters.</p>
+</dd></dl>
+
+<dl class="docutils">
+<dt>-A -<tt class="docutils literal"><span class="pre">predicate``=``answer</span></tt></dt>
+<dd>Cancel an assertion with the predicate <tt class="docutils literal"><span class="pre">predicate</span></tt> and answer
+<tt class="docutils literal"><span class="pre">answer</span></tt>.</dd>
+</dl>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-d<var>CHARS</var></span></kbd></td>
+<td><p class="first"><tt class="docutils literal"><span class="pre">CHARS</span></tt> is a sequence of one or more of the following characters,
+and must not be preceded by a space.  Other characters are interpreted
+by the compiler proper, or reserved for future versions of GCC, and so
+are silently ignored.  If you specify characters whose behavior
+conflicts, the result is undefined.</p>
+<dl class="option">
+<dt id="cmdoption-dM">
+<tt class="descname">-dM</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instead of the normal output, generate a list of #define
+directives for all the macros defined during the execution of the
+preprocessor, including predefined macros.  This gives you a way of
+finding out what is predefined in your version of the preprocessor.
+Assuming you have no file foo.h, the command</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">touch</span> <span class="n">foo</span><span class="p">.</span><span class="n">h</span><span class="p">;</span> <span class="n">cpp</span> <span class="o">-</span><span class="n">dM</span> <span class="n">foo</span><span class="p">.</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>will show all the predefined macros.</p>
+<p>If you use <a class="reference internal" href="#cmdoption-dM"><em class="xref std std-option">-dM</em></a> without the <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a> option, <a class="reference internal" href="#cmdoption-dM"><em class="xref std std-option">-dM</em></a> is
+interpreted as a synonym for <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-fdump-rtl-mach"><em class="xref std std-option">-fdump-rtl-mach</em></a>.
+Debugging Optionsgcc.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-dD">
+<tt class="descname">-dD</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like M except in two respects: it does not include the
+predefined macros, and it outputs both the #define
+directives and the result of preprocessing.  Both kinds of output go to
+the standard output file.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-dN">
+<tt class="descname">-dN</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like D, but emit only the macro names, not their expansions.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-dI">
+<tt class="descname">-dI</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output #include directives in addition to the result of
+preprocessing.</p>
+</dd></dl>
+
+<dl class="last option">
+<dt id="cmdoption-dU">
+<tt class="descname">-dU</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dU" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like D except that only macros that are expanded, or whose
+definedness is tested in preprocessor directives, are output; the
+output is delayed until the use or test of the macro; and
+#undef directives are also output for macros tested but
+undefined at the time.</p>
+</dd></dl>
+
+</td></tr>
+</tbody>
+</table>
+<dl class="option">
+<dt id="cmdoption-P">
+<tt class="descname">-P</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-P" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inhibit generation of linemarkers in the output from the preprocessor.
+This might be useful when running the preprocessor on something that is
+not C code, and will be sent to a program which might be confused by the
+linemarkers.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-C">
+<tt class="descname">-C</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-C" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not discard comments.  All comments are passed through to the output
+file, except for comments in processed directives, which are deleted
+along with the directive.</p>
+<p>You should be prepared for side effects when using <a class="reference internal" href="#cmdoption-C"><em class="xref std std-option">-C</em></a>; it
+causes the preprocessor to treat comments as tokens in their own right.
+For example, comments appearing at the start of what would be a
+directive line have the effect of turning that line into an ordinary
+source line, since the first token on the line is no longer a #.</p>
+</dd></dl>
+
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-C<var>C</var></span></kbd></td>
+<td><p class="first">Do not discard comments, including during macro expansion.  This is
+like <a class="reference internal" href="#cmdoption-C"><em class="xref std std-option">-C</em></a>, except that comments contained within macros are
+also passed through to the output file where the macro is expanded.</p>
+<p>In addition to the side-effects of the <a class="reference internal" href="#cmdoption-C"><em class="xref std std-option">-C</em></a> option, the
+<em class="xref std std-option">-CC</em> option causes all C++-style comments inside a macro
+to be converted to C-style comments.  This is to prevent later use
+of that macro from inadvertently commenting out the remainder of
+the source line.</p>
+<p class="last">The <em class="xref std std-option">-CC</em> option is generally used to support lint comments.</p>
+</td></tr>
+</tbody>
+</table>
+<dl class="option">
+<dt id="cmdoption-traditional-cpp">
+<tt class="descname">-traditional-cpp</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-traditional-cpp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to imitate the behavior of old-fashioned C preprocessors, as
+opposed to ISO C preprocessors.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-trigraphs">
+<tt class="descname">-trigraphs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-trigraphs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process trigraph sequences.
+These are three-character sequences, all starting with ??, that
+are defined by ISO C to stand for single characters.  For example,
+??/ stands for , so &#8216;??/n&#8217; is a character
+constant for a newline.  By default, GCC ignores trigraphs, but in
+standard-conforming modes it converts them.  See the <a class="reference internal" href="#cmdoption-std"><em class="xref std std-option">-std</em></a> and
+<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> options.</p>
+<p>The nine trigraphs and their replacements are</p>
+<div class="highlight-c++"><pre>Trigraph:       ??(  ??)  ??&lt;  ??&gt;  ??=  ??/  ??'  ??!  ??-
+Replacement:      [    ]    {    }    #    \    ^    |    ~</pre>
+</div>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-remap">
+<tt class="descname">-remap</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-remap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable special code to work around file systems which only permit very
+short file names, such as MS-DOS.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--help">
+<tt class="descname">--help</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-help</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-target-help</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--help" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print text describing all the command-line options instead of
+preprocessing anything.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-v">
+<tt class="descname">-v</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verbose mode.  Print out GNU CPP&#8217;s version number at the beginning of
+execution, and report the final form of the include path.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-H">
+<tt class="descname">-H</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the name of each header file used, in addition to other normal
+activities.  Each name is indented to show how deep in the
+#include stack it is.  Precompiled header files are also
+printed, even if they are found to be invalid; an invalid precompiled
+header file is printed with ...x and a valid one with ...! .</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-version">
+<tt class="descname">-version</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print out GNU CPP&#8217;s version number.  With one dash, proceed to
+preprocess as normal.  With two dashes, exit immediately.</p>
+</dd></dl>
+
 </div>
 
 

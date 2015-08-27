@@ -1,4 +1,3 @@
-
 GNU Objective-C Runtime API
 ***************************
 
@@ -22,7 +21,7 @@ to the GNU Objective-C runtime API to define new classes or methods.
    <modern-gnu-objective-c-runtime-api>
    <traditional-gnu-objective-c-runtime-api>
 
-.. ========================================================================= 
+.. =========================================================================
 
 :: _modern-gnu-objective-c-runtime-api:
 
@@ -39,7 +38,7 @@ Objective-C runtime:
   and ``BOOL``.  You have to include this header to do almost
   anything with Objective-C.
 
-  * objc/runtime.h: this header declares most of the public runtime
+* objc/runtime.h: this header declares most of the public runtime
   API functions allowing you to inspect and manipulate the Objective-C
   runtime data structures.  These functions are fairly standardized
   across Objective-C runtimes and are almost identical to the Apple/NeXT
@@ -50,23 +49,23 @@ Objective-C runtime:
   functions, such as ``class_getName()``, declared in
   objc/runtime.h.
 
-  * objc/message.h: this header declares public functions used to
+* objc/message.h: this header declares public functions used to
   construct, deconstruct and forward message invocations.  Because
   messaging is done in quite a different way on different runtimes,
   functions in this header are specific to the GNU Objective-C runtime
   implementation.
 
-  * objc/objc-exception.h: this header declares some public
+* objc/objc-exception.h: this header declares some public
   functions related to Objective-C exceptions.  For example functions in
   this header allow you to throw an Objective-C exception from plain
   C/C++ code.
 
-  * objc/objc-sync.h: this header declares some public functions
+* objc/objc-sync.h: this header declares some public functions
   related to the Objective-C ``@synchronized()`` syntax, allowing
   you to emulate an Objective-C ``@synchronized()`` block in plain
   C/C++ code.
 
-  * objc/thr.h: this header declares a public runtime API threading
+* objc/thr.h: this header declares a public runtime API threading
   layer that is only provided by the GNU Objective-C runtime.  It
   declares functions such as ``objc_mutex_lock()``, which provide a
   platform-independent set of threading functions.
@@ -74,7 +73,7 @@ Objective-C runtime:
 The header files contain detailed documentation for each function in
 the GNU Objective-C runtime API.
 
-.. ========================================================================= 
+.. =========================================================================
 
 :: _traditional-gnu-objective-c-runtime-api:
 
@@ -92,5 +91,5 @@ objc/objc-api.h where it is declared.
 Starting with GCC 4.7.0, the traditional GNU runtime API is no longer
 available.
 
-.. ========================================================================= 
+.. =========================================================================
 

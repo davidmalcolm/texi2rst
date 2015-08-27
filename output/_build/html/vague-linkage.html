@@ -120,8 +120,9 @@ body, even if they are not defined there.</p>
 </div></blockquote>
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">type_info</span></tt> objects</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">type_info</span></tt></p>
-<p class="last" id="index-2">C++ requires information about types to be written out in order to
+<dd><p class="first"><tt class="docutils literal"><span class="pre">type_info</span></tt>
+.. index:: RTTI</p>
+<p class="last">C++ requires information about types to be written out in order to
 implement dynamic_cast, typeid and exception handling.
 For polymorphic classes (classes with virtual functions), the type_info
 object is written out along with the vtable so that dynamic_cast
@@ -131,12 +132,13 @@ applying typeid to an expression, throwing an object, or
 referring to a type in a catch clause or exception specification.</p>
 </dd>
 <dt>Template Instantiations</dt>
-<dd>Most everything in this section also applies to template instantiations,
+<dd><p class="first">Most everything in this section also applies to template instantiations,
 but there are other options as well.
-Template InstantiationWhere&#8217;s the Template?.</dd>
+Template InstantiationWhere&#8217;s the Template?.</p>
+<p class="last">When used with GNU ld version 2.8 or later on an ELF system such as</p>
+</dd>
 </dl>
-<p>When used with GNU ld version 2.8 or later on an ELF system such as
-GNU/Linux or Solaris 2, or on Microsoft Windows, duplicate copies of
+<p>GNU/Linux or Solaris 2, or on Microsoft Windows, duplicate copies of
 these constructs will be discarded at link time.  This is known as
 COMDAT support.</p>
 <p>On targets that don&#8217;t support COMDAT, but do support weak symbols, GCC

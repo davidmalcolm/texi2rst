@@ -1,3 +1,4 @@
+
 Certain Changes We Don't Want to Make
 *************************************
 
@@ -13,17 +14,17 @@ we do not make because we think GCC is better without them.
   function.  But adding a prototype eliminates the motivation for this
   feature.  So the feature is not worthwhile.
 
-  * Warning about using an expression whose type is signed as a shift count.
+* Warning about using an expression whose type is signed as a shift count.
 
   Shift count operands are probably signed more often than unsigned.
   Warning about this would cause far more annoyance than good.
 
-  * Warning about assigning a signed value to an unsigned variable.
+* Warning about assigning a signed value to an unsigned variable.
 
   Such assignments must be very common; warning about them would cause
   more annoyance than good.
 
-  * Warning when a non-void function value is ignored.
+* Warning when a non-void function value is ignored.
 
   C contains many standard functions that return a value that most
   programs choose to ignore.  One obvious example is ``printf``.
@@ -36,7 +37,7 @@ we do not make because we think GCC is better without them.
   ``warn_unused_result`` function attribute (Function
   Attributes).
 
-  * 
+* 
   .. index:: fshort-enums
 
   Making :option:`-fshort-enums` the default.
@@ -47,7 +48,7 @@ we do not make because we think GCC is better without them.
   the enumeration-valued object is inside a structure, and in that case
   you can specify a field width explicitly.
 
-  * Making bit-fields unsigned by default on particular machines where 'the
+* Making bit-fields unsigned by default on particular machines where 'the
   ABI standard' says to do so.
 
   The ISO C standard leaves it up to the implementation whether a bit-field
@@ -106,7 +107,7 @@ we do not make because we think GCC is better without them.
   explicitly in each bit-field whether it is signed or not.  In this way,
   they write programs which have the same meaning in both C dialects.)
 
-  * 
+* 
   .. index:: ansi
 
   .. index:: std
@@ -148,7 +149,7 @@ we do not make because we think GCC is better without them.
   processing system include files, but when processing user files it follows
   the usual GNU C convention.
 
-  * Undefining ``__STDC__`` in C++.
+* Undefining ``__STDC__`` in C++.
 
   Programs written to compile with C++-to-C translators get the
   value of ``__STDC__`` that goes with the C compiler that is
@@ -166,7 +167,7 @@ we do not make because we think GCC is better without them.
   is not defined, they will all fail, and will all need to be changed to
   test explicitly for C++ as well.
 
-  * Deleting 'empty' loops.
+* Deleting 'empty' loops.
 
   Historically, GCC has not deleted 'empty' loops under the
   assumption that the most likely reason you would put one in a program is
@@ -199,7 +200,7 @@ we do not make because we think GCC is better without them.
   Even though ``sum`` is accumulated in the loop, no use is made of
   that summation, so the accumulation can be removed.
 
-  * Making side effects happen in the same order as in some other compiler.
+* Making side effects happen in the same order as in some other compiler.
 
   .. index:: side effects, order of evaluation
 
@@ -221,7 +222,7 @@ we do not make because we think GCC is better without them.
   order.  Either increment might happen first.  ``func`` might get the
   arguments 2, 3, or it might get 3, 2, or even 2, 2.
 
-  * Making certain warnings into errors by default.
+* Making certain warnings into errors by default.
 
   Some ISO C testsuites report failure when the compiler does not produce
   an error message for a certain program.

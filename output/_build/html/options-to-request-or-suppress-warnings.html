@@ -176,10 +176,10 @@ warns that an unrecognized option is present.</p>
 <dd><p>Issue all the warnings demanded by strict ISO C and ISO C++;
 reject all programs that use forbidden extensions, and some other
 programs that do not follow ISO C and ISO C++.  For ISO C, follows the
-version of the ISO C standard specified by any <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option used.</p>
+version of the ISO C standard specified by any <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option used.</p>
 <p>Valid ISO C and ISO C++ programs should compile properly with or without
 this option (though a rare few require <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or a
-<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option specifying the required version of ISO C).  However,
+<a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option specifying the required version of ISO C).  However,
 without this option, certain GNU extensions and traditional C and C++
 features are supported as well.  With this option, they are rejected.</p>
 <p><a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> does not cause warning messages for use of the
@@ -197,7 +197,7 @@ diagnostics have been added.</p>
 some instances, but would require considerable additional work and would
 be quite different from <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a>.  We don&#8217;t have plans to
 support such a feature in the near future.</p>
-<p>Where the standard specified with <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> represents a GNU
+<p>Where the standard specified with <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> represents a GNU
 extended dialect of C, such as gnu90 or gnu99, there is a
 corresponding <em class="dfn">base standard</em>, the version of ISO C on which the GNU
 extended dialect is based.  Warnings from <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> are given
@@ -289,24 +289,17 @@ name is still supported, but the newer name is more descriptive.)</p>
 <a class="reference internal" href="#cmdoption-Wunused-but-set-parameter"><em class="xref std std-option">-Wunused-but-set-parameter</em></a> (only with <em class="xref std std-option">:option:</em>-Wunused`` or <em class="xref std std-option">:option:</em>-Wall``)</p>
 <p>The option <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a> also prints warning messages for the
 following cases:</p>
-<ul>
-<li><p class="first">A pointer is compared against integer zero with <tt class="docutils literal"><span class="pre">&lt;</span></tt>, <tt class="docutils literal"><span class="pre">&lt;=</span></tt>,
-<tt class="docutils literal"><span class="pre">&gt;</span></tt>, or <tt class="docutils literal"><span class="pre">&gt;=</span></tt>.</p>
 <ul class="simple">
-<li>(C++ only) An enumerator and a non-enumerator both appear in a</li>
-</ul>
-<p>conditional expression.</p>
-<ul class="simple">
+<li>A pointer is compared against integer zero with <tt class="docutils literal"><span class="pre">&lt;</span></tt>, <tt class="docutils literal"><span class="pre">&lt;=</span></tt>,
+<tt class="docutils literal"><span class="pre">&gt;</span></tt>, or <tt class="docutils literal"><span class="pre">&gt;=</span></tt>.</li>
+<li>(C++ only) An enumerator and a non-enumerator both appear in a
+conditional expression.</li>
 <li>(C++ only) Ambiguous virtual bases.</li>
 <li>(C++ only) Subscripting an array that has been declared <tt class="docutils literal"><span class="pre">register</span></tt>.</li>
-<li>(C++ only) Taking the address of a variable that has been declared</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">register</span></tt>.</p>
-<ul class="simple">
-<li>(C++ only) A base class is not initialized in a derived class&#8217;s copy</li>
-</ul>
-<p>constructor.</p>
-</li>
+<li>(C++ only) Taking the address of a variable that has been declared
+<tt class="docutils literal"><span class="pre">register</span></tt>.</li>
+<li>(C++ only) A base class is not initialized in a derived class&#8217;s copy
+constructor.</li>
 </ul>
 </dd></dl>
 
@@ -957,8 +950,7 @@ this can happen:</p>
 always initialized, but GCC doesn&#8217;t know this. To suppress the
 warning, you need to provide a default case with assert(0) or
 similar code.</p>
-<p><tt class="docutils literal"><span class="pre">longjmp</span></tt> warnings
-This option also warns when a non-volatile automatic variable might be
+<p><tt class="docutils literal"><span class="pre">longjmp</span></tt> warningsThis option also warns when a non-volatile automatic variable might be
 changed by a call to <tt class="docutils literal"><span class="pre">longjmp</span></tt>.  These warnings as well are possible
 only in optimizing compilation.</p>
 <p>The compiler sees only the calls to <tt class="docutils literal"><span class="pre">setjmp</span></tt>.  It cannot know
@@ -1302,76 +1294,57 @@ probably mistaken.</p>
 <p>Warn about certain constructs that behave differently in traditional and
 ISO C.  Also warn about ISO C constructs that have no traditional C
 equivalent, and/or problematic constructs that should be avoided.</p>
-<ul>
-<li><p class="first">Macro parameters that appear within string literals in the macro body.
-In traditional C macro replacement takes place within string literals,
-but in ISO C it does not.</p>
 <ul class="simple">
-<li>In traditional C, some preprocessor directives did not exist.</li>
-</ul>
-<p>Traditional preprocessors only considered a line to be a directive
+<li>Macro parameters that appear within string literals in the macro body.
+In traditional C macro replacement takes place within string literals,
+but in ISO C it does not.</li>
+<li>In traditional C, some preprocessor directives did not exist.
+Traditional preprocessors only considered a line to be a directive
 if the # appeared in column 1 on the line.  Therefore
 <a class="reference internal" href="#cmdoption-Wtraditional"><em class="xref std std-option">-Wtraditional</em></a> warns about directives that traditional C
 understands but ignores because the # does not appear as the
 first character on the line.  It also suggests you hide directives like
 <tt class="docutils literal"><span class="pre">#pragma</span></tt> not understood by traditional C by indenting them.  Some
 traditional implementations do not recognize <tt class="docutils literal"><span class="pre">#elif</span></tt>, so this option
-suggests avoiding it altogether.</p>
-<ul class="simple">
+suggests avoiding it altogether.</li>
 <li>A function-like macro that appears without arguments.</li>
 <li>The unary plus operator.</li>
-<li>The U integer constant suffix, or the F or L floating-point</li>
-</ul>
-<p>constant suffixes.  (Traditional C does support the L suffix on integer
+<li>The U integer constant suffix, or the F or L floating-point
+constant suffixes.  (Traditional C does support the L suffix on integer
 constants.)  Note, these suffixes appear in macros defined in the system
 headers of most modern systems, e.g. the _MIN/_MAX macros in <tt class="docutils literal"><span class="pre">&lt;limits.h&gt;</span></tt>.
 Use of these macros in user code might normally lead to spurious
 warnings, however GCC&#8217;s integrated preprocessor has enough context to
-avoid warning in these cases.</p>
-<ul class="simple">
-<li>A function declared external in one block and then used after the end of</li>
-</ul>
-<p>the block.</p>
-<ul class="simple">
+avoid warning in these cases.</li>
+<li>A function declared external in one block and then used after the end of
+the block.</li>
 <li>A <tt class="docutils literal"><span class="pre">switch</span></tt> statement has an operand of type <tt class="docutils literal"><span class="pre">long</span></tt>.</li>
-<li>A non-<tt class="docutils literal"><span class="pre">static</span></tt> function declaration follows a <tt class="docutils literal"><span class="pre">static</span></tt> one.</li>
-</ul>
-<p>This construct is not accepted by some traditional C compilers.</p>
-<ul class="simple">
-<li>The ISO type of an integer constant has a different width or</li>
-</ul>
-<p>signedness from its traditional type.  This warning is only issued if
+<li>A non-<tt class="docutils literal"><span class="pre">static</span></tt> function declaration follows a <tt class="docutils literal"><span class="pre">static</span></tt> one.
+This construct is not accepted by some traditional C compilers.</li>
+<li>The ISO type of an integer constant has a different width or
+signedness from its traditional type.  This warning is only issued if
 the base of the constant is ten.  I.e. hexadecimal or octal values, which
-typically represent bit patterns, are not warned about.</p>
-<ul class="simple">
+typically represent bit patterns, are not warned about.</li>
 <li>Usage of ISO string concatenation is detected.</li>
 <li>Initialization of automatic aggregates.</li>
-<li>Identifier conflicts with labels.  Traditional C lacks a separate</li>
-</ul>
-<p>namespace for labels.</p>
-<ul class="simple">
-<li>Initialization of unions.  If the initializer is zero, the warning is</li>
-</ul>
-<p>omitted.  This is done under the assumption that the zero initializer in
+<li>Identifier conflicts with labels.  Traditional C lacks a separate
+namespace for labels.</li>
+<li>Initialization of unions.  If the initializer is zero, the warning is
+omitted.  This is done under the assumption that the zero initializer in
 user code appears conditioned on e.g. <tt class="docutils literal"><span class="pre">__STDC__</span></tt> to avoid missing
 initializer warnings and relies on default initialization to zero in the
-traditional C case.</p>
-<ul class="simple">
-<li>Conversions by prototypes between fixed/floating-point values and vice</li>
-</ul>
-<p>versa.  The absence of these prototypes when compiling with traditional
+traditional C case.</li>
+<li>Conversions by prototypes between fixed/floating-point values and vice
+versa.  The absence of these prototypes when compiling with traditional
 C causes serious problems.  This is a subset of the possible
-conversion warnings; for the full set use <a class="reference internal" href="#cmdoption-Wtraditional-conversion"><em class="xref std std-option">-Wtraditional-conversion</em></a>.</p>
-<ul class="simple">
-<li>Use of ISO C style function definitions.  This warning intentionally is</li>
-</ul>
-<p>not issued for prototype declarations or variadic functions
+conversion warnings; for the full set use <a class="reference internal" href="#cmdoption-Wtraditional-conversion"><em class="xref std std-option">-Wtraditional-conversion</em></a>.</li>
+<li>Use of ISO C style function definitions.  This warning intentionally is
+not issued for prototype declarations or variadic functions
 because these ISO C features appear in your code when using
 libiberty&#8217;s traditional C compatibility macros, <tt class="docutils literal"><span class="pre">PARAMS</span></tt> and
 <tt class="docutils literal"><span class="pre">VPARAMS</span></tt>.  This warning is also bypassed for nested functions
 because that feature is already a GCC extension and thus not relevant to
-traditional C compatibility.</p>
-</li>
+traditional C compatibility.</li>
 </ul>
 </dd></dl>
 
@@ -1437,9 +1410,7 @@ Objective-C method.</p>
 <dl class="option">
 <dt id="cmdoption-Wlarger-than">
 <tt class="descname">-Wlarger-than</tt><tt class="descclassname">=len</tt><a class="headerlink" href="#cmdoption-Wlarger-than" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wlarger-than=``len``
-Wlarger-than-<tt class="docutils literal"><span class="pre">len</span></tt>
-Warn whenever an object of larger than <tt class="docutils literal"><span class="pre">len</span></tt> bytes is defined.</p>
+<dd><p>Wlarger-than=``len``Wlarger-than-<tt class="docutils literal"><span class="pre">len``Warn</span> <span class="pre">whenever</span> <span class="pre">an</span> <span class="pre">object</span> <span class="pre">of</span> <span class="pre">larger</span> <span class="pre">than</span> <span class="pre">``len</span></tt> bytes is defined.</p>
 </dd></dl>
 
 <dl class="option">
@@ -1476,15 +1447,13 @@ issue a warning.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="nl">warning:</span> <span class="n">stack</span> <span class="n">usage</span> <span class="n">is</span> <span class="mi">1120</span> <span class="n">bytes</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>If the stack usage is (partly) dynamic but bounded, it&#8217;s:</li>
-</ul>
+</li>
+<li><p class="first">If the stack usage is (partly) dynamic but bounded, it&#8217;s:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="nl">warning:</span> <span class="n">stack</span> <span class="n">usage</span> <span class="n">might</span> <span class="n">be</span> <span class="mi">1648</span> <span class="n">bytes</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>If the stack usage is (partly) dynamic and not bounded, it&#8217;s:</li>
-</ul>
+</li>
+<li><p class="first">If the stack usage is (partly) dynamic and not bounded, it&#8217;s:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="nl">warning:</span> <span class="n">stack</span> <span class="n">usage</span> <span class="n">might</span> <span class="n">be</span> <span class="n">unbounded</span>
 </pre></div>
 </div>
@@ -1509,7 +1478,7 @@ such assumptions.</p>
 <p class="last">(MinGW targets only)</p>
 </div>
 <p>When used in combination with <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a>
-and <em class="xref std std-option">-pedantic</em> without GNU extensions, this option
+and <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-pedantic"><em class="xref std std-option">-pedantic</em></a> without GNU extensions, this option
 disables the warnings about non-ISO <tt class="docutils literal"><span class="pre">printf</span></tt> / <tt class="docutils literal"><span class="pre">scanf</span></tt> format
 width specifiers <tt class="docutils literal"><span class="pre">I32</span></tt>, <tt class="docutils literal"><span class="pre">I64</span></tt>, and <tt class="docutils literal"><span class="pre">I</span></tt> used on Windows targets,
 which depend on the MS runtime.</p>
@@ -2425,9 +2394,10 @@ from the decimal floating-point extension to C99.</p>
 </tr>
 <tr><td>&nbsp;</td><td><div class="first admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">(C and Objective-C only)Suppress warnings when a positional initializer is used to initialize</p>
+<p class="last">(C and Objective-C only)</p>
 </div>
-<p class="last">a structure that has been marked with the <tt class="docutils literal"><span class="pre">designated_init</span></tt>
+<p class="last">Suppress warnings when a positional initializer is used to initialize
+a structure that has been marked with the <tt class="docutils literal"><span class="pre">designated_init</span></tt>
 attribute.</p>
 </td></tr>
 </tbody>

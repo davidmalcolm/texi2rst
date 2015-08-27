@@ -1,3 +1,4 @@
+
 GCC Command Options
 -------------------
 
@@ -7,7 +8,7 @@ GCC Command Options
 
 .. index:: options, GCC command
 
-.. man begin DESCRIPTION 
+.. man begin DESCRIPTION
 
 When you invoke GCC, it normally does preprocessing, compilation,
 assembly and linking.  The 'overall options' allow you to stop this
@@ -59,7 +60,7 @@ these have both positive and negative forms; the negative form of
 :option:`-ffoo` is :option:`-fno-foo`.  This manual documents
 only one of these two forms, whichever one is not the default.
 
-.. man end 
+.. man end
 
 Option Index, for an index to GCC's options.
 
@@ -94,7 +95,7 @@ Option Index, for an index to GCC's options.
   Env vars that affect GCC. <environment-variables>
   Compiling a header once, and using it many times. <precompiled-headers>
 
-.. man begin OPTIONS 
+.. man begin OPTIONS
 
 :: _option-summary:
 
@@ -120,41 +121,23 @@ Option Index, for an index to GCC's options.
   options-for-code-generation-conventions
   environment-variables-affecting-gcc
   using-precompiled-headers
-:: _overall-options:
 
-:: _invoking-g++:
-
+  :: _overall-options:
+  :: _invoking-g++:
 :: _c-dialect-options:
-
 :: _c++-dialect-options:
-
 :: _objective-c-and-objective-c++-dialect-options:
-
 :: _language-independent-options:
-
 :: _warning-options:
-
-:: _debugging-options:
-
+  :: _debugging-options:
 :: _optimize-options:
-
 :: _preprocessor-options:
-
 :: _assembler-options:
-
 :: _link-options:
-
 :: _directory-options:
-
 :: _spec-files:
-
 :: _target-options:
-
 :: _submodel-options:
-
 :: _code-gen-options:
-
 :: _environment-variables:
-
 :: _precompiled-headers:
-

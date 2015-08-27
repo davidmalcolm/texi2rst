@@ -86,18 +86,15 @@
 <h1>Warning Messages and Error Messages<a class="headerlink" href="#warning-messages-and-error-messages" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><span class="target" id="index-1"></span><p id="index-2">The GNU compiler can produce two kinds of diagnostics: errors and
 warnings.  Each kind has a different purpose:</p>
-<ul>
-<li><p class="first"><em class="dfn">Errors</em> report problems that make it impossible to compile your
-program.  GCC reports errors with the source file name and line
-number where the problem is apparent.</p>
 <ul class="simple">
-<li><em class="dfn">Warnings</em> report other unusual conditions in your code that</li>
-</ul>
-<p>may indicate a problem, although compilation can (and does)
+<li><em class="dfn">Errors</em> report problems that make it impossible to compile your
+program.  GCC reports errors with the source file name and line
+number where the problem is apparent.</li>
+<li><em class="dfn">Warnings</em> report other unusual conditions in your code that
+may indicate a problem, although compilation can (and does)
 proceed.  Warning messages also report the source file name and line
 number, but include the text warning: to distinguish them
-from error messages.</p>
-</li>
+from error messages.</li>
 </ul>
 <p>Warnings may indicate danger points where you should check to make sure
 that your program really does what you intend; or the use of obsolete
@@ -110,7 +107,7 @@ gratuitously rejects a program whose meaning is clear merely because
 (for instance) it fails to conform to a standard.  In some cases,
 however, the C and C++ standards specify that certain extensions are
 forbidden, and a diagnostic must be issued by a conforming
-compiler.  The <em class="xref std std-option">-pedantic</em> option tells GCC to issue warnings in
+compiler.  The <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-pedantic"><em class="xref std std-option">-pedantic</em></a> option tells GCC to issue warnings in
 such cases; <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-pedantic-errors"><em class="xref std std-option">-pedantic-errors</em></a> says to make them errors instead.
 This does not mean that all non-ISO constructs get warnings
 or errors.</p>

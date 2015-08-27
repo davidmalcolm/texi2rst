@@ -1,7 +1,8 @@
+
 Passing Options to the Assembler
 ********************************
 
-.. prevent bad page break with this line 
+.. prevent bad page break with this line
 
 You can pass options to the assembler.
 

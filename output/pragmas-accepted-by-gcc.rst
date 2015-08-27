@@ -1,11 +1,10 @@
+
 Pragmas Accepted by GCC
 ***********************
 
 .. index:: pragmas
 
-``#pragma``
-
-GCC supports several types of pragmas, primarily in order to compile
+``#pragma``GCC supports several types of pragmas, primarily in order to compile
 code originally written for other compilers.  Note that in general
 we do not recommend the use of pragmas; Function Attributes,
 for further explanation.
@@ -56,7 +55,7 @@ long_calls_off
   Do not affect the ``long_call`` or ``short_call`` attributes of
   subsequent functions.
 
-:: _m32c-pragmas:
+  :: _m32c-pragmas:
 
 M32C Pragmas
 ^^^^^^^^^^^^
@@ -89,7 +88,7 @@ ADDRESS ``name````address``
     #pragma ADDRESS port3 0x103
     char port3;
 
-:: _mep-pragmas:
+  :: _mep-pragmas:
 
 MeP Pragmas
 ^^^^^^^^^^^
@@ -170,7 +169,7 @@ GCC call ``name`` , ``name`` ...
     extern int foo ();
     #pragma call foo
 
-:: _rs/6000-and-powerpc-pragmas:
+  :: _rs/6000-and-powerpc-pragmas:
 
 RS/6000 and PowerPC Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -193,10 +192,9 @@ longcall (0)
   Do not apply the ``longcall`` attribute to subsequent function
   declarations.
 
-.. Describe h8300 pragmas here. 
-   Describe sh pragmas here. 
-
-.. Describe v850 pragmas here. 
+.. Describe h8300 pragmas here.
+   Describe sh pragmas here.
+   Describe v850 pragmas here.
 
 :: _darwin-pragmas:
 
@@ -238,7 +236,7 @@ unused (``var`` [, ``var``]...)
   that of the ``unused`` attribute, except that this pragma may appear
   anywhere within the variables' scopes.
 
-:: _solaris-pragmas:
+  :: _solaris-pragmas:
 
 Solaris Pragmas
 ^^^^^^^^^^^^^^^
@@ -274,7 +272,7 @@ init (``function`` [, ``function``]...)
   initialization (before ``main``) or during shared module loading, by
   adding a call to the ``.init`` section.
 
-:: _symbol-renaming-pragmas:
+  :: _symbol-renaming-pragmas:
 
 Symbol-Renaming Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -293,23 +291,23 @@ redefine_extname ``oldname````newname``
   ``newname``.  The preprocessor macro ``__PRAGMA_REDEFINE_EXTNAME``
   is defined if this pragma is available (currently on all platforms).
 
-This pragma and the asm labels extension interact in a complicated
+  This pragma and the asm labels extension interact in a complicated
 manner.  Here are some corner cases you may want to be aware of:
 
 * This pragma silently applies only to declarations with external
   linkage.  Asm labels do not have this restriction.
 
-  * In C++, this pragma silently applies only to declarations with
+* In C++, this pragma silently applies only to declarations with
   'C' linkage.  Again, asm labels do not have this restriction.
 
-  * If either of the ways of changing the assembly name of a
+* If either of the ways of changing the assembly name of a
   declaration are applied to a declaration whose assembly name has
   already been determined (either by a previous use of one of these
   features, or because the compiler needed the assembly name in order to
   generate code), and the new name is different, a warning issues and
   the name does not change.
 
-  * The ``oldname`` used by ``#pragma redefine_extname`` is
+* The ``oldname`` used by ``#pragma redefine_extname`` is
   always the C-language name.
 
 :: _structure-packing-pragmas:
@@ -324,12 +322,15 @@ classes subsequently defined. The ``n`` value below always is required
 to be a small power of two and specifies the new alignment in bytes.
 
 * ``#pragma pack(``n``)`` simply sets the new alignment.
-  * ``#pragma pack()`` sets the alignment to the one that was in
+
+* ``#pragma pack()`` sets the alignment to the one that was in
   effect when compilation started (see also command-line option
   :option:`-fpack-struct[=``n``]` Code Gen Options).
-  * ``#pragma pack(push[,``n``])`` pushes the current alignment
+
+* ``#pragma pack(push[,``n``])`` pushes the current alignment
   setting on an internal stack and then optionally sets the new alignment.
-  * ``#pragma pack(pop)`` restores the alignment setting to the one
+
+* ``#pragma pack(pop)`` restores the alignment setting to the one
   saved at the top of the internal stack (and removes that stack entry).
   Note that ``#pragma pack([``n``])`` does not influence this internal
   stack; thus it is possible to have ``#pragma pack(push)`` followed by
@@ -342,9 +343,11 @@ Some targets, e.g. x86 and PowerPC, support the ``ms_struct``
 
 * ``#pragma ms_struct on`` turns on the layout for structures
   declared.
-  * ``#pragma ms_struct off`` turns off the layout for structures
+
+* ``#pragma ms_struct off`` turns off the layout for structures
   declared.
-  * ``#pragma ms_struct reset`` goes back to the default layout.
+
+* ``#pragma ms_struct reset`` goes back to the default layout.
 
 :: _weak-pragmas:
 
@@ -369,7 +372,7 @@ aliases.
   It is an error if ``symbol2`` is not defined in the current
   translation unit.
 
-:: _diagnostic-pragmas:
+  :: _diagnostic-pragmas:
 
 Diagnostic Pragmas
 ^^^^^^^^^^^^^^^^^^
@@ -410,7 +413,6 @@ macros are defined.
   after a line do not affect diagnostics caused by that line.
 
 #pragma GCC diagnostic push#pragma GCC diagnostic pop
-
   Causes GCC to remember the state of the diagnostics as of each
   ``push``, and restore to that point at each ``pop``.  If a
   ``pop`` has no matching ``push``, the command-line options are
@@ -428,7 +430,7 @@ macros are defined.
     #pragma GCC diagnostic pop
       foo(d);                       /* depends on command-line options */
 
-GCC also offers a simple mechanism for printing messages during
+  GCC also offers a simple mechanism for printing messages during
 compilation.
 
 #pragma message ``string``
@@ -455,7 +457,7 @@ compilation.
   prints /tmp/file.c:4: note: #pragma message:
   TODO - Remember to fix this.
 
-:: _visibility-pragmas:
+  :: _visibility-pragmas:
 
 Visibility Pragmas
 ^^^^^^^^^^^^^^^^^^
@@ -473,7 +475,7 @@ Visibility Pragmas
   affected; if you want to override the visibility for a particular
   member or instantiation, you must use an attribute.
 
-:: _push/pop-macro-pragmas:
+  :: _push/pop-macro-pragmas:
 
 Push/Pop Macro Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -497,7 +499,7 @@ and #pragma pop_macro(``"macro_name"``).
   the value on top of the stack for this macro. If the stack for
   ``macro_name`` is empty, the value of the macro remains unchanged.
 
-For example:
+  For example:
 
 .. code-block:: c++
 
@@ -563,7 +565,7 @@ Function Specific Option Pragmas
   ``#pragma GCC optimize`` to use the default switches as specified
   on the command line.
 
-:: _loop-specific-pragmas:
+  :: _loop-specific-pragmas:
 
 Loop-Specific Pragmas
 ^^^^^^^^^^^^^^^^^^^^^
@@ -572,7 +574,7 @@ Loop-Specific Pragmas
 
   .. index:: pragma GCC ivdep
 
-With this pragma, the programmer asserts that there are no loop-carried
+  With this pragma, the programmer asserts that there are no loop-carried
 dependencies which would prevent consecutive iterations of
 the following loop from executing concurrently with SIMD
 (single instruction multiple data) instructions.

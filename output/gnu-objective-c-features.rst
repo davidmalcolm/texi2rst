@@ -18,7 +18,7 @@ several resources on the Internet that present the language.
    <fast-enumeration>
    <messaging-with-the-gnu-objective-c-runtime>
 
-.. ========================================================================= 
+.. =========================================================================
 
 :: _gnu-objective-c-runtime-api:
 
@@ -34,21 +34,13 @@ several resources on the Internet that present the language.
   synchronization
   fast-enumeration
   messaging-with-the-gnu-objective-c-runtime
+
 :: _executing-code-before-main:
-
 :: _type-encoding:
-
 :: _garbage-collection:
-
 :: _constant-string-objects:
-
 :: _compatibility_alias:
-
 :: _exceptions:
-
 :: _synchronization:
-
 :: _fast-enumeration:
-
 :: _messaging-with-the-gnu-objective-c-runtime:
-

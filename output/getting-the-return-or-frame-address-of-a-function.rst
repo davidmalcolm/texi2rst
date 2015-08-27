@@ -1,3 +1,4 @@
+
 Getting the Return or Frame Address of a Function
 *************************************************
 
@@ -6,8 +7,7 @@ function.
 
 .. index:: __builtin_return_address
 
-  Built-in Function void * __builtin_return_address (unsigned int ``level``)
-This function returns the return address of the current function, or of
+Built-in Functionvoid *__builtin_return_address(unsignedint``level``)This function returns the return address of the current function, or of
 one of its callers.  The ``level`` argument is number of frames to
 scan up the call stack.  A value of ``0`` yields the return address
 of the current function, a value of ``1`` yields the return address
@@ -32,8 +32,7 @@ purposes.
 
 .. index:: __builtin_extract_return_addr
 
-  Built-in Function void * __builtin_extract_return_addr (void *``addr``)
-The address as returned by ``__builtin_return_address`` may have to be fed
+Built-in Functionvoid *__builtin_extract_return_addr(void*``addr``)The address as returned by ``__builtin_return_address`` may have to be fed
 through this function to get the actual encoded address.  For example, on the
 31-bit S/390 platform the highest bit has to be masked out, or on SPARC
 platforms an offset has to be added for the true next instruction to be
@@ -43,13 +42,11 @@ If no fixup is needed, this function simply passes through ``addr``.
 
 .. index:: __builtin_frob_return_address
 
-  Built-in Function void * __builtin_frob_return_address (void *``addr``)
-This function does the reverse of ``__builtin_extract_return_addr``.
+Built-in Functionvoid *__builtin_frob_return_address(void*``addr``)This function does the reverse of ``__builtin_extract_return_addr``.
 
 .. index:: __builtin_frame_address
 
-  Built-in Function void * __builtin_frame_address (unsigned int ``level``)
-This function is similar to ``__builtin_return_address``, but it
+Built-in Functionvoid *__builtin_frame_address(unsignedint``level``)This function is similar to ``__builtin_return_address``, but it
 returns the address of the function frame rather than the return address
 of the function.  Calling ``__builtin_frame_address`` with a value of
 ``0`` yields the frame address of the current function, a value of

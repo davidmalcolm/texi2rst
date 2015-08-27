@@ -1,11 +1,8 @@
+
 Function Names as Strings
 *************************
 
-``__func__`` identifier
-``__FUNCTION__`` identifier
-``__PRETTY_FUNCTION__`` identifier
-
-GCC provides three magic variables that hold the name of the current
+``__func__`` identifier``__FUNCTION__`` identifier``__PRETTY_FUNCTION__`` identifierGCC provides three magic variables that hold the name of the current
 function, as a string.  The first of these is ``__func__``, which
 is part of the C99 standard:
 

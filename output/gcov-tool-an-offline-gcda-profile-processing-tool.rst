@@ -1,6 +1,5 @@
-:command:`gcov-tool`-an Offline Gcda Profile Processing Tool
 
-:command:`gcov-tool` is a tool you can use in conjunction with GCC to
+:command:`gcov-tool`-an Offline Gcda Profile Processing Tool:command:`gcov-tool` is a tool you can use in conjunction with GCC to
 manipulate or process gcda profile files offline.
 
 .. toctree::
@@ -14,5 +13,5 @@ manipulate or process gcda profile files offline.
 
   introduction-to-gcov-tool
   invoking-gcov-tool
-:: _invoking-gcov-tool:
 
+:: _invoking-gcov-tool:

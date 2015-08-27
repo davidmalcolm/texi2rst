@@ -84,12 +84,12 @@
             
   <div class="section" id="alternate-keywords">
 <h1>Alternate Keywords<a class="headerlink" href="#alternate-keywords" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="index-0"></span><p id="index-1"><a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> and the various <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> options disable certain
+<span class="target" id="index-0"></span><p id="index-1"><a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> and the various <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> options disable certain
 keywords.  This causes trouble when you want to use GNU C extensions, or
 a general-purpose header file that should be usable by all programs,
 including ISO C programs.  The keywords <tt class="docutils literal"><span class="pre">asm</span></tt>, <tt class="docutils literal"><span class="pre">typeof</span></tt> and
 <tt class="docutils literal"><span class="pre">inline</span></tt> are not available in programs compiled with
-<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> (although <tt class="docutils literal"><span class="pre">inline</span></tt> can be used in a
+<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> (although <tt class="docutils literal"><span class="pre">inline</span></tt> can be used in a
 program compiled with <em class="xref std std-option">-std=c99</em> or <em class="xref std std-option">-std=c11</em>).  The
 ISO C99 keyword
 <tt class="docutils literal"><span class="pre">restrict</span></tt> is only available when <em class="xref std std-option">-std=gnu99</em> (which will
@@ -107,7 +107,7 @@ macros to replace them with the customary keywords.  It looks like this:</p>
 <span class="cp">#endif</span>
 </pre></div>
 </div>
-<span class="target" id="index-2"></span><p id="index-3"><em class="xref std std-option">-pedantic</em> and other options cause warnings for many GNU C extensions.
+<span class="target" id="index-2"></span><p id="index-3"><a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-pedantic"><em class="xref std std-option">-pedantic</em></a> and other options cause warnings for many GNU C extensions.
 You can
 prevent such warnings within one expression by writing
 <tt class="docutils literal"><span class="pre">__extension__</span></tt> before the expression.  <tt class="docutils literal"><span class="pre">__extension__</span></tt> has no

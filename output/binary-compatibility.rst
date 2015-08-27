@@ -1,3 +1,4 @@
+
 Binary Compatibility
 --------------------
 
@@ -53,24 +54,33 @@ compatibility
   Conformance to the same ABI and the same behavior of implementation-defined
   features are both relevant for compatibility.
 
-The application binary interface implemented by a C or C++ compiler
+  The application binary interface implemented by a C or C++ compiler
 affects code generation and runtime support for:
 
 * size and alignment of data types
-  * layout of structured types
-  * calling conventions
-  * register usage conventions
-  * interfaces for runtime arithmetic support
-  * object file formats
+
+* layout of structured types
+
+* calling conventions
+
+* register usage conventions
+
+* interfaces for runtime arithmetic support
+
+* object file formats
 
 In addition, the application binary interface implemented by a C++ compiler
 affects code generation and runtime support for:
 
 * name mangling
-  * exception handling
-  * invoking constructors and destructors
-  * layout, alignment, and padding of classes
-  * layout and alignment of virtual tables
+
+* exception handling
+
+* invoking constructors and destructors
+
+* layout, alignment, and padding of classes
+
+* layout and alignment of virtual tables
 
 Some GCC compilation options cause the compiler to generate code that
 does not conform to the platform's default ABI.  Other options cause
@@ -138,10 +148,11 @@ and other runtime support libraries, and to suppress the use of GCC's
 support libraries with one or more of the options :option:`-nostdlib`,
 :option:`-nostartfiles`, and :option:`-nodefaultlibs`.
 
-.. Copyright (C) 1996-2015 Free Software Foundation, Inc. 
-   This is part of the GCC manual. 
+.. Copyright (C) 1996-2015 Free Software Foundation, Inc.
 
-.. For copying conditions, see the file gcc.texi. 
+.. This is part of the GCC manual.
+
+.. For copying conditions, see the file gcc.texi.
 
 @c man begin COPYRIGHT
 Copyright @copyright{} 1996-2015 Free Software Foundation, Inc.
@@ -167,4 +178,3 @@ included in the gfdl(7) man page.
 @c Set file name and title for the man page.
 @setfilename gcov
 @settitle coverage testing tool
-

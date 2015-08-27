@@ -104,8 +104,9 @@ give rise to questions of this sort.</p>
 </ul>
 </div>
 <p>:: _static-definitions:</p>
-<p>Declare and Define Static Members</p>
-<span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span><p id="index-6">When a class has static data members, it is not enough to declare
+<p>Declare and Define Static Members
+.. index:: C++ static data, declaring and defining</p>
+<span class="target" id="index-3"></span><span class="target" id="index-4"></span><p id="index-5">When a class has static data members, it is not enough to declare
 the static member; you must also define it.  For example:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
@@ -132,13 +133,15 @@ symbols any static data members that lack definitions.</p>
 <p>:: _name-lookup:</p>
 <div class="section" id="name-lookup-templates-and-accessing-members-of-base-classes">
 <h2>Name Lookup, Templates, and Accessing Members of Base Classes<a class="headerlink" href="#name-lookup-templates-and-accessing-members-of-base-classes" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-7"></span><span class="target" id="index-8"></span><p id="index-9">The C++ standard prescribes that all names that are not dependent on
+<span class="target" id="index-6"></span><span class="target" id="index-7"></span><p id="index-8">The C++ standard prescribes that all names that are not dependent on
 template parameters are bound to their present definitions when parsing
 a template function or class.The C++ standard just uses the
 term &#8216;dependent&#8217; for names that depend on the type or value of
 template parameters.  This shorter term will also be used in the rest of
-this section.  Only names that are dependent are looked up at the point
-of instantiation.  For example, consider</p>
+this section.</p>
+<blockquote>
+<div>Only names that are dependent are looked up at the point</div></blockquote>
+<p>of instantiation.  For example, consider</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
 
 <span class="k">struct</span> <span class="n">A</span> <span class="p">{</span>
@@ -235,7 +238,7 @@ do not implement two-stage name lookup correctly.</p>
 </div>
 <div class="section" id="temporaries-may-vanish-before-you-expect">
 <h2>Temporaries May Vanish Before You Expect<a class="headerlink" href="#temporaries-may-vanish-before-you-expect" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-10"></span><p id="index-11">It is dangerous to use pointers or references to portions of a
+<span class="target" id="index-9"></span><p id="index-10">It is dangerous to use pointers or references to portions of a
 temporary object.  The compiler may very well delete the object before
 you expect it to, leaving a pointer to garbage.  The most common place
 where this problem crops up is in classes like string classes,

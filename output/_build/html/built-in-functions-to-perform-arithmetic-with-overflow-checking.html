@@ -86,7 +86,19 @@
 <h1>Built-in Functions to Perform Arithmetic with Overflow Checking<a class="headerlink" href="#built-in-functions-to-perform-arithmetic-with-overflow-checking" title="Permalink to this headline">¶</a></h1>
 <p>The following built-in functions allow performing simple arithmetic operations
 together with checking whether the operations overflowed.</p>
-<p>These built-in functions promote the first two operands into infinite precision signed
+<p id="index-0">Built-in Functionbool__builtin_add_overflow(<a href="#id1"><span class="problematic" id="id2">``</span></a>type1``a,``type2``b,``type3``*res)
+.. index:: __builtin_sadd_overflow</p>
+<p>Built-in Functionbool__builtin_sadd_overflow(inta,intb,int*res)
+.. index:: __builtin_saddl_overflow</p>
+<p>Built-in Functionbool__builtin_saddl_overflow(longinta,longintb,longint*res)
+.. index:: __builtin_saddll_overflow</p>
+<p>Built-in Functionbool__builtin_saddll_overflow(longlonginta,longlongintb,longint*res)
+.. index:: __builtin_uadd_overflow</p>
+<p>Built-in Functionbool__builtin_uadd_overflow(unsignedinta,unsignedintb,unsignedint*res)
+.. index:: __builtin_uaddl_overflow</p>
+<p>Built-in Functionbool__builtin_uaddl_overflow(unsignedlonginta,unsignedlongintb,unsignedlongint*res)
+.. index:: __builtin_uaddll_overflow</p>
+<p>Built-in Functionbool__builtin_uaddll_overflow(unsignedlonglonginta,unsignedlonglongintb,unsignedlongint*res)These built-in functions promote the first two operands into infinite precision signed
 type and perform addition on those promoted operands.  The result is then
 cast to the type the third pointer argument points to and stored there.
 If the stored result is equal to the infinite precision result, the built-in
@@ -99,10 +111,34 @@ functions have explicit integer types.</p>
 <p>The compiler will attempt to use hardware instructions to implement
 these built-in functions where possible, like conditional jump on overflow
 after addition, conditional jump on carry etc.</p>
-<p>These built-in functions are similar to the add overflow checking built-in
+<p id="index-1">Built-in Functionbool__builtin_sub_overflow(<a href="#id3"><span class="problematic" id="id4">``</span></a>type1``a,``type2``b,``type3``*res)
+.. index:: __builtin_ssub_overflow</p>
+<p>Built-in Functionbool__builtin_ssub_overflow(inta,intb,int*res)
+.. index:: __builtin_ssubl_overflow</p>
+<p>Built-in Functionbool__builtin_ssubl_overflow(longinta,longintb,longint*res)
+.. index:: __builtin_ssubll_overflow</p>
+<p>Built-in Functionbool__builtin_ssubll_overflow(longlonginta,longlongintb,longint*res)
+.. index:: __builtin_usub_overflow</p>
+<p>Built-in Functionbool__builtin_usub_overflow(unsignedinta,unsignedintb,unsignedint*res)
+.. index:: __builtin_usubl_overflow</p>
+<p>Built-in Functionbool__builtin_usubl_overflow(unsignedlonginta,unsignedlongintb,unsignedlongint*res)
+.. index:: __builtin_usubll_overflow</p>
+<p>Built-in Functionbool__builtin_usubll_overflow(unsignedlonglonginta,unsignedlonglongintb,unsignedlongint*res)These built-in functions are similar to the add overflow checking built-in
 functions above, except they perform subtraction, subtract the second argument
 from the first one, instead of addition.</p>
-<p>These built-in functions are similar to the add overflow checking built-in
+<p id="index-2">Built-in Functionbool__builtin_mul_overflow(<a href="#id5"><span class="problematic" id="id6">``</span></a>type1``a,``type2``b,``type3``*res)
+.. index:: __builtin_smul_overflow</p>
+<p>Built-in Functionbool__builtin_smul_overflow(inta,intb,int*res)
+.. index:: __builtin_smull_overflow</p>
+<p>Built-in Functionbool__builtin_smull_overflow(longinta,longintb,longint*res)
+.. index:: __builtin_smulll_overflow</p>
+<p>Built-in Functionbool__builtin_smulll_overflow(longlonginta,longlongintb,longint*res)
+.. index:: __builtin_umul_overflow</p>
+<p>Built-in Functionbool__builtin_umul_overflow(unsignedinta,unsignedintb,unsignedint*res)
+.. index:: __builtin_umull_overflow</p>
+<p>Built-in Functionbool__builtin_umull_overflow(unsignedlonginta,unsignedlongintb,unsignedlongint*res)
+.. index:: __builtin_umulll_overflow</p>
+<p>Built-in Functionbool__builtin_umulll_overflow(unsignedlonglonginta,unsignedlonglongintb,unsignedlongint*res)These built-in functions are similar to the add overflow checking built-in
 functions above, except they perform multiplication, instead of addition.</p>
 </div>
 

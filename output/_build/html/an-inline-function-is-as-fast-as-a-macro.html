@@ -147,11 +147,9 @@ use of computed goto (Labels as Values), use of nonlocal goto,
 and nested functions (Nested Functions).  Using <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Winline"><em class="xref std std-option">-Winline</em></a>
 warns when a function marked <tt class="docutils literal"><span class="pre">inline</span></tt> could not be substituted,
 and gives the reason for the failure.</p>
-<p>automatic <tt class="docutils literal"><span class="pre">inline</span></tt> for C++ member fns
-<tt class="docutils literal"><span class="pre">inline</span></tt> automatic for C++ member fns
-member fns, automatically <tt class="docutils literal"><span class="pre">inline</span></tt>
-C++ member fns, automatically <tt class="docutils literal"><span class="pre">inline</span></tt></p>
-<p id="index-7">As required by ISO C++, GCC considers member functions defined within
+<p>automatic <tt class="docutils literal"><span class="pre">inline</span></tt> for C++ member fns``inline`` automatic for C++ member fnsmember fns, automatically <tt class="docutils literal"><span class="pre">inline``C++</span> <span class="pre">member</span> <span class="pre">fns,</span> <span class="pre">automatically</span> <span class="pre">``inline</span></tt>
+.. index:: fno-default-inline</p>
+<p>As required by ISO C++, GCC considers member functions defined within
 the body of a class to be marked inline even if they are
 not explicitly declared with the <tt class="docutils literal"><span class="pre">inline</span></tt> keyword.  You can
 override this with <em class="xref std std-option">-fno-default-inline</em>; C++ Dialect
@@ -163,7 +161,7 @@ the always_inline attribute for the function, like this:</p>
 </pre></div>
 </div>
 <p>The remainder of this section is specific to GNU C90 inlining.</p>
-<p id="index-8">When an inline function is not <tt class="docutils literal"><span class="pre">static</span></tt>, then the compiler must assume
+<p id="index-7">When an inline function is not <tt class="docutils literal"><span class="pre">static</span></tt>, then the compiler must assume
 that there may be calls from other source files; since a global symbol can
 be defined only once in any program, the function must not be defined in
 the other source files, so the calls therein cannot be integrated.

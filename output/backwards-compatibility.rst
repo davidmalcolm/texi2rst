@@ -1,3 +1,4 @@
+
 Backwards Compatibility
 ***********************
 
@@ -27,9 +28,9 @@ Implicit C language
   ``()`` is treated as an unspecified number of arguments, rather
   than no arguments, as C++ demands.
 
-..  LocalWords:  emph deftypefn builtin ARCv2EM SIMD builtins msimd 
-    LocalWords:  typedef v4si v8hi DMA dma vdiwr vdowr 
-
-.. Copyright (C) 1988-2015 Free Software Foundation, Inc. 
-   This is part of the GCC manual. 
+..  LocalWords:  emph deftypefn builtin ARCv2EM SIMD builtins msimd
+    LocalWords:  typedef v4si v8hi DMA dma vdiwr vdowr
+   Copyright (C) 1988-2015 Free Software Foundation, Inc.
+   This is part of the GCC manual.
+   For copying conditions, see the file gcc.texi.
 

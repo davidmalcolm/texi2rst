@@ -1,12 +1,10 @@
+
 Thread-Local Storage
 ********************
 
 .. index:: Thread-Local Storage
 
-TLS
-``__thread``
-
-Thread-local storage (TLS) is a mechanism by which variables
+TLS``__thread``Thread-local storage (TLS) is a mechanism by which variables
 are allocated such that there is one instance of the variable per extant
 thread.  The runtime model GCC uses to implement this originates
 in the IA-64 processor-specific ABI, but has since been migrated
@@ -75,7 +73,7 @@ that document the exact semantics of the language extension.
   with thread storage duration shall be initialized before thread
   startup.
 
-  * 6.2.4  Storage durations of objects
+* 6.2.4  Storage durations of objects
 
   Add new text before paragraph 3
 
@@ -84,11 +82,11 @@ that document the exact semantics of the language extension.
   Its lifetime is the entire execution of the thread, and its
   stored value is initialized only once, prior to thread startup.
 
-  * 6.4.1  Keywords
+* 6.4.1  Keywords
 
   Add ``__thread``.
 
-  * 6.7.1  Storage-class specifiers
+* 6.7.1  Storage-class specifiers
 
   Add ``__thread`` to the list of storage class specifiers in
   paragraph 1.
@@ -130,11 +128,11 @@ that document the exact semantics of the language extension.
   It is unspecified whether additional action must be taken to
   ensure when and whether side effects are visible to other threads.
 
-  * [lex.key]
+* [lex.key]
 
   Add ``__thread``.
 
-  * [basic.start.main]
+* [basic.start.main]
 
   Add after paragraph 5
 
@@ -146,7 +144,7 @@ that document the exact semantics of the language extension.
   happens if a thread startup function returns.  It is implementation
   defined what happens to other threads when any thread calls ``exit``.
 
-  * [basic.start.init]
+* [basic.start.init]
 
   Add after paragraph 4
 
@@ -155,7 +153,7 @@ that document the exact semantics of the language extension.
   function.  An object of thread storage duration shall not require
   dynamic initialization.
 
-  * [basic.start.term]
+* [basic.start.term]
 
   Add after paragraph 3
 
@@ -163,7 +161,7 @@ that document the exact semantics of the language extension.
   non-trivial destructor, nor shall it be an array type whose elements
   (directly or indirectly) have non-trivial destructors.
 
-  * [basic.stc]
+* [basic.stc]
 
   Add 'thread storage duration' to the list in paragraph 1.
 
@@ -174,7 +172,7 @@ that document the exact semantics of the language extension.
 
   Add ``__thread`` to the list of specifiers in paragraph 3.
 
-  * [basic.stc.thread]
+* [basic.stc.thread]
 
   New section before [basic.stc.static]
 
@@ -185,14 +183,14 @@ that document the exact semantics of the language extension.
   and ``__thread`` gives the variable or member thread storage
   duration.
 
-  * [basic.stc.static]
+* [basic.stc.static]
 
   Change paragraph 1
 
   All objects that have neither thread storage duration, dynamic
   storage duration nor are local [...].
 
-  * [dcl.stc]
+* [dcl.stc]
 
   Add ``__thread`` to the list in paragraph 1.
 
@@ -209,7 +207,7 @@ that document the exact semantics of the language extension.
   The ``__thread`` specifier can be applied only to the names of objects
   and to anonymous unions.
 
-  * [class.mem]
+* [class.mem]
 
   Add after paragraph 6
 

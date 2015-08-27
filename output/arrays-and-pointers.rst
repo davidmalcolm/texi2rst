@@ -1,3 +1,4 @@
+
 Arrays and Pointers
 *******************
 
@@ -8,14 +9,19 @@ Arrays and Pointers
   pointer representation is larger than the integer type,
   sign-extendsFuture versions of GCC may zero-extend, or use
   a target-defined ``ptr_extend`` pattern.  Do not rely on sign extension.
+
   if the pointer representation is smaller than the integer type, otherwise
   the bits are unchanged.
 
-  .. ??? We've always claimed that pointers were unsigned entities. 
-     Shouldn't we therefore be doing zero-extension?  If so, the bug 
+  .. ??? We've always claimed that pointers were unsigned entities.
 
-  .. is in convert_to_integer, where we call type_for_size and request 
-     a signed integral type.  On the other hand, it might be most useful 
+  .. Shouldn't we therefore be doing zero-extension?  If so, the bug
+
+  .. is in convert_to_integer, where we call type_for_size and request
+
+  .. a signed integral type.  On the other hand, it might be most useful
+
+  .. for the target if we extend according to POINTERS_EXTEND_UNSIGNED.
 
   A cast from integer to pointer discards most-significant bits if the
   pointer representation is smaller than the integer type, extends according
@@ -28,7 +34,7 @@ Arrays and Pointers
   avoid the undefined behavior of pointer arithmetic as proscribed in
   C99 and C11 6.5.6/8.
 
-  * The size of the result of subtracting two pointers to elements
+* The size of the result of subtracting two pointers to elements
   of the same array (C90 6.3.6, C99 and C11 6.5.6).
 
   The value is as specified in the standard and the type is determined

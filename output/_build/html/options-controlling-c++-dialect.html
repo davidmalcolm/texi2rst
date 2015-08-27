@@ -492,17 +492,14 @@ Template Instantiation.</p>
 <dd><p>This flag attempts to use visibility settings to make GCC&#8217;s C++
 linkage model compatible with that of Microsoft Visual Studio.</p>
 <p>The flag makes these changes to GCC&#8217;s linkage model:</p>
-<ul>
-<li><p class="first">It sets the default visibility to <tt class="docutils literal"><span class="pre">hidden</span></tt>, like
-<em class="xref std std-option">-fvisibility=hidden</em>.</p>
 <ul class="simple">
+<li>It sets the default visibility to <tt class="docutils literal"><span class="pre">hidden</span></tt>, like
+<em class="xref std std-option">-fvisibility=hidden</em>.</li>
 <li>Types, but not their members, are not hidden by default.</li>
-<li>The One Definition Rule is relaxed for types without explicit</li>
-</ul>
-<p>visibility specifications that are defined in more than one
+<li>The One Definition Rule is relaxed for types without explicit
+visibility specifications that are defined in more than one
 shared object: those declarations are permitted if they are
-permitted when this option is not used.</p>
-</li>
+permitted when this option is not used.</li>
 </ul>
 <p>In new code it is better to use <em class="xref std std-option">-fvisibility=hidden</em> and
 export those classes that are intended to be externally visible.
@@ -631,36 +628,31 @@ mangled incorrectly:</p>
 </pre></div>
 </div>
 <p>This was fixed in <em class="xref std std-option">-fabi-version=3</em>.</p>
-<ul class="simple">
-<li>SIMD vector types declared using <tt class="docutils literal"><span class="pre">__attribute</span> <span class="pre">((vector_size))</span></tt> were</li>
-</ul>
-<p>mangled in a non-standard way that does not allow for overloading of
+</li>
+<li><p class="first">SIMD vector types declared using <tt class="docutils literal"><span class="pre">__attribute</span> <span class="pre">((vector_size))</span></tt> were
+mangled in a non-standard way that does not allow for overloading of
 functions taking vectors of different sizes.</p>
 <p>The mangling was changed in <em class="xref std std-option">-fabi-version=4</em>.</p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">__attribute</span> <span class="pre">((const))</span></tt> and <tt class="docutils literal"><span class="pre">noreturn</span></tt> were mangled as type</li>
-</ul>
-<p>qualifiers, and <tt class="docutils literal"><span class="pre">decltype</span></tt> of a plain declaration was folded away.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">__attribute</span> <span class="pre">((const))</span></tt> and <tt class="docutils literal"><span class="pre">noreturn</span></tt> were mangled as type
+qualifiers, and <tt class="docutils literal"><span class="pre">decltype</span></tt> of a plain declaration was folded away.</p>
 <p>These mangling issues were fixed in <em class="xref std std-option">-fabi-version=5</em>.</p>
-<ul class="simple">
-<li>Scoped enumerators passed as arguments to a variadic function are</li>
-</ul>
-<p>promoted like unscoped enumerators, causing <tt class="docutils literal"><span class="pre">va_arg</span></tt> to complain.
+</li>
+<li><p class="first">Scoped enumerators passed as arguments to a variadic function are
+promoted like unscoped enumerators, causing <tt class="docutils literal"><span class="pre">va_arg</span></tt> to complain.
 On most targets this does not actually affect the parameter passing
 ABI, as there is no way to pass an argument smaller than <tt class="docutils literal"><span class="pre">int</span></tt>.</p>
 <p>Also, the ABI changed the mangling of template argument packs,
 <tt class="docutils literal"><span class="pre">const_cast</span></tt>, <tt class="docutils literal"><span class="pre">static_cast</span></tt>, prefix increment/decrement, and
 a class scope function used as a template argument.</p>
 <p>These issues were corrected in <em class="xref std std-option">-fabi-version=6</em>.</p>
-<ul class="simple">
-<li>Lambdas in default argument scope were mangled incorrectly, and the</li>
-</ul>
-<p>ABI changed the mangling of <tt class="docutils literal"><span class="pre">nullptr_t</span></tt>.</p>
+</li>
+<li><p class="first">Lambdas in default argument scope were mangled incorrectly, and the
+ABI changed the mangling of <tt class="docutils literal"><span class="pre">nullptr_t</span></tt>.</p>
 <p>These issues were corrected in <em class="xref std std-option">-fabi-version=7</em>.</p>
-<ul class="simple">
-<li>When mangling a function type with function-cv-qualifiers, the</li>
-</ul>
-<p>un-qualified function type was incorrectly treated as a substitution
+</li>
+<li><p class="first">When mangling a function type with function-cv-qualifiers, the
+un-qualified function type was incorrectly treated as a substitution
 candidate.</p>
 <p>This was fixed in <em class="xref std std-option">-fabi-version=8</em>.</p>
 </li>
@@ -842,20 +834,15 @@ for ISO C++11 onwards (<em class="xref std std-option">-std=c++11</em>, ...).</p
 </div>
 <p>Warn about violations of the following style guidelines from Scott Meyers&#8217;
 Effective C++ series of books:</p>
-<ul>
-<li><p class="first">Define a copy constructor and an assignment operator for classes
-with dynamically-allocated memory.</p>
 <ul class="simple">
+<li>Define a copy constructor and an assignment operator for classes
+with dynamically-allocated memory.</li>
 <li>Prefer initialization to assignment in constructors.</li>
 <li>Have <tt class="docutils literal"><span class="pre">operator=</span></tt> return a reference to <tt class="docutils literal"><span class="pre">*this</span></tt>.</li>
 <li>Don&#8217;t try to return a reference when you must return an object.</li>
-<li>Distinguish between prefix and postfix forms of increment and</li>
-</ul>
-<p>decrement operators.</p>
-<ul class="simple">
+<li>Distinguish between prefix and postfix forms of increment and
+decrement operators.</li>
 <li>Never overload <tt class="docutils literal"><span class="pre">&amp;&amp;</span></tt>, <tt class="docutils literal"><span class="pre">||</span></tt>, or <tt class="docutils literal"><span class="pre">,</span></tt>.</li>
-</ul>
-</li>
 </ul>
 <p>This option also enables <a class="reference internal" href="#cmdoption-Wnon-virtual-dtor"><em class="xref std std-option">-Wnon-virtual-dtor</em></a>, which is also
 one of the effective C++ recommendations.  However, the check is

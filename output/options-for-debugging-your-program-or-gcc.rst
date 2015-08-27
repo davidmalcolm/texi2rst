@@ -1,3 +1,4 @@
+
 Options for Debugging Your Program or GCC
 *****************************************
 
@@ -121,8 +122,7 @@ either your program or GCC:
 
 .. option:: -gdwarf-version
 
-  gdwarf-``version``
-  Produce debugging information in DWARF format (if that is supported).
+  gdwarf-``version``Produce debugging information in DWARF format (if that is supported).
   The value of ``version`` may be either 2, 3, 4 or 5; the default version
   for most targets is 4.  DWARF Version 5 is only experimental.
 
@@ -413,7 +413,6 @@ either your program or GCC:
   Syntax without explicit ``opts`` parameter is deprecated.  It is equivalent to
 
   :option:`-fsanitize-recover=undefined,float-cast-overflow,float-divide-by-zero`
-
   Similarly :option:`-fno-sanitize-recover` is equivalent to
 
   :option:`-fno-sanitize-recover=undefined,float-cast-overflow,float-divide-by-zero`
@@ -432,7 +431,7 @@ either your program or GCC:
 
   Enable Pointer Bounds Checker instrumentation.  Each memory reference
   is instrumented with checks of the pointer used for memory access against
-  bounds associated with that pointer.  
+  bounds associated with that pointer.
 
   Currently there
   is only an implementation for Intel MPX available, thus x86 target
@@ -769,8 +768,10 @@ either your program or GCC:
   of three fields:
 
   * The name of the function.
-    * A number of bytes.
-    * One or more qualifiers: ``static``, ``dynamic``, ``bounded``.
+
+  * A number of bytes.
+
+  * One or more qualifiers: ``static``, ``dynamic``, ``bounded``.
 
   The qualifier ``static`` means that the function manipulates the stack
   statically: a fixed number of bytes are allocated for the frame on function
@@ -817,22 +818,22 @@ either your program or GCC:
     additional :option:`-ftest-coverage` option.  You do not need to profile
     every source file in a program.
 
-    * Link your object files with :option:`-lgcov` or :option:`-fprofile-arcs`
+  * Link your object files with :option:`-lgcov` or :option:`-fprofile-arcs`
     (the latter implies the former).
 
-    * Run the program on a representative workload to generate the arc profile
+  * Run the program on a representative workload to generate the arc profile
     information.  This may be repeated any number of times.  You can run
     concurrent instances of your program, and provided that the file system
     supports locking, the data files will be correctly updated.  Also
     ``fork`` calls are detected and correctly handled (double counting
     will not happen).
 
-    * For profile-directed optimizations, compile the source files again with
+  * For profile-directed optimizations, compile the source files again with
     the same optimization and code generation options plus
     :option:`-fbranch-probabilities` (Optimize OptionsOptions that
     Control Optimization).
 
-    * For test coverage analysis, use :command:`gcov` to produce human readable
+  * For test coverage analysis, use :command:`gcov` to produce human readable
     information from the .gcno and .gcda files.  Refer to the
     :command:`gcov` documentation for further information.
 
@@ -910,7 +911,7 @@ either your program or GCC:
     Enable tree pass ``pass``.  See :option:`-fdisable-rtl` for the description
     of option arguments.
 
-  Here are some examples showing uses of these options.
+    Here are some examples showing uses of these options.
 
   .. code-block:: c++
 
@@ -931,8 +932,7 @@ either your program or GCC:
 
 .. option:: -dletters, -d
 
-  fdump-rtl-``pass``
-  Says to make debugging dumps during compilation at times specified by
+  fdump-rtl-``pass``Says to make debugging dumps during compilation at times specified by
   ``letters``.  This is used for debugging the RTL-based passes of the
   compiler.  The file names for most of the dumps are made by appending
   a pass number and a word to the ``dumpname``, and the files are
@@ -1227,6 +1227,7 @@ either your program or GCC:
   .. note::
 
     (C++ only)
+
   Dump a representation of the tree structure for the entire translation
   unit to a file.  The file name is made by appending .tu to the
   source file name, and the file is created in the same directory as the
@@ -1239,6 +1240,7 @@ either your program or GCC:
   .. note::
 
     (C++ only)
+
   Dump a representation of each class's hierarchy and virtual function
   table layout to a file.  The file name is made by appending
   .class to the source file name, and the file is created in the
@@ -1394,7 +1396,7 @@ either your program or GCC:
     Turn on all optimization options, i.e., optimized,
     missed, and note.
 
-  The following tree dumps are possible:
+    The following tree dumps are possible:
 
   .. option:: original, -fdump-tree-original
 
@@ -1548,7 +1550,7 @@ either your program or GCC:
 
   missed
     Print information about missed optimizations. Individual passes
-    control which information to include in the output. 
+    control which information to include in the output.
 
   note
     Print verbose information about optimizations, such as certain
@@ -1558,7 +1560,7 @@ either your program or GCC:
     Print detailed optimization information. This includes
     optimized, missed, and note.
 
-  One or more of the following option keywords can be used to describe a
+    One or more of the following option keywords can be used to describe a
   group of optimizations:
 
   ipa
@@ -1577,7 +1579,7 @@ either your program or GCC:
     Enable dumps from all optimizations. This is a superset of
     the optimization groups listed above.
 
-  If ``options`` is
+    If ``options`` is
   omitted, it defaults to optimized-optall, which means to dump all
   info about successful optimizations from all the passes.  
 

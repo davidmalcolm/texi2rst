@@ -1,6 +1,5 @@
-Incomplete ``enum`` Types
 
-You can define an ``enum`` tag without specifying its possible values.
+Incomplete ``enum`` TypesYou can define an ``enum`` tag without specifying its possible values.
 This results in an incomplete type, much like what you get if you write
 ``struct foo`` without describing the elements.  A later declaration
 that does specify the possible values completes the type.

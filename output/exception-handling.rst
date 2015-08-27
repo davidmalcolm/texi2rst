@@ -1,3 +1,4 @@
+
 Exception Handling
 ******************
 
@@ -7,9 +8,7 @@ Exception Handling
 
   The stack is not unwound before std::terminate is called.
 
-.. Copyright (C) 1988-2015 Free Software Foundation, Inc. 
-
-   This is part of the GCC manual. 
-
-.. For copying conditions, see the file gcc.texi. 
+.. Copyright (C) 1988-2015 Free Software Foundation, Inc.
+   This is part of the GCC manual.
+   For copying conditions, see the file gcc.texi.
 

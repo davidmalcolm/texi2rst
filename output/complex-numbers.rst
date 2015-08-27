@@ -1,12 +1,10 @@
+
 Complex Numbers
 ***************
 
 .. index:: complex numbers
 
-``_Complex`` keyword
-``__complex__`` keyword
-
-ISO C99 supports complex floating data types, and as an extension GCC
+``_Complex`` keyword``__complex__`` keywordISO C99 supports complex floating data types, and as an extension GCC
 supports them in C90 mode and in C++.  GCC also supports complex integer data
 types which are not part of ISO C99.  You can declare complex types
 using the keyword ``_Complex``.  As an extension, the older GNU
@@ -29,9 +27,7 @@ conforming C library (such as the GNU C Library), and want to construct complex
 constants of floating type, you should include ``<complex.h>`` and
 use the macros ``I`` or ``_Complex_I`` instead.
 
-``__real__`` keyword
-``__imag__`` keyword
-To extract the real part of a complex-valued expression ``exp``, write
+``__real__`` keyword``__imag__`` keywordTo extract the real part of a complex-valued expression ``exp``, write
 ``__real__ ``exp````.  Likewise, use ``__imag__`` to
 extract the imaginary part.  This is a GNU extension; for values of
 floating type, you should use the ISO C99 functions ``crealf``,

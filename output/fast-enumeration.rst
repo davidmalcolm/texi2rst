@@ -1,3 +1,4 @@
+
 Fast Enumeration
 ****************
 
@@ -8,7 +9,7 @@ Fast Enumeration
    <fast-enumeration-details>
    <fast-enumeration-protocol>
 
-.. ================================ 
+.. ================================
 
 :: _using-fast-enumeration:
 
@@ -50,7 +51,7 @@ provides the implementation of ``NSArray``, ``NSString`` and
     for (object in array)
       NSLog (@"Iterating over %@", object);
 
-.. ================================ 
+.. ================================
 
 :: _c99-like-fast-enumeration-syntax:
 
@@ -87,7 +88,7 @@ but can save some typing.
 Note that the option :option:`-std=c99` is not required to allow this
 syntax in Objective-C.
 
-.. ================================ 
+.. ================================
 
 :: _fast-enumeration-details:
 
@@ -110,25 +111,25 @@ here is what happens when you run it:
   it is safe to write code such as ``for (object in [NSDictionary
   keyEnumerator]) ...``.
 
-  * the iteration is implemented by the compiler by repeatedly getting
+* the iteration is implemented by the compiler by repeatedly getting
   batches of objects from the collection object using the fast
   enumeration protocol (see below), then iterating over all objects in
   the batch.  This is faster than a normal enumeration where objects are
   retrieved one by one (hence the name 'fast enumeration').
 
-  * if there are no objects in the collection, then
+* if there are no objects in the collection, then
   ````object expression```` is set to ``nil`` and the loop
   immediately terminates.
 
-  * if there are objects in the collection, then for each object in the
+* if there are objects in the collection, then for each object in the
   collection (in the order they are returned) ````object expression````
   is set to the object, then ````statements```` are executed.
 
-  * ````statements```` can contain ``break`` and ``continue``
+* ````statements```` can contain ``break`` and ``continue``
   commands, which will abort the iteration or skip to the next loop
   iteration as expected.
 
-  * when the iteration ends because there are no more objects to iterate
+* when the iteration ends because there are no more objects to iterate
   over, ````object expression```` is set to ``nil``.  This allows
   you to determine whether the iteration finished because a ``break``
   command was used (in which case ````object expression```` will remain
@@ -136,14 +137,14 @@ here is what happens when you run it:
   over all the objects (in which case ````object expression```` will be
   set to ``nil``).
 
-  * ````statements```` must not make any changes to the collection
+* ````statements```` must not make any changes to the collection
   object; if they do, it is a hard error and the fast enumeration
   terminates by invoking ``objc_enumerationMutation``, a runtime
   function that normally aborts the program but which can be customized
   by Foundation libraries via ``objc_set_mutation_handler`` to do
   something different, such as raising an exception.
 
-.. ================================ 
+.. ================================
 
 :: _fast-enumeration-protocol:
 
@@ -156,7 +157,6 @@ enumeration, you need to have it implement the method
 - (unsigned long) countByEnumeratingWithState: (NSFastEnumerationState *)state
                                       objects: (id *)objects
                                         count: (unsigned long)len;
-
 where ``NSFastEnumerationState`` must be defined in your code as follows:
 
 .. code-block:: c++
@@ -214,5 +214,5 @@ Finally, note how we declared the ``len`` argument and the return
 value to be of type ``unsigned long``.  They could also be declared
 to be of type ``unsigned int`` and everything would still work.
 
-.. ========================================================================= 
+.. =========================================================================
 

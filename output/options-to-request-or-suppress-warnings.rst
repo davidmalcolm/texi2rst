@@ -1,3 +1,4 @@
+
 Options to Request or Suppress Warnings
 ***************************************
 
@@ -218,17 +219,17 @@ warns that an unrecognized option is present.
   * A pointer is compared against integer zero with ``<``, ``<=``,
     ``>``, or ``>=``.
 
-    * (C++ only) An enumerator and a non-enumerator both appear in a
+  * (C++ only) An enumerator and a non-enumerator both appear in a
     conditional expression.
 
-    * (C++ only) Ambiguous virtual bases.
+  * (C++ only) Ambiguous virtual bases.
 
-    * (C++ only) Subscripting an array that has been declared ``register``.
+  * (C++ only) Subscripting an array that has been declared ``register``.
 
-    * (C++ only) Taking the address of a variable that has been declared
+  * (C++ only) Taking the address of a variable that has been declared
     ``register``.
 
-    * (C++ only) A base class is not initialized in a derived class's copy
+  * (C++ only) A base class is not initialized in a derived class's copy
     constructor.
 
 .. option:: -Wchar-subscripts, -Wno-char-subscripts
@@ -721,6 +722,7 @@ warns that an unrecognized option is present.
   .. note::
 
     (C, Objective-C, C++ and Objective-C++ only)
+
   Warn when a typedef locally defined in a function is not used.
   This warning is enabled by :option:`-Wall`.
 
@@ -819,8 +821,7 @@ warns that an unrecognized option is present.
   warning, you need to provide a default case with assert(0) or
   similar code.
 
-  ``longjmp`` warnings
-  This option also warns when a non-volatile automatic variable might be
+  ``longjmp`` warningsThis option also warns when a non-volatile automatic variable might be
   changed by a call to ``longjmp``.  These warnings as well are possible
   only in optimizing compilation.
 
@@ -1144,7 +1145,7 @@ warns that an unrecognized option is present.
     In traditional C macro replacement takes place within string literals,
     but in ISO C it does not.
 
-    * In traditional C, some preprocessor directives did not exist.
+  * In traditional C, some preprocessor directives did not exist.
     Traditional preprocessors only considered a line to be a directive
     if the # appeared in column 1 on the line.  Therefore
     :option:`-Wtraditional` warns about directives that traditional C
@@ -1154,11 +1155,11 @@ warns that an unrecognized option is present.
     traditional implementations do not recognize ``#elif``, so this option
     suggests avoiding it altogether.
 
-    * A function-like macro that appears without arguments.
+  * A function-like macro that appears without arguments.
 
-    * The unary plus operator.
+  * The unary plus operator.
 
-    * The U integer constant suffix, or the F or L floating-point
+  * The U integer constant suffix, or the F or L floating-point
     constant suffixes.  (Traditional C does support the L suffix on integer
     constants.)  Note, these suffixes appear in macros defined in the system
     headers of most modern systems, e.g. the _MIN/_MAX macros in ``<limits.h>``.
@@ -1166,38 +1167,38 @@ warns that an unrecognized option is present.
     warnings, however GCC's integrated preprocessor has enough context to
     avoid warning in these cases.
 
-    * A function declared external in one block and then used after the end of
+  * A function declared external in one block and then used after the end of
     the block.
 
-    * A ``switch`` statement has an operand of type ``long``.
+  * A ``switch`` statement has an operand of type ``long``.
 
-    * A non-``static`` function declaration follows a ``static`` one.
+  * A non-``static`` function declaration follows a ``static`` one.
     This construct is not accepted by some traditional C compilers.
 
-    * The ISO type of an integer constant has a different width or
+  * The ISO type of an integer constant has a different width or
     signedness from its traditional type.  This warning is only issued if
     the base of the constant is ten.  I.e. hexadecimal or octal values, which
     typically represent bit patterns, are not warned about.
 
-    * Usage of ISO string concatenation is detected.
+  * Usage of ISO string concatenation is detected.
 
-    * Initialization of automatic aggregates.
+  * Initialization of automatic aggregates.
 
-    * Identifier conflicts with labels.  Traditional C lacks a separate
+  * Identifier conflicts with labels.  Traditional C lacks a separate
     namespace for labels.
 
-    * Initialization of unions.  If the initializer is zero, the warning is
+  * Initialization of unions.  If the initializer is zero, the warning is
     omitted.  This is done under the assumption that the zero initializer in
     user code appears conditioned on e.g. ``__STDC__`` to avoid missing
     initializer warnings and relies on default initialization to zero in the
     traditional C case.
 
-    * Conversions by prototypes between fixed/floating-point values and vice
+  * Conversions by prototypes between fixed/floating-point values and vice
     versa.  The absence of these prototypes when compiling with traditional
     C causes serious problems.  This is a subset of the possible
     conversion warnings; for the full set use :option:`-Wtraditional-conversion`.
 
-    * Use of ISO C style function definitions.  This warning intentionally is
+  * Use of ISO C style function definitions.  This warning intentionally is
     not issued for prototype declarations or variadic functions
     because these ISO C features appear in your code when using
     libiberty's traditional C compatibility macros, ``PARAMS`` and
@@ -1254,9 +1255,7 @@ warns that an unrecognized option is present.
 
 .. option:: -Wlarger-than=len
 
-  Wlarger-than=``len``
-  Wlarger-than-``len``
-  Warn whenever an object of larger than ``len`` bytes is defined.
+  Wlarger-than=``len``Wlarger-than-``len``Warn whenever an object of larger than ``len`` bytes is defined.
 
 .. option:: -Wframe-larger-than=len
 
@@ -1290,13 +1289,13 @@ warns that an unrecognized option is present.
 
         warning: stack usage is 1120 bytes
 
-    * If the stack usage is (partly) dynamic but bounded, it's:
+  * If the stack usage is (partly) dynamic but bounded, it's:
 
     .. code-block:: c++
 
         warning: stack usage might be 1648 bytes
 
-    * If the stack usage is (partly) dynamic and not bounded, it's:
+  * If the stack usage is (partly) dynamic and not bounded, it's:
 
     .. code-block:: c++
 
@@ -1377,6 +1376,7 @@ warns that an unrecognized option is present.
   .. note::
 
     (C and Objective-C only)
+
   Warn about ISO C constructs that are outside of the common subset of
   ISO C and ISO C++, e.g. request for implicit conversion from
   ``void *`` to a pointer to non-``void`` type.
@@ -1386,6 +1386,7 @@ warns that an unrecognized option is present.
   .. note::
 
     (C++ and Objective-C++ only)
+
   Warn about C++ constructs whose meaning differs between ISO C++ 1998
   and ISO C++ 2011, e.g., identifiers in ISO C++ 1998 that are keywords
   in ISO C++ 2011.  This warning turns on :option:`-Wnarrowing` and is
@@ -1396,6 +1397,7 @@ warns that an unrecognized option is present.
   .. note::
 
     (C++ and Objective-C++ only)
+
   Warn about C++ constructs whose meaning differs between ISO C++ 2011
   and ISO C++ 2014.  This warning is enabled by :option:`-Wall`.
 
@@ -2119,7 +2121,9 @@ warns that an unrecognized option is present.
 
   .. note::
 
-    (C and Objective-C only)Suppress warnings when a positional initializer is used to initialize
+    (C and Objective-C only)
+
+  Suppress warnings when a positional initializer is used to initialize
   a structure that has been marked with the ``designated_init``
   attribute.
 

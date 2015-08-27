@@ -1,3 +1,4 @@
+
 Labels as Values
 ****************
 
@@ -24,7 +25,9 @@ To use these values, you need to be able to jump to one.  This is done
 with the computed goto statementThe analogous feature in
 Fortran is called an assigned goto, but that name seems inappropriate in
 C, where one can do more than simply store label addresses in label
-variables., ``goto *``exp``;``.  For example,
+variables.
+
+, ``goto *``exp``;``.  For example,
 
 .. code-block:: c++
 

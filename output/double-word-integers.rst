@@ -1,16 +1,13 @@
+
 Double-Word Integers
 ********************
 
 ``long long`` data types
-
 .. index:: double-word arithmetic
 
 .. index:: multiprecision arithmetic
 
-``LL`` integer suffix
-``ULL`` integer suffix
-
-ISO C99 supports data types for integers that are at least 64 bits wide,
+``LL`` integer suffix``ULL`` integer suffixISO C99 supports data types for integers that are at least 64 bits wide,
 and as an extension GCC supports them in C90 mode and in C++.
 Simply write ``long long int`` for a signed integer, or
 ``unsigned long long int`` for an unsigned integer.  To make an

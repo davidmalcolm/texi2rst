@@ -88,16 +88,14 @@
 <span class="target" id="index-1"></span><ul id="index-2">
 <li><p class="first">If the compiler gets a fatal signal, for any input whatever, that is a
 compiler bug.  Reliable compilers never crash.</p>
-<span class="target" id="index-3"></span><ul class="simple" id="index-4">
-<li>If the compiler produces invalid assembly code, for any input whatever</li>
-</ul>
-<p>(except an <tt class="docutils literal"><span class="pre">asm</span></tt> statement), that is a compiler bug, unless the
+<span class="target" id="index-3"></span></li>
+<li id="index-4"><p class="first">If the compiler produces invalid assembly code, for any input whatever
+(except an <tt class="docutils literal"><span class="pre">asm</span></tt> statement), that is a compiler bug, unless the
 compiler reports errors (not just warnings) which would ordinarily
 prevent the assembler from being run.</p>
-<span class="target" id="index-5"></span><span class="target" id="index-6"></span><ul class="simple" id="index-7">
-<li>If the compiler produces valid assembly code that does not correctly</li>
-</ul>
-<p>execute the input source code, that is a compiler bug.</p>
+<span class="target" id="index-5"></span><span class="target" id="index-6"></span></li>
+<li id="index-7"><p class="first">If the compiler produces valid assembly code that does not correctly
+execute the input source code, that is a compiler bug.</p>
 <p>However, you must double-check to make sure, because you may have a
 program whose behavior is undefined, which happened by chance to give
 the desired results with another C or C++ compiler.</p>
@@ -113,20 +111,17 @@ in your code.</p>
 <p>After you have localized the error to a single source line, it should
 be easy to check for these things.  If your program is correct and
 well defined, you have found a compiler bug.</p>
-<ul class="simple">
-<li>If the compiler produces an error message for valid input, that is a</li>
-</ul>
-<p>compiler bug.</p>
-<ul class="simple" id="index-8">
-<li>If the compiler does not produce an error message for invalid input,</li>
-</ul>
-<p>that is a compiler bug.  However, you should note that your idea of
+</li>
+<li><p class="first">If the compiler produces an error message for valid input, that is a
+compiler bug.</p>
+</li>
+<li id="index-8"><p class="first">If the compiler does not produce an error message for invalid input,
+that is a compiler bug.  However, you should note that your idea of
 &#8216;invalid input&#8217; might be someone else&#8217;s idea of &#8216;an extension&#8217; or
 &#8216;support for traditional practice&#8217;.</p>
-<ul class="simple">
-<li>If you are an experienced user of one of the languages GCC supports, your</li>
-</ul>
-<p>suggestions for improvement of GCC are welcome in any case.</p>
+</li>
+<li><p class="first">If you are an experienced user of one of the languages GCC supports, your
+suggestions for improvement of GCC are welcome in any case.</p>
 </li>
 </ul>
 </div>

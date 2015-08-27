@@ -1,3 +1,4 @@
+
 Exceptions
 **********
 
@@ -54,22 +55,22 @@ There are several caveats to using the new exception mechanism:
 * The :option:`-fobjc-exceptions` command line option must be used when
   compiling Objective-C files that use exceptions.
 
-  * With the GNU runtime, exceptions are always implemented as 'native'
+* With the GNU runtime, exceptions are always implemented as 'native'
   exceptions and it is recommended that the :option:`-fexceptions` and
   :option:`-shared-libgcc` options are used when linking.
 
-  * With the NeXT runtime, although currently designed to be binary
+* With the NeXT runtime, although currently designed to be binary
   compatible with ``NS_HANDLER``-style idioms provided by the
   ``NSException`` class, the new exceptions can only be used on Mac
   OS X 10.3 (Panther) and later systems, due to additional functionality
   needed in the NeXT Objective-C runtime.
 
-  * As mentioned above, the new exceptions do not support handling
+* As mentioned above, the new exceptions do not support handling
   types other than Objective-C objects.   Furthermore, when used from
   Objective-C++, the Objective-C exception model does not interoperate with C++
   exceptions at this time.  This means you cannot ``@throw`` an exception
   from Objective-C and ``catch`` it in C++, or vice versa
   (i.e., ``throw ... @catch``).
 
-.. ========================================================================= 
+.. =========================================================================
 

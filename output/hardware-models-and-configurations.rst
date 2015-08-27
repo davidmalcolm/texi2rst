@@ -1,3 +1,4 @@
+
 Hardware Models and Configurations
 **********************************
 
@@ -20,10 +21,9 @@ Some configurations of the compiler also support additional special
 options, usually for compatibility with other compilers on the same
 platform.
 
-.. This list is ordered alphanumerically by subsection name. 
-   It should be the same order and spelling as these options are listed 
-
-.. in Machine Dependent Options 
+.. This list is ordered alphanumerically by subsection name.
+   It should be the same order and spelling as these options are listed
+   in Machine Dependent Options
 
 .. toctree::
 
@@ -241,10 +241,7 @@ These options are defined for AArch64 implementations:
   with :option:`-march` or :option:`-mtune`, those options take precedence
   over the appropriate part of this option.
 
-:option:`-march` and :option:`-mcpu` Feature Modifiers
-:option:`-march` feature modifiers
-:option:`-mcpu` feature modifiers
-Feature modifiers used with :option:`-march` and :option:`-mcpu` can be one
+:option:`-march` and :option:`-mcpu` Feature Modifiers:option:`-march` feature modifiers:option:`-mcpu` feature modifiersFeature modifiers used with :option:`-march` and :option:`-mcpu` can be one
 the following:
 
 crc
@@ -261,7 +258,7 @@ simd
   are enabled.  This is the default for all current possible values for options
   :option:`-march` and :option:`-mcpu=`.
 
-:: _adapteva-epiphany-options:
+  :: _adapteva-epiphany-options:
 
 Adapteva Epiphany Options
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -373,7 +370,7 @@ These -m options are defined for Adapteva Epiphany:
     This is the mode used to perform integer calculations in the FPU, e.g.
     integer multiply, or integer multiply-and-accumulate.
 
-  The default is :option:`-mfp-mode=caller`
+    The default is :option:`-mfp-mode=caller`
 
 .. option:: -mnosplit-lohi, -mno-postinc, -mno-postmodify
 
@@ -420,7 +417,7 @@ ARC Options
 The following options control the architecture variant for which code
 is being compiled:
 
-.. architecture variants 
+.. architecture variants
 
 .. option:: -mbarrel-shifter
 
@@ -517,8 +514,8 @@ is being compiled:
 The following options are passed through to the assembler, and also
 define preprocessor macro symbols.
 
-.. Flags used by the assembler, but for which we define preprocessor 
-   macro symbols as well. 
+.. Flags used by the assembler, but for which we define preprocessor
+   macro symbols as well.
 
 .. option:: -mdsp-packa
 
@@ -530,7 +527,7 @@ define preprocessor macro symbols.
   Passed down to the assembler to enable the dual viterbi butterfly
   extension.  Also sets the preprocessor symbol ``__Xdvbf``.
 
-  .. ARC700 4.10 extension instruction 
+  .. ARC700 4.10 extension instruction
 
 .. option:: -mlock
 
@@ -548,7 +545,7 @@ define preprocessor macro symbols.
   Passed down to the assembler.  Also sets the preprocessor symbol
   ``__Xxmac_24``.
 
-  .. ARC700 4.10 extension instruction 
+  .. ARC700 4.10 extension instruction
 
 .. option:: -mrtsc
 
@@ -556,7 +553,7 @@ define preprocessor macro symbols.
   extension instruction.  Also sets the preprocessor symbol
   ``__Xrtsc``.
 
-  .. ARC700 4.10 extension instruction 
+  .. ARC700 4.10 extension instruction
 
 .. option:: -mswape
 
@@ -577,7 +574,7 @@ define preprocessor macro symbols.
 
 The following options control how the assembly code is annotated:
 
-.. Assembly annotation options 
+.. Assembly annotation options
 
 .. option:: -misize
 
@@ -590,7 +587,7 @@ The following options control how the assembly code is annotated:
 
 The following options are passed through to the linker:
 
-.. options passed through to the linker 
+.. options passed through to the linker
 
 .. option:: -marclinux
 
@@ -608,7 +605,7 @@ The following options are passed through to the linker:
 
 The following options control the semantics of generated code:
 
-.. semantically relevant code generation options 
+.. semantically relevant code generation options
 
 .. option:: -mepilogue-cfi
 
@@ -655,7 +652,7 @@ The following options control the semantics of generated code:
 
 The following options fine tune code generation:
 
-.. code generation tuning options 
+.. code generation tuning options
 
 .. option:: -malign-call
 
@@ -781,7 +778,7 @@ The following options fine tune code generation:
   3
     In addition, optional data alignment is dropped, and the option Os is enabled.
 
-  This defaults to 3 when :option:`-Os` is in effect.  Otherwise,
+    This defaults to 3 when :option:`-Os` is in effect.  Otherwise,
   the behavior when this is not set is equivalent to level 1.
 
 .. option:: -mtune=cpu
@@ -826,7 +823,7 @@ The following options fine tune code generation:
 The following options are maintained for backward compatibility, but
 are now deprecated and will be removed in a future release:
 
-.. Deprecated options 
+.. Deprecated options
 
 .. option:: -margonaut
 
@@ -1354,18 +1351,95 @@ These options are defined for AVR implementations:
 
   GCC supports the following AVR devices and ISAs:
 
-  .. Copyright (C) 2012-2015 Free Software Foundation, Inc. 
-     This is part of the GCC manual. 
+  .. Copyright (C) 2012-2015 Free Software Foundation, Inc.
+     This is part of the GCC manual.
+     For copying conditions, see the file gcc/doc/include/fdl.texi.
+     This file is generated automatically using
+     gcc/config/avr/gen-avr-mmcu-texi.c from:
+        gcc/config/avr/avr-arch.h
+        gcc/config/avr/avr-devices.c
+        gcc/config/avr/avr-mcus.def
+     Please do not edit manually.
 
-  .. For copying conditions, see the file gcc/doc/include/fdl.texi. 
+  avr2
+    'Classic' devices with up to 8 KiB of program memory.
 
-     This file is generated automatically using 
+    ``mcu`` = ``attiny22``, ``attiny26``, ``at90c8534``, ``at90s2313``, ``at90s2323``, ``at90s2333``, ``at90s2343``, ``at90s4414``, ``at90s4433``, ``at90s4434``, ``at90s8515``, ``at90s8535``.
 
-  .. gcc/config/avr/gen-avr-mmcu-texi.c from: 
-        gcc/config/avr/avr-arch.h 
+  avr25
+    'Classic' devices with up to 8 KiB of program memory and with the ``MOVW`` instruction.
 
-  ..    gcc/config/avr/avr-devices.c 
-        gcc/config/avr/avr-mcus.def 
+    ``mcu`` = ``ata5272``, ``ata6616c``, ``attiny13``, ``attiny13a``, ``attiny2313``, ``attiny2313a``, ``attiny24``, ``attiny24a``, ``attiny25``, ``attiny261``, ``attiny261a``, ``attiny43u``, ``attiny4313``, ``attiny44``, ``attiny44a``, ``attiny441``, ``attiny45``, ``attiny461``, ``attiny461a``, ``attiny48``, ``attiny828``, ``attiny84``, ``attiny84a``, ``attiny841``, ``attiny85``, ``attiny861``, ``attiny861a``, ``attiny87``, ``attiny88``, ``at86rf401``.
+
+  avr3
+    'Classic' devices with 16 KiB up to 64 KiB of  program memory.
+
+    ``mcu`` = ``at43usb355``, ``at76c711``.
+
+  avr31
+    'Classic' devices with 128 KiB of program memory.
+
+    ``mcu`` = ``atmega103``, ``at43usb320``.
+
+  avr35
+    'Classic' devices with 16 KiB up to 64 KiB of program memory and with the ``MOVW`` instruction.
+
+    ``mcu`` = ``ata5505``, ``ata6617c``, ``ata664251``, ``atmega16u2``, ``atmega32u2``, ``atmega8u2``, ``attiny1634``, ``attiny167``, ``at90usb162``, ``at90usb82``.
+
+  avr4
+    'Enhanced' devices with up to 8 KiB of program memory.
+
+    ``mcu`` = ``ata6285``, ``ata6286``, ``ata6289``, ``ata6612c``, ``atmega48``, ``atmega48a``, ``atmega48p``, ``atmega48pa``, ``atmega8``, ``atmega8a``, ``atmega8hva``, ``atmega8515``, ``atmega8535``, ``atmega88``, ``atmega88a``, ``atmega88p``, ``atmega88pa``, ``at90pwm1``, ``at90pwm2``, ``at90pwm2b``, ``at90pwm3``, ``at90pwm3b``, ``at90pwm81``.
+
+  avr5
+    'Enhanced' devices with 16 KiB up to 64 KiB of program memory.
+
+    ``mcu`` = ``ata5702m322``, ``ata5782``, ``ata5790``, ``ata5790n``, ``ata5795``, ``ata5831``, ``ata6613c``, ``ata6614q``, ``atmega16``, ``atmega16a``, ``atmega16hva``, ``atmega16hva2``, ``atmega16hvb``, ``atmega16hvbrevb``, ``atmega16m1``, ``atmega16u4``, ``atmega161``, ``atmega162``, ``atmega163``, ``atmega164a``, ``atmega164p``, ``atmega164pa``, ``atmega165``, ``atmega165a``, ``atmega165p``, ``atmega165pa``, ``atmega168``, ``atmega168a``, ``atmega168p``, ``atmega168pa``, ``atmega169``, ``atmega169a``, ``atmega169p``, ``atmega169pa``, ``atmega32``, ``atmega32a``, ``atmega32c1``, ``atmega32hvb``, ``atmega32hvbrevb``, ``atmega32m1``, ``atmega32u4``, ``atmega32u6``, ``atmega323``, ``atmega324a``, ``atmega324p``, ``atmega324pa``, ``atmega325``, ``atmega325a``, ``atmega325p``, ``atmega325pa``, ``atmega3250``, ``atmega3250a``, ``atmega3250p``, ``atmega3250pa``, ``atmega328``, ``atmega328p``, ``atmega329``, ``atmega329a``, ``atmega329p``, ``atmega329pa``, ``atmega3290``, ``atmega3290a``, ``atmega3290p``, ``atmega3290pa``, ``atmega406``, ``atmega64``, ``atmega64a``, ``atmega64c1``, ``atmega64hve``, ``atmega64hve2``, ``atmega64m1``, ``atmega64rfr2``, ``atmega640``, ``atmega644``, ``atmega644a``, ``atmega644p``, ``atmega644pa``, ``atmega644rfr2``, ``atmega645``, ``atmega645a``, ``atmega645p``, ``atmega6450``, ``atmega6450a``, ``atmega6450p``, ``atmega649``, ``atmega649a``, ``atmega649p``, ``atmega6490``, ``atmega6490a``, ``atmega6490p``, ``at90can32``, ``at90can64``, ``at90pwm161``, ``at90pwm216``, ``at90pwm316``, ``at90scr100``, ``at90usb646``, ``at90usb647``, ``at94k``, ``m3000``.
+
+  avr51
+    'Enhanced' devices with 128 KiB of program memory.
+
+    ``mcu`` = ``atmega128``, ``atmega128a``, ``atmega128rfa1``, ``atmega128rfr2``, ``atmega1280``, ``atmega1281``, ``atmega1284``, ``atmega1284p``, ``atmega1284rfr2``, ``at90can128``, ``at90usb1286``, ``at90usb1287``.
+
+  avr6
+    'Enhanced' devices with 3-byte PC, i.e. with more than 128 KiB of program memory.
+
+    ``mcu`` = ``atmega256rfr2``, ``atmega2560``, ``atmega2561``, ``atmega2564rfr2``.
+
+  avrxmega2
+    'XMEGA' devices with more than 8 KiB and up to 64 KiB of program memory.
+
+    ``mcu`` = ``atxmega16a4``, ``atxmega16a4u``, ``atxmega16c4``, ``atxmega16d4``, ``atxmega16e5``, ``atxmega32a4``, ``atxmega32a4u``, ``atxmega32c3``, ``atxmega32c4``, ``atxmega32d3``, ``atxmega32d4``, ``atxmega32e5``, ``atxmega8e5``.
+
+  avrxmega4
+    'XMEGA' devices with more than 64 KiB and up to 128 KiB of program memory.
+
+    ``mcu`` = ``atxmega64a3``, ``atxmega64a3u``, ``atxmega64a4u``, ``atxmega64b1``, ``atxmega64b3``, ``atxmega64c3``, ``atxmega64d3``, ``atxmega64d4``.
+
+  avrxmega5
+    'XMEGA' devices with more than 64 KiB and up to 128 KiB of program memory and more than 64 KiB of RAM.
+
+    ``mcu`` = ``atxmega64a1``, ``atxmega64a1u``.
+
+  avrxmega6
+    'XMEGA' devices with more than 128 KiB of program memory.
+
+    ``mcu`` = ``atxmega128a3``, ``atxmega128a3u``, ``atxmega128b1``, ``atxmega128b3``, ``atxmega128c3``, ``atxmega128d3``, ``atxmega128d4``, ``atxmega192a3``, ``atxmega192a3u``, ``atxmega192c3``, ``atxmega192d3``, ``atxmega256a3``, ``atxmega256a3b``, ``atxmega256a3bu``, ``atxmega256a3u``, ``atxmega256c3``, ``atxmega256d3``, ``atxmega384c3``, ``atxmega384d3``.
+
+  avrxmega7
+    'XMEGA' devices with more than 128 KiB of program memory and more than 64 KiB of RAM.
+
+    ``mcu`` = ``atxmega128a1``, ``atxmega128a1u``, ``atxmega128a4u``.
+
+  avrtiny
+    'TINY' Tiny core devices with 512 B up to 4 KiB of program memory.
+
+    ``mcu`` = ``attiny10``, ``attiny20``, ``attiny4``, ``attiny40``, ``attiny5``, ``attiny9``.
+
+  avr1
+    This ISA is implemented by the minimal AVR core and supported for assembler only.
+
+    ``mcu`` = ``attiny11``, ``attiny12``, ``attiny15``, ``attiny28``, ``at90s1200``.
 
 .. option:: -maccumulate-args
 
@@ -1480,9 +1554,7 @@ These options are defined for AVR implementations:
   Warn about conversions between address spaces in the case where the
   resulting address space is not contained in the incoming address space.
 
-``EIND`` and Devices with More Than 128 Ki Bytes of Flash
-``EIND``
-Pointers in the implementation are 16 bits wide.
+``EIND`` and Devices with More Than 128 Ki Bytes of Flash``EIND``Pointers in the implementation are 16 bits wide.
 The address of a function or label is represented as word address so
 that indirect jumps and calls can target any code address in the
 range of 64 Ki words.
@@ -1497,38 +1569,38 @@ the compiler and are subject to some limitations:
 
 * The compiler never sets ``EIND``.
 
-  * The compiler uses ``EIND`` implicitely in ``EICALL``/``EIJMP``
+* The compiler uses ``EIND`` implicitely in ``EICALL``/``EIJMP``
   instructions or might read ``EIND`` directly in order to emulate an
   indirect call/jump by means of a ``RET`` instruction.
 
-  * The compiler assumes that ``EIND`` never changes during the startup
+* The compiler assumes that ``EIND`` never changes during the startup
   code or during the application. In particular, ``EIND`` is not
   saved/restored in function or interrupt service routine
   prologue/epilogue.
 
-  * For indirect calls to functions and computed goto, the linker
+* For indirect calls to functions and computed goto, the linker
   generates stubs. Stubs are jump pads sometimes also called
   trampolines. Thus, the indirect call/jump jumps to such a stub.
   The stub contains a direct jump to the desired address.
 
-  * Linker relaxation must be turned on so that the linker generates
+* Linker relaxation must be turned on so that the linker generates
   the stubs correctly in all situations. See the compiler option
   :option:`-mrelax` and the linker option :option:`--relax`.
   There are corner cases where the linker is supposed to generate stubs
   but aborts without relaxation and without a helpful error message.
 
-  * The default linker script is arranged for code with ``EIND = 0``.
+* The default linker script is arranged for code with ``EIND = 0``.
   If code is supposed to work for a setup with ``EIND != 0``, a custom
   linker script has to be used in order to place the sections whose
   name start with ``.trampolines`` into the segment where ``EIND``
   points to.
 
-  * The startup code from libgcc never sets ``EIND``.
+* The startup code from libgcc never sets ``EIND``.
   Notice that startup code is a blend of code from libgcc and AVR-LibC.
   For the impact of AVR-LibC on ``EIND``, see the
   http://nongnu.org/avr-libc/user-manual/AVR-LibC user manual.
 
-  * It is legitimate for user-specific startup code to set up ``EIND``
+* It is legitimate for user-specific startup code to set up ``EIND``
   early, for example by means of initialization code located in
   section ``.init3``. Such code runs prior to general startup code
   that initializes RAM and calls constructors, but after the bit
@@ -1549,7 +1621,7 @@ the compiler and are subject to some limitations:
 
   The ``__trampolines_start`` symbol is defined in the linker script.
 
-  * Stubs are generated automatically by the linker if
+* Stubs are generated automatically by the linker if
   the following two conditions are met:
 
   * The address of a label is taken by means of the ``gs`` modifier
@@ -1560,22 +1632,27 @@ the compiler and are subject to some limitations:
       LDI r24, lo8(gs(``func``))
       LDI r25, hi8(gs(``func``))
 
-    * The final location of that label is in a code segment
+  * The final location of that label is in a code segment
     outside the segment where the stubs are located.
 
-  * The compiler emits such ``gs`` modifiers for code labels in the
+* The compiler emits such ``gs`` modifiers for code labels in the
   following situations:
 
   * Taking address of a function or code label.
-    * Computed goto.
-    * If prologue-save function is used, see :option:`-mcall-prologues`
-    command-line option.
-    * Switch/case dispatch tables. If you do not want such dispatch
-    tables you can specify the :option:`-fno-jump-tables` command-line option.
-    * C and C++ constructors/destructors called during startup/shutdown.
-    * If the tools hit a ``gs()`` modifier explained above.
 
-  * Jumping to non-symbolic addresses like so is not supported:
+  * Computed goto.
+
+  * If prologue-save function is used, see :option:`-mcall-prologues`
+    command-line option.
+
+  * Switch/case dispatch tables. If you do not want such dispatch
+    tables you can specify the :option:`-fno-jump-tables` command-line option.
+
+  * C and C++ constructors/destructors called during startup/shutdown.
+
+  * If the tools hit a ``gs()`` modifier explained above.
+
+* Jumping to non-symbolic addresses like so is not supported:
 
   .. code-block:: c++
 
@@ -1601,12 +1678,7 @@ the compiler and are subject to some limitations:
   and the application be linked with :option:`-Wl,--defsym,func_4=0x4`.
   Alternatively, ``func_4`` can be defined in the linker script.
 
-Handling of the ``RAMPD``, ``RAMPX``, ``RAMPY`` and ``RAMPZ`` Special Function Registers
-``RAMPD``
-``RAMPX``
-``RAMPY``
-``RAMPZ``
-Some AVR devices support memories larger than the 64 KiB range
+Handling of the ``RAMPD``, ``RAMPX``, ``RAMPY`` and ``RAMPZ`` Special Function Registers``RAMPD````RAMPX````RAMPY````RAMPZ``Some AVR devices support memories larger than the 64 KiB range
 that can be accessed with 16-bit pointers.  To access memory locations
 outside this 64 KiB range, the contentent of a ``RAMP``
 register is used as high part of the address:
@@ -1618,19 +1690,19 @@ register, respectively, to get a wide address. Similarly,
 * The startup code initializes the ``RAMP`` special function
   registers with zero.
 
-  * If a AVR Named Address Spacesnamed address space other than
+* If a AVR Named Address Spacesnamed address space other than
   generic or ``__flash`` is used, then ``RAMPZ`` is set
   as needed before the operation.
 
-  * If the device supports RAM larger than 64 KiB and the compiler
+* If the device supports RAM larger than 64 KiB and the compiler
   needs to change ``RAMPZ`` to accomplish an operation, ``RAMPZ``
   is reset to zero after the operation.
 
-  * If the device comes with a specific ``RAMP`` register, the ISR
+* If the device comes with a specific ``RAMP`` register, the ISR
   prologue/epilogue saves/restores that SFR and initializes it with
   zero in case the ISR code might (implicitly) use it.
 
-  * RAM larger than 64 KiB is not supported by GCC for AVR targets.
+* RAM larger than 64 KiB is not supported by GCC for AVR targets.
   If you use inline assembler to read from locations outside the
   16-bit address range and change one of the ``RAMP`` registers,
   you must reset it to zero after the access.
@@ -1710,7 +1782,7 @@ __AVR_HAVE_LPMX__
   ``LPM R``n``,Z+`` instructions.
 
 __AVR_HAVE_MUL__
-  The device has a hardware multiplier. 
+  The device has a hardware multiplier.
 
 __AVR_HAVE_JMP_CALL__
   The device has the ``JMP`` and ``CALL`` instructions.
@@ -1768,7 +1840,7 @@ __WITH_AVRLIBC__
   The compiler is configured to be used together with AVR-Libc.
   See the :option:`--with-avrlibc` configure option.
 
-:: _blackfin-options:
+  :: _blackfin-options:
 
 Blackfin Options
 ^^^^^^^^^^^^^^^^
@@ -2033,7 +2105,7 @@ These options are defined specifically for the CRIS ports.
 
   Generate code for the specified architecture.  The choices for
   ``architecture-type`` are v3, v8 and v10 for
-  respectively ETRAX 4, ETRAX 100, and ETRAX 100 LX.
+  respectively ETRAX4, ETRAX100, and ETRAX100LX.
   Default is v0 except for cris-axis-linux-gnu, where the default is
   v10.
 
@@ -2451,7 +2523,7 @@ These -m options are defined for the DEC Alpha implementations:
     Instruction precision.  The trap handler can determine the exact
     instruction that caused a floating-point exception.
 
-  Other Alpha compilers provide the equivalent options called
+    Other Alpha compilers provide the equivalent options called
   :option:`-scope_safe` and :option:`-resumption_safe`.
 
 .. option:: -mieee-conformant
@@ -2557,7 +2629,7 @@ These -m options are defined for the DEC Alpha implementations:
   ev6721264a
     Schedules as an EV6 and supports the BWX, CIX, FIX, and MAX extensions.
 
-  Native toolchains also support the value native,
+    Native toolchains also support the value native,
   which selects the best architecture option for the host processor.
   :option:`-mcpu=native` has no effect if GCC does not recognize
   the processor.
@@ -3221,15 +3293,17 @@ These are the -m options defined for the Intel IA-64 architecture.
 
   Generate (or don't) code for the GNU assembler.  This is the default.
 
-  .. Also, this is the default if the configure option @option{-with-gnu-as} 
-     is used. 
+  .. Also, this is the default if the configure option @option{-with-gnu-as}
+
+  .. is used.
 
 .. option:: -mgnu-ld, -mno-gnu-ld
 
   Generate (or don't) code for the GNU linker.  This is the default.
 
-  .. Also, this is the default if the configure option @option{-with-gnu-ld} 
-     is used. 
+  .. Also, this is the default if the configure option @option{-with-gnu-ld}
+
+  .. is used.
 
 .. option:: -mno-pic
 
@@ -3605,20 +3679,17 @@ These :option:`-m` options are defined for Renesas M32R/D architectures:
 
 .. option:: -missue-rate=number
 
-  missue-rate=``number``
-  Issue ``number`` instructions per cycle.  ``number`` can only be 1
+  missue-rate=``number``Issue ``number`` instructions per cycle.  ``number`` can only be 1
   or 2.
 
 .. option:: -mbranch-cost=number
 
-  mbranch-cost=``number``
-  ``number`` can only be 1 or 2.  If it is 1 then branches are
+  mbranch-cost=``number````number`` can only be 1 or 2.  If it is 1 then branches are
   preferred over conditional code, if it is 2, then the opposite applies.
 
 .. option:: -mflush-trap=number
 
-  mflush-trap=``number``
-  Specifies the trap number to use to flush the cache.  The default is
+  mflush-trap=``number``Specifies the trap number to use to flush the cache.  The default is
   12.  Valid numbers are between 0 and 15 inclusive.
 
 .. option:: -mno-flush-trap
@@ -3627,8 +3698,7 @@ These :option:`-m` options are defined for Renesas M32R/D architectures:
 
 .. option:: -mflush-func=name
 
-  mflush-func=``name``
-  Specifies the name of the operating system function to call to flush
+  mflush-func=``name``Specifies the name of the operating system function to call to flush
   the cache.  The default is _flush_cache, but a function call
   is only used if a trap is not available.
 
@@ -3674,30 +3744,101 @@ are given below.
   and cpu32.  The ColdFire ``cpu``s are given by the table
   below, which also classifies the CPUs into families:
 
-  Family -mcpu arguments
-  51 51 51ac 51ag 51cn 51em 51je 51jf 51jg 51jm 51mm 51qe 51qm
-  5206 5202 5204 5206
-  5206e 5206e
-  5208 5207 5208
-  5211a 5210a 5211a
-  5213 5211 5212 5213
-  5216 5214 5216
-  52235 52230 52231 52232 52233 52234 52235
-  5225 5224 5225
-  52259 52252 52254 52255 52256 52258 52259
-  5235 5232 5233 5234 5235 523x
-  5249 5249
-  5250 5250
-  5271 5270 5271
-  5272 5272
-  5275 5274 5275
-  5282 5280 5281 5282 528x
-  53017 53011 53012 53013 53014 53015 53016 53017
-  5307 5307
-  5329 5327 5328 5329 532x
-  5373 5372 5373 537x
-  5407 5407
-  5475 5470 5471 5472 5473 5474 5475 547x 5480 5481 5482 5483 5484 5485
+  Family 
+
+  -mcpu arguments
+
+  51 
+
+  51 51ac 51ag 51cn 51em 51je 51jf 51jg 51jm 51mm 51qe 51qm
+
+  5206 
+
+  5202 5204 5206
+
+  5206e 
+
+  5206e
+
+  5208 
+
+  5207 5208
+
+  5211a 
+
+  5210a 5211a
+
+  5213 
+
+  5211 5212 5213
+
+  5216 
+
+  5214 5216
+
+  52235 
+
+  52230 52231 52232 52233 52234 52235
+
+  5225 
+
+  5224 5225
+
+  52259 
+
+  52252 52254 52255 52256 52258 52259
+
+  5235 
+
+  5232 5233 5234 5235 523x
+
+  5249 
+
+  5249
+
+  5250 
+
+  5250
+
+  5271 
+
+  5270 5271
+
+  5272 
+
+  5272
+
+  5275 
+
+  5274 5275
+
+  5282 
+
+  5280 5281 5282 528x
+
+  53017 
+
+  53011 53012 53013 53014 53015 53016 53017
+
+  5307 
+
+  5307
+
+  5329 
+
+  5327 5328 5329 532x
+
+  5373 
+
+  5372 5373 537x
+
+  5407 
+
+  5407
+
+  5475 
+
+  5470 5471 5472 5473 5474 5475 547x 5480 5481 5482 5483 5484 5485
 
   :option:`-mcpu=``cpu``` overrides :option:`-march=``arch``` if
   ``arch`` is compatible with ``cpu``.  Other combinations of
@@ -4328,10 +4469,10 @@ MicroBlaze Options
     MicroBlaze vectors. This option may be useful for applications running
     within a monitoring application. This model uses crt3.o as a startup file.
 
-  Option :option:`-xl-mode-``app-model``` is a deprecated alias for
+    Option :option:`-xl-mode-``app-model``` is a deprecated alias for
   :option:`-mxl-mode-``app-model```.
 
-:: _mips-options:
+  :: _mips-options:
 
 MIPS Options
 ^^^^^^^^^^^^
@@ -4501,8 +4642,7 @@ MIPS Options
   for regression testing of mixed MIPS16/non-MIPS16 code generation, and is
   not intended for ordinary use in compiling user code.
 
-  -minterlink-compressed
-
+-minterlink-compressed
 .. option:: -mno-interlink-compressed, -minterlink-compressed
 
   Require (do not require) that code using the standard (uncompressed) MIPS ISA
@@ -4993,8 +5133,7 @@ MIPS Options
   Tell the MIPS assembler to not run its preprocessor over user
   assembler files (with a .s suffix) when assembling them.
 
-  -mfix-24k
-
+-mfix-24k
 .. option:: -mno-fix-24k, -mfix-24k
 
   Work around the 24K E48 (lost data on stores during refill) errata.
@@ -5006,9 +5145,11 @@ MIPS Options
 
   * A double-word or a variable shift may give an incorrect result if executed
     immediately after starting an integer division.
-    * A double-word or a variable shift may give an incorrect result if executed
+
+  * A double-word or a variable shift may give an incorrect result if executed
     while an integer multiplication is in progress.
-    * An integer division may give an incorrect result if started in a delay slot
+
+  * An integer division may give an incorrect result if started in a delay slot
     of a taken branch or a jump.
 
 .. option:: -mfix-r4400, -mno-fix-r4400
@@ -5040,7 +5181,8 @@ MIPS Options
   Work around certain VR4120 errata:
 
   * ``dmultu`` does not always produce the correct result.
-    * ``div`` and ``ddiv`` do not always produce the correct result if one
+
+  * ``div`` and ``ddiv`` do not always produce the correct result if one
     of the operands is negative.
 
   The workarounds for the division errata rely on special functions in
@@ -5092,9 +5234,9 @@ MIPS Options
 
   * the memory occupied by the current function's stack frame;
 
-    * the memory occupied by an incoming stack argument;
+  * the memory occupied by an incoming stack argument;
 
-    * the memory occupied by an object with a link-time-constant address.
+  * the memory occupied by an object with a link-time-constant address.
 
   It is the kernel's responsibility to ensure that speculative
   accesses to these regions are indeed safe.
@@ -5211,7 +5353,8 @@ MIPS Options
   doing both of the following:
 
   * Returning the new address in register ``$31``.
-    * Storing the new address in ``*``ra-address````,
+
+  * Storing the new address in ``*``ra-address````,
     if ``ra-address`` is nonnull.
 
   The default is :option:`-mno-mcount-ra-address`.
@@ -5612,8 +5755,7 @@ These are the options defined for the Altera Nios II processor.
   into the small data or BSS sections instead of the normal data or BSS
   sections.  The default value of ``num`` is 8.
 
-  -mgpopt=``option``
-
+-mgpopt=``option``
 .. option:: -mgpopt, -mno-gpopt
 
   Generate (do not generate) GP-relative accesses.  The following 
@@ -5648,7 +5790,7 @@ These are the options defined for the Altera Nios II processor.
     linker script to allocate them within the addressible range of the
     global pointer.
 
-  :option:`-mgpopt` is equivalent to :option:`-mgpopt=local`, and
+    :option:`-mgpopt` is equivalent to :option:`-mgpopt=local`, and
   :option:`-mno-gpopt` is equivalent to :option:`-mgpopt=none`.
 
   The default is :option:`-mgpopt` except when :option:`-fpic` or
@@ -5691,9 +5833,7 @@ These are the options defined for the Altera Nios II processor.
 
 .. option:: -mcustom-insn=N
 
-  mcustom-``insn``
-  mno-custom-``insn``
-  Each :option:`-mcustom-``insn``=``N``` option enables use of a
+  mcustom-``insn``mno-custom-``insn``Each :option:`-mcustom-``insn``=``N``` option enables use of a
   custom instruction with encoding ``N`` when generating code that uses 
   ``insn``.  For example, :option:`-mcustom-fadds=253` generates custom
   instruction 253 for single-precision floating-point add operations instead
@@ -5729,7 +5869,7 @@ These are the options defined for the Altera Nios II processor.
     Floating-point trigonometric and exponential functions.  These instructions
     are only generated if :option:`-funsafe-math-optimizations` is also specified.
 
-  Double-precision floating point:
+    Double-precision floating point:
 
   faddd, fsubd, fdivd, fmuld
     Binary arithmetic operations.
@@ -5754,7 +5894,7 @@ These are the options defined for the Altera Nios II processor.
     Double-precision trigonometric and exponential functions.  These instructions
     are only generated if :option:`-funsafe-math-optimizations` is also specified.
 
-  Conversions:
+    Conversions:
 
   fextsd
     Conversion from single precision to double precision.
@@ -5775,7 +5915,7 @@ These are the options defined for the Altera Nios II processor.
   floatis, floatus, floatid, floatud
     Conversion from signed or unsigned integer types to floating-point types.
 
-  In addition, all of the following transfer instructions for internal
+    In addition, all of the following transfer instructions for internal
   registers X and Y must be provided to use any of the double-precision
   floating-point instructions.  Custom instructions taking two
   double-precision source operands expect the first operand in the
@@ -5803,7 +5943,7 @@ These are the options defined for the Altera Nios II processor.
   frdy
     Read the value of Y and store it into ``dest``.
 
-  Note that you can gain more local control over generation of Nios II custom
+    Note that you can gain more local control over generation of Nios II custom
   instructions by using the ``target("custom-``insn``=``N``")``
   and ``target("no-custom-``insn``")`` function attributes
   (Function Attributes)
@@ -5821,7 +5961,6 @@ These are the options defined for the Altera Nios II processor.
   :option:`-mcustom-fadds=253` 
   :option:`-mcustom-fsubs=254` 
   :option:`-fsingle-precision-constant`
-
   :option:`-mcustom-fpu-cfg=60-2` is equivalent to:
 
   :option:`-mcustom-fmuls=252` 
@@ -5829,7 +5968,6 @@ These are the options defined for the Altera Nios II processor.
   :option:`-mcustom-fsubs=254` 
   :option:`-mcustom-fdivs=255` 
   :option:`-fsingle-precision-constant`
-
   :option:`-mcustom-fpu-cfg=72-3` is equivalent to:
 
   :option:`-mcustom-floatus=243` 
@@ -5844,7 +5982,6 @@ These are the options defined for the Altera Nios II processor.
   :option:`-mcustom-fsubs=254` 
   :option:`-mcustom-fdivs=255` 
   :option:`-fsingle-precision-constant`
-
   Custom instruction assignments given by individual
   :option:`-mcustom-``insn``=` options override those given by
   :option:`-mcustom-fpu-cfg=`, regardless of the
@@ -6039,7 +6176,7 @@ These -m options are defined for picoChip implementations:
   an AE type that has the necessary hardware support.  This option disables
   these warnings.
 
-:: _powerpc-options:
+  :: _powerpc-options:
 
 PowerPC Options
 ^^^^^^^^^^^^^^^
@@ -6212,7 +6349,6 @@ These -m options are defined for the IBM RS/6000 and PowerPC:
   :option:`-msimple-fpu` :option:`-mstring`  :option:`-mmulhw`  :option:`-mdlmzb`  :option:`-mmfpgpr` :option:`-mvsx` 
   :option:`-mcrypto` :option:`-mdirect-move` :option:`-mpower8-fusion` :option:`-mpower8-vector` 
   :option:`-mquad-memory` :option:`-mquad-memory-atomic`
-
   The particular options set for any particular CPU varies between
   compiler versions, depending on what setting seems to produce optimal
   code for that CPU; it doesn't necessarily reflect the actual hardware's
@@ -7038,7 +7174,7 @@ These -m options are defined for the IBM RS/6000 and PowerPC:
   rsqrtd 
     Enable the double-precision reciprocal square root approximation instructions.
 
-  So, for example, :option:`-mrecip=all,!rsqrtd` enables
+    So, for example, :option:`-mrecip=all,!rsqrtd` enables
   all of the reciprocal estimate instructions, except for the
   ``FRSQRTE``, ``XSRSQRTEDP``, and ``XVRSQRTEDP`` instructions
   which handle the double-precision reciprocal square root calculations.
@@ -7803,8 +7939,7 @@ These -m options are defined for the SH implementations:
 
 .. option:: -matomic-model=model
 
-  matomic-model=``model``
-  Sets the model of atomic operations and additional parameters as a comma
+  matomic-model=``model``Sets the model of atomic operations and additional parameters as a comma
   separated list.  For details on the atomic built-in functions see
   __atomic Builtins.  The following models and parameters are supported:
 
@@ -7884,13 +8019,11 @@ These -m options are defined for the SH implementations:
 
 .. option:: -multcost=number
 
-  multcost=``number``
-  Set the cost to assume for a multiply insn.
+  multcost=``number``Set the cost to assume for a multiply insn.
 
 .. option:: -mdiv=strategy
 
-  mdiv=``strategy``
-  Set the division strategy to be used for integer division operations.
+  mdiv=``strategy``Set the division strategy to be used for integer division operations.
   For SHmedia ``strategy`` can be one of: 
 
   fp 
@@ -7942,7 +8075,7 @@ These -m options are defined for the SH implementations:
     slows down the case of larger dividends.  inv20u assumes the case of a such
     a small dividend to be unlikely, and inv20l assumes it to be likely.
 
-  For targets other than SHmedia ``strategy`` can be one of:
+    For targets other than SHmedia ``strategy`` can be one of:
 
   call-div1
     Calls a library function that uses the single-step division instruction
@@ -7963,7 +8096,7 @@ These -m options are defined for the SH implementations:
     for SH4.  Specifying this for targets that do not have dynamic shift
     instructions defaults to ``call-div1``.
 
-  When a division strategy has not been specified the default strategy is
+    When a division strategy has not been specified the default strategy is
   selected based on the current target.  For SH2A the default strategy is to
   use the ``divs`` and ``divu`` instructions instead of library function
   calls.
@@ -7976,8 +8109,7 @@ These -m options are defined for the SH implementations:
 
 .. option:: -mdivsi3_libfunc=name
 
-  mdivsi3_libfunc=``name``
-  Set the name of the library function used for 32-bit signed division to
+  mdivsi3_libfunc=``name``Set the name of the library function used for 32-bit signed division to
   ``name``.
   This only affects the name used in the call and inv:call
   division strategies, and the compiler still expects the same
@@ -8003,8 +8135,7 @@ These -m options are defined for the SH implementations:
 
 .. option:: -mgettrcost=number
 
-  mgettrcost=``number``
-  Set the cost assumed for the ``gettr`` instruction to ``number``.
+  mgettrcost=``number``Set the cost assumed for the ``gettr`` instruction to ``number``.
   The default is 2 if :option:`-mpt-fixed` is in effect, 100 otherwise.
 
 .. option:: -mpt-fixed
@@ -8045,8 +8176,7 @@ These -m options are defined for the SH implementations:
 
 .. option:: -mbranch-cost=num
 
-  mbranch-cost=``num``
-  Assume ``num`` to be the cost for a branch instruction.  Higher numbers
+  mbranch-cost=``num``Assume ``num`` to be the cost for a branch instruction.  Higher numbers
   make the compiler try to generate more branch-free code if possible.  
   If not specified the value is selected depending on the processor type that
   is being compiled for.
@@ -8276,7 +8406,7 @@ These -m options are supported on the SPARC:
   v9
     ultrasparc, ultrasparc3, niagara, niagara2, niagara3, niagara4
 
-  By default (unless configured otherwise), GCC generates code for the V7
+    By default (unless configured otherwise), GCC generates code for the V7
   variant of the SPARC architecture.  With :option:`-mcpu=cypress`, the compiler
   additionally optimizes it for the Cypress CY7C602 chip, as used in the
   SPARCStation/SPARCServer 3xx series.  This is also appropriate for the older
@@ -8448,7 +8578,7 @@ on SPARC-V9 processors in 64-bit environments:
   sc
     Sequential Consistency
 
-  These memory models are formally defined in Appendix D of the Sparc V9
+    These memory models are formally defined in Appendix D of the Sparc V9
   architecture manual, as set in the processor's ``PSTATE.MM`` field.
 
 .. option:: -mstack-bias, -mno-stack-bias
@@ -8608,8 +8738,9 @@ compatibility with other compilers on those systems:
   Look in the directory ``dir`` to find the M4 preprocessor.
   The assembler uses this option.
 
-  .. This is supposed to go with a -Yd for predefined M4 macro files, but 
-     the generic assembler that comes with Solaris takes just -Ym. 
+  .. This is supposed to go with a -Yd for predefined M4 macro files, but
+
+  .. the generic assembler that comes with Solaris takes just -Ym.
 
 :: _tile-gx-options:
 
@@ -8809,14 +8940,14 @@ These -m options are defined for V850 implementations:
   * Integer sized structures and unions are returned via a memory pointer
     rather than a register.
 
-    * Large structures and unions (more than 8 bytes in size) are passed by
+  * Large structures and unions (more than 8 bytes in size) are passed by
     value.
 
-    * Functions are aligned to 16-bit boundaries.
+  * Functions are aligned to 16-bit boundaries.
 
-    * The :option:`-m8byte-align` command-line option is supported.
+  * The :option:`-m8byte-align` command-line option is supported.
 
-    * The :option:`-mdisable-callt` command-line option is enabled by
+  * The :option:`-mdisable-callt` command-line option is enabled by
     default.  The :option:`-mno-disable-callt` command-line option is not
     supported.
 
@@ -8830,15 +8961,15 @@ These -m options are defined for V850 implementations:
 
   * Integer sized structures and unions are returned in register ``r10``.
 
-    * Large structures and unions (more than 8 bytes in size) are passed by
+  * Large structures and unions (more than 8 bytes in size) are passed by
     reference.
 
-    * Functions are aligned to 32-bit boundaries, unless optimizing for
+  * Functions are aligned to 32-bit boundaries, unless optimizing for
     size.
 
-    * The :option:`-m8byte-align` command-line option is not supported.
+  * The :option:`-m8byte-align` command-line option is not supported.
 
-    * The :option:`-mdisable-callt` command-line option is supported but not
+  * The :option:`-mdisable-callt` command-line option is supported but not
     enabled by default.
 
   When this version of the ABI is enabled the C preprocessor symbol
@@ -8935,7 +9066,7 @@ Visium Options
   mcm is a synonym of gr5 present for backward compatibility.
 
   By default (unless configured otherwise), GCC generates code for the GR5
-  variant of the Visium architecture.  
+  variant of the Visium architecture.
 
   With :option:`-mcpu=gr6`, GCC generates code for the GR6 variant of the Visium
   architecture.  The only difference from GR5 code is that the compiler will
@@ -8972,8 +9103,7 @@ These -m options are defined for the VMS implementations:
 
 .. option:: -mdebug-main=prefix
 
-  mdebug-main=``prefix``
-  Flag the first routine whose name starts with ``prefix`` as the main
+  mdebug-main=``prefix``Flag the first routine whose name starts with ``prefix`` as the main
   routine for the debugger.
 
 .. option:: -mmalloc64
@@ -8982,8 +9112,7 @@ These -m options are defined for the VMS implementations:
 
 .. option:: -mpointer-size=size
 
-  mpointer-size=``size``
-  Set the default size of pointers. Possible options for ``size`` are
+  mpointer-size=``size``Set the default size of pointers. Possible options for ``size`` are
   32 or short for 32 bit pointers, 64 or long
   for 64 bit pointers, and no for supporting only 32 bit pointers.
   The later option disables ``pragma pointer_size``.
@@ -9325,8 +9454,7 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -masm=dialect
 
-  masm=``dialect``
-  Output assembly instructions using selected ``dialect``.  Also affects
+  masm=``dialect``Output assembly instructions using selected ``dialect``.  Also affects
   which dialect is used for basic ``asm`` (Basic Asm) and
   extended ``asm`` (Extended Asm). Supported choices (in dialect
   order) are att or intel. The default is att. Darwin does
@@ -9615,8 +9743,7 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -mtune-ctrl=feature-list
 
-  mtune-ctrl=``feature-list``
-  This option is used to do fine grain control of x86 code generation features.
+  mtune-ctrl=``feature-list``This option is used to do fine grain control of x86 code generation features.
   ``feature-list`` is a comma separated list of ``feature`` names. See also
   :option:`-mdump-tune-features`. When specified, the ``feature`` is turned
   on if it is not preceded with ^, otherwise, it is turned off. 
@@ -9738,7 +9865,7 @@ These -m options are defined for the x86 family of computers.
   vec-sqrt
     Enable the approximation for vectorized square root.
 
-  So, for example, :option:`-mrecip=all,!sqrt` enables
+    So, for example, :option:`-mrecip=all,!sqrt` enables
   all of the reciprocal approximations, except for square root.
 
 .. option:: -mveclibabi=type
@@ -9830,8 +9957,7 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -mstringop-strategy=alg
 
-  mstringop-strategy=``alg``
-  Override the internal decision heuristic for the particular algorithm to use
+  mstringop-strategy=``alg``Override the internal decision heuristic for the particular algorithm to use
   for inlining string operations.  The allowed values for ``alg`` are:
 
   rep_byterep_4byterep_8byte
@@ -9845,8 +9971,7 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -mmemcpy-strategy=strategy
 
-  mmemcpy-strategy=``strategy``
-  Override the internal decision heuristic to decide if ``__builtin_memcpy``
+  mmemcpy-strategy=``strategy``Override the internal decision heuristic to decide if ``__builtin_memcpy``
   should be inlined and what inline algorithm to use when the expected size
   of the copy operation is known. ``strategy`` 
   is a comma-separated list of ``alg``:``max_size``:``dest_align`` triplets. 
@@ -9859,8 +9984,7 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -mmemset-strategy=strategy
 
-  mmemset-strategy=``strategy``
-  The option is similar to :option:`-mmemcpy-strategy=` except that it is to control
+  mmemset-strategy=``strategy``The option is similar to :option:`-mmemcpy-strategy=` except that it is to control
   ``__builtin_memset`` expansion.
 
 .. option:: -momit-leaf-frame-pointer
@@ -9932,8 +10056,7 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -mstack-protector-guard=guard
 
-  mstack-protector-guard=``guard``
-  Generate stack protection code using canary at ``guard``.  Supported
+  mstack-protector-guard=``guard``Generate stack protection code using canary at ``guard``.  Supported
   locations are global for global canary or tls for per-thread
   canary in the TLS block (the default).  This option has effect only when
   :option:`-fstack-protector` or :option:`-fstack-protector-all` is specified.

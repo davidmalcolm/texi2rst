@@ -1,3 +1,4 @@
+
 Compound Literals
 *****************
 
@@ -11,7 +12,7 @@ Compound Literals
 
 .. index:: compound literals
 
-.. The GNU C name for what C99 calls compound literals was "constructor expressions". 
+.. The GNU C name for what C99 calls compound literals was "constructor expressions".
 
 ISO C99 supports compound literals.  A compound literal looks like
 a cast containing an initializer.  Its value is an object of the

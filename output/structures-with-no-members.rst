@@ -1,3 +1,4 @@
+
 Structures with No Members
 **************************
 

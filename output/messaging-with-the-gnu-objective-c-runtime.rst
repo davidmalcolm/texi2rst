@@ -1,3 +1,4 @@
+
 Messaging with the GNU Objective-C Runtime
 ******************************************
 
@@ -28,7 +29,7 @@ then it calls it.
    <dynamically-registering-methods>
    <forwarding-hook>
 
-.. ========================================================================= 
+.. =========================================================================
 
 :: _dynamically-registering-methods:
 
@@ -77,7 +78,7 @@ Support for ``+resolveInstanceMethod:`` and
 ``resolveClassMethod:`` was added to the GNU Objective-C runtime in
 GCC version 4.6.
 
-.. ========================================================================= 
+.. =========================================================================
 
 :: _forwarding-hook:
 
@@ -138,8 +139,9 @@ runtime currently attempts forwarding using an older, deprecated API,
 and if that fails, it aborts the program.  In future versions of the
 GNU Objective-C runtime, the runtime will immediately abort.
 
-.. Copyright (C) 2002-2015 Free Software Foundation, Inc. 
-   This is part of the GCC manual. 
+.. Copyright (C) 2002-2015 Free Software Foundation, Inc.
 
-.. For copying conditions, see the file gcc.texi. 
+.. This is part of the GCC manual.
+
+.. For copying conditions, see the file gcc.texi.
 

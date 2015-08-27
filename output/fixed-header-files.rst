@@ -1,3 +1,4 @@
+
 Fixed Header Files
 ******************
 
@@ -18,7 +19,7 @@ doesn't do the right thing automatically.
   installed in
   ``libexecdir``/gcc/``target``/``version``/install-tools/.
 
-  * On some systems, header file directories contain
+* On some systems, header file directories contain
   machine-specific symbolic links in certain places.  This makes it
   possible to share most of the header files among hosts running the
   same version of the system on different machine models.

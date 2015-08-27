@@ -1,4 +1,3 @@
-
 Option Summary
 **************
 
@@ -148,7 +147,6 @@ Warning Options
   :option:`-Wzero-as-null-pointer-constant`
 
 C and Objective-C-only Warning Options
-
   :option:`-Wbad-function-cast`  :option:`-Wmissing-declarations` 
   :option:`-Wmissing-parameter-type`  :option:`-Wmissing-prototypes`  :option:`-Wnested-externs` 
   :option:`-Wold-style-declaration`  :option:`-Wold-style-definition` 
@@ -367,10 +365,11 @@ Directory Options
 Machine Dependent Options
   Submodel OptionsHardware Models and Configurations.
 
-  .. This list is ordered alphanumerically by subsection name. 
-     Try and put the significant identifier (CPU or system) first, 
+  .. This list is ordered alphanumerically by subsection name.
 
-  .. so users have a clue at guessing where the ones they want will be. 
+  .. Try and put the significant identifier (CPU or system) first,
+
+  .. so users have a clue at guessing where the ones they want will be.
 
   AArch64 Options
 
@@ -383,7 +382,6 @@ Machine Dependent Options
   :option:`-mfix-cortex-a53-835769`  :option:`-mno-fix-cortex-a53-835769` 
   :option:`-mfix-cortex-a53-843419`  :option:`-mno-fix-cortex-a53-843419` 
   :option:`-march=```name``  :option:`-mcpu=```name``  :option:`-mtune=```name``
-
   Adapteva Epiphany Options
 
   :option:`-mhalf-reg-file` :option:`-mprefer-short-insn-regs` 
@@ -392,7 +390,6 @@ Machine Dependent Options
   :option:`-mround-nearest` :option:`-mlong-calls` :option:`-mshort-calls` :option:`-msmall16` 
   :option:`-mfp-mode=```mode`` :option:`-mvect-double` :option:`-max-vect-align=```num`` 
   :option:`-msplit-vecmove-early` :option:`-m1reg-```reg``
-
   ARC Options
 
   :option:`-mbarrel-shifter` 
@@ -410,7 +407,6 @@ Machine Dependent Options
   :option:`-mlra-priority-compact` mlra:option:`-priority-noncompact` :option:`-mno-millicode` 
   :option:`-mmixed-code` :option:`-mq-class` :option:`-mRcq` :option:`-mRcw` :option:`-msize-level=```level`` 
   :option:`-mtune=```cpu`` :option:`-mmultcost=```num`` :option:`-munalign-prob-threshold=```probability``
-
   ARM Options
 
   :option:`-mapcs-frame`  :option:`-mno-apcs-frame` 
@@ -443,13 +439,11 @@ Machine Dependent Options
   :option:`-mslow-flash-data` 
   :option:`-masm-syntax-unified` 
   :option:`-mrestrict-it`
-
   AVR Options
 
   :option:`-mmcu=```mcu`` :option:`-maccumulate-args` :option:`-mbranch-cost=```cost`` 
   :option:`-mcall-prologues` :option:`-mint8` :option:`-mn_flash=```size`` :option:`-mno-interrupts` 
   :option:`-mrelax` :option:`-mrmw` :option:`-mstrict-X` :option:`-mtiny-stack` :option:`-nodevicelib` :option:`-Waddr-space-convert`
-
   Blackfin Options
 
   :option:`-mcpu=```cpu``[-``sirevision``] 
@@ -461,12 +455,10 @@ Machine Dependent Options
   :option:`-msep-data`  :option:`-mno-sep-data`  :option:`-mlong-calls`  :option:`-mno-long-calls` 
   :option:`-mfast-fp` :option:`-minline-plt` :option:`-mmulticore`  :option:`-mcorea`  :option:`-mcoreb`  :option:`-msdram` 
   :option:`-micplb`
-
   C6X Options
 
   :option:`-mbig-endian`  :option:`-mlittle-endian` :option:`-march=```cpu`` 
   :option:`-msim` :option:`-msdata=```sdata:option:`-type```
-
   CRIS Options
 
   :option:`-mcpu=```cpu``  :option:`-march=```cpu``  :option:`-mtune=```cpu`` 
@@ -476,14 +468,12 @@ Machine Dependent Options
   :option:`-m32-bit`  :option:`-m16-bit`  :option:`-m8-bit`  :option:`-mno-prologue-epilogue`  :option:`-mno-gotplt` 
   :option:`-melf`  :option:`-maout`  :option:`-melinux`  :option:`-mlinux`  :option:`-sim`  :option:`-sim2` 
   :option:`-mmul-bug-workaround`  :option:`-mno-mul-bug-workaround`
-
   CR16 Options
 
   :option:`-mmac` 
   :option:`-mcr16cplus` :option:`-mcr16c` 
   :option:`-msim` :option:`-mint32` :option:`-mbit-ops`
   :option:`-mdata-model=```model``
-
   Darwin Options
 
   :option:`-all_load`  :option:`-allowable_client`  :option:`-arch`  :option:`-arch_errors_fatal` 
@@ -511,7 +501,6 @@ Machine Dependent Options
   :option:`-unexported_symbols_list`  :option:`-weak_reference_mismatches` 
   :option:`-whatsloaded` :option:`-F` :option:`-gused` :option:`-gfull` :option:`-mmacosx-version-min=```version`` 
   :option:`-mkernel` :option:`-mone-byte-bool`
-
   DEC Alpha Options
 
   :option:`-mno-fp-regs`  :option:`-msoft-float` 
@@ -524,11 +513,9 @@ Machine Dependent Options
   :option:`-mexplicit-relocs`  :option:`-msmall-data`  :option:`-mlarge-data` 
   :option:`-msmall-text`  :option:`-mlarge-text` 
   :option:`-mmemory-latency=```time``
-
   FR30 Options
 
   :option:`-msmall-model` :option:`-mno-lsim`
-
   FRV Options
 
   :option:`-mgpr-32`  :option:`-mgpr-64`  :option:`-mfpr-32`  :option:`-mfpr-64` 
@@ -547,16 +534,13 @@ Machine Dependent Options
   :option:`-mno-nested-cond-exec`  :option:`-mtomcat-stats` 
   :option:`-mTLS` :option:`-mtls` 
   :option:`-mcpu=```cpu``
-
   GNU/Linux Options
 
   :option:`-mglibc` :option:`-muclibc` :option:`-mmusl` :option:`-mbionic` :option:`-mandroid` 
   :option:`-tno-android-cc` :option:`-tno-android-ld`
-
   H8/300 Options
 
   :option:`-mrelax`  :option:`-mh`  :option:`-ms`  :option:`-mn`  :option:`-mexr` :option:`-mno-exr`  :option:`-mint32`  :option:`-malign-300`
-
   HPPA Options
 
   :option:`-march=```architecture:option:`-type``` 
@@ -572,7 +556,6 @@ Machine Dependent Options
   :option:`-mpa-risc-1-1`  :option:`-mpa-risc-2-0`  :option:`-mportable-runtime` 
   :option:`-mschedule=```cpu:option:`-type```  :option:`-mspace-regs`  :option:`-msio`  :option:`-mwsio` 
   :option:`-munix=```unix:option:`-std```  :option:`-nolibdld`  :option:`-static`  :option:`-threads`
-
   IA-64 Options
 
   :option:`-mbig-endian`  :option:`-mlittle-endian`  :option:`-mgnu-as`  :option:`-mgnu-ld`  :option:`-mno-pic` 
@@ -596,12 +579,10 @@ Machine Dependent Options
   :option:`-msched-stop-bits-after-every-cycle` :option:`-msched-count-spec-in-critical-path` 
   :option:`-msel-sched-dont-check-control-spec` :option:`-msched-fp-mem-deps-zero-cost` 
   :option:`-msched-max-memory-insns-hard-limit` :option:`-msched-max-memory-insns=```max:option:`-insns```
-
   LM32 Options
 
   :option:`-mbarrel-shift-enabled` :option:`-mdivide-enabled` :option:`-mmultiply-enabled` 
   :option:`-msign-extend-enabled` :option:`-muser-enabled`
-
   M32R/D Options
 
   :option:`-m32r2` :option:`-m32rx` :option:`-m32r` 
@@ -614,11 +595,9 @@ Machine Dependent Options
   :option:`-mno-flush-func` :option:`-mflush-func=```name`` 
   :option:`-mno-flush-trap` :option:`-mflush-trap=```number`` 
   :option:`-G` ``num``
-
   M32C Options
 
   :option:`-mcpu=```cpu`` :option:`-msim` :option:`-memregs=```number``
-
   M680x0 Options
 
   :option:`-march=```arch``  :option:`-mcpu=```cpu``  :option:`-mtune=```tune`` 
@@ -630,7 +609,6 @@ Machine Dependent Options
   :option:`-malign-int`  :option:`-mstrict-align`  :option:`-msep-data`  :option:`-mno-sep-data` 
   :option:`-mshared-library-id=n`  :option:`-mid-shared-library`  :option:`-mno-id-shared-library` 
   :option:`-mxgot` :option:`-mno-xgot`
-
   MCore Options
 
   :option:`-mhardlit`  :option:`-mno-hardlit`  :option:`-mdiv`  :option:`-mno-div`  :option:`-mrelax-immediates` 
@@ -638,7 +616,6 @@ Machine Dependent Options
   :option:`-m4byte-functions`  :option:`-mno-4byte-functions`  :option:`-mcallgraph-data` 
   :option:`-mno-callgraph-data`  :option:`-mslow-bytes`  :option:`-mno-slow-bytes`  :option:`-mno-lsim` 
   :option:`-mlittle-endian`  :option:`-mbig-endian`  :option:`-m210`  :option:`-m340`  :option:`-mstack-increment`
-
   MeP Options
 
   :option:`-mabsdiff` :option:`-mall-opts` :option:`-maverage` :option:`-mbased=```n`` :option:`-mbitops` 
@@ -646,7 +623,6 @@ Machine Dependent Options
   :option:`-mdc` :option:`-mdiv` :option:`-meb` :option:`-mel` :option:`-mio-volatile` :option:`-ml` :option:`-mleadz` :option:`-mm` :option:`-mminmax` 
   :option:`-mmult` :option:`-mno-opts` :option:`-mrepeat` :option:`-ms` :option:`-msatur` :option:`-msdram` :option:`-msim` :option:`-msimnovec` :option:`-mtf` 
   :option:`-mtiny=```n``
-
   MicroBlaze Options
 
   :option:`-msoft-float` :option:`-mhard-float` :option:`-msmall-divides` :option:`-mcpu=```cpu`` 
@@ -654,7 +630,6 @@ Machine Dependent Options
   :option:`-mxl-pattern-compare` :option:`-mxl-stack-check` :option:`-mxl-gp-opt` :option:`-mno-clearbss` 
   :option:`-mxl-multiply-high` :option:`-mxl-float-convert` :option:`-mxl-float-sqrt` 
   :option:`-mbig-endian` :option:`-mlittle-endian` :option:`-mxl-reorder` :option:`-mxl-mode-```app:option:`-model```
-
   MIPS Options
 
   :option:`-EL`  :option:`-EB`  :option:`-march=```arch``  :option:`-mtune=```arch`` 
@@ -701,14 +676,12 @@ Machine Dependent Options
   :option:`-mfp-exceptions` :option:`-mno-fp-exceptions` 
   :option:`-mvr4130-align` :option:`-mno-vr4130-align` :option:`-msynci` :option:`-mno-synci` 
   :option:`-mrelax-pic-calls` :option:`-mno-relax-pic-calls` :option:`-mmcount-ra-address`
-
   MMIX Options
 
   :option:`-mlibfuncs`  :option:`-mno-libfuncs`  :option:`-mepsilon`  :option:`-mno-epsilon`  :option:`-mabi=gnu` 
   :option:`-mabi=mmixware`  :option:`-mzero-extend`  :option:`-mknuthdiv`  :option:`-mtoplevel-symbols` 
   :option:`-melf`  :option:`-mbranch-predict`  :option:`-mno-branch-predict`  :option:`-mbase-addresses` 
   :option:`-mno-base-addresses`  :option:`-msingle-exit`  :option:`-mno-single-exit`
-
   MN10300 Options
 
   :option:`-mmult-bug`  :option:`-mno-mult-bug` 
@@ -716,17 +689,14 @@ Machine Dependent Options
   :option:`-mtune=```cpu:option:`-type``` 
   :option:`-mreturn-pointer-on-d0` 
   :option:`-mno-crt0`  :option:`-mrelax` :option:`-mliw` :option:`-msetlb`
-
   Moxie Options
 
   :option:`-meb` :option:`-mel` :option:`-mmul.x` :option:`-mno-crt0`
-
   MSP430 Options
 
   :option:`-msim` :option:`-masm-hex` :option:`-mmcu=` :option:`-mcpu=` :option:`-mlarge` :option:`-msmall` :option:`-mrelax` 
   :option:`-mcode-region=` :option:`-mdata-region=` 
   :option:`-mhwmult=` :option:`-minrt`
-
   NDS32 Options
 
   :option:`-mbig-endian` :option:`-mlittle-endian` 
@@ -740,7 +710,6 @@ Machine Dependent Options
   :option:`-march=```arch`` 
   :option:`-mcmodel=```code:option:`-model``` 
   :option:`-mctor-dtor` :option:`-mrelax`
-
   Nios II Options
 
   :option:`-G` ``num`` :option:`-mgpopt=```option`` :option:`-mgpopt` :option:`-mno-gpopt` 
@@ -752,11 +721,9 @@ Machine Dependent Options
   :option:`-mcustom-```insn``=``N`` :option:`-mno-custom-```insn`` 
   :option:`-mcustom-fpu-cfg=```name`` 
   :option:`-mhal` :option:`-msmallc` :option:`-msys-crt0=```name`` :option:`-msys-lib=```name``
-
   Nvidia PTX Options
 
   :option:`-m32` :option:`-m64` :option:`-mmainkernel`
-
   PDP-11 Options
 
   :option:`-mfpu`  :option:`-msoft-float`  :option:`-mac0`  :option:`-mno-ac0`  :option:`-m40`  :option:`-m45`  :option:`-m10` 
@@ -765,12 +732,10 @@ Machine Dependent Options
   :option:`-mfloat64`  :option:`-mno-float32`  :option:`-mabshi`  :option:`-mno-abshi` 
   :option:`-mbranch-expensive`  :option:`-mbranch-cheap` 
   :option:`-munix-asm`  :option:`-mdec-asm`
-
   picoChip Options
 
   :option:`-mae=```ae_type`` :option:`-mvliw-lookahead=```N`` 
   :option:`-msymbol-as-address` :option:`-mno-inefficient-warnings`
-
   PowerPC Options
   See RS/6000 and PowerPC Options.
 
@@ -779,7 +744,6 @@ Machine Dependent Options
   :option:`-msim` :option:`-mmul=none` :option:`-mmul=g13` :option:`-mmul=g14` :option:`-mallregs` 
   :option:`-mcpu=g10` :option:`-mcpu=g13` :option:`-mcpu=g14` :option:`-mg10` :option:`-mg13` :option:`-mg14` 
   :option:`-m64bit-doubles` :option:`-m32bit-doubles`
-
   RS/6000 and PowerPC Options
 
   :option:`-mcpu=```cpu:option:`-type``` 
@@ -836,7 +800,6 @@ Machine Dependent Options
   :option:`-mcompat-align-parm` :option:`-mno-compat-align-parm` 
   :option:`-mupper-regs-df` :option:`-mno-upper-regs-df` :option:`-mupper-regs-sf` :option:`-mno-upper-regs-sf` 
   :option:`-mupper-regs` :option:`-mno-upper-regs`
-
   RX Options
 
   :option:`-m64bit-doubles`  :option:`-m32bit-doubles`  :option:`-fpu`  :option:`-nofpu`
@@ -852,7 +815,6 @@ Machine Dependent Options
   :option:`-mallow-string-insns` :option:`-mno-allow-string-insns`
   :option:`-mno-warn-multiple-fast-interrupts`
   :option:`-msave-acc-in-interrupts`
-
   S/390 and zSeries Options
 
   :option:`-mtune=```cpu:option:`-type```  :option:`-march=```cpu:option:`-type``` 
@@ -864,7 +826,6 @@ Machine Dependent Options
   :option:`-mtpf-trace` :option:`-mno-tpf-trace`  :option:`-mfused-madd`  :option:`-mno-fused-madd` 
   :option:`-mwarn-framesize`  :option:`-mwarn-dynamicstack`  :option:`-mstack-size` :option:`-mstack-guard` 
   :option:`-mhotpatch=```halfwords``,``halfwords``
-
   Score Options
 
   :option:`-meb` :option:`-mel` 
@@ -872,7 +833,6 @@ Machine Dependent Options
   :option:`-muls` 
   :option:`-mmac` 
   :option:`-mscore5` :option:`-mscore5u` :option:`-mscore7` :option:`-mscore7d`
-
   SH Options
 
   :option:`-m1`  :option:`-m2`  :option:`-m2e` 
@@ -895,12 +855,10 @@ Machine Dependent Options
   :option:`-mcbranch-force-delay-slot` 
   :option:`-mfused-madd` :option:`-mno-fused-madd` :option:`-mfsca` :option:`-mno-fsca` :option:`-mfsrra` :option:`-mno-fsrra` 
   :option:`-mpretend-cmove` :option:`-mtas`
-
   Solaris 2 Options
 
   :option:`-mclear-hwcap` :option:`-mno-clear-hwcap` :option:`-mimpure-text`  :option:`-mno-impure-text` 
   :option:`-pthreads` :option:`-pthread`
-
   SPARC Options
 
   :option:`-mcpu=```cpu:option:`-type``` 
@@ -919,7 +877,6 @@ Machine Dependent Options
   :option:`-mcbcond` :option:`-mno-cbcond` 
   :option:`-mfmaf`  :option:`-mno-fmaf`  :option:`-mpopc`  :option:`-mno-popc` 
   :option:`-mfix-at697f` :option:`-mfix-ut699`
-
   SPU Options
 
   :option:`-mwarn-reloc` :option:`-merror-reloc` 
@@ -931,20 +888,16 @@ Machine Dependent Options
   :option:`-maddress-space-conversion` :option:`-mno-address-space-conversion` 
   :option:`-mcache-size=```cache:option:`-size``` 
   :option:`-matomic-updates` :option:`-mno-atomic-updates`
-
   System V Options
 
   :option:`-Qy`  :option:`-Qn`  :option:`-YP,```paths``  :option:`-Ym,```dir``
-
   TILE-Gx Options
 
   :option:`-mcpu=CPU` :option:`-m32` :option:`-m64` :option:`-mbig-endian` :option:`-mlittle-endian` 
   :option:`-mcmodel=```code:option:`-model```
-
   TILEPro Options
 
   :option:`-mcpu=```cpu`` :option:`-m32`
-
   V850 Options
 
   :option:`-mlong-calls`  :option:`-mno-long-calls`  :option:`-mep`  :option:`-mno-ep` 
@@ -962,26 +915,21 @@ Machine Dependent Options
   :option:`-mgcc-abi` 
   :option:`-mrh850-abi` 
   :option:`-mbig-switch`
-
   VAX Options
 
   :option:`-mg`  :option:`-mgnu`  :option:`-munix`
-
   Visium Options
 
   :option:`-mdebug` :option:`-msim` :option:`-mfpu` :option:`-mno-fpu` :option:`-mhard-float` :option:`-msoft-float` 
   :option:`-mcpu=```cpu:option:`-type``` :option:`-mtune=```cpu:option:`-type``` :option:`-msv-mode` :option:`-muser-mode`
-
   VMS Options
 
   :option:`-mvms-return-codes` :option:`-mdebug-main=```prefix`` :option:`-mmalloc64` 
   :option:`-mpointer-size=```size``
-
   VxWorks Options
 
   :option:`-mrtp`  :option:`-non-static`  :option:`-Bstatic`  :option:`-Bdynamic` 
   :option:`-Xbind-lazy`  :option:`-Xbind-now`
-
   x86 Options
 
   :option:`-mtune=```cpu:option:`-type```  :option:`-march=```cpu:option:`-type``` 
@@ -1015,17 +963,14 @@ Machine Dependent Options
   :option:`-msse2avx` :option:`-mfentry` :option:`-mrecord-mcount` :option:`-mnop-mcount` :option:`-m8bit-idiv` 
   :option:`-mavx256-split-unaligned-load` :option:`-mavx256-split-unaligned-store` 
   :option:`-malign-data=```type`` :option:`-mstack-protector-guard=```guard``
-
   x86 Windows Options
 
   :option:`-mconsole` :option:`-mcygwin` :option:`-mno-cygwin` :option:`-mdll` 
   :option:`-mnop-fun-dllimport` :option:`-mthread` 
   :option:`-municode` :option:`-mwin32` :option:`-mwindows` :option:`-fno-set-stack-executable`
-
   Xstormy16 Options
 
   :option:`-msim`
-
   Xtensa Options
 
   :option:`-mconst16` :option:`-mno-const16` 
@@ -1035,7 +980,6 @@ Machine Dependent Options
   :option:`-mtext-section-literals`  :option:`-mno-text-section-literals` 
   :option:`-mtarget-align`  :option:`-mno-target-align` 
   :option:`-mlongcalls`  :option:`-mno-longcalls`
-
   zSeries Options
   See S/390 and zSeries Options.
 
@@ -1064,4 +1008,3 @@ Code Generation Options
   :option:`-ftrapv`  :option:`-fwrapv`  :option:`-fbounds-check` 
   :option:`-fvisibility=`[default|internal|hidden|protected] 
   :option:`-fstrict-volatile-bitfields` :option:`-fsync-libcalls`
-

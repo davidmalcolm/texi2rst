@@ -1,3 +1,4 @@
+
 Other Built-in Functions Provided by GCC
 ****************************************
 
@@ -938,9 +939,7 @@ built-in functions appear both with and without the ``__builtin_`` prefix.
 
 .. index:: __builtin_types_compatible_p
 
-  Built-in Function int __builtin_types_compatible_p (``type1``, ``type2``)
-
-You can use the built-in function ``__builtin_types_compatible_p`` to
+Built-in Functionint__builtin_types_compatible_p(``type1``,``type2``)You can use the built-in function ``__builtin_types_compatible_p`` to
 determine whether two types are the same.
 
 This built-in function returns 1 if the unqualified versions of the
@@ -989,9 +988,7 @@ Note: This construct is only available for C.
 
 .. index:: __builtin_call_with_static_chain
 
-  Built-in Function ``type`` __builtin_call_with_static_chain (``call_exp``, ``pointer_exp``)
-
-The ``call_exp`` expression must be a function call, and the
+Built-in Function``type``__builtin_call_with_static_chain(``call_exp``,``pointer_exp``)The ``call_exp`` expression must be a function call, and the
 ``pointer_exp`` expression must be a pointer.  The ``pointer_exp``
 is passed to the function call in the target's static chain location.
 The result of builtin is the result of the function call.
@@ -1001,9 +998,7 @@ This builtin can be used to call Go closures from C.
 
 .. index:: __builtin_choose_expr
 
-  Built-in Function ``type`` __builtin_choose_expr (``const_exp``, ``exp1``, ``exp2``)
-
-You can use the built-in function ``__builtin_choose_expr`` to
+Built-in Function``type``__builtin_choose_expr(``const_exp``,``exp1``,``exp2``)You can use the built-in function ``__builtin_choose_expr`` to
 evaluate code depending on the value of a constant expression.  This
 built-in function returns ``exp1`` if ``const_exp``, which is an
 integer constant expression, is nonzero.  Otherwise it returns ``exp2``.
@@ -1043,9 +1038,7 @@ future revisions.
 
 .. index:: __builtin_complex
 
-  Built-in Function ``type`` __builtin_complex (``real``, ``imag``)
-
-The built-in function ``__builtin_complex`` is provided for use in
+Built-in Function``type``__builtin_complex(``real``,``imag``)The built-in function ``__builtin_complex`` is provided for use in
 implementing the ISO C11 macros ``CMPLXF``, ``CMPLX`` and
 ``CMPLXL``.  ``real`` and ``imag`` must have the same type, a
 real binary floating-point type, and the result has the corresponding
@@ -1055,8 +1048,7 @@ infinities, NaNs and negative zeros are involved.
 
 .. index:: __builtin_constant_p
 
-  Built-in Function int __builtin_constant_p (``exp``)
-You can use the built-in function ``__builtin_constant_p`` to
+Built-in Functionint__builtin_constant_p(``exp``)You can use the built-in function ``__builtin_constant_p`` to
 determine if a value is known to be constant at compile time and hence
 that GCC can perform constant-folding on expressions involving that
 value.  The argument of the function is the value to test.  The function
@@ -1106,8 +1098,7 @@ optimization.
 
 .. index:: __builtin_expect
 
-  Built-in Function long __builtin_expect (long ``exp``, long ``c``)
-
+Built-in Functionlong__builtin_expect(long``exp``,long``c``)
 .. index:: fprofile-arcs
 
 You may use ``__builtin_expect`` to provide the compiler with
@@ -1139,8 +1130,7 @@ when testing pointer or floating-point values.
 
 .. index:: __builtin_trap
 
-  Built-in Function void __builtin_trap (void)
-This function causes the program to exit abnormally.  GCC implements
+Built-in Functionvoid__builtin_trap(void)This function causes the program to exit abnormally.  GCC implements
 this function by using a target-dependent mechanism (such as
 intentionally executing an illegal instruction) or by calling
 ``abort``.  The mechanism used may vary from release to release so
@@ -1148,8 +1138,7 @@ you should not rely on any particular implementation.
 
 .. index:: __builtin_unreachable
 
-  Built-in Function void __builtin_unreachable (void)
-If control flow reaches the point of the ``__builtin_unreachable``,
+Built-in Functionvoid__builtin_unreachable(void)If control flow reaches the point of the ``__builtin_unreachable``,
 the program is undefined.  It is useful in situations where the
 compiler cannot deduce the unreachability of the code.
 
@@ -1203,8 +1192,7 @@ function that never returns but that is not declared
 
 .. index:: *__builtin_assume_aligned
 
-  Built-in Function void *__builtin_assume_aligned (const void *``exp``, size_t ``align``, ...)
-This function returns its first argument, and allows the compiler
+Built-in Functionvoid*__builtin_assume_aligned(constvoid*``exp``,size_t``align``,...)This function returns its first argument, and allows the compiler
 to assume that the returned pointer is at least ``align`` bytes
 aligned.  This built-in can have either two or three arguments,
 if it has three, the third argument should have integer type, and
@@ -1226,30 +1214,26 @@ means that the compiler can assume for ``x``, set to ``arg``, that
 
 .. index:: __builtin_LINE
 
-  Built-in Function int __builtin_LINE ()
-This function is the equivalent to the preprocessor ``__LINE__``
+Built-in Functionint__builtin_LINE()This function is the equivalent to the preprocessor ``__LINE__``
 macro and returns the line number of the invocation of the built-in.
 In a C++ default argument for a function ``F``, it gets the line number of
 the call to ``F``.
 
 .. index:: __builtin_FUNCTION
 
-  Built-in Function const char * __builtin_FUNCTION ()
-This function is the equivalent to the preprocessor ``__FUNCTION__``
+Built-in Functionconst char *__builtin_FUNCTION()This function is the equivalent to the preprocessor ``__FUNCTION__``
 macro and returns the function name the invocation of the built-in is in.
 
 .. index:: __builtin_FILE
 
-  Built-in Function const char * __builtin_FILE ()
-This function is the equivalent to the preprocessor ``__FILE__``
+Built-in Functionconst char *__builtin_FILE()This function is the equivalent to the preprocessor ``__FILE__``
 macro and returns the file name the invocation of the built-in is in.
 In a C++ default argument for a function ``F``, it gets the file name of
 the call to ``F``.
 
 .. index:: __builtin___clear_cache
 
-  Built-in Function void __builtin___clear_cache (char *``begin``, char *``end``)
-This function is used to flush the processor's instruction cache for
+Built-in Functionvoid__builtin___clear_cache(char*``begin``,char*``end``)This function is used to flush the processor's instruction cache for
 the region of memory between ``begin`` inclusive and ``end``
 exclusive.  Some targets require that the instruction cache be
 flushed, after modifying memory containing code, in order to obtain
@@ -1262,8 +1246,7 @@ call to the ``__clear_cache`` function in libgcc is made.
 
 .. index:: __builtin_prefetch
 
-  Built-in Function void __builtin_prefetch (const void *``addr``, ...)
-This function is used to minimize cache-miss latency by moving data into
+Built-in Functionvoid__builtin_prefetch(constvoid*``addr``,...)This function is used to minimize cache-miss latency by moving data into
 a cache before it is accessed.
 You can insert calls to ``__builtin_prefetch`` into code for which
 you know addresses of data in memory that is likely to be accessed soon.
@@ -1305,26 +1288,22 @@ and GCC does not issue a warning.
 
 .. index:: __builtin_huge_val
 
-  Built-in Function double __builtin_huge_val (void)
-Returns a positive infinity, if supported by the floating-point format,
+Built-in Functiondouble__builtin_huge_val(void)Returns a positive infinity, if supported by the floating-point format,
 else ``DBL_MAX``.  This function is suitable for implementing the
 ISO C macro ``HUGE_VAL``.
 
 .. index:: __builtin_huge_valf
 
-  Built-in Function float __builtin_huge_valf (void)
-Similar to ``__builtin_huge_val``, except the return type is ``float``.
+Built-in Functionfloat__builtin_huge_valf(void)Similar to ``__builtin_huge_val``, except the return type is ``float``.
 
 .. index:: __builtin_huge_vall
 
-  Built-in Function long double __builtin_huge_vall (void)
-Similar to ``__builtin_huge_val``, except the return
+Built-in Functionlong double__builtin_huge_vall(void)Similar to ``__builtin_huge_val``, except the return
 type is ``long double``.
 
 .. index:: __builtin_fpclassify
 
-  Built-in Function int __builtin_fpclassify (int, int, int, int, int, ...)
-This built-in implements the C99 fpclassify functionality.  The first
+Built-in Functionint__builtin_fpclassify(int,int,int,int,int,...)This built-in implements the C99 fpclassify functionality.  The first
 five int arguments should be the target library's notion of the
 possible FP classes and are used for return values.  They must be
 constant values and they must appear in this order: ``FP_NAN``,
@@ -1335,41 +1314,34 @@ means it does not do default promotion from float to double.
 
 .. index:: __builtin_inf
 
-  Built-in Function double __builtin_inf (void)
-Similar to ``__builtin_huge_val``, except a warning is generated
+Built-in Functiondouble__builtin_inf(void)Similar to ``__builtin_huge_val``, except a warning is generated
 if the target floating-point format does not support infinities.
 
 .. index:: __builtin_infd32
 
-  Built-in Function _Decimal32 __builtin_infd32 (void)
-Similar to ``__builtin_inf``, except the return type is ``_Decimal32``.
+Built-in Function_Decimal32__builtin_infd32(void)Similar to ``__builtin_inf``, except the return type is ``_Decimal32``.
 
 .. index:: __builtin_infd64
 
-  Built-in Function _Decimal64 __builtin_infd64 (void)
-Similar to ``__builtin_inf``, except the return type is ``_Decimal64``.
+Built-in Function_Decimal64__builtin_infd64(void)Similar to ``__builtin_inf``, except the return type is ``_Decimal64``.
 
 .. index:: __builtin_infd128
 
-  Built-in Function _Decimal128 __builtin_infd128 (void)
-Similar to ``__builtin_inf``, except the return type is ``_Decimal128``.
+Built-in Function_Decimal128__builtin_infd128(void)Similar to ``__builtin_inf``, except the return type is ``_Decimal128``.
 
 .. index:: __builtin_inff
 
-  Built-in Function float __builtin_inff (void)
-Similar to ``__builtin_inf``, except the return type is ``float``.
+Built-in Functionfloat__builtin_inff(void)Similar to ``__builtin_inf``, except the return type is ``float``.
 This function is suitable for implementing the ISO C99 macro ``INFINITY``.
 
 .. index:: __builtin_infl
 
-  Built-in Function long double __builtin_infl (void)
-Similar to ``__builtin_inf``, except the return
+Built-in Functionlong double__builtin_infl(void)Similar to ``__builtin_inf``, except the return
 type is ``long double``.
 
 .. index:: __builtin_isinf_sign
 
-  Built-in Function int __builtin_isinf_sign (...)
-Similar to ``isinf``, except the return value is -1 for
+Built-in Functionint__builtin_isinf_sign(...)Similar to ``isinf``, except the return value is -1 for
 an argument of ``-Inf`` and 1 for an argument of ``+Inf``.
 Note while the parameter list is an
 ellipsis, this function only accepts exactly one floating-point
@@ -1378,8 +1350,7 @@ does not do default promotion from float to double.
 
 .. index:: __builtin_nan
 
-  Built-in Function double __builtin_nan (const char *str)
-This is an implementation of the ISO C99 function ``nan``.
+Built-in Functiondouble__builtin_nan(constchar*str)This is an implementation of the ISO C99 function ``nan``.
 
 Since ISO C99 defines this function in terms of ``strtod``, which we
 do not implement, a description of the parsing is in order.  The string
@@ -1396,188 +1367,156 @@ compile-time constant.
 
 .. index:: __builtin_nand32
 
-  Built-in Function _Decimal32 __builtin_nand32 (const char *str)
-Similar to ``__builtin_nan``, except the return type is ``_Decimal32``.
+Built-in Function_Decimal32__builtin_nand32(constchar*str)Similar to ``__builtin_nan``, except the return type is ``_Decimal32``.
 
 .. index:: __builtin_nand64
 
-  Built-in Function _Decimal64 __builtin_nand64 (const char *str)
-Similar to ``__builtin_nan``, except the return type is ``_Decimal64``.
+Built-in Function_Decimal64__builtin_nand64(constchar*str)Similar to ``__builtin_nan``, except the return type is ``_Decimal64``.
 
 .. index:: __builtin_nand128
 
-  Built-in Function _Decimal128 __builtin_nand128 (const char *str)
-Similar to ``__builtin_nan``, except the return type is ``_Decimal128``.
+Built-in Function_Decimal128__builtin_nand128(constchar*str)Similar to ``__builtin_nan``, except the return type is ``_Decimal128``.
 
 .. index:: __builtin_nanf
 
-  Built-in Function float __builtin_nanf (const char *str)
-Similar to ``__builtin_nan``, except the return type is ``float``.
+Built-in Functionfloat__builtin_nanf(constchar*str)Similar to ``__builtin_nan``, except the return type is ``float``.
 
 .. index:: __builtin_nanl
 
-  Built-in Function long double __builtin_nanl (const char *str)
-Similar to ``__builtin_nan``, except the return type is ``long double``.
+Built-in Functionlong double__builtin_nanl(constchar*str)Similar to ``__builtin_nan``, except the return type is ``long double``.
 
 .. index:: __builtin_nans
 
-  Built-in Function double __builtin_nans (const char *str)
-Similar to ``__builtin_nan``, except the significand is forced
+Built-in Functiondouble__builtin_nans(constchar*str)Similar to ``__builtin_nan``, except the significand is forced
 to be a signaling NaN.  The ``nans`` function is proposed by
 http://www.open-std.org/jtc1/sc22/wg14/www/docs/n965.htmWG14 N965.
 
 .. index:: __builtin_nansf
 
-  Built-in Function float __builtin_nansf (const char *str)
-Similar to ``__builtin_nans``, except the return type is ``float``.
+Built-in Functionfloat__builtin_nansf(constchar*str)Similar to ``__builtin_nans``, except the return type is ``float``.
 
 .. index:: __builtin_nansl
 
-  Built-in Function long double __builtin_nansl (const char *str)
-Similar to ``__builtin_nans``, except the return type is ``long double``.
+Built-in Functionlong double__builtin_nansl(constchar*str)Similar to ``__builtin_nans``, except the return type is ``long double``.
 
 .. index:: __builtin_ffs
 
-  Built-in Function int __builtin_ffs (int x)
-Returns one plus the index of the least significant 1-bit of ``x``, or
+Built-in Functionint__builtin_ffs(intx)Returns one plus the index of the least significant 1-bit of ``x``, or
 if ``x`` is zero, returns zero.
 
 .. index:: __builtin_clz
 
-  Built-in Function int __builtin_clz (unsigned int x)
-Returns the number of leading 0-bits in ``x``, starting at the most
+Built-in Functionint__builtin_clz(unsignedintx)Returns the number of leading 0-bits in ``x``, starting at the most
 significant bit position.  If ``x`` is 0, the result is undefined.
 
 .. index:: __builtin_ctz
 
-  Built-in Function int __builtin_ctz (unsigned int x)
-Returns the number of trailing 0-bits in ``x``, starting at the least
+Built-in Functionint__builtin_ctz(unsignedintx)Returns the number of trailing 0-bits in ``x``, starting at the least
 significant bit position.  If ``x`` is 0, the result is undefined.
 
 .. index:: __builtin_clrsb
 
-  Built-in Function int __builtin_clrsb (int x)
-Returns the number of leading redundant sign bits in ``x``, i.e. the
+Built-in Functionint__builtin_clrsb(intx)Returns the number of leading redundant sign bits in ``x``, i.e. the
 number of bits following the most significant bit that are identical
 to it.  There are no special cases for 0 or other values. 
 
 .. index:: __builtin_popcount
 
-  Built-in Function int __builtin_popcount (unsigned int x)
-Returns the number of 1-bits in ``x``.
+Built-in Functionint__builtin_popcount(unsignedintx)Returns the number of 1-bits in ``x``.
 
 .. index:: __builtin_parity
 
-  Built-in Function int __builtin_parity (unsigned int x)
-Returns the parity of ``x``, i.e. the number of 1-bits in ``x``
+Built-in Functionint__builtin_parity(unsignedintx)Returns the parity of ``x``, i.e. the number of 1-bits in ``x``
 modulo 2.
 
 .. index:: __builtin_ffsl
 
-  Built-in Function int __builtin_ffsl (long)
-Similar to ``__builtin_ffs``, except the argument type is
+Built-in Functionint__builtin_ffsl(long)Similar to ``__builtin_ffs``, except the argument type is
 ``long``.
 
 .. index:: __builtin_clzl
 
-  Built-in Function int __builtin_clzl (unsigned long)
-Similar to ``__builtin_clz``, except the argument type is
+Built-in Functionint__builtin_clzl(unsignedlong)Similar to ``__builtin_clz``, except the argument type is
 ``unsigned long``.
 
 .. index:: __builtin_ctzl
 
-  Built-in Function int __builtin_ctzl (unsigned long)
-Similar to ``__builtin_ctz``, except the argument type is
+Built-in Functionint__builtin_ctzl(unsignedlong)Similar to ``__builtin_ctz``, except the argument type is
 ``unsigned long``.
 
 .. index:: __builtin_clrsbl
 
-  Built-in Function int __builtin_clrsbl (long)
-Similar to ``__builtin_clrsb``, except the argument type is
+Built-in Functionint__builtin_clrsbl(long)Similar to ``__builtin_clrsb``, except the argument type is
 ``long``.
 
 .. index:: __builtin_popcountl
 
-  Built-in Function int __builtin_popcountl (unsigned long)
-Similar to ``__builtin_popcount``, except the argument type is
+Built-in Functionint__builtin_popcountl(unsignedlong)Similar to ``__builtin_popcount``, except the argument type is
 ``unsigned long``.
 
 .. index:: __builtin_parityl
 
-  Built-in Function int __builtin_parityl (unsigned long)
-Similar to ``__builtin_parity``, except the argument type is
+Built-in Functionint__builtin_parityl(unsignedlong)Similar to ``__builtin_parity``, except the argument type is
 ``unsigned long``.
 
 .. index:: __builtin_ffsll
 
-  Built-in Function int __builtin_ffsll (long long)
-Similar to ``__builtin_ffs``, except the argument type is
+Built-in Functionint__builtin_ffsll(longlong)Similar to ``__builtin_ffs``, except the argument type is
 ``long long``.
 
 .. index:: __builtin_clzll
 
-  Built-in Function int __builtin_clzll (unsigned long long)
-Similar to ``__builtin_clz``, except the argument type is
+Built-in Functionint__builtin_clzll(unsignedlonglong)Similar to ``__builtin_clz``, except the argument type is
 ``unsigned long long``.
 
 .. index:: __builtin_ctzll
 
-  Built-in Function int __builtin_ctzll (unsigned long long)
-Similar to ``__builtin_ctz``, except the argument type is
+Built-in Functionint__builtin_ctzll(unsignedlonglong)Similar to ``__builtin_ctz``, except the argument type is
 ``unsigned long long``.
 
 .. index:: __builtin_clrsbll
 
-  Built-in Function int __builtin_clrsbll (long long)
-Similar to ``__builtin_clrsb``, except the argument type is
+Built-in Functionint__builtin_clrsbll(longlong)Similar to ``__builtin_clrsb``, except the argument type is
 ``long long``.
 
 .. index:: __builtin_popcountll
 
-  Built-in Function int __builtin_popcountll (unsigned long long)
-Similar to ``__builtin_popcount``, except the argument type is
+Built-in Functionint__builtin_popcountll(unsignedlonglong)Similar to ``__builtin_popcount``, except the argument type is
 ``unsigned long long``.
 
 .. index:: __builtin_parityll
 
-  Built-in Function int __builtin_parityll (unsigned long long)
-Similar to ``__builtin_parity``, except the argument type is
+Built-in Functionint__builtin_parityll(unsignedlonglong)Similar to ``__builtin_parity``, except the argument type is
 ``unsigned long long``.
 
 .. index:: __builtin_powi
 
-  Built-in Function double __builtin_powi (double, int)
-Returns the first argument raised to the power of the second.  Unlike the
+Built-in Functiondouble__builtin_powi(double,int)Returns the first argument raised to the power of the second.  Unlike the
 ``pow`` function no guarantees about precision and rounding are made.
 
 .. index:: __builtin_powif
 
-  Built-in Function float __builtin_powif (float, int)
-Similar to ``__builtin_powi``, except the argument and return types
+Built-in Functionfloat__builtin_powif(float,int)Similar to ``__builtin_powi``, except the argument and return types
 are ``float``.
 
 .. index:: __builtin_powil
 
-  Built-in Function long double __builtin_powil (long double, int)
-Similar to ``__builtin_powi``, except the argument and return types
+Built-in Functionlong double__builtin_powil(longdouble,int)Similar to ``__builtin_powi``, except the argument and return types
 are ``long double``.
 
 .. index:: __builtin_bswap16
 
-  Built-in Function uint16_t __builtin_bswap16 (uint16_t x)
-Returns ``x`` with the order of the bytes reversed; for example,
+Built-in Functionuint16_t__builtin_bswap16(uint16_tx)Returns ``x`` with the order of the bytes reversed; for example,
 ``0xaabb`` becomes ``0xbbaa``.  Byte here always means
 exactly 8 bits.
 
 .. index:: __builtin_bswap32
 
-  Built-in Function uint32_t __builtin_bswap32 (uint32_t x)
-Similar to ``__builtin_bswap16``, except the argument and return types
+Built-in Functionuint32_t__builtin_bswap32(uint32_tx)Similar to ``__builtin_bswap16``, except the argument and return types
 are 32 bit.
 
 .. index:: __builtin_bswap64
 
-  Built-in Function uint64_t __builtin_bswap64 (uint64_t x)
-Similar to ``__builtin_bswap32``, except the argument and return types
+Built-in Functionuint64_t__builtin_bswap64(uint64_tx)Similar to ``__builtin_bswap32``, except the argument and return types
 are 64 bit.
 

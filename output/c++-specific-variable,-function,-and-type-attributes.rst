@@ -1,13 +1,11 @@
+
 C++-Specific Variable, Function, and Type Attributes
 ****************************************************
 
 Some attributes only make sense for C++ programs.
 
 abi_tag ("``tag``", ...)
-  ``abi_tag`` function attribute
-  ``abi_tag`` variable attribute
-  ``abi_tag`` type attribute
-  The ``abi_tag`` attribute can be applied to a function, variable, or class
+  ``abi_tag`` function attribute``abi_tag`` variable attribute``abi_tag`` type attributeThe ``abi_tag`` attribute can be applied to a function, variable, or class
   declaration.  It modifies the mangled name of the entity to
   incorporate the tag name, in order to distinguish the function or
   class from an earlier version with a different ABI; perhaps the class
@@ -46,9 +44,7 @@ abi_tag ("``tag``", ...)
   variable or function or moving it into a tagged inline namespace.
 
 init_priority (``priority``)
-  ``init_priority`` variable attribute
-
-  In Standard C++, objects defined at namespace scope are guaranteed to be
+  ``init_priority`` variable attributeIn Standard C++, objects defined at namespace scope are guaranteed to be
   initialized in an order in strict accordance with that of their definitions
   in a given translation unit.  No guarantee is made for initializations
   across translation units.  However, GNU C++ allows users to control the
@@ -69,17 +65,13 @@ init_priority (``priority``)
   relative ordering.
 
 java_interface
-  ``java_interface`` type attribute
-
-  This type attribute informs C++ that the class is a Java interface.  It may
+  ``java_interface`` type attributeThis type attribute informs C++ that the class is a Java interface.  It may
   only be applied to classes declared within an ``extern "Java"`` block.
   Calls to methods declared in this interface are dispatched using GCJ's
   interface table mechanism, instead of regular virtual table dispatch.
 
 warn_unused
-  ``warn_unused`` type attribute
-
-  For C++ types with non-trivial constructors and/or destructors it is
+  ``warn_unused`` type attributeFor C++ types with non-trivial constructors and/or destructors it is
   impossible for the compiler to determine whether a variable of this
   type is truly unused if it is not referenced. This type attribute
   informs the compiler that variables of this type should be warned
@@ -93,5 +85,5 @@ warn_unused
   This attribute is also accepted in C, but it is unnecessary because C
   does not have constructors or destructors.
 
-See also Namespace Association.
+  See also Namespace Association.
 

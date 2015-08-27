@@ -1,3 +1,4 @@
+
 Conditionals with Omitted Operands
 **********************************
 
@@ -7,10 +8,7 @@ Conditionals with Omitted Operands
 
 .. index:: middle-operands, omitted
 
-extensions, ``?:``
-``?:`` extensions
-
-The middle operand in a conditional expression may be omitted.  Then
+extensions, ``?:````?:`` extensionsThe middle operand in a conditional expression may be omitted.  Then
 if the first operand is nonzero, its value is the value of the conditional
 expression.
 
@@ -29,10 +27,7 @@ This example is perfectly equivalent to
 
   x ? x : y
 
-side effect in ``?:``
-``?:`` side effect
-
-In this simple case, the ability to omit the middle operand is not
+side effect in ``?:````?:`` side effectIn this simple case, the ability to omit the middle operand is not
 especially useful.  When it becomes useful is when the first operand does,
 or may (if it is a macro argument), contain a side effect.  Then repeating
 the operand in the middle would perform the side effect twice.  Omitting

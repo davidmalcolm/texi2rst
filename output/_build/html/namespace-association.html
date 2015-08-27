@@ -89,15 +89,12 @@ to C++ 2011 inline namespaces.  Users should use inline namespaces
 instead as this extension will be removed in future versions of G++.</p>
 <p>A using-directive with <tt class="docutils literal"><span class="pre">__attribute</span> <span class="pre">((strong))</span></tt> is stronger
 than a normal using-directive in two ways:</p>
-<ul>
-<li><p class="first">Templates from the used namespace can be specialized and explicitly
-instantiated as though they were members of the using namespace.</p>
 <ul class="simple">
-<li>The using namespace is considered an associated namespace of all</li>
-</ul>
-<p>templates in the used namespace for purposes of argument-dependent
-name lookup.</p>
-</li>
+<li>Templates from the used namespace can be specialized and explicitly
+instantiated as though they were members of the using namespace.</li>
+<li>The using namespace is considered an associated namespace of all
+templates in the used namespace for purposes of argument-dependent
+name lookup.</li>
 </ul>
 <p>The used namespace must be nested within the using namespace so that
 normal unqualified lookup works properly.</p>

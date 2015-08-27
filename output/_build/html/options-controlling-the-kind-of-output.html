@@ -154,13 +154,13 @@ package body).  Such files are also called <em class="dfn">bodies</em>.</dd>
 <dd>An object file to be fed straight into linking.
 Any file name with no recognized suffix is treated this way.</dd>
 </dl>
-<p id="index-1">You can specify the input language explicitly with the <em class="xref std std-option">-x</em> option:</p>
+<p id="index-1">You can specify the input language explicitly with the <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-x"><em class="xref std std-option">-x</em></a> option:</p>
 <dl class="docutils">
 <dt>-x <tt class="docutils literal"><span class="pre">language</span></tt></dt>
 <dd><p class="first">Specify explicitly the <tt class="docutils literal"><span class="pre">language</span></tt> for the following input files
 (rather than letting the compiler choose a default based on the file
 name suffix).  This option applies to all following input files until
-the next <em class="xref std std-option">-x</em> option.  Possible values for <tt class="docutils literal"><span class="pre">language</span></tt> are:</p>
+the next <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-x"><em class="xref std std-option">-x</em></a> option.  Possible values for <tt class="docutils literal"><span class="pre">language</span></tt> are:</p>
 <div class="last highlight-c++"><div class="highlight"><pre><span class="n">c</span>  <span class="n">c</span><span class="o">-</span><span class="n">header</span>  <span class="n">cpp</span><span class="o">-</span><span class="n">output</span>
 <span class="n">c</span><span class="o">++</span>  <span class="n">c</span><span class="o">++-</span><span class="n">header</span>  <span class="n">c</span><span class="o">++-</span><span class="n">cpp</span><span class="o">-</span><span class="n">output</span>
 <span class="n">objective</span><span class="o">-</span><span class="n">c</span>  <span class="n">objective</span><span class="o">-</span><span class="n">c</span><span class="o">-</span><span class="n">header</span>  <span class="n">objective</span><span class="o">-</span><span class="n">c</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">output</span>
@@ -181,7 +181,7 @@ the next <em class="xref std std-option">-x</em> option.  Possible values for <t
 <tr><td class="option-group">
 <kbd><span class="option">-x <var>none</var></span></kbd></td>
 <td>Turn off any specification of a language, so that subsequent files are
-handled according to their file name suffixes (as they are if <em class="xref std std-option">-x</em>
+handled according to their file name suffixes (as they are if <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-x"><em class="xref std std-option">-x</em></a>
 has not been used at all).</td></tr>
 </tbody>
 </table>
@@ -197,7 +197,7 @@ compiler error is encountered.</p>
 </dd></dl>
 
 <p>If you only want some of the stages of compilation, you can use
-<em class="xref std std-option">-x</em> (or filename suffixes) to tell <strong class="command">gcc</strong> where to start, and
+<a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-x"><em class="xref std std-option">-x</em></a> (or filename suffixes) to tell <strong class="command">gcc</strong> where to start, and
 one of the options <a class="reference internal" href="options-for-linking.html#cmdoption-c"><em class="xref std std-option">-c</em></a>, <a class="reference internal" href="#cmdoption-S"><em class="xref std std-option">-S</em></a>, or <a class="reference internal" href="#cmdoption-E"><em class="xref std std-option">-E</em></a> to say where
 <strong class="command">gcc</strong> is to stop.  Note that some combinations (for example,
 -x cpp-output -E) instruct <strong class="command">gcc</strong> to do nothing at all.</p>
@@ -239,7 +239,7 @@ standard output.</p>
 <dd><p>Place output in file <tt class="docutils literal"><span class="pre">file</span></tt>.  This applies to whatever
 sort of output is being produced, whether it be an executable file,
 an object file, an assembler file or preprocessed C code.</p>
-<p>If <a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o</em></a> is not specified, the default is to put an executable
+<p>If <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-o"><em class="xref std std-option">-o</em></a> is not specified, the default is to put an executable
 file in a.out, the object file for
 <tt class="docutils literal"><span class="pre">source</span></tt>.``suffix`` in <tt class="docutils literal"><span class="pre">source</span></tt>.o, its
 assembler file in <tt class="docutils literal"><span class="pre">source</span></tt>.s, a precompiled header file in
@@ -258,7 +258,7 @@ program and of the preprocessor and the compiler proper.</p>
 <dl class="option">
 <dt>
 <tt class="descname">-###</tt></dt>
-<dd><p>Like <a class="reference internal" href="#cmdoption-v"><em class="xref std std-option">-v</em></a> except the commands are not executed and arguments
+<dd><p>Like <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-v"><em class="xref std std-option">-v</em></a> except the commands are not executed and arguments
 are quoted unless they contain only alphanumeric characters or <tt class="docutils literal"><span class="pre">./-_</span></tt>.
 This is useful for shell scripts to capture the driver-generated command lines.</p>
 </dd></dl>
@@ -276,11 +276,11 @@ no trouble.</p>
 <dt id="cmdoption--help">
 <tt class="descname">--help</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-help</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--help" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print (on the standard output) a description of the command-line options
-understood by <strong class="command">gcc</strong>.  If the <a class="reference internal" href="#cmdoption-v"><em class="xref std std-option">-v</em></a> option is also specified
-then <a class="reference internal" href="#cmdoption--help"><em class="xref std std-option">--help</em></a> is also passed on to the various processes
+understood by <strong class="command">gcc</strong>.  If the <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-v"><em class="xref std std-option">-v</em></a> option is also specified
+then <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption--help"><em class="xref std std-option">--help</em></a> is also passed on to the various processes
 invoked by <strong class="command">gcc</strong>, so that they can display the command-line options
 they accept.  If the <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a> option has also been specified
-(prior to the <a class="reference internal" href="#cmdoption--help"><em class="xref std std-option">--help</em></a> option), then command-line options that
+(prior to the <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption--help"><em class="xref std std-option">--help</em></a> option), then command-line options that
 have no documentation associated with them are also displayed.</p>
 </dd></dl>
 
@@ -317,10 +317,9 @@ option.</dd>
 <tt class="docutils literal"><span class="pre">language</span></tt> is the name of one of the languages supported in this
 version of GCC.</dd>
 <dt>common</dt>
-<dd>Display the options that are common to all languages.</dd>
-</dl>
-<p>These are the supported qualifiers:</p>
-<dl class="docutils">
+<dd><p class="first">Display the options that are common to all languages.</p>
+<p class="last">These are the supported qualifiers:</p>
+</dd>
 <dt>undocumented</dt>
 <dd>Display only those options that are undocumented.</dd>
 <dt>joined</dt>
@@ -328,26 +327,27 @@ version of GCC.</dd>
 sign in the same continuous piece of text, such as:
 &#8211;help=target.</dd>
 <dt>separate</dt>
-<dd>Display options taking an argument that appears as a separate word
-following the original option, such as: -o output-file.</dd>
+<dd><p class="first">Display options taking an argument that appears as a separate word
+following the original option, such as: -o output-file.</p>
+<p class="last">Thus for example to display all the undocumented target-specific</p>
+</dd>
 </dl>
-<p>Thus for example to display all the undocumented target-specific
-switches supported by the compiler, use:</p>
-<p><em class="xref std std-option">--help=target,undocumented</em></p>
-<p>The sense of a qualifier can be inverted by prefixing it with the
+<p>switches supported by the compiler, use:</p>
+<p><em class="xref std std-option">--help=target,undocumented</em>
+The sense of a qualifier can be inverted by prefixing it with the
 ^ character, so for example to display all binary warning
 options (i.e., ones that are either on or off and that do not take an
 argument) that have a description, use:</p>
-<p><em class="xref std std-option">--help=warnings,^joined,^undocumented</em></p>
-<p>The argument to <em class="xref std std-option">--help=</em> should not consist solely of inverted
+<p><em class="xref std std-option">--help=warnings,^joined,^undocumented</em>
+The argument to <em class="xref std std-option">--help=</em> should not consist solely of inverted
 qualifiers.</p>
 <p>Combining several classes is possible, although this usually
 restricts the output so much that there is nothing to display.  One
 case where it does work, however, is when one of the classes is
 <tt class="docutils literal"><span class="pre">target</span></tt>.  For example, to display all the target-specific
 optimization options, use:</p>
-<p><em class="xref std std-option">--help=target,optimizers</em></p>
-<p>The <em class="xref std std-option">--help=</em> option can be repeated on the command line.  Each
+<p><em class="xref std std-option">--help=target,optimizers</em>
+The <em class="xref std std-option">--help=</em> option can be repeated on the command line.  Each
 successive use displays its requested class of options, skipping
 those that have already been displayed.</p>
 <p>If the <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-Q"><em class="xref std std-option">-Q</em></a> option appears on the command line before the
@@ -367,8 +367,8 @@ knows this at the point where the <em class="xref std std-option">--help=</em> o
 <p>The output is sensitive to the effects of previous command-line
 options, so for example it is possible to find out which optimizations
 are enabled at <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O2"><em class="xref std std-option">-O2</em></a> by using:</p>
-<p><a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-Q"><em class="xref std std-option">-Q</em></a> <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O2"><em class="xref std std-option">-O2</em></a> <em class="xref std std-option">--help=optimizers</em></p>
-<p>Alternatively you can discover which binary optimizations are enabled
+<p><a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-Q"><em class="xref std std-option">-Q</em></a> <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O2"><em class="xref std std-option">-O2</em></a> <em class="xref std std-option">--help=optimizers</em>
+Alternatively you can discover which binary optimizations are enabled
 by <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O3"><em class="xref std std-option">-O3</em></a> by using:</p>
 <div class="last highlight-bash"><div class="highlight"><pre>gcc -c -Q -O3 --help<span class="o">=</span>optimizers &gt; /tmp/O3-opts
 gcc -c -Q -O2 --help<span class="o">=</span>optimizers &gt; /tmp/O2-opts

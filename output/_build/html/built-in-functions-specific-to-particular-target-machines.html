@@ -268,9 +268,10 @@ parameters to the function.</p>
 <dt>f</dt>
 <dd><tt class="docutils literal"><span class="pre">float</span></tt> for return type and parameter type</dd>
 <dt>p</dt>
-<dd><tt class="docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt> for return type and parameter type</dd>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt> for return type and parameter type</p>
+<p class="last">And the function names are:</p>
+</dd>
 </dl>
-<p>And the function names are:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">__builtin_custom_n</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="kt">void</span> <span class="n">__builtin_custom_ni</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span>
 <span class="kt">void</span> <span class="n">__builtin_custom_nf</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span>
@@ -339,7 +340,7 @@ described in each case.</p>
 by a target may cause problems. At present the compiler is not
 guaranteed to detect such misuse, and as a result an internal compiler
 error may be generated.</p>
-<p>Return 1 if <tt class="docutils literal"><span class="pre">val</span></tt> is known to have the byte alignment given
+<p id="index-0">Built-in Functionint__builtin_arc_aligned(void*``val``,int``alignval``)Return 1 if <tt class="docutils literal"><span class="pre">val</span></tt> is known to have the byte alignment given
 by <tt class="docutils literal"><span class="pre">alignval</span></tt>, otherwise return 0.
 Note that this is different from</p>
 <div class="highlight-c++"><pre>__alignof__(*(char *)``val``) &gt;= alignval</pre>
@@ -348,88 +349,88 @@ Note that this is different from</p>
 __builtin_arc_align uses alignment information from the pointer
 as well as from the pointed-to type.
 The information available will depend on optimization level.</p>
-<p>Generates</p>
+<p id="index-1">Built-in Functionvoid__builtin_arc_brk(void)Generates</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">brk</span>
 </pre></div>
 </div>
-<p>The operand is the number of a register to be read.  Generates:</p>
+<p id="index-2">Built-in Functionunsigned int__builtin_arc_core_read(unsignedint``regno``)The operand is the number of a register to be read.  Generates:</p>
 <div class="highlight-c++"><pre>mov  ``dest``, r``regno``</pre>
 </div>
 <p>where the value in <tt class="docutils literal"><span class="pre">dest</span></tt> will be the result returned from the
 built-in.</p>
-<p>The first operand is the number of a register to be written, the
+<p id="index-3">Built-in Functionvoid__builtin_arc_core_write(unsignedint``regno``,unsignedint``val``)The first operand is the number of a register to be written, the
 second operand is a compile time constant to write into that
 register.  Generates:</p>
 <div class="highlight-c++"><pre>mov  r``regno``, ``val``</pre>
 </div>
-<p>Only available if either <em class="xref std std-option">-mcpu=ARC700</em> or <em class="xref std std-option">-meA</em> is set.
+<p id="index-4">Built-in Functionint__builtin_arc_divaw(int``a``,int``b``)Only available if either <em class="xref std std-option">-mcpu=ARC700</em> or <em class="xref std std-option">-meA</em> is set.
 Generates:</p>
 <div class="highlight-c++"><pre>divaw  ``dest``, ``a``, ``b``</pre>
 </div>
 <p>where the value in <tt class="docutils literal"><span class="pre">dest</span></tt> will be the result returned from the
 built-in.</p>
-<p>Generates</p>
+<p id="index-5">Built-in Functionvoid__builtin_arc_flag(unsignedint``a``)Generates</p>
 <div class="highlight-c++"><pre>flag  ``a``</pre>
 </div>
-<p>The operand, <tt class="docutils literal"><span class="pre">auxv</span></tt>, is the address of an auxiliary register and
+<p id="index-6">Built-in Functionunsigned int__builtin_arc_lr(unsignedint``auxr``)The operand, <tt class="docutils literal"><span class="pre">auxv</span></tt>, is the address of an auxiliary register and
 must be a compile time constant.  Generates:</p>
 <div class="highlight-c++"><pre>lr  ``dest``, [``auxr``]</pre>
 </div>
 <p>Where the value in <tt class="docutils literal"><span class="pre">dest</span></tt> will be the result returned from the
 built-in.</p>
-<p>Only available with <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmul64"><em class="xref std std-option">-mmul64</em></a>.  Generates:</p>
+<p id="index-7">Built-in Functionvoid__builtin_arc_mul64(int``a``,int``b``)Only available with <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmul64"><em class="xref std std-option">-mmul64</em></a>.  Generates:</p>
 <div class="highlight-c++"><pre>mul64  ``a``, ``b``</pre>
 </div>
-<p>Only available with <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmul64"><em class="xref std std-option">-mmul64</em></a>.  Generates:</p>
+<p id="index-8">Built-in Functionvoid__builtin_arc_mulu64(unsignedint``a``,unsignedint``b``)Only available with <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmul64"><em class="xref std std-option">-mmul64</em></a>.  Generates:</p>
 <div class="highlight-c++"><pre>mulu64  ``a``, ``b``</pre>
 </div>
-<p>Generates:</p>
+<p id="index-9">Built-in Functionvoid__builtin_arc_nop(void)Generates:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">nop</span>
 </pre></div>
 </div>
-<p>Only valid if the norm instruction is available through the
+<p id="index-10">Built-in Functionint__builtin_arc_norm(int``src``)Only valid if the norm instruction is available through the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mnorm"><em class="xref std std-option">-mnorm</em></a> option or by default with <em class="xref std std-option">-mcpu=ARC700</em>.
 Generates:</p>
 <div class="highlight-c++"><pre>norm  ``dest``, ``src``</pre>
 </div>
 <p>Where the value in <tt class="docutils literal"><span class="pre">dest</span></tt> will be the result returned from the
 built-in.</p>
-<p>Only valid if the normw instruction is available through the
+<p id="index-11">Built-in Functionshort int__builtin_arc_normw(shortint``src``)Only valid if the normw instruction is available through the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mnorm"><em class="xref std std-option">-mnorm</em></a> option or by default with <em class="xref std std-option">-mcpu=ARC700</em>.
 Generates:</p>
 <div class="highlight-c++"><pre>normw  ``dest``, ``src``</pre>
 </div>
 <p>Where the value in <tt class="docutils literal"><span class="pre">dest</span></tt> will be the result returned from the
 built-in.</p>
-<p>Generates:</p>
+<p id="index-12">Built-in Functionvoid__builtin_arc_rtie(void)Generates:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">rtie</span>
 </pre></div>
 </div>
-<p>Generates:</p>
+<p id="index-13">Built-in Functionvoid__builtin_arc_sleep(int``a``Generates:</p>
 <div class="highlight-c++"><pre>sleep  ``a``</pre>
 </div>
-<p>The first argument, <tt class="docutils literal"><span class="pre">auxv</span></tt>, is the address of an auxiliary
+<p id="index-14">Built-in Functionvoid__builtin_arc_sr(unsignedint``auxr``,unsignedint``val``)The first argument, <tt class="docutils literal"><span class="pre">auxv</span></tt>, is the address of an auxiliary
 register, the second argument, <tt class="docutils literal"><span class="pre">val</span></tt>, is a compile time constant
 to be written to the register.  Generates:</p>
 <div class="highlight-c++"><pre>sr  ``auxr``, [``val``]</pre>
 </div>
-<p>Only valid with <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mswap"><em class="xref std std-option">-mswap</em></a>.  Generates:</p>
+<p id="index-15">Built-in Functionint__builtin_arc_swap(int``src``)Only valid with <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mswap"><em class="xref std std-option">-mswap</em></a>.  Generates:</p>
 <div class="highlight-c++"><pre>swap  ``dest``, ``src``</pre>
 </div>
 <p>Where the value in <tt class="docutils literal"><span class="pre">dest</span></tt> will be the result returned from the
 built-in.</p>
-<p>Generates:</p>
+<p id="index-16">Built-in Functionvoid__builtin_arc_swi(void)Generates:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">swi</span>
 </pre></div>
 </div>
-<p>Only available with <em class="xref std std-option">-mcpu=ARC700</em>.  Generates:</p>
+<p id="index-17">Built-in Functionvoid__builtin_arc_sync(void)Only available with <em class="xref std std-option">-mcpu=ARC700</em>.  Generates:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">sync</span>
 </pre></div>
 </div>
-<p>Only available with <em class="xref std std-option">-mcpu=ARC700</em>.  Generates:</p>
+<p id="index-18">Built-in Functionvoid__builtin_arc_trap_s(unsignedint``c``)Only available with <em class="xref std std-option">-mcpu=ARC700</em>.  Generates:</p>
 <div class="highlight-c++"><pre>trap_s  ``c``</pre>
 </div>
-<p>Only available with <em class="xref std std-option">-mcpu=ARC700</em>.  Generates:</p>
+<p id="index-19">Built-in Functionvoid__builtin_arc_unimp_s(void)Only available with <em class="xref std std-option">-mcpu=ARC700</em>.  Generates:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">unimp_s</span>
 </pre></div>
 </div>
@@ -880,18 +881,13 @@ If the address does not point to flash memory, return <tt class="docutils litera
 <p>Insert bits from <tt class="docutils literal"><span class="pre">bits</span></tt> into <tt class="docutils literal"><span class="pre">val</span></tt> and return the resulting
 value. The nibbles of <tt class="docutils literal"><span class="pre">map</span></tt> determine how the insertion is
 performed: Let <tt class="docutils literal"><span class="pre">X</span></tt> be the <tt class="docutils literal"><span class="pre">n</span></tt>-th nibble of <tt class="docutils literal"><span class="pre">map</span></tt></p>
-<ul>
-<li><p class="first">If <tt class="docutils literal"><span class="pre">X</span></tt> is <tt class="docutils literal"><span class="pre">0xf</span></tt>,
-then the <tt class="docutils literal"><span class="pre">n</span></tt>-th bit of <tt class="docutils literal"><span class="pre">val</span></tt> is returned unaltered.</p>
 <ul class="simple">
-<li>If X is in the range 0...7,</li>
-</ul>
-<p>then the <tt class="docutils literal"><span class="pre">n</span></tt>-th result bit is set to the <tt class="docutils literal"><span class="pre">X</span></tt>-th bit of <tt class="docutils literal"><span class="pre">bits</span></tt></p>
-<ul class="simple">
-<li>If X is in the range 8...``0xe``,</li>
-</ul>
-<p>then the <tt class="docutils literal"><span class="pre">n</span></tt>-th result bit is undefined.</p>
-</li>
+<li>If <tt class="docutils literal"><span class="pre">X</span></tt> is <tt class="docutils literal"><span class="pre">0xf</span></tt>,
+then the <tt class="docutils literal"><span class="pre">n</span></tt>-th bit of <tt class="docutils literal"><span class="pre">val</span></tt> is returned unaltered.</li>
+<li>If X is in the range 0...7,
+then the <tt class="docutils literal"><span class="pre">n</span></tt>-th result bit is set to the <tt class="docutils literal"><span class="pre">X</span></tt>-th bit of <tt class="docutils literal"><span class="pre">bits</span></tt></li>
+<li>If X is in the range 8...``0xe``,
+then the <tt class="docutils literal"><span class="pre">n</span></tt>-th result bit is undefined.</li>
 </ul>
 <p>One typical use case for this built-in is adjusting input and
 output values to non-contiguous port layouts. Some examples:</p>
@@ -953,16 +949,42 @@ here in tabular form.</p>
 register numbers, compile-time constants and run-time values.  In order
 to make this classification clear at a glance, the arguments and return
 values are given the following pseudo types:</p>
-<p>Pseudo type Real C type Constant? Description
-<tt class="docutils literal"><span class="pre">uh</span></tt> <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span></tt> No an unsigned halfword
-<tt class="docutils literal"><span class="pre">uw1</span></tt> <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt> No an unsigned word
-<tt class="docutils literal"><span class="pre">sw1</span></tt> <tt class="docutils literal"><span class="pre">int</span></tt> No a signed word
-<tt class="docutils literal"><span class="pre">uw2</span></tt> <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt> No
-an unsigned doubleword
-<tt class="docutils literal"><span class="pre">sw2</span></tt> <tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt> No a signed doubleword
-<tt class="docutils literal"><span class="pre">const</span></tt> <tt class="docutils literal"><span class="pre">int</span></tt> Yes an integer constant
-<tt class="docutils literal"><span class="pre">acc</span></tt> <tt class="docutils literal"><span class="pre">int</span></tt> Yes an ACC register number
-<tt class="docutils literal"><span class="pre">iacc</span></tt> <tt class="docutils literal"><span class="pre">int</span></tt> Yes an IACC register number</p>
+<p>Pseudo type</p>
+<p>Real C type</p>
+<p>Constant?</p>
+<p>Description</p>
+<p><tt class="docutils literal"><span class="pre">uh</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span></tt></p>
+<p>No</p>
+<p>an unsigned halfword</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt></p>
+<p>No</p>
+<p>an unsigned word</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">int</span></tt></p>
+<p>No</p>
+<p>a signed word</p>
+<p><tt class="docutils literal"><span class="pre">uw2</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt></p>
+<p>No</p>
+<p>an unsigned doubleword</p>
+<p><tt class="docutils literal"><span class="pre">sw2</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt></p>
+<p>No</p>
+<p>a signed doubleword</p>
+<p><tt class="docutils literal"><span class="pre">const</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">int</span></tt></p>
+<p>Yes</p>
+<p>an integer constant</p>
+<p><tt class="docutils literal"><span class="pre">acc</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">int</span></tt></p>
+<p>Yes</p>
+<p>an ACC register number</p>
+<p><tt class="docutils literal"><span class="pre">iacc</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">int</span></tt></p>
+<p>Yes</p>
+<p>an IACC register number</p>
 <p>These pseudo types are not defined by GCC, they are simply a notational
 convenience used in this manual.</p>
 <p>Arguments of type <tt class="docutils literal"><span class="pre">uh</span></tt>, <tt class="docutils literal"><span class="pre">uw1</span></tt>, <tt class="docutils literal"><span class="pre">sw1</span></tt>, <tt class="docutils literal"><span class="pre">uw2</span></tt>
@@ -981,307 +1003,311 @@ for more details.</p>
 <div class="section" id="directly-mapped-integer-functions">
 <h3>Directly-Mapped Integer Functions<a class="headerlink" href="#directly-mapped-integer-functions" title="Permalink to this headline">¶</a></h3>
 <p>The functions listed below map directly to FR-V I-type instructions.</p>
-<p>Function prototype Example usage Assembly output
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__ADDSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __ADDSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">ADDSS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SCAN</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __SCAN (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">SCAN</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SCUTSS</span> <span class="pre">(sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __SCUTSS (<tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">SCUTSS</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SLASS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __SLASS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">SLASS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMASS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__SMASS</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">SMASS</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMSSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__SMSSS</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">SMSSS</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMU</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__SMU</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">SMU</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__SMUL</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __SMUL (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">SMUL</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SUBSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __SUBSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">SUBSS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__UMUL</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __UMUL (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">UMUL</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p>Function prototype</p>
+<p>Example usage</p>
+<p>Assembly output</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__ADDSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __ADDSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">ADDSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SCAN</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __SCAN (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">SCAN</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SCUTSS</span> <span class="pre">(sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __SCUTSS (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">SCUTSS</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SLASS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __SLASS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">SLASS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMASS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__SMASS</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">SMASS</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMSSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__SMSSS</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">SMSSS</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMU</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__SMU</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">SMU</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__SMUL</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __SMUL (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">SMUL</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SUBSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __SUBSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">SUBSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__UMUL</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __UMUL (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">UMUL</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
 <p>:: _directly-mapped-media-functions:</p>
 </div>
 <div class="section" id="directly-mapped-media-functions">
 <h3>Directly-Mapped Media Functions<a class="headerlink" href="#directly-mapped-media-functions" title="Permalink to this headline">¶</a></h3>
 <p>The functions listed below map directly to FR-V M-type instructions.</p>
-<p>Function prototype Example usage Assembly output
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MABSHS</span> <span class="pre">(sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MABSHS (<tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MABSHS</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MADDACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt>
-<tt class="docutils literal"><span class="pre">__MADDACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MADDACCS</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MADDHSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MADDHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MADDHSS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MADDHUS</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MADDHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MADDHUS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MAND</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MAND (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MAND</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MASACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt>
-<tt class="docutils literal"><span class="pre">__MASACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MASACCS</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MAVEH</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MAVEH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MAVEH</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MBTOH</span> <span class="pre">(uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MBTOH (<tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MBTOH</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MBTOHE</span> <span class="pre">(uw1</span> <span class="pre">*,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MBTOHE</span> <span class="pre">(&amp;``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MBTOHE</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCLRACC</span> <span class="pre">(acc)</span></tt>
-<tt class="docutils literal"><span class="pre">__MCLRACC</span> <span class="pre">(``a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MCLRACC</span> <span class="pre">``a``</span></tt>
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCLRACCA</span> <span class="pre">(void)</span></tt>
-<tt class="docutils literal"><span class="pre">__MCLRACCA</span> <span class="pre">()</span></tt>
-<tt class="docutils literal"><span class="pre">MCLRACCA</span></tt>
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__Mcop1</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __Mcop1 (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">Mcop1</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__Mcop2</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __Mcop2 (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">Mcop2</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCPLHI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MCPLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MCPLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCPLI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MCPLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MCPLI</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXIS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MCPXIS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MCPXIS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXIU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MCPXIU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MCPXIU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXRS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MCPXRS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MCPXRS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXRU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MCPXRU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MCPXRU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCUT</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MCUT (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MCUT</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCUTSS</span> <span class="pre">(acc,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MCUTSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MCUTSS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDADDACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt>
-<tt class="docutils literal"><span class="pre">__MDADDACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MDADDACCS</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDASACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt>
-<tt class="docutils literal"><span class="pre">__MDASACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MDASACCS</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDCUTSSI</span> <span class="pre">(acc,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MDCUTSSI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MDCUTSSI</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDPACKH</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MDPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MDPACKH</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDROTLI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MDROTLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MDROTLI</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDSUBACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt>
-<tt class="docutils literal"><span class="pre">__MDSUBACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MDSUBACCS</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDUNPACKH</span> <span class="pre">(uw1</span> <span class="pre">*,</span> <span class="pre">uw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MDUNPACKH</span> <span class="pre">(&amp;``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MDUNPACKH</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MEXPDHD</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MEXPDHD (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MEXPDHD</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MEXPDHW</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MEXPDHW (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MEXPDHW</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHDSETH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MHDSETH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MHDSETH</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHDSETS</span> <span class="pre">(const)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MHDSETS (<tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MHDSETS</span> <span class="pre">#``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHSETHIH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETHIH (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MHSETHIH</span> <span class="pre">#``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHSETHIS</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETHIS (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MHSETHIS</span> <span class="pre">#``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHSETLOH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETLOH (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MHSETLOH</span> <span class="pre">#``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHSETLOS</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETLOS (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MHSETLOS</span> <span class="pre">#``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHTOB</span> <span class="pre">(uw2)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MHTOB (<tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MHTOB</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMACHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MMACHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MMACHU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMRDHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MMRDHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MMRDHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMRDHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MMRDHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MMRDHU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MMULHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MMULHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MMULHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MMULHU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULXHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MMULXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MMULXHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULXHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MMULXHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MMULXHU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MNOT</span> <span class="pre">(uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MNOT (<tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MNOT</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MOR</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MOR (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MOR</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MPACKH</span> <span class="pre">(uh,</span> <span class="pre">uh)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MPACKH</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQADDHSS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MQADDHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQADDHSS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQADDHUS</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MQADDHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQADDHUS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXIS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQCPXIS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQCPXIS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXIU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQCPXIU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQCPXIU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXRS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQCPXRS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQCPXRS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXRU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQCPXRU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQCPXRU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQLCLRHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MQLCLRHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQLCLRHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQLMTHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MQLMTHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQLMTHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQMACHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQMACHU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQMACXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQMACXHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQMULHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQMULHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQMULHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQMULHU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQMULXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQMULXHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULXHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQMULXHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQMULXHU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSATHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSATHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQSATHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQSLLHI</span> <span class="pre">(uw2,</span> <span class="pre">int)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSLLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQSLLHI</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSRAHI</span> <span class="pre">(sw2,</span> <span class="pre">int)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSRAHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQSRAHI</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSUBHSS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSUBHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQSUBHSS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQSUBHUS</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSUBHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQSUBHUS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQXMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQXMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQXMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQXMACXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt>
-<tt class="docutils literal"><span class="pre">__MQXMACXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MQXMACXHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MRDACC</span> <span class="pre">(acc)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MRDACC (<tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MRDACC</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MRDACCG</span> <span class="pre">(acc)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MRDACCG (<tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MRDACCG</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MROTLI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MROTLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MROTLI</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MROTRI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MROTRI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MROTRI</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSATHS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MSATHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MSATHS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSATHU</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MSATHU (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MSATHU</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSLLHI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MSLLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MSLLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSRAHI</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MSRAHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MSRAHI</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSRLHI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MSRLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MSRLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MSUBACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt>
-<tt class="docutils literal"><span class="pre">__MSUBACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MSUBACCS</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSUBHSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MSUBHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MSUBHSS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSUBHUS</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MSUBHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MSUBHUS</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MTRAP</span> <span class="pre">(void)</span></tt>
-<tt class="docutils literal"><span class="pre">__MTRAP</span> <span class="pre">()</span></tt>
-<tt class="docutils literal"><span class="pre">MTRAP</span></tt>
-<tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MUNPACKH</span> <span class="pre">(uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``b</span></tt> = __MUNPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MUNPACKH</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MWCUT</span> <span class="pre">(uw2,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MWCUT (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MWCUT</span> <span class="pre">``a</span></tt>,``b``,``c````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MWTACC</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MWTACC</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MWTACC</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MWTACCG</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">__MWTACCG</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``
-<tt class="docutils literal"><span class="pre">MWTACCG</span> <span class="pre">``a</span></tt>,``b````
-<tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MXOR</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt>
-<tt class="docutils literal"><span class="pre">``c</span></tt> = __MXOR (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``
-<tt class="docutils literal"><span class="pre">MXOR</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p>Function prototype</p>
+<p>Example usage</p>
+<p>Assembly output</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MABSHS</span> <span class="pre">(sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MABSHS (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MABSHS</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MADDACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MADDACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MADDACCS</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MADDHSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MADDHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MADDHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MADDHUS</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MADDHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MADDHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MAND</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MAND (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MAND</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MASACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MASACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MASACCS</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MAVEH</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MAVEH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MAVEH</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MBTOH</span> <span class="pre">(uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MBTOH (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MBTOH</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MBTOHE</span> <span class="pre">(uw1</span> <span class="pre">*,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MBTOHE</span> <span class="pre">(&amp;``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MBTOHE</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCLRACC</span> <span class="pre">(acc)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MCLRACC</span> <span class="pre">(``a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MCLRACC</span> <span class="pre">``a``</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCLRACCA</span> <span class="pre">(void)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MCLRACCA</span> <span class="pre">()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">MCLRACCA</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__Mcop1</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __Mcop1 (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">Mcop1</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__Mcop2</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __Mcop2 (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">Mcop2</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCPLHI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCPLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MCPLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCPLI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCPLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MCPLI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXIS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MCPXIS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MCPXIS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXIU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MCPXIU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MCPXIU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXRS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MCPXRS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MCPXRS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXRU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MCPXRU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MCPXRU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCUT</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCUT (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MCUT</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCUTSS</span> <span class="pre">(acc,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCUTSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MCUTSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDADDACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MDADDACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MDADDACCS</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDASACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MDASACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MDASACCS</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDCUTSSI</span> <span class="pre">(acc,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MDCUTSSI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MDCUTSSI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDPACKH</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MDPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MDPACKH</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDROTLI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MDROTLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MDROTLI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDSUBACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MDSUBACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MDSUBACCS</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDUNPACKH</span> <span class="pre">(uw1</span> <span class="pre">*,</span> <span class="pre">uw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MDUNPACKH</span> <span class="pre">(&amp;``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MDUNPACKH</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MEXPDHD</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MEXPDHD (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MEXPDHD</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MEXPDHW</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MEXPDHW (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MEXPDHW</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHDSETH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MHDSETH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MHDSETH</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHDSETS</span> <span class="pre">(const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHDSETS (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MHDSETS</span> <span class="pre">#``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHSETHIH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETHIH (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MHSETHIH</span> <span class="pre">#``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHSETHIS</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETHIS (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MHSETHIS</span> <span class="pre">#``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHSETLOH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETLOH (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MHSETLOH</span> <span class="pre">#``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHSETLOS</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETLOS (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MHSETLOS</span> <span class="pre">#``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHTOB</span> <span class="pre">(uw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHTOB (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MHTOB</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMACHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MMACHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MMACHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMRDHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MMRDHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MMRDHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMRDHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MMRDHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MMRDHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MMULHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MMULHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MMULHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MMULHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULXHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MMULXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MMULXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULXHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MMULXHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MMULXHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MNOT</span> <span class="pre">(uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MNOT (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MNOT</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MOR</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MOR (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MOR</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MPACKH</span> <span class="pre">(uh,</span> <span class="pre">uh)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MPACKH</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQADDHSS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQADDHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQADDHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQADDHUS</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQADDHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQADDHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXIS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQCPXIS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQCPXIS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXIU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQCPXIU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQCPXIU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXRS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQCPXRS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQCPXRS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXRU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQCPXRU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQCPXRU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQLCLRHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQLCLRHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQLCLRHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQLMTHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQLMTHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQLMTHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQMACHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQMACHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQMACXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQMACXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQMULHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQMULHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQMULHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQMULHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQMULXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQMULXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULXHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQMULXHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQMULXHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSATHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSATHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQSATHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQSLLHI</span> <span class="pre">(uw2,</span> <span class="pre">int)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSLLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQSLLHI</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSRAHI</span> <span class="pre">(sw2,</span> <span class="pre">int)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSRAHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQSRAHI</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSUBHSS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSUBHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQSUBHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQSUBHUS</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSUBHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQSUBHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQXMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQXMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQXMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQXMACXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MQXMACXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MQXMACXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MRDACC</span> <span class="pre">(acc)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MRDACC (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MRDACC</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MRDACCG</span> <span class="pre">(acc)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MRDACCG (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MRDACCG</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MROTLI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MROTLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MROTLI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MROTRI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MROTRI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MROTRI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSATHS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSATHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MSATHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSATHU</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSATHU (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MSATHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSLLHI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSLLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MSLLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSRAHI</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSRAHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MSRAHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSRLHI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSRLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MSRLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MSUBACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MSUBACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MSUBACCS</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSUBHSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSUBHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MSUBHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSUBHUS</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSUBHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MSUBHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MTRAP</span> <span class="pre">(void)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MTRAP</span> <span class="pre">()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">MTRAP</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MUNPACKH</span> <span class="pre">(uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MUNPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MUNPACKH</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MWCUT</span> <span class="pre">(uw2,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MWCUT (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MWCUT</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MWTACC</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MWTACC</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MWTACC</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MWTACCG</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">__MWTACCG</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MWTACCG</span> <span class="pre">``a</span></tt>,``b````</p>
+<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MXOR</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MXOR (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
+<p><tt class="docutils literal"><span class="pre">MXOR</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
 <p>:: _raw-read/write-functions:</p>
 </div>
 <div class="section" id="raw-read-write-functions">
@@ -1290,16 +1316,10 @@ for more details.</p>
 instructions to access memory.  These functions generate
 <tt class="docutils literal"><span class="pre">membar</span></tt> instructions to flush the I/O load and stores where
 appropriate, as described in Fujitsu&#8217;s manual described above.</p>
-<p>unsigned char __builtin_read8 (void <a href="#id1"><span class="problematic" id="id2">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)
-unsigned short __builtin_read16 (void <a href="#id3"><span class="problematic" id="id4">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)
-unsigned long __builtin_read32 (void <a href="#id5"><span class="problematic" id="id6">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)</p>
-<p>unsigned long long __builtin_read64 (void <a href="#id7"><span class="problematic" id="id8">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)</p>
+<p>unsigned char __builtin_read8 (void <a href="#id1"><span class="problematic" id="id2">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)unsigned short __builtin_read16 (void <a href="#id3"><span class="problematic" id="id4">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)unsigned long __builtin_read32 (void <a href="#id5"><span class="problematic" id="id6">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)
+unsigned long long __builtin_read64 (void <a href="#id7"><span class="problematic" id="id8">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)</p>
 <blockquote>
-<div>void __builtin_write8 (void <a href="#id9"><span class="problematic" id="id10">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned char <tt class="docutils literal"><span class="pre">datum</span></tt>)</div></blockquote>
-<p>void __builtin_write16 (void <a href="#id11"><span class="problematic" id="id12">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned short <tt class="docutils literal"><span class="pre">datum</span></tt>)
-void __builtin_write32 (void <a href="#id13"><span class="problematic" id="id14">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned long <tt class="docutils literal"><span class="pre">datum</span></tt>)
-void __builtin_write64 (void <a href="#id15"><span class="problematic" id="id16">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned long long <tt class="docutils literal"><span class="pre">datum</span></tt>)</p>
-<p>:: _other-built-in-functions:</p>
+<div>void __builtin_write8 (void <a href="#id9"><span class="problematic" id="id10">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned char <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write16 (void <a href="#id11"><span class="problematic" id="id12">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned short <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write32 (void <a href="#id13"><span class="problematic" id="id14">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned long <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write64 (void <a href="#id15"><span class="problematic" id="id16">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned long long <tt class="docutils literal"><span class="pre">datum</span></tt>):: _other-built-in-functions:</div></blockquote>
 </div>
 <div class="section" id="other-built-in-functions">
 <h3>Other Built-in Functions<a class="headerlink" href="#other-built-in-functions" title="Permalink to this headline">¶</a></h3>
@@ -1322,10 +1342,11 @@ is 1.  Other values of <tt class="docutils literal"><span class="pre">reg</span>
 <dd>Use the <tt class="docutils literal"><span class="pre">dcpl</span></tt> instruction to load the contents of address <tt class="docutils literal"><span class="pre">x</span></tt>
 into the data cache.</dd>
 <dt>void __data_prefetch (const void <a href="#id19"><span class="problematic" id="id20">*</span></a><tt class="docutils literal"><span class="pre">x</span></tt>)</dt>
-<dd>Use the <tt class="docutils literal"><span class="pre">nldub</span></tt> instruction to load the contents of address <tt class="docutils literal"><span class="pre">x</span></tt>
-into the data cache.  The instruction is issued in slot I1.</dd>
+<dd><p class="first">Use the <tt class="docutils literal"><span class="pre">nldub</span></tt> instruction to load the contents of address <tt class="docutils literal"><span class="pre">x</span></tt>
+into the data cache.  The instruction is issued in slot I1.</p>
+<p class="last">:: _mips-dsp-built-in-functions:</p>
+</dd>
 </dl>
-<p>:: _mips-dsp-built-in-functions:</p>
 </div>
 </div>
 <div class="section" id="mips-dsp-built-in-functions">
@@ -1387,16 +1408,23 @@ of a Q7 value can be obtained by multiplying the fractional value by
 <p>The table below lists the <tt class="docutils literal"><span class="pre">v4i8</span></tt> and <tt class="docutils literal"><span class="pre">v2q15</span></tt> operations for which
 hardware support exists.  <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> are <tt class="docutils literal"><span class="pre">v4i8</span></tt> values,
 and <tt class="docutils literal"><span class="pre">c</span></tt> and <tt class="docutils literal"><span class="pre">d</span></tt> are <tt class="docutils literal"><span class="pre">v2q15</span></tt> values.</p>
-<p>C code MIPS instruction
-<tt class="docutils literal"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></tt> <tt class="docutils literal"><span class="pre">addu.qb</span></tt>
-<tt class="docutils literal"><span class="pre">c</span> <span class="pre">+</span> <span class="pre">d</span></tt> <tt class="docutils literal"><span class="pre">addq.ph</span></tt>
-<tt class="docutils literal"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></tt> <tt class="docutils literal"><span class="pre">subu.qb</span></tt>
-<tt class="docutils literal"><span class="pre">c</span> <span class="pre">-</span> <span class="pre">d</span></tt> <tt class="docutils literal"><span class="pre">subq.ph</span></tt></p>
+<p>C code</p>
+<p>MIPS instruction</p>
+<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">addu.qb</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">c</span> <span class="pre">+</span> <span class="pre">d</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">addq.ph</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">subu.qb</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">c</span> <span class="pre">-</span> <span class="pre">d</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">subq.ph</span></tt></p>
 <p>The table below lists the <tt class="docutils literal"><span class="pre">v2i16</span></tt> operation for which
 hardware support exists for the DSP ASE REV 2.  <tt class="docutils literal"><span class="pre">e</span></tt> and <tt class="docutils literal"><span class="pre">f</span></tt> are
 <tt class="docutils literal"><span class="pre">v2i16</span></tt> values.</p>
-<p>C code MIPS instruction
-<tt class="docutils literal"><span class="pre">e</span> <span class="pre">*</span> <span class="pre">f</span></tt> <tt class="docutils literal"><span class="pre">mul.ph</span></tt></p>
+<p>C code</p>
+<p>MIPS instruction</p>
+<p><tt class="docutils literal"><span class="pre">e</span> <span class="pre">*</span> <span class="pre">f</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">mul.ph</span></tt></p>
 <p>It is easier to describe the DSP built-in functions if we first define
 the following types:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">q31</span><span class="p">;</span>
@@ -1632,12 +1660,12 @@ ST Microelectronics Loongson-2E and -2F processors.  These intrinsics,
 available after inclusion of the <tt class="docutils literal"><span class="pre">loongson.h</span></tt> header file,
 operate on the following 64-bit vector types:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">uint8x8_t</span></tt>, a vector of eight unsigned 8-bit integers;
-* <tt class="docutils literal"><span class="pre">uint16x4_t</span></tt>, a vector of four unsigned 16-bit integers;
-* <tt class="docutils literal"><span class="pre">uint32x2_t</span></tt>, a vector of two unsigned 32-bit integers;
-* <tt class="docutils literal"><span class="pre">int8x8_t</span></tt>, a vector of eight signed 8-bit integers;
-* <tt class="docutils literal"><span class="pre">int16x4_t</span></tt>, a vector of four signed 16-bit integers;
-* <tt class="docutils literal"><span class="pre">int32x2_t</span></tt>, a vector of two signed 32-bit integers.</li>
+<li><tt class="docutils literal"><span class="pre">uint8x8_t</span></tt>, a vector of eight unsigned 8-bit integers;</li>
+<li><tt class="docutils literal"><span class="pre">uint16x4_t</span></tt>, a vector of four unsigned 16-bit integers;</li>
+<li><tt class="docutils literal"><span class="pre">uint32x2_t</span></tt>, a vector of two unsigned 32-bit integers;</li>
+<li><tt class="docutils literal"><span class="pre">int8x8_t</span></tt>, a vector of eight signed 8-bit integers;</li>
+<li><tt class="docutils literal"><span class="pre">int16x4_t</span></tt>, a vector of four signed 16-bit integers;</li>
+<li><tt class="docutils literal"><span class="pre">int32x2_t</span></tt>, a vector of two signed 32-bit integers.</li>
 </ul>
 <p>The intrinsics provided are listed below; each is named after the
 machine instruction to which it corresponds, with suffixes added as
@@ -1756,16 +1784,26 @@ instruction.</p>
 <p>The table below lists the <tt class="docutils literal"><span class="pre">v2sf</span></tt> operations for which hardware
 support exists.  <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">c</span></tt> are <tt class="docutils literal"><span class="pre">v2sf</span></tt>
 values and <tt class="docutils literal"><span class="pre">x</span></tt> is an integral value.</p>
-<p>C code MIPS instruction
-<tt class="docutils literal"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></tt> <tt class="docutils literal"><span class="pre">add.ps</span></tt>
-<tt class="docutils literal"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></tt> <tt class="docutils literal"><span class="pre">sub.ps</span></tt>
-<tt class="docutils literal"><span class="pre">-a</span></tt> <tt class="docutils literal"><span class="pre">neg.ps</span></tt>
-<tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></tt> <tt class="docutils literal"><span class="pre">mul.ps</span></tt>
-<tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c</span></tt> <tt class="docutils literal"><span class="pre">madd.ps</span></tt>
-<tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">-</span> <span class="pre">c</span></tt> <tt class="docutils literal"><span class="pre">msub.ps</span></tt>
-<tt class="docutils literal"><span class="pre">-(a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c)</span></tt> <tt class="docutils literal"><span class="pre">nmadd.ps</span></tt>
-<tt class="docutils literal"><span class="pre">-(a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">-</span> <span class="pre">c)</span></tt> <tt class="docutils literal"><span class="pre">nmsub.ps</span></tt>
-<tt class="docutils literal"><span class="pre">x</span> <span class="pre">?</span> <span class="pre">a</span> <span class="pre">:</span> <span class="pre">b</span></tt> <tt class="docutils literal"><span class="pre">movn.ps</span></tt>/<tt class="docutils literal"><span class="pre">movz.ps</span></tt></p>
+<p>C code</p>
+<p>MIPS instruction</p>
+<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">add.ps</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">sub.ps</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">-a</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">neg.ps</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">mul.ps</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">madd.ps</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">-</span> <span class="pre">c</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">msub.ps</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">-(a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">nmadd.ps</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">-(a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">-</span> <span class="pre">c)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">nmsub.ps</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">x</span> <span class="pre">?</span> <span class="pre">a</span> <span class="pre">:</span> <span class="pre">b</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">movn.ps</span></tt>/<tt class="docutils literal"><span class="pre">movz.ps</span></tt></p>
 <p>Note that the multiply-accumulate instructions can be disabled
 using the command-line option <tt class="docutils literal"><span class="pre">-mno-fused-madd</span></tt>.</p>
 <p>:: _paired-single-built-in-functions:</p>
@@ -1794,13 +1832,13 @@ for details on what each instruction does.</p>
 <dd>Absolute value (<tt class="docutils literal"><span class="pre">abs.ps</span></tt>).</dd>
 <dt>v2sf __builtin_mips_alnv_ps (v2sf, v2sf, int)</dt>
 <dd><p class="first">Align variable (<tt class="docutils literal"><span class="pre">alnv.ps</span></tt>).</p>
-<p class="last">Note: The value of the third parameter must be 0 or 4
+<p>Note: The value of the third parameter must be 0 or 4
 modulo 8, otherwise the result is unpredictable.  Please read the
 instruction description for details.</p>
+<p class="last">The following multi-instruction functions are also available.</p>
 </dd>
 </dl>
-<p>The following multi-instruction functions are also available.
-In each case, <tt class="docutils literal"><span class="pre">cond</span></tt> can be any of the 16 floating-point conditions:
+<p>In each case, <tt class="docutils literal"><span class="pre">cond</span></tt> can be any of the 16 floating-point conditions:
 <tt class="docutils literal"><span class="pre">f</span></tt>, <tt class="docutils literal"><span class="pre">un</span></tt>, <tt class="docutils literal"><span class="pre">eq</span></tt>, <tt class="docutils literal"><span class="pre">ueq</span></tt>, <tt class="docutils literal"><span class="pre">olt</span></tt>, <tt class="docutils literal"><span class="pre">ult</span></tt>,
 <tt class="docutils literal"><span class="pre">ole</span></tt>, <tt class="docutils literal"><span class="pre">ule</span></tt>, <tt class="docutils literal"><span class="pre">sf</span></tt>, <tt class="docutils literal"><span class="pre">ngle</span></tt>, <tt class="docutils literal"><span class="pre">seq</span></tt>, <tt class="docutils literal"><span class="pre">ngl</span></tt>,
 <tt class="docutils literal"><span class="pre">lt</span></tt>, <tt class="docutils literal"><span class="pre">nge</span></tt>, <tt class="docutils literal"><span class="pre">le</span></tt> or <tt class="docutils literal"><span class="pre">ngt</span></tt>.</p>
@@ -1821,7 +1859,7 @@ of <tt class="docutils literal"><span class="pre">movt.ps</span></tt>.</p>
 <tt class="docutils literal"><span class="pre">bc1t</span></tt>/<tt class="docutils literal"><span class="pre">bc1f</span></tt>).</p>
 <p>These functions compare <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> using <tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``
 and return either the upper or lower half of the result.  For example:</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="n">v2sf</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">v2sf</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">__builtin_mips_upper_c_eq_ps</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
   <span class="n">upper_halves_are_equal</span> <span class="p">();</span>
 <span class="k">else</span>
@@ -1833,9 +1871,9 @@ and return either the upper or lower half of the result.  For example:</p>
   <span class="nf">lower_halves_are_unequal</span> <span class="p">();</span>
 </pre></div>
 </div>
+<p class="last">:: _mips-3d-built-in-functions:</p>
 </dd>
 </dl>
-<p>:: _mips-3d-built-in-functions:</p>
 </div>
 <div class="section" id="mips-3d-built-in-functions">
 <h3>MIPS-3D Built-in Functions<a class="headerlink" href="#mips-3d-built-in-functions" title="Permalink to this headline">¶</a></h3>
@@ -1863,11 +1901,12 @@ more details on what each instruction does.</p>
 <dd>Reduced-precision reciprocal square root (sequence step 1)
 (<tt class="docutils literal"><span class="pre">rsqrt1.``fmt``</span></tt>).</dd>
 <dt>float __builtin_mips_rsqrt2_s (float, float)double __builtin_mips_rsqrt2_d (double, double)v2sf __builtin_mips_rsqrt2_ps (v2sf, v2sf)</dt>
-<dd>Reduced-precision reciprocal square root (sequence step 2)
-(<tt class="docutils literal"><span class="pre">rsqrt2.``fmt``</span></tt>).</dd>
+<dd><p class="first">Reduced-precision reciprocal square root (sequence step 2)
+(<tt class="docutils literal"><span class="pre">rsqrt2.``fmt``</span></tt>).</p>
+<p class="last">The following multi-instruction functions are also available.</p>
+</dd>
 </dl>
-<p>The following multi-instruction functions are also available.
-In each case, <tt class="docutils literal"><span class="pre">cond</span></tt> can be any of the 16 floating-point conditions:
+<p>In each case, <tt class="docutils literal"><span class="pre">cond</span></tt> can be any of the 16 floating-point conditions:
 <tt class="docutils literal"><span class="pre">f</span></tt>, <tt class="docutils literal"><span class="pre">un</span></tt>, <tt class="docutils literal"><span class="pre">eq</span></tt>, <tt class="docutils literal"><span class="pre">ueq</span></tt>, <tt class="docutils literal"><span class="pre">olt</span></tt>, <tt class="docutils literal"><span class="pre">ult</span></tt>,
 <tt class="docutils literal"><span class="pre">ole</span></tt>, <tt class="docutils literal"><span class="pre">ule</span></tt>, <tt class="docutils literal"><span class="pre">sf</span></tt>, <tt class="docutils literal"><span class="pre">ngle</span></tt>, <tt class="docutils literal"><span class="pre">seq</span></tt>,
 <tt class="docutils literal"><span class="pre">ngl</span></tt>, <tt class="docutils literal"><span class="pre">lt</span></tt>, <tt class="docutils literal"><span class="pre">nge</span></tt>, <tt class="docutils literal"><span class="pre">le</span></tt> or <tt class="docutils literal"><span class="pre">ngt</span></tt>.</p>
@@ -1945,7 +1984,7 @@ to compare <tt class="docutils literal"><span class="pre">a</span></tt> with <tt
 The <tt class="docutils literal"><span class="pre">any</span></tt> forms return true if any of the four results are true
 and the <tt class="docutils literal"><span class="pre">all</span></tt> forms return true if all four results are true.
 For example:</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="n">v2sf</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">v2sf</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">;</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">__builtin_mips_any_c_eq_4s</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
   <span class="n">some_are_true</span> <span class="p">();</span>
 <span class="k">else</span>
@@ -1957,9 +1996,9 @@ For example:</p>
   <span class="nf">some_are_false</span> <span class="p">();</span>
 </pre></div>
 </div>
+<p class="last">:: _other-mips-built-in-functions:</p>
 </dd>
 </dl>
-<p>:: _other-mips-built-in-functions:</p>
 </div>
 </div>
 <div class="section" id="other-mips-built-in-functions">
@@ -1974,11 +2013,11 @@ when this function is available.</dd>
 <dd><p class="first">Get and set the contents of the floating-point control and status register
 (FPU control register 31).  These functions are only available in hard-float
 code but can be called in both MIPS16 and non-MIPS16 contexts.</p>
-<p class="last"><tt class="docutils literal"><span class="pre">__builtin_mips_set_fcsr</span></tt> can be used to change any bit of the
+<p><tt class="docutils literal"><span class="pre">__builtin_mips_set_fcsr</span></tt> can be used to change any bit of the
 register except the condition codes, which GCC assumes are preserved.</p>
+<p class="last">:: _msp430-built-in-functions:</p>
 </dd>
 </dl>
-<p>:: _msp430-built-in-functions:</p>
 </div>
 <div class="section" id="msp430-built-in-functions">
 <h2>MSP430 Built-in Functions<a class="headerlink" href="#msp430-built-in-functions" title="Permalink to this headline">¶</a></h2>
@@ -1996,28 +2035,29 @@ currently residing on the stack.  This only works inside interrupt
 handlers and the changes to the status register will only take affect
 once the handler returns.</dd>
 <dt>__delay_cycles (long long <tt class="docutils literal"><span class="pre">cycles</span></tt>)</dt>
-<dd>This inserts an instruction sequence that takes exactly <tt class="docutils literal"><span class="pre">cycles</span></tt>
+<dd><p class="first">This inserts an instruction sequence that takes exactly <tt class="docutils literal"><span class="pre">cycles</span></tt>
 cycles (between 0 and about 17E9) to complete.  The inserted sequence
 may use jumps, loops, or no-ops, and does not interfere with any other
 instructions.  Note that <tt class="docutils literal"><span class="pre">cycles</span></tt> must be a compile-time constant
 integer - that is, you must pass a number, not a variable that may be
 optimized to a constant later.  The number of cycles delayed by this
-builtin is exact.</dd>
+builtin is exact.</p>
+<p class="last">:: _nds32-built-in-functions:</p>
+</dd>
 </dl>
-<p>:: _nds32-built-in-functions:</p>
 </div>
 <div class="section" id="nds32-built-in-functions">
 <h2>NDS32 Built-in Functions<a class="headerlink" href="#nds32-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the NDS32 target:</p>
-<p>Insert an ISYNC instruction into the instruction stream where
+<p id="index-20">Built-in Functionvoid__builtin_nds32_isync(int*``addr``)Insert an ISYNC instruction into the instruction stream where
 <tt class="docutils literal"><span class="pre">addr</span></tt> is an instruction address for serialization.</p>
-<p>Insert an ISB instruction into the instruction stream.</p>
-<p>Return the content of a system register which is mapped by <tt class="docutils literal"><span class="pre">sr</span></tt>.</p>
-<p>Return the content of a user space register which is mapped by <tt class="docutils literal"><span class="pre">usr</span></tt>.</p>
-<p>Move the <tt class="docutils literal"><span class="pre">value</span></tt> to a system register which is mapped by <tt class="docutils literal"><span class="pre">sr</span></tt>.</p>
-<p>Move the <tt class="docutils literal"><span class="pre">value</span></tt> to a user space register which is mapped by <tt class="docutils literal"><span class="pre">usr</span></tt>.</p>
-<p>Enable global interrupt.</p>
-<p>Disable global interrupt.</p>
+<p id="index-21">Built-in Functionvoid__builtin_nds32_isb(void)Insert an ISB instruction into the instruction stream.</p>
+<p id="index-22">Built-in Functionint__builtin_nds32_mfsr(int``sr``)Return the content of a system register which is mapped by <tt class="docutils literal"><span class="pre">sr</span></tt>.</p>
+<p id="index-23">Built-in Functionint__builtin_nds32_mfusr(int``usr``)Return the content of a user space register which is mapped by <tt class="docutils literal"><span class="pre">usr</span></tt>.</p>
+<p id="index-24">Built-in Functionvoid__builtin_nds32_mtsr(int``value``,int``sr``)Move the <tt class="docutils literal"><span class="pre">value</span></tt> to a system register which is mapped by <tt class="docutils literal"><span class="pre">sr</span></tt>.</p>
+<p id="index-25">Built-in Functionvoid__builtin_nds32_mtusr(int``value``,int``usr``)Move the <tt class="docutils literal"><span class="pre">value</span></tt> to a user space register which is mapped by <tt class="docutils literal"><span class="pre">usr</span></tt>.</p>
+<p id="index-26">Built-in Functionvoid__builtin_nds32_setgie_en(void)Enable global interrupt.</p>
+<p id="index-27">Built-in Functionvoid__builtin_nds32_setgie_dis(void)Disable global interrupt.</p>
 <p>:: _picochip-built-in-functions:</p>
 </div>
 <div class="section" id="picochip-built-in-functions">
@@ -2044,10 +2084,11 @@ storing the value 32767 if the result overflows.</dd>
 <dd>Saturating subtraction.  Return the result of subtracting <tt class="docutils literal"><span class="pre">y</span></tt> from
 <tt class="docutils literal"><span class="pre">x</span></tt>, storing the value -32768 if the result overflows.</dd>
 <dt>void __builtin_halt (void)</dt>
-<dd>Halt.  The processor stops execution.  This built-in is useful for
-implementing assertions.</dd>
+<dd><p class="first">Halt.  The processor stops execution.  This built-in is useful for
+implementing assertions.</p>
+<p class="last">:: _powerpc-built-in-functions:</p>
+</dd>
 </dl>
-<p>:: _powerpc-built-in-functions:</p>
 </div>
 <div class="section" id="powerpc-built-in-functions">
 <h2>PowerPC Built-in Functions<a class="headerlink" href="#powerpc-built-in-functions" title="Permalink to this headline">¶</a></h2>
@@ -2163,31 +2204,26 @@ instructions.</p>
 C and C++ code differs from Motorola&#8217;s documentation in several ways.</p>
 <ul>
 <li><p class="first">A vector constant is a list of constant expressions within curly braces.</p>
-<ul class="simple">
-<li>A vector initializer requires no cast if the vector constant is of the</li>
-</ul>
-<p>same type as the variable it is initializing.</p>
-<ul class="simple">
-<li>If <tt class="docutils literal"><span class="pre">signed</span></tt> or <tt class="docutils literal"><span class="pre">unsigned</span></tt> is omitted, the signedness of the</li>
-</ul>
-<p>vector type is the default signedness of the base type.  The default
+</li>
+<li><p class="first">A vector initializer requires no cast if the vector constant is of the
+same type as the variable it is initializing.</p>
+</li>
+<li><p class="first">If <tt class="docutils literal"><span class="pre">signed</span></tt> or <tt class="docutils literal"><span class="pre">unsigned</span></tt> is omitted, the signedness of the
+vector type is the default signedness of the base type.  The default
 varies depending on the operating system, so a portable program should
 always specify the signedness.</p>
-<ul class="simple">
-<li>Compiling with <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-maltivec"><em class="xref std std-option">-maltivec</em></a> adds keywords <tt class="docutils literal"><span class="pre">__vector</span></tt>,</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">vector</span></tt>, <tt class="docutils literal"><span class="pre">__pixel</span></tt>, <tt class="docutils literal"><span class="pre">pixel</span></tt>, <tt class="docutils literal"><span class="pre">__bool</span></tt> and
+</li>
+<li><p class="first">Compiling with <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-maltivec"><em class="xref std std-option">-maltivec</em></a> adds keywords <tt class="docutils literal"><span class="pre">__vector</span></tt>,
+<tt class="docutils literal"><span class="pre">vector</span></tt>, <tt class="docutils literal"><span class="pre">__pixel</span></tt>, <tt class="docutils literal"><span class="pre">pixel</span></tt>, <tt class="docutils literal"><span class="pre">__bool</span></tt> and
 <tt class="docutils literal"><span class="pre">bool</span></tt>.  When compiling ISO C, the context-sensitive substitution
 of the keywords <tt class="docutils literal"><span class="pre">vector</span></tt>, <tt class="docutils literal"><span class="pre">pixel</span></tt> and <tt class="docutils literal"><span class="pre">bool</span></tt> is
 disabled.  To use them, you must include <tt class="docutils literal"><span class="pre">&lt;altivec.h&gt;</span></tt> instead.</p>
-<ul class="simple">
-<li>GCC allows using a <tt class="docutils literal"><span class="pre">typedef</span></tt> name as the type specifier for a</li>
-</ul>
-<p>vector type.</p>
-<ul class="simple">
-<li>For C, overloaded functions are implemented with macros so the following</li>
-</ul>
-<p>does not work:</p>
+</li>
+<li><p class="first">GCC allows using a <tt class="docutils literal"><span class="pre">typedef</span></tt> name as the type specifier for a
+vector type.</p>
+</li>
+<li><p class="first">For C, overloaded functions are implemented with macros so the following
+does not work:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">vec_add</span> <span class="p">((</span><span class="n">vector</span> <span class="kt">signed</span> <span class="kt">int</span><span class="p">){</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">},</span> <span class="n">foo</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -4879,57 +4915,57 @@ section that will work on either PowerPC or S/390:</p>
 <p>GCC supports some of the RX instructions which cannot be expressed in
 the C programming language via the use of built-in functions.  The
 following functions are supported:</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">brk</span></tt> machine instruction.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">clrpsw</span></tt> machine instruction to clear the specified
+<p id="index-28">Built-in Functionvoid__builtin_rx_brk(void)Generates the <tt class="docutils literal"><span class="pre">brk</span></tt> machine instruction.</p>
+<p id="index-29">Built-in Functionvoid__builtin_rx_clrpsw(int)Generates the <tt class="docutils literal"><span class="pre">clrpsw</span></tt> machine instruction to clear the specified
 bit in the processor status word.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">int</span></tt> machine instruction to generate an interrupt
+<p id="index-30">Built-in Functionvoid__builtin_rx_int(int)Generates the <tt class="docutils literal"><span class="pre">int</span></tt> machine instruction to generate an interrupt
 with the specified value.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">machi</span></tt> machine instruction to add the result of
+<p id="index-31">Built-in Functionvoid__builtin_rx_machi(int,int)Generates the <tt class="docutils literal"><span class="pre">machi</span></tt> machine instruction to add the result of
 multiplying the top 16 bits of the two arguments into the
 accumulator.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">maclo</span></tt> machine instruction to add the result of
+<p id="index-32">Built-in Functionvoid__builtin_rx_maclo(int,int)Generates the <tt class="docutils literal"><span class="pre">maclo</span></tt> machine instruction to add the result of
 multiplying the bottom 16 bits of the two arguments into the
 accumulator.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">mulhi</span></tt> machine instruction to place the result of
+<p id="index-33">Built-in Functionvoid__builtin_rx_mulhi(int,int)Generates the <tt class="docutils literal"><span class="pre">mulhi</span></tt> machine instruction to place the result of
 multiplying the top 16 bits of the two arguments into the
 accumulator.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">mullo</span></tt> machine instruction to place the result of
+<p id="index-34">Built-in Functionvoid__builtin_rx_mullo(int,int)Generates the <tt class="docutils literal"><span class="pre">mullo</span></tt> machine instruction to place the result of
 multiplying the bottom 16 bits of the two arguments into the
 accumulator.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">mvfachi</span></tt> machine instruction to read the top
+<p id="index-35">Built-in Functionint__builtin_rx_mvfachi(void)Generates the <tt class="docutils literal"><span class="pre">mvfachi</span></tt> machine instruction to read the top
 32 bits of the accumulator.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">mvfacmi</span></tt> machine instruction to read the middle
+<p id="index-36">Built-in Functionint__builtin_rx_mvfacmi(void)Generates the <tt class="docutils literal"><span class="pre">mvfacmi</span></tt> machine instruction to read the middle
 32 bits of the accumulator.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">mvfc</span></tt> machine instruction which reads the control
+<p id="index-37">Built-in Functionint__builtin_rx_mvfc(int)Generates the <tt class="docutils literal"><span class="pre">mvfc</span></tt> machine instruction which reads the control
 register specified in its argument and returns its value.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">mvtachi</span></tt> machine instruction to set the top
+<p id="index-38">Built-in Functionvoid__builtin_rx_mvtachi(int)Generates the <tt class="docutils literal"><span class="pre">mvtachi</span></tt> machine instruction to set the top
 32 bits of the accumulator.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">mvtaclo</span></tt> machine instruction to set the bottom
+<p id="index-39">Built-in Functionvoid__builtin_rx_mvtaclo(int)Generates the <tt class="docutils literal"><span class="pre">mvtaclo</span></tt> machine instruction to set the bottom
 32 bits of the accumulator.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">mvtc</span></tt> machine instruction which sets control
+<p id="index-40">Built-in Functionvoid__builtin_rx_mvtc(intreg,intval)Generates the <tt class="docutils literal"><span class="pre">mvtc</span></tt> machine instruction which sets control
 register number <tt class="docutils literal"><span class="pre">reg</span></tt> to <tt class="docutils literal"><span class="pre">val</span></tt>.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">mvtipl</span></tt> machine instruction set the interrupt
+<p id="index-41">Built-in Functionvoid__builtin_rx_mvtipl(int)Generates the <tt class="docutils literal"><span class="pre">mvtipl</span></tt> machine instruction set the interrupt
 priority level.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">racw</span></tt> machine instruction to round the accumulator
+<p id="index-42">Built-in Functionvoid__builtin_rx_racw(int)Generates the <tt class="docutils literal"><span class="pre">racw</span></tt> machine instruction to round the accumulator
 according to the specified mode.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">revw</span></tt> machine instruction which swaps the bytes in
+<p id="index-43">Built-in Functionint__builtin_rx_revw(int)Generates the <tt class="docutils literal"><span class="pre">revw</span></tt> machine instruction which swaps the bytes in
 the argument so that bits 0-7 now occupy bits 8-15 and vice versa,
 and also bits 16-23 occupy bits 24-31 and vice versa.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">rmpa</span></tt> machine instruction which initiates a
+<p id="index-44">Built-in Functionvoid__builtin_rx_rmpa(void)Generates the <tt class="docutils literal"><span class="pre">rmpa</span></tt> machine instruction which initiates a
 repeated multiply and accumulate sequence.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">round</span></tt> machine instruction which returns the
+<p id="index-45">Built-in Functionvoid__builtin_rx_round(float)Generates the <tt class="docutils literal"><span class="pre">round</span></tt> machine instruction which returns the
 floating-point argument rounded according to the current rounding mode
 set in the floating-point status word register.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">sat</span></tt> machine instruction which returns the
+<p id="index-46">Built-in Functionint__builtin_rx_sat(int)Generates the <tt class="docutils literal"><span class="pre">sat</span></tt> machine instruction which returns the
 saturated value of the argument.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">setpsw</span></tt> machine instruction to set the specified
+<p id="index-47">Built-in Functionvoid__builtin_rx_setpsw(int)Generates the <tt class="docutils literal"><span class="pre">setpsw</span></tt> machine instruction to set the specified
 bit in the processor status word.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">wait</span></tt> machine instruction.</p>
+<p id="index-48">Built-in Functionvoid__builtin_rx_wait(void)Generates the <tt class="docutils literal"><span class="pre">wait</span></tt> machine instruction.</p>
 <p>:: _s/390-system-z-built-in-functions:</p>
 </div>
 <div class="section" id="s-390-system-z-built-in-functions">
 <h2>S/390 System z Built-in Functions<a class="headerlink" href="#s-390-system-z-built-in-functions" title="Permalink to this headline">¶</a></h2>
-<p>Generates the <tt class="docutils literal"><span class="pre">tbegin</span></tt> machine instruction starting a
+<p id="index-49">Built-in Functionint__builtin_tbegin(void*)Generates the <tt class="docutils literal"><span class="pre">tbegin</span></tt> machine instruction starting a
 non-constraint hardware transaction.  If the parameter is non-NULL the
 memory area is used to store the transaction diagnostic buffer and
 will be passed as first operand to <tt class="docutils literal"><span class="pre">tbegin</span></tt>.  This buffer can be
@@ -4965,41 +5001,41 @@ should be re-executed in that case.</dd>
 <dd>The transaction aborted due to a persistent failure.  Re-execution
 under same circumstances will not be productive.</dd>
 </dl>
-<p>The <tt class="docutils literal"><span class="pre">_HTM_FIRST_USER_ABORT_CODE</span></tt> defined in <tt class="docutils literal"><span class="pre">htmintrin.h</span></tt>
+<p id="index-50">Macro_HTM_FIRST_USER_ABORT_CODEThe <tt class="docutils literal"><span class="pre">_HTM_FIRST_USER_ABORT_CODE</span></tt> defined in <tt class="docutils literal"><span class="pre">htmintrin.h</span></tt>
 specifies the first abort code which can be used for
 <tt class="docutils literal"><span class="pre">__builtin_tabort</span></tt>.  Values below this threshold are reserved for
 machine use.</p>
-<p>The <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">__htm_tdb</span></tt> defined in <tt class="docutils literal"><span class="pre">htmintrin.h</span></tt> describes
+<p id="index-51">Data typestruct __htm_tdbThe <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">__htm_tdb</span></tt> defined in <tt class="docutils literal"><span class="pre">htmintrin.h</span></tt> describes
 the structure of the transaction diagnostic block as specified in the
 Principles of Operation manual chapter 5-91.</p>
-<p>Same as <tt class="docutils literal"><span class="pre">__builtin_tbegin</span></tt> but without FPR saves and restores.
+<p id="index-52">Built-in Functionint__builtin_tbegin_nofloat(void*)Same as <tt class="docutils literal"><span class="pre">__builtin_tbegin</span></tt> but without FPR saves and restores.
 Using this variant in code making use of FPRs will leave the FPRs in
 undefined state when entering the transaction abort handler code.</p>
-<p>In addition to <tt class="docutils literal"><span class="pre">__builtin_tbegin</span></tt> a loop for transient failures
+<p id="index-53">Built-in Functionint__builtin_tbegin_retry(void*,int)In addition to <tt class="docutils literal"><span class="pre">__builtin_tbegin</span></tt> a loop for transient failures
 is generated.  If tbegin returns a condition code of 2 the transaction
 will be retried as often as specified in the second argument.  The
 perform processor assist instruction is used to tell the CPU about the
 number of fails so far.</p>
-<p>Same as <tt class="docutils literal"><span class="pre">__builtin_tbegin_retry</span></tt> but without FPR saves and
+<p id="index-54">Built-in Functionint__builtin_tbegin_retry_nofloat(void*,int)Same as <tt class="docutils literal"><span class="pre">__builtin_tbegin_retry</span></tt> but without FPR saves and
 restores.  Using this variant in code making use of FPRs will leave
 the FPRs in undefined state when entering the transaction abort
 handler code.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">tbeginc</span></tt> machine instruction starting a constraint
+<p id="index-55">Built-in Functionvoid__builtin_tbeginc(void)Generates the <tt class="docutils literal"><span class="pre">tbeginc</span></tt> machine instruction starting a constraint
 hardware transaction.  The second operand is set to <tt class="docutils literal"><span class="pre">0xff08</span></tt>.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">tend</span></tt> machine instruction finishing a transaction
+<p id="index-56">Built-in Functionint__builtin_tend(void)Generates the <tt class="docutils literal"><span class="pre">tend</span></tt> machine instruction finishing a transaction
 and making the changes visible to other threads.  The condition code
 generated by tend is returned as integer value.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">tabort</span></tt> machine instruction with the specified
+<p id="index-57">Built-in Functionvoid__builtin_tabort(int)Generates the <tt class="docutils literal"><span class="pre">tabort</span></tt> machine instruction with the specified
 abort code.  Abort codes from 0 through 255 are reserved and will
 result in an error message.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">ppa</span> <span class="pre">rX,rY,1</span></tt> machine instruction.  Where the
+<p id="index-58">Built-in Functionvoid__builtin_tx_assist(int)Generates the <tt class="docutils literal"><span class="pre">ppa</span> <span class="pre">rX,rY,1</span></tt> machine instruction.  Where the
 integer parameter is loaded into rX and a value of zero is loaded into
 rY.  The integer parameter specifies the number of times the
 transaction repeatedly aborted.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">etnd</span></tt> machine instruction.  The current nesting
+<p id="index-59">Built-in Functionint__builtin_tx_nesting_depth(void)Generates the <tt class="docutils literal"><span class="pre">etnd</span></tt> machine instruction.  The current nesting
 depth is returned as integer value.  For a nesting depth of 0 the code
 is not executed as part of an transaction.</p>
-<p>Generates the <tt class="docutils literal"><span class="pre">ntstg</span></tt> machine instruction.  The second argument
+<p id="index-60">Built-in Functionvoid__builtin_non_tx_store(uint64_t*,uint64_t)Generates the <tt class="docutils literal"><span class="pre">ntstg</span></tt> machine instruction.  The second argument
 is written to the first arguments location.  The store operation will
 not be rolled-back in case of an transaction abort.</p>
 <p>:: _sh-built-in-functions:</p>
@@ -5008,13 +5044,13 @@ not be rolled-back in case of an transaction abort.</p>
 <h2>SH Built-in Functions<a class="headerlink" href="#sh-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>The following built-in functions are supported on the SH1, SH2, SH3 and SH4
 families of processors:</p>
-<p>Sets the GBR register to the specified value <tt class="docutils literal"><span class="pre">ptr</span></tt>.  This is usually
+<p id="index-61">Built-in Functionvoid__builtin_set_thread_pointer(void*``ptr``)Sets the GBR register to the specified value <tt class="docutils literal"><span class="pre">ptr</span></tt>.  This is usually
 used by system code that manages threads and execution contexts.  The compiler
 normally does not generate code that modifies the contents of GBR and
 thus the value is preserved across function calls.  Changing the GBR
 value in user code must be done with caution, since the compiler might use
 GBR in order to access thread local variables.</p>
-<p>Returns the value that is currently set in the GBR register.
+<p id="index-62">Built-in Functionvoid <a href="#id23"><span class="problematic" id="id24">*</span></a>__builtin_thread_pointer(void)Returns the value that is currently set in the GBR register.
 Memory loads and stores that use the thread pointer as a base address are
 turned into GBR based displacement loads and stores, if possible.
 For example:</p>
@@ -5030,8 +5066,8 @@ For example:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Returns the value that is currently set in the FPSCR register.</p>
-<p>Sets the FPSCR register to the specified value <tt class="docutils literal"><span class="pre">val</span></tt>, while
+<p id="index-63">Built-in Functionunsigned int__builtin_sh_get_fpscr(void)Returns the value that is currently set in the FPSCR register.</p>
+<p id="index-64">Built-in Functionvoid__builtin_sh_set_fpscr(unsignedint``val``)Sets the FPSCR register to the specified value <tt class="docutils literal"><span class="pre">val</span></tt>, while
 preserving the current values of the FR, SZ and PR bits.</p>
 <p>:: _sparc-vis-built-in-functions:</p>
 </div>
@@ -5183,38 +5219,32 @@ implementation differs in several ways.</p>
 <ul>
 <li><p class="first">The optional extension of specifying vector constants in parentheses is
 not supported.</p>
-<ul class="simple">
-<li>A vector initializer requires no cast if the vector constant is of the</li>
-</ul>
-<p>same type as the variable it is initializing.</p>
-<ul class="simple">
-<li>If <tt class="docutils literal"><span class="pre">signed</span></tt> or <tt class="docutils literal"><span class="pre">unsigned</span></tt> is omitted, the signedness of the</li>
-</ul>
-<p>vector type is the default signedness of the base type.  The default
+</li>
+<li><p class="first">A vector initializer requires no cast if the vector constant is of the
+same type as the variable it is initializing.</p>
+</li>
+<li><p class="first">If <tt class="docutils literal"><span class="pre">signed</span></tt> or <tt class="docutils literal"><span class="pre">unsigned</span></tt> is omitted, the signedness of the
+vector type is the default signedness of the base type.  The default
 varies depending on the operating system, so a portable program should
 always specify the signedness.</p>
-<ul class="simple">
-<li>By default, the keyword <tt class="docutils literal"><span class="pre">__vector</span></tt> is added. The macro</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">vector</span></tt> is defined in <tt class="docutils literal"><span class="pre">&lt;spu_intrinsics.h&gt;</span></tt> and can be
+</li>
+<li><p class="first">By default, the keyword <tt class="docutils literal"><span class="pre">__vector</span></tt> is added. The macro
+<tt class="docutils literal"><span class="pre">vector</span></tt> is defined in <tt class="docutils literal"><span class="pre">&lt;spu_intrinsics.h&gt;</span></tt> and can be
 undefined.</p>
-<ul class="simple">
-<li>GCC allows using a <tt class="docutils literal"><span class="pre">typedef</span></tt> name as the type specifier for a</li>
-</ul>
-<p>vector type.</p>
-<ul class="simple">
-<li>For C, overloaded functions are implemented with macros so the following</li>
-</ul>
-<p>does not work:</p>
+</li>
+<li><p class="first">GCC allows using a <tt class="docutils literal"><span class="pre">typedef</span></tt> name as the type specifier for a
+vector type.</p>
+</li>
+<li><p class="first">For C, overloaded functions are implemented with macros so the following
+does not work:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">spu_add</span> <span class="p">((</span><span class="n">vector</span> <span class="kt">signed</span> <span class="kt">int</span><span class="p">){</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">},</span> <span class="n">foo</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Since <tt class="docutils literal"><span class="pre">spu_add</span></tt> is a macro, the vector constant in the example
 is treated as four separate arguments.  Wrap the entire argument in
 parentheses for this to work.</p>
-<ul class="simple">
-<li>The extended version of <tt class="docutils literal"><span class="pre">__builtin_expect</span></tt> is not supported.</li>
-</ul>
+</li>
+<li><p class="first">The extended version of <tt class="docutils literal"><span class="pre">__builtin_expect</span></tt> is not supported.</p>
 </li>
 </ul>
 <p>Note: Only the interface described in the aforementioned
@@ -5346,20 +5376,22 @@ mode.  All of them implement the function that is part of the name.</p>
 <p>The following built-in function is always available.</p>
 <dl class="docutils">
 <dt>void __builtin_ia32_pause (void)</dt>
-<dd>Generates the <tt class="docutils literal"><span class="pre">pause</span></tt> machine instruction with a compiler memory
-barrier.</dd>
+<dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">pause</span></tt> machine instruction with a compiler memory
+barrier.</p>
+<p class="last">The following floating-point built-in functions are made available in the</p>
+</dd>
 </dl>
-<p>The following floating-point built-in functions are made available in the
-64-bit mode.</p>
+<p>64-bit mode.</p>
 <dl class="docutils">
 <dt>__float128 __builtin_infq (void)</dt>
 <dd>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">__float128</span></tt>.</dd>
 <dt>__float128 __builtin_huge_valq (void)</dt>
-<dd>Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">__float128</span></tt>.</dd>
+<dd><p class="first">Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">__float128</span></tt>.</p>
+<p class="last" id="index-66">The following built-in functions are always available and can be used to</p>
+</dd>
 </dl>
-<p id="index-1">The following built-in functions are always available and can be used to
-check the target platform type.</p>
-<p>This function runs the CPU detection code to check the type of CPU and the
+<p>check the target platform type.</p>
+<p id="index-67">Built-in Functionvoid__builtin_cpu_init(void)This function runs the CPU detection code to check the type of CPU and the
 features supported.  This built-in function needs to be invoked along with the built-in functions
 to check CPU type and features, <tt class="docutils literal"><span class="pre">__builtin_cpu_is</span></tt> and
 <tt class="docutils literal"><span class="pre">__builtin_cpu_supports</span></tt>, only when used in a function that is
@@ -5384,7 +5416,7 @@ don&#8217;t support constructor priority.</p>
      <span class="n">__attribute__</span> <span class="p">((</span><span class="n">ifunc</span> <span class="p">(</span><span class="s">&quot;resolve_memcpy&quot;</span><span class="p">)));</span>
 </pre></div>
 </div>
-<p>This function returns a positive integer if the run-time CPU
+<p id="index-68">Built-in Functionint__builtin_cpu_is(constchar*``cpuname``)This function returns a positive integer if the run-time CPU
 is of type <tt class="docutils literal"><span class="pre">cpuname</span></tt>
 and returns <tt class="docutils literal"><span class="pre">0</span></tt> otherwise. The following CPU names can be detected:</p>
 <dl class="docutils">
@@ -5425,9 +5457,10 @@ and returns <tt class="docutils literal"><span class="pre">0</span></tt> otherwi
 <dt>bdver4</dt>
 <dd>AMD Family 15h Bulldozer version 4.</dd>
 <dt>btver2</dt>
-<dd>AMD Family 16h CPU.</dd>
+<dd><p class="first">AMD Family 16h CPU.</p>
+<p class="last">Here is an example:</p>
+</dd>
 </dl>
-<p>Here is an example:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">__builtin_cpu_is</span> <span class="p">(</span><span class="s">&quot;corei7&quot;</span><span class="p">))</span>
   <span class="p">{</span>
      <span class="n">do_corei7</span> <span class="p">();</span> <span class="c1">// Core i7 specific implementation.</span>
@@ -5438,7 +5471,7 @@ and returns <tt class="docutils literal"><span class="pre">0</span></tt> otherwi
   <span class="p">}</span>
 </pre></div>
 </div>
-<p>This function returns a positive integer if the run-time CPU
+<p id="index-69">Built-in Functionint__builtin_cpu_supports(constchar*``feature``)This function returns a positive integer if the run-time CPU
 supports <tt class="docutils literal"><span class="pre">feature</span></tt>
 and returns <tt class="docutils literal"><span class="pre">0</span></tt> otherwise. The following features can be detected:</p>
 <dl class="docutils">
@@ -5465,9 +5498,10 @@ and returns <tt class="docutils literal"><span class="pre">0</span></tt> otherwi
 <dt>avx2</dt>
 <dd>AVX2 instructions.</dd>
 <dt>avx512f</dt>
-<dd>AVX512F instructions.</dd>
+<dd><p class="first">AVX512F instructions.</p>
+<p class="last">Here is an example:</p>
+</dd>
 </dl>
-<p>Here is an example:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">__builtin_cpu_supports</span> <span class="p">(</span><span class="s">&quot;popcnt&quot;</span><span class="p">))</span>
   <span class="p">{</span>
      <span class="k">asm</span><span class="p">(</span><span class="s">&quot;popcnt %1,%0&quot;</span> <span class="o">:</span> <span class="s">&quot;=r&quot;</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;rm&quot;</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;cc&quot;</span><span class="p">);</span>
@@ -5626,23 +5660,24 @@ All of them generate the machine instruction that is part of the name.</p>
 </div>
 <p>The following built-in functions are available when <em class="xref std std-option">-msse</em> is used.</p>
 <dl class="docutils">
-<dt>v4sf __builtin_ia32_loadups (float <a href="#id23"><span class="problematic" id="id24">*</span></a>)</dt>
+<dt>v4sf __builtin_ia32_loadups (float <a href="#id25"><span class="problematic" id="id26">*</span></a>)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movups</span></tt> machine instruction as a load from memory.</dd>
-<dt>void __builtin_ia32_storeups (float <a href="#id25"><span class="problematic" id="id26">*</span></a>, v4sf)</dt>
+<dt>void __builtin_ia32_storeups (float <a href="#id27"><span class="problematic" id="id28">*</span></a>, v4sf)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movups</span></tt> machine instruction as a store to memory.</dd>
-<dt>v4sf __builtin_ia32_loadss (float <a href="#id27"><span class="problematic" id="id28">*</span></a>)</dt>
+<dt>v4sf __builtin_ia32_loadss (float <a href="#id29"><span class="problematic" id="id30">*</span></a>)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movss</span></tt> machine instruction as a load from memory.</dd>
-<dt>v4sf __builtin_ia32_loadhps (v4sf, const v2sf <a href="#id29"><span class="problematic" id="id30">*</span></a>)</dt>
+<dt>v4sf __builtin_ia32_loadhps (v4sf, const v2sf <a href="#id31"><span class="problematic" id="id32">*</span></a>)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movhps</span></tt> machine instruction as a load from memory.</dd>
-<dt>v4sf __builtin_ia32_loadlps (v4sf, const v2sf <a href="#id31"><span class="problematic" id="id32">*</span></a>)</dt>
+<dt>v4sf __builtin_ia32_loadlps (v4sf, const v2sf <a href="#id33"><span class="problematic" id="id34">*</span></a>)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movlps</span></tt> machine instruction as a load from memory</dd>
-<dt>void __builtin_ia32_storehps (v2sf <a href="#id33"><span class="problematic" id="id34">*</span></a>, v4sf)</dt>
+<dt>void __builtin_ia32_storehps (v2sf <a href="#id35"><span class="problematic" id="id36">*</span></a>, v4sf)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movhps</span></tt> machine instruction as a store to memory.</dd>
-<dt>void __builtin_ia32_storelps (v2sf <a href="#id35"><span class="problematic" id="id36">*</span></a>, v4sf)</dt>
-<dd>Generates the <tt class="docutils literal"><span class="pre">movlps</span></tt> machine instruction as a store to memory.</dd>
+<dt>void __builtin_ia32_storelps (v2sf <a href="#id37"><span class="problematic" id="id38">*</span></a>, v4sf)</dt>
+<dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">movlps</span></tt> machine instruction as a store to memory.</p>
+<p class="last">The following built-in functions are available when <em class="xref std std-option">-msse2</em> is used.</p>
+</dd>
 </dl>
-<p>The following built-in functions are available when <em class="xref std std-option">-msse2</em> is used.
-All of them generate the machine instruction that is part of the name.</p>
+<p>All of them generate the machine instruction that is part of the name.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">__builtin_ia32_comisdeq</span> <span class="p">(</span><span class="n">v2df</span><span class="p">,</span> <span class="n">v2df</span><span class="p">)</span>
 <span class="kt">int</span> <span class="n">__builtin_ia32_comisdlt</span> <span class="p">(</span><span class="n">v2df</span><span class="p">,</span> <span class="n">v2df</span><span class="p">)</span>
 <span class="kt">int</span> <span class="n">__builtin_ia32_comisdle</span> <span class="p">(</span><span class="n">v2df</span><span class="p">,</span> <span class="n">v2df</span><span class="p">)</span>
@@ -5915,20 +5950,22 @@ used.</p>
 <dt>v4si __builtin_ia32_vec_set_v4si (v4si, int, const int)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">pinsrd</span></tt> machine instruction.</dd>
 <dt>v2di __builtin_ia32_vec_set_v2di (v2di, long long, const int)</dt>
-<dd>Generates the <tt class="docutils literal"><span class="pre">pinsrq</span></tt> machine instruction in 64bit mode.</dd>
+<dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">pinsrq</span></tt> machine instruction in 64bit mode.</p>
+<p class="last">The following built-in functions are changed to generate new SSE4.1</p>
+</dd>
 </dl>
-<p>The following built-in functions are changed to generate new SSE4.1
-instructions when <em class="xref std std-option">-msse4.1</em> is used.</p>
+<p>instructions when <em class="xref std std-option">-msse4.1</em> is used.</p>
 <dl class="docutils">
 <dt>float __builtin_ia32_vec_ext_v4sf (v4sf, const int)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">extractps</span></tt> machine instruction.</dd>
 <dt>int __builtin_ia32_vec_ext_v4si (v4si, const int)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">pextrd</span></tt> machine instruction.</dd>
 <dt>long long __builtin_ia32_vec_ext_v2di (v2di, const int)</dt>
-<dd>Generates the <tt class="docutils literal"><span class="pre">pextrq</span></tt> machine instruction in 64bit mode.</dd>
+<dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">pextrq</span></tt> machine instruction in 64bit mode.</p>
+<p class="last">The following built-in functions are available when <em class="xref std std-option">-msse4.2</em> is</p>
+</dd>
 </dl>
-<p>The following built-in functions are available when <em class="xref std std-option">-msse4.2</em> is
-used.  All of them generate the machine instruction that is part of the
+<p>used.  All of them generate the machine instruction that is part of the
 name.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">v16qi</span> <span class="n">__builtin_ia32_pcmpestrm128</span> <span class="p">(</span><span class="n">v16qi</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">v16qi</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="p">)</span>
 <span class="kt">int</span> <span class="n">__builtin_ia32_pcmpestri128</span> <span class="p">(</span><span class="n">v16qi</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">v16qi</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="p">)</span>
@@ -5957,10 +5994,11 @@ used.</p>
 <dt>unsigned int __builtin_ia32_crc32si (unsigned int, unsigned int)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">crc32l</span></tt> machine instruction.</dd>
 <dt>unsigned long long __builtin_ia32_crc32di (unsigned long long, unsigned long long)</dt>
-<dd>Generates the <tt class="docutils literal"><span class="pre">crc32q</span></tt> machine instruction.</dd>
+<dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">crc32q</span></tt> machine instruction.</p>
+<p class="last">The following built-in functions are changed to generate new SSE4.2</p>
+</dd>
 </dl>
-<p>The following built-in functions are changed to generate new SSE4.2
-instructions when <em class="xref std std-option">-msse4.2</em> is used.</p>
+<p>instructions when <em class="xref std std-option">-msse4.2</em> is used.</p>
 <dl class="docutils">
 <dt>int __builtin_popcount (unsigned int)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">popcntl</span></tt> machine instruction.</dd>
@@ -5968,10 +6006,11 @@ instructions when <em class="xref std std-option">-msse4.2</em> is used.</p>
 <dd>Generates the <tt class="docutils literal"><span class="pre">popcntl</span></tt> or <tt class="docutils literal"><span class="pre">popcntq</span></tt> machine instruction,
 depending on the size of <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt>.</dd>
 <dt>int __builtin_popcountll (unsigned long long)</dt>
-<dd>Generates the <tt class="docutils literal"><span class="pre">popcntq</span></tt> machine instruction.</dd>
+<dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">popcntq</span></tt> machine instruction.</p>
+<p class="last">The following built-in functions are available when <em class="xref std std-option">-mavx</em> is</p>
+</dd>
 </dl>
-<p>The following built-in functions are available when <em class="xref std std-option">-mavx</em> is
-used. All of them generate the machine instruction that is part of the
+<p>used. All of them generate the machine instruction that is part of the
 name.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">v4df</span> <span class="n">__builtin_ia32_addpd256</span> <span class="p">(</span><span class="n">v4df</span><span class="p">,</span><span class="n">v4df</span><span class="p">)</span>
 <span class="n">v8sf</span> <span class="n">__builtin_ia32_addps256</span> <span class="p">(</span><span class="n">v8sf</span><span class="p">,</span><span class="n">v8sf</span><span class="p">)</span>
@@ -6294,10 +6333,11 @@ name.</p>
 used.</p>
 <dl class="docutils">
 <dt>v2di __builtin_ia32_pclmulqdq128 (v2di, v2di, const int)</dt>
-<dd>Generates the <tt class="docutils literal"><span class="pre">pclmulqdq</span></tt> machine instruction.</dd>
+<dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">pclmulqdq</span></tt> machine instruction.</p>
+<p class="last">The following built-in function is available when <em class="xref std std-option">-mfsgsbase</em> is</p>
+</dd>
 </dl>
-<p>The following built-in function is available when <em class="xref std std-option">-mfsgsbase</em> is
-used.  All of them generate the machine instruction that is part of the
+<p>used.  All of them generate the machine instruction that is part of the
 name.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">__builtin_ia32_rdfsbase32</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">__builtin_ia32_rdfsbase64</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -6614,7 +6654,7 @@ as visible to other threads. If the transaction fails it is rolled back
 and all side effects discarded.</p>
 <p>Generally there is no guarantee that a memory transaction ever succeeds
 and suitable fallback code always needs to be supplied.</p>
-<p>Start a RTM (Restricted Transactional Memory) transaction.
+<p id="index-70">RTM Functionunsigned_xbegin()Start a RTM (Restricted Transactional Memory) transaction.
 Returns <tt class="docutils literal"><span class="pre">_XBEGIN_STARTED</span></tt> when the transaction
 started successfully (note this is not 0, so the constant has to be
 explicitly tested).</p>
@@ -6634,16 +6674,17 @@ to <tt class="docutils literal"><span class="pre">_xabort</span></tt> is availab
 <dt>_XABORT_DEBUG</dt>
 <dd>Transaction abort due to a debug trap.</dd>
 <dt>_XABORT_NESTED</dt>
-<dd>Transaction abort in an inner nested transaction.</dd>
+<dd><p class="first">Transaction abort in an inner nested transaction.</p>
+<p class="last">There is no guarantee</p>
+</dd>
 </dl>
-<p>There is no guarantee
-any transaction ever succeeds, so there always needs to be a valid
+<p>any transaction ever succeeds, so there always needs to be a valid
 fallback path.</p>
-<p>Commit the current transaction. When no transaction is active this faults.
+<p id="index-71">RTM Functionvoid_xend()Commit the current transaction. When no transaction is active this faults.
 All memory side-effects of the transaction become visible
 to other threads in an atomic manner.</p>
-<p>Return a nonzero value if a transaction is currently active, otherwise 0.</p>
-<p>Abort the current transaction. When no transaction is active this is a no-op.
+<p id="index-72">RTM Functionint_xtest()Return a nonzero value if a transaction is currently active, otherwise 0.</p>
+<p id="index-73">RTM Functionvoid_xabort(status)Abort the current transaction. When no transaction is active this is a no-op.
 The <tt class="docutils literal"><span class="pre">status</span></tt> is an 8-bit constant; its value is encoded in the return
 value from <tt class="docutils literal"><span class="pre">_xbegin</span></tt>.</p>
 <p>Here is an example showing handling for <tt class="docutils literal"><span class="pre">_XABORT_RETRY</span></tt>

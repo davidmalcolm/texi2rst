@@ -1,45 +1,10 @@
+
 Fixed-Point Types
 *****************
 
 .. index:: fixed-point types
 
-``_Fract`` data type
-``_Accum`` data type
-``_Sat`` data type
-``hr`` fixed-suffix
-``r`` fixed-suffix
-``lr`` fixed-suffix
-``llr`` fixed-suffix
-``uhr`` fixed-suffix
-``ur`` fixed-suffix
-``ulr`` fixed-suffix
-``ullr`` fixed-suffix
-``hk`` fixed-suffix
-``k`` fixed-suffix
-``lk`` fixed-suffix
-``llk`` fixed-suffix
-``uhk`` fixed-suffix
-``uk`` fixed-suffix
-``ulk`` fixed-suffix
-``ullk`` fixed-suffix
-``HR`` fixed-suffix
-``R`` fixed-suffix
-``LR`` fixed-suffix
-``LLR`` fixed-suffix
-``UHR`` fixed-suffix
-``UR`` fixed-suffix
-``ULR`` fixed-suffix
-``ULLR`` fixed-suffix
-``HK`` fixed-suffix
-``K`` fixed-suffix
-``LK`` fixed-suffix
-``LLK`` fixed-suffix
-``UHK`` fixed-suffix
-``UK`` fixed-suffix
-``ULK`` fixed-suffix
-``ULLK`` fixed-suffix
-
-As an extension, GNU C supports fixed-point types as
+``_Fract`` data type``_Accum`` data type``_Sat`` data type``hr`` fixed-suffix``r`` fixed-suffix``lr`` fixed-suffix``llr`` fixed-suffix``uhr`` fixed-suffix``ur`` fixed-suffix``ulr`` fixed-suffix``ullr`` fixed-suffix``hk`` fixed-suffix``k`` fixed-suffix``lk`` fixed-suffix``llk`` fixed-suffix``uhk`` fixed-suffix``uk`` fixed-suffix``ulk`` fixed-suffix``ullk`` fixed-suffix``HR`` fixed-suffix``R`` fixed-suffix``LR`` fixed-suffix``LLR`` fixed-suffix``UHR`` fixed-suffix``UR`` fixed-suffix``ULR`` fixed-suffix``ULLR`` fixed-suffix``HK`` fixed-suffix``K`` fixed-suffix``LK`` fixed-suffix``LLK`` fixed-suffix``UHK`` fixed-suffix``UK`` fixed-suffix``ULK`` fixed-suffix``ULLK`` fixed-suffixAs an extension, GNU C supports fixed-point types as
 defined in the N1169 draft of ISO/IEC DTR 18037.  Support for fixed-point
 types in GCC will evolve as the draft technical report changes.
 Calling conventions for any target might also change.  Not all targets
@@ -85,46 +50,68 @@ The format of fixed-point data varies and depends on the target machine.
 Support for fixed-point types includes:
 
 * prefix and postfix increment and decrement operators (``++``, ``--``)
-  * unary arithmetic operators (``+``, ``-``, ``!``)
-  * binary arithmetic operators (``+``, ``-``, ``*``, ``/``)
-  * binary shift operators (``<<``, ``>>``)
-  * relational operators (``<``, ``<=``, ``>=``, ``>``)
-  * equality operators (``==``, ``!=``)
-  * assignment operators (``+=``, ``-=``, ``*=``, ``/=``,
+
+* unary arithmetic operators (``+``, ``-``, ``!``)
+
+* binary arithmetic operators (``+``, ``-``, ``*``, ``/``)
+
+* binary shift operators (``<<``, ``>>``)
+
+* relational operators (``<``, ``<=``, ``>=``, ``>``)
+
+* equality operators (``==``, ``!=``)
+
+* assignment operators (``+=``, ``-=``, ``*=``, ``/=``,
   ``<<=``, ``>>=``)
-  * conversions to and from integer, floating-point, or fixed-point types
+
+* conversions to and from integer, floating-point, or fixed-point types
 
 Use a suffix in a fixed-point literal constant:
 
 * hr or HR for ``short _Fract`` and
   ``_Sat short _Fract``
-  * r or R for ``_Fract`` and ``_Sat _Fract``
-  * lr or LR for ``long _Fract`` and
+
+* r or R for ``_Fract`` and ``_Sat _Fract``
+
+* lr or LR for ``long _Fract`` and
   ``_Sat long _Fract``
-  * llr or LLR for ``long long _Fract`` and
+
+* llr or LLR for ``long long _Fract`` and
   ``_Sat long long _Fract``
-  * uhr or UHR for ``unsigned short _Fract`` and
+
+* uhr or UHR for ``unsigned short _Fract`` and
   ``_Sat unsigned short _Fract``
-  * ur or UR for ``unsigned _Fract`` and
+
+* ur or UR for ``unsigned _Fract`` and
   ``_Sat unsigned _Fract``
-  * ulr or ULR for ``unsigned long _Fract`` and
+
+* ulr or ULR for ``unsigned long _Fract`` and
   ``_Sat unsigned long _Fract``
-  * ullr or ULLR for ``unsigned long long _Fract``
+
+* ullr or ULLR for ``unsigned long long _Fract``
   and ``_Sat unsigned long long _Fract``
-  * hk or HK for ``short _Accum`` and
+
+* hk or HK for ``short _Accum`` and
   ``_Sat short _Accum``
-  * k or K for ``_Accum`` and ``_Sat _Accum``
-  * lk or LK for ``long _Accum`` and
+
+* k or K for ``_Accum`` and ``_Sat _Accum``
+
+* lk or LK for ``long _Accum`` and
   ``_Sat long _Accum``
-  * llk or LLK for ``long long _Accum`` and
+
+* llk or LLK for ``long long _Accum`` and
   ``_Sat long long _Accum``
-  * uhk or UHK for ``unsigned short _Accum`` and
+
+* uhk or UHK for ``unsigned short _Accum`` and
   ``_Sat unsigned short _Accum``
-  * uk or UK for ``unsigned _Accum`` and
+
+* uk or UK for ``unsigned _Accum`` and
   ``_Sat unsigned _Accum``
-  * ulk or ULK for ``unsigned long _Accum`` and
+
+* ulk or ULK for ``unsigned long _Accum`` and
   ``_Sat unsigned long _Accum``
-  * ullk or ULLK for ``unsigned long long _Accum``
+
+* ullk or ULLK for ``unsigned long long _Accum``
   and ``_Sat unsigned long long _Accum``
 
 GCC support of fixed-point types as specified by the draft technical report

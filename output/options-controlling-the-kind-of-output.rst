@@ -1,3 +1,4 @@
+
 Options Controlling the Kind of Output
 **************************************
 
@@ -74,11 +75,11 @@ compilation is done:
 ``file``.go
   Go source code.
 
-  .. FIXME: Descriptions of Java file types. 
-     @var{file}.java 
-
-  .. @var{file}.class 
-     @var{file}.zip 
+  .. FIXME: Descriptions of Java file types.
+     @var{file}.java
+     @var{file}.class
+     @var{file}.zip
+     @var{file}.jar
 
 ``file``.ads
   Ada source code file that contains a library unit declaration (a
@@ -91,13 +92,12 @@ compilation is done:
   Ada source code file containing a library unit body (a subprogram or
   package body).  Such files are also called :dfn:`bodies`.
 
-  .. GCC also knows about some suffixes for languages not yet included: 
-     Pascal: 
-
-  .. @var{file}.p 
-     @var{file}.pas 
-
-  .. Ratfor: 
+  .. GCC also knows about some suffixes for languages not yet included:
+     Pascal:
+     @var{file}.p
+     @var{file}.pas
+     Ratfor:
+     @var{file}.r
 
 ``file``.s
   Assembler code.
@@ -263,7 +263,7 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   common
     Display the options that are common to all languages.
 
-  These are the supported qualifiers:
+    These are the supported qualifiers:
 
   undocumented
     Display only those options that are undocumented.
@@ -277,18 +277,16 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
     Display options taking an argument that appears as a separate word
     following the original option, such as: -o output-file.
 
-  Thus for example to display all the undocumented target-specific
+    Thus for example to display all the undocumented target-specific
   switches supported by the compiler, use:
 
   :option:`--help=target,undocumented`
-
   The sense of a qualifier can be inverted by prefixing it with the
   ^ character, so for example to display all binary warning
   options (i.e., ones that are either on or off and that do not take an
   argument) that have a description, use:
 
   :option:`--help=warnings,^joined,^undocumented`
-
   The argument to :option:`--help=` should not consist solely of inverted
   qualifiers.
 
@@ -299,7 +297,6 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   optimization options, use:
 
   :option:`--help=target,optimizers`
-
   The :option:`--help=` option can be repeated on the command line.  Each
   successive use displays its requested class of options, skipping
   those that have already been displayed.
@@ -326,7 +323,6 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   are enabled at :option:`-O2` by using:
 
   :option:`-Q` :option:`-O2` :option:`--help=optimizers`
-
   Alternatively you can discover which binary optimizations are enabled
   by :option:`-O3` by using:
 
@@ -393,8 +389,8 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   useful way to start writing a Go interface to code written in some
   other language.
 
-  .. This file is designed to be included in manuals that use  
-     expandargv. 
+  .. This file is designed to be included in manuals that use
+     expandargv.
 
 @``file``
   Read command-line options from ``file``.  The options read are

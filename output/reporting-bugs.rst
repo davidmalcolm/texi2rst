@@ -1,3 +1,4 @@
+
 Reporting Bugs
 --------------
 
@@ -22,5 +23,5 @@ report the problem.
 
   have-you-found-a-bug?
   how-and-where-to-report-bugs
-:: _bug-reporting:
 
+:: _bug-reporting:

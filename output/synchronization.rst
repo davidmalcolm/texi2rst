@@ -1,3 +1,4 @@
+
 Synchronization
 ***************
 
@@ -28,5 +29,5 @@ handling, you can only use ``@synchronized`` when compiling with
 exceptions enabled, that is with the command line option
 :option:`-fobjc-exceptions`.
 
-.. ========================================================================= 
+.. =========================================================================
 

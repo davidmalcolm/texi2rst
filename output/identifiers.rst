@@ -1,3 +1,4 @@
+
 Identifiers
 ***********
 
@@ -7,14 +8,14 @@ Identifiers
   Implementation-defined behaviorImplementation-defined
   behaviorcppThe C Preprocessor.
 
-  * The number of significant initial characters in an identifier
+* The number of significant initial characters in an identifier
   (C90 6.1.2, C90, C99 and C11 5.2.4.1, C99 and C11 6.4.2).
 
   For internal names, all characters are significant.  For external names,
   the number of significant characters are defined by the linker; for
   almost all targets, all characters are significant.
 
-  * Whether case distinctions are significant in an identifier with
+* Whether case distinctions are significant in an identifier with
   external linkage (C90 6.1.2).
 
   This is a property of the linker.  C99 and C11 require that case distinctions

@@ -1,9 +1,10 @@
+
 Environment Variables Affecting GCC
 ***********************************
 
 .. index:: environment variables
 
-.. man begin ENVIRONMENT 
+.. man begin ENVIRONMENT
 
 This section describes several environment variables that affect how GCC
 operates.  Some of them work by specifying directories or prefixes to use
@@ -18,12 +19,11 @@ DriverControlling the Compilation Driver gccgccintGNU Compiler Collection (GCC) 
 
 .. envvar:: LANG
 
-  .. @findex LC_COLLATE 
+  .. @findex LC_COLLATE
 
-  .. @findex LC_MONETARY 
-     @findex LC_NUMERIC 
-
-  .. @findex LC_TIME 
+  .. @findex LC_MONETARY
+     @findex LC_NUMERIC
+     @findex LC_TIME
 
   .. index:: locale
 
@@ -135,23 +135,81 @@ DriverControlling the Compilation Driver gccgccintGNU Compiler Collection (GCC) 
   C-EUCJP
     Recognize EUCJP characters.
 
-  If :envvar:`LANG` is not defined, or if it has some other value, then the
+    If :envvar:`LANG` is not defined, or if it has some other value, then the
   compiler uses ``mblen`` and ``mbtowc`` as defined by the default locale to
   recognize and translate multibyte characters.
 
 Some additional environment variables affect the behavior of the
 preprocessor.
 
-.. Copyright (C) 1999-2015 Free Software Foundation, Inc. 
-   This is part of the CPP and GCC manuals. 
+.. Copyright (C) 1999-2015 Free Software Foundation, Inc.
+   This is part of the CPP and GCC manuals.
+   For copying conditions, see the file gcc.texi.
+   -
+   Environment variables affecting the preprocessor
+   -
+   If this file is included with the flag ``cppmanual'' set, it is
+   formatted for inclusion in the CPP manual; otherwise the main GCC manual.
 
-.. For copying conditions, see the file gcc.texi. 
+.. envvar:: CPATHCPATH
 
-   - 
+  .. Commented out until ObjC++ is part of GCC:
+     @itemx OBJCPLUS_INCLUDE_PATH
 
-.. Environment variables affecting the preprocessor 
-   - 
+  Each variable's value is a list of directories separated by a special
+  character, much like :envvar:`PATH`, in which to look for header files.
+  The special character, ``PATH_SEPARATOR``, is target-dependent and
+  determined at GCC build time.  For Microsoft Windows-based targets it is a
+  semicolon, and for almost all other targets it is a colon.
 
-.. If this file is included with the flag ``cppmanual'' set, it is 
-   formatted for inclusion in the CPP manual; otherwise the main GCC manual. 
+  :envvar:`CPATH` specifies a list of directories to be searched as if
+  specified with :option:`-I`, but after any paths given with :option:`-I`
+  options on the command line.  This environment variable is used
+  regardless of which language is being preprocessed.
+
+  The remaining environment variables apply only when preprocessing the
+  particular language indicated.  Each specifies a list of directories
+  to be searched as if specified with :option:`-isystem`, but after any
+  paths given with :option:`-isystem` options on the command line.
+
+  In all these variables, an empty element instructs the compiler to
+  search its current working directory.  Empty elements can appear at the
+  beginning or end of a path.  For instance, if the value of
+  :envvar:`CPATH` is ``:/special/include``, that has the same
+  effect as -I. -I/special/include.
+
+  .. man end
+     man begin ENVIRONMENT
+
+.. envvar:: DEPENDENCIES_OUTPUTDEPENDENCIES_OUTPUT
+
+  .. index:: dependencies for make as output
+
+  If this variable is set, its value specifies how to output
+  dependencies for Make based on the non-system header files processed
+  by the compiler.  System header files are ignored in the dependency
+  output.
+
+  The value of :envvar:`DEPENDENCIES_OUTPUT` can be just a file name, in
+  which case the Make rules are written to that file, guessing the target
+  name from the source file name.  Or the value can have the form
+  ``file````target``, in which case the rules are written to
+  file ``file`` using ``target`` as the target name.
+
+  In other words, this environment variable is equivalent to combining
+  the options :option:`-MM` and :option:`-MF`
+  (Preprocessor Options),
+  with an optional :option:`-MT` switch too.
+
+.. envvar:: SUNPRO_DEPENDENCIESSUNPRO_DEPENDENCIES
+
+  .. index:: dependencies for make as output
+
+  This variable is the same as :envvar:`DEPENDENCIES_OUTPUT` (see above),
+  except that system header files are not ignored, so it implies
+  :option:`-M` rather than :option:`-MM`.  However, the dependence on the
+  main input file is omitted.
+  Preprocessor Options.
+
+.. man end
 

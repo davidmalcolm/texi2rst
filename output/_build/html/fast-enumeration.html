@@ -169,51 +169,38 @@ syntax in Objective-C.</p>
 }</pre>
 </div>
 <p>here is what happens when you run it:</p>
-<ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">``collection</span> <span class="pre">expression``</span></tt> is evaluated exactly once and the
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">``collection</span> <span class="pre">expression``</span></tt> is evaluated exactly once and the
 result is used as the collection object to iterate over.  This means
 it is safe to write code such as <tt class="docutils literal"><span class="pre">for</span> <span class="pre">(object</span> <span class="pre">in</span> <span class="pre">[NSDictionary</span>
-<span class="pre">keyEnumerator])</span> <span class="pre">...</span></tt>.</p>
-<ul class="simple">
-<li>the iteration is implemented by the compiler by repeatedly getting</li>
-</ul>
-<p>batches of objects from the collection object using the fast
+<span class="pre">keyEnumerator])</span> <span class="pre">...</span></tt>.</li>
+<li>the iteration is implemented by the compiler by repeatedly getting
+batches of objects from the collection object using the fast
 enumeration protocol (see below), then iterating over all objects in
 the batch.  This is faster than a normal enumeration where objects are
-retrieved one by one (hence the name &#8216;fast enumeration&#8217;).</p>
-<ul class="simple">
-<li>if there are no objects in the collection, then</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt> is set to <tt class="docutils literal"><span class="pre">nil</span></tt> and the loop
-immediately terminates.</p>
-<ul class="simple">
-<li>if there are objects in the collection, then for each object in the</li>
-</ul>
-<p>collection (in the order they are returned) <tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt>
-is set to the object, then <tt class="docutils literal"><span class="pre">``statements``</span></tt> are executed.</p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">``statements``</span></tt> can contain <tt class="docutils literal"><span class="pre">break</span></tt> and <tt class="docutils literal"><span class="pre">continue</span></tt></li>
-</ul>
-<p>commands, which will abort the iteration or skip to the next loop
-iteration as expected.</p>
-<ul class="simple">
-<li>when the iteration ends because there are no more objects to iterate</li>
-</ul>
-<p>over, <tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt> is set to <tt class="docutils literal"><span class="pre">nil</span></tt>.  This allows
+retrieved one by one (hence the name &#8216;fast enumeration&#8217;).</li>
+<li>if there are no objects in the collection, then
+<tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt> is set to <tt class="docutils literal"><span class="pre">nil</span></tt> and the loop
+immediately terminates.</li>
+<li>if there are objects in the collection, then for each object in the
+collection (in the order they are returned) <tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt>
+is set to the object, then <tt class="docutils literal"><span class="pre">``statements``</span></tt> are executed.</li>
+<li><tt class="docutils literal"><span class="pre">``statements``</span></tt> can contain <tt class="docutils literal"><span class="pre">break</span></tt> and <tt class="docutils literal"><span class="pre">continue</span></tt>
+commands, which will abort the iteration or skip to the next loop
+iteration as expected.</li>
+<li>when the iteration ends because there are no more objects to iterate
+over, <tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt> is set to <tt class="docutils literal"><span class="pre">nil</span></tt>.  This allows
 you to determine whether the iteration finished because a <tt class="docutils literal"><span class="pre">break</span></tt>
 command was used (in which case <tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt> will remain
 set to the last object that was iterated over) or because it iterated
 over all the objects (in which case <tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt> will be
-set to <tt class="docutils literal"><span class="pre">nil</span></tt>).</p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">``statements``</span></tt> must not make any changes to the collection</li>
-</ul>
-<p>object; if they do, it is a hard error and the fast enumeration
+set to <tt class="docutils literal"><span class="pre">nil</span></tt>).</li>
+<li><tt class="docutils literal"><span class="pre">``statements``</span></tt> must not make any changes to the collection
+object; if they do, it is a hard error and the fast enumeration
 terminates by invoking <tt class="docutils literal"><span class="pre">objc_enumerationMutation</span></tt>, a runtime
 function that normally aborts the program but which can be customized
 by Foundation libraries via <tt class="docutils literal"><span class="pre">objc_set_mutation_handler</span></tt> to do
-something different, such as raising an exception.</p>
-</li>
+something different, such as raising an exception.</li>
 </ul>
 <p>:: _fast-enumeration-protocol:</p>
 </div>

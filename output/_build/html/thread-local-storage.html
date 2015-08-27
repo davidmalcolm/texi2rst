@@ -93,9 +93,7 @@
             
   <div class="section" id="thread-local-storage">
 <h1>Thread-Local Storage<a class="headerlink" href="#thread-local-storage" title="Permalink to this headline">¶</a></h1>
-<p id="index-0">TLS
-<tt class="docutils literal"><span class="pre">__thread</span></tt></p>
-<p>Thread-local storage (TLS) is a mechanism by which variables
+<p id="index-0">TLS``__thread``Thread-local storage (TLS) is a mechanism by which variables
 are allocated such that there is one instance of the variable per extant
 thread.  The runtime model GCC uses to implement this originates
 in the IA-64 processor-specific ABI, but has since been migrated
@@ -149,21 +147,18 @@ created, the name and type of the function called at thread
 startup, and how threads may be terminated.  However, objects
 with thread storage duration shall be initialized before thread
 startup.</p>
-<ul class="simple">
-<li>6.2.4  Storage durations of objects</li>
-</ul>
+</li>
+<li><p class="first">6.2.4  Storage durations of objects</p>
 <p>Add new text before paragraph 3</p>
 <p>An object whose identifier is declared with the storage-class
 specifier <tt class="docutils literal"><span class="pre">__thread</span></tt> has <em class="dfn">thread storage duration</em>.
 Its lifetime is the entire execution of the thread, and its
 stored value is initialized only once, prior to thread startup.</p>
-<ul class="simple">
-<li>6.4.1  Keywords</li>
-</ul>
+</li>
+<li><p class="first">6.4.1  Keywords</p>
 <p>Add <tt class="docutils literal"><span class="pre">__thread</span></tt>.</p>
-<ul class="simple">
-<li>6.7.1  Storage-class specifiers</li>
-</ul>
+</li>
+<li><p class="first">6.7.1  Storage-class specifiers</p>
 <p>Add <tt class="docutils literal"><span class="pre">__thread</span></tt> to the list of storage class specifiers in
 paragraph 1.</p>
 <p>Change paragraph 2 to</p>
@@ -194,13 +189,11 @@ one thread.</p>
 <p>New text after paragraph 7</p>
 <p>It is unspecified whether additional action must be taken to
 ensure when and whether side effects are visible to other threads.</p>
-<ul class="simple">
-<li>[lex.key]</li>
-</ul>
+</li>
+<li><p class="first">[lex.key]</p>
 <p>Add <tt class="docutils literal"><span class="pre">__thread</span></tt>.</p>
-<ul class="simple">
-<li>[basic.start.main]</li>
-</ul>
+</li>
+<li><p class="first">[basic.start.main]</p>
 <p>Add after paragraph 5</p>
 <p>The thread that begins execution at the <tt class="docutils literal"><span class="pre">main</span></tt> function is called
 the <em class="dfn">main thread</em>.  It is implementation defined how functions
@@ -209,47 +202,41 @@ A function so designated, as well as the <tt class="docutils literal"><span clas
 a <em class="dfn">thread startup function</em>.  It is implementation defined what
 happens if a thread startup function returns.  It is implementation
 defined what happens to other threads when any thread calls <tt class="docutils literal"><span class="pre">exit</span></tt>.</p>
-<ul class="simple">
-<li>[basic.start.init]</li>
-</ul>
+</li>
+<li><p class="first">[basic.start.init]</p>
 <p>Add after paragraph 4</p>
 <p>The storage for an object of thread storage duration shall be
 statically initialized before the first statement of the thread startup
 function.  An object of thread storage duration shall not require
 dynamic initialization.</p>
-<ul class="simple">
-<li>[basic.start.term]</li>
-</ul>
+</li>
+<li><p class="first">[basic.start.term]</p>
 <p>Add after paragraph 3</p>
 <p>The type of an object with thread storage duration shall not have a
 non-trivial destructor, nor shall it be an array type whose elements
 (directly or indirectly) have non-trivial destructors.</p>
-<ul class="simple">
-<li>[basic.stc]</li>
-</ul>
+</li>
+<li><p class="first">[basic.stc]</p>
 <p>Add &#8216;thread storage duration&#8217; to the list in paragraph 1.</p>
 <p>Change paragraph 2</p>
 <p>Thread, static, and automatic storage durations are associated with
 objects introduced by declarations [...].</p>
 <p>Add <tt class="docutils literal"><span class="pre">__thread</span></tt> to the list of specifiers in paragraph 3.</p>
-<ul class="simple">
-<li>[basic.stc.thread]</li>
-</ul>
+</li>
+<li><p class="first">[basic.stc.thread]</p>
 <p>New section before [basic.stc.static]</p>
 <p>The keyword <tt class="docutils literal"><span class="pre">__thread</span></tt> applied to a non-local object gives the
 object thread storage duration.</p>
 <p>A local variable or class data member declared both <tt class="docutils literal"><span class="pre">static</span></tt>
 and <tt class="docutils literal"><span class="pre">__thread</span></tt> gives the variable or member thread storage
 duration.</p>
-<ul class="simple">
-<li>[basic.stc.static]</li>
-</ul>
+</li>
+<li><p class="first">[basic.stc.static]</p>
 <p>Change paragraph 1</p>
 <p>All objects that have neither thread storage duration, dynamic
 storage duration nor are local [...].</p>
-<ul class="simple">
-<li>[dcl.stc]</li>
-</ul>
+</li>
+<li><p class="first">[dcl.stc]</p>
 <p>Add <tt class="docutils literal"><span class="pre">__thread</span></tt> to the list in paragraph 1.</p>
 <p>Change paragraph 1</p>
 <p>With the exception of <tt class="docutils literal"><span class="pre">__thread</span></tt>, at most one
@@ -260,9 +247,8 @@ be used alone, or immediately following the <tt class="docutils literal"><span c
 <p>Add after paragraph 5</p>
 <p>The <tt class="docutils literal"><span class="pre">__thread</span></tt> specifier can be applied only to the names of objects
 and to anonymous unions.</p>
-<ul class="simple">
-<li>[class.mem]</li>
-</ul>
+</li>
+<li><p class="first">[class.mem]</p>
 <p>Add after paragraph 6</p>
 <p>Non-<tt class="docutils literal"><span class="pre">static</span></tt> members shall not be <tt class="docutils literal"><span class="pre">__thread</span></tt>.</p>
 </li>

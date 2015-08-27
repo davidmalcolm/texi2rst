@@ -135,11 +135,12 @@ semantic loads from another thread.</dd>
 <dd>Barrier in both directions and synchronizes with acquire loads and
 release stores in another thread.</dd>
 <dt>__ATOMIC_SEQ_CST</dt>
-<dd>Barrier in both directions and synchronizes with acquire loads and
-release stores in all threads.</dd>
+<dd><p class="first">Barrier in both directions and synchronizes with acquire loads and
+release stores in all threads.</p>
+<p class="last">Note that the scope of a C++11 memory model depends on whether or not</p>
+</dd>
 </dl>
-<p>Note that the scope of a C++11 memory model depends on whether or not
-the function being called is a fence (such as
+<p>the function being called is a fence (such as
 __atomic_thread_fence).  In a fence, all memory accesses are
 subject to the restrictions of the memory model.  When the function is
 an operation on a location, the restrictions apply only to those
@@ -169,30 +170,30 @@ standard compliant, safe, and the simplest approach for now.</p>
 reserved for the memory model.  The remainder of the signed int is reserved
 for target use and should be 0.  Use of the predefined atomic values
 ensures proper usage.</p>
-<p>This built-in function implements an atomic load operation.  It returns the
-contents of <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.</p>
+<p id="index-0">Built-in Function``type``__atomic_load_n(<tt class="docutils literal"><span class="pre">type``*ptr,intmemmodel)This</span> <span class="pre">built-in</span> <span class="pre">function</span> <span class="pre">implements</span> <span class="pre">an</span> <span class="pre">atomic</span> <span class="pre">load</span> <span class="pre">operation.</span>&nbsp; <span class="pre">It</span> <span class="pre">returns</span> <span class="pre">the</span>
+<span class="pre">contents</span> <span class="pre">of</span> <span class="pre">``*``ptr``</span></tt>.</p>
 <p>The valid memory model variants are
 <tt class="docutils literal"><span class="pre">__ATOMIC_RELAXED</span></tt>, <tt class="docutils literal"><span class="pre">__ATOMIC_SEQ_CST</span></tt>, <tt class="docutils literal"><span class="pre">__ATOMIC_ACQUIRE</span></tt>,
 and <tt class="docutils literal"><span class="pre">__ATOMIC_CONSUME</span></tt>.</p>
-<p>This is the generic version of an atomic load.  It returns the
-contents of <tt class="docutils literal"><span class="pre">*``ptr``</span></tt> in <tt class="docutils literal"><span class="pre">*``ret``</span></tt>.</p>
-<p>This built-in function implements an atomic store operation.  It writes
-<tt class="docutils literal"><span class="pre">``val``</span></tt> into <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.</p>
+<p id="index-1">Built-in Functionvoid__atomic_load(<tt class="docutils literal"><span class="pre">type``*ptr,``type``*ret,intmemmodel)This</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">generic</span> <span class="pre">version</span> <span class="pre">of</span> <span class="pre">an</span> <span class="pre">atomic</span> <span class="pre">load.</span>&nbsp; <span class="pre">It</span> <span class="pre">returns</span> <span class="pre">the</span>
+<span class="pre">contents</span> <span class="pre">of</span> <span class="pre">``*``ptr``</span></tt> in <tt class="docutils literal"><span class="pre">*``ret``</span></tt>.</p>
+<p id="index-2">Built-in Functionvoid__atomic_store_n(<tt class="docutils literal"><span class="pre">type``*ptr,``type``val,intmemmodel)This</span> <span class="pre">built-in</span> <span class="pre">function</span> <span class="pre">implements</span> <span class="pre">an</span> <span class="pre">atomic</span> <span class="pre">store</span> <span class="pre">operation.</span>&nbsp; <span class="pre">It</span> <span class="pre">writes</span>
+<span class="pre">````val``</span></tt> into <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.</p>
 <p>The valid memory model variants are
 <tt class="docutils literal"><span class="pre">__ATOMIC_RELAXED</span></tt>, <tt class="docutils literal"><span class="pre">__ATOMIC_SEQ_CST</span></tt>, and <tt class="docutils literal"><span class="pre">__ATOMIC_RELEASE</span></tt>.</p>
-<p>This is the generic version of an atomic store.  It stores the value
-of <tt class="docutils literal"><span class="pre">*``val``</span></tt> into <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.</p>
-<p>This built-in function implements an atomic exchange operation.  It writes
-<tt class="docutils literal"><span class="pre">val</span></tt> into <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>, and returns the previous contents of
+<p id="index-3">Built-in Functionvoid__atomic_store(<tt class="docutils literal"><span class="pre">type``*ptr,``type``*val,intmemmodel)This</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">generic</span> <span class="pre">version</span> <span class="pre">of</span> <span class="pre">an</span> <span class="pre">atomic</span> <span class="pre">store.</span>&nbsp; <span class="pre">It</span> <span class="pre">stores</span> <span class="pre">the</span> <span class="pre">value</span>
+<span class="pre">of</span> <span class="pre">``*``val``</span></tt> into <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.</p>
+<p id="index-4">Built-in Function``type``__atomic_exchange_n(<tt class="docutils literal"><span class="pre">type``*ptr,``type``val,intmemmodel)This</span> <span class="pre">built-in</span> <span class="pre">function</span> <span class="pre">implements</span> <span class="pre">an</span> <span class="pre">atomic</span> <span class="pre">exchange</span> <span class="pre">operation.</span>&nbsp; <span class="pre">It</span> <span class="pre">writes</span>
+<span class="pre">``val</span></tt> into <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>, and returns the previous contents of
 <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.</p>
 <p>The valid memory model variants are
 <tt class="docutils literal"><span class="pre">__ATOMIC_RELAXED</span></tt>, <tt class="docutils literal"><span class="pre">__ATOMIC_SEQ_CST</span></tt>, <tt class="docutils literal"><span class="pre">__ATOMIC_ACQUIRE</span></tt>,
 <tt class="docutils literal"><span class="pre">__ATOMIC_RELEASE</span></tt>, and <tt class="docutils literal"><span class="pre">__ATOMIC_ACQ_REL</span></tt>.</p>
-<p>This is the generic version of an atomic exchange.  It stores the
-contents of <tt class="docutils literal"><span class="pre">*``val``</span></tt> into <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>. The original value
+<p id="index-5">Built-in Functionvoid__atomic_exchange(<tt class="docutils literal"><span class="pre">type``*ptr,``type``*val,``type``*ret,intmemmodel)This</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">generic</span> <span class="pre">version</span> <span class="pre">of</span> <span class="pre">an</span> <span class="pre">atomic</span> <span class="pre">exchange.</span>&nbsp; <span class="pre">It</span> <span class="pre">stores</span> <span class="pre">the</span>
+<span class="pre">contents</span> <span class="pre">of</span> <span class="pre">``*``val``</span></tt> into <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>. The original value
 of <tt class="docutils literal"><span class="pre">*``ptr``</span></tt> is copied into <tt class="docutils literal"><span class="pre">*``ret``</span></tt>.</p>
-<p>This built-in function implements an atomic compare and exchange operation.
-This compares the contents of <tt class="docutils literal"><span class="pre">*``ptr``</span></tt> with the contents of
+<p id="index-6">Built-in Functionbool__atomic_compare_exchange_n(<tt class="docutils literal"><span class="pre">type``*ptr,``type``*expected,``type``desired,boolweak,intsuccess_memmodel,intfailure_memmodel)This</span> <span class="pre">built-in</span> <span class="pre">function</span> <span class="pre">implements</span> <span class="pre">an</span> <span class="pre">atomic</span> <span class="pre">compare</span> <span class="pre">and</span> <span class="pre">exchange</span> <span class="pre">operation.</span>
+<span class="pre">This</span> <span class="pre">compares</span> <span class="pre">the</span> <span class="pre">contents</span> <span class="pre">of</span> <span class="pre">``*``ptr``</span></tt> with the contents of
 <tt class="docutils literal"><span class="pre">*``expected``</span></tt>. If equal, the operation is a read-modify-write
 which writes <tt class="docutils literal"><span class="pre">desired</span></tt> into <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.  If they are not
 equal, the operation is a read and the current contents of
@@ -208,28 +209,48 @@ restrictions on what memory model can be used here.</p>
 to <tt class="docutils literal"><span class="pre">failure_memmodel</span></tt>. This memory model cannot be
 <tt class="docutils literal"><span class="pre">__ATOMIC_RELEASE</span></tt> nor <tt class="docutils literal"><span class="pre">__ATOMIC_ACQ_REL</span></tt>.  It also cannot be a
 stronger model than that specified by <tt class="docutils literal"><span class="pre">success_memmodel</span></tt>.</p>
-<p>This built-in function implements the generic version of
-<tt class="docutils literal"><span class="pre">__atomic_compare_exchange</span></tt>.  The function is virtually identical to
+<p id="index-7">Built-in Functionbool__atomic_compare_exchange(<tt class="docutils literal"><span class="pre">type``*ptr,``type``*expected,``type``*desired,boolweak,intsuccess_memmodel,intfailure_memmodel)This</span> <span class="pre">built-in</span> <span class="pre">function</span> <span class="pre">implements</span> <span class="pre">the</span> <span class="pre">generic</span> <span class="pre">version</span> <span class="pre">of</span>
+<span class="pre">``__atomic_compare_exchange</span></tt>.  The function is virtually identical to
 <tt class="docutils literal"><span class="pre">__atomic_compare_exchange_n</span></tt>, except the desired value is also a
 pointer.</p>
-<p>These built-in functions perform the operation suggested by the name, and
+<p id="index-8">Built-in Function``type``__atomic_add_fetch(<a href="#id1"><span class="problematic" id="id2">``</span></a>type``*ptr,``type``val,intmemmodel)
+.. index:: __atomic_sub_fetch</p>
+<p>Built-in Function``type``__atomic_sub_fetch(<a href="#id3"><span class="problematic" id="id4">``</span></a>type``*ptr,``type``val,intmemmodel)
+.. index:: __atomic_and_fetch</p>
+<p>Built-in Function``type``__atomic_and_fetch(<a href="#id5"><span class="problematic" id="id6">``</span></a>type``*ptr,``type``val,intmemmodel)
+.. index:: __atomic_xor_fetch</p>
+<p>Built-in Function``type``__atomic_xor_fetch(<a href="#id7"><span class="problematic" id="id8">``</span></a>type``*ptr,``type``val,intmemmodel)
+.. index:: __atomic_or_fetch</p>
+<p>Built-in Function``type``__atomic_or_fetch(<a href="#id9"><span class="problematic" id="id10">``</span></a>type``*ptr,``type``val,intmemmodel)
+.. index:: __atomic_nand_fetch</p>
+<p>Built-in Function``type``__atomic_nand_fetch(<a href="#id11"><span class="problematic" id="id12">``</span></a>type``*ptr,``type``val,intmemmodel)These built-in functions perform the operation suggested by the name, and
 return the result of the operation. That is,</p>
 <div class="highlight-c++"><pre>{ *ptr ``op``= val; return *ptr; }</pre>
 </div>
 <p>All memory models are valid.</p>
-<p>These built-in functions perform the operation suggested by the name, and
-return the value that had previously been in <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.  That is,</p>
+<p id="index-9">Built-in Function``type``__atomic_fetch_add(<a href="#id13"><span class="problematic" id="id14">``</span></a>type``*ptr,``type``val,intmemmodel)
+.. index:: __atomic_fetch_sub</p>
+<p>Built-in Function``type``__atomic_fetch_sub(<a href="#id15"><span class="problematic" id="id16">``</span></a>type``*ptr,``type``val,intmemmodel)
+.. index:: __atomic_fetch_and</p>
+<p>Built-in Function``type``__atomic_fetch_and(<a href="#id17"><span class="problematic" id="id18">``</span></a>type``*ptr,``type``val,intmemmodel)
+.. index:: __atomic_fetch_xor</p>
+<p>Built-in Function``type``__atomic_fetch_xor(<a href="#id19"><span class="problematic" id="id20">``</span></a>type``*ptr,``type``val,intmemmodel)
+.. index:: __atomic_fetch_or</p>
+<p>Built-in Function``type``__atomic_fetch_or(<a href="#id21"><span class="problematic" id="id22">``</span></a>type``*ptr,``type``val,intmemmodel)
+.. index:: __atomic_fetch_nand</p>
+<p>Built-in Function``type``__atomic_fetch_nand(<tt class="docutils literal"><span class="pre">type``*ptr,``type``val,intmemmodel)These</span> <span class="pre">built-in</span> <span class="pre">functions</span> <span class="pre">perform</span> <span class="pre">the</span> <span class="pre">operation</span> <span class="pre">suggested</span> <span class="pre">by</span> <span class="pre">the</span> <span class="pre">name,</span> <span class="pre">and</span>
+<span class="pre">return</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">that</span> <span class="pre">had</span> <span class="pre">previously</span> <span class="pre">been</span> <span class="pre">in</span> <span class="pre">``*``ptr``</span></tt>.  That is,</p>
 <div class="highlight-c++"><pre>{ tmp = *ptr; *ptr ``op``= val; return tmp; }</pre>
 </div>
 <p>All memory models are valid.</p>
-<p>This built-in function performs an atomic test-and-set operation on
+<p id="index-10">Built-in Functionbool__atomic_test_and_set(void*ptr,intmemmodel)This built-in function performs an atomic test-and-set operation on
 the byte at <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.  The byte is set to some implementation
 defined nonzero &#8216;set&#8217; value and the return value is <tt class="docutils literal"><span class="pre">true</span></tt> if and only
 if the previous contents were &#8216;set&#8217;.
 It should be only used for operands of type <tt class="docutils literal"><span class="pre">bool</span></tt> or <tt class="docutils literal"><span class="pre">char</span></tt>. For
 other types only part of the value may be set.</p>
 <p>All memory models are valid.</p>
-<p>This built-in function performs an atomic clear operation on
+<p id="index-11">Built-in Functionvoid__atomic_clear(bool*ptr,intmemmodel)This built-in function performs an atomic clear operation on
 <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.  After the operation, <tt class="docutils literal"><span class="pre">*``ptr``</span></tt> contains 0.
 It should be only used for operands of type <tt class="docutils literal"><span class="pre">bool</span></tt> or <tt class="docutils literal"><span class="pre">char</span></tt> and
 in conjunction with <tt class="docutils literal"><span class="pre">__atomic_test_and_set</span></tt>.
@@ -238,13 +259,13 @@ prefer using <tt class="docutils literal"><span class="pre">__atomic_store</span
 <p>The valid memory model variants are
 <tt class="docutils literal"><span class="pre">__ATOMIC_RELAXED</span></tt>, <tt class="docutils literal"><span class="pre">__ATOMIC_SEQ_CST</span></tt>, and
 <tt class="docutils literal"><span class="pre">__ATOMIC_RELEASE</span></tt>.</p>
-<p>This built-in function acts as a synchronization fence between threads
+<p id="index-12">Built-in Functionvoid__atomic_thread_fence(intmemmodel)This built-in function acts as a synchronization fence between threads
 based on the specified memory model.</p>
 <p>All memory orders are valid.</p>
-<p>This built-in function acts as a synchronization fence between a thread
+<p id="index-13">Built-in Functionvoid__atomic_signal_fence(intmemmodel)This built-in function acts as a synchronization fence between a thread
 and signal handlers based in the same thread.</p>
 <p>All memory orders are valid.</p>
-<p>This built-in function returns true if objects of <tt class="docutils literal"><span class="pre">size</span></tt> bytes always
+<p id="index-14">Built-in Functionbool__atomic_always_lock_free(size_tsize,void*ptr)This built-in function returns true if objects of <tt class="docutils literal"><span class="pre">size</span></tt> bytes always
 generate lock free atomic instructions for the target architecture.
 <tt class="docutils literal"><span class="pre">size</span></tt> must resolve to a compile-time constant and the result also
 resolves to a compile-time constant.</p>
@@ -254,7 +275,7 @@ compiler may also ignore this parameter.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">_atomic_always_lock_free</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>This built-in function returns true if objects of <tt class="docutils literal"><span class="pre">size</span></tt> bytes always
+<p id="index-15">Built-in Functionbool__atomic_is_lock_free(size_tsize,void*ptr)This built-in function returns true if objects of <tt class="docutils literal"><span class="pre">size</span></tt> bytes always
 generate lock free atomic instructions for the target architecture.  If
 it is not known to be lock free a call is made to a runtime routine named
 <tt class="docutils literal"><span class="pre">__atomic_is_lock_free</span></tt>.</p>

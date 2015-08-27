@@ -107,14 +107,15 @@ should work just fine for standard-conforming code.</td></tr>
 <tr><td class="option-group" colspan="2">
 <kbd><span class="option">-f<var>strict-prototype-fno-strict-prototype</var></span></kbd></td>
 </tr>
-<tr><td>&nbsp;</td><td>Previously it was possible to use an empty prototype parameter list to
+<tr><td>&nbsp;</td><td><p class="first">Previously it was possible to use an empty prototype parameter list to
 indicate an unspecified number of parameters (like C), rather than no
 parameters, as C++ demands.  This feature has been removed, except where
-it is required for backwards compatibility.   Backwards Compatibility.</td></tr>
+it is required for backwards compatibility.   Backwards Compatibility.</p>
+<p class="last">G++ allows a virtual function returning void * to be overridden</p>
+</td></tr>
 </tbody>
 </table>
-<p>G++ allows a virtual function returning void * to be overridden
-by one returning a different pointer type.  This extension to the
+<p>by one returning a different pointer type.  This extension to the
 covariant return type rules is now deprecated and will be removed from a
 future version.</p>
 <p>The G++ minimum and maximum operators (&lt;? and &gt;?) and

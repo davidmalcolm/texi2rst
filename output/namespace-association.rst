@@ -1,3 +1,4 @@
+
 Namespace Association
 *********************
 
@@ -11,7 +12,7 @@ than a normal using-directive in two ways:
 * Templates from the used namespace can be specialized and explicitly
   instantiated as though they were members of the using namespace.
 
-  * The using namespace is considered an associated namespace of all
+* The using namespace is considered an associated namespace of all
   templates in the used namespace for purposes of argument-dependent
   name lookup.
 

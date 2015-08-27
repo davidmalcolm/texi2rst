@@ -1,3 +1,4 @@
+
 Inquiring on Alignment of Types or Variables
 ********************************************
 

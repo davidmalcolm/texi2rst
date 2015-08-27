@@ -1,3 +1,4 @@
+
 Garbage Collection
 ******************
 
@@ -73,5 +74,5 @@ represented by the ! character.  The
 specifier to the string type description of the instance variable named
 as argument.
 
-.. ========================================================================= 
+.. =========================================================================
 

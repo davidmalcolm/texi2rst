@@ -1,6 +1,5 @@
-Brief Description of :command:`gcov` Data Files
 
-:command:`gcov` uses two files for profiling.  The names of these files
+Brief Description of :command:`gcov` Data Files:command:`gcov` uses two files for profiling.  The names of these files
 are derived from the original object file by substituting the
 file suffix with either .gcno, or .gcda.  The files
 contain coverage and profile data stored in a platform-independent format.

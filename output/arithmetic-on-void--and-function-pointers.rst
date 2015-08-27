@@ -1,5 +1,5 @@
-Arithmetic on ``void``- and Function-Pointers
 
+Arithmetic on ``void``- and Function-Pointers
 .. index:: void pointers, arithmetic
 
 .. index:: void, size of pointer to

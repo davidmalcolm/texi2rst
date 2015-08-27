@@ -1,8 +1,8 @@
+
 How to Use Inline Assembly Language in C Code
 *********************************************
 
 ``asm`` keyword
-
 .. index:: assembly language in C
 
 .. index:: inline assembly language
@@ -36,7 +36,6 @@ Basic Asm - Assembler Instructions Without Operands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 basic ``asm``
-
 .. index:: assembly language in C, basic
 
 A basic ``asm`` statement has the following syntax:
@@ -64,7 +63,7 @@ AssemblerInstructions
   This is a literal string that specifies the assembler code. The string can 
   contain any instructions recognized by the assembler, including directives. 
   GCC does not parse the assembler instructions themselves and 
-  does not know what they mean or even whether they are valid assembler input. 
+  does not know what they mean or even whether they are valid assembler input.
 
   You may place multiple assembler instructions together in a single ``asm`` 
   string, separated by the characters normally used in assembly code for the 
@@ -88,7 +87,7 @@ can be used:
   define assembly language macros that can be invoked elsewhere in the file,
   or write entire functions in assembly language.
 
-  * Functions declared
+* Functions declared
   with the ``naked`` attribute also require basic ``asm``
   (Function Attributes).
 
@@ -143,7 +142,6 @@ Extended Asm - Assembler Instructions with C Expression Operands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 extended ``asm``
-
 .. index:: assembly language in C, extended
 
 With extended ``asm`` you can read and write C variables from 
@@ -215,7 +213,7 @@ GotoLabels
   GCC's optimizers do not know about other jumps; therefore they cannot take 
   account of them when deciding how to optimize.
 
-The total number of input + output + goto operands is limited to 30.
+  The total number of input + output + goto operands is limited to 30.
 
 Remarks
 ^^^^^^^
@@ -250,14 +248,10 @@ example for i386 using ``asm`` might look like this:
 This code copies ``src`` to ``dst`` and add 1 to ``dst``.
 
 Volatile
-
 Volatile
 ~~~~~~~~
 
-volatile ``asm``
-``asm`` volatile
-
-GCC's optimizers sometimes discard ``asm`` statements if they determine 
+volatile ``asm````asm`` volatileGCC's optimizers sometimes discard ``asm`` statements if they determine 
 there is no need for the output variables. Also, the optimizers may move 
 code out of loops if they believe that the code will always return the same 
 result (i.e. none of its input values change between calls). Using the 
@@ -375,13 +369,10 @@ Using %=
 (AssemblerTemplate) may help resolve this problem.
 
 AssemblerTemplate
-
 Assembler Template
 ~~~~~~~~~~~~~~~~~~
 
-``asm`` assembler template
-
-An assembler template is a literal string containing assembler instructions.
+``asm`` assembler templateAn assembler template is a literal string containing assembler instructions.
 The compiler replaces tokens in the template that refer 
 to inputs, outputs, and goto labels,
 and then outputs the resulting string to the assembler. The 
@@ -434,9 +425,7 @@ these tokens have special meanings in the assembler template:
   into the assembler code.  When unescaped, these characters have special
   meaning to indicate multiple assembler dialects, as described below.
 
-Multiple assembler dialects in ``asm`` templates
-
-On targets such as x86, GCC supports multiple assembler dialects.
+Multiple assembler dialects in ``asm`` templatesOn targets such as x86, GCC supports multiple assembler dialects.
 The :option:`-masm` option controls which dialect GCC uses as its 
 default for inline assembler. The target-specific documentation for the 
 :option:`-masm` option contains the list of supported dialects, as well as the 
@@ -490,13 +479,10 @@ corresponds to either
 There is no support for nesting dialect alternatives.
 
 OutputOperands
-
 Output Operands
 ~~~~~~~~~~~~~~~
 
-``asm`` output operands
-
-An ``asm`` statement has zero or more output operands indicating the names
+``asm`` output operandsAn ``asm`` statement has zero or more output operands indicating the names
 of C variables modified by the assembler code.
 
 In this i386 example, ``old`` (referred to in the template string as 
@@ -561,7 +547,7 @@ cvariablename
   Specifies a C lvalue expression to hold the output, typically a variable name.
   The enclosing parentheses are a required part of the syntax.
 
-When the compiler selects the registers to use to 
+  When the compiler selects the registers to use to 
 represent the output operands, it does not use any of the clobbered registers 
 (Clobbers).
 
@@ -666,14 +652,10 @@ in a register, you can enable it to choose the best location
 for ``d`` by specifying both constraints.
 
 InputOperands
-
 Input Operands
 ~~~~~~~~~~~~~~
 
-``asm`` input operands
-``asm`` expressions
-
-Input operands make values from C variables and expressions available to the 
+``asm`` input operands``asm`` expressionsInput operands make values from C variables and expressions available to the 
 assembly code.
 
 Operands are separated by commas.  Each operand has this format:
@@ -719,7 +701,7 @@ cexpression
   This is the C variable or expression being passed to the ``asm`` statement 
   as input.  The enclosing parentheses are a required part of the syntax.
 
-When the compiler selects the registers to use to represent the input 
+  When the compiler selects the registers to use to represent the input 
 operands, it does not use any of the clobbered registers (Clobbers).
 
 If there are no output operands but there are input operands, place two 
@@ -772,13 +754,10 @@ Here is an example using symbolic names.
      : "r" (test), "r" (new), "[result]" (old));
 
 Clobbers
-
 Clobbers
 ~~~~~~~~
 
-``asm`` clobbers
-
-While the compiler is aware of changes to entries listed in the output 
+``asm`` clobbersWhile the compiler is aware of changes to entries listed in the output 
 operands, the inline ``asm`` code may modify more than just the outputs. For 
 example, calculations may require additional registers, or the processor may 
 overwrite a register as a side effect of a particular assembler instruction. 
@@ -800,7 +779,7 @@ operands, it does not use any of the clobbered registers. As a result,
 clobbered registers are available for any use in the assembler code.
 
 Here is a realistic example for the VAX showing the use of clobbered 
-registers: 
+registers:
 
 .. code-block:: c++
 
@@ -839,18 +818,15 @@ Also, there are two special clobber arguments:
   Flushing registers to memory has performance implications and may be an issue 
   for time-sensitive code.  You can use a trick to avoid this if the size of 
   the memory being accessed is known at compile time. For example, if accessing 
-  ten bytes of a string, use a memory input like: 
+  ten bytes of a string, use a memory input like:
 
   ``{"m"( ({ struct { char x[10]; } *p = (void *)ptr ; *p; }) )}``.
 
-GotoLabels
-
+  GotoLabels
 Goto Labels
 ~~~~~~~~~~~
 
-``asm`` goto labels
-
-``asm goto`` allows assembly code to jump to one or more C labels.  The
+``asm`` goto labels``asm goto`` allows assembly code to jump to one or more C labels.  The
 ``GotoLabels`` section in an ``asm goto`` statement contains 
 a comma-separated 
 list of all C labels to which the assembler code may jump. GCC assumes that 
@@ -917,7 +893,6 @@ The following example shows an ``asm goto`` that uses a memory clobber.
   }
 
 x86Operandmodifiers
-
 x86 Operand Modifiers
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -958,68 +933,122 @@ The rest of this discussion uses the following code for illustrative purposes.
 With no modifiers, this is what the output from the operands would be for the 
 att and intel dialects of assembler:
 
-Operand masm=att OFFSET FLAT:.L2
-Operand masm=att masm=intel
+Operandmasm=attOFFSET FLAT:.L2Operand
+
+masm=att
+
+masm=intel
+
 ``%0``
+
 ``%eax``
+
 ``eax``
+
 ``%1``
+
 ``$2``
+
 ``2``
+
 ``%2``
+
 ``$.L2``
+
 ``OFFSET FLAT:.L2``
 
 The table below shows the list of supported modifiers and their effects.
 
-Modifier Print the opcode suffix for the size of th Operand masm=att masm=intel
-Modifier Description Operand masm=att masm=intel
+ModifierPrint the opcode suffix for the size of thOperandmasm=attmasm=intelModifier
+
+Description
+
+Operand
+
+masm=att 
+
+masm=intel
+
 ``z``
+
 Print the opcode suffix for the size of the current integer operand (one of ``b``/``w``/``l``/``q``).
+
 ``%z0``
+
 ``l``
 
 ``b``
+
 Print the QImode name of the register.
+
 ``%b0``
+
 ``%al``
+
 ``al``
+
 ``h``
+
 Print the QImode name for a 'high' register.
+
 ``%h0``
+
 ``%ah``
+
 ``ah``
+
 ``w``
+
 Print the HImode name of the register.
+
 ``%w0``
+
 ``%ax``
+
 ``ax``
+
 ``k``
+
 Print the SImode name of the register.
+
 ``%k0``
+
 ``%eax``
+
 ``eax``
+
 ``q``
+
 Print the DImode name of the register.
+
 ``%q0``
+
 ``%rax``
+
 ``rax``
+
 ``l``
+
 Print the label name with no punctuation.
+
 ``%l2``
+
 ``.L2``
+
 ``.L2``
+
 ``c``
+
 Require a constant operand and print the constant expression with no punctuation.
+
 ``%c1``
+
 ``2``
+
 ``2``
 
 x86floatingpointasmoperands
-
-x86 Floating-Point ``asm`` Operands
-
-On x86 targets, there are several rules on the usage of stack-like registers
+x86 Floating-Point ``asm`` OperandsOn x86 targets, there are several rules on the usage of stack-like registers
 in the operands of an ``asm``.  These rules apply only to the operands
 that are stack-like registers:
 
@@ -1031,7 +1060,7 @@ that are stack-like registers:
   explicitly clobbered, unless it is constrained to match an
   output operand.
 
-  * For any input register that is implicitly popped by an ``asm``, it is
+* For any input register that is implicitly popped by an ``asm``, it is
   necessary to know how to adjust the stack to compensate for the pop.
   If any non-popped input is closer to the top of the reg-stack than
   the implicitly popped register, it would not be possible to know what the
@@ -1064,7 +1093,7 @@ that are stack-like registers:
 
     asm ("foo" : "=&t" (a) : "f" (b));
 
-  * Some operands need to be in particular places on the stack.  All
+* Some operands need to be in particular places on the stack.  All
   output operands fall in this category-GCC has no other way to
   know which registers the outputs appear in unless you indicate
   this in the constraints.
@@ -1073,7 +1102,7 @@ that are stack-like registers:
   appears in after an ``asm``.  =f is not allowed: the operand
   constraints must select a class with a single register.
 
-  * Output operands may not be 'inserted' between existing stack registers.
+* Output operands may not be 'inserted' between existing stack registers.
   Since no 387 opcode uses a read/write operand, all output operands
   are dead before the ``asm``, and are pushed by the ``asm``.
   It makes no sense to push anywhere but the top of the reg-stack.
@@ -1081,7 +1110,7 @@ that are stack-like registers:
   Output operands must start at the top of the reg-stack: output
   operands may not 'skip' a register.
 
-  * Some ``asm`` statements may need extra stack space for internal
+* Some ``asm`` statements may need extra stack space for internal
   calculations.  This can be guaranteed by clobbering stack registers
   unrelated to the inputs and outputs.
 
@@ -1100,23 +1129,16 @@ for the compiler to know that ``fyl2xp1`` pops both inputs.
 
   asm ("fyl2xp1" : "=t" (result) : "0" (x), "u" (y) : "st(1)");
 
-.. Copyright (C) 1988-2015 Free Software Foundation, Inc. 
-   This is part of the GCC manual. 
-
-.. For copying conditions, see the file gcc.texi. 
-
-   Most of this node appears by itself (in a different place) even 
-
-.. when the INTERNALS flag is clear.  Passages that require the internals 
+.. Copyright (C) 1988-2015 Free Software Foundation, Inc.
+   This is part of the GCC manual.
+   For copying conditions, see the file gcc.texi.
+   Most of this node appears by itself (in a different place) even
+   when the INTERNALS flag is clear.  Passages that require the internals
+   manual's context are conditionalized to appear only in the internals manual.
 
 :: _constraints:
 
-Constraints for ``asm`` Operands
-operand constraints, ``asm``
-constraints, ``asm``
-``asm`` constraints
-
-Here are specific details on what constraint letters you can use with
+Constraints for ``asm`` Operandsoperand constraints, ``asm``constraints, ``asm````asm`` constraintsHere are specific details on what constraint letters you can use with
 ``asm`` operands.
 Constraints can say whether
 an operand may be in a register, and which kinds of register; whether the
@@ -1153,7 +1175,6 @@ whitespace
   number of constraints and modifiers.
 
   m in constraint
-
   .. index:: memory references in constraints
 
 m
@@ -1165,7 +1186,6 @@ m
   .. index:: offsettable address
 
   o in constraint
-
 o
   A memory operand is allowed, but only if the address is
   :dfn:`offsettable`.  This means that adding a small integer (actually,
@@ -1189,13 +1209,11 @@ o
   and > (if the target machine has preincrement addressing).
 
   V in constraint
-
 V
   A memory operand that is not offsettable.  In other words, anything that
   would fit the m constraint but not the o constraint.
 
   < in constraint
-
 <
   A memory operand with autodecrement addressing (either predecrement or
   postdecrement) is allowed.  In inline ``asm`` this constraint is only
@@ -1209,14 +1227,12 @@ V
   or ``%P0`` on IA-64.
 
   > in constraint
-
 >
   A memory operand with autoincrement addressing (either preincrement or
   postincrement) is allowed.  In inline ``asm`` the same restrictions
   as for < apply.
 
   r in constraint
-
   .. index:: registers in constraints
 
 r
@@ -1226,14 +1242,12 @@ r
   .. index:: constants in constraints
 
   i in constraint
-
 i
   An immediate integer operand (one with constant value) is allowed.
   This includes symbolic constants whose values will be known only at
   assembly time or later.
 
   n in constraint
-
 n
   An immediate integer operand with a known numeric value is allowed.
   Many systems cannot support assembly-time constants for operands less
@@ -1241,7 +1255,6 @@ n
   rather than i.
 
   I in constraint
-
 I, J, K, ... P
   Other letters in the range I through P may be defined in
   a machine-dependent fashion to permit immediate integer operands with
@@ -1251,27 +1264,22 @@ I, J, K, ... P
   instructions.
 
   E in constraint
-
 E
   An immediate floating operand (expression code ``const_double``) is
   allowed, but only if the target floating point format is the same as
   that of the host machine (on which the compiler is running).
 
   F in constraint
-
 F
   An immediate floating operand (expression code ``const_double`` or
   ``const_vector``) is allowed.
 
-  G in constraint
-  H in constraint
-
+  G in constraintH in constraint
 G, H
   G and H may be defined in a machine-dependent fashion to
   permit immediate floating operands in particular ranges of values.
 
   s in constraint
-
 s
   An immediate integer operand whose value is not an explicit integer is
   allowed.
@@ -1291,18 +1299,15 @@ s
   constraints.
 
   g in constraint
-
 g
   Any register, memory or immediate integer operand is allowed, except for
   registers that are not general registers.
 
   X in constraint
-
 X
   Any operand whatsoever is allowed.
 
   0 in constraint
-
   .. index:: digits in constraint
 
 0, 1, 2, ... 9
@@ -1345,7 +1350,6 @@ X
   .. index:: address constraints
 
   p in constraint
-
 p
   An operand that is a valid memory address is allowed.  This is
   for 'load address' and 'push address' instructions.
@@ -1367,7 +1371,7 @@ p
   d, a and f are defined on the 68000/68020 to stand
   for data, address and floating point registers.
 
-:: _multi-alternative:
+  :: _multi-alternative:
 
 Multiple Alternative Constraints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1386,7 +1390,7 @@ constraint for an operand is made from the letters for this operand
 from the first alternative, a comma, the letters for this operand from
 the second alternative, a comma, and so on until the last alternative.
 
-.. FIXME Is this ? and ! stuff of use in asm()?  If not, hide unless INTERNAL 
+.. FIXME Is this ? and ! stuff of use in asm()?  If not, hide unless INTERNAL
 
 If all the operands fit any one alternative, the instruction is valid.
 Otherwise, for each alternative, the compiler counts how many instructions
@@ -1396,7 +1400,6 @@ need the same amount of copying, the one that comes first is chosen.
 These choices can be altered with the ? and ! characters:
 
 ? in constraint
-
 .. index:: question mark
 
 ?
@@ -1406,7 +1409,6 @@ These choices can be altered with the ? and ! characters:
   in it.
 
   ! in constraint
-
   .. index:: exclamation point
 
 !
@@ -1415,7 +1417,6 @@ These choices can be altered with the ? and ! characters:
   but if reloading is needed, some other alternative will be used.
 
   ^ in constraint
-
   .. index:: caret
 
 ^
@@ -1423,14 +1424,13 @@ These choices can be altered with the ? and ! characters:
   the alternative only if the operand with the ^ needs a reload.
 
   $ in constraint
-
   .. index:: dollar sign
 
 $
   This constraint is analogous to ! but it disparages severely
   the alternative only if the operand with the $ needs a reload.
 
-:: _modifiers:
+  :: _modifiers:
 
 Constraint Modifier Characters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1439,18 +1439,16 @@ Constraint Modifier Characters
 
 .. index:: constraint modifier characters
 
-.. prevent bad page break with this line 
+.. prevent bad page break with this line
 
 Here are constraint modifier characters.
 
 = in constraint
-
 =
   Means that this operand is written to by this instruction:
   the previous value is discarded and replaced by new data.
 
   + in constraint
-
 +
   Means that this operand is both read and written by the instruction.
 
@@ -1464,7 +1462,6 @@ Here are constraint modifier characters.
   first character of the constraint string.
 
   & in constraint
-
   .. index:: earlyclobber operand
 
 &
@@ -1494,7 +1491,6 @@ Here are constraint modifier characters.
   compiler.
 
   % in constraint
-
 %
   Declares the instruction to be commutative for this operand and the
   following operand.  This means that the compiler may interchange the
@@ -1512,14 +1508,12 @@ Here are constraint modifier characters.
   % to make the intended insn match.
 
   # in constraint
-
 #
   Says that all following characters, up to the next comma, are to be
   ignored as a constraint.  They are significant only for choosing
   register preferences.
 
   * in constraint
-
 *
   Says that the following character should be ignored when choosing
   register preferences.  * has no effect on the meaning of the
@@ -1527,7 +1521,7 @@ Here are constraint modifier characters.
   * additionally disparages slightly the alternative if the
   following character matches the operand.
 
-:: _machine-constraints:
+  :: _machine-constraints:
 
 Constraints for Particular Machines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1555,7 +1549,7 @@ constraints that aren't.  The compiler source file mentioned in the
 table heading for each architecture is the definitive reference for
 the meanings of that architecture's constraints.
 
-.. Please keep this table alphabetized by target! 
+.. Please keep this table alphabetized by target!
 
 AArch64 family-config/aarch64/constraints.md
 
@@ -3255,7 +3249,7 @@ S/390 and zSeries-config/s390/s390.h
     0,F:
       value of the other parts (F-all bits set)
 
-    The constraint matches if the specified part of a constant
+      The constraint matches if the specified part of a constant
     has a value different from its other parts.
 
   Q
@@ -3882,11 +3876,10 @@ Xtensa-config/xtensa/constraints.md
   L
     Unsigned constant valid for BccUI instructions
 
-.. Each of the following nodes are wrapped in separate 
-   "@ifset INTERNALS" to work around memory limits for the default 
-
-.. configuration in older tetex distributions.  Known to not work: 
-   tetex-1.0.7, known to work: tetex-2.0.2. 
+.. Each of the following nodes are wrapped in separate
+   "@ifset INTERNALS" to work around memory limits for the default
+   configuration in older tetex distributions.  Known to not work:
+   tetex-1.0.7, known to work: tetex-2.0.2.
 
 :: _asm-labels:
 
@@ -3962,7 +3955,7 @@ register variable should be allocated.
   interpreters that have a couple of global variables that are accessed
   very often.
 
-  * Local register variables in specific registers do not reserve the
+* Local register variables in specific registers do not reserve the
   registers, except at the point where they are used as input or output
   operands in an ``asm`` statement and the ``asm`` statement itself is
   not deleted.  The compiler's data flow analysis is capable of determining
@@ -4028,8 +4021,7 @@ handlers, or from more than one thread of control, because the system
 library routines may temporarily use the register for other things (unless
 you recompile them specially for the task at hand).
 
-``qsort``, and global register variables
-It is not safe for one function that uses a global register variable to
+``qsort``, and global register variablesIt is not safe for one function that uses a global register variable to
 call another such function ``foo`` by way of a third function
 ``lose`` that is compiled without knowledge of this variable (i.e. in a
 different source file in which the variable isn't declared).  This is
@@ -4053,10 +4045,7 @@ Therefore, the function that is the entry point into the part of the
 program that uses the global register variable must explicitly save and
 restore the value that belongs to its caller.
 
-register variable after ``longjmp``
-global register after ``longjmp``
-value after ``longjmp``
-
+register variable after ``longjmp``global register after ``longjmp``value after ``longjmp``
 .. index:: longjmp
 
 .. index:: setjmp
@@ -4136,7 +4125,7 @@ be deleted or moved or simplified.
 
 As with global register variables, it is recommended that you choose a
 register that is normally saved and restored by function calls on
-your machine, so that library routines will not clobber it.  
+your machine, so that library routines will not clobber it.
 
 Sometimes when writing inline ``asm`` code, you need to make an operand be a 
 specific register, but there's no matching constraint letter for that 
@@ -4168,9 +4157,7 @@ register assignments:
 
 :: _size-of-an-asm:
 
-Size of an ``asm``
-
-Some targets require that GCC track the size of each instruction used
+Size of an ``asm``Some targets require that GCC track the size of each instruction used
 in order to generate correct code.  Because the final length of the
 code produced by an ``asm`` statement is only known by the
 assembler, GCC must make an estimate as to how big it will be.  It

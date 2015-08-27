@@ -96,10 +96,9 @@ be desirable anyway.  So GCC simply does not mention the eliminated
 variable when it writes debugging information.</p>
 <p>You have to expect a certain amount of disagreement between the
 executable and your source code, when you use optimization.</p>
-<span class="target" id="index-0"></span><ul class="simple" id="index-1">
-<li>Users often think it is a bug when GCC reports an error for code</li>
-</ul>
-<p>like this:</p>
+<span class="target" id="index-0"></span></li>
+<li id="index-1"><p class="first">Users often think it is a bug when GCC reports an error for code
+like this:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">foo</span> <span class="p">(</span><span class="k">struct</span> <span class="n">mumble</span> <span class="o">*</span><span class="p">);</span>
 
 <span class="k">struct</span> <span class="n">mumble</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
@@ -121,18 +120,16 @@ It is easy enough for you to make your code work by moving the
 definition of <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">mumble</span></tt> above the prototype.  It&#8217;s not worth
 being incompatible with ISO C just to avoid an error for the example
 shown above.</p>
-<ul class="simple">
-<li>Accesses to bit-fields even in volatile objects works by accessing larger</li>
-</ul>
-<p>objects, such as a byte or a word.  You cannot rely on what size of
+</li>
+<li><p class="first">Accesses to bit-fields even in volatile objects works by accessing larger
+objects, such as a byte or a word.  You cannot rely on what size of
 object is accessed in order to read or write the bit-field; it may even
 vary for a given bit-field according to the precise usage.</p>
 <p>If you care about controlling the amount of memory that is accessed, use
 volatile but do not use bit-fields.</p>
-<ul class="simple">
-<li>GCC comes with shell scripts to fix certain known problems in system</li>
-</ul>
-<p>header files.  They install corrected copies of various header files in
+</li>
+<li><p class="first">GCC comes with shell scripts to fix certain known problems in system
+header files.  They install corrected copies of various header files in
 a special directory where only GCC will normally look for them.  The
 scripts adapt to various systems by searching all the system header
 files for the problem cases that we know about.</p>
@@ -140,10 +137,8 @@ files for the problem cases that we know about.</p>
 to update the corrected header files.  They can be updated using the
 <strong class="command">mkheaders</strong> script installed in
 <tt class="docutils literal"><span class="pre">libexecdir</span></tt>/gcc/<tt class="docutils literal"><span class="pre">target</span></tt>/<tt class="docutils literal"><span class="pre">version</span></tt>/install-tools/.</p>
-<ul class="simple">
-<li></li>
-</ul>
-<p id="index-2">On 68000 and x86 systems, for instance, you can get paradoxical results
+</li>
+<li><p id="index-2">On 68000 and x86 systems, for instance, you can get paradoxical results
 if you test the precise values of floating point numbers.  For example,
 you can find that a floating point value which is not a NaN is not equal
 to itself.  This results from the fact that the floating point registers
@@ -152,15 +147,13 @@ Compiled code moves values between memory and floating point registers
 at its convenience, and moving them into memory truncates them.</p>
 <p id="index-3">You can partially avoid this problem by using the <a class="reference internal" href="options-that-control-optimization.html#cmdoption-ffloat-store"><em class="xref std std-option">-ffloat-store</em></a>
 option (Optimize Options).</p>
-<ul class="simple">
-<li>On AIX and other platforms without weak symbol support, templates</li>
-</ul>
-<p>need to be instantiated explicitly and symbols for static members
+</li>
+<li><p class="first">On AIX and other platforms without weak symbol support, templates
+need to be instantiated explicitly and symbols for static members
 of templates will not be generated.</p>
-<ul class="simple">
-<li>On AIX, GCC scans object files and library archives for static</li>
-</ul>
-<p>constructors and destructors when linking an application before the
+</li>
+<li><p class="first">On AIX, GCC scans object files and library archives for static
+constructors and destructors when linking an application before the
 linker prunes unreferenced symbols.  This is necessary to prevent the
 AIX linker from mistakenly assuming that static constructor or
 destructor are unused and removing them before the scanning can occur.

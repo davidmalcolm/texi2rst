@@ -1,3 +1,4 @@
+
 Using Precompiled Headers
 *************************
 
@@ -61,18 +62,18 @@ A precompiled header file can be used only when these conditions apply:
 
 * Only one precompiled header can be used in a particular compilation.
 
-  * A precompiled header can't be used once the first C token is seen.  You
+* A precompiled header can't be used once the first C token is seen.  You
   can have preprocessor directives before a precompiled header; you cannot
   include a precompiled header from inside another header.
 
-  * The precompiled header file must be produced for the same language as
+* The precompiled header file must be produced for the same language as
   the current compilation.  You can't use a C precompiled header for a C++
   compilation.
 
-  * The precompiled header file must have been produced by the same compiler
+* The precompiled header file must have been produced by the same compiler
   binary as the current compilation is using.
 
-  * Any macros defined before the precompiled header is included must
+* Any macros defined before the precompiled header is included must
   either be defined in the same way as when the precompiled header was
   generated, or must not affect the precompiled header, which usually
   means that they don't appear in the precompiled header at all.
@@ -83,22 +84,22 @@ A precompiled header file can be used only when these conditions apply:
   :option:`-O` and :option:`-Wdeprecated`; the same rule applies to macros
   defined this way.
 
-  * If debugging information is output when using the precompiled
+* If debugging information is output when using the precompiled
   header, using :option:`-g` or similar, the same kind of debugging information
   must have been output when building the precompiled header.  However,
   a precompiled header built using :option:`-g` can be used in a compilation
   when no debugging information is being output.
 
-  * The same :option:`-m` options must generally be used when building
+* The same :option:`-m` options must generally be used when building
   and using the precompiled header.  Submodel Options,
   for any cases where this rule is relaxed.
 
-  * Each of the following options must be the same when building and using
+* Each of the following options must be the same when building and using
   the precompiled header:
 
   :option:`-fexceptions`
 
-  * Some other command-line options starting with :option:`-f`,
+* Some other command-line options starting with :option:`-f`,
   :option:`-p`, or :option:`-O` must be defined in the same way as when
   the precompiled header was generated.  At present, it's not clear
   which options are safe to change and which are not; the safest choice
@@ -122,8 +123,9 @@ behavior for the options.  For instance, if you use :option:`-g` to
 generate the precompiled header but not when using it, you may or may
 not get debugging information for routines in the precompiled header.
 
-.. Copyright (C) 2001-2015 Free Software Foundation, Inc. 
-   This is part of the GCC manual. 
+.. Copyright (C) 2001-2015 Free Software Foundation, Inc.
 
-.. For copying conditions, see the file gcc.texi. 
+.. This is part of the GCC manual.
+
+.. For copying conditions, see the file gcc.texi.
 

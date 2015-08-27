@@ -1,8 +1,0 @@
-Statements
-**********
-
-* The maximum number of ``case`` values in a ``switch``
-  statement (C90 6.6.4.2).
-
-  GCC is only limited by available memory.
-

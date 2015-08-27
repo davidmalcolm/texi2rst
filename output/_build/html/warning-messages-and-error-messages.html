@@ -1,0 +1,149 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Warning Messages and Error Messages &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Known Causes of Trouble with GCC" href="known-causes-of-trouble-with-gcc.html" />
+    <link rel="next" title="Reporting Bugs" href="reporting-bugs.html" />
+    <link rel="prev" title="Certain Changes We Dont Want to Make" href="certain-changes-we-dont-want-to-make.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="reporting-bugs.html" title="Reporting Bugs"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="certain-changes-we-dont-want-to-make.html" title="Certain Changes We Dont Want to Make"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="known-causes-of-trouble-with-gcc.html" accesskey="U">Known Causes of Trouble with GCC</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="certain-changes-we-dont-want-to-make.html"
+                        title="previous chapter">Certain Changes We Dont Want to Make</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reporting-bugs.html"
+                        title="next chapter">Reporting Bugs</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/warning-messages-and-error-messages.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="warning-messages-and-error-messages">
+<h1>Warning Messages and Error Messages<a class="headerlink" href="#warning-messages-and-error-messages" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><p id="index-2">The GNU compiler can produce two kinds of diagnostics: errors and
+warnings.  Each kind has a different purpose:</p>
+<ul>
+<li><p class="first"><em class="dfn">Errors</em> report problems that make it impossible to compile your
+program.  GCC reports errors with the source file name and line
+number where the problem is apparent.</p>
+<ul class="simple">
+<li><em class="dfn">Warnings</em> report other unusual conditions in your code that</li>
+</ul>
+<p>may indicate a problem, although compilation can (and does)
+proceed.  Warning messages also report the source file name and line
+number, but include the text warning: to distinguish them
+from error messages.</p>
+</li>
+</ul>
+<p>Warnings may indicate danger points where you should check to make sure
+that your program really does what you intend; or the use of obsolete
+features; or the use of nonstandard features of GNU C or C++.  Many
+warnings are issued only if you ask for them, with one of the <em class="xref std std-option">-W</em>
+options (for instance, <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> requests a variety of useful
+warnings).</p>
+<span class="target" id="index-3"></span><p id="index-4">GCC always tries to compile your program if possible; it never
+gratuitously rejects a program whose meaning is clear merely because
+(for instance) it fails to conform to a standard.  In some cases,
+however, the C and C++ standards specify that certain extensions are
+forbidden, and a diagnostic must be issued by a conforming
+compiler.  The <em class="xref std std-option">-pedantic</em> option tells GCC to issue warnings in
+such cases; <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-pedantic-errors"><em class="xref std std-option">-pedantic-errors</em></a> says to make them errors instead.
+This does not mean that all non-ISO constructs get warnings
+or errors.</p>
+<p>Warning OptionsOptions to Request or Suppress Warnings, for
+more detail on these and related command-line options.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="reporting-bugs.html" title="Reporting Bugs"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="certain-changes-we-dont-want-to-make.html" title="Certain Changes We Dont Want to Make"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="known-causes-of-trouble-with-gcc.html" >Known Causes of Trouble with GCC</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

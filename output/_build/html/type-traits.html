@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Type Traits &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C++ Language" href="extensions-to-the-c++-language.html" />
+    <link rel="next" title="Java Exceptions" href="java-exceptions.html" />
+    <link rel="prev" title="Namespace Association" href="namespace-association.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="java-exceptions.html" title="Java Exceptions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="namespace-association.html" title="Namespace Association"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c++-language.html" accesskey="U">Extensions to the C++ Language</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="namespace-association.html"
+                        title="previous chapter">Namespace Association</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="java-exceptions.html"
+                        title="next chapter">Java Exceptions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/type-traits.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="type-traits">
+<h1>Type Traits<a class="headerlink" href="#type-traits" title="Permalink to this headline">¶</a></h1>
+<p>The C++ front end implements syntactic extensions that allow
+compile-time determination of
+various characteristics of a type (or of a
+pair of types).</p>
+<dl class="docutils">
+<dt>__has_nothrow_assign (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is const qualified or is a reference type then the trait is
+false.  Otherwise if <tt class="docutils literal"><span class="pre">__has_trivial_assign</span> <span class="pre">(type)</span></tt> is true then the trait
+is true, else if <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type with copy assignment
+operators that are known not to throw an exception then the trait is true,
+else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type,
+(possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__has_nothrow_copy (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">__has_trivial_copy</span> <span class="pre">(type)</span></tt> is true then the trait is true, else if
+<tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type with copy constructors that
+are known not to throw an exception then the trait is true, else it is false.
+Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type, (possibly cv-qualified)
+<tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__has_nothrow_constructor (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">__has_trivial_constructor</span> <span class="pre">(type)</span></tt> is true then the trait is
+true, else if <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type (or array
+thereof) with a default constructor that is known not to throw an
+exception then the trait is true, else it is false.  Requires:
+<tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type, (possibly cv-qualified)
+<tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__has_trivial_assign (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is const qualified or is a reference type then the trait is
+false.  Otherwise if <tt class="docutils literal"><span class="pre">__is_pod</span> <span class="pre">(type)</span></tt> is true then the trait is
+true, else if <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type with a trivial
+copy assignment ([class.copy]) then the trait is true, else it is
+false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type, (possibly
+cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__has_trivial_copy (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">__is_pod</span> <span class="pre">(type)</span></tt> is true or <tt class="docutils literal"><span class="pre">type</span></tt> is a reference type
+then the trait is true, else if <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type
+with a trivial copy constructor ([class.copy]) then the trait
+is true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
+type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__has_trivial_constructor (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">__is_pod</span> <span class="pre">(type)</span></tt> is true then the trait is true, else if
+<tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type (or array thereof) with a
+trivial default constructor ([class.ctor]) then the trait is true,
+else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
+type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__has_trivial_destructor (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">__is_pod</span> <span class="pre">(type)</span></tt> is true or <tt class="docutils literal"><span class="pre">type</span></tt> is a reference type then
+the trait is true, else if <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type (or
+array thereof) with a trivial destructor ([class.dtor]) then the trait
+is true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
+type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__has_virtual_destructor (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a class type with a virtual destructor
+([class.dtor]) then the trait is true, else it is false.  Requires:
+<tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type, (possibly cv-qualified)
+<tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__is_abstract (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is an abstract class ([class.abstract]) then the trait
+is true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
+type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__is_base_of (base_type, derived_type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">base_type</span></tt> is a base class of <tt class="docutils literal"><span class="pre">derived_type</span></tt>
+([class.derived]) then the trait is true, otherwise it is false.
+Top-level cv qualifications of <tt class="docutils literal"><span class="pre">base_type</span></tt> and
+<tt class="docutils literal"><span class="pre">derived_type</span></tt> are ignored.  For the purposes of this trait, a
+class type is considered is own base.  Requires: if <tt class="docutils literal"><span class="pre">__is_class</span>
+<span class="pre">(base_type)</span></tt> and <tt class="docutils literal"><span class="pre">__is_class</span> <span class="pre">(derived_type)</span></tt> are true and
+<tt class="docutils literal"><span class="pre">base_type</span></tt> and <tt class="docutils literal"><span class="pre">derived_type</span></tt> are not the same type
+(disregarding cv-qualifiers), <tt class="docutils literal"><span class="pre">derived_type</span></tt> shall be a complete
+type.  Diagnostic is produced if this requirement is not met.</dd>
+<dt>__is_class (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class type, and not a union type
+([basic.compound]) the trait is true, else it is false.</dd>
+<dt>__is_empty (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">__is_class</span> <span class="pre">(type)</span></tt> is false then the trait is false.
+Otherwise <tt class="docutils literal"><span class="pre">type</span></tt> is considered empty if and only if: <tt class="docutils literal"><span class="pre">type</span></tt>
+has no non-static data members, or all non-static data members, if
+any, are bit-fields of length 0, and <tt class="docutils literal"><span class="pre">type</span></tt> has no virtual
+members, and <tt class="docutils literal"><span class="pre">type</span></tt> has no virtual base classes, and <tt class="docutils literal"><span class="pre">type</span></tt>
+has no base classes <tt class="docutils literal"><span class="pre">base_type</span></tt> for which
+<tt class="docutils literal"><span class="pre">__is_empty</span> <span class="pre">(base_type)</span></tt> is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall
+be a complete type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array
+of unknown bound.</dd>
+<dt>__is_enum (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a cv enumeration type ([basic.compound]) the trait is
+true, else it is false.</dd>
+<dt>__is_literal_type (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a literal type ([basic.types]) the trait is
+true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type,
+(possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__is_pod (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a cv POD type ([basic.types]) then the trait is true,
+else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type,
+(possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__is_polymorphic (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a polymorphic class ([class.virtual]) then the trait
+is true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
+type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__is_standard_layout (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a standard-layout type ([basic.types]) the trait is
+true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
+type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__is_trivial (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a trivial type ([basic.types]) the trait is
+true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
+type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
+<dt>__is_union (type)</dt>
+<dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a cv union type ([basic.compound]) the trait is
+true, else it is false.</dd>
+<dt>__underlying_type (type)</dt>
+<dd>The underlying type of <tt class="docutils literal"><span class="pre">type</span></tt>.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be
+an enumeration type ([dcl.enum]).</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="java-exceptions.html" title="Java Exceptions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="namespace-association.html" title="Namespace Association"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c++-language.html" >Extensions to the C++ Language</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

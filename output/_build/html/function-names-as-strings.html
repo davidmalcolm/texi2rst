@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Function Names as Strings &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="Getting the Return or Frame Address of a Function" href="getting-the-return-or-frame-address-of-a-function.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="incomplete-enum-types.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="getting-the-return-or-frame-address-of-a-function.html" title="Getting the Return or Frame Address of a Function"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="incomplete-enum-types.html" title="&lt;no title&gt;"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="incomplete-enum-types.html"
+                        title="previous chapter">&lt;no title&gt;</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="getting-the-return-or-frame-address-of-a-function.html"
+                        title="next chapter">Getting the Return or Frame Address of a Function</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/function-names-as-strings.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="function-names-as-strings">
+<h1>Function Names as Strings<a class="headerlink" href="#function-names-as-strings" title="Permalink to this headline">¶</a></h1>
+<p><tt class="docutils literal"><span class="pre">__func__</span></tt> identifier
+<tt class="docutils literal"><span class="pre">__FUNCTION__</span></tt> identifier
+<tt class="docutils literal"><span class="pre">__PRETTY_FUNCTION__</span></tt> identifier</p>
+<p>GCC provides three magic variables that hold the name of the current
+function, as a string.  The first of these is <tt class="docutils literal"><span class="pre">__func__</span></tt>, which
+is part of the C99 standard:</p>
+<p>The identifier <tt class="docutils literal"><span class="pre">__func__</span></tt> is implicitly declared by the translator
+as if, immediately following the opening brace of each function
+definition, the declaration</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">static</span> <span class="k">const</span> <span class="kt">char</span> <span class="n">__func__</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;function-name&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>appeared, where function-name is the name of the lexically-enclosing
+function.  This name is the unadorned name of the function.</p>
+<p><tt class="docutils literal"><span class="pre">__FUNCTION__</span></tt> is another name for <tt class="docutils literal"><span class="pre">__func__</span></tt>, provided for
+backward compatibility with old versions of GCC.</p>
+<p>In C, <tt class="docutils literal"><span class="pre">__PRETTY_FUNCTION__</span></tt> is yet another name for
+<tt class="docutils literal"><span class="pre">__func__</span></tt>.  However, in C++, <tt class="docutils literal"><span class="pre">__PRETTY_FUNCTION__</span></tt> contains
+the type signature of the function as well as its bare name.  For
+example, this program:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
+<span class="k">extern</span> <span class="kt">int</span> <span class="n">printf</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="p">...);</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">a</span> <span class="p">{</span>
+ <span class="nl">public:</span>
+  <span class="kt">void</span> <span class="n">sub</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;__FUNCTION__ = %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">);</span>
+      <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;__PRETTY_FUNCTION__ = %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">__PRETTY_FUNCTION__</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span>
+<span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">a</span> <span class="n">ax</span><span class="p">;</span>
+  <span class="n">ax</span><span class="p">.</span><span class="n">sub</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>gives this output:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">__FUNCTION__</span> <span class="o">=</span> <span class="n">sub</span>
+<span class="n">__PRETTY_FUNCTION__</span> <span class="o">=</span> <span class="kt">void</span> <span class="n">a</span><span class="o">::</span><span class="n">sub</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These identifiers are variables, not preprocessor macros, and may not
+be used to initialize <tt class="docutils literal"><span class="pre">char</span></tt> arrays or be concatenated with other string
+literals.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="getting-the-return-or-frame-address-of-a-function.html" title="Getting the Return or Frame Address of a Function"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="incomplete-enum-types.html" title="&lt;no title&gt;"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

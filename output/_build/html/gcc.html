@@ -1,0 +1,1373 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="next" title="Programming Languages Supported by GCC" href="programming-languages-supported-by-gcc.html" />
+    <link rel="prev" title="Welcome to gcc’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="programming-languages-supported-by-gcc.html" title="Programming Languages Supported by GCC"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to gcc’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#funding-free-software">Funding Free Software</a></li>
+<li><a class="reference internal" href="#the-gnu-project-and-gnu-linux">The GNU Project and GNU/Linux</a></li>
+<li><a class="reference internal" href="#gnu-general-public-license">GNU General Public License</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to gcc&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="programming-languages-supported-by-gcc.html"
+                        title="next chapter">Programming Languages Supported by GCC</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/gcc.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p>Copyright  1988-2015 Free Software Foundation, Inc.</p>
+<p>Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being Funding Free Software, the Front-Cover
+Texts being (a) (see below), and with the Back-Cover Texts being (b)
+(see below).  A copy of the license is included in the section entitled
+GNU Free Documentation License.</p>
+<ol class="loweralpha">
+<li><p class="first">The FSFs Front-Cover Text is:</p>
+<blockquote>
+<div><p>A GNU Manual</p>
+</div></blockquote>
+</li>
+<li><p class="first">The FSFs Back-Cover Text is:</p>
+<blockquote>
+<div><p>You have freedom to copy and modify this GNU Manual, like GNU
+software.  Copies published by the Free Software Foundation raise
+funds for GNU development.</p>
+</div></blockquote>
+</li>
+</ol>
+<p>Software development</p>
+<p>The GNU Compiler Collection. &lt;(gcc)&gt;
+The GNU C++ compiler. &lt;(gcc)&gt;
+:command:<a href="#id1"><span class="problematic" id="id2">`</span></a>gcov`a test coverage program. &lt;(gcc)-gcov&gt;
+:command:<a href="#id3"><span class="problematic" id="id4">`</span></a>gcov-tool`an offline gcda profile processing program. &lt;(gcc)-gcov-tool&gt;</p>
+<p>This file documents the use of the GNU compilers.</p>
+<p>Using the GNU Compiler Collection
+For gcc version 6.0.0 (pre-release)</p>
+<p>(GCC)</p>
+<p>Richard M. Stallman and the GCC Developer Community</p>
+<blockquote>
+<div>0pt plus 1filll</div></blockquote>
+<p>Published by:</p>
+<p>GNU Press
+Website: <a class="reference external" href="http://www.gnupress.org">http://www.gnupress.org</a>
+a division of the
+General: pressgnu.org
+Free Software Foundation
+Orders:  salesgnu.org
+51 Franklin Street, Fifth Floor
+Tel 617-542-5942
+Boston, MA 02110-1301 USA
+Fax 617-542-2652</p>
+<p>Last printed October 2003 for GCC 3.3.1.
+Printed copies are available for $45 each.</p>
+<p>:: _top:</p>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">This manual documents how to use the GNU compilers,
+as well as their features and incompatibilities, and how to report
+bugs.  It corresponds to the compilers
+(GCC)
+version 6.0.0.
+The internals of the GNU compilers, including how to port them to new
+targets and some information about how to write front ends for new
+languages, are documented in a separate manual.  TopIntroductiongccintGNU Compiler Collection (GCC) Internals.</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<p>:: _g++-and-gcc:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="programming-languages-supported-by-gcc.html">Programming Languages Supported by GCC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language-standards-supported-by-gcc.html">Language Standards Supported by GCC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="c-language.html">C Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c++-language.html">C++ Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective-c-and-objective-c++-languages.html">Objective-C and Objective-C++ Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go-language.html">Go Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references-for-other-languages.html">References for Other Languages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gcc-command-options.html">GCC Command Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="option-summary.html">Brief list of all options, without explanations.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="option-summary.html">Option Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options-controlling-the-kind-of-output.html">Options Controlling the Kind of Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiling-c++-programs.html">Compiling C++ Programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options-controlling-c-dialect.html">Options Controlling C Dialect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options-controlling-c++-dialect.html">Options Controlling C++ Dialect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options-controlling-objective-c-and-objective-c++-dialects.html">Options Controlling Objective-C and Objective-C++ Dialects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options-to-control-diagnostic-messages-formatting.html">Options to Control Diagnostic Messages Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options-to-request-or-suppress-warnings.html">Options to Request or Suppress Warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options-for-debugging-your-program-or-gcc.html">Options for Debugging Your Program or GCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options-that-control-optimization.html">Options That Control Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options-controlling-the-preprocessor.html">Options Controlling the Preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="passing-options-to-the-assembler.html">Passing Options to the Assembler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options-for-linking.html">Options for Linking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options-for-directory-search.html">Options for Directory Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specifying-subprocesses-and-the-switches-to-pass-to-them.html">Specifying Subprocesses and the Switches to Pass to Them</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specifying-target-machine-and-compiler-version.html">Specifying Target Machine and Compiler Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html">Hardware Models and Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#aarch64-options">AArch64 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#adapteva-epiphany-options">Adapteva Epiphany Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#arc-options">ARC Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#arm-options">ARM Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#avr-options">AVR Options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hardware-models-and-configurations.html#avr-built-in-macros">AVR Built-in Macros</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#blackfin-options">Blackfin Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#c6x-options">C6X Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#cris-options">CRIS Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#cr16-options">CR16 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#darwin-options">Darwin Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#dec-alpha-options">DEC Alpha Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#fr30-options">FR30 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#frv-options">FRV Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#gnu-linux-options">GNU/Linux Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#h8-300-options">H8/300 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#hppa-options">HPPA Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#ia-64-options">IA-64 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#lm32-options">LM32 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#m32c-options">M32C Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#m32r-d-options">M32R/D Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#m680x0-options">M680x0 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#mcore-options">MCore Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#mep-options">MeP Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#microblaze-options">MicroBlaze Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#mips-options">MIPS Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#mmix-options">MMIX Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#mn10300-options">MN10300 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#moxie-options">Moxie Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#msp430-options">MSP430 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#nds32-options">NDS32 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#nios-ii-options">Nios II Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#nvidia-ptx-options">Nvidia PTX Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#pdp-11-options">PDP-11 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#picochip-options">picoChip Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#powerpc-options">PowerPC Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#rl78-options">RL78 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#ibm-rs-6000-and-powerpc-options">IBM RS/6000 and PowerPC Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#rx-options">RX Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#s-390-and-zseries-options">S/390 and zSeries Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#score-options">Score Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#sh-options">SH Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#solaris-2-options">Solaris 2 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#sparc-options">SPARC Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#spu-options">SPU Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#options-for-system-v">Options for System V</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#tile-gx-options">TILE-Gx Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#tilepro-options">TILEPro Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#v850-options">V850 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#vax-options">VAX Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#visium-options">Visium Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#vms-options">VMS Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#vxworks-options">VxWorks Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#x86-options">x86 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#x86-windows-options">x86 Windows Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#xstormy16-options">Xstormy16 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#xtensa-options">Xtensa Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#zseries-options">zSeries Options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="options-for-code-generation-conventions.html">Options for Code Generation Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment-variables-affecting-gcc.html">Environment Variables Affecting GCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-precompiled-headers.html">Using Precompiled Headers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="c-implementation-defined-behavior.html">C Implementation-Defined Behavior</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html">Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identifiers.html">Identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="characters.html">Characters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integers.html">Integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="floating-point.html">Floating Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays-and-pointers.html">Arrays and Pointers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hints.html">Hints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structures,-unions,-enumerations,-and-bit-fields.html">Structures, Unions, Enumerations, and Bit-Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qualifiers.html">Qualifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="declarators.html">Declarators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statements.html">Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing-directives.html">Preprocessing Directives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library-functions.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="locale-specific-behavior.html">Locale-Specific Behavior</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="c++-implementation-defined-behavior.html">C++ Implementation-Defined Behavior</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conditionally-supported-behavior.html">Conditionally-Supported Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exception-handling.html">Exception Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extensions-to-the-c-language-family.html">Extensions to the C Language Family</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="labels-as-values.html">Getting pointers to labels, and computed gotos.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nested-functions.html">As in Algol and Pascal, lexical scoping of functions.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hex-floats.html">Hexadecimal floating-point constants.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="named-address-spaces.html">Named address spaces.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="named-address-spaces.html#avr-named-address-spaces">AVR Named Address Spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="named-address-spaces.html#m32c-named-address-spaces">M32C Named Address Spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="named-address-spaces.html#rl78-named-address-spaces">RL78 Named Address Spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="named-address-spaces.html#spu-named-address-spaces">SPU Named Address Spaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="compound-literals.html">                        or arrays as values.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-ranges.html">case 1 ... 9 and such.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="label-attributes.html">Specifying attributes on labels.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attribute-syntax.html">Formal syntax for attributes.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="attribute-syntax.html#label-attributes">Label Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attribute-syntax.html#type-attributes">Type Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attribute-syntax.html#all-other-attributes">All other attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="alternate-keywords.html">``__const__``, ``__asm__``, etc., for header files.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x86-specific-memory-model-extensions-for-transactional-memory.html">x86 memory models.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statements-and-declarations-in-expressions.html">Statements and Declarations in Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="locally-declared-labels.html">Locally Declared Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labels-as-values.html">Labels as Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nested-functions.html">Nested Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constructing-function-calls.html">Constructing Function Calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conditionals-with-omitted-operands.html">Conditionals with Omitted Operands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="128-bit-integers.html">128-bit Integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="double-word-integers.html">Double-Word Integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="complex-numbers.html">Complex Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="additional-floating-types.html">Additional Floating Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="half-precision-floating-point.html">Half-Precision Floating Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decimal-floating-types.html">Decimal Floating Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hex-floats.html">Hex Floats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fixed-point-types.html">Fixed-Point Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="named-address-spaces.html">Named Address Spaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="named-address-spaces.html#avr-named-address-spaces">AVR Named Address Spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="named-address-spaces.html#m32c-named-address-spaces">M32C Named Address Spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="named-address-spaces.html#rl78-named-address-spaces">RL78 Named Address Spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="named-address-spaces.html#spu-named-address-spaces">SPU Named Address Spaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arrays-of-length-zero.html">Arrays of Length Zero</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structures-with-no-members.html">Structures with No Members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays-of-variable-length.html">Arrays of Variable Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macros-with-a-variable-number-of-arguments..html">Macros with a Variable Number of Arguments.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slightly-looser-rules-for-escaped-newlines.html">Slightly Looser Rules for Escaped Newlines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="non-lvalue-arrays-may-have-subscripts.html">Non-Lvalue Arrays May Have Subscripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointers-to-arrays-with-qualifiers-work-as-expected.html">Pointers to Arrays with Qualifiers Work as Expected</a></li>
+<li class="toctree-l2"><a class="reference internal" href="non-constant-initializers.html">Non-Constant Initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compound-literals.html">Compound Literals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="designated-initializers.html">Designated Initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-ranges.html">Case Ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cast-to-a-union-type.html">Cast to a Union Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixed-declarations-and-code.html">Mixed Declarations and Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="declaring-attributes-of-functions.html">Declaring Attributes of Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#common-function-attributes">Common Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#arc-function-attributes">ARC Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#arm-function-attributes">ARM Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#avr-function-attributes">AVR Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#blackfin-function-attributes">Blackfin Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#cr16-function-attributes">CR16 Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#epiphany-function-attributes">Epiphany Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#h8-300-function-attributes">H8/300 Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#ia-64-function-attributes">IA-64 Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#m32c-function-attributes">M32C Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#m32r-d-function-attributes">M32R/D Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#m68k-function-attributes">m68k Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#mcore-function-attributes">MCORE Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#mep-function-attributes">MeP Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#microblaze-function-attributes">MicroBlaze Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#microsoft-windows-function-attributes">Microsoft Windows Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#mips-function-attributes">MIPS Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#msp430-function-attributes">MSP430 Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#nds32-function-attributes">NDS32 Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#nios-ii-function-attributes">Nios II Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#powerpc-function-attributes">PowerPC Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#rl78-function-attributes">RL78 Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#rx-function-attributes">RX Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#s-390-function-attributes">S/390 Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#sh-function-attributes">SH Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#spu-function-attributes">SPU Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#symbian-os-function-attributes">Symbian OS Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#visium-function-attributes">Visium Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#x86-function-attributes">x86 Function Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declaring-attributes-of-functions.html#xstormy16-function-attributes">Xstormy16 Function Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="specifying-attributes-of-variables.html">Specifying Attributes of Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#common-variable-attributes">Common Variable Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#avr-variable-attributes">AVR Variable Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#blackfin-variable-attributes">Blackfin Variable Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#h8-300-variable-attributes">H8/300 Variable Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#ia-64-variable-attributes">IA-64 Variable Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#m32r-d-variable-attributes">M32R/D Variable Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#mep-variable-attributes">MeP Variable Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#microsoft-windows-variable-attributes">Microsoft Windows Variable Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#powerpc-variable-attributes">PowerPC Variable Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#spu-variable-attributes">SPU Variable Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#x86-variable-attributes">x86 Variable Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-variables.html#xstormy16-variable-attributes">Xstormy16 Variable Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="specifying-attributes-of-types.html">Specifying Attributes of Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-types.html#common-type-attributes">Common Type Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-types.html#arm-type-attributes">ARM Type Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-types.html#mep-type-attributes">MeP Type Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-types.html#powerpc-type-attributes">PowerPC Type Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-types.html#spu-type-attributes">SPU Type Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specifying-attributes-of-types.html#x86-type-attributes">x86 Type Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="label-attributes.html">Label Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attribute-syntax.html">Attribute Syntax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="attribute-syntax.html#label-attributes">Label Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attribute-syntax.html#type-attributes">Type Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attribute-syntax.html#all-other-attributes">All other attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="prototypes-and-old-style-function-definitions.html">Prototypes and Old-Style Function Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c++-style-comments.html">C++ Style Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dollar-signs-in-identifier-names.html">Dollar Signs in Identifier Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiring-on-alignment-of-types-or-variables.html">Inquiring on Alignment of Types or Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="an-inline-function-is-as-fast-as-a-macro.html">An Inline Function is As Fast As a Macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="when-is-a-volatile-object-accessed?.html">When is a Volatile Object Accessed?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html">How to Use Inline Assembly Language in C Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#basic-asm-assembler-instructions-without-operands">Basic Asm  Assembler Instructions Without Operands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#qualifiers">Qualifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#remarks">Remarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#extended-asm-assembler-instructions-with-c-expression-operands">Extended Asm - Assembler Instructions with C Expression Operands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#id1">Qualifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#id2">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#id3">Remarks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#volatile">Volatile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#assembler-template">Assembler Template</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#special-format-strings">Special format strings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#output-operands">Output Operands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#input-operands">Input Operands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#clobbers">Clobbers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#goto-labels">Goto Labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#x86-operand-modifiers">x86 Operand Modifiers</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#simple-constraints">Simple Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#multiple-alternative-constraints">Multiple Alternative Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#constraint-modifier-characters">Constraint Modifier Characters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#constraints-for-particular-machines">Constraints for Particular Machines</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#controlling-names-used-in-assembler-code">Controlling Names Used in Assembler Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#variables-in-specified-registers">Variables in Specified Registers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#defining-global-register-variables">Defining Global Register Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#specifying-registers-for-local-variables">Specifying Registers for Local Variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="alternate-keywords.html">Alternate Keywords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function-names-as-strings.html">Function Names as Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-the-return-or-frame-address-of-a-function.html">Getting the Return or Frame Address of a Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-vector-instructions-through-built-in-functions.html">Using Vector Instructions through Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="built-in-functions-for-memory-model-aware-atomic-operations.html">Built-in Functions for Memory Model Aware Atomic Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="built-in-functions-to-perform-arithmetic-with-overflow-checking.html">Built-in Functions to Perform Arithmetic with Overflow Checking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x86-specific-memory-model-extensions-for-transactional-memory.html">x86-Specific Memory Model Extensions for Transactional Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object-size-checking-built-in-functions.html">Object Size Checking Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointer-bounds-checker-built-in-functions.html">Pointer Bounds Checker Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cilk-plus-c-c++-language-extension-built-in-functions.html">Cilk Plus C/C++ Language Extension Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other-built-in-functions-provided-by-gcc.html">Other Built-in Functions Provided by GCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html">Built-in Functions Specific to Particular Target Machines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#aarch64-built-in-functions">AArch64 Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#alpha-built-in-functions">Alpha Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#altera-nios-ii-built-in-functions">Altera Nios II Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#arc-built-in-functions">ARC Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#arc-simd-built-in-functions">ARC SIMD Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#arm-iwmmxt-built-in-functions">ARM iWMMXt Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#arm-c-language-extensions-acle">ARM C Language Extensions (ACLE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#arm-floating-point-status-and-control-intrinsics">ARM Floating Point Status and Control Intrinsics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#avr-built-in-functions">AVR Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#blackfin-built-in-functions">Blackfin Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#fr-v-built-in-functions">FR-V Built-in Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#argument-types">Argument Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#directly-mapped-integer-functions">Directly-Mapped Integer Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#directly-mapped-media-functions">Directly-Mapped Media Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#raw-read-write-functions">Raw Read/Write Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#other-built-in-functions">Other Built-in Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#mips-dsp-built-in-functions">MIPS DSP Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#mips-paired-single-support">MIPS Paired-Single Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#mips-loongson-built-in-functions">MIPS Loongson Built-in Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#paired-single-arithmetic">Paired-Single Arithmetic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#paired-single-built-in-functions">Paired-Single Built-in Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#mips-3d-built-in-functions">MIPS-3D Built-in Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#other-mips-built-in-functions">Other MIPS Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#msp430-built-in-functions">MSP430 Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#nds32-built-in-functions">NDS32 Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#picochip-built-in-functions">picoChip Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#powerpc-built-in-functions">PowerPC Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#powerpc-altivec-built-in-functions">PowerPC AltiVec Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#powerpc-hardware-transactional-memory-built-in-functions">PowerPC Hardware Transactional Memory Built-in Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#powerpc-htm-low-level-built-in-functions">PowerPC HTM Low Level Built-in Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#powerpc-htm-high-level-inline-functions">PowerPC HTM High Level Inline Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#rx-built-in-functions">RX Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#s-390-system-z-built-in-functions">S/390 System z Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#sh-built-in-functions">SH Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#sparc-vis-built-in-functions">SPARC VIS Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#spu-built-in-functions">SPU Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#ti-c6x-built-in-functions">TI C6X Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#tile-gx-built-in-functions">TILE-Gx Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#tilepro-built-in-functions">TILEPro Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#x86-built-in-functions">x86 Built-in Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="built-in-functions-specific-to-particular-target-machines.html#x86-transactional-memory-intrinsics">x86 Transactional Memory Intrinsics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="format-checks-specific-to-particular-target-machines.html">Format Checks Specific to Particular Target Machines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="format-checks-specific-to-particular-target-machines.html#solaris-format-checks">Solaris Format Checks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="format-checks-specific-to-particular-target-machines.html#darwin-format-checks">Darwin Format Checks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pragmas-accepted-by-gcc.html">Pragmas Accepted by GCC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#arm-pragmas">ARM Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#m32c-pragmas">M32C Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#mep-pragmas">MeP Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#rs-6000-and-powerpc-pragmas">RS/6000 and PowerPC Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#darwin-pragmas">Darwin Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#solaris-pragmas">Solaris Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#symbol-renaming-pragmas">Symbol-Renaming Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#structure-packing-pragmas">Structure-Packing Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#weak-pragmas">Weak Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#diagnostic-pragmas">Diagnostic Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#visibility-pragmas">Visibility Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#push-pop-macro-pragmas">Push/Pop Macro Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#function-specific-option-pragmas">Function Specific Option Pragmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pragmas-accepted-by-gcc.html#loop-specific-pragmas">Loop-Specific Pragmas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="unnamed-structure-and-union-fields.html">Unnamed Structure and Union Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thread-local-storage.html">Thread-Local Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="thread-local-storage.html#iso-iec-9899-1999-edits-for-thread-local-storage">ISO/IEC 9899:1999 Edits for Thread-Local Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thread-local-storage.html#iso-iec-14882-1998-edits-for-thread-local-storage">ISO/IEC 14882:1998 Edits for Thread-Local Storage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extensions-to-the-c++-language.html">Extensions to the C++ Language</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vague-linkage.html">Where G++ puts inlines, vtables and such.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function-multiversioning.html">Declaring multiple function versions.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace-association.html">Strong using-directives for namespace association.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type-traits.html">Compiler support for type traits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java-exceptions.html">Tweaking exception handling to work with Java.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deprecated-features.html">Things will disappear from G++.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backwards-compatibility.html">Compatibilities with earlier definitions of C++.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="when-is-a-volatile-c++-object-accessed?.html">When is a Volatile C++ Object Accessed?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restricting-pointer-aliasing.html">Restricting Pointer Aliasing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vague-linkage.html">Vague Linkage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c++-interface-and-implementation-pragmas.html">C++ Interface and Implementation Pragmas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wheres-the-template?.html">Wheres the Template?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extracting-the-function-pointer-from-a-bound-pointer-to-member-function.html">Extracting the Function Pointer from a Bound Pointer to Member Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c++-specific-variable,-function,-and-type-attributes.html">C++-Specific Variable, Function, and Type Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function-multiversioning.html">Function Multiversioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace-association.html">Namespace Association</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type-traits.html">Type Traits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java-exceptions.html">Java Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deprecated-features.html">Deprecated Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backwards-compatibility.html">Backwards Compatibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gnu-objective-c-features.html">GNU Objective-C Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gnu-objective-c-runtime-api.html">GNU Objective-C Runtime API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gnu-objective-c-runtime-api.html#modern-gnu-objective-c-runtime-api">Modern GNU Objective-C Runtime API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gnu-objective-c-runtime-api.html#traditional-gnu-objective-c-runtime-api">Traditional GNU Objective-C Runtime API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="type-encoding.html">Type Encoding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="type-encoding.html#legacy-type-encoding">Legacy Type Encoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="type-encoding.html#method-signatures">Method Signatures</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="garbage-collection.html">Garbage Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constant-string-objects.html">Constant String Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="synchronization.html">Synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fast-enumeration.html">Fast Enumeration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fast-enumeration.html#using-fast-enumeration">Using Fast Enumeration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fast-enumeration.html#c99-like-fast-enumeration-syntax">C99-Like Fast Enumeration Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fast-enumeration.html#fast-enumeration-details">Fast Enumeration Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fast-enumeration.html#fast-enumeration-protocol">Fast Enumeration Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="messaging-with-the-gnu-objective-c-runtime.html">Messaging with the GNU Objective-C Runtime</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="messaging-with-the-gnu-objective-c-runtime.html#dynamically-registering-methods">Dynamically Registering Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="messaging-with-the-gnu-objective-c-runtime.html#forwarding-hook">Forwarding Hook</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="binary-compatibility.html">Binary Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-file-relocation-to-support-cross-profiling.html">Data File Relocation to Support Cross-Profiling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known-causes-of-trouble-with-gcc.html">Known Causes of Trouble with GCC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interoperation.html">                        and with certain linkers, assemblers and debuggers.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard-libraries.html">                        compliant with the ISO C standard.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actual-bugs-we-havent-fixed-yet.html">Actual Bugs We Havent Fixed Yet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interoperation.html">Interoperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="incompatibilities-of-gcc.html">Incompatibilities of GCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fixed-header-files.html">Fixed Header Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard-libraries.html">Standard Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disappointments-and-misunderstandings.html">Disappointments and Misunderstandings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common-misunderstandings-with-gnu-c++.html">Common Misunderstandings with GNU C++</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="common-misunderstandings-with-gnu-c++.html#name-lookup-templates-and-accessing-members-of-base-classes">Name Lookup, Templates, and Accessing Members of Base Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common-misunderstandings-with-gnu-c++.html#temporaries-may-vanish-before-you-expect">Temporaries May Vanish Before You Expect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common-misunderstandings-with-gnu-c++.html#implicit-copy-assignment-for-virtual-bases">Implicit Copy-Assignment for Virtual Bases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="certain-changes-we-dont-want-to-make.html">Certain Changes We Dont Want to Make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warning-messages-and-error-messages.html">Warning Messages and Error Messages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reporting-bugs.html">Reporting Bugs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="have-you-found-a-bug?.html">Have You Found a Bug?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-and-where-to-report-bugs.html">How and Where to Report Bugs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-get-help-with-gcc.html">How To Get Help with GCC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing-to-gcc-development.html">Contributing to GCC Development</a></li>
+</ul>
+</div>
+<p>:: _standards:</p>
+<p>:: _invoking-gcc:</p>
+<p>:: _c-implementation:</p>
+<p>:: _c++-implementation:</p>
+<p>:: _c-extensions:</p>
+<p>:: _c++-extensions:</p>
+<p>:: _objective-c:</p>
+<p>:: _compatibility:</p>
+<p>:: _gcov:</p>
+<p>:: _gcov-tool:</p>
+<p>:: _trouble:</p>
+<p>:: _bugs:</p>
+<p>:: _service:</p>
+<p>:: _contributing:</p>
+<p>:: _funding:</p>
+</div>
+<div class="section" id="funding-free-software">
+<h1>Funding Free Software<a class="headerlink" href="#funding-free-software" title="Permalink to this headline">¶</a></h1>
+<p>If you want to have more free software a few years from now, it makes
+sense for you to help encourage people to contribute funds for its
+development.  The most effective approach known is to encourage
+commercial redistributors to donate.</p>
+<p>Users of free software systems can boost the pace of development by
+encouraging for-a-fee distributors to donate part of their selling price
+to free software developersthe Free Software Foundation, and others.</p>
+<p>The way to convince distributors to do this is to demand it and expect
+it from them.  So when you compare distributors, judge them partly by
+how much they give to free software development.  Show distributors
+they must compete to be the one who gives the most.</p>
+<p>To make this approach work, you must insist on numbers that you can
+compare, such as, We will donate ten dollars to the Frobnitz project
+for each disk sold.  Dont be satisfied with a vague promise, such as
+A portion of the profits are donated, since it doesnt give a basis
+for comparison.</p>
+<p>Even a precise fraction of the profits from this disk is not very
+meaningful, since creative accounting and unrelated business decisions
+can greatly alter what fraction of the sales price counts as profit.
+If the price you pay is $50, ten percent of the profit is probably
+less than a dollar; it might be a few cents, or nothing at all.</p>
+<p>Some redistributors do development work themselves.  This is useful too;
+but to keep everyone honest, you need to inquire how much they do, and
+what kind.  Some kinds of development make much more long-term
+difference than others.  For example, maintaining a separate version of
+a program contributes very little; maintaining the standard version of a
+program for the whole community contributes much.  Easy new ports
+contribute little, since someone else would surely do them; difficult
+ports such as adding a new CPU to the GNU Compiler Collection contribute more;
+major new features or packages contribute the most.</p>
+<p>By establishing the idea that supporting further development is the
+proper thing to do when distributing free software for a fee, we can
+assure a steady flow of resources into making more free software.</p>
+<p>Copyright  1994 Free Software Foundation, Inc.
+Verbatim copying and redistribution of this section is permitted
+without royalty; alteration is not permitted.</p>
+<p>:: _gnu-project:</p>
+</div>
+<div class="section" id="the-gnu-project-and-gnu-linux">
+<h1>The GNU Project and GNU/Linux<a class="headerlink" href="#the-gnu-project-and-gnu-linux" title="Permalink to this headline">¶</a></h1>
+<p>The GNU Project was launched in 1984 to develop a complete Unix-like
+operating system which is free software: the GNU system.  (GNU is a
+recursive acronym for GNUs Not Unix; it is pronounced
+guh-NEW.)  Variants of the GNU operating system, which use the
+kernel Linux, are now widely used; though these systems are often
+referred to as Linux, they are more accurately called GNU/Linux
+systems.</p>
+<p>For more information, see:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="nl">http:</span><span class="c1">//www.gnu.org/</span>
+<span class="nl">http:</span><span class="c1">//www.gnu.org/gnu/linux-and-gnu.html</span>
+</pre></div>
+</div>
+<p>&#64;c Set file name and title for man page.
+&#64;setfilename gpl
+&#64;settitle GNU General Public License
+&#64;c man begin SEEALSO
+gfdl(7), fsf-funding(7).
+&#64;c man end
+&#64;c man begin COPYRIGHT
+Copyright &#64;copyright{} 2007 Free Software Foundation, Inc.</p>
+<p>Everyone is permitted to copy and distribute verbatim copies of this
+license document, but changing it is not allowed.
+&#64;c man end</p>
+<p>:: _copying:</p>
+</div>
+<div class="section" id="gnu-general-public-license">
+<h1>GNU General Public License<a class="headerlink" href="#gnu-general-public-license" title="Permalink to this headline">¶</a></h1>
+<p>Version 3, 29 June 2007</p>
+<p>Copyright  2007 Free Software Foundation, Inc. <a class="reference external" href="http://fsf.org/">http://fsf.org/</a></p>
+<p>Everyone is permitted to copy and distribute verbatim copies of this
+license document, but changing it is not allowed.</p>
+<p>Preamble</p>
+<p>The GNU General Public License is a free, copyleft license for
+software and other kinds of works.</p>
+<p>The licenses for most software and other practical works are designed
+to take away your freedom to share and change the works.  By contrast,
+the GNU General Public License is intended to guarantee your freedom
+to share and change all versions of a program-to make sure it remains
+free software for all its users.  We, the Free Software Foundation,
+use the GNU General Public License for most of our software; it
+applies also to any other work released this way by its authors.  You
+can apply it to your programs, too.</p>
+<p>When we speak of free software, we are referring to freedom, not
+price.  Our General Public Licenses are designed to make sure that you
+have the freedom to distribute copies of free software (and charge for
+them if you wish), that you receive source code or can get it if you
+want it, that you can change the software or use pieces of it in new
+free programs, and that you know you can do these things.</p>
+<p>To protect your rights, we need to prevent others from denying you
+these rights or asking you to surrender the rights.  Therefore, you
+have certain responsibilities if you distribute copies of the
+software, or if you modify it: responsibilities to respect the freedom
+of others.</p>
+<p>For example, if you distribute copies of such a program, whether
+gratis or for a fee, you must pass on to the recipients the same
+freedoms that you received.  You must make sure that they, too,
+receive or can get the source code.  And you must show them these
+terms so they know their rights.</p>
+<p>Developers that use the GNU GPL protect your rights with two steps:
+(1) assert copyright on the software, and (2) offer you this License
+giving you legal permission to copy, distribute and/or modify it.</p>
+<p>For the developers and authors protection, the GPL clearly explains
+that there is no warranty for this free software.  For both users and
+authors sake, the GPL requires that modified versions be marked as
+changed, so that their problems will not be attributed erroneously to
+authors of previous versions.</p>
+<p>Some devices are designed to deny users access to install or run
+modified versions of the software inside them, although the
+manufacturer can do so.  This is fundamentally incompatible with the
+aim of protecting users freedom to change the software.  The
+systematic pattern of such abuse occurs in the area of products for
+individuals to use, which is precisely where it is most unacceptable.
+Therefore, we have designed this version of the GPL to prohibit the
+practice for those products.  If such problems arise substantially in
+other domains, we stand ready to extend this provision to those
+domains in future versions of the GPL, as needed to protect the
+freedom of users.</p>
+<p>Finally, every program is threatened constantly by software patents.
+States should not allow patents to restrict development and use of
+software on general-purpose computers, but in those that do, we wish
+to avoid the special danger that patents applied to a free program
+could make it effectively proprietary.  To prevent this, the GPL
+assures that patents cannot be used to render the program non-free.</p>
+<p>The precise terms and conditions for copying, distribution and
+modification follow.</p>
+<p>TERMS AND CONDITIONS</p>
+<p>0
+* Definitions.</p>
+<blockquote>
+<div><p>This License refers to version 3 of the GNU General Public License.</p>
+<p>Copyright also means copyright-like laws that apply to other kinds
+of works, such as semiconductor masks.</p>
+<p>The Program refers to any copyrightable work licensed under this
+License.  Each licensee is addressed as you.  Licensees and
+recipients may be individuals or organizations.</p>
+<p>To modify a work means to copy from or adapt all or part of the work
+in a fashion requiring copyright permission, other than the making of
+an exact copy.  The resulting work is called a modified version of
+the earlier work or a work based on the earlier work.</p>
+<p>A covered work means either the unmodified Program or a work based
+on the Program.</p>
+<p>To propagate a work means to do anything with it that, without
+permission, would make you directly or secondarily liable for
+infringement under applicable copyright law, except executing it on a
+computer or modifying a private copy.  Propagation includes copying,
+distribution (with or without modification), making available to the
+public, and in some countries other activities as well.</p>
+<p>To convey a work means any kind of propagation that enables other
+parties to make or receive copies.  Mere interaction with a user
+through a computer network, with no transfer of a copy, is not
+conveying.</p>
+<p>An interactive user interface displays Appropriate Legal Notices to
+the extent that it includes a convenient and prominently visible
+feature that (1) displays an appropriate copyright notice, and (2)
+tells the user that there is no warranty for the work (except to the
+extent that warranties are provided), that licensees may convey the
+work under this License, and how to view a copy of this License.  If
+the interface presents a list of user commands or options, such as a
+menu, a prominent item in the list meets this criterion.</p>
+<ul class="simple">
+<li>Source Code.</li>
+</ul>
+<p>The source code for a work means the preferred form of the work for
+making modifications to it.  Object code means any non-source form
+of a work.</p>
+<p>A Standard Interface means an interface that either is an official
+standard defined by a recognized standards body, or, in the case of
+interfaces specified for a particular programming language, one that
+is widely used among developers working in that language.</p>
+<p>The System Libraries of an executable work include anything, other
+than the work as a whole, that (a) is included in the normal form of
+packaging a Major Component, but which is not part of that Major
+Component, and (b) serves only to enable use of the work with that
+Major Component, or to implement a Standard Interface for which an
+implementation is available to the public in source code form.  A
+Major Component, in this context, means a major essential component
+(kernel, window system, and so on) of the specific operating system
+(if any) on which the executable work runs, or a compiler used to
+produce the work, or an object code interpreter used to run it.</p>
+<p>The Corresponding Source for a work in object code form means all
+the source code needed to generate, install, and (for an executable
+work) run the object code and to modify the work, including scripts to
+control those activities.  However, it does not include the works
+System Libraries, or general-purpose tools or generally available free
+programs which are used unmodified in performing those activities but
+which are not part of the work.  For example, Corresponding Source
+includes interface definition files associated with source files for
+the work, and the source code for shared libraries and dynamically
+linked subprograms that the work is specifically designed to require,
+such as by intimate data communication or control flow between those
+subprograms and other parts of the work.</p>
+<p>The Corresponding Source need not include anything that users can
+regenerate automatically from other parts of the Corresponding Source.</p>
+<p>The Corresponding Source for a work in source code form is that same
+work.</p>
+<ul class="simple">
+<li>Basic Permissions.</li>
+</ul>
+<p>All rights granted under this License are granted for the term of
+copyright on the Program, and are irrevocable provided the stated
+conditions are met.  This License explicitly affirms your unlimited
+permission to run the unmodified Program.  The output from running a
+covered work is covered by this License only if the output, given its
+content, constitutes a covered work.  This License acknowledges your
+rights of fair use or other equivalent, as provided by copyright law.</p>
+<p>You may make, run and propagate covered works that you do not convey,
+without conditions so long as your license otherwise remains in force.
+You may convey covered works to others for the sole purpose of having
+them make modifications exclusively for you, or provide you with
+facilities for running those works, provided that you comply with the
+terms of this License in conveying all material for which you do not
+control copyright.  Those thus making or running the covered works for
+you must do so exclusively on your behalf, under your direction and
+control, on terms that prohibit them from making any copies of your
+copyrighted material outside their relationship with you.</p>
+<p>Conveying under any other circumstances is permitted solely under the
+conditions stated below.  Sublicensing is not allowed; section 10
+makes it unnecessary.</p>
+<ul class="simple">
+<li>Protecting Users Legal Rights From Anti-Circumvention Law.</li>
+</ul>
+<p>No covered work shall be deemed part of an effective technological
+measure under any applicable law fulfilling obligations under article
+11 of the WIPO copyright treaty adopted on 20 December 1996, or
+similar laws prohibiting or restricting circumvention of such
+measures.</p>
+<p>When you convey a covered work, you waive any legal power to forbid
+circumvention of technological measures to the extent such
+circumvention is effected by exercising rights under this License with
+respect to the covered work, and you disclaim any intention to limit
+operation or modification of the work as a means of enforcing, against
+the works users, your or third parties legal rights to forbid
+circumvention of technological measures.</p>
+<ul class="simple">
+<li>Conveying Verbatim Copies.</li>
+</ul>
+<p>You may convey verbatim copies of the Programs source code as you
+receive it, in any medium, provided that you conspicuously and
+appropriately publish on each copy an appropriate copyright notice;
+keep intact all notices stating that this License and any
+non-permissive terms added in accord with section 7 apply to the code;
+keep intact all notices of the absence of any warranty; and give all
+recipients a copy of this License along with the Program.</p>
+<p>You may charge any price or no price for each copy that you convey,
+and you may offer support or warranty protection for a fee.</p>
+<ul class="simple">
+<li>Conveying Modified Source Versions.</li>
+</ul>
+<p>You may convey a work based on the Program, or the modifications to
+produce it from the Program, in the form of source code under the
+terms of section 4, provided that you also meet all of these
+conditions:</p>
+<p>a
+* The work must carry prominent notices stating that you modified it,</p>
+<blockquote>
+<div><p>and giving a relevant date.</p>
+<ul class="simple">
+<li>The work must carry prominent notices stating that it is released</li>
+</ul>
+<p>under this License and any conditions added under section 7.  This
+requirement modifies the requirement in section 4 to keep intact all
+notices.</p>
+<ul class="simple">
+<li>You must license the entire work, as a whole, under this License to</li>
+</ul>
+<p>anyone who comes into possession of a copy.  This License will
+therefore apply, along with any applicable section 7 additional terms,
+to the whole of the work, and all its parts, regardless of how they
+are packaged.  This License gives no permission to license the work in
+any other way, but it does not invalidate such permission if you have
+separately received it.</p>
+<ul class="simple">
+<li>If the work has interactive user interfaces, each must display</li>
+</ul>
+<p>Appropriate Legal Notices; however, if the Program has interactive
+interfaces that do not display Appropriate Legal Notices, your work
+need not make them do so.</p>
+</div></blockquote>
+<p>A compilation of a covered work with other separate and independent
+works, which are not by their nature extensions of the covered work,
+and which are not combined with it such as to form a larger program,
+in or on a volume of a storage or distribution medium, is called an
+aggregate if the compilation and its resulting copyright are not
+used to limit the access or legal rights of the compilations users
+beyond what the individual works permit.  Inclusion of a covered work
+in an aggregate does not cause this License to apply to the other
+parts of the aggregate.</p>
+<ul class="simple">
+<li>Conveying Non-Source Forms.</li>
+</ul>
+<p>You may convey a covered work in object code form under the terms of
+sections 4 and 5, provided that you also convey the machine-readable
+Corresponding Source under the terms of this License, in one of these
+ways:</p>
+<p>a
+* Convey the object code in, or embodied in, a physical product</p>
+<blockquote>
+<div><p>(including a physical distribution medium), accompanied by the
+Corresponding Source fixed on a durable physical medium customarily
+used for software interchange.</p>
+<ul class="simple">
+<li>Convey the object code in, or embodied in, a physical product</li>
+</ul>
+<p>(including a physical distribution medium), accompanied by a written
+offer, valid for at least three years and valid for as long as you
+offer spare parts or customer support for that product model, to give
+anyone who possesses the object code either (1) a copy of the
+Corresponding Source for all the software in the product that is
+covered by this License, on a durable physical medium customarily used
+for software interchange, for a price no more than your reasonable
+cost of physically performing this conveying of source, or (2) access
+to copy the Corresponding Source from a network server at no charge.</p>
+<ul class="simple">
+<li>Convey individual copies of the object code with a copy of the written</li>
+</ul>
+<p>offer to provide the Corresponding Source.  This alternative is
+allowed only occasionally and noncommercially, and only if you
+received the object code with such an offer, in accord with subsection
+6b.</p>
+<ul class="simple">
+<li>Convey the object code by offering access from a designated place</li>
+</ul>
+<p>(gratis or for a charge), and offer equivalent access to the
+Corresponding Source in the same way through the same place at no
+further charge.  You need not require recipients to copy the
+Corresponding Source along with the object code.  If the place to copy
+the object code is a network server, the Corresponding Source may be
+on a different server (operated by you or a third party) that supports
+equivalent copying facilities, provided you maintain clear directions
+next to the object code saying where to find the Corresponding Source.
+Regardless of what server hosts the Corresponding Source, you remain
+obligated to ensure that it is available for as long as needed to
+satisfy these requirements.</p>
+<ul class="simple">
+<li>Convey the object code using peer-to-peer transmission, provided you</li>
+</ul>
+<p>inform other peers where the object code and Corresponding Source of
+the work are being offered to the general public at no charge under
+subsection 6d.</p>
+</div></blockquote>
+<p>A separable portion of the object code, whose source code is excluded
+from the Corresponding Source as a System Library, need not be
+included in conveying the object code work.</p>
+<p>A User Product is either (1) a consumer product, which means any
+tangible personal property which is normally used for personal,
+family, or household purposes, or (2) anything designed or sold for
+incorporation into a dwelling.  In determining whether a product is a
+consumer product, doubtful cases shall be resolved in favor of
+coverage.  For a particular product received by a particular user,
+normally used refers to a typical or common use of that class of
+product, regardless of the status of the particular user or of the way
+in which the particular user actually uses, or expects or is expected
+to use, the product.  A product is a consumer product regardless of
+whether the product has substantial commercial, industrial or
+non-consumer uses, unless such uses represent the only significant
+mode of use of the product.</p>
+<p>Installation Information for a User Product means any methods,
+procedures, authorization keys, or other information required to
+install and execute modified versions of a covered work in that User
+Product from a modified version of its Corresponding Source.  The
+information must suffice to ensure that the continued functioning of
+the modified object code is in no case prevented or interfered with
+solely because modification has been made.</p>
+<p>If you convey an object code work under this section in, or with, or
+specifically for use in, a User Product, and the conveying occurs as
+part of a transaction in which the right of possession and use of the
+User Product is transferred to the recipient in perpetuity or for a
+fixed term (regardless of how the transaction is characterized), the
+Corresponding Source conveyed under this section must be accompanied
+by the Installation Information.  But this requirement does not apply
+if neither you nor any third party retains the ability to install
+modified object code on the User Product (for example, the work has
+been installed in ROM).</p>
+<p>The requirement to provide Installation Information does not include a
+requirement to continue to provide support service, warranty, or
+updates for a work that has been modified or installed by the
+recipient, or for the User Product in which it has been modified or
+installed.  Access to a network may be denied when the modification
+itself materially and adversely affects the operation of the network
+or violates the rules and protocols for communication across the
+network.</p>
+<p>Corresponding Source conveyed, and Installation Information provided,
+in accord with this section must be in a format that is publicly
+documented (and with an implementation available to the public in
+source code form), and must require no special password or key for
+unpacking, reading or copying.</p>
+<ul class="simple">
+<li>Additional Terms.</li>
+</ul>
+<p>Additional permissions are terms that supplement the terms of this
+License by making exceptions from one or more of its conditions.
+Additional permissions that are applicable to the entire Program shall
+be treated as though they were included in this License, to the extent
+that they are valid under applicable law.  If additional permissions
+apply only to part of the Program, that part may be used separately
+under those permissions, but the entire Program remains governed by
+this License without regard to the additional permissions.</p>
+<p>When you convey a copy of a covered work, you may at your option
+remove any additional permissions from that copy, or from any part of
+it.  (Additional permissions may be written to require their own
+removal in certain cases when you modify the work.)  You may place
+additional permissions on material, added by you to a covered work,
+for which you have or can give appropriate copyright permission.</p>
+<p>Notwithstanding any other provision of this License, for material you
+add to a covered work, you may (if authorized by the copyright holders
+of that material) supplement the terms of this License with terms:</p>
+<p>a
+* Disclaiming warranty or limiting liability differently from the terms</p>
+<blockquote>
+<div><p>of sections 15 and 16 of this License; or</p>
+<ul class="simple">
+<li>Requiring preservation of specified reasonable legal notices or author</li>
+</ul>
+<p>attributions in that material or in the Appropriate Legal Notices
+displayed by works containing it; or</p>
+<ul class="simple">
+<li>Prohibiting misrepresentation of the origin of that material, or</li>
+</ul>
+<p>requiring that modified versions of such material be marked in
+reasonable ways as different from the original version; or</p>
+<ul class="simple">
+<li>Limiting the use for publicity purposes of names of licensors or</li>
+</ul>
+<p>authors of the material; or</p>
+<ul class="simple">
+<li>Declining to grant rights under trademark law for use of some trade</li>
+</ul>
+<p>names, trademarks, or service marks; or</p>
+<ul class="simple">
+<li>Requiring indemnification of licensors and authors of that material by</li>
+</ul>
+<p>anyone who conveys the material (or modified versions of it) with
+contractual assumptions of liability to the recipient, for any
+liability that these contractual assumptions directly impose on those
+licensors and authors.</p>
+</div></blockquote>
+<p>All other non-permissive additional terms are considered further
+restrictions within the meaning of section 10.  If the Program as you
+received it, or any part of it, contains a notice stating that it is
+governed by this License along with a term that is a further
+restriction, you may remove that term.  If a license document contains
+a further restriction but permits relicensing or conveying under this
+License, you may add to a covered work material governed by the terms
+of that license document, provided that the further restriction does
+not survive such relicensing or conveying.</p>
+<p>If you add terms to a covered work in accord with this section, you
+must place, in the relevant source files, a statement of the
+additional terms that apply to those files, or a notice indicating
+where to find the applicable terms.</p>
+<p>Additional terms, permissive or non-permissive, may be stated in the
+form of a separately written license, or stated as exceptions; the
+above requirements apply either way.</p>
+<ul class="simple">
+<li>Termination.</li>
+</ul>
+<p>You may not propagate or modify a covered work except as expressly
+provided under this License.  Any attempt otherwise to propagate or
+modify it is void, and will automatically terminate your rights under
+this License (including any patent licenses granted under the third
+paragraph of section 11).</p>
+<p>However, if you cease all violation of this License, then your license
+from a particular copyright holder is reinstated (a) provisionally,
+unless and until the copyright holder explicitly and finally
+terminates your license, and (b) permanently, if the copyright holder
+fails to notify you of the violation by some reasonable means prior to
+60 days after the cessation.</p>
+<p>Moreover, your license from a particular copyright holder is
+reinstated permanently if the copyright holder notifies you of the
+violation by some reasonable means, this is the first time you have
+received notice of violation of this License (for any work) from that
+copyright holder, and you cure the violation prior to 30 days after
+your receipt of the notice.</p>
+<p>Termination of your rights under this section does not terminate the
+licenses of parties who have received copies or rights from you under
+this License.  If your rights have been terminated and not permanently
+reinstated, you do not qualify to receive new licenses for the same
+material under section 10.</p>
+<ul class="simple">
+<li>Acceptance Not Required for Having Copies.</li>
+</ul>
+<p>You are not required to accept this License in order to receive or run
+a copy of the Program.  Ancillary propagation of a covered work
+occurring solely as a consequence of using peer-to-peer transmission
+to receive a copy likewise does not require acceptance.  However,
+nothing other than this License grants you permission to propagate or
+modify any covered work.  These actions infringe copyright if you do
+not accept this License.  Therefore, by modifying or propagating a
+covered work, you indicate your acceptance of this License to do so.</p>
+<ul class="simple">
+<li>Automatic Licensing of Downstream Recipients.</li>
+</ul>
+<p>Each time you convey a covered work, the recipient automatically
+receives a license from the original licensors, to run, modify and
+propagate that work, subject to this License.  You are not responsible
+for enforcing compliance by third parties with this License.</p>
+<p>An entity transaction is a transaction transferring control of an
+organization, or substantially all assets of one, or subdividing an
+organization, or merging organizations.  If propagation of a covered
+work results from an entity transaction, each party to that
+transaction who receives a copy of the work also receives whatever
+licenses to the work the partys predecessor in interest had or could
+give under the previous paragraph, plus a right to possession of the
+Corresponding Source of the work from the predecessor in interest, if
+the predecessor has it or can get it with reasonable efforts.</p>
+<p>You may not impose any further restrictions on the exercise of the
+rights granted or affirmed under this License.  For example, you may
+not impose a license fee, royalty, or other charge for exercise of
+rights granted under this License, and you may not initiate litigation
+(including a cross-claim or counterclaim in a lawsuit) alleging that
+any patent claim is infringed by making, using, selling, offering for
+sale, or importing the Program or any portion of it.</p>
+<ul class="simple">
+<li>Patents.</li>
+</ul>
+<p>A contributor is a copyright holder who authorizes use under this
+License of the Program or a work on which the Program is based.  The
+work thus licensed is called the contributors contributor version.</p>
+<p>A contributors essential patent claims are all patent claims owned
+or controlled by the contributor, whether already acquired or
+hereafter acquired, that would be infringed by some manner, permitted
+by this License, of making, using, or selling its contributor version,
+but do not include claims that would be infringed only as a
+consequence of further modification of the contributor version.  For
+purposes of this definition, control includes the right to grant
+patent sublicenses in a manner consistent with the requirements of
+this License.</p>
+<p>Each contributor grants you a non-exclusive, worldwide, royalty-free
+patent license under the contributors essential patent claims, to
+make, use, sell, offer for sale, import and otherwise run, modify and
+propagate the contents of its contributor version.</p>
+<p>In the following three paragraphs, a patent license is any express
+agreement or commitment, however denominated, not to enforce a patent
+(such as an express permission to practice a patent or covenant not to
+sue for patent infringement).  To grant such a patent license to a
+party means to make such an agreement or commitment not to enforce a
+patent against the party.</p>
+<p>If you convey a covered work, knowingly relying on a patent license,
+and the Corresponding Source of the work is not available for anyone
+to copy, free of charge and under the terms of this License, through a
+publicly available network server or other readily accessible means,
+then you must either (1) cause the Corresponding Source to be so
+available, or (2) arrange to deprive yourself of the benefit of the
+patent license for this particular work, or (3) arrange, in a manner
+consistent with the requirements of this License, to extend the patent
+license to downstream recipients.  Knowingly relying means you have
+actual knowledge that, but for the patent license, your conveying the
+covered work in a country, or your recipients use of the covered work
+in a country, would infringe one or more identifiable patents in that
+country that you have reason to believe are valid.</p>
+<p>If, pursuant to or in connection with a single transaction or
+arrangement, you convey, or propagate by procuring conveyance of, a
+covered work, and grant a patent license to some of the parties
+receiving the covered work authorizing them to use, propagate, modify
+or convey a specific copy of the covered work, then the patent license
+you grant is automatically extended to all recipients of the covered
+work and works based on it.</p>
+<p>A patent license is discriminatory if it does not include within the
+scope of its coverage, prohibits the exercise of, or is conditioned on
+the non-exercise of one or more of the rights that are specifically
+granted under this License.  You may not convey a covered work if you
+are a party to an arrangement with a third party that is in the
+business of distributing software, under which you make payment to the
+third party based on the extent of your activity of conveying the
+work, and under which the third party grants, to any of the parties
+who would receive the covered work from you, a discriminatory patent
+license (a) in connection with copies of the covered work conveyed by
+you (or copies made from those copies), or (b) primarily for and in
+connection with specific products or compilations that contain the
+covered work, unless you entered into that arrangement, or that patent
+license was granted, prior to 28 March 2007.</p>
+<p>Nothing in this License shall be construed as excluding or limiting
+any implied license or other defenses to infringement that may
+otherwise be available to you under applicable patent law.</p>
+<ul class="simple">
+<li>No Surrender of Others Freedom.</li>
+</ul>
+<p>If conditions are imposed on you (whether by court order, agreement or
+otherwise) that contradict the conditions of this License, they do not
+excuse you from the conditions of this License.  If you cannot convey
+a covered work so as to satisfy simultaneously your obligations under
+this License and any other pertinent obligations, then as a
+consequence you may not convey it at all.  For example, if you agree
+to terms that obligate you to collect a royalty for further conveying
+from those to whom you convey the Program, the only way you could
+satisfy both those terms and this License would be to refrain entirely
+from conveying the Program.</p>
+<ul class="simple">
+<li>Use with the GNU Affero General Public License.</li>
+</ul>
+<p>Notwithstanding any other provision of this License, you have
+permission to link or combine any covered work with a work licensed
+under version 3 of the GNU Affero General Public License into a single
+combined work, and to convey the resulting work.  The terms of this
+License will continue to apply to the part which is the covered work,
+but the special requirements of the GNU Affero General Public License,
+section 13, concerning interaction through a network will apply to the
+combination as such.</p>
+<ul class="simple">
+<li>Revised Versions of this License.</li>
+</ul>
+<p>The Free Software Foundation may publish revised and/or new versions
+of the GNU General Public License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.</p>
+<p>Each version is given a distinguishing version number.  If the Program
+specifies that a certain numbered version of the GNU General Public
+License or any later version applies to it, you have the option of
+following the terms and conditions either of that numbered version or
+of any later version published by the Free Software Foundation.  If
+the Program does not specify a version number of the GNU General
+Public License, you may choose any version ever published by the Free
+Software Foundation.</p>
+<p>If the Program specifies that a proxy can decide which future versions
+of the GNU General Public License can be used, that proxys public
+statement of acceptance of a version permanently authorizes you to
+choose that version for the Program.</p>
+<p>Later license versions may give you additional or different
+permissions.  However, no additional obligations are imposed on any
+author or copyright holder as a result of your choosing to follow a
+later version.</p>
+<ul class="simple">
+<li>Disclaimer of Warranty.</li>
+</ul>
+<p>THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM AS IS WITHOUT
+WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND
+PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE PROGRAM PROVE
+DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR
+CORRECTION.</p>
+<ul class="simple">
+<li>Limitation of Liability.</li>
+</ul>
+<p>IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR
+CONVEYS THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES,
+INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES
+ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT
+NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR
+LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM
+TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER
+PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+<ul class="simple">
+<li>Interpretation of Sections 15 and 16.</li>
+</ul>
+<p>If the disclaimer of warranty and limitation of liability provided
+above cannot be given local legal effect according to their terms,
+reviewing courts shall apply local law that most closely approximates
+an absolute waiver of all civil liability in connection with the
+Program, unless a warranty or assumption of liability accompanies a
+copy of the Program in return for a fee.</p>
+</div></blockquote>
+<p>END OF TERMS AND CONDITIONS</p>
+<p>How to Apply These Terms to Your New Programs</p>
+<p>If you develop a new program, and you want it to be of the greatest
+possible use to the public, the best way to achieve this is to make it
+free software which everyone can redistribute and change under these
+terms.</p>
+<p>To do so, attach the following notices to the program.  It is safest
+to attach them to the start of each source file to most effectively
+state the exclusion of warranty; and each file should have at least
+the copyright line and a pointer to where the full notice is found.</p>
+<div class="highlight-c++"><pre>``one line to give the program's name and a brief idea of what it does.``
+Copyright (C) ``year`` ``name of author``
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/.</pre>
+</div>
+<p>Also add information on how to contact you by electronic and paper mail.</p>
+<p>If the program does terminal interaction, make it output a short
+notice like this when it starts in an interactive mode:</p>
+<div class="highlight-c++"><pre>``program`` Copyright (C) ``year`` ``name of author``
+This program comes with ABSOLUTELY NO WARRANTY; for details type show w.
+This is free software, and you are welcome to redistribute it
+under certain conditions; type show c for details.</pre>
+</div>
+<p>The hypothetical commands show w and show c should show
+the appropriate parts of the General Public License.  Of course, your
+programs commands might be different; for a GUI interface, you would
+use an about box.</p>
+<p>You should also get your employer (if you work as a programmer) or school,
+if any, to sign a copyright disclaimer for the program, if necessary.
+For more information on this, and how to apply and follow the GNU GPL, see
+<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<p>The GNU General Public License does not permit incorporating your
+program into proprietary programs.  If your program is a subroutine
+library, you may consider it more useful to permit linking proprietary
+applications with the library.  If this is what you want to do, use
+the GNU Lesser General Public License instead of this License.  But
+first, please read <a class="reference external" href="http://www.gnu.org/philosophy/why-not-lgpl.html">http://www.gnu.org/philosophy/why-not-lgpl.html</a>.</p>
+<p>&#64;c Set file name and title for man page.
+&#64;setfilename gfdl
+&#64;settitle GNU Free Documentation License
+&#64;c man begin SEEALSO
+gpl(7), fsf-funding(7).
+&#64;c man end
+&#64;c man begin COPYRIGHT
+Copyright &#64;copyright{} 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+&#64;uref{<a class="reference external" href="http://fsf.org/">http://fsf.org/</a>}</p>
+<p>Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
+&#64;c This file is intended to be included within another document,
+&#64;c hence no sectioning command or &#64;node.
+&#64;c man end</p>
+<p>:: _gnu-free-documentation-license:</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="programming-languages-supported-by-gcc.html" title="Programming Languages Supported by GCC"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to gcc’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Attribute Syntax &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="Prototypes and Old-Style Function Definitions" href="prototypes-and-old-style-function-definitions.html" />
+    <link rel="prev" title="Label Attributes" href="label-attributes.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="prototypes-and-old-style-function-definitions.html" title="Prototypes and Old-Style Function Definitions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="label-attributes.html" title="Label Attributes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Attribute Syntax</a><ul>
+<li><a class="reference internal" href="#label-attributes">Label Attributes</a></li>
+<li><a class="reference internal" href="#type-attributes">Type Attributes</a></li>
+<li><a class="reference internal" href="#all-other-attributes">All other attributes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="label-attributes.html"
+                        title="previous chapter">Label Attributes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="prototypes-and-old-style-function-definitions.html"
+                        title="next chapter">Prototypes and Old-Style Function Definitions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/attribute-syntax.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="attribute-syntax">
+<h1>Attribute Syntax<a class="headerlink" href="#attribute-syntax" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">This section describes the syntax with which <tt class="docutils literal"><span class="pre">__attribute__</span></tt> may be
+used, and the constructs to which attribute specifiers bind, for the C
+language.  Some details may vary for C++ and Objective-C.  Because of
+infelicities in the grammar for attributes, some forms described here
+may not be successfully parsed in all cases.</p>
+<p>There are some problems with the semantics of attributes in C++.  For
+example, there are no manglings for attributes, although they may affect
+code generation, so problems may arise when attributed types are used in
+conjunction with templates or overloading.  Similarly, <tt class="docutils literal"><span class="pre">typeid</span></tt>
+does not distinguish between types with different attributes.  Support
+for attributes in C++ may be restricted in future to attributes on
+declarations only, but not on nested declarators.</p>
+<p>Function Attributes, for details of the semantics of attributes
+applying to functions.  Variable Attributes, for details of the
+semantics of attributes applying to variables.  Type Attributes,
+for details of the semantics of attributes applying to structure, union
+and enumerated types.
+Label Attributes, for details of the semantics of attributes
+applying to labels.</p>
+<p>An <em class="dfn">attribute specifier</em> is of the form
+<tt class="docutils literal"><span class="pre">__attribute__</span> <span class="pre">((``attribute-list</span></tt>))``.  An <em class="dfn">attribute list</em>
+is a possibly empty comma-separated sequence of <em class="dfn">attributes</em>, where
+each attribute is one of the following:</p>
+<ul>
+<li><p class="first">Empty.  Empty attributes are ignored.</p>
+<ul class="simple">
+<li>An attribute name</li>
+</ul>
+<p>(which may be an identifier such as <tt class="docutils literal"><span class="pre">unused</span></tt>, or a reserved
+word such as <tt class="docutils literal"><span class="pre">const</span></tt>).</p>
+<ul class="simple">
+<li>An attribute name followed by a parenthesized list of</li>
+</ul>
+<p>parameters for the attribute.
+These parameters take one of the following forms:</p>
+<ul>
+<li><p class="first">An identifier.  For example, <tt class="docutils literal"><span class="pre">mode</span></tt> attributes use this form.</p>
+<ul class="simple">
+<li>An identifier followed by a comma and a non-empty comma-separated list</li>
+</ul>
+<p>of expressions.  For example, <tt class="docutils literal"><span class="pre">format</span></tt> attributes use this form.</p>
+<ul class="simple">
+<li>A possibly empty comma-separated list of expressions.  For example,</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">format_arg</span></tt> attributes use this form with the list being a single
+integer constant expression, and <tt class="docutils literal"><span class="pre">alias</span></tt> attributes use this form
+with the list being a single string constant.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>An <em class="dfn">attribute specifier list</em> is a sequence of one or more attribute
+specifiers, not separated by any other tokens.</p>
+<p>You may optionally specify attribute names with __
+preceding and following the name.
+This allows you to use them in header files without
+being concerned about a possible macro of the same name.  For example,
+you may use the attribute name <tt class="docutils literal"><span class="pre">__noreturn__</span></tt> instead of <tt class="docutils literal"><span class="pre">noreturn</span></tt>.</p>
+<div class="section" id="label-attributes">
+<h2>Label Attributes<a class="headerlink" href="#label-attributes" title="Permalink to this headline">¶</a></h2>
+<p>In GNU C, an attribute specifier list may appear after the colon following a
+label, other than a <tt class="docutils literal"><span class="pre">case</span></tt> or <tt class="docutils literal"><span class="pre">default</span></tt> label.  GNU C++ only permits
+attributes on labels if the attribute specifier is immediately
+followed by a semicolon (i.e., the label applies to an empty
+statement).  If the semicolon is missing, C++ label attributes are
+ambiguous, as it is permissible for a declaration, which could begin
+with an attribute list, to be labelled in C++.  Declarations cannot be
+labelled in C90 or C99, so the ambiguity does not arise there.</p>
+</div>
+<div class="section" id="type-attributes">
+<h2>Type Attributes<a class="headerlink" href="#type-attributes" title="Permalink to this headline">¶</a></h2>
+<p>An attribute specifier list may appear as part of a <tt class="docutils literal"><span class="pre">struct</span></tt>,
+<tt class="docutils literal"><span class="pre">union</span></tt> or <tt class="docutils literal"><span class="pre">enum</span></tt> specifier.  It may go either immediately
+after the <tt class="docutils literal"><span class="pre">struct</span></tt>, <tt class="docutils literal"><span class="pre">union</span></tt> or <tt class="docutils literal"><span class="pre">enum</span></tt> keyword, or after
+the closing brace.  The former syntax is preferred.
+Where attribute specifiers follow the closing brace, they are considered
+to relate to the structure, union or enumerated type defined, not to any
+enclosing declaration the type specifier appears in, and the type
+defined is not complete until after the attribute specifiers.</p>
+</div>
+<div class="section" id="all-other-attributes">
+<h2>All other attributes<a class="headerlink" href="#all-other-attributes" title="Permalink to this headline">¶</a></h2>
+<p>Otherwise, an attribute specifier appears as part of a declaration,
+counting declarations of unnamed parameters and type names, and relates
+to that declaration (which may be nested in another declaration, for
+example in the case of a parameter declaration), or to a particular declarator
+within a declaration.  Where an
+attribute specifier is applied to a parameter declared as a function or
+an array, it should apply to the function or array rather than the
+pointer to which the parameter is implicitly converted, but this is not
+yet correctly implemented.</p>
+<p>Any list of specifiers and qualifiers at the start of a declaration may
+contain attribute specifiers, whether or not such a list may in that
+context contain storage class specifiers.  (Some attributes, however,
+are essentially in the nature of storage class specifiers, and only make
+sense where storage class specifiers may be used; for example,
+<tt class="docutils literal"><span class="pre">section</span></tt>.)  There is one necessary limitation to this syntax: the
+first old-style parameter declaration in a function definition cannot
+begin with an attribute specifier, because such an attribute applies to
+the function instead by syntax described below (which, however, is not
+yet implemented in this case).  In some other cases, attribute
+specifiers are permitted by this grammar but not yet supported by the
+compiler.  All attribute specifiers in this place relate to the
+declaration as a whole.  In the obsolescent usage where a type of
+<tt class="docutils literal"><span class="pre">int</span></tt> is implied by the absence of type specifiers, such a list of
+specifiers and qualifiers may be an attribute specifier list with no
+other specifiers or qualifiers.</p>
+<p>At present, the first parameter in a function prototype must have some
+type specifier that is not an attribute specifier; this resolves an
+ambiguity in the interpretation of <tt class="docutils literal"><span class="pre">void</span> <span class="pre">f(int</span>
+<span class="pre">(__attribute__((foo))</span> <span class="pre">x))</span></tt>, but is subject to change.  At present, if
+the parentheses of a function declarator contain only attributes then
+those attributes are ignored, rather than yielding an error or warning
+or implying a single parameter of type int, but this is subject to
+change.</p>
+<p>An attribute specifier list may appear immediately before a declarator
+(other than the first) in a comma-separated list of declarators in a
+declaration of more than one identifier using a single list of
+specifiers and qualifiers.  Such attribute specifiers apply
+only to the identifier before whose declarator they appear.  For
+example, in</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">__attribute__</span><span class="p">((</span><span class="n">noreturn</span><span class="p">))</span> <span class="kt">void</span> <span class="n">d0</span> <span class="p">(</span><span class="kt">void</span><span class="p">),</span>
+    <span class="n">__attribute__</span><span class="p">((</span><span class="n">format</span><span class="p">(</span><span class="n">printf</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span> <span class="n">d1</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="p">...),</span>
+     <span class="n">d2</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>the <tt class="docutils literal"><span class="pre">noreturn</span></tt> attribute applies to all the functions
+declared; the <tt class="docutils literal"><span class="pre">format</span></tt> attribute only applies to <tt class="docutils literal"><span class="pre">d1</span></tt>.</p>
+<p>An attribute specifier list may appear immediately before the comma,
+<tt class="docutils literal"><span class="pre">=</span></tt> or semicolon terminating the declaration of an identifier other
+than a function definition.  Such attribute specifiers apply
+to the declared object or function.  Where an
+assembler name for an object or function is specified (Asm
+Labels), the attribute must follow the <tt class="docutils literal"><span class="pre">asm</span></tt>
+specification.</p>
+<p>An attribute specifier list may, in future, be permitted to appear after
+the declarator in a function definition (before any old-style parameter
+declarations or the function body).</p>
+<p>Attribute specifiers may be mixed with type qualifiers appearing inside
+the <tt class="docutils literal"><span class="pre">[]</span></tt> of a parameter array declarator, in the C99 construct by
+which such qualifiers are applied to the pointer to which the array is
+implicitly converted.  Such attribute specifiers apply to the pointer,
+not to the array, but at present this is not implemented and they are
+ignored.</p>
+<p>An attribute specifier list may appear at the start of a nested
+declarator.  At present, there are some limitations in this usage: the
+attributes correctly apply to the declarator, but for most individual
+attributes the semantics this implies are not implemented.
+When attribute specifiers follow the <tt class="docutils literal"><span class="pre">*</span></tt> of a pointer
+declarator, they may be mixed with any type qualifiers present.
+The following describes the formal semantics of this syntax.  It makes the
+most sense if you are familiar with the formal specification of
+declarators in the ISO C standard.</p>
+<p>Consider (as in C99 subclause 6.7.5 paragraph 4) a declaration <tt class="docutils literal"><span class="pre">T</span>
+<span class="pre">D1</span></tt>, where <tt class="docutils literal"><span class="pre">T</span></tt> contains declaration specifiers that specify a type
+<tt class="docutils literal"><span class="pre">Type</span></tt> (such as <tt class="docutils literal"><span class="pre">int</span></tt>) and <tt class="docutils literal"><span class="pre">D1</span></tt> is a declarator that
+contains an identifier <tt class="docutils literal"><span class="pre">ident</span></tt>.  The type specified for <tt class="docutils literal"><span class="pre">ident</span></tt>
+for derived declarators whose type does not include an attribute
+specifier is as in the ISO C standard.</p>
+<p>If <tt class="docutils literal"><span class="pre">D1</span></tt> has the form <tt class="docutils literal"><span class="pre">(</span> <span class="pre">``attribute-specifier-list</span></tt> D )``,
+and the declaration <tt class="docutils literal"><span class="pre">T</span> <span class="pre">D</span></tt> specifies the type
+<tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt> <tt class="docutils literal"><span class="pre">Type</span></tt> for <tt class="docutils literal"><span class="pre">ident</span></tt>, then
+<tt class="docutils literal"><span class="pre">T</span> <span class="pre">D1</span></tt> specifies the type <tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt>
+<tt class="docutils literal"><span class="pre">attribute-specifier-list</span></tt> <tt class="docutils literal"><span class="pre">Type</span></tt> for <tt class="docutils literal"><span class="pre">ident</span></tt>.</p>
+<p>If <tt class="docutils literal"><span class="pre">D1</span></tt> has the form <tt class="docutils literal"><span class="pre">*</span>
+<span class="pre">``type-qualifier-and-attribute-specifier-list</span></tt> D``, and the
+declaration <tt class="docutils literal"><span class="pre">T</span> <span class="pre">D</span></tt> specifies the type
+<tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt> <tt class="docutils literal"><span class="pre">Type</span></tt> for <tt class="docutils literal"><span class="pre">ident</span></tt>, then
+<tt class="docutils literal"><span class="pre">T</span> <span class="pre">D1</span></tt> specifies the type <tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt>
+<tt class="docutils literal"><span class="pre">type-qualifier-and-attribute-specifier-list</span></tt> pointer to <tt class="docutils literal"><span class="pre">Type</span></tt> for
+<tt class="docutils literal"><span class="pre">ident</span></tt>.</p>
+<p>For example,</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="p">(</span><span class="n">__attribute__</span><span class="p">((</span><span class="n">noreturn</span><span class="p">))</span> <span class="o">****</span><span class="n">f</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>specifies the type pointer to pointer to pointer to pointer to
+non-returning function returning <tt class="docutils literal"><span class="pre">void</span></tt>.  As another example,</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">char</span> <span class="o">*</span><span class="n">__attribute__</span><span class="p">((</span><span class="n">aligned</span><span class="p">(</span><span class="mi">8</span><span class="p">)))</span> <span class="o">*</span><span class="n">f</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>specifies the type pointer to 8-byte-aligned pointer to <tt class="docutils literal"><span class="pre">char</span></tt>.
+Note again that this does not work with most attributes; for example,
+the usage of aligned and noreturn attributes given above
+is not yet supported.</p>
+<p>For compatibility with existing code written for compiler versions that
+did not implement attributes on nested declarators, some laxity is
+allowed in the placing of attributes.  If an attribute that only applies
+to types is applied to a declaration, it is treated as applying to
+the type of that declaration.  If an attribute that only applies to
+declarations is applied to the type of a declaration, it is treated
+as applying to that declaration; and, for compatibility with code
+placing the attributes immediately before the identifier declared, such
+an attribute applied to a function return type is treated as
+applying to the function type, and such an attribute applied to an array
+element type is treated as applying to the array type.  If an
+attribute that only applies to function types is applied to a
+pointer-to-function type, it is treated as applying to the pointer
+target type; if such an attribute is applied to a function return type
+that is not a pointer-to-function type, it is treated as applying
+to the function type.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="prototypes-and-old-style-function-definitions.html" title="Prototypes and Old-Style Function Definitions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="label-attributes.html" title="Label Attributes"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

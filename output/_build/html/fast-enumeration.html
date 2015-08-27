@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Fast Enumeration &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="GNU Objective-C Features" href="gnu-objective-c-features.html" />
+    <link rel="next" title="Messaging with the GNU Objective-C Runtime" href="messaging-with-the-gnu-objective-c-runtime.html" />
+    <link rel="prev" title="Synchronization" href="synchronization.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="messaging-with-the-gnu-objective-c-runtime.html" title="Messaging with the GNU Objective-C Runtime"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="synchronization.html" title="Synchronization"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gnu-objective-c-features.html" accesskey="U">GNU Objective-C Features</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Fast Enumeration</a><ul>
+<li><a class="reference internal" href="#using-fast-enumeration">Using Fast Enumeration</a></li>
+<li><a class="reference internal" href="#c99-like-fast-enumeration-syntax">C99-Like Fast Enumeration Syntax</a></li>
+<li><a class="reference internal" href="#fast-enumeration-details">Fast Enumeration Details</a></li>
+<li><a class="reference internal" href="#fast-enumeration-protocol">Fast Enumeration Protocol</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="synchronization.html"
+                        title="previous chapter">Synchronization</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="messaging-with-the-gnu-objective-c-runtime.html"
+                        title="next chapter">Messaging with the GNU Objective-C Runtime</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/fast-enumeration.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="fast-enumeration">
+<h1>Fast Enumeration<a class="headerlink" href="#fast-enumeration" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<p>:: _using-fast-enumeration:</p>
+<div class="section" id="using-fast-enumeration">
+<h2>Using Fast Enumeration<a class="headerlink" href="#using-fast-enumeration" title="Permalink to this headline">¶</a></h2>
+<p>GNU Objective-C provides support for the fast enumeration syntax:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">id</span> <span class="n">array</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="n">id</span> <span class="n">object</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">object</span> <span class="n">in</span> <span class="n">array</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="cm">/* Do something with &#39;object&#39; */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">array</span></tt> needs to be an Objective-C object (usually a collection
+object, for example an array, a dictionary or a set) which implements
+the Fast Enumeration Protocol (see below).  If you are using a
+Foundation library such as GNUstep Base or Apple Cocoa Foundation, all
+collection objects in the library implement this protocol and can be
+used in this way.</p>
+<p>The code above would iterate over all objects in <tt class="docutils literal"><span class="pre">array</span></tt>.  For
+each of them, it assigns it to <tt class="docutils literal"><span class="pre">object</span></tt>, then executes the
+<tt class="docutils literal"><span class="pre">Do</span> <span class="pre">something</span> <span class="pre">with</span> <span class="pre">'object'</span></tt> statements.</p>
+<p>Here is a fully worked-out example using a Foundation library (which
+provides the implementation of <tt class="docutils literal"><span class="pre">NSArray</span></tt>, <tt class="docutils literal"><span class="pre">NSString</span></tt> and
+<tt class="docutils literal"><span class="pre">NSLog</span></tt>):</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">NSArray</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="n">nil</span><span class="p">];</span>
+<span class="n">NSString</span> <span class="o">*</span><span class="n">object</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">object</span> <span class="n">in</span> <span class="n">array</span><span class="p">)</span>
+  <span class="n">NSLog</span> <span class="p">(</span><span class="s">&quot;Iterating over %&quot;</span><span class="p">,</span> <span class="n">object</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>:: _c99-like-fast-enumeration-syntax:</p>
+</div>
+<div class="section" id="c99-like-fast-enumeration-syntax">
+<h2>C99-Like Fast Enumeration Syntax<a class="headerlink" href="#c99-like-fast-enumeration-syntax" title="Permalink to this headline">¶</a></h2>
+<p>A c99-like declaration syntax is also allowed:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">id</span> <span class="n">array</span> <span class="o">=</span> <span class="p">...;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">id</span> <span class="n">object</span> <span class="n">in</span> <span class="n">array</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="cm">/* Do something with &#39;object&#39;  */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>this is completely equivalent to:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">id</span> <span class="n">array</span> <span class="o">=</span> <span class="p">...;</span>
+
+<span class="p">{</span>
+  <span class="n">id</span> <span class="n">object</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">object</span> <span class="n">in</span> <span class="n">array</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="cm">/* Do something with &#39;object&#39;  */</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>but can save some typing.</p>
+<p>Note that the option <em class="xref std std-option">-std=c99</em> is not required to allow this
+syntax in Objective-C.</p>
+<p>:: _fast-enumeration-details:</p>
+</div>
+<div class="section" id="fast-enumeration-details">
+<h2>Fast Enumeration Details<a class="headerlink" href="#fast-enumeration-details" title="Permalink to this headline">¶</a></h2>
+<p>Here is a more technical description with the gory details.  Consider the code</p>
+<div class="highlight-c++"><pre>for (``object expression`` in ``collection expression``)
+{
+  ``statements``
+}</pre>
+</div>
+<p>here is what happens when you run it:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">``collection</span> <span class="pre">expression``</span></tt> is evaluated exactly once and the
+result is used as the collection object to iterate over.  This means
+it is safe to write code such as <tt class="docutils literal"><span class="pre">for</span> <span class="pre">(object</span> <span class="pre">in</span> <span class="pre">[NSDictionary</span>
+<span class="pre">keyEnumerator])</span> <span class="pre">...</span></tt>.</p>
+<ul class="simple">
+<li>the iteration is implemented by the compiler by repeatedly getting</li>
+</ul>
+<p>batches of objects from the collection object using the fast
+enumeration protocol (see below), then iterating over all objects in
+the batch.  This is faster than a normal enumeration where objects are
+retrieved one by one (hence the name fast enumeration).</p>
+<ul class="simple">
+<li>if there are no objects in the collection, then</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt> is set to <tt class="docutils literal"><span class="pre">nil</span></tt> and the loop
+immediately terminates.</p>
+<ul class="simple">
+<li>if there are objects in the collection, then for each object in the</li>
+</ul>
+<p>collection (in the order they are returned) <tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt>
+is set to the object, then <tt class="docutils literal"><span class="pre">``statements``</span></tt> are executed.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">``statements``</span></tt> can contain <tt class="docutils literal"><span class="pre">break</span></tt> and <tt class="docutils literal"><span class="pre">continue</span></tt></li>
+</ul>
+<p>commands, which will abort the iteration or skip to the next loop
+iteration as expected.</p>
+<ul class="simple">
+<li>when the iteration ends because there are no more objects to iterate</li>
+</ul>
+<p>over, <tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt> is set to <tt class="docutils literal"><span class="pre">nil</span></tt>.  This allows
+you to determine whether the iteration finished because a <tt class="docutils literal"><span class="pre">break</span></tt>
+command was used (in which case <tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt> will remain
+set to the last object that was iterated over) or because it iterated
+over all the objects (in which case <tt class="docutils literal"><span class="pre">``object</span> <span class="pre">expression``</span></tt> will be
+set to <tt class="docutils literal"><span class="pre">nil</span></tt>).</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">``statements``</span></tt> must not make any changes to the collection</li>
+</ul>
+<p>object; if they do, it is a hard error and the fast enumeration
+terminates by invoking <tt class="docutils literal"><span class="pre">objc_enumerationMutation</span></tt>, a runtime
+function that normally aborts the program but which can be customized
+by Foundation libraries via <tt class="docutils literal"><span class="pre">objc_set_mutation_handler</span></tt> to do
+something different, such as raising an exception.</p>
+</li>
+</ul>
+<p>:: _fast-enumeration-protocol:</p>
+</div>
+<div class="section" id="fast-enumeration-protocol">
+<h2>Fast Enumeration Protocol<a class="headerlink" href="#fast-enumeration-protocol" title="Permalink to this headline">¶</a></h2>
+<p>If you want your own collection object to be usable with fast
+enumeration, you need to have it implement the method</p>
+<ul>
+<li><dl class="first docutils">
+<dt>(unsigned long) countByEnumeratingWithState: (NSFastEnumerationState <a href="#id1"><span class="problematic" id="id2">*</span></a>)state</dt>
+<dd><dl class="first last docutils">
+<dt>objects: (id <a href="#id3"><span class="problematic" id="id4">*</span></a>)objects</dt>
+<dd><p class="first last">count: (unsigned long)len;</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+<p>where <tt class="docutils literal"><span class="pre">NSFastEnumerationState</span></tt> must be defined in your code as follows:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span>
+<span class="p">{</span>
+  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">state</span><span class="p">;</span>
+  <span class="n">id</span>            <span class="o">*</span><span class="n">itemsPtr</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="o">*</span><span class="n">mutationsPtr</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">extra</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">NSFastEnumerationState</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If no <tt class="docutils literal"><span class="pre">NSFastEnumerationState</span></tt> is defined in your code, the
+compiler will automatically replace <tt class="docutils literal"><span class="pre">NSFastEnumerationState</span> <span class="pre">*</span></tt>
+with <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">__objcFastEnumerationState</span> <span class="pre">*</span></tt>, where that type is
+silently defined by the compiler in an identical way.  This can be
+confusing and we recommend that you define
+<tt class="docutils literal"><span class="pre">NSFastEnumerationState</span></tt> (as shown above) instead.</p>
+<p>The method is called repeatedly during a fast enumeration to retrieve
+batches of objects.  Each invocation of the method should retrieve the
+next batch of objects.</p>
+<p>The return value of the method is the number of objects in the current
+batch; this should not exceed <tt class="docutils literal"><span class="pre">len</span></tt>, which is the maximum size of
+a batch as requested by the caller.  The batch itself is returned in
+the <tt class="docutils literal"><span class="pre">itemsPtr</span></tt> field of the <tt class="docutils literal"><span class="pre">NSFastEnumerationState</span></tt> struct.</p>
+<p>To help with returning the objects, the <tt class="docutils literal"><span class="pre">objects</span></tt> array is a C
+array preallocated by the caller (on the stack) of size <tt class="docutils literal"><span class="pre">len</span></tt>.
+In many cases you can put the objects you want to return in that
+<tt class="docutils literal"><span class="pre">objects</span></tt> array, then do <tt class="docutils literal"><span class="pre">itemsPtr</span> <span class="pre">=</span> <span class="pre">objects</span></tt>.  But you
+dont have to; if your collection already has the objects to return in
+some form of C array, it could return them from there instead.</p>
+<p>The <tt class="docutils literal"><span class="pre">state</span></tt> and <tt class="docutils literal"><span class="pre">extra</span></tt> fields of the
+<tt class="docutils literal"><span class="pre">NSFastEnumerationState</span></tt> structure allows your collection object
+to keep track of the state of the enumeration.  In a simple array
+implementation, <tt class="docutils literal"><span class="pre">state</span></tt> may keep track of the index of the last
+object that was returned, and <tt class="docutils literal"><span class="pre">extra</span></tt> may be unused.</p>
+<p>The <tt class="docutils literal"><span class="pre">mutationsPtr</span></tt> field of the <tt class="docutils literal"><span class="pre">NSFastEnumerationState</span></tt> is
+used to keep track of mutations.  It should point to a number; before
+working on each object, the fast enumeration loop will check that this
+number has not changed.  If it has, a mutation has happened and the
+fast enumeration will abort.  So, <tt class="docutils literal"><span class="pre">mutationsPtr</span></tt> could be set to
+point to some sort of version number of your collection, which is
+increased by one every time there is a change (for example when an
+object is added or removed).  Or, if you are content with less strict
+mutation checks, it could point to the number of objects in your
+collection or some other value that can be checked to perform an
+approximate check that the collection has not been mutated.</p>
+<p>Finally, note how we declared the <tt class="docutils literal"><span class="pre">len</span></tt> argument and the return
+value to be of type <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt>.  They could also be declared
+to be of type <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt> and everything would still work.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="messaging-with-the-gnu-objective-c-runtime.html" title="Messaging with the GNU Objective-C Runtime"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="synchronization.html" title="Synchronization"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gnu-objective-c-features.html" >GNU Objective-C Features</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

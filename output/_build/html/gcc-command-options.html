@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>GCC Command Options &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Introduction" href="gcc.html" />
+    <link rel="next" title="Option Summary" href="option-summary.html" />
+    <link rel="prev" title="References for Other Languages" href="references-for-other-languages.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="option-summary.html" title="Option Summary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="references-for-other-languages.html" title="References for Other Languages"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" accesskey="U">Introduction</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="references-for-other-languages.html"
+                        title="previous chapter">References for Other Languages</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="option-summary.html"
+                        title="next chapter">Option Summary</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/gcc-command-options.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="gcc-command-options">
+<h1>GCC Command Options<a class="headerlink" href="#gcc-command-options" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p>When you invoke GCC, it normally does preprocessing, compilation,
+assembly and linking.  The overall options allow you to stop this
+process at an intermediate stage.  For example, the <a class="reference internal" href="options-for-linking.html#cmdoption-c"><em class="xref std std-option">-c</em></a> option
+says not to run the linker.  Then the output consists of object files
+output by the assembler.</p>
+<p>Other options are passed on to one stage of processing.  Some options
+control the preprocessor and others the compiler itself.  Yet other
+options control the assembler and linker; most of these are not
+documented here, since you rarely need to use any of them.</p>
+<p id="index-3">Most of the command-line options that you can use with GCC are useful
+for C programs; when an option is only useful with another language
+(usually C++), the explanation says so explicitly.  If the description
+for a particular option does not mention a source language, you can use
+that option with all supported languages.</p>
+<p id="index-4">Invoking G++Compiling C++ Programs, for a summary of special
+options for compiling C++ programs.</p>
+<span class="target" id="index-5"></span><p id="index-6">The <strong class="command">gcc</strong> program accepts options and file names as operands.  Many
+options have multi-letter names; therefore multiple single-letter options
+may not be grouped: <em class="xref std std-option">-dv</em> is very different from -d
+-v.</p>
+<span class="target" id="index-7"></span><p id="index-8">You can mix options and other arguments.  For the most part, the order
+you use doesnt matter.  Order does matter when you use several
+options of the same kind; for example, if you specify <em class="xref std std-option">-L</em> more
+than once, the directories are searched in the order specified.  Also,
+the placement of the <em class="xref std std-option">-l</em> option is significant.</p>
+<p>Many options have long names starting with -f or with
+-Wfor example,
+<a class="reference internal" href="options-that-control-optimization.html#cmdoption-fmove-loop-invariants"><em class="xref std std-option">-fmove-loop-invariants</em></a>, <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> and so on.  Most of
+these have both positive and negative forms; the negative form of
+<em class="xref std std-option">-ffoo</em> is <em class="xref std std-option">-fno-foo</em>.  This manual documents
+only one of these two forms, whichever one is not the default.</p>
+<p>Option Index, for an index to GCCs options.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="option-summary.html">Brief list of all options, without explanations.</a></li>
+</ul>
+</div>
+<p>:: _option-summary:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="option-summary.html">Option Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options-controlling-the-kind-of-output.html">Options Controlling the Kind of Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling-c++-programs.html">Compiling C++ Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options-controlling-c-dialect.html">Options Controlling C Dialect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options-controlling-c++-dialect.html">Options Controlling C++ Dialect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options-controlling-objective-c-and-objective-c++-dialects.html">Options Controlling Objective-C and Objective-C++ Dialects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options-to-control-diagnostic-messages-formatting.html">Options to Control Diagnostic Messages Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options-to-request-or-suppress-warnings.html">Options to Request or Suppress Warnings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options-for-debugging-your-program-or-gcc.html">Options for Debugging Your Program or GCC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options-that-control-optimization.html">Options That Control Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options-controlling-the-preprocessor.html">Options Controlling the Preprocessor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passing-options-to-the-assembler.html">Passing Options to the Assembler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options-for-linking.html">Options for Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options-for-directory-search.html">Options for Directory Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="specifying-subprocesses-and-the-switches-to-pass-to-them.html">Specifying Subprocesses and the Switches to Pass to Them</a></li>
+<li class="toctree-l1"><a class="reference internal" href="specifying-target-machine-and-compiler-version.html">Specifying Target Machine and Compiler Version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-models-and-configurations.html">Hardware Models and Configurations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#aarch64-options">AArch64 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#adapteva-epiphany-options">Adapteva Epiphany Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#arc-options">ARC Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#arm-options">ARM Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#avr-options">AVR Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hardware-models-and-configurations.html#avr-built-in-macros">AVR Built-in Macros</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#blackfin-options">Blackfin Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#c6x-options">C6X Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#cris-options">CRIS Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#cr16-options">CR16 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#darwin-options">Darwin Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#dec-alpha-options">DEC Alpha Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#fr30-options">FR30 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#frv-options">FRV Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#gnu-linux-options">GNU/Linux Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#h8-300-options">H8/300 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#hppa-options">HPPA Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#ia-64-options">IA-64 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#lm32-options">LM32 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#m32c-options">M32C Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#m32r-d-options">M32R/D Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#m680x0-options">M680x0 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#mcore-options">MCore Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#mep-options">MeP Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#microblaze-options">MicroBlaze Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#mips-options">MIPS Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#mmix-options">MMIX Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#mn10300-options">MN10300 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#moxie-options">Moxie Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#msp430-options">MSP430 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#nds32-options">NDS32 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#nios-ii-options">Nios II Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#nvidia-ptx-options">Nvidia PTX Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#pdp-11-options">PDP-11 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#picochip-options">picoChip Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#powerpc-options">PowerPC Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#rl78-options">RL78 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#ibm-rs-6000-and-powerpc-options">IBM RS/6000 and PowerPC Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#rx-options">RX Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#s-390-and-zseries-options">S/390 and zSeries Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#score-options">Score Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#sh-options">SH Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#solaris-2-options">Solaris 2 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#sparc-options">SPARC Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#spu-options">SPU Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#options-for-system-v">Options for System V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#tile-gx-options">TILE-Gx Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#tilepro-options">TILEPro Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#v850-options">V850 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#vax-options">VAX Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#visium-options">Visium Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#vms-options">VMS Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#vxworks-options">VxWorks Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#x86-options">x86 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#x86-windows-options">x86 Windows Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#xstormy16-options">Xstormy16 Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#xtensa-options">Xtensa Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-models-and-configurations.html#zseries-options">zSeries Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="options-for-code-generation-conventions.html">Options for Code Generation Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment-variables-affecting-gcc.html">Environment Variables Affecting GCC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-precompiled-headers.html">Using Precompiled Headers</a></li>
+</ul>
+</div>
+<p>:: _overall-options:</p>
+<p>:: _invoking-g++:</p>
+<p>:: _c-dialect-options:</p>
+<p>:: _c++-dialect-options:</p>
+<p>:: _objective-c-and-objective-c++-dialect-options:</p>
+<p>:: _language-independent-options:</p>
+<p>:: _warning-options:</p>
+<p>:: _debugging-options:</p>
+<p>:: _optimize-options:</p>
+<p>:: _preprocessor-options:</p>
+<p>:: _assembler-options:</p>
+<p>:: _link-options:</p>
+<p>:: _directory-options:</p>
+<p>:: _spec-files:</p>
+<p>:: _target-options:</p>
+<p>:: _submodel-options:</p>
+<p>:: _code-gen-options:</p>
+<p>:: _environment-variables:</p>
+<p>:: _precompiled-headers:</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="option-summary.html" title="Option Summary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="references-for-other-languages.html" title="References for Other Languages"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

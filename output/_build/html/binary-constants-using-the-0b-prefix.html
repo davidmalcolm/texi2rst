@@ -1,0 +1,130 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="Extensions to the C++ Language" href="extensions-to-the-c++-language.html" />
+    <link rel="prev" title="Thread-Local Storage" href="thread-local-storage.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="extensions-to-the-c++-language.html" title="Extensions to the C++ Language"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="thread-local-storage.html" title="Thread-Local Storage"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="thread-local-storage.html"
+                        title="previous chapter">Thread-Local Storage</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="extensions-to-the-c++-language.html"
+                        title="next chapter">Extensions to the C++ Language</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/binary-constants-using-the-0b-prefix.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p>Binary Constants using the 0b Prefix
+Binary constants using the 0b prefix</p>
+<p>Integer constants can be written as binary constants, consisting of a
+sequence of 0 and 1 digits, prefixed by 0b or
+0B.  This is particularly useful in environments that operate a
+lot on the bit level (like microcontrollers).</p>
+<p>The following statements are identical:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">i</span> <span class="o">=</span>       <span class="mi">42</span><span class="p">;</span>
+<span class="n">i</span> <span class="o">=</span>     <span class="mh">0x2a</span><span class="p">;</span>
+<span class="n">i</span> <span class="o">=</span>      <span class="mo">052</span><span class="p">;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b101010</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The type of these constants follows the same rules as for octal or
+hexadecimal integer constants, so suffixes like L or UL
+can be applied.</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="extensions-to-the-c++-language.html" title="Extensions to the C++ Language"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="thread-local-storage.html" title="Thread-Local Storage"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

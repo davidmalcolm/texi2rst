@@ -1,0 +1,146 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Programming Languages Supported by GCC &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Introduction" href="gcc.html" />
+    <link rel="next" title="Language Standards Supported by GCC" href="language-standards-supported-by-gcc.html" />
+    <link rel="prev" title="Introduction" href="gcc.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="language-standards-supported-by-gcc.html" title="Language Standards Supported by GCC"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gcc.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" accesskey="U">Introduction</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gcc.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="language-standards-supported-by-gcc.html"
+                        title="next chapter">Language Standards Supported by GCC</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/programming-languages-supported-by-gcc.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="programming-languages-supported-by-gcc">
+<h1>Programming Languages Supported by GCC<a class="headerlink" href="#programming-languages-supported-by-gcc" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span><span class="target" id="index-6"></span><span class="target" id="index-7"></span><p id="index-8">GCC stands for GNU Compiler Collection.  GCC is an integrated
+distribution of compilers for several major programming languages.  These
+languages currently include C, C++, Objective-C, Objective-C++, Java,
+Fortran, Ada, and Go.</p>
+<p>The abbreviation <em class="dfn">GCC</em> has multiple meanings in common use.  The
+current official meaning is GNU Compiler Collection, which refers
+generically to the complete suite of tools.  The name historically stood
+for GNU C Compiler, and this usage is still common when the emphasis
+is on compiling C programs.  Finally, the name is also used when speaking
+of the <em class="dfn">language-independent</em> component of GCC: code shared among the
+compilers for all supported languages.</p>
+<p>The language-independent component of GCC includes the majority of the
+optimizers, as well as the back ends that generate machine code for
+various processors.</p>
+<span class="target" id="index-9"></span><span class="target" id="index-10"></span><p id="index-11">The part of a compiler that is specific to a particular language is
+called the front end.  In addition to the front ends that are
+integrated components of GCC, there are several other front ends that
+are maintained separately.  These support languages such as Pascal,
+Mercury, and COBOL.  To use these, they must be built together with
+GCC proper.</p>
+<span class="target" id="index-12"></span><span class="target" id="index-13"></span><span class="target" id="index-14"></span><p id="index-15">Most of the compilers for languages other than C have their own names.
+The C++ compiler is G++, the Ada compiler is GNAT, and so on.  When we
+talk about compiling one of those languages, we might refer to that
+compiler by its own name, or as GCC.  Either is correct.</p>
+<span class="target" id="index-16"></span><span class="target" id="index-17"></span><p id="index-18">Historically, compilers for many languages, including C++ and Fortran,
+have been implemented as preprocessors which emit another high
+level language such as C.  None of the compilers included in GCC are
+implemented this way; they all generate machine code directly.  This
+sort of preprocessor should not be confused with the <em class="dfn">C
+preprocessor</em>, which is an integral feature of the C, C++, Objective-C
+and Objective-C++ languages.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="language-standards-supported-by-gcc.html" title="Language Standards Supported by GCC"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gcc.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

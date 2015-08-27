@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="GNU Objective-C Features" href="gnu-objective-c-features.html" />
+    <link rel="next" title="Type Encoding" href="type-encoding.html" />
+    <link rel="prev" title="GNU Objective-C Runtime API" href="gnu-objective-c-runtime-api.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="type-encoding.html" title="Type Encoding"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gnu-objective-c-runtime-api.html" title="GNU Objective-C Runtime API"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gnu-objective-c-features.html" accesskey="U">GNU Objective-C Features</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gnu-objective-c-runtime-api.html"
+                        title="previous chapter">GNU Objective-C Runtime API</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="type-encoding.html"
+                        title="next chapter">Type Encoding</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/+load:-executing-code-before-main.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p><tt class="docutils literal"><span class="pre">+load</span></tt>: Executing Code before <tt class="docutils literal"><span class="pre">main</span></tt></p>
+<p>This section is specific for the GNU Objective-C runtime.  If you are
+using a different runtime, you can skip it.</p>
+<p>The GNU Objective-C runtime provides a way that allows you to execute
+code before the execution of the program enters the <tt class="docutils literal"><span class="pre">main</span></tt>
+function.  The code is executed on a per-class and a per-category basis,
+through a special class method <tt class="docutils literal"><span class="pre">+load</span></tt>.</p>
+<p>This facility is very useful if you want to initialize global variables
+which can be accessed by the program directly, without sending a message
+to the class first.  The usual way to initialize global variables, in the
+<tt class="docutils literal"><span class="pre">+initialize</span></tt> method, might not be useful because
+<tt class="docutils literal"><span class="pre">+initialize</span></tt> is only called when the first message is sent to a
+class object, which in some cases could be too late.</p>
+<p>Suppose for example you have a <tt class="docutils literal"><span class="pre">FileStream</span></tt> class that declares
+<tt class="docutils literal"><span class="pre">Stdin</span></tt>, <tt class="docutils literal"><span class="pre">Stdout</span></tt> and <tt class="docutils literal"><span class="pre">Stderr</span></tt> as global variables, like
+below:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">FileStream</span> <span class="o">*</span><span class="n">Stdin</span> <span class="o">=</span> <span class="n">nil</span><span class="p">;</span>
+<span class="n">FileStream</span> <span class="o">*</span><span class="n">Stdout</span> <span class="o">=</span> <span class="n">nil</span><span class="p">;</span>
+<span class="n">FileStream</span> <span class="o">*</span><span class="n">Stderr</span> <span class="o">=</span> <span class="n">nil</span><span class="p">;</span>
+
+<span class="n">implementation</span> <span class="n">FileStream</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">initialize</span>
+<span class="p">{</span>
+    <span class="n">Stdin</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="k">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">Stdout</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="k">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">Stderr</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="k">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">2</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="cm">/* Other methods here */</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>In this example, the initialization of <tt class="docutils literal"><span class="pre">Stdin</span></tt>, <tt class="docutils literal"><span class="pre">Stdout</span></tt> and
+<tt class="docutils literal"><span class="pre">Stderr</span></tt> in <tt class="docutils literal"><span class="pre">+initialize</span></tt> occurs too late.  The programmer can
+send a message to one of these objects before the variables are actually
+initialized, thus sending messages to the <tt class="docutils literal"><span class="pre">nil</span></tt> object.  The
+<tt class="docutils literal"><span class="pre">+initialize</span></tt> method which actually initializes the global
+variables is not invoked until the first message is sent to the class
+object.  The solution would require these variables to be initialized
+just before entering <tt class="docutils literal"><span class="pre">main</span></tt>.</p>
+<p>The correct solution of the above problem is to use the <tt class="docutils literal"><span class="pre">+load</span></tt>
+method instead of <tt class="docutils literal"><span class="pre">+initialize</span></tt>:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">implementation</span> <span class="n">FileStream</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">load</span>
+<span class="p">{</span>
+    <span class="n">Stdin</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="k">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">Stdout</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="k">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">Stderr</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="k">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">2</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="cm">/* Other methods here */</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">+load</span></tt> is a method that is not overridden by categories.  If a
+class and a category of it both implement <tt class="docutils literal"><span class="pre">+load</span></tt>, both methods are
+invoked.  This allows some additional initializations to be performed in
+a category.</p>
+<p>This mechanism is not intended to be a replacement for <tt class="docutils literal"><span class="pre">+initialize</span></tt>.
+You should be aware of its limitations when you decide to use it
+instead of <tt class="docutils literal"><span class="pre">+initialize</span></tt>.</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<p>:: _what-you-can-and-what-you-cannot-do-in-+load:</p>
+<p>What You Can and Cannot Do in <tt class="docutils literal"><span class="pre">+load</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">+load</span></tt> is to be used only as a last resort.  Because it is
+executed very early, most of the Objective-C runtime machinery will
+not be ready when <tt class="docutils literal"><span class="pre">+load</span></tt> is executed; hence <tt class="docutils literal"><span class="pre">+load</span></tt> works
+best for executing C code that is independent on the Objective-C
+runtime.</p>
+<p>The <tt class="docutils literal"><span class="pre">+load</span></tt> implementation in the GNU runtime guarantees you the
+following things:</p>
+<ul>
+<li><p class="first">you can write whatever C code you like;</p>
+<ul class="simple">
+<li>you can allocate and send messages to objects whose class is implemented</li>
+</ul>
+<p>in the same file;</p>
+<ul class="simple">
+<li>the <tt class="docutils literal"><span class="pre">+load</span></tt> implementation of all super classes of a class are</li>
+</ul>
+<p>executed before the <tt class="docutils literal"><span class="pre">+load</span></tt> of that class is executed;</p>
+<ul class="simple">
+<li>the <tt class="docutils literal"><span class="pre">+load</span></tt> implementation of a class is executed before the</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">+load</span></tt> implementation of any category.</p>
+</li>
+</ul>
+<p>In particular, the following things, even if they can work in a
+particular case, are not guaranteed:</p>
+<ul>
+<li><p class="first">allocation of or sending messages to arbitrary objects;</p>
+<ul class="simple">
+<li>allocation of or sending messages to objects whose classes have a</li>
+</ul>
+<p>category implemented in the same file;</p>
+<ul class="simple">
+<li>sending messages to Objective-C constant strings (<a href="#id1"><span class="problematic" id="id2">``</span></a>&#8220;this is a</li>
+</ul>
+<p>constant string&#8221;<a href="#id3"><span class="problematic" id="id4">``</span></a>);</p>
+</li>
+</ul>
+<p>You should make no assumptions about receiving <tt class="docutils literal"><span class="pre">+load</span></tt> in sibling
+classes when you write <tt class="docutils literal"><span class="pre">+load</span></tt> of a class.  The order in which
+sibling classes receive <tt class="docutils literal"><span class="pre">+load</span></tt> is not guaranteed.</p>
+<p>The order in which <tt class="docutils literal"><span class="pre">+load</span></tt> and <tt class="docutils literal"><span class="pre">+initialize</span></tt> are called could
+be problematic if this matters.  If you dont allocate objects inside
+<tt class="docutils literal"><span class="pre">+load</span></tt>, it is guaranteed that <tt class="docutils literal"><span class="pre">+load</span></tt> is called before
+<tt class="docutils literal"><span class="pre">+initialize</span></tt>.  If you create an object inside <tt class="docutils literal"><span class="pre">+load</span></tt> the
+<tt class="docutils literal"><span class="pre">+initialize</span></tt> method of objects class is invoked even if
+<tt class="docutils literal"><span class="pre">+load</span></tt> was not invoked.  Note if you explicitly call <tt class="docutils literal"><span class="pre">+load</span></tt>
+on a class, <tt class="docutils literal"><span class="pre">+initialize</span></tt> will be called first.  To avoid possible
+problems try to implement only one of these methods.</p>
+<p>The <tt class="docutils literal"><span class="pre">+load</span></tt> method is also invoked when a bundle is dynamically
+loaded into your running program.  This happens automatically without any
+intervening operation from you.  When you write bundles and you need to
+write <tt class="docutils literal"><span class="pre">+load</span></tt> you can safely create and send messages to objects whose
+classes already exist in the running program.  The same restrictions as
+above apply to classes defined in bundle.</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="type-encoding.html" title="Type Encoding"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gnu-objective-c-runtime-api.html" title="GNU Objective-C Runtime API"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gnu-objective-c-features.html" >GNU Objective-C Features</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Common Misunderstandings with GNU C++ &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Known Causes of Trouble with GCC" href="known-causes-of-trouble-with-gcc.html" />
+    <link rel="next" title="Certain Changes We Dont Want to Make" href="certain-changes-we-dont-want-to-make.html" />
+    <link rel="prev" title="Disappointments and Misunderstandings" href="disappointments-and-misunderstandings.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="certain-changes-we-dont-want-to-make.html" title="Certain Changes We Dont Want to Make"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="disappointments-and-misunderstandings.html" title="Disappointments and Misunderstandings"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="known-causes-of-trouble-with-gcc.html" accesskey="U">Known Causes of Trouble with GCC</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Common Misunderstandings with GNU C++</a><ul>
+<li><a class="reference internal" href="#name-lookup-templates-and-accessing-members-of-base-classes">Name Lookup, Templates, and Accessing Members of Base Classes</a></li>
+<li><a class="reference internal" href="#temporaries-may-vanish-before-you-expect">Temporaries May Vanish Before You Expect</a></li>
+<li><a class="reference internal" href="#implicit-copy-assignment-for-virtual-bases">Implicit Copy-Assignment for Virtual Bases</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="disappointments-and-misunderstandings.html"
+                        title="previous chapter">Disappointments and Misunderstandings</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="certain-changes-we-dont-want-to-make.html"
+                        title="next chapter">Certain Changes We Dont Want to Make</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/common-misunderstandings-with-gnu-c++.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="common-misunderstandings-with-gnu-c">
+<h1>Common Misunderstandings with GNU C++<a class="headerlink" href="#common-misunderstandings-with-gnu-c" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><p id="index-2">C++ is a complex language and an evolving one, and its standard
+definition (the ISO C++ standard) was only recently completed.  As a
+result, your C++ compiler may occasionally surprise you, even when its
+behavior is correct.  This section discusses some areas that frequently
+give rise to questions of this sort.</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<p>:: _static-definitions:</p>
+<p>Declare and Define Static Members</p>
+<span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span><p id="index-6">When a class has static data members, it is not enough to declare
+the static member; you must also define it.  For example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+  <span class="p">...</span>
+  <span class="kt">void</span> <span class="n">method</span><span class="p">();</span>
+  <span class="k">static</span> <span class="kt">int</span> <span class="n">bar</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>This declaration only establishes that the class <tt class="docutils literal"><span class="pre">Foo</span></tt> has an
+<tt class="docutils literal"><span class="pre">int</span></tt> named <tt class="docutils literal"><span class="pre">Foo::bar</span></tt>, and a member function named
+<tt class="docutils literal"><span class="pre">Foo::method</span></tt>.  But you still need to define both
+<tt class="docutils literal"><span class="pre">method</span></tt> and <tt class="docutils literal"><span class="pre">bar</span></tt> elsewhere.  According to the ISO
+standard, you must supply an initializer in one (and only one) source
+file, such as:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">Foo</span><span class="o">::</span><span class="n">bar</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Other C++ compilers may not correctly implement the standard behavior.
+As a result, when you switch to <strong class="command">g++</strong> from one of these compilers,
+you may discover that a program that appeared to work correctly in fact
+does not conform to the standard: <strong class="command">g++</strong> reports as undefined
+symbols any static data members that lack definitions.</p>
+<p>:: _name-lookup:</p>
+<div class="section" id="name-lookup-templates-and-accessing-members-of-base-classes">
+<h2>Name Lookup, Templates, and Accessing Members of Base Classes<a class="headerlink" href="#name-lookup-templates-and-accessing-members-of-base-classes" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-7"></span><span class="target" id="index-8"></span><p id="index-9">The C++ standard prescribes that all names that are not dependent on
+template parameters are bound to their present definitions when parsing
+a template function or class.The C++ standard just uses the
+term dependent for names that depend on the type or value of
+template parameters.  This shorter term will also be used in the rest of
+this section.  Only names that are dependent are looked up at the point
+of instantiation.  For example, consider</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+
+<span class="k">struct</span> <span class="n">A</span> <span class="p">{</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+  <span class="kt">void</span> <span class="n">f</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="n">foo</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>        <span class="c1">// 1</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span>      <span class="c1">// 2</span>
+    <span class="n">T</span> <span class="n">t</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">bar</span><span class="p">();</span>        <span class="c1">// 3</span>
+    <span class="n">foo</span> <span class="p">(</span><span class="n">t</span><span class="p">);</span>        <span class="c1">// 4</span>
+  <span class="p">}</span>
+
+  <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Here, the names <tt class="docutils literal"><span class="pre">foo</span></tt> and <tt class="docutils literal"><span class="pre">N</span></tt> appear in a context that does
+not depend on the type of <tt class="docutils literal"><span class="pre">T</span></tt>.  The compiler will thus require that
+they are defined in the context of use in the template, not only before
+the point of instantiation, and will here use <tt class="docutils literal"><span class="pre">::foo(double)</span></tt> and
+<tt class="docutils literal"><span class="pre">A::N</span></tt>, respectively.  In particular, it will convert the integer
+value to a <tt class="docutils literal"><span class="pre">double</span></tt> when passing it to <tt class="docutils literal"><span class="pre">::foo(double)</span></tt>.</p>
+<p>Conversely, <tt class="docutils literal"><span class="pre">bar</span></tt> and the call to <tt class="docutils literal"><span class="pre">foo</span></tt> in the fourth marked
+line are used in contexts that do depend on the type of <tt class="docutils literal"><span class="pre">T</span></tt>, so
+they are only looked up at the point of instantiation, and you can
+provide declarations for them after declaring the template, but before
+instantiating it.  In particular, if you instantiate <tt class="docutils literal"><span class="pre">A::f&lt;int&gt;</span></tt>,
+the last line will call an overloaded <tt class="docutils literal"><span class="pre">::foo(int)</span></tt> if one was
+provided, even if after the declaration of <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">A</span></tt>.</p>
+<p>This distinction between lookup of dependent and non-dependent names is
+called two-stage (or dependent) name lookup.  G++ implements it
+since version 3.4.</p>
+<p>Two-stage name lookup sometimes leads to situations with behavior
+different from non-template codes.  The most common is probably this:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">Base</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">Derived</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Base</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">get_i</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>In <tt class="docutils literal"><span class="pre">get_i()</span></tt>, <tt class="docutils literal"><span class="pre">i</span></tt> is not used in a dependent context, so the
+compiler will look for a name declared at the enclosing namespace scope
+(which is the global scope here).  It will not look into the base class,
+since that is dependent and you may declare specializations of
+<tt class="docutils literal"><span class="pre">Base</span></tt> even after declaring <tt class="docutils literal"><span class="pre">Derived</span></tt>, so the compiler cant
+really know what <tt class="docutils literal"><span class="pre">i</span></tt> would refer to.  If there is no global
+variable <tt class="docutils literal"><span class="pre">i</span></tt>, then you will get an error message.</p>
+<p>In order to make it clear that you want the member of the base class,
+you need to defer lookup until instantiation time, at which the base
+class is known.  For this, you need to access <tt class="docutils literal"><span class="pre">i</span></tt> in a dependent
+context, by either using <tt class="docutils literal"><span class="pre">this-&gt;i</span></tt> (remember that <tt class="docutils literal"><span class="pre">this</span></tt> is of
+type <tt class="docutils literal"><span class="pre">Derived&lt;T&gt;*</span></tt>, so is obviously dependent), or using
+<tt class="docutils literal"><span class="pre">Base&lt;T&gt;::i</span></tt>.  Alternatively, <tt class="docutils literal"><span class="pre">Base&lt;T&gt;::i</span></tt> might be brought
+into scope by a <tt class="docutils literal"><span class="pre">using</span></tt>-declaration.</p>
+<p>Another, similar example involves calling member functions of a base
+class:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">Base</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">f</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">Derived</span> <span class="o">:</span> <span class="n">Base</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">g</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">f</span><span class="p">();</span> <span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Again, the call to <tt class="docutils literal"><span class="pre">f()</span></tt> is not dependent on template arguments
+(there are no arguments that depend on the type <tt class="docutils literal"><span class="pre">T</span></tt>, and it is also
+not otherwise specified that the call should be in a dependent context).
+Thus a global declaration of such a function must be available, since
+the one in the base class is not visible until instantiation time.  The
+compiler will consequently produce the following error message:</p>
+<div class="highlight-c++"><pre>x.cc: In member function `int Derived&lt;T&gt;::g()':
+x.cc:6: error: there are no arguments to `f' that depend on a template
+   parameter, so a declaration of `f' must be available
+x.cc:6: error: (if you use `-fpermissive', G++ will accept your code, but
+   allowing the use of an undeclared name is deprecated)</pre>
+</div>
+<p>To make the code valid either use <tt class="docutils literal"><span class="pre">this-&gt;f()</span></tt>, or
+<tt class="docutils literal"><span class="pre">Base&lt;T&gt;::f()</span></tt>.  Using the <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fpermissive"><em class="xref std std-option">-fpermissive</em></a> flag will also let
+the compiler accept the code, by marking all function calls for which no
+declaration is visible at the time of definition of the template for
+later lookup at instantiation time, as if it were a dependent call.
+We do not recommend using <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fpermissive"><em class="xref std std-option">-fpermissive</em></a> to work around invalid
+code, and it will also only catch cases where functions in base classes
+are called, not where variables in base classes are used (as in the
+example above).</p>
+<p>Note that some compilers (including G++ versions prior to 3.4) get these
+examples wrong and accept above code without an error.  Those compilers
+do not implement two-stage name lookup correctly.</p>
+<p>:: _temporaries:</p>
+</div>
+<div class="section" id="temporaries-may-vanish-before-you-expect">
+<h2>Temporaries May Vanish Before You Expect<a class="headerlink" href="#temporaries-may-vanish-before-you-expect" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-10"></span><p id="index-11">It is dangerous to use pointers or references to portions of a
+temporary object.  The compiler may very well delete the object before
+you expect it to, leaving a pointer to garbage.  The most common place
+where this problem crops up is in classes like string classes,
+especially ones that define a conversion function to type <tt class="docutils literal"><span class="pre">char</span> <span class="pre">*</span></tt>
+or <tt class="docutils literal"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*``which</span> <span class="pre">is</span> <span class="pre">one</span> <span class="pre">reason</span> <span class="pre">why</span> <span class="pre">the</span> <span class="pre">standard</span>
+<span class="pre">``string</span></tt> class requires you to call the <tt class="docutils literal"><span class="pre">c_str</span></tt> member
+function.  However, any class that returns a pointer to some internal
+structure is potentially subject to this problem.</p>
+<p>For example, a program may use a function <tt class="docutils literal"><span class="pre">strfunc</span></tt> that returns
+<tt class="docutils literal"><span class="pre">string</span></tt> objects, and another function <tt class="docutils literal"><span class="pre">charfunc</span></tt> that
+operates on pointers to <tt class="docutils literal"><span class="pre">char</span></tt>:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">string</span> <span class="nf">strfunc</span> <span class="p">();</span>
+<span class="kt">void</span> <span class="nf">charfunc</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">);</span>
+
+<span class="kt">void</span>
+<span class="nf">f</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">strfunc</span><span class="p">().</span><span class="n">c_str</span><span class="p">();</span>
+  <span class="p">...</span>
+  <span class="n">charfunc</span> <span class="p">(</span><span class="n">p</span><span class="p">);</span>
+  <span class="p">...</span>
+  <span class="n">charfunc</span> <span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this situation, it may seem reasonable to save a pointer to the C
+string returned by the <tt class="docutils literal"><span class="pre">c_str</span></tt> member function and use that rather
+than call <tt class="docutils literal"><span class="pre">c_str</span></tt> repeatedly.  However, the temporary string
+created by the call to <tt class="docutils literal"><span class="pre">strfunc</span></tt> is destroyed after <tt class="docutils literal"><span class="pre">p</span></tt> is
+initialized, at which point <tt class="docutils literal"><span class="pre">p</span></tt> is left pointing to freed memory.</p>
+<p>Code like this may run successfully under some other compilers,
+particularly obsolete cfront-based compilers that delete temporaries
+along with normal local variables.  However, the GNU C++ behavior is
+standard-conforming, so if your program depends on late destruction of
+temporaries it is not portable.</p>
+<p>The safe way to write such code is to give the temporary a name, which
+forces it to remain until the end of the scope of the name.  For
+example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">strfunc</span> <span class="p">();</span>
+<span class="n">charfunc</span> <span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">c_str</span> <span class="p">());</span>
+</pre></div>
+</div>
+<p>:: _copy-assignment:</p>
+</div>
+<div class="section" id="implicit-copy-assignment-for-virtual-bases">
+<h2>Implicit Copy-Assignment for Virtual Bases<a class="headerlink" href="#implicit-copy-assignment-for-virtual-bases" title="Permalink to this headline">¶</a></h2>
+<p>When a base class is virtual, only one subobject of the base class
+belongs to each full object.  Also, the constructors and destructors are
+invoked only once, and called from the most-derived class.  However, such
+objects behave unspecified when being assigned.  For example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">Base</span><span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+  <span class="n">Base</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">strdup</span><span class="p">(</span><span class="n">n</span><span class="p">)){}</span>
+  <span class="n">Base</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">Base</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">){</span>
+   <span class="n">free</span> <span class="p">(</span><span class="n">name</span><span class="p">);</span>
+   <span class="n">name</span> <span class="o">=</span> <span class="n">strdup</span> <span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">A</span><span class="o">:</span><span class="k">virtual</span> <span class="n">Base</span><span class="p">{</span>
+  <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+  <span class="n">A</span><span class="p">()</span><span class="o">:</span><span class="n">Base</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">){}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">B</span><span class="o">:</span><span class="k">virtual</span> <span class="n">Base</span><span class="p">{</span>
+  <span class="kt">int</span> <span class="n">bval</span><span class="p">;</span>
+  <span class="n">B</span><span class="p">()</span><span class="o">:</span><span class="n">Base</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">){}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Derived</span><span class="o">:</span><span class="k">public</span> <span class="n">A</span><span class="p">,</span> <span class="k">public</span> <span class="n">B</span><span class="p">{</span>
+  <span class="n">Derived</span><span class="p">()</span><span class="o">:</span><span class="n">Base</span><span class="p">(</span><span class="s">&quot;Derived&quot;</span><span class="p">){}</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="n">Derived</span> <span class="o">&amp;</span><span class="n">d1</span><span class="p">,</span> <span class="n">Derived</span> <span class="o">&amp;</span><span class="n">d2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">d1</span> <span class="o">=</span> <span class="n">d2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The C++ standard specifies that Base::Base is only called once
+when constructing or copy-constructing a Derived object.  It is
+unspecified whether Base::operator= is called more than once when
+the implicit copy-assignment for Derived objects is invoked (as it is
+inside func in the example).</p>
+<p>G++ implements the intuitive algorithm for copy-assignment: assign all
+direct bases, then assign all members.  In that algorithm, the virtual
+base subobject can be encountered more than once.  In the example, copying
+proceeds in the following order: val, name (via
+<tt class="docutils literal"><span class="pre">strdup</span></tt>), bval, and name again.</p>
+<p>If application code relies on copy-assignment, a user-defined
+copy-assignment operator removes any uncertainties.  With such an
+operator, the application can define whether and how the virtual base
+subobject is assigned.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="certain-changes-we-dont-want-to-make.html" title="Certain Changes We Dont Want to Make"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="disappointments-and-misunderstandings.html" title="Disappointments and Misunderstandings"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="known-causes-of-trouble-with-gcc.html" >Known Causes of Trouble with GCC</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Options Controlling C Dialect &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="GCC Command Options" href="gcc-command-options.html" />
+    <link rel="next" title="Options Controlling C++ Dialect" href="options-controlling-c++-dialect.html" />
+    <link rel="prev" title="Compiling C++ Programs" href="compiling-c++-programs.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="options-controlling-c++-dialect.html" title="Options Controlling C++ Dialect"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="compiling-c++-programs.html" title="Compiling C++ Programs"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gcc-command-options.html" accesskey="U">GCC Command Options</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="compiling-c++-programs.html"
+                        title="previous chapter">Compiling C++ Programs</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="options-controlling-c++-dialect.html"
+                        title="next chapter">Options Controlling C++ Dialect</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/options-controlling-c-dialect.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="options-controlling-c-dialect">
+<h1>Options Controlling C Dialect<a class="headerlink" href="#options-controlling-c-dialect" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><p id="index-2">The following options control the dialect of C (or languages derived
+from C, such as C++, Objective-C and Objective-C++) that the compiler
+accepts:</p>
+<span class="target" id="index-3"></span><span class="target" id="index-4"></span><dl class="option">
+<dt id="cmdoption-ansi">
+<tt class="descname">-ansi</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-ansi" title="Permalink to this definition">¶</a></dt>
+<dd><p>In C mode, this is equivalent to <em class="xref std std-option">-std=c90</em>. In C++ mode, it is
+equivalent to <em class="xref std std-option">-std=c++98</em>.</p>
+<p>This turns off certain features of GCC that are incompatible with ISO
+C90 (when compiling C code), or of standard C++ (when compiling C++ code),
+such as the <tt class="docutils literal"><span class="pre">asm</span></tt> and <tt class="docutils literal"><span class="pre">typeof</span></tt> keywords, and
+predefined macros such as <tt class="docutils literal"><span class="pre">unix</span></tt> and <tt class="docutils literal"><span class="pre">vax</span></tt> that identify the
+type of system you are using.  It also enables the undesirable and
+rarely used ISO trigraph feature.  For the C compiler,
+it disables recognition of C++ style // comments as well as
+the <tt class="docutils literal"><span class="pre">inline</span></tt> keyword.</p>
+<p>The alternate keywords <tt class="docutils literal"><span class="pre">__asm__</span></tt>, <tt class="docutils literal"><span class="pre">__extension__</span></tt>,
+<tt class="docutils literal"><span class="pre">__inline__</span></tt> and <tt class="docutils literal"><span class="pre">__typeof__</span></tt> continue to work despite
+<a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>.  You would not want to use them in an ISO C program, of
+course, but it is useful to put them in header files that might be included
+in compilations done with <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>.  Alternate predefined macros
+such as <tt class="docutils literal"><span class="pre">__unix__</span></tt> and <tt class="docutils literal"><span class="pre">__vax__</span></tt> are also available, with or
+without <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>.</p>
+<p>The <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> option does not cause non-ISO programs to be
+rejected gratuitously.  For that, <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> is required in
+addition to <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>.  Warning Options.</p>
+<p>The macro <tt class="docutils literal"><span class="pre">__STRICT_ANSI__</span></tt> is predefined when the <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>
+option is used.  Some header files may notice this macro and refrain
+from declaring certain functions or defining certain macros that the
+ISO standard doesnt call for; this is to avoid interfering with any
+programs that might use these names for other things.</p>
+<p>Functions that are normally built in but do not have semantics
+defined by ISO C (such as <tt class="docutils literal"><span class="pre">alloca</span></tt> and <tt class="docutils literal"><span class="pre">ffs</span></tt>) are not built-in
+functions when <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> is used.  Other BuiltinsOther
+built-in functions provided by GCC, for details of the functions
+affected.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-std">
+<tt class="descname">-std</tt><tt class="descclassname">=</tt><a class="headerlink" href="#cmdoption-std" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the language standard. StandardsLanguage Standards
+Supported by GCC, for details of these standard versions.  This option
+is currently only supported when compiling C or C++.</p>
+<p>The compiler can accept several base standards, such as c90 or
+c++98, and GNU dialects of those standards, such as
+gnu90 or gnu++98.  When a base standard is specified, the
+compiler accepts all programs following that standard plus those
+using GNU extensions that do not contradict it.  For example,
+<em class="xref std std-option">-std=c90</em> turns off certain features of GCC that are
+incompatible with ISO C90, such as the <tt class="docutils literal"><span class="pre">asm</span></tt> and <tt class="docutils literal"><span class="pre">typeof</span></tt>
+keywords, but not other GNU extensions that do not have a meaning in
+ISO C90, such as omitting the middle term of a <tt class="docutils literal"><span class="pre">?:</span></tt>
+expression. On the other hand, when a GNU dialect of a standard is
+specified, all features supported by the compiler are enabled, even when
+those features change the meaning of the base standard.  As a result, some
+strict-conforming programs may be rejected.  The particular standard
+is used by <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> to identify which features are GNU
+extensions given that version of the standard. For example
+<em class="xref std std-option">-std=gnu90 -Wpedantic</em> warns about C++ style //
+comments, while <em class="xref std std-option">-std=gnu99 -Wpedantic</em> does not.</p>
+<p>A value for this option must be provided; possible values are</p>
+<dl class="docutils">
+<dt>c90c89iso9899:1990</dt>
+<dd>Support all ISO C90 programs (certain GNU extensions that conflict
+with ISO C90 are disabled). Same as <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> for C code.</dd>
+<dt>iso9899:199409</dt>
+<dd>ISO C90 as modified in amendment 1.</dd>
+<dt>c99c9xiso9899:1999iso9899:199x</dt>
+<dd>ISO C99.  This standard is substantially completely supported, modulo
+bugs and floating-point issues
+(mainly but not entirely relating to optional C99 features from
+Annexes F and G).  See
+<a class="reference external" href="http://gcc.gnu.org/c99status.html">http://gcc.gnu.org/c99status.html</a> for more information.  The
+names c9x and iso9899:199x are deprecated.</dd>
+<dt>c11c1xiso9899:2011</dt>
+<dd>ISO C11, the 2011 revision of the ISO C standard.  This standard is
+substantially completely supported, modulo bugs, floating-point issues
+(mainly but not entirely relating to optional C11 features from
+Annexes F and G) and the optional Annexes K (Bounds-checking
+interfaces) and L (Analyzability).  The name c1x is deprecated.</dd>
+<dt>gnu90gnu89</dt>
+<dd>GNU dialect of ISO C90 (including some C99 features).</dd>
+<dt>gnu99gnu9x</dt>
+<dd>GNU dialect of ISO C99.  The name gnu9x is deprecated.</dd>
+<dt>gnu11gnu1x</dt>
+<dd>GNU dialect of ISO C11.  This is the default for C code.
+The name gnu1x is deprecated.</dd>
+<dt>c++98c++03</dt>
+<dd>The 1998 ISO C++ standard plus the 2003 technical corrigendum and some
+additional defect reports. Same as <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> for C++ code.</dd>
+<dt>gnu++98gnu++03</dt>
+<dd>GNU dialect of <em class="xref std std-option">-std=c++98</em>.  This is the default for
+C++ code.</dd>
+<dt>c++11c++0x</dt>
+<dd>The 2011 ISO C++ standard plus amendments.
+The name c++0x is deprecated.</dd>
+<dt>gnu++11gnu++0x</dt>
+<dd>GNU dialect of <em class="xref std std-option">-std=c++11</em>.
+The name gnu++0x is deprecated.</dd>
+<dt>c++14c++1y</dt>
+<dd>The 2014 ISO C++ standard plus amendments.
+The name c++1y is deprecated.</dd>
+<dt>gnu++14gnu++1y</dt>
+<dd>GNU dialect of <em class="xref std std-option">-std=c++14</em>.
+The name gnu++1y is deprecated.</dd>
+<dt>c++1z</dt>
+<dd>The next revision of the ISO C++ standard, tentatively planned for
+2017.  Support is highly experimental, and will almost certainly
+change in incompatible ways in future releases.</dd>
+<dt>gnu++1z</dt>
+<dd>GNU dialect of <em class="xref std std-option">-std=c++1z</em>.  Support is highly experimental,
+and will almost certainly change in incompatible ways in future
+releases.</dd>
+</dl>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fgnu89-inline">
+<tt class="descname">-fgnu89-inline</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fgnu89-inline" title="Permalink to this definition">¶</a></dt>
+<dd><p>The option <a class="reference internal" href="#cmdoption-fgnu89-inline"><em class="xref std std-option">-fgnu89-inline</em></a> tells GCC to use the traditional
+GNU semantics for <tt class="docutils literal"><span class="pre">inline</span></tt> functions when in C99 mode.
+InlineAn Inline Function is As Fast As a Macro.
+Using this option is roughly equivalent to adding the
+<tt class="docutils literal"><span class="pre">gnu_inline</span></tt> function attribute to all inline functions
+(Function Attributes).</p>
+<p>The option <em class="xref std std-option">-fno-gnu89-inline</em> explicitly tells GCC to use the
+C99 semantics for <tt class="docutils literal"><span class="pre">inline</span></tt> when in C99 or gnu99 mode (i.e., it
+specifies the default behavior).
+This option is not supported in <em class="xref std std-option">-std=c90</em> or
+<em class="xref std std-option">-std=gnu90</em> mode.</p>
+<p>The preprocessor macros <tt class="docutils literal"><span class="pre">__GNUC_GNU_INLINE__</span></tt> and
+<tt class="docutils literal"><span class="pre">__GNUC_STDC_INLINE__</span></tt> may be used to check which semantics are
+in effect for <tt class="docutils literal"><span class="pre">inline</span></tt> functions.  Common Predefined
+MacroscppThe C Preprocessor.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-aux-info">
+<tt class="descname">-aux-info</tt><tt class="descclassname"> filename</tt><tt class="descclassname">, </tt><tt class="descname">-aux-info</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-aux-info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output to the given filename prototyped declarations for all functions
+declared and/or defined in a translation unit, including those in header
+files.  This option is silently ignored in any language other than C.</p>
+<p>Besides declarations, the file indicates, in comments, the origin of
+each declaration (source file and line), whether the declaration was
+implicit, prototyped or unprototyped (I, N for new or
+O for old, respectively, in the first character after the line
+number and the colon), and whether it came from a declaration or a
+definition (C or F, respectively, in the following
+character).  In the case of function definitions, a K&amp;R-style list of
+arguments followed by their declarations is also provided, inside
+comments, after the declaration.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fallow-parameterless-variadic-functions">
+<tt class="descname">-fallow-parameterless-variadic-functions</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fallow-parameterless-variadic-functions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accept variadic functions without named parameters.</p>
+<p>Although it is possible to define such a function, this is not very
+useful as it is not possible to read the arguments.  This is only
+supported for C as this construct is allowed by C++.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fno-asm">
+<tt class="descname">-fno-asm</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-asm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not recognize <tt class="docutils literal"><span class="pre">asm</span></tt>, <tt class="docutils literal"><span class="pre">inline</span></tt> or <tt class="docutils literal"><span class="pre">typeof</span></tt> as a
+keyword, so that code can use these words as identifiers.  You can use
+the keywords <tt class="docutils literal"><span class="pre">__asm__</span></tt>, <tt class="docutils literal"><span class="pre">__inline__</span></tt> and <tt class="docutils literal"><span class="pre">__typeof__</span></tt>
+instead.  <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> implies <a class="reference internal" href="#cmdoption-fno-asm"><em class="xref std std-option">-fno-asm</em></a>.</p>
+<p>In C++, this switch only affects the <tt class="docutils literal"><span class="pre">typeof</span></tt> keyword, since
+<tt class="docutils literal"><span class="pre">asm</span></tt> and <tt class="docutils literal"><span class="pre">inline</span></tt> are standard keywords.  You may want to
+use the <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fno-gnu-keywords"><em class="xref std std-option">-fno-gnu-keywords</em></a> flag instead, which has the same
+effect.  In C99 mode (<em class="xref std std-option">-std=c99</em> or <em class="xref std std-option">-std=gnu99</em>), this
+switch only affects the <tt class="docutils literal"><span class="pre">asm</span></tt> and <tt class="docutils literal"><span class="pre">typeof</span></tt> keywords, since
+<tt class="docutils literal"><span class="pre">inline</span></tt> is a standard keyword in ISO C99.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fno-builtin">
+<tt class="descname">-fno-builtin</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-builtin" title="Permalink to this definition">¶</a></dt>
+<dd><p id="index-5">Dont recognize built-in functions that do not begin with
+__builtin_ as prefix.  Other BuiltinsOther built-in
+functions provided by GCC, for details of the functions affected,
+including those which are not built-in functions when <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or
+<a class="reference internal" href="#cmdoption-std"><em class="xref std std-option">-std</em></a> options for strict ISO C conformance are used because they
+do not have an ISO standard meaning.</p>
+<p>GCC normally generates special code to handle certain built-in functions
+more efficiently; for instance, calls to <tt class="docutils literal"><span class="pre">alloca</span></tt> may become single
+instructions which adjust the stack directly, and calls to <tt class="docutils literal"><span class="pre">memcpy</span></tt>
+may become inline copy loops.  The resulting code is often both smaller
+and faster, but since the function calls no longer appear as such, you
+cannot set a breakpoint on those calls, nor can you change the behavior
+of the functions by linking with a different library.  In addition,
+when a function is recognized as a built-in function, GCC may use
+information about that function to warn about problems with calls to
+that function, or to generate more efficient code, even if the
+resulting code still contains calls to that function.  For example,
+warnings are given with <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> for bad calls to
+<tt class="docutils literal"><span class="pre">printf</span></tt> when <tt class="docutils literal"><span class="pre">printf</span></tt> is built in and <tt class="docutils literal"><span class="pre">strlen</span></tt> is
+known not to modify global memory.</p>
+<p>With the <em class="xref std std-option">-fno-builtin-``function``</em> option
+only the built-in function <tt class="docutils literal"><span class="pre">function</span></tt> is
+disabled.  <tt class="docutils literal"><span class="pre">function</span></tt> must not begin with __builtin_.  If a
+function is named that is not built-in in this version of GCC, this
+option is ignored.  There is no corresponding
+<em class="xref std std-option">-fbuiltin-``function``</em> option; if you wish to enable
+built-in functions selectively when using <a class="reference internal" href="#cmdoption-fno-builtin"><em class="xref std std-option">-fno-builtin</em></a> or
+<a class="reference internal" href="#cmdoption-ffreestanding"><em class="xref std std-option">-ffreestanding</em></a>, you may define macros such as:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define abs(n)          __builtin_abs ((n))</span>
+<span class="cp">#define strcpy(d, s)    __builtin_strcpy ((d), (s))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fhosted">
+<tt class="descname">-fhosted</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fhosted" title="Permalink to this definition">¶</a></dt>
+<dd><p id="index-6">Assert that compilation targets a hosted environment.  This implies
+<em class="xref std std-option">-fbuiltin</em>.  A hosted environment is one in which the
+entire standard library is available, and in which <tt class="docutils literal"><span class="pre">main</span></tt> has a return
+type of <tt class="docutils literal"><span class="pre">int</span></tt>.  Examples are nearly everything except a kernel.
+This is equivalent to <em class="xref std std-option">-fno-freestanding</em>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ffreestanding">
+<tt class="descname">-ffreestanding</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-ffreestanding" title="Permalink to this definition">¶</a></dt>
+<dd><p id="index-7">Assert that compilation targets a freestanding environment.  This
+implies <a class="reference internal" href="#cmdoption-fno-builtin"><em class="xref std std-option">-fno-builtin</em></a>.  A freestanding environment
+is one in which the standard library may not exist, and program startup may
+not necessarily be at <tt class="docutils literal"><span class="pre">main</span></tt>.  The most obvious example is an OS kernel.
+This is equivalent to <em class="xref std std-option">-fno-hosted</em>.</p>
+<p>StandardsLanguage Standards Supported by GCC, for details of
+freestanding and hosted environments.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fopenacc">
+<tt class="descname">-fopenacc</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fopenacc" title="Permalink to this definition">¶</a></dt>
+<dd><p id="index-8">Enable handling of OpenACC directives <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">acc</span></tt> in C/C++ and
+<tt class="docutils literal"><span class="pre">!$acc</span></tt> in Fortran.  When <a class="reference internal" href="#cmdoption-fopenacc"><em class="xref std std-option">-fopenacc</em></a> is specified, the
+compiler generates accelerated code according to the OpenACC Application
+Programming Interface v2.0 <a class="reference external" href="http://www.openacc.org/">http://www.openacc.org/</a>.  This option
+implies <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-pthread"><em class="xref std std-option">-pthread</em></a>, and thus is only supported on targets that
+have support for <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-pthread"><em class="xref std std-option">-pthread</em></a>.</p>
+<p>Note that this is an experimental feature, incomplete, and subject to
+change in future versions of GCC.  See
+<a class="reference external" href="https://gcc.gnu.org/wiki/OpenACC">https://gcc.gnu.org/wiki/OpenACC</a> for more information.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fopenmp">
+<tt class="descname">-fopenmp</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fopenmp" title="Permalink to this definition">¶</a></dt>
+<dd><p id="index-9">Enable handling of OpenMP directives <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">omp</span></tt> in C/C++ and
+<tt class="docutils literal"><span class="pre">!$omp</span></tt> in Fortran.  When <a class="reference internal" href="#cmdoption-fopenmp"><em class="xref std std-option">-fopenmp</em></a> is specified, the
+compiler generates parallel code according to the OpenMP Application
+Program Interface v4.0 <a class="reference external" href="http://www.openmp.org/">http://www.openmp.org/</a>.  This option
+implies <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-pthread"><em class="xref std std-option">-pthread</em></a>, and thus is only supported on targets that
+have support for <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-pthread"><em class="xref std std-option">-pthread</em></a>. <a class="reference internal" href="#cmdoption-fopenmp"><em class="xref std std-option">-fopenmp</em></a> implies
+<a class="reference internal" href="#cmdoption-fopenmp-simd"><em class="xref std std-option">-fopenmp-simd</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fopenmp-simd">
+<tt class="descname">-fopenmp-simd</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fopenmp-simd" title="Permalink to this definition">¶</a></dt>
+<dd><span class="target" id="index-10"></span><p id="index-11">Enable handling of OpenMPs SIMD directives with <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">omp</span></tt>
+in C/C++ and <tt class="docutils literal"><span class="pre">!$omp</span></tt> in Fortran. Other OpenMP directives
+are ignored.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fcilkplus">
+<tt class="descname">-fcilkplus</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fcilkplus" title="Permalink to this definition">¶</a></dt>
+<dd><p id="index-12">Enable the usage of Cilk Plus language extension features for C/C++.
+When the option <a class="reference internal" href="#cmdoption-fcilkplus"><em class="xref std std-option">-fcilkplus</em></a> is specified, enable the usage of
+the Cilk Plus Language extension features for C/C++.  The present
+implementation follows ABI version 1.2.  This is an experimental
+feature that is only partially complete, and whose interface may
+change in future versions of GCC as the official specification
+changes.  Currently, all features but <tt class="docutils literal"><span class="pre">_Cilk_for</span></tt> have been
+implemented.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fgnu-tm">
+<tt class="descname">-fgnu-tm</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fgnu-tm" title="Permalink to this definition">¶</a></dt>
+<dd><p>When the option <a class="reference internal" href="#cmdoption-fgnu-tm"><em class="xref std std-option">-fgnu-tm</em></a> is specified, the compiler
+generates code for the Linux variant of Intels current Transactional
+Memory ABI specification document (Revision 1.1, May 6 2009).  This is
+an experimental feature whose interface may change in future versions
+of GCC, as the official specification changes.  Please note that not
+all architectures are supported for this feature.</p>
+<p>For more information on GCCs support for transactional memory,
+Enabling libitmThe GNU Transactional Memory LibrarylibitmGNU
+Transactional Memory Library.</p>
+<p>Note that the transactional memory feature is not supported with
+non-call exceptions (<a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fnon-call-exceptions"><em class="xref std std-option">-fnon-call-exceptions</em></a>).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fms-extensions">
+<tt class="descname">-fms-extensions</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fms-extensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accept some non-standard constructs used in Microsoft header files.</p>
+<p>In C++ code, this allows member names in structures to be similar
+to previous types declarations.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">UOW</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">ABC</span> <span class="p">{</span>
+  <span class="n">UOW</span> <span class="n">UOW</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Some cases of unnamed fields in structures and unions are only
+accepted with this option.  Unnamed FieldsUnnamed struct/union
+fields within structs/unions, for details.</p>
+<p>Note that this option is off for all targets but x86
+targets using ms-abi.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fplan9-extensions">
+<tt class="descname">-fplan9-extensions</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fplan9-extensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accept some non-standard constructs used in Plan 9 code.</p>
+<p>This enables <a class="reference internal" href="#cmdoption-fms-extensions"><em class="xref std std-option">-fms-extensions</em></a>, permits passing pointers to
+structures with anonymous fields to functions that expect pointers to
+elements of the type of the field, and permits referring to anonymous
+fields declared using a typedef.  Unnamed FieldsUnnamed
+struct/union fields within structs/unions, for details.  This is only
+supported for C, not C++.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-trigraphs">
+<tt class="descname">-trigraphs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-trigraphs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Support ISO C trigraphs.  The <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> option (and <a class="reference internal" href="#cmdoption-std"><em class="xref std std-option">-std</em></a>
+options for strict ISO C conformance) implies <a class="reference internal" href="#cmdoption-trigraphs"><em class="xref std std-option">-trigraphs</em></a>.</p>
+<span class="target" id="index-13"></span><span class="target" id="index-14"></span></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-traditional">
+<tt class="descname">-traditional</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-traditional-cpp</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-traditional" title="Permalink to this definition">¶</a></dt>
+<dd><p>Formerly, these options caused GCC to attempt to emulate a pre-standard
+C compiler.  They are now only supported with the <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a> switch.
+The preprocessor continues to support a pre-standard mode.  See the GNU
+CPP manual for details.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fcond-mismatch">
+<tt class="descname">-fcond-mismatch</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fcond-mismatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow conditional expressions with mismatched types in the second and
+third arguments.  The value of such an expression is void.  This option
+is not supported for C++.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-flax-vector-conversions">
+<tt class="descname">-flax-vector-conversions</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-flax-vector-conversions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow implicit conversions between vectors with differing numbers of
+elements and/or incompatible element types.  This option should not be
+used for new code.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-funsigned-char">
+<tt class="descname">-funsigned-char</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-funsigned-char" title="Permalink to this definition">¶</a></dt>
+<dd><p>Let the type <tt class="docutils literal"><span class="pre">char</span></tt> be unsigned, like <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">char</span></tt>.</p>
+<p>Each kind of machine has a default for what <tt class="docutils literal"><span class="pre">char</span></tt> should
+be.  It is either like <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">char</span></tt> by default or like
+<tt class="docutils literal"><span class="pre">signed</span> <span class="pre">char</span></tt> by default.</p>
+<p>Ideally, a portable program should always use <tt class="docutils literal"><span class="pre">signed</span> <span class="pre">char</span></tt> or
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">char</span></tt> when it depends on the signedness of an object.
+But many programs have been written to use plain <tt class="docutils literal"><span class="pre">char</span></tt> and
+expect it to be signed, or expect it to be unsigned, depending on the
+machines they were written for.  This option, and its inverse, let you
+make such a program work with the opposite default.</p>
+<p>The type <tt class="docutils literal"><span class="pre">char</span></tt> is always a distinct type from each of
+<tt class="docutils literal"><span class="pre">signed</span> <span class="pre">char</span></tt> or <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">char</span></tt>, even though its behavior
+is always just like one of those two.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fsigned-char">
+<tt class="descname">-fsigned-char</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fsigned-char" title="Permalink to this definition">¶</a></dt>
+<dd><p>Let the type <tt class="docutils literal"><span class="pre">char</span></tt> be signed, like <tt class="docutils literal"><span class="pre">signed</span> <span class="pre">char</span></tt>.</p>
+<p>Note that this is equivalent to <em class="xref std std-option">-fno-unsigned-char</em>, which is
+the negative form of <a class="reference internal" href="#cmdoption-funsigned-char"><em class="xref std std-option">-funsigned-char</em></a>.  Likewise, the option
+<em class="xref std std-option">-fno-signed-char</em> is equivalent to <a class="reference internal" href="#cmdoption-funsigned-char"><em class="xref std std-option">-funsigned-char</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fsigned-bitfields">
+<tt class="descname">-fsigned-bitfields</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-funsigned-bitfields</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-fno-signed-bitfields</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-fno-unsigned-bitfields</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fsigned-bitfields" title="Permalink to this definition">¶</a></dt>
+<dd><p>These options control whether a bit-field is signed or unsigned, when the
+declaration does not use either <tt class="docutils literal"><span class="pre">signed</span></tt> or <tt class="docutils literal"><span class="pre">unsigned</span></tt>.  By
+default, such a bit-field is signed, because this is consistent: the
+basic integer types such as <tt class="docutils literal"><span class="pre">int</span></tt> are signed types.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="options-controlling-c++-dialect.html" title="Options Controlling C++ Dialect"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="compiling-c++-programs.html" title="Compiling C++ Programs"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gcc-command-options.html" >GCC Command Options</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

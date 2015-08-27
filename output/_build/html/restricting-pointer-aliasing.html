@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Restricting Pointer Aliasing &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C++ Language" href="extensions-to-the-c++-language.html" />
+    <link rel="next" title="Vague Linkage" href="vague-linkage.html" />
+    <link rel="prev" title="When is a Volatile C++ Object Accessed?" href="when-is-a-volatile-c++-object-accessed?.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="vague-linkage.html" title="Vague Linkage"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="when-is-a-volatile-c++-object-accessed?.html" title="When is a Volatile C++ Object Accessed?"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c++-language.html" accesskey="U">Extensions to the C++ Language</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="when-is-a-volatile-c++-object-accessed?.html"
+                        title="previous chapter">When is a Volatile C++ Object Accessed?</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="vague-linkage.html"
+                        title="next chapter">Vague Linkage</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/restricting-pointer-aliasing.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="restricting-pointer-aliasing">
+<h1>Restricting Pointer Aliasing<a class="headerlink" href="#restricting-pointer-aliasing" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><p id="index-2">As with the C front end, G++ understands the C99 feature of restricted pointers,
+specified with the <tt class="docutils literal"><span class="pre">__restrict__</span></tt>, or <tt class="docutils literal"><span class="pre">__restrict</span></tt> type
+qualifier.  Because you cannot compile C++ by specifying the <em class="xref std std-option">-std=c99</em>
+language flag, <tt class="docutils literal"><span class="pre">restrict</span></tt> is not a keyword in C++.</p>
+<p>In addition to allowing restricted pointers, you can specify restricted
+references, which indicate that the reference is not aliased in the local
+context.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">fn</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">__restrict__</span> <span class="n">rptr</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">__restrict__</span> <span class="n">rref</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the body of <tt class="docutils literal"><span class="pre">fn</span></tt>, <tt class="docutils literal"><span class="pre">rptr</span></tt> points to an unaliased integer and
+<tt class="docutils literal"><span class="pre">rref</span></tt> refers to a (different) unaliased integer.</p>
+<p>You may also specify whether a member functions <tt class="docutils literal"><span class="pre">this</span></tt> pointer is
+unaliased by using <tt class="docutils literal"><span class="pre">__restrict__</span></tt> as a member function qualifier.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">T</span><span class="o">::</span><span class="n">fn</span> <span class="p">()</span> <span class="n">__restrict__</span>
+<span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Within the body of <tt class="docutils literal"><span class="pre">T::fn</span></tt>, <tt class="docutils literal"><span class="pre">this</span></tt> has the effective
+definition <tt class="docutils literal"><span class="pre">T</span> <span class="pre">*__restrict__</span> <span class="pre">const</span> <span class="pre">this</span></tt>.  Notice that the
+interpretation of a <tt class="docutils literal"><span class="pre">__restrict__</span></tt> member function qualifier is
+different to that of <tt class="docutils literal"><span class="pre">const</span></tt> or <tt class="docutils literal"><span class="pre">volatile</span></tt> qualifier, in that it
+is applied to the pointer rather than the object.  This is consistent with
+other compilers that implement restricted pointers.</p>
+<p>As with all outermost parameter qualifiers, <tt class="docutils literal"><span class="pre">__restrict__</span></tt> is
+ignored in function definition matching.  This means you only need to
+specify <tt class="docutils literal"><span class="pre">__restrict__</span></tt> in a function definition, rather than
+in a function prototype as well.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="vague-linkage.html" title="Vague Linkage"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="when-is-a-volatile-c++-object-accessed?.html" title="When is a Volatile C++ Object Accessed?"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c++-language.html" >Extensions to the C++ Language</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

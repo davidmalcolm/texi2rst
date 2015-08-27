@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Named Address Spaces &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="Arrays of Length Zero" href="arrays-of-length-zero.html" />
+    <link rel="prev" title="Fixed-Point Types" href="fixed-point-types.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="arrays-of-length-zero.html" title="Arrays of Length Zero"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fixed-point-types.html" title="Fixed-Point Types"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Named Address Spaces</a><ul>
+<li><a class="reference internal" href="#avr-named-address-spaces">AVR Named Address Spaces</a></li>
+<li><a class="reference internal" href="#m32c-named-address-spaces">M32C Named Address Spaces</a></li>
+<li><a class="reference internal" href="#rl78-named-address-spaces">RL78 Named Address Spaces</a></li>
+<li><a class="reference internal" href="#spu-named-address-spaces">SPU Named Address Spaces</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fixed-point-types.html"
+                        title="previous chapter">Fixed-Point Types</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arrays-of-length-zero.html"
+                        title="next chapter">Arrays of Length Zero</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/named-address-spaces.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="named-address-spaces">
+<h1>Named Address Spaces<a class="headerlink" href="#named-address-spaces" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">As an extension, GNU C supports named address spaces as
+defined in the N1275 draft of ISO/IEC DTR 18037.  Support for named
+address spaces in GCC will evolve as the draft technical report
+changes.  Calling conventions for any target might also change.  At
+present, only the AVR, SPU, M32C, and RL78 targets support address
+spaces other than the generic address space.</p>
+<p>Address space identifiers may be used exactly like any other C type
+qualifier (e.g., <tt class="docutils literal"><span class="pre">const</span></tt> or <tt class="docutils literal"><span class="pre">volatile</span></tt>).  See the N1275
+document for more details.</p>
+<p>AVR Named Address Spaces</p>
+<div class="section" id="avr-named-address-spaces">
+<h2>AVR Named Address Spaces<a class="headerlink" href="#avr-named-address-spaces" title="Permalink to this headline">¶</a></h2>
+<p>On the AVR target, there are several address spaces that can be used
+in order to put read-only data into the flash memory and access that
+data by means of the special instructions <tt class="docutils literal"><span class="pre">LPM</span></tt> or <tt class="docutils literal"><span class="pre">ELPM</span></tt>
+needed to read from flash.</p>
+<p>Per default, any data including read-only data is located in RAM
+(the generic address space) so that non-generic address spaces are
+needed to locate read-only data in flash memory
+and to generate the right instructions to access this data
+without using (inline) assembler code.</p>
+<dl class="docutils">
+<dt>__flash</dt>
+<dd><tt class="docutils literal"><span class="pre">__flash</span></tt> AVR Named Address Spaces
+The <tt class="docutils literal"><span class="pre">__flash</span></tt> qualifier locates data in the
+<tt class="docutils literal"><span class="pre">.progmem.data</span></tt> section. Data is read using the <tt class="docutils literal"><span class="pre">LPM</span></tt>
+instruction. Pointers to this address space are 16 bits wide.</dd>
+<dt>__flash1__flash2__flash3__flash4__flash5</dt>
+<dd><tt class="docutils literal"><span class="pre">__flash1</span></tt> AVR Named Address Spaces
+<tt class="docutils literal"><span class="pre">__flash2</span></tt> AVR Named Address Spaces
+<tt class="docutils literal"><span class="pre">__flash3</span></tt> AVR Named Address Spaces
+<tt class="docutils literal"><span class="pre">__flash4</span></tt> AVR Named Address Spaces
+<tt class="docutils literal"><span class="pre">__flash5</span></tt> AVR Named Address Spaces
+These are 16-bit address spaces locating data in section
+<tt class="docutils literal"><span class="pre">.progmem``N</span></tt>.data`` where <tt class="docutils literal"><span class="pre">N</span></tt> refers to
+address space <tt class="docutils literal"><span class="pre">__flash``N``</span></tt>.
+The compiler sets the <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> segment register appropriately
+before reading data by means of the <tt class="docutils literal"><span class="pre">ELPM</span></tt> instruction.</dd>
+<dt>__memx</dt>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">__memx</span></tt> AVR Named Address Spaces
+This is a 24-bit address space that linearizes flash and RAM:
+If the high bit of the address is set, data is read from
+RAM using the lower two bytes as RAM address.
+If the high bit of the address is clear, data is read from flash
+with <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> set according to the high byte of the address.
+AVR Built-in Functions``__builtin_avr_flash_segment``.</p>
+<p class="last">Objects in this address space are located in <tt class="docutils literal"><span class="pre">.progmemx.data</span></tt>.</p>
+</dd>
+</dl>
+<p>Example</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">char</span> <span class="nf">my_read</span> <span class="p">(</span><span class="k">const</span> <span class="n">__flash</span> <span class="kt">char</span> <span class="o">**</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="cm">/* p is a pointer to RAM that points to a pointer to flash.</span>
+<span class="cm">       The first indirection of p reads that flash pointer</span>
+<span class="cm">       from RAM and the second indirection reads a char from this</span>
+<span class="cm">       flash address.  */</span>
+
+    <span class="k">return</span> <span class="o">**</span><span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* Locate array[] in flash memory */</span>
+<span class="k">const</span> <span class="n">__flash</span> <span class="kt">int</span> <span class="n">array</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span> <span class="p">};</span>
+
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="cm">/* Return 17 by reading from flash memory */</span>
+   <span class="k">return</span> <span class="n">array</span><span class="p">[</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For each named address space supported by avr-gcc there is an equally
+named but uppercase built-in macro defined.
+The purpose is to facilitate testing if respective address space
+support is available or not:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#ifdef __FLASH</span>
+<span class="k">const</span> <span class="n">__flash</span> <span class="kt">int</span> <span class="n">var</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">read_var</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">var</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">#else</span>
+<span class="cp">#include &lt;avr/pgmspace.h&gt; </span><span class="cm">/* From AVR-LibC */</span><span class="cp"></span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">var</span> <span class="n">PROGMEM</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">read_var</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">pgm_read_word</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">var</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">#endif </span><span class="cm">/* __FLASH */</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>Notice that attribute AVR Variable Attributes``progmem``
+locates data in flash but
+accesses to these data read from generic address space, i.e.
+from RAM,
+so that you need special accessors like <tt class="docutils literal"><span class="pre">pgm_read_byte</span></tt>
+from <a class="reference external" href="http://nongnu.org/avr-libc/user-manual/AVR-LibC">http://nongnu.org/avr-libc/user-manual/AVR-LibC</a>
+together with attribute <tt class="docutils literal"><span class="pre">progmem</span></tt>.</p>
+<p>Limitations and caveats</p>
+<ul>
+<li><p class="first">Reading across the 64KiB section boundary of
+the <tt class="docutils literal"><span class="pre">__flash</span></tt> or <tt class="docutils literal"><span class="pre">__flash``N``</span></tt> address spaces
+shows undefined behavior. The only address space that
+supports reading across the 64KiB flash segment boundaries is
+<tt class="docutils literal"><span class="pre">__memx</span></tt>.</p>
+<ul class="simple">
+<li>If you use one of the <tt class="docutils literal"><span class="pre">__flash``N``</span></tt> address spaces</li>
+</ul>
+<p>you must arrange your linker script to locate the
+<tt class="docutils literal"><span class="pre">.progmem``N</span></tt>.data`` sections according to your needs.</p>
+<ul class="simple">
+<li>Any data or pointers to the non-generic address spaces must</li>
+</ul>
+<p>be qualified as <tt class="docutils literal"><span class="pre">const</span></tt>, i.e. as read-only data.
+This still applies if the data in one of these address
+spaces like software version number or calibration lookup table are intended to
+be changed after load time by, say, a boot loader. In this case
+the right qualification is <tt class="docutils literal"><span class="pre">const</span></tt> <tt class="docutils literal"><span class="pre">volatile</span></tt> so that the compiler
+must not optimize away known values or insert them
+as immediates into operands of instructions.</p>
+<ul class="simple">
+<li>The following code initializes a variable <tt class="docutils literal"><span class="pre">pfoo</span></tt></li>
+</ul>
+<p>located in static storage with a 24-bit address:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="k">const</span> <span class="n">__memx</span> <span class="kt">char</span> <span class="n">foo</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">__memx</span> <span class="kt">void</span> <span class="o">*</span><span class="n">pfoo</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">foo</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Such code requires at least binutils 2.23, see
+<a class="reference external" href="http://sourceware.org/PR13503PR13503">http://sourceware.org/PR13503PR13503</a>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="m32c-named-address-spaces">
+<h2>M32C Named Address Spaces<a class="headerlink" href="#m32c-named-address-spaces" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">__far</span></tt> M32C Named Address Spaces</p>
+<p>On the M32C target, with the R8C and M16C CPU variants, variables
+qualified with <tt class="docutils literal"><span class="pre">__far</span></tt> are accessed using 32-bit addresses in
+order to access memory beyond the first 64Ki bytes.  If
+<tt class="docutils literal"><span class="pre">__far</span></tt> is used with the M32CM or M32C CPU variants, it has no
+effect.</p>
+</div>
+<div class="section" id="rl78-named-address-spaces">
+<h2>RL78 Named Address Spaces<a class="headerlink" href="#rl78-named-address-spaces" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">__far</span></tt> RL78 Named Address Spaces</p>
+<p>On the RL78 target, variables qualified with <tt class="docutils literal"><span class="pre">__far</span></tt> are accessed
+with 32-bit pointers (20-bit addresses) rather than the default 16-bit
+addresses.  Non-far variables are assumed to appear in the topmost
+64KiB of the address space.</p>
+</div>
+<div class="section" id="spu-named-address-spaces">
+<h2>SPU Named Address Spaces<a class="headerlink" href="#spu-named-address-spaces" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">__ea</span></tt> SPU Named Address Spaces</p>
+<p>On the SPU target variables may be declared as
+belonging to another address space by qualifying the type with the
+<tt class="docutils literal"><span class="pre">__ea</span></tt> address space identifier:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="kt">int</span> <span class="n">__ea</span> <span class="n">i</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The compiler generates special code to access the variable <tt class="docutils literal"><span class="pre">i</span></tt>.
+It may use runtime library
+support, or generate special machine instructions to access that address
+space.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="arrays-of-length-zero.html" title="Arrays of Length Zero"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fixed-point-types.html" title="Fixed-Point Types"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

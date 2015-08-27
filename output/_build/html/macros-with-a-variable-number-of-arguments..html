@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Macros with a Variable Number of Arguments. &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="Slightly Looser Rules for Escaped Newlines" href="slightly-looser-rules-for-escaped-newlines.html" />
+    <link rel="prev" title="Arrays of Variable Length" href="arrays-of-variable-length.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="slightly-looser-rules-for-escaped-newlines.html" title="Slightly Looser Rules for Escaped Newlines"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arrays-of-variable-length.html" title="Arrays of Variable Length"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="arrays-of-variable-length.html"
+                        title="previous chapter">Arrays of Variable Length</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slightly-looser-rules-for-escaped-newlines.html"
+                        title="next chapter">Slightly Looser Rules for Escaped Newlines</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/macros-with-a-variable-number-of-arguments..txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="macros-with-a-variable-number-of-arguments">
+<h1>Macros with a Variable Number of Arguments.<a class="headerlink" href="#macros-with-a-variable-number-of-arguments" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">In the ISO C standard of 1999, a macro can be declared to accept a
+variable number of arguments much as a function can.  The syntax for
+defining the macro is similar to that of a function.  Here is an
+example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define debug(format, ...) fprintf (stderr, format, __VA_ARGS__)</span>
+</pre></div>
+</div>
+<p>Here ... is a <em class="dfn">variable argument</em>.  In the invocation of
+such a macro, it represents the zero or more tokens until the closing
+parenthesis that ends the invocation, including any commas.  This set of
+tokens replaces the identifier <tt class="docutils literal"><span class="pre">__VA_ARGS__</span></tt> in the macro body
+wherever it appears.  See the CPP manual for more information.</p>
+<p>GCC has long supported variadic macros, and used a different syntax that
+allowed you to give a name to the variable arguments just like any other
+argument.  Here is an example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define debug(format, args...) fprintf (stderr, format, args)</span>
+</pre></div>
+</div>
+<p>This is in all ways equivalent to the ISO C example above, but arguably
+more readable and descriptive.</p>
+<p>GNU CPP has two further variadic macro extensions, and permits them to
+be used with either of the above forms of macro definition.</p>
+<p>In standard C, you are not allowed to leave the variable argument out
+entirely; but you are allowed to pass an empty argument.  For example,
+this invocation is invalid in ISO C, because there is no comma after
+the string:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">debug</span> <span class="p">(</span><span class="s">&quot;A message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>GNU CPP permits you to completely omit the variable arguments in this
+way.  In the above examples, the compiler would complain, though since
+the expansion of the macro still has the extra comma after the format
+string.</p>
+<p>To help solve this problem, CPP behaves specially for variable arguments
+used with the token paste operator, ##.  If instead you write</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define debug(format, ...) fprintf (stderr, format, ## __VA_ARGS__)</span>
+</pre></div>
+</div>
+<p>and if the variable arguments are omitted or empty, the ##
+operator causes the preprocessor to remove the comma before it.  If you
+do provide some variable arguments in your macro invocation, GNU CPP
+does not complain about the paste operation and instead places the
+variable arguments after the comma.  Just like any other pasted macro
+argument, these arguments are not macro expanded.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="slightly-looser-rules-for-escaped-newlines.html" title="Slightly Looser Rules for Escaped Newlines"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arrays-of-variable-length.html" title="Arrays of Variable Length"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

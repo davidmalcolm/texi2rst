@@ -1,0 +1,614 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Other Built-in Functions Provided by GCC &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="Built-in Functions Specific to Particular Target Machines" href="built-in-functions-specific-to-particular-target-machines.html" />
+    <link rel="prev" title="Cilk Plus C/C++ Language Extension Built-in Functions" href="cilk-plus-c-c++-language-extension-built-in-functions.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="built-in-functions-specific-to-particular-target-machines.html" title="Built-in Functions Specific to Particular Target Machines"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cilk-plus-c-c++-language-extension-built-in-functions.html" title="Cilk Plus C/C++ Language Extension Built-in Functions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cilk-plus-c-c++-language-extension-built-in-functions.html"
+                        title="previous chapter">Cilk Plus C/C++ Language Extension Built-in Functions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="built-in-functions-specific-to-particular-target-machines.html"
+                        title="next chapter">Built-in Functions Specific to Particular Target Machines</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/other-built-in-functions-provided-by-gcc.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="other-built-in-functions-provided-by-gcc">
+<h1>Other Built-in Functions Provided by GCC<a class="headerlink" href="#other-built-in-functions-provided-by-gcc" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span><span class="target" id="index-6"></span><span class="target" id="index-7"></span><span class="target" id="index-8"></span><span class="target" id="index-9"></span><span class="target" id="index-10"></span><span class="target" id="index-11"></span><span class="target" id="index-12"></span><span class="target" id="index-13"></span><span class="target" id="index-14"></span><span class="target" id="index-15"></span><span class="target" id="index-16"></span><span class="target" id="index-17"></span><span class="target" id="index-18"></span><span class="target" id="index-19"></span><span class="target" id="index-20"></span><span class="target" id="index-21"></span><span class="target" id="index-22"></span><span class="target" id="index-23"></span><span class="target" id="index-24"></span><span class="target" id="index-25"></span><span class="target" id="index-26"></span><span class="target" id="index-27"></span><span class="target" id="index-28"></span><span class="target" id="index-29"></span><span class="target" id="index-30"></span><span class="target" id="index-31"></span><span class="target" id="index-32"></span><span class="target" id="index-33"></span><span class="target" id="index-34"></span><span class="target" id="index-35"></span><span class="target" id="index-36"></span><span class="target" id="index-37"></span><span class="target" id="index-38"></span><span class="target" id="index-39"></span><span class="target" id="index-40"></span><span class="target" id="index-41"></span><span class="target" id="index-42"></span><span class="target" id="index-43"></span><span class="target" id="index-44"></span><span class="target" id="index-45"></span><span class="target" id="index-46"></span><span class="target" id="index-47"></span><span class="target" id="index-48"></span><span class="target" id="index-49"></span><span class="target" id="index-50"></span><span class="target" id="index-51"></span><span class="target" id="index-52"></span><span class="target" id="index-53"></span><span class="target" id="index-54"></span><span class="target" id="index-55"></span><span class="target" id="index-56"></span><span class="target" id="index-57"></span><span class="target" id="index-58"></span><span class="target" id="index-59"></span><span class="target" id="index-60"></span><span class="target" id="index-61"></span><span class="target" id="index-62"></span><span class="target" id="index-63"></span><span class="target" id="index-64"></span><span class="target" id="index-65"></span><span class="target" id="index-66"></span><span class="target" id="index-67"></span><span class="target" id="index-68"></span><span class="target" id="index-69"></span><span class="target" id="index-70"></span><span class="target" id="index-71"></span><span class="target" id="index-72"></span><span class="target" id="index-73"></span><span class="target" id="index-74"></span><span class="target" id="index-75"></span><span class="target" id="index-76"></span><span class="target" id="index-77"></span><span class="target" id="index-78"></span><span class="target" id="index-79"></span><span class="target" id="index-80"></span><span class="target" id="index-81"></span><span class="target" id="index-82"></span><span class="target" id="index-83"></span><span class="target" id="index-84"></span><span class="target" id="index-85"></span><span class="target" id="index-86"></span><span class="target" id="index-87"></span><span class="target" id="index-88"></span><span class="target" id="index-89"></span><span class="target" id="index-90"></span><span class="target" id="index-91"></span><span class="target" id="index-92"></span><span class="target" id="index-93"></span><span class="target" id="index-94"></span><span class="target" id="index-95"></span><span class="target" id="index-96"></span><span class="target" id="index-97"></span><span class="target" id="index-98"></span><span class="target" id="index-99"></span><span class="target" id="index-100"></span><span class="target" id="index-101"></span><span class="target" id="index-102"></span><span class="target" id="index-103"></span><span class="target" id="index-104"></span><span class="target" id="index-105"></span><span class="target" id="index-106"></span><span class="target" id="index-107"></span><span class="target" id="index-108"></span><span class="target" id="index-109"></span><span class="target" id="index-110"></span><span class="target" id="index-111"></span><span class="target" id="index-112"></span><span class="target" id="index-113"></span><span class="target" id="index-114"></span><span class="target" id="index-115"></span><span class="target" id="index-116"></span><span class="target" id="index-117"></span><span class="target" id="index-118"></span><span class="target" id="index-119"></span><span class="target" id="index-120"></span><span class="target" id="index-121"></span><span class="target" id="index-122"></span><span class="target" id="index-123"></span><span class="target" id="index-124"></span><span class="target" id="index-125"></span><span class="target" id="index-126"></span><span class="target" id="index-127"></span><span class="target" id="index-128"></span><span class="target" id="index-129"></span><span class="target" id="index-130"></span><span class="target" id="index-131"></span><span class="target" id="index-132"></span><span class="target" id="index-133"></span><span class="target" id="index-134"></span><span class="target" id="index-135"></span><span class="target" id="index-136"></span><span class="target" id="index-137"></span><span class="target" id="index-138"></span><span class="target" id="index-139"></span><span class="target" id="index-140"></span><span class="target" id="index-141"></span><span class="target" id="index-142"></span><span class="target" id="index-143"></span><span class="target" id="index-144"></span><span class="target" id="index-145"></span><span class="target" id="index-146"></span><span class="target" id="index-147"></span><span class="target" id="index-148"></span><span class="target" id="index-149"></span><span class="target" id="index-150"></span><span class="target" id="index-151"></span><span class="target" id="index-152"></span><span class="target" id="index-153"></span><span class="target" id="index-154"></span><span class="target" id="index-155"></span><span class="target" id="index-156"></span><span class="target" id="index-157"></span><span class="target" id="index-158"></span><span class="target" id="index-159"></span><span class="target" id="index-160"></span><span class="target" id="index-161"></span><span class="target" id="index-162"></span><span class="target" id="index-163"></span><span class="target" id="index-164"></span><span class="target" id="index-165"></span><span class="target" id="index-166"></span><span class="target" id="index-167"></span><span class="target" id="index-168"></span><span class="target" id="index-169"></span><span class="target" id="index-170"></span><span class="target" id="index-171"></span><span class="target" id="index-172"></span><span class="target" id="index-173"></span><span class="target" id="index-174"></span><span class="target" id="index-175"></span><span class="target" id="index-176"></span><span class="target" id="index-177"></span><span class="target" id="index-178"></span><span class="target" id="index-179"></span><span class="target" id="index-180"></span><span class="target" id="index-181"></span><span class="target" id="index-182"></span><span class="target" id="index-183"></span><span class="target" id="index-184"></span><span class="target" id="index-185"></span><span class="target" id="index-186"></span><span class="target" id="index-187"></span><span class="target" id="index-188"></span><span class="target" id="index-189"></span><span class="target" id="index-190"></span><span class="target" id="index-191"></span><span class="target" id="index-192"></span><span class="target" id="index-193"></span><span class="target" id="index-194"></span><span class="target" id="index-195"></span><span class="target" id="index-196"></span><span class="target" id="index-197"></span><span class="target" id="index-198"></span><span class="target" id="index-199"></span><span class="target" id="index-200"></span><span class="target" id="index-201"></span><span class="target" id="index-202"></span><span class="target" id="index-203"></span><span class="target" id="index-204"></span><span class="target" id="index-205"></span><span class="target" id="index-206"></span><span class="target" id="index-207"></span><span class="target" id="index-208"></span><span class="target" id="index-209"></span><span class="target" id="index-210"></span><span class="target" id="index-211"></span><span class="target" id="index-212"></span><span class="target" id="index-213"></span><span class="target" id="index-214"></span><span class="target" id="index-215"></span><span class="target" id="index-216"></span><span class="target" id="index-217"></span><span class="target" id="index-218"></span><span class="target" id="index-219"></span><span class="target" id="index-220"></span><span class="target" id="index-221"></span><span class="target" id="index-222"></span><span class="target" id="index-223"></span><span class="target" id="index-224"></span><span class="target" id="index-225"></span><span class="target" id="index-226"></span><span class="target" id="index-227"></span><span class="target" id="index-228"></span><span class="target" id="index-229"></span><span class="target" id="index-230"></span><span class="target" id="index-231"></span><span class="target" id="index-232"></span><span class="target" id="index-233"></span><span class="target" id="index-234"></span><span class="target" id="index-235"></span><span class="target" id="index-236"></span><span class="target" id="index-237"></span><span class="target" id="index-238"></span><span class="target" id="index-239"></span><span class="target" id="index-240"></span><span class="target" id="index-241"></span><span class="target" id="index-242"></span><span class="target" id="index-243"></span><span class="target" id="index-244"></span><span class="target" id="index-245"></span><span class="target" id="index-246"></span><span class="target" id="index-247"></span><span class="target" id="index-248"></span><span class="target" id="index-249"></span><span class="target" id="index-250"></span><span class="target" id="index-251"></span><span class="target" id="index-252"></span><span class="target" id="index-253"></span><span class="target" id="index-254"></span><span class="target" id="index-255"></span><span class="target" id="index-256"></span><span class="target" id="index-257"></span><span class="target" id="index-258"></span><span class="target" id="index-259"></span><span class="target" id="index-260"></span><span class="target" id="index-261"></span><span class="target" id="index-262"></span><span class="target" id="index-263"></span><span class="target" id="index-264"></span><span class="target" id="index-265"></span><span class="target" id="index-266"></span><span class="target" id="index-267"></span><span class="target" id="index-268"></span><span class="target" id="index-269"></span><span class="target" id="index-270"></span><span class="target" id="index-271"></span><span class="target" id="index-272"></span><span class="target" id="index-273"></span><span class="target" id="index-274"></span><span class="target" id="index-275"></span><span class="target" id="index-276"></span><span class="target" id="index-277"></span><span class="target" id="index-278"></span><span class="target" id="index-279"></span><span class="target" id="index-280"></span><span class="target" id="index-281"></span><span class="target" id="index-282"></span><span class="target" id="index-283"></span><span class="target" id="index-284"></span><span class="target" id="index-285"></span><span class="target" id="index-286"></span><span class="target" id="index-287"></span><span class="target" id="index-288"></span><span class="target" id="index-289"></span><span class="target" id="index-290"></span><span class="target" id="index-291"></span><span class="target" id="index-292"></span><span class="target" id="index-293"></span><span class="target" id="index-294"></span><span class="target" id="index-295"></span><span class="target" id="index-296"></span><span class="target" id="index-297"></span><span class="target" id="index-298"></span><span class="target" id="index-299"></span><span class="target" id="index-300"></span><span class="target" id="index-301"></span><span class="target" id="index-302"></span><span class="target" id="index-303"></span><span class="target" id="index-304"></span><span class="target" id="index-305"></span><span class="target" id="index-306"></span><span class="target" id="index-307"></span><span class="target" id="index-308"></span><span class="target" id="index-309"></span><span class="target" id="index-310"></span><span class="target" id="index-311"></span><span class="target" id="index-312"></span><span class="target" id="index-313"></span><span class="target" id="index-314"></span><span class="target" id="index-315"></span><span class="target" id="index-316"></span><span class="target" id="index-317"></span><span class="target" id="index-318"></span><span class="target" id="index-319"></span><span class="target" id="index-320"></span><span class="target" id="index-321"></span><span class="target" id="index-322"></span><span class="target" id="index-323"></span><span class="target" id="index-324"></span><span class="target" id="index-325"></span><span class="target" id="index-326"></span><span class="target" id="index-327"></span><span class="target" id="index-328"></span><span class="target" id="index-329"></span><span class="target" id="index-330"></span><span class="target" id="index-331"></span><span class="target" id="index-332"></span><span class="target" id="index-333"></span><span class="target" id="index-334"></span><span class="target" id="index-335"></span><span class="target" id="index-336"></span><span class="target" id="index-337"></span><span class="target" id="index-338"></span><span class="target" id="index-339"></span><span class="target" id="index-340"></span><span class="target" id="index-341"></span><span class="target" id="index-342"></span><span class="target" id="index-343"></span><span class="target" id="index-344"></span><span class="target" id="index-345"></span><span class="target" id="index-346"></span><span class="target" id="index-347"></span><span class="target" id="index-348"></span><span class="target" id="index-349"></span><span class="target" id="index-350"></span><span class="target" id="index-351"></span><span class="target" id="index-352"></span><span class="target" id="index-353"></span><span class="target" id="index-354"></span><span class="target" id="index-355"></span><span class="target" id="index-356"></span><span class="target" id="index-357"></span><span class="target" id="index-358"></span><span class="target" id="index-359"></span><span class="target" id="index-360"></span><span class="target" id="index-361"></span><span class="target" id="index-362"></span><span class="target" id="index-363"></span><span class="target" id="index-364"></span><span class="target" id="index-365"></span><span class="target" id="index-366"></span><span class="target" id="index-367"></span><span class="target" id="index-368"></span><span class="target" id="index-369"></span><span class="target" id="index-370"></span><span class="target" id="index-371"></span><span class="target" id="index-372"></span><span class="target" id="index-373"></span><span class="target" id="index-374"></span><span class="target" id="index-375"></span><span class="target" id="index-376"></span><span class="target" id="index-377"></span><span class="target" id="index-378"></span><span class="target" id="index-379"></span><span class="target" id="index-380"></span><span class="target" id="index-381"></span><span class="target" id="index-382"></span><span class="target" id="index-383"></span><span class="target" id="index-384"></span><span class="target" id="index-385"></span><span class="target" id="index-386"></span><span class="target" id="index-387"></span><span class="target" id="index-388"></span><span class="target" id="index-389"></span><span class="target" id="index-390"></span><span class="target" id="index-391"></span><span class="target" id="index-392"></span><p id="index-393">GCC provides a large number of built-in functions other than the ones
+mentioned above.  Some of these are for internal use in the processing
+of exceptions or variable-length argument lists and are not
+documented here because they may change from time to time; we do not
+recommend general use of these functions.</p>
+<p>The remaining functions are provided for optimization purposes.</p>
+<p id="index-394">GCC includes built-in versions of many of the functions in the standard
+C library.  The versions prefixed with <tt class="docutils literal"><span class="pre">__builtin_</span></tt> are always
+treated as having the same meaning as the C library function even if you
+specify the <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fno-builtin"><em class="xref std std-option">-fno-builtin</em></a> option.  (C Dialect Options)
+Many of these functions are only optimized in certain cases; if they are
+not optimized in a particular case, a call to the library function is
+emitted.</p>
+<span class="target" id="index-395"></span><p id="index-396">Outside strict ISO C mode (<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>, <em class="xref std std-option">-std=c90</em>,
+<em class="xref std std-option">-std=c99</em> or <em class="xref std std-option">-std=c11</em>), the functions
+<tt class="docutils literal"><span class="pre">_exit</span></tt>, <tt class="docutils literal"><span class="pre">alloca</span></tt>, <tt class="docutils literal"><span class="pre">bcmp</span></tt>, <tt class="docutils literal"><span class="pre">bzero</span></tt>,
+<tt class="docutils literal"><span class="pre">dcgettext</span></tt>, <tt class="docutils literal"><span class="pre">dgettext</span></tt>, <tt class="docutils literal"><span class="pre">dremf</span></tt>, <tt class="docutils literal"><span class="pre">dreml</span></tt>,
+<tt class="docutils literal"><span class="pre">drem</span></tt>, <tt class="docutils literal"><span class="pre">exp10f</span></tt>, <tt class="docutils literal"><span class="pre">exp10l</span></tt>, <tt class="docutils literal"><span class="pre">exp10</span></tt>, <tt class="docutils literal"><span class="pre">ffsll</span></tt>,
+<tt class="docutils literal"><span class="pre">ffsl</span></tt>, <tt class="docutils literal"><span class="pre">ffs</span></tt>, <tt class="docutils literal"><span class="pre">fprintf_unlocked</span></tt>,
+<tt class="docutils literal"><span class="pre">fputs_unlocked</span></tt>, <tt class="docutils literal"><span class="pre">gammaf</span></tt>, <tt class="docutils literal"><span class="pre">gammal</span></tt>, <tt class="docutils literal"><span class="pre">gamma</span></tt>,
+<tt class="docutils literal"><span class="pre">gammaf_r</span></tt>, <tt class="docutils literal"><span class="pre">gammal_r</span></tt>, <tt class="docutils literal"><span class="pre">gamma_r</span></tt>, <tt class="docutils literal"><span class="pre">gettext</span></tt>,
+<tt class="docutils literal"><span class="pre">index</span></tt>, <tt class="docutils literal"><span class="pre">isascii</span></tt>, <tt class="docutils literal"><span class="pre">j0f</span></tt>, <tt class="docutils literal"><span class="pre">j0l</span></tt>, <tt class="docutils literal"><span class="pre">j0</span></tt>,
+<tt class="docutils literal"><span class="pre">j1f</span></tt>, <tt class="docutils literal"><span class="pre">j1l</span></tt>, <tt class="docutils literal"><span class="pre">j1</span></tt>, <tt class="docutils literal"><span class="pre">jnf</span></tt>, <tt class="docutils literal"><span class="pre">jnl</span></tt>, <tt class="docutils literal"><span class="pre">jn</span></tt>,
+<tt class="docutils literal"><span class="pre">lgammaf_r</span></tt>, <tt class="docutils literal"><span class="pre">lgammal_r</span></tt>, <tt class="docutils literal"><span class="pre">lgamma_r</span></tt>, <tt class="docutils literal"><span class="pre">mempcpy</span></tt>,
+<tt class="docutils literal"><span class="pre">pow10f</span></tt>, <tt class="docutils literal"><span class="pre">pow10l</span></tt>, <tt class="docutils literal"><span class="pre">pow10</span></tt>, <tt class="docutils literal"><span class="pre">printf_unlocked</span></tt>,
+<tt class="docutils literal"><span class="pre">rindex</span></tt>, <tt class="docutils literal"><span class="pre">scalbf</span></tt>, <tt class="docutils literal"><span class="pre">scalbl</span></tt>, <tt class="docutils literal"><span class="pre">scalb</span></tt>,
+<tt class="docutils literal"><span class="pre">signbit</span></tt>, <tt class="docutils literal"><span class="pre">signbitf</span></tt>, <tt class="docutils literal"><span class="pre">signbitl</span></tt>, <tt class="docutils literal"><span class="pre">signbitd32</span></tt>,
+<tt class="docutils literal"><span class="pre">signbitd64</span></tt>, <tt class="docutils literal"><span class="pre">signbitd128</span></tt>, <tt class="docutils literal"><span class="pre">significandf</span></tt>,
+<tt class="docutils literal"><span class="pre">significandl</span></tt>, <tt class="docutils literal"><span class="pre">significand</span></tt>, <tt class="docutils literal"><span class="pre">sincosf</span></tt>,
+<tt class="docutils literal"><span class="pre">sincosl</span></tt>, <tt class="docutils literal"><span class="pre">sincos</span></tt>, <tt class="docutils literal"><span class="pre">stpcpy</span></tt>, <tt class="docutils literal"><span class="pre">stpncpy</span></tt>,
+<tt class="docutils literal"><span class="pre">strcasecmp</span></tt>, <tt class="docutils literal"><span class="pre">strdup</span></tt>, <tt class="docutils literal"><span class="pre">strfmon</span></tt>, <tt class="docutils literal"><span class="pre">strncasecmp</span></tt>,
+<tt class="docutils literal"><span class="pre">strndup</span></tt>, <tt class="docutils literal"><span class="pre">toascii</span></tt>, <tt class="docutils literal"><span class="pre">y0f</span></tt>, <tt class="docutils literal"><span class="pre">y0l</span></tt>, <tt class="docutils literal"><span class="pre">y0</span></tt>,
+<tt class="docutils literal"><span class="pre">y1f</span></tt>, <tt class="docutils literal"><span class="pre">y1l</span></tt>, <tt class="docutils literal"><span class="pre">y1</span></tt>, <tt class="docutils literal"><span class="pre">ynf</span></tt>, <tt class="docutils literal"><span class="pre">ynl</span></tt> and
+<tt class="docutils literal"><span class="pre">yn</span></tt>
+may be handled as built-in functions.
+All these functions have corresponding versions
+prefixed with <tt class="docutils literal"><span class="pre">__builtin_</span></tt>, which may be used even in strict C90
+mode.</p>
+<p>The ISO C99 functions
+<tt class="docutils literal"><span class="pre">_Exit</span></tt>, <tt class="docutils literal"><span class="pre">acoshf</span></tt>, <tt class="docutils literal"><span class="pre">acoshl</span></tt>, <tt class="docutils literal"><span class="pre">acosh</span></tt>, <tt class="docutils literal"><span class="pre">asinhf</span></tt>,
+<tt class="docutils literal"><span class="pre">asinhl</span></tt>, <tt class="docutils literal"><span class="pre">asinh</span></tt>, <tt class="docutils literal"><span class="pre">atanhf</span></tt>, <tt class="docutils literal"><span class="pre">atanhl</span></tt>, <tt class="docutils literal"><span class="pre">atanh</span></tt>,
+<tt class="docutils literal"><span class="pre">cabsf</span></tt>, <tt class="docutils literal"><span class="pre">cabsl</span></tt>, <tt class="docutils literal"><span class="pre">cabs</span></tt>, <tt class="docutils literal"><span class="pre">cacosf</span></tt>, <tt class="docutils literal"><span class="pre">cacoshf</span></tt>,
+<tt class="docutils literal"><span class="pre">cacoshl</span></tt>, <tt class="docutils literal"><span class="pre">cacosh</span></tt>, <tt class="docutils literal"><span class="pre">cacosl</span></tt>, <tt class="docutils literal"><span class="pre">cacos</span></tt>,
+<tt class="docutils literal"><span class="pre">cargf</span></tt>, <tt class="docutils literal"><span class="pre">cargl</span></tt>, <tt class="docutils literal"><span class="pre">carg</span></tt>, <tt class="docutils literal"><span class="pre">casinf</span></tt>, <tt class="docutils literal"><span class="pre">casinhf</span></tt>,
+<tt class="docutils literal"><span class="pre">casinhl</span></tt>, <tt class="docutils literal"><span class="pre">casinh</span></tt>, <tt class="docutils literal"><span class="pre">casinl</span></tt>, <tt class="docutils literal"><span class="pre">casin</span></tt>,
+<tt class="docutils literal"><span class="pre">catanf</span></tt>, <tt class="docutils literal"><span class="pre">catanhf</span></tt>, <tt class="docutils literal"><span class="pre">catanhl</span></tt>, <tt class="docutils literal"><span class="pre">catanh</span></tt>,
+<tt class="docutils literal"><span class="pre">catanl</span></tt>, <tt class="docutils literal"><span class="pre">catan</span></tt>, <tt class="docutils literal"><span class="pre">cbrtf</span></tt>, <tt class="docutils literal"><span class="pre">cbrtl</span></tt>, <tt class="docutils literal"><span class="pre">cbrt</span></tt>,
+<tt class="docutils literal"><span class="pre">ccosf</span></tt>, <tt class="docutils literal"><span class="pre">ccoshf</span></tt>, <tt class="docutils literal"><span class="pre">ccoshl</span></tt>, <tt class="docutils literal"><span class="pre">ccosh</span></tt>, <tt class="docutils literal"><span class="pre">ccosl</span></tt>,
+<tt class="docutils literal"><span class="pre">ccos</span></tt>, <tt class="docutils literal"><span class="pre">cexpf</span></tt>, <tt class="docutils literal"><span class="pre">cexpl</span></tt>, <tt class="docutils literal"><span class="pre">cexp</span></tt>, <tt class="docutils literal"><span class="pre">cimagf</span></tt>,
+<tt class="docutils literal"><span class="pre">cimagl</span></tt>, <tt class="docutils literal"><span class="pre">cimag</span></tt>, <tt class="docutils literal"><span class="pre">clogf</span></tt>, <tt class="docutils literal"><span class="pre">clogl</span></tt>, <tt class="docutils literal"><span class="pre">clog</span></tt>,
+<tt class="docutils literal"><span class="pre">conjf</span></tt>, <tt class="docutils literal"><span class="pre">conjl</span></tt>, <tt class="docutils literal"><span class="pre">conj</span></tt>, <tt class="docutils literal"><span class="pre">copysignf</span></tt>, <tt class="docutils literal"><span class="pre">copysignl</span></tt>,
+<tt class="docutils literal"><span class="pre">copysign</span></tt>, <tt class="docutils literal"><span class="pre">cpowf</span></tt>, <tt class="docutils literal"><span class="pre">cpowl</span></tt>, <tt class="docutils literal"><span class="pre">cpow</span></tt>, <tt class="docutils literal"><span class="pre">cprojf</span></tt>,
+<tt class="docutils literal"><span class="pre">cprojl</span></tt>, <tt class="docutils literal"><span class="pre">cproj</span></tt>, <tt class="docutils literal"><span class="pre">crealf</span></tt>, <tt class="docutils literal"><span class="pre">creall</span></tt>, <tt class="docutils literal"><span class="pre">creal</span></tt>,
+<tt class="docutils literal"><span class="pre">csinf</span></tt>, <tt class="docutils literal"><span class="pre">csinhf</span></tt>, <tt class="docutils literal"><span class="pre">csinhl</span></tt>, <tt class="docutils literal"><span class="pre">csinh</span></tt>, <tt class="docutils literal"><span class="pre">csinl</span></tt>,
+<tt class="docutils literal"><span class="pre">csin</span></tt>, <tt class="docutils literal"><span class="pre">csqrtf</span></tt>, <tt class="docutils literal"><span class="pre">csqrtl</span></tt>, <tt class="docutils literal"><span class="pre">csqrt</span></tt>, <tt class="docutils literal"><span class="pre">ctanf</span></tt>,
+<tt class="docutils literal"><span class="pre">ctanhf</span></tt>, <tt class="docutils literal"><span class="pre">ctanhl</span></tt>, <tt class="docutils literal"><span class="pre">ctanh</span></tt>, <tt class="docutils literal"><span class="pre">ctanl</span></tt>, <tt class="docutils literal"><span class="pre">ctan</span></tt>,
+<tt class="docutils literal"><span class="pre">erfcf</span></tt>, <tt class="docutils literal"><span class="pre">erfcl</span></tt>, <tt class="docutils literal"><span class="pre">erfc</span></tt>, <tt class="docutils literal"><span class="pre">erff</span></tt>, <tt class="docutils literal"><span class="pre">erfl</span></tt>,
+<tt class="docutils literal"><span class="pre">erf</span></tt>, <tt class="docutils literal"><span class="pre">exp2f</span></tt>, <tt class="docutils literal"><span class="pre">exp2l</span></tt>, <tt class="docutils literal"><span class="pre">exp2</span></tt>, <tt class="docutils literal"><span class="pre">expm1f</span></tt>,
+<tt class="docutils literal"><span class="pre">expm1l</span></tt>, <tt class="docutils literal"><span class="pre">expm1</span></tt>, <tt class="docutils literal"><span class="pre">fdimf</span></tt>, <tt class="docutils literal"><span class="pre">fdiml</span></tt>, <tt class="docutils literal"><span class="pre">fdim</span></tt>,
+<tt class="docutils literal"><span class="pre">fmaf</span></tt>, <tt class="docutils literal"><span class="pre">fmal</span></tt>, <tt class="docutils literal"><span class="pre">fmaxf</span></tt>, <tt class="docutils literal"><span class="pre">fmaxl</span></tt>, <tt class="docutils literal"><span class="pre">fmax</span></tt>,
+<tt class="docutils literal"><span class="pre">fma</span></tt>, <tt class="docutils literal"><span class="pre">fminf</span></tt>, <tt class="docutils literal"><span class="pre">fminl</span></tt>, <tt class="docutils literal"><span class="pre">fmin</span></tt>, <tt class="docutils literal"><span class="pre">hypotf</span></tt>,
+<tt class="docutils literal"><span class="pre">hypotl</span></tt>, <tt class="docutils literal"><span class="pre">hypot</span></tt>, <tt class="docutils literal"><span class="pre">ilogbf</span></tt>, <tt class="docutils literal"><span class="pre">ilogbl</span></tt>, <tt class="docutils literal"><span class="pre">ilogb</span></tt>,
+<tt class="docutils literal"><span class="pre">imaxabs</span></tt>, <tt class="docutils literal"><span class="pre">isblank</span></tt>, <tt class="docutils literal"><span class="pre">iswblank</span></tt>, <tt class="docutils literal"><span class="pre">lgammaf</span></tt>,
+<tt class="docutils literal"><span class="pre">lgammal</span></tt>, <tt class="docutils literal"><span class="pre">lgamma</span></tt>, <tt class="docutils literal"><span class="pre">llabs</span></tt>, <tt class="docutils literal"><span class="pre">llrintf</span></tt>, <tt class="docutils literal"><span class="pre">llrintl</span></tt>,
+<tt class="docutils literal"><span class="pre">llrint</span></tt>, <tt class="docutils literal"><span class="pre">llroundf</span></tt>, <tt class="docutils literal"><span class="pre">llroundl</span></tt>, <tt class="docutils literal"><span class="pre">llround</span></tt>,
+<tt class="docutils literal"><span class="pre">log1pf</span></tt>, <tt class="docutils literal"><span class="pre">log1pl</span></tt>, <tt class="docutils literal"><span class="pre">log1p</span></tt>, <tt class="docutils literal"><span class="pre">log2f</span></tt>, <tt class="docutils literal"><span class="pre">log2l</span></tt>,
+<tt class="docutils literal"><span class="pre">log2</span></tt>, <tt class="docutils literal"><span class="pre">logbf</span></tt>, <tt class="docutils literal"><span class="pre">logbl</span></tt>, <tt class="docutils literal"><span class="pre">logb</span></tt>, <tt class="docutils literal"><span class="pre">lrintf</span></tt>,
+<tt class="docutils literal"><span class="pre">lrintl</span></tt>, <tt class="docutils literal"><span class="pre">lrint</span></tt>, <tt class="docutils literal"><span class="pre">lroundf</span></tt>, <tt class="docutils literal"><span class="pre">lroundl</span></tt>,
+<tt class="docutils literal"><span class="pre">lround</span></tt>, <tt class="docutils literal"><span class="pre">nearbyintf</span></tt>, <tt class="docutils literal"><span class="pre">nearbyintl</span></tt>, <tt class="docutils literal"><span class="pre">nearbyint</span></tt>,
+<tt class="docutils literal"><span class="pre">nextafterf</span></tt>, <tt class="docutils literal"><span class="pre">nextafterl</span></tt>, <tt class="docutils literal"><span class="pre">nextafter</span></tt>,
+<tt class="docutils literal"><span class="pre">nexttowardf</span></tt>, <tt class="docutils literal"><span class="pre">nexttowardl</span></tt>, <tt class="docutils literal"><span class="pre">nexttoward</span></tt>,
+<tt class="docutils literal"><span class="pre">remainderf</span></tt>, <tt class="docutils literal"><span class="pre">remainderl</span></tt>, <tt class="docutils literal"><span class="pre">remainder</span></tt>, <tt class="docutils literal"><span class="pre">remquof</span></tt>,
+<tt class="docutils literal"><span class="pre">remquol</span></tt>, <tt class="docutils literal"><span class="pre">remquo</span></tt>, <tt class="docutils literal"><span class="pre">rintf</span></tt>, <tt class="docutils literal"><span class="pre">rintl</span></tt>, <tt class="docutils literal"><span class="pre">rint</span></tt>,
+<tt class="docutils literal"><span class="pre">roundf</span></tt>, <tt class="docutils literal"><span class="pre">roundl</span></tt>, <tt class="docutils literal"><span class="pre">round</span></tt>, <tt class="docutils literal"><span class="pre">scalblnf</span></tt>,
+<tt class="docutils literal"><span class="pre">scalblnl</span></tt>, <tt class="docutils literal"><span class="pre">scalbln</span></tt>, <tt class="docutils literal"><span class="pre">scalbnf</span></tt>, <tt class="docutils literal"><span class="pre">scalbnl</span></tt>,
+<tt class="docutils literal"><span class="pre">scalbn</span></tt>, <tt class="docutils literal"><span class="pre">snprintf</span></tt>, <tt class="docutils literal"><span class="pre">tgammaf</span></tt>, <tt class="docutils literal"><span class="pre">tgammal</span></tt>,
+<tt class="docutils literal"><span class="pre">tgamma</span></tt>, <tt class="docutils literal"><span class="pre">truncf</span></tt>, <tt class="docutils literal"><span class="pre">truncl</span></tt>, <tt class="docutils literal"><span class="pre">trunc</span></tt>,
+<tt class="docutils literal"><span class="pre">vfscanf</span></tt>, <tt class="docutils literal"><span class="pre">vscanf</span></tt>, <tt class="docutils literal"><span class="pre">vsnprintf</span></tt> and <tt class="docutils literal"><span class="pre">vsscanf</span></tt>
+are handled as built-in functions
+except in strict ISO C90 mode (<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or <em class="xref std std-option">-std=c90</em>).</p>
+<p>There are also built-in versions of the ISO C99 functions
+<tt class="docutils literal"><span class="pre">acosf</span></tt>, <tt class="docutils literal"><span class="pre">acosl</span></tt>, <tt class="docutils literal"><span class="pre">asinf</span></tt>, <tt class="docutils literal"><span class="pre">asinl</span></tt>, <tt class="docutils literal"><span class="pre">atan2f</span></tt>,
+<tt class="docutils literal"><span class="pre">atan2l</span></tt>, <tt class="docutils literal"><span class="pre">atanf</span></tt>, <tt class="docutils literal"><span class="pre">atanl</span></tt>, <tt class="docutils literal"><span class="pre">ceilf</span></tt>, <tt class="docutils literal"><span class="pre">ceill</span></tt>,
+<tt class="docutils literal"><span class="pre">cosf</span></tt>, <tt class="docutils literal"><span class="pre">coshf</span></tt>, <tt class="docutils literal"><span class="pre">coshl</span></tt>, <tt class="docutils literal"><span class="pre">cosl</span></tt>, <tt class="docutils literal"><span class="pre">expf</span></tt>,
+<tt class="docutils literal"><span class="pre">expl</span></tt>, <tt class="docutils literal"><span class="pre">fabsf</span></tt>, <tt class="docutils literal"><span class="pre">fabsl</span></tt>, <tt class="docutils literal"><span class="pre">floorf</span></tt>, <tt class="docutils literal"><span class="pre">floorl</span></tt>,
+<tt class="docutils literal"><span class="pre">fmodf</span></tt>, <tt class="docutils literal"><span class="pre">fmodl</span></tt>, <tt class="docutils literal"><span class="pre">frexpf</span></tt>, <tt class="docutils literal"><span class="pre">frexpl</span></tt>, <tt class="docutils literal"><span class="pre">ldexpf</span></tt>,
+<tt class="docutils literal"><span class="pre">ldexpl</span></tt>, <tt class="docutils literal"><span class="pre">log10f</span></tt>, <tt class="docutils literal"><span class="pre">log10l</span></tt>, <tt class="docutils literal"><span class="pre">logf</span></tt>, <tt class="docutils literal"><span class="pre">logl</span></tt>,
+<tt class="docutils literal"><span class="pre">modfl</span></tt>, <tt class="docutils literal"><span class="pre">modf</span></tt>, <tt class="docutils literal"><span class="pre">powf</span></tt>, <tt class="docutils literal"><span class="pre">powl</span></tt>, <tt class="docutils literal"><span class="pre">sinf</span></tt>,
+<tt class="docutils literal"><span class="pre">sinhf</span></tt>, <tt class="docutils literal"><span class="pre">sinhl</span></tt>, <tt class="docutils literal"><span class="pre">sinl</span></tt>, <tt class="docutils literal"><span class="pre">sqrtf</span></tt>, <tt class="docutils literal"><span class="pre">sqrtl</span></tt>,
+<tt class="docutils literal"><span class="pre">tanf</span></tt>, <tt class="docutils literal"><span class="pre">tanhf</span></tt>, <tt class="docutils literal"><span class="pre">tanhl</span></tt> and <tt class="docutils literal"><span class="pre">tanl</span></tt>
+that are recognized in any mode since ISO C90 reserves these names for
+the purpose to which ISO C99 puts them.  All these functions have
+corresponding versions prefixed with <tt class="docutils literal"><span class="pre">__builtin_</span></tt>.</p>
+<p>The ISO C94 functions
+<tt class="docutils literal"><span class="pre">iswalnum</span></tt>, <tt class="docutils literal"><span class="pre">iswalpha</span></tt>, <tt class="docutils literal"><span class="pre">iswcntrl</span></tt>, <tt class="docutils literal"><span class="pre">iswdigit</span></tt>,
+<tt class="docutils literal"><span class="pre">iswgraph</span></tt>, <tt class="docutils literal"><span class="pre">iswlower</span></tt>, <tt class="docutils literal"><span class="pre">iswprint</span></tt>, <tt class="docutils literal"><span class="pre">iswpunct</span></tt>,
+<tt class="docutils literal"><span class="pre">iswspace</span></tt>, <tt class="docutils literal"><span class="pre">iswupper</span></tt>, <tt class="docutils literal"><span class="pre">iswxdigit</span></tt>, <tt class="docutils literal"><span class="pre">towlower</span></tt> and
+<tt class="docutils literal"><span class="pre">towupper</span></tt>
+are handled as built-in functions
+except in strict ISO C90 mode (<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or <em class="xref std std-option">-std=c90</em>).</p>
+<p>The ISO C90 functions
+<tt class="docutils literal"><span class="pre">abort</span></tt>, <tt class="docutils literal"><span class="pre">abs</span></tt>, <tt class="docutils literal"><span class="pre">acos</span></tt>, <tt class="docutils literal"><span class="pre">asin</span></tt>, <tt class="docutils literal"><span class="pre">atan2</span></tt>,
+<tt class="docutils literal"><span class="pre">atan</span></tt>, <tt class="docutils literal"><span class="pre">calloc</span></tt>, <tt class="docutils literal"><span class="pre">ceil</span></tt>, <tt class="docutils literal"><span class="pre">cosh</span></tt>, <tt class="docutils literal"><span class="pre">cos</span></tt>,
+<tt class="docutils literal"><span class="pre">exit</span></tt>, <tt class="docutils literal"><span class="pre">exp</span></tt>, <tt class="docutils literal"><span class="pre">fabs</span></tt>, <tt class="docutils literal"><span class="pre">floor</span></tt>, <tt class="docutils literal"><span class="pre">fmod</span></tt>,
+<tt class="docutils literal"><span class="pre">fprintf</span></tt>, <tt class="docutils literal"><span class="pre">fputs</span></tt>, <tt class="docutils literal"><span class="pre">frexp</span></tt>, <tt class="docutils literal"><span class="pre">fscanf</span></tt>,
+<tt class="docutils literal"><span class="pre">isalnum</span></tt>, <tt class="docutils literal"><span class="pre">isalpha</span></tt>, <tt class="docutils literal"><span class="pre">iscntrl</span></tt>, <tt class="docutils literal"><span class="pre">isdigit</span></tt>,
+<tt class="docutils literal"><span class="pre">isgraph</span></tt>, <tt class="docutils literal"><span class="pre">islower</span></tt>, <tt class="docutils literal"><span class="pre">isprint</span></tt>, <tt class="docutils literal"><span class="pre">ispunct</span></tt>,
+<tt class="docutils literal"><span class="pre">isspace</span></tt>, <tt class="docutils literal"><span class="pre">isupper</span></tt>, <tt class="docutils literal"><span class="pre">isxdigit</span></tt>, <tt class="docutils literal"><span class="pre">tolower</span></tt>,
+<tt class="docutils literal"><span class="pre">toupper</span></tt>, <tt class="docutils literal"><span class="pre">labs</span></tt>, <tt class="docutils literal"><span class="pre">ldexp</span></tt>, <tt class="docutils literal"><span class="pre">log10</span></tt>, <tt class="docutils literal"><span class="pre">log</span></tt>,
+<tt class="docutils literal"><span class="pre">malloc</span></tt>, <tt class="docutils literal"><span class="pre">memchr</span></tt>, <tt class="docutils literal"><span class="pre">memcmp</span></tt>, <tt class="docutils literal"><span class="pre">memcpy</span></tt>,
+<tt class="docutils literal"><span class="pre">memset</span></tt>, <tt class="docutils literal"><span class="pre">modf</span></tt>, <tt class="docutils literal"><span class="pre">pow</span></tt>, <tt class="docutils literal"><span class="pre">printf</span></tt>, <tt class="docutils literal"><span class="pre">putchar</span></tt>,
+<tt class="docutils literal"><span class="pre">puts</span></tt>, <tt class="docutils literal"><span class="pre">scanf</span></tt>, <tt class="docutils literal"><span class="pre">sinh</span></tt>, <tt class="docutils literal"><span class="pre">sin</span></tt>, <tt class="docutils literal"><span class="pre">snprintf</span></tt>,
+<tt class="docutils literal"><span class="pre">sprintf</span></tt>, <tt class="docutils literal"><span class="pre">sqrt</span></tt>, <tt class="docutils literal"><span class="pre">sscanf</span></tt>, <tt class="docutils literal"><span class="pre">strcat</span></tt>,
+<tt class="docutils literal"><span class="pre">strchr</span></tt>, <tt class="docutils literal"><span class="pre">strcmp</span></tt>, <tt class="docutils literal"><span class="pre">strcpy</span></tt>, <tt class="docutils literal"><span class="pre">strcspn</span></tt>,
+<tt class="docutils literal"><span class="pre">strlen</span></tt>, <tt class="docutils literal"><span class="pre">strncat</span></tt>, <tt class="docutils literal"><span class="pre">strncmp</span></tt>, <tt class="docutils literal"><span class="pre">strncpy</span></tt>,
+<tt class="docutils literal"><span class="pre">strpbrk</span></tt>, <tt class="docutils literal"><span class="pre">strrchr</span></tt>, <tt class="docutils literal"><span class="pre">strspn</span></tt>, <tt class="docutils literal"><span class="pre">strstr</span></tt>,
+<tt class="docutils literal"><span class="pre">tanh</span></tt>, <tt class="docutils literal"><span class="pre">tan</span></tt>, <tt class="docutils literal"><span class="pre">vfprintf</span></tt>, <tt class="docutils literal"><span class="pre">vprintf</span></tt> and <tt class="docutils literal"><span class="pre">vsprintf</span></tt>
+are all recognized as built-in functions unless
+<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fno-builtin"><em class="xref std std-option">-fno-builtin</em></a> is specified (or <em class="xref std std-option">-fno-builtin-``function``</em>
+is specified for an individual function).  All of these functions have
+corresponding versions prefixed with <tt class="docutils literal"><span class="pre">__builtin_</span></tt>.</p>
+<p>GCC provides built-in versions of the ISO C99 floating-point comparison
+macros that avoid raising exceptions for unordered operands.  They have
+the same names as the standard macros ( <tt class="docutils literal"><span class="pre">isgreater</span></tt>,
+<tt class="docutils literal"><span class="pre">isgreaterequal</span></tt>, <tt class="docutils literal"><span class="pre">isless</span></tt>, <tt class="docutils literal"><span class="pre">islessequal</span></tt>,
+<tt class="docutils literal"><span class="pre">islessgreater</span></tt>, and <tt class="docutils literal"><span class="pre">isunordered</span></tt>) , with <tt class="docutils literal"><span class="pre">__builtin_</span></tt>
+prefixed.  We intend for a library implementor to be able to simply
+<tt class="docutils literal"><span class="pre">#define</span></tt> each standard macro to its built-in equivalent.
+In the same fashion, GCC provides <tt class="docutils literal"><span class="pre">fpclassify</span></tt>, <tt class="docutils literal"><span class="pre">isfinite</span></tt>,
+<tt class="docutils literal"><span class="pre">isinf_sign</span></tt> and <tt class="docutils literal"><span class="pre">isnormal</span></tt> built-ins used with
+<tt class="docutils literal"><span class="pre">__builtin_</span></tt> prefixed.  The <tt class="docutils literal"><span class="pre">isinf</span></tt> and <tt class="docutils literal"><span class="pre">isnan</span></tt>
+built-in functions appear both with and without the <tt class="docutils literal"><span class="pre">__builtin_</span></tt> prefix.</p>
+<p>You can use the built-in function <tt class="docutils literal"><span class="pre">__builtin_types_compatible_p</span></tt> to
+determine whether two types are the same.</p>
+<p>This built-in function returns 1 if the unqualified versions of the
+types <tt class="docutils literal"><span class="pre">type1</span></tt> and <tt class="docutils literal"><span class="pre">type2</span></tt> (which are types, not expressions) are
+compatible, 0 otherwise.  The result of this built-in function can be
+used in integer constant expressions.</p>
+<p>This built-in function ignores top level qualifiers (e.g., <tt class="docutils literal"><span class="pre">const</span></tt>,
+<tt class="docutils literal"><span class="pre">volatile</span></tt>).  For example, <tt class="docutils literal"><span class="pre">int</span></tt> is equivalent to <tt class="docutils literal"><span class="pre">const</span>
+<span class="pre">int</span></tt>.</p>
+<p>The type <tt class="docutils literal"><span class="pre">int[]</span></tt> and <tt class="docutils literal"><span class="pre">int[5]</span></tt> are compatible.  On the other
+hand, <tt class="docutils literal"><span class="pre">int</span></tt> and <tt class="docutils literal"><span class="pre">char</span> <span class="pre">*</span></tt> are not compatible, even if the size
+of their types, on the particular architecture are the same.  Also, the
+amount of pointer indirection is taken into account when determining
+similarity.  Consequently, <tt class="docutils literal"><span class="pre">short</span> <span class="pre">*</span></tt> is not similar to
+<tt class="docutils literal"><span class="pre">short</span> <span class="pre">**</span></tt>.  Furthermore, two types that are typedefed are
+considered compatible if their underlying types are compatible.</p>
+<p>An <tt class="docutils literal"><span class="pre">enum</span></tt> type is not considered to be compatible with another
+<tt class="docutils literal"><span class="pre">enum</span></tt> type even if both are compatible with the same integer
+type; this is what the C standard specifies.
+For example, <tt class="docutils literal"><span class="pre">enum</span> <span class="pre">{foo,</span> <span class="pre">bar}</span></tt> is not similar to
+<tt class="docutils literal"><span class="pre">enum</span> <span class="pre">{hot,</span> <span class="pre">dog}</span></tt>.</p>
+<p>You typically use this function in code whose execution varies
+depending on the arguments types.  For example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define foo(x)                                                  \</span>
+<span class="cp">  ({                                                           \</span>
+<span class="cp">    typeof (x) tmp = (x);                                       \</span>
+<span class="cp">    if (__builtin_types_compatible_p (typeof (x), long double)) \</span>
+<span class="cp">      tmp = foo_long_double (tmp);                              \</span>
+<span class="cp">    else if (__builtin_types_compatible_p (typeof (x), double)) \</span>
+<span class="cp">      tmp = foo_double (tmp);                                   \</span>
+<span class="cp">    else if (__builtin_types_compatible_p (typeof (x), float))  \</span>
+<span class="cp">      tmp = foo_float (tmp);                                    \</span>
+<span class="cp">    else                                                        \</span>
+<span class="cp">      abort ();                                                 \</span>
+<span class="cp">    tmp;                                                        \</span>
+<span class="cp">  })</span>
+</pre></div>
+</div>
+<p>Note: This construct is only available for C.</p>
+<p>The <tt class="docutils literal"><span class="pre">call_exp</span></tt> expression must be a function call, and the
+<tt class="docutils literal"><span class="pre">pointer_exp</span></tt> expression must be a pointer.  The <tt class="docutils literal"><span class="pre">pointer_exp</span></tt>
+is passed to the function call in the targets static chain location.
+The result of builtin is the result of the function call.</p>
+<p>Note: This builtin is only available for C.
+This builtin can be used to call Go closures from C.</p>
+<p>You can use the built-in function <tt class="docutils literal"><span class="pre">__builtin_choose_expr</span></tt> to
+evaluate code depending on the value of a constant expression.  This
+built-in function returns <tt class="docutils literal"><span class="pre">exp1</span></tt> if <tt class="docutils literal"><span class="pre">const_exp</span></tt>, which is an
+integer constant expression, is nonzero.  Otherwise it returns <tt class="docutils literal"><span class="pre">exp2</span></tt>.</p>
+<p>This built-in function is analogous to the ? : operator in C,
+except that the expression returned has its type unaltered by promotion
+rules.  Also, the built-in function does not evaluate the expression
+that is not chosen.  For example, if <tt class="docutils literal"><span class="pre">const_exp</span></tt> evaluates to true,
+<tt class="docutils literal"><span class="pre">exp2</span></tt> is not evaluated even if it has side-effects.</p>
+<p>This built-in function can return an lvalue if the chosen argument is an
+lvalue.</p>
+<p>If <tt class="docutils literal"><span class="pre">exp1</span></tt> is returned, the return type is the same as <tt class="docutils literal"><span class="pre">exp1``s</span>
+<span class="pre">type.</span>&nbsp; <span class="pre">Similarly,</span> <span class="pre">if</span> <span class="pre">``exp2</span></tt> is returned, its return type is the same
+as <tt class="docutils literal"><span class="pre">exp2</span></tt>.</p>
+<p>Example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define foo(x)                                                    \</span>
+<span class="cp">  __builtin_choose_expr (                                         \</span>
+<span class="cp">    __builtin_types_compatible_p (typeof (x), double),            \</span>
+<span class="cp">    foo_double (x),                                               \</span>
+<span class="cp">    __builtin_choose_expr (                                       \</span>
+<span class="cp">      __builtin_types_compatible_p (typeof (x), float),           \</span>
+<span class="cp">      foo_float (x),                                              \</span>
+<span class="cp">      </span><span class="cm">/* The void expression results in a compile-time error  \</span>
+<span class="cm">         when assigning the result to something.  */</span><span class="cp">          \</span>
+<span class="cp">      (void)0))</span>
+</pre></div>
+</div>
+<p>Note: This construct is only available for C.  Furthermore, the
+unused expression (<tt class="docutils literal"><span class="pre">exp1</span></tt> or <tt class="docutils literal"><span class="pre">exp2</span></tt> depending on the value of
+<tt class="docutils literal"><span class="pre">const_exp</span></tt>) may still generate syntax errors.  This may change in
+future revisions.</p>
+<p>The built-in function <tt class="docutils literal"><span class="pre">__builtin_complex</span></tt> is provided for use in
+implementing the ISO C11 macros <tt class="docutils literal"><span class="pre">CMPLXF</span></tt>, <tt class="docutils literal"><span class="pre">CMPLX</span></tt> and
+<tt class="docutils literal"><span class="pre">CMPLXL</span></tt>.  <tt class="docutils literal"><span class="pre">real</span></tt> and <tt class="docutils literal"><span class="pre">imag</span></tt> must have the same type, a
+real binary floating-point type, and the result has the corresponding
+complex type with real and imaginary parts <tt class="docutils literal"><span class="pre">real</span></tt> and <tt class="docutils literal"><span class="pre">imag</span></tt>.
+Unlike <tt class="docutils literal"><span class="pre">real</span></tt> + I * <tt class="docutils literal"><span class="pre">imag</span></tt>, this works even when
+infinities, NaNs and negative zeros are involved.</p>
+<p>You can use the built-in function <tt class="docutils literal"><span class="pre">__builtin_constant_p</span></tt> to
+determine if a value is known to be constant at compile time and hence
+that GCC can perform constant-folding on expressions involving that
+value.  The argument of the function is the value to test.  The function
+returns the integer 1 if the argument is known to be a compile-time
+constant and 0 if it is not known to be a compile-time constant.  A
+return of 0 does not indicate that the value is not a constant,
+but merely that GCC cannot prove it is a constant with the specified
+value of the <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O"><em class="xref std std-option">-O</em></a> option.</p>
+<p>You typically use this function in an embedded application where
+memory is a critical resource.  If you have some complex calculation,
+you may want it to be folded if it involves constants, but need to call
+a function if it does not.  For example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define Scale_Value(X)      \</span>
+<span class="cp">  (__builtin_constant_p (X) \</span>
+<span class="cp">  ? ((X) * SCALE + OFFSET) : Scale (X))</span>
+</pre></div>
+</div>
+<p>You may use this built-in function in either a macro or an inline
+function.  However, if you use it in an inlined function and pass an
+argument of the function as the argument to the built-in, GCC
+never returns 1 when you call the inline function with a string constant
+or compound literal (Compound Literals) and does not return 1
+when you pass a constant numeric value to the inline function unless you
+specify the <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O"><em class="xref std std-option">-O</em></a> option.</p>
+<p>You may also use <tt class="docutils literal"><span class="pre">__builtin_constant_p</span></tt> in initializers for static
+data.  For instance, you can write</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">table</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="n">__builtin_constant_p</span> <span class="p">(</span><span class="n">EXPRESSION</span><span class="p">)</span> <span class="o">?</span> <span class="p">(</span><span class="n">EXPRESSION</span><span class="p">)</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+   <span class="cm">/* ... */</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>This is an acceptable initializer even if <tt class="docutils literal"><span class="pre">EXPRESSION</span></tt> is not a
+constant expression, including the case where
+<tt class="docutils literal"><span class="pre">__builtin_constant_p</span></tt> returns 1 because <tt class="docutils literal"><span class="pre">EXPRESSION</span></tt> can be
+folded to a constant but <tt class="docutils literal"><span class="pre">EXPRESSION</span></tt> contains operands that are
+not otherwise permitted in a static initializer (for example,
+<tt class="docutils literal"><span class="pre">0</span> <span class="pre">&amp;&amp;</span> <span class="pre">foo</span> <span class="pre">()</span></tt>).  GCC must be more conservative about evaluating the
+built-in in this case, because it has no opportunity to perform
+optimization.</p>
+<p id="index-397">You may use <tt class="docutils literal"><span class="pre">__builtin_expect</span></tt> to provide the compiler with
+branch prediction information.  In general, you should prefer to
+use actual profile feedback for this (<a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-fprofile-arcs"><em class="xref std std-option">-fprofile-arcs</em></a>), as
+programmers are notoriously bad at predicting how their programs
+actually perform.  However, there are applications in which this
+data is hard to collect.</p>
+<p>The return value is the value of <tt class="docutils literal"><span class="pre">exp</span></tt>, which should be an integral
+expression.  The semantics of the built-in are that it is expected that
+<tt class="docutils literal"><span class="pre">exp</span></tt> == <tt class="docutils literal"><span class="pre">c</span></tt>.  For example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">__builtin_expect</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+  <span class="n">foo</span> <span class="p">();</span>
+</pre></div>
+</div>
+<p>indicates that we do not expect to call <tt class="docutils literal"><span class="pre">foo</span></tt>, since
+we expect <tt class="docutils literal"><span class="pre">x</span></tt> to be zero.  Since you are limited to integral
+expressions for <tt class="docutils literal"><span class="pre">exp</span></tt>, you should use constructions such as</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">__builtin_expect</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="n">foo</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>when testing pointer or floating-point values.</p>
+<p>This function causes the program to exit abnormally.  GCC implements
+this function by using a target-dependent mechanism (such as
+intentionally executing an illegal instruction) or by calling
+<tt class="docutils literal"><span class="pre">abort</span></tt>.  The mechanism used may vary from release to release so
+you should not rely on any particular implementation.</p>
+<p>If control flow reaches the point of the <tt class="docutils literal"><span class="pre">__builtin_unreachable</span></tt>,
+the program is undefined.  It is useful in situations where the
+compiler cannot deduce the unreachability of the code.</p>
+<p>One such case is immediately following an <tt class="docutils literal"><span class="pre">asm</span></tt> statement that
+either never terminates, or one that transfers control elsewhere
+and never returns.  In this example, without the
+<tt class="docutils literal"><span class="pre">__builtin_unreachable</span></tt>, GCC issues a warning that control
+reaches the end of a non-void function.  It also generates code
+to return after the <tt class="docutils literal"><span class="pre">asm</span></tt>.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">f</span> <span class="p">(</span><span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="n">v</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="k">asm</span><span class="p">(</span><span class="s">&quot;jmp error_handler&quot;</span><span class="p">);</span>
+      <span class="n">__builtin_unreachable</span> <span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Because the <tt class="docutils literal"><span class="pre">asm</span></tt> statement unconditionally transfers control out
+of the function, control never reaches the end of the function
+body.  The <tt class="docutils literal"><span class="pre">__builtin_unreachable</span></tt> is in fact unreachable and
+communicates this fact to the compiler.</p>
+<p>Another use for <tt class="docutils literal"><span class="pre">__builtin_unreachable</span></tt> is following a call a
+function that never returns but that is not declared
+<tt class="docutils literal"><span class="pre">__attribute__((noreturn))</span></tt>, as in this example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">function_that_never_returns</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">g</span> <span class="p">(</span><span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="n">function_that_never_returns</span> <span class="p">();</span>
+      <span class="n">__builtin_unreachable</span> <span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This function returns its first argument, and allows the compiler
+to assume that the returned pointer is at least <tt class="docutils literal"><span class="pre">align</span></tt> bytes
+aligned.  This built-in can have either two or three arguments,
+if it has three, the third argument should have integer type, and
+if it is nonzero means misalignment offset.  For example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="n">__builtin_assume_aligned</span> <span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>means that the compiler can assume <tt class="docutils literal"><span class="pre">x</span></tt>, set to <tt class="docutils literal"><span class="pre">arg</span></tt>, is at least
+16-byte aligned, while:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="n">__builtin_assume_aligned</span> <span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>means that the compiler can assume for <tt class="docutils literal"><span class="pre">x</span></tt>, set to <tt class="docutils literal"><span class="pre">arg</span></tt>, that
+<tt class="docutils literal"><span class="pre">(char</span> <span class="pre">*)</span> <span class="pre">x</span> <span class="pre">-</span> <span class="pre">8</span></tt> is 32-byte aligned.</p>
+<p>This function is the equivalent to the preprocessor <tt class="docutils literal"><span class="pre">__LINE__</span></tt>
+macro and returns the line number of the invocation of the built-in.
+In a C++ default argument for a function <tt class="docutils literal"><span class="pre">F</span></tt>, it gets the line number of
+the call to <tt class="docutils literal"><span class="pre">F</span></tt>.</p>
+<p>This function is the equivalent to the preprocessor <tt class="docutils literal"><span class="pre">__FUNCTION__</span></tt>
+macro and returns the function name the invocation of the built-in is in.</p>
+<p>This function is the equivalent to the preprocessor <tt class="docutils literal"><span class="pre">__FILE__</span></tt>
+macro and returns the file name the invocation of the built-in is in.
+In a C++ default argument for a function <tt class="docutils literal"><span class="pre">F</span></tt>, it gets the file name of
+the call to <tt class="docutils literal"><span class="pre">F</span></tt>.</p>
+<p>This function is used to flush the processors instruction cache for
+the region of memory between <tt class="docutils literal"><span class="pre">begin</span></tt> inclusive and <tt class="docutils literal"><span class="pre">end</span></tt>
+exclusive.  Some targets require that the instruction cache be
+flushed, after modifying memory containing code, in order to obtain
+deterministic behavior.</p>
+<p>If the target does not require instruction cache flushes,
+<tt class="docutils literal"><span class="pre">__builtin___clear_cache</span></tt> has no effect.  Otherwise either
+instructions are emitted in-line to clear the instruction cache or a
+call to the <tt class="docutils literal"><span class="pre">__clear_cache</span></tt> function in libgcc is made.</p>
+<p>This function is used to minimize cache-miss latency by moving data into
+a cache before it is accessed.
+You can insert calls to <tt class="docutils literal"><span class="pre">__builtin_prefetch</span></tt> into code for which
+you know addresses of data in memory that is likely to be accessed soon.
+If the target supports them, data prefetch instructions are generated.
+If the prefetch is done early enough before the access then the data will
+be in the cache by the time it is accessed.</p>
+<p>The value of <tt class="docutils literal"><span class="pre">addr</span></tt> is the address of the memory to prefetch.
+There are two optional arguments, <tt class="docutils literal"><span class="pre">rw</span></tt> and <tt class="docutils literal"><span class="pre">locality</span></tt>.
+The value of <tt class="docutils literal"><span class="pre">rw</span></tt> is a compile-time constant one or zero; one
+means that the prefetch is preparing for a write to the memory address
+and zero, the default, means that the prefetch is preparing for a read.
+The value <tt class="docutils literal"><span class="pre">locality</span></tt> must be a compile-time constant integer between
+zero and three.  A value of zero means that the data has no temporal
+locality, so it need not be left in the cache after the access.  A value
+of three means that the data has a high degree of temporal locality and
+should be left in all levels of cache possible.  Values of one and two
+mean, respectively, a low or moderate degree of temporal locality.  The
+default is three.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">__builtin_prefetch</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">__builtin_prefetch</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="cm">/* ... */</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>Data prefetch does not generate faults if <tt class="docutils literal"><span class="pre">addr</span></tt> is invalid, but
+the address expression itself must be valid.  For example, a prefetch
+of <tt class="docutils literal"><span class="pre">p-&gt;next</span></tt> does not fault if <tt class="docutils literal"><span class="pre">p-&gt;next</span></tt> is not a valid
+address, but evaluation faults if <tt class="docutils literal"><span class="pre">p</span></tt> is not a valid address.</p>
+<p>If the target does not support data prefetch, the address expression
+is evaluated if it includes side effects but no other code is generated
+and GCC does not issue a warning.</p>
+<p>Returns a positive infinity, if supported by the floating-point format,
+else <tt class="docutils literal"><span class="pre">DBL_MAX</span></tt>.  This function is suitable for implementing the
+ISO C macro <tt class="docutils literal"><span class="pre">HUGE_VAL</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except the return
+type is <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
+<p>This built-in implements the C99 fpclassify functionality.  The first
+five int arguments should be the target librarys notion of the
+possible FP classes and are used for return values.  They must be
+constant values and they must appear in this order: <tt class="docutils literal"><span class="pre">FP_NAN</span></tt>,
+<tt class="docutils literal"><span class="pre">FP_INFINITE</span></tt>, <tt class="docutils literal"><span class="pre">FP_NORMAL</span></tt>, <tt class="docutils literal"><span class="pre">FP_SUBNORMAL</span></tt> and
+<tt class="docutils literal"><span class="pre">FP_ZERO</span></tt>.  The ellipsis is for exactly one floating-point value
+to classify.  GCC treats the last argument as type-generic, which
+means it does not do default promotion from float to double.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except a warning is generated
+if the target floating-point format does not support infinities.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal32</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal64</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal128</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.
+This function is suitable for implementing the ISO C99 macro <tt class="docutils literal"><span class="pre">INFINITY</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return
+type is <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">isinf</span></tt>, except the return value is -1 for
+an argument of <tt class="docutils literal"><span class="pre">-Inf</span></tt> and 1 for an argument of <tt class="docutils literal"><span class="pre">+Inf</span></tt>.
+Note while the parameter list is an
+ellipsis, this function only accepts exactly one floating-point
+argument.  GCC treats this parameter as type-generic, which means it
+does not do default promotion from float to double.</p>
+<p>This is an implementation of the ISO C99 function <tt class="docutils literal"><span class="pre">nan</span></tt>.</p>
+<p>Since ISO C99 defines this function in terms of <tt class="docutils literal"><span class="pre">strtod</span></tt>, which we
+do not implement, a description of the parsing is in order.  The string
+is parsed as by <tt class="docutils literal"><span class="pre">strtol</span></tt>; that is, the base is recognized by
+leading 0 or 0x prefixes.  The number parsed is placed
+in the significand such that the least significant bit of the number
+is at the least significant bit of the significand.  The number is
+truncated to fit the significand field provided.  The significand is
+forced to be a quiet NaN.</p>
+<p>This function, if given a string literal all of which would have been
+consumed by <tt class="docutils literal"><span class="pre">strtol</span></tt>, is evaluated early enough that it is considered a
+compile-time constant.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal32</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal64</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">_Decimal128</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nan</span></tt>, except the significand is forced
+to be a signaling NaN.  The <tt class="docutils literal"><span class="pre">nans</span></tt> function is proposed by
+<a class="reference external" href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n965.htmWG14">http://www.open-std.org/jtc1/sc22/wg14/www/docs/n965.htmWG14</a> N965.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nans</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_nans</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
+<p>Returns one plus the index of the least significant 1-bit of <tt class="docutils literal"><span class="pre">x</span></tt>, or
+if <tt class="docutils literal"><span class="pre">x</span></tt> is zero, returns zero.</p>
+<p>Returns the number of leading 0-bits in <tt class="docutils literal"><span class="pre">x</span></tt>, starting at the most
+significant bit position.  If <tt class="docutils literal"><span class="pre">x</span></tt> is 0, the result is undefined.</p>
+<p>Returns the number of trailing 0-bits in <tt class="docutils literal"><span class="pre">x</span></tt>, starting at the least
+significant bit position.  If <tt class="docutils literal"><span class="pre">x</span></tt> is 0, the result is undefined.</p>
+<p>Returns the number of leading redundant sign bits in <tt class="docutils literal"><span class="pre">x</span></tt>, i.e. the
+number of bits following the most significant bit that are identical
+to it.  There are no special cases for 0 or other values.</p>
+<p>Returns the number of 1-bits in <tt class="docutils literal"><span class="pre">x</span></tt>.</p>
+<p>Returns the parity of <tt class="docutils literal"><span class="pre">x</span></tt>, i.e. the number of 1-bits in <tt class="docutils literal"><span class="pre">x</span></tt>
+modulo 2.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_ffs</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">long</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_clz</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_ctz</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_clrsb</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">long</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_popcount</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_parity</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_ffs</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_clz</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_ctz</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_clrsb</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_popcount</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_parity</span></tt>, except the argument type is
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt>.</p>
+<p>Returns the first argument raised to the power of the second.  Unlike the
+<tt class="docutils literal"><span class="pre">pow</span></tt> function no guarantees about precision and rounding are made.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_powi</span></tt>, except the argument and return types
+are <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_powi</span></tt>, except the argument and return types
+are <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
+<p>Returns <tt class="docutils literal"><span class="pre">x</span></tt> with the order of the bytes reversed; for example,
+<tt class="docutils literal"><span class="pre">0xaabb</span></tt> becomes <tt class="docutils literal"><span class="pre">0xbbaa</span></tt>.  Byte here always means
+exactly 8 bits.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_bswap16</span></tt>, except the argument and return types
+are 32 bit.</p>
+<p>Similar to <tt class="docutils literal"><span class="pre">__builtin_bswap32</span></tt>, except the argument and return types
+are 64 bit.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="built-in-functions-specific-to-particular-target-machines.html" title="Built-in Functions Specific to Particular Target Machines"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cilk-plus-c-c++-language-extension-built-in-functions.html" title="Cilk Plus C/C++ Language Extension Built-in Functions"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

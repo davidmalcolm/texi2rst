@@ -1,0 +1,174 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Labels as Values &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="Nested Functions" href="nested-functions.html" />
+    <link rel="prev" title="Locally Declared Labels" href="locally-declared-labels.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="nested-functions.html" title="Nested Functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="locally-declared-labels.html" title="Locally Declared Labels"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="locally-declared-labels.html"
+                        title="previous chapter">Locally Declared Labels</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="nested-functions.html"
+                        title="next chapter">Nested Functions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/labels-as-values.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="labels-as-values">
+<h1>Labels as Values<a class="headerlink" href="#labels-as-values" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">You can get the address of a label defined in the current function
+(or a containing function) with the unary operator &amp;&amp;.  The
+value has type <tt class="docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt>.  This value is a constant and can be used
+wherever a constant of that type is valid.  For example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
+<span class="cm">/* ... */</span>
+<span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;&amp;</span><span class="n">foo</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>To use these values, you need to be able to jump to one.  This is done
+with the computed goto statementThe analogous feature in
+Fortran is called an assigned goto, but that name seems inappropriate in
+C, where one can do more than simply store label addresses in label
+variables., <tt class="docutils literal"><span class="pre">goto</span> <span class="pre">*``exp</span></tt>;``.  For example,</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">goto</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Any expression of type <tt class="docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt> is allowed.</p>
+<p>One way of using these constants is in initializing a static array that
+serves as a jump table:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="o">*</span><span class="n">array</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="o">&amp;&amp;</span><span class="n">foo</span><span class="p">,</span> <span class="o">&amp;&amp;</span><span class="n">bar</span><span class="p">,</span> <span class="o">&amp;&amp;</span><span class="n">hack</span> <span class="p">};</span>
+</pre></div>
+</div>
+<p>Then you can select a label with indexing, like this:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">goto</span> <span class="o">*</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Note that this does not check whether the subscript is in boundsarray
+indexing in C never does that.</p>
+<p>Such an array of label values serves a purpose much like that of the
+<tt class="docutils literal"><span class="pre">switch</span></tt> statement.  The <tt class="docutils literal"><span class="pre">switch</span></tt> statement is cleaner, so
+use that rather than an array unless the problem does not fit a
+<tt class="docutils literal"><span class="pre">switch</span></tt> statement very well.</p>
+<p>Another use of label values is in an interpreter for threaded code.
+The labels within the interpreter function can be stored in the
+threaded code for super-fast dispatching.</p>
+<p>You may not use this mechanism to jump to code in a different function.
+If you do that, totally unpredictable things happen.  The best way to
+avoid this is to store the label address only in automatic variables and
+never pass it as an argument.</p>
+<p>An alternate way to write the above example is</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">array</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="o">&amp;&amp;</span><span class="n">foo</span> <span class="o">-</span> <span class="o">&amp;&amp;</span><span class="n">foo</span><span class="p">,</span> <span class="o">&amp;&amp;</span><span class="n">bar</span> <span class="o">-</span> <span class="o">&amp;&amp;</span><span class="n">foo</span><span class="p">,</span>
+                             <span class="o">&amp;&amp;</span><span class="n">hack</span> <span class="o">-</span> <span class="o">&amp;&amp;</span><span class="n">foo</span> <span class="p">};</span>
+<span class="k">goto</span> <span class="o">*</span><span class="p">(</span><span class="o">&amp;&amp;</span><span class="n">foo</span> <span class="o">+</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>This is more friendly to code living in shared libraries, as it reduces
+the number of dynamic relocations that are needed, and by consequence,
+allows the data to be read-only.
+This alternative with label differences is not supported for the AVR target,
+please use the first approach for AVR programs.</p>
+<p>The <tt class="docutils literal"><span class="pre">&amp;&amp;foo</span></tt> expressions for the same label might have different
+values if the containing function is inlined or cloned.  If a program
+relies on them being always the same,
+<tt class="docutils literal"><span class="pre">__attribute__((__noinline__,__noclone__))</span></tt> should be used to
+prevent inlining and cloning.  If <tt class="docutils literal"><span class="pre">&amp;&amp;foo</span></tt> is used in a static
+variable initializer, inlining and cloning is forbidden.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="nested-functions.html" title="Nested Functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="locally-declared-labels.html" title="Locally Declared Labels"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

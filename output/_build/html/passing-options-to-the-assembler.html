@@ -1,0 +1,135 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Passing Options to the Assembler &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="GCC Command Options" href="gcc-command-options.html" />
+    <link rel="next" title="Options for Linking" href="options-for-linking.html" />
+    <link rel="prev" title="Options Controlling the Preprocessor" href="options-controlling-the-preprocessor.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="options-for-linking.html" title="Options for Linking"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="options-controlling-the-preprocessor.html" title="Options Controlling the Preprocessor"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gcc-command-options.html" accesskey="U">GCC Command Options</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="options-controlling-the-preprocessor.html"
+                        title="previous chapter">Options Controlling the Preprocessor</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="options-for-linking.html"
+                        title="next chapter">Options for Linking</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/passing-options-to-the-assembler.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="passing-options-to-the-assembler">
+<h1>Passing Options to the Assembler<a class="headerlink" href="#passing-options-to-the-assembler" title="Permalink to this headline">¶</a></h1>
+<p>You can pass options to the assembler.</p>
+<dl class="option">
+<dt id="cmdoption-Wa">
+<tt class="descname">-Wa</tt><tt class="descclassname">,option</tt><tt class="descclassname">, </tt><tt class="descname">-Wa</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pass <tt class="docutils literal"><span class="pre">option</span></tt> as an option to the assembler.  If <tt class="docutils literal"><span class="pre">option</span></tt>
+contains commas, it is split into multiple options at the commas.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Xassembler">
+<tt class="descname">-Xassembler</tt><tt class="descclassname"> option</tt><tt class="descclassname">, </tt><tt class="descname">-Xassembler</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Xassembler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pass <tt class="docutils literal"><span class="pre">option</span></tt> as an option to the assembler.  You can use this to
+supply system-specific assembler options that GCC does not
+recognize.</p>
+<p>If you want to pass an option that takes an argument, you must use
+<a class="reference internal" href="#cmdoption-Xassembler"><em class="xref std std-option">-Xassembler</em></a> twice, once for the option and once for the argument.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="options-for-linking.html" title="Options for Linking"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="options-controlling-the-preprocessor.html" title="Options Controlling the Preprocessor"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gcc-command-options.html" >GCC Command Options</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

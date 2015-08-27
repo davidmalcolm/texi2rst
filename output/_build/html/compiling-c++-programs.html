@@ -1,0 +1,142 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Compiling C++ Programs &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="GCC Command Options" href="gcc-command-options.html" />
+    <link rel="next" title="Options Controlling C Dialect" href="options-controlling-c-dialect.html" />
+    <link rel="prev" title="Options Controlling the Kind of Output" href="options-controlling-the-kind-of-output.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="options-controlling-c-dialect.html" title="Options Controlling C Dialect"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="options-controlling-the-kind-of-output.html" title="Options Controlling the Kind of Output"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gcc-command-options.html" accesskey="U">GCC Command Options</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="options-controlling-the-kind-of-output.html"
+                        title="previous chapter">Options Controlling the Kind of Output</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="options-controlling-c-dialect.html"
+                        title="next chapter">Options Controlling C Dialect</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/compiling-c++-programs.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="compiling-c-programs">
+<h1>Compiling C++ Programs<a class="headerlink" href="#compiling-c-programs" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><p id="index-1">C++ source files conventionally use one of the suffixes .C,
+.cc, .cpp, .CPP, .c++, .cp, or
+.cxx; C++ header files often use .hh, .hpp,
+.H, or (for shared template code) .tcc; and
+preprocessed C++ files use the suffix .ii.  GCC recognizes
+files with these names and compiles them as C++ programs even if you
+call the compiler the same way as for compiling C programs (usually
+with the name <strong class="command">gcc</strong>).</p>
+<span class="target" id="index-2"></span><p id="index-3">However, the use of <strong class="command">gcc</strong> does not add the C++ library.
+<strong class="command">g++</strong> is a program that calls GCC and automatically specifies linking
+against the C++ library.  It treats .c,
+.h and .i files as C++ source files instead of C source
+files unless <em class="xref std std-option">-x</em> is used.  This program is also useful when
+precompiling a C header file with a .h extension for use in C++
+compilations.  On many systems, <strong class="command">g++</strong> is also installed with
+the name <strong class="command">c++</strong>.</p>
+<p>invoking <strong class="command">g++</strong>
+When you compile C++ programs, you may specify many of the same
+command-line options that you use for compiling programs in any
+language; or command-line options meaningful for C and related
+languages; or options that are meaningful only for C++ programs.
+C Dialect OptionsOptions Controlling C Dialect, for
+explanations of options for languages related to C.
+C++ Dialect OptionsOptions Controlling C++ Dialect, for
+explanations of options that are meaningful only for C++ programs.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="options-controlling-c-dialect.html" title="Options Controlling C Dialect"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="options-controlling-the-kind-of-output.html" title="Options Controlling the Kind of Output"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gcc-command-options.html" >GCC Command Options</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

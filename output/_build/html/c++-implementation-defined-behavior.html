@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>C++ Implementation-Defined Behavior &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Introduction" href="gcc.html" />
+    <link rel="next" title="Conditionally-Supported Behavior" href="conditionally-supported-behavior.html" />
+    <link rel="prev" title="Locale-Specific Behavior" href="locale-specific-behavior.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="conditionally-supported-behavior.html" title="Conditionally-Supported Behavior"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="locale-specific-behavior.html" title="Locale-Specific Behavior"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" accesskey="U">Introduction</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="locale-specific-behavior.html"
+                        title="previous chapter">Locale-Specific Behavior</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="conditionally-supported-behavior.html"
+                        title="next chapter">Conditionally-Supported Behavior</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/c++-implementation-defined-behavior.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="c-implementation-defined-behavior">
+<h1>C++ Implementation-Defined Behavior<a class="headerlink" href="#c-implementation-defined-behavior" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">A conforming implementation of ISO C++ is required to document its
+choice of behavior in each of the areas that are designated
+implementation defined.  The following lists all such areas,
+along with the section numbers from the ISO/IEC 14882:1998 and ISO/IEC
+14882:2003 standards.  Some areas are only implementation-defined in
+one version of the standard.</p>
+<p>Some choices depend on the externally determined ABI for the platform
+(including standard character encodings) which GCC follows; these are
+listed as determined by ABI below.  CompatibilityBinary
+Compatibility, and <a class="reference external" href="http://gcc.gnu.org/readings.html">http://gcc.gnu.org/readings.html</a>.  Some
+choices are documented in the preprocessor manual.
+Implementation-defined behaviorImplementation-defined
+behaviorcppThe C Preprocessor.  Some choices are documented in
+the corresponding document for the C language.  C
+Implementation.  Some choices are made by the library and operating
+system (or other environment when compiling for a freestanding
+environment); refer to their documentation for details.</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<p>:: _conditionally-supported-behavior:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conditionally-supported-behavior.html">Conditionally-Supported Behavior</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exception-handling.html">Exception Handling</a></li>
+</ul>
+</div>
+<p>:: _exception-handling:</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="conditionally-supported-behavior.html" title="Conditionally-Supported Behavior"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="locale-specific-behavior.html" title="Locale-Specific Behavior"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

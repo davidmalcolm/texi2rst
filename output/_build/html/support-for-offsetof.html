@@ -1,0 +1,132 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="&lt;no title&gt;" href="legacy-__sync-built-in-functions-for-atomic-memory-access.html" />
+    <link rel="prev" title="Using Vector Instructions through Built-in Functions" href="using-vector-instructions-through-built-in-functions.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="legacy-__sync-built-in-functions-for-atomic-memory-access.html" title="&lt;no title&gt;"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="using-vector-instructions-through-built-in-functions.html" title="Using Vector Instructions through Built-in Functions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="using-vector-instructions-through-built-in-functions.html"
+                        title="previous chapter">Using Vector Instructions through Built-in Functions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="legacy-__sync-built-in-functions-for-atomic-memory-access.html"
+                        title="next chapter">&lt;no title&gt;</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/support-for-offsetof.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p>Support for <tt class="docutils literal"><span class="pre">offsetof</span></tt></p>
+<p id="index-0">GCC implements for both C and C++ a syntactic extension to implement
+the <tt class="docutils literal"><span class="pre">offsetof</span></tt> macro.</p>
+<div class="highlight-c++"><pre>primary:
+        "__builtin_offsetof" "(" ``typename`` "," offsetof_member_designator ")"
+
+offsetof_member_designator:
+          ``identifier``
+        | offsetof_member_designator "." ``identifier``
+        | offsetof_member_designator "[" ``expr`` "]"</pre>
+</div>
+<p>This extension is sufficient such that</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define offsetof(``type``, ``member``)  __builtin_offsetof (``type``, ``member``)</span>
+</pre></div>
+</div>
+<p>is a suitable definition of the <tt class="docutils literal"><span class="pre">offsetof</span></tt> macro.  In C++, <tt class="docutils literal"><span class="pre">type</span></tt>
+may be dependent.  In either case, <tt class="docutils literal"><span class="pre">member</span></tt> may consist of a single
+identifier, or a sequence of member accesses and array references.</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="legacy-__sync-built-in-functions-for-atomic-memory-access.html" title="&lt;no title&gt;"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="using-vector-instructions-through-built-in-functions.html" title="Using Vector Instructions through Built-in Functions"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

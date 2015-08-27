@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using Vector Instructions through Built-in Functions &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="&lt;no title&gt;" href="support-for-offsetof.html" />
+    <link rel="prev" title="Getting the Return or Frame Address of a Function" href="getting-the-return-or-frame-address-of-a-function.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="support-for-offsetof.html" title="&lt;no title&gt;"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="getting-the-return-or-frame-address-of-a-function.html" title="Getting the Return or Frame Address of a Function"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="getting-the-return-or-frame-address-of-a-function.html"
+                        title="previous chapter">Getting the Return or Frame Address of a Function</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="support-for-offsetof.html"
+                        title="next chapter">&lt;no title&gt;</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/using-vector-instructions-through-built-in-functions.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="using-vector-instructions-through-built-in-functions">
+<h1>Using Vector Instructions through Built-in Functions<a class="headerlink" href="#using-vector-instructions-through-built-in-functions" title="Permalink to this headline">¶</a></h1>
+<p>On some targets, the instruction set contains SIMD vector instructions which
+operate on multiple values contained in one large register at the same time.
+For example, on the x86 the MMX, 3DNow! and SSE extensions can be used
+this way.</p>
+<p>The first step in using these extensions is to provide the necessary data
+types.  This should be done using an appropriate <tt class="docutils literal"><span class="pre">typedef</span></tt>:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">v4si</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">vector_size</span> <span class="p">(</span><span class="mi">16</span><span class="p">)));</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">int</span></tt> type specifies the base type, while the attribute specifies
+the vector size for the variable, measured in bytes.  For example, the
+declaration above causes the compiler to set the mode for the <tt class="docutils literal"><span class="pre">v4si</span></tt>
+type to be 16 bytes wide and divided into <tt class="docutils literal"><span class="pre">int</span></tt> sized units.  For
+a 32-bit <tt class="docutils literal"><span class="pre">int</span></tt> this means a vector of 4 units of 4 bytes, and the
+corresponding mode of <tt class="docutils literal"><span class="pre">foo</span></tt> is V4SI.</p>
+<p>The <tt class="docutils literal"><span class="pre">vector_size</span></tt> attribute is only applicable to integral and
+float scalars, although arrays, pointers, and function return values
+are allowed in conjunction with this construct. Only sizes that are
+a power of two are currently allowed.</p>
+<p>All the basic integer types can be used as base types, both as signed
+and as unsigned: <tt class="docutils literal"><span class="pre">char</span></tt>, <tt class="docutils literal"><span class="pre">short</span></tt>, <tt class="docutils literal"><span class="pre">int</span></tt>, <tt class="docutils literal"><span class="pre">long</span></tt>,
+<tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt>.  In addition, <tt class="docutils literal"><span class="pre">float</span></tt> and <tt class="docutils literal"><span class="pre">double</span></tt> can be
+used to build floating-point vector types.</p>
+<p>Specifying a combination that is not valid for the current architecture
+causes GCC to synthesize the instructions using a narrower mode.
+For example, if you specify a variable of type <tt class="docutils literal"><span class="pre">V4SI</span></tt> and your
+architecture does not allow for this specific SIMD type, GCC
+produces code that uses 4 <tt class="docutils literal"><span class="pre">SIs</span></tt>.</p>
+<p>The types defined in this manner can be used with a subset of normal C
+operations.  Currently, GCC allows using the following operators
+on these types: <tt class="docutils literal"><span class="pre">+,</span> <span class="pre">-,</span> <span class="pre">*,</span> <span class="pre">/,</span> <span class="pre">unary</span> <span class="pre">minus,</span> <span class="pre">^,</span> <span class="pre">|,</span> <span class="pre">&amp;,</span> <span class="pre">~,</span> <span class="pre">%</span></tt>.</p>
+<p>The operations behave like C++ <tt class="docutils literal"><span class="pre">valarrays</span></tt>.  Addition is defined as
+the addition of the corresponding elements of the operands.  For
+example, in the code below, each of the 4 elements in <tt class="docutils literal"><span class="pre">a</span></tt> is
+added to the corresponding 4 elements in <tt class="docutils literal"><span class="pre">b</span></tt> and the resulting
+vector is stored in <tt class="docutils literal"><span class="pre">c</span></tt>.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">v4si</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">vector_size</span> <span class="p">(</span><span class="mi">16</span><span class="p">)));</span>
+
+<span class="n">v4si</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Subtraction, multiplication, division, and the logical operations
+operate in a similar manner.  Likewise, the result of using the unary
+minus or complement operators on a vector type is a vector whose
+elements are the negative or complemented values of the corresponding
+elements in the operand.</p>
+<p>It is possible to use shifting operators <tt class="docutils literal"><span class="pre">&lt;&lt;</span></tt>, <tt class="docutils literal"><span class="pre">&gt;&gt;</span></tt> on
+integer-type vectors. The operation is defined as following: <tt class="docutils literal"><span class="pre">{a0,</span>
+<span class="pre">a1,</span> <span class="pre">...,</span> <span class="pre">an}</span> <span class="pre">&gt;&gt;</span> <span class="pre">{b0,</span> <span class="pre">b1,</span> <span class="pre">...,</span> <span class="pre">bn}</span> <span class="pre">==</span> <span class="pre">{a0</span> <span class="pre">&gt;&gt;</span> <span class="pre">b0,</span> <span class="pre">a1</span> <span class="pre">&gt;&gt;</span> <span class="pre">b1,</span>
+<span class="pre">...,</span> <span class="pre">an</span> <span class="pre">&gt;&gt;</span> <span class="pre">bn}</span></tt>. Vector operands must have the same number of
+elements.</p>
+<p>For convenience, it is allowed to use a binary vector operation
+where one operand is a scalar. In that case the compiler transforms
+the scalar operand into a vector where each element is the scalar from
+the operation. The transformation happens only if the scalar could be
+safely converted to the vector-element type.
+Consider the following code.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">v4si</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">vector_size</span> <span class="p">(</span><span class="mi">16</span><span class="p">)));</span>
+
+<span class="n">v4si</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+<span class="kt">long</span> <span class="n">l</span><span class="p">;</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>    <span class="cm">/* a = b + {1,1,1,1}; */</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>    <span class="cm">/* a = {2,2,2,2} * b; */</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>    <span class="cm">/* Error, cannot convert long to int. */</span>
+</pre></div>
+</div>
+<p>Vectors can be subscripted as if the vector were an array with
+the same number of elements and base type.  Out of bound accesses
+invoke undefined behavior at run time.  Warnings for out of bound
+accesses for vector subscription can be enabled with
+<a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Warray-bounds"><em class="xref std std-option">-Warray-bounds</em></a>.</p>
+<p>Vector comparison is supported with standard comparison
+operators: <tt class="docutils literal"><span class="pre">==,</span> <span class="pre">!=,</span> <span class="pre">&lt;,</span> <span class="pre">&lt;=,</span> <span class="pre">&gt;,</span> <span class="pre">&gt;=</span></tt>. Comparison operands can be
+vector expressions of integer-type or real-type. Comparison between
+integer-type vectors and real-type vectors are not supported.  The
+result of the comparison is a vector of the same width and number of
+elements as the comparison operands with a signed integral element
+type.</p>
+<p>Vectors are compared element-wise producing 0 when comparison is false
+and -1 (constant of the appropriate type where all bits are set)
+otherwise. Consider the following example.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">v4si</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">vector_size</span> <span class="p">(</span><span class="mi">16</span><span class="p">)));</span>
+
+<span class="n">v4si</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span>
+<span class="n">v4si</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span>
+<span class="n">v4si</span> <span class="n">c</span><span class="p">;</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&gt;</span>  <span class="n">b</span><span class="p">;</span>     <span class="cm">/* The result would be {0, 0,-1, 0}  */</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">;</span>     <span class="cm">/* The result would be {0,-1, 0,-1}  */</span>
+</pre></div>
+</div>
+<p>In C++, the ternary operator <tt class="docutils literal"><span class="pre">?:</span></tt> is available. <tt class="docutils literal"><span class="pre">a?b:c</span></tt>, where
+<tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">c</span></tt> are vectors of the same type and <tt class="docutils literal"><span class="pre">a</span></tt> is an
+integer vector with the same number of elements of the same size as <tt class="docutils literal"><span class="pre">b</span></tt>
+and <tt class="docutils literal"><span class="pre">c</span></tt>, computes all three arguments and creates a vector
+<tt class="docutils literal"><span class="pre">{a[0]?b[0]:c[0],</span> <span class="pre">a[1]?b[1]:c[1],</span> <span class="pre">...}</span></tt>.  Note that unlike in
+OpenCL, <tt class="docutils literal"><span class="pre">a</span></tt> is thus interpreted as <tt class="docutils literal"><span class="pre">a</span> <span class="pre">!=</span> <span class="pre">0</span></tt> and not <tt class="docutils literal"><span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">0</span></tt>.
+As in the case of binary operations, this syntax is also accepted when
+one of <tt class="docutils literal"><span class="pre">b</span></tt> or <tt class="docutils literal"><span class="pre">c</span></tt> is a scalar that is then transformed into a
+vector. If both <tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">c</span></tt> are scalars and the type of
+<tt class="docutils literal"><span class="pre">true?b:c</span></tt> has the same size as the element type of <tt class="docutils literal"><span class="pre">a</span></tt>, then
+<tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">c</span></tt> are converted to a vector type whose elements have
+this type and with the same number of elements as <tt class="docutils literal"><span class="pre">a</span></tt>.</p>
+<p>In C++, the logic operators <tt class="docutils literal"><span class="pre">!,</span> <span class="pre">&amp;&amp;,</span> <span class="pre">||</span></tt> are available for vectors.
+<tt class="docutils literal"><span class="pre">!v</span></tt> is equivalent to <tt class="docutils literal"><span class="pre">v</span> <span class="pre">==</span> <span class="pre">0</span></tt>, <tt class="docutils literal"><span class="pre">a</span> <span class="pre">&amp;&amp;</span> <span class="pre">b</span></tt> is equivalent to
+<tt class="docutils literal"><span class="pre">a!=0</span> <span class="pre">&amp;</span> <span class="pre">b!=0</span></tt> and <tt class="docutils literal"><span class="pre">a</span> <span class="pre">||</span> <span class="pre">b</span></tt> is equivalent to <tt class="docutils literal"><span class="pre">a!=0</span> <span class="pre">|</span> <span class="pre">b!=0</span></tt>.
+For mixed operations between a scalar <tt class="docutils literal"><span class="pre">s</span></tt> and a vector <tt class="docutils literal"><span class="pre">v</span></tt>,
+<tt class="docutils literal"><span class="pre">s</span> <span class="pre">&amp;&amp;</span> <span class="pre">v</span></tt> is equivalent to <tt class="docutils literal"><span class="pre">s?v!=0:0</span></tt> (the evaluation is
+short-circuit) and <tt class="docutils literal"><span class="pre">v</span> <span class="pre">&amp;&amp;</span> <span class="pre">s</span></tt> is equivalent to <tt class="docutils literal"><span class="pre">v!=0</span> <span class="pre">&amp;</span> <span class="pre">(s?-1:0)</span></tt>.</p>
+<p>Vector shuffling is available using functions
+<tt class="docutils literal"><span class="pre">__builtin_shuffle</span> <span class="pre">(vec,</span> <span class="pre">mask)</span></tt> and
+<tt class="docutils literal"><span class="pre">__builtin_shuffle</span> <span class="pre">(vec0,</span> <span class="pre">vec1,</span> <span class="pre">mask)</span></tt>.
+Both functions construct a permutation of elements from one or two
+vectors and return a vector of the same type as the input vector(s).
+The <tt class="docutils literal"><span class="pre">mask</span></tt> is an integral vector with the same width (<tt class="docutils literal"><span class="pre">W</span></tt>)
+and element count (<tt class="docutils literal"><span class="pre">N</span></tt>) as the output vector.</p>
+<p>The elements of the input vectors are numbered in memory ordering of
+<tt class="docutils literal"><span class="pre">vec0</span></tt> beginning at 0 and <tt class="docutils literal"><span class="pre">vec1</span></tt> beginning at <tt class="docutils literal"><span class="pre">N</span></tt>.  The
+elements of <tt class="docutils literal"><span class="pre">mask</span></tt> are considered modulo <tt class="docutils literal"><span class="pre">N</span></tt> in the single-operand
+case and modulo 2*``N`` in the two-operand case.</p>
+<p>Consider the following example,</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">v4si</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">vector_size</span> <span class="p">(</span><span class="mi">16</span><span class="p">)));</span>
+
+<span class="n">v4si</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span>
+<span class="n">v4si</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">};</span>
+<span class="n">v4si</span> <span class="n">mask1</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+<span class="n">v4si</span> <span class="n">mask2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+<span class="n">v4si</span> <span class="n">res</span><span class="p">;</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">__builtin_shuffle</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">mask1</span><span class="p">);</span>       <span class="cm">/* res is {1,2,2,4}  */</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">__builtin_shuffle</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">mask2</span><span class="p">);</span>    <span class="cm">/* res is {1,5,3,6}  */</span>
+</pre></div>
+</div>
+<p>Note that <tt class="docutils literal"><span class="pre">__builtin_shuffle</span></tt> is intentionally semantically
+compatible with the OpenCL <tt class="docutils literal"><span class="pre">shuffle</span></tt> and <tt class="docutils literal"><span class="pre">shuffle2</span></tt> functions.</p>
+<p>You can declare variables and use them in function calls and returns, as
+well as in assignments and some casts.  You can specify a vector type as
+a return type for a function.  Vector types can also be used as function
+arguments.  It is possible to cast from one vector type to another,
+provided they are of the same size (in fact, you can also cast vectors
+to and from other datatypes of the same size).</p>
+<p>You cannot operate between vectors of different lengths or different
+signedness without a cast.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="support-for-offsetof.html" title="&lt;no title&gt;"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="getting-the-return-or-frame-address-of-a-function.html" title="Getting the Return or Frame Address of a Function"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

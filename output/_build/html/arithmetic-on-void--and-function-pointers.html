@@ -1,0 +1,122 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="Pointers to Arrays with Qualifiers Work as Expected" href="pointers-to-arrays-with-qualifiers-work-as-expected.html" />
+    <link rel="prev" title="Non-Lvalue Arrays May Have Subscripts" href="non-lvalue-arrays-may-have-subscripts.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="pointers-to-arrays-with-qualifiers-work-as-expected.html" title="Pointers to Arrays with Qualifiers Work as Expected"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="non-lvalue-arrays-may-have-subscripts.html" title="Non-Lvalue Arrays May Have Subscripts"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="non-lvalue-arrays-may-have-subscripts.html"
+                        title="previous chapter">Non-Lvalue Arrays May Have Subscripts</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pointers-to-arrays-with-qualifiers-work-as-expected.html"
+                        title="next chapter">Pointers to Arrays with Qualifiers Work as Expected</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/arithmetic-on-void--and-function-pointers.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p>Arithmetic on <tt class="docutils literal"><span class="pre">void</span></tt>- and Function-Pointers</p>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">In GNU C, addition and subtraction operations are supported on pointers to
+<tt class="docutils literal"><span class="pre">void</span></tt> and on pointers to functions.  This is done by treating the
+size of a <tt class="docutils literal"><span class="pre">void</span></tt> or of a function as 1.</p>
+<p>A consequence of this is that <tt class="docutils literal"><span class="pre">sizeof</span></tt> is also allowed on <tt class="docutils literal"><span class="pre">void</span></tt>
+and on function types, and returns 1.</p>
+<p id="index-4">The option <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wpointer-arith"><em class="xref std std-option">-Wpointer-arith</em></a> requests a warning if these extensions
+are used.</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="pointers-to-arrays-with-qualifiers-work-as-expected.html" title="Pointers to Arrays with Qualifiers Work as Expected"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="non-lvalue-arrays-may-have-subscripts.html" title="Non-Lvalue Arrays May Have Subscripts"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

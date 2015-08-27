@@ -1,0 +1,156 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>When is a Volatile C++ Object Accessed? &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C++ Language" href="extensions-to-the-c++-language.html" />
+    <link rel="next" title="Restricting Pointer Aliasing" href="restricting-pointer-aliasing.html" />
+    <link rel="prev" title="Backwards Compatibility" href="backwards-compatibility.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="restricting-pointer-aliasing.html" title="Restricting Pointer Aliasing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="backwards-compatibility.html" title="Backwards Compatibility"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c++-language.html" accesskey="U">Extensions to the C++ Language</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="backwards-compatibility.html"
+                        title="previous chapter">Backwards Compatibility</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="restricting-pointer-aliasing.html"
+                        title="next chapter">Restricting Pointer Aliasing</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/when-is-a-volatile-c++-object-accessed?.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="when-is-a-volatile-c-object-accessed">
+<h1>When is a Volatile C++ Object Accessed?<a class="headerlink" href="#when-is-a-volatile-c-object-accessed" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">The C++ standard differs from the C standard in its treatment of
+volatile objects.  It fails to specify what constitutes a volatile
+access, except to say that C++ should behave in a similar manner to C
+with respect to volatiles, where possible.  However, the different
+lvalueness of expressions between C and C++ complicate the behavior.
+G++ behaves the same as GCC for volatile access, C
+ExtensionsVolatiles, for a description of GCCs behavior.</p>
+<p>The C and C++ language specifications differ when an object is
+accessed in a void context:</p>
+<div class="highlight-c++"><pre>volatile int *src = ``somevalue``;
+*src;</pre>
+</div>
+<p>The C++ standard specifies that such expressions do not undergo lvalue
+to rvalue conversion, and that the type of the dereferenced object may
+be incomplete.  The C++ standard does not specify explicitly that it
+is lvalue to rvalue conversion that is responsible for causing an
+access.  There is reason to believe that it is, because otherwise
+certain simple expressions become undefined.  However, because it
+would surprise most programmers, G++ treats dereferencing a pointer to
+volatile object of complete type as GCC would do for an equivalent
+type in C.  When the object has incomplete type, G++ issues a
+warning; if you wish to force an error, you must force a conversion to
+rvalue with, for instance, a static cast.</p>
+<p>When using a reference to volatile, G++ does not treat equivalent
+expressions as accesses to volatiles, but instead issues a warning that
+no volatile is accessed.  The rationale for this is that otherwise it
+becomes difficult to determine where volatile access occur, and not
+possible to ignore the return value from functions returning volatile
+references.  Again, if you wish to force a read, cast the reference to
+an rvalue.</p>
+<p>G++ implements the same behavior as GCC does when assigning to a
+volatile objectthere is no reread of the assigned-to object, the
+assigned rvalue is reused.  Note that in C++ assignment expressions
+are lvalues, and if used as an lvalue, the volatile object is
+referred to.  For instance, <tt class="docutils literal"><span class="pre">vref</span></tt> refers to <tt class="docutils literal"><span class="pre">vobj</span></tt>, as
+expected, in the following example:</p>
+<div class="highlight-c++"><pre>volatile int vobj;
+volatile int &amp;vref = vobj = ``something``;</pre>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="restricting-pointer-aliasing.html" title="Restricting Pointer Aliasing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="backwards-compatibility.html" title="Backwards Compatibility"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c++-language.html" >Extensions to the C++ Language</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

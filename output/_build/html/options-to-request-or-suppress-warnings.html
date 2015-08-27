@@ -1,0 +1,2465 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Options to Request or Suppress Warnings &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="GCC Command Options" href="gcc-command-options.html" />
+    <link rel="next" title="Options for Debugging Your Program or GCC" href="options-for-debugging-your-program-or-gcc.html" />
+    <link rel="prev" title="Options to Control Diagnostic Messages Formatting" href="options-to-control-diagnostic-messages-formatting.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="options-for-debugging-your-program-or-gcc.html" title="Options for Debugging Your Program or GCC"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="options-to-control-diagnostic-messages-formatting.html" title="Options to Control Diagnostic Messages Formatting"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gcc-command-options.html" accesskey="U">GCC Command Options</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="options-to-control-diagnostic-messages-formatting.html"
+                        title="previous chapter">Options to Control Diagnostic Messages Formatting</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="options-for-debugging-your-program-or-gcc.html"
+                        title="next chapter">Options for Debugging Your Program or GCC</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/options-to-request-or-suppress-warnings.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="options-to-request-or-suppress-warnings">
+<h1>Options to Request or Suppress Warnings<a class="headerlink" href="#options-to-request-or-suppress-warnings" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">Warnings are diagnostic messages that report constructions that
+are not inherently erroneous but that are risky or suggest there
+may have been an error.</p>
+<p>The following language-independent options do not enable specific
+warnings but control the kinds of diagnostics produced by GCC.</p>
+<span class="target" id="index-4"></span><dl class="option">
+<dt id="cmdoption-fsyntax-only">
+<tt class="descname">-fsyntax-only</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fsyntax-only" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the code for syntax errors, but dont do anything beyond that.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-fmax-errors">
+<tt class="descname">-fmax-errors</tt><tt class="descclassname">=n</tt><a class="headerlink" href="#cmdoption-fmax-errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Limits the maximum number of error messages to <tt class="docutils literal"><span class="pre">n</span></tt>, at which point
+GCC bails out rather than attempting to continue processing the source
+code.  If <tt class="docutils literal"><span class="pre">n</span></tt> is 0 (the default), there is no limit on the number
+of error messages produced.  If <a class="reference internal" href="#cmdoption-Wfatal-errors"><em class="xref std std-option">-Wfatal-errors</em></a> is also
+specified, then <a class="reference internal" href="#cmdoption-Wfatal-errors"><em class="xref std std-option">-Wfatal-errors</em></a> takes precedence over this
+option.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-w">
+<tt class="descname">-w</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-w" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inhibit all warning messages.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Werror">
+<tt class="descname">-Werror</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-error</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Werror" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make all warnings into errors.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Werror">
+<tt class="descname">-Werror</tt><tt class="descclassname">=</tt><a class="headerlink" href="#cmdoption-Werror" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the specified warning into an error.  The specifier for a warning
+is appended; for example <em class="xref std std-option">-Werror=switch</em> turns the warnings
+controlled by <a class="reference internal" href="#cmdoption-Wswitch"><em class="xref std std-option">-Wswitch</em></a> into errors.  This switch takes a
+negative form, to be used to negate <a class="reference internal" href="#cmdoption-Werror"><em class="xref std std-option">-Werror</em></a> for specific
+warnings; for example <em class="xref std std-option">-Wno-error=switch</em> makes
+<a class="reference internal" href="#cmdoption-Wswitch"><em class="xref std std-option">-Wswitch</em></a> warnings not be errors, even when <a class="reference internal" href="#cmdoption-Werror"><em class="xref std std-option">-Werror</em></a>
+is in effect.</p>
+<p>The warning message for each controllable warning includes the
+option that controls the warning.  That option can then be used with
+<em class="xref std std-option">-Werror=</em> and <em class="xref std std-option">-Wno-error=</em> as described above.
+(Printing of the option in the warning message can be disabled using the
+<a class="reference internal" href="options-to-control-diagnostic-messages-formatting.html#cmdoption-fno-diagnostics-show-option"><em class="xref std std-option">-fno-diagnostics-show-option</em></a> flag.)</p>
+<p>Note that specifying <em class="xref std std-option">-Werror=```foo`</em> automatically implies
+<em class="xref std std-option">-W```foo`</em>.  However, <em class="xref std std-option">-Wno-error=```foo`</em> does not
+imply anything.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wfatal-errors">
+<tt class="descname">-Wfatal-errors</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-fatal-errors</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wfatal-errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option causes the compiler to abort compilation on the first error
+occurred rather than trying to keep going and printing further error
+messages.</p>
+</dd></dl>
+
+<p>You can request many specific warnings with options beginning with
+-W, for example <a class="reference internal" href="#cmdoption-Wimplicit"><em class="xref std std-option">-Wimplicit</em></a> to request warnings on
+implicit declarations.  Each of these specific warning options also
+has a negative form beginning -Wno- to turn off warnings; for
+example, <em class="xref std std-option">-Wno-implicit</em>.  This manual lists only one of the
+two forms, whichever is not the default.  For further
+language-specific options also refer to C++ Dialect Options and
+Objective-C and Objective-C++ Dialect Options.</p>
+<p>Some options, such as <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> and <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>, turn on other
+options, such as <a class="reference internal" href="#cmdoption-Wunused"><em class="xref std std-option">-Wunused</em></a>, which may turn on further options,
+such as <a class="reference internal" href="#cmdoption-Wunused-value"><em class="xref std std-option">-Wunused-value</em></a>. The combined effect of positive and
+negative forms is that more specific options have priority over less
+specific ones, independently of their position in the command-line. For
+options of the same specificity, the last one takes effect. Options
+enabled or disabled via pragmas (Diagnostic Pragmas) take effect
+as if they appeared at the end of the command-line.</p>
+<p>When an unrecognized warning option is requested (e.g.,
+<em class="xref std std-option">-Wunknown-warning</em>), GCC emits a diagnostic stating
+that the option is not recognized.  However, if the <em class="xref std std-option">-Wno-</em> form
+is used, the behavior is slightly different: no diagnostic is
+produced for <em class="xref std std-option">-Wno-unknown-warning</em> unless other diagnostics
+are being produced.  This allows the use of new <em class="xref std std-option">-Wno-</em> options
+with old compilers, but if something goes wrong, the compiler
+warns that an unrecognized option is present.</p>
+<dl class="option">
+<dt id="cmdoption-Wpedantic">
+<tt class="descname">-Wpedantic</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-pedantic</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wpedantic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Issue all the warnings demanded by strict ISO C and ISO C++;
+reject all programs that use forbidden extensions, and some other
+programs that do not follow ISO C and ISO C++.  For ISO C, follows the
+version of the ISO C standard specified by any <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option used.</p>
+<p>Valid ISO C and ISO C++ programs should compile properly with or without
+this option (though a rare few require <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or a
+<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option specifying the required version of ISO C).  However,
+without this option, certain GNU extensions and traditional C and C++
+features are supported as well.  With this option, they are rejected.</p>
+<p><a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> does not cause warning messages for use of the
+alternate keywords whose names begin and end with __.  Pedantic
+warnings are also disabled in the expression that follows
+<tt class="docutils literal"><span class="pre">__extension__</span></tt>.  However, only system header files should use
+these escape routes; application programs should avoid them.
+Alternate Keywords.</p>
+<p>Some users try to use <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> to check programs for strict ISO
+C conformance.  They soon find that it does not do quite what they want:
+it finds some non-ISO practices, but not allonly those for which
+ISO C requires a diagnostic, and some others for which
+diagnostics have been added.</p>
+<p>A feature to report any failure to conform to ISO C might be useful in
+some instances, but would require considerable additional work and would
+be quite different from <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a>.  We dont have plans to
+support such a feature in the near future.</p>
+<p>Where the standard specified with <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> represents a GNU
+extended dialect of C, such as gnu90 or gnu99, there is a
+corresponding <em class="dfn">base standard</em>, the version of ISO C on which the GNU
+extended dialect is based.  Warnings from <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> are given
+where they are required by the base standard.  (It does not make sense
+for such warnings to be given only for features not in the specified GNU
+C dialect, since by definition the GNU dialects of C include all
+features the compiler supports with the given option, and there would be
+nothing to warn about.)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pedantic-errors">
+<tt class="descname">-pedantic-errors</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pedantic-errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give an error whenever the <em class="dfn">base standard</em> (see <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a>)
+requires a diagnostic, in some cases where there is undefined behavior
+at compile-time and in some other cases that do not prevent compilation
+of programs that are valid according to the standard. This is not
+equivalent to <em class="xref std std-option">-Werror=pedantic</em>, since there are errors enabled
+by this option and not enabled by the latter and vice versa.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wall">
+<tt class="descname">-Wall</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-all</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wall" title="Permalink to this definition">¶</a></dt>
+<dd><p>This enables all the warnings about constructions that some users
+consider questionable, and that are easy to avoid (or modify to
+prevent the warning), even in conjunction with macros.  This also
+enables some language-specific warnings described in C++ Dialect
+Options and Objective-C and Objective-C++ Dialect Options.</p>
+<p><a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> turns on the following warning flags:</p>
+<p><a class="reference internal" href="#cmdoption-Waddress"><em class="xref std std-option">-Waddress</em></a>
+<em class="xref std std-option">-Warray-bounds=1</em> (only with <em class="xref std std-option">:option:</em>-O2``)
+<em class="xref std std-option">-Wc++11-compat</em>  <em class="xref std std-option">-Wc++14-compat</em>
+<a class="reference internal" href="#cmdoption-Wchar-subscripts"><em class="xref std std-option">-Wchar-subscripts</em></a>
+<a class="reference internal" href="#cmdoption-Wenum-compare"><em class="xref std std-option">-Wenum-compare</em></a> (in C/ObjC; this is on by default in C++)
+<a class="reference internal" href="#cmdoption-Wimplicit-int"><em class="xref std std-option">-Wimplicit-int</em></a> (C and Objective:option:<cite>-C</cite> only)
+<a class="reference internal" href="#cmdoption-Wimplicit-function-declaration"><em class="xref std std-option">-Wimplicit-function-declaration</em></a> (C and Objective:option:<cite>-C</cite> only)
+<a class="reference internal" href="#cmdoption-Wcomment"><em class="xref std std-option">-Wcomment</em></a>
+<a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a>
+<a class="reference internal" href="#cmdoption-Wmain"><em class="xref std std-option">-Wmain</em></a> (only for C/ObjC and unless <em class="xref std std-option">:option:</em>-ffreestanding``)
+<a class="reference internal" href="#cmdoption-Wmaybe-uninitialized"><em class="xref std std-option">-Wmaybe-uninitialized</em></a>
+<a class="reference internal" href="#cmdoption-Wmissing-braces"><em class="xref std std-option">-Wmissing-braces</em></a> (only for C/ObjC)
+<a class="reference internal" href="#cmdoption-Wnonnull"><em class="xref std std-option">-Wnonnull</em></a>
+<a class="reference internal" href="#cmdoption-Wopenmp-simd"><em class="xref std std-option">-Wopenmp-simd</em></a>
+<a class="reference internal" href="#cmdoption-Wparentheses"><em class="xref std std-option">-Wparentheses</em></a>
+<a class="reference internal" href="#cmdoption-Wpointer-sign"><em class="xref std std-option">-Wpointer-sign</em></a>
+<a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-Wreorder"><em class="xref std std-option">-Wreorder</em></a>
+<a class="reference internal" href="#cmdoption-Wreturn-type"><em class="xref std std-option">-Wreturn-type</em></a>
+<a class="reference internal" href="#cmdoption-Wsequence-point"><em class="xref std std-option">-Wsequence-point</em></a>
+<a class="reference internal" href="#cmdoption-Wsign-compare"><em class="xref std std-option">-Wsign-compare</em></a> (only in C++)
+<a class="reference internal" href="#cmdoption-Wstrict-aliasing"><em class="xref std std-option">-Wstrict-aliasing</em></a>
+<em class="xref std std-option">-Wstrict-overflow=1</em>
+<a class="reference internal" href="#cmdoption-Wswitch"><em class="xref std std-option">-Wswitch</em></a>
+<a class="reference internal" href="#cmdoption-Wtrigraphs"><em class="xref std std-option">-Wtrigraphs</em></a>
+<a class="reference internal" href="#cmdoption-Wuninitialized"><em class="xref std std-option">-Wuninitialized</em></a>
+<a class="reference internal" href="#cmdoption-Wunknown-pragmas"><em class="xref std std-option">-Wunknown-pragmas</em></a>
+<a class="reference internal" href="#cmdoption-Wunused-function"><em class="xref std std-option">-Wunused-function</em></a>
+<a class="reference internal" href="#cmdoption-Wunused-label"><em class="xref std std-option">-Wunused-label</em></a>
+<a class="reference internal" href="#cmdoption-Wunused-value"><em class="xref std std-option">-Wunused-value</em></a>
+<a class="reference internal" href="#cmdoption-Wunused-variable"><em class="xref std std-option">-Wunused-variable</em></a>
+<a class="reference internal" href="#cmdoption-Wvolatile-register-var"><em class="xref std std-option">-Wvolatile-register-var</em></a></p>
+<p>Note that some warning flags are not implied by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.  Some of
+them warn about constructions that users generally do not consider
+questionable, but which occasionally you might wish to check for;
+others warn about constructions that are necessary or hard to avoid in
+some cases, and there is no simple way to modify the code to suppress
+the warning. Some of them are enabled by <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a> but many of
+them must be enabled individually.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wextra">
+<tt class="descname">-Wextra</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-W</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-extra</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wextra" title="Permalink to this definition">¶</a></dt>
+<dd><p>This enables some extra warning flags that are not enabled by
+<a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>. (This option used to be called <em class="xref std std-option">-W</em>.  The older
+name is still supported, but the newer name is more descriptive.)</p>
+<p><a class="reference internal" href="#cmdoption-Wclobbered"><em class="xref std std-option">-Wclobbered</em></a>
+<a class="reference internal" href="#cmdoption-Wempty-body"><em class="xref std std-option">-Wempty-body</em></a>
+<a class="reference internal" href="#cmdoption-Wignored-qualifiers"><em class="xref std std-option">-Wignored-qualifiers</em></a>
+<a class="reference internal" href="#cmdoption-Wmissing-field-initializers"><em class="xref std std-option">-Wmissing-field-initializers</em></a>
+<a class="reference internal" href="#cmdoption-Wmissing-parameter-type"><em class="xref std std-option">-Wmissing-parameter-type</em></a> (C only)
+<a class="reference internal" href="#cmdoption-Wold-style-declaration"><em class="xref std std-option">-Wold-style-declaration</em></a> (C only)
+<a class="reference internal" href="#cmdoption-Woverride-init"><em class="xref std std-option">-Woverride-init</em></a>
+<a class="reference internal" href="#cmdoption-Wsign-compare"><em class="xref std std-option">-Wsign-compare</em></a>
+<a class="reference internal" href="#cmdoption-Wtype-limits"><em class="xref std std-option">-Wtype-limits</em></a>
+<a class="reference internal" href="#cmdoption-Wuninitialized"><em class="xref std std-option">-Wuninitialized</em></a>
+<a class="reference internal" href="#cmdoption-Wshift-negative-value"><em class="xref std std-option">-Wshift-negative-value</em></a>
+<a class="reference internal" href="#cmdoption-Wunused-parameter"><em class="xref std std-option">-Wunused-parameter</em></a> (only with <em class="xref std std-option">:option:</em>-Wunused`` or <em class="xref std std-option">:option:</em>-Wall``)
+<a class="reference internal" href="#cmdoption-Wunused-but-set-parameter"><em class="xref std std-option">-Wunused-but-set-parameter</em></a> (only with <em class="xref std std-option">:option:</em>-Wunused`` or <em class="xref std std-option">:option:</em>-Wall``)</p>
+<p>The option <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a> also prints warning messages for the
+following cases:</p>
+<ul>
+<li><p class="first">A pointer is compared against integer zero with <tt class="docutils literal"><span class="pre">&lt;</span></tt>, <tt class="docutils literal"><span class="pre">&lt;=</span></tt>,
+<tt class="docutils literal"><span class="pre">&gt;</span></tt>, or <tt class="docutils literal"><span class="pre">&gt;=</span></tt>.</p>
+<ul class="simple">
+<li>(C++ only) An enumerator and a non-enumerator both appear in a</li>
+</ul>
+<p>conditional expression.</p>
+<ul class="simple">
+<li>(C++ only) Ambiguous virtual bases.</li>
+<li>(C++ only) Subscripting an array that has been declared <tt class="docutils literal"><span class="pre">register</span></tt>.</li>
+<li>(C++ only) Taking the address of a variable that has been declared</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">register</span></tt>.</p>
+<ul class="simple">
+<li>(C++ only) A base class is not initialized in a derived classs copy</li>
+</ul>
+<p>constructor.</p>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wchar-subscripts">
+<tt class="descname">-Wchar-subscripts</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-char-subscripts</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wchar-subscripts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if an array subscript has type <tt class="docutils literal"><span class="pre">char</span></tt>.  This is a common cause
+of error, as programmers often forget that this type is signed on some
+machines.
+This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wcomment">
+<tt class="descname">-Wcomment</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-comment</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wcomment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a comment-start sequence /* appears in a /*
+comment, or whenever a Backslash-Newline appears in a // comment.
+This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-coverage-mismatch">
+<tt class="descname">-Wno-coverage-mismatch</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-coverage-mismatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if feedback profiles do not match when using the
+<a class="reference internal" href="options-that-control-optimization.html#cmdoption-fprofile-use"><em class="xref std std-option">-fprofile-use</em></a> option.
+If a source file is changed between compiling with <em class="xref std std-option">-fprofile-gen</em> and
+with <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fprofile-use"><em class="xref std std-option">-fprofile-use</em></a>, the files with the profile feedback can fail
+to match the source file and GCC cannot use the profile feedback
+information.  By default, this warning is enabled and is treated as an
+error.  <a class="reference internal" href="#cmdoption-Wno-coverage-mismatch"><em class="xref std std-option">-Wno-coverage-mismatch</em></a> can be used to disable the
+warning or <em class="xref std std-option">-Wno-error=coverage-mismatch</em> can be used to
+disable the error.  Disabling the error for this warning can result in
+poorly optimized code and is useful only in the
+case of very minor changes such as bug fixes to an existing code-base.
+Completely disabling the warning is not recommended.</p>
+</dd></dl>
+
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-W<var>no-cpp</var></span></kbd></td>
+<td><p class="first">(C, Objective-C, C++, Objective-C++ and Fortran only)</p>
+<p class="last">Suppress warning messages emitted by <tt class="docutils literal"><span class="pre">#warning</span></tt> directives.</p>
+</td></tr>
+</tbody>
+</table>
+<dl class="option">
+<dt id="cmdoption-Wdouble-promotion">
+<tt class="descname">-Wdouble-promotion</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wdouble-promotion</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-double-promotion</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wdouble-promotion" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C, C++, Objective-C and Objective-C++ only)</p>
+</div>
+<p>Give a warning when a value of type <tt class="docutils literal"><span class="pre">float</span></tt> is implicitly
+promoted to <tt class="docutils literal"><span class="pre">double</span></tt>.  CPUs with a 32-bit single-precision
+floating-point unit implement <tt class="docutils literal"><span class="pre">float</span></tt> in hardware, but emulate
+<tt class="docutils literal"><span class="pre">double</span></tt> in software.  On such a machine, doing computations
+using <tt class="docutils literal"><span class="pre">double</span></tt> values is much more expensive because of the
+overhead required for software emulation.</p>
+<p>It is easy to accidentally do computations with <tt class="docutils literal"><span class="pre">double</span></tt> because
+floating-point literals are implicitly of type <tt class="docutils literal"><span class="pre">double</span></tt>.  For
+example, in:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">float</span> <span class="nf">area</span><span class="p">(</span><span class="kt">float</span> <span class="n">radius</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">return</span> <span class="mf">3.14159</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>the compiler performs the entire computation with <tt class="docutils literal"><span class="pre">double</span></tt>
+because the floating-point literal is a <tt class="docutils literal"><span class="pre">double</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wformat">
+<tt class="descname">-Wformat</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-format</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-ffreestanding</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-fno-builtin</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wformat</tt><tt class="descclassname">=</tt><a class="headerlink" href="#cmdoption-Wformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check calls to <tt class="docutils literal"><span class="pre">printf</span></tt> and <tt class="docutils literal"><span class="pre">scanf</span></tt>, etc., to make sure that
+the arguments supplied have types appropriate to the format string
+specified, and that the conversions specified in the format string make
+sense.  This includes standard functions, and others specified by format
+attributes (Function Attributes), in the <tt class="docutils literal"><span class="pre">printf</span></tt>,
+<tt class="docutils literal"><span class="pre">scanf</span></tt>, <tt class="docutils literal"><span class="pre">strftime</span></tt> and <tt class="docutils literal"><span class="pre">strfmon</span></tt> (an X/Open extension,
+not in the C standard) families (or other target-specific families).
+Which functions are checked without format attributes having been
+specified depends on the standard version selected, and such checks of
+functions without the attribute specified are disabled by
+<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ffreestanding"><em class="xref std std-option">-ffreestanding</em></a> or <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fno-builtin"><em class="xref std std-option">-fno-builtin</em></a>.</p>
+<p>The formats are checked against the format features supported by GNU
+libc version 2.2.  These include all ISO C90 and C99 features, as well
+as features from the Single Unix Specification and some BSD and GNU
+extensions.  Other library implementations may not support all these
+features; GCC does not support warning about features that go beyond a
+particular librarys limitations.  However, if <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> is used
+with <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a>, warnings are given about format features not
+in the selected standard version (but not for <tt class="docutils literal"><span class="pre">strfmon</span></tt> formats,
+since those are not in any version of the C standard).  C Dialect
+OptionsOptions Controlling C Dialect.</p>
+<dl class="option">
+<dt id="cmdoption-Wformat">
+<tt class="descname">-Wformat</tt><tt class="descclassname">=1</tt><a class="headerlink" href="#cmdoption-Wformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Option <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> is equivalent to <em class="xref std std-option">-Wformat=1</em>, and
+<em class="xref std std-option">-Wno-format</em> is equivalent to <em class="xref std std-option">-Wformat=0</em>.  Since
+<a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> also checks for null format arguments for several
+functions, <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> also implies <a class="reference internal" href="#cmdoption-Wnonnull"><em class="xref std std-option">-Wnonnull</em></a>.  Some
+aspects of this level of format checking can be disabled by the
+options: <a class="reference internal" href="#cmdoption-Wno-format-contains-nul"><em class="xref std std-option">-Wno-format-contains-nul</em></a>,
+<a class="reference internal" href="#cmdoption-Wno-format-extra-args"><em class="xref std std-option">-Wno-format-extra-args</em></a>, and <a class="reference internal" href="#cmdoption-Wno-format-zero-length"><em class="xref std std-option">-Wno-format-zero-length</em></a>.
+<a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-format-contains-nul">
+<tt class="descname">-Wno-format-contains-nul</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wformat-contains-nul</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-format-contains-nul" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> is specified, do not warn about format strings that
+contain NUL bytes.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-format-extra-args">
+<tt class="descname">-Wno-format-extra-args</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wformat-extra-args</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-format-extra-args" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> is specified, do not warn about excess arguments to a
+<tt class="docutils literal"><span class="pre">printf</span></tt> or <tt class="docutils literal"><span class="pre">scanf</span></tt> format function.  The C standard specifies
+that such arguments are ignored.</p>
+<p>Where the unused arguments lie between used arguments that are
+specified with $ operand number specifications, normally
+warnings are still given, since the implementation could not know what
+type to pass to <tt class="docutils literal"><span class="pre">va_arg</span></tt> to skip the unused arguments.  However,
+in the case of <tt class="docutils literal"><span class="pre">scanf</span></tt> formats, this option suppresses the
+warning if the unused arguments are all pointers, since the Single
+Unix Specification says that such unused arguments are allowed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-format-zero-length">
+<tt class="descname">-Wno-format-zero-length</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wformat-zero-length</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-format-zero-length" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> is specified, do not warn about zero-length formats.
+The C standard specifies that zero-length formats are allowed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wformat">
+<tt class="descname">-Wformat</tt><tt class="descclassname">=2</tt><a class="headerlink" href="#cmdoption-Wformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> plus additional format checks.  Currently
+equivalent to <em class="xref std std-option">-Wformat -Wformat-nonliteral -Wformat-security
+-Wformat-y2k</em>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wformat-nonliteral">
+<tt class="descname">-Wformat-nonliteral</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-format-nonliteral</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wformat-nonliteral" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> is specified, also warn if the format string is not a
+string literal and so cannot be checked, unless the format function
+takes its format arguments as a <tt class="docutils literal"><span class="pre">va_list</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wformat-security">
+<tt class="descname">-Wformat-security</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-format-security</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wformat-security" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> is specified, also warn about uses of format
+functions that represent possible security problems.  At present, this
+warns about calls to <tt class="docutils literal"><span class="pre">printf</span></tt> and <tt class="docutils literal"><span class="pre">scanf</span></tt> functions where the
+format string is not a string literal and there are no format arguments,
+as in <tt class="docutils literal"><span class="pre">printf</span> <span class="pre">(foo);</span></tt>.  This may be a security hole if the format
+string came from untrusted input and contains %n.  (This is
+currently a subset of what <a class="reference internal" href="#cmdoption-Wformat-nonliteral"><em class="xref std std-option">-Wformat-nonliteral</em></a> warns about, but
+in future warnings may be added to <a class="reference internal" href="#cmdoption-Wformat-security"><em class="xref std std-option">-Wformat-security</em></a> that are not
+included in <a class="reference internal" href="#cmdoption-Wformat-nonliteral"><em class="xref std std-option">-Wformat-nonliteral</em></a>.)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wformat-signedness">
+<tt class="descname">-Wformat-signedness</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-format-signedness</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wformat-signedness" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> is specified, also warn if the format string
+requires an unsigned argument and the argument is signed and vice versa.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wformat-y2k">
+<tt class="descname">-Wformat-y2k</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-format-y2k</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wformat-y2k" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a> is specified, also warn about <tt class="docutils literal"><span class="pre">strftime</span></tt>
+formats that may yield only a two-digit year.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wnonnull">
+<tt class="descname">-Wnonnull</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-nonnull</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wnonnull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about passing a null pointer for arguments marked as
+requiring a non-null value by the <tt class="docutils literal"><span class="pre">nonnull</span></tt> function attribute.</p>
+<p><a class="reference internal" href="#cmdoption-Wnonnull"><em class="xref std std-option">-Wnonnull</em></a> is included in <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> and <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a>.  It
+can be disabled with the <em class="xref std std-option">-Wno-nonnull</em> option.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Winit-self">
+<tt class="descname">-Winit-self</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Winit-self</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-init-self</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Winit-self" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C, C++, Objective-C and Objective-C++ only)</p>
+</div>
+<p>Warn about uninitialized variables that are initialized with themselves.
+Note this option can only be used with the <a class="reference internal" href="#cmdoption-Wuninitialized"><em class="xref std std-option">-Wuninitialized</em></a> option.</p>
+<p>For example, GCC warns about <tt class="docutils literal"><span class="pre">i</span></tt> being uninitialized in the
+following snippet only when <a class="reference internal" href="#cmdoption-Winit-self"><em class="xref std std-option">-Winit-self</em></a> has been specified:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">f</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> in C++.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wimplicit-int">
+<tt class="descname">-Wimplicit-int</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wimplicit-int</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-implicit-int</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wimplicit-int" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn when a declaration does not specify a type.
+This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wimplicit-function-declaration">
+<tt class="descname">-Wimplicit-function-declaration</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wimplicit-function-declaration</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-implicit-function-declaration</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wimplicit-function-declaration" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Give a warning whenever a function is used before being declared. In
+C99 mode (<em class="xref std std-option">-std=c99</em> or <em class="xref std std-option">-std=gnu99</em>), this warning is
+enabled by default and it is made into an error by
+<a class="reference internal" href="#cmdoption-pedantic-errors"><em class="xref std std-option">-pedantic-errors</em></a>. This warning is also enabled by
+<a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wimplicit">
+<tt class="descname">-Wimplicit</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wimplicit</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-implicit</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wimplicit" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Same as <a class="reference internal" href="#cmdoption-Wimplicit-int"><em class="xref std std-option">-Wimplicit-int</em></a> and <a class="reference internal" href="#cmdoption-Wimplicit-function-declaration"><em class="xref std std-option">-Wimplicit-function-declaration</em></a>.
+This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wignored-qualifiers">
+<tt class="descname">-Wignored-qualifiers</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wignored-qualifiers</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-ignored-qualifiers</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wignored-qualifiers" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and C++ only)</p>
+</div>
+<p>Warn if the return type of a function has a type qualifier
+such as <tt class="docutils literal"><span class="pre">const</span></tt>.  For ISO C such a type qualifier has no effect,
+since the value returned by a function is not an lvalue.
+For C++, the warning is only emitted for scalar types or <tt class="docutils literal"><span class="pre">void</span></tt>.
+ISO C prohibits qualified <tt class="docutils literal"><span class="pre">void</span></tt> return types on function
+definitions, so such return types always receive a warning
+even without this option.</p>
+<p>This warning is also enabled by <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wmain">
+<tt class="descname">-Wmain</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-main</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wmain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if the type of <tt class="docutils literal"><span class="pre">main</span></tt> is suspicious.  <tt class="docutils literal"><span class="pre">main</span></tt> should be
+a function with external linkage, returning int, taking either zero
+arguments, two, or three arguments of appropriate types.  This warning
+is enabled by default in C++ and is enabled by either <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>
+or <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wmissing-braces">
+<tt class="descname">-Wmissing-braces</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-missing-braces</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wmissing-braces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if an aggregate or union initializer is not fully bracketed.  In
+the following example, the initializer for <tt class="docutils literal"><span class="pre">a</span></tt> is not fully
+bracketed, but that for <tt class="docutils literal"><span class="pre">b</span></tt> is fully bracketed.  This warning is
+enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> in C.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">}</span> <span class="p">};</span>
+</pre></div>
+</div>
+<p>This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wmissing-include-dirs">
+<tt class="descname">-Wmissing-include-dirs</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wmissing-include-dirs</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-missing-include-dirs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wmissing-include-dirs" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C, C++, Objective-C and Objective-C++ only)</p>
+</div>
+<p>Warn if a user-supplied include directory does not exist.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wparentheses">
+<tt class="descname">-Wparentheses</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-parentheses</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wparentheses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if parentheses are omitted in certain contexts, such
+as when there is an assignment in a context where a truth value
+is expected, or when operators are nested whose precedence people
+often get confused about.</p>
+<p>Also warn if a comparison like <tt class="docutils literal"><span class="pre">x&lt;=y&lt;=z</span></tt> appears; this is
+equivalent to <tt class="docutils literal"><span class="pre">(x&lt;=y</span> <span class="pre">?</span> <span class="pre">1</span> <span class="pre">:</span> <span class="pre">0)</span> <span class="pre">&lt;=</span> <span class="pre">z</span></tt>, which is a different
+interpretation from that of ordinary mathematical notation.</p>
+<p>Also warn about constructions where there may be confusion to which
+<tt class="docutils literal"><span class="pre">if</span></tt> statement an <tt class="docutils literal"><span class="pre">else</span></tt> branch belongs.  Here is an example of
+such a case:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span>
+      <span class="n">foo</span> <span class="p">();</span>
+  <span class="k">else</span>
+    <span class="nf">bar</span> <span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In C/C++, every <tt class="docutils literal"><span class="pre">else</span></tt> branch belongs to the innermost possible
+<tt class="docutils literal"><span class="pre">if</span></tt> statement, which in this example is <tt class="docutils literal"><span class="pre">if</span> <span class="pre">(b)</span></tt>.  This is
+often not what the programmer expected, as illustrated in the above
+example by indentation the programmer chose.  When there is the
+potential for this confusion, GCC issues a warning when this flag
+is specified.  To eliminate the warning, add explicit braces around
+the innermost <tt class="docutils literal"><span class="pre">if</span></tt> statement so there is no way the <tt class="docutils literal"><span class="pre">else</span></tt>
+can belong to the enclosing <tt class="docutils literal"><span class="pre">if</span></tt>.  The resulting code
+looks like this:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">foo</span> <span class="p">();</span>
+      <span class="k">else</span>
+        <span class="nf">bar</span> <span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Also warn for dangerous uses of the GNU extension to
+<tt class="docutils literal"><span class="pre">?:</span></tt> with omitted middle operand. When the condition
+in the <tt class="docutils literal"><span class="pre">?</span></tt>: operator is a boolean expression, the omitted value is
+always 1.  Often programmers expect it to be a value computed
+inside the conditional expression instead.</p>
+<p>This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsequence-point">
+<tt class="descname">-Wsequence-point</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-sequence-point</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsequence-point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about code that may have undefined semantics because of violations
+of sequence point rules in the C and C++ standards.</p>
+<p>The C and C++ standards define the order in which expressions in a C/C++
+program are evaluated in terms of <em class="dfn">sequence points</em>, which represent
+a partial ordering between the execution of parts of the program: those
+executed before the sequence point, and those executed after it.  These
+occur after the evaluation of a full expression (one which is not part
+of a larger expression), after the evaluation of the first operand of a
+<tt class="docutils literal"><span class="pre">&amp;&amp;</span></tt>, <tt class="docutils literal"><span class="pre">||</span></tt>, <tt class="docutils literal"><span class="pre">?</span> <span class="pre">:</span></tt> or <tt class="docutils literal"><span class="pre">,</span></tt> (comma) operator, before a
+function is called (but after the evaluation of its arguments and the
+expression denoting the called function), and in certain other places.
+Other than as expressed by the sequence point rules, the order of
+evaluation of subexpressions of an expression is not specified.  All
+these rules describe only a partial order rather than a total order,
+since, for example, if two functions are called within one expression
+with no sequence point between them, the order in which the functions
+are called is not specified.  However, the standards committee have
+ruled that function calls do not overlap.</p>
+<p>It is not specified when between sequence points modifications to the
+values of objects take effect.  Programs whose behavior depends on this
+have undefined behavior; the C and C++ standards specify that Between
+the previous and next sequence point an object shall have its stored
+value modified at most once by the evaluation of an expression.
+Furthermore, the prior value shall be read only to determine the value
+to be stored..  If a program breaks these rules, the results on any
+particular implementation are entirely unpredictable.</p>
+<p>Examples of code with undefined behavior are <tt class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a++;</span></tt>, <tt class="docutils literal"><span class="pre">a[n]</span>
+<span class="pre">=</span> <span class="pre">b[n++]</span></tt> and <tt class="docutils literal"><span class="pre">a[i++]</span> <span class="pre">=</span> <span class="pre">i;</span></tt>.  Some more complicated cases are not
+diagnosed by this option, and it may give an occasional false positive
+result, but in general it has been found fairly effective at detecting
+this sort of problem in programs.</p>
+<p>The standard is worded confusingly, therefore there is some debate
+over the precise meaning of the sequence point rules in subtle cases.
+Links to discussions of the problem, including proposed formal
+definitions, may be found on the GCC readings page, at
+<a class="reference external" href="http://gcc.gnu.org/readings.html">http://gcc.gnu.org/readings.html</a>.</p>
+<p>This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> for C and C++.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-return-local-addr">
+<tt class="descname">-Wno-return-local-addr</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wreturn-local-addr</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-return-local-addr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn about returning a pointer (or in C++, a reference) to a
+variable that goes out of scope after the function returns.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wreturn-type">
+<tt class="descname">-Wreturn-type</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-return-type</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wreturn-type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a function is defined with a return type that defaults
+to <tt class="docutils literal"><span class="pre">int</span></tt>.  Also warn about any <tt class="docutils literal"><span class="pre">return</span></tt> statement with no
+return value in a function whose return type is not <tt class="docutils literal"><span class="pre">void</span></tt>
+(falling off the end of the function body is considered returning
+without a value), and about a <tt class="docutils literal"><span class="pre">return</span></tt> statement with an
+expression in a function whose return type is <tt class="docutils literal"><span class="pre">void</span></tt>.</p>
+<p>For C++, a function without return type always produces a diagnostic
+message, even when <em class="xref std std-option">-Wno-return-type</em> is specified.  The only
+exceptions are <tt class="docutils literal"><span class="pre">main</span></tt> and functions defined in system headers.</p>
+<p>This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wshift-count-negative">
+<tt class="descname">-Wshift-count-negative</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-shift-count-negative</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wshift-count-negative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if shift count is negative. This warning is enabled by default.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wshift-count-overflow">
+<tt class="descname">-Wshift-count-overflow</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-shift-count-overflow</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wshift-count-overflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if shift count &gt;= width of type. This warning is enabled by default.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wshift-negative-value">
+<tt class="descname">-Wshift-negative-value</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-shift-negative-value</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wshift-negative-value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if left shifting a negative value.  This warning is enabled by
+<a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a> in C99 and C++11 modes (and newer).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wswitch">
+<tt class="descname">-Wswitch</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-switch</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wswitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a <tt class="docutils literal"><span class="pre">switch</span></tt> statement has an index of enumerated type
+and lacks a <tt class="docutils literal"><span class="pre">case</span></tt> for one or more of the named codes of that
+enumeration.  (The presence of a <tt class="docutils literal"><span class="pre">default</span></tt> label prevents this
+warning.)  <tt class="docutils literal"><span class="pre">case</span></tt> labels outside the enumeration range also
+provoke warnings when this option is used (even if there is a
+<tt class="docutils literal"><span class="pre">default</span></tt> label).
+This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wswitch-default">
+<tt class="descname">-Wswitch-default</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-switch-default</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wswitch-default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a <tt class="docutils literal"><span class="pre">switch</span></tt> statement does not have a <tt class="docutils literal"><span class="pre">default</span></tt>
+case.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wswitch-enum">
+<tt class="descname">-Wswitch-enum</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-switch-enum</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wswitch-enum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a <tt class="docutils literal"><span class="pre">switch</span></tt> statement has an index of enumerated type
+and lacks a <tt class="docutils literal"><span class="pre">case</span></tt> for one or more of the named codes of that
+enumeration.  <tt class="docutils literal"><span class="pre">case</span></tt> labels outside the enumeration range also
+provoke warnings when this option is used.  The only difference
+between <a class="reference internal" href="#cmdoption-Wswitch"><em class="xref std std-option">-Wswitch</em></a> and this option is that this option gives a
+warning about an omitted enumeration code even if there is a
+<tt class="docutils literal"><span class="pre">default</span></tt> label.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wswitch-bool">
+<tt class="descname">-Wswitch-bool</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-switch-bool</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wswitch-bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a <tt class="docutils literal"><span class="pre">switch</span></tt> statement has an index of boolean type.
+It is possible to suppress this warning by casting the controlling
+expression to a type other than <tt class="docutils literal"><span class="pre">bool</span></tt>.  For example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">switch</span> <span class="p">((</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">4</span><span class="p">))</span>
+  <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>This warning is enabled by default for C and C++ programs.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsync-nand">
+<tt class="descname">-Wsync-nand</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wsync-nand</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-sync-nand</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsync-nand" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and C++ only)</p>
+</div>
+<p>Warn when <tt class="docutils literal"><span class="pre">__sync_fetch_and_nand</span></tt> and <tt class="docutils literal"><span class="pre">__sync_nand_and_fetch</span></tt>
+built-in functions are used.  These functions changed semantics in GCC 4.4.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wtrigraphs">
+<tt class="descname">-Wtrigraphs</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-trigraphs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wtrigraphs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if any trigraphs are encountered that might change the meaning of
+the program (trigraphs within comments are not warned about).
+This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunused-but-set-parameter">
+<tt class="descname">-Wunused-but-set-parameter</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unused-but-set-parameter</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunused-but-set-parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a function parameter is assigned to, but otherwise unused
+(aside from its declaration).</p>
+<p>To suppress this warning use the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute
+(Variable Attributes).</p>
+<p>This warning is also enabled by <a class="reference internal" href="#cmdoption-Wunused"><em class="xref std std-option">-Wunused</em></a> together with
+<a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunused-but-set-variable">
+<tt class="descname">-Wunused-but-set-variable</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unused-but-set-variable</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunused-but-set-variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a local variable is assigned to, but otherwise unused
+(aside from its declaration).
+This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+<p>To suppress this warning use the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute
+(Variable Attributes).</p>
+<p>This warning is also enabled by <a class="reference internal" href="#cmdoption-Wunused"><em class="xref std std-option">-Wunused</em></a>, which is enabled
+by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunused-function">
+<tt class="descname">-Wunused-function</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unused-function</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunused-function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a static function is declared but not defined or a
+non-inline static function is unused.
+This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunused-label">
+<tt class="descname">-Wunused-label</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unused-label</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunused-label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a label is declared but not used.
+This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+<p>To suppress this warning use the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute
+(Variable Attributes).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunused-local-typedefs">
+<tt class="descname">-Wunused-local-typedefs</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wunused-local-typedefs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunused-local-typedefs" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C, Objective-C, C++ and Objective-C++ only)</p>
+</div>
+<p>Warn when a typedef locally defined in a function is not used.
+This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunused-parameter">
+<tt class="descname">-Wunused-parameter</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unused-parameter</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunused-parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a function parameter is unused aside from its declaration.</p>
+<p>To suppress this warning use the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute
+(Variable Attributes).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-unused-result">
+<tt class="descname">-Wno-unused-result</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wunused-result</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-unused-result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn if a caller of a function marked with attribute
+<tt class="docutils literal"><span class="pre">warn_unused_result</span></tt> (Function Attributes) does not use
+its return value. The default is <em class="xref std std-option">-Wunused-result</em>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunused-variable">
+<tt class="descname">-Wunused-variable</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unused-variable</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunused-variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a local variable or non-constant static variable is unused
+aside from its declaration.
+This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+<p>To suppress this warning use the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute
+(Variable Attributes).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunused-value">
+<tt class="descname">-Wunused-value</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unused-value</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunused-value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a statement computes a result that is explicitly not
+used. To suppress this warning cast the unused expression to
+<tt class="docutils literal"><span class="pre">void</span></tt>. This includes an expression-statement or the left-hand
+side of a comma expression that contains no side effects. For example,
+an expression such as <tt class="docutils literal"><span class="pre">x[i,j]</span></tt> causes a warning, while
+<tt class="docutils literal"><span class="pre">x[(void)i,j]</span></tt> does not.</p>
+<p>This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunused">
+<tt class="descname">-Wunused</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unused</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunused" title="Permalink to this definition">¶</a></dt>
+<dd><p>All the above <a class="reference internal" href="#cmdoption-Wunused"><em class="xref std std-option">-Wunused</em></a> options combined.</p>
+<p>In order to get a warning about an unused function parameter, you must
+either specify <em class="xref std std-option">-Wextra -Wunused</em> (note that <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> implies
+<a class="reference internal" href="#cmdoption-Wunused"><em class="xref std std-option">-Wunused</em></a>), or separately specify <a class="reference internal" href="#cmdoption-Wunused-parameter"><em class="xref std std-option">-Wunused-parameter</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wuninitialized">
+<tt class="descname">-Wuninitialized</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-uninitialized</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wuninitialized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if an automatic variable is used without first being initialized
+or if a variable may be clobbered by a <tt class="docutils literal"><span class="pre">setjmp</span></tt> call. In C++,
+warn if a non-static reference or non-static <tt class="docutils literal"><span class="pre">const</span></tt> member
+appears in a class without constructors.</p>
+<p>If you want to warn about code that uses the uninitialized value of the
+variable in its own initializer, use the <a class="reference internal" href="#cmdoption-Winit-self"><em class="xref std std-option">-Winit-self</em></a> option.</p>
+<p>These warnings occur for individual uninitialized or clobbered
+elements of structure, union or array variables as well as for
+variables that are uninitialized or clobbered as a whole.  They do
+not occur for variables or elements declared <tt class="docutils literal"><span class="pre">volatile</span></tt>.  Because
+these warnings depend on optimization, the exact variables or elements
+for which there are warnings depends on the precise optimization
+options and version of GCC used.</p>
+<p>Note that there may be no warning about a variable that is used only
+to compute a value that itself is never used, because such
+computations may be deleted by data flow analysis before the warnings
+are printed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wmaybe-uninitialized">
+<tt class="descname">-Wmaybe-uninitialized</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-maybe-uninitialized</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wmaybe-uninitialized" title="Permalink to this definition">¶</a></dt>
+<dd><p>For an automatic variable, if there exists a path from the function
+entry to a use of the variable that is initialized, but there exist
+some other paths for which the variable is not initialized, the compiler
+emits a warning if it cannot prove the uninitialized paths are not
+executed at run time. These warnings are made optional because GCC is
+not smart enough to see all the reasons why the code might be correct
+in spite of appearing to have an error.  Here is one example of how
+this can happen:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="p">{</span>
+  <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">1</span>: <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">2</span>: <span class="n">x</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">3</span>: <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="n">foo</span> <span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the value of <tt class="docutils literal"><span class="pre">y</span></tt> is always 1, 2 or 3, then <tt class="docutils literal"><span class="pre">x</span></tt> is
+always initialized, but GCC doesnt know this. To suppress the
+warning, you need to provide a default case with assert(0) or
+similar code.</p>
+<p><tt class="docutils literal"><span class="pre">longjmp</span></tt> warnings
+This option also warns when a non-volatile automatic variable might be
+changed by a call to <tt class="docutils literal"><span class="pre">longjmp</span></tt>.  These warnings as well are possible
+only in optimizing compilation.</p>
+<p>The compiler sees only the calls to <tt class="docutils literal"><span class="pre">setjmp</span></tt>.  It cannot know
+where <tt class="docutils literal"><span class="pre">longjmp</span></tt> will be called; in fact, a signal handler could
+call it at any point in the code.  As a result, you may get a warning
+even when there is in fact no problem because <tt class="docutils literal"><span class="pre">longjmp</span></tt> cannot
+in fact be called at the place that would cause a problem.</p>
+<p>Some spurious warnings can be avoided if you declare all the functions
+you use that never return as <tt class="docutils literal"><span class="pre">noreturn</span></tt>.  Function
+Attributes.</p>
+<p>This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> or <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunknown-pragmas">
+<tt class="descname">-Wunknown-pragmas</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unknown-pragmas</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunknown-pragmas" title="Permalink to this definition">¶</a></dt>
+<dd><span class="target" id="index-5"></span><span class="target" id="index-6"></span><p id="index-7">Warn when a <tt class="docutils literal"><span class="pre">#pragma</span></tt> directive is encountered that is not understood by
+GCC.  If this command-line option is used, warnings are even issued
+for unknown pragmas in system header files.  This is not the case if
+the warnings are only enabled by the <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> command-line option.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-pragmas">
+<tt class="descname">-Wno-pragmas</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wpragmas</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-pragmas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn about misuses of pragmas, such as incorrect parameters,
+invalid syntax, or conflicts between pragmas.  See also
+<a class="reference internal" href="#cmdoption-Wunknown-pragmas"><em class="xref std std-option">-Wunknown-pragmas</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wstrict-aliasing">
+<tt class="descname">-Wstrict-aliasing</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-strict-aliasing</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wstrict-aliasing" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option is only active when <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstrict-aliasing"><em class="xref std std-option">-fstrict-aliasing</em></a> is active.
+It warns about code that might break the strict aliasing rules that the
+compiler is using for optimization.  The warning does not catch all
+cases, but does attempt to catch the more common pitfalls.  It is
+included in <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.
+It is equivalent to <em class="xref std std-option">-Wstrict-aliasing=3</em></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wstrict-aliasing">
+<tt class="descname">-Wstrict-aliasing</tt><tt class="descclassname">=n</tt><a class="headerlink" href="#cmdoption-Wstrict-aliasing" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option is only active when <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstrict-aliasing"><em class="xref std std-option">-fstrict-aliasing</em></a> is active.
+It warns about code that might break the strict aliasing rules that the
+compiler is using for optimization.
+Higher levels correspond to higher accuracy (fewer false positives).
+Higher levels also correspond to more effort, similar to the way <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O"><em class="xref std std-option">-O</em></a>
+works.
+<a class="reference internal" href="#cmdoption-Wstrict-aliasing"><em class="xref std std-option">-Wstrict-aliasing</em></a> is equivalent to <em class="xref std std-option">-Wstrict-aliasing=3</em>.</p>
+<p>Level 1: Most aggressive, quick, least accurate.
+Possibly useful when higher levels
+do not warn but <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstrict-aliasing"><em class="xref std std-option">-fstrict-aliasing</em></a> still breaks the code, as it has very few
+false negatives.  However, it has many false positives.
+Warns for all pointer conversions between possibly incompatible types,
+even if never dereferenced.  Runs in the front end only.</p>
+<p>Level 2: Aggressive, quick, not too precise.
+May still have many false positives (not as many as level 1 though),
+and few false negatives (but possibly more than level 1).
+Unlike level 1, it only warns when an address is taken.  Warns about
+incomplete types.  Runs in the front end only.</p>
+<p>Level 3 (default for <a class="reference internal" href="#cmdoption-Wstrict-aliasing"><em class="xref std std-option">-Wstrict-aliasing</em></a>):
+Should have very few false positives and few false
+negatives.  Slightly slower than levels 1 or 2 when optimization is enabled.
+Takes care of the common pun+dereference pattern in the front end:
+<tt class="docutils literal"><span class="pre">*(int*)&amp;some_float</span></tt>.
+If optimization is enabled, it also runs in the back end, where it deals
+with multiple statement cases using flow-sensitive points-to information.
+Only warns when the converted pointer is dereferenced.
+Does not warn about incomplete types.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wstrict-overflow">
+<tt class="descname">-Wstrict-overflow</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-strict-overflow</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wstrict-overflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option is only active when <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstrict-overflow"><em class="xref std std-option">-fstrict-overflow</em></a> is active.
+It warns about cases where the compiler optimizes based on the
+assumption that signed overflow does not occur.  Note that it does not
+warn about all cases where the code might overflow: it only warns
+about cases where the compiler implements some optimization.  Thus
+this warning depends on the optimization level.</p>
+<p>An optimization that assumes that signed overflow does not occur is
+perfectly safe if the values of the variables involved are such that
+overflow never does, in fact, occur.  Therefore this warning can
+easily give a false positive: a warning about code that is not
+actually a problem.  To help focus on important issues, several
+warning levels are defined.  No warnings are issued for the use of
+undefined signed overflow when estimating how many iterations a loop
+requires, in particular when determining whether a loop will be
+executed at all.</p>
+<dl class="docutils">
+<dt>-Wstrict-overflow=1</dt>
+<dd>Warn about cases that are both questionable and easy to avoid.  For
+example,  with <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstrict-overflow"><em class="xref std std-option">-fstrict-overflow</em></a>, the compiler simplifies
+<tt class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">x</span></tt> to <tt class="docutils literal"><span class="pre">1</span></tt>.  This level of
+<a class="reference internal" href="#cmdoption-Wstrict-overflow"><em class="xref std std-option">-Wstrict-overflow</em></a> is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>; higher levels
+are not, and must be explicitly requested.</dd>
+<dt>-Wstrict-overflow=2</dt>
+<dd>Also warn about other cases where a comparison is simplified to a
+constant.  For example: <tt class="docutils literal"><span class="pre">abs</span> <span class="pre">(x)</span> <span class="pre">&gt;=</span> <span class="pre">0</span></tt>.  This can only be
+simplified when <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstrict-overflow"><em class="xref std std-option">-fstrict-overflow</em></a> is in effect, because
+<tt class="docutils literal"><span class="pre">abs</span> <span class="pre">(INT_MIN)</span></tt> overflows to <tt class="docutils literal"><span class="pre">INT_MIN</span></tt>, which is less than
+zero.  <a class="reference internal" href="#cmdoption-Wstrict-overflow"><em class="xref std std-option">-Wstrict-overflow</em></a> (with no level) is the same as
+<em class="xref std std-option">-Wstrict-overflow=2</em>.</dd>
+<dt>-Wstrict-overflow=3</dt>
+<dd>Also warn about other cases where a comparison is simplified.  For
+example: <tt class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">1</span></tt> is simplified to <tt class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></tt>.</dd>
+<dt>-Wstrict-overflow=4</dt>
+<dd>Also warn about other simplifications not covered by the above cases.
+For example: <tt class="docutils literal"><span class="pre">(x</span> <span class="pre">*</span> <span class="pre">10)</span> <span class="pre">/</span> <span class="pre">5</span></tt> is simplified to <tt class="docutils literal"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">2</span></tt>.</dd>
+<dt>-Wstrict-overflow=5</dt>
+<dd>Also warn about cases where the compiler reduces the magnitude of a
+constant involved in a comparison.  For example: <tt class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">&gt;</span> <span class="pre">y</span></tt> is
+simplified to <tt class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;=</span> <span class="pre">y</span></tt>.  This is reported only at the
+highest warning level because this simplification applies to many
+comparisons, so this warning level gives a very large number of
+false positives.</dd>
+</dl>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsuggest-attribute">
+<tt class="descname">-Wsuggest-attribute</tt><tt class="descclassname">=[pure|const|noreturn|format]</tt><a class="headerlink" href="#cmdoption-Wsuggest-attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn for cases where adding an attribute may be beneficial. The
+attributes currently supported are listed below.</p>
+<dl class="option">
+<dt id="cmdoption-Wsuggest-attribute">
+<tt class="descname">-Wsuggest-attribute</tt><tt class="descclassname">=pure</tt><a class="headerlink" href="#cmdoption-Wsuggest-attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about functions that might be candidates for attributes
+<tt class="docutils literal"><span class="pre">pure</span></tt>, <tt class="docutils literal"><span class="pre">const</span></tt> or <tt class="docutils literal"><span class="pre">noreturn</span></tt>.  The compiler only warns for
+functions visible in other compilation units or (in the case of <tt class="docutils literal"><span class="pre">pure</span></tt> and
+<tt class="docutils literal"><span class="pre">const</span></tt>) if it cannot prove that the function returns normally. A function
+returns normally if it doesnt contain an infinite loop or return abnormally
+by throwing, calling <tt class="docutils literal"><span class="pre">abort</span></tt> or trapping.  This analysis requires option
+<a class="reference internal" href="options-that-control-optimization.html#cmdoption-fipa-pure-const"><em class="xref std std-option">-fipa-pure-const</em></a>, which is enabled by default at <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O"><em class="xref std std-option">-O</em></a> and
+higher.  Higher optimization levels improve the accuracy of the analysis.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsuggest-attribute">
+<tt class="descname">-Wsuggest-attribute</tt><tt class="descclassname">=format</tt><a class="headerlink" href="#cmdoption-Wsuggest-attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about function pointers that might be candidates for <tt class="docutils literal"><span class="pre">format</span></tt>
+attributes.  Note these are only possible candidates, not absolute ones.
+GCC guesses that function pointers with <tt class="docutils literal"><span class="pre">format</span></tt> attributes that
+are used in assignment, initialization, parameter passing or return
+statements should have a corresponding <tt class="docutils literal"><span class="pre">format</span></tt> attribute in the
+resulting type.  I.e. the left-hand side of the assignment or
+initialization, the type of the parameter variable, or the return type
+of the containing function respectively should also have a <tt class="docutils literal"><span class="pre">format</span></tt>
+attribute to avoid the warning.</p>
+<p>GCC also warns about function definitions that might be
+candidates for <tt class="docutils literal"><span class="pre">format</span></tt> attributes.  Again, these are only
+possible candidates.  GCC guesses that <tt class="docutils literal"><span class="pre">format</span></tt> attributes
+might be appropriate for any function that calls a function like
+<tt class="docutils literal"><span class="pre">vprintf</span></tt> or <tt class="docutils literal"><span class="pre">vscanf</span></tt>, but this might not always be the
+case, and some functions for which <tt class="docutils literal"><span class="pre">format</span></tt> attributes are
+appropriate may not be detected.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsuggest-final-types">
+<tt class="descname">-Wsuggest-final-types</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-suggest-final-types</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsuggest-final-types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about types with virtual methods where code quality would be improved
+if the type were declared with the C++11 <tt class="docutils literal"><span class="pre">final</span></tt> specifier,
+or, if possible,
+declared in an anonymous namespace. This allows GCC to more aggressively
+devirtualize the polymorphic calls. This warning is more effective with link
+time optimization, where the information about the class hierarchy graph is
+more complete.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsuggest-final-methods">
+<tt class="descname">-Wsuggest-final-methods</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-suggest-final-methods</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsuggest-final-methods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about virtual methods where code quality would be improved if the method
+were declared with the C++11 <tt class="docutils literal"><span class="pre">final</span></tt> specifier,
+or, if possible, its type were
+declared in an anonymous namespace or with the <tt class="docutils literal"><span class="pre">final</span></tt> specifier.
+This warning is
+more effective with link time optimization, where the information about the
+class hierarchy graph is more complete. It is recommended to first consider
+suggestions of <a class="reference internal" href="#cmdoption-Wsuggest-final-types"><em class="xref std std-option">-Wsuggest-final-types</em></a> and then rebuild with new
+annotations.</p>
+</dd></dl>
+
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-W<var>suggest-override</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Warn about overriding virtual functions that are not marked with the override
+keyword.</td></tr>
+</tbody>
+</table>
+<dl class="option">
+<dt id="cmdoption-Warray-bounds">
+<tt class="descname">-Warray-bounds</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-array-bounds</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Warray-bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option is only active when <a class="reference internal" href="options-that-control-optimization.html#cmdoption-ftree-vrp"><em class="xref std std-option">-ftree-vrp</em></a> is active
+(default for <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O2"><em class="xref std std-option">-O2</em></a> and above). It warns about subscripts to arrays
+that are always out of bounds. This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+<dl class="docutils">
+<dt>-Warray-bounds=1</dt>
+<dd>This is the warning level of <a class="reference internal" href="#cmdoption-Warray-bounds"><em class="xref std std-option">-Warray-bounds</em></a> and is enabled
+by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>; higher levels are not, and must be explicitly requested.</dd>
+<dt>-Warray-bounds=2</dt>
+<dd>This warning level also warns about out of bounds access for
+arrays at the end of a struct and for arrays accessed through
+pointers. This warning level may give a larger number of
+false positives and is deactivated by default.</dd>
+</dl>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wbool-compare">
+<tt class="descname">-Wbool-compare</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-bool-compare</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wbool-compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about boolean expression compared with an integer value different from
+<tt class="docutils literal"><span class="pre">true</span></tt>/<tt class="docutils literal"><span class="pre">false</span></tt>.  For instance, the following comparison is
+always false:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-discarded-qualifiers">
+<tt class="descname">-Wno-discarded-qualifiers</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wno-discarded-qualifiers</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wdiscarded-qualifiers</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-discarded-qualifiers" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Do not warn if type qualifiers on pointers are being discarded.
+Typically, the compiler warns if a <tt class="docutils literal"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*</span></tt> variable is
+passed to a function that takes a <tt class="docutils literal"><span class="pre">char</span> <span class="pre">*</span></tt> parameter.  This option
+can be used to suppress such a warning.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-discarded-array-qualifiers">
+<tt class="descname">-Wno-discarded-array-qualifiers</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wno-discarded-array-qualifiers</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wdiscarded-array-qualifiers</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-discarded-array-qualifiers" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Do not warn if type qualifiers on arrays which are pointer targets
+are being discarded. Typically, the compiler warns if a
+<tt class="docutils literal"><span class="pre">const</span> <span class="pre">int</span> <span class="pre">(*)[]</span></tt> variable is passed to a function that
+takes a <tt class="docutils literal"><span class="pre">int</span> <span class="pre">(*)[]</span></tt> parameter.  This option can be used to
+suppress such a warning.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-incompatible-pointer-types">
+<tt class="descname">-Wno-incompatible-pointer-types</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wno-incompatible-pointer-types</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wincompatible-pointer-types</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-incompatible-pointer-types" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Do not warn when there is a conversion between pointers that have incompatible
+types.  This warning is for cases not covered by <em class="xref std std-option">-Wno-pointer-sign</em>,
+which warns for pointer argument passing or assignment with different
+signedness.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-int-conversion">
+<tt class="descname">-Wno-int-conversion</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wno-int-conversion</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wint-conversion</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-int-conversion" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Do not warn about incompatible integer to pointer and pointer to integer
+conversions.  This warning is about implicit conversions; for explicit
+conversions the warnings <a class="reference internal" href="#cmdoption-Wno-int-to-pointer-cast"><em class="xref std std-option">-Wno-int-to-pointer-cast</em></a> and
+<a class="reference internal" href="#cmdoption-Wno-pointer-to-int-cast"><em class="xref std std-option">-Wno-pointer-to-int-cast</em></a> may be used.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-div-by-zero">
+<tt class="descname">-Wno-div-by-zero</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wdiv-by-zero</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-div-by-zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn about compile-time integer division by zero.  Floating-point
+division by zero is not warned about, as it can be a legitimate way of
+obtaining infinities and NaNs.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsystem-headers">
+<tt class="descname">-Wsystem-headers</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-system-headers</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsystem-headers" title="Permalink to this definition">¶</a></dt>
+<dd><span class="target" id="index-8"></span><p id="index-9">Print warning messages for constructs found in system header files.
+Warnings from system headers are normally suppressed, on the assumption
+that they usually do not indicate real problems and would only make the
+compiler output harder to read.  Using this command-line option tells
+GCC to emit warnings from system headers as if they occurred in user
+code.  However, note that using <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> in conjunction with this
+option does not warn about unknown pragmas in system
+headersfor that, <a class="reference internal" href="#cmdoption-Wunknown-pragmas"><em class="xref std std-option">-Wunknown-pragmas</em></a> must also be used.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wtrampolines">
+<tt class="descname">-Wtrampolines</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-trampolines</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wtrampolines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about trampolines generated for pointers to nested functions.
+A trampoline is a small piece of data or code that is created at run
+time on the stack when the address of a nested function is taken, and is
+used to call the nested function indirectly.  For some targets, it is
+made up of data only and thus requires no special treatment.  But, for
+most targets, it is made up of code and thus requires the stack to be
+made executable in order for the program to work properly.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wfloat-equal">
+<tt class="descname">-Wfloat-equal</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-float-equal</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wfloat-equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if floating-point values are used in equality comparisons.</p>
+<p>The idea behind this is that sometimes it is convenient (for the
+programmer) to consider floating-point values as approximations to
+infinitely precise real numbers.  If you are doing this, then you need
+to compute (by analyzing the code, or in some other way) the maximum or
+likely maximum error that the computation introduces, and allow for it
+when performing comparisons (and when producing output, but thats a
+different problem).  In particular, instead of testing for equality, you
+should check to see whether the two values have ranges that overlap; and
+this is done with the relational operators, so equality comparisons are
+probably mistaken.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wtraditional">
+<tt class="descname">-Wtraditional</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wtraditional</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-traditional</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wtraditional" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn about certain constructs that behave differently in traditional and
+ISO C.  Also warn about ISO C constructs that have no traditional C
+equivalent, and/or problematic constructs that should be avoided.</p>
+<ul>
+<li><p class="first">Macro parameters that appear within string literals in the macro body.
+In traditional C macro replacement takes place within string literals,
+but in ISO C it does not.</p>
+<ul class="simple">
+<li>In traditional C, some preprocessor directives did not exist.</li>
+</ul>
+<p>Traditional preprocessors only considered a line to be a directive
+if the # appeared in column 1 on the line.  Therefore
+<a class="reference internal" href="#cmdoption-Wtraditional"><em class="xref std std-option">-Wtraditional</em></a> warns about directives that traditional C
+understands but ignores because the # does not appear as the
+first character on the line.  It also suggests you hide directives like
+<tt class="docutils literal"><span class="pre">#pragma</span></tt> not understood by traditional C by indenting them.  Some
+traditional implementations do not recognize <tt class="docutils literal"><span class="pre">#elif</span></tt>, so this option
+suggests avoiding it altogether.</p>
+<ul class="simple">
+<li>A function-like macro that appears without arguments.</li>
+<li>The unary plus operator.</li>
+<li>The U integer constant suffix, or the F or L floating-point</li>
+</ul>
+<p>constant suffixes.  (Traditional C does support the L suffix on integer
+constants.)  Note, these suffixes appear in macros defined in the system
+headers of most modern systems, e.g. the _MIN/_MAX macros in <tt class="docutils literal"><span class="pre">&lt;limits.h&gt;</span></tt>.
+Use of these macros in user code might normally lead to spurious
+warnings, however GCCs integrated preprocessor has enough context to
+avoid warning in these cases.</p>
+<ul class="simple">
+<li>A function declared external in one block and then used after the end of</li>
+</ul>
+<p>the block.</p>
+<ul class="simple">
+<li>A <tt class="docutils literal"><span class="pre">switch</span></tt> statement has an operand of type <tt class="docutils literal"><span class="pre">long</span></tt>.</li>
+<li>A non-<tt class="docutils literal"><span class="pre">static</span></tt> function declaration follows a <tt class="docutils literal"><span class="pre">static</span></tt> one.</li>
+</ul>
+<p>This construct is not accepted by some traditional C compilers.</p>
+<ul class="simple">
+<li>The ISO type of an integer constant has a different width or</li>
+</ul>
+<p>signedness from its traditional type.  This warning is only issued if
+the base of the constant is ten.  I.e. hexadecimal or octal values, which
+typically represent bit patterns, are not warned about.</p>
+<ul class="simple">
+<li>Usage of ISO string concatenation is detected.</li>
+<li>Initialization of automatic aggregates.</li>
+<li>Identifier conflicts with labels.  Traditional C lacks a separate</li>
+</ul>
+<p>namespace for labels.</p>
+<ul class="simple">
+<li>Initialization of unions.  If the initializer is zero, the warning is</li>
+</ul>
+<p>omitted.  This is done under the assumption that the zero initializer in
+user code appears conditioned on e.g. <tt class="docutils literal"><span class="pre">__STDC__</span></tt> to avoid missing
+initializer warnings and relies on default initialization to zero in the
+traditional C case.</p>
+<ul class="simple">
+<li>Conversions by prototypes between fixed/floating-point values and vice</li>
+</ul>
+<p>versa.  The absence of these prototypes when compiling with traditional
+C causes serious problems.  This is a subset of the possible
+conversion warnings; for the full set use <a class="reference internal" href="#cmdoption-Wtraditional-conversion"><em class="xref std std-option">-Wtraditional-conversion</em></a>.</p>
+<ul class="simple">
+<li>Use of ISO C style function definitions.  This warning intentionally is</li>
+</ul>
+<p>not issued for prototype declarations or variadic functions
+because these ISO C features appear in your code when using
+libibertys traditional C compatibility macros, <tt class="docutils literal"><span class="pre">PARAMS</span></tt> and
+<tt class="docutils literal"><span class="pre">VPARAMS</span></tt>.  This warning is also bypassed for nested functions
+because that feature is already a GCC extension and thus not relevant to
+traditional C compatibility.</p>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wtraditional-conversion">
+<tt class="descname">-Wtraditional-conversion</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wtraditional-conversion</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-traditional-conversion</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wtraditional-conversion" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn if a prototype causes a type conversion that is different from what
+would happen to the same argument in the absence of a prototype.  This
+includes conversions of fixed point to floating and vice versa, and
+conversions changing the width or signedness of a fixed-point argument
+except when the same as the default promotion.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wdeclaration-after-statement">
+<tt class="descname">-Wdeclaration-after-statement</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wdeclaration-after-statement</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-declaration-after-statement</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wdeclaration-after-statement" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn when a declaration is found after a statement in a block.  This
+construct, known from C++, was introduced with ISO C99 and is by default
+allowed in GCC.  It is not supported by ISO C90.  Mixed Declarations.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wundef">
+<tt class="descname">-Wundef</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-undef</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wundef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if an undefined identifier is evaluated in an <tt class="docutils literal"><span class="pre">#if</span></tt> directive.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-endif-labels">
+<tt class="descname">-Wno-endif-labels</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wendif-labels</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-endif-labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn whenever an <tt class="docutils literal"><span class="pre">#else</span></tt> or an <tt class="docutils literal"><span class="pre">#endif</span></tt> are followed by text.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wshadow">
+<tt class="descname">-Wshadow</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-shadow</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wshadow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a local variable or type declaration shadows another
+variable, parameter, type, class member (in C++), or instance variable
+(in Objective-C) or whenever a built-in function is shadowed. Note
+that in C++, the compiler warns if a local variable shadows an
+explicit typedef, but not if it shadows a struct/class/enum.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-shadow-ivar">
+<tt class="descname">-Wno-shadow-ivar</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wno-shadow-ivar</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wshadow-ivar</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-shadow-ivar" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(Objective-C only)</p>
+</div>
+<p>Do not warn whenever a local variable shadows an instance variable in an
+Objective-C method.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wlarger-than">
+<tt class="descname">-Wlarger-than</tt><tt class="descclassname">=len</tt><a class="headerlink" href="#cmdoption-Wlarger-than" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wlarger-than=``len``
+Wlarger-than-<tt class="docutils literal"><span class="pre">len</span></tt>
+Warn whenever an object of larger than <tt class="docutils literal"><span class="pre">len</span></tt> bytes is defined.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wframe-larger-than">
+<tt class="descname">-Wframe-larger-than</tt><tt class="descclassname">=len</tt><a class="headerlink" href="#cmdoption-Wframe-larger-than" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if the size of a function frame is larger than <tt class="docutils literal"><span class="pre">len</span></tt> bytes.
+The computation done to determine the stack frame size is approximate
+and not conservative.
+The actual requirements may be somewhat greater than <tt class="docutils literal"><span class="pre">len</span></tt>
+even if you do not get a warning.  In addition, any space allocated
+via <tt class="docutils literal"><span class="pre">alloca</span></tt>, variable-length arrays, or related constructs
+is not included by the compiler when determining
+whether or not to issue a warning.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-free-nonheap-object">
+<tt class="descname">-Wno-free-nonheap-object</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wfree-nonheap-object</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-free-nonheap-object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn when attempting to free an object that was not allocated
+on the heap.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wstack-usage">
+<tt class="descname">-Wstack-usage</tt><tt class="descclassname">=len</tt><a class="headerlink" href="#cmdoption-Wstack-usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if the stack usage of a function might be larger than <tt class="docutils literal"><span class="pre">len</span></tt> bytes.
+The computation done to determine the stack usage is conservative.
+Any space allocated via <tt class="docutils literal"><span class="pre">alloca</span></tt>, variable-length arrays, or related
+constructs is included by the compiler when determining whether or not to
+issue a warning.</p>
+<p>The message is in keeping with the output of <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-fstack-usage"><em class="xref std std-option">-fstack-usage</em></a>.</p>
+<ul>
+<li><p class="first">If the stack usage is fully static but exceeds the specified amount, its:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="nl">warning:</span> <span class="n">stack</span> <span class="n">usage</span> <span class="n">is</span> <span class="mi">1120</span> <span class="n">bytes</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>If the stack usage is (partly) dynamic but bounded, its:</li>
+</ul>
+<div class="highlight-c++"><div class="highlight"><pre><span class="nl">warning:</span> <span class="n">stack</span> <span class="n">usage</span> <span class="n">might</span> <span class="n">be</span> <span class="mi">1648</span> <span class="n">bytes</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>If the stack usage is (partly) dynamic and not bounded, its:</li>
+</ul>
+<div class="highlight-c++"><div class="highlight"><pre><span class="nl">warning:</span> <span class="n">stack</span> <span class="n">usage</span> <span class="n">might</span> <span class="n">be</span> <span class="n">unbounded</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunsafe-loop-optimizations">
+<tt class="descname">-Wunsafe-loop-optimizations</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unsafe-loop-optimizations</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunsafe-loop-optimizations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if the loop cannot be optimized because the compiler cannot
+assume anything on the bounds of the loop indices.  With
+<a class="reference internal" href="options-that-control-optimization.html#cmdoption-funsafe-loop-optimizations"><em class="xref std std-option">-funsafe-loop-optimizations</em></a> warn if the compiler makes
+such assumptions.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-pedantic-ms-format">
+<tt class="descname">-Wno-pedantic-ms-format</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wno-pedantic-ms-format</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wpedantic-ms-format</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-pedantic-ms-format" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(MinGW targets only)</p>
+</div>
+<p>When used in combination with <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a>
+and <em class="xref std std-option">-pedantic</em> without GNU extensions, this option
+disables the warnings about non-ISO <tt class="docutils literal"><span class="pre">printf</span></tt> / <tt class="docutils literal"><span class="pre">scanf</span></tt> format
+width specifiers <tt class="docutils literal"><span class="pre">I32</span></tt>, <tt class="docutils literal"><span class="pre">I64</span></tt>, and <tt class="docutils literal"><span class="pre">I</span></tt> used on Windows targets,
+which depend on the MS runtime.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wpointer-arith">
+<tt class="descname">-Wpointer-arith</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-pointer-arith</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wpointer-arith" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about anything that depends on the size of a function type or
+of <tt class="docutils literal"><span class="pre">void</span></tt>.  GNU C assigns these types a size of 1, for
+convenience in calculations with <tt class="docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt> pointers and pointers
+to functions.  In C++, warn also when an arithmetic operation involves
+<tt class="docutils literal"><span class="pre">NULL</span></tt>.  This warning is also enabled by <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wtype-limits">
+<tt class="descname">-Wtype-limits</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-type-limits</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wtype-limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if a comparison is always true or always false due to the limited
+range of the data type, but do not warn for constant expressions.  For
+example, warn if an unsigned variable is compared against zero with
+<tt class="docutils literal"><span class="pre">&lt;</span></tt> or <tt class="docutils literal"><span class="pre">&gt;=</span></tt>.  This warning is also enabled by
+<a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wbad-function-cast">
+<tt class="descname">-Wbad-function-cast</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wbad-function-cast</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-bad-function-cast</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wbad-function-cast" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn when a function call is cast to a non-matching type.
+For example, warn if a call to a function returning an integer type
+is cast to a pointer type.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wc90-c99-compat">
+<tt class="descname">-Wc90-c99-compat</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wc90-c99-compat</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-c90-c99-compat</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wc90-c99-compat" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn about features not present in ISO C90, but present in ISO C99.
+For instance, warn about use of variable length arrays, <tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt>
+type, <tt class="docutils literal"><span class="pre">bool</span></tt> type, compound literals, designated initializers, and so
+on.  This option is independent of the standards mode.  Warnings are disabled
+in the expression that follows <tt class="docutils literal"><span class="pre">__extension__</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wc99-c11-compat">
+<tt class="descname">-Wc99-c11-compat</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wc99-c11-compat</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-c99-c11-compat</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wc99-c11-compat" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn about features not present in ISO C99, but present in ISO C11.
+For instance, warn about use of anonymous structures and unions,
+<tt class="docutils literal"><span class="pre">_Atomic</span></tt> type qualifier, <tt class="docutils literal"><span class="pre">_Thread_local</span></tt> storage-class specifier,
+<tt class="docutils literal"><span class="pre">_Alignas</span></tt> specifier, <tt class="docutils literal"><span class="pre">Alignof</span></tt> operator, <tt class="docutils literal"><span class="pre">_Generic</span></tt> keyword,
+and so on.  This option is independent of the standards mode.  Warnings are
+disabled in the expression that follows <tt class="docutils literal"><span class="pre">__extension__</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wc">
+<tt class="descname">-Wc</tt><tt class="descclassname">++-compat </tt><tt class="descclassname">, </tt><tt class="descname">-Wc</tt><tt class="descclassname">++-compat</tt><a class="headerlink" href="#cmdoption-Wc" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn about ISO C constructs that are outside of the common subset of
+ISO C and ISO C++, e.g. request for implicit conversion from
+<tt class="docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt> to a pointer to non-<tt class="docutils literal"><span class="pre">void</span></tt> type.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wc">
+<tt class="descname">-Wc</tt><tt class="descclassname">++11-compat </tt><tt class="descclassname">, </tt><tt class="descname">-Wc</tt><tt class="descclassname">++11-compat</tt><a class="headerlink" href="#cmdoption-Wc" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C++ and Objective-C++ only)</p>
+</div>
+<p>Warn about C++ constructs whose meaning differs between ISO C++ 1998
+and ISO C++ 2011, e.g., identifiers in ISO C++ 1998 that are keywords
+in ISO C++ 2011.  This warning turns on <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-Wnarrowing"><em class="xref std std-option">-Wnarrowing</em></a> and is
+enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wc">
+<tt class="descname">-Wc</tt><tt class="descclassname">++14-compat </tt><tt class="descclassname">, </tt><tt class="descname">-Wc</tt><tt class="descclassname">++14-compat</tt><a class="headerlink" href="#cmdoption-Wc" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C++ and Objective-C++ only)</p>
+</div>
+<p>Warn about C++ constructs whose meaning differs between ISO C++ 2011
+and ISO C++ 2014.  This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wcast-qual">
+<tt class="descname">-Wcast-qual</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-cast-qual</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wcast-qual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a pointer is cast so as to remove a type qualifier from
+the target type.  For example, warn if a <tt class="docutils literal"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*</span></tt> is cast
+to an ordinary <tt class="docutils literal"><span class="pre">char</span> <span class="pre">*</span></tt>.</p>
+<p>Also warn when making a cast that introduces a type qualifier in an
+unsafe way.  For example, casting <tt class="docutils literal"><span class="pre">char</span> <span class="pre">**</span></tt> to <tt class="docutils literal"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">**</span></tt>
+is unsafe, as in this example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cm">/* p is char ** value.  */</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">q</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="p">)</span> <span class="n">p</span><span class="p">;</span>
+<span class="cm">/* Assignment of readonly string to const char * is OK.  */</span>
+<span class="o">*</span><span class="n">q</span> <span class="o">=</span> <span class="s">&quot;string&quot;</span><span class="p">;</span>
+<span class="cm">/* Now char** pointer points to read-only memory.  */</span>
+<span class="o">**</span><span class="n">p</span> <span class="o">=</span> <span class="sc">&#39;b&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wcast-align">
+<tt class="descname">-Wcast-align</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-cast-align</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wcast-align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn whenever a pointer is cast such that the required alignment of the
+target is increased.  For example, warn if a <tt class="docutils literal"><span class="pre">char</span> <span class="pre">*</span></tt> is cast to
+an <tt class="docutils literal"><span class="pre">int</span> <span class="pre">*</span></tt> on machines where integers can only be accessed at
+two- or four-byte boundaries.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wwrite-strings">
+<tt class="descname">-Wwrite-strings</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-write-strings</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wwrite-strings" title="Permalink to this definition">¶</a></dt>
+<dd><p>When compiling C, give string constants the type <tt class="docutils literal"><span class="pre">const</span>
+<span class="pre">char[``length</span></tt>]`` so that copying the address of one into a
+non-<tt class="docutils literal"><span class="pre">const</span></tt> <tt class="docutils literal"><span class="pre">char</span> <span class="pre">*</span></tt> pointer produces a warning.  These
+warnings help you find at compile time code that can try to write
+into a string constant, but only if you have been very careful about
+using <tt class="docutils literal"><span class="pre">const</span></tt> in declarations and prototypes.  Otherwise, it is
+just a nuisance. This is why we did not make <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> request
+these warnings.</p>
+<p>When compiling C++, warn about the deprecated conversion from string
+literals to <tt class="docutils literal"><span class="pre">char</span> <span class="pre">*</span></tt>.  This warning is enabled by default for C++
+programs.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wclobbered">
+<tt class="descname">-Wclobbered</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-clobbered</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wclobbered" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn for variables that might be changed by <tt class="docutils literal"><span class="pre">longjmp</span></tt> or
+<tt class="docutils literal"><span class="pre">vfork</span></tt>.  This warning is also enabled by <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wconditionally-supported">
+<tt class="descname">-Wconditionally-supported</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wconditionally-supported</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-conditionally-supported</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wconditionally-supported" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C++ and Objective-C++ only)</p>
+</div>
+<p>Warn for conditionally-supported (C++11 [intro.defs]) constructs.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wconversion">
+<tt class="descname">-Wconversion</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-conversion</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wconversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn for implicit conversions that may alter a value. This includes
+conversions between real and integer, like <tt class="docutils literal"><span class="pre">abs</span> <span class="pre">(x)</span></tt> when
+<tt class="docutils literal"><span class="pre">x</span></tt> is <tt class="docutils literal"><span class="pre">double</span></tt>; conversions between signed and unsigned,
+like <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">ui</span> <span class="pre">=</span> <span class="pre">-1</span></tt>; and conversions to smaller types, like
+<tt class="docutils literal"><span class="pre">sqrtf</span> <span class="pre">(M_PI)</span></tt>. Do not warn for explicit casts like <tt class="docutils literal"><span class="pre">abs</span>
+<span class="pre">((int)</span> <span class="pre">x)</span></tt> and <tt class="docutils literal"><span class="pre">ui</span> <span class="pre">=</span> <span class="pre">(unsigned)</span> <span class="pre">-1</span></tt>, or if the value is not
+changed by the conversion like in <tt class="docutils literal"><span class="pre">abs</span> <span class="pre">(2.0)</span></tt>.  Warnings about
+conversions between signed and unsigned integers can be disabled by
+using <em class="xref std std-option">-Wno-sign-conversion</em>.</p>
+<p>For C++, also warn for confusing overload resolution for user-defined
+conversions; and conversions that never use a type conversion
+operator: conversions to <tt class="docutils literal"><span class="pre">void</span></tt>, the same type, a base class or a
+reference to them. Warnings about conversions between signed and
+unsigned integers are disabled by default in C++ unless
+<a class="reference internal" href="#cmdoption-Wsign-conversion"><em class="xref std std-option">-Wsign-conversion</em></a> is explicitly enabled.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-conversion-null">
+<tt class="descname">-Wno-conversion-null</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wconversion-null</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-conversion-null</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-conversion-null" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C++ and Objective-C++ only)</p>
+</div>
+<p>Do not warn for conversions between <tt class="docutils literal"><span class="pre">NULL</span></tt> and non-pointer
+types. <em class="xref std std-option">-Wconversion-null</em> is enabled by default.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wzero-as-null-pointer-constant">
+<tt class="descname">-Wzero-as-null-pointer-constant</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wzero-as-null-pointer-constant</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-zero-as-null-pointer-constant</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wzero-as-null-pointer-constant" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C++ and Objective-C++ only)</p>
+</div>
+<p>Warn when a literal 0 is used as null pointer constant.  This can
+be useful to facilitate the conversion to <tt class="docutils literal"><span class="pre">nullptr</span></tt> in C++11.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wdate-time">
+<tt class="descname">-Wdate-time</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-date-time</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wdate-time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn when macros <tt class="docutils literal"><span class="pre">__TIME__</span></tt>, <tt class="docutils literal"><span class="pre">__DATE__</span></tt> or <tt class="docutils literal"><span class="pre">__TIMESTAMP__</span></tt>
+are encountered as they might prevent bit-wise-identical reproducible
+compilations.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wdelete-incomplete">
+<tt class="descname">-Wdelete-incomplete</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wdelete-incomplete</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-delete-incomplete</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wdelete-incomplete" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C++ and Objective-C++ only)</p>
+</div>
+<p>Warn when deleting a pointer to incomplete type, which may cause
+undefined behavior at runtime.  This warning is enabled by default.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wuseless-cast">
+<tt class="descname">-Wuseless-cast</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wuseless-cast</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-useless-cast</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wuseless-cast" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C++ and Objective-C++ only)</p>
+</div>
+<p>Warn when an expression is casted to its own type.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wempty-body">
+<tt class="descname">-Wempty-body</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-empty-body</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wempty-body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if an empty body occurs in an <tt class="docutils literal"><span class="pre">if</span></tt>, <tt class="docutils literal"><span class="pre">else</span></tt> or <tt class="docutils literal"><span class="pre">do</span>
+<span class="pre">while</span></tt> statement.  This warning is also enabled by <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wenum-compare">
+<tt class="descname">-Wenum-compare</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-enum-compare</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wenum-compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about a comparison between values of different enumerated types.
+In C++ enumeral mismatches in conditional expressions are also
+diagnosed and the warning is enabled by default.  In C this warning is
+enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wjump-misses-init">
+<tt class="descname">-Wjump-misses-init</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wjump-misses-init</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-jump-misses-init</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wjump-misses-init" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C, Objective-C only)</p>
+</div>
+<p>Warn if a <tt class="docutils literal"><span class="pre">goto</span></tt> statement or a <tt class="docutils literal"><span class="pre">switch</span></tt> statement jumps
+forward across the initialization of a variable, or jumps backward to a
+label after the variable has been initialized.  This only warns about
+variables that are initialized when they are declared.  This warning is
+only supported for C and Objective-C; in C++ this sort of branch is an
+error in any case.</p>
+<p><a class="reference internal" href="#cmdoption-Wjump-misses-init"><em class="xref std std-option">-Wjump-misses-init</em></a> is included in <em class="xref std std-option">-Wc++-compat</em>.  It
+can be disabled with the <em class="xref std std-option">-Wno-jump-misses-init</em> option.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsign-compare">
+<tt class="descname">-Wsign-compare</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-sign-compare</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsign-compare" title="Permalink to this definition">¶</a></dt>
+<dd><span class="target" id="index-10"></span><span class="target" id="index-11"></span><p id="index-12">Warn when a comparison between signed and unsigned values could produce
+an incorrect result when the signed value is converted to unsigned.
+This warning is also enabled by <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>; to get the other warnings
+of <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a> without this warning, use <em class="xref std std-option">-Wextra -Wno-sign-compare</em>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsign-conversion">
+<tt class="descname">-Wsign-conversion</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-sign-conversion</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsign-conversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn for implicit conversions that may change the sign of an integer
+value, like assigning a signed integer expression to an unsigned
+integer variable. An explicit cast silences the warning. In C, this
+option is enabled also by <a class="reference internal" href="#cmdoption-Wconversion"><em class="xref std std-option">-Wconversion</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wfloat-conversion">
+<tt class="descname">-Wfloat-conversion</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-float-conversion</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wfloat-conversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn for implicit conversions that reduce the precision of a real value.
+This includes conversions from real to integer, and from higher precision
+real to lower precision real values.  This option is also enabled by
+<a class="reference internal" href="#cmdoption-Wconversion"><em class="xref std std-option">-Wconversion</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsized-deallocation">
+<tt class="descname">-Wsized-deallocation</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wsized-deallocation</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-sized-deallocation</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsized-deallocation" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C++ and Objective-C++ only)</p>
+</div>
+<p>Warn about a definition of an unsized deallocation function</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="k">operator</span> <span class="k">delete</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">noexcept</span><span class="p">;</span>
+<span class="kt">void</span> <span class="k">operator</span> <span class="k">delete</span><span class="p">[]</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">noexcept</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>without a definition of the corresponding sized deallocation function</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="k">operator</span> <span class="k">delete</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="p">)</span> <span class="n">noexcept</span><span class="p">;</span>
+<span class="kt">void</span> <span class="k">operator</span> <span class="k">delete</span><span class="p">[]</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="p">)</span> <span class="n">noexcept</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>or vice versa.  Enabled by <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a> along with
+<a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fsized-deallocation"><em class="xref std std-option">-fsized-deallocation</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsizeof-pointer-memaccess">
+<tt class="descname">-Wsizeof-pointer-memaccess</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-sizeof-pointer-memaccess</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsizeof-pointer-memaccess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn for suspicious length parameters to certain string and memory built-in
+functions if the argument uses <tt class="docutils literal"><span class="pre">sizeof</span></tt>.  This warning warns e.g.
+about <tt class="docutils literal"><span class="pre">memset</span> <span class="pre">(ptr,</span> <span class="pre">0,</span> <span class="pre">sizeof</span> <span class="pre">(ptr));</span></tt> if <tt class="docutils literal"><span class="pre">ptr</span></tt> is not an array,
+but a pointer, and suggests a possible fix, or about
+<tt class="docutils literal"><span class="pre">memcpy</span> <span class="pre">(&amp;foo,</span> <span class="pre">ptr,</span> <span class="pre">sizeof</span> <span class="pre">(&amp;foo));</span></tt>.  This warning is enabled by
+<a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wsizeof-array-argument">
+<tt class="descname">-Wsizeof-array-argument</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-sizeof-array-argument</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsizeof-array-argument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn when the <tt class="docutils literal"><span class="pre">sizeof</span></tt> operator is applied to a parameter that is
+declared as an array in a function definition.  This warning is enabled by
+default for C and C++ programs.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wmemset-transposed-args">
+<tt class="descname">-Wmemset-transposed-args</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-memset-transposed-args</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wmemset-transposed-args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn for suspicious calls to the <tt class="docutils literal"><span class="pre">memset</span></tt> built-in function, if the
+second argument is not zero and the third argument is zero.  This warns e.g.about <tt class="docutils literal"><span class="pre">memset</span> <span class="pre">(buf,</span> <span class="pre">sizeof</span> <span class="pre">buf,</span> <span class="pre">0)</span></tt> where most probably
+<tt class="docutils literal"><span class="pre">memset</span> <span class="pre">(buf,</span> <span class="pre">0,</span> <span class="pre">sizeof</span> <span class="pre">buf)</span></tt> was meant instead.  The diagnostics
+is only emitted if the third argument is literal zero.  If it is some
+expression that is folded to zero, a cast of zero to some type, etc.,
+it is far less likely that the user has mistakenly exchanged the arguments
+and no warning is emitted.  This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Waddress">
+<tt class="descname">-Waddress</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-address</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Waddress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about suspicious uses of memory addresses. These include using
+the address of a function in a conditional expression, such as
+<tt class="docutils literal"><span class="pre">void</span> <span class="pre">func(void);</span> <span class="pre">if</span> <span class="pre">(func)</span></tt>, and comparisons against the memory
+address of a string literal, such as <tt class="docutils literal"><span class="pre">if</span> <span class="pre">(x</span> <span class="pre">==</span> <span class="pre">&quot;abc&quot;)</span></tt>.  Such
+uses typically indicate a programmer error: the address of a function
+always evaluates to true, so their use in a conditional usually
+indicate that the programmer forgot the parentheses in a function
+call; and comparisons against string literals result in unspecified
+behavior and are not portable in C, so they usually indicate that the
+programmer intended to use <tt class="docutils literal"><span class="pre">strcmp</span></tt>.  This warning is enabled by
+<a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wlogical-op">
+<tt class="descname">-Wlogical-op</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-logical-op</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wlogical-op" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about suspicious uses of logical operators in expressions.
+This includes using logical operators in contexts where a
+bit-wise operator is likely to be expected.  Also warns when
+the operands of a logical operator are the same:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wlogical-not-parentheses">
+<tt class="descname">-Wlogical-not-parentheses</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-logical-not-parentheses</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wlogical-not-parentheses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about logical not used on the left hand side operand of a comparison.
+This option does not warn if the RHS operand is of a boolean type.  Its
+purpose is to detect suspicious code like the following:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>It is possible to suppress the warning by wrapping the LHS into
+parentheses:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">((</span><span class="o">!</span><span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Waggregate-return">
+<tt class="descname">-Waggregate-return</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-aggregate-return</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Waggregate-return" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if any functions that return structures or unions are defined or
+called.  (In languages where you can return an array, this also elicits
+a warning.)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-aggressive-loop-optimizations">
+<tt class="descname">-Wno-aggressive-loop-optimizations</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Waggressive-loop-optimizations</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-aggressive-loop-optimizations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if in a loop with constant number of iterations the compiler detects
+undefined behavior in some statement during one or more of the iterations.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-attributes">
+<tt class="descname">-Wno-attributes</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wattributes</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn if an unexpected <tt class="docutils literal"><span class="pre">__attribute__</span></tt> is used, such as
+unrecognized attributes, function attributes applied to variables,
+etc.  This does not stop errors for incorrect use of supported
+attributes.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-builtin-macro-redefined">
+<tt class="descname">-Wno-builtin-macro-redefined</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wbuiltin-macro-redefined</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-builtin-macro-redefined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn if certain built-in macros are redefined.  This suppresses
+warnings for redefinition of <tt class="docutils literal"><span class="pre">__TIMESTAMP__</span></tt>, <tt class="docutils literal"><span class="pre">__TIME__</span></tt>,
+<tt class="docutils literal"><span class="pre">__DATE__</span></tt>, <tt class="docutils literal"><span class="pre">__FILE__</span></tt>, and <tt class="docutils literal"><span class="pre">__BASE_FILE__</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wstrict-prototypes">
+<tt class="descname">-Wstrict-prototypes</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wstrict-prototypes</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-strict-prototypes</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wstrict-prototypes" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn if a function is declared or defined without specifying the
+argument types.  (An old-style function definition is permitted without
+a warning if preceded by a declaration that specifies the argument
+types.)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wold-style-declaration">
+<tt class="descname">-Wold-style-declaration</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wold-style-declaration</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-old-style-declaration</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wold-style-declaration" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn for obsolescent usages, according to the C Standard, in a
+declaration. For example, warn if storage-class specifiers like
+<tt class="docutils literal"><span class="pre">static</span></tt> are not the first things in a declaration.  This warning
+is also enabled by <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wold-style-definition">
+<tt class="descname">-Wold-style-definition</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wold-style-definition</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-old-style-definition</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wold-style-definition" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn if an old-style function definition is used.  A warning is given
+even if there is a previous prototype.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wmissing-parameter-type">
+<tt class="descname">-Wmissing-parameter-type</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wmissing-parameter-type</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-missing-parameter-type</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wmissing-parameter-type" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>A function parameter is declared without a type specifier in K&amp;R-style
+functions:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>This warning is also enabled by <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wmissing-prototypes">
+<tt class="descname">-Wmissing-prototypes</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wmissing-prototypes</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-missing-prototypes</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wmissing-prototypes" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn if a global function is defined without a previous prototype
+declaration.  This warning is issued even if the definition itself
+provides a prototype.  Use this option to detect global functions
+that do not have a matching prototype declaration in a header file.
+This option is not valid for C++ because all function declarations
+provide prototypes and a non-matching declaration declares an
+overload rather than conflict with an earlier declaration.
+Use <a class="reference internal" href="#cmdoption-Wmissing-declarations"><em class="xref std std-option">-Wmissing-declarations</em></a> to detect missing declarations in C++.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wmissing-declarations">
+<tt class="descname">-Wmissing-declarations</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-missing-declarations</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wmissing-declarations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if a global function is defined without a previous declaration.
+Do so even if the definition itself provides a prototype.
+Use this option to detect global functions that are not declared in
+header files.  In C, no warnings are issued for functions with previous
+non-prototype declarations; use <a class="reference internal" href="#cmdoption-Wmissing-prototypes"><em class="xref std std-option">-Wmissing-prototypes</em></a> to detect
+missing prototypes.  In C++, no warnings are issued for function templates,
+or for inline functions, or for functions in anonymous namespaces.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wmissing-field-initializers">
+<tt class="descname">-Wmissing-field-initializers</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-missing-field-initializers</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-W</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wextra</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-extra</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wmissing-field-initializers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if a structures initializer has some fields missing.  For
+example, the following code causes such a warning, because
+<tt class="docutils literal"><span class="pre">x.h</span></tt> is implicitly zero:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">s</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">;</span> <span class="p">};</span>
+<span class="k">struct</span> <span class="n">s</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+</pre></div>
+</div>
+<p>This option does not warn about designated initializers, so the following
+modification does not trigger a warning:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">s</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">;</span> <span class="p">};</span>
+<span class="k">struct</span> <span class="n">s</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{</span> <span class="p">.</span><span class="n">f</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="p">.</span><span class="n">g</span> <span class="o">=</span> <span class="mi">4</span> <span class="p">};</span>
+</pre></div>
+</div>
+<p>In C++ this option does not warn either about the empty { }
+initializer, for example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">s</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">;</span> <span class="p">};</span>
+<span class="n">s</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
+</pre></div>
+</div>
+<p>This warning is included in <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.  To get other <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>
+warnings without this one, use <em class="xref std std-option">-Wextra -Wno-missing-field-initializers</em>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-multichar">
+<tt class="descname">-Wno-multichar</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wmultichar</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-multichar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn if a multicharacter constant (&#8216;FOOF&#8217;) is used.
+Usually they indicate a typo in the users code, as they have
+implementation-defined values, and should not be used in portable code.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wnormalized">
+<tt class="descname">-Wnormalized</tt><tt class="descclassname">[=&lt;none|id|nfc|nfkc&gt;]</tt><a class="headerlink" href="#cmdoption-Wnormalized" title="Permalink to this definition">¶</a></dt>
+<dd><span class="target" id="index-13"></span><span class="target" id="index-14"></span><p id="index-15">In ISO C and ISO C++, two identifiers are different if they are
+different sequences of characters.  However, sometimes when characters
+outside the basic ASCII character set are used, you can have two
+different character sequences that look the same.  To avoid confusion,
+the ISO 10646 standard sets out some <em class="dfn">normalization rules</em> which
+when applied ensure that two sequences that look the same are turned into
+the same sequence.  GCC can warn you if you are using identifiers that
+have not been normalized; this option controls that warning.</p>
+<p>There are four levels of warning supported by GCC.  The default is
+<em class="xref std std-option">-Wnormalized=nfc</em>, which warns about any identifier that is
+not in the ISO 10646 C normalized form, <em class="dfn">NFC</em>.  NFC is the
+recommended form for most uses.  It is equivalent to
+<a class="reference internal" href="#cmdoption-Wnormalized"><em class="xref std std-option">-Wnormalized</em></a>.</p>
+<p>Unfortunately, there are some characters allowed in identifiers by
+ISO C and ISO C++ that, when turned into NFC, are not allowed in
+identifiers.  That is, theres no way to use these symbols in portable
+ISO C or C++ and have all your identifiers in NFC.
+<em class="xref std std-option">-Wnormalized=id</em> suppresses the warning for these characters.
+It is hoped that future versions of the standards involved will correct
+this, which is why this option is not the default.</p>
+<p>You can switch the warning off for all characters by writing
+<em class="xref std std-option">-Wnormalized=none</em> or <em class="xref std std-option">-Wno-normalized</em>.  You should
+only do this if you are using some other normalization scheme (like
+D), because otherwise you can easily create bugs that are
+literally impossible to see.</p>
+<p>Some characters in ISO 10646 have distinct meanings but look identical
+in some fonts or display methodologies, especially once formatting has
+been applied.  For instance <tt class="docutils literal"><span class="pre">\u207F</span></tt>, SUPERSCRIPT LATIN SMALL
+LETTER N, displays just like a regular <tt class="docutils literal"><span class="pre">n</span></tt> that has been
+placed in a superscript.  ISO 10646 defines the <em class="dfn">NFKC</em>
+normalization scheme to convert all these into a standard form as
+well, and GCC warns if your code is not in NFKC if you use
+<em class="xref std std-option">-Wnormalized=nfkc</em>.  This warning is comparable to warning
+about every identifier that contains the letter O because it might be
+confused with the digit 0, and so is not the default, but may be
+useful as a local coding convention if the programming environment
+cannot be fixed to display these characters distinctly.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-deprecated">
+<tt class="descname">-Wno-deprecated</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wdeprecated</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-deprecated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn about usage of deprecated features.  Deprecated Features.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-deprecated-declarations">
+<tt class="descname">-Wno-deprecated-declarations</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wdeprecated-declarations</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-deprecated-declarations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn about uses of functions (Function Attributes),
+variables (Variable Attributes), and types (Type
+Attributes) marked as deprecated by using the <tt class="docutils literal"><span class="pre">deprecated</span></tt>
+attribute.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-overflow">
+<tt class="descname">-Wno-overflow</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Woverflow</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-overflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not warn about compile-time overflow in constant expressions.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-odr">
+<tt class="descname">-Wno-odr</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wodr</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-odr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about One Definition Rule violations during link-time optimization.
+Requires <a class="reference internal" href="options-that-control-optimization.html#cmdoption-flto-odr-type-merging"><em class="xref std std-option">-flto-odr-type-merging</em></a> to be enabled.  Enabled by default.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wopenmp-simd">
+<tt class="descname">-Wopenmp-simd</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wopenm-simd</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wopenmp-simd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if the vectorizer cost model overrides the OpenMP or the Cilk Plus
+simd directive set by user.  The <em class="xref std std-option">-fsimd-cost-model=unlimited</em>
+option can be used to relax the cost model.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Woverride-init">
+<tt class="descname">-Woverride-init</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Woverride-init</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-override-init</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-W</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wextra</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-extra</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Woverride-init" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn if an initialized field without side effects is overridden when
+using designated initializers (Designated InitsDesignated
+Initializers).</p>
+<p>This warning is included in <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.  To get other
+<a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a> warnings without this one, use <em class="xref std std-option">-Wextra
+-Wno-override-init</em>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Woverride-init-side-effects">
+<tt class="descname">-Woverride-init-side-effects</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Woverride-init-side-effects</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-override-init-side-effects</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Woverride-init-side-effects" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn if an initialized field with side effects is overridden when
+using designated initializers (Designated InitsDesignated
+Initializers).  This warning is enabled by default.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wpacked">
+<tt class="descname">-Wpacked</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-packed</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wpacked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if a structure is given the packed attribute, but the packed
+attribute has no effect on the layout or size of the structure.
+Such structures may be mis-aligned for little benefit.  For
+instance, in this code, the variable <tt class="docutils literal"><span class="pre">f.x</span></tt> in <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">bar</span></tt>
+is misaligned even though <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">bar</span></tt> does not itself
+have the packed attribute:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">foo</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+<span class="k">struct</span> <span class="n">bar</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="n">z</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">foo</span> <span class="n">f</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wpacked-bitfield-compat">
+<tt class="descname">-Wpacked-bitfield-compat</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-packed-bitfield-compat</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wpacked-bitfield-compat" title="Permalink to this definition">¶</a></dt>
+<dd><p>The 4.1, 4.2 and 4.3 series of GCC ignore the <tt class="docutils literal"><span class="pre">packed</span></tt> attribute
+on bit-fields of type <tt class="docutils literal"><span class="pre">char</span></tt>.  This has been fixed in GCC 4.4 but
+the change can lead to differences in the structure layout.  GCC
+informs you when the offset of such a field has changed in GCC 4.4.
+For example there is no longer a 4-bit padding between field <tt class="docutils literal"><span class="pre">a</span></tt>
+and <tt class="docutils literal"><span class="pre">b</span></tt> in this structure:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">foo</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="n">a</span><span class="o">:</span><span class="mi">4</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">b</span><span class="o">:</span><span class="mi">8</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>This warning is enabled by default.  Use
+<em class="xref std std-option">-Wno-packed-bitfield-compat</em> to disable this warning.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wpadded">
+<tt class="descname">-Wpadded</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-padded</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wpadded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if padding is included in a structure, either to align an element
+of the structure or to align the whole structure.  Sometimes when this
+happens it is possible to rearrange the fields of the structure to
+reduce the padding and so make the structure smaller.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wredundant-decls">
+<tt class="descname">-Wredundant-decls</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-redundant-decls</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wredundant-decls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if anything is declared more than once in the same scope, even in
+cases where multiple declaration is valid and changes nothing.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wnested-externs">
+<tt class="descname">-Wnested-externs</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wnested-externs</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-nested-externs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wnested-externs" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn if an <tt class="docutils literal"><span class="pre">extern</span></tt> declaration is encountered within a function.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-inherited-variadic-ctor">
+<tt class="descname">-Wno-inherited-variadic-ctor</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Winherited-variadic-ctor</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-inherited-variadic-ctor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suppress warnings about use of C++11 inheriting constructors when the
+base class inherited from has a C variadic constructor; the warning is
+on by default because the ellipsis is not inherited.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Winline">
+<tt class="descname">-Winline</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-inline</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Winline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if a function that is declared as inline cannot be inlined.
+Even with this option, the compiler does not warn about failures to
+inline functions declared in system headers.</p>
+<p>The compiler uses a variety of heuristics to determine whether or not
+to inline a function.  For example, the compiler takes into account
+the size of the function being inlined and the amount of inlining
+that has already been done in the current function.  Therefore,
+seemingly insignificant changes in the source program can cause the
+warnings produced by <a class="reference internal" href="#cmdoption-Winline"><em class="xref std std-option">-Winline</em></a> to appear or disappear.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-invalid-offsetof">
+<tt class="descname">-Wno-invalid-offsetof</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wno-invalid-offsetof</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Winvalid-offsetof</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-invalid-offsetof" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C++ and Objective-C++ only)</p>
+</div>
+<p>Suppress warnings from applying the <tt class="docutils literal"><span class="pre">offsetof</span></tt> macro to a non-POD
+type.  According to the 2014 ISO C++ standard, applying <tt class="docutils literal"><span class="pre">offsetof</span></tt>
+to a non-standard-layout type is undefined.  In existing C++ implementations,
+however, <tt class="docutils literal"><span class="pre">offsetof</span></tt> typically gives meaningful results.
+This flag is for users who are aware that they are
+writing nonportable code and who have deliberately chosen to ignore the
+warning about it.</p>
+<p>The restrictions on <tt class="docutils literal"><span class="pre">offsetof</span></tt> may be relaxed in a future version
+of the C++ standard.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-int-to-pointer-cast">
+<tt class="descname">-Wno-int-to-pointer-cast</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wint-to-pointer-cast</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-int-to-pointer-cast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suppress warnings from casts to pointer type of an integer of a
+different size. In C++, casting to a pointer type of smaller size is
+an error. Wint-to-pointer-cast is enabled by default.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-pointer-to-int-cast">
+<tt class="descname">-Wno-pointer-to-int-cast</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wno-pointer-to-int-cast</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wpointer-to-int-cast</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-pointer-to-int-cast" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Suppress warnings from casts from a pointer to an integer type of a
+different size.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Winvalid-pch">
+<tt class="descname">-Winvalid-pch</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-invalid-pch</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Winvalid-pch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if a precompiled header (Precompiled Headers) is found in
+the search path but cant be used.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wlong-long">
+<tt class="descname">-Wlong-long</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-long-long</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wlong-long" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if <tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt> type is used.  This is enabled by either
+<a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> or <a class="reference internal" href="#cmdoption-Wtraditional"><em class="xref std std-option">-Wtraditional</em></a> in ISO C90 and C++98
+modes.  To inhibit the warning messages, use <em class="xref std std-option">-Wno-long-long</em>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wvariadic-macros">
+<tt class="descname">-Wvariadic-macros</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-variadic-macros</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wvariadic-macros" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if variadic macros are used in ISO C90 mode, or if the GNU
+alternate syntax is used in ISO C99 mode.  This is enabled by either
+<a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> or <a class="reference internal" href="#cmdoption-Wtraditional"><em class="xref std std-option">-Wtraditional</em></a>.  To inhibit the warning
+messages, use <em class="xref std std-option">-Wno-variadic-macros</em>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wvarargs">
+<tt class="descname">-Wvarargs</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-varargs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wvarargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn upon questionable usage of the macros used to handle variable
+arguments like <tt class="docutils literal"><span class="pre">va_start</span></tt>.  This is default.  To inhibit the
+warning messages, use <em class="xref std std-option">-Wno-varargs</em>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wvector-operation-performance">
+<tt class="descname">-Wvector-operation-performance</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-vector-operation-performance</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wvector-operation-performance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if vector operation is not implemented via SIMD capabilities of the
+architecture.  Mainly useful for the performance tuning.
+Vector operation can be implemented <tt class="docutils literal"><span class="pre">piecewise</span></tt>, which means that the
+scalar operation is performed on every vector element;
+<tt class="docutils literal"><span class="pre">in</span> <span class="pre">parallel</span></tt>, which means that the vector operation is implemented
+using scalars of wider type, which normally is more performance efficient;
+and <tt class="docutils literal"><span class="pre">as</span> <span class="pre">a</span> <span class="pre">single</span> <span class="pre">scalar</span></tt>, which means that vector fits into a
+scalar type.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wno-virtual-move-assign">
+<tt class="descname">-Wno-virtual-move-assign</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wvirtual-move-assign</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-virtual-move-assign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suppress warnings about inheriting from a virtual base with a
+non-trivial C++11 move assignment operator.  This is dangerous because
+if the virtual base is reachable along more than one path, it is
+moved multiple times, which can mean both objects end up in the
+moved-from state.  If the move assignment operator is written to avoid
+moving from a moved-from object, this warning can be disabled.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wvla">
+<tt class="descname">-Wvla</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-vla</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wvla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if variable length array is used in the code.
+<em class="xref std std-option">-Wno-vla</em> prevents the <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> warning of
+the variable length array.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wvolatile-register-var">
+<tt class="descname">-Wvolatile-register-var</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-volatile-register-var</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wvolatile-register-var" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if a register variable is declared volatile.  The volatile
+modifier does not inhibit all optimizations that may eliminate reads
+and/or writes to register variables.  This warning is enabled by
+<a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wdisabled-optimization">
+<tt class="descname">-Wdisabled-optimization</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-disabled-optimization</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wdisabled-optimization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn if a requested optimization pass is disabled.  This warning does
+not generally indicate that there is anything wrong with your code; it
+merely indicates that GCCs optimizers are unable to handle the code
+effectively.  Often, the problem is that your code is too big or too
+complex; GCC refuses to optimize programs when the optimization
+itself is likely to take inordinate amounts of time.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wpointer-sign">
+<tt class="descname">-Wpointer-sign</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wpointer-sign</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-pointer-sign</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wpointer-sign" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Warn for pointer argument passing or assignment with different signedness.
+This option is only supported for C and Objective-C.  It is implied by
+<a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> and by <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a>, which can be disabled with
+<em class="xref std std-option">-Wno-pointer-sign</em>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wstack-protector">
+<tt class="descname">-Wstack-protector</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-stack-protector</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wstack-protector" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option is only active when <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstack-protector"><em class="xref std std-option">-fstack-protector</em></a> is active.  It
+warns about functions that are not protected against stack smashing.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Woverlength-strings">
+<tt class="descname">-Woverlength-strings</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-overlength-strings</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Woverlength-strings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Warn about string constants that are longer than the minimum
+maximum length specified in the C standard.  Modern compilers
+generally allow string constants that are much longer than the
+standards minimum limit, but very portable programs should avoid
+using longer strings.</p>
+<p>The limit applies after string constant concatenation, and does
+not count the trailing NUL.  In C90, the limit was 509 characters; in
+C99, it was raised to 4095.  C++98 does not specify a normative
+minimum maximum, so we do not diagnose overlength strings in C++.</p>
+<p>This option is implied by <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a>, and can be disabled with
+<em class="xref std std-option">-Wno-overlength-strings</em>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-Wunsuffixed-float-constants">
+<tt class="descname">-Wunsuffixed-float-constants</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wunsuffixed-float-constants</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunsuffixed-float-constants" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)</p>
+</div>
+<p>Issue a warning for any floating constant that does not have
+a suffix.  When used together with <a class="reference internal" href="#cmdoption-Wsystem-headers"><em class="xref std std-option">-Wsystem-headers</em></a> it
+warns about such constants in system header files.  This can be useful
+when preparing code to use with the <tt class="docutils literal"><span class="pre">FLOAT_CONST_DECIMAL64</span></tt> pragma
+from the decimal floating-point extension to C99.</p>
+</dd></dl>
+
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-W<var>no-designated-init</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td><div class="first admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">(C and Objective-C only)Suppress warnings when a positional initializer is used to initialize</p>
+</div>
+<p class="last">a structure that has been marked with the <tt class="docutils literal"><span class="pre">designated_init</span></tt>
+attribute.</p>
+</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="options-for-debugging-your-program-or-gcc.html" title="Options for Debugging Your Program or GCC"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="options-to-control-diagnostic-messages-formatting.html" title="Options to Control Diagnostic Messages Formatting"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gcc-command-options.html" >GCC Command Options</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

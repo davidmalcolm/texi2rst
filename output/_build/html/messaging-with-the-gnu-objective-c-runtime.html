@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Messaging with the GNU Objective-C Runtime &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="GNU Objective-C Features" href="gnu-objective-c-features.html" />
+    <link rel="next" title="Binary Compatibility" href="binary-compatibility.html" />
+    <link rel="prev" title="Fast Enumeration" href="fast-enumeration.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="binary-compatibility.html" title="Binary Compatibility"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fast-enumeration.html" title="Fast Enumeration"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gnu-objective-c-features.html" accesskey="U">GNU Objective-C Features</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Messaging with the GNU Objective-C Runtime</a><ul>
+<li><a class="reference internal" href="#dynamically-registering-methods">Dynamically Registering Methods</a></li>
+<li><a class="reference internal" href="#forwarding-hook">Forwarding Hook</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fast-enumeration.html"
+                        title="previous chapter">Fast Enumeration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="binary-compatibility.html"
+                        title="next chapter">Binary Compatibility</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/messaging-with-the-gnu-objective-c-runtime.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="messaging-with-the-gnu-objective-c-runtime">
+<h1>Messaging with the GNU Objective-C Runtime<a class="headerlink" href="#messaging-with-the-gnu-objective-c-runtime" title="Permalink to this headline">¶</a></h1>
+<p>This section is specific for the GNU Objective-C runtime.  If you are
+using a different runtime, you can skip it.</p>
+<p>The implementation of messaging in the GNU Objective-C runtime is
+designed to be portable, and so is based on standard C.</p>
+<p>Sending a message in the GNU Objective-C runtime is composed of two
+separate steps.  First, there is a call to the lookup function,
+<tt class="docutils literal"><span class="pre">objc_msg_lookup</span> <span class="pre">()</span></tt> (or, in the case of messages to super,
+<tt class="docutils literal"><span class="pre">objc_msg_lookup_super</span> <span class="pre">()</span></tt>).  This runtime function takes as
+argument the receiver and the selector of the method to be called; it
+returns the <tt class="docutils literal"><span class="pre">IMP</span></tt>, that is a pointer to the function implementing
+the method.  The second step of method invocation consists of casting
+this pointer function to the appropriate function pointer type, and
+calling the function pointed to it with the right arguments.</p>
+<p>For example, when the compiler encounters a method invocation such as
+<tt class="docutils literal"><span class="pre">[object</span> <span class="pre">init]</span></tt>, it compiles it into a call to
+<tt class="docutils literal"><span class="pre">objc_msg_lookup</span> <span class="pre">(object,</span> <span class="pre">selector(init))</span></tt> followed by a cast
+of the returned value to the appropriate function pointer type, and
+then it calls it.</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<p>:: _dynamically-registering-methods:</p>
+<div class="section" id="dynamically-registering-methods">
+<h2>Dynamically Registering Methods<a class="headerlink" href="#dynamically-registering-methods" title="Permalink to this headline">¶</a></h2>
+<p>If <tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt> does not find a suitable method
+implementation, because the receiver does not implement the required
+method, it tries to see if the class can dynamically register the
+method.</p>
+<p>To do so, the runtime checks if the class of the receiver implements
+the method</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span> <span class="n">resolveInstanceMethod</span><span class="o">:</span> <span class="p">(</span><span class="n">SEL</span><span class="p">)</span><span class="n">selector</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>in the case of an instance method, or</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span> <span class="n">resolveClassMethod</span><span class="o">:</span> <span class="p">(</span><span class="n">SEL</span><span class="p">)</span><span class="n">selector</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>in the case of a class method.  If the class implements it, the
+runtime invokes it, passing as argument the selector of the original
+method, and if it returns <tt class="docutils literal"><span class="pre">YES</span></tt>, the runtime tries the lookup
+again, which could now succeed if a matching method was added
+dynamically by <tt class="docutils literal"><span class="pre">+resolveInstanceMethod:</span></tt> or
+<tt class="docutils literal"><span class="pre">+resolveClassMethod:</span></tt>.</p>
+<p>This allows classes to dynamically register methods (by adding them to
+the class using <tt class="docutils literal"><span class="pre">class_addMethod</span></tt>) when they are first called.
+To do so, a class should implement <tt class="docutils literal"><span class="pre">+resolveInstanceMethod:</span></tt> (or,
+depending on the case, <tt class="docutils literal"><span class="pre">+resolveClassMethod:</span></tt>) and have it
+recognize the selectors of methods that can be registered dynamically
+at runtime, register them, and return <tt class="docutils literal"><span class="pre">YES</span></tt>.  It should return
+<tt class="docutils literal"><span class="pre">NO</span></tt> for methods that it does not dynamically registered at
+runtime.</p>
+<p>If <tt class="docutils literal"><span class="pre">+resolveInstanceMethod:</span></tt> (or <tt class="docutils literal"><span class="pre">+resolveClassMethod:</span></tt>) is
+not implemented or returns <tt class="docutils literal"><span class="pre">NO</span></tt>, the runtime then tries the
+forwarding hook.</p>
+<p>Support for <tt class="docutils literal"><span class="pre">+resolveInstanceMethod:</span></tt> and
+<tt class="docutils literal"><span class="pre">resolveClassMethod:</span></tt> was added to the GNU Objective-C runtime in
+GCC version 4.6.</p>
+<p>:: _forwarding-hook:</p>
+</div>
+<div class="section" id="forwarding-hook">
+<h2>Forwarding Hook<a class="headerlink" href="#forwarding-hook" title="Permalink to this headline">¶</a></h2>
+<p>The GNU Objective-C runtime provides a hook, called
+<tt class="docutils literal"><span class="pre">__objc_msg_forward2</span></tt>, which is called by
+<tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt> when it cant find a method implementation in
+the runtime tables and after calling <tt class="docutils literal"><span class="pre">+resolveInstanceMethod:</span></tt>
+and <tt class="docutils literal"><span class="pre">+resolveClassMethod:</span></tt> has been attempted and did not succeed
+in dynamically registering the method.</p>
+<p>To configure the hook, you set the global variable
+<tt class="docutils literal"><span class="pre">__objc_msg_forward2</span></tt> to a function with the same argument and
+return types of <tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt>.  When
+<tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt> can not find a method implementation, it
+invokes the hook function you provided to get a method implementation
+to return.  So, in practice <tt class="docutils literal"><span class="pre">__objc_msg_forward2</span></tt> allows you to
+extend <tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt> by adding some custom code that is
+called to do a further lookup when no standard method implementation
+can be found using the normal lookup.</p>
+<p>This hook is generally reserved for Foundation libraries such as
+GNUstep Base, which use it to implement their high-level method
+forwarding API, typically based around the <tt class="docutils literal"><span class="pre">forwardInvocation:</span></tt>
+method.  So, unless you are implementing your own Foundation
+library, you should not set this hook.</p>
+<p>In a typical forwarding implementation, the <tt class="docutils literal"><span class="pre">__objc_msg_forward2</span></tt>
+hook function determines the argument and return type of the method
+that is being looked up, and then creates a function that takes these
+arguments and has that return type, and returns it to the caller.
+Creating this function is non-trivial and is typically performed using
+a dedicated library such as <tt class="docutils literal"><span class="pre">libffi</span></tt>.</p>
+<p>The forwarding method implementation thus created is returned by
+<tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt> and is executed as if it was a normal method
+implementation.  When the forwarding method implementation is called,
+it is usually expected to pack all arguments into some sort of object
+(typically, an <tt class="docutils literal"><span class="pre">NSInvocation</span></tt> in a Foundation library), and
+hand it over to the programmer (<tt class="docutils literal"><span class="pre">forwardInvocation:</span></tt>) who is then
+allowed to manipulate the method invocation using a high-level API
+provided by the Foundation library.  For example, the programmer
+may want to examine the method invocation arguments and name and
+potentially change them before forwarding the method invocation to one
+or more local objects (<tt class="docutils literal"><span class="pre">performInvocation:</span></tt>) or even to remote
+objects (by using Distributed Objects or some other mechanism).  When
+all this completes, the return value is passed back and must be
+returned correctly to the original caller.</p>
+<p>Note that the GNU Objective-C runtime currently provides no support
+for method forwarding or method invocations other than the
+<tt class="docutils literal"><span class="pre">__objc_msg_forward2</span></tt> hook.</p>
+<p>If the forwarding hook does not exist or returns <tt class="docutils literal"><span class="pre">NULL</span></tt>, the
+runtime currently attempts forwarding using an older, deprecated API,
+and if that fails, it aborts the program.  In future versions of the
+GNU Objective-C runtime, the runtime will immediately abort.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="binary-compatibility.html" title="Binary Compatibility"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fast-enumeration.html" title="Fast Enumeration"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="gnu-objective-c-features.html" >GNU Objective-C Features</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

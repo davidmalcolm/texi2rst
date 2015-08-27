@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>When is a Volatile Object Accessed? &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="How to Use Inline Assembly Language in C Code" href="how-to-use-inline-assembly-language-in-c-code.html" />
+    <link rel="prev" title="An Inline Function is As Fast As a Macro" href="an-inline-function-is-as-fast-as-a-macro.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="how-to-use-inline-assembly-language-in-c-code.html" title="How to Use Inline Assembly Language in C Code"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="an-inline-function-is-as-fast-as-a-macro.html" title="An Inline Function is As Fast As a Macro"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="an-inline-function-is-as-fast-as-a-macro.html"
+                        title="previous chapter">An Inline Function is As Fast As a Macro</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="how-to-use-inline-assembly-language-in-c-code.html"
+                        title="next chapter">How to Use Inline Assembly Language in C Code</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/when-is-a-volatile-object-accessed?.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="when-is-a-volatile-object-accessed">
+<h1>When is a Volatile Object Accessed?<a class="headerlink" href="#when-is-a-volatile-object-accessed" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">C has the concept of volatile objects.  These are normally accessed by
+pointers and used for accessing hardware or inter-thread
+communication.  The standard encourages compilers to refrain from
+optimizations concerning accesses to volatile objects, but leaves it
+implementation defined as to what constitutes a volatile access.  The
+minimum requirement is that at a sequence point all previous accesses
+to volatile objects have stabilized and no subsequent accesses have
+occurred.  Thus an implementation is free to reorder and combine
+volatile accesses that occur between sequence points, but cannot do
+so for accesses across a sequence point.  The use of volatile does
+not allow you to violate the restriction on updating objects multiple
+times between two sequence points.</p>
+<p>Accesses to non-volatile objects are not ordered with respect to
+volatile accesses.  You cannot use a volatile object as a memory
+barrier to order a sequence of writes to non-volatile memory.  For
+instance:</p>
+<div class="highlight-c++"><pre>int *ptr = ``something``;
+volatile int vobj;
+*ptr = ``something``;
+vobj = 1;</pre>
+</div>
+<p>Unless <tt class="docutils literal"><span class="pre">*ptr</span></tt> and <tt class="docutils literal"><span class="pre">vobj</span></tt> can be aliased, it is not guaranteed
+that the write to <tt class="docutils literal"><span class="pre">*ptr</span></tt> occurs by the time the update
+of <tt class="docutils literal"><span class="pre">vobj</span></tt> happens.  If you need this guarantee, you must use
+a stronger memory barrier such as:</p>
+<div class="highlight-c++"><pre>int *ptr = ``something``;
+volatile int vobj;
+*ptr = ``something``;
+asm volatile ("" : : : "memory");
+vobj = 1;</pre>
+</div>
+<p>A scalar volatile object is read when it is accessed in a void context:</p>
+<div class="highlight-c++"><pre>volatile int *src = ``somevalue``;
+*src;</pre>
+</div>
+<p>Such expressions are rvalues, and GCC implements this as a
+read of the volatile object being pointed to.</p>
+<p>Assignments are also expressions and have an rvalue.  However when
+assigning to a scalar volatile, the volatile object is not reread,
+regardless of whether the assignment expressions rvalue is used or
+not.  If the assignments rvalue is used, the value is that assigned
+to the volatile object.  For instance, there is no read of <tt class="docutils literal"><span class="pre">vobj</span></tt>
+in all the following cases:</p>
+<div class="highlight-c++"><pre>int obj;
+volatile int vobj;
+vobj = ``something``;
+obj = vobj = ``something``;
+obj ? vobj = ``onething`` : vobj = ``anotherthing``;
+obj = (``something``, vobj = ``anotherthing``);</pre>
+</div>
+<p>If you need to read the volatile object after an assignment has
+occurred, you must use a separate expression with an intervening
+sequence point.</p>
+<p>As bit-fields are not individually addressable, volatile bit-fields may
+be implicitly read when written to, or when adjacent bit-fields are
+accessed.  Bit-field operations may be optimized such that adjacent
+bit-fields are only partially accessed, if they straddle a storage unit
+boundary.  For these reasons it is unwise to use volatile bit-fields to
+access hardware.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="how-to-use-inline-assembly-language-in-c-code.html" title="How to Use Inline Assembly Language in C Code"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="an-inline-function-is-as-fast-as-a-macro.html" title="An Inline Function is As Fast As a Macro"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

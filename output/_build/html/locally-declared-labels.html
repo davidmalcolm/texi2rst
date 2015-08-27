@@ -1,0 +1,174 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Locally Declared Labels &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="Labels as Values" href="labels-as-values.html" />
+    <link rel="prev" title="Statements and Declarations in Expressions" href="statements-and-declarations-in-expressions.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="labels-as-values.html" title="Labels as Values"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="statements-and-declarations-in-expressions.html" title="Statements and Declarations in Expressions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="statements-and-declarations-in-expressions.html"
+                        title="previous chapter">Statements and Declarations in Expressions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="labels-as-values.html"
+                        title="next chapter">Labels as Values</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/locally-declared-labels.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="locally-declared-labels">
+<h1>Locally Declared Labels<a class="headerlink" href="#locally-declared-labels" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><p id="index-1">GCC allows you to declare <em class="dfn">local labels</em> in any nested block
+scope.  A local label is just like an ordinary label, but you can
+only reference it (with a <tt class="docutils literal"><span class="pre">goto</span></tt> statement, or by taking its
+address) within the block in which it is declared.</p>
+<p>A local label declaration looks like this:</p>
+<div class="highlight-c++"><pre>__label__ ``label``;</pre>
+</div>
+<p>or</p>
+<div class="highlight-c++"><pre>__label__ ``label1``, ``label2``, /* ... */;</pre>
+</div>
+<p>Local label declarations must come at the beginning of the block,
+before any ordinary declarations or statements.</p>
+<p>The label declaration defines the label name, but does not define
+the label itself.  You must do this in the usual way, with
+<tt class="docutils literal"><span class="pre">``label</span></tt>:<a href="#id1"><span class="problematic" id="id2">``</span></a>, within the statements of the statement expression.</p>
+<p>The local label feature is useful for complex macros.  If a macro
+contains nested loops, a <tt class="docutils literal"><span class="pre">goto</span></tt> can be useful for breaking out of
+them.  However, an ordinary label whose scope is the whole function
+cannot be used: if the macro can be expanded several times in one
+function, the label is multiply defined in that function.  A
+local label avoids this problem.  For example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define SEARCH(value, array, target)              \</span>
+<span class="cp">do {                                              \</span>
+<span class="cp">  __label__ found;                                \</span>
+<span class="cp">  typeof (target) _SEARCH_target = (target);      \</span>
+<span class="cp">  typeof (*(array)) *_SEARCH_array = (array);     \</span>
+<span class="cp">  int i, j;                                       \</span>
+<span class="cp">  int value;                                      \</span>
+<span class="cp">  for (i = 0; i &lt; max; i++)                       \</span>
+<span class="cp">    for (j = 0; j &lt; max; j++)                     \</span>
+<span class="cp">      if (_SEARCH_array[i][j] == _SEARCH_target)  \</span>
+<span class="cp">        { (value) = i; goto found; }              \</span>
+<span class="cp">  (value) = -1;                                   \</span>
+<span class="cp"> found:;                                          \</span>
+<span class="cp">} while (0)</span>
+</pre></div>
+</div>
+<p>This could also be written using a statement expression:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define SEARCH(array, target)                     \</span>
+<span class="cp">({                                                \</span>
+<span class="cp">  __label__ found;                                \</span>
+<span class="cp">  typeof (target) _SEARCH_target = (target);      \</span>
+<span class="cp">  typeof (*(array)) *_SEARCH_array = (array);     \</span>
+<span class="cp">  int i, j;                                       \</span>
+<span class="cp">  int value;                                      \</span>
+<span class="cp">  for (i = 0; i &lt; max; i++)                       \</span>
+<span class="cp">    for (j = 0; j &lt; max; j++)                     \</span>
+<span class="cp">      if (_SEARCH_array[i][j] == _SEARCH_target)  \</span>
+<span class="cp">        { value = i; goto found; }                \</span>
+<span class="cp">  value = -1;                                     \</span>
+<span class="cp"> found:                                           \</span>
+<span class="cp">  value;                                          \</span>
+<span class="cp">})</span>
+</pre></div>
+</div>
+<p>Local label declarations also make the labels they declare visible to
+nested functions, if there are any.  Nested Functions, for details.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="labels-as-values.html" title="Labels as Values"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="statements-and-declarations-in-expressions.html" title="Statements and Declarations in Expressions"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

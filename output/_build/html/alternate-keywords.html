@@ -1,0 +1,145 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Alternate Keywords &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="&lt;no title&gt;" href="incomplete-enum-types.html" />
+    <link rel="prev" title="How to Use Inline Assembly Language in C Code" href="how-to-use-inline-assembly-language-in-c-code.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="incomplete-enum-types.html" title="&lt;no title&gt;"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="how-to-use-inline-assembly-language-in-c-code.html" title="How to Use Inline Assembly Language in C Code"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="how-to-use-inline-assembly-language-in-c-code.html"
+                        title="previous chapter">How to Use Inline Assembly Language in C Code</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="incomplete-enum-types.html"
+                        title="next chapter">&lt;no title&gt;</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/alternate-keywords.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="alternate-keywords">
+<h1>Alternate Keywords<a class="headerlink" href="#alternate-keywords" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><p id="index-1"><a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> and the various <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> options disable certain
+keywords.  This causes trouble when you want to use GNU C extensions, or
+a general-purpose header file that should be usable by all programs,
+including ISO C programs.  The keywords <tt class="docutils literal"><span class="pre">asm</span></tt>, <tt class="docutils literal"><span class="pre">typeof</span></tt> and
+<tt class="docutils literal"><span class="pre">inline</span></tt> are not available in programs compiled with
+<a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> (although <tt class="docutils literal"><span class="pre">inline</span></tt> can be used in a
+program compiled with <em class="xref std std-option">-std=c99</em> or <em class="xref std std-option">-std=c11</em>).  The
+ISO C99 keyword
+<tt class="docutils literal"><span class="pre">restrict</span></tt> is only available when <em class="xref std std-option">-std=gnu99</em> (which will
+eventually be the default) or <em class="xref std std-option">-std=c99</em> (or the equivalent
+<em class="xref std std-option">-std=iso9899:1999</em>), or an option for a later standard
+version, is used.</p>
+<p>The way to solve these problems is to put __ at the beginning and
+end of each problematical keyword.  For example, use <tt class="docutils literal"><span class="pre">__asm__</span></tt>
+instead of <tt class="docutils literal"><span class="pre">asm</span></tt>, and <tt class="docutils literal"><span class="pre">__inline__</span></tt> instead of <tt class="docutils literal"><span class="pre">inline</span></tt>.</p>
+<p>Other C compilers wont accept these alternative keywords; if you want to
+compile with another compiler, you can define the alternate keywords as
+macros to replace them with the customary keywords.  It looks like this:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#ifndef __GNUC__</span>
+<span class="cp">#define __asm__ asm</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<span class="target" id="index-2"></span><p id="index-3"><em class="xref std std-option">-pedantic</em> and other options cause warnings for many GNU C extensions.
+You can
+prevent such warnings within one expression by writing
+<tt class="docutils literal"><span class="pre">__extension__</span></tt> before the expression.  <tt class="docutils literal"><span class="pre">__extension__</span></tt> has no
+effect aside from this.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="incomplete-enum-types.html" title="&lt;no title&gt;"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="how-to-use-inline-assembly-language-in-c-code.html" title="How to Use Inline Assembly Language in C Code"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

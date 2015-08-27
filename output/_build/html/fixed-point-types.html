@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Fixed-Point Types &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="Named Address Spaces" href="named-address-spaces.html" />
+    <link rel="prev" title="Hex Floats" href="hex-floats.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="named-address-spaces.html" title="Named Address Spaces"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="hex-floats.html" title="Hex Floats"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="hex-floats.html"
+                        title="previous chapter">Hex Floats</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="named-address-spaces.html"
+                        title="next chapter">Named Address Spaces</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/fixed-point-types.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="fixed-point-types">
+<h1>Fixed-Point Types<a class="headerlink" href="#fixed-point-types" title="Permalink to this headline">¶</a></h1>
+<p id="index-0"><tt class="docutils literal"><span class="pre">_Fract</span></tt> data type
+<tt class="docutils literal"><span class="pre">_Accum</span></tt> data type
+<tt class="docutils literal"><span class="pre">_Sat</span></tt> data type
+<tt class="docutils literal"><span class="pre">hr</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">r</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">lr</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">llr</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">uhr</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">ur</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">ulr</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">ullr</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">hk</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">k</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">lk</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">llk</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">uhk</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">uk</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">ulk</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">ullk</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">HR</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">R</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">LR</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">LLR</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">UHR</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">UR</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">ULR</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">ULLR</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">HK</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">K</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">LK</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">LLK</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">UHK</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">UK</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">ULK</span></tt> fixed-suffix
+<tt class="docutils literal"><span class="pre">ULLK</span></tt> fixed-suffix</p>
+<p>As an extension, GNU C supports fixed-point types as
+defined in the N1169 draft of ISO/IEC DTR 18037.  Support for fixed-point
+types in GCC will evolve as the draft technical report changes.
+Calling conventions for any target might also change.  Not all targets
+support fixed-point types.</p>
+<p>The fixed-point types are
+<tt class="docutils literal"><span class="pre">short</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">long</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>,
+<tt class="docutils literal"><span class="pre">short</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">long</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>,
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>.</p>
+<p>Fixed-point data values contain fractional and optional integral parts.
+The format of fixed-point data varies and depends on the target machine.</p>
+<p>Support for fixed-point types includes:</p>
+<ul class="simple">
+<li>prefix and postfix increment and decrement operators (<tt class="docutils literal"><span class="pre">++</span></tt>, <tt class="docutils literal"><span class="pre">--</span></tt>)
+* unary arithmetic operators (<tt class="docutils literal"><span class="pre">+</span></tt>, <tt class="docutils literal"><span class="pre">-</span></tt>, <tt class="docutils literal"><span class="pre">!</span></tt>)
+* binary arithmetic operators (<tt class="docutils literal"><span class="pre">+</span></tt>, <tt class="docutils literal"><span class="pre">-</span></tt>, <tt class="docutils literal"><span class="pre">*</span></tt>, <tt class="docutils literal"><span class="pre">/</span></tt>)
+* binary shift operators (<tt class="docutils literal"><span class="pre">&lt;&lt;</span></tt>, <tt class="docutils literal"><span class="pre">&gt;&gt;</span></tt>)
+* relational operators (<tt class="docutils literal"><span class="pre">&lt;</span></tt>, <tt class="docutils literal"><span class="pre">&lt;=</span></tt>, <tt class="docutils literal"><span class="pre">&gt;=</span></tt>, <tt class="docutils literal"><span class="pre">&gt;</span></tt>)
+* equality operators (<tt class="docutils literal"><span class="pre">==</span></tt>, <tt class="docutils literal"><span class="pre">!=</span></tt>)
+* assignment operators (<tt class="docutils literal"><span class="pre">+=</span></tt>, <tt class="docutils literal"><span class="pre">-=</span></tt>, <tt class="docutils literal"><span class="pre">*=</span></tt>, <tt class="docutils literal"><span class="pre">/=</span></tt>,
+<tt class="docutils literal"><span class="pre">&lt;&lt;=</span></tt>, <tt class="docutils literal"><span class="pre">&gt;&gt;=</span></tt>)
+* conversions to and from integer, floating-point, or fixed-point types</li>
+</ul>
+<p>Use a suffix in a fixed-point literal constant:</p>
+<ul class="simple">
+<li>hr or HR for <tt class="docutils literal"><span class="pre">short</span> <span class="pre">_Fract</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt>
+* r or R for <tt class="docutils literal"><span class="pre">_Fract</span></tt> and <tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">_Fract</span></tt>
+* lr or LR for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">_Fract</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>
+* llr or LLR for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>
+* uhr or UHR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Fract</span></tt>
+* ur or UR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">_Fract</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">_Fract</span></tt>
+* ulr or ULR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>
+* ullr or ULLR for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>
+and <tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Fract</span></tt>
+* hk or HK for <tt class="docutils literal"><span class="pre">short</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt>
+* k or K for <tt class="docutils literal"><span class="pre">_Accum</span></tt> and <tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">_Accum</span></tt>
+* lk or LK for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>
+* llk or LLK for <tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>
+* uhk or UHK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">_Accum</span></tt>
+* uk or UK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">_Accum</span></tt>
+* ulk or ULK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt> and
+<tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>
+* ullk or ULLK for <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt>
+and <tt class="docutils literal"><span class="pre">_Sat</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">_Accum</span></tt></li>
+</ul>
+<p>GCC support of fixed-point types as specified by the draft technical report
+is incomplete:</p>
+<ul class="simple">
+<li>Pragmas to control overflow and rounding behaviors are not implemented.</li>
+</ul>
+<p>Fixed-point types are supported by the DWARF 2 debug information format.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="named-address-spaces.html" title="Named Address Spaces"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="hex-floats.html" title="Hex Floats"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

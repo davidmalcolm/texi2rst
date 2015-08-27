@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Arrays of Length Zero &mdash; gcc 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gcc 6 documentation" href="index.html" />
+    <link rel="up" title="Extensions to the C Language Family" href="extensions-to-the-c-language-family.html" />
+    <link rel="next" title="Structures with No Members" href="structures-with-no-members.html" />
+    <link rel="prev" title="Named Address Spaces" href="named-address-spaces.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="structures-with-no-members.html" title="Structures with No Members"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="named-address-spaces.html" title="Named Address Spaces"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" accesskey="U">Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="named-address-spaces.html"
+                        title="previous chapter">Named Address Spaces</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="structures-with-no-members.html"
+                        title="next chapter">Structures with No Members</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/arrays-of-length-zero.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="arrays-of-length-zero">
+<h1>Arrays of Length Zero<a class="headerlink" href="#arrays-of-length-zero" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">Zero-length arrays are allowed in GNU C.  They are very useful as the
+last element of a structure that is really a header for a variable-length
+object:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">line</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">length</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">line</span> <span class="o">*</span><span class="n">thisline</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">line</span> <span class="o">*</span><span class="p">)</span>
+  <span class="n">malloc</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="k">struct</span> <span class="n">line</span><span class="p">)</span> <span class="o">+</span> <span class="n">this_length</span><span class="p">);</span>
+<span class="n">thisline</span><span class="o">-&gt;</span><span class="n">length</span> <span class="o">=</span> <span class="n">this_length</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In ISO C90, you would have to give <tt class="docutils literal"><span class="pre">contents</span></tt> a length of 1, which
+means either you waste space or complicate the argument to <tt class="docutils literal"><span class="pre">malloc</span></tt>.</p>
+<p>In ISO C99, you would use a <em class="dfn">flexible array member</em>, which is
+slightly different in syntax and semantics:</p>
+<ul>
+<li><p class="first">Flexible array members are written as <tt class="docutils literal"><span class="pre">contents[]</span></tt> without
+the <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
+<ul class="simple">
+<li>Flexible array members have incomplete type, and so the <tt class="docutils literal"><span class="pre">sizeof</span></tt></li>
+</ul>
+<p>operator may not be applied.  As a quirk of the original implementation
+of zero-length arrays, <tt class="docutils literal"><span class="pre">sizeof</span></tt> evaluates to zero.</p>
+<ul class="simple">
+<li>Flexible array members may only appear as the last member of a</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">struct</span></tt> that is otherwise non-empty.</p>
+<ul class="simple">
+<li>A structure containing a flexible array member, or a union containing</li>
+</ul>
+<p>such a structure (possibly recursively), may not be a member of a
+structure or an element of an array.  (However, these uses are
+permitted by GCC as extensions.)</p>
+</li>
+</ul>
+<p>Non-empty initialization of zero-length
+arrays is treated like any case where there are more initializer
+elements than the array holds, in that a suitable warning about excess
+elements in array is given, and the excess elements (all of them, in
+this case) are ignored.</p>
+<p>GCC allows static initialization of flexible array members.
+This is equivalent to defining a new structure containing the original
+structure followed by an array of sufficient size to contain the data.
+E.g. in the following, <tt class="docutils literal"><span class="pre">f1</span></tt> is constructed as if it were declared
+like <tt class="docutils literal"><span class="pre">f2</span></tt>.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">f1</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">x</span><span class="p">;</span> <span class="kt">int</span> <span class="n">y</span><span class="p">[];</span>
+<span class="p">}</span> <span class="n">f1</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">}</span> <span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">f2</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="n">f1</span> <span class="n">f1</span><span class="p">;</span> <span class="kt">int</span> <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">f2</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">}</span> <span class="p">};</span>
+</pre></div>
+</div>
+<p>The convenience of this extension is that <tt class="docutils literal"><span class="pre">f1</span></tt> has the desired
+type, eliminating the need to consistently refer to <tt class="docutils literal"><span class="pre">f2.f1</span></tt>.</p>
+<p>This has symmetry with normal static arrays, in that an array of
+unknown size is also written with <tt class="docutils literal"><span class="pre">[]</span></tt>.</p>
+<p>Of course, this extension only makes sense if the extra data comes at
+the end of a top-level object, as otherwise we would be overwriting
+data at subsequent offsets.  To avoid undue complication and confusion
+with initialization of deeply nested arrays, we simply disallow any
+non-empty initialization except when the structure is the top-level
+object.  For example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">foo</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">x</span><span class="p">;</span> <span class="kt">int</span> <span class="n">y</span><span class="p">[];</span> <span class="p">};</span>
+<span class="k">struct</span> <span class="n">bar</span> <span class="p">{</span> <span class="k">struct</span> <span class="n">foo</span> <span class="n">z</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">foo</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">}</span> <span class="p">};</span>        <span class="c1">// Valid.</span>
+<span class="k">struct</span> <span class="n">bar</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">}</span> <span class="p">}</span> <span class="p">};</span>    <span class="c1">// Invalid.</span>
+<span class="k">struct</span> <span class="n">bar</span> <span class="n">c</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span> <span class="p">}</span> <span class="p">}</span> <span class="p">};</span>            <span class="c1">// Valid.</span>
+<span class="k">struct</span> <span class="n">foo</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">}</span> <span class="p">}</span> <span class="p">};</span>  <span class="c1">// Invalid.</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="structures-with-no-members.html" title="Structures with No Members"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="named-address-spaces.html" title="Named Address Spaces"
+             >previous</a> |</li>
+        <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
+          <li><a href="gcc.html" >Introduction</a> &raquo;</li>
+          <li><a href="extensions-to-the-c-language-family.html" >Extensions to the C Language Family</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, gcc peeps.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

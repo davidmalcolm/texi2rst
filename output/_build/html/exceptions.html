@@ -86,53 +86,52 @@
 <h1>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h1>
 <p>GNU Objective-C provides exception support built into the language, as
 in the following example:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="n">try</span> <span class="p">{</span>
-  <span class="p">...</span>
-     <span class="k">throw</span> <span class="n">expr</span><span class="p">;</span>
-  <span class="p">...</span>
-<span class="p">}</span>
-<span class="k">catch</span> <span class="p">(</span><span class="n">AnObjCClass</span> <span class="o">*</span><span class="n">exc</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-    <span class="k">throw</span> <span class="n">expr</span><span class="p">;</span>
-  <span class="p">...</span>
-    <span class="k">throw</span><span class="p">;</span>
-  <span class="p">...</span>
-<span class="p">}</span>
-<span class="k">catch</span> <span class="p">(</span><span class="n">AnotherClass</span> <span class="o">*</span><span class="n">exc</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
-<span class="k">catch</span> <span class="p">(</span><span class="n">id</span> <span class="n">allOthers</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
-<span class="n">finally</span> <span class="p">{</span>
-  <span class="p">...</span>
-    <span class="k">throw</span> <span class="n">expr</span><span class="p">;</span>
-  <span class="p">...</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight-c++"><pre>@try {
+  ...
+     @throw expr;
+  ...
+}
+@catch (AnObjCClass *exc) {
+  ...
+    @throw expr;
+  ...
+    @throw;
+  ...
+}
+@catch (AnotherClass *exc) {
+  ...
+}
+@catch (id allOthers) {
+  ...
+}
+@finally {
+  ...
+    @throw expr;
+  ...
+}</pre>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">throw</span></tt> statement may appear anywhere in an Objective-C or
-Objective-C++ program; when used inside of a <tt class="docutils literal"><span class="pre">catch</span></tt> block, the
-<tt class="docutils literal"><span class="pre">throw</span></tt> may appear without an argument (as shown above), in
-which case the object caught by the <tt class="docutils literal"><span class="pre">catch</span></tt> will be rethrown.</p>
+<p>The <tt class="docutils literal"><span class="pre">&#64;throw</span></tt> statement may appear anywhere in an Objective-C or
+Objective-C++ program; when used inside of a <tt class="docutils literal"><span class="pre">&#64;catch</span></tt> block, the
+<tt class="docutils literal"><span class="pre">&#64;throw</span></tt> may appear without an argument (as shown above), in
+which case the object caught by the <tt class="docutils literal"><span class="pre">&#64;catch</span></tt> will be rethrown.</p>
 <p>Note that only (pointers to) Objective-C objects may be thrown and
 caught using this scheme.  When an object is thrown, it will be caught
-by the nearest <tt class="docutils literal"><span class="pre">catch</span></tt> clause capable of handling objects of
+by the nearest <tt class="docutils literal"><span class="pre">&#64;catch</span></tt> clause capable of handling objects of
 that type, analogously to how <tt class="docutils literal"><span class="pre">catch</span></tt> blocks work in C++ and
-Java.  A <tt class="docutils literal"><span class="pre">catch(id</span> <span class="pre">...)</span></tt> clause (as shown above) may also
+Java.  A <tt class="docutils literal"><span class="pre">&#64;catch(id</span> <span class="pre">...)</span></tt> clause (as shown above) may also
 be provided to catch any and all Objective-C exceptions not caught by
-previous <tt class="docutils literal"><span class="pre">catch</span></tt> clauses (if any).</p>
-<p>The <tt class="docutils literal"><span class="pre">finally</span></tt> clause, if present, will be executed upon exit
-from the immediately preceding <tt class="docutils literal"><span class="pre">try</span> <span class="pre">...</span> <span class="pre">catch</span></tt> section.
+previous <tt class="docutils literal"><span class="pre">&#64;catch</span></tt> clauses (if any).</p>
+<p>The <tt class="docutils literal"><span class="pre">&#64;finally</span></tt> clause, if present, will be executed upon exit
+from the immediately preceding <tt class="docutils literal"><span class="pre">&#64;try</span> <span class="pre">...</span> <span class="pre">&#64;catch</span></tt> section.
 This will happen regardless of whether any exceptions are thrown,
-caught or rethrown inside the <tt class="docutils literal"><span class="pre">try</span> <span class="pre">...</span> <span class="pre">catch</span></tt> section,
+caught or rethrown inside the <tt class="docutils literal"><span class="pre">&#64;try</span> <span class="pre">...</span> <span class="pre">&#64;catch</span></tt> section,
 analogously to the behavior of the <tt class="docutils literal"><span class="pre">finally</span></tt> clause in Java.</p>
 <p>There are several caveats to using the new exception mechanism:</p>
 <ul>
 <li><p class="first">The <a class="reference internal" href="options-controlling-objective-c-and-objective-c++-dialects.html#cmdoption-fobjc-exceptions"><em class="xref std std-option">-fobjc-exceptions</em></a> command line option must be used when
 compiling Objective-C files that use exceptions.</p>
 <ul class="simple">
-<li>With the GNU runtime, exceptions are always implemented as native</li>
+<li>With the GNU runtime, exceptions are always implemented as &#8216;native&#8217;</li>
 </ul>
 <p>exceptions and it is recommended that the <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fexceptions"><em class="xref std std-option">-fexceptions</em></a> and
 <a class="reference internal" href="options-for-linking.html#cmdoption-shared-libgcc"><em class="xref std std-option">-shared-libgcc</em></a> options are used when linking.</p>
@@ -148,9 +147,9 @@ needed in the NeXT Objective-C runtime.</p>
 </ul>
 <p>types other than Objective-C objects.   Furthermore, when used from
 Objective-C++, the Objective-C exception model does not interoperate with C++
-exceptions at this time.  This means you cannot <tt class="docutils literal"><span class="pre">throw</span></tt> an exception
+exceptions at this time.  This means you cannot <tt class="docutils literal"><span class="pre">&#64;throw</span></tt> an exception
 from Objective-C and <tt class="docutils literal"><span class="pre">catch</span></tt> it in C++, or vice versa
-(i.e., <tt class="docutils literal"><span class="pre">throw</span> <span class="pre">...</span> <span class="pre">catch</span></tt>).</p>
+(i.e., <tt class="docutils literal"><span class="pre">throw</span> <span class="pre">...</span> <span class="pre">&#64;catch</span></tt>).</p>
 </li>
 </ul>
 </div>

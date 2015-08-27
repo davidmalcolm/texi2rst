@@ -37,16 +37,16 @@ following class does this:
 
 .. code-block:: c++
 
-  interface WeakPointer : Object
+  @interface WeakPointer : Object
   {
       const void* weakPointer;
   }
 
   - initWithPointer:(const void*)p;
   - (const void*)weakPointer;
-  end
+  @end
 
-  implementation WeakPointer
+  @implementation WeakPointer
 
   + (void)initialize
   {
@@ -65,7 +65,7 @@ following class does this:
     return weakPointer;
   }
 
-  end
+  @end
 
 Weak pointers are supported through a new type character specifier
 represented by the ! character.  The

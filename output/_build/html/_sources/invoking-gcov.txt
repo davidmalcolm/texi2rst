@@ -185,7 +185,7 @@ These preamble lines are of the form
 :option:`-:0:```tag``:``value``
 
 The ordering and number of these preamble lines will be augmented as
-:command:`gcov` development progresses  do not rely on them remaining
+:command:`gcov` development progresses - do not rely on them remaining
 unchanged.  Use ``tag`` to locate a particular preamble line.
 
 The additional block information is of the form
@@ -214,7 +214,7 @@ Running the program will cause profile output to be generated.  For each
 source file compiled with :option:`-fprofile-arcs`, an accompanying
 .gcda file will be placed in the object file directory.
 
-Running :command:`gcov` with your programs source file names as arguments
+Running :command:`gcov` with your program's source file names as arguments
 will now produce a listing of the code along with frequency of execution
 for each line.  For example, if your program is called tmp.c, this
 is what you see when you use the basic :command:`gcov` facility:
@@ -350,7 +350,7 @@ Here is a sample of a resulting tmp.c.gcov file:
 
 For each function, a line is printed showing how many times the function
 is called, how many times it returns and what percentage of the
-functions blocks were executed.
+function's blocks were executed.
 
 For each basic block, a line is printed after the last line of the basic
 block describing the branch or call that ends the basic block.  There can
@@ -364,7 +364,7 @@ on the source line.
 For a branch, if it was executed at least once, then a percentage
 indicating the number of times the branch was taken divided by the
 number of times the branch was executed will be printed.  Otherwise, the
-message never executed is printed.
+message 'never executed' is printed.
 
 For a call, if it was executed at least once, then a percentage
 indicating the number of times the call returned divided by the number
@@ -384,7 +384,7 @@ program runs.
 The data in the .gcda files is saved immediately before the program
 exits.  For each source file compiled with :option:`-fprofile-arcs`, the
 profiling code first attempts to read in an existing .gcda file; if
-the file doesnt match the executable (differing number of basic block
+the file doesn't match the executable (differing number of basic block
 counts) it will ignore the contents of the file.  It then adds in the
 new execution counts and finally writes the data to the file.
 

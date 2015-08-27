@@ -16,7 +16,7 @@ libraries and debuggers on certain systems.
   including: how class instances are laid out, how multiple inheritance is
   implemented, and how virtual function calls are handled.  If the name
   encoding were made the same, your programs would link against libraries
-  provided from other compilersbut the programs would then crash when
+  provided from other compilers-but the programs would then crash when
   run.  Incompatible libraries are then detected at link time, rather than
   at run time.
 
@@ -71,7 +71,7 @@ libraries and debuggers on certain systems.
 
   * On the HP PA machine, ADB sometimes fails to work on functions compiled
   with GCC.  Specifically, it fails to work on functions that use
-  ``alloca`` or variable-size arrays.  This is because GCC doesnt
+  ``alloca`` or variable-size arrays.  This is because GCC doesn't
   generate HP-UX unwind descriptors for such functions.  It may even be
   impossible to generate them.
 
@@ -111,21 +111,21 @@ libraries and debuggers on certain systems.
   linker semantics which merges global symbols between libraries and
   applications, especially necessary for C++ streams functionality.
   This is not the default behavior of AIX shared libraries and dynamic
-  linking.  libstdc++.a is built on AIX with runtime-linking
+  linking.  libstdc++.a is built on AIX with 'runtime-linking'
   enabled so that symbol merging can occur.  To utilize this feature,
   the application linked with libstdc++.a must include the
   :option:`-Wl,-brtl` flag on the link line.  G++ cannot impose this
   because this option may interfere with the semantics of the user
   program and users may not always use g++ to link his or her
   application.  Applications are not required to use the
-  :option:`-Wl,-brtl` flag on the link linethe rest of the
+  :option:`-Wl,-brtl` flag on the link line-the rest of the
   libstdc++.a library which is not dependent on the symbol
   merging semantics will continue to function correctly.
 
   * An application can interpose its own definition of functions for
-  functions invoked by libstdc++.a with runtime-linking
+  functions invoked by libstdc++.a with 'runtime-linking'
   enabled on AIX.  To accomplish this the application must be linked
-  with runtime-linking option and the functions explicitly must be
+  with 'runtime-linking' option and the functions explicitly must be
   exported by the application (:option:`-Wl,-brtl,-bE:exportfile`).
 
   * AIX on the RS/6000 provides support (NLS) for environments outside of

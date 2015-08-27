@@ -112,36 +112,35 @@ a pointer type can be declared a weak pointer, including <tt class="docutils lit
 <p>Here is an example of how to use this feature.  Suppose you want to
 implement a class whose instances hold a weak pointer reference; the
 following class does this:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="n">interface</span> <span class="n">WeakPointer</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="p">{</span>
-    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">weakPointer</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight-c++"><pre>@interface WeakPointer : Object
+{
+    const void* weakPointer;
+}
 
-<span class="o">-</span> <span class="n">initWithPointer</span><span class="o">:</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">p</span><span class="p">;</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">weakPointer</span><span class="p">;</span>
-<span class="n">end</span>
+- initWithPointer:(const void*)p;
+- (const void*)weakPointer;
+@end
 
-<span class="n">implementation</span> <span class="n">WeakPointer</span>
+@implementation WeakPointer
 
-<span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">initialize</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">self</span> <span class="o">==</span> <span class="n">objc_lookUpClass</span> <span class="p">(</span><span class="s">&quot;WeakPointer&quot;</span><span class="p">))</span>
-    <span class="n">class_ivar_set_gcinvisible</span> <span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="s">&quot;weakPointer&quot;</span><span class="p">,</span> <span class="n">YES</span><span class="p">);</span>
-<span class="p">}</span>
++ (void)initialize
+{
+  if (self == objc_lookUpClass ("WeakPointer"))
+    class_ivar_set_gcinvisible (self, "weakPointer", YES);
+}
 
-<span class="o">-</span> <span class="n">initWithPointer</span><span class="o">:</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">p</span>
-<span class="p">{</span>
-  <span class="n">weakPointer</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
-  <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
-<span class="p">}</span>
+- initWithPointer:(const void*)p
+{
+  weakPointer = p;
+  return self;
+}
 
-<span class="o">-</span> <span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">weakPointer</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">weakPointer</span><span class="p">;</span>
-<span class="p">}</span>
+- (const void*)weakPointer
+{
+  return weakPointer;
+}
 
-<span class="n">end</span>
-</pre></div>
+@end</pre>
 </div>
 <p>Weak pointers are supported through a new type character specifier
 represented by the ! character.  The

@@ -23,7 +23,7 @@ seen in the compilation.  As it searches for the included file
 compiler looks for a precompiled header in each directory just before it
 looks for the include file in that directory.  The name searched for is
 the name specified in the ``#include`` with .gch appended.  If
-the precompiled header file cant be used, it is ignored.
+the precompiled header file can't be used, it is ignored.
 
 For instance, if you have ``#include "all.h"``, and you have
 all.h.gch in the same directory as all.h, then the
@@ -43,16 +43,16 @@ header files in mind, is to simply take most of the header files used by
 a project, include them from another header file, precompile that header
 file, and :option:`-include` the precompiled header.  If the header files
 have guards against multiple inclusion, they are skipped because
-theyve already been included (in the precompiled header).
+they've already been included (in the precompiled header).
 
 If you need to precompile the same header file for different
 languages, targets, or compiler options, you can instead make a
 directory named like all.h.gch, and put each precompiled
-header in the directory, perhaps using :option:`-o`.  It doesnt matter
+header in the directory, perhaps using :option:`-o`.  It doesn't matter
 what you call the files in the directory; every precompiled header in
 the directory is considered.  The first precompiled header
 encountered in the directory that is valid for this compilation is
-used; theyre searched in no particular order.
+used; they're searched in no particular order.
 
 There are many other possibilities, limited only by your imagination,
 good sense, and the constraints of your build system.
@@ -61,12 +61,12 @@ A precompiled header file can be used only when these conditions apply:
 
 * Only one precompiled header can be used in a particular compilation.
 
-  * A precompiled header cant be used once the first C token is seen.  You
+  * A precompiled header can't be used once the first C token is seen.  You
   can have preprocessor directives before a precompiled header; you cannot
   include a precompiled header from inside another header.
 
   * The precompiled header file must be produced for the same language as
-  the current compilation.  You cant use a C precompiled header for a C++
+  the current compilation.  You can't use a C precompiled header for a C++
   compilation.
 
   * The precompiled header file must have been produced by the same compiler
@@ -75,7 +75,7 @@ A precompiled header file can be used only when these conditions apply:
   * Any macros defined before the precompiled header is included must
   either be defined in the same way as when the precompiled header was
   generated, or must not affect the precompiled header, which usually
-  means that they dont appear in the precompiled header at all.
+  means that they don't appear in the precompiled header at all.
 
   The :option:`-D` option is one way to define a macro before a
   precompiled header is included; using a ``#define`` can also do it.
@@ -100,7 +100,7 @@ A precompiled header file can be used only when these conditions apply:
 
   * Some other command-line options starting with :option:`-f`,
   :option:`-p`, or :option:`-O` must be defined in the same way as when
-  the precompiled header was generated.  At present, its not clear
+  the precompiled header was generated.  At present, it's not clear
   which options are safe to change and which are not; the safest choice
   is to use exactly the same options when generating and using the
   precompiled header.  The following are known to be safe:
@@ -111,8 +111,8 @@ A precompiled header file can be used only when these conditions apply:
   :option:`-pedantic-errors`
 
 For all of these except the last, the compiler automatically
-ignores the precompiled header if the conditions arent met.  If you
-find an option combination that doesnt work and doesnt cause the
+ignores the precompiled header if the conditions aren't met.  If you
+find an option combination that doesn't work and doesn't cause the
 precompiled header to be ignored, please consider filing a bug report,
 see Bugs.
 

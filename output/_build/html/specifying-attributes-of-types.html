@@ -171,7 +171,7 @@ compiler sets the alignment for the entire <tt class="docutils literal"><span cl
 bytes.</p>
 <p>Note that although you can ask the compiler to select a time-efficient
 alignment for a given type and then declare only individual stand-alone
-objects of that type, the compilers ability to select a time-efficient
+objects of that type, the compiler&#8217;s ability to select a time-efficient
 alignment is primarily useful only when you plan to create arrays of
 variables having the relevant (efficiently aligned) type.  If you
 declare or use arrays of variables of an efficiently-aligned type, then
@@ -195,9 +195,9 @@ equivalent to specifying the <tt class="docutils literal"><span class="pre">pack
 structure or union members.  Specifying the <a class="reference internal" href="#cmdoption-fshort-enums"><em class="xref std std-option">-fshort-enums</em></a>
 flag on the line is equivalent to specifying the <tt class="docutils literal"><span class="pre">packed</span></tt>
 attribute on all <tt class="docutils literal"><span class="pre">enum</span></tt> definitions.</p>
-<p>In the following example <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">my_packed_struct``s</span> <span class="pre">members</span> <span class="pre">are</span>
-<span class="pre">packed</span> <span class="pre">closely</span> <span class="pre">together,</span> <span class="pre">but</span> <span class="pre">the</span> <span class="pre">internal</span> <span class="pre">layout</span> <span class="pre">of</span> <span class="pre">its</span> <span class="pre">``s</span></tt> member
-is not packedto do that, <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">my_unpacked_struct</span></tt> needs to
+<p>In the following example <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">my_packed_struct</span></tt>&#8216;s members are
+packed closely together, but the internal layout of its <tt class="docutils literal"><span class="pre">s</span></tt> member
+is not packed-to do that, <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">my_unpacked_struct</span></tt> needs to
 be packed too.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">my_unpacked_struct</span>
  <span class="p">{</span>
@@ -279,7 +279,7 @@ variables (Function Attributes, Variable Attributes.)</p>
 This attribute may only be applied to structure types.  It indicates
 that any initialization of an object of this type must use designated
 initializers rather than positional initializers.  The intent of this
-attribute is to allow the programmer to indicate that a structures
+attribute is to allow the programmer to indicate that a structure&#8217;s
 layout may change, and that therefore relying on positional
 initialization will result in future breakage.</p>
 <p class="last">GCC emits warnings based on this attribute by default; use
@@ -350,7 +350,7 @@ to work properly.</p>
 interfaces for compatibility reasons.  For example, suppose the
 <tt class="docutils literal"><span class="pre">wait</span></tt> function must accept either a value of type <tt class="docutils literal"><span class="pre">int</span> <span class="pre">*</span></tt> to
 comply with POSIX, or a value of type <tt class="docutils literal"><span class="pre">union</span> <span class="pre">wait</span> <span class="pre">*</span></tt> to comply with
-the 4.1BSD interface.  If <tt class="docutils literal"><span class="pre">wait``s</span> <span class="pre">parameter</span> <span class="pre">were</span> <span class="pre">``void</span> <span class="pre">*</span></tt>,
+the 4.1BSD interface.  If <tt class="docutils literal"><span class="pre">wait</span></tt>&#8216;s parameter were <tt class="docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt>,
 <tt class="docutils literal"><span class="pre">wait</span></tt> would accept both kinds of arguments, but it would also
 accept any other pointer type and this would make argument type checking
 less useful.  Instead, <tt class="docutils literal"><span class="pre">&lt;sys/wait.h&gt;</span></tt> might define the interface
@@ -371,7 +371,7 @@ The program can call <tt class="docutils literal"><span class="pre">wait</span><
 <span class="kt">int</span> <span class="nf">w2</span> <span class="p">()</span> <span class="p">{</span> <span class="k">union</span> <span class="n">wait</span> <span class="n">w</span><span class="p">;</span> <span class="k">return</span> <span class="n">wait</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">w</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>With this interface, <a href="#id1"><span class="problematic" id="id2">``</span></a>wait``s implementation might look like this:</p>
+<p>With this interface, <tt class="docutils literal"><span class="pre">wait</span></tt>&#8216;s implementation might look like this:</p>
 <div class="last highlight-c++"><div class="highlight"><pre><span class="kt">pid_t</span> <span class="nf">wait</span> <span class="p">(</span><span class="kt">wait_status_ptr_t</span> <span class="n">p</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">return</span> <span class="n">waitpid</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">__ip</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>

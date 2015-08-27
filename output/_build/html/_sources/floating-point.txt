@@ -47,8 +47,8 @@ Floating Point
   * The default state for the ``FENV_ACCESS`` pragma (C99 and C11
   7.6.1).
 
-  This pragma is not implemented, but the default is to off unless
-  :option:`-frounding-math` is used in which case it is on.
+  This pragma is not implemented, but the default is to 'off' unless
+  :option:`-frounding-math` is used in which case it is 'on'.
 
   * Additional floating-point exceptions, rounding modes, environments,
   and classifications, and their macro names (C99 and C11 7.6, C99 and
@@ -65,14 +65,14 @@ Floating Point
   :option:`-funsafe-math-optimizations` or :option:`-ffast-math` are used.
   This is subject to change.
 
-  * Whether the inexact floating-point exception can be raised
+  * Whether the 'inexact' floating-point exception can be raised
   when the rounded result actually does equal the mathematical result
   in an IEC 60559 conformant implementation (C99 F.9).
 
   This is dependent on the implementation of the C library, and is not
   defined by GCC itself.
 
-  * Whether the underflow (and inexact) floating-point
+  * Whether the 'underflow' (and 'inexact') floating-point
   exception can be raised when a result is tiny but not inexact in an
   IEC 60559 conformant implementation (C99 F.9).
 

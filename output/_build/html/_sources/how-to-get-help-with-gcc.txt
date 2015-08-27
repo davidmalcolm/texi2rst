@@ -5,9 +5,9 @@ If you need help installing, using or changing GCC, there are two
 ways to find it:
 
 * Send a message to a suitable network mailing list.  First try
-  gcc-helpgcc.gnu.org (for help installing or using GCC), and if
-  that brings no response, try gccgcc.gnu.org.  For help
-  changing GCC, ask gccgcc.gnu.org.  If you think you have found
+  gcc-help@gcc.gnu.org (for help installing or using GCC), and if
+  that brings no response, try gcc@gcc.gnu.org.  For help
+  changing GCC, ask gcc@gcc.gnu.org.  If you think you have found
   a bug in GCC, please report it following the instructions at
   Bug Reporting.
 

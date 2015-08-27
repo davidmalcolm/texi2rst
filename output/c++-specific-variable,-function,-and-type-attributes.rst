@@ -73,7 +73,7 @@ java_interface
 
   This type attribute informs C++ that the class is a Java interface.  It may
   only be applied to classes declared within an ``extern "Java"`` block.
-  Calls to methods declared in this interface are dispatched using GCJs
+  Calls to methods declared in this interface are dispatched using GCJ's
   interface table mechanism, instead of regular virtual table dispatch.
 
 warn_unused

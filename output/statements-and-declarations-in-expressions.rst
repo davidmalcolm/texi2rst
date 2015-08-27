@@ -37,9 +37,9 @@ value of the entire construct.  (If you use some other kind of statement
 last within the braces, the construct has type ``void``, and thus
 effectively no value.)
 
-This feature is especially useful in making macro definitions safe (so
+This feature is especially useful in making macro definitions 'safe' (so
 that they evaluate each operand exactly once).  For example, the
-maximum function is commonly defined as a macro in standard C as
+'maximum' function is commonly defined as a macro in standard C as
 follows:
 
 .. code-block:: c++
@@ -62,7 +62,7 @@ Embedded statements are not allowed in constant expressions, such as
 the value of an enumeration constant, the width of a bit-field, or
 the initial value of a static variable.
 
-If you dont know the type of the operand, you can still do this, but you
+If you don't know the type of the operand, you can still do this, but you
 must use ``typeof`` or ``__auto_type`` (Typeof).
 
 In G++, the result value of a statement expression undergoes array and
@@ -81,7 +81,7 @@ Therefore the ``this`` pointer observed by ``Foo`` is not the
 address of ``a``.
 
 In a statement expression, any temporaries created within a statement
-are destroyed at that statements end.  This makes statement
+are destroyed at that statement's end.  This makes statement
 expressions inside macros slightly different from function calls.  In
 the latter case temporaries introduced during argument evaluation are
 destroyed at the end of the statement that includes the function

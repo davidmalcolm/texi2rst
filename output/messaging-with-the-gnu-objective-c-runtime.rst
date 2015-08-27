@@ -19,7 +19,7 @@ calling the function pointed to it with the right arguments.
 
 For example, when the compiler encounters a method invocation such as
 ``[object init]``, it compiles it into a call to
-``objc_msg_lookup (object, selector(init))`` followed by a cast
+``objc_msg_lookup (object, @selector(init))`` followed by a cast
 of the returned value to the appropriate function pointer type, and
 then it calls it.
 
@@ -86,7 +86,7 @@ Forwarding Hook
 
 The GNU Objective-C runtime provides a hook, called
 ``__objc_msg_forward2``, which is called by
-``objc_msg_lookup()`` when it cant find a method implementation in
+``objc_msg_lookup()`` when it can't find a method implementation in
 the runtime tables and after calling ``+resolveInstanceMethod:``
 and ``+resolveClassMethod:`` has been attempted and did not succeed
 in dynamically registering the method.
@@ -101,10 +101,10 @@ extend ``objc_msg_lookup()`` by adding some custom code that is
 called to do a further lookup when no standard method implementation
 can be found using the normal lookup.
 
-This hook is generally reserved for Foundation libraries such as
+This hook is generally reserved for 'Foundation' libraries such as
 GNUstep Base, which use it to implement their high-level method
 forwarding API, typically based around the ``forwardInvocation:``
-method.  So, unless you are implementing your own Foundation
+method.  So, unless you are implementing your own 'Foundation'
 library, you should not set this hook.
 
 In a typical forwarding implementation, the ``__objc_msg_forward2``
@@ -118,10 +118,10 @@ The forwarding method implementation thus created is returned by
 ``objc_msg_lookup()`` and is executed as if it was a normal method
 implementation.  When the forwarding method implementation is called,
 it is usually expected to pack all arguments into some sort of object
-(typically, an ``NSInvocation`` in a Foundation library), and
+(typically, an ``NSInvocation`` in a 'Foundation' library), and
 hand it over to the programmer (``forwardInvocation:``) who is then
 allowed to manipulate the method invocation using a high-level API
-provided by the Foundation library.  For example, the programmer
+provided by the 'Foundation' library.  For example, the programmer
 may want to examine the method invocation arguments and name and
 potentially change them before forwarding the method invocation to one
 or more local objects (``performInvocation:``) or even to remote

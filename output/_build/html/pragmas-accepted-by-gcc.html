@@ -152,7 +152,7 @@ as it may allow you to reduce the number of memregs used.</p>
 <div><p id="index-5">For any declared symbols matching <tt class="docutils literal"><span class="pre">name</span></tt>, this does three things
 to that symbol: it forces the symbol to be located at the given
 address (a number), it forces the symbol to be volatile, and it
-changes the symbols scope to be static.  This pragma exists for
+changes the symbol&#8217;s scope to be static.  This pragma exists for
 compatibility with other compilers, but note that the common
 <tt class="docutils literal"><span class="pre">1234H</span></tt> numeric syntax is not supported (use <tt class="docutils literal"><span class="pre">0x1234</span></tt>
 instead).  Example:</p>
@@ -272,7 +272,7 @@ properly; to restore the previous setting, use <tt class="docutils literal"><spa
 <div><p id="index-16">This pragma declares variables to be possibly unused.  GCC does not
 produce warnings for the listed variables.  The effect is similar to
 that of the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute, except that this pragma may appear
-anywhere within the variables scopes.</p>
+anywhere within the variables&#8217; scopes.</p>
 </div></blockquote>
 <p>:: _solaris-pragmas:</p>
 </div>
@@ -284,7 +284,7 @@ anywhere within the variables scopes.</p>
 <p>align <tt class="docutils literal"><span class="pre">alignment</span></tt> (<tt class="docutils literal"><span class="pre">variable</span></tt> [, <tt class="docutils literal"><span class="pre">variable</span></tt>]...)</p>
 <blockquote>
 <div><p id="index-17">Increase the minimum alignment of each <tt class="docutils literal"><span class="pre">variable</span></tt> to <tt class="docutils literal"><span class="pre">alignment</span></tt>.
-This is the same as GCCs <tt class="docutils literal"><span class="pre">aligned</span></tt> attribute Variable
+This is the same as GCC&#8217;s <tt class="docutils literal"><span class="pre">aligned</span></tt> attribute Variable
 Attributes).  Macro expansion occurs on the arguments to this pragma
 when compiling C and Objective-C.  It does not currently occur when
 compiling C++, but this is a bug which may be fixed in a future
@@ -325,7 +325,7 @@ linkage.  Asm labels do not have this restriction.</p>
 <ul class="simple">
 <li>In C++, this pragma silently applies only to declarations with</li>
 </ul>
-<p>C linkage.  Again, asm labels do not have this restriction.</p>
+<p>&#8216;C&#8217; linkage.  Again, asm labels do not have this restriction.</p>
 <ul class="simple">
 <li>If either of the ways of changing the assembly name of a</li>
 </ul>
@@ -399,7 +399,7 @@ translation unit.</dd>
 <h2>Diagnostic Pragmas<a class="headerlink" href="#diagnostic-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>GCC allows the user to selectively enable or disable certain types of
 diagnostics, and change the kind of the diagnostic.  For example, a
-projects policy might require that all sources compile with
+project&#8217;s policy might require that all sources compile with
 <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Werror"><em class="xref std std-option">-Werror</em></a> but certain files might have exceptions allowing
 specific types of warnings.  Or, a project might selectively enable
 diagnostics and treat them as errors depending on which preprocessor

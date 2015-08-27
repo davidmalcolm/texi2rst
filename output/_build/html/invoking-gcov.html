@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="gcc 6 documentation" href="index.html" />
-    <link rel="up" title="&lt;no title&gt;" href="gcova-test-coverage-program.html" />
+    <link rel="up" title="&lt;no title&gt;" href="gcov-a-test-coverage-program.html" />
     <link rel="next" title="&lt;no title&gt;" href="using-gcov-with-gcc-optimization.html" />
     <link rel="prev" title="&lt;no title&gt;" href="introduction-to-gcov.html" /> 
   </head>
@@ -45,7 +45,7 @@
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
           <li><a href="gcc.html" >Introduction</a> &raquo;</li>
-          <li><a href="gcova-test-coverage-program.html" accesskey="U">&lt;no title&gt;</a> &raquo;</li> 
+          <li><a href="gcov-a-test-coverage-program.html" accesskey="U">&lt;no title&gt;</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -237,7 +237,7 @@ handlers, respectively.</p>
 These preamble lines are of the form</p>
 <p><em class="xref std std-option">-:0:```tag`</em>:<tt class="docutils literal"><span class="pre">value</span></tt></p>
 <p>The ordering and number of these preamble lines will be augmented as
-<strong class="command">gcov</strong> development progresses  do not rely on them remaining
+<strong class="command">gcov</strong> development progresses - do not rely on them remaining
 unchanged.  Use <tt class="docutils literal"><span class="pre">tag</span></tt> to locate a particular preamble line.</p>
 <p>The additional block information is of the form</p>
 <div class="highlight-c++"><pre>``tag`` ``information``</pre>
@@ -258,7 +258,7 @@ directory where the object file is located.</p>
 <p>Running the program will cause profile output to be generated.  For each
 source file compiled with <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-fprofile-arcs"><em class="xref std std-option">-fprofile-arcs</em></a>, an accompanying
 .gcda file will be placed in the object file directory.</p>
-<p>Running <strong class="command">gcov</strong> with your programs source file names as arguments
+<p>Running <strong class="command">gcov</strong> with your program&#8217;s source file names as arguments
 will now produce a listing of the code along with frequency of execution
 for each line.  For example, if your program is called tmp.c, this
 is what you see when you use the basic <strong class="command">gcov</strong> facility:</p>
@@ -377,7 +377,7 @@ call    0 called 1 returned 100%
 </div>
 <p>For each function, a line is printed showing how many times the function
 is called, how many times it returns and what percentage of the
-functions blocks were executed.</p>
+function&#8217;s blocks were executed.</p>
 <p>For each basic block, a line is printed after the last line of the basic
 block describing the branch or call that ends the basic block.  There can
 be multiple branches and calls listed for a single source line if there
@@ -389,7 +389,7 @@ on the source line.</p>
 <p>For a branch, if it was executed at least once, then a percentage
 indicating the number of times the branch was taken divided by the
 number of times the branch was executed will be printed.  Otherwise, the
-message never executed is printed.</p>
+message &#8216;never executed&#8217; is printed.</p>
 <p>For a call, if it was executed at least once, then a percentage
 indicating the number of times the call returned divided by the number
 of times the call was executed will be printed.  This will usually be
@@ -406,7 +406,7 @@ program runs.</p>
 <p>The data in the .gcda files is saved immediately before the program
 exits.  For each source file compiled with <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-fprofile-arcs"><em class="xref std std-option">-fprofile-arcs</em></a>, the
 profiling code first attempts to read in an existing .gcda file; if
-the file doesnt match the executable (differing number of basic block
+the file doesn&#8217;t match the executable (differing number of basic block
 counts) it will ignore the contents of the file.  It then adds in the
 new execution counts and finally writes the data to the file.</p>
 
@@ -430,7 +430,7 @@ new execution counts and finally writes the data to the file.</p>
              >previous</a> |</li>
         <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
           <li><a href="gcc.html" >Introduction</a> &raquo;</li>
-          <li><a href="gcova-test-coverage-program.html" >&lt;no title&gt;</a> &raquo;</li> 
+          <li><a href="gcov-a-test-coverage-program.html" >&lt;no title&gt;</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -967,7 +967,7 @@ For example, ``enum {foo, bar}`` is not similar to
 ``enum {hot, dog}``.
 
 You typically use this function in code whose execution varies
-depending on the arguments types.  For example:
+depending on the arguments' types.  For example:
 
 .. code-block:: c++
 
@@ -993,7 +993,7 @@ Note: This construct is only available for C.
 
 The ``call_exp`` expression must be a function call, and the
 ``pointer_exp`` expression must be a pointer.  The ``pointer_exp``
-is passed to the function call in the targets static chain location.
+is passed to the function call in the target's static chain location.
 The result of builtin is the result of the function call.
 
 Note: This builtin is only available for C.
@@ -1017,7 +1017,7 @@ that is not chosen.  For example, if ``const_exp`` evaluates to true,
 This built-in function can return an lvalue if the chosen argument is an
 lvalue.
 
-If ``exp1`` is returned, the return type is the same as ``exp1``s
+If ``exp1`` is returned, the return type is the same as ``exp1``'s
 type.  Similarly, if ``exp2`` is returned, its return type is the same
 as ``exp2``.
 
@@ -1249,7 +1249,7 @@ the call to ``F``.
 .. index:: __builtin___clear_cache
 
   Built-in Function void __builtin___clear_cache (char *``begin``, char *``end``)
-This function is used to flush the processors instruction cache for
+This function is used to flush the processor's instruction cache for
 the region of memory between ``begin`` inclusive and ``end``
 exclusive.  Some targets require that the instruction cache be
 flushed, after modifying memory containing code, in order to obtain
@@ -1325,7 +1325,7 @@ type is ``long double``.
 
   Built-in Function int __builtin_fpclassify (int, int, int, int, int, ...)
 This built-in implements the C99 fpclassify functionality.  The first
-five int arguments should be the target librarys notion of the
+five int arguments should be the target library's notion of the
 possible FP classes and are used for return values.  They must be
 constant values and they must appear in this order: ``FP_NAN``,
 ``FP_INFINITE``, ``FP_NORMAL``, ``FP_SUBNORMAL`` and

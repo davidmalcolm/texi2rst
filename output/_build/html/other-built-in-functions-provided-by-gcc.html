@@ -238,7 +238,7 @@ type; this is what the C standard specifies.
 For example, <tt class="docutils literal"><span class="pre">enum</span> <span class="pre">{foo,</span> <span class="pre">bar}</span></tt> is not similar to
 <tt class="docutils literal"><span class="pre">enum</span> <span class="pre">{hot,</span> <span class="pre">dog}</span></tt>.</p>
 <p>You typically use this function in code whose execution varies
-depending on the arguments types.  For example:</p>
+depending on the arguments&#8217; types.  For example:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define foo(x)                                                  \</span>
 <span class="cp">  ({                                                           \</span>
 <span class="cp">    typeof (x) tmp = (x);                                       \</span>
@@ -257,7 +257,7 @@ depending on the arguments types.  For example:</p>
 <p>Note: This construct is only available for C.</p>
 <p>The <tt class="docutils literal"><span class="pre">call_exp</span></tt> expression must be a function call, and the
 <tt class="docutils literal"><span class="pre">pointer_exp</span></tt> expression must be a pointer.  The <tt class="docutils literal"><span class="pre">pointer_exp</span></tt>
-is passed to the function call in the targets static chain location.
+is passed to the function call in the target&#8217;s static chain location.
 The result of builtin is the result of the function call.</p>
 <p>Note: This builtin is only available for C.
 This builtin can be used to call Go closures from C.</p>
@@ -272,8 +272,8 @@ that is not chosen.  For example, if <tt class="docutils literal"><span class="p
 <tt class="docutils literal"><span class="pre">exp2</span></tt> is not evaluated even if it has side-effects.</p>
 <p>This built-in function can return an lvalue if the chosen argument is an
 lvalue.</p>
-<p>If <tt class="docutils literal"><span class="pre">exp1</span></tt> is returned, the return type is the same as <tt class="docutils literal"><span class="pre">exp1``s</span>
-<span class="pre">type.</span>&nbsp; <span class="pre">Similarly,</span> <span class="pre">if</span> <span class="pre">``exp2</span></tt> is returned, its return type is the same
+<p>If <tt class="docutils literal"><span class="pre">exp1</span></tt> is returned, the return type is the same as <tt class="docutils literal"><span class="pre">exp1</span></tt>&#8216;s
+type.  Similarly, if <tt class="docutils literal"><span class="pre">exp2</span></tt> is returned, its return type is the same
 as <tt class="docutils literal"><span class="pre">exp2</span></tt>.</p>
 <p>Example:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define foo(x)                                                    \</span>
@@ -437,7 +437,7 @@ macro and returns the function name the invocation of the built-in is in.</p>
 macro and returns the file name the invocation of the built-in is in.
 In a C++ default argument for a function <tt class="docutils literal"><span class="pre">F</span></tt>, it gets the file name of
 the call to <tt class="docutils literal"><span class="pre">F</span></tt>.</p>
-<p>This function is used to flush the processors instruction cache for
+<p>This function is used to flush the processor&#8217;s instruction cache for
 the region of memory between <tt class="docutils literal"><span class="pre">begin</span></tt> inclusive and <tt class="docutils literal"><span class="pre">end</span></tt>
 exclusive.  Some targets require that the instruction cache be
 flushed, after modifying memory containing code, in order to obtain
@@ -488,7 +488,7 @@ ISO C macro <tt class="docutils literal"><span class="pre">HUGE_VAL</span></tt>.
 <p>Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except the return
 type is <tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt>.</p>
 <p>This built-in implements the C99 fpclassify functionality.  The first
-five int arguments should be the target librarys notion of the
+five int arguments should be the target library&#8217;s notion of the
 possible FP classes and are used for return values.  They must be
 constant values and they must appear in this order: <tt class="docutils literal"><span class="pre">FP_NAN</span></tt>,
 <tt class="docutils literal"><span class="pre">FP_INFINITE</span></tt>, <tt class="docutils literal"><span class="pre">FP_NORMAL</span></tt>, <tt class="docutils literal"><span class="pre">FP_SUBNORMAL</span></tt> and

@@ -33,7 +33,7 @@ old-style non-prototype definition.  Consider the following example:
 Suppose the type ``uid_t`` happens to be ``short``.  ISO C does
 not allow this example, because subword arguments in old-style
 non-prototype definitions are promoted.  Therefore in this example the
-function definitions argument is really an ``int``, which does not
+function definition's argument is really an ``int``, which does not
 match the prototype argument type of ``short``.
 
 This restriction of ISO C makes it hard to write code that is portable

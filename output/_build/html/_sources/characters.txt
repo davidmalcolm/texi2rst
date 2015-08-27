@@ -23,7 +23,7 @@ Characters
   Determined by ABI.
 
   * Which of ``signed char`` or ``unsigned char`` has the same
-  range, representation, and behavior as plain ``char`` (C90
+  range, representation, and behavior as 'plain' ``char`` (C90
   6.1.2.5, C90 6.2.1.1, C99 and C11 6.2.5, C99 and C11 6.3.1.1).
 
   .. index:: fsigned-char

@@ -26,7 +26,7 @@ context.
 In the body of ``fn``, ``rptr`` points to an unaliased integer and
 ``rref`` refers to a (different) unaliased integer.
 
-You may also specify whether a member functions ``this`` pointer is
+You may also specify whether a member function's ``this`` pointer is
 unaliased by using ``__restrict__`` as a member function qualifier.
 
 .. code-block:: c++

@@ -86,14 +86,14 @@
 <h1>An Inline Function is As Fast As a Macro<a class="headerlink" href="#an-inline-function-is-as-fast-as-a-macro" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">By declaring a function inline, you can direct GCC to make
 calls to that function faster.  One way GCC can achieve this is to
-integrate that functions code into the code for its callers.  This
+integrate that function&#8217;s code into the code for its callers.  This
 makes execution faster by eliminating the function-call overhead; in
 addition, if any of the actual argument values are constant, their
 known values may permit simplifications at compile time so that not
-all of the inline functions code needs to be included.  The effect on
+all of the inline function&#8217;s code needs to be included.  The effect on
 code size is less predictable; object code may be larger or smaller
 with function inlining, depending on the particular case.  You can
-also direct GCC to try to integrate all simple enough functions
+also direct GCC to try to integrate all &#8216;simple enough&#8217; functions
 into their callers with the option <a class="reference internal" href="options-that-control-optimization.html#cmdoption-finline-functions"><em class="xref std std-option">-finline-functions</em></a>.</p>
 <p>GCC implements three different semantics of declaring a function
 inline.  One is available with <em class="xref std std-option">-std=gnu89</em> or
@@ -130,16 +130,16 @@ using the <tt class="docutils literal"><span class="pre">inline</span></tt> keyw
 <p>In both of these common cases, the program behaves the same as if you
 had not used the <tt class="docutils literal"><span class="pre">inline</span></tt> keyword, except for its speed.</p>
 <span class="target" id="index-4"></span><p id="index-5">When a function is both inline and <tt class="docutils literal"><span class="pre">static</span></tt>, if all calls to the
-function are integrated into the caller, and the functions address is
-never used, then the functions own assembler code is never referenced.
+function are integrated into the caller, and the function&#8217;s address is
+never used, then the function&#8217;s own assembler code is never referenced.
 In this case, GCC does not actually output assembler code for the
 function, unless you specify the option <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fkeep-inline-functions"><em class="xref std std-option">-fkeep-inline-functions</em></a>.
 Some calls cannot be integrated for various reasons (in particular,
-calls that precede the functions definition cannot be integrated, and
+calls that precede the function&#8217;s definition cannot be integrated, and
 neither can recursive calls within the definition).  If there is a
 nonintegrated call, then the function is compiled to assembler code as
 usual.  The function must also be compiled as usual if the program
-refers to its address, because that cant be inlined.</p>
+refers to its address, because that can&#8217;t be inlined.</p>
 <p id="index-6">Note that certain usages in a function definition can make it unsuitable
 for inline substitution.  Among these usages are: variadic functions, use of
 <tt class="docutils literal"><span class="pre">alloca</span></tt>, use of variable-length data types (Variable Length),

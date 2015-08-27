@@ -85,25 +85,24 @@
   <div class="section" id="synchronization">
 <h1>Synchronization<a class="headerlink" href="#synchronization" title="Permalink to this headline">¶</a></h1>
 <p>GNU Objective-C provides support for synchronized blocks:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="n">synchronized</span> <span class="p">(</span><span class="n">ObjCClass</span> <span class="o">*</span><span class="n">guard</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight-c++"><pre>@synchronized (ObjCClass *guard) {
+  ...
+}</pre>
 </div>
-<p>Upon entering the <tt class="docutils literal"><span class="pre">synchronized</span></tt> block, a thread of execution
+<p>Upon entering the <tt class="docutils literal"><span class="pre">&#64;synchronized</span></tt> block, a thread of execution
 shall first check whether a lock has been placed on the corresponding
 <tt class="docutils literal"><span class="pre">guard</span></tt> object by another thread.  If it has, the current thread
 shall wait until the other thread relinquishes its lock.  Once
 <tt class="docutils literal"><span class="pre">guard</span></tt> becomes available, the current thread will place its own
-lock on it, execute the code contained in the <tt class="docutils literal"><span class="pre">synchronized</span></tt>
+lock on it, execute the code contained in the <tt class="docutils literal"><span class="pre">&#64;synchronized</span></tt>
 block, and finally relinquish the lock (thereby making <tt class="docutils literal"><span class="pre">guard</span></tt>
 available to other threads).</p>
 <p>Unlike Java, Objective-C does not allow for entire methods to be
-marked <tt class="docutils literal"><span class="pre">synchronized</span></tt>.  Note that throwing exceptions out of
-<tt class="docutils literal"><span class="pre">synchronized</span></tt> blocks is allowed, and will cause the guarding
+marked <tt class="docutils literal"><span class="pre">&#64;synchronized</span></tt>.  Note that throwing exceptions out of
+<tt class="docutils literal"><span class="pre">&#64;synchronized</span></tt> blocks is allowed, and will cause the guarding
 object to be unlocked properly.</p>
 <p>Because of the interactions between synchronization and exception
-handling, you can only use <tt class="docutils literal"><span class="pre">synchronized</span></tt> when compiling with
+handling, you can only use <tt class="docutils literal"><span class="pre">&#64;synchronized</span></tt> when compiling with
 exceptions enabled, that is with the command line option
 <a class="reference internal" href="options-controlling-objective-c-and-objective-c++-dialects.html#cmdoption-fobjc-exceptions"><em class="xref std std-option">-fobjc-exceptions</em></a>.</p>
 </div>

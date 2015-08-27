@@ -29,7 +29,7 @@ GNU Objective-C provides support for the fast enumeration syntax:
 
 ``array`` needs to be an Objective-C object (usually a collection
 object, for example an array, a dictionary or a set) which implements
-the Fast Enumeration Protocol (see below).  If you are using a
+the 'Fast Enumeration Protocol' (see below).  If you are using a
 Foundation library such as GNUstep Base or Apple Cocoa Foundation, all
 collection objects in the library implement this protocol and can be
 used in this way.
@@ -44,11 +44,11 @@ provides the implementation of ``NSArray``, ``NSString`` and
 
 .. code-block:: c++
 
-    NSArray *array = [NSArray arrayWithObjects: "1", "2", "3", nil];
+    NSArray *array = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
     NSString *object;
 
     for (object in array)
-      NSLog ("Iterating over %", object);
+      NSLog (@"Iterating over %@", object);
 
 .. ================================ 
 
@@ -114,7 +114,7 @@ here is what happens when you run it:
   batches of objects from the collection object using the fast
   enumeration protocol (see below), then iterating over all objects in
   the batch.  This is faster than a normal enumeration where objects are
-  retrieved one by one (hence the name fast enumeration).
+  retrieved one by one (hence the name 'fast enumeration').
 
   * if there are no objects in the collection, then
   ````object expression```` is set to ``nil`` and the loop
@@ -189,7 +189,7 @@ To help with returning the objects, the ``objects`` array is a C
 array preallocated by the caller (on the stack) of size ``len``.
 In many cases you can put the objects you want to return in that
 ``objects`` array, then do ``itemsPtr = objects``.  But you
-dont have to; if your collection already has the objects to return in
+don't have to; if your collection already has the objects to return in
 some form of C array, it could return them from there instead.
 
 The ``state`` and ``extra`` fields of the

@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="gcc 6 documentation" href="index.html" />
-    <link rel="up" title="&lt;no title&gt;" href="gcova-test-coverage-program.html" />
+    <link rel="up" title="&lt;no title&gt;" href="gcov-a-test-coverage-program.html" />
     <link rel="next" title="&lt;no title&gt;" href="invoking-gcov.html" />
     <link rel="prev" title="&lt;no title&gt;" href="invoking-gcov.html" /> 
   </head>
@@ -45,7 +45,7 @@
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
           <li><a href="gcc.html" >Introduction</a> &raquo;</li>
-          <li><a href="gcova-test-coverage-program.html" accesskey="U">&lt;no title&gt;</a> &raquo;</li> 
+          <li><a href="gcov-a-test-coverage-program.html" accesskey="U">&lt;no title&gt;</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -91,7 +91,7 @@ optimization efforts will best affect your code.  You can also use
 <strong class="command">gcov</strong> along with the other profiling tool, <strong class="command">gprof</strong>, to
 assess which parts of your code use the greatest amount of computing
 time.</p>
-<p>Profiling tools help you analyze your codes performance.  Using a
+<p>Profiling tools help you analyze your code&#8217;s performance.  Using a
 profiler such as <strong class="command">gcov</strong> or <strong class="command">gprof</strong>, you can find out some
 basic performance statistics, such as:</p>
 <ul class="simple">
@@ -114,12 +114,12 @@ final product.</p>
 <p>You should compile your code without optimization if you plan to use
 <strong class="command">gcov</strong> because the optimization, by combining some lines of code
 into one function, may not give you as much information as you need to
-look for hot spots where the code is using a great deal of computer
+look for &#8216;hot spots&#8217; where the code is using a great deal of computer
 time.  Likewise, because <strong class="command">gcov</strong> accumulates statistics by line (at
 the lowest resolution), it works best with a programming style that
 places only one statement on each line.  If you use complicated macros
 that expand to loops or to other control structures, the statistics are
-less helpfulthey only report on the line where the macro call
+less helpful-they only report on the line where the macro call
 appears.  If your complex macros behave like functions, you can replace
 them with inline functions to solve this problem.</p>
 <p><strong class="command">gcov</strong> creates a logfile called <tt class="docutils literal"><span class="pre">sourcefile</span></tt>.gcov which
@@ -151,7 +151,7 @@ compatible with any other profiling or test coverage mechanism.</p>
              >previous</a> |</li>
         <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
           <li><a href="gcc.html" >Introduction</a> &raquo;</li>
-          <li><a href="gcova-test-coverage-program.html" >&lt;no title&gt;</a> &raquo;</li> 
+          <li><a href="gcov-a-test-coverage-program.html" >&lt;no title&gt;</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

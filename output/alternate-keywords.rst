@@ -22,7 +22,7 @@ The way to solve these problems is to put __ at the beginning and
 end of each problematical keyword.  For example, use ``__asm__``
 instead of ``asm``, and ``__inline__`` instead of ``inline``.
 
-Other C compilers wont accept these alternative keywords; if you want to
+Other C compilers won't accept these alternative keywords; if you want to
 compile with another compiler, you can define the alternate keywords as
 macros to replace them with the customary keywords.  It looks like this:
 

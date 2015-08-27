@@ -75,7 +75,7 @@ Name Lookup, Templates, and Accessing Members of Base Classes
 The C++ standard prescribes that all names that are not dependent on
 template parameters are bound to their present definitions when parsing
 a template function or class.The C++ standard just uses the
-term dependent for names that depend on the type or value of
+term 'dependent' for names that depend on the type or value of
 template parameters.  This shorter term will also be used in the rest of
 this section.  Only names that are dependent are looked up at the point
 of instantiation.  For example, consider
@@ -133,7 +133,7 @@ In ``get_i()``, ``i`` is not used in a dependent context, so the
 compiler will look for a name declared at the enclosing namespace scope
 (which is the global scope here).  It will not look into the base class,
 since that is dependent and you may declare specializations of
-``Base`` even after declaring ``Derived``, so the compiler cant
+``Base`` even after declaring ``Derived``, so the compiler can't
 really know what ``i`` would refer to.  If there is no global
 variable ``i``, then you will get an error message.
 
@@ -201,7 +201,7 @@ temporary object.  The compiler may very well delete the object before
 you expect it to, leaving a pointer to garbage.  The most common place
 where this problem crops up is in classes like string classes,
 especially ones that define a conversion function to type ``char *``
-or ``const char *``which is one reason why the standard
+or ``const char *``-which is one reason why the standard
 ``string`` class requires you to call the ``c_str`` member
 function.  However, any class that returns a pointer to some internal
 structure is potentially subject to this problem.
@@ -292,7 +292,7 @@ unspecified whether Base::operator= is called more than once when
 the implicit copy-assignment for Derived objects is invoked (as it is
 inside func in the example).
 
-G++ implements the intuitive algorithm for copy-assignment: assign all
+G++ implements the 'intuitive' algorithm for copy-assignment: assign all
 direct bases, then assign all members.  In that algorithm, the virtual
 base subobject can be encountered more than once.  In the example, copying
 proceeds in the following order: val, name (via

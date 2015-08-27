@@ -118,7 +118,7 @@ immediately after the other storage class specifier.</p>
 static, function-scoped static, or static data member of a class.  It may
 not be applied to block-scoped automatic or non-static data member.</p>
 <p>When the address-of operator is applied to a thread-local variable, it is
-evaluated at run time and returns the address of the current threads
+evaluated at run time and returns the address of the current thread&#8217;s
 instance of that variable.  An address so obtained may be used by any
 thread.  When a thread terminates, any pointers to thread-local variables
 in that thread become invalid.</p>
@@ -227,7 +227,7 @@ non-trivial destructor, nor shall it be an array type whose elements
 <ul class="simple">
 <li>[basic.stc]</li>
 </ul>
-<p>Add thread storage duration to the list in paragraph 1.</p>
+<p>Add &#8216;thread storage duration&#8217; to the list in paragraph 1.</p>
 <p>Change paragraph 2</p>
 <p>Thread, static, and automatic storage durations are associated with
 objects introduced by declarations [...].</p>

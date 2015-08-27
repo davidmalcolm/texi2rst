@@ -57,8 +57,8 @@ If you are not sure whether you have found a bug, here are some guidelines:
 
   * If the compiler does not produce an error message for invalid input,
   that is a compiler bug.  However, you should note that your idea of
-  invalid input might be someone elses idea of an extension or
-  support for traditional practice.
+  'invalid input' might be someone else's idea of 'an extension' or
+  'support for traditional practice'.
 
   * If you are an experienced user of one of the languages GCC supports, your
   suggestions for improvement of GCC are welcome in any case.

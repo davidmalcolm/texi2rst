@@ -5,7 +5,7 @@ Vague Linkage
 
 There are several constructs in C++ that require space in the object
 file but are not clearly tied to a single translation unit.  We say that
-these constructs have vague linkage.  Typically such constructs are
+these constructs have 'vague linkage'.  Typically such constructs are
 emitted wherever they are needed, though sometimes we can be more
 clever.
 
@@ -31,7 +31,7 @@ VTables
   functions provided by a class, and each object of the class contains a
   pointer to its vtable (or vtables, in some multiple-inheritance
   situations).  If the class declares any non-inline, non-pure virtual
-  functions, the first one is chosen as the key method for the class,
+  functions, the first one is chosen as the 'key method' for the class,
   and the vtable is only emitted in the translation unit where the key
   method is defined.
 
@@ -57,14 +57,14 @@ VTables
 Template Instantiations
   Most everything in this section also applies to template instantiations,
   but there are other options as well.
-  Template InstantiationWheres the Template?.
+  Template InstantiationWhere's the Template?.
 
 When used with GNU ld version 2.8 or later on an ELF system such as
 GNU/Linux or Solaris 2, or on Microsoft Windows, duplicate copies of
 these constructs will be discarded at link time.  This is known as
 COMDAT support.
 
-On targets that dont support COMDAT, but do support weak symbols, GCC
+On targets that don't support COMDAT, but do support weak symbols, GCC
 uses them.  This way one copy overrides all the others, but
 the unused copies still take up space in the executable.
 

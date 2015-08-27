@@ -142,12 +142,34 @@ def from_xml_string(xml_src):
     # Hack: not sure how to correctly handle entities using
     # xml.dom.minidom (if it is indeed possible), so do a textual
     # substitution first:
-    xml_src = xml_src.replace('&lbrace;', '{')
-    xml_src = xml_src.replace('&rbrace;', '}')
+    # FIXME: use correct unicode chars for the results
+    xml_src = xml_src.replace('&arobase;', "@")
     xml_src = xml_src.replace('&bullet;', '*')
+    xml_src = xml_src.replace('&copyright;', "(C)")
     xml_src = xml_src.replace('&dots;', '...')
     xml_src = xml_src.replace('&eosperiod;', '.')
+    xml_src = xml_src.replace('&equiv;', '==')
+    xml_src = xml_src.replace('&lbrace;', '{')
+    xml_src = xml_src.replace('&linebreak;', "\n")
+    xml_src = xml_src.replace('&rbrace;', '}')
+    xml_src = xml_src.replace('&slashbreak;', "/")
+    xml_src = xml_src.replace('&minus;', '-')
+    xml_src = xml_src.replace('&nbsp;', ' ')
+    xml_src = xml_src.replace('&noeos;', '')
+    xml_src = xml_src.replace('&tex;', 'Tex')
+    xml_src = xml_src.replace('&textmdash;', '-')
     xml_src = xml_src.replace('&textndash;', '-')
+    xml_src = xml_src.replace('&textldquo;', "'")
+    xml_src = xml_src.replace('&textrdquo;', "'")
+    xml_src = xml_src.replace('&textlsquo;', "'")
+    xml_src = xml_src.replace('&textrsquo;', "'")
+
+    # Complain about any entities still present
+    for m in re.finditer('(&[a-z]+;)', xml_src):
+        BUILTIN_XML_ENTITIES = ('&quot;', '&amp;', '&apos;', '&lt;', '&gt;')
+        if m.group(1) not in BUILTIN_XML_ENTITIES:
+            raise ValueError('Unhandled entity: %r' % m.group(1))
+
     dom = xml.dom.minidom.parseString(xml_src)
     tree = convert_from_xml(dom)
     return tree

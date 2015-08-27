@@ -15,10 +15,10 @@ Integers
   .. __int128_t and __uint128_t typedefs are not extended integer types 
 
   * Whether signed integer types are represented using sign and magnitude,
-  twos complement, or ones complement, and whether the extraordinary value
+  two's complement, or one's complement, and whether the extraordinary value
   is a trap representation or an ordinary value (C99 and C11 6.2.6.2).
 
-  GCC supports only twos complement integer types, and all bit patterns
+  GCC supports only two's complement integer types, and all bit patterns
   are ordinary values.
 
   * The rank of any extended integer type relative to another extended

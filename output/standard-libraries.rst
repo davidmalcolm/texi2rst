@@ -7,9 +7,9 @@ GCC by itself attempts to be a conforming freestanding implementation.
 StandardsLanguage Standards Supported by GCC, for details of
 what this means.  Beyond the library facilities required of such an
 implementation, the rest of the C library is supplied by the vendor of
-the operating system.  If that C library doesnt conform to the C
+the operating system.  If that C library doesn't conform to the C
 standards, then your programs might get warnings (especially when using
-:option:`-Wall`) that you dont expect.
+:option:`-Wall`) that you don't expect.
 
 For example, the ``sprintf`` function on SunOS 4.1.3 returns
 ``char *`` while the C standard says that ``sprintf`` returns an

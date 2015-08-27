@@ -101,8 +101,8 @@ of the union.  Thus, given the following union and variables:</p>
 union type is equivalent to storing in a member of the union:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">union</span> <span class="n">foo</span> <span class="n">u</span><span class="p">;</span>
 <span class="cm">/* ... */</span>
-<span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="k">union</span> <span class="n">foo</span><span class="p">)</span> <span class="n">x</span>    <span class="n">u</span><span class="p">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">x</span>
-<span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="k">union</span> <span class="n">foo</span><span class="p">)</span> <span class="n">y</span>    <span class="n">u</span><span class="p">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="k">union</span> <span class="n">foo</span><span class="p">)</span> <span class="n">x</span>  <span class="o">==</span>  <span class="n">u</span><span class="p">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="k">union</span> <span class="n">foo</span><span class="p">)</span> <span class="n">y</span>  <span class="o">==</span>  <span class="n">u</span><span class="p">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">y</span>
 </pre></div>
 </div>
 <p>You can also use the union cast as a function argument:</p>

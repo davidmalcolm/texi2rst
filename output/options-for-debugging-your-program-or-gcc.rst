@@ -10,7 +10,7 @@ either your program or GCC:
 
 .. option:: -g
 
-  Produce debugging information in the operating systems native format
+  Produce debugging information in the operating system's native format
   (stabs, COFF, XCOFF, or DWARF 2).  GDB can work with this debugging
   information.
 
@@ -162,9 +162,9 @@ either your program or GCC:
   Produce compressed debug sections in DWARF format, if that is supported.
   If ``type`` is not given, the default type depends on the capabilities
   of the assembler and linker used.  ``type`` may be one of
-  none (dont compress debug sections), zlib (use zlib
+  none (don't compress debug sections), zlib (use zlib
   compression in ELF gABI format), or zlib-gnu (use zlib
-  compression in traditional GNU format).  If the linker doesnt support
+  compression in traditional GNU format).  If the linker doesn't support
   writing compressed debug sections, the option is rejected.  Otherwise,
   if the assembler does not support them, :option:`-gz` is silently ignored
   when producing object files.
@@ -182,7 +182,7 @@ either your program or GCC:
   :option:`-g`.
 
   Level 1 produces minimal information, enough for making backtraces in
-  parts of the program that you dont plan to debug.  This includes
+  parts of the program that you don't plan to debug.  This includes
   descriptions of functions and external variables, and line number
   tables, but no information about local variables.
 
@@ -442,12 +442,12 @@ either your program or GCC:
   violation signals.  By default when :option:`-fcheck-pointer-bounds`
   and :option:`-mmpx` options are used to link a program, the GCC driver
   links against the libmpx runtime library and libmpxwrappers
-  library.  It also passes -z bndplt to a linker in case it supports this
+  library.  It also passes '-z bndplt' to a linker in case it supports this
   option (which is checked on libmpx configuration).  Note that old versions
-  of linker may ignore option.  Gold linker doesnt support -z bndplt
-  option.  With no -z bndplt support in linker all calls to dynamic libraries
-  lose passed bounds reducing overall protection level.  Its highly
-  recommended to use linker with -z bndplt support.  In case such linker
+  of linker may ignore option.  Gold linker doesn't support '-z bndplt'
+  option.  With no '-z bndplt' support in linker all calls to dynamic libraries
+  lose passed bounds reducing overall protection level.  It's highly
+  recommended to use linker with '-z bndplt' support.  In case such linker
   is not available it is adviced to always use :option:`-static-libmpxwrappers`
   for better protection level or use :option:`-static` to completely avoid
   external calls to dynamic libraries.  MPX-based instrumentation
@@ -654,6 +654,7 @@ either your program or GCC:
   which serves for most needs.
 
   A specification has the syntax
+
   [dir:|ind:][ord:|gen:](any|sys|base|none)
 
   The optional first word limits the specification to
@@ -794,7 +795,7 @@ either your program or GCC:
   program exits it saves this data to a file called
   ``auxname``.gcda for each source file.  The data may be used for
   profile-directed optimizations (:option:`-fbranch-probabilities`), or for
-  test coverage analysis (:option:`-ftest-coverage`).  Each object files
+  test coverage analysis (:option:`-ftest-coverage`).  Each object file's
   ``auxname`` is generated from the name of the output file, if
   explicitly specified and it is not the final executable, otherwise it is
   the basename of the source file.  In both cases any suffix is removed
@@ -846,8 +847,8 @@ either your program or GCC:
 .. option:: -ftest-coverage
 
   Produce a notes file that the :command:`gcov` code-coverage utility
-  (Gcov:command:`gcov`a Test Coverage Program) can use to
-  show program coverage.  Each source files note file is called
+  (Gcov:command:`gcov`-a Test Coverage Program) can use to
+  show program coverage.  Each source file's note file is called
   ``auxname``.gcno.  Refer to the :option:`-fprofile-arcs` option
   above for a description of ``auxname`` and instructions on how to
   generate test coverage data.  Coverage data matches the source files
@@ -887,7 +888,7 @@ either your program or GCC:
     comma-separated list of function ranges or assembler names.  Each range is a number
     pair separated by a colon.  The range is inclusive in both ends.  If the range
     is trivial, the number pair can be simplified as a single number.  If the
-    functions call graph nodes ``uid`` falls within one of the specified ranges,
+    function's call graph node's ``uid`` falls within one of the specified ranges,
     the ``pass`` is disabled for that function.  The ``uid`` is shown in the
     function header of a dump file, and the pass names can be dumped by using
     option :option:`-fdump-passes`.
@@ -1135,8 +1136,8 @@ either your program or GCC:
 
   .. option:: -fdump-rtl-stack
 
-    Dump after conversion from GCCs flat register file registers to the
-    x87s stack-like registers.  This pass is only run on x86 variants.
+    Dump after conversion from GCC's 'flat register file' registers to the
+    x87's stack-like registers.  This pass is only run on x86 variants.
 
   .. option:: -fdump-rtl-subreg1, -fdump-rtl-subreg2
 
@@ -1238,7 +1239,7 @@ either your program or GCC:
   .. note::
 
     (C++ only)
-  Dump a representation of each classs hierarchy and virtual function
+  Dump a representation of each class's hierarchy and virtual function
   table layout to a file.  The file name is made by appending
   .class to the source file name, and the file is created in the
   same directory as the output file.  If the -``options`` form
@@ -1670,7 +1671,7 @@ either your program or GCC:
 
 .. option:: -save-temps
 
-  Store the usual temporary intermediate files permanently; place them
+  Store the usual 'temporary' intermediate files permanently; place them
   in the current directory and name them based on the source file.  Thus,
   compiling foo.c with :option:`-c -save-temps` produces files
   foo.i and foo.s, as well as foo.o.  This creates a
@@ -1699,7 +1700,7 @@ either your program or GCC:
 
 .. option:: -save-temps=obj
 
-  Store the usual temporary intermediate files permanently.  If the
+  Store the usual 'temporary' intermediate files permanently.  If the
   :option:`-o` option is used, the temporary files are based on the
   object file.  If the :option:`-o` option is not used, the
   :option:`-save-temps=obj` switch behaves like :option:`-save-temps`.
@@ -1729,8 +1730,8 @@ either your program or GCC:
     # cc1 0.12 0.01
     # as 0.00 0.01
 
-  The first number on each line is the user time, that is time spent
-  executing the program itself.  The second number is system time,
+  The first number on each line is the 'user time', that is time spent
+  executing the program itself.  The second number is 'system time',
   time spent executing operating system routines on behalf of the program.
   Both numbers are in seconds.
 
@@ -1742,7 +1743,7 @@ either your program or GCC:
     0.12 0.01 cc1 ``options``
     0.00 0.01 as ``options``
 
-  The user time and the system time are moved before the program
+  The 'user time' and the 'system time' are moved before the program
   name, and the options passed to the program are displayed, so that one
   can later tell what file was being compiled, and with which options.
 
@@ -1776,7 +1777,7 @@ either your program or GCC:
 .. option:: -print-file-name=library
 
   Print the full absolute name of the library file ``library`` that
-  would be used when linkingand dont do anything else.  With this
+  would be used when linking-and don't do anything else.  With this
   option, GCC does not compile or link anything; it just prints the
   file name.
 
@@ -1790,7 +1791,7 @@ either your program or GCC:
 
   Print the mapping from multilib directory names to compiler switches
   that enable them.  The directory name is separated from the switches by
-  ;, and each switch starts with an  instead of the
+  ;, and each switch starts with an @ instead of the
   -, without spaces between multiple switches.  This is supposed to
   ease shell processing.
 
@@ -1827,14 +1828,14 @@ either your program or GCC:
 .. option:: -print-search-dirs
 
   Print the name of the configured installation directory and a list of
-  program and library directories :command:`gcc` searchesand dont do anything else.
+  program and library directories :command:`gcc` searches-and don't do anything else.
 
   This is useful when :command:`gcc` prints the error message
   installation problem, cannot exec cpp0: No such file or directory.
   To resolve this you either need to put cpp0 and the other compiler
   components where :command:`gcc` expects to find them, or you can set the environment
   variable :envvar:`GCC_EXEC_PREFIX` to the directory where you installed them.
-  Dont forget the trailing /.
+  Don't forget the trailing /.
   Environment Variables.
 
 .. option:: -print-sysroot
@@ -1849,21 +1850,21 @@ either your program or GCC:
 
   Print the suffix added to the target sysroot when searching for
   headers, or give an error if the compiler is not configured with such
-  a suffixand dont do anything else.
+  a suffix-and don't do anything else.
 
 .. option:: -dumpmachine
 
-  Print the compilers target machine (for example,
-  i686-pc-linux-gnu)and dont do anything else.
+  Print the compiler's target machine (for example,
+  i686-pc-linux-gnu)-and don't do anything else.
 
 .. option:: -dumpversion
 
-  Print the compiler version (for example, ``3.0``)and dont do
+  Print the compiler version (for example, ``3.0``)-and don't do
   anything else.
 
 .. option:: -dumpspecs
 
-  Print the compilers built-in specsand dont do anything else.  (This
+  Print the compiler's built-in specs-and don't do anything else.  (This
   is used when GCC itself is being built.)  Spec Files.
 
 .. option:: -fno-eliminate-unused-debug-types, -feliminate-unused-debug-types

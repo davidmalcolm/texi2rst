@@ -103,9 +103,9 @@ followed by a semicolon; the value of this subexpression serves as the
 value of the entire construct.  (If you use some other kind of statement
 last within the braces, the construct has type <tt class="docutils literal"><span class="pre">void</span></tt>, and thus
 effectively no value.)</p>
-<p>This feature is especially useful in making macro definitions safe (so
+<p>This feature is especially useful in making macro definitions &#8216;safe&#8217; (so
 that they evaluate each operand exactly once).  For example, the
-maximum function is commonly defined as a macro in standard C as
+&#8216;maximum&#8217; function is commonly defined as a macro in standard C as
 follows:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define max(a,b) ((a) &gt; (b) ? (a) : (b))</span>
 </pre></div>
@@ -121,7 +121,7 @@ the macro safely as follows:</p>
 <p>Embedded statements are not allowed in constant expressions, such as
 the value of an enumeration constant, the width of a bit-field, or
 the initial value of a static variable.</p>
-<p>If you dont know the type of the operand, you can still do this, but you
+<p>If you don&#8217;t know the type of the operand, you can still do this, but you
 must use <tt class="docutils literal"><span class="pre">typeof</span></tt> or <tt class="docutils literal"><span class="pre">__auto_type</span></tt> (Typeof).</p>
 <p>In G++, the result value of a statement expression undergoes array and
 function pointer decay, and is returned by value to the enclosing
@@ -136,7 +136,7 @@ statement expression, and that is used to invoke <tt class="docutils literal"><s
 Therefore the <tt class="docutils literal"><span class="pre">this</span></tt> pointer observed by <tt class="docutils literal"><span class="pre">Foo</span></tt> is not the
 address of <tt class="docutils literal"><span class="pre">a</span></tt>.</p>
 <p>In a statement expression, any temporaries created within a statement
-are destroyed at that statements end.  This makes statement
+are destroyed at that statement&#8217;s end.  This makes statement
 expressions inside macros slightly different from function calls.  In
 the latter case temporaries introduced during argument evaluation are
 destroyed at the end of the statement that includes the function

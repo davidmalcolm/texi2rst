@@ -20,7 +20,7 @@ warnings but control the kinds of diagnostics produced by GCC.
 
 .. option:: -fsyntax-only
 
-  Check the code for syntax errors, but dont do anything beyond that.
+  Check the code for syntax errors, but don't do anything beyond that.
 
 .. option:: -fmax-errors=n
 
@@ -114,13 +114,13 @@ warns that an unrecognized option is present.
 
   Some users try to use :option:`-Wpedantic` to check programs for strict ISO
   C conformance.  They soon find that it does not do quite what they want:
-  it finds some non-ISO practices, but not allonly those for which
+  it finds some non-ISO practices, but not all-only those for which
   ISO C requires a diagnostic, and some others for which
   diagnostics have been added.
 
   A feature to report any failure to conform to ISO C might be useful in
   some instances, but would require considerable additional work and would
-  be quite different from :option:`-Wpedantic`.  We dont have plans to
+  be quite different from :option:`-Wpedantic`.  We don't have plans to
   support such a feature in the near future.
 
   Where the standard specified with :option:`-std` represents a GNU
@@ -228,7 +228,7 @@ warns that an unrecognized option is present.
     * (C++ only) Taking the address of a variable that has been declared
     ``register``.
 
-    * (C++ only) A base class is not initialized in a derived classs copy
+    * (C++ only) A base class is not initialized in a derived class's copy
     constructor.
 
 .. option:: -Wchar-subscripts, -Wno-char-subscripts
@@ -271,7 +271,7 @@ warns that an unrecognized option is present.
     (C, C++, Objective-C and Objective-C++ only)
 
   Give a warning when a value of type ``float`` is implicitly
-  promoted to ``double``.  CPUs with a 32-bit single-precision
+  promoted to ``double``.  CPUs with a 32-bit 'single-precision'
   floating-point unit implement ``float`` in hardware, but emulate
   ``double`` in software.  On such a machine, doing computations
   using ``double`` values is much more expensive because of the
@@ -310,7 +310,7 @@ warns that an unrecognized option is present.
   as features from the Single Unix Specification and some BSD and GNU
   extensions.  Other library implementations may not support all these
   features; GCC does not support warning about features that go beyond a
-  particular librarys limitations.  However, if :option:`-Wpedantic` is used
+  particular library's limitations.  However, if :option:`-Wpedantic` is used
   with :option:`-Wformat`, warnings are given about format features not
   in the selected standard version (but not for ``strfmon`` formats,
   since those are not in any version of the C standard).  C Dialect
@@ -570,11 +570,11 @@ warns that an unrecognized option is present.
 
   It is not specified when between sequence points modifications to the
   values of objects take effect.  Programs whose behavior depends on this
-  have undefined behavior; the C and C++ standards specify that Between
+  have undefined behavior; the C and C++ standards specify that 'Between
   the previous and next sequence point an object shall have its stored
   value modified at most once by the evaluation of an expression.
   Furthermore, the prior value shall be read only to determine the value
-  to be stored..  If a program breaks these rules, the results on any
+  to be stored.'.  If a program breaks these rules, the results on any
   particular implementation are entirely unpredictable.
 
   Examples of code with undefined behavior are ``a = a++;``, ``a[n]
@@ -587,7 +587,7 @@ warns that an unrecognized option is present.
   over the precise meaning of the sequence point rules in subtle cases.
   Links to discussions of the problem, including proposed formal
   definitions, may be found on the GCC readings page, at
-  http://gcc.gnu.org/readings.html.
+  http://gcc.gnu.org//readings.html.
 
   This warning is enabled by :option:`-Wall` for C and C++.
 
@@ -815,7 +815,7 @@ warns that an unrecognized option is present.
     }
 
   If the value of ``y`` is always 1, 2 or 3, then ``x`` is
-  always initialized, but GCC doesnt know this. To suppress the
+  always initialized, but GCC doesn't know this. To suppress the
   warning, you need to provide a default case with assert(0) or
   similar code.
 
@@ -958,7 +958,7 @@ warns that an unrecognized option is present.
     ``pure``, ``const`` or ``noreturn``.  The compiler only warns for
     functions visible in other compilation units or (in the case of ``pure`` and
     ``const``) if it cannot prove that the function returns normally. A function
-    returns normally if it doesnt contain an infinite loop or return abnormally
+    returns normally if it doesn't contain an infinite loop or return abnormally
     by throwing, calling ``abort`` or trapping.  This analysis requires option
     :option:`-fipa-pure-const`, which is enabled by default at :option:`-O` and
     higher.  Higher optimization levels improve the accuracy of the analysis.
@@ -1103,7 +1103,7 @@ warns that an unrecognized option is present.
   GCC to emit warnings from system headers as if they occurred in user
   code.  However, note that using :option:`-Wall` in conjunction with this
   option does not warn about unknown pragmas in system
-  headersfor that, :option:`-Wunknown-pragmas` must also be used.
+  headers-for that, :option:`-Wunknown-pragmas` must also be used.
 
 .. option:: -Wtrampolines, -Wno-trampolines
 
@@ -1124,7 +1124,7 @@ warns that an unrecognized option is present.
   infinitely precise real numbers.  If you are doing this, then you need
   to compute (by analyzing the code, or in some other way) the maximum or
   likely maximum error that the computation introduces, and allow for it
-  when performing comparisons (and when producing output, but thats a
+  when performing comparisons (and when producing output, but that's a
   different problem).  In particular, instead of testing for equality, you
   should check to see whether the two values have ranges that overlap; and
   this is done with the relational operators, so equality comparisons are
@@ -1163,7 +1163,7 @@ warns that an unrecognized option is present.
     constants.)  Note, these suffixes appear in macros defined in the system
     headers of most modern systems, e.g. the _MIN/_MAX macros in ``<limits.h>``.
     Use of these macros in user code might normally lead to spurious
-    warnings, however GCCs integrated preprocessor has enough context to
+    warnings, however GCC's integrated preprocessor has enough context to
     avoid warning in these cases.
 
     * A function declared external in one block and then used after the end of
@@ -1200,7 +1200,7 @@ warns that an unrecognized option is present.
     * Use of ISO C style function definitions.  This warning intentionally is
     not issued for prototype declarations or variadic functions
     because these ISO C features appear in your code when using
-    libibertys traditional C compatibility macros, ``PARAMS`` and
+    libiberty's traditional C compatibility macros, ``PARAMS`` and
     ``VPARAMS``.  This warning is also bypassed for nested functions
     because that feature is already a GCC extension and thus not relevant to
     traditional C compatibility.
@@ -1284,19 +1284,19 @@ warns that an unrecognized option is present.
 
   The message is in keeping with the output of :option:`-fstack-usage`.
 
-  * If the stack usage is fully static but exceeds the specified amount, its:
+  * If the stack usage is fully static but exceeds the specified amount, it's:
 
     .. code-block:: c++
 
         warning: stack usage is 1120 bytes
 
-    * If the stack usage is (partly) dynamic but bounded, its:
+    * If the stack usage is (partly) dynamic but bounded, it's:
 
     .. code-block:: c++
 
         warning: stack usage might be 1648 bytes
 
-    * If the stack usage is (partly) dynamic and not bounded, its:
+    * If the stack usage is (partly) dynamic and not bounded, it's:
 
     .. code-block:: c++
 
@@ -1323,7 +1323,7 @@ warns that an unrecognized option is present.
 
 .. option:: -Wpointer-arith, -Wno-pointer-arith
 
-  Warn about anything that depends on the size of a function type or
+  Warn about anything that depends on the 'size of' a function type or
   of ``void``.  GNU C assigns these types a size of 1, for
   convenience in calculations with ``void *`` pointers and pointers
   to functions.  In C++, warn also when an arithmetic operation involves
@@ -1487,7 +1487,7 @@ warns that an unrecognized option is present.
 
     (C++ and Objective-C++ only)
 
-  Warn when a literal 0 is used as null pointer constant.  This can
+  Warn when a literal '0' is used as null pointer constant.  This can
   be useful to facilitate the conversion to ``nullptr`` in C++11.
 
 .. option:: -Wdate-time, -Wno-date-time
@@ -1760,7 +1760,7 @@ warns that an unrecognized option is present.
 
 .. option:: -Wmissing-field-initializers, -Wno-missing-field-initializers, -W, -Wextra, -Wno-extra
 
-  Warn if a structures initializer has some fields missing.  For
+  Warn if a structure's initializer has some fields missing.  For
   example, the following code causes such a warning, because
   ``x.h`` is implicitly zero:
 
@@ -1791,7 +1791,7 @@ warns that an unrecognized option is present.
 .. option:: -Wno-multichar, -Wmultichar
 
   Do not warn if a multicharacter constant ('FOOF') is used.
-  Usually they indicate a typo in the users code, as they have
+  Usually they indicate a typo in the user's code, as they have
   implementation-defined values, and should not be used in portable code.
 
 .. option:: -Wnormalized[=<none|id|nfc|nfkc>]
@@ -1813,13 +1813,13 @@ warns that an unrecognized option is present.
 
   There are four levels of warning supported by GCC.  The default is
   :option:`-Wnormalized=nfc`, which warns about any identifier that is
-  not in the ISO 10646 C normalized form, :dfn:`NFC`.  NFC is the
+  not in the ISO 10646 'C' normalized form, :dfn:`NFC`.  NFC is the
   recommended form for most uses.  It is equivalent to
   :option:`-Wnormalized`.
 
   Unfortunately, there are some characters allowed in identifiers by
   ISO C and ISO C++ that, when turned into NFC, are not allowed in 
-  identifiers.  That is, theres no way to use these symbols in portable
+  identifiers.  That is, there's no way to use these symbols in portable
   ISO C or C++ and have all your identifiers in NFC.
   :option:`-Wnormalized=id` suppresses the warning for these characters.
   It is hoped that future versions of the standards involved will correct
@@ -1828,13 +1828,13 @@ warns that an unrecognized option is present.
   You can switch the warning off for all characters by writing
   :option:`-Wnormalized=none` or :option:`-Wno-normalized`.  You should
   only do this if you are using some other normalization scheme (like
-  D), because otherwise you can easily create bugs that are
+  'D'), because otherwise you can easily create bugs that are
   literally impossible to see.
 
   Some characters in ISO 10646 have distinct meanings but look identical
   in some fonts or display methodologies, especially once formatting has
-  been applied.  For instance ``\u207F``, SUPERSCRIPT LATIN SMALL
-  LETTER N, displays just like a regular ``n`` that has been
+  been applied.  For instance ``\u207F``, 'SUPERSCRIPT LATIN SMALL
+  LETTER N', displays just like a regular ``n`` that has been
   placed in a superscript.  ISO 10646 defines the :dfn:`NFKC`
   normalization scheme to convert all these into a standard form as
   well, and GCC warns if your code is not in NFKC if you use
@@ -2008,7 +2008,7 @@ warns that an unrecognized option is present.
 .. option:: -Winvalid-pch, -Wno-invalid-pch
 
   Warn if a precompiled header (Precompiled Headers) is found in
-  the search path but cant be used.
+  the search path but can't be used.
 
 .. option:: -Wlong-long, -Wno-long-long
 
@@ -2066,7 +2066,7 @@ warns that an unrecognized option is present.
 
   Warn if a requested optimization pass is disabled.  This warning does
   not generally indicate that there is anything wrong with your code; it
-  merely indicates that GCCs optimizers are unable to handle the code
+  merely indicates that GCC's optimizers are unable to handle the code
   effectively.  Often, the problem is that your code is too big or too
   complex; GCC refuses to optimize programs when the optimization
   itself is likely to take inordinate amounts of time.
@@ -2089,10 +2089,10 @@ warns that an unrecognized option is present.
 
 .. option:: -Woverlength-strings, -Wno-overlength-strings
 
-  Warn about string constants that are longer than the minimum
-  maximum length specified in the C standard.  Modern compilers
+  Warn about string constants that are longer than the 'minimum
+  maximum' length specified in the C standard.  Modern compilers
   generally allow string constants that are much longer than the
-  standards minimum limit, but very portable programs should avoid
+  standard's minimum limit, but very portable programs should avoid
   using longer strings.
 
   The limit applies after string constant concatenation, and does

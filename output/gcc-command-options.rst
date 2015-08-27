@@ -10,7 +10,7 @@ GCC Command Options
 .. man begin DESCRIPTION 
 
 When you invoke GCC, it normally does preprocessing, compilation,
-assembly and linking.  The overall options allow you to stop this
+assembly and linking.  The 'overall options' allow you to stop this
 process at an intermediate stage.  For example, the :option:`-c` option
 says not to run the linker.  Then the output consists of object files
 output by the assembler.
@@ -47,13 +47,13 @@ may not be grouped: :option:`-dv` is very different from -d
 .. index:: options, order
 
 You can mix options and other arguments.  For the most part, the order
-you use doesnt matter.  Order does matter when you use several
+you use doesn't matter.  Order does matter when you use several
 options of the same kind; for example, if you specify :option:`-L` more
 than once, the directories are searched in the order specified.  Also,
 the placement of the :option:`-l` option is significant.
 
 Many options have long names starting with -f or with
--Wfor example,
+-W-for example,
 :option:`-fmove-loop-invariants`, :option:`-Wformat` and so on.  Most of
 these have both positive and negative forms; the negative form of
 :option:`-ffoo` is :option:`-fno-foo`.  This manual documents
@@ -61,7 +61,7 @@ only one of these two forms, whichever one is not the default.
 
 .. man end 
 
-Option Index, for an index to GCCs options.
+Option Index, for an index to GCC's options.
 
 .. toctree::
 

@@ -99,7 +99,7 @@ The following type attributes are supported on most targets.
 
   Note that although you can ask the compiler to select a time-efficient
   alignment for a given type and then declare only individual stand-alone
-  objects of that type, the compilers ability to select a time-efficient
+  objects of that type, the compiler's ability to select a time-efficient
   alignment is primarily useful only when you plan to create arrays of
   variables having the relevant (efficiently aligned) type.  If you
   declare or use arrays of variables of an efficiently-aligned type, then
@@ -127,9 +127,9 @@ The following type attributes are supported on most targets.
   flag on the line is equivalent to specifying the ``packed``
   attribute on all ``enum`` definitions.
 
-  In the following example ``struct my_packed_struct``s members are
+  In the following example ``struct my_packed_struct``'s members are
   packed closely together, but the internal layout of its ``s`` member
-  is not packedto do that, ``struct my_unpacked_struct`` needs to
+  is not packed-to do that, ``struct my_unpacked_struct`` needs to
   be packed too.
 
   .. code-block:: c++
@@ -220,7 +220,7 @@ designated_init
   This attribute may only be applied to structure types.  It indicates
   that any initialization of an object of this type must use designated
   initializers rather than positional initializers.  The intent of this
-  attribute is to allow the programmer to indicate that a structures
+  attribute is to allow the programmer to indicate that a structure's
   layout may change, and that therefore relying on positional
   initialization will result in future breakage.
 
@@ -301,7 +301,7 @@ transparent_union
   interfaces for compatibility reasons.  For example, suppose the
   ``wait`` function must accept either a value of type ``int *`` to
   comply with POSIX, or a value of type ``union wait *`` to comply with
-  the 4.1BSD interface.  If ``wait``s parameter were ``void *``,
+  the 4.1BSD interface.  If ``wait``'s parameter were ``void *``,
   ``wait`` would accept both kinds of arguments, but it would also
   accept any other pointer type and this would make argument type checking
   less useful.  Instead, ``<sys/wait.h>`` might define the interface
@@ -326,7 +326,7 @@ transparent_union
     int w1 () { int w; return wait (&w); }
     int w2 () { union wait w; return wait (&w); }
 
-  With this interface, ``wait``s implementation might look like this:
+  With this interface, ``wait``'s implementation might look like this:
 
   .. code-block:: c++
 

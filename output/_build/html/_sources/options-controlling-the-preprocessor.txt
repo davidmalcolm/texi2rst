@@ -20,7 +20,7 @@ compilation.
   ``option`` contains commas, it is split into multiple options at the
   commas.  However, many options are modified, translated or interpreted
   by the compiler driver before being passed to the preprocessor, and
-  :option:`-Wp` forcibly bypasses this phase.  The preprocessors direct
+  :option:`-Wp` forcibly bypasses this phase.  The preprocessor's direct
   interface is undocumented and subject to change, so whenever possible
   you should avoid using :option:`-Wp` and let the driver handle the
   options instead.

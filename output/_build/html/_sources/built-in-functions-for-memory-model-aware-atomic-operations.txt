@@ -253,8 +253,8 @@ All memory models are valid.
 
 This built-in function performs an atomic test-and-set operation on
 the byte at ``*``ptr````.  The byte is set to some implementation
-defined nonzero set value and the return value is ``true`` if and only
-if the previous contents were set.
+defined nonzero 'set' value and the return value is ``true`` if and only
+if the previous contents were 'set'.
 It should be only used for operands of type ``bool`` or ``char``. For 
 other types only part of the value may be set.
 

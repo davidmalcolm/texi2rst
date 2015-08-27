@@ -11,7 +11,7 @@ Overall Options
   :option:`-c`  :option:`-S`  :option:`-E`  :option:`-o` ``file``  :option:`-no-canonical-prefixes`  
   :option:`-pipe`  :option:`-pass-exit-codes`  
   :option:`-x` ``language``  :option:`-v`  :option:`-###`  :option:`--help`[=``class``[,...]]  :option:`--target-help`  
-  :option:`--version` :option:`-wrapper` ``file`` :option:`-fplugin=```file`` :option:`-fplugin-arg-```name``=``arg``  
+  :option:`--version` :option:`-wrapper` @``file`` :option:`-fplugin=```file`` :option:`-fplugin-arg-```name``=``arg``  
   :option:`-fdump-ada-spec`[:option:`-slim`] :option:`-fada-spec-parent=```unit`` :option:`-fdump-go-spec=```file``
 
 C Language Options

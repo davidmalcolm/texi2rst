@@ -39,7 +39,7 @@ test specifically for GNU C++ (Common Predefined MacrosPredefined MacroscppThe G
   restricting-pointer-aliasing
   vague-linkage
   c++-interface-and-implementation-pragmas
-  wheres-the-template?
+  where's-the-template?
   extracting-the-function-pointer-from-a-bound-pointer-to-member-function
   c++-specific-variable,-function,-and-type-attributes
   function-multiversioning

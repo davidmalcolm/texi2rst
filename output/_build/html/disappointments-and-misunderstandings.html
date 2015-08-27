@@ -84,14 +84,14 @@
             
   <div class="section" id="disappointments-and-misunderstandings">
 <h1>Disappointments and Misunderstandings<a class="headerlink" href="#disappointments-and-misunderstandings" title="Permalink to this headline">¶</a></h1>
-<p>These problems are perhaps regrettable, but we dont know any practical
+<p>These problems are perhaps regrettable, but we don&#8217;t know any practical
 way around them.</p>
 <ul>
-<li><p class="first">Certain local variables arent recognized by debuggers when you compile
+<li><p class="first">Certain local variables aren&#8217;t recognized by debuggers when you compile
 with optimization.</p>
 <p>This occurs because sometimes GCC optimizes the variable out of
 existence.  There is no way to tell the debugger how to compute the
-value such a variable would have had, and it is not clear that would
+value such a variable &#8216;would have had&#8217;, and it is not clear that would
 be desirable anyway.  So GCC simply does not mention the eliminated
 variable when it writes debugging information.</p>
 <p>You have to expect a certain amount of disagreement between the
@@ -111,14 +111,14 @@ executable and your source code, when you use optimization.</p>
 <p>This code really is erroneous, because the scope of <tt class="docutils literal"><span class="pre">struct</span>
 <span class="pre">mumble</span></tt> in the prototype is limited to the argument list containing it.
 It does not refer to the <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">mumble</span></tt> defined with file scope
-immediately belowthey are two unrelated types with similar names in
+immediately below-they are two unrelated types with similar names in
 different scopes.</p>
 <p>But in the definition of <tt class="docutils literal"><span class="pre">foo</span></tt>, the file-scope type is used
 because that is available to be inherited.  Thus, the definition and
 the prototype do not match, and you get an error.</p>
-<p>This behavior may seem silly, but its what the ISO standard specifies.
+<p>This behavior may seem silly, but it&#8217;s what the ISO standard specifies.
 It is easy enough for you to make your code work by moving the
-definition of <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">mumble</span></tt> above the prototype.  Its not worth
+definition of <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">mumble</span></tt> above the prototype.  It&#8217;s not worth
 being incompatible with ISO C just to avoid an error for the example
 shown above.</p>
 <ul class="simple">

@@ -85,7 +85,7 @@
   <div class="section" id="options-to-control-diagnostic-messages-formatting">
 <h1>Options to Control Diagnostic Messages Formatting<a class="headerlink" href="#options-to-control-diagnostic-messages-formatting" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><span class="target" id="index-1"></span><p id="index-2">Traditionally, diagnostic messages have been formatted irrespective of
-the output devices aspect (e.g. its width, ...).  You can use the
+the output device&#8217;s aspect (e.g. its width, ...).  You can use the
 options described below
 to control the formatting algorithm for diagnostic messages,
 e.g. how many characters per line, how often source location
@@ -106,7 +106,7 @@ default for all front ends.</p>
 <dd><p>Only meaningful in line-wrapping mode.  Instructs the diagnostic messages
 reporter to emit source location information once; that is, in
 case the message is too long to fit on a single physical line and has to
-be wrapped, the source location wont be emitted (as prefix) again,
+be wrapped, the source location won&#8217;t be emitted (as prefix) again,
 over and over, in subsequent continuation lines.  This is the default
 behavior.</p>
 </dd></dl>
@@ -125,7 +125,7 @@ a message which is too long to fit on a single line.</dd>
 Use color in diagnostics.  <tt class="docutils literal"><span class="pre">WHEN</span></tt> is never, always,
 or auto.  The default depends on how the compiler has been configured,
 it can be any of the above <tt class="docutils literal"><span class="pre">WHEN</span></tt> options or also never
-if <span class="target" id="index-4"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> environment variable isnt present in the environment,
+if <span class="target" id="index-4"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> environment variable isn&#8217;t present in the environment,
 and auto otherwise.
 auto means to use color only when the standard error is a terminal.
 The forms <a class="reference internal" href="#cmdoption-fdiagnostics-color"><em class="xref std std-option">-fdiagnostics-color</em></a> and <em class="xref std std-option">-fno-diagnostics-color</em> are
@@ -198,7 +198,7 @@ option is known to the diagnostic machinery).  Specifying the
 <dt id="cmdoption-fno-diagnostics-show-caret">
 <tt class="descname">-fno-diagnostics-show-caret</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-fdiagnostics-show-caret</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-diagnostics-show-caret" title="Permalink to this definition">¶</a></dt>
 <dd><p>By default, each diagnostic emitted includes the original source line
-and a caret ^ indicating the column.  This option suppresses this
+and a caret &#8216;^&#8217; indicating the column.  This option suppresses this
 information.  The source line is truncated to <tt class="docutils literal"><span class="pre">n</span></tt> characters, if
 the <em class="xref std std-option">-fmessage-length=n</em> option is given.  When the output is done
 to the terminal, the width is limited to the width given by the

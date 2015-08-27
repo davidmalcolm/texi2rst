@@ -6,47 +6,47 @@ in the following example:
 
 .. code-block:: c++
 
-    try {
+    @try {
       ...
-         throw expr;
-      ...
-    }
-    catch (AnObjCClass *exc) {
-      ...
-        throw expr;
-      ...
-        throw;
+         @throw expr;
       ...
     }
-    catch (AnotherClass *exc) {
+    @catch (AnObjCClass *exc) {
+      ...
+        @throw expr;
+      ...
+        @throw;
       ...
     }
-    catch (id allOthers) {
+    @catch (AnotherClass *exc) {
       ...
     }
-    finally {
+    @catch (id allOthers) {
       ...
-        throw expr;
+    }
+    @finally {
+      ...
+        @throw expr;
       ...
     }
 
-The ``throw`` statement may appear anywhere in an Objective-C or
-Objective-C++ program; when used inside of a ``catch`` block, the
-``throw`` may appear without an argument (as shown above), in
-which case the object caught by the ``catch`` will be rethrown.
+The ``@throw`` statement may appear anywhere in an Objective-C or
+Objective-C++ program; when used inside of a ``@catch`` block, the
+``@throw`` may appear without an argument (as shown above), in
+which case the object caught by the ``@catch`` will be rethrown.
 
 Note that only (pointers to) Objective-C objects may be thrown and
 caught using this scheme.  When an object is thrown, it will be caught
-by the nearest ``catch`` clause capable of handling objects of
+by the nearest ``@catch`` clause capable of handling objects of
 that type, analogously to how ``catch`` blocks work in C++ and
-Java.  A ``catch(id ...)`` clause (as shown above) may also
+Java.  A ``@catch(id ...)`` clause (as shown above) may also
 be provided to catch any and all Objective-C exceptions not caught by
-previous ``catch`` clauses (if any).
+previous ``@catch`` clauses (if any).
 
-The ``finally`` clause, if present, will be executed upon exit
-from the immediately preceding ``try ... catch`` section.
+The ``@finally`` clause, if present, will be executed upon exit
+from the immediately preceding ``@try ... @catch`` section.
 This will happen regardless of whether any exceptions are thrown,
-caught or rethrown inside the ``try ... catch`` section,
+caught or rethrown inside the ``@try ... @catch`` section,
 analogously to the behavior of the ``finally`` clause in Java.
 
 There are several caveats to using the new exception mechanism:
@@ -54,7 +54,7 @@ There are several caveats to using the new exception mechanism:
 * The :option:`-fobjc-exceptions` command line option must be used when
   compiling Objective-C files that use exceptions.
 
-  * With the GNU runtime, exceptions are always implemented as native
+  * With the GNU runtime, exceptions are always implemented as 'native'
   exceptions and it is recommended that the :option:`-fexceptions` and
   :option:`-shared-libgcc` options are used when linking.
 
@@ -67,9 +67,9 @@ There are several caveats to using the new exception mechanism:
   * As mentioned above, the new exceptions do not support handling
   types other than Objective-C objects.   Furthermore, when used from
   Objective-C++, the Objective-C exception model does not interoperate with C++
-  exceptions at this time.  This means you cannot ``throw`` an exception
+  exceptions at this time.  This means you cannot ``@throw`` an exception
   from Objective-C and ``catch`` it in C++, or vice versa
-  (i.e., ``throw ... catch``).
+  (i.e., ``throw ... @catch``).
 
 .. ========================================================================= 
 

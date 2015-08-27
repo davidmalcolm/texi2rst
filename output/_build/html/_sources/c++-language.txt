@@ -21,14 +21,14 @@ commonly referred to as C++0x.  C++11 contains several
 changes to the C++ language, most of which have been implemented in an
 experimental C++11 mode in GCC.  For information
 regarding the C++11 features available in the experimental C++11 mode,
-see http://gcc.gnu.org/projects/cxx0x.html. To select this
+see http://gcc.gnu.org/projects//cxx0x.html. To select this
 standard in GCC, use the option :option:`-std=c++11`; to obtain all the
 diagnostics required by the standard, you should also specify
 :option:`-pedantic` (or :option:`-pedantic-errors` if you want them to
 be errors rather than warnings).
 
 More information about the C++ standards is available on the ISO C++
-committees web site at http://www.open-std.org/jtc1/sc22/wg21/.
+committee's web site at http://www.open-std.org//jtc1//sc22//wg21/.
 
 By default, GCC provides some extensions to the C++ language; C++
 Dialect OptionsOptions Controlling C++ Dialect.  Use of the

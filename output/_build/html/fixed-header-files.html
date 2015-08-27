@@ -85,16 +85,16 @@
   <div class="section" id="fixed-header-files">
 <h1>Fixed Header Files<a class="headerlink" href="#fixed-header-files" title="Permalink to this headline">¶</a></h1>
 <p>GCC needs to install corrected versions of some system header files.
-This is because most target systems have some header files that wont
+This is because most target systems have some header files that won&#8217;t
 work with GCC unless they are changed.  Some have bugs, some are
 incompatible with ISO C, and some depend on special features of other
 compilers.</p>
 <p>Installing GCC automatically creates and installs the fixed header
 files, by running a program called <tt class="docutils literal"><span class="pre">fixincludes</span></tt>.  Normally, you
-dont need to pay attention to this.  But there are cases where it
-doesnt do the right thing automatically.</p>
+don&#8217;t need to pay attention to this.  But there are cases where it
+doesn&#8217;t do the right thing automatically.</p>
 <ul>
-<li><p class="first">If you update the systems header files, such as by installing a new
+<li><p class="first">If you update the system&#8217;s header files, such as by installing a new
 system version, the fixed header files of GCC are not automatically
 updated.  They can be updated using the <strong class="command">mkheaders</strong> script
 installed in
@@ -110,7 +110,7 @@ way of using symbolic links; therefore, the directory of fixed header
 files is good only for the machine model used to build it.</p>
 <p>It is possible to make separate sets of fixed header files for the
 different machine models, and arrange a structure of symbolic links so
-as to use the proper set, but youll have to do this by hand.</p>
+as to use the proper set, but you&#8217;ll have to do this by hand.</p>
 </li>
 </ul>
 </div>

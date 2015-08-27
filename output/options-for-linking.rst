@@ -53,7 +53,7 @@ not doing a link step.
   The directories searched include several standard system directories
   plus any that you specify with :option:`-L`.
 
-  Normally the files found this way are library filesarchive files
+  Normally the files found this way are library files-archive files
   whose members are object files.  The linker handles an archive file by
   scanning through it for members which define symbols that have so far
   been referenced but not defined.  But if the file that is found is an

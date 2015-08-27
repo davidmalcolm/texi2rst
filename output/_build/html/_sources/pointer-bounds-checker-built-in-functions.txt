@@ -109,7 +109,7 @@ Bounds Checker off, the built-in function just returns the first argument.
 
 This built-in function stores the bounds associated with pointer ``ptr_val``
 and location ``ptr_addr`` into Bounds Table.  This can be useful to propagate
-bounds from legacy code without touching the associated pointers memory when
+bounds from legacy code without touching the associated pointer's memory when
 pointers are copied as integers.  With Pointer Bounds Checker off, the built-in
 function call is ignored.
 

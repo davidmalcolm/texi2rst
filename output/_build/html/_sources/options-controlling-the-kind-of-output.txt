@@ -172,7 +172,7 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   By default, the assembler file name for a source file is made by
   replacing the suffix .c, .i, etc., with .s.
 
-  Input files that dont require compilation are ignored.
+  Input files that don't require compilation are ignored.
 
 .. option:: -E
 
@@ -180,7 +180,7 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   output is in the form of preprocessed source code, which is sent to the
   standard output.
 
-  Input files that dont require preprocessing are ignored.
+  Input files that don't require preprocessing are ignored.
 
   .. index:: output file option
 
@@ -363,7 +363,7 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
 .. option:: -fplugin=name.so
 
   Load the plugin code in file ``name``.so, assumed to be a
-  shared object to be dlopend by the compiler.  The base name of
+  shared object to be dlopen'd by the compiler.  The base name of
   the shared object file is used to identify the plugin for the
   purposes of argument parsing (See
   :option:`-fplugin-arg-``name``-``key``=``value``` below).
@@ -378,7 +378,7 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
 .. option:: -fdump-ada-spec[-slim], -fdump-ada-spec
 
   For C and C++ source and include files, generate corresponding Ada specs.
-  Generating Ada Bindings for C and C++ headersgnat_ugnGNAT Users Guide, which provides detailed documentation on this feature.
+  Generating Ada Bindings for C and C++ headersgnat_ugnGNAT User's Guide, which provides detailed documentation on this feature.
 
 .. option:: -fada-spec-parent=unit
 
@@ -396,9 +396,9 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   .. This file is designed to be included in manuals that use  
      expandargv. 
 
-``file``
+@``file``
   Read command-line options from ``file``.  The options read are
-  inserted in place of the original ``file`` option.  If ``file``
+  inserted in place of the original @``file`` option.  If ``file``
   does not exist, or cannot be read, then the option will be treated
   literally, and not removed.  
 
@@ -407,5 +407,5 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   option in either single or double quotes.  Any character (including a
   backslash) may be included by prefixing the character to be included
   with a backslash.  The ``file`` may itself contain additional
-  ``file`` options; any such options will be processed recursively.
+  @``file`` options; any such options will be processed recursively.
 

@@ -36,7 +36,7 @@ processor from speculating loads across the operation and from queuing stores
 after the operation.
 
 All of the routines are described in the Intel documentation to take
-an optional list of variables protected by the memory barrier.  Its
+'an optional list of variables protected by the memory barrier'.  It's
 not clear what is meant by that; it could mean that only the
 listed variables are protected, or it could mean a list of additional
 variables to be protected.  The list is ignored by GCC which treats it as
@@ -105,8 +105,8 @@ bool __sync_bool_compare_and_swap (``type`` *ptr, ``type`` oldval, ``type`` newv
   value of ``*``ptr```` is ``oldval``, then write ``newval`` into
   ``*``ptr````.
 
-  The bool version returns true if the comparison is successful and
-  ``newval`` is written.  The val version returns the contents
+  The 'bool' version returns true if the comparison is successful and
+  ``newval`` is written.  The 'val' version returns the contents
   of ``*``ptr```` before the operation.
 
 __sync_synchronize (...)

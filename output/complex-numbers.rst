@@ -48,12 +48,12 @@ floating type, you should use the ISO C99 functions ``conjf``,
 provided as built-in functions by GCC.
 
 GCC can allocate complex automatic variables in a noncontiguous
-fashion; its even possible for the real part to be in a register while
+fashion; it's even possible for the real part to be in a register while
 the imaginary part is on the stack (or vice versa).  Only the DWARF 2
 debug info format can represent this, so use of DWARF 2 is recommended.
 If you are using the stabs debug info format, GCC describes a noncontiguous
 complex variable as if it were two separate variables of noncomplex type.
-If the variables actual name is ``foo``, the two fictitious
+If the variable's actual name is ``foo``, the two fictitious
 variables are named ``foo$real`` and ``foo$imag``.  You can
 examine and set these two fictitious variables with your debugger.
 

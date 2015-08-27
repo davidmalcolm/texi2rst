@@ -32,8 +32,8 @@ for a C symbol, or to place a C variable in a specific register.
 
 :: _basic-asm:
 
-Basic Asm  Assembler Instructions Without Operands
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Basic Asm - Assembler Instructions Without Operands
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 basic ``asm``
 
@@ -82,7 +82,7 @@ efficient code, and in most cases it is a better solution than basic
 can be used:
 
 * Extended ``asm`` statements have to be inside a C
-  function, so to write inline assembly language at file scope (top-level),
+  function, so to write inline assembly language at file scope ('top-level'),
   outside of C functions, you must use basic ``asm``.
   You can use this technique to emit assembler directives,
   define assembly language macros that can be invoked elsewhere in the file,
@@ -99,7 +99,7 @@ complex than it may appear. To access C data, it is better to use extended
 Do not expect a sequence of ``asm`` statements to remain perfectly 
 consecutive after compilation. If certain instructions need to remain 
 consecutive in the output, put them in a single multi-instruction ``asm``
-statement. Note that GCCs optimizers can move ``asm`` statements 
+statement. Note that GCC's optimizers can move ``asm`` statements 
 relative to other code, including across jumps.
 
 ``asm`` statements may not perform jumps into other ``asm`` statements. 
@@ -212,7 +212,7 @@ GotoLabels
 
   ``asm`` statements may not perform jumps into other ``asm`` statements,
   only to the listed ``GotoLabels``.
-  GCCs optimizers do not know about other jumps; therefore they cannot take 
+  GCC's optimizers do not know about other jumps; therefore they cannot take 
   account of them when deciding how to optimize.
 
 The total number of input + output + goto operands is limited to 30.
@@ -257,7 +257,7 @@ Volatile
 volatile ``asm``
 ``asm`` volatile
 
-GCCs optimizers sometimes discard ``asm`` statements if they determine 
+GCC's optimizers sometimes discard ``asm`` statements if they determine 
 there is no need for the output variables. Also, the optimizers may move 
 code out of loops if they believe that the code will always return the same 
 result (i.e. none of its input values change between calls). Using the 
@@ -271,7 +271,7 @@ uses ``asm`` to perform the validation. Otherwise, ``dwRes`` is
 unreferenced by any code. As a result, the optimizers can discard the 
 ``asm`` statement, which in turn removes the need for the entire 
 ``DoCheck`` routine. By omitting the ``volatile`` qualifier when it 
-isnt needed you allow the optimizers to produce the most efficient code 
+isn't needed you allow the optimizers to produce the most efficient code 
 possible.
 
 .. code-block:: c++
@@ -315,7 +315,7 @@ Again, using ``volatile`` disables this type of optimization.
 The following example demonstrates a case where you need to use the 
 ``volatile`` qualifier. 
 It uses the x86 ``rdtsc`` instruction, which reads 
-the computers time-stamp counter. Without the ``volatile`` qualifier, 
+the computer's time-stamp counter. Without the ``volatile`` qualifier, 
 the optimizers might assume that the ``asm`` block will always return the 
 same value and therefore optimize away the second call.
 
@@ -344,7 +344,7 @@ same value and therefore optimize away the second call.
 
   printf("msr: %llx\n", msr);
 
-GCCs optimizers do not treat this code like the non-volatile code in the 
+GCC's optimizers do not treat this code like the non-volatile code in the 
 earlier examples. They do not move it out of loops or omit it on the 
 assumption that the result from a previous call is still valid.
 
@@ -985,7 +985,7 @@ Print the QImode name of the register.
 ``%al``
 ``al``
 ``h``
-Print the QImode name for a high register.
+Print the QImode name for a 'high' register.
 ``%h0``
 ``%ah``
 ``ah``
@@ -1035,8 +1035,8 @@ that are stack-like registers:
   necessary to know how to adjust the stack to compensate for the pop.
   If any non-popped input is closer to the top of the reg-stack than
   the implicitly popped register, it would not be possible to know what the
-  stack looked likeits not clear how the rest of the stack slides
-  up.
+  stack looked like-it's not clear how the rest of the stack 'slides
+  up'.
 
   All implicitly popped input registers must be closer to the top of
   the reg-stack than any input that is not implicitly popped.
@@ -1065,7 +1065,7 @@ that are stack-like registers:
     asm ("foo" : "=&t" (a) : "f" (b));
 
   * Some operands need to be in particular places on the stack.  All
-  output operands fall in this categoryGCC has no other way to
+  output operands fall in this category-GCC has no other way to
   know which registers the outputs appear in unless you indicate
   this in the constraints.
 
@@ -1073,13 +1073,13 @@ that are stack-like registers:
   appears in after an ``asm``.  =f is not allowed: the operand
   constraints must select a class with a single register.
 
-  * Output operands may not be inserted between existing stack registers.
+  * Output operands may not be 'inserted' between existing stack registers.
   Since no 387 opcode uses a read/write operand, all output operands
   are dead before the ``asm``, and are pushed by the ``asm``.
   It makes no sense to push anywhere but the top of the reg-stack.
 
   Output operands must start at the top of the reg-stack: output
-  operands may not skip a register.
+  operands may not 'skip' a register.
 
   * Some ``asm`` statements may need extra stack space for internal
   calculations.  This can be guaranteed by clobbering stack registers
@@ -1123,7 +1123,7 @@ an operand may be in a register, and which kinds of register; whether the
 operand can be a memory reference, and which kinds of address; whether the
 operand may be an immediate constant, and which possible values it may
 have.  Constraints can also require two operands to match.
-Side-effects arent allowed in operands of inline ``asm``, unless
+Side-effects aren't allowed in operands of inline ``asm``, unless
 < or > constraints are used, because there is no guarantee
 that the side-effects will happen exactly once in an instruction that can update
 the addressing register.
@@ -1202,7 +1202,7 @@ V
   allowed if the operand is used exactly once in an instruction that can
   handle the side-effects.  Not using an operand with < in constraint
   string in the inline ``asm`` pattern at all or using it in multiple
-  instructions isnt valid, because the side-effects wouldnt be performed
+  instructions isn't valid, because the side-effects wouldn't be performed
   or would be performed more than once.  Furthermore, on some targets
   the operand with < in constraint string must be accompanied by
   special instruction suffixes like ``%U0`` instruction suffix on PowerPC
@@ -1282,12 +1282,12 @@ s
   better code to be generated.
 
   For example, on the 68000 in a fullword instruction it is possible to
-  use an immediate operand; but if the immediate value is between 128
+  use an immediate operand; but if the immediate value is between -128
   and 127, better code results from loading the value into a register and
   using the register.  This is because the load into the register can be
   done with a moveq instruction.  We arrange for this to happen
-  by defining the letter K to mean any integer outside the
-  range 128 to 127, and then specifying Ks in the operand
+  by defining the letter K to mean 'any integer outside the
+  range -128 to 127', and then specifying Ks in the operand
   constraints.
 
   g in constraint
@@ -1348,7 +1348,7 @@ X
 
 p
   An operand that is a valid memory address is allowed.  This is
-  for load address and push address instructions.
+  for 'load address' and 'push address' instructions.
 
   .. index:: address_operand
 
@@ -1486,7 +1486,7 @@ Here are constraint modifier characters.
   earlyclobber. See, for example, the mulsi3 insn of the ARM.
 
   Furthermore, if the :dfn:`earlyclobber` operand is also a read/write
-  operand, then that operand is written only after its used.
+  operand, then that operand is written only after it's used.
 
   & does not obviate the need to write = or +.  As
   :dfn:`earlyclobber` operands are always written, a read-only
@@ -1551,13 +1551,13 @@ for ``asm`` statements; therefore, some of the constraints are not
 particularly useful for ``asm``.  Here is a summary of some of the
 machine-dependent constraints available on some particular machines;
 it includes both constraints that are useful for ``asm`` and
-constraints that arent.  The compiler source file mentioned in the
+constraints that aren't.  The compiler source file mentioned in the
 table heading for each architecture is the definitive reference for
-the meanings of that architectures constraints.
+the meanings of that architecture's constraints.
 
 .. Please keep this table alphabetized by target! 
 
-AArch64 familyconfig/aarch64/constraints.md
+AArch64 family-config/aarch64/constraints.md
 
   k
     The stack pointer register (``SP``)
@@ -1608,7 +1608,7 @@ AArch64 familyconfig/aarch64/constraints.md
     A memory address suitable for a load/store pair instruction in SI, DI, SF and
     DF modes
 
-ARC config/arc/constraints.md
+ARC -config/arc/constraints.md
 
   q
     Registers usable in ARCompact 16-bit instructions: ``r0``-``r3``,
@@ -1639,10 +1639,10 @@ ARC config/arc/constraints.md
     A 6-bit unsigned integer constant.
 
   CnL
-    Ones complement of a 6-bit unsigned integer constant.
+    One's complement of a 6-bit unsigned integer constant.
 
   CmL
-    Twos complement of a 6-bit unsigned integer constant.
+    Two's complement of a 6-bit unsigned integer constant.
 
   M
     A 5-bit unsigned integer constant.
@@ -1656,7 +1656,7 @@ ARC config/arc/constraints.md
   H
     Any const_double value.
 
-ARM familyconfig/arm/constraints.md
+ARM family-config/arm/constraints.md
 
   h
     In Thumb state, the core registers ``r8``-``r15``.
@@ -1691,7 +1691,7 @@ ARM familyconfig/arm/constraints.md
     multiple of 2
 
   J
-    Integer in the range 4095 to 4095
+    Integer in the range -4095 to 4095
 
   K
     Integer that satisfies constraint I when inverted (ones complement)
@@ -1704,7 +1704,7 @@ ARM familyconfig/arm/constraints.md
 
   Q
     A memory reference where the exact address is in a single register
-    (m is preferable for ``asm`` statements)
+    ('m' is preferable for ``asm`` statements)
 
   R
     An item in the constant pool
@@ -1721,7 +1721,7 @@ ARM familyconfig/arm/constraints.md
   Uq
     A memory reference suitable for the ARMv4 ldrsb instruction.
 
-AVR familyconfig/avr/constraints.md
+AVR family-config/avr/constraints.md
 
   l
     Registers from r0 to r15
@@ -1757,10 +1757,10 @@ AVR familyconfig/avr/constraints.md
     Register pair Z (r31:r30)
 
   I
-    Constant greater than 1, less than 64
+    Constant greater than -1, less than 64
 
   J
-    Constant greater than 64, less than 1
+    Constant greater than -64, less than 1
 
   K
     Constant integer 2
@@ -1772,7 +1772,7 @@ AVR familyconfig/avr/constraints.md
     Constant that fits in 8 bits
 
   N
-    Constant integer 1
+    Constant integer -1
 
   O
     Constant integer 8, 16, or 24
@@ -1786,7 +1786,7 @@ AVR familyconfig/avr/constraints.md
   Q
     A memory address based on Y or Z pointer with displacement.
 
-Blackfin familyconfig/bfin/constraints.md
+Blackfin family-config/bfin/constraints.md
 
   a
     P register
@@ -1851,13 +1851,13 @@ Blackfin familyconfig/bfin/constraints.md
     Any register except accumulators or CC.
 
   Ksh
-    Signed 16 bit integer (in the range 32768 to 32767)
+    Signed 16 bit integer (in the range -32768 to 32767)
 
   Kuh
     Unsigned 16 bit integer (in the range 0 to 65535)
 
   Ks7
-    Signed 7 bit integer (in the range 64 to 63)
+    Signed 7 bit integer (in the range -64 to 63)
 
   Ku7
     Unsigned 7 bit integer (in the range 0 to 127)
@@ -1866,10 +1866,10 @@ Blackfin familyconfig/bfin/constraints.md
     Unsigned 5 bit integer (in the range 0 to 31)
 
   Ks4
-    Signed 4 bit integer (in the range 8 to 7)
+    Signed 4 bit integer (in the range -8 to 7)
 
   Ks3
-    Signed 3 bit integer (in the range 3 to 4)
+    Signed 3 bit integer (in the range -3 to 4)
 
   Ku3
     Unsigned 3 bit integer (in the range 0 to 7)
@@ -1902,7 +1902,7 @@ Blackfin familyconfig/bfin/constraints.md
   Q
     Any SYMBOL_REF.
 
-CR16 Architectureconfig/cr16/cr16.h
+CR16 Architecture-config/cr16/cr16.h
 
   b
     Registers from r0 to r14 (registers without stack pointer)
@@ -1934,7 +1934,7 @@ CR16 Architectureconfig/cr16/cr16.h
   G
     Floating point constant that is legal for store immediate
 
-Epiphanyconfig/epiphany/constraints.md
+Epiphany-config/epiphany/constraints.md
 
   U16
     An unsigned 16-bit constant.
@@ -1946,16 +1946,16 @@ Epiphanyconfig/epiphany/constraints.md
     A signed 11-bit constant.
 
   Cm1
-    A signed 11-bit constant added to 1.
+    A signed 11-bit constant added to -1.
     Can only match when the :option:`-m1reg-``reg``` option is active.
 
   Cl1
-    Left-shift of 1, i.e., a bit mask with a block of leading ones, the rest
+    Left-shift of -1, i.e., a bit mask with a block of leading ones, the rest
     being a block of trailing zeroes.
     Can only match when the :option:`-m1reg-``reg``` option is active.
 
   Cr1
-    Right-shift of 1, i.e., a bit mask with a trailing block of ones, the
+    Right-shift of -1, i.e., a bit mask with a trailing block of ones, the
     rest being zeroes.  Or to put it another way, one less than a power of two.
     Can only match when the :option:`-m1reg-``reg``` option is active.
 
@@ -1970,7 +1970,7 @@ Epiphanyconfig/epiphany/constraints.md
   Rcs
     The register class usable in short insns.  This is a register class
     constraint, and can thus drive register allocation.
-    This constraint wont match unless :option:`-mprefer-short-insn-regs` is
+    This constraint won't match unless :option:`-mprefer-short-insn-regs` is
     in effect.
 
   Rsc
@@ -1983,7 +1983,7 @@ Epiphanyconfig/epiphany/constraints.md
   Rgs
     The register group usable in short insns.
     This constraint does not use a register class, so that it only
-    passively matches suitable registers, and doesnt drive register allocation.
+    passively matches suitable registers, and doesn't drive register allocation.
 
   Rra
     Matches the return address if it can be replaced with the link register.
@@ -1998,7 +1998,7 @@ Epiphanyconfig/epiphany/constraints.md
     Matches control register values to switch fp mode, which are encapsulated in
     ``UNSPEC_FP_MODE``.
 
-FRVconfig/frv/frv.h
+FRV-config/frv/frv.h
 
   a
     Register in the class ``ACC_REGS`` (``acc0`` to ``acc7``).
@@ -2079,17 +2079,17 @@ FRVconfig/frv/frv.h
     16-bit unsigned integer constant
 
   N
-    12-bit signed integer constant that is negativei.e. in the
-    range of 2048 to 1
+    12-bit signed integer constant that is negative-i.e. in the
+    range of -2048 to -1
 
   O
     Constant zero
 
   P
-    12-bit signed integer constant that is greater than zeroi.e. in the
+    12-bit signed integer constant that is greater than zero-i.e. in the
     range of 1 to 2047.
 
-Hewlett-Packard PA-RISCconfig/pa/pa.h
+Hewlett-Packard PA-RISC-config/pa/pa.h
 
   a
     General register 1
@@ -2159,7 +2159,7 @@ Hewlett-Packard PA-RISCconfig/pa/pa.h
   W
     A register indirect memory operand
 
-Intel IA-64config/ia64/ia64.h
+Intel IA-64-config/ia64/ia64.h
 
   a
     General register ``r0`` to ``r3`` for ``addl`` instruction
@@ -2168,7 +2168,7 @@ Intel IA-64config/ia64/ia64.h
     Branch register
 
   c
-    Predicate register (c as in conditional)
+    Predicate register (c as in 'conditional')
 
   d
     Application register residing in M-unit
@@ -2209,7 +2209,7 @@ Intel IA-64config/ia64/ia64.h
     The constant zero
 
   P
-    0 or 1 for ``dep`` instruction
+    0 or -1 for ``dep`` instruction
 
   Q
     Non-volatile memory for floating-point loads and stores
@@ -2222,17 +2222,17 @@ Intel IA-64config/ia64/ia64.h
     now roughly the same as m when not used together with <
     or >.
 
-M32Cconfig/m32c/m32c.c
+M32C-config/m32c/m32c.c
 
   RspRfbRsb
     $sp, $fb, $sb.
 
   Rcr
-    Any control register, when theyre 16 bits wide (nothing if control
+    Any control register, when they're 16 bits wide (nothing if control
     registers are 24 bits wide)
 
   Rcl
-    Any control register, when theyre 24 bits wide.
+    Any control register, when they're 24 bits wide.
 
   R0wR1wR2wR3w
     $r0, $r1, $r2, $r3.
@@ -2256,10 +2256,10 @@ M32Cconfig/m32c/m32c.c
     Address registers
 
   Raw
-    Address registers when theyre 16 bits wide.
+    Address registers when they're 16 bits wide.
 
   Ral
-    Address registers when theyre 24 bits wide.
+    Address registers when they're 24 bits wide.
 
   Rqi
     Registers that can hold QI values.
@@ -2295,28 +2295,28 @@ M32Cconfig/m32c/m32c.c
     Used to match function return values.
 
   Is3
-    8 ... 7
+    -8 ... 7
 
   IS1
-    128 ... 127
+    -128 ... 127
 
   IS2
-    32768 ... 32767
+    -32768 ... 32767
 
   IU2
     0 ... 65535
 
   In4
-    8 ... 1 or 1 ... 8
+    -8 ... -1 or 1 ... 8
 
   In5
-    16 ... 1 or 1 ... 16
+    -16 ... -1 or 1 ... 16
 
   In6
-    32 ... 1 or 1 ... 32
+    -32 ... -1 or 1 ... 32
 
   IM2
-    65536 ... 1
+    -65536 ... -1
 
   Ilb
     An 8 bit value with exactly one bit set.
@@ -2345,7 +2345,7 @@ M32Cconfig/m32c/m32c.c
   S1
     $r1h
 
-MePconfig/mep/constraints.md
+MeP-config/mep/constraints.md
 
   a
     The $sp register.
@@ -2435,7 +2435,7 @@ MePconfig/mep/constraints.md
     Non-constant addresses for loading/saving coprocessor registers.
 
   W
-    The top half of a symbols value.
+    The top half of a symbol's value.
 
   Y
     A register indirect address without offset.
@@ -2443,7 +2443,7 @@ MePconfig/mep/constraints.md
   Z
     Symbolic references to the control bus.
 
-MicroBlazeconfig/microblaze/constraints.md
+MicroBlaze-config/microblaze/constraints.md
 
   d
     A general register (``r0`` to ``r31``).
@@ -2451,7 +2451,7 @@ MicroBlazeconfig/microblaze/constraints.md
   z
     A status register (``rmsr``, ``$fcc1`` to ``$fcc7``).
 
-MIPSconfig/mips/constraints.md
+MIPS-config/mips/constraints.md
 
   d
     An address register.  This is equivalent to ``r`` unless
@@ -2503,7 +2503,7 @@ MIPSconfig/mips/constraints.md
     or ``ori``.
 
   N
-    A constant in the range 65535 to 1 (inclusive).
+    A constant in the range -65535 to -1 (inclusive).
 
   O
     A signed 15-bit constant.
@@ -2526,7 +2526,7 @@ MIPSconfig/mips/constraints.md
     An address suitable for a ``prefetch`` instruction, or for any other
     instruction with the same addressing mode as ``prefetch``.
 
-Motorola 680x0config/m68k/constraints.md
+Motorola 680x0-config/m68k/constraints.md
 
   a
     Address register
@@ -2547,7 +2547,7 @@ Motorola 680x0config/m68k/constraints.md
     Signed number whose magnitude is greater than 0x80
 
   L
-    Integer in the range 8 to 1
+    Integer in the range -8 to -1
 
   M
     Signed number whose magnitude is greater than 0x100
@@ -2568,10 +2568,10 @@ Motorola 680x0config/m68k/constraints.md
     Floating point constant that is not a 68881 constant
 
   S
-    Operands that satisfy m when -mpcrel is in effect
+    Operands that satisfy 'm' when -mpcrel is in effect
 
   T
-    Operands that satisfy s when -mpcrel is not in effect
+    Operands that satisfy 's' when -mpcrel is not in effect
 
   Q
     Address register indirect addressing mode
@@ -2592,7 +2592,7 @@ Motorola 680x0config/m68k/constraints.md
     const_int 0
 
   Cj
-    Range of signed numbers that dont fit in 16 bits
+    Range of signed numbers that don't fit in 16 bits
 
   Cmvq
     Integers valid for mvq
@@ -2612,7 +2612,7 @@ Motorola 680x0config/m68k/constraints.md
   Ac
     Non-register operands allowed in clr
 
-Moxieconfig/moxie/constraints.md
+Moxie-config/moxie/constraints.md
 
   A
     An absolute address
@@ -2627,7 +2627,7 @@ Moxieconfig/moxie/constraints.md
     A constant in the range of 0 to 255.
 
   N
-    A constant in the range of 0 to 255.
+    A constant in the range of 0 to -255.
 
 MSP430-config/msp430/constraints.md
 
@@ -2655,7 +2655,7 @@ MSP430-config/msp430/constraints.md
   Ys
     Memory reference, stack only.
 
-NDS32config/nds32/constraints.md
+NDS32-config/nds32/constraints.md
 
   w
     LOW register class $r0 to $r7 constraint for V3/V3M ISA.
@@ -2679,7 +2679,7 @@ NDS32config/nds32/constraints.md
     Unsigned immediate 3-bit value.
 
   In03
-    Negative immediate 3-bit value in the range of 7-0.
+    Negative immediate 3-bit value in the range of -7-0.
 
   Iu04
     Unsigned immediate 4-bit value.
@@ -2691,7 +2691,7 @@ NDS32config/nds32/constraints.md
     Unsigned immediate 5-bit value.
 
   In05
-    Negative immediate 5-bit value in the range of 31-0.
+    Negative immediate 5-bit value in the range of -31-0.
 
   Ip05
     Unsigned immediate 5-bit value for movpi45 instruction with range 16-47.
@@ -2772,12 +2772,12 @@ NDS32config/nds32/constraints.md
   U37
     Memory constraint for 37 format.
 
-Nios II familyconfig/nios2/constraints.md
+Nios II family-config/nios2/constraints.md
 
   I
     Integer that is valid as an immediate operand in an
     instruction taking a signed 16-bit number. Range
-    32768 to 32767.
+    -32768 to 32767.
 
   J
     Integer that is valid as an immediate operand in an
@@ -2809,7 +2809,7 @@ Nios II familyconfig/nios2/constraints.md
     data section and therefore can be added to ``gp``
     as a 16-bit immediate to re-create their 32-bit value.
 
-PDP-11config/pdp11/constraints.md
+PDP-11-config/pdp11/constraints.md
 
   a
     Floating point registers AC0 through AC3.  These can be loaded from/to
@@ -2839,13 +2839,13 @@ PDP-11config/pdp11/constraints.md
     The integer constant 1.
 
   M
-    The integer constant 1.
+    The integer constant -1.
 
   N
     The integer constant 0.
 
   O
-    Integer constants 4 through 1 and 1 through 4; shifts by these
+    Integer constants -4 through -1 and 1 through 4; shifts by these
     amounts are handled as multiple single-bit shifts rather than a single
     variable-length shift.
 
@@ -2856,7 +2856,7 @@ PDP-11config/pdp11/constraints.md
   R
     A memory reference that is encoded within the opcode.
 
-PowerPC and IBM RS6000config/rs6000/constraints.md
+PowerPC and IBM RS6000-config/rs6000/constraints.md
 
   b
     Address base register
@@ -2998,7 +2998,7 @@ PowerPC and IBM RS6000config/rs6000/constraints.md
     therefore on PowerPC targets in that case it is only safe
     to use m<> in an ``asm`` statement if that ``asm`` statement
     accesses the operand exactly once.  The ``asm`` statement must also
-    use %U``<opno>`` as a placeholder for the update flag in the
+    use %U``<opno>`` as a placeholder for the 'update' flag in the
     corresponding load or store instruction.  For example:
 
     .. code-block:: c++
@@ -3014,7 +3014,7 @@ PowerPC and IBM RS6000config/rs6000/constraints.md
     is not.
 
   es
-    A stable memory operand; that is, one which does not include any
+    A 'stable' memory operand; that is, one which does not include any
     automodification of the base register.  This used to be useful when
     m allowed automodification of the base register, but as those are now only
     allowed when < or > is used, es is basically the same
@@ -3053,7 +3053,7 @@ PowerPC and IBM RS6000config/rs6000/constraints.md
   j
     Vector constant that is all zeros.
 
-RL78config/rl78/constraints.md
+RL78-config/rl78/constraints.md
 
   Int3
     An integer constant in the range 1 ... 7.
@@ -3062,7 +3062,7 @@ RL78config/rl78/constraints.md
     An integer constant in the range 0 ... 255.
 
   J
-    An integer constant in the range 255 ... 0
+    An integer constant in the range -255 ... 0
 
   K
     The integer constant 1.
@@ -3181,7 +3181,7 @@ RL78config/rl78/constraints.md
   x
     The ``X`` register.
 
-RXconfig/rx/constraints.md
+RX-config/rx/constraints.md
 
   Q
     An address which does not involve register indirect addressing or
@@ -3191,21 +3191,21 @@ RXconfig/rx/constraints.md
     A symbol reference.
 
   Int08
-    A constant in the range 256 to 255, inclusive.
+    A constant in the range -256 to 255, inclusive.
 
   Sint08
-    A constant in the range 128 to 127, inclusive.
+    A constant in the range -128 to 127, inclusive.
 
   Sint16
-    A constant in the range 32768 to 32767, inclusive.
+    A constant in the range -32768 to 32767, inclusive.
 
   Sint24
-    A constant in the range 8388608 to 8388607, inclusive.
+    A constant in the range -8388608 to 8388607, inclusive.
 
   Uint04
     A constant in the range 0 to 15, inclusive.
 
-S/390 and zSeriesconfig/s390/s390.h
+S/390 and zSeries-config/s390/s390.h
 
   a
     Address register (general purpose register except r0)
@@ -3226,7 +3226,7 @@ S/390 and zSeriesconfig/s390/s390.h
     Unsigned 12-bit constant (0-4095)
 
   K
-    Signed 16-bit constant (32768-32767)
+    Signed 16-bit constant (-32768-32767)
 
   L
     Value appropriate as displacement.
@@ -3234,7 +3234,7 @@ S/390 and zSeriesconfig/s390/s390.h
     (0..4095)
       for short displacement
 
-    (524288..524287)
+    (-524288..524287)
       for long displacement
 
   M
@@ -3253,7 +3253,7 @@ S/390 and zSeriesconfig/s390/s390.h
       mode of the containing operand
 
     0,F:
-      value of the other parts (Fall bits set)
+      value of the other parts (F-all bits set)
 
     The constraint matches if the specified part of a constant
     has a value different from its other parts.
@@ -3279,7 +3279,7 @@ S/390 and zSeriesconfig/s390/s390.h
   Y
     Shift count operand.
 
-SPARCconfig/sparc/sparc.h
+SPARC-config/sparc/sparc.h
 
   f
     Floating-point register on the SPARC-V8 architecture and
@@ -3378,7 +3378,7 @@ SPARCconfig/sparc/sparc.h
   Y
     Vector zero
 
-SPUconfig/spu/spu.h
+SPU-config/spu/spu.h
 
   a
     An immediate which can be loaded with the il/ila/ilh/ilhu instructions.  const_int is treated as a 64 bit value.
@@ -3405,7 +3405,7 @@ SPUconfig/spu/spu.h
     An immediate for the ``iohl`` instruction.  const_int is treated as a 32 bit value.
 
   I
-    A constant in the range [64, 63] for shift/rotate instructions.
+    A constant in the range [-64, 63] for shift/rotate instructions.
 
   J
     An unsigned 7-bit constant for conversion/nop/channel instructions.
@@ -3446,7 +3446,7 @@ SPUconfig/spu/spu.h
   Z
     An immediate for the ``iohl`` instruction.  const_int is sign extended to 128 bit.
 
-TI C6X familyconfig/c6x/constraints.md
+TI C6X family-config/c6x/constraints.md
 
   a
     Register file A (A0-A31).
@@ -3478,10 +3478,10 @@ TI C6X familyconfig/c6x/constraints.md
     Integer constant in the range 0 ... 31.
 
   In5
-    Integer constant in the range 31 ... 0.
+    Integer constant in the range -31 ... 0.
 
   Is5
-    Integer constant in the range 16 ... 15.
+    Integer constant in the range -16 ... 15.
 
   I5x
     Integer constant that can be the operand of an ADDA or a SUBA insn.
@@ -3490,7 +3490,7 @@ TI C6X familyconfig/c6x/constraints.md
     Integer constant in the range 0 ... 65535.
 
   IsB
-    Integer constant in the range 32768 ... 32767.
+    Integer constant in the range -32768 ... 32767.
 
   IsC
     Integer constant in the range -2^{20} ... 2^{20} - 1.
@@ -3510,7 +3510,7 @@ TI C6X familyconfig/c6x/constraints.md
   Z
     Register B14 (aka DP).
 
-TILE-Gxconfig/tilegx/constraints.md
+TILE-Gx-config/tilegx/constraints.md
 
   R00R01R02R03R04R05R06R07R08R09R10
     Each of these represents a register constraint for an individual
@@ -3527,7 +3527,7 @@ TILE-Gxconfig/tilegx/constraints.md
 
   L
     Integer constant that fits in one signed byte when incremented by one
-    (129 ... 126).
+    (-129 ... 126).
 
   m
     Memory operand.  If used together with < or >, the
@@ -3552,7 +3552,7 @@ TILE-Gxconfig/tilegx/constraints.md
 
   Q
     Integer constant that fits in one signed byte when incremented
-    (129 ... 126), but excluding -1.
+    (-129 ... 126), but excluding -1.
 
   S
     Integer constant that has all 1 bits consecutive and starting at bit 0.
@@ -3576,7 +3576,7 @@ TILE-Gxconfig/tilegx/constraints.md
   Z1
     The integer constant 0xffffffff00000000.
 
-TILEProconfig/tilepro/constraints.md
+TILEPro-config/tilepro/constraints.md
 
   R00R01R02R03R04R05R06R07R08R09R10
     Each of these represents a register constraint for an individual
@@ -3593,7 +3593,7 @@ TILEProconfig/tilepro/constraints.md
 
   L
     Integer constant that fits in one signed byte when incremented by one
-    (129 ... 126).
+    (-129 ... 126).
 
   m
     Memory operand.  If used together with < or >, the
@@ -3618,7 +3618,7 @@ TILEProconfig/tilepro/constraints.md
 
   Q
     Integer constant that fits in one signed byte when incremented
-    (129 ... 126), but excluding -1.
+    (-129 ... 126), but excluding -1.
 
   T
     A symbolic operand, or a 16-bit fragment of a got, tls, or pc-relative
@@ -3634,7 +3634,7 @@ TILEProconfig/tilepro/constraints.md
   Y
     A 2-element vector constant with identical elements.
 
-Visiumconfig/visium/constraints.md
+Visium-config/visium/constraints.md
 
   b
     EAM register ``mdb``
@@ -3667,10 +3667,10 @@ Visiumconfig/visium/constraints.md
     Integer constant in the range 1 .. 31 (5-bit immediate)
 
   L
-    Integer constant in the range 65535 .. 1 (16-bit negative immediate)
+    Integer constant in the range -65535 .. -1 (16-bit negative immediate)
 
   M
-    Integer constant 1
+    Integer constant -1
 
   O
     Integer constant 0
@@ -3678,10 +3678,10 @@ Visiumconfig/visium/constraints.md
   P
     Integer constant 32
 
-x86 familyconfig/i386/constraints.md
+x86 family-config/i386/constraints.md
 
   R
-    Legacy registerthe eight integer registers available on all
+    Legacy register-the eight integer registers available on all
     i386 processors (``a``, ``b``, ``c``, ``d``,
     ``si``, ``di``, ``bp``, ``sp``).
 
@@ -3791,7 +3791,7 @@ x86 familyconfig/i386/constraints.md
     to fit that range (for immediate operands in zero-extending x86-64
     instructions).
 
-Xstormy16config/stormy16/stormy16.h
+Xstormy16-config/stormy16/stormy16.h
 
   a
     Register r0.
@@ -3830,16 +3830,16 @@ Xstormy16config/stormy16/stormy16.h
     A constant between 0 and 255 inclusive.
 
   M
-    A constant between 255 and 0 inclusive.
+    A constant between -255 and 0 inclusive.
 
   N
-    A constant between 3 and 0 inclusive.
+    A constant between -3 and 0 inclusive.
 
   O
     A constant between 1 and 4 inclusive.
 
   P
-    A constant between 4 and 1 inclusive.
+    A constant between -4 and -1 inclusive.
 
   Q
     A memory reference that is a stack push.
@@ -3859,7 +3859,7 @@ Xstormy16config/stormy16/stormy16.h
   Z
     The constant 0.
 
-Xtensaconfig/xtensa/constraints.md
+Xtensa-config/xtensa/constraints.md
 
   a
     General-purpose 32-bit register
@@ -3965,7 +3965,7 @@ register variable should be allocated.
   * Local register variables in specific registers do not reserve the
   registers, except at the point where they are used as input or output
   operands in an ``asm`` statement and the ``asm`` statement itself is
-  not deleted.  The compilers data flow analysis is capable of determining
+  not deleted.  The compiler's data flow analysis is capable of determining
   where the specified registers contain live values, and where they are
   available for other uses.  Stores into local register variables may be deleted
   when they appear to be dead according to dataflow analysis.  References
@@ -4004,7 +4004,7 @@ machine, so that library routines will not clobber it.
 Naturally the register name is CPU-dependent, so you need to
 conditionalize your program according to CPU type.  The register
 ``a5`` is a good choice on a 68000 for a variable of pointer
-type.  On machines with register windows, be sure to choose a global
+type.  On machines with register windows, be sure to choose a 'global'
 register that is not affected magically by the function call mechanism.
 
 In addition, different operating systems on the same CPU may differ in how they
@@ -4032,9 +4032,9 @@ you recompile them specially for the task at hand).
 It is not safe for one function that uses a global register variable to
 call another such function ``foo`` by way of a third function
 ``lose`` that is compiled without knowledge of this variable (i.e. in a
-different source file in which the variable isnt declared).  This is
+different source file in which the variable isn't declared).  This is
 because ``lose`` might save the register and put some other value there.
-For example, you cant expect a global register variable to be available in
+For example, you can't expect a global register variable to be available in
 the comparison-function that you pass to ``qsort``, since ``qsort``
 might have put something else in that register.  (If you are prepared to
 recompile ``qsort`` with the same global register variable, you can
@@ -4119,7 +4119,7 @@ example, some 68000 operating systems call this register ``%a5``.
 
 Defining such a register variable does not reserve the register; it
 remains available for other uses in places where flow control determines
-the variables value is not live.
+the variable's value is not live.
 
 This option does not guarantee that GCC generates code that has
 this variable in the register you specify at all times.  You may not
@@ -4139,9 +4139,9 @@ register that is normally saved and restored by function calls on
 your machine, so that library routines will not clobber it.  
 
 Sometimes when writing inline ``asm`` code, you need to make an operand be a 
-specific register, but theres no matching constraint letter for that 
+specific register, but there's no matching constraint letter for that 
 register. To force the operand into that register, create a local variable 
-and specify the register in the variables declaration. Then use the local 
+and specify the register in the variable's declaration. Then use the local 
 variable for the asm operand and specify any constraint letter that matches 
 the register:
 
@@ -4179,9 +4179,9 @@ does this by counting the number of instructions in the pattern of the
 instruction supported by that processor.  (When working out the number
 of instructions, it assumes that any occurrence of a newline or of
 whatever statement separator character is supported by the assembler -
-typically ;  indicates the end of an instruction.)
+typically ; - indicates the end of an instruction.)
 
-Normally, GCCs estimate is adequate to ensure that correct
+Normally, GCC's estimate is adequate to ensure that correct
 code is generated, but it is possible to confuse the compiler if you use
 pseudo instructions or assembler macros that expand into multiple real
 instructions, or if you use assembler directives that expand to more

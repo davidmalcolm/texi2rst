@@ -7,7 +7,7 @@ Options That Control Optimization
 
 These options control various sorts of optimizations.
 
-Without any optimization option, the compilers goal is to reduce the
+Without any optimization option, the compiler's goal is to reduce the
 cost of compilation and to make debugging produce the expected
 results.  Statements are independent: if you stop the program with a
 breakpoint between statements, you can then assign a new value to any
@@ -187,13 +187,13 @@ Overall Options, for examples.
 Options of the form :option:`-f``flag``` specify machine-independent
 flags.  Most flags have both positive and negative forms; the negative
 form of :option:`-ffoo` is :option:`-fno-foo`.  In the table
-below, only one of the forms is listedthe one you typically 
+below, only one of the forms is listed-the one you typically 
 use.  You can figure out the other form by either removing no-
 or adding it.
 
 The following options control specific optimizations.  They are either
 activated by :option:`-O` options or are related to ones that are.  You
-can use the following flags in the rare cases when fine-tuning of
+can use the following flags in the rare cases when 'fine-tuning' of
 optimizations to be performed is desired.
 
 .. option:: -fno-defer-pop
@@ -229,15 +229,15 @@ optimizations to be performed is desired.
 
 .. option:: -fomit-frame-pointer
 
-  Dont keep the frame pointer in a register for functions that
-  dont need one.  This avoids the instructions to save, set up and
+  Don't keep the frame pointer in a register for functions that
+  don't need one.  This avoids the instructions to save, set up and
   restore frame pointers; it also makes an extra register available
   in many functions.  It also makes debugging impossible on
   some machines.
 
   On some machines, such as the VAX, this flag has no effect, because
   the standard calling sequence automatically handles the frame pointer
-  and nothing is saved by pretending it doesnt exist.  The
+  and nothing is saved by pretending it doesn't exist.  The
   machine-description macro ``FRAME_POINTER_REQUIRED`` controls
   whether a target machine supports this flag.  RegistersRegister
   UsagegccintGNU Compiler Collection (GCC) Internals.
@@ -354,7 +354,7 @@ optimizations to be performed is desired.
   in default behavior.
 
   Note: pseudo instruction represents, in this particular context, an
-  abstract measurement of functions size.  In no way does it represent a count
+  abstract measurement of function's size.  In no way does it represent a count
   of assembly instructions and as such its exact meaning might change from one
   release to an another.
 
@@ -375,8 +375,8 @@ optimizations to be performed is desired.
 
 .. option:: -fkeep-static-consts
 
-  Emit variables declared ``static const`` when optimization isnt turned
-  on, even if the variables arent referenced.
+  Emit variables declared ``static const`` when optimization isn't turned
+  on, even if the variables aren't referenced.
 
   GCC enables this option by default.  If you want to force the compiler to
   check if a variable is referenced, regardless of whether or not
@@ -421,7 +421,7 @@ optimizations to be performed is desired.
 
 .. option:: -fno-branch-count-reg
 
-  Do not use decrement and branch instructions on a count register,
+  Do not use 'decrement and branch' instructions on a count register,
   but instead generate a sequence of instructions that decrement a
   register, compare it against zero, then branch based upon the result.
   This option is only meaningful on architectures that support such
@@ -434,7 +434,7 @@ optimizations to be performed is desired.
 .. option:: -fno-function-cse
 
   Do not put function addresses in registers; make each instruction that
-  calls a constant function contain the functions address explicitly.
+  calls a constant function contain the function's address explicitly.
 
   This option results in less efficient code, but some strange hacks
   that alter the assembler output may be confused by the optimizations
@@ -449,7 +449,7 @@ optimizations to be performed is desired.
   code.
 
   This option turns off this behavior because some programs explicitly
-  rely on variables going to the data sectione.g., so that the
+  rely on variables going to the data section-e.g., so that the
   resulting executable can find the beginning of that section and/or make
   assumptions based on that.
 
@@ -701,7 +701,7 @@ optimizations to be performed is desired.
 
   Use the specified coloring algorithm for the integrated register
   allocator.  The ``algorithm`` argument can be priority, which
-  specifies Chows priority coloring, or CB, which specifies
+  specifies Chow's priority coloring, or CB, which specifies
   Chaitin-Briggs coloring.  Chaitin-Briggs coloring is not implemented
   for all architectures, but for those targets that do support it, it is
   the default because it generates better code.
@@ -801,13 +801,13 @@ optimizations to be performed is desired.
 
 .. option:: -fno-sched-interblock
 
-  Dont schedule instructions across basic blocks.  This is normally
+  Don't schedule instructions across basic blocks.  This is normally
   enabled by default when scheduling before register allocation, i.e.
   with :option:`-fschedule-insns` or at :option:`-O2` or higher.
 
 .. option:: -fno-sched-spec
 
-  Dont allow speculative motion of non-load instructions.  This is normally
+  Don't allow speculative motion of non-load instructions.  This is normally
   enabled by default when scheduling before register allocation, i.e.
   with :option:`-fschedule-insns` or at :option:`-O2` or higher.
 
@@ -1691,7 +1691,7 @@ optimizations to be performed is desired.
     }
 
   The practice of reading from a different union member than the one most
-  recently written to (called type-punning) is common.  Even with
+  recently written to (called 'type-punning') is common.  Even with
   :option:`-fstrict-aliasing`, type-punning is allowed, provided the memory
   is accessed through the union type.  So, the code above works as
   expected.  Structures unions enumerations and bit-fields
@@ -1848,7 +1848,7 @@ optimizations to be performed is desired.
   to operate on pseudos directly, but also strengthens several other optimization
   passes, such as CSE, loop optimizer and trivial dead code remover.  It can,
   however, make debugging impossible, since variables no longer stay in a
-  home register.
+  'home register'.
 
   Enabled by default with :option:`-funroll-loops`.
 
@@ -1866,7 +1866,7 @@ optimizations to be performed is desired.
 .. option:: -flto[=n]
 
   This option runs the standard link-time optimizer.  When invoked
-  with source code, it generates GIMPLE (one of GCCs internal
+  with source code, it generates GIMPLE (one of GCC's internal
   representations) and writes it to special ELF sections in the object
   file.  When the object files are linked together, all the function
   bodies are read from these ELF sections and instantiated as if they
@@ -2062,7 +2062,7 @@ optimizations to be performed is desired.
   environment variable :envvar:`MAKE` may be used to override the program
   used.  The default value for ``n`` is 1.
 
-  You can also specify :option:`-flto=jobserver` to use GNU makes
+  You can also specify :option:`-flto=jobserver` to use GNU make's
   job server mode to determine the number of parallel jobs. This
   is useful when the Makefile calling GCC is already executing in parallel.
   You must prepend a + to the command recipe in the parent Makefile
@@ -2361,7 +2361,7 @@ correctness.  All must be specifically enabled.
   ``(x + 2**52) - 2**52``.  May also reorder floating-point comparisons
   and thus may not be used when ordered comparisons are required.
   This option requires that both :option:`-fno-signed-zeros` and
-  :option:`-fno-trapping-math` be in effect.  Moreover, it doesnt make
+  :option:`-fno-trapping-math` be in effect.  Moreover, it doesn't make
   much sense with :option:`-frounding-math`. For Fortran the option
   is automatically enabled when both :option:`-fno-signed-zeros` and
   :option:`-fno-trapping-math` are in effect.
@@ -2395,9 +2395,9 @@ correctness.  All must be specifically enabled.
 
   Allow optimizations for floating-point arithmetic that ignore the
   signedness of zero.  IEEE arithmetic specifies the behavior of
-  distinct +0.0 and 0.0 values, which then prohibits simplification
+  distinct +0.0 and -0.0 values, which then prohibits simplification
   of expressions such as x+0.0 or 0.0*x (even with :option:`-ffinite-math-only`).
-  This option implies that the sign of a zero result isnt significant.
+  This option implies that the sign of a zero result isn't significant.
 
   The default is :option:`-fsigned-zeros`.
 
@@ -2407,7 +2407,7 @@ correctness.  All must be specifically enabled.
   user-visible traps.  These traps include division by zero, overflow,
   underflow, inexact result and invalid operation.  This option requires
   that :option:`-fno-signaling-nans` be in effect.  Setting this option may
-  allow faster code if one relies on non-stop IEEE arithmetic, for example.
+  allow faster code if one relies on 'non-stop' IEEE arithmetic, for example.
 
   This option should never be turned on by any :option:`-O` option since
   it can result in incorrect output for programs that depend on
@@ -2433,7 +2433,7 @@ correctness.  All must be specifically enabled.
   This option is experimental and does not currently guarantee to
   disable all GCC optimizations that are affected by rounding mode.
   Future versions of GCC may provide finer control of this setting
-  using C99s ``FENV_ACCESS`` pragma.  This command-line option
+  using C99's ``FENV_ACCESS`` pragma.  This command-line option
   will be used to specify the default state for ``FENV_ACCESS``.
 
 .. option:: -fsignaling-nans
@@ -2537,7 +2537,7 @@ section includes experimental options that may produce broken code.
   most benefits processors with lots of registers.  Depending on the
   debug information format adopted by the target, however, it can
   make debugging impossible, since variables no longer stay in
-  a home register.
+  a 'home register'.
 
   Enabled by default with :option:`-funroll-loops` and :option:`-fpeel-loops`.
 
@@ -2597,7 +2597,7 @@ section includes experimental options that may produce broken code.
 
   Place each function or data item into its own section in the output
   file if the target supports arbitrary sections.  The name of the
-  function or the name of the data item determines the sections name
+  function or the name of the data item determines the section's name
   in the output file.
 
   Use these options on systems where the linker can perform optimizations
@@ -2628,7 +2628,7 @@ section includes experimental options that may produce broken code.
 
 .. option:: -fbtr-bb-exclusive
 
-  When performing branch target register load optimization, dont reuse
+  When performing branch target register load optimization, don't reuse
   branch target registers within any basic block.
 
 .. option:: -fstack-protector
@@ -2647,7 +2647,7 @@ section includes experimental options that may produce broken code.
 .. option:: -fstack-protector-strong
 
   Like :option:`-fstack-protector` but includes additional functions to
-  be protected  those that have local array definitions, or have
+  be protected - those that have local array definitions, or have
   references to local frame addresses.
 
 .. option:: -fstack-protector-explicit
@@ -2663,7 +2663,7 @@ section includes experimental options that may produce broken code.
 .. option:: -fsection-anchors
 
   Try to reduce the number of symbolic address calculations by using
-  shared anchor symbols to address nearby objects.  This transformation
+  shared 'anchor' symbols to address nearby objects.  This transformation
   can help to reduce the number of GOT entries and GOT accesses on some
   targets.
 
@@ -2677,7 +2677,7 @@ section includes experimental options that may produce broken code.
   usually calculates the addresses of all three variables, but if you
   compile it with :option:`-fsection-anchors`, it accesses the variables
   from a common anchor point instead.  The effect is similar to the
-  following pseudocode (which isnt valid C):
+  following pseudocode (which isn't valid C):
 
   .. code-block:: c++
 
@@ -2774,7 +2774,7 @@ section includes experimental options that may produce broken code.
 
   max-inline-insns-single
     Several parameters control the tree inliner used in GCC.
-    This number sets the maximum number of instructions (counted in GCCs
+    This number sets the maximum number of instructions (counted in GCC's
     internal representation) in a single function that the tree inliner
     considers for inlining.  This only affects functions declared
     inline and methods implemented in a class declaration (C++).
@@ -3033,7 +3033,7 @@ section includes experimental options that may produce broken code.
 
   vect-max-peeling-for-alignment
     The maximum number of loop peels to enhance access alignment
-    for vectorizer. Value -1 means no limit.
+    for vectorizer. Value -1 means 'no limit'.
 
   max-iterations-to-track
     The maximum number of iterations of a loop the brute-force algorithm
@@ -3115,12 +3115,12 @@ section includes experimental options that may produce broken code.
 
     GCC uses a garbage collector to manage its own memory allocation.  This
     parameter specifies the minimum percentage by which the garbage
-    collectors heap should be allowed to expand between collections.
+    collector's heap should be allowed to expand between collections.
     Tuning this may improve compilation speed; it has no effect on code
     generation.
 
     The default is 30% + 70% * (RAM/1GB) with an upper bound of 100% when
-    RAM >= 1GB.  If ``getrlimit`` is available, the notion of RAM is
+    RAM >= 1GB.  If ``getrlimit`` is available, the notion of 'RAM' is
     the smallest of actual RAM and ``RLIMIT_DATA`` or ``RLIMIT_AS``.  If
     GCC is not able to calculate RAM on a particular platform, the lower
     bound of 30% is used.  Setting this parameter and
@@ -3130,7 +3130,7 @@ section includes experimental options that may produce broken code.
 
   ggc-min-heapsize
 
-    Minimum size of the garbage collectors heap before it begins bothering
+    Minimum size of the garbage collector's heap before it begins bothering
     to collect garbage.  The first collection occurs after the heap expands
     by ggc-min-expand% beyond ggc-min-heapsize.  Again,
     tuning this may improve compilation speed, and has no effect on code
@@ -3246,7 +3246,7 @@ section includes experimental options that may produce broken code.
 
   integer-share-limit
     Small integer constants can use a shared data structure, reducing the
-    compilers memory usage and increasing its speed.  This sets the maximum
+    compiler's memory usage and increasing its speed.  This sets the maximum
     value of a shared integer constant.  The default value is 256.
 
   ssp-buffer-size
@@ -3294,7 +3294,7 @@ section includes experimental options that may produce broken code.
     number of memory references to enable prefetching in a loop.
 
   use-canonical-types
-    Whether the compiler should use the canonical type system.  By
+    Whether the compiler should use the 'canonical' type system.  By
     default, this should always be 1, which uses a more efficient internal
     mechanism for comparing types in C++ and Objective-C++.  However, if
     bugs in the canonical type system are causing compilation failures,
@@ -3364,7 +3364,7 @@ section includes experimental options that may produce broken code.
   loop-invariant-max-bbs-in-loop
     Loop invariant motion can be very expensive, both in compilation time and
     in amount of needed compile-time memory, with very large loops.  Loops
-    with more basic blocks than this parameter wont have loop invariant
+    with more basic blocks than this parameter won't have loop invariant
     motion optimization performed on them.  The default value of the
     parameter is 1000 for :option:`-O1` and 10000 for :option:`-O2` and above.
 
@@ -3450,7 +3450,7 @@ section includes experimental options that may produce broken code.
     for the  :option:`-floop-unroll-and-jam`.  The default value is 2.
 
   ipa-cp-value-list-size
-    IPA-CP attempts to track all possible values and types passed to a functions
+    IPA-CP attempts to track all possible values and types passed to a function's
     parameter in order to propagate them and perform devirtualization.
     ipa-cp-value-list-size is the maximum number of values and types it
     stores per one formal parameter of a function.
@@ -3508,7 +3508,7 @@ section includes experimental options that may produce broken code.
 
   sink-frequency-threshold
     The maximum relative execution frequency (in percents) of the target block
-    relative to a statements original block to allow statement sinking of a
+    relative to a statement's original block to allow statement sinking of a
     statement.  Larger numbers result in more aggressive statement sinking.
     The default value is 75.  A small positive adjustment is applied for
     statements with memory operands as those are even more profitable so sink.

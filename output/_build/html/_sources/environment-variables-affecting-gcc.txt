@@ -103,7 +103,7 @@ DriverControlling the Compilation Driver gccgccintGNU Compiler Collection (GCC) 
 
   The value of :envvar:`COMPILER_PATH` is a colon-separated list of
   directories, much like :envvar:`PATH`.  GCC tries the directories thus
-  specified when searching for subprograms, if it cant find the
+  specified when searching for subprograms, if it can't find the
   subprograms using :envvar:`GCC_EXEC_PREFIX`.
 
 .. envvar:: LIBRARY_PATH
@@ -111,7 +111,7 @@ DriverControlling the Compilation Driver gccgccintGNU Compiler Collection (GCC) 
   The value of :envvar:`LIBRARY_PATH` is a colon-separated list of
   directories, much like :envvar:`PATH`.  When configured as a native compiler,
   GCC tries the directories thus specified when searching for special
-  linker files, if it cant find them using :envvar:`GCC_EXEC_PREFIX`.  Linking
+  linker files, if it can't find them using :envvar:`GCC_EXEC_PREFIX`.  Linking
   using GCC also uses these directories when searching for ordinary
   libraries for the :option:`-l` option (but directories specified with
   :option:`-L` come first).

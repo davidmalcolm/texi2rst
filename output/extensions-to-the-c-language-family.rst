@@ -29,8 +29,8 @@ extensions, accepted by GCC in C90 mode and in C++.
   Dispatching a call to another function. <constructing-calls>
   ``typeof``: referring to the type of an expression. <typeof>
   Omitting the middle operand of a ?: expression. <conditionals>
-  128-bit integers``__int128``. <__int128>
-  Double-word integers``long long int``. <long-long>
+  128-bit integers-``__int128``. <__int128>
+  Double-word integers-``long long int``. <long-long>
   Data types for complex numbers. <complex>
   Additional Floating Types. <floating-types>
   Half-Precision Floating Point. <half-precision>
@@ -50,7 +50,7 @@ extensions, accepted by GCC in C90 mode and in C++.
   Compound literals give structures, unions
                           or arrays as values. <compound-literals>
   Labeling elements of initializers. <designated-inits>
-  case 1 ... 9 and such. <case-ranges>
+  'case 1 ... 9' and such. <case-ranges>
   Casting to union type from any member of the union. <cast-to-union>
   Mixing declarations and code. <mixed-declarations>
   Declaring that functions have no side effects,

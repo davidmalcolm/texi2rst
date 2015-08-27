@@ -45,7 +45,7 @@ intercallability
 implementation-defined features
   Language standards include lists of implementation-defined features whose
   behavior can vary from one implementation to another.  Some of these
-  features are normally covered by a platforms ABI and others are not.
+  features are normally covered by a platform's ABI and others are not.
   The features that are not covered by an ABI generally affect how a
   program behaves, but not intercallability.
 
@@ -73,10 +73,10 @@ affects code generation and runtime support for:
   * layout and alignment of virtual tables
 
 Some GCC compilation options cause the compiler to generate code that
-does not conform to the platforms default ABI.  Other options cause
+does not conform to the platform's default ABI.  Other options cause
 different program behavior for implementation-defined features that are
 not covered by an ABI.  These options are provided for consistency with
-other compilers that do not follow the platforms default ABI or the
+other compilers that do not follow the platform's default ABI or the
 usual behavior of implementation-defined features for the platform.
 Be very careful about using such options.
 
@@ -94,7 +94,7 @@ future GCC releases, but it is possible that we will encounter problems
 that make this difficult.  Such problems could include different
 interpretations of the C++ ABI by different vendors, bugs in the ABI, or
 bugs in the implementation of the ABI in different compilers.
-GCCs :option:`-Wabi` switch warns when G++ generates code that is
+GCC's :option:`-Wabi` switch warns when G++ generates code that is
 probably not compatible with the C++ ABI.
 
 The C++ library used with a C++ compiler includes the Standard C++
@@ -111,7 +111,7 @@ follow the same ABI for the Standard C++ Library, object files built with
 those compilers can be used in the same program only if they use the same
 C++ library.  This requires specifying the location of the C++ library
 header files when invoking the compiler whose usual library is not being
-used.  The location of GCCs C++ header files depends on how the GCC
+used.  The location of GCC's C++ header files depends on how the GCC
 build was configured, but can be seen by using the G++ :option:`-v` option.
 With default configuration options for G++ 3.3 the compile line for a
 different C++ compiler needs to include
@@ -127,14 +127,14 @@ files for that other library.
 The most straightforward way to link a program to use a particular
 C++ library is to use a C++ driver that specifies that C++ library by
 default.  The :command:`g++` driver, for example, tells the linker where
-to find GCCs C++ library (libstdc++) plus the other libraries
+to find GCC's C++ library (libstdc++) plus the other libraries
 and startup files it needs, in the proper order.
 
-If a program must use a different C++ library and its not possible
+If a program must use a different C++ library and it's not possible
 to do the final link using a C++ driver that uses that library by default,
 it is necessary to tell :command:`g++` the location and name of that
 library.  It might also be necessary to specify different startup files
-and other runtime support libraries, and to suppress the use of GCCs
+and other runtime support libraries, and to suppress the use of GCC's
 support libraries with one or more of the options :option:`-nostdlib`,
 :option:`-nostartfiles`, and :option:`-nodefaultlibs`.
 

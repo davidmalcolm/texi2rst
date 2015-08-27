@@ -902,9 +902,9 @@ The built-in intrinsics for the Advanced SIMD extension are available when
 NEON is enabled.
 
 Currently, ARM and AArch64 back ends do not support ACLE 2.0 fully.  Both
-back ends support CRC32 intrinsics from arm_acle.h.  The ARM back ends
+back ends support CRC32 intrinsics from arm_acle.h.  The ARM back end's
 16-bit floating-point Advanced SIMD intrinsics currently comply to ACLE v1.1.
-AArch64s back end does not have support for 16-bit floating point Advanced SIMD
+AArch64's back end does not have support for 16-bit floating point Advanced SIMD
 intrinsics yet.
 
 See ARM Options and AArch64 Options for more information on the
@@ -1049,7 +1049,7 @@ Semiconductor.  The two exceptions are ``__MDUNPACKH`` and
 pointer rather than by value.
 
 Most of the functions are named after specific FR-V instructions.
-Such functions are said to be directly mapped and are summarized
+Such functions are said to be 'directly mapped' and are summarized
 here in tabular form.
 
 .. toctree::
@@ -1419,7 +1419,7 @@ Raw Read/Write Functions
 This sections describes built-in functions related to read and write
 instructions to access memory.  These functions generate
 ``membar`` instructions to flush the I/O load and stores where
-appropriate, as described in Fujitsus manual described above.
+appropriate, as described in Fujitsu's manual described above.
 
 unsigned char __builtin_read8 (void *``data``)
 unsigned short __builtin_read16 (void *``data``)
@@ -1519,7 +1519,7 @@ initialized in the same way as aggregates.  For example:
   v2q15 d;
   d = (v2q15) {0.1234 * 0x1.0p15, 0.4567 * 0x1.0p15};
 
-Note: The CPUs endianness determines the order in which values
+Note: The CPU's endianness determines the order in which values
 are packed.  On little-endian targets, the first value is the least
 significant and the last value is the most significant.  The opposite
 order applies to big-endian targets.  For example, the code above
@@ -1761,8 +1761,8 @@ MIPS Paired-Single Support
 The MIPS64 architecture includes a number of instructions that
 operate on pairs of single-precision floating-point values.
 Each pair is packed into a 64-bit floating-point register,
-with one element being designated the upper half and
-the other being designated the lower half.
+with one element being designated the 'upper half' and
+the other being designated the 'lower half'.
 
 GCC supports paired-single operations using both the generic
 vector extensions (Vector Extensions) and a collection of
@@ -1786,7 +1786,7 @@ For example:
   float e, f;
   b = (v2sf) {e, f};
 
-Note: The CPUs endianness determines which value is stored in
+Note: The CPU's endianness determines which value is stored in
 the upper half of a register and which value is stored in the lower half.
 On little-endian targets, the first value is the lower one and the second
 value is the upper one.  The opposite order applies to big-endian targets.
@@ -2299,7 +2299,7 @@ int __builtin_adds (int ``x``, int ``y``)
 
 int __builtin_subs (int ``x``, int ``y``)
   Saturating subtraction.  Return the result of subtracting ``y`` from
-  ``x``, storing the value 32768 if the result overflows.
+  ``x``, storing the value -32768 if the result overflows.
 
 void __builtin_halt (void)
   Halt.  The processor stops execution.  This built-in is useful for
@@ -2401,7 +2401,7 @@ PowerPC AltiVec Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 GCC provides an interface for the PowerPC family of processors to access
-the AltiVec operations described in Motorolas AltiVec Programming
+the AltiVec operations described in Motorola's AltiVec Programming
 Interface Manual.  The interface is made available by including
 ``<altivec.h>`` and using :option:`-maltivec` and
 :option:`-mabi=altivec`.  The interface supports the following vector
@@ -2436,8 +2436,8 @@ The long types are only implemented for 64-bit code generation, and
 the long type is only used in the floating point/integer conversion
 instructions.
 
-GCCs implementation of the high-level language interface available from
-C and C++ code differs from Motorolas documentation in several ways.
+GCC's implementation of the high-level language interface available from
+C and C++ code differs from Motorola's documentation in several ways.
 
 * A vector constant is a list of constant expressions within curly braces.
 
@@ -4995,7 +4995,7 @@ PowerPC HTM Low Level Built-in Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following low level built-in functions are available with
-:option:`-mhtm` or :option:`-mcpu=CPU` where CPU is power8 or later.
+:option:`-mhtm` or :option:`-mcpu=CPU` where CPU is 'power8' or later.
 They all generate the machine instruction that is part of the name.
 
 The HTM builtins (with the exception of ``__builtin_tbegin``) return
@@ -5004,9 +5004,9 @@ instruction.  The header file ``htmintrin.h`` defines some macros that can
 be used to decipher the return value.  The ``__builtin_tbegin`` builtin
 returns a simple true or false value depending on whether a transaction was
 successfully started or not.  The arguments of the builtins match exactly the
-type and order of the associated hardware instructions operands, except for
+type and order of the associated hardware instruction's operands, except for
 the ``__builtin_tcheck`` builtin, which does not take any input arguments.
-Refer to the ISA manual for a description of each instructions operands.
+Refer to the ISA manual for a description of each instruction's operands.
 
 .. code-block:: c++
 
@@ -5117,7 +5117,7 @@ PowerPC HTM High Level Inline Functions
 
 The following high level HTM interface is made available by including
 ``<htmxlintrin.h>`` and using :option:`-mhtm` or :option:`-mcpu=CPU`
-where CPU is power8 or later.  This interface is common between PowerPC
+where CPU is 'power8' or later.  This interface is common between PowerPC
 and S/390, allowing users to write one HTM source implementation that
 can be compiled and executed on either system.
 
@@ -5483,7 +5483,7 @@ For example:
 
   int get_tcb_value (void)
   {
-    // Generate mov.l (8,gbr),r0 instruction
+    // Generate mov.l @(8,gbr),r0 instruction
     return ((my_tcb*)__builtin_thread_pointer ())->c;
   }
 
@@ -5651,7 +5651,7 @@ SPU Built-in Functions
 GCC provides extensions for the SPU processor as described in the
 Sony/Toshiba/IBM SPU Language Extensions Specification, which can be
 found at http://cell.scei.co.jp/ or
-http://www.ibm.com/developerworks/power/cell/.  GCCs
+http://www.ibm.com/developerworks/power/cell/.  GCC's
 implementation differs in several ways.
 
 * The optional extension of specifying vector constants in parentheses is
@@ -5875,7 +5875,7 @@ automatically executed in a very high priority constructor.
 For example, this function has to be used in ``ifunc`` resolvers that
 check for CPU type using the built-in functions ``__builtin_cpu_is``
 and ``__builtin_cpu_supports``, or in constructors on targets that
-dont support constructor priority.
+don't support constructor priority.
 
 .. code-block:: c++
 

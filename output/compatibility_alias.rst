@@ -1,17 +1,17 @@
 ``compatibility_alias``
 
-The keyword ``compatibility_alias`` allows you to define a class name
+The keyword ``@compatibility_alias`` allows you to define a class name
 as equivalent to another class name.  For example:
 
 .. code-block:: c++
 
-  compatibility_alias WOApplication GSWApplication;
+  @compatibility_alias WOApplication GSWApplication;
 
 tells the compiler that each time it encounters ``WOApplication`` as
 a class name, it should replace it with ``GSWApplication`` (that is,
 ``WOApplication`` is just an alias for ``GSWApplication``).
 
-There are some constraints on how this can be used
+There are some constraints on how this can be used-
 
 * ``WOApplication`` (the alias) must not be an existing class;
 

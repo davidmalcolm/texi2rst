@@ -86,7 +86,7 @@
 <h1>Vague Linkage<a class="headerlink" href="#vague-linkage" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">There are several constructs in C++ that require space in the object
 file but are not clearly tied to a single translation unit.  We say that
-these constructs have vague linkage.  Typically such constructs are
+these constructs have &#8216;vague linkage&#8217;.  Typically such constructs are
 emitted wherever they are needed, though sometimes we can be more
 clever.</p>
 <dl class="docutils">
@@ -110,7 +110,7 @@ table, known as a vtable.  The vtable contains pointers to the virtual
 functions provided by a class, and each object of the class contains a
 pointer to its vtable (or vtables, in some multiple-inheritance
 situations).  If the class declares any non-inline, non-pure virtual
-functions, the first one is chosen as the key method for the class,
+functions, the first one is chosen as the &#8216;key method&#8217; for the class,
 and the vtable is only emitted in the translation unit where the key
 method is defined.</p>
 <p>Note: If the chosen key method is later defined as inline, the
@@ -133,13 +133,13 @@ referring to a type in a catch clause or exception specification.</p>
 <dt>Template Instantiations</dt>
 <dd>Most everything in this section also applies to template instantiations,
 but there are other options as well.
-Template InstantiationWheres the Template?.</dd>
+Template InstantiationWhere&#8217;s the Template?.</dd>
 </dl>
 <p>When used with GNU ld version 2.8 or later on an ELF system such as
 GNU/Linux or Solaris 2, or on Microsoft Windows, duplicate copies of
 these constructs will be discarded at link time.  This is known as
 COMDAT support.</p>
-<p>On targets that dont support COMDAT, but do support weak symbols, GCC
+<p>On targets that don&#8217;t support COMDAT, but do support weak symbols, GCC
 uses them.  This way one copy overrides all the others, but
 the unused copies still take up space in the executable.</p>
 <p>For targets that do not support either COMDAT or weak symbols,

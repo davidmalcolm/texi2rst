@@ -255,26 +255,26 @@ for derived declarators whose type does not include an attribute
 specifier is as in the ISO C standard.</p>
 <p>If <tt class="docutils literal"><span class="pre">D1</span></tt> has the form <tt class="docutils literal"><span class="pre">(</span> <span class="pre">``attribute-specifier-list</span></tt> D )``,
 and the declaration <tt class="docutils literal"><span class="pre">T</span> <span class="pre">D</span></tt> specifies the type
-<tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt> <tt class="docutils literal"><span class="pre">Type</span></tt> for <tt class="docutils literal"><span class="pre">ident</span></tt>, then
-<tt class="docutils literal"><span class="pre">T</span> <span class="pre">D1</span></tt> specifies the type <tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt>
-<tt class="docutils literal"><span class="pre">attribute-specifier-list</span></tt> <tt class="docutils literal"><span class="pre">Type</span></tt> for <tt class="docutils literal"><span class="pre">ident</span></tt>.</p>
+&#8216;<tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt> <tt class="docutils literal"><span class="pre">Type</span></tt>&#8216; for <tt class="docutils literal"><span class="pre">ident</span></tt>, then
+<tt class="docutils literal"><span class="pre">T</span> <span class="pre">D1</span></tt> specifies the type &#8216;<tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt>
+<tt class="docutils literal"><span class="pre">attribute-specifier-list</span></tt> <tt class="docutils literal"><span class="pre">Type</span></tt>&#8216; for <tt class="docutils literal"><span class="pre">ident</span></tt>.</p>
 <p>If <tt class="docutils literal"><span class="pre">D1</span></tt> has the form <tt class="docutils literal"><span class="pre">*</span>
 <span class="pre">``type-qualifier-and-attribute-specifier-list</span></tt> D``, and the
 declaration <tt class="docutils literal"><span class="pre">T</span> <span class="pre">D</span></tt> specifies the type
-<tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt> <tt class="docutils literal"><span class="pre">Type</span></tt> for <tt class="docutils literal"><span class="pre">ident</span></tt>, then
-<tt class="docutils literal"><span class="pre">T</span> <span class="pre">D1</span></tt> specifies the type <tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt>
-<tt class="docutils literal"><span class="pre">type-qualifier-and-attribute-specifier-list</span></tt> pointer to <tt class="docutils literal"><span class="pre">Type</span></tt> for
+&#8216;<tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt> <tt class="docutils literal"><span class="pre">Type</span></tt>&#8216; for <tt class="docutils literal"><span class="pre">ident</span></tt>, then
+<tt class="docutils literal"><span class="pre">T</span> <span class="pre">D1</span></tt> specifies the type &#8216;<tt class="docutils literal"><span class="pre">derived-declarator-type-list</span></tt>
+<tt class="docutils literal"><span class="pre">type-qualifier-and-attribute-specifier-list</span></tt> pointer to <tt class="docutils literal"><span class="pre">Type</span></tt>&#8216; for
 <tt class="docutils literal"><span class="pre">ident</span></tt>.</p>
 <p>For example,</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="p">(</span><span class="n">__attribute__</span><span class="p">((</span><span class="n">noreturn</span><span class="p">))</span> <span class="o">****</span><span class="n">f</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>specifies the type pointer to pointer to pointer to pointer to
-non-returning function returning <tt class="docutils literal"><span class="pre">void</span></tt>.  As another example,</p>
+<p>specifies the type &#8216;pointer to pointer to pointer to pointer to
+non-returning function returning <tt class="docutils literal"><span class="pre">void</span></tt>&#8216;.  As another example,</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">char</span> <span class="o">*</span><span class="n">__attribute__</span><span class="p">((</span><span class="n">aligned</span><span class="p">(</span><span class="mi">8</span><span class="p">)))</span> <span class="o">*</span><span class="n">f</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>specifies the type pointer to 8-byte-aligned pointer to <tt class="docutils literal"><span class="pre">char</span></tt>.
+<p>specifies the type &#8216;pointer to 8-byte-aligned pointer to <tt class="docutils literal"><span class="pre">char</span></tt>&#8216;.
 Note again that this does not work with most attributes; for example,
 the usage of aligned and noreturn attributes given above
 is not yet supported.</p>

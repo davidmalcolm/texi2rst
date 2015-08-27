@@ -201,8 +201,8 @@ return normally.</p>
 <dd><p><tt class="docutils literal"><span class="pre">common</span></tt> variable attribute
 <tt class="docutils literal"><span class="pre">nocommon</span></tt> variable attribute</p>
 <p>The <tt class="docutils literal"><span class="pre">common</span></tt> attribute requests GCC to place a variable in
-common storage.  The <tt class="docutils literal"><span class="pre">nocommon</span></tt> attribute requests the
-oppositeto allocate space for it directly.</p>
+&#8216;common&#8217; storage.  The <tt class="docutils literal"><span class="pre">nocommon</span></tt> attribute requests the
+opposite-to allocate space for it directly.</p>
 <p>These attributes override the default chosen by the
 <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fno-common"><em class="xref std std-option">-fno-common</em></a> and <a class="reference internal" href="#cmdoption-fcommon"><em class="xref std std-option">-fcommon</em></a> flags respectively.</p>
 </dd></dl>
@@ -231,7 +231,7 @@ Common Type Attributes).</p>
 </dd>
 <dt>mode (<tt class="docutils literal"><span class="pre">mode</span></tt>)</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">mode</span></tt> variable attribute
-This attribute specifies the data type for the declarationwhichever
+This attribute specifies the data type for the declaration-whichever
 type corresponds to the mode <tt class="docutils literal"><span class="pre">mode</span></tt>.  This in effect lets you
 request an integer or floating-point type according to its width.</p>
 <p class="last">You may also specify a mode of <tt class="docutils literal"><span class="pre">byte</span></tt> or <tt class="docutils literal"><span class="pre">__byte__</span></tt> to
@@ -242,7 +242,7 @@ or <tt class="docutils literal"><span class="pre">__pointer__</span></tt> for th
 <dt>packed</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">packed</span></tt> variable attribute
 The <tt class="docutils literal"><span class="pre">packed</span></tt> attribute specifies that a variable or structure field
-should have the smallest possible alignmentone byte for a variable,
+should have the smallest possible alignment-one byte for a variable,
 and one bit for a field, unless you specify a larger value with the
 <tt class="docutils literal"><span class="pre">aligned</span></tt> attribute.</p>
 <p>Here is a structure in which the field <tt class="docutils literal"><span class="pre">x</span></tt> is packed, so that it
@@ -294,7 +294,7 @@ as shown in the example.</p>
 uninitialized global variables but the linker requires
 each object be defined once, with the exception that uninitialized
 variables tentatively go in the <tt class="docutils literal"><span class="pre">common</span></tt> (or <tt class="docutils literal"><span class="pre">bss</span></tt>) section
-and can be multiply defined.  Using the <tt class="docutils literal"><span class="pre">section</span></tt> attribute
+and can be multiply &#8216;defined&#8217;.  Using the <tt class="docutils literal"><span class="pre">section</span></tt> attribute
 changes what section the variable goes into and may cause the
 linker to issue an error if an uninitialized variable has multiple
 definitions.  You can force a variable to be initialized with the
@@ -481,7 +481,7 @@ slightly under 32KB of data.</p>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">model</span></tt> variable attribute, IA-64</p>
 <p class="last">On IA-64, use this attribute to set the addressability of an object.
 At present, the only supported identifier for <tt class="docutils literal"><span class="pre">model-name</span></tt> is
-<tt class="docutils literal"><span class="pre">small</span></tt>, indicating addressability via small (22-bit)
+<tt class="docutils literal"><span class="pre">small</span></tt>, indicating addressability via &#8216;small&#8217; (22-bit)
 addresses (so that their addresses can be loaded with the <tt class="docutils literal"><span class="pre">addl</span></tt>
 instruction).  Caveat: such addressing is by definition not position
 independent and hence this attribute must not be used for objects
@@ -511,7 +511,7 @@ addresses).</p>
 <div class="section" id="mep-variable-attributes">
 <h2>MeP Variable Attributes<a class="headerlink" href="#mep-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>The MeP target has a number of addressing modes and busses.  The
-<tt class="docutils literal"><span class="pre">near</span></tt> space spans the standard memory spaces first 16 megabytes
+<tt class="docutils literal"><span class="pre">near</span></tt> space spans the standard memory space&#8217;s first 16 megabytes
 (24 bits).  The <tt class="docutils literal"><span class="pre">far</span></tt> space spans the entire 32-bit memory space.
 The <tt class="docutils literal"><span class="pre">based</span></tt> space is a 128-byte region in the memory space that
 is addressed relative to the <tt class="docutils literal"><span class="pre">$tp</span></tt> register.  The <tt class="docutils literal"><span class="pre">tiny</span></tt>
@@ -696,7 +696,7 @@ are normally coalesced, the bit-fields are not coalesced.</p>
 </pre></div>
 </div>
 <p>The size of <tt class="docutils literal"><span class="pre">t1</span></tt> is 8 bytes with the zero-length bit-field.  If the
-zero-length bit-field were removed, <a href="#id1"><span class="problematic" id="id2">``</span></a>t1``s size would be 4 bytes.</p>
+zero-length bit-field were removed, <tt class="docutils literal"><span class="pre">t1</span></tt>&#8216;s size would be 4 bytes.</p>
 <ul class="simple">
 <li>If a zero-length bit-field is inserted after a bit-field, <tt class="docutils literal"><span class="pre">foo</span></tt>, and the</li>
 </ul>

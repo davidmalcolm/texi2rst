@@ -8,7 +8,7 @@ Structures, Unions, Enumerations, and Bit-Fields
   an object of the type used for the access.  Type-punning.  This
   may be a trap representation.
 
-  * Whether a plain ``int`` bit-field is treated as a
+  * Whether a 'plain' ``int`` bit-field is treated as a
   ``signed int`` bit-field or as an ``unsigned int`` bit-field
   (C90 6.5.2, C90 6.5.2.1, C99 and C11 6.7.2, C99 and C11 6.7.2.1).
 

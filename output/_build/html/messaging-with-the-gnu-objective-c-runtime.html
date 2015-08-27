@@ -108,7 +108,7 @@ this pointer function to the appropriate function pointer type, and
 calling the function pointed to it with the right arguments.</p>
 <p>For example, when the compiler encounters a method invocation such as
 <tt class="docutils literal"><span class="pre">[object</span> <span class="pre">init]</span></tt>, it compiles it into a call to
-<tt class="docutils literal"><span class="pre">objc_msg_lookup</span> <span class="pre">(object,</span> <span class="pre">selector(init))</span></tt> followed by a cast
+<tt class="docutils literal"><span class="pre">objc_msg_lookup</span> <span class="pre">(object,</span> <span class="pre">&#64;selector(init))</span></tt> followed by a cast
 of the returned value to the appropriate function pointer type, and
 then it calls it.</p>
 <div class="toctree-wrapper compound">
@@ -157,7 +157,7 @@ GCC version 4.6.</p>
 <h2>Forwarding Hook<a class="headerlink" href="#forwarding-hook" title="Permalink to this headline">¶</a></h2>
 <p>The GNU Objective-C runtime provides a hook, called
 <tt class="docutils literal"><span class="pre">__objc_msg_forward2</span></tt>, which is called by
-<tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt> when it cant find a method implementation in
+<tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt> when it can&#8217;t find a method implementation in
 the runtime tables and after calling <tt class="docutils literal"><span class="pre">+resolveInstanceMethod:</span></tt>
 and <tt class="docutils literal"><span class="pre">+resolveClassMethod:</span></tt> has been attempted and did not succeed
 in dynamically registering the method.</p>
@@ -170,10 +170,10 @@ to return.  So, in practice <tt class="docutils literal"><span class="pre">__obj
 extend <tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt> by adding some custom code that is
 called to do a further lookup when no standard method implementation
 can be found using the normal lookup.</p>
-<p>This hook is generally reserved for Foundation libraries such as
+<p>This hook is generally reserved for &#8216;Foundation&#8217; libraries such as
 GNUstep Base, which use it to implement their high-level method
 forwarding API, typically based around the <tt class="docutils literal"><span class="pre">forwardInvocation:</span></tt>
-method.  So, unless you are implementing your own Foundation
+method.  So, unless you are implementing your own &#8216;Foundation&#8217;
 library, you should not set this hook.</p>
 <p>In a typical forwarding implementation, the <tt class="docutils literal"><span class="pre">__objc_msg_forward2</span></tt>
 hook function determines the argument and return type of the method
@@ -185,10 +185,10 @@ a dedicated library such as <tt class="docutils literal"><span class="pre">libff
 <tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt> and is executed as if it was a normal method
 implementation.  When the forwarding method implementation is called,
 it is usually expected to pack all arguments into some sort of object
-(typically, an <tt class="docutils literal"><span class="pre">NSInvocation</span></tt> in a Foundation library), and
+(typically, an <tt class="docutils literal"><span class="pre">NSInvocation</span></tt> in a &#8216;Foundation&#8217; library), and
 hand it over to the programmer (<tt class="docutils literal"><span class="pre">forwardInvocation:</span></tt>) who is then
 allowed to manipulate the method invocation using a high-level API
-provided by the Foundation library.  For example, the programmer
+provided by the &#8216;Foundation&#8217; library.  For example, the programmer
 may want to examine the method invocation arguments and name and
 potentially change them before forwarding the method invocation to one
 or more local objects (<tt class="docutils literal"><span class="pre">performInvocation:</span></tt>) or even to remote

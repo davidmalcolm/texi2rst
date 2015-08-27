@@ -88,7 +88,7 @@
 used in code generation.</p>
 <p>Most of them have both positive and negative forms; the negative form
 of <em class="xref std std-option">-ffoo</em> is <em class="xref std std-option">-fno-foo</em>.  In the table below, only
-one of the forms is listedthe one that is not the default.  You
+one of the forms is listed-the one that is not the default.  You
 can figure out the other form by either removing no- or adding
 it.</p>
 <dl class="option">
@@ -169,7 +169,7 @@ standard. When a lifetime of a temporary ends, and if the temporary lives
 in memory, the optimizing compiler has the freedom to reuse its stack
 space with other temporaries or scoped local variables whose live range
 does not overlap with it. However some of the legacy code relies on
-the behavior of older compilers in which temporaries stack space is
+the behavior of older compilers in which temporaries&#8217; stack space is
 not reused, the aggressive stack reuse can lead to runtime errors. This
 option is used to control the temporary stack reuse optimization.</p>
 </dd></dl>
@@ -203,7 +203,7 @@ C++ that normally require exception handling, and disables it for
 languages like C that do not normally require it.  However, you may need
 to enable this option when compiling C code that needs to interoperate
 properly with exception handlers written in C++.  You may also wish to
-disable this option if you are compiling older C++ programs that dont
+disable this option if you are compiling older C++ programs that don&#8217;t
 use exception handling.</p>
 </dd></dl>
 
@@ -221,7 +221,7 @@ arbitrary signal handlers such as <tt class="docutils literal"><span class="pre"
 <dl class="option">
 <dt id="cmdoption-fdelete-dead-exceptions">
 <tt class="descname">-fdelete-dead-exceptions</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fdelete-dead-exceptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Consider that instructions that may throw exceptions but dont otherwise
+<dd><p>Consider that instructions that may throw exceptions but don&#8217;t otherwise
 contribute to the execution of the program can be optimized away.
 This option is enabled by default for the Ada front end, as permitted by
 the Ada language specification.
@@ -264,7 +264,7 @@ DSOs; if your program relies on reinitialization of a DSO via
 <dl class="option">
 <dt id="cmdoption-fpcc-struct-return">
 <tt class="descname">-fpcc-struct-return</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fpcc-struct-return" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return short <tt class="docutils literal"><span class="pre">struct</span></tt> and <tt class="docutils literal"><span class="pre">union</span></tt> values in memory like
+<dd><p>Return &#8216;short&#8217; <tt class="docutils literal"><span class="pre">struct</span></tt> and <tt class="docutils literal"><span class="pre">union</span></tt> values in memory like
 longer ones, rather than in registers.  This convention is less
 efficient, but it has the advantage of allowing intercallability between
 GCC-compiled files and files compiled with other compilers, particularly
@@ -361,7 +361,7 @@ variable declarations this way.</p>
 <dl class="option">
 <dt id="cmdoption-finhibit-size-directive">
 <tt class="descname">-finhibit-size-directive</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-finhibit-size-directive" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont output a <tt class="docutils literal"><span class="pre">.size</span></tt> assembler directive, or anything else that
+<dd><p>Don&#8217;t output a <tt class="docutils literal"><span class="pre">.size</span></tt> assembler directive, or anything else that
 would cause trouble if the function is split in the middle, and the
 two halves are placed at locations far apart in memory.  This option is
 used when compiling crtstuff.c; you should not need to use it
@@ -486,7 +486,7 @@ variables that do not live across a call.  Functions compiled this way
 do not save and restore the register <tt class="docutils literal"><span class="pre">reg</span></tt>.</p>
 <p>It is an error to use this flag with the frame pointer or stack pointer.
 Use of this flag for other registers that have fixed pervasive roles in
-the machines execution model produces disastrous results.</p>
+the machine&#8217;s execution model produces disastrous results.</p>
 <p>This flag does not have a negative form, because it specifies a
 three-way choice.</p>
 </dd></dl>
@@ -500,7 +500,7 @@ live across a call.  Functions compiled this way save and restore
 the register <tt class="docutils literal"><span class="pre">reg</span></tt> if they use it.</p>
 <p>It is an error to use this flag with the frame pointer or stack pointer.
 Use of this flag for other registers that have fixed pervasive roles in
-the machines execution model produces disastrous results.</p>
+the machine&#8217;s execution model produces disastrous results.</p>
 <p>A different sort of disaster results from the use of this flag for
 a register in which function values may be returned.</p>
 <p>This flag does not have a negative form, because it specifies a
@@ -688,7 +688,7 @@ unit, or if <a class="reference internal" href="#cmdoption-fpic"><em class="xref
 <dl class="option">
 <dt id="cmdoption-fvisibility">
 <tt class="descname">-fvisibility</tt><tt class="descclassname">=[default|internal|hidden|protected]</tt><a class="headerlink" href="#cmdoption-fvisibility" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the default ELF image symbol visibility to the specified optionall
+<dd><p>Set the default ELF image symbol visibility to the specified option-all
 symbols are marked with this unless overridden within the code.
 Using this feature can very substantially improve linking and
 load times of shared object libraries, produce more optimized
@@ -699,12 +699,12 @@ you distribute.</p>
 available to be linked against from outside the shared object.
 protected and internal are pretty useless in real-world
 usage so the only other commonly used option is hidden.
-The default if <a class="reference internal" href="#cmdoption-fvisibility"><em class="xref std std-option">-fvisibility</em></a> isnt specified is
+The default if <a class="reference internal" href="#cmdoption-fvisibility"><em class="xref std std-option">-fvisibility</em></a> isn&#8217;t specified is
 default, i.e., make every symbol public.</p>
 <p>A good explanation of the benefits offered by ensuring ELF
-symbols have the correct visibility is given by How To Write
-Shared Libraries by Ulrich Drepper (which can be found at
-<a class="reference external" href="http://www.akkadia.org/drepper/)however">http://www.akkadia.org/drepper/)however</a> a superior
+symbols have the correct visibility is given by &#8216;How To Write
+Shared Libraries&#8217; by Ulrich Drepper (which can be found at
+<a class="reference external" href="http://www.akkadia.org/drepper/)-however">http://www.akkadia.org/drepper/)-however</a> a superior
 solution made possible by this option to marking things hidden when
 the default is public is to make the default hidden and mark things
 public.  This is the norm with DLLs on Windows and with <em class="xref std std-option">-fvisibility=hidden</em>
@@ -721,7 +721,7 @@ Bear in mind that symbol visibility should be viewed as
 part of the API interface contract and thus all new code should
 always specify visibility when it is not the default; i.e., declarations
 only for use within the local DSO should always be marked explicitly
-as hidden as so to avoid PLT indirection overheadsmaking this
+as hidden as so to avoid PLT indirection overheads-making this
 abundantly clear also aids readability and self-documentation of the code.
 Note that due to ISO C++ specification requirements, <tt class="docutils literal"><span class="pre">operator</span> <span class="pre">new</span></tt> and
 <tt class="docutils literal"><span class="pre">operator</span> <span class="pre">delete</span></tt> must always be of default visibility.</p>
@@ -743,7 +743,7 @@ be thrown between DSOs must be explicitly marked with default
 visibility so that the type_info nodes are unified between
 the DSOs.</p>
 <p>An overview of these techniques, their benefits and how to use them
-is at <a class="reference external" href="http://gcc.gnu.org/wiki/Visibility">http://gcc.gnu.org/wiki/Visibility</a>.</p>
+is at <a class="reference external" href="http://gcc.gnu.org//wiki//Visibility">http://gcc.gnu.org//wiki//Visibility</a>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -752,7 +752,7 @@ is at <a class="reference external" href="http://gcc.gnu.org/wiki/Visibility">ht
 <dd><p>This option should be used if accesses to volatile bit-fields (or other
 structure fields, although the compiler usually honors those types
 anyway) should use a single access of the width of the
-fields type, aligned to a natural alignment if possible.  For
+field&#8217;s type, aligned to a natural alignment if possible.  For
 example, targets with memory-mapped peripheral registers might require
 all such accesses to be 16 bits wide; with this flag you can
 declare all peripheral bit-fields as <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span></tt> (assuming short
@@ -770,7 +770,7 @@ case GCC falls back to generating multiple accesses rather than code that
 will fault or truncate the result at run time.</p>
 <p>Note:  Due to restrictions of the C/C++11 memory model, write accesses are
 not allowed to touch non bit-field members.  It is therefore recommended
-to define all bits of the fields type as bit-field members.</p>
+to define all bits of the field&#8217;s type as bit-field members.</p>
 <p>The default value of this option is determined by the application binary
 interface for the target processor.</p>
 </dd></dl>

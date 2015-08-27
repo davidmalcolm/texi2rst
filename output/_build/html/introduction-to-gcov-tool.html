@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="gcc 6 documentation" href="index.html" />
-    <link rel="up" title="&lt;no title&gt;" href="gcov-toolan-offline-gcda-profile-processing-tool.html" />
+    <link rel="up" title="&lt;no title&gt;" href="gcov-tool-an-offline-gcda-profile-processing-tool.html" />
     <link rel="next" title="&lt;no title&gt;" href="invoking-gcov-tool.html" />
     <link rel="prev" title="&lt;no title&gt;" href="invoking-gcov-tool.html" /> 
   </head>
@@ -45,7 +45,7 @@
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
           <li><a href="gcc.html" >Introduction</a> &raquo;</li>
-          <li><a href="gcov-toolan-offline-gcda-profile-processing-tool.html" accesskey="U">&lt;no title&gt;</a> &raquo;</li> 
+          <li><a href="gcov-tool-an-offline-gcda-profile-processing-tool.html" accesskey="U">&lt;no title&gt;</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -83,7 +83,7 @@
           <div class="body">
             
   <p>Introduction to <strong class="command">gcov-tool</strong></p>
-<p><strong class="command">gcov-tool</strong> is an offline tool to process gccs gcda profile files.</p>
+<p><strong class="command">gcov-tool</strong> is an offline tool to process gcc&#8217;s gcda profile files.</p>
 <p>Current gcov-tool supports the following functionalities:</p>
 <ul>
 <li><p class="first">merge two sets of profiles with weights.</p>
@@ -120,13 +120,13 @@ histograms and the result is an approximation.</p>
 <li>summary checksum difference: Summary checksum uses a CRC32 operation. The value</li>
 </ul>
 <p>depends on the link list order of gcov-info objects. This order is different in
-gcov-tool from that in the online merge. Its expected to have different
+gcov-tool from that in the online merge. It&#8217;s expected to have different
 summary checksums. It does not really matter as the compiler does not use this
 checksum anywhere.</p>
 <ul class="simple">
 <li>value profile counter values difference: Some counter values for value profile</li>
 </ul>
-<p>are runtime dependent, like heap addresses. Its normal to see some difference
+<p>are runtime dependent, like heap addresses. It&#8217;s normal to see some difference
 in these kind of counters.</p>
 </li>
 </ul>
@@ -151,7 +151,7 @@ in these kind of counters.</p>
              >previous</a> |</li>
         <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
           <li><a href="gcc.html" >Introduction</a> &raquo;</li>
-          <li><a href="gcov-toolan-offline-gcda-profile-processing-tool.html" >&lt;no title&gt;</a> &raquo;</li> 
+          <li><a href="gcov-tool-an-offline-gcda-profile-processing-tool.html" >&lt;no title&gt;</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

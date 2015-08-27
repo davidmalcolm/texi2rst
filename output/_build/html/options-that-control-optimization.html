@@ -85,7 +85,7 @@
   <div class="section" id="options-that-control-optimization">
 <h1>Options That Control Optimization<a class="headerlink" href="#options-that-control-optimization" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><p id="index-1">These options control various sorts of optimizations.</p>
-<p>Without any optimization option, the compilers goal is to reduce the
+<p>Without any optimization option, the compiler&#8217;s goal is to reduce the
 cost of compilation and to make debugging produce the expected
 results.  Statements are independent: if you stop the program with a
 breakpoint between statements, you can then assign a new value to any
@@ -263,12 +263,12 @@ the last such option is the one that is effective.</p>
 <p>Options of the form <em class="xref std std-option">-f``flag``</em> specify machine-independent
 flags.  Most flags have both positive and negative forms; the negative
 form of <em class="xref std std-option">-ffoo</em> is <em class="xref std std-option">-fno-foo</em>.  In the table
-below, only one of the forms is listedthe one you typically
+below, only one of the forms is listed-the one you typically
 use.  You can figure out the other form by either removing no-
 or adding it.</p>
 <p>The following options control specific optimizations.  They are either
 activated by <a class="reference internal" href="#cmdoption-O"><em class="xref std std-option">-O</em></a> options or are related to ones that are.  You
-can use the following flags in the rare cases when fine-tuning of
+can use the following flags in the rare cases when &#8216;fine-tuning&#8217; of
 optimizations to be performed is desired.</p>
 <dl class="option">
 <dt id="cmdoption-fno-defer-pop">
@@ -307,14 +307,14 @@ and treated equal to <em class="xref std std-option">-ffp-contract=off</em>.</p>
 <dl class="option">
 <dt id="cmdoption-fomit-frame-pointer">
 <tt class="descname">-fomit-frame-pointer</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fomit-frame-pointer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont keep the frame pointer in a register for functions that
-dont need one.  This avoids the instructions to save, set up and
+<dd><p>Don&#8217;t keep the frame pointer in a register for functions that
+don&#8217;t need one.  This avoids the instructions to save, set up and
 restore frame pointers; it also makes an extra register available
 in many functions.  It also makes debugging impossible on
 some machines.</p>
 <p>On some machines, such as the VAX, this flag has no effect, because
 the standard calling sequence automatically handles the frame pointer
-and nothing is saved by pretending it doesnt exist.  The
+and nothing is saved by pretending it doesn&#8217;t exist.  The
 machine-description macro <tt class="docutils literal"><span class="pre">FRAME_POINTER_REQUIRED</span></tt> controls
 whether a target machine supports this flag.  RegistersRegister
 UsagegccintGNU Compiler Collection (GCC) Internals.</p>
@@ -435,7 +435,7 @@ parameters controlling inlining and for the defaults of these parameters.</p>
 <p>Note: there may be no value to <a class="reference internal" href="#cmdoption-finline-limit"><em class="xref std std-option">-finline-limit</em></a> that results
 in default behavior.</p>
 <p>Note: pseudo instruction represents, in this particular context, an
-abstract measurement of functions size.  In no way does it represent a count
+abstract measurement of function&#8217;s size.  In no way does it represent a count
 of assembly instructions and as such its exact meaning might change from one
 release to an another.</p>
 </dd></dl>
@@ -462,8 +462,8 @@ inline functions into the object file.</p>
 <dl class="option">
 <dt id="cmdoption-fkeep-static-consts">
 <tt class="descname">-fkeep-static-consts</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fkeep-static-consts" title="Permalink to this definition">¶</a></dt>
-<dd><p>Emit variables declared <tt class="docutils literal"><span class="pre">static</span> <span class="pre">const</span></tt> when optimization isnt turned
-on, even if the variables arent referenced.</p>
+<dd><p>Emit variables declared <tt class="docutils literal"><span class="pre">static</span> <span class="pre">const</span></tt> when optimization isn&#8217;t turned
+on, even if the variables aren&#8217;t referenced.</p>
 <p>GCC enables this option by default.  If you want to force the compiler to
 check if a variable is referenced, regardless of whether or not
 optimization is turned on, use the <em class="xref std std-option">-fno-keep-static-consts</em> option.</p>
@@ -514,7 +514,7 @@ life-range analysis.  This option is effective only with
 <dl class="option">
 <dt id="cmdoption-fno-branch-count-reg">
 <tt class="descname">-fno-branch-count-reg</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-branch-count-reg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not use decrement and branch instructions on a count register,
+<dd><p>Do not use &#8216;decrement and branch&#8217; instructions on a count register,
 but instead generate a sequence of instructions that decrement a
 register, compare it against zero, then branch based upon the result.
 This option is only meaningful on architectures that support such
@@ -527,7 +527,7 @@ instructions, which include x86, PowerPC, IA-64 and S/390.</p>
 <dt id="cmdoption-fno-function-cse">
 <tt class="descname">-fno-function-cse</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-function-cse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do not put function addresses in registers; make each instruction that
-calls a constant function contain the functions address explicitly.</p>
+calls a constant function contain the function&#8217;s address explicitly.</p>
 <p>This option results in less efficient code, but some strange hacks
 that alter the assembler output may be confused by the optimizations
 performed when this option is not used.</p>
@@ -541,7 +541,7 @@ performed when this option is not used.</p>
 are initialized to zero into BSS.  This can save space in the resulting
 code.</p>
 <p>This option turns off this behavior because some programs explicitly
-rely on variables going to the data sectione.g., so that the
+rely on variables going to the data section-e.g., so that the
 resulting executable can find the beginning of that section and/or make
 assumptions based on that.</p>
 <p>The default is <em class="xref std std-option">-fzero-initialized-in-bss</em>.</p>
@@ -829,7 +829,7 @@ size register sets.</p>
 <tt class="descname">-fira-algorithm</tt><tt class="descclassname">=algorithm</tt><a class="headerlink" href="#cmdoption-fira-algorithm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use the specified coloring algorithm for the integrated register
 allocator.  The <tt class="docutils literal"><span class="pre">algorithm</span></tt> argument can be priority, which
-specifies Chows priority coloring, or CB, which specifies
+specifies Chow&#8217;s priority coloring, or CB, which specifies
 Chaitin-Briggs coloring.  Chaitin-Briggs coloring is not implemented
 for all architectures, but for those targets that do support it, it is
 the default because it generates better code.</p>
@@ -944,7 +944,7 @@ registers and where memory load instructions take more than one cycle.</p>
 <dl class="option">
 <dt id="cmdoption-fno-sched-interblock">
 <tt class="descname">-fno-sched-interblock</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-sched-interblock" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont schedule instructions across basic blocks.  This is normally
+<dd><p>Don&#8217;t schedule instructions across basic blocks.  This is normally
 enabled by default when scheduling before register allocation, i.e.
 with <a class="reference internal" href="#cmdoption-fschedule-insns"><em class="xref std std-option">-fschedule-insns</em></a> or at <a class="reference internal" href="#cmdoption-O2"><em class="xref std std-option">-O2</em></a> or higher.</p>
 </dd></dl>
@@ -952,7 +952,7 @@ with <a class="reference internal" href="#cmdoption-fschedule-insns"><em class="
 <dl class="option">
 <dt id="cmdoption-fno-sched-spec">
 <tt class="descname">-fno-sched-spec</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-sched-spec" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont allow speculative motion of non-load instructions.  This is normally
+<dd><p>Don&#8217;t allow speculative motion of non-load instructions.  This is normally
 enabled by default when scheduling before register allocation, i.e.
 with <a class="reference internal" href="#cmdoption-fschedule-insns"><em class="xref std std-option">-fschedule-insns</em></a> or at <a class="reference internal" href="#cmdoption-O2"><em class="xref std std-option">-O2</em></a> or higher.</p>
 </dd></dl>
@@ -1975,7 +1975,7 @@ type.</p>
 </pre></div>
 </div>
 <p>The practice of reading from a different union member than the one most
-recently written to (called type-punning) is common.  Even with
+recently written to (called &#8216;type-punning&#8217;) is common.  Even with
 <a class="reference internal" href="#cmdoption-fstrict-aliasing"><em class="xref std std-option">-fstrict-aliasing</em></a>, type-punning is allowed, provided the memory
 is accessed through the union type.  So, the code above works as
 expected.  Structures unions enumerations and bit-fields
@@ -2125,7 +2125,7 @@ each web individual pseudo register.  This allows the register allocation pass
 to operate on pseudos directly, but also strengthens several other optimization
 passes, such as CSE, loop optimizer and trivial dead code remover.  It can,
 however, make debugging impossible, since variables no longer stay in a
-home register.</p>
+&#8216;home register&#8217;.</p>
 <p>Enabled by default with <a class="reference internal" href="#cmdoption-funroll-loops"><em class="xref std std-option">-funroll-loops</em></a>.</p>
 </dd></dl>
 
@@ -2145,7 +2145,7 @@ information.</p>
 <dt id="cmdoption-flto">
 <tt class="descname">-flto</tt><tt class="descclassname">[=n]</tt><a class="headerlink" href="#cmdoption-flto" title="Permalink to this definition">¶</a></dt>
 <dd><p>This option runs the standard link-time optimizer.  When invoked
-with source code, it generates GIMPLE (one of GCCs internal
+with source code, it generates GIMPLE (one of GCC&#8217;s internal
 representations) and writes it to special ELF sections in the object
 file.  When the object files are linked together, all the function
 bodies are read from these ELF sections and instantiated as if they
@@ -2309,7 +2309,7 @@ generation done at link time is executed in parallel using <tt class="docutils l
 parallel jobs by utilizing an installed <strong class="command">make</strong> program.  The
 environment variable <span class="target" id="index-2"></span><tt class="xref std std-envvar docutils literal"><span class="pre">MAKE</span></tt> may be used to override the program
 used.  The default value for <tt class="docutils literal"><span class="pre">n</span></tt> is 1.</p>
-<p>You can also specify <em class="xref std std-option">-flto=jobserver</em> to use GNU makes
+<p>You can also specify <em class="xref std std-option">-flto=jobserver</em> to use GNU make&#8217;s
 job server mode to determine the number of parallel jobs. This
 is useful when the Makefile calling GCC is already executing in parallel.
 You must prepend a + to the command recipe in the parent Makefile
@@ -2617,7 +2617,7 @@ thus cannot be used on code that relies on rounding behavior like
 <tt class="docutils literal"><span class="pre">(x</span> <span class="pre">+</span> <span class="pre">2**52)</span> <span class="pre">-</span> <span class="pre">2**52</span></tt>.  May also reorder floating-point comparisons
 and thus may not be used when ordered comparisons are required.
 This option requires that both <a class="reference internal" href="#cmdoption-fno-signed-zeros"><em class="xref std std-option">-fno-signed-zeros</em></a> and
-<a class="reference internal" href="#cmdoption-fno-trapping-math"><em class="xref std std-option">-fno-trapping-math</em></a> be in effect.  Moreover, it doesnt make
+<a class="reference internal" href="#cmdoption-fno-trapping-math"><em class="xref std std-option">-fno-trapping-math</em></a> be in effect.  Moreover, it doesn&#8217;t make
 much sense with <a class="reference internal" href="#cmdoption-frounding-math"><em class="xref std std-option">-frounding-math</em></a>. For Fortran the option
 is automatically enabled when both <a class="reference internal" href="#cmdoption-fno-signed-zeros"><em class="xref std std-option">-fno-signed-zeros</em></a> and
 <a class="reference internal" href="#cmdoption-fno-trapping-math"><em class="xref std std-option">-fno-trapping-math</em></a> are in effect.</p>
@@ -2653,9 +2653,9 @@ that do not require the guarantees of these specifications.</p>
 <tt class="descname">-fno-signed-zeros</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-signed-zeros" title="Permalink to this definition">¶</a></dt>
 <dd><p>Allow optimizations for floating-point arithmetic that ignore the
 signedness of zero.  IEEE arithmetic specifies the behavior of
-distinct +0.0 and 0.0 values, which then prohibits simplification
+distinct +0.0 and -0.0 values, which then prohibits simplification
 of expressions such as x+0.0 or 0.0*x (even with <a class="reference internal" href="#cmdoption-ffinite-math-only"><em class="xref std std-option">-ffinite-math-only</em></a>).
-This option implies that the sign of a zero result isnt significant.</p>
+This option implies that the sign of a zero result isn&#8217;t significant.</p>
 <p>The default is <em class="xref std std-option">-fsigned-zeros</em>.</p>
 </dd></dl>
 
@@ -2666,7 +2666,7 @@ This option implies that the sign of a zero result isnt significant.</p>
 user-visible traps.  These traps include division by zero, overflow,
 underflow, inexact result and invalid operation.  This option requires
 that <em class="xref std std-option">-fno-signaling-nans</em> be in effect.  Setting this option may
-allow faster code if one relies on non-stop IEEE arithmetic, for example.</p>
+allow faster code if one relies on &#8216;non-stop&#8217; IEEE arithmetic, for example.</p>
 <p>This option should never be turned on by any <a class="reference internal" href="#cmdoption-O"><em class="xref std std-option">-O</em></a> option since
 it can result in incorrect output for programs that depend on
 an exact implementation of IEEE or ISO rules/specifications for
@@ -2690,7 +2690,7 @@ presence of sign-dependent rounding modes.</p>
 <p>This option is experimental and does not currently guarantee to
 disable all GCC optimizations that are affected by rounding mode.
 Future versions of GCC may provide finer control of this setting
-using C99s <tt class="docutils literal"><span class="pre">FENV_ACCESS</span></tt> pragma.  This command-line option
+using C99&#8217;s <tt class="docutils literal"><span class="pre">FENV_ACCESS</span></tt> pragma.  This command-line option
 will be used to specify the default state for <tt class="docutils literal"><span class="pre">FENV_ACCESS</span></tt>.</p>
 </dd></dl>
 
@@ -2801,7 +2801,7 @@ of registers left over after register allocation.  This optimization
 most benefits processors with lots of registers.  Depending on the
 debug information format adopted by the target, however, it can
 make debugging impossible, since variables no longer stay in
-a home register.</p>
+a &#8216;home register&#8217;.</p>
 <p>Enabled by default with <a class="reference internal" href="#cmdoption-funroll-loops"><em class="xref std std-option">-funroll-loops</em></a> and <a class="reference internal" href="#cmdoption-fpeel-loops"><em class="xref std std-option">-fpeel-loops</em></a>.</p>
 </dd></dl>
 
@@ -2872,7 +2872,7 @@ of the loop on both branches (modified according to result of the condition).</p
 <tt class="descname">-ffunction-sections</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-fdata-sections</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-ffunction-sections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Place each function or data item into its own section in the output
 file if the target supports arbitrary sections.  The name of the
-function or the name of the data item determines the sections name
+function or the name of the data item determines the section&#8217;s name
 in the output file.</p>
 <p>Use these options on systems where the linker can perform optimizations
 to improve locality of reference in the instruction space.  Most systems
@@ -2907,7 +2907,7 @@ threading.</p>
 <dl class="option">
 <dt id="cmdoption-fbtr-bb-exclusive">
 <tt class="descname">-fbtr-bb-exclusive</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fbtr-bb-exclusive" title="Permalink to this definition">¶</a></dt>
-<dd><p>When performing branch target register load optimization, dont reuse
+<dd><p>When performing branch target register load optimization, don&#8217;t reuse
 branch target registers within any basic block.</p>
 </dd></dl>
 
@@ -2932,7 +2932,7 @@ If a guard check fails, an error message is printed and the program exits.</p>
 <dt id="cmdoption-fstack-protector-strong">
 <tt class="descname">-fstack-protector-strong</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fstack-protector-strong" title="Permalink to this definition">¶</a></dt>
 <dd><p>Like <a class="reference internal" href="#cmdoption-fstack-protector"><em class="xref std std-option">-fstack-protector</em></a> but includes additional functions to
-be protected  those that have local array definitions, or have
+be protected - those that have local array definitions, or have
 references to local frame addresses.</p>
 </dd></dl>
 
@@ -2954,7 +2954,7 @@ those arguments.</p>
 <dt id="cmdoption-fsection-anchors">
 <tt class="descname">-fsection-anchors</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fsection-anchors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Try to reduce the number of symbolic address calculations by using
-shared anchor symbols to address nearby objects.  This transformation
+shared &#8216;anchor&#8217; symbols to address nearby objects.  This transformation
 can help to reduce the number of GOT entries and GOT accesses on some
 targets.</p>
 <p>For example, the implementation of the following function <tt class="docutils literal"><span class="pre">foo</span></tt>:</p>
@@ -2965,7 +2965,7 @@ targets.</p>
 <p>usually calculates the addresses of all three variables, but if you
 compile it with <a class="reference internal" href="#cmdoption-fsection-anchors"><em class="xref std std-option">-fsection-anchors</em></a>, it accesses the variables
 from a common anchor point instead.  The effect is similar to the
-following pseudocode (which isnt valid C):</p>
+following pseudocode (which isn&#8217;t valid C):</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">foo</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">register</span> <span class="kt">int</span> <span class="o">*</span><span class="n">xr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">;</span>
@@ -3049,7 +3049,7 @@ when modulo scheduling a loop.  Larger values can exponentially increase
 compilation time.</dd>
 <dt>max-inline-insns-single</dt>
 <dd>Several parameters control the tree inliner used in GCC.
-This number sets the maximum number of instructions (counted in GCCs
+This number sets the maximum number of instructions (counted in GCC&#8217;s
 internal representation) in a single function that the tree inliner
 considers for inlining.  This only affects functions declared
 inline and methods implemented in a class declaration (C++).
@@ -3259,7 +3259,7 @@ doing loop versioning for alignment in the vectorizer.</dd>
 doing loop versioning for alias in the vectorizer.</dd>
 <dt>vect-max-peeling-for-alignment</dt>
 <dd>The maximum number of loop peels to enhance access alignment
-for vectorizer. Value -1 means no limit.</dd>
+for vectorizer. Value -1 means &#8216;no limit&#8217;.</dd>
 <dt>max-iterations-to-track</dt>
 <dd>The maximum number of iterations of a loop the brute-force algorithm
 for analysis of the number of iterations of the loop tries to evaluate.</dd>
@@ -3332,11 +3332,11 @@ The default is 1000.</dd>
 <blockquote>
 <div><p>GCC uses a garbage collector to manage its own memory allocation.  This
 parameter specifies the minimum percentage by which the garbage
-collectors heap should be allowed to expand between collections.
+collector&#8217;s heap should be allowed to expand between collections.
 Tuning this may improve compilation speed; it has no effect on code
 generation.</p>
 <p>The default is 30% + 70% * (RAM/1GB) with an upper bound of 100% when
-RAM &gt;= 1GB.  If <tt class="docutils literal"><span class="pre">getrlimit</span></tt> is available, the notion of RAM is
+RAM &gt;= 1GB.  If <tt class="docutils literal"><span class="pre">getrlimit</span></tt> is available, the notion of &#8216;RAM&#8217; is
 the smallest of actual RAM and <tt class="docutils literal"><span class="pre">RLIMIT_DATA</span></tt> or <tt class="docutils literal"><span class="pre">RLIMIT_AS</span></tt>.  If
 GCC is not able to calculate RAM on a particular platform, the lower
 bound of 30% is used.  Setting this parameter and
@@ -3346,7 +3346,7 @@ debugging.</p>
 </div></blockquote>
 <p>ggc-min-heapsize</p>
 <blockquote>
-<div><p>Minimum size of the garbage collectors heap before it begins bothering
+<div><p>Minimum size of the garbage collector&#8217;s heap before it begins bothering
 to collect garbage.  The first collection occurs after the heap expands
 by ggc-min-expand% beyond ggc-min-heapsize.  Again,
 tuning this may improve compilation speed, and has no effect on code
@@ -3444,7 +3444,7 @@ is 10000.</dd>
 The default value is 2 at <a class="reference internal" href="#cmdoption-Og"><em class="xref std std-option">-Og</em></a> and 4 otherwise.</dd>
 <dt>integer-share-limit</dt>
 <dd>Small integer constants can use a shared data structure, reducing the
-compilers memory usage and increasing its speed.  This sets the maximum
+compiler&#8217;s memory usage and increasing its speed.  This sets the maximum
 value of a shared integer constant.  The default value is 256.</dd>
 <dt>ssp-buffer-size</dt>
 <dd>The minimum size of buffers (i.e. arrays) that receive stack smashing
@@ -3480,7 +3480,7 @@ number of prefetches to enable prefetching in a loop.</dd>
 <dd>The minimum ratio between the number of instructions and the
 number of memory references to enable prefetching in a loop.</dd>
 <dt>use-canonical-types</dt>
-<dd>Whether the compiler should use the canonical type system.  By
+<dd>Whether the compiler should use the &#8216;canonical&#8217; type system.  By
 default, this should always be 1, which uses a more efficient internal
 mechanism for comparing types in C++ and Objective-C++.  However, if
 bugs in the canonical type system are causing compilation failures,
@@ -3541,7 +3541,7 @@ from numerous runs of SPEC2000 on x86-64.</dd>
 <dt>loop-invariant-max-bbs-in-loop</dt>
 <dd>Loop invariant motion can be very expensive, both in compilation time and
 in amount of needed compile-time memory, with very large loops.  Loops
-with more basic blocks than this parameter wont have loop invariant
+with more basic blocks than this parameter won&#8217;t have loop invariant
 motion optimization performed on them.  The default value of the
 parameter is 1000 for <em class="xref std std-option">-O1</em> and 10000 for <a class="reference internal" href="#cmdoption-O2"><em class="xref std std-option">-O2</em></a> and above.</dd>
 <dt>loop-max-datarefs-for-datadeps</dt>
@@ -3614,7 +3614,7 @@ default value is 4.</dd>
 <dd>Specify the dimension to be unrolled (counting from the most inner loop)
 for the  <a class="reference internal" href="#cmdoption-floop-unroll-and-jam"><em class="xref std std-option">-floop-unroll-and-jam</em></a>.  The default value is 2.</dd>
 <dt>ipa-cp-value-list-size</dt>
-<dd>IPA-CP attempts to track all possible values and types passed to a functions
+<dd>IPA-CP attempts to track all possible values and types passed to a function&#8217;s
 parameter in order to propagate them and perform devirtualization.
 ipa-cp-value-list-size is the maximum number of values and types it
 stores per one formal parameter of a function.</dd>
@@ -3661,7 +3661,7 @@ partitions.</dd>
 name lookup fails for an identifier.  The default is 1000.</dd>
 <dt>sink-frequency-threshold</dt>
 <dd>The maximum relative execution frequency (in percents) of the target block
-relative to a statements original block to allow statement sinking of a
+relative to a statement&#8217;s original block to allow statement sinking of a
 statement.  Larger numbers result in more aggressive statement sinking.
 The default value is 75.  A small positive adjustment is applied for
 statements with memory operands as those are even more profitable so sink.</dd>

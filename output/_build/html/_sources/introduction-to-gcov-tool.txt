@@ -3,7 +3,7 @@ Introduction to :command:`gcov-tool`
 
 .. man begin DESCRIPTION 
 
-:command:`gcov-tool` is an offline tool to process gccs gcda profile files.
+:command:`gcov-tool` is an offline tool to process gcc's gcda profile files.
 
 Current gcov-tool supports the following functionalities:
 
@@ -35,12 +35,12 @@ a list of typical differences:
 
   * summary checksum difference: Summary checksum uses a CRC32 operation. The value
   depends on the link list order of gcov-info objects. This order is different in
-  gcov-tool from that in the online merge. Its expected to have different
+  gcov-tool from that in the online merge. It's expected to have different
   summary checksums. It does not really matter as the compiler does not use this
   checksum anywhere.
 
   * value profile counter values difference: Some counter values for value profile
-  are runtime dependent, like heap addresses. Its normal to see some difference
+  are runtime dependent, like heap addresses. It's normal to see some difference
   in these kind of counters.
 
 .. man end 

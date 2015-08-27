@@ -45,7 +45,7 @@ Then you can select a label with indexing, like this:
 
   goto *array[i];
 
-Note that this does not check whether the subscript is in boundsarray
+Note that this does not check whether the subscript is in bounds-array
 indexing in C never does that.
 
 Such an array of label values serves a purpose much like that of the

@@ -44,7 +44,7 @@ The types are encoded in the following way:
 ``void``
 ``v``
 ``id``
-````
+``@``
 ``Class``
 ``#``
 ``SEL``
@@ -59,7 +59,7 @@ unknown type
 Complex types
 ``j`` followed by the inner type.  For example ``_Complex double`` is encoded as "jd".
 bit-fields
-``b`` followed by the starting position of the bit-field, the type of the bit-field and the size of the bit-field (the bit-fields encoding was changed from the NeXTs compiler encoding, see below)
+``b`` followed by the starting position of the bit-field, the type of the bit-field and the size of the bit-field (the bit-fields encoding was changed from the NeXT's compiler encoding, see below)
 
 .. @sp 1 
 
@@ -68,7 +68,7 @@ properly handled by the runtime functions that compute sizes and
 alignments of types that contain bit-fields.  The previous encoding
 contained only the size of the bit-field.  Using only this information
 it is not possible to reliably compute the size occupied by the
-bit-field.  This is very important in the presence of the Boehms
+bit-field.  This is very important in the presence of the Boehm's
 garbage collector because the objects are allocated using the typed
 memory facility available in this collector.  The typed memory
 allocation requires information about where the pointers are located
@@ -187,7 +187,7 @@ as ``*``, and the ``const`` is lost.
 .. toctree::
 
    <legacy-type-encoding>
-   <encode>
+   <@encode>
    <method-signatures>
 
 :: _legacy-type-encoding:
@@ -201,32 +201,32 @@ this historical format (compatible with GCC-3.3), so when using the
 NeXT runtime, GCC will introduce on purpose a number of incorrect
 encodings:
 
-* the read-only qualifier of the pointee gets emitted before the ^.
+* the read-only qualifier of the pointee gets emitted before the '^'.
   The read-only qualifier of the pointer itself gets ignored, unless it
-  is a typedef.  Also, the r is only emitted for the outermost type.
+  is a typedef.  Also, the 'r' is only emitted for the outermost type.
 
-  * 32-bit longs are encoded as l or L, but not always.  For typedefs,
-  the compiler uses i or I instead if encoding a struct field or a
+  * 32-bit longs are encoded as 'l' or 'L', but not always.  For typedefs,
+  the compiler uses 'i' or 'I' instead if encoding a struct field or a
   pointer.
 
-  * ``enum``s are always encoded as i (int) even if they are actually
+  * ``enum``s are always encoded as 'i' (int) even if they are actually
   unsigned or long.
 
 In addition to that, the NeXT runtime uses a different encoding for
 bitfields.  It encodes them as ``b`` followed by the size, without
 a bit offset or the underlying field type.
 
-:: _encode:
+:: _@encode:
 
-``encode``
+``@encode``
 
-GNU Objective-C supports the ``encode`` syntax that allows you to
+GNU Objective-C supports the ``@encode`` syntax that allows you to
 create a type encoding from a C/Objective-C type.  For example,
-``encode(int)`` is compiled by the compiler into ``"i"``.
+``@encode(int)`` is compiled by the compiler into ``"i"``.
 
-``encode`` does not support type qualifiers other than
-``const``.  For example, ``encode(const char*)`` is valid and
-is compiled into ``"r*"``, while ``encode(bycopy char *)`` is
+``@encode`` does not support type qualifiers other than
+``const``.  For example, ``@encode(const char*)`` is valid and
+is compiled into ``"r*"``, while ``@encode(bycopy char *)`` is
 invalid and will cause a compilation error.
 
 :: _method-signatures:
@@ -238,18 +238,18 @@ This section documents the encoding of method types, which is rarely
 needed to use Objective-C.  You should skip it at a first reading; the
 runtime provides functions that will work on methods and can walk
 through the list of parameters and interpret them for you.  These
-functions are part of the public API and are the preferred way to
+functions are part of the public 'API' and are the preferred way to
 interact with method signatures from user code.
 
 But if you need to debug a problem with method signatures and need to
-know how they are implemented (i.e., the ABI), read on.
+know how they are implemented (i.e., the 'ABI'), read on.
 
-Methods have their signature encoded and made available to the
-runtime.  The signature encodes all the information required to
+Methods have their 'signature' encoded and made available to the
+runtime.  The 'signature' encodes all the information required to
 dynamically build invocations of the method at runtime: return type
 and arguments.
 
-The signature is a null-terminated string, composed of the following:
+The 'signature' is a null-terminated string, composed of the following:
 
 * The return type, including type qualifiers.  For example, a method
   returning ``int`` would have ``i`` here.
@@ -262,15 +262,15 @@ The signature is a null-terminated string, composed of the following:
   bytes) of the argument in the list of parameters.
 
 For example, a method with no arguments and returning ``int`` would
-have the signature ``i80:4`` if the size of a pointer is 4.  The
+have the signature ``i8@0:4`` if the size of a pointer is 4.  The
 signature is interpreted as follows: the ``i`` is the return type
 (an ``int``), the ``8`` is the total size of the parameters in
-bytes (two pointers each of size 4), the ``0`` is the first
+bytes (two pointers each of size 4), the ``@0`` is the first
 parameter (an object at byte offset ``0``) and ``:4`` is the
 second parameter (a ``SEL`` at byte offset ``4``).
 
-You can easily find more examples by running the strings program
-on an Objective-C object file compiled by GCC.  Youll see a lot of
-strings that look very much like ``i80:4``.  They are signatures
+You can easily find more examples by running the 'strings' program
+on an Objective-C object file compiled by GCC.  You'll see a lot of
+strings that look very much like ``i8@0:4``.  They are signatures
 of Objective-C methods.
 

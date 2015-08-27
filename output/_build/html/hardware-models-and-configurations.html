@@ -153,7 +153,7 @@
 <h1>Hardware Models and Configurations<a class="headerlink" href="#hardware-models-and-configurations" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">Each target machine types can have its own
 special options, starting with -m, to choose among various
-hardware models or configurationsfor example, 68010 vs 68020,
+hardware models or configurations-for example, 68010 vs 68020,
 floating coprocessor or none.  A single installed version of the
 compiler can compile for any model or configuration, according to the
 options specified.</p>
@@ -361,7 +361,7 @@ are enabled.  This is the default for all current possible values for options
 <dl class="option">
 <dt id="cmdoption-mhalf-reg-file">
 <tt class="descname">-mhalf-reg-file</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mhalf-reg-file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont allocate any register in the range <tt class="docutils literal"><span class="pre">r32</span></tt>...``r63``.
+<dd><p>Don&#8217;t allocate any register in the range <tt class="docutils literal"><span class="pre">r32</span></tt>...``r63``.
 That allows code to run on hardware variants that lack these registers.</p>
 </dd></dl>
 
@@ -376,7 +376,7 @@ increase overall code size.</p>
 <dl class="option">
 <dt id="cmdoption-mbranch-cost">
 <tt class="descname">-mbranch-cost</tt><tt class="descclassname">=num</tt><a class="headerlink" href="#cmdoption-mbranch-cost" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the cost of branches to roughly <tt class="docutils literal"><span class="pre">num</span></tt> simple instructions.
+<dd><p>Set the cost of branches to roughly <tt class="docutils literal"><span class="pre">num</span></tt> &#8216;simple&#8217; instructions.
 This cost is only a heuristic and is not guaranteed to produce
 consistent results across releases.</p>
 </dd></dl>
@@ -507,7 +507,7 @@ post-modify addresses.  The defaults are msplit-lohi,
 <dd><p>The maximum alignment for SIMD vector mode types.
 <tt class="docutils literal"><span class="pre">num</span></tt> may be 4 or 8.  The default is 8.
 Note that this is an ABI change, even though many library function
-interfaces are unaffected if they dont use SIMD vector modes
+interfaces are unaffected if they don&#8217;t use SIMD vector modes
 in places that affect size and/or alignment of relevant types.</p>
 </dd></dl>
 
@@ -522,7 +522,7 @@ generally the case.</p>
 <dl class="option">
 <dt id="cmdoption-m1reg-reg">
 <tt class="descname">-m1reg-reg</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-m1reg-</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-m1reg-reg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Specify a register to hold the constant 1, which makes loading small negative
+<dd><p>Specify a register to hold the constant -1, which makes loading small negative
 constants and certain bitmasks faster.
 Allowable values for <tt class="docutils literal"><span class="pre">reg</span></tt> are r43 and r63,
 which specify use of that register as a fixed register,
@@ -784,7 +784,7 @@ to the full 32-bit address range.</p>
 <dl class="option">
 <dt id="cmdoption-mmedium-calls">
 <tt class="descname">-mmedium-calls</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mmedium-calls" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont use less than 25 bit addressing range for calls, which is the
+<dd><p>Don&#8217;t use less than 25 bit addressing range for calls, which is the
 offset available for an unconditional branch-and-link
 instruction.  Conditional execution of function calls is suppressed, to
 allow use of the 25-bit range, rather than the 21-bit range with
@@ -911,7 +911,7 @@ so by default the compiler uses standard reload
 <dl class="option">
 <dt id="cmdoption-mlra-priority-none">
 <tt class="descname">-mlra-priority-none</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mlra-priority-none" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont indicate any priority for target registers.</p>
+<dd><p>Don&#8217;t indicate any priority for target registers.</p>
 </dd></dl>
 
 <dl class="option">
@@ -949,7 +949,7 @@ while increasing the instruction count.</p>
 <dl class="option">
 <dt id="cmdoption-mq-class">
 <tt class="descname">-mq-class</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mq-class" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enable q instruction alternatives.
+<dd><p>Enable &#8216;q&#8217; instruction alternatives.
 This is the default for <a class="reference internal" href="options-that-control-optimization.html#cmdoption-Os"><em class="xref std std-option">-Os</em></a>.</p>
 </dd></dl>
 
@@ -1188,7 +1188,7 @@ configurations this option is meaningless.</p>
 <dt id="cmdoption-mno-sched-prolog">
 <tt class="descname">-mno-sched-prolog</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-sched-prolog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prevent the reordering of instructions in the function prologue, or the
-merging of those instruction with the instructions in the functions
+merging of those instruction with the instructions in the function&#8217;s
 body.  This means that all functions start with a recognizable set
 of instructions (or in fact one of a choice from a small set of
 different function prologues), and this information can be used to
@@ -1344,7 +1344,7 @@ fp-armv8, neon-fp-armv8, and crypto-neon-fp-armv8.</p>
 floating-point values.</p>
 <p>If the selected floating-point hardware includes the NEON extension
 (e.g. <em class="xref std std-option">-mfpu`=neon), note that floating-point
-operations are not generated by GCCs auto-vectorization pass unless
+operations are not generated by GCC's auto-vectorization pass unless
 :option:</em>-funsafe-math-optimizations` is also specified.  This is
 because NEON hardware does not fully implement the IEEE 754 standard for
 floating-point arithmetic (in particular denormal values are treated as
@@ -1520,7 +1520,7 @@ auto.</p>
 <dt id="cmdoption-mtls-dialect">
 <tt class="descname">-mtls-dialect</tt><tt class="descclassname">=dialect</tt><a class="headerlink" href="#cmdoption-mtls-dialect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specify the dialect to use for accessing thread local storage.  Two
-<a href="#id1"><span class="problematic" id="id2">``</span></a>dialect``s are supportedgnu and gnu2.  The
+<a href="#id1"><span class="problematic" id="id2">``</span></a>dialect``s are supported-gnu and gnu2.  The
 gnu dialect selects the original GNU scheme for supporting
 local and global dynamic TLS models.  The gnu2 dialect
 selects the GNU descriptor scheme, which provides better performance
@@ -1617,7 +1617,7 @@ by default.</p>
 <dt id="cmdoption-mmcu">
 <tt class="descname">-mmcu</tt><tt class="descclassname">=mcu</tt><a class="headerlink" href="#cmdoption-mmcu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specify Atmel AVR instruction set architectures (ISA) or MCU type.</p>
-<p>The default for this option isavr2.</p>
+<p>The default for this option is avr2.</p>
 <p>GCC supports the following AVR devices and ISAs:</p>
 </dd></dl>
 
@@ -1666,7 +1666,7 @@ size.</p>
 <dt id="cmdoption-mn-flash">
 <tt class="descname">-mn-flash</tt><tt class="descclassname">=num</tt><a class="headerlink" href="#cmdoption-mn-flash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assume that the flash memory has a size of
-<tt class="docutils literal"><span class="pre">num</span></tt> times 64KiB.</p>
+<tt class="docutils literal"><span class="pre">num</span></tt> times 64 KiB.</p>
 </dd></dl>
 
 <dl class="option">
@@ -1682,8 +1682,8 @@ Code size is smaller.</p>
 <dd><p>Try to replace <tt class="docutils literal"><span class="pre">CALL</span></tt> resp. <tt class="docutils literal"><span class="pre">JMP</span></tt> instruction by the shorter
 <tt class="docutils literal"><span class="pre">RCALL</span></tt> resp. <tt class="docutils literal"><span class="pre">RJMP</span></tt> instruction if applicable.
 Setting <a class="reference internal" href="#cmdoption-mrelax"><em class="xref std std-option">-mrelax</em></a> just adds the <em class="xref std std-option">--mlink-relax</em> option to
-the assemblers command line and the <em class="xref std std-option">--relax</em> option to the
-linkers command line.</p>
+the assembler&#8217;s command line and the <em class="xref std std-option">--relax</em> option to the
+linker&#8217;s command line.</p>
 <p>Jump relaxing is performed by the linker because jump offsets are not
 known before code is located. Therefore, the assembler code generated by the
 compiler is the same, but the instructions in the executable may
@@ -1704,13 +1704,13 @@ instructions <tt class="docutils literal"><span class="pre">XCH</span></tt>, <tt
 <tt class="descname">-msp8</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-msp8" title="Permalink to this definition">¶</a></dt>
 <dd><p>Treat the stack pointer register as an 8-bit register,
 i.e. assume the high byte of the stack pointer is zero.
-In general, you dont need to set this option by hand.</p>
+In general, you don&#8217;t need to set this option by hand.</p>
 <p>This option is used internally by the compiler to select and
 build multilibs for architectures <tt class="docutils literal"><span class="pre">avr2</span></tt> and <tt class="docutils literal"><span class="pre">avr25</span></tt>.
 These architectures mix devices with and without <tt class="docutils literal"><span class="pre">SPH</span></tt>.
 For any setting other than <em class="xref std std-option">-mmcu=avr2</em> or <em class="xref std std-option">-mmcu=avr25</em>
 the compiler driver adds or removes this option from the compiler
-propers command line, because the compiler then knows if the device
+proper&#8217;s command line, because the compiler then knows if the device
 or architecture has an 8-bit stack pointer and thus no <tt class="docutils literal"><span class="pre">SPH</span></tt>
 register or not.</p>
 </dd></dl>
@@ -1736,13 +1736,13 @@ sbiw r26, const   ; X -= const</pre>
 <dl class="option">
 <dt id="cmdoption-mtiny-stack">
 <tt class="descname">-mtiny-stack</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mtiny-stack" title="Permalink to this definition">¶</a></dt>
-<dd><p>Only change the lower 8bits of the stack pointer.</p>
+<dd><p>Only change the lower 8 bits of the stack pointer.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-nodevicelib">
 <tt class="descname">-nodevicelib</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-nodevicelib" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont link against AVR-LibCs device specific library <tt class="docutils literal"><span class="pre">libdev.a</span></tt>.</p>
+<dd><p>Don&#8217;t link against AVR-LibC&#8217;s device specific library <tt class="docutils literal"><span class="pre">libdev.a</span></tt>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -1754,11 +1754,11 @@ resulting address space is not contained in the incoming address space.</p>
 
 <p><tt class="docutils literal"><span class="pre">EIND</span></tt> and Devices with More Than 128 Ki Bytes of Flash
 <tt class="docutils literal"><span class="pre">EIND</span></tt>
-Pointers in the implementation are 16bits wide.
+Pointers in the implementation are 16 bits wide.
 The address of a function or label is represented as word address so
 that indirect jumps and calls can target any code address in the
-range of 64Ki words.</p>
-<p>In order to facilitate indirect jump on devices with more than 128Ki
+range of 64 Ki words.</p>
+<p>In order to facilitate indirect jump on devices with more than 128 Ki
 bytes of program memory space, there is a special function register called
 <tt class="docutils literal"><span class="pre">EIND</span></tt> that serves as most significant part of the target address
 when <tt class="docutils literal"><span class="pre">EICALL</span></tt> or <tt class="docutils literal"><span class="pre">EIJMP</span></tt> instructions are used.</p>
@@ -1880,9 +1880,9 @@ Alternatively, <tt class="docutils literal"><span class="pre">func_4</span></tt>
 <tt class="docutils literal"><span class="pre">RAMPX</span></tt>
 <tt class="docutils literal"><span class="pre">RAMPY</span></tt>
 <tt class="docutils literal"><span class="pre">RAMPZ</span></tt>
-Some AVR devices support memories larger than the 64KiB range
+Some AVR devices support memories larger than the 64 KiB range
 that can be accessed with 16-bit pointers.  To access memory locations
-outside this 64KiB range, the contentent of a <tt class="docutils literal"><span class="pre">RAMP</span></tt>
+outside this 64 KiB range, the contentent of a <tt class="docutils literal"><span class="pre">RAMP</span></tt>
 register is used as high part of the address:
 The <tt class="docutils literal"><span class="pre">X</span></tt>, <tt class="docutils literal"><span class="pre">Y</span></tt>, <tt class="docutils literal"><span class="pre">Z</span></tt> address register is concatenated
 with the <tt class="docutils literal"><span class="pre">RAMPX</span></tt>, <tt class="docutils literal"><span class="pre">RAMPY</span></tt>, <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> special function
@@ -1897,7 +1897,7 @@ registers with zero.</p>
 <p>generic or <tt class="docutils literal"><span class="pre">__flash</span></tt> is used, then <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> is set
 as needed before the operation.</p>
 <ul class="simple">
-<li>If the device supports RAM larger than 64KiB and the compiler</li>
+<li>If the device supports RAM larger than 64 KiB and the compiler</li>
 </ul>
 <p>needs to change <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> to accomplish an operation, <tt class="docutils literal"><span class="pre">RAMPZ</span></tt>
 is reset to zero after the operation.</p>
@@ -1907,7 +1907,7 @@ is reset to zero after the operation.</p>
 <p>prologue/epilogue saves/restores that SFR and initializes it with
 zero in case the ISR code might (implicitly) use it.</p>
 <ul class="simple">
-<li>RAM larger than 64KiB is not supported by GCC for AVR targets.</li>
+<li>RAM larger than 64 KiB is not supported by GCC for AVR targets.</li>
 </ul>
 <p>If you use inline assembler to read from locations outside the
 16-bit address range and change one of the <tt class="docutils literal"><span class="pre">RAMP</span></tt> registers,
@@ -1942,10 +1942,10 @@ defined to <tt class="docutils literal"><span class="pre">4</span></tt>.</p>
 </dd>
 <dt>__AVR_``Device``__</dt>
 <dd><p class="first">Setting <em class="xref std std-option">-mmcu=``device``</em> defines this built-in macro which reflects
-the devices name. For example, <em class="xref std std-option">-mmcu=atmega8</em> defines the
+the device&#8217;s name. For example, <em class="xref std std-option">-mmcu=atmega8</em> defines the
 built-in macro <tt class="docutils literal"><span class="pre">__AVR_ATmega8__</span></tt>, <em class="xref std std-option">-mmcu=attiny261a</em> defines
 <tt class="docutils literal"><span class="pre">__AVR_ATtiny261A__</span></tt>, etc.</p>
-<p>The built-in macros names follow
+<p>The built-in macros&#8217; names follow
 the scheme <tt class="docutils literal"><span class="pre">__AVR_``Device``__</span></tt> where <tt class="docutils literal"><span class="pre">Device</span></tt> is
 the device name as from the AVR user manual. The difference between
 <tt class="docutils literal"><span class="pre">Device</span></tt> in the built-in macro and <tt class="docutils literal"><span class="pre">device</span></tt> in
@@ -1955,7 +1955,7 @@ avr51, this macro is not defined.</p>
 </dd>
 <dt>__AVR_DEVICE_NAME__</dt>
 <dd><p class="first">Setting <em class="xref std std-option">-mmcu=``device``</em> defines this built-in macro to
-the devices name. For example, with <em class="xref std std-option">-mmcu=atmega8</em> the macro
+the device&#8217;s name. For example, with <em class="xref std std-option">-mmcu=atmega8</em> the macro
 is defined to <tt class="docutils literal"><span class="pre">atmega8</span></tt>.</p>
 <p class="last">If <tt class="docutils literal"><span class="pre">device</span></tt> is not a device but only a core architecture like
 avr51, this macro is not defined.</p>
@@ -1977,16 +1977,16 @@ register-register moves.</dd>
 <dd>The device has a hardware multiplier.</dd>
 <dt>__AVR_HAVE_JMP_CALL__</dt>
 <dd>The device has the <tt class="docutils literal"><span class="pre">JMP</span></tt> and <tt class="docutils literal"><span class="pre">CALL</span></tt> instructions.
-This is the case for devices with at least 16KiB of program
+This is the case for devices with at least 16 KiB of program
 memory.</dd>
 <dt>__AVR_HAVE_EIJMP_EICALL____AVR_3_BYTE_PC__</dt>
 <dd>The device has the <tt class="docutils literal"><span class="pre">EIJMP</span></tt> and <tt class="docutils literal"><span class="pre">EICALL</span></tt> instructions.
-This is the case for devices with more than 128KiB of program memory.
+This is the case for devices with more than 128 KiB of program memory.
 This also means that the program counter
-(PC) is 3bytes wide.</dd>
+(PC) is 3 bytes wide.</dd>
 <dt>__AVR_2_BYTE_PC__</dt>
-<dd>The program counter (PC) is 2bytes wide. This is the case for devices
-with up to 128KiB of program memory.</dd>
+<dd>The program counter (PC) is 2 bytes wide. This is the case for devices
+with up to 128 KiB of program memory.</dd>
 <dt>__AVR_HAVE_8BIT_SP____AVR_HAVE_16BIT_SP__</dt>
 <dd>The stack pointer (SP) register is treated as 8-bit respectively
 16-bit register by the compiler.
@@ -2016,7 +2016,7 @@ like <tt class="docutils literal"><span class="pre">IN</span></tt>, <tt class="d
 address as if addressed by an instruction to access RAM like <tt class="docutils literal"><span class="pre">LD</span></tt>
 or <tt class="docutils literal"><span class="pre">STS</span></tt>. This offset depends on the device architecture and has
 to be subtracted from the RAM address in order to get the
-respective I/Oaddress.</dd>
+respective I/O address.</dd>
 <dt>__WITH_AVRLIBC__</dt>
 <dd>The compiler is configured to be used together with AVR-Libc.
 See the <em class="xref std std-option">--with-avrlibc</em> configure option.</dd>
@@ -2069,7 +2069,7 @@ Certain other options, such as <a class="reference internal" href="#cmdoption-mi
 <dl class="option">
 <dt id="cmdoption-momit-leaf-frame-pointer">
 <tt class="descname">-momit-leaf-frame-pointer</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-momit-leaf-frame-pointer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont keep the frame pointer in a register for leaf functions.  This
+<dd><p>Don&#8217;t keep the frame pointer in a register for leaf functions.  This
 avoids the instructions to save, set up and restore frame pointers and
 makes an extra register available in leaf functions.  The option
 <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fomit-frame-pointer"><em class="xref std std-option">-fomit-frame-pointer</em></a> removes the frame pointer for all functions,
@@ -2087,7 +2087,7 @@ contain speculative loads after jump instructions. If this option is used,
 <dl class="option">
 <dt id="cmdoption-mno-specld-anomaly">
 <tt class="descname">-mno-specld-anomaly</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-specld-anomaly" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont generate extra code to prevent speculative loads from occurring.</p>
+<dd><p>Don&#8217;t generate extra code to prevent speculative loads from occurring.</p>
 </dd></dl>
 
 <dl class="option">
@@ -2101,7 +2101,7 @@ If this option is used, <tt class="docutils literal"><span class="pre">__WORKARO
 <dl class="option">
 <dt id="cmdoption-mno-csync-anomaly">
 <tt class="descname">-mno-csync-anomaly</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-csync-anomaly" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont generate extra code to prevent CSYNC or SSYNC instructions from
+<dd><p>Don&#8217;t generate extra code to prevent CSYNC or SSYNC instructions from
 occurring too soon after a conditional branch.</p>
 </dd></dl>
 
@@ -2137,7 +2137,7 @@ With a bfin-elf target, this option implies <a class="reference internal" href="
 <dl class="option">
 <dt id="cmdoption-mno-id-shared-library">
 <tt class="descname">-mno-id-shared-library</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-id-shared-library" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate code that doesnt assume ID-based shared libraries are being used.
+<dd><p>Generate code that doesn&#8217;t assume ID-based shared libraries are being used.
 This is the default.</p>
 </dd></dl>
 
@@ -2145,7 +2145,7 @@ This is the default.</p>
 <dt id="cmdoption-mleaf-id-shared-library">
 <tt class="descname">-mleaf-id-shared-library</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mleaf-id-shared-library" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate code that supports shared libraries via the library ID method,
-but assumes that this library or executable wont link against any other
+but assumes that this library or executable won&#8217;t link against any other
 ID shared libraries.  That allows the compiler to use faster code for jumps
 and calls.</p>
 </dd></dl>
@@ -2153,7 +2153,7 @@ and calls.</p>
 <dl class="option">
 <dt id="cmdoption-mno-leaf-id-shared-library">
 <tt class="descname">-mno-leaf-id-shared-library</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-leaf-id-shared-library" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not assume that the code being compiled wont link against any ID shared
+<dd><p>Do not assume that the code being compiled won&#8217;t link against any ID shared
 libraries.  Slower code is generated for jump and call insns.</p>
 </dd></dl>
 
@@ -2200,7 +2200,7 @@ function calls via function pointers.</p>
 <dt id="cmdoption-mfast-fp">
 <tt class="descname">-mfast-fp</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mfast-fp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Link with the fast floating-point library. This library relaxes some of
-the IEEE floating-point standards rules for checking inputs against
+the IEEE floating-point standard&#8217;s rules for checking inputs against
 Not-a-Number (NAN), in the interest of performance.</p>
 </dd></dl>
 
@@ -2424,7 +2424,7 @@ or storage for local variables needs to be allocated.</p>
 <dl class="option">
 <dt id="cmdoption-mno-gotplt">
 <tt class="descname">-mno-gotplt</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mgotplt</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-gotplt" title="Permalink to this definition">¶</a></dt>
-<dd><p>With <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a> and <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fPIC"><em class="xref std std-option">-fPIC</em></a>, dont generate (do generate)
+<dd><p>With <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a> and <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fPIC"><em class="xref std std-option">-fPIC</em></a>, don&#8217;t generate (do generate)
 instruction sequences that load addresses for functions from the PLT part
 of the GOT rather than (traditional on other architectures) calls to the
 PLT.  The default is <em class="xref std std-option">-mgotplt</em>.</p>
@@ -2510,9 +2510,9 @@ CR16C architecture does not support the far data model.</p>
 <h2>Darwin Options<a class="headerlink" href="#darwin-options" title="Permalink to this headline">¶</a></h2>
 <p id="index-14">These options are defined for all architectures running the Darwin operating
 system.</p>
-<p>FSF GCC on Darwin does not create fat object files; it creates
+<p>FSF GCC on Darwin does not create &#8216;fat&#8217; object files; it creates
 an object file for the single architecture that GCC was built to
-target.  Apples GCC on Darwin does create fat files if multiple
+target.  Apple&#8217;s GCC on Darwin does create &#8216;fat&#8217; files if multiple
 <em class="xref std std-option">-arch</em> options are used; it does so by running the compiler or
 linker multiple times and joining the results together with
 lipo.</p>
@@ -2544,7 +2544,7 @@ in .framework.  The name of a framework is the name of this
 directory excluding the .framework.  Headers associated with
 the framework are found in one of those two directories, with
 Headers being searched first.  A subframework is a framework
-directory that is in a frameworks Frameworks directory.
+directory that is in a framework&#8217;s Frameworks directory.
 Includes of subframework headers can only appear in a header of a
 framework that contains the subframework, or in a sibling subframework
 header.  Two subframeworks are siblings if they occur in the same
@@ -2588,7 +2588,7 @@ This is by default ON.</p>
 <dd><p class="first">The earliest version of MacOS X that this executable will run on
 is <tt class="docutils literal"><span class="pre">version</span></tt>.  Typical values of <tt class="docutils literal"><span class="pre">version</span></tt> include <tt class="docutils literal"><span class="pre">10.1</span></tt>,
 <tt class="docutils literal"><span class="pre">10.2</span></tt>, and <tt class="docutils literal"><span class="pre">10.3.9</span></tt>.</p>
-<p class="last">If the compiler was built to use the systems headers by default,
+<p class="last">If the compiler was built to use the system&#8217;s headers by default,
 then the default for this option is the system version on which the
 compiler is running, otherwise the default is to make choices that
 are compatible with as many systems and code bases as possible.</p>
@@ -2674,7 +2674,7 @@ an executable when linking, using the Darwin libtool command.</p>
 <dl class="option">
 <dt id="cmdoption-force_cpusubtype_ALL">
 <tt class="descname">-force_cpusubtype_ALL</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-force_cpusubtype_ALL" title="Permalink to this definition">¶</a></dt>
-<dd><p>This causes GCCs output file to have the ALL subtype, instead of
+<dd><p>This causes GCC&#8217;s output file to have the ALL subtype, instead of
 one controlled by the <a class="reference internal" href="#cmdoption-mcpu"><em class="xref std std-option">-mcpu</em></a> or <a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a> option.</p>
 </dd></dl>
 
@@ -2886,7 +2886,7 @@ directly accessed via a single instruction.</p>
 <p>The default is <em class="xref std std-option">-mlarge-data</em>.  With this option the data area
 is limited to just below 2GB.  Programs that require more than 2GB of
 data must use <tt class="docutils literal"><span class="pre">malloc</span></tt> or <tt class="docutils literal"><span class="pre">mmap</span></tt> to allocate the data in the
-heap instead of in the programs data segment.</p>
+heap instead of in the program&#8217;s data segment.</p>
 <p>When generating code for shared libraries, <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a> implies
 <a class="reference internal" href="#cmdoption-msmall-data"><em class="xref std std-option">-msmall-data</em></a> and <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fPIC"><em class="xref std std-option">-fPIC</em></a> implies <em class="xref std std-option">-mlarge-data</em>.</p>
 </dd></dl>
@@ -2958,7 +2958,7 @@ and the size of the external cache on the machine.</p>
 <dd>A decimal number representing clock cycles.</dd>
 <dt>L1L2L3main</dt>
 <dd>The compiler contains estimates of the number of clock cycles for
-typical EV4 &amp; EV5 hardware for the Level 1, 2 &amp; 3 caches
+&#8216;typical&#8217; EV4 &amp; EV5 hardware for the Level 1, 2 &amp; 3 caches
 (also called Dcache, Scache, and Bcache), as well as to main memory.
 Note that L3 is only valid for EV5.</dd>
 </dl>
@@ -3103,7 +3103,7 @@ With a bfin-elf target, this option implies <a class="reference internal" href="
 <tt class="descname">-minline-plt</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-minline-plt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable inlining of PLT entries in function calls to functions that are
 not known to bind locally.  It has no effect without <a class="reference internal" href="#cmdoption-mfdpic"><em class="xref std std-option">-mfdpic</em></a>.
-Its enabled by default if optimizing for speed and compiling for
+It&#8217;s enabled by default if optimizing for speed and compiling for
 shared libraries (i.e., <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fPIC"><em class="xref std std-option">-fPIC</em></a> or <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a>), or when an
 optimization option such as <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O3"><em class="xref std std-option">-O3</em></a> or above is present in the
 command line.</p>
@@ -3125,19 +3125,19 @@ command line.</p>
 <dt id="cmdoption-mgprel-ro">
 <tt class="descname">-mgprel-ro</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mgprel-ro" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable the use of <tt class="docutils literal"><span class="pre">GPREL</span></tt> relocations in the FDPIC ABI for data
-that is known to be in read-only sections.  Its enabled by default,
+that is known to be in read-only sections.  It&#8217;s enabled by default,
 except for <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a> or <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fpie"><em class="xref std std-option">-fpie</em></a>: even though it may help
 make the global offset table smaller, it trades 1 instruction for 4.
 With <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fPIC"><em class="xref std std-option">-fPIC</em></a> or <em class="xref std std-option">-fPIE</em>, it trades 3 instructions for 4,
 one of which may be shared by multiple symbols, and it avoids the need
-for a GOT entry for the referenced symbol, so its more likely to be a
+for a GOT entry for the referenced symbol, so it&#8217;s more likely to be a
 win.  If it is not, <em class="xref std std-option">-mno-gprel-ro</em> can be used to disable it.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-multilib-library-pic">
 <tt class="descname">-multilib-library-pic</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-multilib-library-pic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Link with the (library, not FD) pic libraries.  Its implied by
+<dd><p>Link with the (library, not FD) pic libraries.  It&#8217;s implied by
 <a class="reference internal" href="#cmdoption-mlibrary-pic"><em class="xref std std-option">-mlibrary-pic</em></a>, as well as by <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fPIC"><em class="xref std std-option">-fPIC</em></a> and
 <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a> without <a class="reference internal" href="#cmdoption-mfdpic"><em class="xref std std-option">-mfdpic</em></a>.  You should never have to use
 it explicitly.</p>
@@ -3164,7 +3164,7 @@ within the 32-bit address space.</p>
 <tt class="descname">-malign-labels</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-malign-labels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Try to align labels to an 8-byte boundary by inserting NOPs into the
 previous packet.  This option only has an effect when VLIW packing
-is enabled.  It doesnt create new packets; it merely adds NOPs to
+is enabled.  It doesn&#8217;t create new packets; it merely adds NOPs to
 existing ones.</p>
 </dd></dl>
 
@@ -3575,7 +3575,7 @@ linkers in which they give bogus error messages when linking some programs.</p>
 <tt class="descname">-msoft-float</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-msoft-float" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate output containing library calls for floating point.
 Warning: the requisite libraries are not available for all HPPA
-targets.  Normally the facilities of the machines usual C compiler are
+targets.  Normally the facilities of the machine&#8217;s usual C compiler are
 used, but this cannot be done directly in cross-compilation.  You must make
 your own arrangements to provide suitable library functions for
 cross-compilation.</p>
@@ -3605,8 +3605,8 @@ explicitly or implicitly, with the GNU linker.  This option does not
 affect which <strong class="command">ld</strong> is called; it only changes what parameters
 are passed to that <strong class="command">ld</strong>.
 The <strong class="command">ld</strong> that is called is determined by the
-<em class="xref std std-option">--with-ld</em> configure option, GCCs program search path, and
-finally by the users <span class="target" id="index-18"></span><tt class="xref std std-envvar docutils literal"><span class="pre">PATH</span></tt>.  The linker used by GCC can be printed
+<em class="xref std std-option">--with-ld</em> configure option, GCC&#8217;s program search path, and
+finally by the user&#8217;s <span class="target" id="index-18"></span><tt class="xref std std-envvar docutils literal"><span class="pre">PATH</span></tt>.  The linker used by GCC can be printed
 using which <cite>gcc -print-prog-name=ld</cite>.  This option is only available
 on the 64-bit HP-UX GCC, i.e. configured with hppa*64*-<em>-hpux</em>.</p>
 </dd></dl>
@@ -3622,7 +3622,7 @@ implicitly, with the HP linker.  This option does not affect
 which <strong class="command">ld</strong> is called; it only changes what parameters are passed to that
 <strong class="command">ld</strong>.
 The <strong class="command">ld</strong> that is called is determined by the <em class="xref std std-option">--with-ld</em>
-configure option, GCCs program search path, and finally by the users
+configure option, GCC&#8217;s program search path, and finally by the user&#8217;s
 <span class="target" id="index-19"></span><tt class="xref std std-envvar docutils literal"><span class="pre">PATH</span></tt>.  The linker used by GCC can be printed using which
 <cite>gcc -print-prog-name=ld</cite>.  This option is only available on the 64-bit
 HP-UX GCC, i.e. configured with hppa*64*-<em>-hpux</em>.</p>
@@ -3676,7 +3676,7 @@ of the C library.  Thus, extreme care is needed in using this
 option.</p>
 <p>Library code that is intended to operate with more than one UNIX
 standard must test, set and restore the variable <tt class="docutils literal"><span class="pre">__xpg4_extended_mask</span></tt>
-as appropriate.  Most GNU software doesnt provide this capability.</p>
+as appropriate.  Most GNU software doesn&#8217;t provide this capability.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3690,7 +3690,7 @@ as appropriate.  Most GNU software doesnt provide this capability.</p>
 <dt id="cmdoption-static">
 <tt class="descname">-static</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-static" title="Permalink to this definition">¶</a></dt>
 <dd><p>The HP-UX implementation of setlocale in libc has a dependency on
-libdld.sl.  There isnt an archive version of libdld.sl.  Thus,
+libdld.sl.  There isn&#8217;t an archive version of libdld.sl.  Thus,
 when the <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified, special link options
 are needed to resolve this dependency.</p>
 <p>On HP-UX 10 and later, the GCC driver adds the necessary options to
@@ -3730,13 +3730,13 @@ and GNU/Linux.</p>
 <dl class="option">
 <dt id="cmdoption-mgnu-as">
 <tt class="descname">-mgnu-as</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-gnu-as</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mgnu-as" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate (or dont) code for the GNU assembler.  This is the default.</p>
+<dd><p>Generate (or don&#8217;t) code for the GNU assembler.  This is the default.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-mgnu-ld">
 <tt class="descname">-mgnu-ld</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-gnu-ld</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mgnu-ld" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate (or dont) code for the GNU linker.  This is the default.</p>
+<dd><p>Generate (or don&#8217;t) code for the GNU linker.  This is the default.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3749,14 +3749,14 @@ is not position independent code, and violates the IA-64 ABI.</p>
 <dl class="option">
 <dt id="cmdoption-mvolatile-asm-stop">
 <tt class="descname">-mvolatile-asm-stop</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-volatile-asm-stop</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mvolatile-asm-stop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate (or dont) a stop bit immediately before and after volatile asm
+<dd><p>Generate (or don&#8217;t) a stop bit immediately before and after volatile asm
 statements.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-mregister-names">
 <tt class="descname">-mregister-names</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-register-names</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mregister-names" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate (or dont) in, loc, and out register names for
+<dd><p>Generate (or don&#8217;t) in, loc, and out register names for
 the stacked registers.  This may make assembler output more readable.</p>
 </dd></dl>
 
@@ -3844,14 +3844,14 @@ using the maximum throughput algorithm.</p>
 <dl class="option">
 <dt id="cmdoption-mfused-madd">
 <tt class="descname">-mfused-madd</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-fused-madd</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mfused-madd" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do (dont) generate code that uses the fused multiply/add or multiply/subtract
+<dd><p>Do (don&#8217;t) generate code that uses the fused multiply/add or multiply/subtract
 instructions.  The default is to use these instructions.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-mno-dwarf2-asm">
 <tt class="descname">-mno-dwarf2-asm</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mdwarf2-asm</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-dwarf2-asm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont (or do) generate assembler code for the DWARF 2 line number debugging
+<dd><p>Don&#8217;t (or do) generate assembler code for the DWARF 2 line number debugging
 info.  This may be useful when not using the GNU assembler.</p>
 </dd></dl>
 
@@ -3903,7 +3903,7 @@ to 64 bits.  These are HP-UX specific flags.</p>
 <dd><p>(Dis/En)able data speculative scheduling before reload.
 This results in generation of <tt class="docutils literal"><span class="pre">ld.a</span></tt> instructions and
 the corresponding check instructions (<tt class="docutils literal"><span class="pre">ld.c</span></tt> / <tt class="docutils literal"><span class="pre">chk.a</span></tt>).
-The default is disable.</p>
+The default is &#8216;disable&#8217;.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3912,7 +3912,7 @@ The default is disable.</p>
 <dd><p>(En/Dis)able data speculative scheduling after reload.
 This results in generation of <tt class="docutils literal"><span class="pre">ld.a</span></tt> instructions and
 the corresponding check instructions (<tt class="docutils literal"><span class="pre">ld.c</span></tt> / <tt class="docutils literal"><span class="pre">chk.a</span></tt>).
-The default is enable.</p>
+The default is &#8216;enable&#8217;.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3922,7 +3922,7 @@ The default is enable.</p>
 available only during region scheduling (i.e. before reload).
 This results in generation of the <tt class="docutils literal"><span class="pre">ld.s</span></tt> instructions and
 the corresponding check instructions <tt class="docutils literal"><span class="pre">chk.s</span></tt>.
-The default is disable.</p>
+The default is &#8216;disable&#8217;.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3931,7 +3931,7 @@ The default is disable.</p>
 <dd><p>(En/Dis)able speculative scheduling of the instructions that
 are dependent on the data speculative loads before reload.
 This is effective only with <em class="xref std std-option">-msched-br-data-spec</em> enabled.
-The default is enable.</p>
+The default is &#8216;enable&#8217;.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3940,7 +3940,7 @@ The default is enable.</p>
 <dd><p>(En/Dis)able speculative scheduling of the instructions that
 are dependent on the data speculative loads after reload.
 This is effective only with <a class="reference internal" href="#cmdoption-msched-ar-data-spec"><em class="xref std std-option">-msched-ar-data-spec</em></a> enabled.
-The default is enable.</p>
+The default is &#8216;enable&#8217;.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3949,7 +3949,7 @@ The default is enable.</p>
 <dd><p>(En/Dis)able speculative scheduling of the instructions that
 are dependent on the control speculative loads.
 This is effective only with <em class="xref std std-option">-msched-control-spec</em> enabled.
-The default is enable.</p>
+The default is &#8216;enable&#8217;.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3958,7 +3958,7 @@ The default is enable.</p>
 <dd><p>If enabled, data-speculative instructions are chosen for schedule
 only if there are no other choices at the moment.  This makes
 the use of the data speculation much more conservative.
-The default is disable.</p>
+The default is &#8216;disable&#8217;.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3967,7 +3967,7 @@ The default is disable.</p>
 <dd><p>If enabled, control-speculative instructions are chosen for schedule
 only if there are no other choices at the moment.  This makes
 the use of the control speculation much more conservative.
-The default is disable.</p>
+The default is &#8216;disable&#8217;.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3976,7 +3976,7 @@ The default is disable.</p>
 <dd><p>If enabled, speculative dependencies are considered during
 computation of the instructions priorities.  This makes the use of the
 speculation a bit more conservative.
-The default is disable.</p>
+The default is &#8216;disable&#8217;.</p>
 </dd></dl>
 
 <dl class="option">
@@ -4027,7 +4027,7 @@ The default value is 1.</p>
 <tt class="descname">-msched-max-memory-insns-hard-limit</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-msched-max-memory-insns-hard-limit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes the limit specified by msched-max-memory-insns a hard limit,
 disallowing more than that number in an instruction group.
-Otherwise, the limit is soft, meaning that non-memory operations
+Otherwise, the limit is &#8216;soft&#8217;, meaning that non-memory operations
 are preferred when the limit is reached, but memory operations may still
 be scheduled.</p>
 </dd></dl>
@@ -4095,11 +4095,11 @@ runtime library for whatever I/O functions are needed.</p>
 <tt class="descname">-memregs</tt><tt class="descclassname">=number</tt><a class="headerlink" href="#cmdoption-memregs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specifies the number of memory-based pseudo-registers GCC uses
 during code generation.  These pseudo-registers are used like real
-registers, so there is a tradeoff between GCCs ability to fit the
+registers, so there is a tradeoff between GCC&#8217;s ability to fit the
 code into available registers, and the performance penalty of using
 memory instead of registers.  Note that all modules in a program must
 be compiled with the same value for this option.  Because of that, you
-must not use this option with GCCs default runtime libraries.</p>
+must not use this option with GCC&#8217;s default runtime libraries.</p>
 </dd></dl>
 
 <p>:: _m32r/d-options:</p>
@@ -4190,7 +4190,7 @@ The <a class="reference internal" href="#cmdoption-msdata"><em class="xref std s
 for this option to have any effect.</p>
 <p>All modules should be compiled with the same <em class="xref std std-option">-G ``num``</em> value.
 Compiling with different values of <tt class="docutils literal"><span class="pre">num</span></tt> may or may not work; if it
-doesnt the linker gives an error messageincorrect code is not
+doesn&#8217;t the linker gives an error message-incorrect code is not
 generated.</p>
 </dd></dl>
 
@@ -4273,7 +4273,7 @@ are given below.</p>
 architecture.  Permissible values of <tt class="docutils literal"><span class="pre">arch</span></tt> for M680x0
 architectures are: 68000, 68010, 68020,
 68030, 68040, 68060 and cpu32.  ColdFire
-architectures are selected according to Freescales ISA classification
+architectures are selected according to Freescale&#8217;s ISA classification
 and the permissible values are: isaa, isaaplus,
 isab and isac.</p>
 <p>GCC defines a macro <tt class="docutils literal"><span class="pre">__mcf``arch``__</span></tt> whenever it is generating
@@ -4507,10 +4507,10 @@ the default for ColdFire devices that have no FPU.</p>
 <tt class="descname">-mdiv</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-div</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mdiv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate (do not generate) ColdFire hardware divide and remainder
 instructions.  If <a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a> is used without <a class="reference internal" href="#cmdoption-mcpu"><em class="xref std std-option">-mcpu</em></a>,
-the default is on for ColdFire architectures and off for M680x0
+the default is &#8216;on&#8217; for ColdFire architectures and &#8216;off&#8217; for M680x0
 architectures.  Otherwise, the default is taken from the target CPU
 (either the default CPU, or the one specified by <a class="reference internal" href="#cmdoption-mcpu"><em class="xref std std-option">-mcpu</em></a>).  For
-example, the default is off for <em class="xref std std-option">-mcpu=5206</em> and on for
+example, the default is &#8216;off&#8217; for <em class="xref std std-option">-mcpu=5206</em> and &#8216;on&#8217; for
 <em class="xref std std-option">-mcpu=5206e</em>.</p>
 <p>GCC defines the macro <tt class="docutils literal"><span class="pre">__mcfhwdiv__</span></tt> when this option is enabled.</p>
 </dd></dl>
@@ -4626,7 +4626,7 @@ without virtual memory management.  This option implies <a class="reference inte
 <tr><td class="option-group" colspan="2">
 <kbd><span class="option">-m<var>no-id-shared-library</var></span></kbd></td>
 </tr>
-<tr><td>&nbsp;</td><td>Generate code that doesnt assume ID-based shared libraries are being used.
+<tr><td>&nbsp;</td><td>Generate code that doesn&#8217;t assume ID-based shared libraries are being used.
 This is the default.</td></tr>
 </tbody>
 </table>
@@ -4755,7 +4755,7 @@ between two registers.</p>
 <dl class="option">
 <dt id="cmdoption-mall-opts">
 <tt class="descname">-mall-opts</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mall-opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enables all the optional instructionsaverage, multiply, divide, bit
+<dd><p>Enables all the optional instructions-average, multiply, divide, bit
 operations, leading zero, absolute difference, min/max, clip, and
 saturation.</p>
 </dd></dl>
@@ -4779,7 +4779,7 @@ register as a base register, and there is a 128-byte limit to the
 <dl class="option">
 <dt id="cmdoption-mbitops">
 <tt class="descname">-mbitops</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mbitops" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enables the bit operation instructionsbit test (<tt class="docutils literal"><span class="pre">btstm</span></tt>), set
+<dd><p>Enables the bit operation instructions-bit test (<tt class="docutils literal"><span class="pre">btstm</span></tt>), set
 (<tt class="docutils literal"><span class="pre">bsetm</span></tt>), clear (<tt class="docutils literal"><span class="pre">bclrm</span></tt>), invert (<tt class="docutils literal"><span class="pre">bnotm</span></tt>), and
 test-and-set (<tt class="docutils literal"><span class="pre">tas</span></tt>).</p>
 </dd></dl>
@@ -4821,13 +4821,13 @@ coprocessor.  Note that the coprocessor is normally enabled via the
 <dl class="option">
 <dt id="cmdoption-mcop32">
 <tt class="descname">-mcop32</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mcop32" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enables the 32-bit coprocessors instructions.</p>
+<dd><p>Enables the 32-bit coprocessor&#8217;s instructions.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-mcop64">
 <tt class="descname">-mcop64</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mcop64" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enables the 64-bit coprocessors instructions.</p>
+<dd><p>Enables the 64-bit coprocessor&#8217;s instructions.</p>
 </dd></dl>
 
 <dl class="option">
@@ -4957,7 +4957,7 @@ this option, functions default to the <tt class="docutils literal"><span class="
 <tt class="descname">-mtiny</tt><tt class="descclassname">=n</tt><a class="headerlink" href="#cmdoption-mtiny" title="Permalink to this definition">¶</a></dt>
 <dd><p>Variables that are <tt class="docutils literal"><span class="pre">n</span></tt> bytes or smaller are allocated to the
 <tt class="docutils literal"><span class="pre">.tiny</span></tt> section.  These variables use the <tt class="docutils literal"><span class="pre">$gp</span></tt> base
-register.  The default for this option is 4, but note that theres a
+register.  The default for this option is 4, but note that there&#8217;s a
 65536-byte limit to the <tt class="docutils literal"><span class="pre">.tiny</span></tt> section.</p>
 </dd></dl>
 
@@ -5326,7 +5326,7 @@ and are retained for backwards compatibility.</p>
 generates 64-bit code when you select a 64-bit architecture, but you
 can use <a class="reference internal" href="#cmdoption-mgp32"><em class="xref std std-option">-mgp32</em></a> to get 32-bit code instead.</p>
 <p>For information about the O64 ABI, see
-<a class="reference external" href="http://gcc.gnu.org/projects/mipso64-abi.html">http://gcc.gnu.org/projects/mipso64-abi.html</a>.</p>
+<a class="reference external" href="http://gcc.gnu.org//projects//mipso64-abi.html">http://gcc.gnu.org//projects//mipso64-abi.html</a>.</p>
 <p>GCC supports a variant of the o32 ABI in which floating-point registers
 are 64 rather than 32 bits wide.  You can select this combination with
 <em class="xref std std-option">-mabi=32</em> <a class="reference internal" href="#cmdoption-mfp64"><em class="xref std std-option">-mfp64</em></a>.  This ABI relies on the <tt class="docutils literal"><span class="pre">mthc1</span></tt>
@@ -5415,7 +5415,7 @@ less efficient, since it takes three instructions to fetch the
 value of a global symbol.</p>
 <p>Note that some linkers can create multiple GOTs.  If you have such a
 linker, you should only need to use <a class="reference internal" href="#cmdoption-mxgot"><em class="xref std std-option">-mxgot</em></a> when a single object
-file accesses more than 64ks worth of GOT entries.  Very few do.</p>
+file accesses more than 64k&#8217;s worth of GOT entries.  Very few do.</p>
 <p>These options have no effect unless GCC is generating position
 independent code.</p>
 </dd></dl>
@@ -5699,8 +5699,8 @@ a small data section if the size of that data is within the <a class="reference 
 that is no bigger than <tt class="docutils literal"><span class="pre">num</span></tt> bytes, you must make sure that <tt class="docutils literal"><span class="pre">Var</span></tt>
 is placed in a small data section.  If <tt class="docutils literal"><span class="pre">Var</span></tt> is defined by another
 module, you must either compile that module with a high-enough
-<a class="reference internal" href="#cmdoption-G"><em class="xref std std-option">-G</em></a> setting or attach a <tt class="docutils literal"><span class="pre">section</span></tt> attribute to <tt class="docutils literal"><span class="pre">Var``s</span>
-<span class="pre">definition.</span>&nbsp; <span class="pre">If</span> <span class="pre">``Var</span></tt> is common, you must link the application
+<a class="reference internal" href="#cmdoption-G"><em class="xref std std-option">-G</em></a> setting or attach a <tt class="docutils literal"><span class="pre">section</span></tt> attribute to <tt class="docutils literal"><span class="pre">Var</span></tt>&#8216;s
+definition.  If <tt class="docutils literal"><span class="pre">Var</span></tt> is common, you must link the application
 with a high-enough <a class="reference internal" href="#cmdoption-G"><em class="xref std std-option">-G</em></a> setting.</p>
 <p>The easiest way of satisfying these restrictions is to compile
 and link every module with the same <a class="reference internal" href="#cmdoption-G"><em class="xref std std-option">-G</em></a> option.  However,
@@ -5948,7 +5948,7 @@ instructions are available instead.</p>
 <tt class="descname">-mfix-sb1</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mfix-sb1" title="Permalink to this definition">¶</a></dt>
 <dd><p>Work around certain SB-1 CPU core errata.
 (This flag currently works around the SB-1 revision 2
-F1 and F2 floating-point errata.)</p>
+&#8216;F1&#8217; and &#8216;F2&#8217; floating-point errata.)</p>
 </dd></dl>
 
 <dl class="option">
@@ -5958,30 +5958,30 @@ F1 and F2 floating-point errata.)</p>
 side-effects of speculation on R10K processors.</p>
 <p>In common with many processors, the R10K tries to predict the outcome
 of a conditional branch and speculatively executes instructions from
-the taken branch.  It later aborts these instructions if the
+the &#8216;taken&#8217; branch.  It later aborts these instructions if the
 predicted outcome is wrong.  However, on the R10K, even aborted
 instructions can have side effects.</p>
 <p>This problem only affects kernel stores and, depending on the system,
 kernel loads.  As an example, a speculatively-executed store may load
 the target memory into cache and mark the cache line as dirty, even if
 the store itself is later aborted.  If a DMA operation writes to the
-same area of memory before the dirty line is flushed, the cached
+same area of memory before the &#8216;dirty&#8217; line is flushed, the cached
 data overwrites the DMA-ed data.  See the R10K processor manual
 for a full description, including other potential problems.</p>
 <p>One workaround is to insert cache barrier instructions before every memory
 access that might be speculatively executed and that might have side
 effects even if aborted.  <em class="xref std std-option">-mr10k-cache-barrier=``setting``</em>
-controls GCCs implementation of this workaround.  It assumes that
+controls GCC&#8217;s implementation of this workaround.  It assumes that
 aborted accesses to any byte in the following regions does not have
 side effects:</p>
 <ul class="simple">
-<li>the memory occupied by the current functions stack frame;<ul>
+<li>the memory occupied by the current function&#8217;s stack frame;<ul>
 <li>the memory occupied by an incoming stack argument;</li>
 <li>the memory occupied by an object with a link-time-constant address.</li>
 </ul>
 </li>
 </ul>
-<p>It is the kernels responsibility to ensure that speculative
+<p>It is the kernel&#8217;s responsibility to ensure that speculative
 accesses to these regions are indeed safe.</p>
 <p>If the input program contains a function declaration such as:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">foo</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>
@@ -6020,7 +6020,7 @@ depends on the target GCC was configured for, but commonly is either
 <dl class="option">
 <dt id="cmdoption-cost">
 <tt class="descname">-cost</tt><tt class="descclassname">=num</tt><a class="headerlink" href="#cmdoption-cost" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the cost of branches to roughly <tt class="docutils literal"><span class="pre">num</span></tt> simple instructions.
+<dd><p>Set the cost of branches to roughly <tt class="docutils literal"><span class="pre">num</span></tt> &#8216;simple&#8217; instructions.
 This cost is only a heuristic and is not guaranteed to produce
 consistent results across releases.  A zero cost redundantly selects
 the default, which is based on the <a class="reference internal" href="#cmdoption-mtune"><em class="xref std std-option">-mtune</em></a> setting.</p>
@@ -6095,7 +6095,7 @@ assembler and the linker alone without help from the compiler.</p>
 <dt id="cmdoption-mmcount-ra-address">
 <tt class="descname">-mmcount-ra-address</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-mcount-ra-address</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mmcount-ra-address" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emit (do not emit) code that allows <tt class="docutils literal"><span class="pre">_mcount</span></tt> to modify the
-calling functions return address.  When enabled, this option extends
+calling function&#8217;s return address.  When enabled, this option extends
 the usual <tt class="docutils literal"><span class="pre">_mcount</span></tt> interface with a new <tt class="docutils literal"><span class="pre">ra-address</span></tt>
 parameter, which has type <tt class="docutils literal"><span class="pre">intptr_t</span> <span class="pre">*</span></tt> and is passed in register
 <tt class="docutils literal"><span class="pre">$12</span></tt>.  <tt class="docutils literal"><span class="pre">_mcount</span></tt> can then modify the return address by
@@ -6360,7 +6360,7 @@ known to only support the 430 ISA then that is selected, otherwise the
 used to select the 430 ISA.  Similarly the generic msp430x MCU
 name selects the 430X ISA.</p>
 <p>In addition an MCU-specific linker script is added to the linker
-command line.  The scripts name is the name of the MCU with
+command line.  The script&#8217;s name is the name of the MCU with
 .ld appended.  Thus specifying <em class="xref std std-option">-mmcu=xxx</em> on the <strong class="command">gcc</strong>
 command line defines the C preprocessor symbol <tt class="docutils literal"><span class="pre">__XXX__</span></tt> and
 cause the linker to search for a script called xxx.ld.</p>
@@ -7016,7 +7016,7 @@ since the DSP AE does not provide hardware support for byte load/stores.</p>
 <tr><td>&nbsp;</td><td>Enable the compiler to directly use a symbol name as an address in a
 load/store instruction, without first loading it into a
 register.  Typically, the use of this option generates larger
-programs, which run faster than when the option isnt used.  However, the
+programs, which run faster than when the option isn&#8217;t used.  However, the
 results vary from program to program, so it is left as a user option,
 rather than being permanently enabled.</td></tr>
 <tr><td class="option-group" colspan="2">
@@ -7199,14 +7199,14 @@ following options:</p>
 <a class="reference internal" href="#cmdoption-mquad-memory"><em class="xref std std-option">-mquad-memory</em></a> <a class="reference internal" href="#cmdoption-mquad-memory-atomic"><em class="xref std std-option">-mquad-memory-atomic</em></a></p>
 <p>The particular options set for any particular CPU varies between
 compiler versions, depending on what setting seems to produce optimal
-code for that CPU; it doesnt necessarily reflect the actual hardwares
+code for that CPU; it doesn&#8217;t necessarily reflect the actual hardware&#8217;s
 capabilities.  If you wish to set an individual option to a particular
 value, you may specify it after the <a class="reference internal" href="#cmdoption-mcpu"><em class="xref std std-option">-mcpu</em></a> option, like
 <em class="xref std std-option">-mcpu=970 -mno-altivec</em>.</p>
 <p>On AIX, the <a class="reference internal" href="#cmdoption-maltivec"><em class="xref std std-option">-maltivec</em></a> and <em class="xref std std-option">-mpowerpc64</em> options are
 not enabled or disabled by the <a class="reference internal" href="#cmdoption-mcpu"><em class="xref std std-option">-mcpu</em></a> option at present because
 AIX does not have full support for these options.  You may still
-enable or disable them individually if youre sure itll work in your
+enable or disable them individually if you&#8217;re sure it&#8217;ll work in your
 environment.</p>
 </dd></dl>
 
@@ -7792,10 +7792,10 @@ the second scheduling pass.  The argument <tt class="docutils literal"><span cla
 following values:</p>
 <dl class="docutils">
 <dt>no</dt>
-<dd>Dont insert NOPs.</dd>
+<dd>Don&#8217;t insert NOPs.</dd>
 <dt>pad</dt>
 <dd>Pad with NOPs any dispatch group that has vacant issue slots,
-according to the schedulers grouping.</dd>
+according to the scheduler&#8217;s grouping.</dd>
 <dt>regroup_exact</dt>
 <dd>Insert NOPs to force costly dependent insns into
 separate groups.  Insert exactly as many NOPs as needed to force an insn
@@ -8200,7 +8200,7 @@ estimate that converges after three steps.</p>
 <tt class="descname">-mveclibabi</tt><tt class="descclassname">=type</tt><a class="headerlink" href="#cmdoption-mveclibabi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specifies the ABI type to use for vectorizing intrinsics using an
 external library.  The only type supported at present is mass,
-which specifies to use IBMs Mathematical Acceleration Subsystem
+which specifies to use IBM&#8217;s Mathematical Acceleration Subsystem
 (MASS) libraries for vectorizing intrinsics using external libraries.
 GCC currently emits calls to <tt class="docutils literal"><span class="pre">acosd2</span></tt>, <tt class="docutils literal"><span class="pre">acosf4</span></tt>,
 <tt class="docutils literal"><span class="pre">acoshd2</span></tt>, <tt class="docutils literal"><span class="pre">acoshf4</span></tt>, <tt class="docutils literal"><span class="pre">asind2</span></tt>, <tt class="docutils literal"><span class="pre">asinf4</span></tt>,
@@ -8327,7 +8327,7 @@ format.</p>
 which can be placed into the small data area.  Using the small data
 area can lead to smaller and faster code, but the size of area is
 limited and it is up to the programmer to ensure that the area does
-not overflow.  Also when the small data area is used one of the RXs
+not overflow.  Also when the small data area is used one of the RX&#8217;s
 registers (usually <tt class="docutils literal"><span class="pre">r13</span></tt>) is reserved for use pointing to this
 area, so it is no longer available for use by the compiler.  This
 could result in slower and/or larger code if variables are pushed onto
@@ -8355,7 +8355,7 @@ board-specific runtime.</p>
 <dt id="cmdoption-mas100-syntax">
 <tt class="descname">-mas100-syntax</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-as100-syntax</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mas100-syntax" title="Permalink to this definition">¶</a></dt>
 <dd><p>When generating assembler output use a syntax that is compatible with
-Renesass AS100 assembler.  This syntax can also be handled by the GAS
+Renesas&#8217;s AS100 assembler.  This syntax can also be handled by the GAS
 assembler, but it has some restrictions so it is not generated by default.</p>
 </dd></dl>
 
@@ -8445,7 +8445,7 @@ only supports one such interrupt.</p>
 <tt class="docutils literal"><span class="pre">SMOVF</span></tt>, <tt class="docutils literal"><span class="pre">SCMPU</span></tt>, <tt class="docutils literal"><span class="pre">SMOVB</span></tt>, <tt class="docutils literal"><span class="pre">SMOVU</span></tt>, <tt class="docutils literal"><span class="pre">SUNTIL</span></tt>
 <tt class="docutils literal"><span class="pre">SWHILE</span></tt> and also the <tt class="docutils literal"><span class="pre">RMPA</span></tt> instruction.  These
 instructions may prefetch data, which is not safe to do if accessing
-an I/O register.  (See section 12.2.7 of the RX62N Group Users Manual
+an I/O register.  (See section 12.2.7 of the RX62N Group User&#8217;s Manual
 for more information).</p>
 <p>The default is to allow these instructions, but it is not possible for
 GCC to reliably detect all circumstances where a string instruction
@@ -8504,8 +8504,8 @@ type. This is the default.</p>
 <dl class="option">
 <dt id="cmdoption-mbackchain">
 <tt class="descname">-mbackchain</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-backchain</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mbackchain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Store (do not store) the address of the callers frame as backchain pointer
-into the callees stack frame.
+<dd><p>Store (do not store) the address of the caller&#8217;s frame as backchain pointer
+into the callee&#8217;s stack frame.
 A backchain may be needed to allow debugging using tools that do not understand
 DWARF 2 call frame information.
 When <em class="xref std std-option">-mno-packed-stack</em> is in effect, the backchain pointer is stored
@@ -8636,7 +8636,7 @@ hardware floating point is used.</p>
 <dt id="cmdoption-mwarn-framesize">
 <tt class="descname">-mwarn-framesize</tt><tt class="descclassname">=framesize</tt><a class="headerlink" href="#cmdoption-mwarn-framesize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emit a warning if the current function exceeds the given frame size.  Because
-this is a compile-time check it doesnt need to be a real problem when the program
+this is a compile-time check it doesn&#8217;t need to be a real problem when the program
 runs.  It is intended to identify functions that most probably cause
 a stack overflow.  It is useful to be used in an environment with limited stack
 size e.g. the linux kernel.</p>
@@ -8670,7 +8670,7 @@ The <tt class="docutils literal"><span class="pre">stack-guard</span></tt> optio
 <dl class="option">
 <dt id="cmdoption-mhotpatch">
 <tt class="descname">-mhotpatch</tt><tt class="descclassname">=pre-halfwords,post-halfwords</tt><a class="headerlink" href="#cmdoption-mhotpatch" title="Permalink to this definition">¶</a></dt>
-<dd><p>If the hotpatch option is enabled, a hot-patching function
+<dd><p>If the hotpatch option is enabled, a &#8216;hot-patching&#8217; function
 prologue is generated for all functions in the compilation unit.
 The funtion label is prepended with the given number of two-byte
 NOP instructions (<tt class="docutils literal"><span class="pre">pre-halfwords</span></tt>, maximum 1000000).  After
@@ -8953,7 +8953,7 @@ single-precision mode by default.</p>
 <dt id="cmdoption-m4al">
 <tt class="descname">-m4al</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-m4al" title="Permalink to this definition">¶</a></dt>
 <dd><p>Same as <a class="reference internal" href="#cmdoption-m4a-nofpu"><em class="xref std std-option">-m4a-nofpu</em></a>, except that it implicitly passes
-<em class="xref std std-option">-dsp</em> to the assembler.  GCC doesnt generate any DSP
+<em class="xref std std-option">-dsp</em> to the assembler.  GCC doesn&#8217;t generate any DSP
 instructions at the moment.</p>
 </dd></dl>
 
@@ -9180,7 +9180,7 @@ the Global Offset Table instead of the Procedure Linkage Table.</p>
 <dl class="option">
 <dt id="cmdoption-musermode">
 <tt class="descname">-musermode</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-usermode</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-musermode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont allow (allow) the compiler generating privileged mode code.  Specifying
+<dd><p>Don&#8217;t allow (allow) the compiler generating privileged mode code.  Specifying
 <a class="reference internal" href="#cmdoption-musermode"><em class="xref std std-option">-musermode</em></a> also implies <em class="xref std std-option">-mno-inline-ic_invalidate</em> if the
 inlined code would not work in user mode.  <a class="reference internal" href="#cmdoption-musermode"><em class="xref std std-option">-musermode</em></a> is the default
 when the target is <tt class="docutils literal"><span class="pre">sh*-*-linux*</span></tt>.  If the target is SH1* or SH2*
@@ -9321,7 +9321,7 @@ The default is 2 if <a class="reference internal" href="#cmdoption-mpt-fixed"><e
 <dl class="option">
 <dt id="cmdoption-mpt-fixed">
 <tt class="descname">-mpt-fixed</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mpt-fixed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Assume <tt class="docutils literal"><span class="pre">pt*</span></tt> instructions wont trap.  This generally generates
+<dd><p>Assume <tt class="docutils literal"><span class="pre">pt*</span></tt> instructions won&#8217;t trap.  This generally generates
 better-scheduled code, but is unsafe on current hardware.
 The current architecture
 definition says that <tt class="docutils literal"><span class="pre">ptabs</span></tt> and <tt class="docutils literal"><span class="pre">ptrel</span></tt> trap when the target
@@ -9330,11 +9330,11 @@ This has the unintentional effect of making it unsafe to schedule these
 instructions before a branch, or hoist them out of a loop.  For example,
 <tt class="docutils literal"><span class="pre">__do_global_ctors</span></tt>, a part of libgcc
 that runs constructors at program
-startup, calls functions in a list which is delimited by 1.  With the
-<a class="reference internal" href="#cmdoption-mpt-fixed"><em class="xref std std-option">-mpt-fixed</em></a> option, the <tt class="docutils literal"><span class="pre">ptabs</span></tt> is done before testing against 1.
+startup, calls functions in a list which is delimited by -1.  With the
+<a class="reference internal" href="#cmdoption-mpt-fixed"><em class="xref std std-option">-mpt-fixed</em></a> option, the <tt class="docutils literal"><span class="pre">ptabs</span></tt> is done before testing against -1.
 That means that all the constructors run a bit more quickly, but when
 the loop comes to the end of the list, the program crashes because <tt class="docutils literal"><span class="pre">ptabs</span></tt>
-loads 1 into a target register.</p>
+loads -1 into a target register.</p>
 <p>Since this option is unsafe for any
 hardware implementing the current architecture specification, the default
 is <em class="xref std std-option">-mno-pt-fixed</em>.  Unless specified explicitly with
@@ -9381,7 +9381,7 @@ disabled by specifying <em class="xref std std-option">-mno-zdcbranch</em>.</p>
 <dt id="cmdoption-mcbranch-force-delay-slot">
 <tt class="descname">-mcbranch-force-delay-slot</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mcbranch-force-delay-slot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Force the usage of delay slots for conditional branches, which stuffs the delay
-slot with a <tt class="docutils literal"><span class="pre">nop</span></tt> if a suitable instruction cant be found.  By default
+slot with a <tt class="docutils literal"><span class="pre">nop</span></tt> if a suitable instruction can&#8217;t be found.  By default
 this option is disabled.  It can be enabled to work around hardware bugs as
 found in the original SH7055.</p>
 </dd></dl>
@@ -9447,8 +9447,8 @@ machine, but check at runtime whether or not to use them.</p>
 the compiler to not pass <em class="xref std std-option">-z text</em> to the linker when linking a
 shared object.  Using this option, you can link position-dependent
 code into a shared object.</p>
-<p><a class="reference internal" href="#cmdoption-mimpure-text"><em class="xref std std-option">-mimpure-text</em></a> suppresses the relocations remain against
-allocatable but non-writable sections linker error message.
+<p><a class="reference internal" href="#cmdoption-mimpure-text"><em class="xref std std-option">-mimpure-text</em></a> suppresses the &#8216;relocations remain against
+allocatable but non-writable sections&#8217; linker error message.
 However, the necessary relocations trigger copy-on-write, and the
 shared object is not actually shared across processes.  Instead of
 using <a class="reference internal" href="#cmdoption-mimpure-text"><em class="xref std std-option">-mimpure-text</em></a>, you should compile all source code with
@@ -9492,9 +9492,9 @@ software with this option.</p>
 <dt id="cmdoption-mflat">
 <tt class="descname">-mflat</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-flat</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mflat" title="Permalink to this definition">¶</a></dt>
 <dd><p>With <a class="reference internal" href="#cmdoption-mflat"><em class="xref std std-option">-mflat</em></a>, the compiler does not generate save/restore instructions
-and uses a flat or single register window model.  This model is compatible
+and uses a &#8216;flat&#8217; or single register window model.  This model is compatible
 with the regular register window model.  The local registers and the input
-registers (0-5) are still treated as call-saved registers and are
+registers (0-5) are still treated as &#8216;call-saved&#8217; registers and are
 saved on the stack as needed.</p>
 <p>With <em class="xref std std-option">-mno-flat</em> (the default), the compiler generates save/restore
 instructions (except for leaf functions).  This is the normal operating mode.</p>
@@ -9512,7 +9512,7 @@ default.</p>
 <tt class="descname">-mno-fpu</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-msoft-float</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-fpu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate output containing library calls for floating point.
 Warning: the requisite libraries are not available for all SPARC
-targets.  Normally the facilities of the machines usual C compiler are
+targets.  Normally the facilities of the machine&#8217;s usual C compiler are
 used, but this cannot be done directly in cross-compilation.  You must make
 your own arrangements to provide suitable library functions for
 cross-compilation.  The embedded targets sparc-<em>-aout and
@@ -9573,7 +9573,7 @@ should have 8-byte alignment.  This enables the use of pairs of
 <tt class="docutils literal"><span class="pre">ldd</span></tt> and <tt class="docutils literal"><span class="pre">std</span></tt> instructions for copies in structure
 assignment, in place of twice as many <tt class="docutils literal"><span class="pre">ld</span></tt> and <tt class="docutils literal"><span class="pre">st</span></tt> pairs.
 However, the use of this changed alignment directly violates the SPARC
-ABI.  Thus, its intended only for use on targets where the developer
+ABI.  Thus, it&#8217;s intended only for use on targets where the developer
 acknowledges that their resulting code is not directly in line with
 the rules of the ABI.</p>
 </dd></dl>
@@ -9796,14 +9796,14 @@ are statically linked and PIC is not supported.</dd>
 <dd>Sequential Consistency</dd>
 </dl>
 <p>These memory models are formally defined in Appendix D of the Sparc V9
-architecture manual, as set in the processors <tt class="docutils literal"><span class="pre">PSTATE.MM</span></tt> field.</p>
+architecture manual, as set in the processor&#8217;s <tt class="docutils literal"><span class="pre">PSTATE.MM</span></tt> field.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-mstack-bias">
 <tt class="descname">-mstack-bias</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-stack-bias</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mstack-bias" title="Permalink to this definition">¶</a></dt>
 <dd><p>With <a class="reference internal" href="#cmdoption-mstack-bias"><em class="xref std std-option">-mstack-bias</em></a>, GCC assumes that the stack pointer, and
-frame pointer if present, are offset by 2047 which must be added back
+frame pointer if present, are offset by -2047 which must be added back
 when making stack frame references.  This is the default in 64-bit mode.
 Otherwise, assume no such offset is present.</p>
 </dd></dl>
@@ -9946,7 +9946,7 @@ sure it is within 125.</p>
 <tt class="descname">-msafe-hints</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-msafe-hints" title="Permalink to this definition">¶</a></dt>
 <dd><p>Work around a hardware bug that causes the SPU to stall indefinitely.
 By default, GCC inserts the <tt class="docutils literal"><span class="pre">hbrp</span></tt> instruction to make sure
-this stall wont happen.</p>
+this stall won&#8217;t happen.</p>
 </dd></dl>
 
 <p>:: _system-v-options:</p>
@@ -10060,7 +10060,7 @@ is essentially ignored.</p>
 <dt id="cmdoption-mlong-calls">
 <tt class="descname">-mlong-calls</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-long-calls</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mlong-calls" title="Permalink to this definition">¶</a></dt>
 <dd><p>Treat all calls as being far away (near).  If calls are assumed to be
-far away, the compiler always loads the functions address into a
+far away, the compiler always loads the function&#8217;s address into a
 register, and calls indirect through the pointer.</p>
 </dd></dl>
 
@@ -10569,7 +10569,7 @@ instruction set support.</dd>
 <dd>Intel Silvermont CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3, SSSE3,
 SSE4.1, SSE4.2, POPCNT, AES, PCLMUL and RDRND instruction set support.</dd>
 <dt>knl</dt>
-<dd>Intel Knights Landing CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3,
+<dd>Intel Knight&#8217;s Landing CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3,
 SSSE3, SSE4.1, SSE4.2, POPCNT, AVX, AVX2, AES, PCLMUL, FSGSBASE, RDRND, FMA,
 BMI, BMI2, F16C, RDSEED, ADCX, PREFETCHW, AVX512F, AVX512PF, AVX512ER and
 AVX512CD instruction set support.</dd>
@@ -10655,7 +10655,7 @@ but still runs on i686 machines.</p>
 In addition, <a class="reference internal" href="#cmdoption-mtune"><em class="xref std std-option">-mtune</em></a> supports 2 extra choices for <tt class="docutils literal"><span class="pre">cpu-type</span></tt>:</p>
 <dl class="docutils">
 <dt>generic</dt>
-<dd><p class="first">Produce code optimized for the most common IA32/AMD64/EM64T processors.
+<dd><p class="first">Produce code optimized for the most common IA32//AMD64//EM64T processors.
 If you know the CPU on which your code will run, then you should use
 the corresponding <a class="reference internal" href="#cmdoption-mtune"><em class="xref std std-option">-mtune</em></a> or <a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a> option instead of
 <em class="xref std std-option">-mtune=generic</em>.  But, if you do not know exactly what CPU users
@@ -10762,8 +10762,8 @@ comparison is unordered.</p>
 <tt class="descname">-msoft-float</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-msoft-float" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate output containing library calls for floating point.</p>
 <p>Warning: the requisite libraries are not part of GCC.
-Normally the facilities of the machines usual C compiler are used, but
-this cant be done directly in cross-compilation.  You must make your
+Normally the facilities of the machine&#8217;s usual C compiler are used, but
+this can&#8217;t be done directly in cross-compilation.  You must make your
 own arrangements to provide suitable library functions for
 cross-compilation.</p>
 <p>On machines where a function returns floating-point results in the 80387
@@ -10924,10 +10924,10 @@ the system libraries and startup modules.</p>
 <dt id="cmdoption-mvect8-ret-in-mem">
 <tt class="descname">-mvect8-ret-in-mem</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mvect8-ret-in-mem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return 8-byte vectors in memory instead of MMX registers.  This is the
-default on Solaris8 and 9 and VxWorks to match the ABI of the Sun
+default on Solaris 8 and 9 and VxWorks to match the ABI of the Sun
 Studio compilers until version 12.  Later compiler versions (starting
-with Studio 12 Update1) follow the ABI used by other x86 targets, which
-is the default on Solaris10 and later.  Only use this option if
+with Studio 12 Update 1) follow the ABI used by other x86 targets, which
+is the default on Solaris 10 and later.  Only use this option if
 you need to remain compatible with existing code produced by those
 previous compiler versions or older versions of GCC.</p>
 </dd></dl>
@@ -10948,7 +10948,7 @@ control word explicitly.</p>
 80 bits can speed some programs by 2% or more.  Note that some mathematical
 libraries assume that extended-precision (80-bit) floating-point operations
 are enabled by default; routines in such libraries could suffer significant
-loss of accuracy, typically through so-called catastrophic cancellation,
+loss of accuracy, typically through so-called &#8216;catastrophic cancellation&#8217;,
 when this option is used to set the precision to less than extended precision.</p>
 </dd></dl>
 
@@ -11151,11 +11151,11 @@ of the non-reciprocal instruction, the precision of the sequence can be
 decreased by up to 2 ulp (i.e. the inverse of 1.0 equals 0.99999994).</p>
 <p>Note that GCC implements <tt class="docutils literal"><span class="pre">1.0f/sqrtf(``x</span></tt>)`` in terms of <tt class="docutils literal"><span class="pre">RSQRTSS</span></tt>
 (or <tt class="docutils literal"><span class="pre">RSQRTPS</span></tt>) already with <a class="reference internal" href="options-that-control-optimization.html#cmdoption-ffast-math"><em class="xref std std-option">-ffast-math</em></a> (or the above option
-combination), and doesnt need <a class="reference internal" href="#cmdoption-mrecip"><em class="xref std std-option">-mrecip</em></a>.</p>
+combination), and doesn&#8217;t need <a class="reference internal" href="#cmdoption-mrecip"><em class="xref std std-option">-mrecip</em></a>.</p>
 <p>Also note that GCC emits the above sequence with additional Newton-Raphson step
 for vectorized single-float division and vectorized <tt class="docutils literal"><span class="pre">sqrtf(``x</span></tt>)``
 already with <a class="reference internal" href="options-that-control-optimization.html#cmdoption-ffast-math"><em class="xref std std-option">-ffast-math</em></a> (or the above option combination), and
-doesnt need <a class="reference internal" href="#cmdoption-mrecip"><em class="xref std std-option">-mrecip</em></a>.</p>
+doesn&#8217;t need <a class="reference internal" href="#cmdoption-mrecip"><em class="xref std std-option">-mrecip</em></a>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -11267,7 +11267,7 @@ on thread-safe exception handling must compile and link all code with the
 <tt class="descname">-mno-align-stringops</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-align-stringops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do not align the destination of inlined string operations.  This switch reduces
 code size and improves performance in case the destination is already aligned,
-but GCC doesnt know about it.</p>
+but GCC doesn&#8217;t know about it.</p>
 </dd></dl>
 
 <dl class="option">
@@ -11331,7 +11331,7 @@ The option is similar to <em class="xref std std-option">-mmemcpy-strategy=</em>
 <dl class="option">
 <dt id="cmdoption-momit-leaf-frame-pointer">
 <tt class="descname">-momit-leaf-frame-pointer</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-momit-leaf-frame-pointer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont keep the frame pointer in a register for leaf functions.  This
+<dd><p>Don&#8217;t keep the frame pointer in a register for leaf functions.  This
 avoids the instructions to save, set up, and restore frame pointers and
 makes an extra register available in leaf functions.  The option
 <em class="xref std std-option">-fomit-leaf-frame-pointer</em> removes the frame pointer for leaf functions,
@@ -11362,7 +11362,7 @@ prefix.  The option <em class="xref std std-option">-mavx</em> turns this on by 
 <dd><p>If profiling is active (<a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-pg"><em class="xref std std-option">-pg</em></a>), put the profiling
 counter call before the prologue.
 Note: On x86 architectures the attribute <tt class="docutils literal"><span class="pre">ms_hook_prologue</span></tt>
-isnt possible at the moment for <a class="reference internal" href="#cmdoption-mfentry"><em class="xref std std-option">-mfentry</em></a> and <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-pg"><em class="xref std std-option">-pg</em></a>.</p>
+isn&#8217;t possible at the moment for <a class="reference internal" href="#cmdoption-mfentry"><em class="xref std std-option">-mfentry</em></a> and <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-pg"><em class="xref std std-option">-pg</em></a>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -11391,7 +11391,7 @@ register when there are no variable arguments passed in vector registers.</p>
 <p>Warning: Since RAX register is used to avoid unnecessarily
 saving vector registers on stack when passing variable arguments, the
 impacts of this option are callees may waste some stack space,
-misbehave or jump to a random location.  GCC 4.4 or newer dont have
+misbehave or jump to a random location.  GCC 4.4 or newer don&#8217;t have
 those issues, regardless the RAX register value.</p>
 </dd></dl>
 
@@ -11445,7 +11445,7 @@ the assembly output so that the binary can run in 16-bit mode.</p>
 <dl class="option">
 <dt id="cmdoption-mno-red-zone">
 <tt class="descname">-mno-red-zone</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-red-zone" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not use a so-called red zone for x86-64 code.  The red zone is mandated
+<dd><p>Do not use a so-called &#8216;red zone&#8217; for x86-64 code.  The red zone is mandated
 by the x86-64 ABI; it is a 128-byte area beyond the location of the
 stack pointer that is not modified by signal or interrupt handlers
 and therefore can be used for temporary data without adjusting the stack
@@ -11522,7 +11522,7 @@ enabled by default on those targets.</p>
 <dt id="cmdoption-mdll">
 <tt class="descname">-mdll</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mdll" title="Permalink to this definition">¶</a></dt>
 <dd><p>This option is available for Cygwin and MinGW targets.  It
-specifies that a DLLa dynamic link libraryis to be
+specifies that a DLL-a dynamic link library-is to be
 generated, enabling the selection of the required runtime
 startup object and entry point.</p>
 </dd></dl>
@@ -11571,10 +11571,10 @@ appropriately.</p>
 <dt id="cmdoption-fno-set-stack-executable">
 <tt class="descname">-fno-set-stack-executable</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-set-stack-executable" title="Permalink to this definition">¶</a></dt>
 <dd><p>This option is available for MinGW targets. It specifies that
-the executable flag for the stack used by nested functions isnt
+the executable flag for the stack used by nested functions isn&#8217;t
 set. This is necessary for binaries running in kernel mode of
 Microsoft Windows, as there the User32 API, which is used to set executable
-privileges, isnt available.</p>
+privileges, isn&#8217;t available.</p>
 </dd></dl>
 
 <dl class="option">
@@ -11638,7 +11638,7 @@ required: the fused multiply add/subtract instructions do not round the
 intermediate result, thereby producing results with more bits of
 precision than specified by the IEEE standard.  Disabling fused multiply
 add/subtract instructions also ensures that the program output is not
-sensitive to the compilers ability to combine multiply and add/subtract
+sensitive to the compiler&#8217;s ability to combine multiply and add/subtract
 operations.</p>
 </dd></dl>
 
@@ -11701,7 +11701,7 @@ The default is <em class="xref std std-option">-mno-longcalls</em>.  This option
 programs where the call target can potentially be out of range.  This
 option is implemented in the assembler, not the compiler, so the
 assembly code generated by GCC still shows direct call
-instructionslook at the disassembled object code to see the actual
+instructions-look at the disassembled object code to see the actual
 instructions.  Note that the assembler uses an indirect call for
 every cross-file call, not just those that really are out of range.</p>
 </dd></dl>

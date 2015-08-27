@@ -136,10 +136,10 @@ There are several noteworthy incompatibilities between GNU C and K&R
     typedef foo foo;
 
   * GCC treats all characters of identifiers as significant.  According to
-  K&R-1 (2.2), No more than the first eight characters are significant,
-  although more may be used..  Also according to K&R-1 (2.2), An
+  K&R-1 (2.2), 'No more than the first eight characters are significant,
+  although more may be used.'.  Also according to K&R-1 (2.2), 'An
   identifier is a sequence of letters and digits; the first character must
-  be a letter.  The underscore _ counts as a letter., but GCC also
+  be a letter.  The underscore _ counts as a letter.', but GCC also
   allows dollar signs in identifiers.
 
   .. index:: whitespace

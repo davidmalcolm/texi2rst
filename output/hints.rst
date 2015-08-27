@@ -15,8 +15,8 @@ Hints
     may have a shorter lifespan than the code would indicate and may never
     be placed in memory.
 
-    * On some rare x86 targets, ``setjmp`` doesnt save the registers in
-    all circumstances.  In those cases, GCC doesnt allocate any variables
+    * On some rare x86 targets, ``setjmp`` doesn't save the registers in
+    all circumstances.  In those cases, GCC doesn't allocate any variables
     in registers unless they are marked ``register``.
 
   * The extent to which suggestions made by using the inline function

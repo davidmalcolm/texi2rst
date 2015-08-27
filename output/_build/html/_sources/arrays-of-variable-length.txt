@@ -58,7 +58,7 @@ variable-length arrays are more elegant.
 There are other differences between these two methods.  Space allocated
 with ``alloca`` exists until the containing function returns.
 The space for a variable-length array is deallocated as soon as the array
-names scope ends.  (If you use both variable-length arrays and
+name's scope ends.  (If you use both variable-length arrays and
 ``alloca`` in the same function, deallocation of a variable-length array
 also deallocates anything more recently allocated with ``alloca``.)
 
@@ -77,7 +77,7 @@ and is remembered for the scope of the array in case you access it with
 ``sizeof``.
 
 If you want to pass the array first and the length afterward, you can
-use a forward declaration in the parameter listanother GNU extension.
+use a forward declaration in the parameter list-another GNU extension.
 
 .. code-block:: c++
 
@@ -95,8 +95,8 @@ known when the declaration of ``data`` is parsed.
 
 You can write any number of such parameter forward declarations in the
 parameter list.  They can be separated by commas or semicolons, but the
-last one must end with a semicolon, which is followed by the real
-parameter declarations.  Each forward declaration must match a real
+last one must end with a semicolon, which is followed by the 'real'
+parameter declarations.  Each forward declaration must match a 'real'
 declaration in parameter name and data type.  ISO C99 does not support
 parameter forward declarations.
 

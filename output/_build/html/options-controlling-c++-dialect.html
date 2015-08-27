@@ -215,7 +215,7 @@ call the copy constructor in all cases.</p>
 <dl class="option">
 <dt id="cmdoption-fno-enforce-eh-specs">
 <tt class="descname">-fno-enforce-eh-specs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-enforce-eh-specs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont generate code to check for violation of exception specifications
+<dd><p>Don&#8217;t generate code to check for violation of exception specifications
 at run time.  This option violates the C++ standard, but may be useful
 for reducing code size in production builds, much like defining
 <tt class="docutils literal"><span class="pre">NDEBUG</span></tt>.  This does not give user code permission to throw
@@ -234,7 +234,7 @@ through a wrapper function that performs any necessary initialization.
 When the use and definition of the variable are in the same
 translation unit, this overhead can be optimized away, but when the
 use is in a different translation unit there is significant overhead
-even if the variable doesnt actually need dynamic initialization.  If
+even if the variable doesn&#8217;t actually need dynamic initialization.  If
 the programmer can be sure that no use of the variable in a
 non-defining TU needs to trigger dynamic initialization (either
 because the variable is statically initialized, or a use of the
@@ -280,7 +280,7 @@ Template Instantiation, for more information.</p>
 <dl class="option">
 <dt id="cmdoption-fno-implicit-inline-templates">
 <tt class="descname">-fno-implicit-inline-templates</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-implicit-inline-templates" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont emit code for implicit instantiations of inline templates, either.
+<dd><p>Don&#8217;t emit code for implicit instantiations of inline templates, either.
 The default is to handle inlines differently so that compiles with and
 without optimization need the same set of explicit instantiations.</p>
 </dd></dl>
@@ -353,7 +353,7 @@ nonconforming code to compile.</p>
 template, the compiler normally prints the signature of the
 template followed by the template arguments and any typedefs or
 typenames in the signature (e.g. <tt class="docutils literal"><span class="pre">void</span> <span class="pre">f(T)</span> <span class="pre">[with</span> <span class="pre">T</span> <span class="pre">=</span> <span class="pre">int]</span></tt>
-rather than <tt class="docutils literal"><span class="pre">void</span> <span class="pre">f(int)</span></tt>) so that its clear which template is
+rather than <tt class="docutils literal"><span class="pre">void</span> <span class="pre">f(int)</span></tt>) so that it&#8217;s clear which template is
 involved.  When an error message refers to a specialization of a class
 template, the compiler omits any template arguments that match
 the default template arguments for that template.  If either of these
@@ -374,7 +374,7 @@ Instantiation, for more information.</p>
 <tt class="descname">-fno-rtti</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-rtti" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disable generation of information about every class with virtual
 functions for use by the C++ run-time type identification features
-(<tt class="docutils literal"><span class="pre">dynamic_cast</span></tt> and <tt class="docutils literal"><span class="pre">typeid</span></tt>).  If you dont use those parts
+(<tt class="docutils literal"><span class="pre">dynamic_cast</span></tt> and <tt class="docutils literal"><span class="pre">typeid</span></tt>).  If you don&#8217;t use those parts
 of the language, you can save some space by using this flag.  Note that
 exception handling uses the same information, but G++ generates it as
 needed. The <tt class="docutils literal"><span class="pre">dynamic_cast</span></tt> operator can still be used for casts that
@@ -438,7 +438,7 @@ can run out of stack space before hitting 1024 in some situations.</p>
 <tt class="descname">-fno-threadsafe-statics</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-threadsafe-statics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do not emit the extra code to use the routines specified in the C++
 ABI for thread-safe initialization of local statics.  You can use this
-option to reduce code size slightly in code that doesnt need to be
+option to reduce code size slightly in code that doesn&#8217;t need to be
 thread-safe.</p>
 </dd></dl>
 
@@ -455,7 +455,7 @@ destructors, but only works if your C library supports
 <dl class="option">
 <dt id="cmdoption-fno-use-cxa-get-exception-ptr">
 <tt class="descname">-fno-use-cxa-get-exception-ptr</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-use-cxa-get-exception-ptr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dont use the <tt class="docutils literal"><span class="pre">__cxa_get_exception_ptr</span></tt> runtime routine.  This
+<dd><p>Don&#8217;t use the <tt class="docutils literal"><span class="pre">__cxa_get_exception_ptr</span></tt> runtime routine.  This
 causes <tt class="docutils literal"><span class="pre">std::uncaught_exception</span></tt> to be incorrect, but is necessary
 if the runtime routine is not available.</p>
 </dd></dl>
@@ -489,9 +489,9 @@ Template Instantiation.</p>
 <dl class="option">
 <dt id="cmdoption-fvisibility-ms-compat">
 <tt class="descname">-fvisibility-ms-compat</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fvisibility-ms-compat" title="Permalink to this definition">¶</a></dt>
-<dd><p>This flag attempts to use visibility settings to make GCCs C++
+<dd><p>This flag attempts to use visibility settings to make GCC&#8217;s C++
 linkage model compatible with that of Microsoft Visual Studio.</p>
-<p>The flag makes these changes to GCCs linkage model:</p>
+<p>The flag makes these changes to GCC&#8217;s linkage model:</p>
 <ul>
 <li><p class="first">It sets the default visibility to <tt class="docutils literal"><span class="pre">hidden</span></tt>, like
 <em class="xref std std-option">-fvisibility=hidden</em>.</p>
@@ -703,7 +703,7 @@ about ABI tags.</p>
 <p>Warn when a class seems unusable because all the constructors or
 destructors in that class are private, and it has neither friends nor
 public static member functions.  Also warn if there are no non-private
-methods, and theres at least one private member function that isnt
+methods, and there&#8217;s at least one private member function that isn&#8217;t
 a constructor or destructor.</p>
 </dd></dl>
 
@@ -840,7 +840,7 @@ for ISO C++11 onwards (<em class="xref std std-option">-std=c++11</em>, ...).</p
 <p class="first admonition-title">Note</p>
 <p class="last">(C++ and Objective-C++ only)</p>
 </div>
-<p>Warn about violations of the following style guidelines from Scott Meyers
+<p>Warn about violations of the following style guidelines from Scott Meyers&#8217;
 Effective C++ series of books:</p>
 <ul>
 <li><p class="first">Define a copy constructor and an assignment operator for classes
@@ -848,7 +848,7 @@ with dynamically-allocated memory.</p>
 <ul class="simple">
 <li>Prefer initialization to assignment in constructors.</li>
 <li>Have <tt class="docutils literal"><span class="pre">operator=</span></tt> return a reference to <tt class="docutils literal"><span class="pre">*this</span></tt>.</li>
-<li>Dont try to return a reference when you must return an object.</li>
+<li>Don&#8217;t try to return a reference when you must return an object.</li>
 <li>Distinguish between prefix and postfix forms of increment and</li>
 </ul>
 <p>decrement operators.</p>

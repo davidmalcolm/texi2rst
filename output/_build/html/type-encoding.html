@@ -131,7 +131,7 @@ selectors and methods and about objects and classes.</p>
 <tt class="docutils literal"><span class="pre">void</span></tt>
 <tt class="docutils literal"><span class="pre">v</span></tt>
 <tt class="docutils literal"><span class="pre">id</span></tt>
-<a href="#id1"><span class="problematic" id="id2">``</span></a>``
+<tt class="docutils literal"><span class="pre">&#64;</span></tt>
 <tt class="docutils literal"><span class="pre">Class</span></tt>
 <tt class="docutils literal"><span class="pre">#</span></tt>
 <tt class="docutils literal"><span class="pre">SEL</span></tt>
@@ -146,13 +146,13 @@ unknown type
 Complex types
 <tt class="docutils literal"><span class="pre">j</span></tt> followed by the inner type.  For example <tt class="docutils literal"><span class="pre">_Complex</span> <span class="pre">double</span></tt> is encoded as &#8220;jd&#8221;.
 bit-fields
-<tt class="docutils literal"><span class="pre">b</span></tt> followed by the starting position of the bit-field, the type of the bit-field and the size of the bit-field (the bit-fields encoding was changed from the NeXTs compiler encoding, see below)</p>
+<tt class="docutils literal"><span class="pre">b</span></tt> followed by the starting position of the bit-field, the type of the bit-field and the size of the bit-field (the bit-fields encoding was changed from the NeXT&#8217;s compiler encoding, see below)</p>
 <p>The encoding of bit-fields has changed to allow bit-fields to be
 properly handled by the runtime functions that compute sizes and
 alignments of types that contain bit-fields.  The previous encoding
 contained only the size of the bit-field.  Using only this information
 it is not possible to reliably compute the size occupied by the
-bit-field.  This is very important in the presence of the Boehms
+bit-field.  This is very important in the presence of the Boehm&#8217;s
 garbage collector because the objects are allocated using the typed
 memory facility available in this collector.  The typed memory
 allocation requires information about where the pointers are located
@@ -253,16 +253,16 @@ this historical format (compatible with GCC-3.3), so when using the
 NeXT runtime, GCC will introduce on purpose a number of incorrect
 encodings:</p>
 <ul>
-<li><p class="first">the read-only qualifier of the pointee gets emitted before the ^.
+<li><p class="first">the read-only qualifier of the pointee gets emitted before the &#8216;^&#8217;.
 The read-only qualifier of the pointer itself gets ignored, unless it
-is a typedef.  Also, the r is only emitted for the outermost type.</p>
+is a typedef.  Also, the &#8216;r&#8217; is only emitted for the outermost type.</p>
 <ul class="simple">
-<li>32-bit longs are encoded as l or L, but not always.  For typedefs,</li>
+<li>32-bit longs are encoded as &#8216;l&#8217; or &#8216;L&#8217;, but not always.  For typedefs,</li>
 </ul>
-<p>the compiler uses i or I instead if encoding a struct field or a
+<p>the compiler uses &#8216;i&#8217; or &#8216;I&#8217; instead if encoding a struct field or a
 pointer.</p>
 <ul class="simple">
-<li><a href="#id3"><span class="problematic" id="id4">``</span></a>enum``s are always encoded as i (int) even if they are actually</li>
+<li><a href="#id1"><span class="problematic" id="id2">``</span></a>enum``s are always encoded as &#8216;i&#8217; (int) even if they are actually</li>
 </ul>
 <p>unsigned or long.</p>
 </li>
@@ -270,14 +270,14 @@ pointer.</p>
 <p>In addition to that, the NeXT runtime uses a different encoding for
 bitfields.  It encodes them as <tt class="docutils literal"><span class="pre">b</span></tt> followed by the size, without
 a bit offset or the underlying field type.</p>
-<p>:: _encode:</p>
-<p><tt class="docutils literal"><span class="pre">encode</span></tt></p>
-<p>GNU Objective-C supports the <tt class="docutils literal"><span class="pre">encode</span></tt> syntax that allows you to
+<p>:: <a class="reference external" href="mailto:_&#37;&#52;&#48;encode">_<span>&#64;</span>encode</a>:</p>
+<p><tt class="docutils literal"><span class="pre">&#64;encode</span></tt></p>
+<p>GNU Objective-C supports the <tt class="docutils literal"><span class="pre">&#64;encode</span></tt> syntax that allows you to
 create a type encoding from a C/Objective-C type.  For example,
-<tt class="docutils literal"><span class="pre">encode(int)</span></tt> is compiled by the compiler into <tt class="docutils literal"><span class="pre">&quot;i&quot;</span></tt>.</p>
-<p><tt class="docutils literal"><span class="pre">encode</span></tt> does not support type qualifiers other than
-<tt class="docutils literal"><span class="pre">const</span></tt>.  For example, <tt class="docutils literal"><span class="pre">encode(const</span> <span class="pre">char*)</span></tt> is valid and
-is compiled into <tt class="docutils literal"><span class="pre">&quot;r*&quot;</span></tt>, while <tt class="docutils literal"><span class="pre">encode(bycopy</span> <span class="pre">char</span> <span class="pre">*)</span></tt> is
+<tt class="docutils literal"><span class="pre">&#64;encode(int)</span></tt> is compiled by the compiler into <tt class="docutils literal"><span class="pre">&quot;i&quot;</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">&#64;encode</span></tt> does not support type qualifiers other than
+<tt class="docutils literal"><span class="pre">const</span></tt>.  For example, <tt class="docutils literal"><span class="pre">&#64;encode(const</span> <span class="pre">char*)</span></tt> is valid and
+is compiled into <tt class="docutils literal"><span class="pre">&quot;r*&quot;</span></tt>, while <tt class="docutils literal"><span class="pre">&#64;encode(bycopy</span> <span class="pre">char</span> <span class="pre">*)</span></tt> is
 invalid and will cause a compilation error.</p>
 <p>:: _method-signatures:</p>
 </div>
@@ -287,15 +287,15 @@ invalid and will cause a compilation error.</p>
 needed to use Objective-C.  You should skip it at a first reading; the
 runtime provides functions that will work on methods and can walk
 through the list of parameters and interpret them for you.  These
-functions are part of the public API and are the preferred way to
+functions are part of the public &#8216;API&#8217; and are the preferred way to
 interact with method signatures from user code.</p>
 <p>But if you need to debug a problem with method signatures and need to
-know how they are implemented (i.e., the ABI), read on.</p>
-<p>Methods have their signature encoded and made available to the
-runtime.  The signature encodes all the information required to
+know how they are implemented (i.e., the &#8216;ABI&#8217;), read on.</p>
+<p>Methods have their &#8216;signature&#8217; encoded and made available to the
+runtime.  The &#8216;signature&#8217; encodes all the information required to
 dynamically build invocations of the method at runtime: return type
 and arguments.</p>
-<p>The signature is a null-terminated string, composed of the following:</p>
+<p>The &#8216;signature&#8217; is a null-terminated string, composed of the following:</p>
 <ul>
 <li><p class="first">The return type, including type qualifiers.  For example, a method
 returning <tt class="docutils literal"><span class="pre">int</span></tt> would have <tt class="docutils literal"><span class="pre">i</span></tt> here.</p>
@@ -311,15 +311,15 @@ method selector <tt class="docutils literal"><span class="pre">_cmd</span></tt>)
 </li>
 </ul>
 <p>For example, a method with no arguments and returning <tt class="docutils literal"><span class="pre">int</span></tt> would
-have the signature <tt class="docutils literal"><span class="pre">i80:4</span></tt> if the size of a pointer is 4.  The
+have the signature <tt class="docutils literal"><span class="pre">i8&#64;0:4</span></tt> if the size of a pointer is 4.  The
 signature is interpreted as follows: the <tt class="docutils literal"><span class="pre">i</span></tt> is the return type
 (an <tt class="docutils literal"><span class="pre">int</span></tt>), the <tt class="docutils literal"><span class="pre">8</span></tt> is the total size of the parameters in
-bytes (two pointers each of size 4), the <tt class="docutils literal"><span class="pre">0</span></tt> is the first
+bytes (two pointers each of size 4), the <tt class="docutils literal"><span class="pre">&#64;0</span></tt> is the first
 parameter (an object at byte offset <tt class="docutils literal"><span class="pre">0</span></tt>) and <tt class="docutils literal"><span class="pre">:4</span></tt> is the
 second parameter (a <tt class="docutils literal"><span class="pre">SEL</span></tt> at byte offset <tt class="docutils literal"><span class="pre">4</span></tt>).</p>
-<p>You can easily find more examples by running the strings program
-on an Objective-C object file compiled by GCC.  Youll see a lot of
-strings that look very much like <tt class="docutils literal"><span class="pre">i80:4</span></tt>.  They are signatures
+<p>You can easily find more examples by running the &#8216;strings&#8217; program
+on an Objective-C object file compiled by GCC.  You&#8217;ll see a lot of
+strings that look very much like <tt class="docutils literal"><span class="pre">i8&#64;0:4</span></tt>.  They are signatures
 of Objective-C methods.</p>
 </div>
 </div>

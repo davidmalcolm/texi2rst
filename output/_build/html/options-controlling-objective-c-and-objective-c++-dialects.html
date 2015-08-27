@@ -107,11 +107,11 @@ and Objective-C++ programs:</p>
 <dt id="cmdoption-fconstant-string-class">
 <tt class="descname">-fconstant-string-class</tt><tt class="descclassname">=class-name</tt><a class="headerlink" href="#cmdoption-fconstant-string-class" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use <tt class="docutils literal"><span class="pre">class-name</span></tt> as the name of the class to instantiate for each
-literal string specified with the syntax <tt class="docutils literal"><span class="pre">&quot;...&quot;</span></tt>.  The default
+literal string specified with the syntax <tt class="docutils literal"><span class="pre">&#64;&quot;...&quot;</span></tt>.  The default
 class name is <tt class="docutils literal"><span class="pre">NXConstantString</span></tt> if the GNU runtime is being used, and
 <tt class="docutils literal"><span class="pre">NSConstantString</span></tt> if the NeXT runtime is being used (see below).  The
 <em class="xref std std-option">-fconstant-cfstrings</em> option, if also present, overrides the
-<a class="reference internal" href="#cmdoption-fconstant-string-class"><em class="xref std std-option">-fconstant-string-class</em></a> setting and cause <tt class="docutils literal"><span class="pre">&quot;...&quot;</span></tt> literals
+<a class="reference internal" href="#cmdoption-fconstant-string-class"><em class="xref std std-option">-fconstant-string-class</em></a> setting and cause <tt class="docutils literal"><span class="pre">&#64;&quot;...&quot;</span></tt> literals
 to be laid out as constant CoreFoundation strings.</p>
 </dd></dl>
 
@@ -169,7 +169,7 @@ all such default destructors, in reverse order.</p>
 methods thusly generated only operate on instance variables
 declared in the current Objective-C class, and not those inherited
 from superclasses.  It is the responsibility of the Objective-C
-runtime to invoke all such methods in an objects inheritance
+runtime to invoke all such methods in an object&#8217;s inheritance
 hierarchy.  The <tt class="docutils literal"><span class="pre">-</span> <span class="pre">(id)</span> <span class="pre">.cxx_construct</span></tt> methods are invoked
 by the runtime immediately after a new object instance is allocated;
 the <tt class="docutils literal"><span class="pre">-</span> <span class="pre">(void)</span> <span class="pre">.cxx_destruct</span></tt> methods are invoked immediately
@@ -191,9 +191,9 @@ accomplished via the comm page.</p>
 <tt class="descname">-fobjc-exceptions</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fobjc-exceptions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable syntactic support for structured exception handling in
 Objective-C, similar to what is offered by C++ and Java.  This option
-is required to use the Objective-C keywords <tt class="docutils literal"><span class="pre">try</span></tt>,
-<tt class="docutils literal"><span class="pre">throw</span></tt>, <tt class="docutils literal"><span class="pre">catch</span></tt>, <tt class="docutils literal"><span class="pre">finally</span></tt> and
-<tt class="docutils literal"><span class="pre">synchronized</span></tt>.  This option is available with both the GNU
+is required to use the Objective-C keywords <tt class="docutils literal"><span class="pre">&#64;try</span></tt>,
+<tt class="docutils literal"><span class="pre">&#64;throw</span></tt>, <tt class="docutils literal"><span class="pre">&#64;catch</span></tt>, <tt class="docutils literal"><span class="pre">&#64;finally</span></tt> and
+<tt class="docutils literal"><span class="pre">&#64;synchronized</span></tt>.  This option is available with both the GNU
 runtime and the NeXT runtime (but not available in conjunction with
 the NeXT runtime on Mac OS X 10.2 and earlier).</p>
 </dd></dl>
@@ -263,7 +263,7 @@ regardless of command-line options.</p>
 <dt id="cmdoption-fno-local-ivars">
 <tt class="descname">-fno-local-ivars</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-flocal-ivars</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-local-ivars" title="Permalink to this definition">¶</a></dt>
 <dd><p>By default instance variables in Objective-C can be accessed as if
-they were local variables from within the methods of the class theyre
+they were local variables from within the methods of the class they&#8217;re
 declared in.  This can lead to shadowing between instance variables
 and other variables declared either locally inside a class method or
 globally with the same name.  Specifying the <a class="reference internal" href="#cmdoption-fno-local-ivars"><em class="xref std std-option">-fno-local-ivars</em></a>
@@ -322,7 +322,7 @@ and no warning is issued for them.</p>
 <p>Warn if multiple methods of different types for the same selector are
 found during compilation.  The check is performed on the list of methods
 in the final stage of compilation.  Additionally, a check is performed
-for each selector appearing in a <tt class="docutils literal"><span class="pre">selector(...)</span></tt>
+for each selector appearing in a <tt class="docutils literal"><span class="pre">&#64;selector(...)</span></tt>
 expression, and a corresponding method for that selector has been found
 during compilation.  Because these checks scan the method table only at
 the end of compilation, these warnings are not produced if the final
@@ -353,13 +353,13 @@ and alignment.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">(Objective-C and Objective-C++ only)</p>
 </div>
-<p>Warn if a <tt class="docutils literal"><span class="pre">selector(...)</span></tt> expression referring to an
+<p>Warn if a <tt class="docutils literal"><span class="pre">&#64;selector(...)</span></tt> expression referring to an
 undeclared selector is found.  A selector is considered undeclared if no
 method with that name has been declared before the
-<tt class="docutils literal"><span class="pre">selector(...)</span></tt> expression, either explicitly in an
-<tt class="docutils literal"><span class="pre">interface</span></tt> or <tt class="docutils literal"><span class="pre">protocol</span></tt> declaration, or implicitly in
-an <tt class="docutils literal"><span class="pre">implementation</span></tt> section.  This option always performs its
-checks as soon as a <tt class="docutils literal"><span class="pre">selector(...)</span></tt> expression is found,
+<tt class="docutils literal"><span class="pre">&#64;selector(...)</span></tt> expression, either explicitly in an
+<tt class="docutils literal"><span class="pre">&#64;interface</span></tt> or <tt class="docutils literal"><span class="pre">&#64;protocol</span></tt> declaration, or implicitly in
+an <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> section.  This option always performs its
+checks as soon as a <tt class="docutils literal"><span class="pre">&#64;selector(...)</span></tt> expression is found,
 while <a class="reference internal" href="#cmdoption-Wselector"><em class="xref std std-option">-Wselector</em></a> only performs its checks in the final stage of
 compilation.  This also enforces the coding style convention
 that methods and selectors must be declared before being used.</p>

@@ -68,7 +68,7 @@ character on the line, which can be one of the following:
   As an alternative to providing a spec string, the text following a
   suffix directive can be one of the following:
 
-  ``language``
+  @``language``
     This says that the suffix is an alias for a known ``language``.  This is
     similar to using the :option:`-x` command-line switch to GCC to specify a
     language explicitly.  For example:
@@ -76,7 +76,7 @@ character on the line, which can be one of the following:
     .. code-block:: c++
 
       .ZZ:
-      c++
+      @c++
 
     Says that .ZZ files are, in fact, C++ source files.
 
@@ -179,7 +179,7 @@ together or combine them with constant text in a single argument.
 %U``suffix``
   Substitutes the last file name generated with %u``suffix``, generating a
   new one if there is no such last file name.  In the absence of any
-  %u``suffix``, this is just like %g``suffix``, except they dont share
+  %u``suffix``, this is just like %g``suffix``, except they don't share
   the same suffix space, so %g.s ... %U.s ... %g.s ... %U.s
   involves the generation of two distinct file names, one
   for each %g.s and another for each %U.s.  Previously, %U was
@@ -203,7 +203,7 @@ together or combine them with constant text in a single argument.
   construct: see for example f/lang-specs.h.
 
 %.``SUFFIX``
-  Substitutes ``.SUFFIX`` for the suffixes of a matched switchs args
+  Substitutes ``.SUFFIX`` for the suffixes of a matched switch's args
   when it is subsequently output with %*.  ``SUFFIX`` is
   terminated by the next space or %.
 
@@ -334,7 +334,7 @@ together or combine them with constant text in a single argument.
   a single space.
 
 %<``S``
-  Remove all occurrences of ``-S`` from the command line.  Notethis
+  Remove all occurrences of ``-S`` from the command line.  Note-this
   command is position dependent.  % commands in the spec string
   before this one see ``-S``, % commands in the spec string
   after this one do not.
@@ -546,7 +546,7 @@ only if :option:`-pipe` is specified.
 
 It is built into GCC which switches take arguments and which do not.
 (You might think it would be useful to generalize this to allow each
-compilers spec to say which switches take arguments.  But this cannot
+compiler's spec to say which switches take arguments.  But this cannot
 be done in a consistent fashion.  GCC cannot even decide which input
 files have been specified without knowing which switches take arguments,
 and it must know which input files to compile in order to tell which

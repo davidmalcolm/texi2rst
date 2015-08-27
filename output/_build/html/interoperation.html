@@ -28,7 +28,7 @@
     <link rel="top" title="gcc 6 documentation" href="index.html" />
     <link rel="up" title="Known Causes of Trouble with GCC" href="known-causes-of-trouble-with-gcc.html" />
     <link rel="next" title="Incompatibilities of GCC" href="incompatibilities-of-gcc.html" />
-    <link rel="prev" title="Actual Bugs We Havent Fixed Yet" href="actual-bugs-we-havent-fixed-yet.html" /> 
+    <link rel="prev" title="Actual Bugs We Haven’t Fixed Yet" href="actual-bugs-we-haven&#39;t-fixed-yet.html" /> 
   </head>
   <body>
     <div class="related">
@@ -41,7 +41,7 @@
           <a href="incompatibilities-of-gcc.html" title="Incompatibilities of GCC"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="actual-bugs-we-havent-fixed-yet.html" title="Actual Bugs We Havent Fixed Yet"
+          <a href="actual-bugs-we-haven't-fixed-yet.html" title="Actual Bugs We Haven’t Fixed Yet"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
           <li><a href="gcc.html" >Introduction</a> &raquo;</li>
@@ -51,8 +51,8 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="actual-bugs-we-havent-fixed-yet.html"
-                        title="previous chapter">Actual Bugs We Havent Fixed Yet</a></p>
+  <p class="topless"><a href="actual-bugs-we-haven&#39;t-fixed-yet.html"
+                        title="previous chapter">Actual Bugs We Haven&#8217;t Fixed Yet</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="incompatibilities-of-gcc.html"
                         title="next chapter">Incompatibilities of GCC</a></p>
@@ -98,7 +98,7 @@ Compilers differ as to many internal details of C++ implementation,
 including: how class instances are laid out, how multiple inheritance is
 implemented, and how virtual function calls are handled.  If the name
 encoding were made the same, your programs would link against libraries
-provided from other compilersbut the programs would then crash when
+provided from other compilers-but the programs would then crash when
 run.  Incompatible libraries are then detected at link time, rather than
 at run time.</p>
 <ul class="simple">
@@ -152,7 +152,7 @@ this problem.</p>
 <li>On the HP PA machine, ADB sometimes fails to work on functions compiled</li>
 </ul>
 <p>with GCC.  Specifically, it fails to work on functions that use
-<tt class="docutils literal"><span class="pre">alloca</span></tt> or variable-size arrays.  This is because GCC doesnt
+<tt class="docutils literal"><span class="pre">alloca</span></tt> or variable-size arrays.  This is because GCC doesn&#8217;t
 generate HP-UX unwind descriptors for such functions.  It may even be
 impossible to generate them.</p>
 <ul class="simple">
@@ -197,22 +197,22 @@ making your function smaller.</p>
 <p>linker semantics which merges global symbols between libraries and
 applications, especially necessary for C++ streams functionality.
 This is not the default behavior of AIX shared libraries and dynamic
-linking.  libstdc++.a is built on AIX with runtime-linking
+linking.  libstdc++.a is built on AIX with &#8216;runtime-linking&#8217;
 enabled so that symbol merging can occur.  To utilize this feature,
 the application linked with libstdc++.a must include the
 <em class="xref std std-option">-Wl,-brtl</em> flag on the link line.  G++ cannot impose this
 because this option may interfere with the semantics of the user
 program and users may not always use g++ to link his or her
 application.  Applications are not required to use the
-<em class="xref std std-option">-Wl,-brtl</em> flag on the link linethe rest of the
+<em class="xref std std-option">-Wl,-brtl</em> flag on the link line-the rest of the
 libstdc++.a library which is not dependent on the symbol
 merging semantics will continue to function correctly.</p>
 <ul class="simple">
 <li>An application can interpose its own definition of functions for</li>
 </ul>
-<p>functions invoked by libstdc++.a with runtime-linking
+<p>functions invoked by libstdc++.a with &#8216;runtime-linking&#8217;
 enabled on AIX.  To accomplish this the application must be linked
-with runtime-linking option and the functions explicitly must be
+with &#8216;runtime-linking&#8217; option and the functions explicitly must be
 exported by the application (<em class="xref std std-option">-Wl,-brtl,-bE:exportfile</em>).</p>
 <ul class="simple">
 <li>AIX on the RS/6000 provides support (NLS) for environments outside of</li>
@@ -251,7 +251,7 @@ identifiers.</p>
           <a href="incompatibilities-of-gcc.html" title="Incompatibilities of GCC"
              >next</a> |</li>
         <li class="right" >
-          <a href="actual-bugs-we-havent-fixed-yet.html" title="Actual Bugs We Havent Fixed Yet"
+          <a href="actual-bugs-we-haven't-fixed-yet.html" title="Actual Bugs We Haven’t Fixed Yet"
              >previous</a> |</li>
         <li><a href="index.html">gcc 6 documentation</a> &raquo;</li>
           <li><a href="gcc.html" >Introduction</a> &raquo;</li>

@@ -221,7 +221,7 @@ is in the form of an assembler code file for each non-assembler input
 file specified.</p>
 <p>By default, the assembler file name for a source file is made by
 replacing the suffix .c, .i, etc., with .s.</p>
-<p>Input files that dont require compilation are ignored.</p>
+<p>Input files that don&#8217;t require compilation are ignored.</p>
 </dd></dl>
 
 <dl class="option">
@@ -230,7 +230,7 @@ replacing the suffix .c, .i, etc., with .s.</p>
 <dd><p>Stop after the preprocessing stage; do not run the compiler proper.  The
 output is in the form of preprocessed source code, which is sent to the
 standard output.</p>
-<p>Input files that dont require preprocessing are ignored.</p>
+<p>Input files that don&#8217;t require preprocessing are ignored.</p>
 <span class="target" id="index-2"></span></dd></dl>
 
 <dl class="option">
@@ -409,7 +409,7 @@ gdb &#8211;args cc1 ....</p>
 <dt id="cmdoption-fplugin">
 <tt class="descname">-fplugin</tt><tt class="descclassname">=name.so</tt><a class="headerlink" href="#cmdoption-fplugin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load the plugin code in file <tt class="docutils literal"><span class="pre">name</span></tt>.so, assumed to be a
-shared object to be dlopend by the compiler.  The base name of
+shared object to be dlopen&#8217;d by the compiler.  The base name of
 the shared object file is used to identify the plugin for the
 purposes of argument parsing (See
 <em class="xref std std-option">-fplugin-arg-``name`</em>-<tt class="docutils literal"><span class="pre">key``=``value`</span></tt> below).
@@ -428,7 +428,7 @@ for the plugin called <tt class="docutils literal"><span class="pre">name</span>
 <dt id="cmdoption-fdump-ada-spec">
 <tt class="descname">-fdump-ada-spec</tt><tt class="descclassname">[-slim]</tt><tt class="descclassname">, </tt><tt class="descname">-fdump-ada-spec</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fdump-ada-spec" title="Permalink to this definition">¶</a></dt>
 <dd><p>For C and C++ source and include files, generate corresponding Ada specs.
-Generating Ada Bindings for C and C++ headersgnat_ugnGNAT Users Guide, which provides detailed documentation on this feature.</p>
+Generating Ada Bindings for C and C++ headersgnat_ugnGNAT User&#8217;s Guide, which provides detailed documentation on this feature.</p>
 </dd></dl>
 
 <dl class="option">
@@ -449,9 +449,9 @@ other language.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">file</span></tt></dt>
+<dt>&#64;``file``</dt>
 <dd><p class="first">Read command-line options from <tt class="docutils literal"><span class="pre">file</span></tt>.  The options read are
-inserted in place of the original <tt class="docutils literal"><span class="pre">file</span></tt> option.  If <tt class="docutils literal"><span class="pre">file</span></tt>
+inserted in place of the original &#64;``file`` option.  If <tt class="docutils literal"><span class="pre">file</span></tt>
 does not exist, or cannot be read, then the option will be treated
 literally, and not removed.</p>
 <p class="last">Options in <tt class="docutils literal"><span class="pre">file</span></tt> are separated by whitespace.  A whitespace
@@ -459,7 +459,7 @@ character may be included in an option by surrounding the entire
 option in either single or double quotes.  Any character (including a
 backslash) may be included by prefixing the character to be included
 with a backslash.  The <tt class="docutils literal"><span class="pre">file</span></tt> may itself contain additional
-<tt class="docutils literal"><span class="pre">file</span></tt> options; any such options will be processed recursively.</p>
+&#64;``file`` options; any such options will be processed recursively.</p>
 </dd>
 </dl>
 </div>

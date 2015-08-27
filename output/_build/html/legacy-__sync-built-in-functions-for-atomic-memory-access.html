@@ -109,7 +109,7 @@ backward.  Further, instructions are issued as necessary to prevent the
 processor from speculating loads across the operation and from queuing stores
 after the operation.</p>
 <p>All of the routines are described in the Intel documentation to take
-an optional list of variables protected by the memory barrier.  Its
+&#8216;an optional list of variables protected by the memory barrier&#8217;.  It&#8217;s
 not clear what is meant by that; it could mean that only the
 listed variables are protected, or it could mean a list of additional
 variables to be protected.  The list is ignored by GCC which treats it as
@@ -142,8 +142,8 @@ as <tt class="docutils literal"><span class="pre">*ptr</span> <span class="pre">
 That is, if the current
 value of <tt class="docutils literal"><span class="pre">*``ptr``</span></tt> is <tt class="docutils literal"><span class="pre">oldval</span></tt>, then write <tt class="docutils literal"><span class="pre">newval</span></tt> into
 <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.</p>
-<p>The bool version returns true if the comparison is successful and
-<tt class="docutils literal"><span class="pre">newval</span></tt> is written.  The val version returns the contents
+<p>The &#8216;bool&#8217; version returns true if the comparison is successful and
+<tt class="docutils literal"><span class="pre">newval</span></tt> is written.  The &#8216;val&#8217; version returns the contents
 of <tt class="docutils literal"><span class="pre">*``ptr``</span></tt> before the operation.</p>
 </div></blockquote>
 <p>__sync_synchronize (...)</p>

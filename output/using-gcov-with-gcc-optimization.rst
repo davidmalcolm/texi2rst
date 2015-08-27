@@ -18,7 +18,7 @@ like this:
 
 can be compiled into one instruction on some machines.  In this case,
 there is no way for :command:`gcov` to calculate separate execution counts
-for each line because there isnt separate code for each line.  Hence
+for each line because there isn't separate code for each line.  Hence
 the :command:`gcov` output looks like this if you compiled the program with
 optimization:
 

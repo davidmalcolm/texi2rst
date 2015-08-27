@@ -140,7 +140,7 @@ Here is a list of options that are only for compiling C++ programs:
 
 .. option:: -fno-enforce-eh-specs
 
-  Dont generate code to check for violation of exception specifications
+  Don't generate code to check for violation of exception specifications
   at run time.  This option violates the C++ standard, but may be useful
   for reducing code size in production builds, much like defining
   ``NDEBUG``.  This does not give user code permission to throw
@@ -157,7 +157,7 @@ Here is a list of options that are only for compiling C++ programs:
   When the use and definition of the variable are in the same
   translation unit, this overhead can be optimized away, but when the
   use is in a different translation unit there is significant overhead
-  even if the variable doesnt actually need dynamic initialization.  If
+  even if the variable doesn't actually need dynamic initialization.  If
   the programmer can be sure that no use of the variable in a
   non-defining TU needs to trigger dynamic initialization (either
   because the variable is statically initialized, or a use of the
@@ -197,7 +197,7 @@ Here is a list of options that are only for compiling C++ programs:
 
 .. option:: -fno-implicit-inline-templates
 
-  Dont emit code for implicit instantiations of inline templates, either.
+  Don't emit code for implicit instantiations of inline templates, either.
   The default is to handle inlines differently so that compiles with and
   without optimization need the same set of explicit instantiations.
 
@@ -254,7 +254,7 @@ Here is a list of options that are only for compiling C++ programs:
   template, the compiler normally prints the signature of the
   template followed by the template arguments and any typedefs or
   typenames in the signature (e.g. ``void f(T) [with T = int]``
-  rather than ``void f(int)``) so that its clear which template is
+  rather than ``void f(int)``) so that it's clear which template is
   involved.  When an error message refers to a specialization of a class
   template, the compiler omits any template arguments that match
   the default template arguments for that template.  If either of these
@@ -271,7 +271,7 @@ Here is a list of options that are only for compiling C++ programs:
 
   Disable generation of information about every class with virtual
   functions for use by the C++ run-time type identification features
-  (``dynamic_cast`` and ``typeid``).  If you dont use those parts
+  (``dynamic_cast`` and ``typeid``).  If you don't use those parts
   of the language, you can save some space by using this flag.  Note that
   exception handling uses the same information, but G++ generates it as
   needed. The ``dynamic_cast`` operator can still be used for casts that
@@ -325,7 +325,7 @@ Here is a list of options that are only for compiling C++ programs:
 
   Do not emit the extra code to use the routines specified in the C++
   ABI for thread-safe initialization of local statics.  You can use this
-  option to reduce code size slightly in code that doesnt need to be
+  option to reduce code size slightly in code that doesn't need to be
   thread-safe.
 
 .. option:: -fuse-cxa-atexit
@@ -338,7 +338,7 @@ Here is a list of options that are only for compiling C++ programs:
 
 .. option:: -fno-use-cxa-get-exception-ptr
 
-  Dont use the ``__cxa_get_exception_ptr`` runtime routine.  This
+  Don't use the ``__cxa_get_exception_ptr`` runtime routine.  This
   causes ``std::uncaught_exception`` to be incorrect, but is necessary
   if the runtime routine is not available.
 
@@ -372,10 +372,10 @@ Here is a list of options that are only for compiling C++ programs:
 
 .. option:: -fvisibility-ms-compat
 
-  This flag attempts to use visibility settings to make GCCs C++
+  This flag attempts to use visibility settings to make GCC's C++
   linkage model compatible with that of Microsoft Visual Studio.
 
-  The flag makes these changes to GCCs linkage model:
+  The flag makes these changes to GCC's linkage model:
 
   * It sets the default visibility to ``hidden``, like
     :option:`-fvisibility=hidden`.
@@ -582,7 +582,7 @@ have meanings only for C++ programs:
   Warn when a class seems unusable because all the constructors or
   destructors in that class are private, and it has neither friends nor
   public static member functions.  Also warn if there are no non-private
-  methods, and theres at least one private member function that isnt
+  methods, and there's at least one private member function that isn't
   a constructor or destructor.
 
 .. option:: -Wdelete-non-virtual-dtor , -Wdelete-non-virtual-dtor, -Wno-delete-non-virtual-dtor
@@ -716,7 +716,7 @@ The following :option:`-W...` options are not affected by :option:`-Wall`.
 
     (C++ and Objective-C++ only)
 
-  Warn about violations of the following style guidelines from Scott Meyers
+  Warn about violations of the following style guidelines from Scott Meyers'
   Effective C++ series of books:
 
   * Define a copy constructor and an assignment operator for classes
@@ -726,7 +726,7 @@ The following :option:`-W...` options are not affected by :option:`-Wall`.
 
     * Have ``operator=`` return a reference to ``*this``.
 
-    * Dont try to return a reference when you must return an object.
+    * Don't try to return a reference when you must return an object.
 
     * Distinguish between prefix and postfix forms of increment and
     decrement operators.

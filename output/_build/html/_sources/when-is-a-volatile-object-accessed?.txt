@@ -59,8 +59,8 @@ read of the volatile object being pointed to.
 
 Assignments are also expressions and have an rvalue.  However when
 assigning to a scalar volatile, the volatile object is not reread,
-regardless of whether the assignment expressions rvalue is used or
-not.  If the assignments rvalue is used, the value is that assigned
+regardless of whether the assignment expression's rvalue is used or
+not.  If the assignment's rvalue is used, the value is that assigned
 to the volatile object.  For instance, there is no read of ``vobj``
 in all the following cases:
 

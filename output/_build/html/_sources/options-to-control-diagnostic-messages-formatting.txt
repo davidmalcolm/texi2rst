@@ -8,7 +8,7 @@ Options to Control Diagnostic Messages Formatting
 .. index:: message formatting
 
 Traditionally, diagnostic messages have been formatted irrespective of
-the output devices aspect (e.g. its width, ...).  You can use the
+the output device's aspect (e.g. its width, ...).  You can use the
 options described below
 to control the formatting algorithm for diagnostic messages, 
 e.g. how many characters per line, how often source location
@@ -27,7 +27,7 @@ honor these options.
   Only meaningful in line-wrapping mode.  Instructs the diagnostic messages
   reporter to emit source location information once; that is, in
   case the message is too long to fit on a single physical line and has to
-  be wrapped, the source location wont be emitted (as prefix) again,
+  be wrapped, the source location won't be emitted (as prefix) again,
   over and over, in subsequent continuation lines.  This is the default
   behavior.
 
@@ -45,7 +45,7 @@ honor these options.
   Use color in diagnostics.  ``WHEN`` is never, always,
   or auto.  The default depends on how the compiler has been configured,
   it can be any of the above ``WHEN`` options or also never
-  if :envvar:`GCC_COLORS` environment variable isnt present in the environment,
+  if :envvar:`GCC_COLORS` environment variable isn't present in the environment,
   and auto otherwise.
   auto means to use color only when the standard error is a terminal.
   The forms :option:`-fdiagnostics-color` and :option:`-fno-diagnostics-color` are
@@ -122,7 +122,7 @@ honor these options.
 .. option:: -fno-diagnostics-show-caret, -fdiagnostics-show-caret
 
   By default, each diagnostic emitted includes the original source line
-  and a caret ^ indicating the column.  This option suppresses this
+  and a caret '^' indicating the column.  This option suppresses this
   information.  The source line is truncated to ``n`` characters, if
   the :option:`-fmessage-length=n` option is given.  When the output is done
   to the terminal, the width is limited to the width given by the

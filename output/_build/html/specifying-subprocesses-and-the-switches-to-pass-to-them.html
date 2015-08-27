@@ -143,13 +143,12 @@ command-line switch <em class="xref std std-option">-input</em> and with the res
 <p>As an alternative to providing a spec string, the text following a
 suffix directive can be one of the following:</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">language</span></tt></dt>
+<dt>&#64;``language``</dt>
 <dd><p class="first">This says that the suffix is an alias for a known <tt class="docutils literal"><span class="pre">language</span></tt>.  This is
 similar to using the <em class="xref std std-option">-x</em> command-line switch to GCC to specify a
 language explicitly.  For example:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="p">.</span><span class="n">ZZ</span><span class="o">:</span>
-<span class="n">c</span><span class="o">++</span>
-</pre></div>
+<div class="highlight-c++"><pre>.ZZ:
+@c++</pre>
 </div>
 <p class="last">Says that .ZZ files are, in fact, C++ source files.</p>
 </dd>
@@ -238,7 +237,7 @@ each time it appears instead of once per compilation.</dd>
 <dt>%U``suffix``</dt>
 <dd>Substitutes the last file name generated with %u``suffix``, generating a
 new one if there is no such last file name.  In the absence of any
-%u``suffix``, this is just like %g``suffix``, except they dont share
+%u``suffix``, this is just like %g``suffix``, except they don&#8217;t share
 the same suffix space, so %g.s ... %U.s ... %g.s ... %U.s
 involves the generation of two distinct file names, one
 for each %g.s and another for each %U.s.  Previously, %U was
@@ -259,7 +258,7 @@ should read from standard input or write to standard output.  If you
 need something more elaborate you can use an %{pipe:<tt class="docutils literal"><span class="pre">X</span></tt>}
 construct: see for example f/lang-specs.h.</dd>
 <dt>%.``SUFFIX``</dt>
-<dd>Substitutes <tt class="docutils literal"><span class="pre">.SUFFIX</span></tt> for the suffixes of a matched switchs args
+<dd>Substitutes <tt class="docutils literal"><span class="pre">.SUFFIX</span></tt> for the suffixes of a matched switch&#8217;s args
 when it is subsequently output with %*.  <tt class="docutils literal"><span class="pre">SUFFIX</span></tt> is
 terminated by the next space or %.</dd>
 <dt>%w</dt>
@@ -363,7 +362,7 @@ passed to the actual C++ compiler (<strong class="command">cc1plus</strong>).</d
 Note that each comma in the substituted string is replaced by
 a single space.</dd>
 <dt>%&lt;<tt class="docutils literal"><span class="pre">S</span></tt></dt>
-<dd>Remove all occurrences of <tt class="docutils literal"><span class="pre">-S</span></tt> from the command line.  Notethis
+<dd>Remove all occurrences of <tt class="docutils literal"><span class="pre">-S</span></tt> from the command line.  Note-this
 command is position dependent.  % commands in the spec string
 before this one see <tt class="docutils literal"><span class="pre">-S</span></tt>, % commands in the spec string
 after this one do not.</dd>
@@ -544,7 +543,7 @@ indicate that a command should be piped to the following command, but
 only if <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-pipe"><em class="xref std std-option">-pipe</em></a> is specified.</p>
 <p>It is built into GCC which switches take arguments and which do not.
 (You might think it would be useful to generalize this to allow each
-compilers spec to say which switches take arguments.  But this cannot
+compiler&#8217;s spec to say which switches take arguments.  But this cannot
 be done in a consistent fashion.  GCC cannot even decide which input
 files have been specified without knowing which switches take arguments,
 and it must know which input files to compile in order to tell which

@@ -34,7 +34,7 @@ static, function-scoped static, or static data member of a class.  It may
 not be applied to block-scoped automatic or non-static data member.
 
 When the address-of operator is applied to a thread-local variable, it is
-evaluated at run time and returns the address of the current threads
+evaluated at run time and returns the address of the current thread's
 instance of that variable.  An address so obtained may be used by any
 thread.  When a thread terminates, any pointers to thread-local variables
 in that thread become invalid.
@@ -165,7 +165,7 @@ that document the exact semantics of the language extension.
 
   * [basic.stc]
 
-  Add thread storage duration to the list in paragraph 1.
+  Add 'thread storage duration' to the list in paragraph 1.
 
   Change paragraph 2
 

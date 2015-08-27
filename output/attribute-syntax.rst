@@ -182,16 +182,16 @@ specifier is as in the ISO C standard.
 
 If ``D1`` has the form ``( ``attribute-specifier-list`` D )``,
 and the declaration ``T D`` specifies the type
-``derived-declarator-type-list`` ``Type`` for ``ident``, then
-``T D1`` specifies the type ``derived-declarator-type-list``
-``attribute-specifier-list`` ``Type`` for ``ident``.
+'``derived-declarator-type-list`` ``Type``' for ``ident``, then
+``T D1`` specifies the type '``derived-declarator-type-list``
+``attribute-specifier-list`` ``Type``' for ``ident``.
 
 If ``D1`` has the form ``*
 ``type-qualifier-and-attribute-specifier-list`` D``, and the
 declaration ``T D`` specifies the type
-``derived-declarator-type-list`` ``Type`` for ``ident``, then
-``T D1`` specifies the type ``derived-declarator-type-list``
-``type-qualifier-and-attribute-specifier-list`` pointer to ``Type`` for
+'``derived-declarator-type-list`` ``Type``' for ``ident``, then
+``T D1`` specifies the type '``derived-declarator-type-list``
+``type-qualifier-and-attribute-specifier-list`` pointer to ``Type``' for
 ``ident``.
 
 For example,
@@ -200,14 +200,14 @@ For example,
 
   void (__attribute__((noreturn)) ****f) (void);
 
-specifies the type pointer to pointer to pointer to pointer to
-non-returning function returning ``void``.  As another example,
+specifies the type 'pointer to pointer to pointer to pointer to
+non-returning function returning ``void``'.  As another example,
 
 .. code-block:: c++
 
   char *__attribute__((aligned(8))) *f;
 
-specifies the type pointer to 8-byte-aligned pointer to ``char``.
+specifies the type 'pointer to 8-byte-aligned pointer to ``char``'.
 Note again that this does not work with most attributes; for example,
 the usage of aligned and noreturn attributes given above
 is not yet supported.

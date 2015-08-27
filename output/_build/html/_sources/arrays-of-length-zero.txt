@@ -47,8 +47,8 @@ slightly different in syntax and semantics:
 
 Non-empty initialization of zero-length
 arrays is treated like any case where there are more initializer
-elements than the array holds, in that a suitable warning about excess
-elements in array is given, and the excess elements (all of them, in
+elements than the array holds, in that a suitable warning about 'excess
+elements in array' is given, and the excess elements (all of them, in
 this case) are ignored.
 
 GCC allows static initialization of flexible array members.

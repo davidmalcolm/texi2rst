@@ -1,15 +1,15 @@
 Disappointments and Misunderstandings
 *************************************
 
-These problems are perhaps regrettable, but we dont know any practical
+These problems are perhaps regrettable, but we don't know any practical
 way around them.
 
-* Certain local variables arent recognized by debuggers when you compile
+* Certain local variables aren't recognized by debuggers when you compile
   with optimization.
 
   This occurs because sometimes GCC optimizes the variable out of
   existence.  There is no way to tell the debugger how to compute the
-  value such a variable would have had, and it is not clear that would
+  value such a variable 'would have had', and it is not clear that would
   be desirable anyway.  So GCC simply does not mention the eliminated
   variable when it writes debugging information.
 
@@ -35,16 +35,16 @@ way around them.
   This code really is erroneous, because the scope of ``struct
   mumble`` in the prototype is limited to the argument list containing it.
   It does not refer to the ``struct mumble`` defined with file scope
-  immediately belowthey are two unrelated types with similar names in
+  immediately below-they are two unrelated types with similar names in
   different scopes.
 
   But in the definition of ``foo``, the file-scope type is used
   because that is available to be inherited.  Thus, the definition and
   the prototype do not match, and you get an error.
 
-  This behavior may seem silly, but its what the ISO standard specifies.
+  This behavior may seem silly, but it's what the ISO standard specifies.
   It is easy enough for you to make your code work by moving the
-  definition of ``struct mumble`` above the prototype.  Its not worth
+  definition of ``struct mumble`` above the prototype.  It's not worth
   being incompatible with ISO C just to avoid an error for the example
   shown above.
 

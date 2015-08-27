@@ -11,14 +11,14 @@ An Inline Function is As Fast As a Macro
 
 By declaring a function inline, you can direct GCC to make
 calls to that function faster.  One way GCC can achieve this is to
-integrate that functions code into the code for its callers.  This
+integrate that function's code into the code for its callers.  This
 makes execution faster by eliminating the function-call overhead; in
 addition, if any of the actual argument values are constant, their
 known values may permit simplifications at compile time so that not
-all of the inline functions code needs to be included.  The effect on
+all of the inline function's code needs to be included.  The effect on
 code size is less predictable; object code may be larger or smaller
 with function inlining, depending on the particular case.  You can
-also direct GCC to try to integrate all simple enough functions
+also direct GCC to try to integrate all 'simple enough' functions
 into their callers with the option :option:`-finline-functions`.
 
 GCC implements three different semantics of declaring a function
@@ -67,16 +67,16 @@ had not used the ``inline`` keyword, except for its speed.
 .. index:: fkeep-inline-functions
 
 When a function is both inline and ``static``, if all calls to the
-function are integrated into the caller, and the functions address is
-never used, then the functions own assembler code is never referenced.
+function are integrated into the caller, and the function's address is
+never used, then the function's own assembler code is never referenced.
 In this case, GCC does not actually output assembler code for the
 function, unless you specify the option :option:`-fkeep-inline-functions`.
 Some calls cannot be integrated for various reasons (in particular,
-calls that precede the functions definition cannot be integrated, and
+calls that precede the function's definition cannot be integrated, and
 neither can recursive calls within the definition).  If there is a
 nonintegrated call, then the function is compiled to assembler code as
 usual.  The function must also be compiled as usual if the program
-refers to its address, because that cant be inlined.
+refers to its address, because that can't be inlined.
 
 .. index:: Winline
 

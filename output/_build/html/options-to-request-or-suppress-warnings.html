@@ -92,7 +92,7 @@ warnings but control the kinds of diagnostics produced by GCC.</p>
 <span class="target" id="index-4"></span><dl class="option">
 <dt id="cmdoption-fsyntax-only">
 <tt class="descname">-fsyntax-only</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fsyntax-only" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check the code for syntax errors, but dont do anything beyond that.</p>
+<dd><p>Check the code for syntax errors, but don&#8217;t do anything beyond that.</p>
 </dd></dl>
 
 <dl class="option">
@@ -190,12 +190,12 @@ these escape routes; application programs should avoid them.
 Alternate Keywords.</p>
 <p>Some users try to use <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> to check programs for strict ISO
 C conformance.  They soon find that it does not do quite what they want:
-it finds some non-ISO practices, but not allonly those for which
+it finds some non-ISO practices, but not all-only those for which
 ISO C requires a diagnostic, and some others for which
 diagnostics have been added.</p>
 <p>A feature to report any failure to conform to ISO C might be useful in
 some instances, but would require considerable additional work and would
-be quite different from <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a>.  We dont have plans to
+be quite different from <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a>.  We don&#8217;t have plans to
 support such a feature in the near future.</p>
 <p>Where the standard specified with <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-std"><em class="xref std std-option">-std</em></a> represents a GNU
 extended dialect of C, such as gnu90 or gnu99, there is a
@@ -303,7 +303,7 @@ following cases:</p>
 </ul>
 <p><tt class="docutils literal"><span class="pre">register</span></tt>.</p>
 <ul class="simple">
-<li>(C++ only) A base class is not initialized in a derived classs copy</li>
+<li>(C++ only) A base class is not initialized in a derived class&#8217;s copy</li>
 </ul>
 <p>constructor.</p>
 </li>
@@ -363,7 +363,7 @@ Completely disabling the warning is not recommended.</p>
 <p class="last">(C, C++, Objective-C and Objective-C++ only)</p>
 </div>
 <p>Give a warning when a value of type <tt class="docutils literal"><span class="pre">float</span></tt> is implicitly
-promoted to <tt class="docutils literal"><span class="pre">double</span></tt>.  CPUs with a 32-bit single-precision
+promoted to <tt class="docutils literal"><span class="pre">double</span></tt>.  CPUs with a 32-bit &#8216;single-precision&#8217;
 floating-point unit implement <tt class="docutils literal"><span class="pre">float</span></tt> in hardware, but emulate
 <tt class="docutils literal"><span class="pre">double</span></tt> in software.  On such a machine, doing computations
 using <tt class="docutils literal"><span class="pre">double</span></tt> values is much more expensive because of the
@@ -400,7 +400,7 @@ libc version 2.2.  These include all ISO C90 and C99 features, as well
 as features from the Single Unix Specification and some BSD and GNU
 extensions.  Other library implementations may not support all these
 features; GCC does not support warning about features that go beyond a
-particular librarys limitations.  However, if <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> is used
+particular library&#8217;s limitations.  However, if <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> is used
 with <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a>, warnings are given about format features not
 in the selected standard version (but not for <tt class="docutils literal"><span class="pre">strfmon</span></tt> formats,
 since those are not in any version of the C standard).  C Dialect
@@ -683,11 +683,11 @@ are called is not specified.  However, the standards committee have
 ruled that function calls do not overlap.</p>
 <p>It is not specified when between sequence points modifications to the
 values of objects take effect.  Programs whose behavior depends on this
-have undefined behavior; the C and C++ standards specify that Between
+have undefined behavior; the C and C++ standards specify that &#8216;Between
 the previous and next sequence point an object shall have its stored
 value modified at most once by the evaluation of an expression.
 Furthermore, the prior value shall be read only to determine the value
-to be stored..  If a program breaks these rules, the results on any
+to be stored.&#8217;.  If a program breaks these rules, the results on any
 particular implementation are entirely unpredictable.</p>
 <p>Examples of code with undefined behavior are <tt class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a++;</span></tt>, <tt class="docutils literal"><span class="pre">a[n]</span>
 <span class="pre">=</span> <span class="pre">b[n++]</span></tt> and <tt class="docutils literal"><span class="pre">a[i++]</span> <span class="pre">=</span> <span class="pre">i;</span></tt>.  Some more complicated cases are not
@@ -698,7 +698,7 @@ this sort of problem in programs.</p>
 over the precise meaning of the sequence point rules in subtle cases.
 Links to discussions of the problem, including proposed formal
 definitions, may be found on the GCC readings page, at
-<a class="reference external" href="http://gcc.gnu.org/readings.html">http://gcc.gnu.org/readings.html</a>.</p>
+<a class="reference external" href="http://gcc.gnu.org//readings.html">http://gcc.gnu.org//readings.html</a>.</p>
 <p>This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> for C and C++.</p>
 </dd></dl>
 
@@ -954,7 +954,7 @@ this can happen:</p>
 </pre></div>
 </div>
 <p>If the value of <tt class="docutils literal"><span class="pre">y</span></tt> is always 1, 2 or 3, then <tt class="docutils literal"><span class="pre">x</span></tt> is
-always initialized, but GCC doesnt know this. To suppress the
+always initialized, but GCC doesn&#8217;t know this. To suppress the
 warning, you need to provide a default case with assert(0) or
 similar code.</p>
 <p><tt class="docutils literal"><span class="pre">longjmp</span></tt> warnings
@@ -1092,7 +1092,7 @@ attributes currently supported are listed below.</p>
 <tt class="docutils literal"><span class="pre">pure</span></tt>, <tt class="docutils literal"><span class="pre">const</span></tt> or <tt class="docutils literal"><span class="pre">noreturn</span></tt>.  The compiler only warns for
 functions visible in other compilation units or (in the case of <tt class="docutils literal"><span class="pre">pure</span></tt> and
 <tt class="docutils literal"><span class="pre">const</span></tt>) if it cannot prove that the function returns normally. A function
-returns normally if it doesnt contain an infinite loop or return abnormally
+returns normally if it doesn&#8217;t contain an infinite loop or return abnormally
 by throwing, calling <tt class="docutils literal"><span class="pre">abort</span></tt> or trapping.  This analysis requires option
 <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fipa-pure-const"><em class="xref std std-option">-fipa-pure-const</em></a>, which is enabled by default at <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O"><em class="xref std std-option">-O</em></a> and
 higher.  Higher optimization levels improve the accuracy of the analysis.</p>
@@ -1261,7 +1261,7 @@ compiler output harder to read.  Using this command-line option tells
 GCC to emit warnings from system headers as if they occurred in user
 code.  However, note that using <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> in conjunction with this
 option does not warn about unknown pragmas in system
-headersfor that, <a class="reference internal" href="#cmdoption-Wunknown-pragmas"><em class="xref std std-option">-Wunknown-pragmas</em></a> must also be used.</p>
+headers-for that, <a class="reference internal" href="#cmdoption-Wunknown-pragmas"><em class="xref std std-option">-Wunknown-pragmas</em></a> must also be used.</p>
 </dd></dl>
 
 <dl class="option">
@@ -1285,7 +1285,7 @@ programmer) to consider floating-point values as approximations to
 infinitely precise real numbers.  If you are doing this, then you need
 to compute (by analyzing the code, or in some other way) the maximum or
 likely maximum error that the computation introduces, and allow for it
-when performing comparisons (and when producing output, but thats a
+when performing comparisons (and when producing output, but that&#8217;s a
 different problem).  In particular, instead of testing for equality, you
 should check to see whether the two values have ranges that overlap; and
 this is done with the relational operators, so equality comparisons are
@@ -1326,7 +1326,7 @@ suggests avoiding it altogether.</p>
 constants.)  Note, these suffixes appear in macros defined in the system
 headers of most modern systems, e.g. the _MIN/_MAX macros in <tt class="docutils literal"><span class="pre">&lt;limits.h&gt;</span></tt>.
 Use of these macros in user code might normally lead to spurious
-warnings, however GCCs integrated preprocessor has enough context to
+warnings, however GCC&#8217;s integrated preprocessor has enough context to
 avoid warning in these cases.</p>
 <ul class="simple">
 <li>A function declared external in one block and then used after the end of</li>
@@ -1367,7 +1367,7 @@ conversion warnings; for the full set use <a class="reference internal" href="#c
 </ul>
 <p>not issued for prototype declarations or variadic functions
 because these ISO C features appear in your code when using
-libibertys traditional C compatibility macros, <tt class="docutils literal"><span class="pre">PARAMS</span></tt> and
+libiberty&#8217;s traditional C compatibility macros, <tt class="docutils literal"><span class="pre">PARAMS</span></tt> and
 <tt class="docutils literal"><span class="pre">VPARAMS</span></tt>.  This warning is also bypassed for nested functions
 because that feature is already a GCC extension and thus not relevant to
 traditional C compatibility.</p>
@@ -1472,18 +1472,18 @@ constructs is included by the compiler when determining whether or not to
 issue a warning.</p>
 <p>The message is in keeping with the output of <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-fstack-usage"><em class="xref std std-option">-fstack-usage</em></a>.</p>
 <ul>
-<li><p class="first">If the stack usage is fully static but exceeds the specified amount, its:</p>
+<li><p class="first">If the stack usage is fully static but exceeds the specified amount, it&#8217;s:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="nl">warning:</span> <span class="n">stack</span> <span class="n">usage</span> <span class="n">is</span> <span class="mi">1120</span> <span class="n">bytes</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>If the stack usage is (partly) dynamic but bounded, its:</li>
+<li>If the stack usage is (partly) dynamic but bounded, it&#8217;s:</li>
 </ul>
 <div class="highlight-c++"><div class="highlight"><pre><span class="nl">warning:</span> <span class="n">stack</span> <span class="n">usage</span> <span class="n">might</span> <span class="n">be</span> <span class="mi">1648</span> <span class="n">bytes</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>If the stack usage is (partly) dynamic and not bounded, its:</li>
+<li>If the stack usage is (partly) dynamic and not bounded, it&#8217;s:</li>
 </ul>
 <div class="highlight-c++"><div class="highlight"><pre><span class="nl">warning:</span> <span class="n">stack</span> <span class="n">usage</span> <span class="n">might</span> <span class="n">be</span> <span class="n">unbounded</span>
 </pre></div>
@@ -1518,7 +1518,7 @@ which depend on the MS runtime.</p>
 <dl class="option">
 <dt id="cmdoption-Wpointer-arith">
 <tt class="descname">-Wpointer-arith</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-pointer-arith</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wpointer-arith" title="Permalink to this definition">¶</a></dt>
-<dd><p>Warn about anything that depends on the size of a function type or
+<dd><p>Warn about anything that depends on the &#8216;size of&#8217; a function type or
 of <tt class="docutils literal"><span class="pre">void</span></tt>.  GNU C assigns these types a size of 1, for
 convenience in calculations with <tt class="docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt> pointers and pointers
 to functions.  In C++, warn also when an arithmetic operation involves
@@ -1711,7 +1711,7 @@ types. <em class="xref std std-option">-Wconversion-null</em> is enabled by defa
 <p class="first admonition-title">Note</p>
 <p class="last">(C++ and Objective-C++ only)</p>
 </div>
-<p>Warn when a literal 0 is used as null pointer constant.  This can
+<p>Warn when a literal &#8216;0&#8217; is used as null pointer constant.  This can
 be useful to facilitate the conversion to <tt class="docutils literal"><span class="pre">nullptr</span></tt> in C++11.</p>
 </dd></dl>
 
@@ -2020,7 +2020,7 @@ or for inline functions, or for functions in anonymous namespaces.</p>
 <dl class="option">
 <dt id="cmdoption-Wmissing-field-initializers">
 <tt class="descname">-Wmissing-field-initializers</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-missing-field-initializers</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-W</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wextra</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-extra</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wmissing-field-initializers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Warn if a structures initializer has some fields missing.  For
+<dd><p>Warn if a structure&#8217;s initializer has some fields missing.  For
 example, the following code causes such a warning, because
 <tt class="docutils literal"><span class="pre">x.h</span></tt> is implicitly zero:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">s</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">;</span> <span class="p">};</span>
@@ -2047,7 +2047,7 @@ warnings without this one, use <em class="xref std std-option">-Wextra -Wno-miss
 <dt id="cmdoption-Wno-multichar">
 <tt class="descname">-Wno-multichar</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wmultichar</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-multichar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do not warn if a multicharacter constant (&#8216;FOOF&#8217;) is used.
-Usually they indicate a typo in the users code, as they have
+Usually they indicate a typo in the user&#8217;s code, as they have
 implementation-defined values, and should not be used in portable code.</p>
 </dd></dl>
 
@@ -2064,12 +2064,12 @@ the same sequence.  GCC can warn you if you are using identifiers that
 have not been normalized; this option controls that warning.</p>
 <p>There are four levels of warning supported by GCC.  The default is
 <em class="xref std std-option">-Wnormalized=nfc</em>, which warns about any identifier that is
-not in the ISO 10646 C normalized form, <em class="dfn">NFC</em>.  NFC is the
+not in the ISO 10646 &#8216;C&#8217; normalized form, <em class="dfn">NFC</em>.  NFC is the
 recommended form for most uses.  It is equivalent to
 <a class="reference internal" href="#cmdoption-Wnormalized"><em class="xref std std-option">-Wnormalized</em></a>.</p>
 <p>Unfortunately, there are some characters allowed in identifiers by
 ISO C and ISO C++ that, when turned into NFC, are not allowed in
-identifiers.  That is, theres no way to use these symbols in portable
+identifiers.  That is, there&#8217;s no way to use these symbols in portable
 ISO C or C++ and have all your identifiers in NFC.
 <em class="xref std std-option">-Wnormalized=id</em> suppresses the warning for these characters.
 It is hoped that future versions of the standards involved will correct
@@ -2077,12 +2077,12 @@ this, which is why this option is not the default.</p>
 <p>You can switch the warning off for all characters by writing
 <em class="xref std std-option">-Wnormalized=none</em> or <em class="xref std std-option">-Wno-normalized</em>.  You should
 only do this if you are using some other normalization scheme (like
-D), because otherwise you can easily create bugs that are
+&#8216;D&#8217;), because otherwise you can easily create bugs that are
 literally impossible to see.</p>
 <p>Some characters in ISO 10646 have distinct meanings but look identical
 in some fonts or display methodologies, especially once formatting has
-been applied.  For instance <tt class="docutils literal"><span class="pre">\u207F</span></tt>, SUPERSCRIPT LATIN SMALL
-LETTER N, displays just like a regular <tt class="docutils literal"><span class="pre">n</span></tt> that has been
+been applied.  For instance <tt class="docutils literal"><span class="pre">\u207F</span></tt>, &#8216;SUPERSCRIPT LATIN SMALL
+LETTER N&#8217;, displays just like a regular <tt class="docutils literal"><span class="pre">n</span></tt> that has been
 placed in a superscript.  ISO 10646 defines the <em class="dfn">NFKC</em>
 normalization scheme to convert all these into a standard form as
 well, and GCC warns if your code is not in NFKC if you use
@@ -2286,7 +2286,7 @@ different size.</p>
 <dt id="cmdoption-Winvalid-pch">
 <tt class="descname">-Winvalid-pch</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-invalid-pch</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Winvalid-pch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Warn if a precompiled header (Precompiled Headers) is found in
-the search path but cant be used.</p>
+the search path but can&#8217;t be used.</p>
 </dd></dl>
 
 <dl class="option">
@@ -2360,7 +2360,7 @@ and/or writes to register variables.  This warning is enabled by
 <tt class="descname">-Wdisabled-optimization</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-disabled-optimization</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wdisabled-optimization" title="Permalink to this definition">¶</a></dt>
 <dd><p>Warn if a requested optimization pass is disabled.  This warning does
 not generally indicate that there is anything wrong with your code; it
-merely indicates that GCCs optimizers are unable to handle the code
+merely indicates that GCC&#8217;s optimizers are unable to handle the code
 effectively.  Often, the problem is that your code is too big or too
 complex; GCC refuses to optimize programs when the optimization
 itself is likely to take inordinate amounts of time.</p>
@@ -2389,10 +2389,10 @@ warns about functions that are not protected against stack smashing.</p>
 <dl class="option">
 <dt id="cmdoption-Woverlength-strings">
 <tt class="descname">-Woverlength-strings</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-overlength-strings</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Woverlength-strings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Warn about string constants that are longer than the minimum
-maximum length specified in the C standard.  Modern compilers
+<dd><p>Warn about string constants that are longer than the &#8216;minimum
+maximum&#8217; length specified in the C standard.  Modern compilers
 generally allow string constants that are much longer than the
-standards minimum limit, but very portable programs should avoid
+standard&#8217;s minimum limit, but very portable programs should avoid
 using longer strings.</p>
 <p>The limit applies after string constant concatenation, and does
 not count the trailing NUL.  In C90, the limit was 509 characters; in

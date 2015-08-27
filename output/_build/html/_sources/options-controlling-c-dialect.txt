@@ -44,7 +44,7 @@ accepts:
   The macro ``__STRICT_ANSI__`` is predefined when the :option:`-ansi`
   option is used.  Some header files may notice this macro and refrain
   from declaring certain functions or defining certain macros that the
-  ISO standard doesnt call for; this is to avoid interfering with any
+  ISO standard doesn't call for; this is to avoid interfering with any
   programs that might use these names for other things.
 
   Functions that are normally built in but do not have semantics
@@ -207,7 +207,7 @@ accepts:
 
   .. index:: built-in functions
 
-  Dont recognize built-in functions that do not begin with
+  Don't recognize built-in functions that do not begin with
   __builtin_ as prefix.  Other BuiltinsOther built-in
   functions provided by GCC, for details of the functions affected,
   including those which are not built-in functions when :option:`-ansi` or
@@ -299,7 +299,7 @@ accepts:
 
   .. index:: SIMD
 
-  Enable handling of OpenMPs SIMD directives with ``#pragma omp``
+  Enable handling of OpenMP's SIMD directives with ``#pragma omp``
   in C/C++ and ``!$omp`` in Fortran. Other OpenMP directives
   are ignored.
 
@@ -319,13 +319,13 @@ accepts:
 .. option:: -fgnu-tm
 
   When the option :option:`-fgnu-tm` is specified, the compiler
-  generates code for the Linux variant of Intels current Transactional
+  generates code for the Linux variant of Intel's current Transactional
   Memory ABI specification document (Revision 1.1, May 6 2009).  This is
   an experimental feature whose interface may change in future versions
   of GCC, as the official specification changes.  Please note that not
   all architectures are supported for this feature.
 
-  For more information on GCCs support for transactional memory,
+  For more information on GCC's support for transactional memory,
   Enabling libitmThe GNU Transactional Memory LibrarylibitmGNU
   Transactional Memory Library.
 

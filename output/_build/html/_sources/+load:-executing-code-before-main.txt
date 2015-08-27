@@ -25,7 +25,7 @@ below:
   FileStream *Stdout = nil;
   FileStream *Stderr = nil;
 
-  implementation FileStream
+  @implementation FileStream
 
   + (void)initialize
   {
@@ -35,7 +35,7 @@ below:
   }
 
   /* Other methods here */
-  end
+  @end
 
 In this example, the initialization of ``Stdin``, ``Stdout`` and
 ``Stderr`` in ``+initialize`` occurs too late.  The programmer can
@@ -51,7 +51,7 @@ method instead of ``+initialize``:
 
 .. code-block:: c++
 
-  implementation FileStream
+  @implementation FileStream
 
   + (void)load
   {
@@ -61,7 +61,7 @@ method instead of ``+initialize``:
   }
 
   /* Other methods here */
-  end
+  @end
 
 The ``+load`` is a method that is not overridden by categories.  If a
 class and a category of it both implement ``+load``, both methods are
@@ -108,7 +108,7 @@ particular case, are not guaranteed:
   * allocation of or sending messages to objects whose classes have a
   category implemented in the same file;
 
-  * sending messages to Objective-C constant strings (``"this is a
+  * sending messages to Objective-C constant strings (``@"this is a
   constant string"``);
 
 You should make no assumptions about receiving ``+load`` in sibling
@@ -116,10 +116,10 @@ classes when you write ``+load`` of a class.  The order in which
 sibling classes receive ``+load`` is not guaranteed.
 
 The order in which ``+load`` and ``+initialize`` are called could
-be problematic if this matters.  If you dont allocate objects inside
+be problematic if this matters.  If you don't allocate objects inside
 ``+load``, it is guaranteed that ``+load`` is called before
 ``+initialize``.  If you create an object inside ``+load`` the
-``+initialize`` method of objects class is invoked even if
+``+initialize`` method of object's class is invoked even if
 ``+load`` was not invoked.  Note if you explicitly call ``+load``
 on a class, ``+initialize`` will be called first.  To avoid possible
 problems try to implement only one of these methods.

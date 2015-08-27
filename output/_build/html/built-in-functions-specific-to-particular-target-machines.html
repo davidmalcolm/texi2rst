@@ -816,9 +816,9 @@ intrinsics can be found at
 The built-in intrinsics for the Advanced SIMD extension are available when
 NEON is enabled.</p>
 <p>Currently, ARM and AArch64 back ends do not support ACLE 2.0 fully.  Both
-back ends support CRC32 intrinsics from arm_acle.h.  The ARM back ends
+back ends support CRC32 intrinsics from arm_acle.h.  The ARM back end&#8217;s
 16-bit floating-point Advanced SIMD intrinsics currently comply to ACLE v1.1.
-AArch64s back end does not have support for 16-bit floating point Advanced SIMD
+AArch64&#8217;s back end does not have support for 16-bit floating point Advanced SIMD
 intrinsics yet.</p>
 <p>See ARM Options and AArch64 Options for more information on the
 availability of extensions.</p>
@@ -940,7 +940,7 @@ Semiconductor.  The two exceptions are <tt class="docutils literal"><span class=
 <tt class="docutils literal"><span class="pre">__MBTOHE</span></tt>, the GCC forms of which pass 128-bit values by
 pointer rather than by value.</p>
 <p>Most of the functions are named after specific FR-V instructions.
-Such functions are said to be directly mapped and are summarized
+Such functions are said to be &#8216;directly mapped&#8217; and are summarized
 here in tabular form.</p>
 <div class="toctree-wrapper compound">
 <ul class="simple">
@@ -1289,7 +1289,7 @@ for more details.</p>
 <p>This sections describes built-in functions related to read and write
 instructions to access memory.  These functions generate
 <tt class="docutils literal"><span class="pre">membar</span></tt> instructions to flush the I/O load and stores where
-appropriate, as described in Fujitsus manual described above.</p>
+appropriate, as described in Fujitsu&#8217;s manual described above.</p>
 <p>unsigned char __builtin_read8 (void <a href="#id1"><span class="problematic" id="id2">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)
 unsigned short __builtin_read16 (void <a href="#id3"><span class="problematic" id="id4">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)
 unsigned long __builtin_read32 (void <a href="#id5"><span class="problematic" id="id6">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)</p>
@@ -1372,7 +1372,7 @@ initialized in the same way as aggregates.  For example:</p>
 <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">v2q15</span><span class="p">)</span> <span class="p">{</span><span class="mf">0.1234</span> <span class="o">*</span> <span class="mh">0x1</span><span class="mf">.0</span><span class="n">p15</span><span class="p">,</span> <span class="mf">0.4567</span> <span class="o">*</span> <span class="mh">0x1</span><span class="mf">.0</span><span class="n">p15</span><span class="p">};</span>
 </pre></div>
 </div>
-<p>Note: The CPUs endianness determines the order in which values
+<p>Note: The CPU&#8217;s endianness determines the order in which values
 are packed.  On little-endian targets, the first value is the least
 significant and the last value is the most significant.  The opposite
 order applies to big-endian targets.  For example, the code above
@@ -1598,8 +1598,8 @@ for details on what each instruction does.</p>
 <p>The MIPS64 architecture includes a number of instructions that
 operate on pairs of single-precision floating-point values.
 Each pair is packed into a 64-bit floating-point register,
-with one element being designated the upper half and
-the other being designated the lower half.</p>
+with one element being designated the &#8216;upper half&#8217; and
+the other being designated the &#8216;lower half&#8217;.</p>
 <p>GCC supports paired-single operations using both the generic
 vector extensions (Vector Extensions) and a collection of
 MIPS-specific built-in functions.  Both kinds of support are
@@ -1617,7 +1617,7 @@ For example:</p>
 <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">v2sf</span><span class="p">)</span> <span class="p">{</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">};</span>
 </pre></div>
 </div>
-<p>Note: The CPUs endianness determines which value is stored in
+<p>Note: The CPU&#8217;s endianness determines which value is stored in
 the upper half of a register and which value is stored in the lower half.
 On little-endian targets, the first value is the lower one and the second
 value is the upper one.  The opposite order applies to big-endian targets.
@@ -2042,7 +2042,7 @@ and so on.</dd>
 storing the value 32767 if the result overflows.</dd>
 <dt>int __builtin_subs (int <tt class="docutils literal"><span class="pre">x</span></tt>, int <tt class="docutils literal"><span class="pre">y</span></tt>)</dt>
 <dd>Saturating subtraction.  Return the result of subtracting <tt class="docutils literal"><span class="pre">y</span></tt> from
-<tt class="docutils literal"><span class="pre">x</span></tt>, storing the value 32768 if the result overflows.</dd>
+<tt class="docutils literal"><span class="pre">x</span></tt>, storing the value -32768 if the result overflows.</dd>
 <dt>void __builtin_halt (void)</dt>
 <dd>Halt.  The processor stops execution.  This built-in is useful for
 implementing assertions.</dd>
@@ -2129,7 +2129,7 @@ available:</p>
 <div class="section" id="powerpc-altivec-built-in-functions">
 <h2>PowerPC AltiVec Built-in Functions<a class="headerlink" href="#powerpc-altivec-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides an interface for the PowerPC family of processors to access
-the AltiVec operations described in Motorolas AltiVec Programming
+the AltiVec operations described in Motorola&#8217;s AltiVec Programming
 Interface Manual.  The interface is made available by including
 <tt class="docutils literal"><span class="pre">&lt;altivec.h&gt;</span></tt> and using <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-maltivec"><em class="xref std std-option">-maltivec</em></a> and
 <em class="xref std std-option">-mabi=altivec</em>.  The interface supports the following vector
@@ -2159,8 +2159,8 @@ implemented.</p>
 <p>The long types are only implemented for 64-bit code generation, and
 the long type is only used in the floating point/integer conversion
 instructions.</p>
-<p>GCCs implementation of the high-level language interface available from
-C and C++ code differs from Motorolas documentation in several ways.</p>
+<p>GCC&#8217;s implementation of the high-level language interface available from
+C and C++ code differs from Motorola&#8217;s documentation in several ways.</p>
 <ul>
 <li><p class="first">A vector constant is a list of constant expressions within curly braces.</p>
 <ul class="simple">
@@ -4704,7 +4704,7 @@ between PowerPC and S/390.</p>
 <div class="section" id="powerpc-htm-low-level-built-in-functions">
 <h3>PowerPC HTM Low Level Built-in Functions<a class="headerlink" href="#powerpc-htm-low-level-built-in-functions" title="Permalink to this headline">¶</a></h3>
 <p>The following low level built-in functions are available with
-<em class="xref std std-option">-mhtm</em> or <em class="xref std std-option">-mcpu=CPU</em> where CPU is power8 or later.
+<em class="xref std std-option">-mhtm</em> or <em class="xref std std-option">-mcpu=CPU</em> where CPU is &#8216;power8&#8217; or later.
 They all generate the machine instruction that is part of the name.</p>
 <p>The HTM builtins (with the exception of <tt class="docutils literal"><span class="pre">__builtin_tbegin</span></tt>) return
 the full 4-bit condition register value set by their associated hardware
@@ -4712,9 +4712,9 @@ instruction.  The header file <tt class="docutils literal"><span class="pre">htm
 be used to decipher the return value.  The <tt class="docutils literal"><span class="pre">__builtin_tbegin</span></tt> builtin
 returns a simple true or false value depending on whether a transaction was
 successfully started or not.  The arguments of the builtins match exactly the
-type and order of the associated hardware instructions operands, except for
+type and order of the associated hardware instruction&#8217;s operands, except for
 the <tt class="docutils literal"><span class="pre">__builtin_tcheck</span></tt> builtin, which does not take any input arguments.
-Refer to the ISA manual for a description of each instructions operands.</p>
+Refer to the ISA manual for a description of each instruction&#8217;s operands.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">__builtin_tbegin</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span>
 <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">__builtin_tend</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span>
 
@@ -4813,7 +4813,7 @@ using the following code example:</p>
 <h3>PowerPC HTM High Level Inline Functions<a class="headerlink" href="#powerpc-htm-high-level-inline-functions" title="Permalink to this headline">¶</a></h3>
 <p>The following high level HTM interface is made available by including
 <tt class="docutils literal"><span class="pre">&lt;htmxlintrin.h&gt;</span></tt> and using <em class="xref std std-option">-mhtm</em> or <em class="xref std std-option">-mcpu=CPU</em>
-where CPU is power8 or later.  This interface is common between PowerPC
+where CPU is &#8216;power8&#8217; or later.  This interface is common between PowerPC
 and S/390, allowing users to write one HTM source implementation that
 can be compiled and executed on either system.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">long</span> <span class="n">__TM_simple_begin</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -5025,7 +5025,7 @@ For example:</p>
 
 <span class="kt">int</span> <span class="nf">get_tcb_value</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="c1">// Generate mov.l (8,gbr),r0 instruction</span>
+  <span class="c1">// Generate mov.l @(8,gbr),r0 instruction</span>
   <span class="k">return</span> <span class="p">((</span><span class="n">my_tcb</span><span class="o">*</span><span class="p">)</span><span class="n">__builtin_thread_pointer</span> <span class="p">())</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -5178,7 +5178,7 @@ functions also become available:</p>
 <p>GCC provides extensions for the SPU processor as described in the
 Sony/Toshiba/IBM SPU Language Extensions Specification, which can be
 found at <a class="reference external" href="http://cell.scei.co.jp/">http://cell.scei.co.jp/</a> or
-<a class="reference external" href="http://www.ibm.com/developerworks/power/cell/">http://www.ibm.com/developerworks/power/cell/</a>.  GCCs
+<a class="reference external" href="http://www.ibm.com/developerworks/power/cell/">http://www.ibm.com/developerworks/power/cell/</a>.  GCC&#8217;s
 implementation differs in several ways.</p>
 <ul>
 <li><p class="first">The optional extension of specifying vector constants in parentheses is
@@ -5368,7 +5368,7 @@ automatically executed in a very high priority constructor.</p>
 <p>For example, this function has to be used in <tt class="docutils literal"><span class="pre">ifunc</span></tt> resolvers that
 check for CPU type using the built-in functions <tt class="docutils literal"><span class="pre">__builtin_cpu_is</span></tt>
 and <tt class="docutils literal"><span class="pre">__builtin_cpu_supports</span></tt>, or in constructors on targets that
-dont support constructor priority.</p>
+don&#8217;t support constructor priority.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">static</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="n">resolve_memcpy</span> <span class="p">(</span><span class="kt">void</span><span class="p">))</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="c1">// ifunc resolvers fire before constructors, explicitly call the init</span>

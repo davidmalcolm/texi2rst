@@ -84,12 +84,12 @@
             
   <div class="section" id="objective-c-and-objective-c-languages">
 <h1>Objective-C and Objective-C++ Languages<a class="headerlink" href="#objective-c-and-objective-c-languages" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="index-0"></span><p id="index-1">GCC supports traditional Objective-C (also known as Objective-C
-1.0) and contains support for the Objective-C exception and
+<span class="target" id="index-0"></span><p id="index-1">GCC supports &#8216;traditional&#8217; Objective-C (also known as &#8216;Objective-C
+1.0&#8217;) and contains support for the Objective-C exception and
 synchronization syntax.  It has also support for a number of
-Objective-C 2.0 language extensions, including properties, fast
+&#8216;Objective-C 2.0&#8217; language extensions, including properties, fast
 enumeration (only for Objective-C), method attributes and the
-optional and required keywords in protocols.  GCC supports
+&#64;optional and &#64;required keywords in protocols.  GCC supports
 Objective-C++ and features available in Objective-C are also available
 in Objective-C++.</p>
 <p>GCC by default uses the GNU Objective-C runtime library, which is part
@@ -101,29 +101,29 @@ that works with the GNU Objective-C runtime library and output that
 works with the Apple/NeXT Objective-C runtime library.</p>
 <p>There is no formal written standard for Objective-C or Objective-C++.
 The authoritative manual on traditional Objective-C (1.0) is
-Object-Oriented Programming and the Objective-C Language,
+&#8216;Object-Oriented Programming and the Objective-C Language&#8217;,
 available at a number of web sites:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.gnustep.org/resources/documentation/ObjectivCBook.pdf">http://www.gnustep.org/resources/documentation/ObjectivCBook.pdf</a>
+<li><a class="reference external" href="http://www.gnustep.org//resources//documentation//ObjectivCBook.pdf">http://www.gnustep.org//resources//documentation//ObjectivCBook.pdf</a>
 is the original NeXTstep document;
 * <a class="reference external" href="http://objc.toodarkpark.net">http://objc.toodarkpark.net</a>
 is the same document in another format;
-* <a class="reference external" href="http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/ObjectiveC/">http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/ObjectiveC/</a>
-has an updated version but make sure you search for Object Oriented Programming and the Objective-C Programming Language 1.0,
-not documentation on the newer Objective-C 2.0 language</li>
+* <a class="reference external" href="http://developer.apple.com//mac//library//documentation//Cocoa//Conceptual//ObjectiveC/">http://developer.apple.com//mac//library//documentation//Cocoa//Conceptual//ObjectiveC/</a>
+has an updated version but make sure you search for &#8216;Object Oriented Programming and the Objective-C Programming Language 1.0&#8217;,
+not documentation on the newer &#8216;Objective-C 2.0&#8217; language</li>
 </ul>
 <p>The Objective-C exception and synchronization syntax (that is, the
-keywords try, throw, catch, finally and synchronized) is
+keywords &#64;try, &#64;throw, &#64;catch, &#64;finally and &#64;synchronized) is
 supported by GCC and is enabled with the option
 <a class="reference internal" href="options-controlling-objective-c-and-objective-c++-dialects.html#cmdoption-fobjc-exceptions"><em class="xref std std-option">-fobjc-exceptions</em></a>.  The syntax is briefly documented in this
 manual and in the Objective-C 2.0 manuals from Apple.</p>
 <p>The Objective-C 2.0 language extensions and features are automatically
-enabled; they include properties (via the property, synthesize and
-dynamic keywords), fast enumeration (not available in
+enabled; they include properties (via the &#64;property, &#64;synthesize and
+&#64;dynamic keywords), fast enumeration (not available in
 Objective-C++), attributes for methods (such as deprecated, noreturn,
 sentinel, format), the unused attribute for method arguments, the
-package keyword for instance variables and the optional and
-required keywords in protocols.  You can disable all these
+&#64;package keyword for instance variables and the &#64;optional and
+&#64;required keywords in protocols.  You can disable all these
 Objective-C 2.0 language extensions with the option
 <em class="xref std std-option">-fobjc-std=objc1</em>, which causes the compiler to recognize the
 same Objective-C language syntax recognized by GCC 4.0, and to produce
@@ -131,7 +131,7 @@ an error if one of the new features is used.</p>
 <p>GCC has currently no support for non-fragile instance variables.</p>
 <p>The authoritative manual on Objective-C 2.0 is available from Apple:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/ObjectiveC/">http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/ObjectiveC/</a></li>
+<li><a class="reference external" href="http://developer.apple.com//mac//library//documentation//Cocoa//Conceptual//ObjectiveC/">http://developer.apple.com//mac//library//documentation//Cocoa//Conceptual//ObjectiveC/</a></li>
 </ul>
 <p>For more information concerning the history of Objective-C that is
 available online, see <a class="reference external" href="http://gcc.gnu.org/readings.html">http://gcc.gnu.org/readings.html</a></p>

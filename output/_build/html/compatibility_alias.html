@@ -83,15 +83,14 @@
           <div class="body">
             
   <p><tt class="docutils literal"><span class="pre">compatibility_alias</span></tt></p>
-<p>The keyword <tt class="docutils literal"><span class="pre">compatibility_alias</span></tt> allows you to define a class name
+<p>The keyword <tt class="docutils literal"><span class="pre">&#64;compatibility_alias</span></tt> allows you to define a class name
 as equivalent to another class name.  For example:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="n">compatibility_alias</span> <span class="n">WOApplication</span> <span class="n">GSWApplication</span><span class="p">;</span>
-</pre></div>
+<div class="highlight-c++"><pre>@compatibility_alias WOApplication GSWApplication;</pre>
 </div>
 <p>tells the compiler that each time it encounters <tt class="docutils literal"><span class="pre">WOApplication</span></tt> as
 a class name, it should replace it with <tt class="docutils literal"><span class="pre">GSWApplication</span></tt> (that is,
 <tt class="docutils literal"><span class="pre">WOApplication</span></tt> is just an alias for <tt class="docutils literal"><span class="pre">GSWApplication</span></tt>).</p>
-<p>There are some constraints on how this can be used</p>
+<p>There are some constraints on how this can be used-</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">WOApplication</span></tt> (the alias) must not be an existing class;<ul>
 <li><tt class="docutils literal"><span class="pre">GSWApplication</span></tt> (the real class) must be an existing class.</li>

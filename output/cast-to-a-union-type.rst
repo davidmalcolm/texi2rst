@@ -29,8 +29,8 @@ union type is equivalent to storing in a member of the union:
 
   union foo u;
   /* ... */
-  u = (union foo) x    u.i = x
-  u = (union foo) y    u.d = y
+  u = (union foo) x  ==  u.i = x
+  u = (union foo) y  ==  u.d = y
 
 You can also use the union cast as a function argument:
 

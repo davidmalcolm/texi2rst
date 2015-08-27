@@ -5,7 +5,7 @@ This results in an incomplete type, much like what you get if you write
 ``struct foo`` without describing the elements.  A later declaration
 that does specify the possible values completes the type.
 
-You cant allocate variables or storage using the type while it is
+You can't allocate variables or storage using the type while it is
 incomplete.  However, you can work with pointers to that type.
 
 This extension may not be very useful, but it makes the handling of

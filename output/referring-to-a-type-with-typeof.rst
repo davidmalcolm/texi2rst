@@ -43,7 +43,7 @@ such a type.
 ``typeof`` is often useful in conjunction with
 statement expressions (Statement Exprs).
 Here is how the two together can
-be used to define a safe maximum macro which operates on any
+be used to define a safe 'maximum' macro which operates on any
 arithmetic type and evaluates each of its arguments exactly once:
 
 .. code-block:: c++
@@ -120,7 +120,7 @@ declaration must be initialized, and the type of the variable is
 determined by the initializer; the name of the variable is not in
 scope until after the initializer.  (In C++, you should use C++11
 ``auto`` for this purpose.)  Using ``__auto_type``, the
-maximum macro above could be written as:
+'maximum' macro above could be written as:
 
 .. code-block:: c++
 

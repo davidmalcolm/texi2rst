@@ -121,7 +121,7 @@ variable-length arrays are more elegant.</p>
 <p>There are other differences between these two methods.  Space allocated
 with <tt class="docutils literal"><span class="pre">alloca</span></tt> exists until the containing function returns.
 The space for a variable-length array is deallocated as soon as the array
-names scope ends.  (If you use both variable-length arrays and
+name&#8217;s scope ends.  (If you use both variable-length arrays and
 <tt class="docutils literal"><span class="pre">alloca</span></tt> in the same function, deallocation of a variable-length array
 also deallocates anything more recently allocated with <tt class="docutils literal"><span class="pre">alloca</span></tt>.)</p>
 <p>You can also use variable-length arrays as arguments to functions:</p>
@@ -136,7 +136,7 @@ also deallocates anything more recently allocated with <tt class="docutils liter
 and is remembered for the scope of the array in case you access it with
 <tt class="docutils literal"><span class="pre">sizeof</span></tt>.</p>
 <p>If you want to pass the array first and the length afterward, you can
-use a forward declaration in the parameter listanother GNU extension.</p>
+use a forward declaration in the parameter list-another GNU extension.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">entry</span>
 <span class="n">tester</span> <span class="p">(</span><span class="kt">int</span> <span class="n">len</span><span class="p">;</span> <span class="kt">char</span> <span class="n">data</span><span class="p">[</span><span class="n">len</span><span class="p">][</span><span class="n">len</span><span class="p">],</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span>
 <span class="p">{</span>
@@ -149,8 +149,8 @@ declaration</em>, and it serves the purpose of making the name <tt class="docuti
 known when the declaration of <tt class="docutils literal"><span class="pre">data</span></tt> is parsed.</p>
 <p>You can write any number of such parameter forward declarations in the
 parameter list.  They can be separated by commas or semicolons, but the
-last one must end with a semicolon, which is followed by the real
-parameter declarations.  Each forward declaration must match a real
+last one must end with a semicolon, which is followed by the &#8216;real&#8217;
+parameter declarations.  Each forward declaration must match a &#8216;real&#8217;
 declaration in parameter name and data type.  ISO C99 does not support
 parameter forward declarations.</p>
 </div>

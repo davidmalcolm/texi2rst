@@ -3,11 +3,11 @@ Constant String Objects
 
 GNU Objective-C provides constant string objects that are generated
 directly by the compiler.  You declare a constant string object by
-prefixing a C constant string with the character :
+prefixing a C constant string with the character @:
 
 .. code-block:: c++
 
-    id myString = "this is a constant string object";
+    id myString = @"this is a constant string object";
 
 The constant string objects are by default instances of the
 ``NXConstantString`` class which is provided by the GNU Objective-C
@@ -18,17 +18,17 @@ User defined libraries may want to implement their own constant string
 class.  To be able to support them, the GNU Objective-C compiler provides
 a new command line options :option:`-fconstant-string-class=``class-name```.
 The provided class should adhere to a strict structure, the same
-as ``NXConstantString``s structure:
+as ``NXConstantString``'s structure:
 
 .. code-block:: c++
 
-  interface MyConstantStringClass
+  @interface MyConstantStringClass
   {
     Class isa;
     char *c_string;
     unsigned int len;
   }
-  end
+  @end
 
 ``NXConstantString`` inherits from ``Object``; user class
 libraries may choose to inherit the customized constant string class

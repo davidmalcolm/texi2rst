@@ -12,7 +12,7 @@ optimization efforts will best affect your code.  You can also use
 assess which parts of your code use the greatest amount of computing
 time.
 
-Profiling tools help you analyze your codes performance.  Using a
+Profiling tools help you analyze your code's performance.  Using a
 profiler such as :command:`gcov` or :command:`gprof`, you can find out some
 basic performance statistics, such as:
 
@@ -37,12 +37,12 @@ final product.
 You should compile your code without optimization if you plan to use
 :command:`gcov` because the optimization, by combining some lines of code
 into one function, may not give you as much information as you need to
-look for hot spots where the code is using a great deal of computer
+look for 'hot spots' where the code is using a great deal of computer
 time.  Likewise, because :command:`gcov` accumulates statistics by line (at
 the lowest resolution), it works best with a programming style that
 places only one statement on each line.  If you use complicated macros
 that expand to loops or to other control structures, the statistics are
-less helpfulthey only report on the line where the macro call
+less helpful-they only report on the line where the macro call
 appears.  If your complex macros behave like functions, you can replace
 them with inline functions to solve this problem.
 

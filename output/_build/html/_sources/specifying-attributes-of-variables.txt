@@ -131,8 +131,8 @@ cleanup (``cleanup_function``)
   ``nocommon`` variable attribute
 
   The ``common`` attribute requests GCC to place a variable in
-  common storage.  The ``nocommon`` attribute requests the
-  oppositeto allocate space for it directly.
+  'common' storage.  The ``nocommon`` attribute requests the
+  opposite-to allocate space for it directly.
 
   These attributes override the default chosen by the
   :option:`-fno-common` and :option:`-fcommon` flags respectively.
@@ -163,7 +163,7 @@ deprecateddeprecated (``msg``)
 
 mode (``mode``)
   ``mode`` variable attribute
-  This attribute specifies the data type for the declarationwhichever
+  This attribute specifies the data type for the declaration-whichever
   type corresponds to the mode ``mode``.  This in effect lets you
   request an integer or floating-point type according to its width.
 
@@ -175,7 +175,7 @@ mode (``mode``)
 packed
   ``packed`` variable attribute
   The ``packed`` attribute specifies that a variable or structure field
-  should have the smallest possible alignmentone byte for a variable,
+  should have the smallest possible alignment-one byte for a variable,
   and one bit for a field, unless you specify a larger value with the
   ``aligned`` attribute.
 
@@ -233,7 +233,7 @@ section ("``section-name``")
   uninitialized global variables but the linker requires
   each object be defined once, with the exception that uninitialized
   variables tentatively go in the ``common`` (or ``bss``) section
-  and can be multiply defined.  Using the ``section`` attribute
+  and can be multiply 'defined'.  Using the ``section`` attribute
   changes what section the variable goes into and may cause the
   linker to issue an error if an uninitialized variable has multiple
   definitions.  You can force a variable to be initialized with the
@@ -451,7 +451,7 @@ model (``model-name``)
 
   On IA-64, use this attribute to set the addressability of an object.
   At present, the only supported identifier for ``model-name`` is
-  ``small``, indicating addressability via small (22-bit)
+  ``small``, indicating addressability via 'small' (22-bit)
   addresses (so that their addresses can be loaded with the ``addl``
   instruction).  Caveat: such addressing is by definition not position
   independent and hence this attribute must not be used for objects
@@ -486,7 +486,7 @@ MeP Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 The MeP target has a number of addressing modes and busses.  The
-``near`` space spans the standard memory spaces first 16 megabytes
+``near`` space spans the standard memory space's first 16 megabytes
 (24 bits).  The ``far`` space spans the entire 32-bit memory space.
 The ``based`` space is a 128-byte region in the memory space that
 is addressed relative to the ``$tp`` register.  The ``tiny``
@@ -693,7 +693,7 @@ ms_structgcc_struct
        } t1;
 
     The size of ``t1`` is 8 bytes with the zero-length bit-field.  If the
-    zero-length bit-field were removed, ``t1``s size would be 4 bytes.
+    zero-length bit-field were removed, ``t1``'s size would be 4 bytes.
 
     * If a zero-length bit-field is inserted after a bit-field, ``foo``, and the
     alignment of the zero-length bit-field is greater than the member that follows it,

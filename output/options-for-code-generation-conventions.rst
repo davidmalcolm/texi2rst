@@ -12,7 +12,7 @@ used in code generation.
 
 Most of them have both positive and negative forms; the negative form
 of :option:`-ffoo` is :option:`-fno-foo`.  In the table below, only
-one of the forms is listedthe one that is not the default.  You
+one of the forms is listed-the one that is not the default.  You
 can figure out the other form by either removing no- or adding
 it.
 
@@ -96,7 +96,7 @@ it.
   in memory, the optimizing compiler has the freedom to reuse its stack
   space with other temporaries or scoped local variables whose live range
   does not overlap with it. However some of the legacy code relies on
-  the behavior of older compilers in which temporaries stack space is
+  the behavior of older compilers in which temporaries' stack space is
   not reused, the aggressive stack reuse can lead to runtime errors. This
   option is used to control the temporary stack reuse optimization.
 
@@ -124,7 +124,7 @@ it.
   languages like C that do not normally require it.  However, you may need
   to enable this option when compiling C code that needs to interoperate
   properly with exception handlers written in C++.  You may also wish to
-  disable this option if you are compiling older C++ programs that dont
+  disable this option if you are compiling older C++ programs that don't
   use exception handling.
 
 .. option:: -fnon-call-exceptions
@@ -138,7 +138,7 @@ it.
 
 .. option:: -fdelete-dead-exceptions
 
-  Consider that instructions that may throw exceptions but dont otherwise
+  Consider that instructions that may throw exceptions but don't otherwise
   contribute to the execution of the program can be optimized away.
   This option is enabled by default for the Ada front end, as permitted by
   the Ada language specification.
@@ -173,7 +173,7 @@ it.
 
 .. option:: -fpcc-struct-return
 
-  Return short ``struct`` and ``union`` values in memory like
+  Return 'short' ``struct`` and ``union`` values in memory like
   longer ones, rather than in registers.  This convention is less
   efficient, but it has the advantage of allowing intercallability between
   GCC-compiled files and files compiled with other compilers, particularly
@@ -264,7 +264,7 @@ it.
 
 .. option:: -finhibit-size-directive
 
-  Dont output a ``.size`` assembler directive, or anything else that
+  Don't output a ``.size`` assembler directive, or anything else that
   would cause trouble if the function is split in the middle, and the
   two halves are placed at locations far apart in memory.  This option is
   used when compiling crtstuff.c; you should not need to use it
@@ -384,7 +384,7 @@ it.
 
   It is an error to use this flag with the frame pointer or stack pointer.
   Use of this flag for other registers that have fixed pervasive roles in
-  the machines execution model produces disastrous results.
+  the machine's execution model produces disastrous results.
 
   This flag does not have a negative form, because it specifies a
   three-way choice.
@@ -398,7 +398,7 @@ it.
 
   It is an error to use this flag with the frame pointer or stack pointer.
   Use of this flag for other registers that have fixed pervasive roles in
-  the machines execution model produces disastrous results.
+  the machine's execution model produces disastrous results.
 
   A different sort of disaster results from the use of this flag for
   a register in which function values may be returned.
@@ -581,7 +581,7 @@ it.
 
 .. option:: -fvisibility=[default|internal|hidden|protected]
 
-  Set the default ELF image symbol visibility to the specified optionall
+  Set the default ELF image symbol visibility to the specified option-all
   symbols are marked with this unless overridden within the code.
   Using this feature can very substantially improve linking and
   load times of shared object libraries, produce more optimized
@@ -593,13 +593,13 @@ it.
   available to be linked against from outside the shared object.
   protected and internal are pretty useless in real-world
   usage so the only other commonly used option is hidden.
-  The default if :option:`-fvisibility` isnt specified is
+  The default if :option:`-fvisibility` isn't specified is
   default, i.e., make every symbol public.
 
   A good explanation of the benefits offered by ensuring ELF
-  symbols have the correct visibility is given by How To Write
-  Shared Libraries by Ulrich Drepper (which can be found at
-  http://www.akkadia.org/drepper/)however a superior
+  symbols have the correct visibility is given by 'How To Write
+  Shared Libraries' by Ulrich Drepper (which can be found at
+  http://www.akkadia.org/drepper/)-however a superior
   solution made possible by this option to marking things hidden when
   the default is public is to make the default hidden and mark things
   public.  This is the norm with DLLs on Windows and with :option:`-fvisibility=hidden`
@@ -617,7 +617,7 @@ it.
   part of the API interface contract and thus all new code should
   always specify visibility when it is not the default; i.e., declarations
   only for use within the local DSO should always be marked explicitly
-  as hidden as so to avoid PLT indirection overheadsmaking this
+  as hidden as so to avoid PLT indirection overheads-making this
   abundantly clear also aids readability and self-documentation of the code.
   Note that due to ISO C++ specification requirements, ``operator new`` and
   ``operator delete`` must always be of default visibility.
@@ -643,14 +643,14 @@ it.
   the DSOs.
 
   An overview of these techniques, their benefits and how to use them
-  is at http://gcc.gnu.org/wiki/Visibility.
+  is at http://gcc.gnu.org//wiki//Visibility.
 
 .. option:: -fstrict-volatile-bitfields
 
   This option should be used if accesses to volatile bit-fields (or other
   structure fields, although the compiler usually honors those types
   anyway) should use a single access of the width of the
-  fields type, aligned to a natural alignment if possible.  For
+  field's type, aligned to a natural alignment if possible.  For
   example, targets with memory-mapped peripheral registers might require
   all such accesses to be 16 bits wide; with this flag you can
   declare all peripheral bit-fields as ``unsigned short`` (assuming short
@@ -671,7 +671,7 @@ it.
 
   Note:  Due to restrictions of the C/C++11 memory model, write accesses are
   not allowed to touch non bit-field members.  It is therefore recommended
-  to define all bits of the fields type as bit-field members.
+  to define all bits of the field's type as bit-field members.
 
   The default value of this option is determined by the application binary
   interface for the target processor.

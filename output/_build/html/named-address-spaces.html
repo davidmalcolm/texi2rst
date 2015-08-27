@@ -199,10 +199,10 @@ from <a class="reference external" href="http://nongnu.org/avr-libc/user-manual/
 together with attribute <tt class="docutils literal"><span class="pre">progmem</span></tt>.</p>
 <p>Limitations and caveats</p>
 <ul>
-<li><p class="first">Reading across the 64KiB section boundary of
+<li><p class="first">Reading across the 64 KiB section boundary of
 the <tt class="docutils literal"><span class="pre">__flash</span></tt> or <tt class="docutils literal"><span class="pre">__flash``N``</span></tt> address spaces
 shows undefined behavior. The only address space that
-supports reading across the 64KiB flash segment boundaries is
+supports reading across the 64 KiB flash segment boundaries is
 <tt class="docutils literal"><span class="pre">__memx</span></tt>.</p>
 <ul class="simple">
 <li>If you use one of the <tt class="docutils literal"><span class="pre">__flash``N``</span></tt> address spaces</li>
@@ -237,7 +237,7 @@ as immediates into operands of instructions.</p>
 <p><tt class="docutils literal"><span class="pre">__far</span></tt> M32C Named Address Spaces</p>
 <p>On the M32C target, with the R8C and M16C CPU variants, variables
 qualified with <tt class="docutils literal"><span class="pre">__far</span></tt> are accessed using 32-bit addresses in
-order to access memory beyond the first 64Ki bytes.  If
+order to access memory beyond the first 64 Ki bytes.  If
 <tt class="docutils literal"><span class="pre">__far</span></tt> is used with the M32CM or M32C CPU variants, it has no
 effect.</p>
 </div>
@@ -247,7 +247,7 @@ effect.</p>
 <p>On the RL78 target, variables qualified with <tt class="docutils literal"><span class="pre">__far</span></tt> are accessed
 with 32-bit pointers (20-bit addresses) rather than the default 16-bit
 addresses.  Non-far variables are assumed to appear in the topmost
-64KiB of the address space.</p>
+64 KiB of the address space.</p>
 </div>
 <div class="section" id="spu-named-address-spaces">
 <h2>SPU Named Address Spaces<a class="headerlink" href="#spu-named-address-spaces" title="Permalink to this headline">¶</a></h2>

@@ -114,7 +114,7 @@
 </div>
 <p><tt class="docutils literal"><span class="pre">array</span></tt> needs to be an Objective-C object (usually a collection
 object, for example an array, a dictionary or a set) which implements
-the Fast Enumeration Protocol (see below).  If you are using a
+the &#8216;Fast Enumeration Protocol&#8217; (see below).  If you are using a
 Foundation library such as GNUstep Base or Apple Cocoa Foundation, all
 collection objects in the library implement this protocol and can be
 used in this way.</p>
@@ -124,12 +124,11 @@ each of them, it assigns it to <tt class="docutils literal"><span class="pre">ob
 <p>Here is a fully worked-out example using a Foundation library (which
 provides the implementation of <tt class="docutils literal"><span class="pre">NSArray</span></tt>, <tt class="docutils literal"><span class="pre">NSString</span></tt> and
 <tt class="docutils literal"><span class="pre">NSLog</span></tt>):</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="n">NSArray</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="n">nil</span><span class="p">];</span>
-<span class="n">NSString</span> <span class="o">*</span><span class="n">object</span><span class="p">;</span>
+<div class="highlight-c++"><pre>NSArray *array = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
+NSString *object;
 
-<span class="k">for</span> <span class="p">(</span><span class="n">object</span> <span class="n">in</span> <span class="n">array</span><span class="p">)</span>
-  <span class="n">NSLog</span> <span class="p">(</span><span class="s">&quot;Iterating over %&quot;</span><span class="p">,</span> <span class="n">object</span><span class="p">);</span>
-</pre></div>
+for (object in array)
+  NSLog (@"Iterating over %@", object);</pre>
 </div>
 <p>:: _c99-like-fast-enumeration-syntax:</p>
 </div>
@@ -181,7 +180,7 @@ it is safe to write code such as <tt class="docutils literal"><span class="pre">
 <p>batches of objects from the collection object using the fast
 enumeration protocol (see below), then iterating over all objects in
 the batch.  This is faster than a normal enumeration where objects are
-retrieved one by one (hence the name fast enumeration).</p>
+retrieved one by one (hence the name &#8216;fast enumeration&#8217;).</p>
 <ul class="simple">
 <li>if there are no objects in the collection, then</li>
 </ul>
@@ -261,7 +260,7 @@ the <tt class="docutils literal"><span class="pre">itemsPtr</span></tt> field of
 array preallocated by the caller (on the stack) of size <tt class="docutils literal"><span class="pre">len</span></tt>.
 In many cases you can put the objects you want to return in that
 <tt class="docutils literal"><span class="pre">objects</span></tt> array, then do <tt class="docutils literal"><span class="pre">itemsPtr</span> <span class="pre">=</span> <span class="pre">objects</span></tt>.  But you
-dont have to; if your collection already has the objects to return in
+don&#8217;t have to; if your collection already has the objects to return in
 some form of C array, it could return them from there instead.</p>
 <p>The <tt class="docutils literal"><span class="pre">state</span></tt> and <tt class="docutils literal"><span class="pre">extra</span></tt> fields of the
 <tt class="docutils literal"><span class="pre">NSFastEnumerationState</span></tt> structure allows your collection object

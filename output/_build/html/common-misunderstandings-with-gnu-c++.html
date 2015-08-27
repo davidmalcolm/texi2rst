@@ -27,7 +27,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="gcc 6 documentation" href="index.html" />
     <link rel="up" title="Known Causes of Trouble with GCC" href="known-causes-of-trouble-with-gcc.html" />
-    <link rel="next" title="Certain Changes We Dont Want to Make" href="certain-changes-we-dont-want-to-make.html" />
+    <link rel="next" title="Certain Changes We Don’t Want to Make" href="certain-changes-we-don&#39;t-want-to-make.html" />
     <link rel="prev" title="Disappointments and Misunderstandings" href="disappointments-and-misunderstandings.html" /> 
   </head>
   <body>
@@ -38,7 +38,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="certain-changes-we-dont-want-to-make.html" title="Certain Changes We Dont Want to Make"
+          <a href="certain-changes-we-don't-want-to-make.html" title="Certain Changes We Don’t Want to Make"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="disappointments-and-misunderstandings.html" title="Disappointments and Misunderstandings"
@@ -64,8 +64,8 @@
   <p class="topless"><a href="disappointments-and-misunderstandings.html"
                         title="previous chapter">Disappointments and Misunderstandings</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="certain-changes-we-dont-want-to-make.html"
-                        title="next chapter">Certain Changes We Dont Want to Make</a></p>
+  <p class="topless"><a href="certain-changes-we-don&#39;t-want-to-make.html"
+                        title="next chapter">Certain Changes We Don&#8217;t Want to Make</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/common-misunderstandings-with-gnu-c++.txt"
@@ -135,7 +135,7 @@ symbols any static data members that lack definitions.</p>
 <span class="target" id="index-7"></span><span class="target" id="index-8"></span><p id="index-9">The C++ standard prescribes that all names that are not dependent on
 template parameters are bound to their present definitions when parsing
 a template function or class.The C++ standard just uses the
-term dependent for names that depend on the type or value of
+term &#8216;dependent&#8217; for names that depend on the type or value of
 template parameters.  This shorter term will also be used in the rest of
 this section.  Only names that are dependent are looked up at the point
 of instantiation.  For example, consider</p>
@@ -186,7 +186,7 @@ different from non-template codes.  The most common is probably this:</p>
 compiler will look for a name declared at the enclosing namespace scope
 (which is the global scope here).  It will not look into the base class,
 since that is dependent and you may declare specializations of
-<tt class="docutils literal"><span class="pre">Base</span></tt> even after declaring <tt class="docutils literal"><span class="pre">Derived</span></tt>, so the compiler cant
+<tt class="docutils literal"><span class="pre">Base</span></tt> even after declaring <tt class="docutils literal"><span class="pre">Derived</span></tt>, so the compiler can&#8217;t
 really know what <tt class="docutils literal"><span class="pre">i</span></tt> would refer to.  If there is no global
 variable <tt class="docutils literal"><span class="pre">i</span></tt>, then you will get an error message.</p>
 <p>In order to make it clear that you want the member of the base class,
@@ -240,8 +240,8 @@ temporary object.  The compiler may very well delete the object before
 you expect it to, leaving a pointer to garbage.  The most common place
 where this problem crops up is in classes like string classes,
 especially ones that define a conversion function to type <tt class="docutils literal"><span class="pre">char</span> <span class="pre">*</span></tt>
-or <tt class="docutils literal"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*``which</span> <span class="pre">is</span> <span class="pre">one</span> <span class="pre">reason</span> <span class="pre">why</span> <span class="pre">the</span> <span class="pre">standard</span>
-<span class="pre">``string</span></tt> class requires you to call the <tt class="docutils literal"><span class="pre">c_str</span></tt> member
+or <tt class="docutils literal"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*</span></tt>-which is one reason why the standard
+<tt class="docutils literal"><span class="pre">string</span></tt> class requires you to call the <tt class="docutils literal"><span class="pre">c_str</span></tt> member
 function.  However, any class that returns a pointer to some internal
 structure is potentially subject to this problem.</p>
 <p>For example, a program may use a function <tt class="docutils literal"><span class="pre">strfunc</span></tt> that returns
@@ -320,7 +320,7 @@ when constructing or copy-constructing a Derived object.  It is
 unspecified whether Base::operator= is called more than once when
 the implicit copy-assignment for Derived objects is invoked (as it is
 inside func in the example).</p>
-<p>G++ implements the intuitive algorithm for copy-assignment: assign all
+<p>G++ implements the &#8216;intuitive&#8217; algorithm for copy-assignment: assign all
 direct bases, then assign all members.  In that algorithm, the virtual
 base subobject can be encountered more than once.  In the example, copying
 proceeds in the following order: val, name (via
@@ -345,7 +345,7 @@ subobject is assigned.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="certain-changes-we-dont-want-to-make.html" title="Certain Changes We Dont Want to Make"
+          <a href="certain-changes-we-don't-want-to-make.html" title="Certain Changes We Don’t Want to Make"
              >next</a> |</li>
         <li class="right" >
           <a href="disappointments-and-misunderstandings.html" title="Disappointments and Misunderstandings"

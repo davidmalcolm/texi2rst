@@ -16,7 +16,7 @@ access, except to say that C++ should behave in a similar manner to C
 with respect to volatiles, where possible.  However, the different
 lvalueness of expressions between C and C++ complicate the behavior.
 G++ behaves the same as GCC for volatile access, C
-ExtensionsVolatiles, for a description of GCCs behavior.
+ExtensionsVolatiles, for a description of GCC's behavior.
 
 The C and C++ language specifications differ when an object is
 accessed in a void context:
@@ -47,7 +47,7 @@ references.  Again, if you wish to force a read, cast the reference to
 an rvalue.
 
 G++ implements the same behavior as GCC does when assigning to a
-volatile objectthere is no reread of the assigned-to object, the
+volatile object-there is no reread of the assigned-to object, the
 assigned rvalue is reused.  Note that in C++ assignment expressions
 are lvalues, and if used as an lvalue, the volatile object is
 referred to.  For instance, ``vref`` refers to ``vobj``, as

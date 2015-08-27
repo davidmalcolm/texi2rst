@@ -25,7 +25,7 @@ libraries and for parts of the compiler:
   :option:`-isystem`, is also specified with :option:`-I`, the :option:`-I`
   option is ignored.  The directory is still searched but as a
   system directory at its normal position in the system include chain.
-  This is to ensure that GCCs procedure to fix buggy system headers and
+  This is to ensure that GCC's procedure to fix buggy system headers and
   the ordering for the ``include_next`` directive are not inadvertently changed.
   If you really need to change the search order for system directories,
   use the :option:`-nostdinc` and/or :option:`-isystem` options.

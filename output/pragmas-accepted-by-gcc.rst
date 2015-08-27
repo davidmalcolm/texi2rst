@@ -79,7 +79,7 @@ ADDRESS ``name````address``
   For any declared symbols matching ``name``, this does three things
   to that symbol: it forces the symbol to be located at the given
   address (a number), it forces the symbol to be volatile, and it
-  changes the symbols scope to be static.  This pragma exists for
+  changes the symbol's scope to be static.  This pragma exists for
   compatibility with other compilers, but note that the common
   ``1234H`` numeric syntax is not supported (use ``0x1234``
   instead).  Example:
@@ -236,7 +236,7 @@ unused (``var`` [, ``var``]...)
   This pragma declares variables to be possibly unused.  GCC does not
   produce warnings for the listed variables.  The effect is similar to
   that of the ``unused`` attribute, except that this pragma may appear
-  anywhere within the variables scopes.
+  anywhere within the variables' scopes.
 
 :: _solaris-pragmas:
 
@@ -252,7 +252,7 @@ align ``alignment`` (``variable`` [, ``variable``]...)
   .. index:: pragma, align
 
   Increase the minimum alignment of each ``variable`` to ``alignment``.
-  This is the same as GCCs ``aligned`` attribute Variable
+  This is the same as GCC's ``aligned`` attribute Variable
   Attributes).  Macro expansion occurs on the arguments to this pragma
   when compiling C and Objective-C.  It does not currently occur when
   compiling C++, but this is a bug which may be fixed in a future
@@ -300,7 +300,7 @@ manner.  Here are some corner cases you may want to be aware of:
   linkage.  Asm labels do not have this restriction.
 
   * In C++, this pragma silently applies only to declarations with
-  C linkage.  Again, asm labels do not have this restriction.
+  'C' linkage.  Again, asm labels do not have this restriction.
 
   * If either of the ways of changing the assembly name of a
   declaration are applied to a declaration whose assembly name has
@@ -376,7 +376,7 @@ Diagnostic Pragmas
 
 GCC allows the user to selectively enable or disable certain types of
 diagnostics, and change the kind of the diagnostic.  For example, a
-projects policy might require that all sources compile with
+project's policy might require that all sources compile with
 :option:`-Werror` but certain files might have exceptions allowing
 specific types of warnings.  Or, a project might selectively enable
 diagnostics and treat them as errors depending on which preprocessor

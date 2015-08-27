@@ -13,7 +13,7 @@ with vague linkage (and debugging information) in a particular
 translation unit.
 
 Note: These ``#pragma``s have been superceded as of GCC 2.7.2
-by COMDAT support and the key method heuristic
+by COMDAT support and the 'key method' heuristic
 mentioned in Vague Linkage.  Using them can actually cause your
 program to grow due to unnecessary out-of-line copies of inline
 functions.
@@ -56,7 +56,7 @@ functions.
   .. index:: naming convention, implementation headers
 
   If you use #pragma implementation with no argument, it applies to
-  an include file with the same basenameA files :dfn:`basename`
+  an include file with the same basenameA file's :dfn:`basename`
   is the name stripped of all leading path information and of trailing
   suffixes, such as .h or .C or .cc. as your source
   file.  For example, in allclass.cc, giving just
@@ -66,7 +66,7 @@ functions.
   Use the string argument if you want a single implementation file to
   include code from multiple header files.  (You must also use
   #include to include the header file; #pragma
-  implementation only specifies how to use the fileit doesnt actually
+  implementation only specifies how to use the file-it doesn't actually
   include it.)
 
   There is no way to split up the contents of a single header file into
@@ -83,7 +83,7 @@ effect on function inlining.
 
 If you define a class in a header file marked with #pragma
 interface, the effect on an inline function defined in that class is
-similar to an explicit ``extern`` declarationthe compiler emits
+similar to an explicit ``extern`` declaration-the compiler emits
 no code at all to define an independent version of the function.  Its
 definition is used only for inlining with its callers.
 

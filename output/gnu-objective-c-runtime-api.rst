@@ -12,7 +12,7 @@ example to inspect and navigate classes, methods and protocols; to
 define new classes or new methods, and even to modify existing classes
 or protocols.
 
-If you are using a Foundation library such as GNUstep-Base, this
+If you are using a 'Foundation' library such as GNUstep-Base, this
 library will provide you with a rich set of functionality to do most
 of the inspection tasks, and you probably will only need direct access
 to the GNU Objective-C runtime API to define new classes or methods.
@@ -30,7 +30,7 @@ Modern GNU Objective-C Runtime API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The GNU Objective-C runtime provides an API which is similar to the
-one provided by the Objective-C 2.0 Apple/NeXT Objective-C
+one provided by the 'Objective-C 2.0' Apple/NeXT Objective-C
 runtime.  The API is documented in the public header files of the GNU
 Objective-C runtime:
 
@@ -62,8 +62,8 @@ Objective-C runtime:
   C/C++ code.
 
   * objc/objc-sync.h: this header declares some public functions
-  related to the Objective-C ``synchronized()`` syntax, allowing
-  you to emulate an Objective-C ``synchronized()`` block in plain
+  related to the Objective-C ``@synchronized()`` syntax, allowing
+  you to emulate an Objective-C ``@synchronized()`` block in plain
   C/C++ code.
 
   * objc/thr.h: this header declares a public runtime API threading
@@ -82,7 +82,7 @@ Traditional GNU Objective-C Runtime API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The GNU Objective-C runtime used to provide a different API, which we
-call the traditional GNU Objective-C runtime API.  Functions
+call the 'traditional' GNU Objective-C runtime API.  Functions
 belonging to this API are easy to recognize because they use a
 different naming convention, such as ``class_get_super_class()``
 (traditional API) instead of ``class_getSuperclass()`` (modern

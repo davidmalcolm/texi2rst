@@ -35,11 +35,11 @@ and Objective-C++ programs:
 .. option:: -fconstant-string-class=class-name
 
   Use ``class-name`` as the name of the class to instantiate for each
-  literal string specified with the syntax ``"..."``.  The default
+  literal string specified with the syntax ``@"..."``.  The default
   class name is ``NXConstantString`` if the GNU runtime is being used, and
   ``NSConstantString`` if the NeXT runtime is being used (see below).  The
   :option:`-fconstant-cfstrings` option, if also present, overrides the
-  :option:`-fconstant-string-class` setting and cause ``"..."`` literals
+  :option:`-fconstant-string-class` setting and cause ``@"..."`` literals
   to be laid out as constant CoreFoundation strings.
 
 .. option:: -fgnu-runtime
@@ -88,7 +88,7 @@ and Objective-C++ programs:
   methods thusly generated only operate on instance variables
   declared in the current Objective-C class, and not those inherited
   from superclasses.  It is the responsibility of the Objective-C
-  runtime to invoke all such methods in an objects inheritance
+  runtime to invoke all such methods in an object's inheritance
   hierarchy.  The ``- (id) .cxx_construct`` methods are invoked
   by the runtime immediately after a new object instance is allocated;
   the ``- (void) .cxx_destruct`` methods are invoked immediately
@@ -107,9 +107,9 @@ and Objective-C++ programs:
 
   Enable syntactic support for structured exception handling in
   Objective-C, similar to what is offered by C++ and Java.  This option
-  is required to use the Objective-C keywords ``try``,
-  ``throw``, ``catch``, ``finally`` and
-  ``synchronized``.  This option is available with both the GNU
+  is required to use the Objective-C keywords ``@try``,
+  ``@throw``, ``@catch``, ``@finally`` and
+  ``@synchronized``.  This option is available with both the GNU
   runtime and the NeXT runtime (but not available in conjunction with
   the NeXT runtime on Mac OS X 10.2 and earlier).
 
@@ -167,7 +167,7 @@ and Objective-C++ programs:
 .. option:: -fno-local-ivars, -flocal-ivars
 
   By default instance variables in Objective-C can be accessed as if
-  they were local variables from within the methods of the class theyre
+  they were local variables from within the methods of the class they're
   declared in.  This can lead to shadowing between instance variables
   and other variables declared either locally inside a class method or
   globally with the same name.  Specifying the :option:`-fno-local-ivars`
@@ -216,7 +216,7 @@ and Objective-C++ programs:
   Warn if multiple methods of different types for the same selector are
   found during compilation.  The check is performed on the list of methods
   in the final stage of compilation.  Additionally, a check is performed
-  for each selector appearing in a ``selector(...)``
+  for each selector appearing in a ``@selector(...)``
   expression, and a corresponding method for that selector has been found
   during compilation.  Because these checks scan the method table only at
   the end of compilation, these warnings are not produced if the final
@@ -243,13 +243,13 @@ and Objective-C++ programs:
 
     (Objective-C and Objective-C++ only)
 
-  Warn if a ``selector(...)`` expression referring to an
+  Warn if a ``@selector(...)`` expression referring to an
   undeclared selector is found.  A selector is considered undeclared if no
   method with that name has been declared before the
-  ``selector(...)`` expression, either explicitly in an
-  ``interface`` or ``protocol`` declaration, or implicitly in
-  an ``implementation`` section.  This option always performs its
-  checks as soon as a ``selector(...)`` expression is found,
+  ``@selector(...)`` expression, either explicitly in an
+  ``@interface`` or ``@protocol`` declaration, or implicitly in
+  an ``@implementation`` section.  This option always performs its
+  checks as soon as a ``@selector(...)`` expression is found,
   while :option:`-Wselector` only performs its checks in the final stage of
   compilation.  This also enforces the coding style convention
   that methods and selectors must be declared before being used.

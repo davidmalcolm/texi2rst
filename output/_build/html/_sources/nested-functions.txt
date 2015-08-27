@@ -11,7 +11,7 @@ A :dfn:`nested function` is a function defined inside another function.
 Nested functions are supported as an extension in GNU C, but are not
 supported by GNU C++.
 
-The nested functions name is local to the block where it is defined.
+The nested function's name is local to the block where it is defined.
 For example, here we define a nested function named ``square``, and
 call it twice:
 
@@ -68,7 +68,7 @@ If you try to call the nested function through its address after the
 containing function exits, all hell breaks loose.  If you try
 to call it after a containing scope level exits, and if it refers
 to some of the variables that are no longer in scope, you may be lucky,
-but its not wise to take the risk.  If, however, the nested function
+but it's not wise to take the risk.  If, however, the nested function
 does not refer to anything that has gone out of scope, you should be
 safe.
 

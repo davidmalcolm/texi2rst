@@ -2838,7 +2838,7 @@ section includes experimental options that may produce broken code.
     The default value is 1000 which limits large stack frame growth to 11 times
     the original size.
 
-  max-inline-insns-recursivemax-inline-insns-recursive-auto
+  max-inline-insns-recursive max-inline-insns-recursive-auto
     Specifies the maximum number of instructions an out-of-line copy of a
     self-recursive inline
     function can grow into by performing recursive inlining.
@@ -2850,7 +2850,7 @@ section includes experimental options that may produce broken code.
     enabled; :option:`--param max-inline-insns-recursive-auto` applies instead.  The
     default value is 450.
 
-  max-inline-recursive-depthmax-inline-recursive-depth-auto
+  max-inline-recursive-depth max-inline-recursive-depth-auto
     Specifies the maximum recursion depth used for recursive inlining.
 
     :option:`--param max-inline-recursive-depth` applies to functions
@@ -3067,7 +3067,7 @@ section includes experimental options that may produce broken code.
     A loop expected to iterate at least the selected number of iterations is
     aligned.
 
-  tracer-dynamic-coveragetracer-dynamic-coverage-feedback
+  tracer-dynamic-coverage tracer-dynamic-coverage-feedback
     This value is used to limit superblock formation once the given percentage of
     executed instructions is covered.  This limits unnecessary code size
     expansion.
@@ -3087,7 +3087,7 @@ section includes experimental options that may produce broken code.
     Stop reverse growth when the reverse probability of best edge is less than this
     threshold (in percent).
 
-  tracer-min-branch-ratiotracer-min-branch-ratio-feedback
+  tracer-min-branch-ratio tracer-min-branch-ratio-feedback
     Stop forward growth if the best edge has probability lower than this
     threshold.
 
@@ -3147,7 +3147,7 @@ section includes experimental options that may produce broken code.
     Increasing values mean more aggressive optimization, making the compilation time
     increase with probably slightly better performance.  The default value is 500.
 
-  reorder-blocks-duplicatereorder-blocks-duplicate-feedback
+  reorder-blocks-duplicate reorder-blocks-duplicate-feedback
     Used by the basic block reordering pass to decide whether to use unconditional
     branch or duplicate the code on its destination.  Code is duplicated when its
     estimated size is smaller than this value multiplied by the estimated size of

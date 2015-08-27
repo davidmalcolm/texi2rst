@@ -30,34 +30,34 @@ gpl(7), gfdl(7), fsf-funding(7), gcc(1) and the Info entry for @file{gcc}.
 
 .. man begin OPTIONS
 
--h--help
+-h --help
   Display help about using :command:`gcov` (on the standard output), and
   exit without doing any further processing.
 
--v--version
+-v --version
   Display the :command:`gcov` version number (on the standard output),
   and exit without doing any further processing.
 
--a--all-blocks
+-a --all-blocks
   Write individual execution counts for every basic block.  Normally gcov
   outputs execution counts only for the main blocks of a line.  With this
   option you can determine if blocks within a single line are not being
   executed.
 
--b--branch-probabilities
+-b --branch-probabilities
   Write branch frequencies to the output file, and write branch summary
   info to the standard output.  This option allows you to see how often
   each branch in your program was taken.  Unconditional branches will not
   be shown, unless the :option:`-u` option is given.
 
--c--branch-counts
+-c --branch-counts
   Write branch frequencies as the number of branches taken, rather than
   the percentage of branches taken.
 
--n--no-output
+-n --no-output
   Do not create the :command:`gcov` output file.
 
--l--long-file-names
+-l --long-file-names
   Create long file names for included source files.  For example, if the
   header file x.h contains code, and was included in the file
   a.c, then running :command:`gcov` on the file a.c will
@@ -67,7 +67,7 @@ gpl(7), gfdl(7), fsf-funding(7), gcc(1) and the Info entry for @file{gcc}.
   contributions.  If you use the -p option, both the including
   and included file names will be complete path names.
 
--p--preserve-paths
+-p --preserve-paths
   Preserve complete path information in the names of generated
   .gcov files.  Without this option, just the filename component is
   used.  With this option, all directories are used, with / characters
@@ -76,16 +76,16 @@ gpl(7), gfdl(7), fsf-funding(7), gcc(1) and the Info entry for @file{gcc}.
   components renamed to ^.  This is useful if sourcefiles are in several
   different directories.
 
--r--relative-only
+-r --relative-only
   Only output information about source files with a relative pathname
   (after source prefix elision).  Absolute paths are usually system
   header files and coverage of any inline functions therein is normally
   uninteresting.
 
--f--function-summaries
+-f --function-summaries
   Output summaries for each function in addition to the file level summary.
 
--o ``directory|file``--object-directory ``directory``--object-file ``file``
+-o ``directory|file`` --object-directory ``directory`` --object-file ``file``
   Specify either the directory containing the gcov data files, or the
   object path name.  The .gcno, and
   .gcda data files are searched for using this option.  If a directory
@@ -93,21 +93,21 @@ gpl(7), gfdl(7), fsf-funding(7), gcc(1) and the Info entry for @file{gcc}.
   input file name, without its extension.  If a file is specified here,
   the data files are named after that file, without its extension.
 
--s ``directory``--source-prefix ``directory``
+-s ``directory`` --source-prefix ``directory``
   A prefix for source file names to remove when generating the output
   coverage files.  This option is useful when building in a separate
   directory, and the pathname to the source directory is not wanted when
   determining the output file names.  Note that this prefix detection is
   applied before determining whether the source file is absolute.
 
--u--unconditional-branches
+-u --unconditional-branches
   When branch probabilities are given, include those of unconditional branches.
   Unconditional branches are normally not interesting.
 
--d--display-progress
+-d --display-progress
   Display the progress on the standard output.
 
--i--intermediate-format
+-i --intermediate-format
   Output gcov file in an easy-to-parse intermediate text format that can
   be used by :command:`lcov` or other tools. The output is a single
   .gcov file per .gcda file. No source code is required.
@@ -145,7 +145,7 @@ gpl(7), gfdl(7), fsf-funding(7), gcc(1) and the Info entry for @file{gcc}.
     lcount:26,1
     branch:28,nottaken
 
--m--demangled-names
+-m --demangled-names
   Display demangled function names in output. The default is to show
   mangled function names.
 

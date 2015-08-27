@@ -93,7 +93,7 @@ by COMDAT support and the &#8216;key method&#8217; heuristic
 mentioned in Vague Linkage.  Using them can actually cause your
 program to grow due to unnecessary out-of-line copies of inline
 functions.</p>
-<p>#pragma interface#pragma interface &#8220;<tt class="docutils literal"><span class="pre">subdir</span></tt>/<tt class="docutils literal"><span class="pre">objects</span></tt>.h&#8221;</p>
+<p>#pragma interface #pragma interface &#8220;<tt class="docutils literal"><span class="pre">subdir</span></tt>/<tt class="docutils literal"><span class="pre">objects</span></tt>.h&#8221;</p>
 <blockquote>
 <div><p id="index-3">Use this directive in header files that define object classes, to save
 space in most of the object files that use those classes.  Normally,
@@ -111,7 +111,7 @@ multiple headers with the same name in different directories.  If you
 use this form, you must specify the same string to #pragma
 implementation.</p>
 </div></blockquote>
-<p>#pragma implementation#pragma implementation &#8220;<tt class="docutils literal"><span class="pre">objects</span></tt>.h&#8221;</p>
+<p>#pragma implementation #pragma implementation &#8220;<tt class="docutils literal"><span class="pre">objects</span></tt>.h&#8221;</p>
 <blockquote>
 <div><p id="index-4">Use this pragma in a main input file, when you want full output from
 included header files to be generated (and made globally visible).  The

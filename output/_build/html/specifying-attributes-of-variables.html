@@ -206,7 +206,7 @@ opposite-to allocate space for it directly.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt>deprecateddeprecated (<tt class="docutils literal"><span class="pre">msg</span></tt>)</dt>
+<dt>deprecated deprecated (<tt class="docutils literal"><span class="pre">msg</span></tt>)</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">deprecated</span></tt> variable attributeThe <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute results in a warning if the variable
 is used anywhere in the source file.  This is useful when identifying
 variables that are expected to be removed in a future version of a
@@ -379,7 +379,7 @@ normally resides in the data memory (RAM).</p>
 <p class="last">See also the AVR Named Address Spaces section for
 an alternate way to locate and access data in flash memory.</p>
 </dd>
-<dt>ioio (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
+<dt>io io (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">io</span></tt> variable attribute, AVRVariables with the <tt class="docutils literal"><span class="pre">io</span></tt> attribute are used to address
 memory-mapped peripherals in the io address range.
 If an address is specified, the variable
@@ -398,12 +398,12 @@ Example:</p>
 </pre></div>
 </div>
 </dd>
-<dt>io_lowio_low (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
+<dt>io_low io_low (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
 <dd><tt class="docutils literal"><span class="pre">io_low</span></tt> variable attribute, AVRThis is like the <tt class="docutils literal"><span class="pre">io</span></tt> attribute, but additionally it informs the
 compiler that the object lies in the lower half of the I/O area,
 allowing the use of <tt class="docutils literal"><span class="pre">cbi</span></tt>, <tt class="docutils literal"><span class="pre">sbi</span></tt>, <tt class="docutils literal"><span class="pre">sbic</span></tt> and <tt class="docutils literal"><span class="pre">sbis</span></tt>
 instructions.</dd>
-<dt>addressaddress (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
+<dt>address address (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">address</span></tt> variable attribute, AVRVariables with the <tt class="docutils literal"><span class="pre">address</span></tt> attribute are used to address
 memory-mapped peripherals that may lie outside the io address range.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">volatile</span> <span class="kt">int</span> <span class="n">porta</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">address</span> <span class="p">(</span><span class="mh">0x600</span><span class="p">)));</span>
@@ -417,7 +417,7 @@ memory-mapped peripherals that may lie outside the io address range.</p>
 <h2>Blackfin Variable Attributes<a class="headerlink" href="#blackfin-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Three attributes are currently defined for the Blackfin.</p>
 <dl class="docutils">
-<dt>l1_datal1_data_Al1_data_B</dt>
+<dt>l1_data l1_data_A l1_data_B</dt>
 <dd><tt class="docutils literal"><span class="pre">l1_data</span></tt> variable attribute, Blackfin``l1_data_A`` variable attribute, Blackfin``l1_data_B`` variable attribute, BlackfinUse these attributes on the Blackfin to place the variable into L1 Data SRAM.
 Variables with <tt class="docutils literal"><span class="pre">l1_data</span></tt> attribute are put into the specific section
 named <tt class="docutils literal"><span class="pre">.l1.data</span></tt>. Those with <tt class="docutils literal"><span class="pre">l1_data_A</span></tt> attribute are put into
@@ -521,7 +521,7 @@ override <tt class="docutils literal"><span class="pre">-mtiny=</span></tt> for 
 32-bit address.  Since this covers the entire memory space, this
 allows modules to make no assumptions about where variables might be
 stored.</dd>
-<dt>io``io`` variable attribute, MePio (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
+<dt>io``io`` variable attribute, MeP io (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
 <dd><p class="first">Variables with the <tt class="docutils literal"><span class="pre">io</span></tt> attribute are used to address
 memory-mapped peripherals.  If an address is specified, the variable
 is assigned that address, else it is not assigned an address (it is
@@ -530,7 +530,7 @@ assumed some other module assigns an address).  Example:</p>
 </pre></div>
 </div>
 </dd>
-<dt>cbcb (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
+<dt>cb cb (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">cb</span></tt> variable attribute, MePVariables with the <tt class="docutils literal"><span class="pre">cb</span></tt> attribute are used to access the control
 bus, using special instructions.  <tt class="docutils literal"><span class="pre">addr</span></tt> indicates the control bus
 address.  Example:</p>
@@ -547,7 +547,7 @@ address.  Example:</p>
 x86 Variable Attributes for additional Windows compatibility
 attributes available on all x86 targets.</p>
 <dl class="docutils">
-<dt>dllimportdllexport</dt>
+<dt>dllimport dllexport</dt>
 <dd><tt class="docutils literal"><span class="pre">dllimport</span></tt> variable attribute``dllexport`` variable attributeThe <tt class="docutils literal"><span class="pre">dllimport</span></tt> and <tt class="docutils literal"><span class="pre">dllexport</span></tt> attributes are described in
 Microsoft Windows Function Attributes.</dd>
 <dt>selectany</dt>
@@ -615,7 +615,7 @@ SPU Type Attributes.</p>
 <p>Two attributes are currently defined for x86 configurations:
 <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>.</p>
 <dl class="docutils">
-<dt>ms_structgcc_struct</dt>
+<dt>ms_struct gcc_struct</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">ms_struct</span></tt> variable attribute, x86``gcc_struct`` variable attribute, x86If <tt class="docutils literal"><span class="pre">packed</span></tt> is used on a structure, or if bit-fields are used,
 it may be that the Microsoft ABI lays out the structure differently
 than the way GCC normally does.  Particularly when moving packed

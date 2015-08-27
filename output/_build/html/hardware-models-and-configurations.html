@@ -2021,7 +2021,7 @@ register-register moves.</dd>
 <dd>The device has the <tt class="docutils literal"><span class="pre">JMP</span></tt> and <tt class="docutils literal"><span class="pre">CALL</span></tt> instructions.
 This is the case for devices with at least 16 KiB of program
 memory.</dd>
-<dt>__AVR_HAVE_EIJMP_EICALL____AVR_3_BYTE_PC__</dt>
+<dt>__AVR_HAVE_EIJMP_EICALL__ __AVR_3_BYTE_PC__</dt>
 <dd>The device has the <tt class="docutils literal"><span class="pre">EIJMP</span></tt> and <tt class="docutils literal"><span class="pre">EICALL</span></tt> instructions.
 This is the case for devices with more than 128 KiB of program memory.
 This also means that the program counter
@@ -2029,22 +2029,22 @@ This also means that the program counter
 <dt>__AVR_2_BYTE_PC__</dt>
 <dd>The program counter (PC) is 2 bytes wide. This is the case for devices
 with up to 128 KiB of program memory.</dd>
-<dt>__AVR_HAVE_8BIT_SP____AVR_HAVE_16BIT_SP__</dt>
+<dt>__AVR_HAVE_8BIT_SP__ __AVR_HAVE_16BIT_SP__</dt>
 <dd>The stack pointer (SP) register is treated as 8-bit respectively
 16-bit register by the compiler.
 The definition of these macros is affected by <a class="reference internal" href="#cmdoption-mtiny-stack"><em class="xref std std-option">-mtiny-stack</em></a>.</dd>
-<dt>__AVR_HAVE_SPH____AVR_SP8__</dt>
+<dt>__AVR_HAVE_SPH__ __AVR_SP8__</dt>
 <dd>The device has the SPH (high part of stack pointer) special function
 register or has an 8-bit stack pointer, respectively.
 The definition of these macros is affected by <em class="xref std std-option">-mmcu=</em> and
 in the cases of <em class="xref std std-option">-mmcu=avr2</em> and <em class="xref std std-option">-mmcu=avr25</em> also
 by <a class="reference internal" href="#cmdoption-msp8"><em class="xref std std-option">-msp8</em></a>.</dd>
-<dt>__AVR_HAVE_RAMPD____AVR_HAVE_RAMPX____AVR_HAVE_RAMPY____AVR_HAVE_RAMPZ__</dt>
+<dt>__AVR_HAVE_RAMPD__ __AVR_HAVE_RAMPX__ __AVR_HAVE_RAMPY__ __AVR_HAVE_RAMPZ__</dt>
 <dd>The device has the <tt class="docutils literal"><span class="pre">RAMPD</span></tt>, <tt class="docutils literal"><span class="pre">RAMPX</span></tt>, <tt class="docutils literal"><span class="pre">RAMPY</span></tt>,
 <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> special function register, respectively.</dd>
 <dt>__NO_INTERRUPTS__</dt>
 <dd>This macro reflects the <a class="reference internal" href="#cmdoption-mno-interrupts"><em class="xref std std-option">-mno-interrupts</em></a> command-line option.</dd>
-<dt>__AVR_ERRATA_SKIP____AVR_ERRATA_SKIP_JMP_CALL__</dt>
+<dt>__AVR_ERRATA_SKIP__ __AVR_ERRATA_SKIP_JMP_CALL__</dt>
 <dd>Some AVR devices (AT90S8515, ATmega103) must not skip 32-bit
 instructions because of a hardware erratum.  Skip instructions are
 <tt class="docutils literal"><span class="pre">SBRS</span></tt>, <tt class="docutils literal"><span class="pre">SBRC</span></tt>, <tt class="docutils literal"><span class="pre">SBIS</span></tt>, <tt class="docutils literal"><span class="pre">SBIC</span></tt> and <tt class="docutils literal"><span class="pre">CPSE</span></tt>.
@@ -2959,17 +2959,17 @@ you specify.  If you do not specify a processor type, GCC defaults
 to the processor on which the compiler was built.</p>
 <p>Supported values for <tt class="docutils literal"><span class="pre">cpu_type</span></tt> are</p>
 <dl class="docutils">
-<dt>ev4ev4521064</dt>
+<dt>ev4 ev45 21064</dt>
 <dd>Schedules as an EV4 and has no instruction set extensions.</dd>
-<dt>ev521164</dt>
+<dt>ev5 21164</dt>
 <dd>Schedules as an EV5 and has no instruction set extensions.</dd>
-<dt>ev5621164a</dt>
+<dt>ev56 21164a</dt>
 <dd>Schedules as an EV5 and supports the BWX extension.</dd>
-<dt>pca5621164pc21164PC</dt>
+<dt>pca56 21164pc 21164PC</dt>
 <dd>Schedules as an EV5 and supports the BWX and MAX extensions.</dd>
-<dt>ev621264</dt>
+<dt>ev6 21264</dt>
 <dd>Schedules as an EV6 and supports the BWX, FIX, and MAX extensions.</dd>
-<dt>ev6721264a</dt>
+<dt>ev67 21264a</dt>
 <dd><p class="first">Schedules as an EV6 and supports the BWX, CIX, FIX, and MAX extensions.</p>
 <p class="last">Native toolchains also support the value native,</p>
 </dd>
@@ -3001,7 +3001,7 @@ and the size of the external cache on the machine.</p>
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">number</span></tt></dt>
 <dd>A decimal number representing clock cycles.</dd>
-<dt>L1L2L3main</dt>
+<dt>L1 L2 L3 main</dt>
 <dd>The compiler contains estimates of the number of clock cycles for
 &#8216;typical&#8217; EV4 &amp; EV5 hardware for the Level 1, 2 &amp; 3 caches
 (also called Dcache, Scache, and Bcache), as well as to main memory.
@@ -5424,14 +5424,9 @@ dynamic objects.  <a class="reference internal" href="#cmdoption-mabicalls"><em 
 systems.</p>
 </dd></dl>
 
-<table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-m<var>shared-mno-shared</var></span></kbd></td>
-</tr>
-<tr><td>&nbsp;</td><td><p class="first">Generate (do not generate) code that is fully position-independent,
+<dl class="docutils">
+<dt>-mshared -mno-shared</dt>
+<dd><p class="first">Generate (do not generate) code that is fully position-independent,
 and that can therefore be linked into shared libraries.  This option
 only affects <a class="reference internal" href="#cmdoption-mabicalls"><em class="xref std std-option">-mabicalls</em></a>.</p>
 <p>All <a class="reference internal" href="#cmdoption-mabicalls"><em class="xref std std-option">-mabicalls</em></a> code has traditionally been position-independent,
@@ -5446,9 +5441,8 @@ does not affect the ABI of the final executable; it only affects the ABI
 of relocatable objects.  Using <em class="xref std std-option">-mno-shared</em> generally makes
 executables both smaller and quicker.</p>
 <p class="last"><em class="xref std std-option">-mshared</em> is the default.</p>
-</td></tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <dl class="option">
 <dt id="cmdoption-mplt">
 <tt class="descname">-mplt</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-plt</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mplt" title="Permalink to this definition">¶</a></dt>
@@ -9282,7 +9276,7 @@ This gives high code density for <tt class="docutils literal"><span class="pre">
 <dd>Uses a different entry point of the same library function, where it
 assumes that a pointer to a lookup table has already been set up, which
 exposes the pointer load to CSE and code hoisting optimizations.</dd>
-<dt>inv:callinv:call2inv:fp</dt>
+<dt>inv:call inv:call2 inv:fp</dt>
 <dd>Use the inv algorithm for initial
 code generation, but if the code stays unoptimized, revert to the call,
 call2, or fp strategies, respectively.  Note that the
@@ -9291,7 +9285,7 @@ separate instruction, so it is possible that all the integer instructions
 are hoisted out, but the marker for the side effect stays where it is.
 A recombination to floating-point operations or a call is not possible
 in that case.</dd>
-<dt>inv20uinv20l</dt>
+<dt>inv20u inv20l</dt>
 <dd><p class="first">Variants of the inv:minlat strategy.  In the case
 that the inverse calculation is not separated from the multiply, they speed
 up division where the dividend fits into 20 bits (plus sign where applicable)
@@ -10551,7 +10545,7 @@ of the selected instruction set.</dd>
 <dd>Original Intel i386 CPU.</dd>
 <dt>i486</dt>
 <dd>Intel i486 CPU.  (No scheduling is implemented for this chip.)</dd>
-<dt>i586pentium</dt>
+<dt>i586 pentium</dt>
 <dd>Intel Pentium CPU with no MMX support.</dd>
 <dt>pentium-mmx</dt>
 <dd>Intel Pentium MMX CPU, based on Pentium core with MMX instruction set support.</dd>
@@ -10564,13 +10558,13 @@ When used with <a class="reference internal" href="#cmdoption-mtune"><em class="
 <dt>pentium2</dt>
 <dd>Intel Pentium II CPU, based on Pentium Pro core with MMX instruction set
 support.</dd>
-<dt>pentium3pentium3m</dt>
+<dt>pentium3 pentium3m</dt>
 <dd>Intel Pentium III CPU, based on Pentium Pro core with MMX and SSE instruction
 set support.</dd>
 <dt>pentium-m</dt>
 <dd>Intel Pentium M; low-power version of Intel Pentium III CPU
 with MMX, SSE and SSE2 instruction set support.  Used by Centrino notebooks.</dd>
-<dt>pentium4pentium4m</dt>
+<dt>pentium4 pentium4m</dt>
 <dd>Intel Pentium 4 CPU with MMX, SSE and SSE2 instruction set support.</dd>
 <dt>prescott</dt>
 <dd>Improved version of Intel Pentium 4 CPU with MMX, SSE, SSE2 and SSE3 instruction
@@ -10615,22 +10609,22 @@ BMI, BMI2, F16C, RDSEED, ADCX, PREFETCHW, AVX512F, AVX512PF, AVX512ER and
 AVX512CD instruction set support.</dd>
 <dt>k6</dt>
 <dd>AMD K6 CPU with MMX instruction set support.</dd>
-<dt>k6-2k6-3</dt>
+<dt>k6-2 k6-3</dt>
 <dd>Improved versions of AMD K6 CPU with MMX and 3DNow! instruction set support.</dd>
-<dt>athlonathlon-tbird</dt>
+<dt>athlon athlon-tbird</dt>
 <dd>AMD Athlon CPU with MMX, 3dNOW!, enhanced 3DNow! and SSE prefetch instructions
 support.</dd>
-<dt>athlon-4athlon-xpathlon-mp</dt>
+<dt>athlon-4 athlon-xp athlon-mp</dt>
 <dd>Improved AMD Athlon CPU with MMX, 3DNow!, enhanced 3DNow! and full SSE
 instruction set support.</dd>
-<dt>k8opteronathlon64athlon-fx</dt>
+<dt>k8 opteron athlon64 athlon-fx</dt>
 <dd>Processors based on the AMD K8 core with x86-64 instruction set support,
 including the AMD Opteron, Athlon 64, and Athlon 64 FX processors.
 (This supersets MMX, SSE, SSE2, 3DNow!, enhanced 3DNow! and 64-bit
 instruction set extensions.)</dd>
-<dt>k8-sse3opteron-sse3athlon64-sse3</dt>
+<dt>k8-sse3 opteron-sse3 athlon64-sse3</dt>
 <dd>Improved versions of AMD K8 cores with SSE3 instruction set support.</dd>
-<dt>amdfam10barcelona</dt>
+<dt>amdfam10 barcelona</dt>
 <dd>CPUs based on AMD Family 10h cores with x86-64 instruction set support.  (This
 supersets MMX, SSE, SSE2, SSE3, SSE4A, 3DNow!, enhanced 3DNow!, ABM and 64-bit
 instruction set extensions.)</dd>
@@ -10769,7 +10763,7 @@ the numerical instability problems of 387 code, but may break some existing
 code that expects temporaries to be 80 bits.</p>
 <p class="last">This is the default choice for the x86-64 compiler.</p>
 </dd>
-<dt>sse,387sse+387both</dt>
+<dt>sse,387 sse+387 both</dt>
 <dd>Attempt to utilize both instruction sets at once.  This effectively doubles the
 amount of available registers, and on chips with separate execution units for
 387 and SSE the execution resources too.  Use this option with care, as it is
@@ -11333,9 +11327,9 @@ inline code for small blocks and a library call for large blocks.</p>
 <dd><p>mstringop-strategy=``alg``Override the internal decision heuristic for the particular algorithm to use
 for inlining string operations.  The allowed values for <tt class="docutils literal"><span class="pre">alg</span></tt> are:</p>
 <dl class="docutils">
-<dt>rep_byterep_4byterep_8byte</dt>
+<dt>rep_byte rep_4byte rep_8byte</dt>
 <dd>Expand using i386 <tt class="docutils literal"><span class="pre">rep</span></tt> prefix of the specified size.</dd>
-<dt>byte_looploopunrolled_loop</dt>
+<dt>byte_loop loop unrolled_loop</dt>
 <dd>Expand into an inline loop.</dd>
 <dt>libcall</dt>
 <dd>Always use a library call.</dd>

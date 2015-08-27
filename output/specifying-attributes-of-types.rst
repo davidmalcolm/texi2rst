@@ -183,7 +183,7 @@ bnd_variable_size
     S *p = (S *)malloc (sizeof(S) + 100);
     p->data[10] = 0; //OK
 
-deprecateddeprecated (``msg``)
+deprecated deprecated (``msg``)
   ``deprecated`` type attributeThe ``deprecated`` attribute results in a warning if the type
   is used anywhere in the source file.  This is useful when identifying
   types that are expected to be removed in a future version of a program.
@@ -434,7 +434,7 @@ x86 Type Attributes
 Two attributes are currently defined for x86 configurations:
 ``ms_struct`` and ``gcc_struct``.
 
-ms_structgcc_struct
+ms_struct gcc_struct
   ``ms_struct`` type attribute, x86``gcc_struct`` type attribute, x86If ``packed`` is used on a structure, or if bit-fields are used
   it may be that the Microsoft ABI packs them differently
   than GCC normally packs them.  Particularly when moving packed

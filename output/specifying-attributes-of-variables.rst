@@ -133,7 +133,7 @@ cleanup (``cleanup_function``)
   These attributes override the default chosen by the
   :option:`-fno-common` and :option:`-fcommon` flags respectively.
 
-deprecateddeprecated (``msg``)
+deprecated deprecated (``msg``)
   ``deprecated`` variable attributeThe ``deprecated`` attribute results in a warning if the variable
   is used anywhere in the source file.  This is useful when identifying
   variables that are expected to be removed in a future version of a
@@ -330,7 +330,7 @@ progmem
   See also the AVR Named Address Spaces section for
   an alternate way to locate and access data in flash memory.
 
-ioio (``addr``)
+io io (``addr``)
   ``io`` variable attribute, AVRVariables with the ``io`` attribute are used to address
   memory-mapped peripherals in the io address range.
   If an address is specified, the variable
@@ -353,13 +353,13 @@ ioio (``addr``)
 
     extern volatile int porta __attribute__((io));
 
-io_lowio_low (``addr``)
+io_low io_low (``addr``)
   ``io_low`` variable attribute, AVRThis is like the ``io`` attribute, but additionally it informs the
   compiler that the object lies in the lower half of the I/O area,
   allowing the use of ``cbi``, ``sbi``, ``sbic`` and ``sbis``
   instructions.
 
-addressaddress (``addr``)
+address address (``addr``)
   ``address`` variable attribute, AVRVariables with the ``address`` attribute are used to address
   memory-mapped peripherals that may lie outside the io address range.
 
@@ -374,7 +374,7 @@ Blackfin Variable Attributes
 
 Three attributes are currently defined for the Blackfin.
 
-l1_datal1_data_Al1_data_B
+l1_data l1_data_A l1_data_B
   ``l1_data`` variable attribute, Blackfin``l1_data_A`` variable attribute, Blackfin``l1_data_B`` variable attribute, BlackfinUse these attributes on the Blackfin to place the variable into L1 Data SRAM.
   Variables with ``l1_data`` attribute are put into the specific section
   named ``.l1.data``. Those with ``l1_data_A`` attribute are put into
@@ -489,7 +489,7 @@ far
   allows modules to make no assumptions about where variables might be
   stored.
 
-io``io`` variable attribute, MePio (``addr``)
+io``io`` variable attribute, MeP io (``addr``)
   Variables with the ``io`` attribute are used to address
   memory-mapped peripherals.  If an address is specified, the variable
   is assigned that address, else it is not assigned an address (it is
@@ -499,7 +499,7 @@ io``io`` variable attribute, MePio (``addr``)
 
     int timer_count __attribute__((io(0x123)));
 
-cbcb (``addr``)
+cb cb (``addr``)
   ``cb`` variable attribute, MePVariables with the ``cb`` attribute are used to access the control
   bus, using special instructions.  ``addr`` indicates the control bus
   address.  Example:
@@ -517,7 +517,7 @@ You can use these attributes on Microsoft Windows targets.
 x86 Variable Attributes for additional Windows compatibility
 attributes available on all x86 targets.
 
-dllimportdllexport
+dllimport dllexport
   ``dllimport`` variable attribute``dllexport`` variable attributeThe ``dllimport`` and ``dllexport`` attributes are described in
   Microsoft Windows Function Attributes.
 
@@ -597,7 +597,7 @@ x86 Variable Attributes
 Two attributes are currently defined for x86 configurations:
 ``ms_struct`` and ``gcc_struct``.
 
-ms_structgcc_struct
+ms_struct gcc_struct
   ``ms_struct`` variable attribute, x86``gcc_struct`` variable attribute, x86If ``packed`` is used on a structure, or if bit-fields are used,
   it may be that the Microsoft ABI lays out the structure differently
   than the way GCC normally does.  Particularly when moving packed

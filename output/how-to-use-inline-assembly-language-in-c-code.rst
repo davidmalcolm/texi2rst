@@ -420,7 +420,7 @@ these tokens have special meanings in the assembler template:
   labels and referring to them multiple times in a single template that 
   generates multiple assembler instructions. 
 
-%{%|%}
+%{ %| %}
   Outputs {, |, and } characters (respectively)
   into the assembler code.  When unescaped, these characters have special
   meaning to indicate multiple assembler dialects, as described below.
@@ -2218,7 +2218,7 @@ Intel IA-64-config/ia64/ia64.h
 
 M32C-config/m32c/m32c.c
 
-  RspRfbRsb
+  Rsp Rfb Rsb
     $sp, $fb, $sb.
 
   Rcr
@@ -2228,7 +2228,7 @@ M32C-config/m32c/m32c.c
   Rcl
     Any control register, when they're 24 bits wide.
 
-  R0wR1wR2wR3w
+  R0w R1w R2w R3w
     $r0, $r1, $r2, $r3.
 
   R02
@@ -3506,7 +3506,7 @@ TI C6X family-config/c6x/constraints.md
 
 TILE-Gx-config/tilegx/constraints.md
 
-  R00R01R02R03R04R05R06R07R08R09R10
+  R00 R01 R02 R03 R04 R05 R06 R07 R08 R09 R10
     Each of these represents a register constraint for an individual
     register, from r0 to r10.
 
@@ -3572,7 +3572,7 @@ TILE-Gx-config/tilegx/constraints.md
 
 TILEPro-config/tilepro/constraints.md
 
-  R00R01R02R03R04R05R06R07R08R09R10
+  R00 R01 R02 R03 R04 R05 R06 R07 R08 R09 R10
     Each of these represents a register constraint for an individual
     register, from r0 to r10.
 

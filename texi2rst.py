@@ -540,9 +540,8 @@ def fixup_table_entry(tree):
                                                       itemformat):
                                 return
                             else:
-                                tableterm.rst_kind = DefinitionListHeader()
-                                tableitem.rst_kind = DefinitionListBody()
-                                tableterm = fixup_whitespace(tableterm)
+                                self.convert_to_definition_list(tableterm,
+                                                                tableitem)
 
         def convert_to_option(self, tableentry, tableitem,
                               itemformat):
@@ -600,6 +599,18 @@ def fixup_table_entry(tree):
                 # any <findex> element below <tableitem>.
                 tableentry.delete_children_named('findex')
                 return True
+
+        def convert_to_definition_list(self, tableterm, tableitem):
+            tableterm.rst_kind = DefinitionListHeader()
+            tableitem.rst_kind = DefinitionListBody()
+
+            # Add whitespace before <itemx> items
+            new_children = []
+            for child in tableterm.children:
+                if child.is_element('itemx'):
+                    new_children.append(Text(' '))
+                new_children.append(child)
+            tableterm.children = new_children
 
     v = TableEntryFixer()
     v.visit(tree)
@@ -1466,6 +1477,24 @@ proper.
 
 ''',
                          out)
+
+    def test_itemx(self):
+        xml_src = u'''<texinfo>
+<tableentry><tableterm><item spaces=" "><itemformat command="samp">c90</itemformat></item>
+<itemx spaces=" "><itemformat command="samp">c89</itemformat></itemx>
+<itemx spaces=" "><itemformat command="samp">iso9899:1990</itemformat></itemx>
+</tableterm><tableitem><para>Support all ISO C90 programs (certain GNU extensions that conflict
+with ISO C90 are disabled). Same as <option>-ansi</option> for C code.
+</para>
+</tableitem></tableentry></texinfo>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree)
+        out = self.make_rst_string(tree)
+        self.assertEqual(u'''c90 c89 iso9899:1990
+  Support all ISO C90 programs (certain GNU extensions that conflict
+  with ISO C90 are disabled). Same as :option:`-ansi` for C code.
+
+''', out)
 
 class CodeFragmentTests(Texi2RstTests):
     def test_smallexample_option(self):

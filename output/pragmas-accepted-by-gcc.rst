@@ -412,7 +412,7 @@ macros are defined.
   to the state as of that point in the source file.  Thus, pragmas occurring
   after a line do not affect diagnostics caused by that line.
 
-#pragma GCC diagnostic push#pragma GCC diagnostic pop
+#pragma GCC diagnostic push #pragma GCC diagnostic pop
   Causes GCC to remember the state of the diagnostics as of each
   ``push``, and restore to that point at each ``pop``.  If a
   ``pop`` has no matching ``push``, the command-line options are
@@ -462,7 +462,7 @@ compilation.
 Visibility Pragmas
 ^^^^^^^^^^^^^^^^^^
 
-#pragma GCC visibility push(``visibility``)#pragma GCC visibility pop
+#pragma GCC visibility push(``visibility``) #pragma GCC visibility pop
 
   .. index:: pragma, visibility
 
@@ -545,7 +545,7 @@ Function Specific Option Pragmas
   Function Attributes, for more information about the
   ``optimize`` attribute and the attribute syntax.
 
-#pragma GCC push_options#pragma GCC pop_options
+#pragma GCC push_options #pragma GCC pop_options
 
   .. index:: pragma GCC push_options
 

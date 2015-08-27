@@ -1843,7 +1843,7 @@ instruction description for details.</p>
 <tt class="docutils literal"><span class="pre">ole</span></tt>, <tt class="docutils literal"><span class="pre">ule</span></tt>, <tt class="docutils literal"><span class="pre">sf</span></tt>, <tt class="docutils literal"><span class="pre">ngle</span></tt>, <tt class="docutils literal"><span class="pre">seq</span></tt>, <tt class="docutils literal"><span class="pre">ngl</span></tt>,
 <tt class="docutils literal"><span class="pre">lt</span></tt>, <tt class="docutils literal"><span class="pre">nge</span></tt>, <tt class="docutils literal"><span class="pre">le</span></tt> or <tt class="docutils literal"><span class="pre">ngt</span></tt>.</p>
 <dl class="docutils">
-<dt>v2sf __builtin_mips_movt_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)v2sf __builtin_mips_movf_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)</dt>
+<dt>v2sf __builtin_mips_movt_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>) v2sf __builtin_mips_movf_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)</dt>
 <dd><p class="first">Conditional move based on floating-point comparison (<tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">movt.ps</span></tt>/<tt class="docutils literal"><span class="pre">movf.ps</span></tt>).</p>
 <p>The <tt class="docutils literal"><span class="pre">movt</span></tt> functions return the value <tt class="docutils literal"><span class="pre">x</span></tt> computed by:</p>
@@ -1854,7 +1854,7 @@ movt.ps ``x``,``d``,``cc``</pre>
 <p class="last">The <tt class="docutils literal"><span class="pre">movf</span></tt> functions are similar but use <tt class="docutils literal"><span class="pre">movf.ps</span></tt> instead
 of <tt class="docutils literal"><span class="pre">movt.ps</span></tt>.</p>
 </dd>
-<dt>int __builtin_mips_upper_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)int __builtin_mips_lower_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
+<dt>int __builtin_mips_upper_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_lower_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
 <dd><p class="first">Comparison of two paired-single values (<tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">bc1t</span></tt>/<tt class="docutils literal"><span class="pre">bc1f</span></tt>).</p>
 <p>These functions compare <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> using <tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``
@@ -1893,14 +1893,14 @@ more details on what each instruction does.</p>
 <dd>Convert paired single to paired word (<tt class="docutils literal"><span class="pre">cvt.pw.ps</span></tt>).</dd>
 <dt>v2sf __builtin_mips_cvt_ps_pw (v2sf)</dt>
 <dd>Convert paired word to paired single (<tt class="docutils literal"><span class="pre">cvt.ps.pw</span></tt>).</dd>
-<dt>float __builtin_mips_recip1_s (float)double __builtin_mips_recip1_d (double)v2sf __builtin_mips_recip1_ps (v2sf)</dt>
+<dt>float __builtin_mips_recip1_s (float) double __builtin_mips_recip1_d (double) v2sf __builtin_mips_recip1_ps (v2sf)</dt>
 <dd>Reduced-precision reciprocal (sequence step 1) (<tt class="docutils literal"><span class="pre">recip1.``fmt``</span></tt>).</dd>
-<dt>float __builtin_mips_recip2_s (float, float)double __builtin_mips_recip2_d (double, double)v2sf __builtin_mips_recip2_ps (v2sf, v2sf)</dt>
+<dt>float __builtin_mips_recip2_s (float, float) double __builtin_mips_recip2_d (double, double) v2sf __builtin_mips_recip2_ps (v2sf, v2sf)</dt>
 <dd>Reduced-precision reciprocal (sequence step 2) (<tt class="docutils literal"><span class="pre">recip2.``fmt``</span></tt>).</dd>
-<dt>float __builtin_mips_rsqrt1_s (float)double __builtin_mips_rsqrt1_d (double)v2sf __builtin_mips_rsqrt1_ps (v2sf)</dt>
+<dt>float __builtin_mips_rsqrt1_s (float) double __builtin_mips_rsqrt1_d (double) v2sf __builtin_mips_rsqrt1_ps (v2sf)</dt>
 <dd>Reduced-precision reciprocal square root (sequence step 1)
 (<tt class="docutils literal"><span class="pre">rsqrt1.``fmt``</span></tt>).</dd>
-<dt>float __builtin_mips_rsqrt2_s (float, float)double __builtin_mips_rsqrt2_d (double, double)v2sf __builtin_mips_rsqrt2_ps (v2sf, v2sf)</dt>
+<dt>float __builtin_mips_rsqrt2_s (float, float) double __builtin_mips_rsqrt2_d (double, double) v2sf __builtin_mips_rsqrt2_ps (v2sf, v2sf)</dt>
 <dd><p class="first">Reduced-precision reciprocal square root (sequence step 2)
 (<tt class="docutils literal"><span class="pre">rsqrt2.``fmt``</span></tt>).</p>
 <p class="last">The following multi-instruction functions are also available.</p>
@@ -1911,7 +1911,7 @@ more details on what each instruction does.</p>
 <tt class="docutils literal"><span class="pre">ole</span></tt>, <tt class="docutils literal"><span class="pre">ule</span></tt>, <tt class="docutils literal"><span class="pre">sf</span></tt>, <tt class="docutils literal"><span class="pre">ngle</span></tt>, <tt class="docutils literal"><span class="pre">seq</span></tt>,
 <tt class="docutils literal"><span class="pre">ngl</span></tt>, <tt class="docutils literal"><span class="pre">lt</span></tt>, <tt class="docutils literal"><span class="pre">nge</span></tt>, <tt class="docutils literal"><span class="pre">le</span></tt> or <tt class="docutils literal"><span class="pre">ngt</span></tt>.</p>
 <dl class="docutils">
-<dt>int __builtin_mips_cabs_``cond``_s (float <tt class="docutils literal"><span class="pre">a</span></tt>, float <tt class="docutils literal"><span class="pre">b</span></tt>)int __builtin_mips_cabs_``cond``_d (double <tt class="docutils literal"><span class="pre">a</span></tt>, double <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
+<dt>int __builtin_mips_cabs_``cond``_s (float <tt class="docutils literal"><span class="pre">a</span></tt>, float <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_cabs_``cond``_d (double <tt class="docutils literal"><span class="pre">a</span></tt>, double <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
 <dd><p class="first">Absolute comparison of two scalar values (<tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.``fmt````,
 <tt class="docutils literal"><span class="pre">bc1t</span></tt>/<tt class="docutils literal"><span class="pre">bc1f</span></tt>).</p>
 <p>These functions compare <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> using <tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.s``
@@ -1925,7 +1925,7 @@ For example:</p>
 </pre></div>
 </div>
 </dd>
-<dt>int __builtin_mips_upper_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)int __builtin_mips_lower_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
+<dt>int __builtin_mips_upper_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_lower_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
 <dd><p class="first">Absolute comparison of two paired-single values (<tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">bc1t</span></tt>/<tt class="docutils literal"><span class="pre">bc1f</span></tt>).</p>
 <p>These functions compare <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> using <tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.ps``
@@ -1943,7 +1943,7 @@ and return either the upper or lower half of the result.  For example:</p>
 </pre></div>
 </div>
 </dd>
-<dt>v2sf __builtin_mips_movt_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)v2sf __builtin_mips_movf_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)</dt>
+<dt>v2sf __builtin_mips_movt_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>) v2sf __builtin_mips_movf_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)</dt>
 <dd><p class="first">Conditional move based on absolute comparison (<tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">movt.ps</span></tt>/<tt class="docutils literal"><span class="pre">movf.ps</span></tt>).</p>
 <p>The <tt class="docutils literal"><span class="pre">movt</span></tt> functions return the value <tt class="docutils literal"><span class="pre">x</span></tt> computed by:</p>
@@ -1954,7 +1954,7 @@ movt.ps ``x``,``d``,``cc``</pre>
 <p class="last">The <tt class="docutils literal"><span class="pre">movf</span></tt> functions are similar but use <tt class="docutils literal"><span class="pre">movf.ps</span></tt> instead
 of <tt class="docutils literal"><span class="pre">movt.ps</span></tt>.</p>
 </dd>
-<dt>int __builtin_mips_any_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)int __builtin_mips_all_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)int __builtin_mips_any_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)int __builtin_mips_all_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
+<dt>int __builtin_mips_any_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_all_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_any_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_all_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
 <dd><p class="first">Comparison of two paired-single values
 (<tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``/<tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">bc1any2t</span></tt>/<tt class="docutils literal"><span class="pre">bc1any2f</span></tt>).</p>
@@ -1975,7 +1975,7 @@ For example:</p>
 </pre></div>
 </div>
 </dd>
-<dt>int __builtin_mips_any_c_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)int __builtin_mips_all_c_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)int __builtin_mips_any_cabs_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)int __builtin_mips_all_cabs_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)</dt>
+<dt>int __builtin_mips_any_c_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>) int __builtin_mips_all_c_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>) int __builtin_mips_any_cabs_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>) int __builtin_mips_all_cabs_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)</dt>
 <dd><p class="first">Comparison of four paired-single values
 (<tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``/<tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">bc1any4t</span></tt>/<tt class="docutils literal"><span class="pre">bc1any4f</span></tt>).</p>
@@ -2009,7 +2009,7 @@ For example:</p>
 <dd>Insert a cache instruction with operands <tt class="docutils literal"><span class="pre">op</span></tt> and <tt class="docutils literal"><span class="pre">addr</span></tt>.
 GCC defines the preprocessor macro <tt class="docutils literal"><span class="pre">___GCC_HAVE_BUILTIN_MIPS_CACHE</span></tt>
 when this function is available.</dd>
-<dt>unsigned int __builtin_mips_get_fcsr (void)void __builtin_mips_set_fcsr (unsigned int <tt class="docutils literal"><span class="pre">value</span></tt>)</dt>
+<dt>unsigned int __builtin_mips_get_fcsr (void) void __builtin_mips_set_fcsr (unsigned int <tt class="docutils literal"><span class="pre">value</span></tt>)</dt>
 <dd><p class="first">Get and set the contents of the floating-point control and status register
 (FPU control register 31).  These functions are only available in hard-float
 code but can be called in both MIPS16 and non-MIPS16 contexts.</p>

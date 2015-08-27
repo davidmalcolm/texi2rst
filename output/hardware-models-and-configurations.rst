@@ -1789,7 +1789,7 @@ __AVR_HAVE_JMP_CALL__
   This is the case for devices with at least 16 KiB of program
   memory.
 
-__AVR_HAVE_EIJMP_EICALL____AVR_3_BYTE_PC__
+__AVR_HAVE_EIJMP_EICALL__ __AVR_3_BYTE_PC__
   The device has the ``EIJMP`` and ``EICALL`` instructions.
   This is the case for devices with more than 128 KiB of program memory.
   This also means that the program counter
@@ -1799,26 +1799,26 @@ __AVR_2_BYTE_PC__
   The program counter (PC) is 2 bytes wide. This is the case for devices
   with up to 128 KiB of program memory.
 
-__AVR_HAVE_8BIT_SP____AVR_HAVE_16BIT_SP__
+__AVR_HAVE_8BIT_SP__ __AVR_HAVE_16BIT_SP__
   The stack pointer (SP) register is treated as 8-bit respectively
   16-bit register by the compiler.
   The definition of these macros is affected by :option:`-mtiny-stack`.
 
-__AVR_HAVE_SPH____AVR_SP8__
+__AVR_HAVE_SPH__ __AVR_SP8__
   The device has the SPH (high part of stack pointer) special function
   register or has an 8-bit stack pointer, respectively.
   The definition of these macros is affected by :option:`-mmcu=` and
   in the cases of :option:`-mmcu=avr2` and :option:`-mmcu=avr25` also
   by :option:`-msp8`.
 
-__AVR_HAVE_RAMPD____AVR_HAVE_RAMPX____AVR_HAVE_RAMPY____AVR_HAVE_RAMPZ__
+__AVR_HAVE_RAMPD__ __AVR_HAVE_RAMPX__ __AVR_HAVE_RAMPY__ __AVR_HAVE_RAMPZ__
   The device has the ``RAMPD``, ``RAMPX``, ``RAMPY``,
   ``RAMPZ`` special function register, respectively.
 
 __NO_INTERRUPTS__
   This macro reflects the :option:`-mno-interrupts` command-line option.
 
-__AVR_ERRATA_SKIP____AVR_ERRATA_SKIP_JMP_CALL__
+__AVR_ERRATA_SKIP__ __AVR_ERRATA_SKIP_JMP_CALL__
   Some AVR devices (AT90S8515, ATmega103) must not skip 32-bit
   instructions because of a hardware erratum.  Skip instructions are
   ``SBRS``, ``SBRC``, ``SBIS``, ``SBIC`` and ``CPSE``.
@@ -2611,22 +2611,22 @@ These -m options are defined for the DEC Alpha implementations:
 
   Supported values for ``cpu_type`` are
 
-  ev4ev4521064
+  ev4 ev45 21064
     Schedules as an EV4 and has no instruction set extensions.
 
-  ev521164
+  ev5 21164
     Schedules as an EV5 and has no instruction set extensions.
 
-  ev5621164a
+  ev56 21164a
     Schedules as an EV5 and supports the BWX extension.
 
-  pca5621164pc21164PC
+  pca56 21164pc 21164PC
     Schedules as an EV5 and supports the BWX and MAX extensions.
 
-  ev621264
+  ev6 21264
     Schedules as an EV6 and supports the BWX, FIX, and MAX extensions.
 
-  ev6721264a
+  ev67 21264a
     Schedules as an EV6 and supports the BWX, CIX, FIX, and MAX extensions.
 
     Native toolchains also support the value native,
@@ -2656,7 +2656,7 @@ These -m options are defined for the DEC Alpha implementations:
   ``number``
     A decimal number representing clock cycles.
 
-  L1L2L3main
+  L1 L2 L3 main
     The compiler contains estimates of the number of clock cycles for
     'typical' EV4 & EV5 hardware for the Level 1, 2 & 3 caches
     (also called Dcache, Scache, and Bcache), as well as to main memory.
@@ -4702,7 +4702,7 @@ MIPS Options
   dynamic objects.  :option:`-mabicalls` is the default for SVR4-based
   systems.
 
--mshared-mno-shared
+-mshared -mno-shared
   Generate (do not generate) code that is fully position-independent,
   and that can therefore be linked into shared libraries.  This option
   only affects :option:`-mabicalls`.
@@ -8057,7 +8057,7 @@ These -m options are defined for the SH implementations:
     assumes that a pointer to a lookup table has already been set up, which
     exposes the pointer load to CSE and code hoisting optimizations.
 
-  inv:callinv:call2inv:fp
+  inv:call inv:call2 inv:fp
     Use the inv algorithm for initial
     code generation, but if the code stays unoptimized, revert to the call,
     call2, or fp strategies, respectively.  Note that the
@@ -8067,7 +8067,7 @@ These -m options are defined for the SH implementations:
     A recombination to floating-point operations or a call is not possible
     in that case.
 
-  inv20uinv20l
+  inv20u inv20l
     Variants of the inv:minlat strategy.  In the case
     that the inverse calculation is not separated from the multiply, they speed
     up division where the dividend fits into 20 bits (plus sign where applicable)
@@ -9190,7 +9190,7 @@ These -m options are defined for the x86 family of computers.
   i486
     Intel i486 CPU.  (No scheduling is implemented for this chip.)
 
-  i586pentium
+  i586 pentium
     Intel Pentium CPU with no MMX support.
 
   pentium-mmx
@@ -9208,7 +9208,7 @@ These -m options are defined for the x86 family of computers.
     Intel Pentium II CPU, based on Pentium Pro core with MMX instruction set
     support.
 
-  pentium3pentium3m
+  pentium3 pentium3m
     Intel Pentium III CPU, based on Pentium Pro core with MMX and SSE instruction
     set support.
 
@@ -9216,7 +9216,7 @@ These -m options are defined for the x86 family of computers.
     Intel Pentium M; low-power version of Intel Pentium III CPU
     with MMX, SSE and SSE2 instruction set support.  Used by Centrino notebooks.
 
-  pentium4pentium4m
+  pentium4 pentium4m
     Intel Pentium 4 CPU with MMX, SSE and SSE2 instruction set support.
 
   prescott
@@ -9275,27 +9275,27 @@ These -m options are defined for the x86 family of computers.
   k6
     AMD K6 CPU with MMX instruction set support.
 
-  k6-2k6-3
+  k6-2 k6-3
     Improved versions of AMD K6 CPU with MMX and 3DNow! instruction set support.
 
-  athlonathlon-tbird
+  athlon athlon-tbird
     AMD Athlon CPU with MMX, 3dNOW!, enhanced 3DNow! and SSE prefetch instructions
     support.
 
-  athlon-4athlon-xpathlon-mp
+  athlon-4 athlon-xp athlon-mp
     Improved AMD Athlon CPU with MMX, 3DNow!, enhanced 3DNow! and full SSE
     instruction set support.
 
-  k8opteronathlon64athlon-fx
+  k8 opteron athlon64 athlon-fx
     Processors based on the AMD K8 core with x86-64 instruction set support,
     including the AMD Opteron, Athlon 64, and Athlon 64 FX processors.
     (This supersets MMX, SSE, SSE2, 3DNow!, enhanced 3DNow! and 64-bit
     instruction set extensions.)
 
-  k8-sse3opteron-sse3athlon64-sse3
+  k8-sse3 opteron-sse3 athlon64-sse3
     Improved versions of AMD K8 cores with SSE3 instruction set support.
 
-  amdfam10barcelona
+  amdfam10 barcelona
     CPUs based on AMD Family 10h cores with x86-64 instruction set support.  (This
     supersets MMX, SSE, SSE2, SSE3, SSE4A, 3DNow!, enhanced 3DNow!, ABM and 64-bit
     instruction set extensions.)
@@ -9445,7 +9445,7 @@ These -m options are defined for the x86 family of computers.
 
     This is the default choice for the x86-64 compiler.
 
-  sse,387sse+387both
+  sse,387 sse+387 both
     Attempt to utilize both instruction sets at once.  This effectively doubles the
     amount of available registers, and on chips with separate execution units for
     387 and SSE the execution resources too.  Use this option with care, as it is
@@ -9960,10 +9960,10 @@ These -m options are defined for the x86 family of computers.
   mstringop-strategy=``alg``Override the internal decision heuristic for the particular algorithm to use
   for inlining string operations.  The allowed values for ``alg`` are:
 
-  rep_byterep_4byterep_8byte
+  rep_byte rep_4byte rep_8byte
     Expand using i386 ``rep`` prefix of the specified size.
 
-  byte_looploopunrolled_loop
+  byte_loop loop unrolled_loop
     Expand into an inline loop.
 
   libcall

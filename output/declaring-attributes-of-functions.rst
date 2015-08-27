@@ -240,7 +240,7 @@ const
   ``const``.  It does not make sense for a ``const`` function to
   return ``void``.
 
-constructordestructorconstructor (``priority``)destructor (``priority``)
+constructor destructor constructor (``priority``) destructor (``priority``)
   ``constructor`` function attribute``destructor`` function attributeThe ``constructor`` attribute causes the function to be called
   automatically before execution enters ``main ()``.  Similarly, the
   ``destructor`` attribute causes the function to be called
@@ -261,7 +261,7 @@ constructordestructorconstructor (``priority``)destructor (``priority``)
 
   These attributes are not currently implemented for Objective-C.
 
-deprecateddeprecated (``msg``)
+deprecated deprecated (``msg``)
   ``deprecated`` function attributeThe ``deprecated`` attribute results in a warning if the function
   is used anywhere in the source file.  This is useful when identifying
   functions that are expected to be removed in a future version of a
@@ -283,7 +283,7 @@ deprecateddeprecated (``msg``)
   The ``deprecated`` attribute can also be used for variables and
   types (Variable Attributes, Type Attributes.)
 
-error ("``message``")warning ("``message``")
+error ("``message``") warning ("``message``")
   ``error`` function attribute``warning`` function attributeIf the ``error`` or ``warning`` attribute 
   is used on a function declaration and a call to such a function
   is not eliminated through dead code elimination or other optimizations, 
@@ -539,7 +539,7 @@ ifunc ("``resolver``")
   Indirect functions cannot be weak.  Binutils version 2.20.1 or higher
   and GNU C Library version 2.11.1 are required to use this feature.
 
-interruptinterrupt_handler
+interrupt interrupt_handler
   Many GCC back ends support attributes to indicate that a function is
   an interrupt handler, which tells the compiler to generate function
   entry and exit sequences that differ from those from regular
@@ -604,7 +604,7 @@ no_reorder
   as the :option:`-fno-toplevel-reorder` option, but only applies to the
   marked symbols.
 
-no_sanitize_addressno_address_safety_analysis
+no_sanitize_address no_address_safety_analysis
   ``no_sanitize_address`` function attributeThe ``no_sanitize_address`` attribute on functions is used
   to inform the compiler that it should not instrument memory accesses
   in the function when compiling with the :option:`-fsanitize=address` option.
@@ -1019,7 +1019,7 @@ weak
   for ELF targets, and also for a.out targets when using the GNU assembler
   and linker.
 
-weakrefweakref ("``target``")
+weakref weakref ("``target``")
   ``weakref`` function attributeThe ``weakref`` attribute marks a declaration as a weak reference.
   Without arguments, it should be accompanied by an ``alias`` attribute
   naming the target symbol.  Optionally, the ``target`` may be given as
@@ -1052,7 +1052,7 @@ weakrefweakref ("``target``")
   At present, a declaration to which ``weakref`` is attached can
   only be ``static``.
 
-loweruppereither
+lower upper either
 
   .. index:: lower memory region on the MSP430
 
@@ -1111,7 +1111,7 @@ interrupt
   Permissible values for this parameter are: ``ilink1`` and
   ``ilink2``.
 
-long_callmedium_callshort_call
+long_call medium_call short_call
   ``long_call`` function attribute, ARC``medium_call`` function attribute, ARC``short_call`` function attribute, ARC
   .. index:: indirect calls, ARC
 
@@ -1161,7 +1161,7 @@ isr
   ``isr`` function attribute, ARMUse this attribute on ARM to write Interrupt Service Routines. This is an
   alias to the ``interrupt`` attribute above.
 
-long_callshort_call
+long_call short_call
   ``long_call`` function attribute, ARM``short_call`` function attribute, ARM
   .. index:: indirect calls, ARM
 
@@ -1236,7 +1236,7 @@ naked
   basic ``asm`` and C code may appear to work, they cannot be
   depended upon to work reliably and are not supported.
 
-OS_mainOS_task
+OS_main OS_task
   ``OS_main`` function attribute, AVR``OS_task`` function attribute, AVROn AVR, functions with the ``OS_main`` or ``OS_task`` attribute
   do not save/restore any call-saved register in their prologue/epilogue.
 
@@ -1321,7 +1321,7 @@ l2
   ``.l2.text``. With :option:`-mfdpic`, callers of such functions use
   an inlined PLT.
 
-longcallshortcall
+longcall shortcall
 
   .. index:: indirect calls, Blackfin
 
@@ -1430,7 +1430,7 @@ interrupt
                          forwarder_section ("tramp")))
       external_dma_handler ();
 
-long_callshort_call
+long_call short_call
   ``long_call`` function attribute, Epiphany``short_call`` function attribute, Epiphany
   .. index:: indirect calls, Epiphany
 
@@ -1595,7 +1595,7 @@ m68k Function Attributes
 
 These function attributes are supported by the m68k back end:
 
-interruptinterrupt_handler
+interrupt interrupt_handler
   ``interrupt`` function attribute, m68k``interrupt_handler`` function attribute, m68kUse this attribute to
   indicate that the specified function is an interrupt handler.  The compiler
   generates function entry and exit sequences suitable for use in an
@@ -1827,7 +1827,7 @@ interrupt
                          keep_interrupts_masked,
                          use_debug_exception_return)) v7 ();
 
-long_callnearfar
+long_call near far
 
   .. index:: indirect calls, MIPS
 
@@ -1840,7 +1840,7 @@ long_callnearfar
   effect; it specifies that non-PIC calls should be made using the more
   efficient ``jal`` instruction.
 
-mips16nomips16
+mips16 nomips16
   ``mips16`` function attribute, MIPS``nomips16`` function attribute, MIPSOn MIPS targets, you can use the ``mips16`` and ``nomips16``
   function attributes to locally select or turn off MIPS16 code generation.
   A function with the ``mips16`` attribute is emitted as MIPS16 code,
@@ -1855,7 +1855,7 @@ mips16nomips16
   may interact badly with some GCC extensions such as ``__builtin_apply``
   (Constructing Calls).
 
-micromips, MIPSnomicromips, MIPS
+micromips, MIPS nomicromips, MIPS
   ``micromips`` function attribute``nomicromips`` function attributeOn MIPS targets, you can use the ``micromips`` and ``nomicromips``
   function attributes to locally select or turn off microMIPS code generation.
   A function with the ``micromips`` attribute is emitted as microMIPS code,
@@ -2005,7 +2005,7 @@ target (``options``)
 
   When compiling for Nios II, the following options are allowed:
 
-  custom-``insn``=``N``no-custom-``insn``
+  custom-``insn``=``N`` no-custom-``insn``
     ``target("custom-``insn``=``N``")`` function attribute, Nios II``target("no-custom-``insn``")`` function attribute, Nios IIEach custom-``insn``=``N`` attribute locally enables use of a
     custom instruction with encoding ``N`` when generating code that uses 
     ``insn``.  Similarly, no-custom-``insn`` locally inhibits use of
@@ -2028,7 +2028,7 @@ PowerPC Function Attributes
 
 These function attributes are supported by the PowerPC back end:
 
-longcallshortcall
+longcall shortcall
 
   .. index:: indirect calls, PowerPC
 
@@ -2049,112 +2049,112 @@ target (``options``)
 
   On the PowerPC, the following options are allowed:
 
-  altivecno-altivec
+  altivec no-altivec
     ``target("altivec")`` function attribute, PowerPCGenerate code that uses (does not use) AltiVec instructions.  In
     32-bit code, you cannot enable AltiVec instructions unless
     :option:`-mabi=altivec` is used on the command line.
 
-  cmpbno-cmpb
+  cmpb no-cmpb
     ``target("cmpb")`` function attribute, PowerPCGenerate code that uses (does not use) the compare bytes instruction
     implemented on the POWER6 processor and other processors that support
     the PowerPC V2.05 architecture.
 
-  dlmzbno-dlmzb
+  dlmzb no-dlmzb
     ``target("dlmzb")`` function attribute, PowerPCGenerate code that uses (does not use) the string-search dlmzb
     instruction on the IBM 405, 440, 464 and 476 processors.  This instruction is
     generated by default when targeting those processors.
 
-  fprndno-fprnd
+  fprnd no-fprnd
     ``target("fprnd")`` function attribute, PowerPCGenerate code that uses (does not use) the FP round to integer
     instructions implemented on the POWER5+ processor and other processors
     that support the PowerPC V2.03 architecture.
 
-  hard-dfpno-hard-dfp
+  hard-dfp no-hard-dfp
     ``target("hard-dfp")`` function attribute, PowerPCGenerate code that uses (does not use) the decimal floating-point
     instructions implemented on some POWER processors.
 
-  iselno-isel
+  isel no-isel
     ``target("isel")`` function attribute, PowerPCGenerate code that uses (does not use) ISEL instruction.
 
-  mfcrfno-mfcrf
+  mfcrf no-mfcrf
     ``target("mfcrf")`` function attribute, PowerPCGenerate code that uses (does not use) the move from condition
     register field instruction implemented on the POWER4 processor and
     other processors that support the PowerPC V2.01 architecture.
 
-  mfpgprno-mfpgpr
+  mfpgpr no-mfpgpr
     ``target("mfpgpr")`` function attribute, PowerPCGenerate code that uses (does not use) the FP move to/from general
     purpose register instructions implemented on the POWER6X processor and
     other processors that support the extended PowerPC V2.05 architecture.
 
-  mulhwno-mulhw
+  mulhw no-mulhw
     ``target("mulhw")`` function attribute, PowerPCGenerate code that uses (does not use) the half-word multiply and
     multiply-accumulate instructions on the IBM 405, 440, 464 and 476 processors.
     These instructions are generated by default when targeting those
     processors.
 
-  multipleno-multiple
+  multiple no-multiple
     ``target("multiple")`` function attribute, PowerPCGenerate code that uses (does not use) the load multiple word
     instructions and the store multiple word instructions.
 
-  updateno-update
+  update no-update
     ``target("update")`` function attribute, PowerPCGenerate code that uses (does not use) the load or store instructions
     that update the base register to the address of the calculated memory
     location.
 
-  popcntbno-popcntb
+  popcntb no-popcntb
     ``target("popcntb")`` function attribute, PowerPCGenerate code that uses (does not use) the popcount and double-precision
     FP reciprocal estimate instruction implemented on the POWER5
     processor and other processors that support the PowerPC V2.02
     architecture.
 
-  popcntdno-popcntd
+  popcntd no-popcntd
     ``target("popcntd")`` function attribute, PowerPCGenerate code that uses (does not use) the popcount instruction
     implemented on the POWER7 processor and other processors that support
     the PowerPC V2.06 architecture.
 
-  powerpc-gfxoptno-powerpc-gfxopt
+  powerpc-gfxopt no-powerpc-gfxopt
     ``target("powerpc-gfxopt")`` function attribute, PowerPCGenerate code that uses (does not use) the optional PowerPC
     architecture instructions in the Graphics group, including
     floating-point select.
 
-  powerpc-gpoptno-powerpc-gpopt
+  powerpc-gpopt no-powerpc-gpopt
     ``target("powerpc-gpopt")`` function attribute, PowerPCGenerate code that uses (does not use) the optional PowerPC
     architecture instructions in the General Purpose group, including
     floating-point square root.
 
-  recip-precisionno-recip-precision
+  recip-precision no-recip-precision
     ``target("recip-precision")`` function attribute, PowerPCAssume (do not assume) that the reciprocal estimate instructions
     provide higher-precision estimates than is mandated by the PowerPC
     ABI.
 
-  stringno-string
+  string no-string
     ``target("string")`` function attribute, PowerPCGenerate code that uses (does not use) the load string instructions
     and the store string word instructions to save multiple registers and
     do small block moves.
 
-  vsxno-vsx
+  vsx no-vsx
     ``target("vsx")`` function attribute, PowerPCGenerate code that uses (does not use) vector/scalar (VSX)
     instructions, and also enable the use of built-in functions that allow
     more direct access to the VSX instruction set.  In 32-bit code, you
     cannot enable VSX or AltiVec instructions unless
     :option:`-mabi=altivec` is used on the command line.
 
-  frizno-friz
+  friz no-friz
     ``target("friz")`` function attribute, PowerPCGenerate (do not generate) the ``friz`` instruction when the
     :option:`-funsafe-math-optimizations` option is used to optimize
     rounding a floating-point value to 64-bit integer and back to floating
     point.  The ``friz`` instruction does not return the same value if
     the floating-point number is too large to fit in an integer.
 
-  avoid-indexed-addressesno-avoid-indexed-addresses
+  avoid-indexed-addresses no-avoid-indexed-addresses
     ``target("avoid-indexed-addresses")`` function attribute, PowerPCGenerate code that tries to avoid (not avoid) the use of indexed load
     or store instructions.
 
-  pairedno-paired
+  paired no-paired
     ``target("paired")`` function attribute, PowerPCGenerate code that uses (does not use) the generation of PAIRED simd
     instructions.
 
-  longcallno-longcall
+  longcall no-longcall
     ``target("longcall")`` function attribute, PowerPCGenerate code that assumes (does not assume) that all calls are far
     away so that a longer more expensive calling sequence is required.
 
@@ -2182,7 +2182,7 @@ RL78 Function Attributes
 
 These function attributes are supported by the RL78 back end:
 
-interruptbrk_interrupt
+interrupt brk_interrupt
   ``interrupt`` function attribute, RL78``brk_interrupt`` function attribute, RL78These attributes indicate
   that the specified function is an interrupt handler.  The compiler generates
   function entry and exit sequences suitable for use in an interrupt handler
@@ -2436,7 +2436,7 @@ thiscall
   As a GCC extension, this calling convention can be used for C functions
   and for static member methods.
 
-ms_abisysv_abi
+ms_abi sysv_abi
   ``ms_abi`` function attribute, x86``sysv_abi`` function attribute, x86On 32-bit and 64-bit x86 targets, you can use an ABI attribute
   to indicate which calling convention should be used for a function.  The
   ``ms_abi`` attribute tells the compiler to use the Microsoft ABI,
@@ -2514,83 +2514,83 @@ target (``options``)
 
   On the x86, the following options are allowed:
 
-  abmno-abm
+  abm no-abm
     ``target("abm")`` function attribute, x86Enable/disable the generation of the advanced bit instructions.
 
-  aesno-aes
+  aes no-aes
     ``target("aes")`` function attribute, x86Enable/disable the generation of the AES instructions.
 
   default
     ``target("default")`` function attribute, x86Function Multiversioning, where it is used to specify the
     default function version.
 
-  mmxno-mmx
+  mmx no-mmx
     ``target("mmx")`` function attribute, x86Enable/disable the generation of the MMX instructions.
 
-  pclmulno-pclmul
+  pclmul no-pclmul
     ``target("pclmul")`` function attribute, x86Enable/disable the generation of the PCLMUL instructions.
 
-  popcntno-popcnt
+  popcnt no-popcnt
     ``target("popcnt")`` function attribute, x86Enable/disable the generation of the POPCNT instruction.
 
-  sseno-sse
+  sse no-sse
     ``target("sse")`` function attribute, x86Enable/disable the generation of the SSE instructions.
 
-  sse2no-sse2
+  sse2 no-sse2
     ``target("sse2")`` function attribute, x86Enable/disable the generation of the SSE2 instructions.
 
-  sse3no-sse3
+  sse3 no-sse3
     ``target("sse3")`` function attribute, x86Enable/disable the generation of the SSE3 instructions.
 
-  sse4no-sse4
+  sse4 no-sse4
     ``target("sse4")`` function attribute, x86Enable/disable the generation of the SSE4 instructions (both SSE4.1
     and SSE4.2).
 
-  sse4.1no-sse4.1
+  sse4.1 no-sse4.1
     ``target("sse4.1")`` function attribute, x86Enable/disable the generation of the sse4.1 instructions.
 
-  sse4.2no-sse4.2
+  sse4.2 no-sse4.2
     ``target("sse4.2")`` function attribute, x86Enable/disable the generation of the sse4.2 instructions.
 
-  sse4ano-sse4a
+  sse4a no-sse4a
     ``target("sse4a")`` function attribute, x86Enable/disable the generation of the SSE4A instructions.
 
-  fma4no-fma4
+  fma4 no-fma4
     ``target("fma4")`` function attribute, x86Enable/disable the generation of the FMA4 instructions.
 
-  xopno-xop
+  xop no-xop
     ``target("xop")`` function attribute, x86Enable/disable the generation of the XOP instructions.
 
-  lwpno-lwp
+  lwp no-lwp
     ``target("lwp")`` function attribute, x86Enable/disable the generation of the LWP instructions.
 
-  ssse3no-ssse3
+  ssse3 no-ssse3
     ``target("ssse3")`` function attribute, x86Enable/disable the generation of the SSSE3 instructions.
 
-  cldno-cld
+  cld no-cld
     ``target("cld")`` function attribute, x86Enable/disable the generation of the CLD before string moves.
 
-  fancy-math-387no-fancy-math-387
+  fancy-math-387 no-fancy-math-387
     ``target("fancy-math-387")`` function attribute, x86Enable/disable the generation of the ``sin``, ``cos``, and
     ``sqrt`` instructions on the 387 floating-point unit.
 
-  fused-maddno-fused-madd
+  fused-madd no-fused-madd
     ``target("fused-madd")`` function attribute, x86Enable/disable the generation of the fused multiply/add instructions.
 
-  ieee-fpno-ieee-fp
+  ieee-fp no-ieee-fp
     ``target("ieee-fp")`` function attribute, x86Enable/disable the generation of floating point that depends on IEEE arithmetic.
 
-  inline-all-stringopsno-inline-all-stringops
+  inline-all-stringops no-inline-all-stringops
     ``target("inline-all-stringops")`` function attribute, x86Enable/disable inlining of string operations.
 
-  inline-stringops-dynamicallyno-inline-stringops-dynamically
+  inline-stringops-dynamically no-inline-stringops-dynamically
     ``target("inline-stringops-dynamically")`` function attribute, x86Enable/disable the generation of the inline code to do small string
     operations and calling the library routines for large operations.
 
-  align-stringopsno-align-stringops
+  align-stringops no-align-stringops
     ``target("align-stringops")`` function attribute, x86Do/do not align destination of inlined string operations.
 
-  recipno-recip
+  recip no-recip
     ``target("recip")`` function attribute, x86Enable/disable the generation of RCPSS, RCPPS, RSQRTSS and RSQRTPS
     instructions followed an additional Newton-Raphson step instead of
     doing a floating-point division.

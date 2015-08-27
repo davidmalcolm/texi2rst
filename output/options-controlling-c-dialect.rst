@@ -80,14 +80,14 @@ accepts:
 
   A value for this option must be provided; possible values are
 
-  c90c89iso9899:1990
+  c90 c89 iso9899:1990
     Support all ISO C90 programs (certain GNU extensions that conflict
     with ISO C90 are disabled). Same as :option:`-ansi` for C code.
 
   iso9899:199409
     ISO C90 as modified in amendment 1.
 
-  c99c9xiso9899:1999iso9899:199x
+  c99 c9x iso9899:1999 iso9899:199x
     ISO C99.  This standard is substantially completely supported, modulo
     bugs and floating-point issues
     (mainly but not entirely relating to optional C99 features from
@@ -95,44 +95,44 @@ accepts:
     http://gcc.gnu.org/c99status.html for more information.  The
     names c9x and iso9899:199x are deprecated.
 
-  c11c1xiso9899:2011
+  c11 c1x iso9899:2011
     ISO C11, the 2011 revision of the ISO C standard.  This standard is
     substantially completely supported, modulo bugs, floating-point issues
     (mainly but not entirely relating to optional C11 features from
     Annexes F and G) and the optional Annexes K (Bounds-checking
     interfaces) and L (Analyzability).  The name c1x is deprecated.
 
-  gnu90gnu89
+  gnu90 gnu89
     GNU dialect of ISO C90 (including some C99 features).
 
-  gnu99gnu9x
+  gnu99 gnu9x
     GNU dialect of ISO C99.  The name gnu9x is deprecated.
 
-  gnu11gnu1x
+  gnu11 gnu1x
     GNU dialect of ISO C11.  This is the default for C code.
     The name gnu1x is deprecated.
 
-  c++98c++03
+  c++98 c++03
     The 1998 ISO C++ standard plus the 2003 technical corrigendum and some
     additional defect reports. Same as :option:`-ansi` for C++ code.
 
-  gnu++98gnu++03
+  gnu++98 gnu++03
     GNU dialect of :option:`-std=c++98`.  This is the default for
     C++ code.
 
-  c++11c++0x
+  c++11 c++0x
     The 2011 ISO C++ standard plus amendments.
     The name c++0x is deprecated.
 
-  gnu++11gnu++0x
+  gnu++11 gnu++0x
     GNU dialect of :option:`-std=c++11`.
     The name gnu++0x is deprecated.
 
-  c++14c++1y
+  c++14 c++1y
     The 2014 ISO C++ standard plus amendments.
     The name c++1y is deprecated.
 
-  gnu++14gnu++1y
+  gnu++14 gnu++1y
     GNU dialect of :option:`-std=c++14`.
     The name gnu++1y is deprecated.
 

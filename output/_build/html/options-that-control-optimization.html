@@ -3105,7 +3105,7 @@ to not grow past this limit too much.  The default value is 256 bytes.</dd>
 <dd>Specifies maximal growth of large stack frames caused by inlining in percents.
 The default value is 1000 which limits large stack frame growth to 11 times
 the original size.</dd>
-<dt>max-inline-insns-recursivemax-inline-insns-recursive-auto</dt>
+<dt>max-inline-insns-recursive max-inline-insns-recursive-auto</dt>
 <dd><p class="first">Specifies the maximum number of instructions an out-of-line copy of a
 self-recursive inline
 function can grow into by performing recursive inlining.</p>
@@ -3116,7 +3116,7 @@ happens only when <a class="reference internal" href="#cmdoption-finline-functio
 enabled; <em class="xref std std-option">--param max-inline-insns-recursive-auto</em> applies instead.  The
 default value is 450.</p>
 </dd>
-<dt>max-inline-recursive-depthmax-inline-recursive-depth-auto</dt>
+<dt>max-inline-recursive-depth max-inline-recursive-depth-auto</dt>
 <dd><p class="first">Specifies the maximum recursion depth used for recursive inlining.</p>
 <p class="last"><em class="xref std std-option">--param max-inline-recursive-depth</em> applies to functions
 declared inline.  For functions not declared inline, recursive inlining
@@ -3287,7 +3287,7 @@ a function to align the basic block.</dd>
 <dt>align-loop-iterations</dt>
 <dd>A loop expected to iterate at least the selected number of iterations is
 aligned.</dd>
-<dt>tracer-dynamic-coveragetracer-dynamic-coverage-feedback</dt>
+<dt>tracer-dynamic-coverage tracer-dynamic-coverage-feedback</dt>
 <dd><p class="first">This value is used to limit superblock formation once the given percentage of
 executed instructions is covered.  This limits unnecessary code size
 expansion.</p>
@@ -3304,7 +3304,7 @@ growth.</dd>
 <dt>tracer-min-branch-ratio</dt>
 <dd>Stop reverse growth when the reverse probability of best edge is less than this
 threshold (in percent).</dd>
-<dt>tracer-min-branch-ratiotracer-min-branch-ratio-feedback</dt>
+<dt>tracer-min-branch-ratio tracer-min-branch-ratio-feedback</dt>
 <dd><p class="first">Stop forward growth if the best edge has probability lower than this
 threshold.</p>
 <p class="last">Similarly to tracer-dynamic-coverage two values are present, one for
@@ -3357,7 +3357,7 @@ The default value is 100.</dd>
 <dd>The maximum number of memory locations cselib should take into account.
 Increasing values mean more aggressive optimization, making the compilation time
 increase with probably slightly better performance.  The default value is 500.</dd>
-<dt>reorder-blocks-duplicatereorder-blocks-duplicate-feedback</dt>
+<dt>reorder-blocks-duplicate reorder-blocks-duplicate-feedback</dt>
 <dd><p class="first">Used by the basic block reordering pass to decide whether to use unconditional
 branch or duplicate the code on its destination.  Code is duplicated when its
 estimated size is smaller than this value multiplied by the estimated size of

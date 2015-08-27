@@ -290,7 +290,7 @@ function that calls a non-<tt class="docutils literal"><span class="pre">const</
 <tt class="docutils literal"><span class="pre">const</span></tt>.  It does not make sense for a <tt class="docutils literal"><span class="pre">const</span></tt> function to
 return <tt class="docutils literal"><span class="pre">void</span></tt>.</p>
 </dd>
-<dt>constructordestructorconstructor (<tt class="docutils literal"><span class="pre">priority</span></tt>)destructor (<tt class="docutils literal"><span class="pre">priority</span></tt>)</dt>
+<dt>constructor destructor constructor (<tt class="docutils literal"><span class="pre">priority</span></tt>) destructor (<tt class="docutils literal"><span class="pre">priority</span></tt>)</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">constructor</span></tt> function attribute``destructor`` function attributeThe <tt class="docutils literal"><span class="pre">constructor</span></tt> attribute causes the function to be called
 automatically before execution enters <tt class="docutils literal"><span class="pre">main</span> <span class="pre">()</span></tt>.  Similarly, the
 <tt class="docutils literal"><span class="pre">destructor</span></tt> attribute causes the function to be called
@@ -309,7 +309,7 @@ functions are the same as those specified for namespace-scope C++
 objects (C++ Attributes).</p>
 <p class="last">These attributes are not currently implemented for Objective-C.</p>
 </dd>
-<dt>deprecateddeprecated (<tt class="docutils literal"><span class="pre">msg</span></tt>)</dt>
+<dt>deprecated deprecated (<tt class="docutils literal"><span class="pre">msg</span></tt>)</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">deprecated</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute results in a warning if the function
 is used anywhere in the source file.  This is useful when identifying
 functions that are expected to be removed in a future version of a
@@ -328,7 +328,7 @@ present.</p>
 <p class="last">The <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute can also be used for variables and
 types (Variable Attributes, Type Attributes.)</p>
 </dd>
-<dt>error (&#8220;<tt class="docutils literal"><span class="pre">message</span></tt>&#8221;)warning (&#8220;<tt class="docutils literal"><span class="pre">message</span></tt>&#8221;)</dt>
+<dt>error (&#8220;<tt class="docutils literal"><span class="pre">message</span></tt>&#8221;) warning (&#8220;<tt class="docutils literal"><span class="pre">message</span></tt>&#8221;)</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">error</span></tt> function attribute``warning`` function attributeIf the <tt class="docutils literal"><span class="pre">error</span></tt> or <tt class="docutils literal"><span class="pre">warning</span></tt> attribute
 is used on a function declaration and a call to such a function
 is not eliminated through dead code elimination or other optimizations,
@@ -560,7 +560,7 @@ the same translation unit as the resolver function:</p>
 <p class="last">Indirect functions cannot be weak.  Binutils version 2.20.1 or higher
 and GNU C Library version 2.11.1 are required to use this feature.</p>
 </dd>
-<dt>interruptinterrupt_handler</dt>
+<dt>interrupt interrupt_handler</dt>
 <dd>Many GCC back ends support attributes to indicate that a function is
 an interrupt handler, which tells the compiler to generate function
 entry and exit sequences that differ from those from regular
@@ -621,7 +621,7 @@ line. Static variables marked like this are also not removed.
 This has a similar effect
 as the <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fno-toplevel-reorder"><em class="xref std std-option">-fno-toplevel-reorder</em></a> option, but only applies to the
 marked symbols.</dd>
-<dt>no_sanitize_addressno_address_safety_analysis</dt>
+<dt>no_sanitize_address no_address_safety_analysis</dt>
 <dd><tt class="docutils literal"><span class="pre">no_sanitize_address</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">no_sanitize_address</span></tt> attribute on functions is used
 to inform the compiler that it should not instrument memory accesses
 in the function when compiling with the <em class="xref std std-option">-fsanitize=address</em> option.
@@ -975,7 +975,7 @@ library functions that can be overridden in user code, though it can
 also be used with non-function declarations.  Weak symbols are supported
 for ELF targets, and also for a.out targets when using the GNU assembler
 and linker.</dd>
-<dt>weakrefweakref (&#8220;<tt class="docutils literal"><span class="pre">target</span></tt>&#8221;)</dt>
+<dt>weakref weakref (&#8220;<tt class="docutils literal"><span class="pre">target</span></tt>&#8221;)</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">weakref</span></tt> function attributeThe <tt class="docutils literal"><span class="pre">weakref</span></tt> attribute marks a declaration as a weak reference.
 Without arguments, it should be accompanied by an <tt class="docutils literal"><span class="pre">alias</span></tt> attribute
 naming the target symbol.  Optionally, the <tt class="docutils literal"><span class="pre">target</span></tt> may be given as
@@ -1005,7 +1005,7 @@ performing a reloadable link on them.</p>
 only be <tt class="docutils literal"><span class="pre">static</span></tt>.</p>
 </dd>
 </dl>
-<p>loweruppereither</p>
+<p>lower upper either</p>
 <blockquote>
 <div><span class="target" id="index-4"></span><span class="target" id="index-5"></span><p id="index-6">On the MSP430 target these attributes can be used to specify whether
 the function or variable should be placed into low memory, high
@@ -1050,7 +1050,7 @@ in a parameter to the interrupt attribute like this:</p>
 <p class="last">Permissible values for this parameter are: <tt class="docutils literal"><span class="pre">ilink1</span></tt> and
 <tt class="docutils literal"><span class="pre">ilink2</span></tt>.</p>
 </dd>
-<dt>long_callmedium_callshort_call</dt>
+<dt>long_call medium_call short_call</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, ARC``medium_call`` function attribute, ARC``short_call`` function attribute, ARC
 .. index:: indirect calls, ARC</p>
 <p>These attributes specify how a particular function is called.
@@ -1093,7 +1093,7 @@ may be called with a word-aligned stack pointer.</p>
 <dt>isr</dt>
 <dd><tt class="docutils literal"><span class="pre">isr</span></tt> function attribute, ARMUse this attribute on ARM to write Interrupt Service Routines. This is an
 alias to the <tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute above.</dd>
-<dt>long_callshort_call</dt>
+<dt>long_call short_call</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, ARM``short_call`` function attribute, ARM
 .. index:: indirect calls, ARM</p>
 <p class="last">These attributes specify how a particular function is called.
@@ -1161,7 +1161,7 @@ prologue/epilogue sequences generated by the compiler. Only basic
 (Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</dd>
-<dt>OS_mainOS_task</dt>
+<dt>OS_main OS_task</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">OS_main</span></tt> function attribute, AVR``OS_task`` function attribute, AVROn AVR, functions with the <tt class="docutils literal"><span class="pre">OS_main</span></tt> or <tt class="docutils literal"><span class="pre">OS_task</span></tt> attribute
 do not save/restore any call-saved register in their prologue/epilogue.</p>
 <p>The <tt class="docutils literal"><span class="pre">OS_main</span></tt> attribute can be used when there is
@@ -1236,7 +1236,7 @@ SRAM. The function is put into a specific section named
 <tt class="docutils literal"><span class="pre">.l2.text</span></tt>. With <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mfdpic"><em class="xref std std-option">-mfdpic</em></a>, callers of such functions use
 an inlined PLT.</dd>
 </dl>
-<p>longcallshortcall</p>
+<p>longcall shortcall</p>
 <blockquote>
 <div><p id="index-7"><tt class="docutils literal"><span class="pre">longcall</span></tt> function attribute, Blackfin``shortcall`` function attribute, BlackfinThe <tt class="docutils literal"><span class="pre">longcall</span></tt> attribute
 indicates that the function might be far away from the call site and
@@ -1333,7 +1333,7 @@ Epiphany targets:</p>
 </pre></div>
 </div>
 </dd>
-<dt>long_callshort_call</dt>
+<dt>long_call short_call</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, Epiphany``short_call`` function attribute, Epiphany
 .. index:: indirect calls, Epiphany</p>
 <p>These attributes specify how a particular function is called.
@@ -1480,7 +1480,7 @@ generates the much slower <tt class="docutils literal"><span class="pre">seth/ad
 <h2>m68k Function Attributes<a class="headerlink" href="#m68k-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the m68k back end:</p>
 <dl class="docutils">
-<dt>interruptinterrupt_handler</dt>
+<dt>interrupt interrupt_handler</dt>
 <dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, m68k``interrupt_handler`` function attribute, m68kUse this attribute to
 indicate that the specified function is an interrupt handler.  The compiler
 generates function entry and exit sequences suitable for use in an
@@ -1689,7 +1689,7 @@ have this attribute return using <tt class="docutils literal"><span class="pre">
 </div>
 </dd>
 </dl>
-<p>long_callnearfar</p>
+<p>long_call near far</p>
 <blockquote>
 <div><p id="index-8"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, MIPS``near`` function attribute, MIPS``far`` function attribute, MIPSThese attributes specify how a particular function is called on MIPS.
 The attributes override the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (MIPS Options)
@@ -1701,7 +1701,7 @@ effect; it specifies that non-PIC calls should be made using the more
 efficient <tt class="docutils literal"><span class="pre">jal</span></tt> instruction.</p>
 </div></blockquote>
 <dl class="docutils">
-<dt>mips16nomips16</dt>
+<dt>mips16 nomips16</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">mips16</span></tt> function attribute, MIPS``nomips16`` function attribute, MIPSOn MIPS targets, you can use the <tt class="docutils literal"><span class="pre">mips16</span></tt> and <tt class="docutils literal"><span class="pre">nomips16</span></tt>
 function attributes to locally select or turn off MIPS16 code generation.
 A function with the <tt class="docutils literal"><span class="pre">mips16</span></tt> attribute is emitted as MIPS16 code,
@@ -1715,7 +1715,7 @@ not that within individual functions.  Mixed MIPS16 and non-MIPS16 code
 may interact badly with some GCC extensions such as <tt class="docutils literal"><span class="pre">__builtin_apply</span></tt>
 (Constructing Calls).</p>
 </dd>
-<dt>micromips, MIPSnomicromips, MIPS</dt>
+<dt>micromips, MIPS nomicromips, MIPS</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">micromips</span></tt> function attribute``nomicromips`` function attributeOn MIPS targets, you can use the <tt class="docutils literal"><span class="pre">micromips</span></tt> and <tt class="docutils literal"><span class="pre">nomicromips</span></tt>
 function attributes to locally select or turn off microMIPS code generation.
 A function with the <tt class="docutils literal"><span class="pre">micromips</span></tt> attribute is emitted as microMIPS code,
@@ -1854,7 +1854,7 @@ to provide extra exception handling:</p>
 allows specification of target-specific compilation options.</p>
 <p>When compiling for Nios II, the following options are allowed:</p>
 <dl class="last docutils">
-<dt>custom-<tt class="docutils literal"><span class="pre">insn``=``N``no-custom-``insn</span></tt></dt>
+<dt>custom-<tt class="docutils literal"><span class="pre">insn``=``N</span></tt> no-custom-<tt class="docutils literal"><span class="pre">insn</span></tt></dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;custom-``insn``=``N</span></tt>&#8221;)`` function attribute, Nios II``target(&#8220;no-custom-<tt class="docutils literal"><span class="pre">insn</span></tt>&#8221;)`` function attribute, Nios IIEach custom-<tt class="docutils literal"><span class="pre">insn``=``N</span></tt> attribute locally enables use of a
 custom instruction with encoding <tt class="docutils literal"><span class="pre">N</span></tt> when generating code that uses
 <tt class="docutils literal"><span class="pre">insn</span></tt>.  Similarly, no-custom-<tt class="docutils literal"><span class="pre">insn</span></tt> locally inhibits use of
@@ -1877,7 +1877,7 @@ Nios II Options, for more information.</p>
 <div class="section" id="powerpc-function-attributes">
 <h2>PowerPC Function Attributes<a class="headerlink" href="#powerpc-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the PowerPC back end:</p>
-<p>longcallshortcall</p>
+<p>longcall shortcall</p>
 <blockquote>
 <div><p id="index-9"><tt class="docutils literal"><span class="pre">longcall</span></tt> function attribute, PowerPC``shortcall`` function attribute, PowerPCThe <tt class="docutils literal"><span class="pre">longcall</span></tt> attribute
 indicates that the function might be far away from the call site and
@@ -1895,91 +1895,91 @@ calls are necessary.</p>
 allows specification of target-specific compilation options.</p>
 <p>On the PowerPC, the following options are allowed:</p>
 <dl class="docutils">
-<dt>altivecno-altivec</dt>
+<dt>altivec no-altivec</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;altivec&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) AltiVec instructions.  In
 32-bit code, you cannot enable AltiVec instructions unless
 <em class="xref std std-option">-mabi=altivec</em> is used on the command line.</dd>
-<dt>cmpbno-cmpb</dt>
+<dt>cmpb no-cmpb</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;cmpb&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the compare bytes instruction
 implemented on the POWER6 processor and other processors that support
 the PowerPC V2.05 architecture.</dd>
-<dt>dlmzbno-dlmzb</dt>
+<dt>dlmzb no-dlmzb</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;dlmzb&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the string-search dlmzb
 instruction on the IBM 405, 440, 464 and 476 processors.  This instruction is
 generated by default when targeting those processors.</dd>
-<dt>fprndno-fprnd</dt>
+<dt>fprnd no-fprnd</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;fprnd&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the FP round to integer
 instructions implemented on the POWER5+ processor and other processors
 that support the PowerPC V2.03 architecture.</dd>
-<dt>hard-dfpno-hard-dfp</dt>
+<dt>hard-dfp no-hard-dfp</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;hard-dfp&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the decimal floating-point
 instructions implemented on some POWER processors.</dd>
-<dt>iselno-isel</dt>
+<dt>isel no-isel</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;isel&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) ISEL instruction.</dd>
-<dt>mfcrfno-mfcrf</dt>
+<dt>mfcrf no-mfcrf</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;mfcrf&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the move from condition
 register field instruction implemented on the POWER4 processor and
 other processors that support the PowerPC V2.01 architecture.</dd>
-<dt>mfpgprno-mfpgpr</dt>
+<dt>mfpgpr no-mfpgpr</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;mfpgpr&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the FP move to/from general
 purpose register instructions implemented on the POWER6X processor and
 other processors that support the extended PowerPC V2.05 architecture.</dd>
-<dt>mulhwno-mulhw</dt>
+<dt>mulhw no-mulhw</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;mulhw&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the half-word multiply and
 multiply-accumulate instructions on the IBM 405, 440, 464 and 476 processors.
 These instructions are generated by default when targeting those
 processors.</dd>
-<dt>multipleno-multiple</dt>
+<dt>multiple no-multiple</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;multiple&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the load multiple word
 instructions and the store multiple word instructions.</dd>
-<dt>updateno-update</dt>
+<dt>update no-update</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;update&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the load or store instructions
 that update the base register to the address of the calculated memory
 location.</dd>
-<dt>popcntbno-popcntb</dt>
+<dt>popcntb no-popcntb</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;popcntb&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the popcount and double-precision
 FP reciprocal estimate instruction implemented on the POWER5
 processor and other processors that support the PowerPC V2.02
 architecture.</dd>
-<dt>popcntdno-popcntd</dt>
+<dt>popcntd no-popcntd</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;popcntd&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the popcount instruction
 implemented on the POWER7 processor and other processors that support
 the PowerPC V2.06 architecture.</dd>
-<dt>powerpc-gfxoptno-powerpc-gfxopt</dt>
+<dt>powerpc-gfxopt no-powerpc-gfxopt</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;powerpc-gfxopt&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the optional PowerPC
 architecture instructions in the Graphics group, including
 floating-point select.</dd>
-<dt>powerpc-gpoptno-powerpc-gpopt</dt>
+<dt>powerpc-gpopt no-powerpc-gpopt</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;powerpc-gpopt&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the optional PowerPC
 architecture instructions in the General Purpose group, including
 floating-point square root.</dd>
-<dt>recip-precisionno-recip-precision</dt>
+<dt>recip-precision no-recip-precision</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;recip-precision&quot;)</span></tt> function attribute, PowerPCAssume (do not assume) that the reciprocal estimate instructions
 provide higher-precision estimates than is mandated by the PowerPC
 ABI.</dd>
-<dt>stringno-string</dt>
+<dt>string no-string</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;string&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the load string instructions
 and the store string word instructions to save multiple registers and
 do small block moves.</dd>
-<dt>vsxno-vsx</dt>
+<dt>vsx no-vsx</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;vsx&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) vector/scalar (VSX)
 instructions, and also enable the use of built-in functions that allow
 more direct access to the VSX instruction set.  In 32-bit code, you
 cannot enable VSX or AltiVec instructions unless
 <em class="xref std std-option">-mabi=altivec</em> is used on the command line.</dd>
-<dt>frizno-friz</dt>
+<dt>friz no-friz</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;friz&quot;)</span></tt> function attribute, PowerPCGenerate (do not generate) the <tt class="docutils literal"><span class="pre">friz</span></tt> instruction when the
 <a class="reference internal" href="options-that-control-optimization.html#cmdoption-funsafe-math-optimizations"><em class="xref std std-option">-funsafe-math-optimizations</em></a> option is used to optimize
 rounding a floating-point value to 64-bit integer and back to floating
 point.  The <tt class="docutils literal"><span class="pre">friz</span></tt> instruction does not return the same value if
 the floating-point number is too large to fit in an integer.</dd>
-<dt>avoid-indexed-addressesno-avoid-indexed-addresses</dt>
+<dt>avoid-indexed-addresses no-avoid-indexed-addresses</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;avoid-indexed-addresses&quot;)</span></tt> function attribute, PowerPCGenerate code that tries to avoid (not avoid) the use of indexed load
 or store instructions.</dd>
-<dt>pairedno-paired</dt>
+<dt>paired no-paired</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;paired&quot;)</span></tt> function attribute, PowerPCGenerate code that uses (does not use) the generation of PAIRED simd
 instructions.</dd>
-<dt>longcallno-longcall</dt>
+<dt>longcall no-longcall</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;longcall&quot;)</span></tt> function attribute, PowerPCGenerate code that assumes (does not assume) that all calls are far
 away so that a longer more expensive calling sequence is required.</dd>
 <dt>cpu=``CPU``</dt>
@@ -2006,7 +2006,7 @@ callee has a subset of the target options of the caller.</p>
 <h2>RL78 Function Attributes<a class="headerlink" href="#rl78-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the RL78 back end:</p>
 <dl class="docutils">
-<dt>interruptbrk_interrupt</dt>
+<dt>interrupt brk_interrupt</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, RL78``brk_interrupt`` function attribute, RL78These attributes indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
@@ -2240,7 +2240,7 @@ The <tt class="docutils literal"><span class="pre">thiscall</span></tt> attribut
 As a GCC extension, this calling convention can be used for C functions
 and for static member methods.</p>
 </dd>
-<dt>ms_abisysv_abi</dt>
+<dt>ms_abi sysv_abi</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">ms_abi</span></tt> function attribute, x86``sysv_abi`` function attribute, x86On 32-bit and 64-bit x86 targets, you can use an ABI attribute
 to indicate which calling convention should be used for a function.  The
 <tt class="docutils literal"><span class="pre">ms_abi</span></tt> attribute tells the compiler to use the Microsoft ABI,
@@ -2309,59 +2309,59 @@ pass arguments, unless it takes a variable number of arguments.</p>
 allows specification of target-specific compilation options.</p>
 <p>On the x86, the following options are allowed:</p>
 <dl class="docutils">
-<dt>abmno-abm</dt>
+<dt>abm no-abm</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;abm&quot;)</span></tt> function attribute, x86Enable/disable the generation of the advanced bit instructions.</dd>
-<dt>aesno-aes</dt>
+<dt>aes no-aes</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;aes&quot;)</span></tt> function attribute, x86Enable/disable the generation of the AES instructions.</dd>
 <dt>default</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;default&quot;)</span></tt> function attribute, x86Function Multiversioning, where it is used to specify the
 default function version.</dd>
-<dt>mmxno-mmx</dt>
+<dt>mmx no-mmx</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;mmx&quot;)</span></tt> function attribute, x86Enable/disable the generation of the MMX instructions.</dd>
-<dt>pclmulno-pclmul</dt>
+<dt>pclmul no-pclmul</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;pclmul&quot;)</span></tt> function attribute, x86Enable/disable the generation of the PCLMUL instructions.</dd>
-<dt>popcntno-popcnt</dt>
+<dt>popcnt no-popcnt</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;popcnt&quot;)</span></tt> function attribute, x86Enable/disable the generation of the POPCNT instruction.</dd>
-<dt>sseno-sse</dt>
+<dt>sse no-sse</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;sse&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSE instructions.</dd>
-<dt>sse2no-sse2</dt>
+<dt>sse2 no-sse2</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;sse2&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSE2 instructions.</dd>
-<dt>sse3no-sse3</dt>
+<dt>sse3 no-sse3</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;sse3&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSE3 instructions.</dd>
-<dt>sse4no-sse4</dt>
+<dt>sse4 no-sse4</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;sse4&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSE4 instructions (both SSE4.1
 and SSE4.2).</dd>
-<dt>sse4.1no-sse4.1</dt>
+<dt>sse4.1 no-sse4.1</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;sse4.1&quot;)</span></tt> function attribute, x86Enable/disable the generation of the sse4.1 instructions.</dd>
-<dt>sse4.2no-sse4.2</dt>
+<dt>sse4.2 no-sse4.2</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;sse4.2&quot;)</span></tt> function attribute, x86Enable/disable the generation of the sse4.2 instructions.</dd>
-<dt>sse4ano-sse4a</dt>
+<dt>sse4a no-sse4a</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;sse4a&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSE4A instructions.</dd>
-<dt>fma4no-fma4</dt>
+<dt>fma4 no-fma4</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;fma4&quot;)</span></tt> function attribute, x86Enable/disable the generation of the FMA4 instructions.</dd>
-<dt>xopno-xop</dt>
+<dt>xop no-xop</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;xop&quot;)</span></tt> function attribute, x86Enable/disable the generation of the XOP instructions.</dd>
-<dt>lwpno-lwp</dt>
+<dt>lwp no-lwp</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;lwp&quot;)</span></tt> function attribute, x86Enable/disable the generation of the LWP instructions.</dd>
-<dt>ssse3no-ssse3</dt>
+<dt>ssse3 no-ssse3</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;ssse3&quot;)</span></tt> function attribute, x86Enable/disable the generation of the SSSE3 instructions.</dd>
-<dt>cldno-cld</dt>
+<dt>cld no-cld</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;cld&quot;)</span></tt> function attribute, x86Enable/disable the generation of the CLD before string moves.</dd>
-<dt>fancy-math-387no-fancy-math-387</dt>
+<dt>fancy-math-387 no-fancy-math-387</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;fancy-math-387&quot;)</span></tt> function attribute, x86Enable/disable the generation of the <tt class="docutils literal"><span class="pre">sin</span></tt>, <tt class="docutils literal"><span class="pre">cos</span></tt>, and
 <tt class="docutils literal"><span class="pre">sqrt</span></tt> instructions on the 387 floating-point unit.</dd>
-<dt>fused-maddno-fused-madd</dt>
+<dt>fused-madd no-fused-madd</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;fused-madd&quot;)</span></tt> function attribute, x86Enable/disable the generation of the fused multiply/add instructions.</dd>
-<dt>ieee-fpno-ieee-fp</dt>
+<dt>ieee-fp no-ieee-fp</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;ieee-fp&quot;)</span></tt> function attribute, x86Enable/disable the generation of floating point that depends on IEEE arithmetic.</dd>
-<dt>inline-all-stringopsno-inline-all-stringops</dt>
+<dt>inline-all-stringops no-inline-all-stringops</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;inline-all-stringops&quot;)</span></tt> function attribute, x86Enable/disable inlining of string operations.</dd>
-<dt>inline-stringops-dynamicallyno-inline-stringops-dynamically</dt>
+<dt>inline-stringops-dynamically no-inline-stringops-dynamically</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;inline-stringops-dynamically&quot;)</span></tt> function attribute, x86Enable/disable the generation of the inline code to do small string
 operations and calling the library routines for large operations.</dd>
-<dt>align-stringopsno-align-stringops</dt>
+<dt>align-stringops no-align-stringops</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;align-stringops&quot;)</span></tt> function attribute, x86Do/do not align destination of inlined string operations.</dd>
-<dt>recipno-recip</dt>
+<dt>recip no-recip</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;recip&quot;)</span></tt> function attribute, x86Enable/disable the generation of RCPSS, RCPPS, RSQRTSS and RSQRTPS
 instructions followed an additional Newton-Raphson step instead of
 doing a floating-point division.</dd>

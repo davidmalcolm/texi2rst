@@ -31,7 +31,7 @@ compilation is done:
 ``file``.mi
   Objective-C source code that should not be preprocessed.
 
-``file``.mm``file``.M
+``file``.mm ``file``.M
   Objective-C++ source code.  Note that you must link with the libobjc
   library to make an Objective-C++ program work.  Note that .M refers
   to a literal capital M.
@@ -44,31 +44,31 @@ compilation is done:
   precompiled header (default), or C, C++ header file to be turned into an
   Ada spec (via the :option:`-fdump-ada-spec` switch).
 
-``file``.cc``file``.cp``file``.cxx``file``.cpp``file``.CPP``file``.c++``file``.C
+``file``.cc ``file``.cp ``file``.cxx ``file``.cpp ``file``.CPP ``file``.c++ ``file``.C
   C++ source code that must be preprocessed.  Note that in .cxx,
   the last two letters must both be literally x.  Likewise,
   .C refers to a literal capital C.
 
-``file``.mm``file``.M
+``file``.mm ``file``.M
   Objective-C++ source code that must be preprocessed.
 
 ``file``.mii
   Objective-C++ source code that should not be preprocessed.
 
-``file``.hh``file``.H``file``.hp``file``.hxx``file``.hpp``file``.HPP``file``.h++``file``.tcc
+``file``.hh ``file``.H ``file``.hp ``file``.hxx ``file``.hpp ``file``.HPP ``file``.h++ ``file``.tcc
   C++ header file to be turned into a precompiled header or Ada spec.
 
-``file``.f``file``.for``file``.ftn
+``file``.f ``file``.for ``file``.ftn
   Fixed form Fortran source code that should not be preprocessed.
 
-``file``.F``file``.FOR``file``.fpp``file``.FPP``file``.FTN
+``file``.F ``file``.FOR ``file``.fpp ``file``.FPP ``file``.FTN
   Fixed form Fortran source code that must be preprocessed (with the traditional
   preprocessor).
 
-``file``.f90``file``.f95``file``.f03``file``.f08
+``file``.f90 ``file``.f95 ``file``.f03 ``file``.f08
   Free form Fortran source code that should not be preprocessed.
 
-``file``.F90``file``.F95``file``.F03``file``.F08
+``file``.F90 ``file``.F95 ``file``.F03 ``file``.F08
   Free form Fortran source code that must be preprocessed (with the
   traditional preprocessor).
 
@@ -102,7 +102,7 @@ compilation is done:
 ``file``.s
   Assembler code.
 
-``file``.S``file``.sx
+``file``.S ``file``.sx
   Assembler code that must be preprocessed.
 
 ``other``

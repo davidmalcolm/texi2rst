@@ -396,7 +396,7 @@ compilation.
   ``standard``
   may be one of:
 
-  c90c89iso9899:1990
+  c90 c89 iso9899:1990
     The ISO C standard from 1990.  c90 is the customary shorthand for
     this version of the standard.
 
@@ -405,21 +405,21 @@ compilation.
   iso9899:199409
     The 1990 C standard, as amended in 1994.
 
-  iso9899:1999c99iso9899:199xc9x
+  iso9899:1999 c99 iso9899:199x c9x
     The revised ISO C standard, published in December 1999.  Before
     publication, this was known as C9X.
 
-  iso9899:2011c11c1x
+  iso9899:2011 c11 c1x
     The revised ISO C standard, published in December 2011.  Before
     publication, this was known as C1X.
 
-  gnu90gnu89
+  gnu90 gnu89
     The 1990 C standard plus GNU extensions.  This is the default.
 
-  gnu99gnu9x
+  gnu99 gnu9x
     The 1999 C standard plus GNU extensions.
 
-  gnu11gnu1x
+  gnu11 gnu1x
     The 2011 C standard plus GNU extensions.
 
   c++98

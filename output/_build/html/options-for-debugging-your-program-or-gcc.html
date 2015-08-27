@@ -286,7 +286,7 @@ supported).  This is the format used by DEBUG on Alpha/VMS systems.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt>-g``level``-ggdb``level``-gstabs``level``-gcoff``level``-gxcoff``level``-gvms``level``</dt>
+<dt>-g``level`` -ggdb``level`` -gstabs``level`` -gcoff``level`` -gxcoff``level`` -gvms``level``</dt>
 <dd><p class="first">Request debugging information and also use <tt class="docutils literal"><span class="pre">level</span></tt> to specify how
 much information.  The default level is 2.</p>
 <p>Level 0 produces no debug information at all.  Thus, <em class="xref std std-option">-g0</em> negates
@@ -1096,7 +1096,7 @@ passes instead.</p>
 <dd>Disable IPA pass <tt class="docutils literal"><span class="pre">pass</span></tt>. <tt class="docutils literal"><span class="pre">pass</span></tt> is the pass name.  If the same pass is
 statically invoked in the compiler multiple times, the pass name should be
 appended with a sequential number starting from 1.</dd>
-<dt>-fdisable-rtl-<tt class="docutils literal"><span class="pre">pass</span></tt>-fdisable-rtl-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
+<dt>-fdisable-rtl-<tt class="docutils literal"><span class="pre">pass</span></tt> -fdisable-rtl-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
 <dd>Disable RTL pass <tt class="docutils literal"><span class="pre">pass</span></tt>.  <tt class="docutils literal"><span class="pre">pass</span></tt> is the pass name.  If the same pass is
 statically invoked in the compiler multiple times, the pass name should be
 appended with a sequential number starting from 1.  <tt class="docutils literal"><span class="pre">range-list</span></tt> is a
@@ -1107,17 +1107,17 @@ function&#8217;s call graph node&#8217;s <tt class="docutils literal"><span clas
 the <tt class="docutils literal"><span class="pre">pass</span></tt> is disabled for that function.  The <tt class="docutils literal"><span class="pre">uid</span></tt> is shown in the
 function header of a dump file, and the pass names can be dumped by using
 option <a class="reference internal" href="#cmdoption-fdump-passes"><em class="xref std std-option">-fdump-passes</em></a>.</dd>
-<dt>-fdisable-tree-<tt class="docutils literal"><span class="pre">pass</span></tt>-fdisable-tree-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
+<dt>-fdisable-tree-<tt class="docutils literal"><span class="pre">pass</span></tt> -fdisable-tree-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
 <dd>Disable tree pass <tt class="docutils literal"><span class="pre">pass</span></tt>.  See <em class="xref std std-option">-fdisable-rtl</em> for the description of
 option arguments.</dd>
 <dt>-fenable-ipa-<tt class="docutils literal"><span class="pre">pass</span></tt></dt>
 <dd>Enable IPA pass <tt class="docutils literal"><span class="pre">pass</span></tt>.  <tt class="docutils literal"><span class="pre">pass</span></tt> is the pass name.  If the same pass is
 statically invoked in the compiler multiple times, the pass name should be
 appended with a sequential number starting from 1.</dd>
-<dt>-fenable-rtl-<tt class="docutils literal"><span class="pre">pass</span></tt>-fenable-rtl-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
+<dt>-fenable-rtl-<tt class="docutils literal"><span class="pre">pass</span></tt> -fenable-rtl-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
 <dd>Enable RTL pass <tt class="docutils literal"><span class="pre">pass</span></tt>.  See <em class="xref std std-option">-fdisable-rtl</em> for option argument
 description and examples.</dd>
-<dt>-fenable-tree-<tt class="docutils literal"><span class="pre">pass</span></tt>-fenable-tree-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
+<dt>-fenable-tree-<tt class="docutils literal"><span class="pre">pass</span></tt> -fenable-tree-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
 <dd><p class="first">Enable tree pass <tt class="docutils literal"><span class="pre">pass</span></tt>.  See <em class="xref std std-option">-fdisable-rtl</em> for the description
 of option arguments.</p>
 <p class="last">Here are some examples showing uses of these options.</p>

@@ -2382,7 +2382,7 @@ In each case, ``cond`` can be any of the 16 floating-point conditions:
 ``ole``, ``ule``, ``sf``, ``ngle``, ``seq``, ``ngl``,
 ``lt``, ``nge``, ``le`` or ``ngt``.
 
-v2sf __builtin_mips_movt_c_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)v2sf __builtin_mips_movf_c_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)
+v2sf __builtin_mips_movt_c_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``) v2sf __builtin_mips_movf_c_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)
   Conditional move based on floating-point comparison (``c.``cond``.ps``,
   ``movt.ps``/``movf.ps``).
 
@@ -2397,7 +2397,7 @@ v2sf __builtin_mips_movt_c_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf
   The ``movf`` functions are similar but use ``movf.ps`` instead
   of ``movt.ps``.
 
-int __builtin_mips_upper_c_``cond``_ps (v2sf ``a``, v2sf ``b``)int __builtin_mips_lower_c_``cond``_ps (v2sf ``a``, v2sf ``b``)
+int __builtin_mips_upper_c_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mips_lower_c_``cond``_ps (v2sf ``a``, v2sf ``b``)
   Comparison of two paired-single values (``c.``cond``.ps``,
   ``bc1t``/``bc1f``).
 
@@ -2443,17 +2443,17 @@ v2sf __builtin_mips_cvt_pw_ps (v2sf)
 v2sf __builtin_mips_cvt_ps_pw (v2sf)
   Convert paired word to paired single (``cvt.ps.pw``).
 
-float __builtin_mips_recip1_s (float)double __builtin_mips_recip1_d (double)v2sf __builtin_mips_recip1_ps (v2sf)
+float __builtin_mips_recip1_s (float) double __builtin_mips_recip1_d (double) v2sf __builtin_mips_recip1_ps (v2sf)
   Reduced-precision reciprocal (sequence step 1) (``recip1.``fmt````).
 
-float __builtin_mips_recip2_s (float, float)double __builtin_mips_recip2_d (double, double)v2sf __builtin_mips_recip2_ps (v2sf, v2sf)
+float __builtin_mips_recip2_s (float, float) double __builtin_mips_recip2_d (double, double) v2sf __builtin_mips_recip2_ps (v2sf, v2sf)
   Reduced-precision reciprocal (sequence step 2) (``recip2.``fmt````).
 
-float __builtin_mips_rsqrt1_s (float)double __builtin_mips_rsqrt1_d (double)v2sf __builtin_mips_rsqrt1_ps (v2sf)
+float __builtin_mips_rsqrt1_s (float) double __builtin_mips_rsqrt1_d (double) v2sf __builtin_mips_rsqrt1_ps (v2sf)
   Reduced-precision reciprocal square root (sequence step 1)
   (``rsqrt1.``fmt````).
 
-float __builtin_mips_rsqrt2_s (float, float)double __builtin_mips_rsqrt2_d (double, double)v2sf __builtin_mips_rsqrt2_ps (v2sf, v2sf)
+float __builtin_mips_rsqrt2_s (float, float) double __builtin_mips_rsqrt2_d (double, double) v2sf __builtin_mips_rsqrt2_ps (v2sf, v2sf)
   Reduced-precision reciprocal square root (sequence step 2)
   (``rsqrt2.``fmt````).
 
@@ -2463,7 +2463,7 @@ In each case, ``cond`` can be any of the 16 floating-point conditions:
 ``ole``, ``ule``, ``sf``, ``ngle``, ``seq``,
 ``ngl``, ``lt``, ``nge``, ``le`` or ``ngt``.
 
-int __builtin_mips_cabs_``cond``_s (float ``a``, float ``b``)int __builtin_mips_cabs_``cond``_d (double ``a``, double ``b``)
+int __builtin_mips_cabs_``cond``_s (float ``a``, float ``b``) int __builtin_mips_cabs_``cond``_d (double ``a``, double ``b``)
   Absolute comparison of two scalar values (``cabs.``cond``.``fmt````,
   ``bc1t``/``bc1f``).
 
@@ -2479,7 +2479,7 @@ int __builtin_mips_cabs_``cond``_s (float ``a``, float ``b``)int __builtin_mips_
     else
       false ();
 
-int __builtin_mips_upper_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``)int __builtin_mips_lower_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``)
+int __builtin_mips_upper_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mips_lower_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``)
   Absolute comparison of two paired-single values (``cabs.``cond``.ps``,
   ``bc1t``/``bc1f``).
 
@@ -2499,7 +2499,7 @@ int __builtin_mips_upper_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``)int __builtin_
     else
       lower_halves_are_unequal ();
 
-v2sf __builtin_mips_movt_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)v2sf __builtin_mips_movf_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)
+v2sf __builtin_mips_movt_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``) v2sf __builtin_mips_movf_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)
   Conditional move based on absolute comparison (``cabs.``cond``.ps``,
   ``movt.ps``/``movf.ps``).
 
@@ -2514,7 +2514,7 @@ v2sf __builtin_mips_movt_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v
   The ``movf`` functions are similar but use ``movf.ps`` instead
   of ``movt.ps``.
 
-int __builtin_mips_any_c_``cond``_ps (v2sf ``a``, v2sf ``b``)int __builtin_mips_all_c_``cond``_ps (v2sf ``a``, v2sf ``b``)int __builtin_mips_any_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``)int __builtin_mips_all_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``)
+int __builtin_mips_any_c_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mips_all_c_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mips_any_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mips_all_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``)
   Comparison of two paired-single values
   (``c.``cond``.ps``/``cabs.``cond``.ps``,
   ``bc1any2t``/``bc1any2f``).
@@ -2537,7 +2537,7 @@ int __builtin_mips_any_c_``cond``_ps (v2sf ``a``, v2sf ``b``)int __builtin_mips_
     else
       one_is_false ();
 
-int __builtin_mips_any_c_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)int __builtin_mips_all_c_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)int __builtin_mips_any_cabs_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)int __builtin_mips_all_cabs_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)
+int __builtin_mips_any_c_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``) int __builtin_mips_all_c_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``) int __builtin_mips_any_cabs_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``) int __builtin_mips_all_cabs_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)
   Comparison of four paired-single values
   (``c.``cond``.ps``/``cabs.``cond``.ps``,
   ``bc1any4t``/``bc1any4f``).
@@ -2573,7 +2573,7 @@ void __builtin_mips_cache (int ``op``, const volatile void *``addr``)
   GCC defines the preprocessor macro ``___GCC_HAVE_BUILTIN_MIPS_CACHE``
   when this function is available.
 
-unsigned int __builtin_mips_get_fcsr (void)void __builtin_mips_set_fcsr (unsigned int ``value``)
+unsigned int __builtin_mips_get_fcsr (void) void __builtin_mips_set_fcsr (unsigned int ``value``)
   Get and set the contents of the floating-point control and status register
   (FPU control register 31).  These functions are only available in hard-float
   code but can be called in both MIPS16 and non-MIPS16 contexts.

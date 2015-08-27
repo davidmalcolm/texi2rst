@@ -36,42 +36,42 @@ gpl(7), gfdl(7), fsf-funding(7), gcc(1), gcov(1) and the Info entry for
 
 .. man begin OPTIONS
 
--h--help
+-h --help
   Display help about using :command:`gcov-tool` (on the standard output), and
   exit without doing any further processing.
 
--v--version
+-v --version
   Display the :command:`gcov-tool` version number (on the standard output),
   and exit without doing any further processing.
 
 merge
   Merge two profile directories.
 
-  -v--verbose
+  -v --verbose
     Set the verbose mode.
 
-  -o ``directory``--output ``directory``
+  -o ``directory`` --output ``directory``
     Set the output profile directory. Default output directory name is
     ``merged_profile``.
 
-  -w ``w1``,``w2``--weight ``w1``,``w2``
+  -w ``w1``,``w2`` --weight ``w1``,``w2``
     Set the merge weights of the ``directory1`` and ``directory2``,
     respectively. The default weights are 1 for both.
 
 rewrite
   Read the specified profile directory and rewrite to a new directory.
 
-  -v--verbose
+  -v --verbose
     Set the verbose mode.
 
-  -o ``directory``--output ``directory``
+  -o ``directory`` --output ``directory``
     Set the output profile directory. Default output name is ``rewrite_profile``.
 
-  -s ``float_or_simple-frac_value``--scale ``float_or_simple-frac_value``
+  -s ``float_or_simple-frac_value`` --scale ``float_or_simple-frac_value``
     Scale the profile counters. The specified value can be in floating point value,
     or simple fraction value form, such 1, 2, 2/3, and 5/3.
 
-  -n ``long_long_value``--normalize <long_long_value>
+  -n ``long_long_value`` --normalize <long_long_value>
     Normalize the profile. The specified value is the max counter value
     in the new profile.
 
@@ -83,22 +83,22 @@ overlap
   matched counters and p1_sum_all and p2_sum_all are the sum of counter
   values in profile 1 and profile 2, respectively.
 
-  -v--verbose
+  -v --verbose
     Set the verbose mode.
 
-  -h--hotonly
+  -h --hotonly
     Only print info for hot objects/functions.
 
-  -f--function
+  -f --function
     Print function level overlap score.
 
-  -F--fullname
+  -F --fullname
     Print full gcda filename.
 
-  -o--object
+  -o --object
     Print object level overlap score.
 
-  -t ``float``--hot_threshold <float>
+  -t ``float`` --hot_threshold <float>
     Set the threshold for hot counter value.
 
 .. man end

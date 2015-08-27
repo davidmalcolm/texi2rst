@@ -192,7 +192,7 @@ together or combine them with constant text in a single argument.
   meant for communication between processes, but rather as a junk
   disposal mechanism.
 
-%|``suffix``%m``suffix``
+%|``suffix`` %m``suffix``
   Like %g, except if :option:`-pipe` is in effect.  In that case
   %| substitutes a single dash and %m substitutes nothing at
   all.  These are the two most common ways to instruct a program that it

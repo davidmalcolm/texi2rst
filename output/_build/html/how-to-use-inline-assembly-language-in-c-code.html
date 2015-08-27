@@ -469,7 +469,7 @@ these tokens have special meanings in the assembler template:</p>
 statement in the entire compilation. This option is useful when creating local
 labels and referring to them multiple times in a single template that
 generates multiple assembler instructions.</dd>
-<dt>%{%|%}</dt>
+<dt>%{ %| %}</dt>
 <dd>Outputs {, <a href="#id4"><span class="problematic" id="id5">|</span></a>, and } characters (respectively)
 into the assembler code.  When unescaped, these characters have special
 meaning to indicate multiple assembler dialects, as described below.</dd>
@@ -1894,14 +1894,14 @@ or &gt;.</dd>
 <p>M32C-config/m32c/m32c.c</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>RspRfbRsb</dt>
+<dt>Rsp Rfb Rsb</dt>
 <dd>$sp, $fb, $sb.</dd>
 <dt>Rcr</dt>
 <dd>Any control register, when they&#8217;re 16 bits wide (nothing if control
 registers are 24 bits wide)</dd>
 <dt>Rcl</dt>
 <dd>Any control register, when they&#8217;re 24 bits wide.</dd>
-<dt>R0wR1wR2wR3w</dt>
+<dt>R0w R1w R2w R3w</dt>
 <dd>$r0, $r1, $r2, $r3.</dd>
 <dt>R02</dt>
 <dd>$r0 or $r2, or $r2r0 for 32 bit values.</dd>
@@ -2847,7 +2847,7 @@ plus A0 if not C64X or higher).</dd>
 <p>TILE-Gx-config/tilegx/constraints.md</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>R00R01R02R03R04R05R06R07R08R09R10</dt>
+<dt>R00 R01 R02 R03 R04 R05 R06 R07 R08 R09 R10</dt>
 <dd>Each of these represents a register constraint for an individual
 register, from r0 to r10.</dd>
 <dt>I</dt>
@@ -2898,7 +2898,7 @@ m when not used together with &lt; or &gt;.</dd>
 <p>TILEPro-config/tilepro/constraints.md</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>R00R01R02R03R04R05R06R07R08R09R10</dt>
+<dt>R00 R01 R02 R03 R04 R05 R06 R07 R08 R09 R10</dt>
 <dd>Each of these represents a register constraint for an individual
 register, from r0 to r10.</dd>
 <dt>I</dt>

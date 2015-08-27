@@ -174,7 +174,7 @@ either your program or GCC:
   Produce debugging information in Alpha/VMS debug format (if that is
   supported).  This is the format used by DEBUG on Alpha/VMS systems.
 
--g``level``-ggdb``level``-gstabs``level``-gcoff``level``-gxcoff``level``-gvms``level``
+-g``level`` -ggdb``level`` -gstabs``level`` -gcoff``level`` -gxcoff``level`` -gvms``level``
   Request debugging information and also use ``level`` to specify how
   much information.  The default level is 2.
 
@@ -882,7 +882,7 @@ either your program or GCC:
     statically invoked in the compiler multiple times, the pass name should be
     appended with a sequential number starting from 1.
 
-  -fdisable-rtl-``pass``-fdisable-rtl-``pass``=``range-list``
+  -fdisable-rtl-``pass`` -fdisable-rtl-``pass``=``range-list``
     Disable RTL pass ``pass``.  ``pass`` is the pass name.  If the same pass is
     statically invoked in the compiler multiple times, the pass name should be
     appended with a sequential number starting from 1.  ``range-list`` is a 
@@ -894,7 +894,7 @@ either your program or GCC:
     function header of a dump file, and the pass names can be dumped by using
     option :option:`-fdump-passes`.
 
-  -fdisable-tree-``pass``-fdisable-tree-``pass``=``range-list``
+  -fdisable-tree-``pass`` -fdisable-tree-``pass``=``range-list``
     Disable tree pass ``pass``.  See :option:`-fdisable-rtl` for the description of
     option arguments.
 
@@ -903,11 +903,11 @@ either your program or GCC:
     statically invoked in the compiler multiple times, the pass name should be
     appended with a sequential number starting from 1.
 
-  -fenable-rtl-``pass``-fenable-rtl-``pass``=``range-list``
+  -fenable-rtl-``pass`` -fenable-rtl-``pass``=``range-list``
     Enable RTL pass ``pass``.  See :option:`-fdisable-rtl` for option argument
     description and examples.
 
-  -fenable-tree-``pass``-fenable-tree-``pass``=``range-list``
+  -fenable-tree-``pass`` -fenable-tree-``pass``=``range-list``
     Enable tree pass ``pass``.  See :option:`-fdisable-rtl` for the description
     of option arguments.
 

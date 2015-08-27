@@ -35,7 +35,7 @@ __flash
   ``.progmem.data`` section. Data is read using the ``LPM``
   instruction. Pointers to this address space are 16 bits wide.
 
-__flash1__flash2__flash3__flash4__flash5
+__flash1 __flash2 __flash3 __flash4 __flash5
   ``__flash1`` AVR Named Address Spaces``__flash2`` AVR Named Address Spaces``__flash3`` AVR Named Address Spaces``__flash4`` AVR Named Address Spaces``__flash5`` AVR Named Address SpacesThese are 16-bit address spaces locating data in section
   ``.progmem``N``.data`` where ``N`` refers to
   address space ``__flash``N````.

@@ -1,3 +1,4 @@
+.. _directory-options:
 
 Options for Directory Search
 ****************************

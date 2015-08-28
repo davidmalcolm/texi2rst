@@ -1,3 +1,4 @@
+.. _hints-implementation:
 
 Hints
 *****

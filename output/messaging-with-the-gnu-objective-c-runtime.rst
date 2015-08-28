@@ -1,3 +1,4 @@
+.. _messaging-with-the-gnu-objective-c-runtime:
 
 Messaging with the GNU Objective-C Runtime
 ******************************************
@@ -31,7 +32,7 @@ then it calls it.
 
 .. =========================================================================
 
-:: _dynamically-registering-methods:
+.. _dynamically-registering-methods:
 
 Dynamically Registering Methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -80,7 +81,7 @@ GCC version 4.6.
 
 .. =========================================================================
 
-:: _forwarding-hook:
+.. _forwarding-hook:
 
 Forwarding Hook
 ^^^^^^^^^^^^^^^

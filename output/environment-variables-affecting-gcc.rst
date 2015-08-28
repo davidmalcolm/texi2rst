@@ -1,3 +1,4 @@
+.. _environment-variables:
 
 Environment Variables Affecting GCC
 ***********************************

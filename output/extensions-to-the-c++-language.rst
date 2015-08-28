@@ -1,3 +1,4 @@
+.. _c++-extensions:
 
 Extensions to the C++ Language
 ------------------------------
@@ -32,8 +33,6 @@ test specifically for GNU C++ (Common Predefined MacrosPredefined MacroscppThe G
   Things will disappear from G++. <deprecated-features>
   Compatibilities with earlier definitions of C++. <backwards-compatibility>
 
-:: _c++-volatiles:
-
 .. toctree::
 
   when-is-a-volatile-c++-object-accessed?
@@ -50,15 +49,3 @@ test specifically for GNU C++ (Common Predefined MacrosPredefined MacroscppThe G
   deprecated-features
   backwards-compatibility
 
-:: _restricted-pointers:
-:: _vague-linkage:
-:: _c++-interface:
-:: _template-instantiation:
-:: _bound-member-functions:
-:: _c++-attributes:
-:: _function-multiversioning:
-:: _namespace-association:
-:: _type-traits:
-  :: _java-exceptions:
-:: _deprecated-features:
-:: _backwards-compatibility:

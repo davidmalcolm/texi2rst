@@ -1,3 +1,4 @@
+.. _namespace-association:
 
 Namespace Association
 *********************

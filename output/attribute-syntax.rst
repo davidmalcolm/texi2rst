@@ -1,3 +1,4 @@
+  .. _attribute-syntax:
 
 Attribute Syntax
 ****************

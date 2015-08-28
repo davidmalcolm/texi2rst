@@ -1,3 +1,4 @@
+.. _preprocessor-options:
 
 Options Controlling the Preprocessor
 ************************************

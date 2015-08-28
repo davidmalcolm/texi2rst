@@ -1,3 +1,4 @@
+.. _objective-c-and-objective-c++-dialect-options:
 
 Options Controlling Objective-C and Objective-C++ Dialects
 **********************************************************

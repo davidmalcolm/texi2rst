@@ -1,3 +1,4 @@
+.. _empty-structures:
 
 Structures with No Members
 **************************

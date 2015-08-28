@@ -1,3 +1,4 @@
+.. _non-bugs:
 
 Certain Changes We Don't Want to Make
 *************************************

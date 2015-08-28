@@ -1,3 +1,4 @@
+.. _link-options:
 
 Options for Linking
 *******************

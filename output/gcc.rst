@@ -103,7 +103,7 @@ Last printed October 2003 for GCC 3.3.1.
 
 Printed copies are available for $45 each.
 
-:: _top:
+.. _top:
 
 Introduction
 ============
@@ -152,8 +152,6 @@ languages, are documented in a separate manual.  See :ref:`Introduction <top>`.
    This is part of the GCC manual.
    For copying conditions, see the file gcc.texi.
 
-:: _g++-and-gcc:
-
 .. toctree::
 
   programming-languages-supported-by-gcc
@@ -172,26 +170,12 @@ languages, are documented in a separate manual.  See :ref:`Introduction <top>`.
   how-to-get-help-with-gcc
   contributing-to-gcc-development
 
-:: _standards:
-:: _invoking-gcc:
-:: _c-implementation:
-:: _c++-implementation:
-:: _c-extensions:
-:: _c++-extensions:
-:: _objective-c:
-
 ..  comment  node-name,  next,  previous,  up
 
-:: _compatibility:
-:: _gcov:
-:: _gcov-tool:
-:: _trouble:
-:: _bugs:
-:: _service:
-:: _contributing:
-:: _funding:
 
 .. man begin DESCRIPTION
+
+.. _funding:
 
 Funding Free Software
 =====================
@@ -250,7 +234,7 @@ without royalty; alteration is not permitted.
    This is part of the GCC manual.
    For copying conditions, see the file gcc.texi.
 
-:: _gnu-project:
+.. _gnu-project:
 
 The GNU Project and GNU/Linux
 =============================
@@ -282,9 +266,10 @@ Copyright @copyright{} 2007 Free Software Foundation, Inc.
 Everyone is permitted to copy and distribute verbatim copies of this
 license document, but changing it is not allowed.
 @c man end
-:: _copying:
 
 .. man begin DESCRIPTION
+
+.. _copying:
 
 GNU General Public License
 ==========================
@@ -993,7 +978,7 @@ of this license document, but changing it is not allowed.
 .. Special handling for inclusion in the install manual.
    man begin DESCRIPTION
 
-:: _gnu-free-documentation-license:
+.. _gnu-free-documentation-license:
 
 GNU Free Documentation License
 ==============================
@@ -1465,7 +1450,7 @@ to permit their use in free software.
    This is part of the GCC manual.
    For copying conditions, see the file gcc.texi.
 
-:: _contributors:
+.. _contributors:
 
 Contributors to GCC
 ===================
@@ -2680,7 +2665,7 @@ place.
    Indexes
    -
 
-:: _option-index:
+.. _option-index:
 
 Option Index
 ============
@@ -2691,7 +2676,7 @@ or --.  Where an option has both positive and negative forms
 relevant entries in the manual are indexed under the most appropriate
 form; it may sometimes be useful to look up both forms.
 
-:: _keyword-index:
+.. _keyword-index:
 
 Keyword Index
 =============

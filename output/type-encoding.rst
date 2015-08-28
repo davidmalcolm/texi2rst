@@ -1,3 +1,4 @@
+.. _type-encoding:
 
 Type Encoding
 *************
@@ -262,7 +263,7 @@ as ``*``, and the ``const`` is lost.
    <@encode>
    <method-signatures>
 
-:: _legacy-type-encoding:
+.. _legacy-type-encoding:
 
 Legacy Type Encoding
 ^^^^^^^^^^^^^^^^^^^^
@@ -288,7 +289,7 @@ In addition to that, the NeXT runtime uses a different encoding for
 bitfields.  It encodes them as ``b`` followed by the size, without
 a bit offset or the underlying field type.
 
-:: _@encode:
+.. _@encode:
 
 ``@encode``GNU Objective-C supports the ``@encode`` syntax that allows you to
 create a type encoding from a C/Objective-C type.  For example,
@@ -299,7 +300,7 @@ create a type encoding from a C/Objective-C type.  For example,
 is compiled into ``"r*"``, while ``@encode(bycopy char *)`` is
 invalid and will cause a compilation error.
 
-:: _method-signatures:
+.. _method-signatures:
 
 Method Signatures
 ^^^^^^^^^^^^^^^^^

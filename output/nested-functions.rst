@@ -1,3 +1,4 @@
+.. _nested-functions:
 
 Nested Functions
 ****************

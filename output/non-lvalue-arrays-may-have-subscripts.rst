@@ -1,3 +1,4 @@
+.. _subscripting:
 
 Non-Lvalue Arrays May Have Subscripts
 *************************************

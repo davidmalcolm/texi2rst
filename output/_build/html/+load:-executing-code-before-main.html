@@ -82,7 +82,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <p><tt class="docutils literal"><span class="pre">+load</span></tt>: Executing Code before <a href="#id1"><span class="problematic" id="id2">``</span></a>main``This section is specific for the GNU Objective-C runtime.  If you are
+  <p id="executing-code-before-main"><tt class="docutils literal"><span class="pre">+load</span></tt>: Executing Code before <a href="#id1"><span class="problematic" id="id2">``</span></a>main``This section is specific for the GNU Objective-C runtime.  If you are
 using a different runtime, you can skip it.</p>
 <p>The GNU Objective-C runtime provides a way that allows you to execute
 code before the execution of the program enters the <tt class="docutils literal"><span class="pre">main</span></tt>
@@ -146,8 +146,7 @@ instead of <tt class="docutils literal"><span class="pre">+initialize</span></tt
 <ul class="simple">
 </ul>
 </div>
-<p>:: _what-you-can-and-what-you-cannot-do-in-+load:</p>
-<p>What You Can and Cannot Do in <tt class="docutils literal"><span class="pre">+load````+load</span></tt> is to be used only as a last resort.  Because it is
+<p id="what-you-can-and-what-you-cannot-do-in-load">What You Can and Cannot Do in <tt class="docutils literal"><span class="pre">+load````+load</span></tt> is to be used only as a last resort.  Because it is
 executed very early, most of the Objective-C runtime machinery will
 not be ready when <tt class="docutils literal"><span class="pre">+load</span></tt> is executed; hence <tt class="docutils literal"><span class="pre">+load</span></tt> works
 best for executing C code that is independent on the Objective-C

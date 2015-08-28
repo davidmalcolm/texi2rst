@@ -1,3 +1,4 @@
+.. _using-assembly-language-with-c:
 
 How to Use Inline Assembly Language in C Code
 *********************************************
@@ -30,7 +31,7 @@ for a C symbol, or to place a C variable in a specific register.
   Defining variables residing in specified registers. <explicit-reg-vars>
   How GCC calculates the size of an ``asm`` block. <size-of-an-asm>
 
-:: _basic-asm:
+.. _basic-asm:
 
 Basic Asm - Assembler Instructions Without Operands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -136,7 +137,7 @@ Here is an example of basic ``asm`` for i386:
   /* Note that this code will not compile with -masm=intel */
   #define DebugBreak() asm("int $3")
 
-:: _extended-asm:
+.. _extended-asm:
 
 Extended Asm - Assembler Instructions with C Expression Operands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1136,7 +1137,7 @@ for the compiler to know that ``fyl2xp1`` pops both inputs.
    when the INTERNALS flag is clear.  Passages that require the internals
    manual's context are conditionalized to appear only in the internals manual.
 
-:: _constraints:
+.. _constraints:
 
 Constraints for ``asm`` Operandsoperand constraints, ``asm``constraints, ``asm````asm`` constraintsHere are specific details on what constraint letters you can use with
 ``asm`` operands.
@@ -1157,7 +1158,7 @@ the addressing register.
   More precise control over effects of constraints. <modifiers>
   Special constraints for some particular machines. <machine-constraints>
 
-:: _simple-constraints:
+.. _simple-constraints:
 
 Simple Constraints
 ~~~~~~~~~~~~~~~~~~
@@ -1371,7 +1372,7 @@ p
   d, a and f are defined on the 68000/68020 to stand
   for data, address and floating point registers.
 
-  :: _multi-alternative:
+  .. _multi-alternative:
 
 Multiple Alternative Constraints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1430,7 +1431,7 @@ $
   This constraint is analogous to ! but it disparages severely
   the alternative only if the operand with the $ needs a reload.
 
-  :: _modifiers:
+  .. _modifiers:
 
 Constraint Modifier Characters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1521,7 +1522,7 @@ Here are constraint modifier characters.
   * additionally disparages slightly the alternative if the
   following character matches the operand.
 
-  :: _machine-constraints:
+  .. _machine-constraints:
 
 Constraints for Particular Machines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3881,7 +3882,7 @@ Xtensa-config/xtensa/constraints.md
    configuration in older tetex distributions.  Known to not work:
    tetex-1.0.7, known to work: tetex-2.0.2.
 
-:: _asm-labels:
+.. _asm-labels:
 
 Controlling Names Used in Assembler Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3933,7 +3934,7 @@ register name; that would produce completely invalid assembler code.  GCC
 does not as yet have the ability to store static variables in registers.
 Perhaps that will be added.
 
-:: _explicit-reg-vars:
+.. _explicit-reg-vars:
 
 Variables in Specified Registers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3975,7 +3976,7 @@ register variable should be allocated.
    <global-reg-vars>
    <local-reg-vars>
 
-:: _global-reg-vars:
+.. _global-reg-vars:
 
 Defining Global Register Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4074,7 +4075,7 @@ g2 are local temporaries.
 On the 68000, a2 ... a5 should be suitable, as should d2 ... d7.
 Of course, it does not do to use more than a few of those.
 
-:: _local-reg-vars:
+.. _local-reg-vars:
 
 Specifying Registers for Local Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4155,7 +4156,7 @@ register assignments:
   register int *result asm ("r0");
   asm ("sysint" : "=r" (result) : "0" (p1), "r" (p2));
 
-:: _size-of-an-asm:
+.. _size-of-an-asm:
 
 Size of an ``asm``Some targets require that GCC track the size of each instruction used
 in order to generate correct code.  Because the final length of the

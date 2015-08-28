@@ -1,3 +1,4 @@
+.. _cast-to-union:
 
 Cast to a Union Type
 ********************

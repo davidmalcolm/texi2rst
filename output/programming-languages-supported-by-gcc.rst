@@ -1,3 +1,5 @@
+.. _g++-and-gcc:
+
 Programming Languages Supported by GCC
 --------------------------------------
 

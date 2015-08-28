@@ -1,3 +1,4 @@
+.. _c-dialect-options:
 
 Options Controlling C Dialect
 *****************************

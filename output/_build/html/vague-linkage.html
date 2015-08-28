@@ -83,7 +83,7 @@
           <div class="body">
             
   <div class="section" id="vague-linkage">
-<h1>Vague Linkage<a class="headerlink" href="#vague-linkage" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Vague Linkage<a class="headerlink" href="#vague-linkage" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">There are several constructs in C++ that require space in the object
 file but are not clearly tied to a single translation unit.  We say that
 these constructs have &#8216;vague linkage&#8217;.  Typically such constructs are
@@ -134,7 +134,7 @@ referring to a type in a catch clause or exception specification.</p>
 <dt>Template Instantiations</dt>
 <dd><p class="first">Most everything in this section also applies to template instantiations,
 but there are other options as well.
-See <em class="xref std std-ref">Where&#8217;s the Template?</em>.</p>
+See <a class="reference internal" href="where's-the-template?.html#template-instantiation"><em>Where&#8217;s the Template?</em></a>.</p>
 <p class="last">When used with GNU ld version 2.8 or later on an ELF system such as</p>
 </dd>
 </dl>
@@ -149,7 +149,7 @@ most entities with vague linkage are emitted as local symbols to
 avoid duplicate definition errors from the linker.  This does not happen
 for local statics in inlines, however, as having multiple copies
 almost certainly breaks things.</p>
-<p>See <em class="xref std std-ref">Declarations and Definitions in One Header</em>, for
+<p>See <a class="reference internal" href="c++-interface-and-implementation-pragmas.html#c-interface"><em>Declarations and Definitions in One Header</em></a>, for
 another way to control placement of these constructs.</p>
 </div>
 

@@ -1,3 +1,4 @@
+.. _code-gen-options:
 
 Options for Code Generation Conventions
 ***************************************

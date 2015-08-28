@@ -101,8 +101,10 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="specifying-attributes-of-variables">
-<h1>Specifying Attributes of Variables<a class="headerlink" href="#specifying-attributes-of-variables" title="Permalink to this headline">¶</a></h1>
+  <blockquote>
+<div></div></blockquote>
+<div class="section" id="specifying-attributes-of-variables">
+<span id="variable-attributes"></span><h1>Specifying Attributes of Variables<a class="headerlink" href="#specifying-attributes-of-variables" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><p id="index-1">The keyword <tt class="docutils literal"><span class="pre">__attribute__</span></tt> allows you to specify special
 attributes of variables or structure fields.  This keyword is followed
 by an attribute specification inside double parentheses.  Some
@@ -113,15 +115,14 @@ systems.  Other attributes are available for functions
 types (Type Attributes).
 Other front ends might define more attributes
 (C++ ExtensionsExtensions to the C++ Language).</p>
-<p>See <em class="xref std std-ref">attribute-syntax</em>, for details of the exact syntax for using
+<p>See <a class="reference internal" href="attribute-syntax.html#attribute-syntax"><em>Attribute Syntax</em></a>, for details of the exact syntax for using
 attributes.</p>
 <div class="toctree-wrapper compound">
 <ul class="simple">
 </ul>
 </div>
-<p>:: _common-variable-attributes:</p>
 <div class="section" id="common-variable-attributes">
-<h2>Common Variable Attributes<a class="headerlink" href="#common-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Common Variable Attributes<a class="headerlink" href="#common-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>The following attributes are supported on most targets.</p>
 <p><tt class="docutils literal"><span class="pre">aligned</span></tt> variable attribute
 aligned (<tt class="docutils literal"><span class="pre">alignment</span></tt>)</p>
@@ -341,14 +342,12 @@ size as a corresponding scalar.  For example, the declaration:</p>
 the <tt class="docutils literal"><span class="pre">int</span></tt>.</p>
 </dd>
 <dt>weak</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">weak</span></tt> variable attributeThe <tt class="docutils literal"><span class="pre">weak</span></tt> attribute is described in
-Common Function Attributes.</p>
-<p class="last">:: _avr-variable-attributes:</p>
-</dd>
+<dd><tt class="docutils literal"><span class="pre">weak</span></tt> variable attributeThe <tt class="docutils literal"><span class="pre">weak</span></tt> attribute is described in
+Common Function Attributes.</dd>
 </dl>
 </div>
 <div class="section" id="avr-variable-attributes">
-<h2>AVR Variable Attributes<a class="headerlink" href="#avr-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>AVR Variable Attributes<a class="headerlink" href="#avr-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>progmem</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">progmem</span></tt> variable attribute, AVRThe <tt class="docutils literal"><span class="pre">progmem</span></tt> attribute is used on the AVR to place read-only
@@ -406,15 +405,14 @@ instructions.</dd>
 <dt>address address (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">address</span></tt> variable attribute, AVRVariables with the <tt class="docutils literal"><span class="pre">address</span></tt> attribute are used to address
 memory-mapped peripherals that may lie outside the io address range.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">volatile</span> <span class="kt">int</span> <span class="n">porta</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">address</span> <span class="p">(</span><span class="mh">0x600</span><span class="p">)));</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="k">volatile</span> <span class="kt">int</span> <span class="n">porta</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">address</span> <span class="p">(</span><span class="mh">0x600</span><span class="p">)));</span>
 </pre></div>
 </div>
-<p class="last">:: _blackfin-variable-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="blackfin-variable-attributes">
-<h2>Blackfin Variable Attributes<a class="headerlink" href="#blackfin-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>Blackfin Variable Attributes<a class="headerlink" href="#blackfin-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Three attributes are currently defined for the Blackfin.</p>
 <dl class="docutils">
 <dt>l1_data l1_data_A l1_data_B</dt>
@@ -424,15 +422,13 @@ named <tt class="docutils literal"><span class="pre">.l1.data</span></tt>. Those
 the specific section named <tt class="docutils literal"><span class="pre">.l1.data.A</span></tt>. Those with <tt class="docutils literal"><span class="pre">l1_data_B</span></tt>
 attribute are put into the specific section named <tt class="docutils literal"><span class="pre">.l1.data.B</span></tt>.</dd>
 <dt>l2</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">l2</span></tt> variable attribute, BlackfinUse this attribute on the Blackfin to place the variable into L2 SRAM.
+<dd><tt class="docutils literal"><span class="pre">l2</span></tt> variable attribute, BlackfinUse this attribute on the Blackfin to place the variable into L2 SRAM.
 Variables with <tt class="docutils literal"><span class="pre">l2</span></tt> attribute are put into the specific section
-named <tt class="docutils literal"><span class="pre">.l2.data</span></tt>.</p>
-<p class="last">:: _h8-300-variable-attributes:</p>
-</dd>
+named <tt class="docutils literal"><span class="pre">.l2.data</span></tt>.</dd>
 </dl>
 </div>
 <div class="section" id="h8-300-variable-attributes">
-<h2>H8/300 Variable Attributes<a class="headerlink" href="#h8-300-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>H8/300 Variable Attributes<a class="headerlink" href="#h8-300-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These variable attributes are available for H8/300 targets:</p>
 <dl class="docutils">
 <dt>eightbit_data</dt>
@@ -449,33 +445,30 @@ this attribute to work correctly.</p>
 <dt>tiny_data</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">tiny_data</span></tt> variable attribute, H8/300
 .. index:: tiny data section on the H8/300H and H8S</p>
-<p>Use this attribute on the H8/300H and H8S to indicate that the specified
+<p class="last">Use this attribute on the H8/300H and H8S to indicate that the specified
 variable should be placed into the tiny data section.
 The compiler generates more efficient code for loads and stores
 on data in the tiny data section.  Note the tiny data area is limited to
 slightly under 32KB of data.</p>
-<p class="last">:: _ia-64-variable-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="ia-64-variable-attributes">
-<h2>IA-64 Variable Attributes<a class="headerlink" href="#ia-64-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>IA-64 Variable Attributes<a class="headerlink" href="#ia-64-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>The IA-64 back end supports the following variable attribute:</p>
 <dl class="docutils">
 <dt>model (<tt class="docutils literal"><span class="pre">model-name</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">model</span></tt> variable attribute, IA-64On IA-64, use this attribute to set the addressability of an object.
+<dd><tt class="docutils literal"><span class="pre">model</span></tt> variable attribute, IA-64On IA-64, use this attribute to set the addressability of an object.
 At present, the only supported identifier for <tt class="docutils literal"><span class="pre">model-name</span></tt> is
 <tt class="docutils literal"><span class="pre">small</span></tt>, indicating addressability via &#8216;small&#8217; (22-bit)
 addresses (so that their addresses can be loaded with the <tt class="docutils literal"><span class="pre">addl</span></tt>
 instruction).  Caveat: such addressing is by definition not position
 independent and hence this attribute must not be used for objects
-defined by shared libraries.</p>
-<p class="last">:: _m32r-d-variable-attributes:</p>
-</dd>
+defined by shared libraries.</dd>
 </dl>
 </div>
 <div class="section" id="m32r-d-variable-attributes">
-<h2>M32R/D Variable Attributes<a class="headerlink" href="#m32r-d-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>M32R/D Variable Attributes<a class="headerlink" href="#m32r-d-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>One attribute is currently defined for the M32R/D.</p>
 <dl class="docutils">
 <dt>model (<tt class="docutils literal"><span class="pre">model-name</span></tt>)</dt>
@@ -486,15 +479,14 @@ The identifier <tt class="docutils literal"><span class="pre">model-name</span><
 or <tt class="docutils literal"><span class="pre">large</span></tt>, representing each of the code models.</p>
 <p>Small model objects live in the lower 16MB of memory (so that their
 addresses can be loaded with the <tt class="docutils literal"><span class="pre">ld24</span></tt> instruction).</p>
-<p>Medium and large model objects may live anywhere in the 32-bit address space
+<p class="last">Medium and large model objects may live anywhere in the 32-bit address space
 (the compiler generates <tt class="docutils literal"><span class="pre">seth/add3</span></tt> instructions to load their
 addresses).</p>
-<p class="last">:: _mep-variable-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="mep-variable-attributes">
-<h2>MeP Variable Attributes<a class="headerlink" href="#mep-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>MeP Variable Attributes<a class="headerlink" href="#mep-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>The MeP target has a number of addressing modes and busses.  The
 <tt class="docutils literal"><span class="pre">near</span></tt> space spans the standard memory space&#8217;s first 16 megabytes
 (24 bits).  The <tt class="docutils literal"><span class="pre">far</span></tt> space spans the entire 32-bit memory space.
@@ -534,15 +526,14 @@ assumed some other module assigns an address).  Example:</p>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">cb</span></tt> variable attribute, MePVariables with the <tt class="docutils literal"><span class="pre">cb</span></tt> attribute are used to access the control
 bus, using special instructions.  <tt class="docutils literal"><span class="pre">addr</span></tt> indicates the control bus
 address.  Example:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">cpu_clock</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">cb</span><span class="p">(</span><span class="mh">0x123</span><span class="p">)));</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">cpu_clock</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">cb</span><span class="p">(</span><span class="mh">0x123</span><span class="p">)));</span>
 </pre></div>
 </div>
-<p class="last">:: _microsoft-windows-variable-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="microsoft-windows-variable-attributes">
-<h2>Microsoft Windows Variable Attributes<a class="headerlink" href="#microsoft-windows-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>Microsoft Windows Variable Attributes<a class="headerlink" href="#microsoft-windows-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>You can use these attributes on Microsoft Windows targets.
 x86 Variable Attributes for additional Windows compatibility
 attributes available on all x86 targets.</p>
@@ -588,30 +579,27 @@ shareable:</p>
 <p>You may only use the <tt class="docutils literal"><span class="pre">shared</span></tt> attribute along with <tt class="docutils literal"><span class="pre">section</span></tt>
 attribute with a fully-initialized global definition because of the way
 linkers work.  See <tt class="docutils literal"><span class="pre">section</span></tt> attribute for more information.</p>
-<p>The <tt class="docutils literal"><span class="pre">shared</span></tt> attribute is only available on Microsoft Windows.</p>
-<p class="last">:: _powerpc-variable-attributes:</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">shared</span></tt> attribute is only available on Microsoft Windows.</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="powerpc-variable-attributes">
-<h2>PowerPC Variable Attributes<a class="headerlink" href="#powerpc-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>PowerPC Variable Attributes<a class="headerlink" href="#powerpc-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Three attributes currently are defined for PowerPC configurations:
 <tt class="docutils literal"><span class="pre">altivec</span></tt>, <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">ms_struct</span></tt> variable attribute, PowerPC``gcc_struct`` variable attribute, PowerPCFor full documentation of the struct attributes please see the
 documentation in x86 Variable Attributes.</p>
 <p><tt class="docutils literal"><span class="pre">altivec</span></tt> variable attribute, PowerPCFor documentation of <tt class="docutils literal"><span class="pre">altivec</span></tt> attribute please see the
 documentation in PowerPC Type Attributes.</p>
-<p>:: _spu-variable-attributes:</p>
 </div>
 <div class="section" id="spu-variable-attributes">
-<h2>SPU Variable Attributes<a class="headerlink" href="#spu-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>SPU Variable Attributes<a class="headerlink" href="#spu-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">spu_vector</span></tt> variable attribute, SPUThe SPU supports the <tt class="docutils literal"><span class="pre">spu_vector</span></tt> attribute for variables.  For
 documentation of this attribute please see the documentation in
 SPU Type Attributes.</p>
-<p>:: _x86-variable-attributes:</p>
 </div>
 <div class="section" id="x86-variable-attributes">
-<h2>x86 Variable Attributes<a class="headerlink" href="#x86-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>x86 Variable Attributes<a class="headerlink" href="#x86-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Two attributes are currently defined for x86 configurations:
 <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>.</p>
 <dl class="docutils">
@@ -651,7 +639,7 @@ common alignment requirements of the bit-fields.</p>
 </li>
 </ul>
 <p>MSVC interprets zero-length bit-fields in the following ways:</p>
-<ul>
+<ul class="last">
 <li><p class="first">If a zero-length bit-field is inserted between two bit-fields that
 are normally coalesced, the bit-fields are not coalesced.</p>
 <p>For example:</p>
@@ -721,12 +709,11 @@ still affect the alignment of the structure:</p>
 <p>Here, <tt class="docutils literal"><span class="pre">t5</span></tt> takes up 2 bytes.</p>
 </li>
 </ul>
-<p class="last">:: _xstormy16-variable-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="xstormy16-variable-attributes">
-<h2>Xstormy16 Variable Attributes<a class="headerlink" href="#xstormy16-variable-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>Xstormy16 Variable Attributes<a class="headerlink" href="#xstormy16-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>One attribute is currently defined for xstormy16 configurations:
 <tt class="docutils literal"><span class="pre">below100</span></tt>.</p>
 <dl class="docutils">

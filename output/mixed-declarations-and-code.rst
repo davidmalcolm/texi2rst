@@ -1,3 +1,4 @@
+.. _mixed-declarations:
 
 Mixed Declarations and Code
 ***************************

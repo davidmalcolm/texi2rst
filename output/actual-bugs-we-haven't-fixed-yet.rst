@@ -1,3 +1,5 @@
+.. _actual-bugs:
+
 Actual Bugs We Haven't Fixed Yet
 ********************************
 

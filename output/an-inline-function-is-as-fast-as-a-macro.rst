@@ -1,3 +1,4 @@
+.. _inline:
 
 An Inline Function is As Fast As a Macro
 ****************************************

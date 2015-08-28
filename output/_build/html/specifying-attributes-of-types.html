@@ -95,8 +95,10 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="specifying-attributes-of-types">
-<h1>Specifying Attributes of Types<a class="headerlink" href="#specifying-attributes-of-types" title="Permalink to this headline">¶</a></h1>
+  <blockquote>
+<div></div></blockquote>
+<div class="section" id="specifying-attributes-of-types">
+<span id="type-attributes"></span><h1>Specifying Attributes of Types<a class="headerlink" href="#specifying-attributes-of-types" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><p id="index-1">The keyword <tt class="docutils literal"><span class="pre">__attribute__</span></tt> allows you to specify special
 attributes of types.  Some type attributes apply only to <tt class="docutils literal"><span class="pre">struct</span></tt>
 and <tt class="docutils literal"><span class="pre">union</span></tt> types, while others can apply to any type defined
@@ -111,15 +113,14 @@ declaration or definition by placing them immediately after the
 syntax is to place them just past the closing curly brace of the
 definition.</p>
 <p>You can also include type attributes in a <tt class="docutils literal"><span class="pre">typedef</span></tt> declaration.
-See <em class="xref std std-ref">attribute-syntax</em>, for details of the exact syntax for using
+See <a class="reference internal" href="attribute-syntax.html#attribute-syntax"><em>Attribute Syntax</em></a>, for details of the exact syntax for using
 attributes.</p>
 <div class="toctree-wrapper compound">
 <ul class="simple">
 </ul>
 </div>
-<p>:: _common-type-attributes:</p>
 <div class="section" id="common-type-attributes">
-<h2>Common Type Attributes<a class="headerlink" href="#common-type-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Common Type Attributes<a class="headerlink" href="#common-type-attributes" title="Permalink to this headline">¶</a></h2>
 <p>The following type attributes are supported on most targets.</p>
 <p><tt class="docutils literal"><span class="pre">aligned</span></tt> type attribute
 .. option:: aligned (alignment), -fshort-enums</p>
@@ -397,10 +398,9 @@ typeinfo node and exception handling will break.</p>
 </dl>
 <p>double parentheses: for example, __attribute__ ((aligned (16),
 packed)).</p>
-<p>:: _arm-type-attributes:</p>
 </div>
 <div class="section" id="arm-type-attributes">
-<h2>ARM Type Attributes<a class="headerlink" href="#arm-type-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>ARM Type Attributes<a class="headerlink" href="#arm-type-attributes" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">notshared</span></tt> type attribute, ARMOn those ARM targets that support <tt class="docutils literal"><span class="pre">dllimport</span></tt> (such as Symbian
 OS), you can use the <tt class="docutils literal"><span class="pre">notshared</span></tt> attribute to indicate that the
 virtual table and other similar data for a class should not be
@@ -419,18 +419,16 @@ exported from a DLL.  For example:</p>
 virtual table for <tt class="docutils literal"><span class="pre">C</span></tt> is not exported.  (You can use
 <tt class="docutils literal"><span class="pre">__attribute__</span></tt> instead of <tt class="docutils literal"><span class="pre">__declspec</span></tt> if you prefer, but
 most Symbian OS code uses <tt class="docutils literal"><span class="pre">__declspec</span></tt>.)</p>
-<p>:: _mep-type-attributes:</p>
 </div>
 <div class="section" id="mep-type-attributes">
-<h2>MeP Type Attributes<a class="headerlink" href="#mep-type-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>MeP Type Attributes<a class="headerlink" href="#mep-type-attributes" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">based</span></tt> type attribute, MeP``tiny`` type attribute, MeP``near`` type attribute, MeP``far`` type attribute, MePMany of the MeP variable attributes may be applied to types as well.
 Specifically, the <tt class="docutils literal"><span class="pre">based</span></tt>, <tt class="docutils literal"><span class="pre">tiny</span></tt>, <tt class="docutils literal"><span class="pre">near</span></tt>, and
 <tt class="docutils literal"><span class="pre">far</span></tt> attributes may be applied to either.  The <tt class="docutils literal"><span class="pre">io</span></tt> and
 <tt class="docutils literal"><span class="pre">cb</span></tt> attributes may not be applied to types.</p>
-<p>:: _powerpc-type-attributes:</p>
 </div>
 <div class="section" id="powerpc-type-attributes">
-<h2>PowerPC Type Attributes<a class="headerlink" href="#powerpc-type-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>PowerPC Type Attributes<a class="headerlink" href="#powerpc-type-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Three attributes currently are defined for PowerPC configurations:
 <tt class="docutils literal"><span class="pre">altivec</span></tt>, <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">ms_struct</span></tt> type attribute, PowerPC``gcc_struct`` type attribute, PowerPCFor full documentation of the <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>
@@ -447,18 +445,16 @@ and <tt class="docutils literal"><span class="pre">bool__</span></tt> (always fo
 </div>
 <p>These attributes mainly are intended to support the <tt class="docutils literal"><span class="pre">__vector</span></tt>,
 <tt class="docutils literal"><span class="pre">__pixel</span></tt>, and <tt class="docutils literal"><span class="pre">__bool</span></tt> AltiVec keywords.</p>
-<p>:: _spu-type-attributes:</p>
 </div>
 <div class="section" id="spu-type-attributes">
-<h2>SPU Type Attributes<a class="headerlink" href="#spu-type-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>SPU Type Attributes<a class="headerlink" href="#spu-type-attributes" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">spu_vector</span></tt> type attribute, SPUThe SPU supports the <tt class="docutils literal"><span class="pre">spu_vector</span></tt> attribute for types.  This attribute
 allows one to declare vector data types supported by the Sony/Toshiba/IBM SPU
 Language Extensions Specification.  It is intended to support the
 <tt class="docutils literal"><span class="pre">__vector</span></tt> keyword.</p>
-<p>:: _x86-type-attributes:</p>
 </div>
 <div class="section" id="x86-type-attributes">
-<h2>x86 Type Attributes<a class="headerlink" href="#x86-type-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>x86 Type Attributes<a class="headerlink" href="#x86-type-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Two attributes are currently defined for x86 configurations:
 <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>.</p>
 <dl class="docutils">

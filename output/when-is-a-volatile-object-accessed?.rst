@@ -1,3 +1,4 @@
+.. _volatiles:
 
 When is a Volatile Object Accessed?
 ***********************************

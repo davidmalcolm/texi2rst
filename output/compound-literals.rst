@@ -1,3 +1,4 @@
+.. _compound-literals:
 
 Compound Literals
 *****************

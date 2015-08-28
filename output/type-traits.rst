@@ -1,3 +1,4 @@
+.. _type-traits:
 
 Type Traits
 ***********

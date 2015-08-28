@@ -1,3 +1,4 @@
+.. _warning-options:
 
 Options to Request or Suppress Warnings
 ***************************************

@@ -1,3 +1,5 @@
+.. _option-summary:
+
 Option Summary
 **************
 

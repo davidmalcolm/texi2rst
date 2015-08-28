@@ -1,3 +1,4 @@
+.. _vague-linkage:
 
 Vague Linkage
 *************

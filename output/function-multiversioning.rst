@@ -1,3 +1,4 @@
+.. _function-multiversioning:
 
 Function Multiversioning
 ************************

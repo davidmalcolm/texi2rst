@@ -1,3 +1,4 @@
+.. _target-builtins:
 
 Built-in Functions Specific to Particular Target Machines
 *********************************************************
@@ -40,7 +41,7 @@ instructions, but allow the compiler to schedule those calls.
    <x86-built-in-functions>
    <x86-transactional-memory-intrinsics>
 
-:: _aarch64-built-in-functions:
+.. _aarch64-built-in-functions:
 
 AArch64 Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,7 +56,7 @@ processors.
   unsigned int __builtin_aarch64_get_fpsr ()
   void __builtin_aarch64_set_fpsr (unsigned int)
 
-:: _alpha-built-in-functions:
+.. _alpha-built-in-functions:
 
 Alpha Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,7 +140,7 @@ PAL calls, but when invoked with :option:`-mtls-kernel`, they invoke
   void *__builtin_thread_pointer (void)
   void __builtin_set_thread_pointer (void *)
 
-:: _altera-nios-ii-built-in-functions:
+.. _altera-nios-ii-built-in-functions:
 
 Altera Nios II Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -244,7 +245,7 @@ p
   void * __builtin_custom_pnpf (void *, float)
   void * __builtin_custom_pnpp (void *, void *)
 
-:: _arc-built-in-functions:
+.. _arc-built-in-functions:
 
 ARC Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -472,7 +473,7 @@ where they are put in the C code:
   __builtin_arc_sr()
   __builtin_arc_swi()
 
-:: _arc-simd-built-in-functions:
+.. _arc-simd-built-in-functions:
 
 ARC SIMD Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -711,7 +712,7 @@ indicating one the registers I0-I7, and the fourth argument must be an
   void __builtin_arc_vst16_n (__v8hi, const int, const int, const int)
   void __builtin_arc_vst32_n (__v8hi, const int, const int, const int)
 
-:: _arm-iwmmxt-built-in-functions:
+.. _arm-iwmmxt-built-in-functions:
 
 ARM iWMMXt Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -866,7 +867,7 @@ processors when the :option:`-mcpu=iwmmxt` switch is used:
   long long __builtin_arm_wxor (long long, long long)
   long long __builtin_arm_wzero ()
 
-:: _arm-c-language-extensions-(acle):
+.. _arm-c-language-extensions-(acle):
 
 ARM C Language Extensions (ACLE)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -891,7 +892,7 @@ intrinsics yet.
 See ARM Options and AArch64 Options for more information on the
 availability of extensions.
 
-:: _arm-floating-point-status-and-control-intrinsics:
+.. _arm-floating-point-status-and-control-intrinsics:
 
 ARM Floating Point Status and Control Intrinsics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -904,7 +905,7 @@ processors with floating-point unit.
   unsigned int __builtin_arm_get_fpscr ()
   void __builtin_arm_set_fpscr (unsigned int)
 
-:: _avr-built-in-functions:
+.. _avr-built-in-functions:
 
 AVR Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -1001,7 +1002,7 @@ output values to non-contiguous port layouts. Some examples:
   // reverse the bit order of bits
   __builtin_avr_insert_bits (0x01234567, bits, 0)
 
-:: _blackfin-built-in-functions:
+.. _blackfin-built-in-functions:
 
 Blackfin Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1017,7 +1018,7 @@ instructions.  These functions are named as follows:
   void __builtin_bfin_csync (void)
   void __builtin_bfin_ssync (void)
 
-:: _fr-v-built-in-functions:
+.. _fr-v-built-in-functions:
 
 FR-V Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1041,7 +1042,7 @@ here in tabular form.
    <raw-read-write-functions>
    <other-built-in-functions>
 
-:: _argument-types:
+.. _argument-types:
 
 Argument Types
 ~~~~~~~~~~~~~~
@@ -1141,7 +1142,7 @@ selects the ACC2 register.
 number of an IACC register.  See Other Built-in Functions
 for more details.
 
-:: _directly-mapped-integer-functions:
+.. _directly-mapped-integer-functions:
 
 Directly-Mapped Integer Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1214,7 +1215,7 @@ Assembly output
 
 ``UMUL ``a``,``b``,``c````
 
-:: _directly-mapped-media-functions:
+.. _directly-mapped-media-functions:
 
 Directly-Mapped Media Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1755,7 +1756,7 @@ Assembly output
 
 ``MXOR ``a``,``b``,``c````
 
-:: _raw-read-write-functions:
+.. _raw-read-write-functions:
 
 Raw Read/Write Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1767,7 +1768,7 @@ appropriate, as described in Fujitsu's manual described above.
 
 unsigned char __builtin_read8 (void *``data``)unsigned short __builtin_read16 (void *``data``)unsigned long __builtin_read32 (void *``data``)
 unsigned long long __builtin_read64 (void *``data``)
-  void __builtin_write8 (void *``data``, unsigned char ``datum``)void __builtin_write16 (void *``data``, unsigned short ``datum``)void __builtin_write32 (void *``data``, unsigned long ``datum``)void __builtin_write64 (void *``data``, unsigned long long ``datum``):: _other-built-in-functions:
+  void __builtin_write8 (void *``data``, unsigned char ``datum``)void __builtin_write16 (void *``data``, unsigned short ``datum``)void __builtin_write32 (void *``data``, unsigned long ``datum``)void __builtin_write64 (void *``data``, unsigned long long ``datum``).. _other-built-in-functions:
 
 Other Built-in Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1799,7 +1800,7 @@ void __data_prefetch (const void *``x``)
   Use the ``nldub`` instruction to load the contents of address ``x``
   into the data cache.  The instruction is issued in slot I1.
 
-  :: _mips-dsp-built-in-functions:
+  .. _mips-dsp-built-in-functions:
 
 MIPS DSP Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2107,7 +2108,7 @@ for details on what each instruction does.
   a64 __builtin_mips_dpsqx_s_w_ph (a64, v2q15, v2q15);
   a64 __builtin_mips_dpsqx_sa_w_ph (a64, v2q15, v2q15);
 
-:: _mips-paired-single-support:
+.. _mips-paired-single-support:
 
 MIPS Paired-Single Support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2147,7 +2148,7 @@ value is the upper one.  The opposite order applies to big-endian targets.
 For example, the code above sets the lower half of ``a`` to
 ``1.5`` on little-endian targets and ``9.1`` on big-endian targets.
 
-:: _mips-loongson-built-in-functions:
+.. _mips-loongson-built-in-functions:
 
 MIPS Loongson Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2284,7 +2285,7 @@ instruction.
    <paired-single-built-in-functions>
    <mips-3d-built-in-functions>
 
-:: _paired-single-arithmetic:
+.. _paired-single-arithmetic:
 
 Paired-Single Arithmetic
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2336,7 +2337,7 @@ MIPS instruction
 Note that the multiply-accumulate instructions can be disabled
 using the command-line option ``-mno-fused-madd``.
 
-:: _paired-single-built-in-functions:
+.. _paired-single-built-in-functions:
 
 Paired-Single Built-in Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2417,7 +2418,7 @@ int __builtin_mips_upper_c_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mi
     else
       lower_halves_are_unequal ();
 
-  :: _mips-3d-built-in-functions:
+  .. _mips-3d-built-in-functions:
 
 MIPS-3D Built-in Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2561,7 +2562,7 @@ int __builtin_mips_any_c_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf `
     else
       some_are_false ();
 
-  :: _other-mips-built-in-functions:
+  .. _other-mips-built-in-functions:
 
 Other MIPS Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2581,7 +2582,7 @@ unsigned int __builtin_mips_get_fcsr (void) void __builtin_mips_set_fcsr (unsign
   ``__builtin_mips_set_fcsr`` can be used to change any bit of the
   register except the condition codes, which GCC assumes are preserved.
 
-  :: _msp430-built-in-functions:
+  .. _msp430-built-in-functions:
 
 MSP430 Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2610,7 +2611,7 @@ __delay_cycles (long long ``cycles``)
   optimized to a constant later.  The number of cycles delayed by this
   builtin is exact.
 
-  :: _nds32-built-in-functions:
+  .. _nds32-built-in-functions:
 
 NDS32 Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2650,7 +2651,7 @@ Built-in Functionvoid__builtin_nds32_setgie_en(void)Enable global interrupt.
 
 Built-in Functionvoid__builtin_nds32_setgie_dis(void)Disable global interrupt.
 
-:: _picochip-built-in-functions:
+.. _picochip-built-in-functions:
 
 picoChip Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2685,7 +2686,7 @@ void __builtin_halt (void)
   Halt.  The processor stops execution.  This built-in is useful for
   implementing assertions.
 
-  :: _powerpc-built-in-functions:
+  .. _powerpc-built-in-functions:
 
 PowerPC Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2775,7 +2776,7 @@ available:
   vector __int128_t __builtin_pack_vector_int128 (unsigned long long,
                                                   unsigned long long);
 
-:: _powerpc-altivec-vsx-built-in-functions:
+.. _powerpc-altivec-vsx-built-in-functions:
 
 PowerPC AltiVec Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -5359,7 +5360,7 @@ The second argument to the ``__builtin_crypto_vshasigmad`` and
 integer that is 0 or 1.  The third argument to these builtin functions
 must be a constant integer in the range of 0 to 15.
 
-:: _powerpc-hardware-transactional-memory-built-in-functions:
+.. _powerpc-hardware-transactional-memory-built-in-functions:
 
 PowerPC Hardware Transactional Memory Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -5559,7 +5560,7 @@ section that will work on either PowerPC or S/390:
         }
     }
 
-:: _rx-built-in-functions:
+.. _rx-built-in-functions:
 
 RX Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^
@@ -5677,7 +5678,7 @@ bit in the processor status word.
 
 Built-in Functionvoid__builtin_rx_wait(void)Generates the ``wait`` machine instruction.
 
-:: _s-390-system-z-built-in-functions:
+.. _s-390-system-z-built-in-functions:
 
 S/390 System z Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -5794,7 +5795,7 @@ Built-in Functionvoid__builtin_non_tx_store(uint64_t*,uint64_t)Generates the ``n
 is written to the first arguments location.  The store operation will
 not be rolled-back in case of an transaction abort.
 
-:: _sh-built-in-functions:
+.. _sh-built-in-functions:
 
 SH Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^
@@ -5840,7 +5841,7 @@ Built-in Functionunsigned int__builtin_sh_get_fpscr(void)Returns the value that 
 Built-in Functionvoid__builtin_sh_set_fpscr(unsignedint``val``)Sets the FPSCR register to the specified value ``val``, while
 preserving the current values of the FR, SZ and PR bits.
 
-:: _sparc-vis-built-in-functions:
+.. _sparc-vis-built-in-functions:
 
 SPARC VIS Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -5985,7 +5986,7 @@ functions also become available:
   int64_t __builtin_vis_xmulx (int64_t, int64_t);
   int64_t __builtin_vis_xmulxhi (int64_t, int64_t);
 
-:: _spu-built-in-functions:
+.. _spu-built-in-functions:
 
 SPU Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -6032,7 +6033,7 @@ specification is supported. Internally, GCC uses built-in functions to
 implement the required functionality, but these are not supported and
 are subject to change without notice.
 
-:: _ti-c6x-built-in-functions:
+.. _ti-c6x-built-in-functions:
 
 TI C6X Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -6071,7 +6072,7 @@ to C6X instructions.
   int _abs (int)
   int _abs2 (int)
 
-:: _tile-gx-built-in-functions:
+.. _tile-gx-built-in-functions:
 
 TILE-Gx Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -6104,7 +6105,7 @@ The intrinsic ``void __tile_network_barrier (void)`` is used to
 guarantee that no network operations before it are reordered with
 those after it.
 
-:: _tilepro-built-in-functions:
+.. _tilepro-built-in-functions:
 
 TILEPro Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -6139,7 +6140,7 @@ The intrinsic ``void __tile_network_barrier (void)`` is used to
 guarantee that no network operations before it are reordered with
 those after it.
 
-:: _x86-built-in-functions:
+.. _x86-built-in-functions:
 
 x86 Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -7560,7 +7561,7 @@ x86 transactional memory intrinsics should be used instead.
   void __builtin_ia32_xabort (status)
   int __builtin_ia32_xtest ()
 
-:: _x86-transactional-memory-intrinsics:
+.. _x86-transactional-memory-intrinsics:
 
 x86 Transactional Memory Intrinsics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

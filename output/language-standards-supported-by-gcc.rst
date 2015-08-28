@@ -1,3 +1,4 @@
+.. _standards:
 
 Language Standards Supported by GCC
 -----------------------------------

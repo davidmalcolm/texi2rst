@@ -1,3 +1,5 @@
+.. _statement-exprs:
+
 Statements and Declarations in Expressions
 ******************************************
 

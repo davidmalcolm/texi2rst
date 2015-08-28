@@ -1,3 +1,4 @@
+.. _c++-misunderstandings:
 
 Common Misunderstandings with GNU C++
 *************************************
@@ -21,7 +22,7 @@ give rise to questions of this sort.
   Temporaries may vanish before you expect <temporaries>
   Copy Assignment operators copy virtual bases twice <copy-assignment>
 
-:: _static-definitions:
+.. _static-definitions:
 
 Declare and Define Static Members
 .. index:: C++ static data, declaring and defining
@@ -61,7 +62,7 @@ you may discover that a program that appeared to work correctly in fact
 does not conform to the standard: :command:`g++` reports as undefined
 symbols any static data members that lack definitions.
 
-:: _name-lookup:
+.. _name-lookup:
 
 Name Lookup, Templates, and Accessing Members of Base Classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -189,7 +190,7 @@ Note that some compilers (including G++ versions prior to 3.4) get these
 examples wrong and accept above code without an error.  Those compilers
 do not implement two-stage name lookup correctly.
 
-:: _temporaries:
+.. _temporaries:
 
 Temporaries May Vanish Before You Expect
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -248,7 +249,7 @@ example:
   const string& tmp = strfunc ();
   charfunc (tmp.c_str ());
 
-:: _copy-assignment:
+.. _copy-assignment:
 
 Implicit Copy-Assignment for Virtual Bases
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,3 +1,4 @@
+.. _pointer-bounds-checker-builtins:
 
 Pointer Bounds Checker Built-in Functions
 *****************************************

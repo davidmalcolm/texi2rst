@@ -1,3 +1,4 @@
+.. _variadic-macros:
 
 Macros with a Variable Number of Arguments.
 *******************************************

@@ -1,3 +1,4 @@
+.. _fast-enumeration:
 
 Fast Enumeration
 ****************
@@ -11,7 +12,7 @@ Fast Enumeration
 
 .. ================================
 
-:: _using-fast-enumeration:
+.. _using-fast-enumeration:
 
 Using Fast Enumeration
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -53,7 +54,7 @@ provides the implementation of ``NSArray``, ``NSString`` and
 
 .. ================================
 
-:: _c99-like-fast-enumeration-syntax:
+.. _c99-like-fast-enumeration-syntax:
 
 C99-Like Fast Enumeration Syntax
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -90,7 +91,7 @@ syntax in Objective-C.
 
 .. ================================
 
-:: _fast-enumeration-details:
+.. _fast-enumeration-details:
 
 Fast Enumeration Details
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -146,7 +147,7 @@ here is what happens when you run it:
 
 .. ================================
 
-:: _fast-enumeration-protocol:
+.. _fast-enumeration-protocol:
 
 Fast Enumeration Protocol
 ^^^^^^^^^^^^^^^^^^^^^^^^^

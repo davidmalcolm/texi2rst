@@ -1,3 +1,4 @@
+.. _named-address-spaces:
 
 Named Address Spaces
 ********************

@@ -1,3 +1,4 @@
+.. _c++-attributes:
 
 C++-Specific Variable, Function, and Type Attributes
 ****************************************************

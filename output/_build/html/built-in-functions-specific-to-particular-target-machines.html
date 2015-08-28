@@ -137,7 +137,7 @@
           <div class="body">
             
   <div class="section" id="built-in-functions-specific-to-particular-target-machines">
-<h1>Built-in Functions Specific to Particular Target Machines<a class="headerlink" href="#built-in-functions-specific-to-particular-target-machines" title="Permalink to this headline">¶</a></h1>
+<span id="target-builtins"></span><h1>Built-in Functions Specific to Particular Target Machines<a class="headerlink" href="#built-in-functions-specific-to-particular-target-machines" title="Permalink to this headline">¶</a></h1>
 <p>On some target machines, GCC supports many built-in functions specific
 to those machines.  Generally these generate calls to specific machine
 instructions, but allow the compiler to schedule those calls.</p>
@@ -145,9 +145,8 @@ instructions, but allow the compiler to schedule those calls.</p>
 <ul class="simple">
 </ul>
 </div>
-<p>:: _aarch64-built-in-functions:</p>
 <div class="section" id="aarch64-built-in-functions">
-<h2>AArch64 Built-in Functions<a class="headerlink" href="#aarch64-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>AArch64 Built-in Functions<a class="headerlink" href="#aarch64-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the AArch64 family of
 processors.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">__builtin_aarch64_get_fpcr</span> <span class="p">()</span>
@@ -156,10 +155,9 @@ processors.</p>
 <span class="kt">void</span> <span class="n">__builtin_aarch64_set_fpsr</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>:: _alpha-built-in-functions:</p>
 </div>
 <div class="section" id="alpha-built-in-functions">
-<h2>Alpha Built-in Functions<a class="headerlink" href="#alpha-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>Alpha Built-in Functions<a class="headerlink" href="#alpha-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the Alpha family of
 processors, depending on the command-line switches used.</p>
 <p>The following built-in functions are always available.  They
@@ -230,10 +228,9 @@ PAL calls, but when invoked with <em class="xref std std-option">-mtls-kernel</e
 <span class="kt">void</span> <span class="n">__builtin_set_thread_pointer</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>:: _altera-nios-ii-built-in-functions:</p>
 </div>
 <div class="section" id="altera-nios-ii-built-in-functions">
-<h2>Altera Nios II Built-in Functions<a class="headerlink" href="#altera-nios-ii-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>Altera Nios II Built-in Functions<a class="headerlink" href="#altera-nios-ii-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the Altera Nios II
 family of processors.</p>
 <p>The following built-in functions are always available.  They
@@ -326,10 +323,9 @@ parameters to the function.</p>
 <span class="kt">void</span> <span class="o">*</span> <span class="n">__builtin_custom_pnpp</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>:: _arc-built-in-functions:</p>
 </div>
 <div class="section" id="arc-built-in-functions">
-<h2>ARC Built-in Functions<a class="headerlink" href="#arc-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>ARC Built-in Functions<a class="headerlink" href="#arc-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>The following built-in functions are provided for ARC targets.  The
 built-ins generate the corresponding assembly instructions.  In the
 examples given below, the generated code often requires an operand or
@@ -448,10 +444,9 @@ where they are put in the C code:</p>
 <span class="n">__builtin_arc_swi</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>:: _arc-simd-built-in-functions:</p>
 </div>
 <div class="section" id="arc-simd-built-in-functions">
-<h2>ARC SIMD Built-in Functions<a class="headerlink" href="#arc-simd-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>ARC SIMD Built-in Functions<a class="headerlink" href="#arc-simd-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>SIMD builtins provided by the compiler can be used to generate the
 vector instructions.  This section describes the available builtins
 and their usage in programs.  With the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-msimd"><em class="xref std std-option">-msimd</em></a> option, the
@@ -651,10 +646,9 @@ indicating one the registers I0-I7, and the fourth argument must be an
 <span class="kt">void</span> <span class="n">__builtin_arc_vst32_n</span> <span class="p">(</span><span class="n">__v8hi</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>:: _arm-iwmmxt-built-in-functions:</p>
 </div>
 <div class="section" id="arm-iwmmxt-built-in-functions">
-<h2>ARM iWMMXt Built-in Functions<a class="headerlink" href="#arm-iwmmxt-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>ARM iWMMXt Built-in Functions<a class="headerlink" href="#arm-iwmmxt-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the ARM family of
 processors when the <em class="xref std std-option">-mcpu=iwmmxt</em> switch is used:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">v2si</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">vector_size</span> <span class="p">(</span><span class="mi">8</span><span class="p">)));</span>
@@ -803,10 +797,9 @@ processors when the <em class="xref std std-option">-mcpu=iwmmxt</em> switch is 
 <span class="kt">long</span> <span class="kt">long</span> <span class="n">__builtin_arm_wzero</span> <span class="p">()</span>
 </pre></div>
 </div>
-<p>:: _arm-c-language-extensions-(acle):</p>
 </div>
 <div class="section" id="arm-c-language-extensions-acle">
-<h2>ARM C Language Extensions (ACLE)<a class="headerlink" href="#arm-c-language-extensions-acle" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>ARM C Language Extensions (ACLE)<a class="headerlink" href="#arm-c-language-extensions-acle" title="Permalink to this headline">¶</a></h2>
 <p>GCC implements extensions for C as described in the ARM C Language
 Extensions (ACLE) specification, which can be found at
 <a class="reference external" href="http://infocenter.arm.com/help/topic/com.arm.doc.ihi0053c/IHI0053C_acle_2_0.pdf">http://infocenter.arm.com/help/topic/com.arm.doc.ihi0053c/IHI0053C_acle_2_0.pdf</a>.</p>
@@ -823,20 +816,18 @@ AArch64&#8217;s back end does not have support for 16-bit floating point Advance
 intrinsics yet.</p>
 <p>See ARM Options and AArch64 Options for more information on the
 availability of extensions.</p>
-<p>:: _arm-floating-point-status-and-control-intrinsics:</p>
 </div>
 <div class="section" id="arm-floating-point-status-and-control-intrinsics">
-<h2>ARM Floating Point Status and Control Intrinsics<a class="headerlink" href="#arm-floating-point-status-and-control-intrinsics" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>ARM Floating Point Status and Control Intrinsics<a class="headerlink" href="#arm-floating-point-status-and-control-intrinsics" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the ARM family of
 processors with floating-point unit.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">__builtin_arm_get_fpscr</span> <span class="p">()</span>
 <span class="kt">void</span> <span class="n">__builtin_arm_set_fpscr</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>:: _avr-built-in-functions:</p>
 </div>
 <div class="section" id="avr-built-in-functions">
-<h2>AVR Built-in Functions<a class="headerlink" href="#avr-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>AVR Built-in Functions<a class="headerlink" href="#avr-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>For each built-in function for AVR, there is an equally named,
 uppercase built-in macro defined. That way users can easily query if
 or if not a specific built-in is implemented or not. For example, if
@@ -912,10 +903,9 @@ output values to non-contiguous port layouts. Some examples:</p>
 <span class="n">__builtin_avr_insert_bits</span> <span class="p">(</span><span class="mh">0x01234567</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>:: _blackfin-built-in-functions:</p>
 </div>
 <div class="section" id="blackfin-built-in-functions">
-<h2>Blackfin Built-in Functions<a class="headerlink" href="#blackfin-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>Blackfin Built-in Functions<a class="headerlink" href="#blackfin-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>Currently, there are two Blackfin-specific built-in functions.  These are
 used for generating <tt class="docutils literal"><span class="pre">CSYNC</span></tt> and <tt class="docutils literal"><span class="pre">SSYNC</span></tt> machine insns without
 using inline assembly; by using these built-in functions the compiler can
@@ -925,10 +915,9 @@ instructions.  These functions are named as follows:</p>
 <span class="kt">void</span> <span class="n">__builtin_bfin_ssync</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>:: _fr-v-built-in-functions:</p>
 </div>
 <div class="section" id="fr-v-built-in-functions">
-<h2>FR-V Built-in Functions<a class="headerlink" href="#fr-v-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>FR-V Built-in Functions<a class="headerlink" href="#fr-v-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides many FR-V-specific built-in functions.  In general,
 these functions are intended to be compatible with those described
 by FR-V Family, Softune C/C++ Compiler Manual (V6), Fujitsu
@@ -942,9 +931,8 @@ here in tabular form.</p>
 <ul class="simple">
 </ul>
 </div>
-<p>:: _argument-types:</p>
 <div class="section" id="argument-types">
-<h3>Argument Types<a class="headerlink" href="#argument-types" title="Permalink to this headline">¶</a></h3>
+<span id="id12"></span><h3>Argument Types<a class="headerlink" href="#argument-types" title="Permalink to this headline">¶</a></h3>
 <p>The arguments to the built-in functions can be divided into three groups:
 register numbers, compile-time constants and run-time values.  In order
 to make this classification clear at a glance, the arguments and return
@@ -998,10 +986,9 @@ selects the ACC2 register.</p>
 <p><tt class="docutils literal"><span class="pre">iacc</span></tt> arguments are similar to <tt class="docutils literal"><span class="pre">acc</span></tt> arguments but specify the
 number of an IACC register.  See Other Built-in Functions
 for more details.</p>
-<p>:: _directly-mapped-integer-functions:</p>
 </div>
 <div class="section" id="directly-mapped-integer-functions">
-<h3>Directly-Mapped Integer Functions<a class="headerlink" href="#directly-mapped-integer-functions" title="Permalink to this headline">¶</a></h3>
+<span id="id13"></span><h3>Directly-Mapped Integer Functions<a class="headerlink" href="#directly-mapped-integer-functions" title="Permalink to this headline">¶</a></h3>
 <p>The functions listed below map directly to FR-V I-type instructions.</p>
 <p>Function prototype</p>
 <p>Example usage</p>
@@ -1036,10 +1023,9 @@ for more details.</p>
 <p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__UMUL</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">``c</span></tt> = __UMUL (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
 <p><tt class="docutils literal"><span class="pre">UMUL</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p>:: _directly-mapped-media-functions:</p>
 </div>
 <div class="section" id="directly-mapped-media-functions">
-<h3>Directly-Mapped Media Functions<a class="headerlink" href="#directly-mapped-media-functions" title="Permalink to this headline">¶</a></h3>
+<span id="id14"></span><h3>Directly-Mapped Media Functions<a class="headerlink" href="#directly-mapped-media-functions" title="Permalink to this headline">¶</a></h3>
 <p>The functions listed below map directly to FR-V M-type instructions.</p>
 <p>Function prototype</p>
 <p>Example usage</p>
@@ -1308,18 +1294,17 @@ for more details.</p>
 <p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MXOR</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MXOR (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
 <p><tt class="docutils literal"><span class="pre">MXOR</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p>:: _raw-read-write-functions:</p>
 </div>
 <div class="section" id="raw-read-write-functions">
-<h3>Raw Read/Write Functions<a class="headerlink" href="#raw-read-write-functions" title="Permalink to this headline">¶</a></h3>
+<span id="id15"></span><h3>Raw Read/Write Functions<a class="headerlink" href="#raw-read-write-functions" title="Permalink to this headline">¶</a></h3>
 <p>This sections describes built-in functions related to read and write
 instructions to access memory.  These functions generate
 <tt class="docutils literal"><span class="pre">membar</span></tt> instructions to flush the I/O load and stores where
 appropriate, as described in Fujitsu&#8217;s manual described above.</p>
-<p>unsigned char __builtin_read8 (void <a href="#id1"><span class="problematic" id="id2">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)unsigned short __builtin_read16 (void <a href="#id3"><span class="problematic" id="id4">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)unsigned long __builtin_read32 (void <a href="#id5"><span class="problematic" id="id6">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)
-unsigned long long __builtin_read64 (void <a href="#id7"><span class="problematic" id="id8">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)</p>
+<p>unsigned char __builtin_read8 (void <a href="#id16"><span class="problematic" id="id17">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)unsigned short __builtin_read16 (void <a href="#id18"><span class="problematic" id="id19">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)unsigned long __builtin_read32 (void <a href="#id20"><span class="problematic" id="id21">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)
+unsigned long long __builtin_read64 (void <a href="#id22"><span class="problematic" id="id23">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)</p>
 <blockquote>
-<div>void __builtin_write8 (void <a href="#id9"><span class="problematic" id="id10">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned char <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write16 (void <a href="#id11"><span class="problematic" id="id12">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned short <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write32 (void <a href="#id13"><span class="problematic" id="id14">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned long <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write64 (void <a href="#id15"><span class="problematic" id="id16">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned long long <tt class="docutils literal"><span class="pre">datum</span></tt>):: _other-built-in-functions:</div></blockquote>
+<div>void __builtin_write8 (void <a href="#id24"><span class="problematic" id="id25">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned char <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write16 (void <a href="#id26"><span class="problematic" id="id27">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned short <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write32 (void <a href="#id28"><span class="problematic" id="id29">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned long <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write64 (void <a href="#id30"><span class="problematic" id="id31">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned long long <tt class="docutils literal"><span class="pre">datum</span></tt>).. _other-built-in-functions:</div></blockquote>
 </div>
 <div class="section" id="other-built-in-functions">
 <h3>Other Built-in Functions<a class="headerlink" href="#other-built-in-functions" title="Permalink to this headline">¶</a></h3>
@@ -1338,19 +1323,17 @@ is reserved for future expansion and must be 0.</dd>
 <dt>void __IACCsetl (iacc <tt class="docutils literal"><span class="pre">reg</span></tt>, sw1 <tt class="docutils literal"><span class="pre">x</span></tt>)</dt>
 <dd>Set IACC0H to <tt class="docutils literal"><span class="pre">x</span></tt> if <tt class="docutils literal"><span class="pre">reg</span></tt> is 0 and IACC0L to <tt class="docutils literal"><span class="pre">x</span></tt> if <tt class="docutils literal"><span class="pre">reg</span></tt>
 is 1.  Other values of <tt class="docutils literal"><span class="pre">reg</span></tt> are rejected as invalid.</dd>
-<dt>void __data_prefetch0 (const void <a href="#id17"><span class="problematic" id="id18">*</span></a><tt class="docutils literal"><span class="pre">x</span></tt>)</dt>
+<dt>void __data_prefetch0 (const void <a href="#id32"><span class="problematic" id="id33">*</span></a><tt class="docutils literal"><span class="pre">x</span></tt>)</dt>
 <dd>Use the <tt class="docutils literal"><span class="pre">dcpl</span></tt> instruction to load the contents of address <tt class="docutils literal"><span class="pre">x</span></tt>
 into the data cache.</dd>
-<dt>void __data_prefetch (const void <a href="#id19"><span class="problematic" id="id20">*</span></a><tt class="docutils literal"><span class="pre">x</span></tt>)</dt>
-<dd><p class="first">Use the <tt class="docutils literal"><span class="pre">nldub</span></tt> instruction to load the contents of address <tt class="docutils literal"><span class="pre">x</span></tt>
-into the data cache.  The instruction is issued in slot I1.</p>
-<p class="last">:: _mips-dsp-built-in-functions:</p>
-</dd>
+<dt>void __data_prefetch (const void <a href="#id34"><span class="problematic" id="id35">*</span></a><tt class="docutils literal"><span class="pre">x</span></tt>)</dt>
+<dd>Use the <tt class="docutils literal"><span class="pre">nldub</span></tt> instruction to load the contents of address <tt class="docutils literal"><span class="pre">x</span></tt>
+into the data cache.  The instruction is issued in slot I1.</dd>
 </dl>
 </div>
 </div>
 <div class="section" id="mips-dsp-built-in-functions">
-<h2>MIPS DSP Built-in Functions<a class="headerlink" href="#mips-dsp-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id36"></span><h2>MIPS DSP Built-in Functions<a class="headerlink" href="#mips-dsp-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>The MIPS DSP Application-Specific Extension (ASE) includes new
 instructions that are designed to improve the performance of DSP and
 media applications.  It provides instructions that operate on packed
@@ -1619,10 +1602,9 @@ for details on what each instruction does.</p>
 <span class="n">a64</span> <span class="nf">__builtin_mips_dpsqx_sa_w_ph</span> <span class="p">(</span><span class="n">a64</span><span class="p">,</span> <span class="n">v2q15</span><span class="p">,</span> <span class="n">v2q15</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>:: _mips-paired-single-support:</p>
 </div>
 <div class="section" id="mips-paired-single-support">
-<h2>MIPS Paired-Single Support<a class="headerlink" href="#mips-paired-single-support" title="Permalink to this headline">¶</a></h2>
+<span id="id37"></span><h2>MIPS Paired-Single Support<a class="headerlink" href="#mips-paired-single-support" title="Permalink to this headline">¶</a></h2>
 <p>The MIPS64 architecture includes a number of instructions that
 operate on pairs of single-precision floating-point values.
 Each pair is packed into a 64-bit floating-point register,
@@ -1651,10 +1633,9 @@ On little-endian targets, the first value is the lower one and the second
 value is the upper one.  The opposite order applies to big-endian targets.
 For example, the code above sets the lower half of <tt class="docutils literal"><span class="pre">a</span></tt> to
 <tt class="docutils literal"><span class="pre">1.5</span></tt> on little-endian targets and <tt class="docutils literal"><span class="pre">9.1</span></tt> on big-endian targets.</p>
-<p>:: _mips-loongson-built-in-functions:</p>
 </div>
 <div class="section" id="mips-loongson-built-in-functions">
-<h2>MIPS Loongson Built-in Functions<a class="headerlink" href="#mips-loongson-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id38"></span><h2>MIPS Loongson Built-in Functions<a class="headerlink" href="#mips-loongson-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides intrinsics to access the SIMD instructions provided by the
 ST Microelectronics Loongson-2E and -2F processors.  These intrinsics,
 available after inclusion of the <tt class="docutils literal"><span class="pre">loongson.h</span></tt> header file,
@@ -1778,9 +1759,8 @@ instruction.</p>
 <ul class="simple">
 </ul>
 </div>
-<p>:: _paired-single-arithmetic:</p>
 <div class="section" id="paired-single-arithmetic">
-<h3>Paired-Single Arithmetic<a class="headerlink" href="#paired-single-arithmetic" title="Permalink to this headline">¶</a></h3>
+<span id="id39"></span><h3>Paired-Single Arithmetic<a class="headerlink" href="#paired-single-arithmetic" title="Permalink to this headline">¶</a></h3>
 <p>The table below lists the <tt class="docutils literal"><span class="pre">v2sf</span></tt> operations for which hardware
 support exists.  <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">c</span></tt> are <tt class="docutils literal"><span class="pre">v2sf</span></tt>
 values and <tt class="docutils literal"><span class="pre">x</span></tt> is an integral value.</p>
@@ -1806,10 +1786,9 @@ values and <tt class="docutils literal"><span class="pre">x</span></tt> is an in
 <p><tt class="docutils literal"><span class="pre">movn.ps</span></tt>/<tt class="docutils literal"><span class="pre">movz.ps</span></tt></p>
 <p>Note that the multiply-accumulate instructions can be disabled
 using the command-line option <tt class="docutils literal"><span class="pre">-mno-fused-madd</span></tt>.</p>
-<p>:: _paired-single-built-in-functions:</p>
 </div>
 <div class="section" id="paired-single-built-in-functions">
-<h3>Paired-Single Built-in Functions<a class="headerlink" href="#paired-single-built-in-functions" title="Permalink to this headline">¶</a></h3>
+<span id="id40"></span><h3>Paired-Single Built-in Functions<a class="headerlink" href="#paired-single-built-in-functions" title="Permalink to this headline">¶</a></h3>
 <p>The following paired-single functions map directly to a particular
 MIPS instruction.  Please refer to the architecture specification
 for details on what each instruction does.</p>
@@ -1859,7 +1838,7 @@ of <tt class="docutils literal"><span class="pre">movt.ps</span></tt>.</p>
 <tt class="docutils literal"><span class="pre">bc1t</span></tt>/<tt class="docutils literal"><span class="pre">bc1f</span></tt>).</p>
 <p>These functions compare <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> using <tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``
 and return either the upper or lower half of the result.  For example:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="n">v2sf</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="n">v2sf</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">__builtin_mips_upper_c_eq_ps</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
   <span class="n">upper_halves_are_equal</span> <span class="p">();</span>
 <span class="k">else</span>
@@ -1871,12 +1850,11 @@ and return either the upper or lower half of the result.  For example:</p>
   <span class="nf">lower_halves_are_unequal</span> <span class="p">();</span>
 </pre></div>
 </div>
-<p class="last">:: _mips-3d-built-in-functions:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="mips-3d-built-in-functions">
-<h3>MIPS-3D Built-in Functions<a class="headerlink" href="#mips-3d-built-in-functions" title="Permalink to this headline">¶</a></h3>
+<span id="id41"></span><h3>MIPS-3D Built-in Functions<a class="headerlink" href="#mips-3d-built-in-functions" title="Permalink to this headline">¶</a></h3>
 <p>The MIPS-3D Application-Specific Extension (ASE) includes additional
 paired-single instructions that are designed to improve the performance
 of 3D graphics operations.  Support for these instructions is controlled
@@ -1984,7 +1962,7 @@ to compare <tt class="docutils literal"><span class="pre">a</span></tt> with <tt
 The <tt class="docutils literal"><span class="pre">any</span></tt> forms return true if any of the four results are true
 and the <tt class="docutils literal"><span class="pre">all</span></tt> forms return true if all four results are true.
 For example:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="n">v2sf</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">;</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="n">v2sf</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">;</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">__builtin_mips_any_c_eq_4s</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
   <span class="n">some_are_true</span> <span class="p">();</span>
 <span class="k">else</span>
@@ -1996,16 +1974,15 @@ For example:</p>
   <span class="nf">some_are_false</span> <span class="p">();</span>
 </pre></div>
 </div>
-<p class="last">:: _other-mips-built-in-functions:</p>
 </dd>
 </dl>
 </div>
 </div>
 <div class="section" id="other-mips-built-in-functions">
-<h2>Other MIPS Built-in Functions<a class="headerlink" href="#other-mips-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id42"></span><h2>Other MIPS Built-in Functions<a class="headerlink" href="#other-mips-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides other MIPS-specific built-in functions:</p>
 <dl class="docutils">
-<dt>void __builtin_mips_cache (int <tt class="docutils literal"><span class="pre">op</span></tt>, const volatile void <a href="#id21"><span class="problematic" id="id22">*</span></a><tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
+<dt>void __builtin_mips_cache (int <tt class="docutils literal"><span class="pre">op</span></tt>, const volatile void <a href="#id43"><span class="problematic" id="id44">*</span></a><tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
 <dd>Insert a cache instruction with operands <tt class="docutils literal"><span class="pre">op</span></tt> and <tt class="docutils literal"><span class="pre">addr</span></tt>.
 GCC defines the preprocessor macro <tt class="docutils literal"><span class="pre">___GCC_HAVE_BUILTIN_MIPS_CACHE</span></tt>
 when this function is available.</dd>
@@ -2013,14 +1990,13 @@ when this function is available.</dd>
 <dd><p class="first">Get and set the contents of the floating-point control and status register
 (FPU control register 31).  These functions are only available in hard-float
 code but can be called in both MIPS16 and non-MIPS16 contexts.</p>
-<p><tt class="docutils literal"><span class="pre">__builtin_mips_set_fcsr</span></tt> can be used to change any bit of the
+<p class="last"><tt class="docutils literal"><span class="pre">__builtin_mips_set_fcsr</span></tt> can be used to change any bit of the
 register except the condition codes, which GCC assumes are preserved.</p>
-<p class="last">:: _msp430-built-in-functions:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="msp430-built-in-functions">
-<h2>MSP430 Built-in Functions<a class="headerlink" href="#msp430-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id45"></span><h2>MSP430 Built-in Functions<a class="headerlink" href="#msp430-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides a couple of special builtin functions to aid in the
 writing of interrupt handlers in C.</p>
 <dl class="docutils">
@@ -2035,19 +2011,17 @@ currently residing on the stack.  This only works inside interrupt
 handlers and the changes to the status register will only take affect
 once the handler returns.</dd>
 <dt>__delay_cycles (long long <tt class="docutils literal"><span class="pre">cycles</span></tt>)</dt>
-<dd><p class="first">This inserts an instruction sequence that takes exactly <tt class="docutils literal"><span class="pre">cycles</span></tt>
+<dd>This inserts an instruction sequence that takes exactly <tt class="docutils literal"><span class="pre">cycles</span></tt>
 cycles (between 0 and about 17E9) to complete.  The inserted sequence
 may use jumps, loops, or no-ops, and does not interfere with any other
 instructions.  Note that <tt class="docutils literal"><span class="pre">cycles</span></tt> must be a compile-time constant
 integer - that is, you must pass a number, not a variable that may be
 optimized to a constant later.  The number of cycles delayed by this
-builtin is exact.</p>
-<p class="last">:: _nds32-built-in-functions:</p>
-</dd>
+builtin is exact.</dd>
 </dl>
 </div>
 <div class="section" id="nds32-built-in-functions">
-<h2>NDS32 Built-in Functions<a class="headerlink" href="#nds32-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id46"></span><h2>NDS32 Built-in Functions<a class="headerlink" href="#nds32-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the NDS32 target:</p>
 <p id="index-20">Built-in Functionvoid__builtin_nds32_isync(int*``addr``)Insert an ISYNC instruction into the instruction stream where
 <tt class="docutils literal"><span class="pre">addr</span></tt> is an instruction address for serialization.</p>
@@ -2058,10 +2032,9 @@ builtin is exact.</p>
 <p id="index-25">Built-in Functionvoid__builtin_nds32_mtusr(int``value``,int``usr``)Move the <tt class="docutils literal"><span class="pre">value</span></tt> to a user space register which is mapped by <tt class="docutils literal"><span class="pre">usr</span></tt>.</p>
 <p id="index-26">Built-in Functionvoid__builtin_nds32_setgie_en(void)Enable global interrupt.</p>
 <p id="index-27">Built-in Functionvoid__builtin_nds32_setgie_dis(void)Disable global interrupt.</p>
-<p>:: _picochip-built-in-functions:</p>
 </div>
 <div class="section" id="picochip-built-in-functions">
-<h2>picoChip Built-in Functions<a class="headerlink" href="#picochip-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id47"></span><h2>picoChip Built-in Functions<a class="headerlink" href="#picochip-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides an interface to selected machine instructions from the
 picoChip instruction set.</p>
 <dl class="docutils">
@@ -2084,14 +2057,12 @@ storing the value 32767 if the result overflows.</dd>
 <dd>Saturating subtraction.  Return the result of subtracting <tt class="docutils literal"><span class="pre">y</span></tt> from
 <tt class="docutils literal"><span class="pre">x</span></tt>, storing the value -32768 if the result overflows.</dd>
 <dt>void __builtin_halt (void)</dt>
-<dd><p class="first">Halt.  The processor stops execution.  This built-in is useful for
-implementing assertions.</p>
-<p class="last">:: _powerpc-built-in-functions:</p>
-</dd>
+<dd>Halt.  The processor stops execution.  This built-in is useful for
+implementing assertions.</dd>
 </dl>
 </div>
 <div class="section" id="powerpc-built-in-functions">
-<h2>PowerPC Built-in Functions<a class="headerlink" href="#powerpc-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id48"></span><h2>PowerPC Built-in Functions<a class="headerlink" href="#powerpc-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the PowerPC family of
 processors:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">float</span> <span class="nf">__builtin_recipdivf</span> <span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">);</span>
@@ -2165,10 +2136,9 @@ available:</p>
                                                 <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>:: _powerpc-altivec-vsx-built-in-functions:</p>
 </div>
 <div class="section" id="powerpc-altivec-built-in-functions">
-<h2>PowerPC AltiVec Built-in Functions<a class="headerlink" href="#powerpc-altivec-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="powerpc-altivec-vsx-built-in-functions"></span><h2>PowerPC AltiVec Built-in Functions<a class="headerlink" href="#powerpc-altivec-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides an interface for the PowerPC family of processors to access
 the AltiVec operations described in Motorola&#8217;s AltiVec Programming
 Interface Manual.  The interface is made available by including
@@ -4727,10 +4697,9 @@ but the index value must be 0.</p>
 <tt class="docutils literal"><span class="pre">__builtin_crypto_vshasigmaw</span></tt> builtin functions must be a constant
 integer that is 0 or 1.  The third argument to these builtin functions
 must be a constant integer in the range of 0 to 15.</p>
-<p>:: _powerpc-hardware-transactional-memory-built-in-functions:</p>
 </div>
 <div class="section" id="powerpc-hardware-transactional-memory-built-in-functions">
-<h2>PowerPC Hardware Transactional Memory Built-in Functions<a class="headerlink" href="#powerpc-hardware-transactional-memory-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id49"></span><h2>PowerPC Hardware Transactional Memory Built-in Functions<a class="headerlink" href="#powerpc-hardware-transactional-memory-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides two interfaces for accessing the Hardware Transactional
 Memory (HTM) instructions available on some of the PowerPC family
 of processors (eg, POWER8).  The two interfaces come in a low level
@@ -4907,11 +4876,10 @@ section that will work on either PowerPC or S/390:</p>
   <span class="p">}</span>
 </pre></div>
 </div>
-<p>:: _rx-built-in-functions:</p>
 </div>
 </div>
 <div class="section" id="rx-built-in-functions">
-<h2>RX Built-in Functions<a class="headerlink" href="#rx-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id50"></span><h2>RX Built-in Functions<a class="headerlink" href="#rx-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC supports some of the RX instructions which cannot be expressed in
 the C programming language via the use of built-in functions.  The
 following functions are supported:</p>
@@ -4961,10 +4929,9 @@ saturated value of the argument.</p>
 <p id="index-47">Built-in Functionvoid__builtin_rx_setpsw(int)Generates the <tt class="docutils literal"><span class="pre">setpsw</span></tt> machine instruction to set the specified
 bit in the processor status word.</p>
 <p id="index-48">Built-in Functionvoid__builtin_rx_wait(void)Generates the <tt class="docutils literal"><span class="pre">wait</span></tt> machine instruction.</p>
-<p>:: _s-390-system-z-built-in-functions:</p>
 </div>
 <div class="section" id="s-390-system-z-built-in-functions">
-<h2>S/390 System z Built-in Functions<a class="headerlink" href="#s-390-system-z-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id51"></span><h2>S/390 System z Built-in Functions<a class="headerlink" href="#s-390-system-z-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p id="index-49">Built-in Functionint__builtin_tbegin(void*)Generates the <tt class="docutils literal"><span class="pre">tbegin</span></tt> machine instruction starting a
 non-constraint hardware transaction.  If the parameter is non-NULL the
 memory area is used to store the transaction diagnostic buffer and
@@ -5038,10 +5005,9 @@ is not executed as part of an transaction.</p>
 <p id="index-60">Built-in Functionvoid__builtin_non_tx_store(uint64_t*,uint64_t)Generates the <tt class="docutils literal"><span class="pre">ntstg</span></tt> machine instruction.  The second argument
 is written to the first arguments location.  The store operation will
 not be rolled-back in case of an transaction abort.</p>
-<p>:: _sh-built-in-functions:</p>
 </div>
 <div class="section" id="sh-built-in-functions">
-<h2>SH Built-in Functions<a class="headerlink" href="#sh-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id52"></span><h2>SH Built-in Functions<a class="headerlink" href="#sh-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>The following built-in functions are supported on the SH1, SH2, SH3 and SH4
 families of processors:</p>
 <p id="index-61">Built-in Functionvoid__builtin_set_thread_pointer(void*``ptr``)Sets the GBR register to the specified value <tt class="docutils literal"><span class="pre">ptr</span></tt>.  This is usually
@@ -5050,7 +5016,7 @@ normally does not generate code that modifies the contents of GBR and
 thus the value is preserved across function calls.  Changing the GBR
 value in user code must be done with caution, since the compiler might use
 GBR in order to access thread local variables.</p>
-<p id="index-62">Built-in Functionvoid <a href="#id23"><span class="problematic" id="id24">*</span></a>__builtin_thread_pointer(void)Returns the value that is currently set in the GBR register.
+<p id="index-62">Built-in Functionvoid <a href="#id53"><span class="problematic" id="id54">*</span></a>__builtin_thread_pointer(void)Returns the value that is currently set in the GBR register.
 Memory loads and stores that use the thread pointer as a base address are
 turned into GBR based displacement loads and stores, if possible.
 For example:</p>
@@ -5069,10 +5035,9 @@ For example:</p>
 <p id="index-63">Built-in Functionunsigned int__builtin_sh_get_fpscr(void)Returns the value that is currently set in the FPSCR register.</p>
 <p id="index-64">Built-in Functionvoid__builtin_sh_set_fpscr(unsignedint``val``)Sets the FPSCR register to the specified value <tt class="docutils literal"><span class="pre">val</span></tt>, while
 preserving the current values of the FR, SZ and PR bits.</p>
-<p>:: _sparc-vis-built-in-functions:</p>
 </div>
 <div class="section" id="sparc-vis-built-in-functions">
-<h2>SPARC VIS Built-in Functions<a class="headerlink" href="#sparc-vis-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id55"></span><h2>SPARC VIS Built-in Functions<a class="headerlink" href="#sparc-vis-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC supports SIMD operations on the SPARC using both the generic vector
 extensions (Vector Extensions) as well as built-in functions for
 the SPARC Visual Instruction Set (VIS).  When you use the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mvis"><em class="xref std std-option">-mvis</em></a>
@@ -5207,10 +5172,9 @@ functions also become available:</p>
 <span class="kt">int64_t</span> <span class="nf">__builtin_vis_xmulxhi</span> <span class="p">(</span><span class="kt">int64_t</span><span class="p">,</span> <span class="kt">int64_t</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>:: _spu-built-in-functions:</p>
 </div>
 <div class="section" id="spu-built-in-functions">
-<h2>SPU Built-in Functions<a class="headerlink" href="#spu-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id56"></span><h2>SPU Built-in Functions<a class="headerlink" href="#spu-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides extensions for the SPU processor as described in the
 Sony/Toshiba/IBM SPU Language Extensions Specification, which can be
 found at <a class="reference external" href="http://cell.scei.co.jp/">http://cell.scei.co.jp/</a> or
@@ -5251,10 +5215,9 @@ parentheses for this to work.</p>
 specification is supported. Internally, GCC uses built-in functions to
 implement the required functionality, but these are not supported and
 are subject to change without notice.</p>
-<p>:: _ti-c6x-built-in-functions:</p>
 </div>
 <div class="section" id="ti-c6x-built-in-functions">
-<h2>TI C6X Built-in Functions<a class="headerlink" href="#ti-c6x-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id57"></span><h2>TI C6X Built-in Functions<a class="headerlink" href="#ti-c6x-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides intrinsics to access certain instructions of the TI C6X
 processors.  These intrinsics, listed below, are available after
 inclusion of the <tt class="docutils literal"><span class="pre">c6x_intrinsics.h</span></tt> header file.  They map directly
@@ -5287,10 +5250,9 @@ to C6X instructions.</p>
 <span class="kt">int</span> <span class="n">_abs2</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>:: _tile-gx-built-in-functions:</p>
 </div>
 <div class="section" id="tile-gx-built-in-functions">
-<h2>TILE-Gx Built-in Functions<a class="headerlink" href="#tile-gx-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id58"></span><h2>TILE-Gx Built-in Functions<a class="headerlink" href="#tile-gx-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides intrinsics to access every instruction of the TILE-Gx
 processor.  The intrinsics are of the form:</p>
 <div class="highlight-c++"><pre>unsigned long long __insn_``op`` (...)</pre>
@@ -5312,10 +5274,9 @@ The intrinsics are:</p>
 <p>The intrinsic <tt class="docutils literal"><span class="pre">void</span> <span class="pre">__tile_network_barrier</span> <span class="pre">(void)</span></tt> is used to
 guarantee that no network operations before it are reordered with
 those after it.</p>
-<p>:: _tilepro-built-in-functions:</p>
 </div>
 <div class="section" id="tilepro-built-in-functions">
-<h2>TILEPro Built-in Functions<a class="headerlink" href="#tilepro-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id59"></span><h2>TILEPro Built-in Functions<a class="headerlink" href="#tilepro-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides intrinsics to access every instruction of the TILEPro
 processor.  The intrinsics are of the form:</p>
 <div class="highlight-c++"><pre>unsigned __insn_``op`` (...)</pre>
@@ -5339,10 +5300,9 @@ The intrinsics are:</p>
 <p>The intrinsic <tt class="docutils literal"><span class="pre">void</span> <span class="pre">__tile_network_barrier</span> <span class="pre">(void)</span></tt> is used to
 guarantee that no network operations before it are reordered with
 those after it.</p>
-<p>:: _x86-built-in-functions:</p>
 </div>
 <div class="section" id="x86-built-in-functions">
-<h2>x86 Built-in Functions<a class="headerlink" href="#x86-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id60"></span><h2>x86 Built-in Functions<a class="headerlink" href="#x86-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the x86-32 and x86-64 family
 of computers, depending on the command-line switches used.</p>
 <p>If you specify command-line switches such as <em class="xref std std-option">-msse</em>,
@@ -5660,19 +5620,19 @@ All of them generate the machine instruction that is part of the name.</p>
 </div>
 <p>The following built-in functions are available when <em class="xref std std-option">-msse</em> is used.</p>
 <dl class="docutils">
-<dt>v4sf __builtin_ia32_loadups (float <a href="#id25"><span class="problematic" id="id26">*</span></a>)</dt>
+<dt>v4sf __builtin_ia32_loadups (float <a href="#id61"><span class="problematic" id="id62">*</span></a>)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movups</span></tt> machine instruction as a load from memory.</dd>
-<dt>void __builtin_ia32_storeups (float <a href="#id27"><span class="problematic" id="id28">*</span></a>, v4sf)</dt>
+<dt>void __builtin_ia32_storeups (float <a href="#id63"><span class="problematic" id="id64">*</span></a>, v4sf)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movups</span></tt> machine instruction as a store to memory.</dd>
-<dt>v4sf __builtin_ia32_loadss (float <a href="#id29"><span class="problematic" id="id30">*</span></a>)</dt>
+<dt>v4sf __builtin_ia32_loadss (float <a href="#id65"><span class="problematic" id="id66">*</span></a>)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movss</span></tt> machine instruction as a load from memory.</dd>
-<dt>v4sf __builtin_ia32_loadhps (v4sf, const v2sf <a href="#id31"><span class="problematic" id="id32">*</span></a>)</dt>
+<dt>v4sf __builtin_ia32_loadhps (v4sf, const v2sf <a href="#id67"><span class="problematic" id="id68">*</span></a>)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movhps</span></tt> machine instruction as a load from memory.</dd>
-<dt>v4sf __builtin_ia32_loadlps (v4sf, const v2sf <a href="#id33"><span class="problematic" id="id34">*</span></a>)</dt>
+<dt>v4sf __builtin_ia32_loadlps (v4sf, const v2sf <a href="#id69"><span class="problematic" id="id70">*</span></a>)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movlps</span></tt> machine instruction as a load from memory</dd>
-<dt>void __builtin_ia32_storehps (v2sf <a href="#id35"><span class="problematic" id="id36">*</span></a>, v4sf)</dt>
+<dt>void __builtin_ia32_storehps (v2sf <a href="#id71"><span class="problematic" id="id72">*</span></a>, v4sf)</dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movhps</span></tt> machine instruction as a store to memory.</dd>
-<dt>void __builtin_ia32_storelps (v2sf <a href="#id37"><span class="problematic" id="id38">*</span></a>, v4sf)</dt>
+<dt>void __builtin_ia32_storelps (v2sf <a href="#id73"><span class="problematic" id="id74">*</span></a>, v4sf)</dt>
 <dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">movlps</span></tt> machine instruction as a store to memory.</p>
 <p class="last">The following built-in functions are available when <em class="xref std std-option">-msse2</em> is used.</p>
 </dd>
@@ -6640,10 +6600,9 @@ x86 transactional memory intrinsics should be used instead.</p>
 <span class="kt">int</span> <span class="n">__builtin_ia32_xtest</span> <span class="p">()</span>
 </pre></div>
 </div>
-<p>:: _x86-transactional-memory-intrinsics:</p>
 </div>
 <div class="section" id="x86-transactional-memory-intrinsics">
-<h2>x86 Transactional Memory Intrinsics<a class="headerlink" href="#x86-transactional-memory-intrinsics" title="Permalink to this headline">¶</a></h2>
+<span id="id75"></span><h2>x86 Transactional Memory Intrinsics<a class="headerlink" href="#x86-transactional-memory-intrinsics" title="Permalink to this headline">¶</a></h2>
 <p>These hardware transactional memory intrinsics for x86 allow you to use
 memory transactions with RTM (Restricted Transactional Memory).
 This support is enabled with the <em class="xref std std-option">-mrtm</em> option.

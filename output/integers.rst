@@ -1,3 +1,4 @@
+.. _integers-implementation:
 
 Integers
 ********

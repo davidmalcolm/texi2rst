@@ -1,3 +1,4 @@
+.. _x86-specific-memory-model-extensions-for-transactional-memory:
 
 x86-Specific Memory Model Extensions for Transactional Memory
 *************************************************************

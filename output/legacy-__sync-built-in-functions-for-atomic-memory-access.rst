@@ -1,3 +1,4 @@
+.. ___sync-builtins:
 
 Legacy ``__sync`` Built-in Functions for Atomic Memory AccessThe following built-in functions
 are intended to be compatible with those described

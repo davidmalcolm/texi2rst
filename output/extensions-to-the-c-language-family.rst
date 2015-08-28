@@ -1,3 +1,4 @@
+.. _c-extensions:
 
 Extensions to the C Language Family
 -----------------------------------
@@ -92,8 +93,6 @@ extensions, accepted by GCC in C90 mode and in C++.
   Per-thread variables. <thread-local>
   Binary constants using the 0b prefix. <binary-constants>
 
-:: _statement-exprs:
-
 .. toctree::
 
   statements-and-declarations-in-expressions
@@ -160,65 +159,3 @@ extensions, accepted by GCC in C90 mode and in C++.
   thread-local-storage
   binary-constants-using-the-0b-prefix
 
-:: _local-labels:
-:: _labels-as-values:
-:: _nested-functions:
-:: _constructing-calls:
-:: _typeof:
-:: _conditionals:
-:: ___int128:
-:: _long-long:
-:: _complex:
-:: _floating-types:
-:: _half-precision:
-:: _decimal-float:
-:: _hex-floats:
-:: _fixed-point:
-:: _named-address-spaces:
-:: _zero-length:
-:: _empty-structures:
-:: _variable-length:
-:: _variadic-macros:
-:: _escaped-newlines:
-:: _subscripting:
-:: _pointer-arith:
-:: _pointers-to-arrays:
-:: _initializers:
-:: _compound-literals:
-:: _designated-inits:
-:: _case-ranges:
-:: _cast-to-union:
-:: _mixed-declarations:
-:: _function-attributes:
-  :: _variable-attributes:
-  :: _type-attributes:
-  :: _label-attributes:
-  :: _attribute-syntax:
-:: _function-prototypes:
-:: _c++-comments:
-:: _dollar-signs:
-:: _character-escapes:
-:: _alignment:
-:: _inline:
-:: _volatiles:
-:: _using-assembly-language-with-c:
-:: _alternate-keywords:
-:: _incomplete-enums:
-:: _function-names:
-:: _return-address:
-:: _vector-extensions:
-:: _offsetof:
-:: ___sync-builtins:
-  :: ___atomic-builtins:
-:: _integer-overflow-builtins:
-:: _x86-specific-memory-model-extensions-for-transactional-memory:
-:: _object-size-checking:
-:: _pointer-bounds-checker-builtins:
-:: _cilk-plus-builtins:
-:: _other-builtins:
-:: _target-builtins:
-:: _target-format-checks:
-:: _pragmas:
-:: _unnamed-fields:
-:: _thread-local:
-:: _binary-constants:

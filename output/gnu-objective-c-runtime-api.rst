@@ -1,3 +1,5 @@
+.. _gnu-objective-c-runtime-api:
+
 GNU Objective-C Runtime API
 ***************************
 
@@ -23,7 +25,7 @@ to the GNU Objective-C runtime API to define new classes or methods.
 
 .. =========================================================================
 
-:: _modern-gnu-objective-c-runtime-api:
+.. _modern-gnu-objective-c-runtime-api:
 
 Modern GNU Objective-C Runtime API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -75,7 +77,7 @@ the GNU Objective-C runtime API.
 
 .. =========================================================================
 
-:: _traditional-gnu-objective-c-runtime-api:
+.. _traditional-gnu-objective-c-runtime-api:
 
 Traditional GNU Objective-C Runtime API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

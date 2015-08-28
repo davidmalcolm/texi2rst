@@ -1,3 +1,4 @@
+.. _trouble:
 
 Known Causes of Trouble with GCC
 --------------------------------
@@ -32,8 +33,6 @@ where people's opinions differ as to what is best.
   Which problems in your code get warnings,
                           and which get errors. <warnings-and-errors>
 
-:: _actual-bugs:
-
 .. toctree::
 
   actual-bugs-we-haven't-fixed-yet
@@ -46,11 +45,3 @@ where people's opinions differ as to what is best.
   certain-changes-we-don't-want-to-make
   warning-messages-and-error-messages
 
-:: _interoperation:
-:: _incompatibilities:
-:: _fixed-headers:
-:: _standard-libraries:
-:: _disappointments:
-:: _c++-misunderstandings:
-:: _non-bugs:
-:: _warnings-and-errors:

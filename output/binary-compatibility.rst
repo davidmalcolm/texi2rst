@@ -1,3 +1,4 @@
+.. _compatibility:
 
 Binary Compatibility
 --------------------

@@ -1,3 +1,4 @@
+.. _cross-profiling:
 
 Data File Relocation to Support Cross-Profiling
 ***********************************************

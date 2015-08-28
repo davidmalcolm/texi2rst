@@ -1,3 +1,4 @@
+.. _case-ranges:
 
 Case Ranges
 ***********

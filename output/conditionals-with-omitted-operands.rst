@@ -1,3 +1,4 @@
+.. _conditionals:
 
 Conditionals with Omitted Operands
 **********************************

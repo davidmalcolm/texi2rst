@@ -1,3 +1,4 @@
+.. _incompatibilities:
 
 Incompatibilities of GCC
 ************************

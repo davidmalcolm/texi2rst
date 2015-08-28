@@ -1,3 +1,4 @@
+.. _structures-unions-enumerations-and-bit-fields-implementation:
 
 Structures, Unions, Enumerations, and Bit-Fields
 ************************************************

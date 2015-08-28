@@ -1,3 +1,4 @@
+.. _typeof:
 
 Referring to a Type with ``typeof``
 .. index:: typeof

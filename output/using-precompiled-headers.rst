@@ -1,3 +1,4 @@
+.. _precompiled-headers:
 
 Using Precompiled Headers
 *************************

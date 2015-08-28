@@ -1,3 +1,4 @@
+.. _constant-string-objects:
 
 Constant String Objects
 ***********************

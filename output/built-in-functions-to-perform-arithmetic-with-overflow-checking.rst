@@ -1,3 +1,4 @@
+.. _integer-overflow-builtins:
 
 Built-in Functions to Perform Arithmetic with Overflow Checking
 ***************************************************************

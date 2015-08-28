@@ -1,3 +1,4 @@
+.. _fixed-point:
 
 Fixed-Point Types
 *****************

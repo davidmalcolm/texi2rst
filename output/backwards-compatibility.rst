@@ -1,3 +1,4 @@
+.. _backwards-compatibility:
 
 Backwards Compatibility
 ***********************

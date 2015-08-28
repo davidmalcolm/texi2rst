@@ -1,3 +1,4 @@
+.. _template-instantiation:
 
 Where's the Template?
 *********************

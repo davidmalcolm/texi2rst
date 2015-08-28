@@ -1,3 +1,4 @@
+.. _alternate-keywords:
 
 Alternate Keywords
 ******************

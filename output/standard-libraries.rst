@@ -1,3 +1,4 @@
+.. _standard-libraries:
 
 Standard Libraries
 ******************

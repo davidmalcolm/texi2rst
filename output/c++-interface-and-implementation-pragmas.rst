@@ -1,3 +1,4 @@
+.. _c++-interface:
 
 C++ Interface and Implementation Pragmas
 ****************************************

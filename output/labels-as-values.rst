@@ -1,3 +1,4 @@
+.. _labels-as-values:
 
 Labels as Values
 ****************

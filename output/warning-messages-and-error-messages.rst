@@ -1,3 +1,4 @@
+.. _warnings-and-errors:
 
 Warning Messages and Error Messages
 ***********************************

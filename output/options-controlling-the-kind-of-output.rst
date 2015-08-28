@@ -1,3 +1,4 @@
+  .. _overall-options:
 
 Options Controlling the Kind of Output
 **************************************

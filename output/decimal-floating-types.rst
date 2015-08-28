@@ -1,3 +1,4 @@
+.. _decimal-float:
 
 Decimal Floating Types
 **********************

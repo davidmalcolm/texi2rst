@@ -1,3 +1,4 @@
+.. _unnamed-fields:
 
 Unnamed Structure and Union Fields
 **********************************

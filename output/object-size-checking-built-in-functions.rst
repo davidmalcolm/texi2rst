@@ -1,3 +1,4 @@
+.. _object-size-checking:
 
 Object Size Checking Built-in Functions
 ***************************************

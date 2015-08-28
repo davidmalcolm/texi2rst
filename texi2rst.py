@@ -428,11 +428,29 @@ def fixup_nodes(tree):
       </node>'''
     convert the <node> into a label for use by a ref:
 
-       :: _c-implementation
+       :: _c-implementation:
 
     (see http://sphinx-doc.org/markup/inline.html#role-ref)
-    """
-    class MenuFixer(NoopVisitor):
+
+    Also, we are given a structure like this:
+      Element(PARENT)
+        <node/> for chapter 1
+        <chapter/>
+          ...content of chapter 1...
+        <node/> for chapter 2
+          ...content of chapter 1...
+        <chapter/>
+    whereas we want the nodes inside the things they describe, so that
+    the label will work.  Move them, to be the first child, like this:
+      Element(PARENT)
+        <chapter/>
+          <node/> for chapter 1
+          ...content of chapter 1...
+        <chapter)
+          <node/> for chapter 2
+          ...content of chapter 1...
+   """
+    class NodeFixer(NoopVisitor):
         def previsit_element(self, element):
             if element.kind == 'node':
                 nodename = element.first_element_named('nodename')
@@ -442,8 +460,35 @@ def fixup_nodes(tree):
                     label = convert_text_to_label(text.data)
                     element.rst_kind = Label(label)
 
-    v = MenuFixer()
+    class NodeMover(NoopVisitor):
+        def __init__(self):
+            self.moved = set()
+
+        def previsit_element(self, element):
+            new_children = []
+            for i, child in enumerate(element.children):
+                if child.is_element('node'):
+                    node = child
+                    if node not in self.moved:
+                        next_child = self.get_next_child_element(element, i)
+                        if next_child:
+                            next_child.children.insert (0, node)
+                            self.moved.add(node)
+                            continue # dropping node from element.children
+                new_children.append(child)
+            element.children = new_children
+
+        def get_next_child_element(self, element, idx):
+            for child in element.children[idx + 1:]:
+                if isinstance(child, Element):
+                    return child
+
+    v = NodeFixer()
     v.visit(tree)
+
+    v = NodeMover()
+    v.visit(tree)
+
     return tree
 
 def fixup_option_refs(tree):
@@ -852,9 +897,9 @@ def fixup_inline_markup(tree):
 def convert_to_rst(tree):
     tree = fixup_comments(tree)
     tree = prune(tree)
+    tree = fixup_nodes(tree)
     tree = fixup_menus(tree)
     tree = split(tree)
-    tree = fixup_nodes(tree)
     tree = fixup_option_refs(tree)
     tree = fixup_table_entry(tree)
     tree = fixup_examples(tree)
@@ -1013,7 +1058,7 @@ class Label(RstKind):
         return 'Label(%r)' % self.title
 
     def before(self, w):
-        w.write(':: _%s:\n' % (self.title, ))
+        w.write('.. _%s:\n' % (self.title, ))
 
 class OutputFile(RstKind):
     def __init__(self, name):
@@ -1232,7 +1277,7 @@ class MenuTests(Texi2RstTests):
         doc = from_xml_string(xml_src)
         doc = fixup_nodes(doc)
         out = self.make_rst_string(doc)
-        self.assertEqual(u':: _c-implementation:\n',
+        self.assertEqual(u'.. _c-implementation:\n',
                          out)
 
 class InlineMarkupTests(Texi2RstTests):
@@ -1961,6 +2006,63 @@ class IntegrationTests(Texi2RstTests):
                 print(repr(k))
                 print(repr(dict_[k]))
                 print(dict_[k])
+
+    def test_nodes_placed_before_section_titles(self):
+        # Make sure that nodes get placed with their sections, with links
+        # appearing before section titles
+        xml_src = u'''
+<texinfo>
+  <para>Top level para.  <xref><xrefnodename>Standards</xrefnodename></xref> and <xref><xrefnodename>Function Attributes</xrefnodename></xref>.
+  </para>
+  <node name="Standards" spaces=" "><nodename>Standards</nodename><nodenext automatic="on">Invoking GCC</nodenext><nodeprev automatic="on">G++ and GCC</nodeprev><nodeup automatic="on">Top</nodeup></node>
+  <chapter spaces=" ">
+    <sectiontitle>Language Standards Supported by GCC</sectiontitle>
+    <para>First para of standards</para>
+  </chapter>
+  <node name="Function-Attributes" spaces=" "><nodename>Function Attributes</nodename><nodenext automatic="on">Variable Attributes</nodenext><nodeprev automatic="on">Mixed Declarations</nodeprev><nodeup automatic="on">C Extensions</nodeup></node>
+  <!-- some comment -->
+  <chapter spaces=" ">
+    <sectiontitle>Declaring Attributes of Functions</sectiontitle>
+    <para>First para of attributes</para>
+  </chapter>
+</texinfo>
+'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree)
+        out = self.make_rst_strings(tree)
+        dict_ = self.make_rst_strings(tree)
+        self.assertEqual(
+            dict_['gcc'],
+            u'''Top level para.  See :ref:`standards` and See :ref:`function-attributes`.
+
+.. toctree::
+
+  language-standards-supported-by-gcc
+  declaring-attributes-of-functions
+
+..  some comment
+
+''')
+        self.assertEqual(
+            dict_['language-standards-supported-by-gcc'],
+            u'''.. _standards:
+
+Language Standards Supported by GCC
+-----------------------------------
+
+First para of standards
+
+''')
+        self.assertEqual(
+            dict_['declaring-attributes-of-functions'],
+            u'''.. _function-attributes:
+
+Declaring Attributes of Functions
+---------------------------------
+
+First para of attributes
+
+''')
 
 #
 

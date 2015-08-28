@@ -1,3 +1,4 @@
+.. _pragmas:
 
 Pragmas Accepted by GCC
 ***********************
@@ -26,7 +27,7 @@ for further explanation.
    <function-specific-option-pragmas>
    <loop-specific-pragmas>
 
-:: _arm-pragmas:
+.. _arm-pragmas:
 
 ARM Pragmas
 ^^^^^^^^^^^
@@ -55,7 +56,7 @@ long_calls_off
   Do not affect the ``long_call`` or ``short_call`` attributes of
   subsequent functions.
 
-  :: _m32c-pragmas:
+  .. _m32c-pragmas:
 
 M32C Pragmas
 ^^^^^^^^^^^^
@@ -88,7 +89,7 @@ ADDRESS ``name````address``
     #pragma ADDRESS port3 0x103
     char port3;
 
-  :: _mep-pragmas:
+  .. _mep-pragmas:
 
 MeP Pragmas
 ^^^^^^^^^^^
@@ -169,7 +170,7 @@ GCC call ``name`` , ``name`` ...
     extern int foo ();
     #pragma call foo
 
-  :: _rs-6000-and-powerpc-pragmas:
+  .. _rs-6000-and-powerpc-pragmas:
 
 RS/6000 and PowerPC Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -196,7 +197,7 @@ longcall (0)
    Describe sh pragmas here.
    Describe v850 pragmas here.
 
-:: _darwin-pragmas:
+.. _darwin-pragmas:
 
 Darwin Pragmas
 ^^^^^^^^^^^^^^
@@ -236,7 +237,7 @@ unused (``var`` [, ``var``]...)
   that of the ``unused`` attribute, except that this pragma may appear
   anywhere within the variables' scopes.
 
-  :: _solaris-pragmas:
+  .. _solaris-pragmas:
 
 Solaris Pragmas
 ^^^^^^^^^^^^^^^
@@ -272,7 +273,7 @@ init (``function`` [, ``function``]...)
   initialization (before ``main``) or during shared module loading, by
   adding a call to the ``.init`` section.
 
-  :: _symbol-renaming-pragmas:
+  .. _symbol-renaming-pragmas:
 
 Symbol-Renaming Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -310,7 +311,7 @@ manner.  Here are some corner cases you may want to be aware of:
 * The ``oldname`` used by ``#pragma redefine_extname`` is
   always the C-language name.
 
-:: _structure-packing-pragmas:
+.. _structure-packing-pragmas:
 
 Structure-Packing Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -349,7 +350,7 @@ Some targets, e.g. x86 and PowerPC, support the ``ms_struct``
 
 * ``#pragma ms_struct reset`` goes back to the default layout.
 
-:: _weak-pragmas:
+.. _weak-pragmas:
 
 Weak Pragmas
 ^^^^^^^^^^^^
@@ -372,7 +373,7 @@ aliases.
   It is an error if ``symbol2`` is not defined in the current
   translation unit.
 
-  :: _diagnostic-pragmas:
+  .. _diagnostic-pragmas:
 
 Diagnostic Pragmas
 ^^^^^^^^^^^^^^^^^^
@@ -457,7 +458,7 @@ compilation.
   prints /tmp/file.c:4: note: #pragma message:
   TODO - Remember to fix this.
 
-  :: _visibility-pragmas:
+  .. _visibility-pragmas:
 
 Visibility Pragmas
 ^^^^^^^^^^^^^^^^^^
@@ -475,7 +476,7 @@ Visibility Pragmas
   affected; if you want to override the visibility for a particular
   member or instantiation, you must use an attribute.
 
-  :: _push-pop-macro-pragmas:
+  .. _push-pop-macro-pragmas:
 
 Push/Pop Macro Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -513,7 +514,7 @@ and #pragma pop_macro(``"macro_name"``).
 In this example, the definition of X as 1 is saved by ``#pragma
 push_macro`` and restored by ``#pragma pop_macro``.
 
-:: _function-specific-option-pragmas:
+.. _function-specific-option-pragmas:
 
 Function Specific Option Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -565,7 +566,7 @@ Function Specific Option Pragmas
   ``#pragma GCC optimize`` to use the default switches as specified
   on the command line.
 
-  :: _loop-specific-pragmas:
+  .. _loop-specific-pragmas:
 
 Loop-Specific Pragmas
 ^^^^^^^^^^^^^^^^^^^^^

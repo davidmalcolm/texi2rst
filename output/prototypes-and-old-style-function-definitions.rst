@@ -1,3 +1,4 @@
+.. _function-prototypes:
 
 Prototypes and Old-Style Function Definitions
 *********************************************

@@ -1,3 +1,4 @@
+.. _service:
 
 How To Get Help with GCC
 ------------------------

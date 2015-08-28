@@ -1,3 +1,4 @@
+.. _floating-point-implementation:
 
 Floating Point
 **************

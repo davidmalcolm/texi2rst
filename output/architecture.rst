@@ -1,3 +1,4 @@
+.. _architecture-implementation:
 
 Architecture
 ************

@@ -83,7 +83,7 @@
           <div class="body">
             
   <div class="section" id="options-that-control-optimization">
-<h1>Options That Control Optimization<a class="headerlink" href="#options-that-control-optimization" title="Permalink to this headline">¶</a></h1>
+<span id="optimize-options"></span><h1>Options That Control Optimization<a class="headerlink" href="#options-that-control-optimization" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><p id="index-1">These options control various sorts of optimizations.</p>
 <p>Without any optimization option, the compiler&#8217;s goal is to reduce the
 cost of compilation and to make debugging produce the expected
@@ -108,7 +108,7 @@ optimization flags are specified.</p>
 set of optimizations may be enabled at each <a class="reference internal" href="#cmdoption-O"><em class="xref std std-option">-O</em></a> level than
 those listed here.  You can invoke GCC with <em class="xref std std-option">-Q --help=optimizers</em>
 to find out the exact set of optimizations that are enabled at each level.
-See <em class="xref std std-ref">overall-options</em>, for examples.</p>
+See <a class="reference internal" href="options-controlling-the-kind-of-output.html#overall-options"><em>Options Controlling the Kind of Output</em></a>, for examples.</p>
 <dl class="option">
 <dt id="cmdoption-O">
 <tt class="descname">-O</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-O1</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-O" title="Permalink to this definition">¶</a></dt>
@@ -446,8 +446,8 @@ release to an another.</p>
 <tt class="descname">-fno-keep-inline-dllexport</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-keep-inline-dllexport" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is a more fine-grained version of <a class="reference internal" href="#cmdoption-fkeep-inline-functions"><em class="xref std std-option">-fkeep-inline-functions</em></a>,
 which applies only to functions that are declared using the <tt class="docutils literal"><span class="pre">dllexport</span></tt>
-attribute or declspec (See <em class="xref std std-ref">Declaring Attributes of
-Functions</em>.)</p>
+attribute or declspec (See <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of
+Functions</em></a>.)</p>
 </dd></dl>
 
 <dl class="option">
@@ -1979,7 +1979,7 @@ type.</p>
 recently written to (called &#8216;type-punning&#8217;) is common.  Even with
 <a class="reference internal" href="#cmdoption-fstrict-aliasing"><em class="xref std std-option">-fstrict-aliasing</em></a>, type-punning is allowed, provided the memory
 is accessed through the union type.  So, the code above works as
-expected.  See <em class="xref std std-ref">structures-unions-enumerations-and-bit-fields-implementation</em>.  However, this code might not:</p>
+expected.  See <a class="reference internal" href="structures,-unions,-enumerations,-and-bit-fields.html#structures-unions-enumerations-and-bit-fields-implementation"><em>Structures, Unions, Enumerations, and Bit-Fields</em></a>.  However, this code might not:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">union</span> <span class="n">a_union</span> <span class="n">t</span><span class="p">;</span>
   <span class="kt">int</span><span class="o">*</span> <span class="n">ip</span><span class="p">;</span>

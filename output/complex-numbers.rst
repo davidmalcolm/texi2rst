@@ -1,3 +1,4 @@
+.. _complex:
 
 Complex Numbers
 ***************

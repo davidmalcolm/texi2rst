@@ -1,3 +1,4 @@
+.. _return-address:
 
 Getting the Return or Frame Address of a Function
 *************************************************

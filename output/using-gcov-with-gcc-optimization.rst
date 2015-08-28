@@ -1,3 +1,4 @@
+.. _gcov-and-optimization:
 
 Using :command:`gcov` with GCC OptimizationIf you plan to use :command:`gcov` to help optimize your code, you must
 first compile your program with two special GCC options:

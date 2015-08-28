@@ -1,3 +1,4 @@
+.. _long-long:
 
 Double-Word Integers
 ********************

@@ -92,7 +92,7 @@
           <div class="body">
             
   <div class="section" id="messaging-with-the-gnu-objective-c-runtime">
-<h1>Messaging with the GNU Objective-C Runtime<a class="headerlink" href="#messaging-with-the-gnu-objective-c-runtime" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Messaging with the GNU Objective-C Runtime<a class="headerlink" href="#messaging-with-the-gnu-objective-c-runtime" title="Permalink to this headline">¶</a></h1>
 <p>This section is specific for the GNU Objective-C runtime.  If you are
 using a different runtime, you can skip it.</p>
 <p>The implementation of messaging in the GNU Objective-C runtime is
@@ -115,9 +115,8 @@ then it calls it.</p>
 <ul class="simple">
 </ul>
 </div>
-<p>:: _dynamically-registering-methods:</p>
 <div class="section" id="dynamically-registering-methods">
-<h2>Dynamically Registering Methods<a class="headerlink" href="#dynamically-registering-methods" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>Dynamically Registering Methods<a class="headerlink" href="#dynamically-registering-methods" title="Permalink to this headline">¶</a></h2>
 <p>If <tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt> does not find a suitable method
 implementation, because the receiver does not implement the required
 method, it tries to see if the class can dynamically register the
@@ -151,10 +150,9 @@ forwarding hook.</p>
 <p>Support for <tt class="docutils literal"><span class="pre">+resolveInstanceMethod:</span></tt> and
 <tt class="docutils literal"><span class="pre">resolveClassMethod:</span></tt> was added to the GNU Objective-C runtime in
 GCC version 4.6.</p>
-<p>:: _forwarding-hook:</p>
 </div>
 <div class="section" id="forwarding-hook">
-<h2>Forwarding Hook<a class="headerlink" href="#forwarding-hook" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>Forwarding Hook<a class="headerlink" href="#forwarding-hook" title="Permalink to this headline">¶</a></h2>
 <p>The GNU Objective-C runtime provides a hook, called
 <tt class="docutils literal"><span class="pre">__objc_msg_forward2</span></tt>, which is called by
 <tt class="docutils literal"><span class="pre">objc_msg_lookup()</span></tt> when it can&#8217;t find a method implementation in

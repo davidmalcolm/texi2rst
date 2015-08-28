@@ -1,3 +1,4 @@
+.. _preprocessing-directives-implementation:
 
 Preprocessing Directives
 ************************

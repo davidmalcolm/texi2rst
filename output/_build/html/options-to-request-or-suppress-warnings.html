@@ -83,7 +83,7 @@
           <div class="body">
             
   <div class="section" id="options-to-request-or-suppress-warnings">
-<h1>Options to Request or Suppress Warnings<a class="headerlink" href="#options-to-request-or-suppress-warnings" title="Permalink to this headline">¶</a></h1>
+<span id="warning-options"></span><h1>Options to Request or Suppress Warnings<a class="headerlink" href="#options-to-request-or-suppress-warnings" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">Warnings are diagnostic messages that report constructions that
 are not inherently erroneous but that are risky or suggest there
 may have been an error.</p>
@@ -187,7 +187,7 @@ alternate keywords whose names begin and end with __.  Pedantic
 warnings are also disabled in the expression that follows
 <tt class="docutils literal"><span class="pre">__extension__</span></tt>.  However, only system header files should use
 these escape routes; application programs should avoid them.
-See <em class="xref std std-ref">alternate-keywords</em>.</p>
+See <a class="reference internal" href="alternate-keywords.html#alternate-keywords"><em>Alternate Keywords</em></a>.</p>
 <p>Some users try to use <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> to check programs for strict ISO
 C conformance.  They soon find that it does not do quite what they want:
 it finds some non-ISO practices, but not all-only those for which
@@ -396,7 +396,7 @@ features; GCC does not support warning about features that go beyond a
 particular library&#8217;s limitations.  However, if <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> is used
 with <a class="reference internal" href="#cmdoption-Wformat"><em class="xref std std-option">-Wformat</em></a>, warnings are given about format features not
 in the selected standard version (but not for <tt class="docutils literal"><span class="pre">strfmon</span></tt> formats,
-since those are not in any version of the C standard).  See <em class="xref std std-ref">Options Controlling C Dialect</em>.</p>
+since those are not in any version of the C standard).  See <a class="reference internal" href="options-controlling-c-dialect.html#c-dialect-options"><em>Options Controlling C Dialect</em></a>.</p>
 <dl class="option">
 <dt id="cmdoption-Wformat">
 <tt class="descname">-Wformat</tt><tt class="descclassname">=1</tt><a class="headerlink" href="#cmdoption-Wformat" title="Permalink to this definition">¶</a></dt>
@@ -958,7 +958,7 @@ call it at any point in the code.  As a result, you may get a warning
 even when there is in fact no problem because <tt class="docutils literal"><span class="pre">longjmp</span></tt> cannot
 in fact be called at the place that would cause a problem.</p>
 <p>Some spurious warnings can be avoided if you declare all the functions
-you use that never return as <tt class="docutils literal"><span class="pre">noreturn</span></tt>.  See <em class="xref std std-ref">function-attributes</em>.</p>
+you use that never return as <tt class="docutils literal"><span class="pre">noreturn</span></tt>.  See <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>.</p>
 <p>This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> or <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.</p>
 </dd></dl>
 
@@ -1369,7 +1369,7 @@ except when the same as the default promotion.</p>
 </div>
 <p>Warn when a declaration is found after a statement in a block.  This
 construct, known from C++, was introduced with ISO C99 and is by default
-allowed in GCC.  It is not supported by ISO C90.  See <em class="xref std std-ref">mixed-declarations</em>.</p>
+allowed in GCC.  It is not supported by ISO C90.  See <a class="reference internal" href="mixed-declarations-and-code.html#mixed-declarations"><em>Mixed Declarations and Code</em></a>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -2063,7 +2063,7 @@ cannot be fixed to display these characters distinctly.</p>
 <dl class="option">
 <dt id="cmdoption-Wno-deprecated">
 <tt class="descname">-Wno-deprecated</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wdeprecated</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-deprecated" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not warn about usage of deprecated features.  See <em class="xref std std-ref">deprecated-features</em>.</p>
+<dd><p>Do not warn about usage of deprecated features.  See <a class="reference internal" href="deprecated-features.html#deprecated-features"><em>Deprecated Features</em></a>.</p>
 </dd></dl>
 
 <dl class="option">

@@ -92,7 +92,7 @@
           <div class="body">
             
   <div class="section" id="format-checks-specific-to-particular-target-machines">
-<h1>Format Checks Specific to Particular Target Machines<a class="headerlink" href="#format-checks-specific-to-particular-target-machines" title="Permalink to this headline">¶</a></h1>
+<span id="target-format-checks"></span><h1>Format Checks Specific to Particular Target Machines<a class="headerlink" href="#format-checks-specific-to-particular-target-machines" title="Permalink to this headline">¶</a></h1>
 <p>For some target machines, GCC supports additional options to the
 format attribute
 (Function AttributesDeclaring Attributes of Functions).</p>
@@ -100,17 +100,15 @@ format attribute
 <ul class="simple">
 </ul>
 </div>
-<p>:: _solaris-format-checks:</p>
 <div class="section" id="solaris-format-checks">
-<h2>Solaris Format Checks<a class="headerlink" href="#solaris-format-checks" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Solaris Format Checks<a class="headerlink" href="#solaris-format-checks" title="Permalink to this headline">¶</a></h2>
 <p>Solaris targets support the <tt class="docutils literal"><span class="pre">cmn_err</span></tt> (or <tt class="docutils literal"><span class="pre">__cmn_err__</span></tt>) format
 check.  <tt class="docutils literal"><span class="pre">cmn_err</span></tt> accepts a subset of the standard <tt class="docutils literal"><span class="pre">printf</span></tt>
 conversions, and the two-argument <tt class="docutils literal"><span class="pre">%b</span></tt> conversion for displaying
 bit-fields.  See the Solaris man page for <tt class="docutils literal"><span class="pre">cmn_err</span></tt> for more information.</p>
-<p>:: _darwin-format-checks:</p>
 </div>
 <div class="section" id="darwin-format-checks">
-<h2>Darwin Format Checks<a class="headerlink" href="#darwin-format-checks" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>Darwin Format Checks<a class="headerlink" href="#darwin-format-checks" title="Permalink to this headline">¶</a></h2>
 <p>Darwin targets support the <tt class="docutils literal"><span class="pre">CFString</span></tt> (or <tt class="docutils literal"><span class="pre">__CFString__</span></tt>) in the format
 attribute context.  Declarations made with such attribution are parsed for correct syntax
 and format argument types.  However, parsing of the format string itself is currently undefined

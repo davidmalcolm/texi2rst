@@ -1,3 +1,4 @@
+.. _vector-extensions:
 
 Using Vector Instructions through Built-in Functions
 ****************************************************

@@ -1,3 +1,4 @@
+.. _thread-local:
 
 Thread-Local Storage
 ********************
@@ -52,7 +53,7 @@ is expected to function.
    <c99-thread-local-edits>
    <c++98-thread-local-edits>
 
-:: _c99-thread-local-edits:
+.. _c99-thread-local-edits:
 
 ISO/IEC 9899:1999 Edits for Thread-Local Storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -107,7 +108,7 @@ that document the exact semantics of the language extension.
   The ``__thread`` specifier shall be used only with
   variables.
 
-:: _c++98-thread-local-edits:
+.. _c++98-thread-local-edits:
 
 ISO/IEC 14882:1998 Edits for Thread-Local Storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

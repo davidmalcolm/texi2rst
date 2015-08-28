@@ -1,3 +1,4 @@
+  .. _debugging-options:
 
 Options for Debugging Your Program or GCC
 *****************************************

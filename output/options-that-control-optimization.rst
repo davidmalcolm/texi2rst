@@ -1,3 +1,4 @@
+.. _optimize-options:
 
 Options That Control Optimization
 *********************************

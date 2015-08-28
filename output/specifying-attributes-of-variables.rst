@@ -1,3 +1,4 @@
+  .. _variable-attributes:
 
 Specifying Attributes of Variables
 **********************************
@@ -35,7 +36,7 @@ attributes.
    <x86-variable-attributes>
    <xstormy16-variable-attributes>
 
-:: _common-variable-attributes:
+.. _common-variable-attributes:
 
 Common Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -291,7 +292,7 @@ weak
   ``weak`` variable attributeThe ``weak`` attribute is described in
   Common Function Attributes.
 
-  :: _avr-variable-attributes:
+  .. _avr-variable-attributes:
 
 AVR Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -367,7 +368,7 @@ address address (``addr``)
 
     volatile int porta __attribute__((address (0x600)));
 
-  :: _blackfin-variable-attributes:
+  .. _blackfin-variable-attributes:
 
 Blackfin Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -386,7 +387,7 @@ l2
   Variables with ``l2`` attribute are put into the specific section
   named ``.l2.data``.
 
-  :: _h8-300-variable-attributes:
+  .. _h8-300-variable-attributes:
 
 H8/300 Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -416,7 +417,7 @@ tiny_data
   on data in the tiny data section.  Note the tiny data area is limited to
   slightly under 32KB of data.
 
-  :: _ia-64-variable-attributes:
+  .. _ia-64-variable-attributes:
 
 IA-64 Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -432,7 +433,7 @@ model (``model-name``)
   independent and hence this attribute must not be used for objects
   defined by shared libraries.
 
-  :: _m32r-d-variable-attributes:
+  .. _m32r-d-variable-attributes:
 
 M32R/D Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -454,7 +455,7 @@ model (``model-name``)
   (the compiler generates ``seth/add3`` instructions to load their
   addresses).
 
-  :: _mep-variable-attributes:
+  .. _mep-variable-attributes:
 
 MeP Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -508,7 +509,7 @@ cb cb (``addr``)
 
     int cpu_clock __attribute__((cb(0x123)));
 
-  :: _microsoft-windows-variable-attributes:
+  .. _microsoft-windows-variable-attributes:
 
 Microsoft Windows Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -566,7 +567,7 @@ shared
 
   The ``shared`` attribute is only available on Microsoft Windows.
 
-  :: _powerpc-variable-attributes:
+  .. _powerpc-variable-attributes:
 
 PowerPC Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -580,7 +581,7 @@ documentation in x86 Variable Attributes.
 ``altivec`` variable attribute, PowerPCFor documentation of ``altivec`` attribute please see the
 documentation in PowerPC Type Attributes.
 
-:: _spu-variable-attributes:
+.. _spu-variable-attributes:
 
 SPU Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -589,7 +590,7 @@ SPU Variable Attributes
 documentation of this attribute please see the documentation in
 SPU Type Attributes.
 
-:: _x86-variable-attributes:
+.. _x86-variable-attributes:
 
 x86 Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -713,7 +714,7 @@ ms_struct gcc_struct
 
     Here, ``t5`` takes up 2 bytes.
 
-  :: _xstormy16-variable-attributes:
+  .. _xstormy16-variable-attributes:
 
 Xstormy16 Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

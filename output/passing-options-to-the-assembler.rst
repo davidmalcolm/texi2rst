@@ -1,3 +1,4 @@
+.. _assembler-options:
 
 Passing Options to the Assembler
 ********************************

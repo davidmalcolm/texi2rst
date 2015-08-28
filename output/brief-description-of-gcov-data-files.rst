@@ -1,3 +1,4 @@
+.. _gcov-data-files:
 
 Brief Description of :command:`gcov` Data Files:command:`gcov` uses two files for profiling.  The names of these files
 are derived from the original object file by substituting the

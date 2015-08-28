@@ -1,3 +1,4 @@
+.. _c++-comments:
 
 C++ Style Comments
 ******************

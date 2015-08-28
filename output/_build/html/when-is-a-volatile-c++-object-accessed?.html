@@ -83,13 +83,13 @@
           <div class="body">
             
   <div class="section" id="when-is-a-volatile-c-object-accessed">
-<h1>When is a Volatile C++ Object Accessed?<a class="headerlink" href="#when-is-a-volatile-c-object-accessed" title="Permalink to this headline">¶</a></h1>
+<span id="c-volatiles"></span><h1>When is a Volatile C++ Object Accessed?<a class="headerlink" href="#when-is-a-volatile-c-object-accessed" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">The C++ standard differs from the C standard in its treatment of
 volatile objects.  It fails to specify what constitutes a volatile
 access, except to say that C++ should behave in a similar manner to C
 with respect to volatiles, where possible.  However, the different
 lvalueness of expressions between C and C++ complicate the behavior.
-G++ behaves the same as GCC for volatile access, See <em class="xref std std-ref">Volatiles</em>, for a description of GCC&#8217;s behavior.</p>
+G++ behaves the same as GCC for volatile access, See <a class="reference internal" href="extensions-to-the-c-language-family.html#c-extensions"><em>Volatiles</em></a>, for a description of GCC&#8217;s behavior.</p>
 <p>The C and C++ language specifications differ when an object is
 accessed in a void context:</p>
 <div class="highlight-c++"><pre>volatile int *src = ``somevalue``;

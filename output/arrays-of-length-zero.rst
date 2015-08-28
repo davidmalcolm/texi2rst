@@ -1,3 +1,4 @@
+.. _zero-length:
 
 Arrays of Length Zero
 *********************

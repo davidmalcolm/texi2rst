@@ -120,7 +120,7 @@
           <div class="body">
             
   <div class="section" id="declaring-attributes-of-functions">
-<h1>Declaring Attributes of Functions<a class="headerlink" href="#declaring-attributes-of-functions" title="Permalink to this headline">¶</a></h1>
+<span id="function-attributes"></span><h1>Declaring Attributes of Functions<a class="headerlink" href="#declaring-attributes-of-functions" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><p id="index-1"><tt class="docutils literal"><span class="pre">volatile</span></tt> applied to function``const`` applied to functionIn GNU C, you can use function attributes to declare certain things
 about functions called in your program which help the compiler
 optimize calls and check your code more carefully.  For example, you
@@ -138,7 +138,7 @@ on a declaration, followed by an attribute specification inside double
 parentheses.  You can specify multiple attributes in a declaration by
 separating them by commas within the double parentheses or by
 immediately following an attribute declaration with another attribute
-declaration.  See <em class="xref std std-ref">attribute-syntax</em>, for the exact rules on
+declaration.  See <a class="reference internal" href="attribute-syntax.html#attribute-syntax"><em>Attribute Syntax</em></a>, for the exact rules on
 attribute syntax and placement.</p>
 <p>GCC also supports attributes on
 variable declarations (Variable Attributes),
@@ -156,9 +156,8 @@ GCC plugins may provide their own attributes.</p>
 <ul class="simple">
 </ul>
 </div>
-<p>:: _common-function-attributes:</p>
 <div class="section" id="common-function-attributes">
-<h2>Common Function Attributes<a class="headerlink" href="#common-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Common Function Attributes<a class="headerlink" href="#common-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>The following attributes are supported on most targets.</p>
 <dl class="docutils">
 <dt>alias (&#8220;<tt class="docutils literal"><span class="pre">target</span></tt>&#8221;)</dt>
@@ -387,9 +386,9 @@ MinGW targets, <tt class="docutils literal"><span class="pre">ms_printf</span></
 <tt class="docutils literal"><span class="pre">ms_strftime</span></tt> are also present.
 <tt class="docutils literal"><span class="pre">archetype</span></tt> values such as <tt class="docutils literal"><span class="pre">printf</span></tt> refer to the formats accepted
 by the system&#8217;s C runtime library,
-while values prefixed with <a href="#id1"><span class="problematic" id="id2">gnu_</span></a> always refer
+while values prefixed with <a href="#id31"><span class="problematic" id="id32">gnu_</span></a> always refer
 to the formats accepted by the GNU C Library.  On Microsoft Windows
-targets, values prefixed with <a href="#id3"><span class="problematic" id="id4">ms_</span></a> refer to the formats accepted by the
+targets, values prefixed with <a href="#id33"><span class="problematic" id="id34">ms_</span></a> refer to the formats accepted by the
 msvcrt.dll library.
 The parameter <tt class="docutils literal"><span class="pre">string-index</span></tt>
 specifies which argument is the format string argument (starting
@@ -419,15 +418,15 @@ modify the header file stdio.h.  In C99 mode, the functions
 <tt class="docutils literal"><span class="pre">vsscanf</span></tt> are also checked.  Except in strictly conforming C
 standard modes, the X/Open function <tt class="docutils literal"><span class="pre">strfmon</span></tt> is also checked as
 are <tt class="docutils literal"><span class="pre">printf_unlocked</span></tt> and <tt class="docutils literal"><span class="pre">fprintf_unlocked</span></tt>.
-See <em class="xref std std-ref">Options Controlling C Dialect</em>.</p>
+See <a class="reference internal" href="options-controlling-c-dialect.html#c-dialect-options"><em>Options Controlling C Dialect</em></a>.</p>
 <p>For Objective-C dialects, <tt class="docutils literal"><span class="pre">NSString</span></tt> (or <tt class="docutils literal"><span class="pre">__NSString__</span></tt>) is
 recognized in the same context.  Declarations including these format attributes
 are parsed for correct syntax, however the result of checking of such format
 strings is not yet defined, and is not carried out by this version of the
 compiler.</p>
 <p>The target may also provide additional types of format checks.
-See <em class="xref std std-ref">Format Checks Specific to Particular
-Target Machines</em>.</p>
+See <a class="reference internal" href="format-checks-specific-to-particular-target-machines.html#target-format-checks"><em>Format Checks Specific to Particular
+Target Machines</em></a>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -467,14 +466,14 @@ The compiler always treats <tt class="docutils literal"><span class="pre">gettex
 <tt class="docutils literal"><span class="pre">dcgettext</span></tt> in this manner except when strict ISO C support is
 requested by <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or an appropriate <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option, or
 <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ffreestanding"><em class="xref std std-option">-ffreestanding</em></a> or <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fno-builtin"><em class="xref std std-option">-fno-builtin</em></a>
-is used.  See <em class="xref std std-ref">Options
-Controlling C Dialect</em>.</p>
+is used.  See <a class="reference internal" href="options-controlling-c-dialect.html#c-dialect-options"><em>Options
+Controlling C Dialect</em></a>.</p>
 <p>For Objective-C dialects, the <tt class="docutils literal"><span class="pre">format-arg</span></tt> attribute may refer to an
 <tt class="docutils literal"><span class="pre">NSString</span></tt> reference for compatibility with the <tt class="docutils literal"><span class="pre">format</span></tt> attribute
 above.</p>
 <p>The target may also allow additional types in <tt class="docutils literal"><span class="pre">format-arg</span></tt> attributes.
-See <em class="xref std std-ref">Format Checks Specific to Particular
-Target Machines</em>.</p>
+See <a class="reference internal" href="format-checks-specific-to-particular-target-machines.html#target-format-checks"><em>Format Checks Specific to Particular
+Target Machines</em></a>.</p>
 </dd></dl>
 
 <dl class="docutils">
@@ -505,8 +504,8 @@ inlined where possible.</p>
 measure and as a useful feature in its own right.  This attribute is
 available in GCC 4.1.3 and later.  It is available if either of the
 preprocessor macros <tt class="docutils literal"><span class="pre">__GNUC_GNU_INLINE__</span></tt> or
-<tt class="docutils literal"><span class="pre">__GNUC_STDC_INLINE__</span></tt> are defined.  See <em class="xref std std-ref">An Inline
-Function is As Fast As a Macro</em>.</p>
+<tt class="docutils literal"><span class="pre">__GNUC_STDC_INLINE__</span></tt> are defined.  See <a class="reference internal" href="an-inline-function-is-as-fast-as-a-macro.html#inline"><em>An Inline
+Function is As Fast As a Macro</em></a>.</p>
 <p class="last">In C++, this attribute does not depend on <tt class="docutils literal"><span class="pre">extern</span></tt> in any way,
 but it still requires the <tt class="docutils literal"><span class="pre">inline</span></tt> keyword to enable its special
 behavior.</p>
@@ -735,7 +734,7 @@ are assumed to be an optimization level.  Strings that begin with
 are assumed to be used with a <tt class="docutils literal"><span class="pre">-f</span></tt> prefix.  You can also use the
 #pragma GCC optimize pragma to set the optimization options
 that affect more than one function.
-See <em class="xref std std-ref">function-specific-option-pragmas</em>, for details about the
+See <a class="reference internal" href="pragmas-accepted-by-gcc.html#function-specific-option-pragmas"><em>Function Specific Option Pragmas</em></a>, for details about the
 #pragma GCC optimize pragma.</p>
 <p class="last">This can be used for instance to have frequently-executed functions
 compiled with more aggressive optimization options that produce faster
@@ -833,7 +832,7 @@ command line.  This can be used for instance to have functions
 compiled with a different ISA (instruction set architecture) than the
 default.  You can also use the #pragma GCC target pragma to set
 more than one function to be compiled with specific target options.
-See <em class="xref std std-ref">function-specific-option-pragmas</em>, for details about the
+See <a class="reference internal" href="pragmas-accepted-by-gcc.html#function-specific-option-pragmas"><em>Function Specific Option Pragmas</em></a>, for details about the
 #pragma GCC target pragma.</p>
 <p>For instance, on an x86, you could declare one function with the
 <tt class="docutils literal"><span class="pre">target(&quot;sse4.1,arch=core2&quot;)</span></tt> attribute and another with
@@ -1031,10 +1030,9 @@ one pass over the objects and does the best that it can.  Using the
 options can help the packing however, since they produce smaller,
 easier to pack regions.</p>
 </div></blockquote>
-<p>:: _arc-function-attributes:</p>
 </div>
 <div class="section" id="arc-function-attributes">
-<h2>ARC Function Attributes<a class="headerlink" href="#arc-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>ARC Function Attributes<a class="headerlink" href="#arc-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the ARC back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
@@ -1057,7 +1055,7 @@ in a parameter to the interrupt attribute like this:</p>
 These attributes override the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> and <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmedium-calls"><em class="xref std std-option">-mmedium-calls</em></a> (ARC Options)
 command-line switches and <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">long_calls</span></tt> settings.</p>
-<p>For ARC, a function marked with the <tt class="docutils literal"><span class="pre">long_call</span></tt> attribute is
+<p class="last">For ARC, a function marked with the <tt class="docutils literal"><span class="pre">long_call</span></tt> attribute is
 always called using register-indirect jump-and-link instructions,
 thereby enabling the called function to be placed anywhere within the
 32-bit address space.  A function marked with the <tt class="docutils literal"><span class="pre">medium_call</span></tt>
@@ -1067,12 +1065,11 @@ the call site.  A function marked with the <tt class="docutils literal"><span cl
 attribute will always be close enough to be called with a conditional
 branch-and-link instruction, which has a 21-bit offset from
 the call site.</p>
-<p class="last">:: _arm-function-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="arm-function-attributes">
-<h2>ARM Function Attributes<a class="headerlink" href="#arm-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>ARM Function Attributes<a class="headerlink" href="#arm-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported for ARM targets:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
@@ -1129,14 +1126,13 @@ For example,</p>
 <span class="kt">double</span> <span class="nf">f2d</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">pcs</span><span class="p">(</span><span class="s">&quot;aapcs&quot;</span><span class="p">)));</span>
 </pre></div>
 </div>
-<p>Variadic functions always use the <tt class="docutils literal"><span class="pre">&quot;aapcs&quot;</span></tt> calling convention and
+<p class="last">Variadic functions always use the <tt class="docutils literal"><span class="pre">&quot;aapcs&quot;</span></tt> calling convention and
 the compiler rejects attempts to specify an alternative.</p>
-<p class="last">:: _avr-function-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="avr-function-attributes">
-<h2>AVR Function Attributes<a class="headerlink" href="#avr-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>AVR Function Attributes<a class="headerlink" href="#avr-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the AVR back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
@@ -1195,14 +1191,13 @@ do not re-enable interrupts.  It is save to enable interrupts in a
 <tt class="docutils literal"><span class="pre">signal</span></tt> handler.  This &#8216;save&#8217; only applies to the code
 generated by the compiler and not to the IRQ layout of the
 application which is responsibility of the application.</p>
-<p>If both <tt class="docutils literal"><span class="pre">signal</span></tt> and <tt class="docutils literal"><span class="pre">interrupt</span></tt> are specified for the same
+<p class="last">If both <tt class="docutils literal"><span class="pre">signal</span></tt> and <tt class="docutils literal"><span class="pre">interrupt</span></tt> are specified for the same
 function, <tt class="docutils literal"><span class="pre">signal</span></tt> is silently ignored.</p>
-<p class="last">:: _blackfin-function-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="blackfin-function-attributes">
-<h2>Blackfin Function Attributes<a class="headerlink" href="#blackfin-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>Blackfin Function Attributes<a class="headerlink" href="#blackfin-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the Blackfin back end:</p>
 <dl class="docutils">
 <dt>exception_handler</dt>
@@ -1264,28 +1259,25 @@ attribute is present.</p>
 <dt>saveall</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">saveall</span></tt> function attribute, Blackfin
 .. index:: save all registers on the Blackfin</p>
-<p>Use this attribute to indicate that
+<p class="last">Use this attribute to indicate that
 all registers except the stack pointer should be saved in the prologue
 regardless of whether they are used or not.</p>
-<p class="last">:: _cr16-function-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="cr16-function-attributes">
-<h2>CR16 Function Attributes<a class="headerlink" href="#cr16-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>CR16 Function Attributes<a class="headerlink" href="#cr16-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the CR16 back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, CR16Use this attribute to indicate
+<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, CR16Use this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
-when this attribute is present.</p>
-<p class="last">:: _epiphany-function-attributes:</p>
-</dd>
+when this attribute is present.</dd>
 </dl>
 </div>
 <div class="section" id="epiphany-function-attributes">
-<h2>Epiphany Function Attributes<a class="headerlink" href="#epiphany-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>Epiphany Function Attributes<a class="headerlink" href="#epiphany-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the Epiphany back end:</p>
 <dl class="docutils">
 <dt>disinterrupt</dt>
@@ -1336,16 +1328,15 @@ Epiphany targets:</p>
 <dt>long_call short_call</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">long_call</span></tt> function attribute, Epiphany``short_call`` function attribute, Epiphany
 .. index:: indirect calls, Epiphany</p>
-<p>These attributes specify how a particular function is called.
+<p class="last">These attributes specify how a particular function is called.
 These attributes override the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (Adapteva Epiphany Options)
 command-line switch and <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">long_calls</span></tt> settings.</p>
-<p class="last">:: _h8-300-function-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="h8-300-function-attributes">
-<h2>H8/300 Function Attributes<a class="headerlink" href="#h8-300-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>H8/300 Function Attributes<a class="headerlink" href="#h8-300-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are available for H8/300 targets:</p>
 <dl class="docutils">
 <dt>function_vector</dt>
@@ -1363,15 +1354,14 @@ interrupt handler when this attribute is present.</dd>
 <dt>saveall</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">saveall</span></tt> function attribute, H8/300
 .. index:: save all registers on the H8/300, H8/300H, and H8S</p>
-<p>Use this attribute on the H8/300, H8/300H, and H8S to indicate that
+<p class="last">Use this attribute on the H8/300, H8/300H, and H8S to indicate that
 all registers except the stack pointer should be saved in the prologue
 regardless of whether they are used or not.</p>
-<p class="last">:: _ia-64-function-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="ia-64-function-attributes">
-<h2>IA-64 Function Attributes<a class="headerlink" href="#ia-64-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>IA-64 Function Attributes<a class="headerlink" href="#ia-64-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported on IA-64 targets:</p>
 <dl class="docutils">
 <dt>syscall_linkage</dt>
@@ -1388,13 +1378,12 @@ for some system calls.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="kt">int</span> <span class="nf">foo</span> <span class="p">()</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">version_id</span> <span class="p">(</span><span class="s">&quot;20040821&quot;</span><span class="p">)));</span>
 </pre></div>
 </div>
-<p>Calls to <tt class="docutils literal"><span class="pre">foo</span></tt> are mapped to calls to <tt class="docutils literal"><span class="pre">foo{20040821}</span></tt>.</p>
-<p class="last">:: _m32c-function-attributes:</p>
+<p class="last">Calls to <tt class="docutils literal"><span class="pre">foo</span></tt> are mapped to calls to <tt class="docutils literal"><span class="pre">foo{20040821}</span></tt>.</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="m32c-function-attributes">
-<h2>M32C Function Attributes<a class="headerlink" href="#m32c-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>M32C Function Attributes<a class="headerlink" href="#m32c-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the M32C back end:</p>
 <dl class="docutils">
 <dt>bank_switch</dt>
@@ -1438,16 +1427,14 @@ then be sure to write this declaration in both files.</p>
 <p class="last">This attribute is ignored for R8C target.</p>
 </dd>
 <dt>interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, M32CUse this attribute to indicate
+<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, M32CUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
-when this attribute is present.</p>
-<p class="last">:: _m32r-d-function-attributes:</p>
-</dd>
+when this attribute is present.</dd>
 </dl>
 </div>
 <div class="section" id="m32r-d-function-attributes">
-<h2>M32R/D Function Attributes<a class="headerlink" href="#m32r-d-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>M32R/D Function Attributes<a class="headerlink" href="#m32r-d-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the M32R/D back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
@@ -1468,16 +1455,15 @@ callable with the <tt class="docutils literal"><span class="pre">bl</span></tt> 
 <p>Medium model objects may live anywhere in the 32-bit address space (the
 compiler generates <tt class="docutils literal"><span class="pre">seth/add3</span></tt> instructions to load their addresses),
 and are callable with the <tt class="docutils literal"><span class="pre">bl</span></tt> instruction.</p>
-<p>Large model objects may live anywhere in the 32-bit address space (the
+<p class="last">Large model objects may live anywhere in the 32-bit address space (the
 compiler generates <tt class="docutils literal"><span class="pre">seth/add3</span></tt> instructions to load their addresses),
 and may not be reachable with the <tt class="docutils literal"><span class="pre">bl</span></tt> instruction (the compiler
 generates the much slower <tt class="docutils literal"><span class="pre">seth/add3/jl</span></tt> instruction sequence).</p>
-<p class="last">:: _m68k-function-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="m68k-function-attributes">
-<h2>m68k Function Attributes<a class="headerlink" href="#m68k-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>m68k Function Attributes<a class="headerlink" href="#m68k-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the m68k back end:</p>
 <dl class="docutils">
 <dt>interrupt interrupt_handler</dt>
@@ -1486,34 +1472,30 @@ indicate that the specified function is an interrupt handler.  The compiler
 generates function entry and exit sequences suitable for use in an
 interrupt handler when this attribute is present.  Either name may be used.</dd>
 <dt>interrupt_thread</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt_thread</span></tt> function attribute, fidoUse this attribute on fido, a subarchitecture of the m68k, to indicate
+<dd><tt class="docutils literal"><span class="pre">interrupt_thread</span></tt> function attribute, fidoUse this attribute on fido, a subarchitecture of the m68k, to indicate
 that the specified function is an interrupt handler that is designed
 to run as a thread.  The compiler omits generate prologue/epilogue
 sequences and replaces the return instruction with a <tt class="docutils literal"><span class="pre">sleep</span></tt>
-instruction.  This attribute is available only on fido.</p>
-<p class="last">:: _mcore-function-attributes:</p>
-</dd>
+instruction.  This attribute is available only on fido.</dd>
 </dl>
 </div>
 <div class="section" id="mcore-function-attributes">
-<h2>MCORE Function Attributes<a class="headerlink" href="#mcore-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id13"></span><h2>MCORE Function Attributes<a class="headerlink" href="#mcore-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the MCORE back end:</p>
 <dl class="docutils">
 <dt>naked</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, MCOREThis attribute allows the compiler to construct the
+<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, MCOREThis attribute allows the compiler to construct the
 requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
 (Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
-depended upon to work reliably and are not supported.</p>
-<p class="last">:: _mep-function-attributes:</p>
-</dd>
+depended upon to work reliably and are not supported.</dd>
 </dl>
 </div>
 <div class="section" id="mep-function-attributes">
-<h2>MeP Function Attributes<a class="headerlink" href="#mep-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id14"></span><h2>MeP Function Attributes<a class="headerlink" href="#mep-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the MeP back end:</p>
 <dl class="docutils">
 <dt>disinterrupt</dt>
@@ -1534,16 +1516,14 @@ overriding the <a class="reference internal" href="hardware-models-and-configura
 that assumes the called function is too far away for the built-in
 addressing modes.</dd>
 <dt>vliw</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">vliw</span></tt> function attribute, MePThe <tt class="docutils literal"><span class="pre">vliw</span></tt> attribute tells the compiler to emit
+<dd><tt class="docutils literal"><span class="pre">vliw</span></tt> function attribute, MePThe <tt class="docutils literal"><span class="pre">vliw</span></tt> attribute tells the compiler to emit
 instructions in VLIW mode instead of core mode.  Note that this
 attribute is not allowed unless a VLIW coprocessor has been configured
-and enabled through command-line options.</p>
-<p class="last">:: _microblaze-function-attributes:</p>
-</dd>
+and enabled through command-line options.</dd>
 </dl>
 </div>
 <div class="section" id="microblaze-function-attributes">
-<h2>MicroBlaze Function Attributes<a class="headerlink" href="#microblaze-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id15"></span><h2>MicroBlaze Function Attributes<a class="headerlink" href="#microblaze-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported on MicroBlaze targets:</p>
 <dl class="docutils">
 <dt>save_volatiles</dt>
@@ -1560,15 +1540,14 @@ the specified function is a break handler.  The compiler generates function
 entry and exit sequences suitable for use in an break handler when this
 attribute is present. The return from <tt class="docutils literal"><span class="pre">break_handler</span></tt> is done through
 the <tt class="docutils literal"><span class="pre">rtbd</span></tt> instead of <tt class="docutils literal"><span class="pre">rtsd</span></tt>.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">f</span> <span class="p">()</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">break_handler</span><span class="p">));</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">f</span> <span class="p">()</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">break_handler</span><span class="p">));</span>
 </pre></div>
 </div>
-<p class="last">:: _microsoft-windows-function-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="microsoft-windows-function-attributes">
-<h2>Microsoft Windows Function Attributes<a class="headerlink" href="#microsoft-windows-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id16"></span><h2>Microsoft Windows Function Attributes<a class="headerlink" href="#microsoft-windows-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>The following attributes are available on Microsoft Windows and Symbian OS
 targets.</p>
 <dl class="docutils">
@@ -1637,19 +1616,18 @@ performance benefit by eliminating a thunk in the DLL.  The use of the
 <em class="xref std std-option">--enable-auto-import</em> switch to the GNU linker.  As with
 functions, using the attribute for a variable eliminates a thunk in
 the DLL.</p>
-<p>One drawback to using this attribute is that a pointer to a
+<p class="last">One drawback to using this attribute is that a pointer to a
 variable marked as <tt class="docutils literal"><span class="pre">dllimport</span></tt> cannot be used as a constant
 address. However, a pointer to a function with the
 <tt class="docutils literal"><span class="pre">dllimport</span></tt> attribute can be used as a constant initializer; in
 this case, the address of a stub function in the import lib is
 referenced.  On Microsoft Windows targets, the attribute can be disabled
 for functions by setting the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mnop-fun-dllimport"><em class="xref std std-option">-mnop-fun-dllimport</em></a> flag.</p>
-<p class="last">:: _mips-function-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="mips-function-attributes">
-<h2>MIPS Function Attributes<a class="headerlink" href="#mips-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id17"></span><h2>MIPS Function Attributes<a class="headerlink" href="#mips-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the MIPS back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
@@ -1731,16 +1709,14 @@ may interact badly with some GCC extensions such as <tt class="docutils literal"
 (Constructing Calls).</p>
 </dd>
 <dt>nocompression</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">nocompression</span></tt> function attribute, MIPSOn MIPS targets, you can use the <tt class="docutils literal"><span class="pre">nocompression</span></tt> function attribute
+<dd><tt class="docutils literal"><span class="pre">nocompression</span></tt> function attribute, MIPSOn MIPS targets, you can use the <tt class="docutils literal"><span class="pre">nocompression</span></tt> function attribute
 to locally turn off MIPS16 and microMIPS code generation.  This attribute
 overrides the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mips16"><em class="xref std std-option">-mips16</em></a> and <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmicromips"><em class="xref std std-option">-mmicromips</em></a> options on the
-command line (MIPS Options).</p>
-<p class="last">:: _msp430-function-attributes:</p>
-</dd>
+command line (MIPS Options).</dd>
 </dl>
 </div>
 <div class="section" id="msp430-function-attributes">
-<h2>MSP430 Function Attributes<a class="headerlink" href="#msp430-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id18"></span><h2>MSP430 Function Attributes<a class="headerlink" href="#msp430-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the MSP430 back end:</p>
 <dl class="docutils">
 <dt>critical</dt>
@@ -1777,16 +1753,14 @@ upon exit.  Reentrant functions cannot also have the <tt class="docutils literal
 or <tt class="docutils literal"><span class="pre">critical</span></tt> attributes.  They can have the <tt class="docutils literal"><span class="pre">interrupt</span></tt>
 attribute.</dd>
 <dt>wakeup</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">wakeup</span></tt> function attribute, MSP430This attribute only applies to interrupt functions.  It is silently
+<dd><tt class="docutils literal"><span class="pre">wakeup</span></tt> function attribute, MSP430This attribute only applies to interrupt functions.  It is silently
 ignored if applied to a non-interrupt function.  A wakeup interrupt
 function will rouse the processor from any low-power state that it
-might be in when the function exits.</p>
-<p class="last">:: _nds32-function-attributes:</p>
-</dd>
+might be in when the function exits.</dd>
 </dl>
 </div>
 <div class="section" id="nds32-function-attributes">
-<h2>NDS32 Function Attributes<a class="headerlink" href="#nds32-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id19"></span><h2>NDS32 Function Attributes<a class="headerlink" href="#nds32-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the NDS32 back end:</p>
 <dl class="docutils">
 <dt>exception</dt>
@@ -1838,15 +1812,13 @@ to provide extra exception handling:</p>
 <dt>nmi</dt>
 <dd><tt class="docutils literal"><span class="pre">nmi</span></tt> function attribute, NDS32Provide a user-defined function to handle NMI exception.</dd>
 <dt>warm</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">warm</span></tt> function attribute, NDS32Provide a user-defined function to handle warm reset exception.</p>
-<p class="last">:: _nios-ii-function-attributes:</p>
-</dd>
+<dd><tt class="docutils literal"><span class="pre">warm</span></tt> function attribute, NDS32Provide a user-defined function to handle warm reset exception.</dd>
 </dl>
 </dd>
 </dl>
 </div>
 <div class="section" id="nios-ii-function-attributes">
-<h2>Nios II Function Attributes<a class="headerlink" href="#nios-ii-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id20"></span><h2>Nios II Function Attributes<a class="headerlink" href="#nios-ii-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the Nios II back end:</p>
 <dl class="docutils">
 <dt>target (<tt class="docutils literal"><span class="pre">options</span></tt>)</dt>
@@ -1862,20 +1834,18 @@ the custom instruction <tt class="docutils literal"><span class="pre">insn</span
 These target attributes correspond to the
 <em class="xref std std-option">-mcustom-``insn``=``N``</em> and <em class="xref std std-option">-mno-custom-``insn``</em>
 command-line options, and support the same set of <tt class="docutils literal"><span class="pre">insn</span></tt> keywords.
-See <em class="xref std std-ref">nios-ii-options</em>, for more information.</dd>
+See <a class="reference internal" href="hardware-models-and-configurations.html#nios-ii-options"><em>Nios II Options</em></a>, for more information.</dd>
 <dt>custom-fpu-cfg=``name``</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">target(&quot;custom-fpu-cfg=``name</span></tt>&#8221;)`` function attribute, Nios IIThis attribute corresponds to the <em class="xref std std-option">-mcustom-fpu-cfg=``name``</em>
+<dd><tt class="docutils literal"><span class="pre">target(&quot;custom-fpu-cfg=``name</span></tt>&#8221;)`` function attribute, Nios IIThis attribute corresponds to the <em class="xref std std-option">-mcustom-fpu-cfg=``name``</em>
 command-line option, to select a predefined set of custom instructions
 named <tt class="docutils literal"><span class="pre">name</span></tt>.
-See <em class="xref std std-ref">nios-ii-options</em>, for more information.</p>
-<p class="last">:: _powerpc-function-attributes:</p>
-</dd>
+See <a class="reference internal" href="hardware-models-and-configurations.html#nios-ii-options"><em>Nios II Options</em></a>, for more information.</dd>
 </dl>
 </dd>
 </dl>
 </div>
 <div class="section" id="powerpc-function-attributes">
-<h2>PowerPC Function Attributes<a class="headerlink" href="#powerpc-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id21"></span><h2>PowerPC Function Attributes<a class="headerlink" href="#powerpc-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the PowerPC back end:</p>
 <p>longcall shortcall</p>
 <blockquote>
@@ -1886,7 +1856,7 @@ require a different (more expensive) calling sequence.  The
 enough for the shorter calling sequence to be used.  These attributes
 override both the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlongcall"><em class="xref std std-option">-mlongcall</em></a> switch and
 the <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">longcall</span></tt> setting.</p>
-<p>See <em class="xref std std-ref">rs-6000-and-powerpc-options</em>, for more information on whether long
+<p>See <a class="reference internal" href="hardware-models-and-configurations.html#rs-6000-and-powerpc-options"><em>IBM RS/6000 and PowerPC Options</em></a>, for more information on whether long
 calls are necessary.</p>
 </div></blockquote>
 <dl class="docutils">
@@ -1996,14 +1966,13 @@ default tuning specified on the command line.</p>
 <p class="last">On the PowerPC, the inliner does not inline a</p>
 </dd>
 </dl>
-<p>function that has different target options than the caller, unless the
+<p class="last">function that has different target options than the caller, unless the
 callee has a subset of the target options of the caller.</p>
-<p class="last">:: _rl78-function-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="rl78-function-attributes">
-<h2>RL78 Function Attributes<a class="headerlink" href="#rl78-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id22"></span><h2>RL78 Function Attributes<a class="headerlink" href="#rl78-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the RL78 back end:</p>
 <dl class="docutils">
 <dt>interrupt brk_interrupt</dt>
@@ -2016,20 +1985,18 @@ handlers intended to be used with the <tt class="docutils literal"><span class="
 that must end with <tt class="docutils literal"><span class="pre">RETB</span></tt> instead of <tt class="docutils literal"><span class="pre">RETI</span></tt>).</p>
 </dd>
 <dt>naked</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, RL78This attribute allows the compiler to construct the
+<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, RL78This attribute allows the compiler to construct the
 requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
 (Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
-depended upon to work reliably and are not supported.</p>
-<p class="last">:: _rx-function-attributes:</p>
-</dd>
+depended upon to work reliably and are not supported.</dd>
 </dl>
 </div>
 <div class="section" id="rx-function-attributes">
-<h2>RX Function Attributes<a class="headerlink" href="#rx-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id23"></span><h2>RX Function Attributes<a class="headerlink" href="#rx-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the RX back end:</p>
 <dl class="docutils">
 <dt>fast_interrupt</dt>
@@ -2072,16 +2039,14 @@ prologue/epilogue sequences generated by the compiler. Only basic
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</dd>
 <dt>vector</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">vector</span></tt> function attribute, RXThis RX attribute is similar to the <tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute, including its
+<dd><tt class="docutils literal"><span class="pre">vector</span></tt> function attribute, RXThis RX attribute is similar to the <tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute, including its
 parameters, but does not make the function an interrupt-handler type
 function (i.e. it retains the normal C function calling ABI).  See the
-<tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute for a description of its arguments.</p>
-<p class="last">:: _s-390-function-attributes:</p>
-</dd>
+<tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute for a description of its arguments.</dd>
 </dl>
 </div>
 <div class="section" id="s-390-function-attributes">
-<h2>S/390 Function Attributes<a class="headerlink" href="#s-390-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id24"></span><h2>S/390 Function Attributes<a class="headerlink" href="#s-390-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported on the S/390:</p>
 <dl class="docutils">
 <dt>hotpatch (<tt class="docutils literal"><span class="pre">halfwords-before-function-label</span></tt>,``halfwords-after-function-label``)</dt>
@@ -2093,13 +2058,12 @@ two arguments specifies the number of halfwords to be added before
 the function label.  A second argument can be used to specify the
 number of halfwords to be added after the function label.  For
 both arguments the maximum allowed value is 1000000.</p>
-<p>If both arguments are zero, hotpatching is disabled.</p>
-<p class="last">:: _sh-function-attributes:</p>
+<p class="last">If both arguments are zero, hotpatching is disabled.</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="sh-function-attributes">
-<h2>SH Function Attributes<a class="headerlink" href="#sh-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id25"></span><h2>SH Function Attributes<a class="headerlink" href="#sh-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported on the SH family of processors:</p>
 <dl class="docutils">
 <dt>function_vector</dt>
@@ -2160,50 +2124,43 @@ alternate stack.</p>
 <tt class="docutils literal"><span class="pre">trapa</span></tt> instead of <tt class="docutils literal"><span class="pre">rte</span></tt>.  This attribute expects an integer
 argument specifying the trap number to be used.</dd>
 <dt>trapa_handler</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">trapa_handler</span></tt> function attribute, SHOn SH targets this function attribute is similar to <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>
-but it does not save and restore all registers.</p>
-<p class="last">:: _spu-function-attributes:</p>
-</dd>
+<dd><tt class="docutils literal"><span class="pre">trapa_handler</span></tt> function attribute, SHOn SH targets this function attribute is similar to <tt class="docutils literal"><span class="pre">interrupt_handler</span></tt>
+but it does not save and restore all registers.</dd>
 </dl>
 </div>
 <div class="section" id="spu-function-attributes">
-<h2>SPU Function Attributes<a class="headerlink" href="#spu-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id26"></span><h2>SPU Function Attributes<a class="headerlink" href="#spu-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the SPU back end:</p>
 <dl class="docutils">
 <dt>naked</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, SPUThis attribute allows the compiler to construct the
+<dd><tt class="docutils literal"><span class="pre">naked</span></tt> function attribute, SPUThis attribute allows the compiler to construct the
 requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
 (Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
-depended upon to work reliably and are not supported.</p>
-<p class="last">:: _symbian-os-function-attributes:</p>
-</dd>
+depended upon to work reliably and are not supported.</dd>
 </dl>
 </div>
 <div class="section" id="symbian-os-function-attributes">
-<h2>Symbian OS Function Attributes<a class="headerlink" href="#symbian-os-function-attributes" title="Permalink to this headline">¶</a></h2>
-<p>See <em class="xref std std-ref">microsoft-windows-function-attributes</em>, for discussion of the
+<span id="id27"></span><h2>Symbian OS Function Attributes<a class="headerlink" href="#symbian-os-function-attributes" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="#microsoft-windows-function-attributes"><em>Microsoft Windows Function Attributes</em></a>, for discussion of the
 <tt class="docutils literal"><span class="pre">dllexport</span></tt> and <tt class="docutils literal"><span class="pre">dllimport</span></tt> attributes.</p>
-<p>:: _visium-function-attributes:</p>
 </div>
 <div class="section" id="visium-function-attributes">
-<h2>Visium Function Attributes<a class="headerlink" href="#visium-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id28"></span><h2>Visium Function Attributes<a class="headerlink" href="#visium-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the Visium back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, VisiumUse this attribute to indicate
+<dd><tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute, VisiumUse this attribute to indicate
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
-when this attribute is present.</p>
-<p class="last">:: _x86-function-attributes:</p>
-</dd>
+when this attribute is present.</dd>
 </dl>
 </div>
 <div class="section" id="x86-function-attributes">
-<h2>x86 Function Attributes<a class="headerlink" href="#x86-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id29"></span><h2>x86 Function Attributes<a class="headerlink" href="#x86-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the x86 back end:</p>
 <dl class="option">
 <dt id="cmdoption-mrtd">
@@ -2314,7 +2271,7 @@ allows specification of target-specific compilation options.</p>
 <dt>aes no-aes</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;aes&quot;)</span></tt> function attribute, x86Enable/disable the generation of the AES instructions.</dd>
 <dt>default</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;default&quot;)</span></tt> function attribute, x86See <em class="xref std std-ref">function-multiversioning</em>, where it is used to specify the
+<dd><tt class="docutils literal"><span class="pre">target(&quot;default&quot;)</span></tt> function attribute, x86See <a class="reference internal" href="function-multiversioning.html#function-multiversioning"><em>Function Multiversioning</em></a>, where it is used to specify the
 default function version.</dd>
 <dt>mmx no-mmx</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;mmx&quot;)</span></tt> function attribute, x86Enable/disable the generation of the MMX instructions.</dd>
@@ -2377,16 +2334,15 @@ different options.</p>
 <p class="last">On the x86, the inliner does not inline a</p>
 </dd>
 </dl>
-<p>function that has different target options than the caller, unless the
+<p class="last">function that has different target options than the caller, unless the
 callee has a subset of the target options of the caller.  For example
 a function declared with <tt class="docutils literal"><span class="pre">target(&quot;sse3&quot;)</span></tt> can inline a function
 with <tt class="docutils literal"><span class="pre">target(&quot;sse2&quot;)</span></tt>, since <tt class="docutils literal"><span class="pre">-msse3</span></tt> implies <tt class="docutils literal"><span class="pre">-msse2</span></tt>.</p>
-<p class="last">:: _xstormy16-function-attributes:</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="xstormy16-function-attributes">
-<h2>Xstormy16 Function Attributes<a class="headerlink" href="#xstormy16-function-attributes" title="Permalink to this headline">¶</a></h2>
+<span id="id30"></span><h2>Xstormy16 Function Attributes<a class="headerlink" href="#xstormy16-function-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These function attributes are supported by the Xstormy16 back end:</p>
 <dl class="docutils">
 <dt>interrupt</dt>

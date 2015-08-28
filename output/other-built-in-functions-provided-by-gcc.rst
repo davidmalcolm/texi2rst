@@ -1,3 +1,4 @@
+.. _other-builtins:
 
 Other Built-in Functions Provided by GCC
 ****************************************

@@ -1,3 +1,4 @@
+.. _bug-reporting:
 
 How and Where to Report Bugs
 ****************************

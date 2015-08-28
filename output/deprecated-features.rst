@@ -1,3 +1,4 @@
+.. _deprecated-features:
 
 Deprecated Features
 *******************

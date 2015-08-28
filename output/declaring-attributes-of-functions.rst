@@ -1,3 +1,4 @@
+.. _function-attributes:
 
 Declaring Attributes of Functions
 *********************************
@@ -76,7 +77,7 @@ GCC plugins may provide their own attributes.
    <x86-function-attributes>
    <xstormy16-function-attributes>
 
-:: _common-function-attributes:
+.. _common-function-attributes:
 
 Common Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1088,7 +1089,7 @@ lower upper either
 
 .. This is the end of the target-independent attribute table
 
-:: _arc-function-attributes:
+.. _arc-function-attributes:
 
 ARC Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1131,7 +1132,7 @@ long_call medium_call short_call
   branch-and-link instruction, which has a 21-bit offset from
   the call site.
 
-  :: _arm-function-attributes:
+  .. _arm-function-attributes:
 
 ARM Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1205,7 +1206,7 @@ pcs
   Variadic functions always use the ``"aapcs"`` calling convention and
   the compiler rejects attempts to specify an alternative.
 
-  :: _avr-function-attributes:
+  .. _avr-function-attributes:
 
 AVR Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1279,7 +1280,7 @@ signal
   If both ``signal`` and ``interrupt`` are specified for the same
   function, ``signal`` is silently ignored.
 
-  :: _blackfin-function-attributes:
+  .. _blackfin-function-attributes:
 
 Blackfin Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1357,7 +1358,7 @@ saveall
   all registers except the stack pointer should be saved in the prologue
   regardless of whether they are used or not.
 
-  :: _cr16-function-attributes:
+  .. _cr16-function-attributes:
 
 CR16 Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1370,7 +1371,7 @@ interrupt
   function entry and exit sequences suitable for use in an interrupt handler
   when this attribute is present.
 
-  :: _epiphany-function-attributes:
+  .. _epiphany-function-attributes:
 
 Epiphany Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1439,7 +1440,7 @@ long_call short_call
   :option:`-mlong-calls` (Adapteva Epiphany Options)
   command-line switch and ``#pragma long_calls`` settings.
 
-  :: _h8-300-function-attributes:
+  .. _h8-300-function-attributes:
 
 H8/300 Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1468,7 +1469,7 @@ saveall
   all registers except the stack pointer should be saved in the prologue
   regardless of whether they are used or not.
 
-  :: _ia-64-function-attributes:
+  .. _ia-64-function-attributes:
 
 IA-64 Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1494,7 +1495,7 @@ version_id
 
   Calls to ``foo`` are mapped to calls to ``foo{20040821}``.
 
-  :: _m32c-function-attributes:
+  .. _m32c-function-attributes:
 
 M32C Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1553,7 +1554,7 @@ interrupt
   function entry and exit sequences suitable for use in an interrupt handler
   when this attribute is present.
 
-  :: _m32r-d-function-attributes:
+  .. _m32r-d-function-attributes:
 
 M32R/D Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1588,7 +1589,7 @@ model (``model-name``)
   and may not be reachable with the ``bl`` instruction (the compiler
   generates the much slower ``seth/add3/jl`` instruction sequence).
 
-  :: _m68k-function-attributes:
+  .. _m68k-function-attributes:
 
 m68k Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1608,7 +1609,7 @@ interrupt_thread
   sequences and replaces the return instruction with a ``sleep``
   instruction.  This attribute is available only on fido.
 
-  :: _mcore-function-attributes:
+  .. _mcore-function-attributes:
 
 MCORE Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1625,7 +1626,7 @@ naked
   basic ``asm`` and C code may appear to work, they cannot be
   depended upon to work reliably and are not supported.
 
-  :: _mep-function-attributes:
+  .. _mep-function-attributes:
 
 MeP Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1659,7 +1660,7 @@ vliw
   attribute is not allowed unless a VLIW coprocessor has been configured
   and enabled through command-line options.
 
-  :: _microblaze-function-attributes:
+  .. _microblaze-function-attributes:
 
 MicroBlaze Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1687,7 +1688,7 @@ break_handler
 
     void f () __attribute__ ((break_handler));
 
-  :: _microsoft-windows-function-attributes:
+  .. _microsoft-windows-function-attributes:
 
 Microsoft Windows Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1781,7 +1782,7 @@ dllimport
   referenced.  On Microsoft Windows targets, the attribute can be disabled
   for functions by setting the :option:`-mnop-fun-dllimport` flag.
 
-  :: _mips-function-attributes:
+  .. _mips-function-attributes:
 
 MIPS Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1877,7 +1878,7 @@ nocompression
   overrides the :option:`-mips16` and :option:`-mmicromips` options on the
   command line (MIPS Options).
 
-  :: _msp430-function-attributes:
+  .. _msp430-function-attributes:
 
 MSP430 Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1927,7 +1928,7 @@ wakeup
   function will rouse the processor from any low-power state that it
   might be in when the function exits.
 
-  :: _nds32-function-attributes:
+  .. _nds32-function-attributes:
 
 NDS32 Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1992,7 +1993,7 @@ reset
   warm
     ``warm`` function attribute, NDS32Provide a user-defined function to handle warm reset exception.
 
-    :: _nios-ii-function-attributes:
+    .. _nios-ii-function-attributes:
 
 Nios II Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2021,7 +2022,7 @@ target (``options``)
     named ``name``.
     See :ref:`nios-ii-options`, for more information.
 
-    :: _powerpc-function-attributes:
+    .. _powerpc-function-attributes:
 
 PowerPC Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2175,7 +2176,7 @@ target (``options``)
   function that has different target options than the caller, unless the
   callee has a subset of the target options of the caller.
 
-  :: _rl78-function-attributes:
+  .. _rl78-function-attributes:
 
 RL78 Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2202,7 +2203,7 @@ naked
   basic ``asm`` and C code may appear to work, they cannot be
   depended upon to work reliably and are not supported.
 
-  :: _rx-function-attributes:
+  .. _rx-function-attributes:
 
 RX Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -2261,7 +2262,7 @@ vector
   function (i.e. it retains the normal C function calling ABI).  See the
   ``interrupt`` attribute for a description of its arguments.
 
-  :: _s-390-function-attributes:
+  .. _s-390-function-attributes:
 
 S/390 Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2280,7 +2281,7 @@ hotpatch (``halfwords-before-function-label``,``halfwords-after-function-label``
 
   If both arguments are zero, hotpatching is disabled.
 
-  :: _sh-function-attributes:
+  .. _sh-function-attributes:
 
 SH Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -2356,7 +2357,7 @@ trapa_handler
   ``trapa_handler`` function attribute, SHOn SH targets this function attribute is similar to ``interrupt_handler``
   but it does not save and restore all registers.
 
-  :: _spu-function-attributes:
+  .. _spu-function-attributes:
 
 SPU Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -2373,7 +2374,7 @@ naked
   basic ``asm`` and C code may appear to work, they cannot be
   depended upon to work reliably and are not supported.
 
-  :: _symbian-os-function-attributes:
+  .. _symbian-os-function-attributes:
 
 Symbian OS Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2381,7 +2382,7 @@ Symbian OS Function Attributes
 See :ref:`microsoft-windows-function-attributes`, for discussion of the
 ``dllexport`` and ``dllimport`` attributes.
 
-:: _visium-function-attributes:
+.. _visium-function-attributes:
 
 Visium Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2394,7 +2395,7 @@ interrupt
   function entry and exit sequences suitable for use in an interrupt handler
   when this attribute is present.
 
-  :: _x86-function-attributes:
+  .. _x86-function-attributes:
 
 x86 Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -2613,7 +2614,7 @@ target (``options``)
   a function declared with ``target("sse3")`` can inline a function
   with ``target("sse2")``, since ``-msse3`` implies ``-msse2``.
 
-  :: _xstormy16-function-attributes:
+  .. _xstormy16-function-attributes:
 
 Xstormy16 Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

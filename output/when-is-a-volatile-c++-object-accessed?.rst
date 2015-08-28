@@ -1,3 +1,5 @@
+.. _c++-volatiles:
+
 When is a Volatile C++ Object Accessed?
 ***************************************
 

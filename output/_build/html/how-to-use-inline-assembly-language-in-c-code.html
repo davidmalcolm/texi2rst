@@ -114,7 +114,7 @@
           <div class="body">
             
   <div class="section" id="how-to-use-inline-assembly-language-in-c-code">
-<h1>How to Use Inline Assembly Language in C Code<a class="headerlink" href="#how-to-use-inline-assembly-language-in-c-code" title="Permalink to this headline">¶</a></h1>
+<span id="using-assembly-language-with-c"></span><h1>How to Use Inline Assembly Language in C Code<a class="headerlink" href="#how-to-use-inline-assembly-language-in-c-code" title="Permalink to this headline">¶</a></h1>
 <p><tt class="docutils literal"><span class="pre">asm</span></tt> keyword
 .. index:: assembly language in C</p>
 <span class="target" id="index-0"></span><p id="index-1">The <tt class="docutils literal"><span class="pre">asm</span></tt> keyword allows you to embed assembler instructions
@@ -131,9 +131,8 @@ for a C symbol, or to place a C variable in a specific register.</p>
 <ul class="simple">
 </ul>
 </div>
-<p>:: _basic-asm:</p>
 <div class="section" id="basic-asm-assembler-instructions-without-operands">
-<h2>Basic Asm - Assembler Instructions Without Operands<a class="headerlink" href="#basic-asm-assembler-instructions-without-operands" title="Permalink to this headline">¶</a></h2>
+<span id="basic-asm"></span><h2>Basic Asm - Assembler Instructions Without Operands<a class="headerlink" href="#basic-asm-assembler-instructions-without-operands" title="Permalink to this headline">¶</a></h2>
 <p>basic <tt class="docutils literal"><span class="pre">asm</span></tt>
 .. index:: assembly language in C, basic</p>
 <p>A basic <tt class="docutils literal"><span class="pre">asm</span></tt> statement has the following syntax:</p>
@@ -222,10 +221,9 @@ mechanism to provide different assembler strings for different dialects.</p>
 <span class="cp">#define DebugBreak() asm(&quot;int $3&quot;)</span>
 </pre></div>
 </div>
-<p>:: _extended-asm:</p>
 </div>
 <div class="section" id="extended-asm-assembler-instructions-with-c-expression-operands">
-<h2>Extended Asm - Assembler Instructions with C Expression Operands<a class="headerlink" href="#extended-asm-assembler-instructions-with-c-expression-operands" title="Permalink to this headline">¶</a></h2>
+<span id="extended-asm"></span><h2>Extended Asm - Assembler Instructions with C Expression Operands<a class="headerlink" href="#extended-asm-assembler-instructions-with-c-expression-operands" title="Permalink to this headline">¶</a></h2>
 <p>extended <tt class="docutils literal"><span class="pre">asm</span></tt>
 .. index:: assembly language in C, extended</p>
 <p>With extended <tt class="docutils literal"><span class="pre">asm</span></tt> you can read and write C variables from
@@ -481,7 +479,7 @@ default for inline assembler. The target-specific documentation for the
 default dialect if the option is not specified. This information may be
 important to understand, since assembler code that works correctly when
 compiled using one dialect will likely fail if compiled using another.
-See <em class="xref std std-ref">x86-options</em>.</p>
+See <a class="reference internal" href="hardware-models-and-configurations.html#x86-options"><em>x86 Options</em></a>.</p>
 <p>If your code needs to support multiple assembler dialects (for example, if
 you are writing public headers that need to support a variety of compilation
 options), use constructs of this form:</p>
@@ -1030,8 +1028,7 @@ for the compiler to know that <tt class="docutils literal"><span class="pre">fyl
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">asm</span> <span class="p">(</span><span class="s">&quot;fyl2xp1&quot;</span> <span class="o">:</span> <span class="s">&quot;=t&quot;</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;0&quot;</span> <span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s">&quot;u&quot;</span> <span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;st(1)&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>:: _constraints:</p>
-<p>Constraints for <tt class="docutils literal"><span class="pre">asm</span></tt> Operandsoperand constraints, <tt class="docutils literal"><span class="pre">asm``constraints,</span> <span class="pre">``asm````asm</span></tt> constraintsHere are specific details on what constraint letters you can use with
+<p id="constraints">Constraints for <tt class="docutils literal"><span class="pre">asm</span></tt> Operandsoperand constraints, <tt class="docutils literal"><span class="pre">asm``constraints,</span> <span class="pre">``asm````asm</span></tt> constraintsHere are specific details on what constraint letters you can use with
 <tt class="docutils literal"><span class="pre">asm</span></tt> operands.
 Constraints can say whether
 an operand may be in a register, and which kinds of register; whether the
@@ -1046,10 +1043,9 @@ the addressing register.</p>
 <ul class="simple">
 </ul>
 </div>
-<p>:: _simple-constraints:</p>
 </div>
 <div class="section" id="simple-constraints">
-<h3>Simple Constraints<a class="headerlink" href="#simple-constraints" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>Simple Constraints<a class="headerlink" href="#simple-constraints" title="Permalink to this headline">¶</a></h3>
 <p id="index-2">The simplest kind of constraint is a string full of letters, each of
 which describes one kind of operand that is permitted.  Here are
 the letters that are allowed:</p>
@@ -1221,16 +1217,14 @@ the mode specified in the <tt class="docutils literal"><span class="pre">match_o
 reference for which the address would be valid.</p>
 <span class="target" id="index-12"></span></dd>
 <dt><tt class="docutils literal"><span class="pre">other-letters</span></tt></dt>
-<dd><p class="first">Other letters can be defined in machine-dependent fashion to stand for
+<dd>Other letters can be defined in machine-dependent fashion to stand for
 particular classes of registers or other arbitrary operand types.
 d, a and f are defined on the 68000/68020 to stand
-for data, address and floating point registers.</p>
-<p class="last">:: _multi-alternative:</p>
-</dd>
+for data, address and floating point registers.</dd>
 </dl>
 </div>
 <div class="section" id="multiple-alternative-constraints">
-<h3>Multiple Alternative Constraints<a class="headerlink" href="#multiple-alternative-constraints" title="Permalink to this headline">¶</a></h3>
+<span id="multi-alternative"></span><h3>Multiple Alternative Constraints<a class="headerlink" href="#multiple-alternative-constraints" title="Permalink to this headline">¶</a></h3>
 <p id="index-14">Sometimes a single instruction has multiple alternative sets of possible
 operands.  For example, on the 68000, a logical-or instruction can combine
 register or an immediate value into memory, or it can combine any kind of
@@ -1278,14 +1272,12 @@ the alternative only if the operand with the ^ needs a reload.</p>
 </dl>
 <dl class="docutils">
 <dt>$</dt>
-<dd><p class="first">This constraint is analogous to ! but it disparages severely
-the alternative only if the operand with the $ needs a reload.</p>
-<p class="last">:: _modifiers:</p>
-</dd>
+<dd>This constraint is analogous to ! but it disparages severely
+the alternative only if the operand with the $ needs a reload.</dd>
 </dl>
 </div>
 <div class="section" id="constraint-modifier-characters">
-<h3>Constraint Modifier Characters<a class="headerlink" href="#constraint-modifier-characters" title="Permalink to this headline">¶</a></h3>
+<span id="modifiers"></span><h3>Constraint Modifier Characters<a class="headerlink" href="#constraint-modifier-characters" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-15"></span><span class="target" id="index-16"></span><p>Here are constraint modifier characters.</p>
 <p>= in constraint
 =</p>
@@ -1347,7 +1339,7 @@ the compiler may fail.  Note that you need not use the modifier if
 the two alternatives are strictly identical; this would only waste
 time in the reload pass.  The modifier is not operational after
 register allocation, so the result of <tt class="docutils literal"><span class="pre">define_peephole2</span></tt>
-and <a href="#id6"><span class="problematic" id="id7">``</span></a>define_split``s performed after reload cannot rely on
+and <a href="#id7"><span class="problematic" id="id8">``</span></a>define_split``s performed after reload cannot rely on
 % to make the intended insn match.</p>
 <p class="last"># in constraint</p>
 </dd>
@@ -1362,18 +1354,16 @@ register preferences.</p>
 </ul>
 </dd>
 </dl>
-<ul>
-<li><p class="first">Says that the following character should be ignored when choosing
+<ul class="simple">
+<li>Says that the following character should be ignored when choosing
 register preferences.  * has no effect on the meaning of the
 constraint as a constraint, and no effect on reloading.  For LRA
 * additionally disparages slightly the alternative if the
-following character matches the operand.</p>
-<p>:: _machine-constraints:</p>
-</li>
+following character matches the operand.</li>
 </ul>
 </div>
 <div class="section" id="constraints-for-particular-machines">
-<h3>Constraints for Particular Machines<a class="headerlink" href="#constraints-for-particular-machines" title="Permalink to this headline">¶</a></h3>
+<span id="machine-constraints"></span><h3>Constraints for Particular Machines<a class="headerlink" href="#constraints-for-particular-machines" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-17"></span><p id="index-18">Whenever possible, you should use the general-purpose constraint letters
 in <tt class="docutils literal"><span class="pre">asm</span></tt> arguments, since they will convey meaning more readily to
 people reading your code.  Failing that, use the constraint letters
@@ -3130,11 +3120,10 @@ instructions).</dd>
 <dd>Unsigned constant valid for BccUI instructions</dd>
 </dl>
 </div></blockquote>
-<p>:: _asm-labels:</p>
 </div>
 </div>
 <div class="section" id="controlling-names-used-in-assembler-code">
-<h2>Controlling Names Used in Assembler Code<a class="headerlink" href="#controlling-names-used-in-assembler-code" title="Permalink to this headline">¶</a></h2>
+<span id="asm-labels"></span><h2>Controlling Names Used in Assembler Code<a class="headerlink" href="#controlling-names-used-in-assembler-code" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-19"></span><span class="target" id="index-20"></span><p id="index-21">You can specify the name to be used in the assembler code for a C
 function or variable by writing the <tt class="docutils literal"><span class="pre">asm</span></tt> (or <tt class="docutils literal"><span class="pre">__asm__</span></tt>)
 keyword after the declarator as follows:</p>
@@ -3168,10 +3157,9 @@ conflict with any other assembler symbols.  Also, you must not use a
 register name; that would produce completely invalid assembler code.  GCC
 does not as yet have the ability to store static variables in registers.
 Perhaps that will be added.</p>
-<p>:: _explicit-reg-vars:</p>
 </div>
 <div class="section" id="variables-in-specified-registers">
-<h2>Variables in Specified Registers<a class="headerlink" href="#variables-in-specified-registers" title="Permalink to this headline">¶</a></h2>
+<span id="explicit-reg-vars"></span><h2>Variables in Specified Registers<a class="headerlink" href="#variables-in-specified-registers" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-22"></span><span class="target" id="index-23"></span><span class="target" id="index-24"></span><p id="index-25">GNU C allows you to put a few global variables into specified hardware
 registers.  You can also specify the register in which an ordinary
 register variable should be allocated.</p>
@@ -3200,9 +3188,8 @@ specified for that operand in the <tt class="docutils literal"><span class="pre"
 <ul class="simple">
 </ul>
 </div>
-<p>:: _global-reg-vars:</p>
 <div class="section" id="defining-global-register-variables">
-<h3>Defining Global Register Variables<a class="headerlink" href="#defining-global-register-variables" title="Permalink to this headline">¶</a></h3>
+<span id="global-reg-vars"></span><h3>Defining Global Register Variables<a class="headerlink" href="#defining-global-register-variables" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-26"></span><p id="index-27">You can define a global register variable in GNU C like this:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">register</span> <span class="kt">int</span> <span class="o">*</span><span class="n">foo</span> <span class="nf">asm</span> <span class="p">(</span><span class="s">&quot;a5&quot;</span><span class="p">);</span>
 </pre></div>
@@ -3274,10 +3261,9 @@ as the subroutines for division and remainder, modify g3 and g4.  g1 and
 g2 are local temporaries.</p>
 <p>On the 68000, a2 ... a5 should be suitable, as should d2 ... d7.
 Of course, it does not do to use more than a few of those.</p>
-<p>:: _local-reg-vars:</p>
 </div>
 <div class="section" id="specifying-registers-for-local-variables">
-<h3>Specifying Registers for Local Variables<a class="headerlink" href="#specifying-registers-for-local-variables" title="Permalink to this headline">¶</a></h3>
+<span id="local-reg-vars"></span><h3>Specifying Registers for Local Variables<a class="headerlink" href="#specifying-registers-for-local-variables" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-29"></span><span class="target" id="index-30"></span><p id="index-31">You can define a local register variable with a specified register
 like this:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">register</span> <span class="kt">int</span> <span class="o">*</span><span class="n">foo</span> <span class="nf">asm</span> <span class="p">(</span><span class="s">&quot;a5&quot;</span><span class="p">);</span>
@@ -3304,7 +3290,7 @@ instruction template part of an <tt class="docutils literal"><span class="pre">a
 always refers to this variable.
 However, using the variable as an input or output operand to the <tt class="docutils literal"><span class="pre">asm</span></tt>
 guarantees that the specified register is used for that operand.
-See <em class="xref std std-ref">extended-asm</em>, for more information.</p>
+See <a class="reference internal" href="#extended-asm"><em>Extended Asm - Assembler Instructions with C Expression Operands</em></a>, for more information.</p>
 <p>Stores into local register variables may be deleted when they appear to be dead
 according to dataflow analysis.  References to local register variables may
 be deleted or moved or simplified.</p>
@@ -3335,8 +3321,7 @@ register assignments:</p>
 <span class="k">asm</span> <span class="p">(</span><span class="s">&quot;sysint&quot;</span> <span class="o">:</span> <span class="s">&quot;=r&quot;</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;0&quot;</span> <span class="p">(</span><span class="n">p1</span><span class="p">),</span> <span class="s">&quot;r&quot;</span> <span class="p">(</span><span class="n">p2</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>:: _size-of-an-asm:</p>
-<p>Size of an <tt class="docutils literal"><span class="pre">asm``Some</span> <span class="pre">targets</span> <span class="pre">require</span> <span class="pre">that</span> <span class="pre">GCC</span> <span class="pre">track</span> <span class="pre">the</span> <span class="pre">size</span> <span class="pre">of</span> <span class="pre">each</span> <span class="pre">instruction</span> <span class="pre">used</span>
+<p id="size-of-an-asm">Size of an <tt class="docutils literal"><span class="pre">asm``Some</span> <span class="pre">targets</span> <span class="pre">require</span> <span class="pre">that</span> <span class="pre">GCC</span> <span class="pre">track</span> <span class="pre">the</span> <span class="pre">size</span> <span class="pre">of</span> <span class="pre">each</span> <span class="pre">instruction</span> <span class="pre">used</span>
 <span class="pre">in</span> <span class="pre">order</span> <span class="pre">to</span> <span class="pre">generate</span> <span class="pre">correct</span> <span class="pre">code.</span>&nbsp; <span class="pre">Because</span> <span class="pre">the</span> <span class="pre">final</span> <span class="pre">length</span> <span class="pre">of</span> <span class="pre">the</span>
 <span class="pre">code</span> <span class="pre">produced</span> <span class="pre">by</span> <span class="pre">an</span> <span class="pre">``asm</span></tt> statement is only known by the
 assembler, GCC must make an estimate as to how big it will be.  It

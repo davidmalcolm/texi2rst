@@ -1,3 +1,4 @@
+.. _alignment:
 
 Inquiring on Alignment of Types or Variables
 ********************************************

@@ -1,3 +1,4 @@
+  .. _invoking-g++:
 
 Compiling C++ Programs
 **********************

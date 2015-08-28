@@ -1,3 +1,4 @@
+.. _submodel-options:
 
 Hardware Models and Configurations
 **********************************
@@ -85,7 +86,7 @@ platform.
    <xtensa-options>
    <zseries-options>
 
-:: _aarch64-options:
+.. _aarch64-options:
 
 AArch64 Options
 ^^^^^^^^^^^^^^^
@@ -258,7 +259,7 @@ simd
   are enabled.  This is the default for all current possible values for options
   :option:`-march` and :option:`-mcpu=`.
 
-  :: _adapteva-epiphany-options:
+  .. _adapteva-epiphany-options:
 
 Adapteva Epiphany Options
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -407,7 +408,7 @@ These -m options are defined for Adapteva Epiphany:
   and none, which means that no register is used for this
   purpose.  The default is :option:`-m1reg-none`.
 
-:: _arc-options:
+.. _arc-options:
 
 ARC Options
 ^^^^^^^^^^^
@@ -889,7 +890,7 @@ are now deprecated and will be removed in a future release:
 
   Replaced by :option:`-mmultcost`.
 
-:: _arm-options:
+.. _arm-options:
 
 ARM Options
 ^^^^^^^^^^^
@@ -1334,7 +1335,7 @@ These -m options are defined for the ARM port:
   intended for ordinary use in compiling code.  This option is disabled
   by default.
 
-:: _avr-options:
+.. _avr-options:
 
 AVR Options
 ^^^^^^^^^^^
@@ -1840,7 +1841,7 @@ __WITH_AVRLIBC__
   The compiler is configured to be used together with AVR-Libc.
   See the :option:`--with-avrlibc` configure option.
 
-  :: _blackfin-options:
+  .. _blackfin-options:
 
 Blackfin Options
 ^^^^^^^^^^^^^^^^
@@ -2043,7 +2044,7 @@ Blackfin Options
   anomaly workarounds.  For Linux targets, the default is to assume ICPLBs
   are enabled; for standalone applications the default is off.
 
-:: _c6x-options:
+.. _c6x-options:
 
 C6X Options
 ^^^^^^^^^^^
@@ -2092,7 +2093,7 @@ C6X Options
   ``.far`` section.  Put all constant data into the ``.const``
   section.
 
-:: _cris-options:
+.. _cris-options:
 
 CRIS Options
 ^^^^^^^^^^^^
@@ -2197,7 +2198,7 @@ These options are defined specifically for the CRIS ports.
   Like :option:`-sim`, but pass linker options to locate initialized data at
   0x40000000 and zero-initialized data at 0x80000000.
 
-:: _cr16-options:
+.. _cr16-options:
 
 CR16 Options
 ^^^^^^^^^^^^
@@ -2235,7 +2236,7 @@ These options are defined specifically for the CR16 ports.
   However, far is not valid with :option:`-mcr16c`, as the
   CR16C architecture does not support the far data model.
 
-:: _darwin-options:
+.. _darwin-options:
 
 Darwin Options
 ^^^^^^^^^^^^^^
@@ -2394,7 +2395,7 @@ restrictive subtype of any of its input files.
   These options are passed to the Darwin linker.  The Darwin linker man page
   describes them in detail.
 
-:: _dec-alpha-options:
+.. _dec-alpha-options:
 
 DEC Alpha Options
 ^^^^^^^^^^^^^^^^^
@@ -2662,7 +2663,7 @@ These -m options are defined for the DEC Alpha implementations:
     (also called Dcache, Scache, and Bcache), as well as to main memory.
     Note that L3 is only valid for EV5.
 
-:: _fr30-options:
+.. _fr30-options:
 
 FR30 Options
 ^^^^^^^^^^^^
@@ -2683,7 +2684,7 @@ These options are defined specifically for the FR30 port.
   to include the simulator library (libsim.a) on the linker
   command line.
 
-:: _frv-options:
+.. _frv-options:
 
 FRV Options
 ^^^^^^^^^^^
@@ -2948,7 +2949,7 @@ FRV Options
   frv, fr550, tomcat, fr500, fr450,
   fr405, fr400, fr300 and simple.
 
-:: _gnu-linux-options:
+.. _gnu-linux-options:
 
 GNU/Linux Options
 ^^^^^^^^^^^^^^^^^
@@ -2998,7 +2999,7 @@ These -m options are defined for GNU/Linux targets:
   Disable linking effects of :option:`-mandroid`, i.e., pass standard Linux
   linking options to the linker.
 
-:: _h8-300-options:
+.. _h8-300-options:
 
 H8/300 Options
 ^^^^^^^^^^^^^^
@@ -3051,7 +3052,7 @@ These -m options are defined for the H8/300 implementations:
   :option:`-malign-300` causes them to be aligned on 2-byte boundaries.
   This option has no effect on the H8/300.
 
-:: _hppa-options:
+.. _hppa-options:
 
 HPPA Options
 ^^^^^^^^^^^^
@@ -3271,7 +3272,7 @@ These -m options are defined for the HPPA family of computers:
   under HP-UX.  This option sets flags for both the preprocessor and
   linker.
 
-:: _ia-64-options:
+.. _ia-64-options:
 
 IA-64 Options
 ^^^^^^^^^^^^^
@@ -3522,7 +3523,7 @@ These are the -m options defined for the Intel IA-64 architecture.
   are preferred when the limit is reached, but memory operations may still
   be scheduled.
 
-:: _lm32-options:
+.. _lm32-options:
 
 LM32 Options
 ^^^^^^^^^^^^
@@ -3551,7 +3552,7 @@ These :option:`-m` options are defined for the LatticeMico32 architecture:
 
   Enable user-defined instructions.
 
-:: _m32c-options:
+.. _m32c-options:
 
 M32C Options
 ^^^^^^^^^^^^
@@ -3583,7 +3584,7 @@ M32C Options
   be compiled with the same value for this option.  Because of that, you
   must not use this option with GCC's default runtime libraries.
 
-:: _m32r-d-options:
+.. _m32r-d-options:
 
 M32R/D Options
 ^^^^^^^^^^^^^^
@@ -3706,7 +3707,7 @@ These :option:`-m` options are defined for Renesas M32R/D architectures:
 
   Indicates that there is no OS function for flushing the cache.
 
-:: _m680x0-options:
+.. _m680x0-options:
 
 M680x0 Options
 ^^^^^^^^^^^^^^
@@ -4143,7 +4144,7 @@ are given below.
   These options have no effect unless GCC is generating
   position-independent code.
 
-:: _mcore-options:
+.. _mcore-options:
 
 MCore Options
 ^^^^^^^^^^^^^
@@ -4203,7 +4204,7 @@ processors.
   segmentation fault if the stack is extended too much.  The default
   value is 0x1000.
 
-:: _mep-options:
+.. _mep-options:
 
 MeP Options
 ^^^^^^^^^^^
@@ -4364,7 +4365,7 @@ MeP Options
   register.  The default for this option is 4, but note that there's a
   65536-byte limit to the ``.tiny`` section.
 
-:: _microblaze-options:
+.. _microblaze-options:
 
 MicroBlaze Options
 ^^^^^^^^^^^^^^^^^^
@@ -4472,7 +4473,7 @@ MicroBlaze Options
     Option :option:`-xl-mode-``app-model``` is a deprecated alias for
   :option:`-mxl-mode-``app-model```.
 
-  :: _mips-options:
+  .. _mips-options:
 
 MIPS Options
 ^^^^^^^^^^^^
@@ -5359,7 +5360,7 @@ MIPS Options
 
   The default is :option:`-mno-mcount-ra-address`.
 
-:: _mmix-options:
+.. _mmix-options:
 
 MMIX Options
 ^^^^^^^^^^^^
@@ -5428,7 +5429,7 @@ These options are defined for the MMIX:
   Force (do not force) generated code to have a single exit point in each
   function.
 
-:: _mn10300-options:
+.. _mn10300-options:
 
 MN10300 Options
 ^^^^^^^^^^^^^^^
@@ -5515,7 +5516,7 @@ These :option:`-m` options are defined for Matsushita MN10300 architectures:
   instructions.  This option defines the preprocessor macro
   ``__NO_SETLB__``.
 
-:: _moxie-options:
+.. _moxie-options:
 
 Moxie Options
 ^^^^^^^^^^^^^
@@ -5540,7 +5541,7 @@ Moxie Options
 
   Do not link in the C run-time initialization object file.
 
-:: _msp430-options:
+.. _msp430-options:
 
 MSP430 Options
 ^^^^^^^^^^^^^^
@@ -5642,7 +5643,7 @@ These options are defined for the MSP430:
   linker script and how it assigns the standard sections (.text, .data
   etc) to the memory regions.
 
-:: _nds32-options:
+.. _nds32-options:
 
 NDS32 Options
 ^^^^^^^^^^^^^
@@ -5736,7 +5737,7 @@ These options are defined for NDS32 implementations:
 
   Guide linker to relax instructions.
 
-:: _nios-ii-options:
+.. _nios-ii-options:
 
 Nios II Options
 ^^^^^^^^^^^^^^^
@@ -6019,7 +6020,7 @@ ELF (bare-metal) target:
   e.g. ``read`` and ``write``.
   This option is typically used to link with a library provided by a HAL BSP.
 
-:: _nvidia-ptx-options:
+.. _nvidia-ptx-options:
 
 Nvidia PTX Options
 ^^^^^^^^^^^^^^^^^^
@@ -6039,7 +6040,7 @@ These options are defined for Nvidia PTX:
   Link in code for a __main kernel.  This is for stand-alone instead of
   offloading execution.
 
-:: _pdp-11-options:
+.. _pdp-11-options:
 
 PDP-11 Options
 ^^^^^^^^^^^^^^
@@ -6129,7 +6130,7 @@ These options are defined for the PDP-11:
   Use DEC assembler syntax.  This is the default when configured for any
   PDP-11 target other than pdp11-*-bsd.
 
-:: _picochip-options:
+.. _picochip-options:
 
 picoChip Options
 ^^^^^^^^^^^^^^^^
@@ -6176,7 +6177,7 @@ These -m options are defined for picoChip implementations:
   an AE type that has the necessary hardware support.  This option disables
   these warnings.
 
-  :: _powerpc-options:
+  .. _powerpc-options:
 
 PowerPC Options
 ^^^^^^^^^^^^^^^
@@ -6185,7 +6186,7 @@ PowerPC Options
 
 These are listed under See :ref:`rs-6000-and-powerpc-options`.
 
-:: _rl78-options:
+.. _rl78-options:
 
 RL78 Options
 ^^^^^^^^^^^^
@@ -6258,7 +6259,7 @@ RL78 Options
   or 32 bits (:option:`-m32bit-doubles`) in size.  The default is
   :option:`-m32bit-doubles`.
 
-:: _rs-6000-and-powerpc-options:
+.. _rs-6000-and-powerpc-options:
 
 IBM RS/6000 and PowerPC Options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -7256,7 +7257,7 @@ These -m options are defined for the IBM RS/6000 and PowerPC:
 
   The :option:`-mno-compat-align-parm` option is the default.
 
-:: _rx-options:
+.. _rx-options:
 
 RX Options
 ^^^^^^^^^^
@@ -7442,7 +7443,7 @@ corresponding registers have been restricted via the
 :option:`-ffixed-``reg``` or :option:`-mint-register` command-line
 options.
 
-:: _s-390-and-zseries-options:
+.. _s-390-and-zseries-options:
 
 S/390 and zSeries Options
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -7631,7 +7632,7 @@ These are the -m options defined for the S/390 and zSeries architecture.
   This option can be overridden for individual functions with the
   ``hotpatch`` attribute.
 
-:: _score-options:
+.. _score-options:
 
 Score Options
 ^^^^^^^^^^^^^
@@ -7676,7 +7677,7 @@ These options are defined for Score implementations:
 
   Specify the SCORE7D as the target architecture.
 
-:: _sh-options:
+.. _sh-options:
 
 SH Options
 ^^^^^^^^^^
@@ -8228,7 +8229,7 @@ These -m options are defined for the SH implementations:
   Prefer zero-displacement conditional branches for conditional move instruction
   patterns.  This can result in faster code on the SH4 processor.
 
-:: _solaris-2-options:
+.. _solaris-2-options:
 
 Solaris 2 Options
 ^^^^^^^^^^^^^^^^^
@@ -8271,7 +8272,7 @@ These switches are supported in addition to the above on Solaris 2:
 
   This is a synonym for :option:`-pthreads`.
 
-:: _sparc-options:
+.. _sparc-options:
 
 SPARC Options
 ^^^^^^^^^^^^^
@@ -8588,7 +8589,7 @@ on SPARC-V9 processors in 64-bit environments:
   when making stack frame references.  This is the default in 64-bit mode.
   Otherwise, assume no such offset is present.
 
-:: _spu-options:
+.. _spu-options:
 
 SPU Options
 ^^^^^^^^^^^
@@ -8705,7 +8706,7 @@ These -m options are supported on the SPU:
   By default, GCC inserts the ``hbrp`` instruction to make sure
   this stall won't happen.
 
-:: _system-v-options:
+.. _system-v-options:
 
 Options for System V
 ^^^^^^^^^^^^^^^^^^^^
@@ -8742,7 +8743,7 @@ compatibility with other compilers on those systems:
 
   .. the generic assembler that comes with Solaris takes just -Ym.
 
-:: _tile-gx-options:
+.. _tile-gx-options:
 
 TILE-Gx Options
 ^^^^^^^^^^^^^^^
@@ -8777,7 +8778,7 @@ These -m options are supported on the TILE-Gx:
 
   Generate code in big/little endian mode, respectively.
 
-:: _tilepro-options:
+.. _tilepro-options:
 
 TILEPro Options
 ^^^^^^^^^^^^^^^
@@ -8797,7 +8798,7 @@ These -m options are supported on the TILEPro:
   pointer to 32 bits.  This is the only supported behavior so the flag
   is essentially ignored.
 
-:: _v850-options:
+.. _v850-options:
 
 V850 Options
 ^^^^^^^^^^^^
@@ -8998,7 +8999,7 @@ These -m options are defined for V850 implementations:
 
   This option causes r2 and r5 to be treated as fixed registers.
 
-:: _vax-options:
+.. _vax-options:
 
 VAX Options
 ^^^^^^^^^^^
@@ -9022,7 +9023,7 @@ These -m options are defined for the VAX:
 
   Output code for G-format floating-point numbers instead of D-format.
 
-:: _visium-options:
+.. _visium-options:
 
 Visium Options
 ^^^^^^^^^^^^^^
@@ -9089,7 +9090,7 @@ Visium Options
   is forbidden: on the GR5, registers r24 to r31 cannot be accessed in this
   mode; on the GR6, only registers r29 to r31 are affected.
 
-:: _vms-options:
+.. _vms-options:
 
 VMS Options
 ^^^^^^^^^^^
@@ -9117,7 +9118,7 @@ These -m options are defined for the VMS implementations:
   for 64 bit pointers, and no for supporting only 32 bit pointers.
   The later option disables ``pragma pointer_size``.
 
-:: _vxworks-options:
+.. _vxworks-options:
 
 VxWorks Options
 ^^^^^^^^^^^^^^^
@@ -9156,7 +9157,7 @@ options for that target.
   Disable lazy binding of function calls.  This option is the default and
   is defined for compatibility with Diab.
 
-:: _x86-options:
+.. _x86-options:
 
 x86 Options
 ^^^^^^^^^^^
@@ -10130,7 +10131,7 @@ on x86-64 processors in 64-bit environments.
   and x32 environments.  It is the default address mode for 32-bit and
   x32 environments.
 
-:: _x86-windows-options:
+.. _x86-windows-options:
 
 x86 Windows Options
 ^^^^^^^^^^^^^^^^^^^
@@ -10213,7 +10214,7 @@ These additional options are available for Microsoft Windows targets:
 
 See also under x86 Options for standard options.
 
-:: _xstormy16-options:
+.. _xstormy16-options:
 
 Xstormy16 Options
 ^^^^^^^^^^^^^^^^^
@@ -10226,7 +10227,7 @@ These options are defined for Xstormy16:
 
   Choose startup files and linker script suitable for the simulator.
 
-:: _xtensa-options:
+.. _xtensa-options:
 
 Xtensa Options
 ^^^^^^^^^^^^^^
@@ -10313,7 +10314,7 @@ These options are supported for Xtensa targets:
   instructions.  Note that the assembler uses an indirect call for
   every cross-file call, not just those that really are out of range.
 
-:: _zseries-options:
+.. _zseries-options:
 
 zSeries Options
 ^^^^^^^^^^^^^^^

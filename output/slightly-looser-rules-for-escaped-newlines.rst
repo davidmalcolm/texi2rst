@@ -1,3 +1,4 @@
+.. _escaped-newlines:
 
 Slightly Looser Rules for Escaped Newlines
 ******************************************

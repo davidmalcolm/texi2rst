@@ -1,3 +1,4 @@
+.. _variable-length:
 
 Arrays of Variable Length
 *************************

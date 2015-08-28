@@ -1,3 +1,4 @@
+.. _local-labels:
 
 Locally Declared Labels
 ***********************

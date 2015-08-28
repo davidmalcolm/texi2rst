@@ -1,3 +1,4 @@
+.. _initializers:
 
 Non-Constant Initializers
 *************************

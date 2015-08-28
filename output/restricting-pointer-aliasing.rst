@@ -1,3 +1,4 @@
+.. _restricted-pointers:
 
 Restricting Pointer Aliasing
 ****************************

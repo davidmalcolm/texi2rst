@@ -1,3 +1,4 @@
+.. _language-independent-options:
 
 Options to Control Diagnostic Messages Formatting
 *************************************************

@@ -1,3 +1,4 @@
+.. _function-names:
 
 Function Names as Strings
 *************************

@@ -1,3 +1,4 @@
+.. _dollar-signs:
 
 Dollar Signs in Identifier Names
 ********************************

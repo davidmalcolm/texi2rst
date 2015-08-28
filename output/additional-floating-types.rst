@@ -1,3 +1,4 @@
+.. _floating-types:
 
 Additional Floating Types
 *************************

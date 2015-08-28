@@ -1,3 +1,4 @@
+.. _invoking-gcov-tool:
 
 Invoking :command:`gcov-tool`
 .. code-block:: c++

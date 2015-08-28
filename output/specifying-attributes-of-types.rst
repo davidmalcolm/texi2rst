@@ -1,3 +1,4 @@
+  .. _type-attributes:
 
 Specifying Attributes of Types
 ******************************
@@ -35,7 +36,7 @@ attributes.
    <spu-type-attributes>
    <x86-type-attributes>
 
-:: _common-type-attributes:
+.. _common-type-attributes:
 
 Common Type Attributes
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -354,7 +355,7 @@ visibility
 double parentheses: for example, __attribute__ ((aligned (16),
 packed)).
 
-:: _arm-type-attributes:
+.. _arm-type-attributes:
 
 ARM Type Attributes
 ^^^^^^^^^^^^^^^^^^^
@@ -380,7 +381,7 @@ virtual table for ``C`` is not exported.  (You can use
 ``__attribute__`` instead of ``__declspec`` if you prefer, but
 most Symbian OS code uses ``__declspec``.)
 
-:: _mep-type-attributes:
+.. _mep-type-attributes:
 
 MeP Type Attributes
 ^^^^^^^^^^^^^^^^^^^
@@ -390,7 +391,7 @@ Specifically, the ``based``, ``tiny``, ``near``, and
 ``far`` attributes may be applied to either.  The ``io`` and
 ``cb`` attributes may not be applied to types.
 
-:: _powerpc-type-attributes:
+.. _powerpc-type-attributes:
 
 PowerPC Type Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -416,7 +417,7 @@ and ``bool__`` (always followed by unsigned).
 These attributes mainly are intended to support the ``__vector``,
 ``__pixel``, and ``__bool`` AltiVec keywords.
 
-:: _spu-type-attributes:
+.. _spu-type-attributes:
 
 SPU Type Attributes
 ^^^^^^^^^^^^^^^^^^^
@@ -426,7 +427,7 @@ allows one to declare vector data types supported by the Sony/Toshiba/IBM SPU
 Language Extensions Specification.  It is intended to support the
 ``__vector`` keyword.
 
-:: _x86-type-attributes:
+.. _x86-type-attributes:
 
 x86 Type Attributes
 ^^^^^^^^^^^^^^^^^^^

@@ -1,3 +1,4 @@
+.. _half-precision:
 
 Half-Precision Floating Point
 *****************************

@@ -1,3 +1,4 @@
+.. _cilk-plus-builtins:
 
 Cilk Plus C/C++ Language Extension Built-in Functions
 *****************************************************

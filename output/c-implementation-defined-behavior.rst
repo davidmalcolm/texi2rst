@@ -1,3 +1,4 @@
+.. _c-implementation:
 
 C Implementation-Defined Behavior
 ---------------------------------
@@ -40,8 +41,6 @@ a freestanding environment); refer to their documentation for details.
    <architecture-implementation>
    <locale-specific-behavior-implementation>
 
-:: _translation-implementation:
-
 .. toctree::
 
   translation
@@ -61,18 +60,3 @@ a freestanding environment); refer to their documentation for details.
   architecture
   locale-specific-behavior
 
-:: _environment-implementation:
-:: _identifiers-implementation:
-:: _characters-implementation:
-:: _integers-implementation:
-:: _floating-point-implementation:
-:: _arrays-and-pointers-implementation:
-:: _hints-implementation:
-:: _structures-unions-enumerations-and-bit-fields-implementation:
-:: _qualifiers-implementation:
-:: _declarators-implementation:
-:: _statements-implementation:
-:: _preprocessing-directives-implementation:
-:: _library-functions-implementation:
-:: _architecture-implementation:
-:: _locale-specific-behavior-implementation:

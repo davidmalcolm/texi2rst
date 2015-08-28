@@ -1,3 +1,4 @@
+.. _pointers-to-arrays:
 
 Pointers to Arrays with Qualifiers Work as Expected
 ***************************************************

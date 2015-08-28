@@ -1,3 +1,4 @@
+.. _target-options:
 
 Specifying Target Machine and Compiler Version
 **********************************************

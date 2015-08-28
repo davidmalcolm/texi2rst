@@ -83,12 +83,12 @@
           <div class="body">
             
   <div class="section" id="cast-to-a-union-type">
-<h1>Cast to a Union Type<a class="headerlink" href="#cast-to-a-union-type" title="Permalink to this headline">¶</a></h1>
+<span id="cast-to-union"></span><h1>Cast to a Union Type<a class="headerlink" href="#cast-to-a-union-type" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><p id="index-1">A cast to union type is similar to other casts, except that the type
 specified is a union type.  You can specify the type either with
 <tt class="docutils literal"><span class="pre">union</span> <span class="pre">``tag``</span></tt> or with a typedef name.  A cast to union is actually
 a constructor, not a cast, and hence does not yield an lvalue like
-normal casts.  (See <em class="xref std std-ref">compound-literals</em>.)</p>
+normal casts.  (See <a class="reference internal" href="compound-literals.html#compound-literals"><em>Compound Literals</em></a>.)</p>
 <p>The types that may be cast to the union type are those of the members
 of the union.  Thus, given the following union and variables:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">union</span> <span class="n">foo</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">i</span><span class="p">;</span> <span class="kt">double</span> <span class="n">d</span><span class="p">;</span> <span class="p">};</span>

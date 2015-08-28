@@ -1,3 +1,4 @@
+.. _bound-member-functions:
 
 Extracting the Function Pointer from a Bound Pointer to Member Function
 ***********************************************************************

@@ -1,3 +1,4 @@
+.. _c++-implementation:
 
 C++ Implementation-Defined Behavior
 -----------------------------------
@@ -27,11 +28,8 @@ environment); refer to their documentation for details.
    <conditionally-supported-behavior>
    <exception-handling>
 
-:: _conditionally-supported-behavior:
-
 .. toctree::
 
   conditionally-supported-behavior
   exception-handling
 
-:: _exception-handling:

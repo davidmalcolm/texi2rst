@@ -1,3 +1,4 @@
+.. _bugs:
 
 Reporting Bugs
 --------------
@@ -17,11 +18,8 @@ report the problem.
   Have you really found a bug? <bug-criteria>
   How to report a bug effectively. <bug-reporting>
 
-:: _bug-criteria:
-
 .. toctree::
 
   have-you-found-a-bug?
   how-and-where-to-report-bugs
 
-:: _bug-reporting:

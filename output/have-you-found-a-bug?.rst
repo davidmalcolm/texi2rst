@@ -1,3 +1,5 @@
+.. _bug-criteria:
+
 Have You Found a Bug?
 *********************
 

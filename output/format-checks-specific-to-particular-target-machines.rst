@@ -1,3 +1,4 @@
+.. _target-format-checks:
 
 Format Checks Specific to Particular Target Machines
 ****************************************************
@@ -11,7 +12,7 @@ format attribute
    <solaris-format-checks>
    <darwin-format-checks>
 
-:: _solaris-format-checks:
+.. _solaris-format-checks:
 
 Solaris Format Checks
 ^^^^^^^^^^^^^^^^^^^^^
@@ -21,7 +22,7 @@ check.  ``cmn_err`` accepts a subset of the standard ``printf``
 conversions, and the two-argument ``%b`` conversion for displaying
 bit-fields.  See the Solaris man page for ``cmn_err`` for more information.
 
-:: _darwin-format-checks:
+.. _darwin-format-checks:
 
 Darwin Format Checks
 ^^^^^^^^^^^^^^^^^^^^

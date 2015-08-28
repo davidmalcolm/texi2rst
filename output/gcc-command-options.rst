@@ -1,3 +1,4 @@
+.. _invoking-gcc:
 
 GCC Command Options
 -------------------
@@ -97,8 +98,6 @@ See :ref:`option-index`, for an index to GCC's options.
 
 .. man begin OPTIONS
 
-:: _option-summary:
-
 .. toctree::
 
   option-summary
@@ -122,22 +121,3 @@ See :ref:`option-index`, for an index to GCC's options.
   environment-variables-affecting-gcc
   using-precompiled-headers
 
-  :: _overall-options:
-  :: _invoking-g++:
-:: _c-dialect-options:
-:: _c++-dialect-options:
-:: _objective-c-and-objective-c++-dialect-options:
-:: _language-independent-options:
-:: _warning-options:
-  :: _debugging-options:
-:: _optimize-options:
-:: _preprocessor-options:
-:: _assembler-options:
-:: _link-options:
-:: _directory-options:
-:: _spec-files:
-:: _target-options:
-:: _submodel-options:
-:: _code-gen-options:
-:: _environment-variables:
-:: _precompiled-headers:

@@ -1,3 +1,4 @@
+.. _designated-inits:
 
 Designated Initializers
 ***********************

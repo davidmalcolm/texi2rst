@@ -1,3 +1,4 @@
+.. _synchronization:
 
 Synchronization
 ***************

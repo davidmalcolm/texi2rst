@@ -1,3 +1,4 @@
+  .. ___atomic-builtins:
 
 Built-in Functions for Memory Model Aware Atomic Operations
 ***********************************************************

@@ -22,8 +22,7 @@ not doing a link step.
 .. option:: -c, -S, -E
 
   If any of these options is used, then the linker is not run, and
-  object file names should not be used as arguments.  Overall
-  Options.
+  object file names should not be used as arguments.  See :ref:`overall-options`.
 
 .. option:: -fuse-ld=bfd
 
@@ -106,8 +105,7 @@ not doing a link step.
   :option:`-nodefaultlibs` is libgcc.a, a library of internal subroutines
   which GCC uses to overcome shortcomings of particular machines, or special
   needs for some languages.
-  (InterfaceInterfacing to GCC OutputgccintGNU Compiler
-  Collection (GCC) Internals,
+  (See :ref:`Interfacing to GCC Output <interface>`,
   for more discussion of libgcc.a.)
   In most cases, you need libgcc.a even when you want to avoid
   other standard libraries.  In other words, when you specify :option:`-nostdlib`

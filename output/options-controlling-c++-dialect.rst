@@ -194,7 +194,7 @@ Here is a list of options that are only for compiling C++ programs:
 
   Never emit code for non-inline templates that are instantiated
   implicitly (i.e. by use); only emit code for explicit instantiations.
-  Template Instantiation, for more information.
+  See :ref:`template-instantiation`, for more information.
 
 .. option:: -fno-implicit-inline-templates
 
@@ -265,8 +265,7 @@ Here is a list of options that are only for compiling C++ programs:
 .. option:: -frepo
 
   Enable automatic template instantiation at link time.  This option also
-  implies :option:`-fno-implicit-templates`.  Template
-  Instantiation, for more information.
+  implies :option:`-fno-implicit-templates`.  See :ref:`template-instantiation`, for more information.
 
 .. option:: -fno-rtti
 
@@ -369,7 +368,7 @@ Here is a list of options that are only for compiling C++ programs:
 
   Explicitly instantiated inline methods are unaffected by this option
   as their linkage might otherwise cross a shared library boundary.
-  Template Instantiation.
+  See :ref:`template-instantiation`.
 
 .. option:: -fvisibility-ms-compat
 

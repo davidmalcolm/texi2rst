@@ -30,8 +30,7 @@ be errors rather than warnings).
 More information about the C++ standards is available on the ISO C++
 committee's web site at http://www.open-std.org//jtc1//sc22//wg21/.
 
-By default, GCC provides some extensions to the C++ language; C++
-Dialect OptionsOptions Controlling C++ Dialect.  Use of the
+By default, GCC provides some extensions to the C++ language; See :ref:`c++-dialect-options`.  Use of the
 :option:`-std` option listed above will disable these extensions.  You
 may also select an extended version of the C++ language explicitly with
 :option:`-std=gnu++98` (for C++98 with GNU extensions) or

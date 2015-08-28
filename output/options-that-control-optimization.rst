@@ -36,7 +36,7 @@ Depending on the target and how GCC was configured, a slightly different
 set of optimizations may be enabled at each :option:`-O` level than
 those listed here.  You can invoke GCC with :option:`-Q --help=optimizers`
 to find out the exact set of optimizations that are enabled at each level.
-Overall Options, for examples.
+See :ref:`overall-options`, for examples.
 
 .. option:: -O, -O1
 
@@ -238,8 +238,8 @@ optimizations to be performed is desired.
   the standard calling sequence automatically handles the frame pointer
   and nothing is saved by pretending it doesn't exist.  The
   machine-description macro ``FRAME_POINTER_REQUIRED`` controls
-  whether a target machine supports this flag.  RegistersRegister
-  UsagegccintGNU Compiler Collection (GCC) Internals.
+  whether a target machine supports this flag.  See :ref:`Register
+  Usage <registers>`.
 
   The default setting (when not optimizing for
   size) for 32-bit GNU/Linux x86 and 32-bit Darwin x86 targets is
@@ -361,8 +361,8 @@ optimizations to be performed is desired.
 
   This is a more fine-grained version of :option:`-fkeep-inline-functions`,
   which applies only to functions that are declared using the ``dllexport``
-  attribute or declspec (Function AttributesDeclaring Attributes of
-  Functions.)
+  attribute or declspec (See :ref:`Declaring Attributes of
+  Functions <function-attributes>`.)
 
 .. option:: -fkeep-inline-functions
 
@@ -1693,8 +1693,7 @@ optimizations to be performed is desired.
   recently written to (called 'type-punning') is common.  Even with
   :option:`-fstrict-aliasing`, type-punning is allowed, provided the memory
   is accessed through the union type.  So, the code above works as
-  expected.  Structures unions enumerations and bit-fields
-  implementation.  However, this code might not:
+  expected.  See :ref:`structures-unions-enumerations-and-bit-fields-implementation`.  However, this code might not:
 
   .. code-block:: c++
 

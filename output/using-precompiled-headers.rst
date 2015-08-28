@@ -91,7 +91,7 @@ A precompiled header file can be used only when these conditions apply:
   when no debugging information is being output.
 
 * The same :option:`-m` options must generally be used when building
-  and using the precompiled header.  Submodel Options,
+  and using the precompiled header.  See :ref:`submodel-options`,
   for any cases where this rule is relaxed.
 
 * Each of the following options must be the same when building and using

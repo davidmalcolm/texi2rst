@@ -48,7 +48,7 @@ __memx
   RAM using the lower two bytes as RAM address.
   If the high bit of the address is clear, data is read from flash
   with ``RAMPZ`` set according to the high byte of the address.
-  AVR Built-in Functions``__builtin_avr_flash_segment``.
+  See :ref:`avr-built-in-functions`.
 
   Objects in this address space are located in ``.progmemx.data``.
 

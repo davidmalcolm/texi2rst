@@ -321,6 +321,8 @@ def prune(tree):
 
 def convert_text_to_label(data):
     data = data.replace(' ', '-')
+    data = data.replace('\n', '-')
+    data = data.replace('/', '-')
     data = data.lower()
     return data
 
@@ -741,6 +743,46 @@ def fixup_index(tree):
     v.visit(tree)
     return tree
 
+def fixup_xrefs(tree):
+    class XRefFixer(NoopVisitor):
+        """
+        Given:
+          <xref label="C-Dialect-Options">
+            <xrefnodename>C Dialect Options</xrefnodename>
+            <xrefprinteddesc>Options Controlling C Dialect</xrefprinteddesc>
+          </xref>
+        generate:
+          Element("xref")
+            Text("See ")
+            Element(Ref(REF_DESC, REF_NAME))
+        giving this .rst text:
+          See :ref:`REF_DESC <REF_NAME>`
+        (see http://sphinx-doc.org/markup/inline.html#role-ref)
+        Note that the XML already contains a trailing period.
+        """
+        def previsit_element(self, element):
+            if element.kind == 'xref':
+                xrefnodename = element.first_element_named('xrefnodename')
+                xrefprinteddesc = element.first_element_named('xrefprinteddesc')
+                ref_desc = self.get_desc(element)
+                ref_name = convert_text_to_label(xrefnodename.get_sole_text().data)
+                ref = Element('ref', {})
+                ref.rst_kind = Ref(ref_desc, ref_name)
+                element.children = [Text('See '), ref]
+
+        def get_desc(self, element):
+            xrefprinteddesc = element.first_element_named('xrefprinteddesc')
+            if not xrefprinteddesc:
+                return None
+            desc = xrefprinteddesc.get_sole_text()
+            if not desc:
+                return None
+            return desc.data
+
+    v = XRefFixer()
+    v.visit(tree)
+    return tree
+
 def fixup_lists(tree):
     class ListFixer(NoopVisitor):
         """
@@ -818,6 +860,7 @@ def convert_to_rst(tree):
     tree = fixup_examples(tree)
     tree = fixup_titles(tree)
     tree = fixup_index(tree)
+    tree = fixup_xrefs(tree)
     tree = fixup_lists(tree)
     tree = fixup_inline_markup(tree)
     return tree
@@ -859,6 +902,23 @@ class MatchedInlineMarkup(RstKind):
 
     def after(self, w):
         w.write(self.tag)
+
+class Ref(RstKind):
+    def __init__(self, desc, name):
+        self.desc = desc
+        self.name = name
+
+    def __repr__(self):
+        return 'Ref(%r, %r)' % (self.desc, self.name)
+
+    def before(self, w):
+        if self.desc:
+            w.write(':ref:`%s <%s>`' % (self.desc, self.name))
+        else:
+            w.write(':ref:`%s`' % self.name)
+
+    def after(self, w):
+        pass
 
 class Title(RstKind):
     def __init__(self, element, underline):
@@ -1789,6 +1849,38 @@ Some text about grouping options.
 
 '''),
         out)
+
+class XRefTests(Texi2RstTests):
+    def test_xref(self):
+        xml_src = ('''<para>Some text.
+<xref label="C-Dialect-Options"><xrefnodename>C Dialect Options</xrefnodename><xrefprinteddesc>Options Controlling C Dialect</xrefprinteddesc></xref>.
+</para>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_xrefs(doc)
+        out = self.make_rst_string(doc)
+        self.maxDiff = 2000
+        self.assertEqual(
+            (u'''Some text.
+See :ref:`Options Controlling C Dialect <c-dialect-options>`.
+
+'''),
+        out)
+
+    def test_xref_with_infoname(self):
+        xml_src = ('''<para>Some text.
+<xref label="C_002b_002b-Dialect-Options"><xrefnodename>C++
+Dialect Options</xrefnodename><xrefinfoname>Options Controlling C++ Dialect</xrefinfoname></xref>.</para>''')
+        doc = from_xml_string(xml_src)
+        doc = fixup_xrefs(doc)
+        out = self.make_rst_string(doc)
+        self.maxDiff = 2000
+        self.assertEqual(
+            (u'''Some text.
+See :ref:`c++-dialect-options`.
+
+'''),
+        out)
+
 
 class IntegrationTests(Texi2RstTests):
     def test_empty(self):

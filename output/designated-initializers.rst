@@ -99,7 +99,7 @@ should be used.  For example,
 converts 4 to a ``double`` to store it in the union using
 the second element.  By contrast, casting 4 to type ``union foo``
 stores it into the union as the integer ``i``, since it is
-an integer.  (Cast to Union.)
+an integer.  (See :ref:`cast-to-union`.)
 
 You can combine this technique of naming elements with ordinary C
 initialization of successive elements.  Each initializer element that

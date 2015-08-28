@@ -75,5 +75,5 @@ This could also be written using a statement expression:
   })
 
 Local label declarations also make the labels they declare visible to
-nested functions, if there are any.  Nested Functions, for details.
+nested functions, if there are any.  See :ref:`nested-functions`, for details.
 

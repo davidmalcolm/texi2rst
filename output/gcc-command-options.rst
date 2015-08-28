@@ -31,7 +31,7 @@ that option with all supported languages.
 
 .. index:: C++ compilation options
 
-Invoking G++Compiling C++ Programs, for a summary of special
+See :ref:`Compiling C++ Programs <invoking-g++>`, for a summary of special
 options for compiling C++ programs.
 
 .. index:: grouping options
@@ -62,7 +62,7 @@ only one of these two forms, whichever one is not the default.
 
 .. man end
 
-Option Index, for an index to GCC's options.
+See :ref:`option-index`, for an index to GCC's options.
 
 .. toctree::
 

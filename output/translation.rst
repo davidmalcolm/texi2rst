@@ -10,6 +10,6 @@ Translation
   new-line is retained or replaced by one space character in translation
   phase 3 (C90, C99 and C11 5.1.1.2).
 
-  Implementation-defined behaviorImplementation-defined
-  behaviorcppThe C Preprocessor.
+  See :ref:`Implementation-defined
+  behavior <implementation-defined-behavior>`.
 

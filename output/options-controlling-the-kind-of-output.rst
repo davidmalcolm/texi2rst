@@ -374,7 +374,7 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
 .. option:: -fdump-ada-spec[-slim], -fdump-ada-spec
 
   For C and C++ source and include files, generate corresponding Ada specs.
-  Generating Ada Bindings for C and C++ headersgnat_ugnGNAT User's Guide, which provides detailed documentation on this feature.
+  See :ref:`generating-ada-bindings-for-c-and-c++-headers`, which provides detailed documentation on this feature.
 
 .. option:: -fada-spec-parent=unit
 

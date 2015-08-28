@@ -18,12 +18,12 @@ does not distinguish between types with different attributes.  Support
 for attributes in C++ may be restricted in future to attributes on
 declarations only, but not on nested declarators.
 
-Function Attributes, for details of the semantics of attributes
-applying to functions.  Variable Attributes, for details of the
-semantics of attributes applying to variables.  Type Attributes,
+See :ref:`function-attributes`, for details of the semantics of attributes
+applying to functions.  See :ref:`variable-attributes`, for details of the
+semantics of attributes applying to variables.  See :ref:`type-attributes`,
 for details of the semantics of attributes applying to structure, union
 and enumerated types.
-Label Attributes, for details of the semantics of attributes 
+See :ref:`label-attributes`, for details of the semantics of attributes 
 applying to labels.
 
 An :dfn:`attribute specifier` is of the form

@@ -23,7 +23,7 @@ syntax is to place them just past the closing curly brace of the
 definition.
 
 You can also include type attributes in a ``typedef`` declaration.
-Attribute Syntax, for details of the exact syntax for using
+See :ref:`attribute-syntax`, for details of the exact syntax for using
 attributes.
 
 .. toctree::

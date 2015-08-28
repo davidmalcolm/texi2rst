@@ -111,7 +111,7 @@ warns that an unrecognized option is present.
   warnings are also disabled in the expression that follows
   ``__extension__``.  However, only system header files should use
   these escape routes; application programs should avoid them.
-  Alternate Keywords.
+  See :ref:`alternate-keywords`.
 
   Some users try to use :option:`-Wpedantic` to check programs for strict ISO
   C conformance.  They soon find that it does not do quite what they want:
@@ -314,8 +314,7 @@ warns that an unrecognized option is present.
   particular library's limitations.  However, if :option:`-Wpedantic` is used
   with :option:`-Wformat`, warnings are given about format features not
   in the selected standard version (but not for ``strfmon`` formats,
-  since those are not in any version of the C standard).  C Dialect
-  OptionsOptions Controlling C Dialect.
+  since those are not in any version of the C standard).  See :ref:`Options Controlling C Dialect <c-dialect-options>`.
 
   .. option:: -Wformat=1
 
@@ -832,8 +831,7 @@ warns that an unrecognized option is present.
   in fact be called at the place that would cause a problem.
 
   Some spurious warnings can be avoided if you declare all the functions
-  you use that never return as ``noreturn``.  Function
-  Attributes.
+  you use that never return as ``noreturn``.  See :ref:`function-attributes`.
 
   This warning is enabled by :option:`-Wall` or :option:`-Wextra`.
 
@@ -1226,7 +1224,7 @@ warns that an unrecognized option is present.
 
   Warn when a declaration is found after a statement in a block.  This
   construct, known from C++, was introduced with ISO C99 and is by default
-  allowed in GCC.  It is not supported by ISO C90.  Mixed Declarations.
+  allowed in GCC.  It is not supported by ISO C90.  See :ref:`mixed-declarations`.
 
 .. option:: -Wundef, -Wno-undef
 
@@ -1848,7 +1846,7 @@ warns that an unrecognized option is present.
 
 .. option:: -Wno-deprecated, -Wdeprecated
 
-  Do not warn about usage of deprecated features.  Deprecated Features.
+  Do not warn about usage of deprecated features.  See :ref:`deprecated-features`.
 
 .. option:: -Wno-deprecated-declarations, -Wdeprecated-declarations
 

@@ -465,8 +465,7 @@ either your program or GCC:
   structure field attribute (Type Attributes) and
   ``bnd_legacy``, and ``bnd_instrument`` function attributes
   (Function Attributes).  GCC also provides a number of built-in
-  functions for controlling the Pointer Bounds Checker.  Pointer
-  Bounds Checker builtins, for more information.
+  functions for controlling the Pointer Bounds Checker.  See :ref:`pointer-bounds-checker-builtins`, for more information.
 
 .. option:: -fchkp-check-incomplete-type, -fno-chkp-check-incomplete-type
 
@@ -802,7 +801,7 @@ either your program or GCC:
   the basename of the source file.  In both cases any suffix is removed
   (e.g. foo.gcda for input file dir/foo.c, or
   dir/foo.gcda for output file specified as :option:`-o dir/foo.o`).
-  Cross-profiling.
+  See :ref:`cross-profiling`.
 
   :command:`gcov`
 
@@ -1838,7 +1837,7 @@ either your program or GCC:
   components where :command:`gcc` expects to find them, or you can set the environment
   variable :envvar:`GCC_EXEC_PREFIX` to the directory where you installed them.
   Don't forget the trailing /.
-  Environment Variables.
+  See :ref:`environment-variables`.
 
 .. option:: -print-sysroot
 
@@ -1867,7 +1866,7 @@ either your program or GCC:
 .. option:: -dumpspecs
 
   Print the compiler's built-in specs-and don't do anything else.  (This
-  is used when GCC itself is being built.)  Spec Files.
+  is used when GCC itself is being built.)  See :ref:`spec-files`.
 
 .. option:: -fno-eliminate-unused-debug-types, -feliminate-unused-debug-types
 

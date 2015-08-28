@@ -705,7 +705,7 @@ compilation.
 
     If you use :option:`-dM` without the :option:`-E` option, :option:`-dM` is
     interpreted as a synonym for :option:`-fdump-rtl-mach`.
-    Debugging Optionsgcc.
+    See :ref:`debugging-options`.
 
   .. option:: D, -dD
 

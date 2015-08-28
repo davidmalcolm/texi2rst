@@ -138,7 +138,7 @@ on a declaration, followed by an attribute specification inside double
 parentheses.  You can specify multiple attributes in a declaration by
 separating them by commas within the double parentheses or by
 immediately following an attribute declaration with another attribute
-declaration.  Attribute Syntax, for the exact rules on
+declaration.  See <em class="xref std std-ref">attribute-syntax</em>, for the exact rules on
 attribute syntax and placement.</p>
 <p>GCC also supports attributes on
 variable declarations (Variable Attributes),
@@ -419,15 +419,15 @@ modify the header file stdio.h.  In C99 mode, the functions
 <tt class="docutils literal"><span class="pre">vsscanf</span></tt> are also checked.  Except in strictly conforming C
 standard modes, the X/Open function <tt class="docutils literal"><span class="pre">strfmon</span></tt> is also checked as
 are <tt class="docutils literal"><span class="pre">printf_unlocked</span></tt> and <tt class="docutils literal"><span class="pre">fprintf_unlocked</span></tt>.
-C Dialect OptionsOptions Controlling C Dialect.</p>
+See <em class="xref std std-ref">Options Controlling C Dialect</em>.</p>
 <p>For Objective-C dialects, <tt class="docutils literal"><span class="pre">NSString</span></tt> (or <tt class="docutils literal"><span class="pre">__NSString__</span></tt>) is
 recognized in the same context.  Declarations including these format attributes
 are parsed for correct syntax, however the result of checking of such format
 strings is not yet defined, and is not carried out by this version of the
 compiler.</p>
 <p>The target may also provide additional types of format checks.
-Target Format ChecksFormat Checks Specific to Particular
-Target Machines.</p>
+See <em class="xref std std-ref">Format Checks Specific to Particular
+Target Machines</em>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -467,14 +467,14 @@ The compiler always treats <tt class="docutils literal"><span class="pre">gettex
 <tt class="docutils literal"><span class="pre">dcgettext</span></tt> in this manner except when strict ISO C support is
 requested by <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or an appropriate <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> option, or
 <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ffreestanding"><em class="xref std std-option">-ffreestanding</em></a> or <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fno-builtin"><em class="xref std std-option">-fno-builtin</em></a>
-is used.  C Dialect OptionsOptions
-Controlling C Dialect.</p>
+is used.  See <em class="xref std std-ref">Options
+Controlling C Dialect</em>.</p>
 <p>For Objective-C dialects, the <tt class="docutils literal"><span class="pre">format-arg</span></tt> attribute may refer to an
 <tt class="docutils literal"><span class="pre">NSString</span></tt> reference for compatibility with the <tt class="docutils literal"><span class="pre">format</span></tt> attribute
 above.</p>
 <p>The target may also allow additional types in <tt class="docutils literal"><span class="pre">format-arg</span></tt> attributes.
-Target Format ChecksFormat Checks Specific to Particular
-Target Machines.</p>
+See <em class="xref std std-ref">Format Checks Specific to Particular
+Target Machines</em>.</p>
 </dd></dl>
 
 <dl class="docutils">
@@ -505,8 +505,8 @@ inlined where possible.</p>
 measure and as a useful feature in its own right.  This attribute is
 available in GCC 4.1.3 and later.  It is available if either of the
 preprocessor macros <tt class="docutils literal"><span class="pre">__GNUC_GNU_INLINE__</span></tt> or
-<tt class="docutils literal"><span class="pre">__GNUC_STDC_INLINE__</span></tt> are defined.  InlineAn Inline
-Function is As Fast As a Macro.</p>
+<tt class="docutils literal"><span class="pre">__GNUC_STDC_INLINE__</span></tt> are defined.  See <em class="xref std std-ref">An Inline
+Function is As Fast As a Macro</em>.</p>
 <p class="last">In C++, this attribute does not depend on <tt class="docutils literal"><span class="pre">extern</span></tt> in any way,
 but it still requires the <tt class="docutils literal"><span class="pre">inline</span></tt> keyword to enable its special
 behavior.</p>
@@ -735,7 +735,7 @@ are assumed to be an optimization level.  Strings that begin with
 are assumed to be used with a <tt class="docutils literal"><span class="pre">-f</span></tt> prefix.  You can also use the
 #pragma GCC optimize pragma to set the optimization options
 that affect more than one function.
-Function Specific Option Pragmas, for details about the
+See <em class="xref std std-ref">function-specific-option-pragmas</em>, for details about the
 #pragma GCC optimize pragma.</p>
 <p class="last">This can be used for instance to have frequently-executed functions
 compiled with more aggressive optimization options that produce faster
@@ -833,7 +833,7 @@ command line.  This can be used for instance to have functions
 compiled with a different ISA (instruction set architecture) than the
 default.  You can also use the #pragma GCC target pragma to set
 more than one function to be compiled with specific target options.
-Function Specific Option Pragmas, for details about the
+See <em class="xref std std-ref">function-specific-option-pragmas</em>, for details about the
 #pragma GCC target pragma.</p>
 <p>For instance, on an x86, you could declare one function with the
 <tt class="docutils literal"><span class="pre">target(&quot;sse4.1,arch=core2&quot;)</span></tt> attribute and another with
@@ -1340,7 +1340,7 @@ Epiphany targets:</p>
 These attributes override the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (Adapteva Epiphany Options)
 command-line switch and <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">long_calls</span></tt> settings.</p>
-<p class="last">:: _h8/300-function-attributes:</p>
+<p class="last">:: _h8-300-function-attributes:</p>
 </dd>
 </dl>
 </div>
@@ -1442,7 +1442,7 @@ then be sure to write this declaration in both files.</p>
 that the specified function is an interrupt handler.  The compiler generates
 function entry and exit sequences suitable for use in an interrupt handler
 when this attribute is present.</p>
-<p class="last">:: _m32r/d-function-attributes:</p>
+<p class="last">:: _m32r-d-function-attributes:</p>
 </dd>
 </dl>
 </div>
@@ -1862,12 +1862,12 @@ the custom instruction <tt class="docutils literal"><span class="pre">insn</span
 These target attributes correspond to the
 <em class="xref std std-option">-mcustom-``insn``=``N``</em> and <em class="xref std std-option">-mno-custom-``insn``</em>
 command-line options, and support the same set of <tt class="docutils literal"><span class="pre">insn</span></tt> keywords.
-Nios II Options, for more information.</dd>
+See <em class="xref std std-ref">nios-ii-options</em>, for more information.</dd>
 <dt>custom-fpu-cfg=``name``</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">target(&quot;custom-fpu-cfg=``name</span></tt>&#8221;)`` function attribute, Nios IIThis attribute corresponds to the <em class="xref std std-option">-mcustom-fpu-cfg=``name``</em>
 command-line option, to select a predefined set of custom instructions
 named <tt class="docutils literal"><span class="pre">name</span></tt>.
-Nios II Options, for more information.</p>
+See <em class="xref std std-ref">nios-ii-options</em>, for more information.</p>
 <p class="last">:: _powerpc-function-attributes:</p>
 </dd>
 </dl>
@@ -1886,7 +1886,7 @@ require a different (more expensive) calling sequence.  The
 enough for the shorter calling sequence to be used.  These attributes
 override both the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlongcall"><em class="xref std std-option">-mlongcall</em></a> switch and
 the <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">longcall</span></tt> setting.</p>
-<p>RS/6000 and PowerPC Options, for more information on whether long
+<p>See <em class="xref std std-ref">rs-6000-and-powerpc-options</em>, for more information on whether long
 calls are necessary.</p>
 </div></blockquote>
 <dl class="docutils">
@@ -2076,7 +2076,7 @@ depended upon to work reliably and are not supported.</dd>
 parameters, but does not make the function an interrupt-handler type
 function (i.e. it retains the normal C function calling ABI).  See the
 <tt class="docutils literal"><span class="pre">interrupt</span></tt> attribute for a description of its arguments.</p>
-<p class="last">:: _s/390-function-attributes:</p>
+<p class="last">:: _s-390-function-attributes:</p>
 </dd>
 </dl>
 </div>
@@ -2185,7 +2185,7 @@ depended upon to work reliably and are not supported.</p>
 </div>
 <div class="section" id="symbian-os-function-attributes">
 <h2>Symbian OS Function Attributes<a class="headerlink" href="#symbian-os-function-attributes" title="Permalink to this headline">¶</a></h2>
-<p>Microsoft Windows Function Attributes, for discussion of the
+<p>See <em class="xref std std-ref">microsoft-windows-function-attributes</em>, for discussion of the
 <tt class="docutils literal"><span class="pre">dllexport</span></tt> and <tt class="docutils literal"><span class="pre">dllimport</span></tt> attributes.</p>
 <p>:: _visium-function-attributes:</p>
 </div>
@@ -2314,7 +2314,7 @@ allows specification of target-specific compilation options.</p>
 <dt>aes no-aes</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;aes&quot;)</span></tt> function attribute, x86Enable/disable the generation of the AES instructions.</dd>
 <dt>default</dt>
-<dd><tt class="docutils literal"><span class="pre">target(&quot;default&quot;)</span></tt> function attribute, x86Function Multiversioning, where it is used to specify the
+<dd><tt class="docutils literal"><span class="pre">target(&quot;default&quot;)</span></tt> function attribute, x86See <em class="xref std std-ref">function-multiversioning</em>, where it is used to specify the
 default function version.</dd>
 <dt>mmx no-mmx</dt>
 <dd><tt class="docutils literal"><span class="pre">target(&quot;mmx&quot;)</span></tt> function attribute, x86Enable/disable the generation of the MMX instructions.</dd>

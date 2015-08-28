@@ -30,7 +30,7 @@ Here the type described is that of pointers to ``int``.
 
 If you are writing a header file that must work when included in ISO C
 programs, write ``__typeof__`` instead of ``typeof``.
-Alternate Keywords.
+See :ref:`alternate-keywords`.
 
 A ``typeof`` construct can be used anywhere a typedef name can be
 used.  For example, you can use it in a declaration, in a cast, or inside

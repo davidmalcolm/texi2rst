@@ -15,7 +15,7 @@ Note that you can also specify places to search using options such as
 :option:`-B`, :option:`-I` and :option:`-L` (Directory Options).  These
 take precedence over places specified using environment variables, which
 in turn take precedence over those specified by the configuration of GCC.
-DriverControlling the Compilation Driver gccgccintGNU Compiler Collection (GCC) Internals.
+See :ref:`driver`.
 
 .. envvar:: LANG
 
@@ -209,7 +209,7 @@ preprocessor.
   except that system header files are not ignored, so it implies
   :option:`-M` rather than :option:`-MM`.  However, the dependence on the
   main input file is omitted.
-  Preprocessor Options.
+  See :ref:`preprocessor-options`.
 
 .. man end
 

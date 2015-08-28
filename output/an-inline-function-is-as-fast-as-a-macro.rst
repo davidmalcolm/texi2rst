@@ -43,7 +43,7 @@ declaration, like this:
   }
 
 If you are writing a header file to be included in ISO C90 programs, write
-``__inline__`` instead of ``inline``.  Alternate Keywords.
+``__inline__`` instead of ``inline``.  See :ref:`alternate-keywords`.
 
 The three types of inlining behave similarly in two important cases:
 when the ``inline`` keyword is used on a ``static`` function,

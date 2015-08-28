@@ -255,11 +255,11 @@ various <a class="reference internal" href="options-controlling-the-preprocessor
 <dd>The typical use of extended <tt class="docutils literal"><span class="pre">asm</span></tt> statements is to manipulate input
 values to produce output values. However, your <tt class="docutils literal"><span class="pre">asm</span></tt> statements may
 also produce side effects. If so, you may need to use the <tt class="docutils literal"><span class="pre">volatile</span></tt>
-qualifier to disable certain optimizations. Volatile.</dd>
+qualifier to disable certain optimizations. See <em class="xref std std-ref">volatile</em>.</dd>
 <dt>goto</dt>
 <dd>This qualifier informs the compiler that the <tt class="docutils literal"><span class="pre">asm</span></tt> statement may
 perform a jump to one of the labels listed in the <tt class="docutils literal"><span class="pre">GotoLabels</span></tt>.
-GotoLabels.</dd>
+See <em class="xref std std-ref">gotolabels</em>.</dd>
 </dl>
 </div>
 <div class="section" id="id2">
@@ -268,22 +268,22 @@ GotoLabels.</dd>
 <dt>AssemblerTemplate</dt>
 <dd>This is a literal string that is the template for the assembler code. It is a
 combination of fixed text and tokens that refer to the input, output,
-and goto parameters. AssemblerTemplate.</dd>
+and goto parameters. See <em class="xref std std-ref">assemblertemplate</em>.</dd>
 <dt>OutputOperands</dt>
 <dd>A comma-separated list of the C variables modified by the instructions in the
-<tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt>.  An empty list is permitted.  OutputOperands.</dd>
+<tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt>.  An empty list is permitted.  See <em class="xref std std-ref">outputoperands</em>.</dd>
 <dt>InputOperands</dt>
 <dd>A comma-separated list of C expressions read by the instructions in the
-<tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt>.  An empty list is permitted.  InputOperands.</dd>
+<tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt>.  An empty list is permitted.  See <em class="xref std std-ref">inputoperands</em>.</dd>
 <dt>Clobbers</dt>
 <dd>A comma-separated list of registers or other values changed by the
 <tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt>, beyond those listed as outputs.
-An empty list is permitted.  Clobbers.</dd>
+An empty list is permitted.  See <em class="xref std std-ref">clobbers</em>.</dd>
 <dt>GotoLabels</dt>
 <dd><p class="first">When you are using the <tt class="docutils literal"><span class="pre">goto</span></tt> form of <tt class="docutils literal"><span class="pre">asm</span></tt>, this section contains
 the list of all C labels to which the code in the
 <tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt> may jump.
-GotoLabels.</p>
+See <em class="xref std std-ref">gotolabels</em>.</p>
 <p><tt class="docutils literal"><span class="pre">asm</span></tt> statements may not perform jumps into other <tt class="docutils literal"><span class="pre">asm</span></tt> statements,
 only to the listed <tt class="docutils literal"><span class="pre">GotoLabels</span></tt>.
 GCC&#8217;s optimizers do not know about other jumps; therefore they cannot take
@@ -481,7 +481,7 @@ default for inline assembler. The target-specific documentation for the
 default dialect if the option is not specified. This information may be
 important to understand, since assembler code that works correctly when
 compiled using one dialect will likely fail if compiled using another.
-x86 Options.</p>
+See <em class="xref std std-ref">x86-options</em>.</p>
 <p>If your code needs to support multiple assembler dialects (for example, if
 you are writing public headers that need to support a variety of compilation
 options), use constructs of this form:</p>
@@ -553,7 +553,7 @@ three output operands, use %0 in the template to refer to the first,
 </dd>
 <dt>constraint</dt>
 <dd><p class="first">A string constant specifying constraints on the placement of the operand;
-Constraints, for details.</p>
+See <em class="xref std std-ref">constraints</em>, for details.</p>
 <p>Output constraints must begin with either = (a variable overwriting an
 existing value) or + (when reading and writing). When using
 =, do not assume the location contains the existing value
@@ -690,7 +690,7 @@ use %2 in the template to refer to the first input operand,
 </dd>
 <dt>constraint</dt>
 <dd><p class="first">A string constant specifying constraints on the placement of the operand;
-Constraints, for details.</p>
+See <em class="xref std std-ref">constraints</em>, for details.</p>
 <p>Input constraint strings may not begin with either = or +.
 When you list more than one possible location (for example, &#8220;irm&#8221;),
 the compiler chooses the most efficient one based on the current context.
@@ -3304,7 +3304,7 @@ instruction template part of an <tt class="docutils literal"><span class="pre">a
 always refers to this variable.
 However, using the variable as an input or output operand to the <tt class="docutils literal"><span class="pre">asm</span></tt>
 guarantees that the specified register is used for that operand.
-Extended Asm, for more information.</p>
+See <em class="xref std std-ref">extended-asm</em>, for more information.</p>
 <p>Stores into local register variables may be deleted when they appear to be dead
 according to dataflow analysis.  References to local register variables may
 be deleted or moved or simplified.</p>

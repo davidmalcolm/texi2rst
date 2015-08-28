@@ -9,8 +9,8 @@ Options Controlling Objective-C and Objective-C++ Dialects
 .. index:: options, Objective-C and Objective-C++
 
 (NOTE: This manual does not describe the Objective-C and Objective-C++
-languages themselves.  StandardsLanguage Standards
-Supported by GCC, for references.)
+languages themselves.  See :ref:`Language Standards
+Supported by GCC <standards>`, for references.)
 
 This section describes the command-line options that are only meaningful
 for Objective-C and Objective-C++ programs.  You can also use most of

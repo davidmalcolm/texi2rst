@@ -6,7 +6,7 @@ Structures, Unions, Enumerations, and Bit-Fields
   different type (C90 6.3.2.3).
 
   The relevant bytes of the representation of the object are treated as
-  an object of the type used for the access.  Type-punning.  This
+  an object of the type used for the access.  See :ref:`type-punning`.  This
   may be a trap representation.
 
 * Whether a 'plain' ``int`` bit-field is treated as a

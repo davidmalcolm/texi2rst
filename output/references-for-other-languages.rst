@@ -1,13 +1,13 @@
 References for Other Languages
 ******************************
 
-TopGNAT Reference ManualAbout This Guidegnat_rmGNAT Reference Manual, for information on standard
+See :ref:`About This Guide <top>`, for information on standard
 conformance and compatibility of the Ada compiler.
 
-StandardsStandardsgfortranThe GNU Fortran Compiler, for details
+See :ref:`Standards <standards>`, for details
 of standards supported by GNU Fortran.
 
-CompatibilityCompatibility with the Java PlatformgcjGNU gcj,
+See :ref:`Compatibility with the Java Platform <compatibility>`,
 for details of compatibility between :command:`gcj` and the Java Platform.
 
 .. Copyright (C) 1988-2015 Free Software Foundation, Inc.

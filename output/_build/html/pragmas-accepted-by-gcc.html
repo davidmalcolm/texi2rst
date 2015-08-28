@@ -107,7 +107,7 @@
 <h1>Pragmas Accepted by GCC<a class="headerlink" href="#pragmas-accepted-by-gcc" title="Permalink to this headline">¶</a></h1>
 <p id="index-0"><a href="#id1"><span class="problematic" id="id2">``</span></a>#pragma``GCC supports several types of pragmas, primarily in order to compile
 code originally written for other compilers.  Note that in general
-we do not recommend the use of pragmas; Function Attributes,
+we do not recommend the use of pragmas; See <em class="xref std std-ref">function-attributes</em>,
 for further explanation.</p>
 <div class="toctree-wrapper compound">
 <ul class="simple">
@@ -118,7 +118,7 @@ for further explanation.</p>
 <h2>ARM Pragmas<a class="headerlink" href="#arm-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>The ARM target defines pragmas for controlling the default addition of
 <tt class="docutils literal"><span class="pre">long_call</span></tt> and <tt class="docutils literal"><span class="pre">short_call</span></tt> attributes to functions.
-Function Attributes, for information about the effects of these
+See <em class="xref std std-ref">function-attributes</em>, for information about the effects of these
 attributes.</p>
 <p>long_calls</p>
 <blockquote>
@@ -222,7 +222,7 @@ call model when calling the named functions.  Examples:</p>
 <span class="cp">#pragma call foo</span>
 </pre></div>
 </div>
-<p>:: _rs/6000-and-powerpc-pragmas:</p>
+<p>:: _rs-6000-and-powerpc-pragmas:</p>
 </div></blockquote>
 </div>
 <div class="section" id="rs-6000-and-powerpc-pragmas">
@@ -231,7 +231,7 @@ call model when calling the named functions.  Examples:</p>
 whether or not the <tt class="docutils literal"><span class="pre">longcall</span></tt> attribute is added to function
 declarations by default.  This pragma overrides the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlongcall"><em class="xref std std-option">-mlongcall</em></a>
 option, but not the <tt class="docutils literal"><span class="pre">longcall</span></tt> and <tt class="docutils literal"><span class="pre">shortcall</span></tt> attributes.
-RS/6000 and PowerPC Options, for more information about when long
+See <em class="xref std std-ref">rs-6000-and-powerpc-options</em>, for more information about when long
 calls are and are not necessary.</p>
 <p>longcall (1)</p>
 <blockquote>
@@ -470,7 +470,7 @@ declarations without having to give each a visibility attribute
 declarations.  Class members and template specializations are not
 affected; if you want to override the visibility for a particular
 member or instantiation, you must use an attribute.</p>
-<p>:: _push/pop-macro-pragmas:</p>
+<p>:: _push-pop-macro-pragmas:</p>
 </div></blockquote>
 </div>
 <div class="section" id="push-pop-macro-pragmas">
@@ -511,7 +511,7 @@ defined later in the source file.  One or more strings can be
 specified.  Each function that is defined after this point is as
 if <tt class="docutils literal"><span class="pre">attribute((target(&quot;STRING&quot;)))</span></tt> was specified for that
 function.  The parenthesis around the options is optional.
-Function Attributes, for more information about the
+See <em class="xref std std-ref">function-attributes</em>, for more information about the
 <tt class="docutils literal"><span class="pre">target</span></tt> attribute and the attribute syntax.</p>
 <p>The <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">target</span></tt> pragma is presently implemented for
 x86, PowerPC, and Nios II targets only.</p>
@@ -523,7 +523,7 @@ defined later in the source file.  One or more strings can be
 specified.  Each function that is defined after this point is as
 if <tt class="docutils literal"><span class="pre">attribute((optimize(&quot;STRING&quot;)))</span></tt> was specified for that
 function.  The parenthesis around the options is optional.
-Function Attributes, for more information about the
+See <em class="xref std std-ref">function-attributes</em>, for more information about the
 <tt class="docutils literal"><span class="pre">optimize</span></tt> attribute and the attribute syntax.</p>
 </div></blockquote>
 <p>#pragma GCC push_options #pragma GCC pop_options</p>

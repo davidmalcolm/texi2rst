@@ -13,7 +13,7 @@ used to be acceptable in previous drafts of the standard, such as the ARM
 compilation of C++ written to such drafts, G++ contains some backwards
 compatibilities.  All such backwards compatibility features are
 liable to disappear in future versions of G++. They should be considered
-deprecated.   Deprecated Features.
+deprecated.   See :ref:`deprecated-features`.
 
 For scope
   If a variable is declared at for scope, it used to remain in scope until

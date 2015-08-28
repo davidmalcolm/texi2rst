@@ -6,7 +6,7 @@ Pragmas Accepted by GCC
 
 ``#pragma``GCC supports several types of pragmas, primarily in order to compile
 code originally written for other compilers.  Note that in general
-we do not recommend the use of pragmas; Function Attributes,
+we do not recommend the use of pragmas; See :ref:`function-attributes`,
 for further explanation.
 
 .. toctree::
@@ -14,7 +14,7 @@ for further explanation.
    <arm-pragmas>
    <m32c-pragmas>
    <mep-pragmas>
-   <rs/6000-and-powerpc-pragmas>
+   <rs-6000-and-powerpc-pragmas>
    <darwin-pragmas>
    <solaris-pragmas>
    <symbol-renaming-pragmas>
@@ -22,7 +22,7 @@ for further explanation.
    <weak-pragmas>
    <diagnostic-pragmas>
    <visibility-pragmas>
-   <push/pop-macro-pragmas>
+   <push-pop-macro-pragmas>
    <function-specific-option-pragmas>
    <loop-specific-pragmas>
 
@@ -33,7 +33,7 @@ ARM Pragmas
 
 The ARM target defines pragmas for controlling the default addition of
 ``long_call`` and ``short_call`` attributes to functions.
-Function Attributes, for information about the effects of these
+See :ref:`function-attributes`, for information about the effects of these
 attributes.
 
 long_calls
@@ -169,7 +169,7 @@ GCC call ``name`` , ``name`` ...
     extern int foo ();
     #pragma call foo
 
-  :: _rs/6000-and-powerpc-pragmas:
+  :: _rs-6000-and-powerpc-pragmas:
 
 RS/6000 and PowerPC Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -178,7 +178,7 @@ The RS/6000 and PowerPC targets define one pragma for controlling
 whether or not the ``longcall`` attribute is added to function
 declarations by default.  This pragma overrides the :option:`-mlongcall`
 option, but not the ``longcall`` and ``shortcall`` attributes.
-RS/6000 and PowerPC Options, for more information about when long
+See :ref:`rs-6000-and-powerpc-options`, for more information about when long
 calls are and are not necessary.
 
 longcall (1)
@@ -475,7 +475,7 @@ Visibility Pragmas
   affected; if you want to override the visibility for a particular
   member or instantiation, you must use an attribute.
 
-  :: _push/pop-macro-pragmas:
+  :: _push-pop-macro-pragmas:
 
 Push/Pop Macro Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -527,7 +527,7 @@ Function Specific Option Pragmas
   specified.  Each function that is defined after this point is as
   if ``attribute((target("STRING")))`` was specified for that
   function.  The parenthesis around the options is optional.
-  Function Attributes, for more information about the
+  See :ref:`function-attributes`, for more information about the
   ``target`` attribute and the attribute syntax.
 
   The ``#pragma GCC target`` pragma is presently implemented for
@@ -542,7 +542,7 @@ Function Specific Option Pragmas
   specified.  Each function that is defined after this point is as
   if ``attribute((optimize("STRING")))`` was specified for that
   function.  The parenthesis around the options is optional.
-  Function Attributes, for more information about the
+  See :ref:`function-attributes`, for more information about the
   ``optimize`` attribute and the attribute syntax.
 
 #pragma GCC push_options #pragma GCC pop_options

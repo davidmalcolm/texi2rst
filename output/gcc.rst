@@ -117,7 +117,7 @@ bugs.  It corresponds to the compilers
 version 6.0.0.
 The internals of the GNU compilers, including how to port them to new
 targets and some information about how to write front ends for new
-languages, are documented in a separate manual.  TopIntroductiongccintGNU Compiler Collection (GCC) Internals.
+languages, are documented in a separate manual.  See :ref:`Introduction <top>`.
 
 .. toctree::
 

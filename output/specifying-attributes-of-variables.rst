@@ -17,7 +17,7 @@ types (Type Attributes).
 Other front ends might define more attributes
 (C++ ExtensionsExtensions to the C++ Language).
 
-Attribute Syntax, for details of the exact syntax for using
+See :ref:`attribute-syntax`, for details of the exact syntax for using
 attributes.
 
 .. toctree::
@@ -25,9 +25,9 @@ attributes.
    <common-variable-attributes>
    <avr-variable-attributes>
    <blackfin-variable-attributes>
-   <h8/300-variable-attributes>
+   <h8-300-variable-attributes>
    <ia-64-variable-attributes>
-   <m32r/d-variable-attributes>
+   <m32r-d-variable-attributes>
    <mep-variable-attributes>
    <microsoft-windows-variable-attributes>
    <powerpc-variable-attributes>
@@ -386,7 +386,7 @@ l2
   Variables with ``l2`` attribute are put into the specific section
   named ``.l2.data``.
 
-  :: _h8/300-variable-attributes:
+  :: _h8-300-variable-attributes:
 
 H8/300 Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -432,7 +432,7 @@ model (``model-name``)
   independent and hence this attribute must not be used for objects
   defined by shared libraries.
 
-  :: _m32r/d-variable-attributes:
+  :: _m32r-d-variable-attributes:
 
 M32R/D Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

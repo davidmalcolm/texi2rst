@@ -14,8 +14,7 @@ volatile objects.  It fails to specify what constitutes a volatile
 access, except to say that C++ should behave in a similar manner to C
 with respect to volatiles, where possible.  However, the different
 lvalueness of expressions between C and C++ complicate the behavior.
-G++ behaves the same as GCC for volatile access, C
-ExtensionsVolatiles, for a description of GCC's behavior.
+G++ behaves the same as GCC for volatile access, See :ref:`Volatiles <c-extensions>`, for a description of GCC's behavior.
 
 The C and C++ language specifications differ when an object is
 accessed in a void context:

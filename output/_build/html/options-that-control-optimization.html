@@ -108,7 +108,7 @@ optimization flags are specified.</p>
 set of optimizations may be enabled at each <a class="reference internal" href="#cmdoption-O"><em class="xref std std-option">-O</em></a> level than
 those listed here.  You can invoke GCC with <em class="xref std std-option">-Q --help=optimizers</em>
 to find out the exact set of optimizations that are enabled at each level.
-Overall Options, for examples.</p>
+See <em class="xref std std-ref">overall-options</em>, for examples.</p>
 <dl class="option">
 <dt id="cmdoption-O">
 <tt class="descname">-O</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-O1</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-O" title="Permalink to this definition">¶</a></dt>
@@ -316,8 +316,8 @@ some machines.</p>
 the standard calling sequence automatically handles the frame pointer
 and nothing is saved by pretending it doesn&#8217;t exist.  The
 machine-description macro <tt class="docutils literal"><span class="pre">FRAME_POINTER_REQUIRED</span></tt> controls
-whether a target machine supports this flag.  RegistersRegister
-UsagegccintGNU Compiler Collection (GCC) Internals.</p>
+whether a target machine supports this flag.  See <em class="xref std std-ref">Register
+Usage</em>.</p>
 <p>The default setting (when not optimizing for
 size) for 32-bit GNU/Linux x86 and 32-bit Darwin x86 targets is
 <a class="reference internal" href="#cmdoption-fomit-frame-pointer"><em class="xref std std-option">-fomit-frame-pointer</em></a>.  You can configure GCC with the
@@ -446,8 +446,8 @@ release to an another.</p>
 <tt class="descname">-fno-keep-inline-dllexport</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-keep-inline-dllexport" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is a more fine-grained version of <a class="reference internal" href="#cmdoption-fkeep-inline-functions"><em class="xref std std-option">-fkeep-inline-functions</em></a>,
 which applies only to functions that are declared using the <tt class="docutils literal"><span class="pre">dllexport</span></tt>
-attribute or declspec (Function AttributesDeclaring Attributes of
-Functions.)</p>
+attribute or declspec (See <em class="xref std std-ref">Declaring Attributes of
+Functions</em>.)</p>
 </dd></dl>
 
 <dl class="option">
@@ -1979,8 +1979,7 @@ type.</p>
 recently written to (called &#8216;type-punning&#8217;) is common.  Even with
 <a class="reference internal" href="#cmdoption-fstrict-aliasing"><em class="xref std std-option">-fstrict-aliasing</em></a>, type-punning is allowed, provided the memory
 is accessed through the union type.  So, the code above works as
-expected.  Structures unions enumerations and bit-fields
-implementation.  However, this code might not:</p>
+expected.  See <em class="xref std std-ref">structures-unions-enumerations-and-bit-fields-implementation</em>.  However, this code might not:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">union</span> <span class="n">a_union</span> <span class="n">t</span><span class="p">;</span>
   <span class="kt">int</span><span class="o">*</span> <span class="n">ip</span><span class="p">;</span>

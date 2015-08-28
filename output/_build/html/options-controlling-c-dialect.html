@@ -109,7 +109,7 @@ such as <tt class="docutils literal"><span class="pre">__unix__</span></tt> and 
 without <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>.</p>
 <p>The <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> option does not cause non-ISO programs to be
 rejected gratuitously.  For that, <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> is required in
-addition to <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>.  Warning Options.</p>
+addition to <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>.  See <em class="xref std std-ref">warning-options</em>.</p>
 <p>The macro <tt class="docutils literal"><span class="pre">__STRICT_ANSI__</span></tt> is predefined when the <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>
 option is used.  Some header files may notice this macro and refrain
 from declaring certain functions or defining certain macros that the
@@ -117,16 +117,16 @@ ISO standard doesn&#8217;t call for; this is to avoid interfering with any
 programs that might use these names for other things.</p>
 <p>Functions that are normally built in but do not have semantics
 defined by ISO C (such as <tt class="docutils literal"><span class="pre">alloca</span></tt> and <tt class="docutils literal"><span class="pre">ffs</span></tt>) are not built-in
-functions when <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> is used.  Other BuiltinsOther
-built-in functions provided by GCC, for details of the functions
+functions when <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> is used.  See <em class="xref std std-ref">Other
+built-in functions provided by GCC</em>, for details of the functions
 affected.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-std">
 <tt class="descname">-std</tt><tt class="descclassname">=</tt><a class="headerlink" href="#cmdoption-std" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determine the language standard. StandardsLanguage Standards
-Supported by GCC, for details of these standard versions.  This option
+<dd><p>Determine the language standard. See <em class="xref std std-ref">Language Standards
+Supported by GCC</em>, for details of these standard versions.  This option
 is currently only supported when compiling C or C++.</p>
 <p>The compiler can accept several base standards, such as c90 or
 c++98, and GNU dialects of those standards, such as
@@ -206,7 +206,7 @@ releases.</dd>
 <tt class="descname">-fgnu89-inline</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fgnu89-inline" title="Permalink to this definition">¶</a></dt>
 <dd><p>The option <a class="reference internal" href="#cmdoption-fgnu89-inline"><em class="xref std std-option">-fgnu89-inline</em></a> tells GCC to use the traditional
 GNU semantics for <tt class="docutils literal"><span class="pre">inline</span></tt> functions when in C99 mode.
-InlineAn Inline Function is As Fast As a Macro.
+See <em class="xref std std-ref">An Inline Function is As Fast As a Macro</em>.
 Using this option is roughly equivalent to adding the
 <tt class="docutils literal"><span class="pre">gnu_inline</span></tt> function attribute to all inline functions
 (Function Attributes).</p>
@@ -217,8 +217,7 @@ This option is not supported in <em class="xref std std-option">-std=c90</em> or
 <em class="xref std std-option">-std=gnu90</em> mode.</p>
 <p>The preprocessor macros <tt class="docutils literal"><span class="pre">__GNUC_GNU_INLINE__</span></tt> and
 <tt class="docutils literal"><span class="pre">__GNUC_STDC_INLINE__</span></tt> may be used to check which semantics are
-in effect for <tt class="docutils literal"><span class="pre">inline</span></tt> functions.  Common Predefined
-MacroscppThe C Preprocessor.</p>
+in effect for <tt class="docutils literal"><span class="pre">inline</span></tt> functions.  See <em class="xref std std-ref">common-predefined-macros</em>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -266,8 +265,8 @@ switch only affects the <tt class="docutils literal"><span class="pre">asm</span
 <dt id="cmdoption-fno-builtin">
 <tt class="descname">-fno-builtin</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-builtin" title="Permalink to this definition">¶</a></dt>
 <dd><p id="index-5">Don&#8217;t recognize built-in functions that do not begin with
-__builtin_ as prefix.  Other BuiltinsOther built-in
-functions provided by GCC, for details of the functions affected,
+__builtin_ as prefix.  See <em class="xref std std-ref">Other built-in
+functions provided by GCC</em>, for details of the functions affected,
 including those which are not built-in functions when <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or
 <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> options for strict ISO C conformance are used because they
 do not have an ISO standard meaning.</p>
@@ -317,7 +316,7 @@ implies <a class="reference internal" href="#cmdoption-fno-builtin"><em class="x
 is one in which the standard library may not exist, and program startup may
 not necessarily be at <tt class="docutils literal"><span class="pre">main</span></tt>.  The most obvious example is an OS kernel.
 This is equivalent to <em class="xref std std-option">-fno-hosted</em>.</p>
-<p>StandardsLanguage Standards Supported by GCC, for details of
+<p>See <em class="xref std std-ref">Language Standards Supported by GCC</em>, for details of
 freestanding and hosted environments.</p>
 </dd></dl>
 
@@ -378,8 +377,7 @@ an experimental feature whose interface may change in future versions
 of GCC, as the official specification changes.  Please note that not
 all architectures are supported for this feature.</p>
 <p>For more information on GCC&#8217;s support for transactional memory,
-Enabling libitmThe GNU Transactional Memory LibrarylibitmGNU
-Transactional Memory Library.</p>
+See <em class="xref std std-ref">The GNU Transactional Memory Library</em>.</p>
 <p>Note that the transactional memory feature is not supported with
 non-call exceptions (<a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fnon-call-exceptions"><em class="xref std std-option">-fnon-call-exceptions</em></a>).</p>
 </dd></dl>
@@ -397,8 +395,8 @@ to previous types declarations.</p>
 </pre></div>
 </div>
 <p>Some cases of unnamed fields in structures and unions are only
-accepted with this option.  Unnamed FieldsUnnamed struct/union
-fields within structs/unions, for details.</p>
+accepted with this option.  See <em class="xref std std-ref">Unnamed struct/union
+fields within structs/unions</em>, for details.</p>
 <p>Note that this option is off for all targets but x86
 targets using ms-abi.</p>
 </dd></dl>
@@ -410,8 +408,8 @@ targets using ms-abi.</p>
 <p>This enables <a class="reference internal" href="#cmdoption-fms-extensions"><em class="xref std std-option">-fms-extensions</em></a>, permits passing pointers to
 structures with anonymous fields to functions that expect pointers to
 elements of the type of the field, and permits referring to anonymous
-fields declared using a typedef.  Unnamed FieldsUnnamed
-struct/union fields within structs/unions, for details.  This is only
+fields declared using a typedef.  See <em class="xref std std-ref">Unnamed
+struct/union fields within structs/unions</em>, for details.  This is only
 supported for C, not C++.</p>
 </dd></dl>
 

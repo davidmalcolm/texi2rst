@@ -27,10 +27,10 @@ instructions, but allow the compiler to schedule those calls.
    <nds32-built-in-functions>
    <picochip-built-in-functions>
    <powerpc-built-in-functions>
-   <powerpc-altivec/vsx-built-in-functions>
+   <powerpc-altivec-vsx-built-in-functions>
    <powerpc-hardware-transactional-memory-built-in-functions>
    <rx-built-in-functions>
-   <s/390-system-z-built-in-functions>
+   <s-390-system-z-built-in-functions>
    <sh-built-in-functions>
    <sparc-vis-built-in-functions>
    <spu-built-in-functions>
@@ -1038,7 +1038,7 @@ here in tabular form.
    <argument-types>
    <directly-mapped-integer-functions>
    <directly-mapped-media-functions>
-   <raw-read/write-functions>
+   <raw-read-write-functions>
    <other-built-in-functions>
 
 :: _argument-types:
@@ -1755,7 +1755,7 @@ Assembly output
 
 ``MXOR ``a``,``b``,``c````
 
-:: _raw-read/write-functions:
+:: _raw-read-write-functions:
 
 Raw Read/Write Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2775,7 +2775,7 @@ available:
   vector __int128_t __builtin_pack_vector_int128 (unsigned long long,
                                                   unsigned long long);
 
-:: _powerpc-altivec/vsx-built-in-functions:
+:: _powerpc-altivec-vsx-built-in-functions:
 
 PowerPC AltiVec Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -5677,7 +5677,7 @@ bit in the processor status word.
 
 Built-in Functionvoid__builtin_rx_wait(void)Generates the ``wait`` machine instruction.
 
-:: _s/390-system-z-built-in-functions:
+:: _s-390-system-z-built-in-functions:
 
 S/390 System z Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -85,8 +85,7 @@ libraries and for parts of the compiler:
   out of the link if it is not found by those means.
 
   Another way to specify a prefix much like the :option:`-B` prefix is to use
-  the environment variable :envvar:`GCC_EXEC_PREFIX`.  Environment
-  Variables.
+  the environment variable :envvar:`GCC_EXEC_PREFIX`.  See :ref:`environment-variables`.
 
   As a special kludge, if the path provided by :option:`-B` is
   [dir/]stage``N``/, where ``N`` is a number in the range 0 to

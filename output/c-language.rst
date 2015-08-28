@@ -102,8 +102,8 @@ document.  To select this standard in GCC, use one of the options
 :option:`-ansi`, :option:`-std=c90` or :option:`-std=iso9899:1990`; to obtain
 all the diagnostics required by the standard, you should also specify
 :option:`-pedantic` (or :option:`-pedantic-errors` if you want them to be
-errors rather than warnings).  C Dialect OptionsOptions
-Controlling C Dialect.
+errors rather than warnings).  See :ref:`Options
+Controlling C Dialect <c-dialect-options>`.
 
 Errors in the 1990 ISO C standard were corrected in two Technical
 Corrigenda published in 1994 and 1996.  GCC does not support the
@@ -136,8 +136,7 @@ for this standard, enabled with :option:`-std=c11` or
 standard version were referred to as :dfn:`C1X`.)
 
 By default, GCC provides some extensions to the C language that on
-rare occasions conflict with the C standard.  C
-ExtensionsExtensions to the C Language Family.  Use of the
+rare occasions conflict with the C standard.  See :ref:`Extensions to the C Language Family <c-extensions>`.  Use of the
 :option:`-std` options listed above will disable these extensions where
 they conflict with the C standard version selected.  You may also
 select an extended version of the C language explicitly with
@@ -183,13 +182,13 @@ option :option:`-ffreestanding`; it will then define
 meanings of function names from the standard library, with exceptions
 noted below.  To build an OS kernel, you may well still need to make
 your own arrangements for linking and startup.
-C Dialect OptionsOptions Controlling C Dialect.
+See :ref:`Options Controlling C Dialect <c-dialect-options>`.
 
 GCC does not provide the library facilities required only of hosted
 implementations, nor yet all the facilities required by C99 of
 freestanding implementations on all platforms; to use the facilities of a hosted
 environment, you will need to find them elsewhere (for example, in the
-GNU C library).  Standard LibrariesStandard Libraries.
+GNU C library).  See :ref:`Standard Libraries <standard-libraries>`.
 
 Most of the compiler support routines used by GCC are present in
 libgcc, but there are a few exceptions.  GCC requires the

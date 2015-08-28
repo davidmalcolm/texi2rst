@@ -98,8 +98,8 @@ document.  To select this standard in GCC, use one of the options
 <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a>, <em class="xref std std-option">-std=c90</em> or <em class="xref std std-option">-std=iso9899:1990</em>; to obtain
 all the diagnostics required by the standard, you should also specify
 <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-pedantic"><em class="xref std std-option">-pedantic</em></a> (or <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-pedantic-errors"><em class="xref std std-option">-pedantic-errors</em></a> if you want them to be
-errors rather than warnings).  C Dialect OptionsOptions
-Controlling C Dialect.</p>
+errors rather than warnings).  See <em class="xref std std-ref">Options
+Controlling C Dialect</em>.</p>
 <p>Errors in the 1990 ISO C standard were corrected in two Technical
 Corrigenda published in 1994 and 1996.  GCC does not support the
 uncorrected version.</p>
@@ -126,8 +126,7 @@ for this standard, enabled with <em class="xref std std-option">-std=c11</em> or
 <em class="xref std std-option">-std=iso9899:2011</em>.  (While in development, drafts of this
 standard version were referred to as <em class="dfn">C1X</em>.)</p>
 <p>By default, GCC provides some extensions to the C language that on
-rare occasions conflict with the C standard.  C
-ExtensionsExtensions to the C Language Family.  Use of the
+rare occasions conflict with the C standard.  See <em class="xref std std-ref">Extensions to the C Language Family</em>.  Use of the
 <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> options listed above will disable these extensions where
 they conflict with the C standard version selected.  You may also
 select an extended version of the C language explicitly with
@@ -169,12 +168,12 @@ option <a class="reference internal" href="options-controlling-c-dialect.html#cm
 meanings of function names from the standard library, with exceptions
 noted below.  To build an OS kernel, you may well still need to make
 your own arrangements for linking and startup.
-C Dialect OptionsOptions Controlling C Dialect.</p>
+See <em class="xref std std-ref">Options Controlling C Dialect</em>.</p>
 <p>GCC does not provide the library facilities required only of hosted
 implementations, nor yet all the facilities required by C99 of
 freestanding implementations on all platforms; to use the facilities of a hosted
 environment, you will need to find them elsewhere (for example, in the
-GNU C library).  Standard LibrariesStandard Libraries.</p>
+GNU C library).  See <em class="xref std std-ref">Standard Libraries</em>.</p>
 <p>Most of the compiler support routines used by GCC are present in
 libgcc, but there are a few exceptions.  GCC requires the
 freestanding environment provide <tt class="docutils literal"><span class="pre">memcpy</span></tt>, <tt class="docutils literal"><span class="pre">memmove</span></tt>,

@@ -10,7 +10,7 @@ A cast to union type is similar to other casts, except that the type
 specified is a union type.  You can specify the type either with
 ``union ``tag```` or with a typedef name.  A cast to union is actually
 a constructor, not a cast, and hence does not yield an lvalue like
-normal casts.  (Compound Literals.)
+normal casts.  (See :ref:`compound-literals`.)
 
 The types that may be cast to the union type are those of the members
 of the union.  Thus, given the following union and variables:

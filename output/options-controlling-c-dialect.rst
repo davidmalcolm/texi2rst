@@ -40,7 +40,7 @@ accepts:
 
   The :option:`-ansi` option does not cause non-ISO programs to be
   rejected gratuitously.  For that, :option:`-Wpedantic` is required in
-  addition to :option:`-ansi`.  Warning Options.
+  addition to :option:`-ansi`.  See :ref:`warning-options`.
 
   The macro ``__STRICT_ANSI__`` is predefined when the :option:`-ansi`
   option is used.  Some header files may notice this macro and refrain
@@ -50,14 +50,14 @@ accepts:
 
   Functions that are normally built in but do not have semantics
   defined by ISO C (such as ``alloca`` and ``ffs``) are not built-in
-  functions when :option:`-ansi` is used.  Other BuiltinsOther
-  built-in functions provided by GCC, for details of the functions
+  functions when :option:`-ansi` is used.  See :ref:`Other
+  built-in functions provided by GCC <other-builtins>`, for details of the functions
   affected.
 
 .. option:: -std=
 
-  Determine the language standard. StandardsLanguage Standards
-  Supported by GCC, for details of these standard versions.  This option
+  Determine the language standard. See :ref:`Language Standards
+  Supported by GCC <standards>`, for details of these standard versions.  This option
   is currently only supported when compiling C or C++.
 
   The compiler can accept several base standards, such as c90 or
@@ -150,7 +150,7 @@ accepts:
 
   The option :option:`-fgnu89-inline` tells GCC to use the traditional
   GNU semantics for ``inline`` functions when in C99 mode.
-  InlineAn Inline Function is As Fast As a Macro.
+  See :ref:`An Inline Function is As Fast As a Macro <inline>`.
   Using this option is roughly equivalent to adding the
   ``gnu_inline`` function attribute to all inline functions
   (Function Attributes).
@@ -163,8 +163,7 @@ accepts:
 
   The preprocessor macros ``__GNUC_GNU_INLINE__`` and
   ``__GNUC_STDC_INLINE__`` may be used to check which semantics are
-  in effect for ``inline`` functions.  Common Predefined
-  MacroscppThe C Preprocessor.
+  in effect for ``inline`` functions.  See :ref:`common-predefined-macros`.
 
 .. option:: -aux-info filename, -aux-info
 
@@ -209,8 +208,8 @@ accepts:
   .. index:: built-in functions
 
   Don't recognize built-in functions that do not begin with
-  __builtin_ as prefix.  Other BuiltinsOther built-in
-  functions provided by GCC, for details of the functions affected,
+  __builtin_ as prefix.  See :ref:`Other built-in
+  functions provided by GCC <other-builtins>`, for details of the functions affected,
   including those which are not built-in functions when :option:`-ansi` or
   :option:`-std` options for strict ISO C conformance are used because they
   do not have an ISO standard meaning.
@@ -264,7 +263,7 @@ accepts:
   not necessarily be at ``main``.  The most obvious example is an OS kernel.
   This is equivalent to :option:`-fno-hosted`.
 
-  StandardsLanguage Standards Supported by GCC, for details of
+  See :ref:`Language Standards Supported by GCC <standards>`, for details of
   freestanding and hosted environments.
 
 .. option:: -fopenacc
@@ -327,8 +326,7 @@ accepts:
   all architectures are supported for this feature.
 
   For more information on GCC's support for transactional memory,
-  Enabling libitmThe GNU Transactional Memory LibrarylibitmGNU
-  Transactional Memory Library.
+  See :ref:`The GNU Transactional Memory Library <enabling-libitm>`.
 
   Note that the transactional memory feature is not supported with
   non-call exceptions (:option:`-fnon-call-exceptions`).
@@ -348,8 +346,8 @@ accepts:
     };
 
   Some cases of unnamed fields in structures and unions are only
-  accepted with this option.  Unnamed FieldsUnnamed struct/union
-  fields within structs/unions, for details.
+  accepted with this option.  See :ref:`Unnamed struct/union
+  fields within structs/unions <unnamed-fields>`, for details.
 
   Note that this option is off for all targets but x86 
   targets using ms-abi.
@@ -361,8 +359,8 @@ accepts:
   This enables :option:`-fms-extensions`, permits passing pointers to
   structures with anonymous fields to functions that expect pointers to
   elements of the type of the field, and permits referring to anonymous
-  fields declared using a typedef.  Unnamed FieldsUnnamed
-  struct/union fields within structs/unions, for details.  This is only
+  fields declared using a typedef.  See :ref:`Unnamed
+  struct/union fields within structs/unions <unnamed-fields>`, for details.  This is only
   supported for C, not C++.
 
 .. option:: -trigraphs

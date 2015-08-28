@@ -174,12 +174,12 @@ volatile
   The typical use of extended ``asm`` statements is to manipulate input 
   values to produce output values. However, your ``asm`` statements may 
   also produce side effects. If so, you may need to use the ``volatile`` 
-  qualifier to disable certain optimizations. Volatile.
+  qualifier to disable certain optimizations. See :ref:`volatile`.
 
 goto
   This qualifier informs the compiler that the ``asm`` statement may 
   perform a jump to one of the labels listed in the ``GotoLabels``.
-  GotoLabels.
+  See :ref:`gotolabels`.
 
 Parameters
 ^^^^^^^^^^
@@ -187,26 +187,26 @@ Parameters
 AssemblerTemplate
   This is a literal string that is the template for the assembler code. It is a 
   combination of fixed text and tokens that refer to the input, output, 
-  and goto parameters. AssemblerTemplate.
+  and goto parameters. See :ref:`assemblertemplate`.
 
 OutputOperands
   A comma-separated list of the C variables modified by the instructions in the 
-  ``AssemblerTemplate``.  An empty list is permitted.  OutputOperands.
+  ``AssemblerTemplate``.  An empty list is permitted.  See :ref:`outputoperands`.
 
 InputOperands
   A comma-separated list of C expressions read by the instructions in the 
-  ``AssemblerTemplate``.  An empty list is permitted.  InputOperands.
+  ``AssemblerTemplate``.  An empty list is permitted.  See :ref:`inputoperands`.
 
 Clobbers
   A comma-separated list of registers or other values changed by the 
   ``AssemblerTemplate``, beyond those listed as outputs.
-  An empty list is permitted.  Clobbers.
+  An empty list is permitted.  See :ref:`clobbers`.
 
 GotoLabels
   When you are using the ``goto`` form of ``asm``, this section contains 
   the list of all C labels to which the code in the 
   ``AssemblerTemplate`` may jump. 
-  GotoLabels.
+  See :ref:`gotolabels`.
 
   ``asm`` statements may not perform jumps into other ``asm`` statements,
   only to the listed ``GotoLabels``.
@@ -432,7 +432,7 @@ default for inline assembler. The target-specific documentation for the
 default dialect if the option is not specified. This information may be 
 important to understand, since assembler code that works correctly when 
 compiled using one dialect will likely fail if compiled using another.
-x86 Options.
+See :ref:`x86-options`.
 
 If your code needs to support multiple assembler dialects (for example, if 
 you are writing public headers that need to support a variety of compilation 
@@ -524,7 +524,7 @@ asmSymbolicName
 
 constraint
   A string constant specifying constraints on the placement of the operand; 
-  Constraints, for details.
+  See :ref:`constraints`, for details.
 
   Output constraints must begin with either = (a variable overwriting an 
   existing value) or + (when reading and writing). When using 
@@ -682,7 +682,7 @@ asmSymbolicName
 
 constraint
   A string constant specifying constraints on the placement of the operand; 
-  Constraints, for details.
+  See :ref:`constraints`, for details.
 
   Input constraint strings may not begin with either = or +.
   When you list more than one possible location (for example, "irm"), 
@@ -4117,7 +4117,7 @@ instruction template part of an ``asm`` statement and assume it
 always refers to this variable.
 However, using the variable as an input or output operand to the ``asm``
 guarantees that the specified register is used for that operand.  
-Extended Asm, for more information.
+See :ref:`extended-asm`, for more information.
 
 Stores into local register variables may be deleted when they appear to be dead
 according to dataflow analysis.  References to local register variables may

@@ -14,7 +14,7 @@ that are now deprecated:
 
 -fexternal-templates -falt-external-templates
   These are two of the many ways for G++ to implement template
-  instantiation.  Template Instantiation.  The C++ standard clearly
+  instantiation.  See :ref:`template-instantiation`.  The C++ standard clearly
   defines how template definitions have to be organized across
   implementation units.  G++ has an implicit instantiation mechanism that
   should work just fine for standard-conforming code.
@@ -23,7 +23,7 @@ that are now deprecated:
   Previously it was possible to use an empty prototype parameter list to
   indicate an unspecified number of parameters (like C), rather than no
   parameters, as C++ demands.  This feature has been removed, except where
-  it is required for backwards compatibility.   Backwards Compatibility.
+  it is required for backwards compatibility.   See :ref:`backwards-compatibility`.
 
   G++ allows a virtual function returning void * to be overridden
 by one returning a different pointer type.  This extension to the

@@ -5,7 +5,7 @@ Standard Libraries
 .. index:: Wall
 
 GCC by itself attempts to be a conforming freestanding implementation.
-StandardsLanguage Standards Supported by GCC, for details of
+See :ref:`Language Standards Supported by GCC <standards>`, for details of
 what this means.  Beyond the library facilities required of such an
 implementation, the rest of the C library is supplied by the vendor of
 the operating system.  If that C library doesn't conform to the C

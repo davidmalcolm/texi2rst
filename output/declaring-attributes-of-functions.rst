@@ -25,7 +25,7 @@ on a declaration, followed by an attribute specification inside double
 parentheses.  You can specify multiple attributes in a declaration by
 separating them by commas within the double parentheses or by
 immediately following an attribute declaration with another attribute
-declaration.  Attribute Syntax, for the exact rules on
+declaration.  See :ref:`attribute-syntax`, for the exact rules on
 attribute syntax and placement.
 
 GCC also supports attributes on
@@ -52,10 +52,10 @@ GCC plugins may provide their own attributes.
    <blackfin-function-attributes>
    <cr16-function-attributes>
    <epiphany-function-attributes>
-   <h8/300-function-attributes>
+   <h8-300-function-attributes>
    <ia-64-function-attributes>
    <m32c-function-attributes>
-   <m32r/d-function-attributes>
+   <m32r-d-function-attributes>
    <m68k-function-attributes>
    <mcore-function-attributes>
    <mep-function-attributes>
@@ -68,7 +68,7 @@ GCC plugins may provide their own attributes.
    <powerpc-function-attributes>
    <rl78-function-attributes>
    <rx-function-attributes>
-   <s/390-function-attributes>
+   <s-390-function-attributes>
    <sh-function-attributes>
    <spu-function-attributes>
    <symbian-os-function-attributes>
@@ -380,7 +380,7 @@ flatten
   ``vsscanf`` are also checked.  Except in strictly conforming C
   standard modes, the X/Open function ``strfmon`` is also checked as
   are ``printf_unlocked`` and ``fprintf_unlocked``.
-  C Dialect OptionsOptions Controlling C Dialect.
+  See :ref:`Options Controlling C Dialect <c-dialect-options>`.
 
   For Objective-C dialects, ``NSString`` (or ``__NSString__``) is
   recognized in the same context.  Declarations including these format attributes
@@ -389,8 +389,8 @@ flatten
   compiler.
 
   The target may also provide additional types of format checks.
-  Target Format ChecksFormat Checks Specific to Particular
-  Target Machines.
+  See :ref:`Format Checks Specific to Particular
+  Target Machines <target-format-checks>`.
 
 .. option:: format_arg (string-index), -Wformat-nonliteral
 
@@ -432,16 +432,16 @@ flatten
   ``dcgettext`` in this manner except when strict ISO C support is
   requested by :option:`-ansi` or an appropriate :option:`-std` option, or
   :option:`-ffreestanding` or :option:`-fno-builtin`
-  is used.  C Dialect OptionsOptions
-  Controlling C Dialect.
+  is used.  See :ref:`Options
+  Controlling C Dialect <c-dialect-options>`.
 
   For Objective-C dialects, the ``format-arg`` attribute may refer to an
   ``NSString`` reference for compatibility with the ``format`` attribute
   above.
 
   The target may also allow additional types in ``format-arg`` attributes.
-  Target Format ChecksFormat Checks Specific to Particular
-  Target Machines.
+  See :ref:`Format Checks Specific to Particular
+  Target Machines <target-format-checks>`.
 
 gnu_inline
   ``gnu_inline`` function attributeThis attribute should be used with a function that is also declared
@@ -473,8 +473,8 @@ gnu_inline
   measure and as a useful feature in its own right.  This attribute is
   available in GCC 4.1.3 and later.  It is available if either of the
   preprocessor macros ``__GNUC_GNU_INLINE__`` or
-  ``__GNUC_STDC_INLINE__`` are defined.  InlineAn Inline
-  Function is As Fast As a Macro.
+  ``__GNUC_STDC_INLINE__`` are defined.  See :ref:`An Inline
+  Function is As Fast As a Macro <inline>`.
 
   In C++, this attribute does not depend on ``extern`` in any way,
   but it still requires the ``inline`` keyword to enable its special
@@ -737,7 +737,7 @@ optimize
   are assumed to be used with a ``-f`` prefix.  You can also use the
   #pragma GCC optimize pragma to set the optimization options
   that affect more than one function.
-  Function Specific Option Pragmas, for details about the
+  See :ref:`function-specific-option-pragmas`, for details about the
   #pragma GCC optimize pragma.
 
   This can be used for instance to have frequently-executed functions
@@ -852,7 +852,7 @@ target (``options``)
   compiled with a different ISA (instruction set architecture) than the
   default.  You can also use the #pragma GCC target pragma to set
   more than one function to be compiled with specific target options.
-  Function Specific Option Pragmas, for details about the
+  See :ref:`function-specific-option-pragmas`, for details about the
   #pragma GCC target pragma.
 
   For instance, on an x86, you could declare one function with the
@@ -1439,7 +1439,7 @@ long_call short_call
   :option:`-mlong-calls` (Adapteva Epiphany Options)
   command-line switch and ``#pragma long_calls`` settings.
 
-  :: _h8/300-function-attributes:
+  :: _h8-300-function-attributes:
 
 H8/300 Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1553,7 +1553,7 @@ interrupt
   function entry and exit sequences suitable for use in an interrupt handler
   when this attribute is present.
 
-  :: _m32r/d-function-attributes:
+  :: _m32r-d-function-attributes:
 
 M32R/D Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2013,13 +2013,13 @@ target (``options``)
     These target attributes correspond to the
     :option:`-mcustom-``insn``=``N``` and :option:`-mno-custom-``insn```
     command-line options, and support the same set of ``insn`` keywords.
-    Nios II Options, for more information.
+    See :ref:`nios-ii-options`, for more information.
 
   custom-fpu-cfg=``name``
     ``target("custom-fpu-cfg=``name``")`` function attribute, Nios IIThis attribute corresponds to the :option:`-mcustom-fpu-cfg=``name```
     command-line option, to select a predefined set of custom instructions
     named ``name``.
-    Nios II Options, for more information.
+    See :ref:`nios-ii-options`, for more information.
 
     :: _powerpc-function-attributes:
 
@@ -2040,7 +2040,7 @@ longcall shortcall
   override both the :option:`-mlongcall` switch and
   the ``#pragma longcall`` setting.
 
-  RS/6000 and PowerPC Options, for more information on whether long
+  See :ref:`rs-6000-and-powerpc-options`, for more information on whether long
   calls are necessary.
 
 target (``options``)
@@ -2261,7 +2261,7 @@ vector
   function (i.e. it retains the normal C function calling ABI).  See the
   ``interrupt`` attribute for a description of its arguments.
 
-  :: _s/390-function-attributes:
+  :: _s-390-function-attributes:
 
 S/390 Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2378,7 +2378,7 @@ naked
 Symbian OS Function Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Microsoft Windows Function Attributes, for discussion of the
+See :ref:`microsoft-windows-function-attributes`, for discussion of the
 ``dllexport`` and ``dllimport`` attributes.
 
 :: _visium-function-attributes:
@@ -2521,7 +2521,7 @@ target (``options``)
     ``target("aes")`` function attribute, x86Enable/disable the generation of the AES instructions.
 
   default
-    ``target("default")`` function attribute, x86Function Multiversioning, where it is used to specify the
+    ``target("default")`` function attribute, x86See :ref:`function-multiversioning`, where it is used to specify the
     default function version.
 
   mmx no-mmx

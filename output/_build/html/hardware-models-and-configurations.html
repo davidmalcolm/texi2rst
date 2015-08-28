@@ -1022,7 +1022,7 @@ normal instruction.</p>
 When tuning for ARC700 and optimizing for speed, branches without
 filled delay slot are preferably emitted unaligned and long, unless
 profiling indicates that the probability for the branch to be taken
-is below <tt class="docutils literal"><span class="pre">probability</span></tt>.  Cross-profiling.
+is below <tt class="docutils literal"><span class="pre">probability</span></tt>.  See <em class="xref std std-ref">cross-profiling</em>.
 The default is (REG_BR_PROB_BASE/2), i.e. 5000.</p>
 </dd></dl>
 
@@ -1357,7 +1357,7 @@ zero), so the use of NEON instructions may lead to a loss of precision.</p>
 <dd><p>Specify the format of the <tt class="docutils literal"><span class="pre">__fp16</span></tt> half-precision floating-point type.
 Permissible names are none, ieee, and alternative;
 the default is none, in which case the <tt class="docutils literal"><span class="pre">__fp16</span></tt> type is not
-defined.  Half-Precision, for more information.</p>
+defined.  See <em class="xref std std-ref">half-precision</em>, for more information.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3374,7 +3374,7 @@ frv, fr550, tomcat, fr500, fr450,
 fr405, fr400, fr300 and simple.</p>
 </dd></dl>
 
-<p>:: _gnu/linux-options:</p>
+<p>:: _gnu-linux-options:</p>
 </div>
 <div class="section" id="gnu-linux-options">
 <h2>GNU/Linux Options<a class="headerlink" href="#gnu-linux-options" title="Permalink to this headline">¶</a></h2>
@@ -3435,7 +3435,7 @@ to be defined.</p>
 linking options to the linker.</p>
 </dd></dl>
 
-<p>:: _h8/300-options:</p>
+<p>:: _h8-300-options:</p>
 </div>
 <div class="section" id="h8-300-options">
 <h2>H8/300 Options<a class="headerlink" href="#h8-300-options" title="Permalink to this headline">¶</a></h2>
@@ -3444,7 +3444,7 @@ linking options to the linker.</p>
 <dt id="cmdoption-mrelax">
 <tt class="descname">-mrelax</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mrelax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shorten some address references at link time, when possible; uses the
-linker option <em class="xref std std-option">-relax</em>.  H8/300``ld`` and the H8/300ldUsing ld, for a fuller description.</p>
+linker option <em class="xref std std-option">-relax</em>.  See <em class="xref std std-ref">h8-300</em>, for a fuller description.</p>
 </dd></dl>
 
 <dl class="option">
@@ -4147,7 +4147,7 @@ be compiled with the same value for this option.  Because of that, you
 must not use this option with GCC&#8217;s default runtime libraries.</p>
 </dd></dl>
 
-<p>:: _m32r/d-options:</p>
+<p>:: _m32r-d-options:</p>
 </div>
 <div class="section" id="m32r-d-options">
 <h2>M32R/D Options<a class="headerlink" href="#m32r-d-options" title="Permalink to this headline">¶</a></h2>
@@ -5353,7 +5353,7 @@ particular member of that family.</p>
 MIPS32 or MIPS64 architecture, it makes use of the MIPS16e ASE.</p>
 <p>MIPS16 code generation can also be controlled on a per-function basis
 by means of <tt class="docutils literal"><span class="pre">mips16</span></tt> and <tt class="docutils literal"><span class="pre">nomips16</span></tt> attributes.
-Function Attributes, for more information.</p>
+See <em class="xref std std-ref">function-attributes</em>, for more information.</p>
 </dd></dl>
 
 <dl class="option">
@@ -5614,7 +5614,7 @@ configurations; see the installation documentation for details.</p>
 <dt id="cmdoption-mdsp">
 <tt class="descname">-mdsp</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-dsp</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mdsp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use (do not use) revision 1 of the MIPS DSP ASE.
-MIPS DSP Built-in Functions.  This option defines the
+See <em class="xref std std-ref">mips-dsp-built-in-functions</em>.  This option defines the
 preprocessor macro <tt class="docutils literal"><span class="pre">__mips_dsp</span></tt>.  It also defines
 <tt class="docutils literal"><span class="pre">__mips_dsp_rev</span></tt> to 1.</p>
 </dd></dl>
@@ -5623,7 +5623,7 @@ preprocessor macro <tt class="docutils literal"><span class="pre">__mips_dsp</sp
 <dt id="cmdoption-mdspr2">
 <tt class="descname">-mdspr2</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-dspr2</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mdspr2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use (do not use) revision 2 of the MIPS DSP ASE.
-MIPS DSP Built-in Functions.  This option defines the
+See <em class="xref std std-ref">mips-dsp-built-in-functions</em>.  This option defines the
 preprocessor macros <tt class="docutils literal"><span class="pre">__mips_dsp</span></tt> and <tt class="docutils literal"><span class="pre">__mips_dspr2</span></tt>.
 It also defines <tt class="docutils literal"><span class="pre">__mips_dsp_rev</span></tt> to 2.</p>
 </dd></dl>
@@ -5638,7 +5638,7 @@ It also defines <tt class="docutils literal"><span class="pre">__mips_dsp_rev</s
 <dt id="cmdoption-mpaired-single">
 <tt class="descname">-mpaired-single</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-paired-single</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mpaired-single" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use (do not use) paired-single floating-point instructions.
-MIPS Paired-Single Support.  This option requires
+See <em class="xref std std-ref">mips-paired-single-support</em>.  This option requires
 hardware floating-point support to be enabled.</p>
 </dd></dl>
 
@@ -5653,7 +5653,7 @@ hardware floating-point support to be enabled.</p>
 <dl class="option">
 <dt id="cmdoption-mips3d">
 <tt class="descname">-mips3d</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-mips3d</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mips3d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use (do not use) the MIPS-3D ASE.  MIPS-3D Built-in Functions.
+<dd><p>Use (do not use) the MIPS-3D ASE.  See <em class="xref std std-ref">mips-3d-built-in-functions</em>.
 The option <a class="reference internal" href="#cmdoption-mips3d"><em class="xref std std-option">-mips3d</em></a> implies <a class="reference internal" href="#cmdoption-mpaired-single"><em class="xref std std-option">-mpaired-single</em></a>.</p>
 </dd></dl>
 
@@ -5663,7 +5663,7 @@ The option <a class="reference internal" href="#cmdoption-mips3d"><em class="xre
 <dd><p>Generate (do not generate) microMIPS code.</p>
 <p>MicroMIPS code generation can also be controlled on a per-function basis
 by means of <tt class="docutils literal"><span class="pre">micromips</span></tt> and <tt class="docutils literal"><span class="pre">nomicromips</span></tt> attributes.
-Function Attributes, for more information.</p>
+See <em class="xref std std-ref">function-attributes</em>, for more information.</p>
 </dd></dl>
 
 <dl class="option">
@@ -7088,7 +7088,7 @@ these warnings.</p>
 </div>
 <div class="section" id="powerpc-options">
 <h2>PowerPC Options<a class="headerlink" href="#powerpc-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-44">These are listed under RS/6000 and PowerPC Options.</p>
+<p id="index-44">These are listed under See <em class="xref std std-ref">rs-6000-and-powerpc-options</em>.</p>
 <p>:: _rl78-options:</p>
 </div>
 <div class="section" id="rl78-options">
@@ -7167,7 +7167,7 @@ or 32 bits (<em class="xref std std-option">-m32bit-doubles</em>) in size.  The 
 <em class="xref std std-option">-m32bit-doubles</em>.</p>
 </dd></dl>
 
-<p>:: _rs/6000-and-powerpc-options:</p>
+<p>:: _rs-6000-and-powerpc-options:</p>
 </div>
 <div class="section" id="ibm-rs-6000-and-powerpc-options">
 <h2>IBM RS/6000 and PowerPC Options<a class="headerlink" href="#ibm-rs-6000-and-powerpc-options" title="Permalink to this headline">¶</a></h2>
@@ -8519,7 +8519,7 @@ and/or <tt class="docutils literal"><span class="pre">r13</span></tt> and only p
 corresponding registers have been restricted via the
 <em class="xref std std-option">-ffixed-``reg``</em> or <a class="reference internal" href="#cmdoption-mint-register"><em class="xref std std-option">-mint-register</em></a> command-line
 options.</p>
-<p>:: _s/390-and-zseries-options:</p>
+<p>:: _s-390-and-zseries-options:</p>
 </div>
 <div class="section" id="s-390-and-zseries-options">
 <h2>S/390 and zSeries Options<a class="headerlink" href="#s-390-and-zseries-options" title="Permalink to this headline">¶</a></h2>
@@ -10914,7 +10914,7 @@ there.</p>
 <p>You can specify that an individual function is called with this calling
 sequence with the function attribute <tt class="docutils literal"><span class="pre">stdcall</span></tt>.  You can also
 override the <a class="reference internal" href="#cmdoption-mrtd"><em class="xref std std-option">-mrtd</em></a> option by using the function attribute
-<tt class="docutils literal"><span class="pre">cdecl</span></tt>.  Function Attributes.</p>
+<tt class="docutils literal"><span class="pre">cdecl</span></tt>.  See <em class="xref std std-ref">function-attributes</em>.</p>
 <p>Warning: this calling convention is incompatible with the one
 normally used on Unix, so you cannot use it if you need to call
 libraries compiled with the Unix compiler.</p>
@@ -10934,7 +10934,7 @@ harmlessly ignored.)</p>
 default, no registers are used to pass arguments, and at most 3
 registers can be used.  You can control this behavior for a specific
 function by using the function attribute <tt class="docutils literal"><span class="pre">regparm</span></tt>.
-Function Attributes.</p>
+See <em class="xref std std-ref">function-attributes</em>.</p>
 <p>Warning: if you use this switch, and
 <tt class="docutils literal"><span class="pre">num</span></tt> is nonzero, then you must build all modules with the same
 value, including any libraries.  This includes the system libraries and
@@ -10947,7 +10947,7 @@ startup modules.</p>
 <dd><p>Use SSE register passing conventions for float and double arguments
 and return values.  You can control this behavior for a specific
 function by using the function attribute <tt class="docutils literal"><span class="pre">sseregparm</span></tt>.
-Function Attributes.</p>
+See <em class="xref std std-ref">function-attributes</em>.</p>
 <p>Warning: if you use this switch then you must build all
 modules with the same value, including any libraries.  This includes
 the system libraries and startup modules.</p>
@@ -11254,7 +11254,7 @@ ms for the Microsoft ABI.  The default is to use the Microsoft
 ABI when targeting Microsoft Windows and the SysV ABI on all other systems.
 You can control this behavior for specific functions by
 using the function attributes <tt class="docutils literal"><span class="pre">ms_abi</span></tt> and <tt class="docutils literal"><span class="pre">sysv_abi</span></tt>.
-Function Attributes.</p>
+See <em class="xref std std-ref">function-attributes</em>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -11739,7 +11739,7 @@ every cross-file call, not just those that really are out of range.</p>
 </div>
 <div class="section" id="zseries-options">
 <h2>zSeries Options<a class="headerlink" href="#zseries-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-67">These are listed under S/390 and zSeries Options.</p>
+<p id="index-67">These are listed under See <em class="xref std std-ref">s-390-and-zseries-options</em>.</p>
 </div>
 </div>
 

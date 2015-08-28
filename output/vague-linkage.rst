@@ -57,7 +57,7 @@ VTables
 Template Instantiations
   Most everything in this section also applies to template instantiations,
   but there are other options as well.
-  Template InstantiationWhere's the Template?.
+  See :ref:`Where's the Template? <template-instantiation>`.
 
   When used with GNU ld version 2.8 or later on an ELF system such as
 GNU/Linux or Solaris 2, or on Microsoft Windows, duplicate copies of
@@ -74,6 +74,6 @@ avoid duplicate definition errors from the linker.  This does not happen
 for local statics in inlines, however, as having multiple copies
 almost certainly breaks things.
 
-C++ InterfaceDeclarations and Definitions in One Header, for
+See :ref:`Declarations and Definitions in One Header <c++-interface>`, for
 another way to control placement of these constructs.
 

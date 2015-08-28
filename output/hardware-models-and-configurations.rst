@@ -40,13 +40,13 @@ platform.
    <dec-alpha-options>
    <fr30-options>
    <frv-options>
-   <gnu/linux-options>
-   <h8/300-options>
+   <gnu-linux-options>
+   <h8-300-options>
    <hppa-options>
    <ia-64-options>
    <lm32-options>
    <m32c-options>
-   <m32r/d-options>
+   <m32r-d-options>
    <m680x0-options>
    <mcore-options>
    <mep-options>
@@ -63,9 +63,9 @@ platform.
    <picochip-options>
    <powerpc-options>
    <rl78-options>
-   <rs/6000-and-powerpc-options>
+   <rs-6000-and-powerpc-options>
    <rx-options>
-   <s/390-and-zseries-options>
+   <s-390-and-zseries-options>
    <score-options>
    <sh-options>
    <solaris-2-options>
@@ -817,7 +817,7 @@ The following options fine tune code generation:
   When tuning for ARC700 and optimizing for speed, branches without
   filled delay slot are preferably emitted unaligned and long, unless
   profiling indicates that the probability for the branch to be taken
-  is below ``probability``.  Cross-profiling.
+  is below ``probability``.  See :ref:`cross-profiling`.
   The default is (REG_BR_PROB_BASE/2), i.e. 5000.
 
 The following options are maintained for backward compatibility, but
@@ -1121,7 +1121,7 @@ These -m options are defined for the ARM port:
   Specify the format of the ``__fp16`` half-precision floating-point type.
   Permissible names are none, ieee, and alternative;
   the default is none, in which case the ``__fp16`` type is not
-  defined.  Half-Precision, for more information.
+  defined.  See :ref:`half-precision`, for more information.
 
 .. option:: -mstructure-size-boundary=n
 
@@ -2948,7 +2948,7 @@ FRV Options
   frv, fr550, tomcat, fr500, fr450,
   fr405, fr400, fr300 and simple.
 
-:: _gnu/linux-options:
+:: _gnu-linux-options:
 
 GNU/Linux Options
 ^^^^^^^^^^^^^^^^^
@@ -2998,7 +2998,7 @@ These -m options are defined for GNU/Linux targets:
   Disable linking effects of :option:`-mandroid`, i.e., pass standard Linux
   linking options to the linker.
 
-:: _h8/300-options:
+:: _h8-300-options:
 
 H8/300 Options
 ^^^^^^^^^^^^^^
@@ -3008,7 +3008,7 @@ These -m options are defined for the H8/300 implementations:
 .. option:: -mrelax
 
   Shorten some address references at link time, when possible; uses the
-  linker option :option:`-relax`.  H8/300``ld`` and the H8/300ldUsing ld, for a fuller description.
+  linker option :option:`-relax`.  See :ref:`h8-300`, for a fuller description.
 
 .. option:: -mh
 
@@ -3583,7 +3583,7 @@ M32C Options
   be compiled with the same value for this option.  Because of that, you
   must not use this option with GCC's default runtime libraries.
 
-:: _m32r/d-options:
+:: _m32r-d-options:
 
 M32R/D Options
 ^^^^^^^^^^^^^^
@@ -4634,7 +4634,7 @@ MIPS Options
 
   MIPS16 code generation can also be controlled on a per-function basis
   by means of ``mips16`` and ``nomips16`` attributes.
-  Function Attributes, for more information.
+  See :ref:`function-attributes`, for more information.
 
 .. option:: -mflip-mips16
 
@@ -4874,14 +4874,14 @@ MIPS Options
 .. option:: -mdsp, -mno-dsp
 
   Use (do not use) revision 1 of the MIPS DSP ASE.
-  MIPS DSP Built-in Functions.  This option defines the
+  See :ref:`mips-dsp-built-in-functions`.  This option defines the
   preprocessor macro ``__mips_dsp``.  It also defines
   ``__mips_dsp_rev`` to 1.
 
 .. option:: -mdspr2, -mno-dspr2
 
   Use (do not use) revision 2 of the MIPS DSP ASE.
-  MIPS DSP Built-in Functions.  This option defines the
+  See :ref:`mips-dsp-built-in-functions`.  This option defines the
   preprocessor macros ``__mips_dsp`` and ``__mips_dspr2``.
   It also defines ``__mips_dsp_rev`` to 2.
 
@@ -4892,7 +4892,7 @@ MIPS Options
 .. option:: -mpaired-single, -mno-paired-single
 
   Use (do not use) paired-single floating-point instructions.
-  MIPS Paired-Single Support.  This option requires
+  See :ref:`mips-paired-single-support`.  This option requires
   hardware floating-point support to be enabled.
 
 .. option:: -mdmx, -mno-mdmx
@@ -4903,7 +4903,7 @@ MIPS Options
 
 .. option:: -mips3d, -mno-mips3d
 
-  Use (do not use) the MIPS-3D ASE.  MIPS-3D Built-in Functions.
+  Use (do not use) the MIPS-3D ASE.  See :ref:`mips-3d-built-in-functions`.
   The option :option:`-mips3d` implies :option:`-mpaired-single`.
 
 .. option:: -mmicromips, -mno-mmicromips
@@ -4912,7 +4912,7 @@ MIPS Options
 
   MicroMIPS code generation can also be controlled on a per-function basis
   by means of ``micromips`` and ``nomicromips`` attributes.
-  Function Attributes, for more information.
+  See :ref:`function-attributes`, for more information.
 
 .. option:: -mmt, -mno-mt
 
@@ -6183,7 +6183,7 @@ PowerPC Options
 
 .. index:: PowerPC options
 
-These are listed under RS/6000 and PowerPC Options.
+These are listed under See :ref:`rs-6000-and-powerpc-options`.
 
 :: _rl78-options:
 
@@ -6258,7 +6258,7 @@ RL78 Options
   or 32 bits (:option:`-m32bit-doubles`) in size.  The default is
   :option:`-m32bit-doubles`.
 
-:: _rs/6000-and-powerpc-options:
+:: _rs-6000-and-powerpc-options:
 
 IBM RS/6000 and PowerPC Options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -7442,7 +7442,7 @@ corresponding registers have been restricted via the
 :option:`-ffixed-``reg``` or :option:`-mint-register` command-line
 options.
 
-:: _s/390-and-zseries-options:
+:: _s-390-and-zseries-options:
 
 S/390 and zSeries Options
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -9585,7 +9585,7 @@ These -m options are defined for the x86 family of computers.
   You can specify that an individual function is called with this calling
   sequence with the function attribute ``stdcall``.  You can also
   override the :option:`-mrtd` option by using the function attribute
-  ``cdecl``.  Function Attributes.
+  ``cdecl``.  See :ref:`function-attributes`.
 
   Warning: this calling convention is incompatible with the one
   normally used on Unix, so you cannot use it if you need to call
@@ -9606,7 +9606,7 @@ These -m options are defined for the x86 family of computers.
   default, no registers are used to pass arguments, and at most 3
   registers can be used.  You can control this behavior for a specific
   function by using the function attribute ``regparm``.
-  Function Attributes.
+  See :ref:`function-attributes`.
 
   Warning: if you use this switch, and
   ``num`` is nonzero, then you must build all modules with the same
@@ -9618,7 +9618,7 @@ These -m options are defined for the x86 family of computers.
   Use SSE register passing conventions for float and double arguments
   and return values.  You can control this behavior for a specific
   function by using the function attribute ``sseregparm``.
-  Function Attributes.
+  See :ref:`function-attributes`.
 
   Warning: if you use this switch then you must build all
   modules with the same value, including any libraries.  This includes
@@ -9903,7 +9903,7 @@ These -m options are defined for the x86 family of computers.
   ABI when targeting Microsoft Windows and the SysV ABI on all other systems.
   You can control this behavior for specific functions by
   using the function attributes ``ms_abi`` and ``sysv_abi``.
-  Function Attributes.
+  See :ref:`function-attributes`.
 
 .. option:: -mtls-dialect=type
 
@@ -10320,5 +10320,5 @@ zSeries Options
 
 .. index:: zSeries options
 
-These are listed under S/390 and zSeries Options.
+These are listed under See :ref:`s-390-and-zseries-options`.
 

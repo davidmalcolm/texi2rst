@@ -4,7 +4,7 @@ Label Attributes
 
 .. index:: Label Attributes
 
-GCC allows attributes to be set on C labels.  Attribute Syntax, for 
+GCC allows attributes to be set on C labels.  See :ref:`attribute-syntax`, for 
 details of the exact syntax for using attributes.  Other attributes are 
 available for functions (Function Attributes), variables 
 (Variable Attributes) and for types (Type Attributes).

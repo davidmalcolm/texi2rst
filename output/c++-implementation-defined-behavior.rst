@@ -13,13 +13,12 @@ one version of the standard.
 
 Some choices depend on the externally determined ABI for the platform
 (including standard character encodings) which GCC follows; these are
-listed as 'determined by ABI' below.  CompatibilityBinary
-Compatibility, and http://gcc.gnu.org/readings.html.  Some
+listed as 'determined by ABI' below.  See :ref:`Binary
+Compatibility <compatibility>`, and http://gcc.gnu.org/readings.html.  Some
 choices are documented in the preprocessor manual.
-Implementation-defined behaviorImplementation-defined
-behaviorcppThe C Preprocessor.  Some choices are documented in
-the corresponding document for the C language.  C
-Implementation.  Some choices are made by the library and operating
+See :ref:`Implementation-defined
+behavior <implementation-defined-behavior>`.  Some choices are documented in
+the corresponding document for the C language.  See :ref:`c-implementation`.  Some choices are made by the library and operating
 system (or other environment when compiling for a freestanding
 environment); refer to their documentation for details.
 

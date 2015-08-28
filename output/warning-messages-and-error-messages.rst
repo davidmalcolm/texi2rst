@@ -42,7 +42,7 @@ such cases; :option:`-pedantic-errors` says to make them errors instead.
 This does not mean that all non-ISO constructs get warnings
 or errors.
 
-Warning OptionsOptions to Request or Suppress Warnings, for
+See :ref:`Options to Request or Suppress Warnings <warning-options>`, for
 more detail on these and related command-line options.
 
 .. Copyright (C) 1988-2015 Free Software Foundation, Inc.

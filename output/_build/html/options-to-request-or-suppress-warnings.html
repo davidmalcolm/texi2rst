@@ -949,7 +949,7 @@ this can happen:</p>
 always initialized, but GCC doesn&#8217;t know this. To suppress the
 warning, you need to provide a default case with assert(0) or
 similar code.</p>
-<p><tt class="docutils literal"><span class="pre">longjmp</span></tt> warningsThis option also warns when a non-volatile automatic variable might be
+<p id="index-5">This option also warns when a non-volatile automatic variable might be
 changed by a call to <tt class="docutils literal"><span class="pre">longjmp</span></tt>.  These warnings as well are possible
 only in optimizing compilation.</p>
 <p>The compiler sees only the calls to <tt class="docutils literal"><span class="pre">setjmp</span></tt>.  It cannot know
@@ -965,7 +965,7 @@ you use that never return as <tt class="docutils literal"><span class="pre">nore
 <dl class="option">
 <dt id="cmdoption-Wunknown-pragmas">
 <tt class="descname">-Wunknown-pragmas</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unknown-pragmas</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunknown-pragmas" title="Permalink to this definition">¶</a></dt>
-<dd><span class="target" id="index-5"></span><span class="target" id="index-6"></span><p id="index-7">Warn when a <tt class="docutils literal"><span class="pre">#pragma</span></tt> directive is encountered that is not understood by
+<dd><span class="target" id="index-6"></span><span class="target" id="index-7"></span><p id="index-8">Warn when a <tt class="docutils literal"><span class="pre">#pragma</span></tt> directive is encountered that is not understood by
 GCC.  If this command-line option is used, warnings are even issued
 for unknown pragmas in system header files.  This is not the case if
 the warnings are only enabled by the <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> command-line option.</p>
@@ -1244,7 +1244,7 @@ obtaining infinities and NaNs.</p>
 <dl class="option">
 <dt id="cmdoption-Wsystem-headers">
 <tt class="descname">-Wsystem-headers</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-system-headers</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsystem-headers" title="Permalink to this definition">¶</a></dt>
-<dd><span class="target" id="index-8"></span><p id="index-9">Print warning messages for constructs found in system header files.
+<dd><span class="target" id="index-9"></span><p id="index-10">Print warning messages for constructs found in system header files.
 Warnings from system headers are normally suppressed, on the assumption
 that they usually do not indicate real problems and would only make the
 compiler output harder to read.  Using this command-line option tells
@@ -1408,7 +1408,7 @@ Objective-C method.</p>
 <dl class="option">
 <dt id="cmdoption-Wlarger-than">
 <tt class="descname">-Wlarger-than</tt><tt class="descclassname">=len</tt><a class="headerlink" href="#cmdoption-Wlarger-than" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wlarger-than=``len``Wlarger-than-<tt class="docutils literal"><span class="pre">len``Warn</span> <span class="pre">whenever</span> <span class="pre">an</span> <span class="pre">object</span> <span class="pre">of</span> <span class="pre">larger</span> <span class="pre">than</span> <span class="pre">``len</span></tt> bytes is defined.</p>
+<dd><span class="target" id="index-11"></span><p id="index-12">Warn whenever an object of larger than <tt class="docutils literal"><span class="pre">len</span></tt> bytes is defined.</p>
 </dd></dl>
 
 <dl class="option">
@@ -1747,7 +1747,7 @@ can be disabled with the <em class="xref std std-option">-Wno-jump-misses-init</
 <dl class="option">
 <dt id="cmdoption-Wsign-compare">
 <tt class="descname">-Wsign-compare</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-sign-compare</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wsign-compare" title="Permalink to this definition">¶</a></dt>
-<dd><span class="target" id="index-10"></span><span class="target" id="index-11"></span><p id="index-12">Warn when a comparison between signed and unsigned values could produce
+<dd><span class="target" id="index-13"></span><span class="target" id="index-14"></span><p id="index-15">Warn when a comparison between signed and unsigned values could produce
 an incorrect result when the signed value is converted to unsigned.
 This warning is also enabled by <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>; to get the other warnings
 of <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a> without this warning, use <em class="xref std std-option">-Wextra -Wno-sign-compare</em>.</p>
@@ -2021,7 +2021,7 @@ implementation-defined values, and should not be used in portable code.</p>
 <dl class="option">
 <dt id="cmdoption-Wnormalized">
 <tt class="descname">-Wnormalized</tt><tt class="descclassname">[=&lt;none|id|nfc|nfkc&gt;]</tt><a class="headerlink" href="#cmdoption-Wnormalized" title="Permalink to this definition">¶</a></dt>
-<dd><span class="target" id="index-13"></span><span class="target" id="index-14"></span><p id="index-15">In ISO C and ISO C++, two identifiers are different if they are
+<dd><span class="target" id="index-16"></span><span class="target" id="index-17"></span><p id="index-18">In ISO C and ISO C++, two identifiers are different if they are
 different sequences of characters.  However, sometimes when characters
 outside the basic ASCII character set are used, you can have two
 different character sequences that look the same.  To avoid confusion,

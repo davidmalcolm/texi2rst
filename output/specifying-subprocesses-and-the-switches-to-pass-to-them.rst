@@ -26,15 +26,24 @@ character on the line, which can be one of the following:
   appear here are:
 
   %include <``file``>
-    ``%include``Search for ``file`` and insert its text at the current point in the
+
+    .. index:: %include
+
+    Search for ``file`` and insert its text at the current point in the
     specs file.
 
   %include_noerr <``file``>
-    ``%include_noerr``Just like %include, but do not generate an error message if the include
+
+    .. index:: %include_noerr
+
+    Just like %include, but do not generate an error message if the include
     file cannot be found.
 
   %rename ``old_name````new_name``
-    ``%rename``Rename the spec string ``old_name`` to ``new_name``.
+
+    .. index:: %rename
+
+    Rename the spec string ``old_name`` to ``new_name``.
 
 *[``spec_name``]:
   This tells the compiler to create, override or delete the named spec

@@ -5,7 +5,9 @@ Pragmas Accepted by GCC
 
 .. index:: pragmas
 
-``#pragma``GCC supports several types of pragmas, primarily in order to compile
+.. index:: #pragma
+
+GCC supports several types of pragmas, primarily in order to compile
 code originally written for other compilers.  Note that in general
 we do not recommend the use of pragmas; See :ref:`function-attributes`,
 for further explanation.

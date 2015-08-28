@@ -3,7 +3,11 @@
 Unnamed Structure and Union Fields
 **********************************
 
-``struct````union``As permitted by ISO C11 and for compatibility with other compilers,
+.. index:: struct
+
+.. index:: union
+
+As permitted by ISO C11 and for compatibility with other compilers,
 GCC allows you to define
 a structure or union that contains, as fields, structures and unions
 without names.  For example:

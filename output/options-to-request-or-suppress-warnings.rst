@@ -821,7 +821,9 @@ warns that an unrecognized option is present.
   warning, you need to provide a default case with assert(0) or
   similar code.
 
-  ``longjmp`` warningsThis option also warns when a non-volatile automatic variable might be
+  .. index:: longjmp warnings
+
+  This option also warns when a non-volatile automatic variable might be
   changed by a call to ``longjmp``.  These warnings as well are possible
   only in optimizing compilation.
 
@@ -1254,7 +1256,11 @@ warns that an unrecognized option is present.
 
 .. option:: -Wlarger-than=len
 
-  Wlarger-than=``len``Wlarger-than-``len``Warn whenever an object of larger than ``len`` bytes is defined.
+  .. index:: Wlarger-than=len
+
+  .. index:: Wlarger-than-len
+
+  Warn whenever an object of larger than ``len`` bytes is defined.
 
 .. option:: -Wframe-larger-than=len
 

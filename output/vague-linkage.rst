@@ -43,7 +43,9 @@ VTables
   body, even if they are not defined there.
 
 ``type_info`` objects
-  ``type_info``
+
+  .. index:: type_info
+
   .. index:: RTTI
 
   C++ requires information about types to be written out in order to

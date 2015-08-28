@@ -121,16 +121,16 @@ a message which is too long to fit on a single line.</dd>
 <dl class="option">
 <dt id="cmdoption-fdiagnostics-color">
 <tt class="descname">-fdiagnostics-color</tt><tt class="descclassname">[=WHEN]</tt><a class="headerlink" href="#cmdoption-fdiagnostics-color" title="Permalink to this definition">¶</a></dt>
-<dd><p id="index-3">GCC_COLORS environment variableUse color in diagnostics.  <tt class="docutils literal"><span class="pre">WHEN</span></tt> is never, always,
+<dd><span class="target" id="index-3"></span><p id="index-4">Use color in diagnostics.  <tt class="docutils literal"><span class="pre">WHEN</span></tt> is never, always,
 or auto.  The default depends on how the compiler has been configured,
 it can be any of the above <tt class="docutils literal"><span class="pre">WHEN</span></tt> options or also never
-if <span class="target" id="index-4"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> environment variable isn&#8217;t present in the environment,
+if <span class="target" id="index-5"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> environment variable isn&#8217;t present in the environment,
 and auto otherwise.
 auto means to use color only when the standard error is a terminal.
 The forms <a class="reference internal" href="#cmdoption-fdiagnostics-color"><em class="xref std std-option">-fdiagnostics-color</em></a> and <em class="xref std std-option">-fno-diagnostics-color</em> are
 aliases for <em class="xref std std-option">-fdiagnostics-color=always</em> and
 <em class="xref std std-option">-fdiagnostics-color=never</em>, respectively.</p>
-<p>The colors are defined by the environment variable <span class="target" id="index-5"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt>.
+<p>The colors are defined by the environment variable <span class="target" id="index-6"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt>.
 Its value is a colon-separated list of capabilities and Select Graphic
 Rendition (SGR) substrings. SGR commands are interpreted by the
 terminal or terminal emulator.  (See the section in the documentation
@@ -152,30 +152,40 @@ for 88-color and 256-color modes foreground colors,
 100 to 107 for 16-color mode background colors,
 and 48;5;0 to 48;5;255
 for 88-color and 256-color modes background colors.</p>
-<p>The default <span class="target" id="index-6"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> is</p>
+<p>The default <span class="target" id="index-7"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> is</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">error</span><span class="o">=</span><span class="mo">01</span><span class="p">;</span><span class="mi">31</span><span class="o">:</span><span class="n">warning</span><span class="o">=</span><span class="mo">01</span><span class="p">;</span><span class="mi">35</span><span class="o">:</span><span class="n">note</span><span class="o">=</span><span class="mo">01</span><span class="p">;</span><span class="mi">36</span><span class="o">:</span><span class="n">caret</span><span class="o">=</span><span class="mo">01</span><span class="p">;</span><span class="mi">32</span><span class="o">:</span><span class="n">locus</span><span class="o">=</span><span class="mo">01</span><span class="o">:</span><span class="n">quote</span><span class="o">=</span><span class="mo">01</span>
 </pre></div>
 </div>
 <p>where 01;31 is bold red, 01;35 is bold magenta,
 01;36 is bold cyan, 01;32 is bold green and
-01 is bold. Setting <span class="target" id="index-7"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> to the empty
+01 is bold. Setting <span class="target" id="index-8"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> to the empty
 string disables colors.
 Supported capabilities are as follows.</p>
-<dl class="docutils">
-<dt>error=</dt>
-<dd>error GCC_COLORS capabilitySGR substring for error: markers.</dd>
-<dt>warning=</dt>
-<dd>warning GCC_COLORS capabilitySGR substring for warning: markers.</dd>
-<dt>note=</dt>
-<dd>note GCC_COLORS capabilitySGR substring for note: markers.</dd>
-<dt>caret=</dt>
-<dd>caret GCC_COLORS capabilitySGR substring for caret line.</dd>
-<dt>locus=</dt>
-<dd>locus GCC_COLORS capabilitySGR substring for location information, <a class="reference external" href="file:line">file:line</a> or
-<a class="reference external" href="file:line:column">file:line:column</a> etc.</dd>
-<dt>quote=</dt>
-<dd>quote GCC_COLORS capabilitySGR substring for information printed within quotes.</dd>
-</dl>
+<p>error=</p>
+<blockquote>
+<div><p id="index-9">SGR substring for error: markers.</p>
+</div></blockquote>
+<p>warning=</p>
+<blockquote>
+<div><p id="index-10">SGR substring for warning: markers.</p>
+</div></blockquote>
+<p>note=</p>
+<blockquote>
+<div><p id="index-11">SGR substring for note: markers.</p>
+</div></blockquote>
+<p>caret=</p>
+<blockquote>
+<div><p id="index-12">SGR substring for caret line.</p>
+</div></blockquote>
+<p>locus=</p>
+<blockquote>
+<div><p id="index-13">SGR substring for location information, <a class="reference external" href="file:line">file:line</a> or
+<a class="reference external" href="file:line:column">file:line:column</a> etc.</p>
+</div></blockquote>
+<p>quote=</p>
+<blockquote>
+<div><p id="index-14">SGR substring for information printed within quotes.</p>
+</div></blockquote>
 </dd></dl>
 
 <dl class="option">
@@ -195,7 +205,7 @@ and a caret &#8216;^&#8217; indicating the column.  This option suppresses this
 information.  The source line is truncated to <tt class="docutils literal"><span class="pre">n</span></tt> characters, if
 the <em class="xref std std-option">-fmessage-length=n</em> option is given.  When the output is done
 to the terminal, the width is limited to the width given by the
-<span class="target" id="index-8"></span><tt class="xref std std-envvar docutils literal"><span class="pre">COLUMNS</span></tt> environment variable or, if not set, to the terminal width.</p>
+<span class="target" id="index-15"></span><tt class="xref std std-envvar docutils literal"><span class="pre">COLUMNS</span></tt> environment variable or, if not set, to the terminal width.</p>
 </dd></dl>
 
 </div>

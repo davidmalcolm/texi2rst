@@ -132,7 +132,8 @@ compilation.
 
 .. option:: -Wtrigraphs
 
-  WtrigraphsMost trigraphs in comments cannot affect the meaning of the program.
+  .. _wtrigraphs:
+  Most trigraphs in comments cannot affect the meaning of the program.
   However, a trigraph that would form an escaped newline (??/ at
   the end of a line) can, by changing where the comment begins or ends.
   Therefore, only trigraphs that would form escaped newlines produce
@@ -221,7 +222,11 @@ compilation.
 
 .. option:: -M
 
-  :command:`make`dependencies, :command:`make`Instead of outputting the result of preprocessing, output a rule
+  .. index:: make
+
+  .. index:: dependencies, make
+
+  Instead of outputting the result of preprocessing, output a rule
   suitable for :command:`make` describing the dependencies of the main
   source file.  The preprocessor outputs one :command:`make` rule containing
   the object file name for that source file, a colon, and the names of all
@@ -255,8 +260,6 @@ compilation.
   #include directive does not in itself determine whether that
   header will appear in :option:`-MM` dependency output.  This is a
   slight change in semantics from GCC versions 3.0 and earlier.
-
-  dashMF
 
 .. option:: -MF file, -MF
 
@@ -553,7 +556,8 @@ compilation.
 
 .. option:: -fdollars-in-identifiers
 
-  fdollars-in-identifiersAccept $ in identifiers.
+  .. _fdollars-in-identifiers:
+  Accept $ in identifiers.
 
 .. option:: -fextended-identifiers
 

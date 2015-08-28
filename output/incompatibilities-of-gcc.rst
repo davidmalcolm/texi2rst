@@ -20,11 +20,19 @@ There are several noteworthy incompatibilities between GNU C and K&R
   identical-looking string constants are used, GCC stores only one
   copy of the string.
 
-  ``mktemp``, and constant stringsOne consequence is that you cannot call ``mktemp`` with a string
+  .. index:: mktemp, and constant strings
+
+  One consequence is that you cannot call ``mktemp`` with a string
   constant argument.  The function ``mktemp`` always alters the
   string its argument points to.
 
-  ``sscanf``, and constant strings``fscanf``, and constant strings``scanf``, and constant stringsAnother consequence is that ``sscanf`` does not work on some very
+  .. index:: sscanf, and constant strings
+
+  .. index:: fscanf, and constant strings
+
+  .. index:: scanf, and constant strings
+
+  Another consequence is that ``sscanf`` does not work on some very
   old systems when passed a string constant as its format control string
   or input.  This is because ``sscanf`` incorrectly tries to write
   into the string constant.  Likewise ``fscanf`` and ``scanf``.
@@ -48,7 +56,9 @@ There are several noteworthy incompatibilities between GNU C and K&R
 
   will produce output ``"a"`` regardless of what the argument ``a`` is.
 
-  ``setjmp`` incompatibilities``longjmp`` incompatibilities
+  .. index:: setjmp incompatibilities
+
+  .. index:: longjmp incompatibilities
 
 * When you use ``setjmp`` and ``longjmp``, the only automatic
   variables guaranteed to remain valid are those declared
@@ -148,7 +158,7 @@ There are several noteworthy incompatibilities between GNU C and K&R
 
   .. index:: apostrophes
 
-  ``'``
+  .. index:: '
 
 * GCC complains about unterminated character constants inside of
   preprocessing conditionals that fail.  Some programs have English
@@ -177,7 +187,7 @@ There are several noteworthy incompatibilities between GNU C and K&R
   ``time`` if the system header files declare it, or failing that to
   use ``time_t`` as the return type of ``time``.
 
-  ``float`` as function value type
+  .. index:: float as function value type
 
 * When compiling functions that return ``float``, PCC converts it to
   a double.  GCC actually returns a ``float``.  If you are concerned

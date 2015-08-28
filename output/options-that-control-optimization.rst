@@ -1675,7 +1675,8 @@ optimizations to be performed is desired.
   ``void*`` or a ``double``.  A character type may alias any other
   type.
 
-  Type-punningPay special attention to code like this:
+  .. _type-punning:
+  Pay special attention to code like this:
 
   .. code-block:: c++
 

@@ -52,7 +52,10 @@ functions.
   internal tables used to implement virtual functions are all generated in
   implementation files.
 
-  implied ``#pragma implementation````#pragma implementation``, implied
+  .. index:: implied #pragma implementation
+
+  .. index:: #pragma implementation, implied
+
   .. index:: naming convention, implementation headers
 
   If you use #pragma implementation with no argument, it applies to

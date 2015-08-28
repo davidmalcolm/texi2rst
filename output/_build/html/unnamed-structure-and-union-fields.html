@@ -84,7 +84,7 @@
             
   <div class="section" id="unnamed-structure-and-union-fields">
 <span id="unnamed-fields"></span><h1>Unnamed Structure and Union Fields<a class="headerlink" href="#unnamed-structure-and-union-fields" title="Permalink to this headline">¶</a></h1>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a>struct````union``As permitted by ISO C11 and for compatibility with other compilers,
+<span class="target" id="index-0"></span><p id="index-1">As permitted by ISO C11 and for compatibility with other compilers,
 GCC allows you to define
 a structure or union that contains, as fields, structures and unions
 without names.  For example:</p>
@@ -114,14 +114,14 @@ For example, in this structure:</p>
 </div>
 <p>it is ambiguous which <tt class="docutils literal"><span class="pre">a</span></tt> is being referred to with foo.a.
 The compiler gives errors for such constructs.</p>
-<p id="index-0">Unless <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fms-extensions"><em class="xref std std-option">-fms-extensions</em></a> is used, the unnamed field must be a
+<p id="index-2">Unless <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fms-extensions"><em class="xref std std-option">-fms-extensions</em></a> is used, the unnamed field must be a
 structure or union definition without a tag (for example, struct
 { int a; };).  If <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fms-extensions"><em class="xref std std-option">-fms-extensions</em></a> is used, the field may
 also be a definition with a tag such as struct foo { int a;
 };, a reference to a previously defined structure or union such as
 struct foo;, or a reference to a <tt class="docutils literal"><span class="pre">typedef</span></tt> name for a
 previously defined structure or union type.</p>
-<p id="index-1">The option <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fplan9-extensions"><em class="xref std std-option">-fplan9-extensions</em></a> enables
+<p id="index-3">The option <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fplan9-extensions"><em class="xref std std-option">-fplan9-extensions</em></a> enables
 <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fms-extensions"><em class="xref std std-option">-fms-extensions</em></a> as well as two other extensions.  First, a
 pointer to a structure is automatically converted to a pointer to an
 anonymous field for assignments and function calls.  For example:</p>

@@ -335,7 +335,9 @@ with <a class="reference internal" href="#cmdoption-march"><em class="xref std s
 over the appropriate part of this option.</p>
 </dd></dl>
 
-<p><a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a> and <a class="reference internal" href="#cmdoption-mcpu"><em class="xref std std-option">-mcpu</em></a> Feature Modifiers:option:<cite>-march</cite> feature modifiers:option:<cite>-mcpu</cite> feature modifiersFeature modifiers used with <a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a> and <a class="reference internal" href="#cmdoption-mcpu"><em class="xref std std-option">-mcpu</em></a> can be one
+<p><a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a> and <a class="reference internal" href="#cmdoption-mcpu"><em class="xref std std-option">-mcpu</em></a> Feature Modifiers
+.. index:: -march feature modifiers</p>
+<p id="index-5">Feature modifiers used with <a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a> and <a class="reference internal" href="#cmdoption-mcpu"><em class="xref std std-option">-mcpu</em></a> can be one
 the following:</p>
 <dl class="docutils">
 <dt>crc</dt>
@@ -529,7 +531,7 @@ purpose.  The default is <em class="xref std std-option">-m1reg-none</em>.</p>
 </div>
 <div class="section" id="arc-options">
 <span id="id3"></span><h2>ARC Options<a class="headerlink" href="#arc-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-5">The following options control the architecture variant for which code
+<p id="index-6">The following options control the architecture variant for which code
 is being compiled:</p>
 <dl class="option">
 <dt id="cmdoption-mbarrel-shifter">
@@ -545,7 +547,7 @@ unless <em class="xref std std-option">-mcpu=ARC601</em> is in effect.</p>
 parameters for <tt class="docutils literal"><span class="pre">cpu</span></tt>.  There are also shortcut alias options
 available for backward compatibility and convenience.  Supported
 values for <tt class="docutils literal"><span class="pre">cpu</span></tt> are</p>
-<span class="target" id="index-6"></span><dl class="docutils" id="index-7">
+<span class="target" id="index-7"></span><dl class="docutils" id="index-8">
 <dt>ARC600</dt>
 <dd>Compile for ARC600.  Aliases: <em class="xref std std-option">-mA6</em>, <em class="xref std std-option">-mARC600</em>.</dd>
 </dl>
@@ -1119,7 +1121,7 @@ ARC601, ARC700 and ARC700-xmac respectively</p>
 </div>
 <div class="section" id="arm-options">
 <span id="id4"></span><h2>ARM Options<a class="headerlink" href="#arm-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-8">These -m options are defined for the ARM port:</p>
+<p id="index-9">These -m options are defined for the ARM port:</p>
 <dl class="option">
 <dt id="cmdoption-mabi">
 <tt class="descname">-mabi</tt><tt class="descclassname">=name</tt><a class="headerlink" href="#cmdoption-mabi" title="Permalink to this definition">¶</a></dt>
@@ -1606,7 +1608,7 @@ by default.</p>
 </div>
 <div class="section" id="avr-options">
 <span id="id7"></span><h2>AVR Options<a class="headerlink" href="#avr-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-9">These options are defined for AVR implementations:</p>
+<p id="index-10">These options are defined for AVR implementations:</p>
 <dl class="option">
 <dt id="cmdoption-mmcu">
 <tt class="descname">-mmcu</tt><tt class="descclassname">=mcu</tt><a class="headerlink" href="#cmdoption-mmcu" title="Permalink to this definition">¶</a></dt>
@@ -1812,7 +1814,9 @@ sbiw r26, const   ; X -= const</pre>
 resulting address space is not contained in the incoming address space.</p>
 </dd></dl>
 
-<p><tt class="docutils literal"><span class="pre">EIND</span></tt> and Devices with More Than 128 Ki Bytes of Flash``EIND``Pointers in the implementation are 16 bits wide.
+<p><tt class="docutils literal"><span class="pre">EIND</span></tt> and Devices with More Than 128 Ki Bytes of Flash
+.. index:: EIND</p>
+<p>Pointers in the implementation are 16 bits wide.
 The address of a function or label is represented as word address so
 that indirect jumps and calls can target any code address in the
 range of 64 Ki words.</p>
@@ -1925,7 +1929,9 @@ through a symbol (<tt class="docutils literal"><span class="pre">func_4</span></
 Alternatively, <tt class="docutils literal"><span class="pre">func_4</span></tt> can be defined in the linker script.</p>
 </li>
 </ul>
-<p>Handling of the <tt class="docutils literal"><span class="pre">RAMPD</span></tt>, <tt class="docutils literal"><span class="pre">RAMPX</span></tt>, <tt class="docutils literal"><span class="pre">RAMPY</span></tt> and <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> Special Function Registers``RAMPD````RAMPX````RAMPY````RAMPZ``Some AVR devices support memories larger than the 64 KiB range
+<p>Handling of the <tt class="docutils literal"><span class="pre">RAMPD</span></tt>, <tt class="docutils literal"><span class="pre">RAMPX</span></tt>, <tt class="docutils literal"><span class="pre">RAMPY</span></tt> and <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> Special Function Registers
+.. index:: RAMPD</p>
+<span class="target" id="index-11"></span><span class="target" id="index-12"></span><p id="index-13">Some AVR devices support memories larger than the 64 KiB range
 that can be accessed with 16-bit pointers.  To access memory locations
 outside this 64 KiB range, the contentent of a <tt class="docutils literal"><span class="pre">RAMP</span></tt>
 register is used as high part of the address:
@@ -2061,7 +2067,7 @@ See the <em class="xref std std-option">--with-avrlibc</em> configure option.</d
 </div>
 <div class="section" id="blackfin-options">
 <span id="id8"></span><h2>Blackfin Options<a class="headerlink" href="#blackfin-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-10"></span><dl class="option">
+<span class="target" id="index-14"></span><dl class="option">
 <dt id="cmdoption-mcpu">
 <tt class="descname">-mcpu</tt><tt class="descclassname">=cpu[-sirevision]</tt><a class="headerlink" href="#cmdoption-mcpu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specifies the name of the target Blackfin processor.  Currently, <tt class="docutils literal"><span class="pre">cpu</span></tt>
@@ -2303,7 +2309,7 @@ are enabled; for standalone applications the default is off.</p>
 </div>
 <div class="section" id="c6x-options">
 <span id="id9"></span><h2>C6X Options<a class="headerlink" href="#c6x-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-11"></span><dl class="option">
+<span class="target" id="index-15"></span><dl class="option">
 <dt id="cmdoption-march">
 <tt class="descname">-march</tt><tt class="descclassname">=name</tt><a class="headerlink" href="#cmdoption-march" title="Permalink to this definition">¶</a></dt>
 <dd><p>This specifies the name of the target architecture.  GCC uses this
@@ -2362,7 +2368,7 @@ section.</p>
 </div>
 <div class="section" id="cris-options">
 <span id="id10"></span><h2>CRIS Options<a class="headerlink" href="#cris-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-12">These options are defined specifically for the CRIS ports.</p>
+<p id="index-16">These options are defined specifically for the CRIS ports.</p>
 <dl class="option">
 <dt id="cmdoption-march">
 <tt class="descname">-march</tt><tt class="descclassname">=architecture-type</tt><a class="headerlink" href="#cmdoption-march" title="Permalink to this definition">¶</a></dt>
@@ -2494,7 +2500,7 @@ initialized data and zero-initialized data are allocated consecutively.</p>
 </div>
 <div class="section" id="cr16-options">
 <span id="id11"></span><h2>CR16 Options<a class="headerlink" href="#cr16-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-13">These options are defined specifically for the CR16 ports.</p>
+<p id="index-17">These options are defined specifically for the CR16 ports.</p>
 <dl class="option">
 <dt id="cmdoption-mmac">
 <tt class="descname">-mmac</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mmac" title="Permalink to this definition">¶</a></dt>
@@ -2539,7 +2545,7 @@ CR16C architecture does not support the far data model.</p>
 </div>
 <div class="section" id="darwin-options">
 <span id="id12"></span><h2>Darwin Options<a class="headerlink" href="#darwin-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-14">These options are defined for all architectures running the Darwin operating
+<p id="index-18">These options are defined for all architectures running the Darwin operating
 system.</p>
 <p>FSF GCC on Darwin does not create &#8216;fat&#8217; object files; it creates
 an object file for the single architecture that GCC was built to
@@ -2999,7 +3005,7 @@ Note that L3 is only valid for EV5.</dd>
 </div>
 <div class="section" id="fr30-options">
 <span id="id14"></span><h2>FR30 Options<a class="headerlink" href="#fr30-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-15">These options are defined specifically for the FR30 port.</p>
+<p id="index-19">These options are defined specifically for the FR30 port.</p>
 <dl class="option">
 <dt id="cmdoption-msmall-model">
 <tt class="descname">-msmall-model</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-msmall-model" title="Permalink to this definition">¶</a></dt>
@@ -3019,7 +3025,7 @@ command line.</p>
 </div>
 <div class="section" id="frv-options">
 <span id="id15"></span><h2>FRV Options<a class="headerlink" href="#frv-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-16"></span><dl class="option">
+<span class="target" id="index-20"></span><dl class="option">
 <dt id="cmdoption-mgpr-32">
 <tt class="descname">-mgpr-32</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mgpr-32" title="Permalink to this definition">¶</a></dt>
 <dd><p>Only use the first 32 general-purpose registers.</p>
@@ -3490,7 +3496,7 @@ This option has no effect on the H8/300.</p>
 </div>
 <div class="section" id="hppa-options">
 <span id="id18"></span><h2>HPPA Options<a class="headerlink" href="#hppa-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-17">These -m options are defined for the HPPA family of computers:</p>
+<p id="index-21">These -m options are defined for the HPPA family of computers:</p>
 <dl class="option">
 <dt id="cmdoption-march">
 <tt class="descname">-march</tt><tt class="descclassname">=architecture-type</tt><a class="headerlink" href="#cmdoption-march" title="Permalink to this definition">¶</a></dt>
@@ -3633,7 +3639,7 @@ affect which <strong class="command">ld</strong> is called; it only changes what
 are passed to that <strong class="command">ld</strong>.
 The <strong class="command">ld</strong> that is called is determined by the
 <em class="xref std std-option">--with-ld</em> configure option, GCC&#8217;s program search path, and
-finally by the user&#8217;s <span class="target" id="index-18"></span><tt class="xref std std-envvar docutils literal"><span class="pre">PATH</span></tt>.  The linker used by GCC can be printed
+finally by the user&#8217;s <span class="target" id="index-22"></span><tt class="xref std std-envvar docutils literal"><span class="pre">PATH</span></tt>.  The linker used by GCC can be printed
 using which <cite>gcc -print-prog-name=ld</cite>.  This option is only available
 on the 64-bit HP-UX GCC, i.e. configured with hppa*64*-<em>-hpux</em>.</p>
 </dd></dl>
@@ -3650,7 +3656,7 @@ which <strong class="command">ld</strong> is called; it only changes what parame
 <strong class="command">ld</strong>.
 The <strong class="command">ld</strong> that is called is determined by the <em class="xref std std-option">--with-ld</em>
 configure option, GCC&#8217;s program search path, and finally by the user&#8217;s
-<span class="target" id="index-19"></span><tt class="xref std std-envvar docutils literal"><span class="pre">PATH</span></tt>.  The linker used by GCC can be printed using which
+<span class="target" id="index-23"></span><tt class="xref std std-envvar docutils literal"><span class="pre">PATH</span></tt>.  The linker used by GCC can be printed using which
 <cite>gcc -print-prog-name=ld</cite>.  This option is only available on the 64-bit
 HP-UX GCC, i.e. configured with hppa*64*-<em>-hpux</em>.</p>
 </dd></dl>
@@ -3739,7 +3745,7 @@ linker.</p>
 </div>
 <div class="section" id="ia-64-options">
 <span id="id19"></span><h2>IA-64 Options<a class="headerlink" href="#ia-64-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-20">These are the -m options defined for the Intel IA-64 architecture.</p>
+<p id="index-24">These are the -m options defined for the Intel IA-64 architecture.</p>
 <dl class="option">
 <dt id="cmdoption-mbig-endian">
 <tt class="descname">-mbig-endian</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mbig-endian" title="Permalink to this definition">¶</a></dt>
@@ -4061,7 +4067,7 @@ be scheduled.</p>
 </div>
 <div class="section" id="lm32-options">
 <span id="id20"></span><h2>LM32 Options<a class="headerlink" href="#lm32-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-21">These <em class="xref std std-option">-m</em> options are defined for the LatticeMico32 architecture:</p>
+<p id="index-25">These <em class="xref std std-option">-m</em> options are defined for the LatticeMico32 architecture:</p>
 <dl class="option">
 <dt id="cmdoption-mbarrel-shift-enabled">
 <tt class="descname">-mbarrel-shift-enabled</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mbarrel-shift-enabled" title="Permalink to this definition">¶</a></dt>
@@ -4095,7 +4101,7 @@ be scheduled.</p>
 </div>
 <div class="section" id="m32c-options">
 <span id="id21"></span><h2>M32C Options<a class="headerlink" href="#m32c-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-22"></span><dl class="option">
+<span class="target" id="index-26"></span><dl class="option">
 <dt id="cmdoption-mcpu">
 <tt class="descname">-mcpu</tt><tt class="descclassname">=name</tt><a class="headerlink" href="#cmdoption-mcpu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select the CPU for which code is generated.  <tt class="docutils literal"><span class="pre">name</span></tt> may be one of
@@ -4129,7 +4135,7 @@ must not use this option with GCC&#8217;s default runtime libraries.</p>
 </div>
 <div class="section" id="m32r-d-options">
 <span id="id22"></span><h2>M32R/D Options<a class="headerlink" href="#m32r-d-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-23">These <em class="xref std std-option">-m</em> options are defined for Renesas M32R/D architectures:</p>
+<p id="index-27">These <em class="xref std std-option">-m</em> options are defined for Renesas M32R/D architectures:</p>
 <dl class="option">
 <dt id="cmdoption-m32r2">
 <tt class="descname">-m32r2</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-m32r2" title="Permalink to this definition">¶</a></dt>
@@ -4206,7 +4212,7 @@ special instructions to reference them.</p>
 <dl class="option">
 <dt id="cmdoption-G">
 <tt class="descname">-G</tt><tt class="descclassname"> num</tt><tt class="descclassname">, </tt><tt class="descname">-G</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-G" title="Permalink to this definition">¶</a></dt>
-<dd><p id="index-24">Put global and static objects less than or equal to <tt class="docutils literal"><span class="pre">num</span></tt> bytes
+<dd><p id="index-28">Put global and static objects less than or equal to <tt class="docutils literal"><span class="pre">num</span></tt> bytes
 into the small data or BSS sections instead of the normal data or BSS
 sections.  The default value of <tt class="docutils literal"><span class="pre">num</span></tt> is 8.
 The <a class="reference internal" href="#cmdoption-msdata"><em class="xref std std-option">-msdata</em></a> option must be set to one of sdata or use
@@ -4239,21 +4245,21 @@ that might help in debugging programs.</p>
 <dl class="option">
 <dt id="cmdoption-missue-rate">
 <tt class="descname">-missue-rate</tt><tt class="descclassname">=number</tt><a class="headerlink" href="#cmdoption-missue-rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>missue-rate=``number``Issue <tt class="docutils literal"><span class="pre">number</span></tt> instructions per cycle.  <tt class="docutils literal"><span class="pre">number</span></tt> can only be 1
+<dd><p id="index-29">Issue <tt class="docutils literal"><span class="pre">number</span></tt> instructions per cycle.  <tt class="docutils literal"><span class="pre">number</span></tt> can only be 1
 or 2.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-mbranch-cost">
 <tt class="descname">-mbranch-cost</tt><tt class="descclassname">=number</tt><a class="headerlink" href="#cmdoption-mbranch-cost" title="Permalink to this definition">¶</a></dt>
-<dd><p>mbranch-cost=``number````number`` can only be 1 or 2.  If it is 1 then branches are
+<dd><p id="index-30"><tt class="docutils literal"><span class="pre">number</span></tt> can only be 1 or 2.  If it is 1 then branches are
 preferred over conditional code, if it is 2, then the opposite applies.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-mflush-trap">
 <tt class="descname">-mflush-trap</tt><tt class="descclassname">=number</tt><a class="headerlink" href="#cmdoption-mflush-trap" title="Permalink to this definition">¶</a></dt>
-<dd><p>mflush-trap=``number``Specifies the trap number to use to flush the cache.  The default is
+<dd><p id="index-31">Specifies the trap number to use to flush the cache.  The default is
 12.  Valid numbers are between 0 and 15 inclusive.</p>
 </dd></dl>
 
@@ -4266,7 +4272,7 @@ preferred over conditional code, if it is 2, then the opposite applies.</p>
 <dl class="option">
 <dt id="cmdoption-mflush-func">
 <tt class="descname">-mflush-func</tt><tt class="descclassname">=name</tt><a class="headerlink" href="#cmdoption-mflush-func" title="Permalink to this definition">¶</a></dt>
-<dd><p>mflush-func=``name``Specifies the name of the operating system function to call to flush
+<dd><p id="index-32">Specifies the name of the operating system function to call to flush
 the cache.  The default is _flush_cache, but a function call
 is only used if a trap is not available.</p>
 </dd></dl>
@@ -4280,7 +4286,7 @@ is only used if a trap is not available.</p>
 </div>
 <div class="section" id="m680x0-options">
 <span id="id23"></span><h2>M680x0 Options<a class="headerlink" href="#m680x0-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-25">These are the -m options defined for M680x0 and ColdFire processors.
+<p id="index-33">These are the -m options defined for M680x0 and ColdFire processors.
 The default settings depend on which architecture was selected when
 the compiler was configured; the defaults for the most common choices
 are given below.</p>
@@ -4690,7 +4696,7 @@ processors, this option is not needed; <a class="reference internal" href="optio
 While this is relatively efficient, it only works if the GOT
 is smaller than about 64k.  Anything larger causes the linker
 to report an error such as:</p>
-<div class="highlight-c++" id="index-26"><div class="highlight"><pre><span class="n">relocation</span> <span class="n">truncated</span> <span class="n">to</span> <span class="n">fit</span><span class="o">:</span> <span class="n">R_68K_GOT16O</span> <span class="n">foobar</span>
+<div class="highlight-c++" id="index-34"><div class="highlight"><pre><span class="n">relocation</span> <span class="n">truncated</span> <span class="n">to</span> <span class="n">fit</span><span class="o">:</span> <span class="n">R_68K_GOT16O</span> <span class="n">foobar</span>
 </pre></div>
 </div>
 <p>If this happens, you should recompile your code with <a class="reference internal" href="#cmdoption-mxgot"><em class="xref std std-option">-mxgot</em></a>.
@@ -4708,7 +4714,7 @@ position-independent code.</p>
 </div>
 <div class="section" id="mcore-options">
 <span id="id28"></span><h2>MCore Options<a class="headerlink" href="#mcore-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-27">These are the -m options defined for the Motorola M*Core
+<p id="index-35">These are the -m options defined for the Motorola M*Core
 processors.</p>
 <dl class="option">
 <dt id="cmdoption-mhardlit">
@@ -4785,7 +4791,7 @@ value is 0x1000.</p>
 </div>
 <div class="section" id="mep-options">
 <span id="id29"></span><h2>MeP Options<a class="headerlink" href="#mep-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-28"></span><dl class="option">
+<span class="target" id="index-36"></span><dl class="option">
 <dt id="cmdoption-mabsdiff">
 <tt class="descname">-mabsdiff</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mabsdiff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enables the <tt class="docutils literal"><span class="pre">abs</span></tt> instruction, which is the absolute difference
@@ -5004,7 +5010,7 @@ register.  The default for this option is 4, but note that there&#8217;s a
 </div>
 <div class="section" id="microblaze-options">
 <span id="id30"></span><h2>MicroBlaze Options<a class="headerlink" href="#microblaze-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-29"></span><dl class="option">
+<span class="target" id="index-37"></span><dl class="option">
 <dt id="cmdoption-msoft-float">
 <tt class="descname">-msoft-float</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-msoft-float" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use software emulation for floating point (default).</p>
@@ -5144,7 +5150,7 @@ within a monitoring application. This model uses crt3.o as a startup file.</p>
 </div>
 <div class="section" id="mips-options">
 <span id="id31"></span><h2>MIPS Options<a class="headerlink" href="#mips-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-30"></span><dl class="option">
+<span class="target" id="index-38"></span><dl class="option">
 <dt id="cmdoption-EB">
 <tt class="descname">-EB</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-EB" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate big-endian code.</p>
@@ -5437,7 +5443,7 @@ offset table.</p>
 While this is relatively efficient, it only works if the GOT
 is smaller than about 64k.  Anything larger causes the linker
 to report an error such as:</p>
-<div class="highlight-c++" id="index-31"><div class="highlight"><pre><span class="n">relocation</span> <span class="n">truncated</span> <span class="n">to</span> <span class="n">fit</span><span class="o">:</span> <span class="n">R_MIPS_GOT16</span> <span class="n">foobar</span>
+<div class="highlight-c++" id="index-39"><div class="highlight"><pre><span class="n">relocation</span> <span class="n">truncated</span> <span class="n">to</span> <span class="n">fit</span><span class="o">:</span> <span class="n">R_MIPS_GOT16</span> <span class="n">foobar</span>
 </pre></div>
 </div>
 <p>If this happens, you should recompile your code with <a class="reference internal" href="#cmdoption-mxgot"><em class="xref std std-option">-mxgot</em></a>.
@@ -6137,7 +6143,7 @@ if <tt class="docutils literal"><span class="pre">ra-address</span></tt> is nonn
 </div>
 <div class="section" id="mmix-options">
 <span id="id60"></span><h2>MMIX Options<a class="headerlink" href="#mmix-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-32">These options are defined for the MMIX:</p>
+<p id="index-40">These options are defined for the MMIX:</p>
 <dl class="option">
 <dt id="cmdoption-mlibfuncs">
 <tt class="descname">-mlibfuncs</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-libfuncs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mlibfuncs" title="Permalink to this definition">¶</a></dt>
@@ -6221,7 +6227,7 @@ function.</p>
 </div>
 <div class="section" id="mn10300-options">
 <span id="id61"></span><h2>MN10300 Options<a class="headerlink" href="#mn10300-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-33">These <em class="xref std std-option">-m</em> options are defined for Matsushita MN10300 architectures:</p>
+<p id="index-41">These <em class="xref std std-option">-m</em> options are defined for Matsushita MN10300 architectures:</p>
 <dl class="option">
 <dt id="cmdoption-mmult-bug">
 <tt class="descname">-mmult-bug</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mmult-bug" title="Permalink to this definition">¶</a></dt>
@@ -6330,7 +6336,7 @@ instructions.  This option defines the preprocessor macro
 </div>
 <div class="section" id="moxie-options">
 <span id="id62"></span><h2>Moxie Options<a class="headerlink" href="#moxie-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-34"></span><dl class="option">
+<span class="target" id="index-42"></span><dl class="option">
 <dt id="cmdoption-meb">
 <tt class="descname">-meb</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-meb" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate big-endian code.  This is the default for moxie-<em>-</em>
@@ -6359,7 +6365,7 @@ moxiebox-<em>-</em> configurations.</p>
 </div>
 <div class="section" id="msp430-options">
 <span id="id63"></span><h2>MSP430 Options<a class="headerlink" href="#msp430-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-35">These options are defined for the MSP430:</p>
+<p id="index-43">These options are defined for the MSP430:</p>
 <dl class="option">
 <dt id="cmdoption-masm-hex">
 <tt class="descname">-masm-hex</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-masm-hex" title="Permalink to this definition">¶</a></dt>
@@ -6471,7 +6477,7 @@ etc) to the memory regions.</p>
 </div>
 <div class="section" id="nds32-options">
 <span id="id64"></span><h2>NDS32 Options<a class="headerlink" href="#nds32-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-36">These options are defined for NDS32 implementations:</p>
+<p id="index-44">These options are defined for NDS32 implementations:</p>
 <dl class="option">
 <dt id="cmdoption-mbig-endian">
 <tt class="descname">-mbig-endian</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mbig-endian" title="Permalink to this definition">¶</a></dt>
@@ -6595,11 +6601,11 @@ addressing space.</dd>
 </div>
 <div class="section" id="nios-ii-options">
 <span id="id65"></span><h2>Nios II Options<a class="headerlink" href="#nios-ii-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-37"></span><p id="index-38">These are the options defined for the Altera Nios II processor.</p>
+<span class="target" id="index-45"></span><p id="index-46">These are the options defined for the Altera Nios II processor.</p>
 <dl class="option">
 <dt id="cmdoption-G">
 <tt class="descname">-G</tt><tt class="descclassname"> num</tt><tt class="descclassname">, </tt><tt class="descname">-G</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-G" title="Permalink to this definition">¶</a></dt>
-<dd><p id="index-39">Put global and static objects less than or equal to <tt class="docutils literal"><span class="pre">num</span></tt> bytes
+<dd><p id="index-47">Put global and static objects less than or equal to <tt class="docutils literal"><span class="pre">num</span></tt> bytes
 into the small data or BSS sections instead of the normal data or BSS
 sections.  The default value of <tt class="docutils literal"><span class="pre">num</span></tt> is 8.</p>
 </dd></dl>
@@ -6688,7 +6694,7 @@ and not emit <tt class="docutils literal"><span class="pre">div</span></tt> and 
 <dl class="option">
 <dt id="cmdoption-mcustom-insn">
 <tt class="descname">-mcustom-insn</tt><tt class="descclassname">=N</tt><a class="headerlink" href="#cmdoption-mcustom-insn" title="Permalink to this definition">¶</a></dt>
-<dd><p>mcustom-<tt class="docutils literal"><span class="pre">insn``mno-custom-``insn``Each</span> <span class="pre">:option:`-mcustom-``insn``=``N`</span></tt> option enables use of a
+<dd><span class="target" id="index-48"></span><p id="index-49">Each <em class="xref std std-option">-mcustom-``insn``=``N``</em> option enables use of a
 custom instruction with encoding <tt class="docutils literal"><span class="pre">N</span></tt> when generating code that uses
 <tt class="docutils literal"><span class="pre">insn</span></tt>.  For example, <em class="xref std std-option">-mcustom-fadds=253</em> generates custom
 instruction 253 for single-precision floating-point add operations instead
@@ -6861,7 +6867,7 @@ This option is typically used to link with a library provided by a HAL BSP.</p>
 </div>
 <div class="section" id="nvidia-ptx-options">
 <span id="id66"></span><h2>Nvidia PTX Options<a class="headerlink" href="#nvidia-ptx-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-40"></span><p id="index-41">These options are defined for Nvidia PTX:</p>
+<span class="target" id="index-50"></span><p id="index-51">These options are defined for Nvidia PTX:</p>
 <dl class="option">
 <dt id="cmdoption-m32">
 <tt class="descname">-m32</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-m64</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-m32" title="Permalink to this definition">¶</a></dt>
@@ -6878,7 +6884,7 @@ offloading execution.</p>
 </div>
 <div class="section" id="pdp-11-options">
 <span id="id67"></span><h2>PDP-11 Options<a class="headerlink" href="#pdp-11-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-42">These options are defined for the PDP-11:</p>
+<p id="index-52">These options are defined for the PDP-11:</p>
 <dl class="option">
 <dt id="cmdoption-mfpu">
 <tt class="descname">-mfpu</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mfpu" title="Permalink to this definition">¶</a></dt>
@@ -7001,7 +7007,7 @@ PDP-11 target other than pdp11-<a href="#id70"><span class="problematic" id="id7
 </div>
 <div class="section" id="picochip-options">
 <span id="id72"></span><h2>picoChip Options<a class="headerlink" href="#picochip-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-43">These -m options are defined for picoChip implementations:</p>
+<p id="index-53">These -m options are defined for picoChip implementations:</p>
 <dl class="option">
 <dt id="cmdoption-mae">
 <tt class="descname">-mae</tt><tt class="descclassname">=ae_type</tt><a class="headerlink" href="#cmdoption-mae" title="Permalink to this definition">¶</a></dt>
@@ -7050,11 +7056,11 @@ these warnings.</td></tr>
 </div>
 <div class="section" id="powerpc-options">
 <span id="id73"></span><h2>PowerPC Options<a class="headerlink" href="#powerpc-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-44">These are listed under See <a class="reference internal" href="#rs-6000-and-powerpc-options"><em>IBM RS/6000 and PowerPC Options</em></a>.</p>
+<p id="index-54">These are listed under See <a class="reference internal" href="#rs-6000-and-powerpc-options"><em>IBM RS/6000 and PowerPC Options</em></a>.</p>
 </div>
 <div class="section" id="rl78-options">
 <span id="id74"></span><h2>RL78 Options<a class="headerlink" href="#rl78-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-45"></span><dl class="option">
+<span class="target" id="index-55"></span><dl class="option">
 <dt id="cmdoption-msim">
 <tt class="descname">-msim</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-msim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Links in additional target libraries to support operation within a
@@ -7131,7 +7137,7 @@ or 32 bits (<em class="xref std std-option">-m32bit-doubles</em>) in size.  The 
 </div>
 <div class="section" id="ibm-rs-6000-and-powerpc-options">
 <span id="rs-6000-and-powerpc-options"></span><h2>IBM RS/6000 and PowerPC Options<a class="headerlink" href="#ibm-rs-6000-and-powerpc-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-46"></span><p id="index-47">These -m options are defined for the IBM RS/6000 and PowerPC:</p>
+<span class="target" id="index-56"></span><p id="index-57">These -m options are defined for the IBM RS/6000 and PowerPC:</p>
 <dl class="option">
 <dt id="cmdoption-mpowerpc-gpopt">
 <tt class="descname">-mpowerpc-gpopt</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-powerpc-gpopt</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mpowerpc-gfxopt</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-powerpc-gfxopt</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mpowerpc64</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-powerpc64</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mmfcrf</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-mfcrf</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mpopcntb</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-popcntb</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mpopcntd</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-popcntd</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mfprnd</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-fprnd</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mcmpb</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-cmpb</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mmfpgpr</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-mfpgpr</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mhard-dfp</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-hard-dfp</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mpowerpc-gpopt" title="Permalink to this definition">¶</a></dt>
@@ -8081,7 +8087,7 @@ targets.  The default value is target-specific.</p>
 <dl class="option">
 <dt id="cmdoption-G">
 <tt class="descname">-G</tt><tt class="descclassname"> num</tt><tt class="descclassname">, </tt><tt class="descname">-G</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-G" title="Permalink to this definition">¶</a></dt>
-<dd><span class="target" id="index-48"></span><p id="index-49">On embedded PowerPC systems, put global and static items less than or
+<dd><span class="target" id="index-58"></span><p id="index-59">On embedded PowerPC systems, put global and static items less than or
 equal to <tt class="docutils literal"><span class="pre">num</span></tt> bytes into the small data or BSS sections instead of
 the normal data or BSS section.  By default, <tt class="docutils literal"><span class="pre">num</span></tt> is 8.  The
 <em class="xref std std-option">-G ``num``</em> switch is also passed to the linker.
@@ -8285,7 +8291,7 @@ GCC.</p>
 </div>
 <div class="section" id="rx-options">
 <span id="id79"></span><h2>RX Options<a class="headerlink" href="#rx-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-50">These command-line options are defined for RX targets:</p>
+<p id="index-60">These command-line options are defined for RX targets:</p>
 <dl class="option">
 <dt id="cmdoption-m64bit-doubles">
 <tt class="descname">-m64bit-doubles</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-m32bit-doubles</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-m64bit-doubles" title="Permalink to this definition">¶</a></dt>
@@ -8481,7 +8487,7 @@ options.</p>
 </div>
 <div class="section" id="s-390-and-zseries-options">
 <span id="id80"></span><h2>S/390 and zSeries Options<a class="headerlink" href="#s-390-and-zseries-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-51">These are the -m options defined for the S/390 and zSeries architecture.</p>
+<p id="index-61">These are the -m options defined for the S/390 and zSeries architecture.</p>
 <dl class="option">
 <dt id="cmdoption-mhard-float">
 <tt class="descname">-mhard-float</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-msoft-float</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mhard-float" title="Permalink to this definition">¶</a></dt>
@@ -8695,7 +8701,7 @@ largest NOP like instructions the architecture allows (maximum
 </div>
 <div class="section" id="score-options">
 <span id="id81"></span><h2>Score Options<a class="headerlink" href="#score-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-52">These options are defined for Score implementations:</p>
+<p id="index-62">These options are defined for Score implementations:</p>
 <dl class="option">
 <dt id="cmdoption-meb">
 <tt class="descname">-meb</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-meb" title="Permalink to this definition">¶</a></dt>
@@ -9114,7 +9120,7 @@ which is incompatible with the SH ABI.</p>
 <dl class="option">
 <dt id="cmdoption-matomic-model">
 <tt class="descname">-matomic-model</tt><tt class="descclassname">=model</tt><a class="headerlink" href="#cmdoption-matomic-model" title="Permalink to this definition">¶</a></dt>
-<dd><p>matomic-model=``model``Sets the model of atomic operations and additional parameters as a comma
+<dd><p id="index-63">Sets the model of atomic operations and additional parameters as a comma
 separated list.  For details on the atomic built-in functions see
 __atomic Builtins.  The following models and parameters are supported:</p>
 <dl class="docutils">
@@ -9197,13 +9203,13 @@ when the target is <tt class="docutils literal"><span class="pre">sh*-*-linux*</
 <dl class="option">
 <dt id="cmdoption-multcost">
 <tt class="descname">-multcost</tt><tt class="descclassname">=number</tt><a class="headerlink" href="#cmdoption-multcost" title="Permalink to this definition">¶</a></dt>
-<dd><p>multcost=``number``Set the cost to assume for a multiply insn.</p>
+<dd><p id="index-64">Set the cost to assume for a multiply insn.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-mdiv">
 <tt class="descname">-mdiv</tt><tt class="descclassname">=strategy</tt><a class="headerlink" href="#cmdoption-mdiv" title="Permalink to this definition">¶</a></dt>
-<dd><p>mdiv=``strategy``Set the division strategy to be used for integer division operations.
+<dd><p id="index-65">Set the division strategy to be used for integer division operations.
 For SHmedia <tt class="docutils literal"><span class="pre">strategy</span></tt> can be one of:</p>
 <dl class="docutils">
 <dt>fp</dt>
@@ -9285,7 +9291,7 @@ needed for unwinding to avoid changing the stack frame around conditional code.<
 <dl class="option">
 <dt id="cmdoption-mdivsi3_libfunc">
 <tt class="descname">-mdivsi3_libfunc</tt><tt class="descclassname">=name</tt><a class="headerlink" href="#cmdoption-mdivsi3_libfunc" title="Permalink to this definition">¶</a></dt>
-<dd><p>mdivsi3_libfunc=``name``Set the name of the library function used for 32-bit signed division to
+<dd><p id="index-66">Set the name of the library function used for 32-bit signed division to
 <tt class="docutils literal"><span class="pre">name</span></tt>.
 This only affects the name used in the call and inv:call
 division strategies, and the compiler still expects the same
@@ -9317,7 +9323,7 @@ the 32-bit ABI, the default is <em class="xref std std-option">-mno-indexed-addr
 <dl class="option">
 <dt id="cmdoption-mgettrcost">
 <tt class="descname">-mgettrcost</tt><tt class="descclassname">=number</tt><a class="headerlink" href="#cmdoption-mgettrcost" title="Permalink to this definition">¶</a></dt>
-<dd><p>mgettrcost=``number``Set the cost assumed for the <tt class="docutils literal"><span class="pre">gettr</span></tt> instruction to <tt class="docutils literal"><span class="pre">number</span></tt>.
+<dd><p id="index-67">Set the cost assumed for the <tt class="docutils literal"><span class="pre">gettr</span></tt> instruction to <tt class="docutils literal"><span class="pre">number</span></tt>.
 The default is 2 if <a class="reference internal" href="#cmdoption-mpt-fixed"><em class="xref std std-option">-mpt-fixed</em></a> is in effect, 100 otherwise.</p>
 </dd></dl>
 
@@ -9363,7 +9369,7 @@ of symbol loads.  The default is <em class="xref std std-option">-mno-invalid-sy
 <dl class="option">
 <dt id="cmdoption-mbranch-cost">
 <tt class="descname">-mbranch-cost</tt><tt class="descclassname">=num</tt><a class="headerlink" href="#cmdoption-mbranch-cost" title="Permalink to this definition">¶</a></dt>
-<dd><p>mbranch-cost=``num``Assume <tt class="docutils literal"><span class="pre">num</span></tt> to be the cost for a branch instruction.  Higher numbers
+<dd><p id="index-68">Assume <tt class="docutils literal"><span class="pre">num</span></tt> to be the cost for a branch instruction.  Higher numbers
 make the compiler try to generate more branch-free code if possible.
 If not specified the value is selected depending on the processor type that
 is being compiled for.</p>
@@ -9431,7 +9437,7 @@ patterns.  This can result in faster code on the SH4 processor.</p>
 </div>
 <div class="section" id="solaris-2-options">
 <span id="id83"></span><h2>Solaris 2 Options<a class="headerlink" href="#solaris-2-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-53">These -m options are supported on Solaris 2:</p>
+<p id="index-69">These -m options are supported on Solaris 2:</p>
 <dl class="option">
 <dt id="cmdoption-mclear-hwcap">
 <tt class="descname">-mclear-hwcap</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mclear-hwcap" title="Permalink to this definition">¶</a></dt>
@@ -9475,7 +9481,7 @@ that of libraries supplied with it.</p>
 </div>
 <div class="section" id="sparc-options">
 <span id="id84"></span><h2>SPARC Options<a class="headerlink" href="#sparc-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-54">These -m options are supported on the SPARC:</p>
+<p id="index-70">These -m options are supported on the SPARC:</p>
 <dl class="option">
 <dt id="cmdoption-mno-app-regs">
 <tt class="descname">-mno-app-regs</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mapp-regs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-app-regs" title="Permalink to this definition">¶</a></dt>
@@ -9813,7 +9819,7 @@ Otherwise, assume no such offset is present.</p>
 </div>
 <div class="section" id="spu-options">
 <span id="id85"></span><h2>SPU Options<a class="headerlink" href="#spu-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-55">These -m options are supported on the SPU:</p>
+<p id="index-71">These -m options are supported on the SPU:</p>
 <dl class="option">
 <dt id="cmdoption-mwarn-reloc">
 <tt class="descname">-mwarn-reloc</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-merror-reloc</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mwarn-reloc" title="Permalink to this definition">¶</a></dt>
@@ -9993,7 +9999,7 @@ The assembler uses this option.</p>
 </div>
 <div class="section" id="tile-gx-options">
 <span id="id86"></span><h2>TILE-Gx Options<a class="headerlink" href="#tile-gx-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-56">These -m options are supported on the TILE-Gx:</p>
+<p id="index-72">These -m options are supported on the TILE-Gx:</p>
 <dl class="option">
 <dt id="cmdoption-mcmodel">
 <tt class="descname">-mcmodel</tt><tt class="descclassname">=small</tt><a class="headerlink" href="#cmdoption-mcmodel" title="Permalink to this definition">¶</a></dt>
@@ -10033,7 +10039,7 @@ environment sets int to 32 bits and long and pointer to 64 bits.</p>
 </div>
 <div class="section" id="tilepro-options">
 <span id="id87"></span><h2>TILEPro Options<a class="headerlink" href="#tilepro-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-57">These -m options are supported on the TILEPro:</p>
+<p id="index-73">These -m options are supported on the TILEPro:</p>
 <dl class="option">
 <dt id="cmdoption-mcpu">
 <tt class="descname">-mcpu</tt><tt class="descclassname">=name</tt><a class="headerlink" href="#cmdoption-mcpu" title="Permalink to this definition">¶</a></dt>
@@ -10052,7 +10058,7 @@ is essentially ignored.</p>
 </div>
 <div class="section" id="v850-options">
 <span id="id88"></span><h2>V850 Options<a class="headerlink" href="#v850-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-58">These -m options are defined for V850 implementations:</p>
+<p id="index-74">These -m options are defined for V850 implementations:</p>
 <dl class="option">
 <dt id="cmdoption-mlong-calls">
 <tt class="descname">-mlong-calls</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-long-calls</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mlong-calls" title="Permalink to this definition">¶</a></dt>
@@ -10289,7 +10295,7 @@ the compiler.  This setting is the default.</p>
 </div>
 <div class="section" id="vax-options">
 <span id="id89"></span><h2>VAX Options<a class="headerlink" href="#vax-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-59">These -m options are defined for the VAX:</p>
+<p id="index-75">These -m options are defined for the VAX:</p>
 <dl class="option">
 <dt id="cmdoption-munix">
 <tt class="descname">-munix</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-munix" title="Permalink to this definition">¶</a></dt>
@@ -10314,7 +10320,7 @@ GNU assembler is being used.</p>
 </div>
 <div class="section" id="visium-options">
 <span id="id90"></span><h2>Visium Options<a class="headerlink" href="#visium-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-60"></span><dl class="option">
+<span class="target" id="index-76"></span><dl class="option">
 <dt id="cmdoption-mdebug">
 <tt class="descname">-mdebug</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mdebug" title="Permalink to this definition">¶</a></dt>
 <dd><p>A program which performs file I/O and is destined to run on an MCM target
@@ -10400,7 +10406,7 @@ condition (e.g.error) codes.</p>
 <dl class="option">
 <dt id="cmdoption-mdebug-main">
 <tt class="descname">-mdebug-main</tt><tt class="descclassname">=prefix</tt><a class="headerlink" href="#cmdoption-mdebug-main" title="Permalink to this definition">¶</a></dt>
-<dd><p>mdebug-main=``prefix``Flag the first routine whose name starts with <tt class="docutils literal"><span class="pre">prefix</span></tt> as the main
+<dd><p id="index-77">Flag the first routine whose name starts with <tt class="docutils literal"><span class="pre">prefix</span></tt> as the main
 routine for the debugger.</p>
 </dd></dl>
 
@@ -10413,7 +10419,7 @@ routine for the debugger.</p>
 <dl class="option">
 <dt id="cmdoption-mpointer-size">
 <tt class="descname">-mpointer-size</tt><tt class="descclassname">=size</tt><a class="headerlink" href="#cmdoption-mpointer-size" title="Permalink to this definition">¶</a></dt>
-<dd><p>mpointer-size=``size``Set the default size of pointers. Possible options for <tt class="docutils literal"><span class="pre">size</span></tt> are
+<dd><p id="index-78">Set the default size of pointers. Possible options for <tt class="docutils literal"><span class="pre">size</span></tt> are
 32 or short for 32 bit pointers, 64 or long
 for 64 bit pointers, and no for supporting only 32 bit pointers.
 The later option disables <tt class="docutils literal"><span class="pre">pragma</span> <span class="pre">pointer_size</span></tt>.</p>
@@ -10422,7 +10428,7 @@ The later option disables <tt class="docutils literal"><span class="pre">pragma<
 </div>
 <div class="section" id="vxworks-options">
 <span id="id92"></span><h2>VxWorks Options<a class="headerlink" href="#vxworks-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-61">The options in this section are defined for all VxWorks targets.
+<p id="index-79">The options in this section are defined for all VxWorks targets.
 Options specific to the target hardware are listed with the other
 options for that target.</p>
 <dl class="option">
@@ -10466,7 +10472,7 @@ is defined for compatibility with Diab.</p>
 </div>
 <div class="section" id="x86-options">
 <span id="id93"></span><h2>x86 Options<a class="headerlink" href="#x86-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-62">These -m options are defined for the x86 family of computers.</p>
+<p id="index-80">These -m options are defined for the x86 family of computers.</p>
 <dl class="option">
 <dt id="cmdoption-march">
 <tt class="descname">-march</tt><tt class="descclassname">=cpu-type</tt><a class="headerlink" href="#cmdoption-march" title="Permalink to this definition">¶</a></dt>
@@ -10719,7 +10725,7 @@ functional units well, resulting in unstable performance.</dd>
 <dl class="option">
 <dt id="cmdoption-masm">
 <tt class="descname">-masm</tt><tt class="descclassname">=dialect</tt><a class="headerlink" href="#cmdoption-masm" title="Permalink to this definition">¶</a></dt>
-<dd><p>masm=``dialect``Output assembly instructions using selected <tt class="docutils literal"><span class="pre">dialect</span></tt>.  Also affects
+<dd><p id="index-81">Output assembly instructions using selected <tt class="docutils literal"><span class="pre">dialect</span></tt>.  Also affects
 which dialect is used for basic <tt class="docutils literal"><span class="pre">asm</span></tt> (Basic Asm) and
 extended <tt class="docutils literal"><span class="pre">asm</span></tt> (Extended Asm). Supported choices (in dialect
 order) are att or intel. The default is att. Darwin does
@@ -11022,7 +11028,7 @@ tuning features and default settings. The names can be used in
 <dl class="option">
 <dt id="cmdoption-mtune-ctrl">
 <tt class="descname">-mtune-ctrl</tt><tt class="descclassname">=feature-list</tt><a class="headerlink" href="#cmdoption-mtune-ctrl" title="Permalink to this definition">¶</a></dt>
-<dd><p>mtune-ctrl=``feature-list``This option is used to do fine grain control of x86 code generation features.
+<dd><p id="index-82">This option is used to do fine grain control of x86 code generation features.
 <tt class="docutils literal"><span class="pre">feature-list</span></tt> is a comma separated list of <tt class="docutils literal"><span class="pre">feature</span></tt> names. See also
 <a class="reference internal" href="#cmdoption-mdump-tune-features"><em class="xref std std-option">-mdump-tune-features</em></a>. When specified, the <tt class="docutils literal"><span class="pre">feature</span></tt> is turned
 on if it is not preceded with ^, otherwise, it is turned off.
@@ -11268,7 +11274,7 @@ inline code for small blocks and a library call for large blocks.</p>
 <dl class="option">
 <dt id="cmdoption-mstringop-strategy">
 <tt class="descname">-mstringop-strategy</tt><tt class="descclassname">=alg</tt><a class="headerlink" href="#cmdoption-mstringop-strategy" title="Permalink to this definition">¶</a></dt>
-<dd><p>mstringop-strategy=``alg``Override the internal decision heuristic for the particular algorithm to use
+<dd><p id="index-83">Override the internal decision heuristic for the particular algorithm to use
 for inlining string operations.  The allowed values for <tt class="docutils literal"><span class="pre">alg</span></tt> are:</p>
 <dl class="docutils">
 <dt>rep_byte rep_4byte rep_8byte</dt>
@@ -11283,7 +11289,7 @@ for inlining string operations.  The allowed values for <tt class="docutils lite
 <dl class="option">
 <dt id="cmdoption-mmemcpy-strategy">
 <tt class="descname">-mmemcpy-strategy</tt><tt class="descclassname">=strategy</tt><a class="headerlink" href="#cmdoption-mmemcpy-strategy" title="Permalink to this definition">¶</a></dt>
-<dd><p>mmemcpy-strategy=``strategy``Override the internal decision heuristic to decide if <tt class="docutils literal"><span class="pre">__builtin_memcpy</span></tt>
+<dd><p id="index-84">Override the internal decision heuristic to decide if <tt class="docutils literal"><span class="pre">__builtin_memcpy</span></tt>
 should be inlined and what inline algorithm to use when the expected size
 of the copy operation is known. <tt class="docutils literal"><span class="pre">strategy</span></tt>
 is a comma-separated list of <tt class="docutils literal"><span class="pre">alg</span></tt>:<tt class="docutils literal"><span class="pre">max_size</span></tt>:<tt class="docutils literal"><span class="pre">dest_align</span></tt> triplets.
@@ -11298,7 +11304,7 @@ preceding range.</p>
 <dl class="option">
 <dt id="cmdoption-mmemset-strategy">
 <tt class="descname">-mmemset-strategy</tt><tt class="descclassname">=strategy</tt><a class="headerlink" href="#cmdoption-mmemset-strategy" title="Permalink to this definition">¶</a></dt>
-<dd><p>mmemset-strategy=``strategy``The option is similar to <em class="xref std std-option">-mmemcpy-strategy=</em> except that it is to control
+<dd><p id="index-85">The option is similar to <em class="xref std std-option">-mmemcpy-strategy=</em> except that it is to control
 <tt class="docutils literal"><span class="pre">__builtin_memset</span></tt> expansion.</p>
 </dd></dl>
 
@@ -11388,7 +11394,7 @@ to 255, 8-bit unsigned integer divide is used instead of
 <dl class="option">
 <dt id="cmdoption-mstack-protector-guard">
 <tt class="descname">-mstack-protector-guard</tt><tt class="descclassname">=guard</tt><a class="headerlink" href="#cmdoption-mstack-protector-guard" title="Permalink to this definition">¶</a></dt>
-<dd><p>mstack-protector-guard=``guard``Generate stack protection code using canary at <tt class="docutils literal"><span class="pre">guard</span></tt>.  Supported
+<dd><p id="index-86">Generate stack protection code using canary at <tt class="docutils literal"><span class="pre">guard</span></tt>.  Supported
 locations are global for global canary or tls for per-thread
 canary in the TLS block (the default).  This option has effect only when
 <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstack-protector"><em class="xref std std-option">-fstack-protector</em></a> or <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstack-protector-all"><em class="xref std std-option">-fstack-protector-all</em></a> is specified.</p>
@@ -11478,7 +11484,7 @@ x32 environments.</p>
 </div>
 <div class="section" id="x86-windows-options">
 <span id="id94"></span><h2>x86 Windows Options<a class="headerlink" href="#x86-windows-options" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-63"></span><p id="index-64">These additional options are available for Microsoft Windows targets:</p>
+<span class="target" id="index-87"></span><p id="index-88">These additional options are available for Microsoft Windows targets:</p>
 <dl class="option">
 <dt id="cmdoption-mconsole">
 <tt class="descname">-mconsole</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mconsole" title="Permalink to this definition">¶</a></dt>
@@ -11573,7 +11579,7 @@ supports the feature.</p>
 </div>
 <div class="section" id="xstormy16-options">
 <span id="id95"></span><h2>Xstormy16 Options<a class="headerlink" href="#xstormy16-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-65">These options are defined for Xstormy16:</p>
+<p id="index-89">These options are defined for Xstormy16:</p>
 <dl class="option">
 <dt id="cmdoption-msim">
 <tt class="descname">-msim</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-msim" title="Permalink to this definition">¶</a></dt>
@@ -11583,7 +11589,7 @@ supports the feature.</p>
 </div>
 <div class="section" id="xtensa-options">
 <span id="id96"></span><h2>Xtensa Options<a class="headerlink" href="#xtensa-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-66">These options are supported for Xtensa targets:</p>
+<p id="index-90">These options are supported for Xtensa targets:</p>
 <dl class="option">
 <dt id="cmdoption-mconst16">
 <tt class="descname">-mconst16</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-const16</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mconst16" title="Permalink to this definition">¶</a></dt>
@@ -11679,7 +11685,7 @@ every cross-file call, not just those that really are out of range.</p>
 </div>
 <div class="section" id="zseries-options">
 <span id="id97"></span><h2>zSeries Options<a class="headerlink" href="#zseries-options" title="Permalink to this headline">¶</a></h2>
-<p id="index-67">These are listed under See <a class="reference internal" href="#s-390-and-zseries-options"><em>S/390 and zSeries Options</em></a>.</p>
+<p id="index-91">These are listed under See <a class="reference internal" href="#s-390-and-zseries-options"><em>S/390 and zSeries Options</em></a>.</p>
 </div>
 </div>
 

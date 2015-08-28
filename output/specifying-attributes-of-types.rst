@@ -43,7 +43,8 @@ Common Type Attributes
 
 The following type attributes are supported on most targets.
 
-``aligned`` type attribute
+.. index:: aligned type attribute
+
 .. option:: aligned (alignment), -fshort-enums
 
   This attribute specifies a minimum alignment (in bytes) for variables
@@ -153,7 +154,9 @@ The following type attributes are supported on most targets.
   also define the enumerated type, structure or union.
 
 bnd_variable_size
-  ``bnd_variable_size`` type attribute
+
+  .. index:: bnd_variable_size type attribute
+
   .. index:: Pointer Bounds Checker attributes
 
   When applied to a structure field, this attribute tells Pointer
@@ -185,7 +188,10 @@ bnd_variable_size
     p->data[10] = 0; //OK
 
 deprecated deprecated (``msg``)
-  ``deprecated`` type attributeThe ``deprecated`` attribute results in a warning if the type
+
+  .. index:: deprecated type attribute
+
+  The ``deprecated`` attribute results in a warning if the type
   is used anywhere in the source file.  This is useful when identifying
   types that are expected to be removed in a future version of a program.
   If possible, the warning also includes the location of the declaration
@@ -215,7 +221,10 @@ deprecated deprecated (``msg``)
   variables (Function Attributes, Variable Attributes.)
 
 designated_init
-  ``designated_init`` type attributeThis attribute may only be applied to structure types.  It indicates
+
+  .. index:: designated_init type attribute
+
+  This attribute may only be applied to structure types.  It indicates
   that any initialization of an object of this type must use designated
   initializers rather than positional initializers.  The intent of this
   attribute is to allow the programmer to indicate that a structure's
@@ -226,7 +235,10 @@ designated_init
   :option:`-Wno-designated-init` to suppress them.
 
 may_alias
-  ``may_alias`` type attributeAccesses through pointers to types with this attribute are not subject
+
+  .. index:: may_alias type attribute
+
+  Accesses through pointers to types with this attribute are not subject
   to type-based alias analysis, but are instead assumed to be able to alias
   any other type of objects.
   In the context of section 6.5 paragraph 7 of the C99 standard,
@@ -265,14 +277,20 @@ may_alias
   above.
 
 packed
-  ``packed`` type attributeThis attribute, attached to ``struct`` or ``union`` type
+
+  .. index:: packed type attribute
+
+  This attribute, attached to ``struct`` or ``union`` type
   definition, specifies that each member (other than zero-width bit-fields)
   of the structure or union is placed to minimize the memory required.  When
   attached to an ``enum`` definition, it indicates that the smallest
   integral type should be used.
 
 transparent_union
-  ``transparent_union`` type attributeThis attribute, attached to a ``union`` type definition, indicates
+
+  .. index:: transparent_union type attribute
+
+  This attribute, attached to a ``union`` type definition, indicates
   that any function parameter having that union type causes calls to that
   function to be treated in a special way.
 
@@ -330,7 +348,10 @@ transparent_union
     }
 
 unused
-  ``unused`` type attributeWhen attached to a type (including a ``union`` or a ``struct``),
+
+  .. index:: unused type attribute
+
+  When attached to a type (including a ``union`` or a ``struct``),
   this attribute means that variables of that type are meant to appear
   possibly unused.  GCC does not produce a warning for any variables of
   that type, even if the variable appears to do nothing.  This is often
@@ -339,7 +360,10 @@ unused
   nontrivial bookkeeping functions.
 
 visibility
-  ``visibility`` type attributeIn C++, attribute visibility (Function Attributes) can also be
+
+  .. index:: visibility type attribute
+
+  In C++, attribute visibility (Function Attributes) can also be
   applied to class, struct, union and enum types.  Unlike other type
   attributes, the attribute must appear between the initial keyword and
   the name of the type; it cannot appear after the body of the type.
@@ -360,7 +384,9 @@ packed)).
 ARM Type Attributes
 ^^^^^^^^^^^^^^^^^^^
 
-``notshared`` type attribute, ARMOn those ARM targets that support ``dllimport`` (such as Symbian
+.. index:: notshared type attribute, ARM
+
+On those ARM targets that support ``dllimport`` (such as Symbian
 OS), you can use the ``notshared`` attribute to indicate that the
 virtual table and other similar data for a class should not be
 exported from a DLL.  For example:
@@ -386,7 +412,15 @@ most Symbian OS code uses ``__declspec``.)
 MeP Type Attributes
 ^^^^^^^^^^^^^^^^^^^
 
-``based`` type attribute, MeP``tiny`` type attribute, MeP``near`` type attribute, MeP``far`` type attribute, MePMany of the MeP variable attributes may be applied to types as well.
+.. index:: based type attribute, MeP
+
+.. index:: tiny type attribute, MeP
+
+.. index:: near type attribute, MeP
+
+.. index:: far type attribute, MeP
+
+Many of the MeP variable attributes may be applied to types as well.
 Specifically, the ``based``, ``tiny``, ``near``, and
 ``far`` attributes may be applied to either.  The ``io`` and
 ``cb`` attributes may not be applied to types.
@@ -399,10 +433,16 @@ PowerPC Type Attributes
 Three attributes currently are defined for PowerPC configurations:
 ``altivec``, ``ms_struct`` and ``gcc_struct``.
 
-``ms_struct`` type attribute, PowerPC``gcc_struct`` type attribute, PowerPCFor full documentation of the ``ms_struct`` and ``gcc_struct``
+.. index:: ms_struct type attribute, PowerPC
+
+.. index:: gcc_struct type attribute, PowerPC
+
+For full documentation of the ``ms_struct`` and ``gcc_struct``
 attributes please see the documentation in x86 Type Attributes.
 
-``altivec`` type attribute, PowerPCThe ``altivec`` attribute allows one to declare AltiVec vector data
+.. index:: altivec type attribute, PowerPC
+
+The ``altivec`` attribute allows one to declare AltiVec vector data
 types supported by the AltiVec Programming Interface Manual.  The
 attribute requires an argument to specify one of three vector types:
 ``vector__``, ``pixel__`` (always followed by unsigned short),
@@ -422,7 +462,9 @@ These attributes mainly are intended to support the ``__vector``,
 SPU Type Attributes
 ^^^^^^^^^^^^^^^^^^^
 
-``spu_vector`` type attribute, SPUThe SPU supports the ``spu_vector`` attribute for types.  This attribute
+.. index:: spu_vector type attribute, SPU
+
+The SPU supports the ``spu_vector`` attribute for types.  This attribute
 allows one to declare vector data types supported by the Sony/Toshiba/IBM SPU
 Language Extensions Specification.  It is intended to support the
 ``__vector`` keyword.
@@ -436,7 +478,12 @@ Two attributes are currently defined for x86 configurations:
 ``ms_struct`` and ``gcc_struct``.
 
 ms_struct gcc_struct
-  ``ms_struct`` type attribute, x86``gcc_struct`` type attribute, x86If ``packed`` is used on a structure, or if bit-fields are used
+
+  .. index:: ms_struct type attribute, x86
+
+  .. index:: gcc_struct type attribute, x86
+
+  If ``packed`` is used on a structure, or if bit-fields are used
   it may be that the Microsoft ABI packs them differently
   than GCC normally packs them.  Particularly when moving packed
   data between functions compiled with GCC and the native Microsoft compiler

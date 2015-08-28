@@ -123,7 +123,9 @@ either your program or GCC:
 
 .. option:: -gdwarf-version
 
-  gdwarf-``version``Produce debugging information in DWARF format (if that is supported).
+  .. index:: gdwarf-version
+
+  Produce debugging information in DWARF format (if that is supported).
   The value of ``version`` may be either 2, 3, 4 or 5; the default version
   for most targets is 4.  DWARF Version 5 is only experimental.
 
@@ -708,7 +710,7 @@ either your program or GCC:
   Emit DWARF 2 unwind info as compiler generated ``.eh_frame`` section
   instead of using GAS ``.cfi_*`` directives.
 
-  :command:`prof`
+  .. index:: prof
 
 .. option:: -p
 
@@ -717,7 +719,7 @@ either your program or GCC:
   the source files you want data about, and you must also use it when
   linking.
 
-  :command:`gprof`
+  .. index:: gprof
 
 .. option:: -pg
 
@@ -804,7 +806,7 @@ either your program or GCC:
   dir/foo.gcda for output file specified as :option:`-o dir/foo.o`).
   See :ref:`cross-profiling`.
 
-  :command:`gcov`
+  .. index:: gcov
 
 .. option:: --coverage, -coverage
 
@@ -932,7 +934,9 @@ either your program or GCC:
 
 .. option:: -dletters, -d
 
-  fdump-rtl-``pass``Says to make debugging dumps during compilation at times specified by
+  .. index:: fdump-rtl-pass
+
+  Says to make debugging dumps during compilation at times specified by
   ``letters``.  This is used for debugging the RTL-based passes of the
   compiler.  The file names for most of the dumps are made by appending
   a pass number and a word to the ``dumpname``, and the files are

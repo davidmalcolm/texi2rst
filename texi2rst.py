@@ -29,6 +29,20 @@ class Node:
             if self.kind == kind:
                 return True
 
+    def iter_depth_first(self):
+        yield self
+        if isinstance(self, Element):
+            for child in self.children:
+                for item in child.iter_depth_first():
+                    yield item
+
+    def iter_depth_first_edges(self):
+        if isinstance(self, Element):
+            for child in self.children:
+                yield (self, child)
+                for src, dst in child.iter_depth_first_edges():
+                    yield (src, dst)
+
 class Element(Node):
     def __init__(self, kind, attrs):
         self.kind = kind
@@ -417,7 +431,7 @@ def split(tree):
     v.visit(tree)
     return tree
 
-def fixup_nodes(tree):
+def fixup_nodes(tree, ctxt):
     """
     Given:
       <node name="C-Implementation" spaces=" ">
@@ -432,6 +446,11 @@ def fixup_nodes(tree):
 
     (see http://sphinx-doc.org/markup/inline.html#role-ref)
 
+    We also need to handle <anchor> in a similar way, so that:
+      <anchor name="GotoLabels">GotoLabels</anchor>
+    becomes:
+       :: _gotolabels:
+
     Also, we are given a structure like this:
       Element(PARENT)
         <node/> for chapter 1
@@ -440,8 +459,9 @@ def fixup_nodes(tree):
         <node/> for chapter 2
           ...content of chapter 1...
         <chapter/>
-    whereas we want the nodes inside the things they describe, so that
-    the label will work.  Move them, to be the first child, like this:
+    whereas we want the nodes/anchors inside the things they describe,
+    so that the label will work.  Move them, to be the first child,
+    like this:
       Element(PARENT)
         <chapter/>
           <node/> for chapter 1
@@ -449,7 +469,25 @@ def fixup_nodes(tree):
         <chapter)
           <node/> for chapter 2
           ...content of chapter 1...
-   """
+
+    But we could have:
+      Element(ANCESTOR)
+        Element
+          Element
+            Element
+              <anchor>
+      Element
+        ...content...
+    where we want to put the <anchor> after the next Element in depth-first
+    order:
+      Element(ANCESTOR)
+        Element
+          Element
+            Element
+      Element
+        <anchor>
+        ...content...
+    """
     class NodeFixer(NoopVisitor):
         def previsit_element(self, element):
             if element.kind == 'node':
@@ -460,34 +498,50 @@ def fixup_nodes(tree):
                     label = convert_text_to_label(text.data)
                     element.rst_kind = Label(label)
 
-    class NodeMover(NoopVisitor):
-        def __init__(self):
-            self.moved = set()
+            if element.kind == 'anchor':
+                text = element.get_sole_text()
+                if text:
+                    element.children = []
+                    label = convert_text_to_label(text.data)
+                    element.rst_kind = Label(label)
 
-        def previsit_element(self, element):
-            new_children = []
-            for i, child in enumerate(element.children):
-                if child.is_element('node'):
-                    node = child
-                    if node not in self.moved:
-                        next_child = self.get_next_child_element(element, i)
-                        if next_child:
-                            next_child.children.insert (0, node)
-                            self.moved.add(node)
-                            continue # dropping node from element.children
-                new_children.append(child)
-            element.children = new_children
+    def move_nodes(tree):
+        # Gather a list of (parent, child) pairs
+        if ctxt.debug:
+            for node in tree.iter_depth_first():
+                print(node)
 
-        def get_next_child_element(self, element, idx):
-            for child in element.children[idx + 1:]:
-                if isinstance(child, Element):
-                    return child
+        edges = list(tree.iter_depth_first_edges())
+        for i, (parent, child) in enumerate(edges):
+                if ctxt.debug:
+                    print i, parent, child
+                if child.is_element('node') or child.is_element('anchor'):
+
+                    def get_next_child_element():
+                        for cand_parent, cand_child in edges[i + 1:]:
+                            if isinstance(cand_child, Element):
+                                return cand_child
+
+                    next_parent = get_next_child_element()
+                    if next_parent:
+                        if ctxt.debug:
+                            print('\nMOVING %r from %r to %r\n'
+                                  % (child, parent, next_parent))
+                        parent.children.remove(child)
+                        next_parent.children.insert(0, child)
 
     v = NodeFixer()
     v.visit(tree)
 
-    v = NodeMover()
-    v.visit(tree)
+    if ctxt.debug:
+        print
+        tree.dump(sys.stdout)
+        print
+    move_nodes(tree)
+    if ctxt.debug:
+        print
+        tree.dump(sys.stdout)
+        print
 
     return tree
 
@@ -780,9 +834,9 @@ def fixup_index(tree):
         def previsit_element(self, element):
             if isinstance(element, Element):
                 if element.kind == 'indexterm':
-                    text = element.get_sole_text()
+                    text = element.get_all_text()
                     if text:
-                        element.rst_kind = Directive('index', text.data)
+                        element.rst_kind = Directive('index', text)
                         element.children = []
     v = IndexFixer()
     v.visit(tree)
@@ -894,10 +948,10 @@ def fixup_inline_markup(tree):
 
 # Top-level conversion routine
 
-def convert_to_rst(tree):
+def convert_to_rst(tree, ctxt):
     tree = fixup_comments(tree)
     tree = prune(tree)
-    tree = fixup_nodes(tree)
+    tree = fixup_nodes(tree, ctxt)
     tree = fixup_menus(tree)
     tree = split(tree)
     tree = fixup_option_refs(tree)
@@ -1157,9 +1211,16 @@ class RstOpener:
     def close(self, f_out):
         raise NotImplementedError
 
+class Context:
+    def __init__(self):
+        self.debug = False
+
 # Unit tests
 
 class Texi2RstTests(unittest.TestCase):
+    def setUp(self):
+        self.ctxt = Context()
+
     def make_rst_string(self, doc):
         w = RstWriter(StringIO.StringIO())
         w.visit(doc)
@@ -1275,7 +1336,7 @@ class MenuTests(Texi2RstTests):
     def test_nodename(self):
         xml_src = u'''<node name="C-Implementation" spaces=" "><nodename>C Implementation</nodename><nodenext automatic="on">C++ Implementation</nodenext><nodeprev automatic="on">Invoking GCC</nodeprev><nodeup automatic="on">Top</nodeup></node>'''
         doc = from_xml_string(xml_src)
-        doc = fixup_nodes(doc)
+        doc = fixup_nodes(doc, self.ctxt)
         out = self.make_rst_string(doc)
         self.assertEqual(u'.. _c-implementation:\n',
                          out)
@@ -1593,7 +1654,7 @@ with ISO C90 are disabled). Same as <option>-ansi</option> for C code.
 </para>
 </tableitem></tableentry></texinfo>'''
         tree = from_xml_string(xml_src)
-        tree = convert_to_rst(tree)
+        tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
         self.assertEqual(u'''c90 c89 iso9899:1990
   Support all ISO C90 programs (certain GNU extensions that conflict
@@ -1931,9 +1992,44 @@ class IntegrationTests(Texi2RstTests):
     def test_empty(self):
         xml_src = '''<texinfo/>'''
         tree = from_xml_string(xml_src)
-        tree = convert_to_rst(tree)
+        tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
         self.assertEqual(u'', out)
+
+    def test_anchor(self):
+        xml_src = u'''<texinfo>
+<subsubsection>
+  <subsubheading spaces=" ">Qualifiers</subsubheading>
+  <para>Some text about qualifiers.  <xref label="GotoLabels"><xrefnodename>GotoLabels</xrefnodename></xref>.</para>
+  <anchor name="GotoLabels">GotoLabels</anchor>
+</subsubsection>
+<subsubsection spaces=" ">
+  <sectiontitle>Goto Labels</sectiontitle>
+  <cindex index="cp" spaces=" ">
+    <indexterm index="cp" number="789"><code>asm</code> goto labels</indexterm>
+  </cindex>
+  <para>Some text about goto labels.</para>
+</subsubsection>
+</texinfo>
+'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(u'''Qualifiers
+^^^^^^^^^^
+
+Some text about qualifiers.  See :ref:`gotolabels`.
+
+.. _gotolabels:
+
+Goto Labels
+~~~~~~~~~~~
+
+.. index:: asm goto labels
+
+Some text about goto labels.
+
+''', out)
 
     def test_splitting(self):
         xml_src = u'''<texinfo>
@@ -1968,7 +2064,7 @@ class IntegrationTests(Texi2RstTests):
 </texinfo>
 '''
         tree = from_xml_string(xml_src)
-        tree = convert_to_rst(tree)
+        tree = convert_to_rst(tree, self.ctxt)
         dict_ = self.make_rst_strings(tree)
         self.assertEqual(
             (u'Top-level title\n' +
@@ -2028,11 +2124,10 @@ class IntegrationTests(Texi2RstTests):
 </texinfo>
 '''
         tree = from_xml_string(xml_src)
-        tree = convert_to_rst(tree)
+        tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_strings(tree)
         dict_ = self.make_rst_strings(tree)
         self.assertEqual(
-            dict_['gcc'],
             u'''Top level para.  See :ref:`standards` and See :ref:`function-attributes`.
 
 .. toctree::
@@ -2042,7 +2137,8 @@ class IntegrationTests(Texi2RstTests):
 
 ..  some comment
 
-''')
+''',
+            dict_['gcc'])
         self.assertEqual(
             dict_['language-standards-supported-by-gcc'],
             u'''.. _standards:
@@ -2063,6 +2159,50 @@ Declaring Attributes of Functions
 First para of attributes
 
 ''')
+
+class TestIter(Texi2RstTests):
+    def test_traversal(self):
+        xml_src = u'''<A>
+   <B-1>
+      <C-1/>
+      <C-2/>
+   </B-1>
+   <B-2>
+      <C-3/>
+      <C-4/>
+   </B-2>
+</A>'''
+        tree = from_xml_string(xml_src)
+        dfs = list(tree.iter_depth_first())
+        self.assertEqual(len(dfs), 8)
+        self.assert_(dfs[0].is_element('document'))
+        self.assert_(dfs[1].is_element('A'))
+        self.assert_(dfs[2].is_element('B-1'))
+        self.assert_(dfs[3].is_element('C-1'))
+        self.assert_(dfs[4].is_element('C-2'))
+        self.assert_(dfs[5].is_element('B-2'))
+        self.assert_(dfs[6].is_element('C-3'))
+        self.assert_(dfs[7].is_element('C-4'))
+
+        dfs_edges = list(tree.iter_depth_first_edges())
+        self.assertEqual(len(dfs_edges), 7)
+        self.assert_edge_from(dfs_edges[0], 'document', 'A')
+        self.assert_edge_from(dfs_edges[1], 'A', 'B-1')
+        self.assert_edge_from(dfs_edges[2], 'B-1', 'C-1')
+        self.assert_edge_from(dfs_edges[3], 'B-1', 'C-2')
+        self.assert_edge_from(dfs_edges[4], 'A', 'B-2')
+        self.assert_edge_from(dfs_edges[5], 'B-2', 'C-3')
+        self.assert_edge_from(dfs_edges[6], 'B-2', 'C-4')
+
+    def assert_is_element(self, node, element_name):
+        if not isinstance(node, Element):
+            raise ValueError('%r is not an element' % node)
+        if node.kind != element_name:
+            raise ValueError('%r is not of kind %r' % (node, element_name))
+
+    def assert_edge_from(self, edge, src_element_name, dst_element_name):
+        self.assert_is_element(edge[0], src_element_name)
+        self.assert_is_element(edge[1], dst_element_name)
 
 #
 
@@ -2089,7 +2229,7 @@ if __name__ == '__main__':
         with open(sys.argv[1]) as f_in:
             xml_src = f_in.read()
             tree = from_xml_string(xml_src)
-        tree = convert_to_rst(tree)
+        tree = convert_to_rst(tree, Context())
         if 1:
             with open('output/gcc.rst', 'w') as f_out:
                 w = RstWriter(f_out, FileOpener('output'))

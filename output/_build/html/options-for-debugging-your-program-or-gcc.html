@@ -224,8 +224,8 @@ assembler (GAS) to fail with an error.</p>
 <dl class="option">
 <dt id="cmdoption-gdwarf-version">
 <tt class="descname">-gdwarf-version</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-gdwarf-version" title="Permalink to this definition">¶</a></dt>
-<dd><p>gdwarf-<tt class="docutils literal"><span class="pre">version``Produce</span> <span class="pre">debugging</span> <span class="pre">information</span> <span class="pre">in</span> <span class="pre">DWARF</span> <span class="pre">format</span> <span class="pre">(if</span> <span class="pre">that</span> <span class="pre">is</span> <span class="pre">supported).</span>
-<span class="pre">The</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">``version</span></tt> may be either 2, 3, 4 or 5; the default version
+<dd><p id="index-2">Produce debugging information in DWARF format (if that is supported).
+The value of <tt class="docutils literal"><span class="pre">version</span></tt> may be either 2, 3, 4 or 5; the default version
 for most targets is 4.  DWARF Version 5 is only experimental.</p>
 <p>Note that with DWARF Version 2, some ports require and always
 use some non-conflicting DWARF 3 extensions in the unwind tables.</p>
@@ -328,7 +328,7 @@ Memory access instructions are instrumented to detect
 out-of-bounds and use-after-free bugs.
 See <a class="reference external" href="http://code.google.com/p/address-sanitizer/">http://code.google.com/p/address-sanitizer/</a> for
 more details.  The run-time behavior can be influenced using the
-<span class="target" id="index-2"></span><tt class="xref std std-envvar docutils literal"><span class="pre">ASAN_OPTIONS</span></tt> environment variable; see
+<span class="target" id="index-3"></span><tt class="xref std std-envvar docutils literal"><span class="pre">ASAN_OPTIONS</span></tt> environment variable; see
 <a class="reference external" href="https://code.google.com/p/address-sanitizer/wiki/Flags#Run-time_flags">https://code.google.com/p/address-sanitizer/wiki/Flags#Run-time_flags</a> for
 a list of supported options.</p>
 </dd></dl>
@@ -346,7 +346,7 @@ See <a class="reference external" href="http://code.google.com/p/address-sanitiz
 <dd><p>Enable ThreadSanitizer, a fast data race detector.
 Memory access instructions are instrumented to detect
 data race bugs.  See <a class="reference external" href="http://code.google.com/p/thread-sanitizer/">http://code.google.com/p/thread-sanitizer/</a> for more
-details. The run-time behavior can be influenced using the <span class="target" id="index-3"></span><tt class="xref std std-envvar docutils literal"><span class="pre">TSAN_OPTIONS</span></tt>
+details. The run-time behavior can be influenced using the <span class="target" id="index-4"></span><tt class="xref std std-envvar docutils literal"><span class="pre">TSAN_OPTIONS</span></tt>
 environment variable; see
 <a class="reference external" href="https://code.google.com/p/thread-sanitizer/wiki/Flags">https://code.google.com/p/thread-sanitizer/wiki/Flags</a> for a list of
 supported options.</p>
@@ -362,7 +362,7 @@ case the executable is linked against a library that overrides <tt class="docuti
 and other allocator functions.  See
 <a class="reference external" href="https://code.google.com/p/address-sanitizer/wiki/LeakSanitizer">https://code.google.com/p/address-sanitizer/wiki/LeakSanitizer</a> for more
 details.  The run-time behavior can be influenced using the
-<span class="target" id="index-4"></span><tt class="xref std std-envvar docutils literal"><span class="pre">LSAN_OPTIONS</span></tt> environment variable.</p>
+<span class="target" id="index-5"></span><tt class="xref std std-envvar docutils literal"><span class="pre">LSAN_OPTIONS</span></tt> environment variable.</p>
 </dd></dl>
 
 <dl class="option">
@@ -591,7 +591,7 @@ is usable even in freestanding environments.</p>
 <dl class="option">
 <dt id="cmdoption-fcheck-pointer-bounds">
 <tt class="descname">-fcheck-pointer-bounds</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-fno-check-pointer-bounds</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fcheck-pointer-bounds" title="Permalink to this definition">¶</a></dt>
-<dd><p id="index-5">Enable Pointer Bounds Checker instrumentation.  Each memory reference
+<dd><p id="index-6">Enable Pointer Bounds Checker instrumentation.  Each memory reference
 is instrumented with checks of the pointer used for memory access against
 bounds associated with that pointer.</p>
 <p>Currently there
@@ -617,7 +617,7 @@ have different requirements for the runtime library.  The current version
 of the MPX runtime library is more oriented for use as a debugging
 tool.  MPX runtime library usage implies <em class="xref std std-option">-lpthread</em>.  See
 also <a class="reference internal" href="options-for-linking.html#cmdoption-static-libmpx"><em class="xref std std-option">-static-libmpx</em></a>.  The runtime library  behavior can be
-influenced using various <span class="target" id="index-6"></span><tt class="xref std std-envvar docutils literal"><span class="pre">CHKP_RT_*</span></tt> environment variables.  See
+influenced using various <span class="target" id="index-7"></span><tt class="xref std std-envvar docutils literal"><span class="pre">CHKP_RT_*</span></tt> environment variables.  See
 <a class="reference external" href="https://gcc.gnu.org/wiki/Intel%20MPX%20support%20in%20the%20GCC%20compiler">https://gcc.gnu.org/wiki/Intel%20MPX%20support%20in%20the%20GCC%20compiler</a>
 for more details.</p>
 <p>Generated instrumentation may be controlled by various
@@ -769,20 +769,20 @@ adding <tt class="docutils literal"><span class="pre">opts</span></tt> and <a cl
 passed to the second compilation.  Dump the final internal
 representation in both compilations, and print an error if they differ.</p>
 <p>If the equal sign is omitted, the default <a class="reference internal" href="#cmdoption-gtoggle"><em class="xref std std-option">-gtoggle</em></a> is used.</p>
-<p>The environment variable <span class="target" id="index-7"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a>, if defined, non-empty
+<p>The environment variable <span class="target" id="index-8"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a>, if defined, non-empty
 and nonzero, implicitly enables <a class="reference internal" href="#cmdoption-fcompare-debug"><em class="xref std std-option">-fcompare-debug</em></a>.  If
-<span class="target" id="index-8"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a> is defined to a string starting with a dash,
+<span class="target" id="index-9"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a> is defined to a string starting with a dash,
 then it is used for <tt class="docutils literal"><span class="pre">opts</span></tt>, otherwise the default <a class="reference internal" href="#cmdoption-gtoggle"><em class="xref std std-option">-gtoggle</em></a>
 is used.</p>
 <p><em class="xref std std-option">-fcompare-debug=</em>, with the equal sign but without <tt class="docutils literal"><span class="pre">opts</span></tt>,
 is equivalent to <em class="xref std std-option">-fno-compare-debug</em>, which disables the dumping
 of the final representation and the second compilation, preventing even
-<span class="target" id="index-9"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a> from taking effect.</p>
+<span class="target" id="index-10"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a> from taking effect.</p>
 <p>To verify full coverage during <a class="reference internal" href="#cmdoption-fcompare-debug"><em class="xref std std-option">-fcompare-debug</em></a> testing, set
-<span class="target" id="index-10"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a> to say <em class="xref std std-option">-fcompare-debug-not-overridden</em>,
+<span class="target" id="index-11"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a> to say <em class="xref std std-option">-fcompare-debug-not-overridden</em>,
 which GCC rejects as an invalid option in any actual compilation
 (rather than preprocessing, assembly or linking).  To get just a
-warning, setting <span class="target" id="index-11"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a> to -w%n-fcompare-debug
+warning, setting <span class="target" id="index-12"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a> to -w%n-fcompare-debug
 not overridden will do.</p>
 </dd></dl>
 
@@ -900,8 +900,7 @@ information describing them as in <tt class="docutils literal"><span class="pre"
 <tt class="descname">-fno-dwarf2-cfi-asm</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-fdwarf2-cfi-asm</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-dwarf2-cfi-asm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emit DWARF 2 unwind info as compiler generated <tt class="docutils literal"><span class="pre">.eh_frame</span></tt> section
 instead of using GAS <tt class="docutils literal"><span class="pre">.cfi_*</span></tt> directives.</p>
-<p><strong class="command">prof</strong></p>
-</dd></dl>
+<span class="target" id="index-13"></span></dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-p">
@@ -910,8 +909,7 @@ instead of using GAS <tt class="docutils literal"><span class="pre">.cfi_*</span
 analysis program <strong class="command">prof</strong>.  You must use this option when compiling
 the source files you want data about, and you must also use it when
 linking.</p>
-<p><strong class="command">gprof</strong></p>
-</dd></dl>
+<span class="target" id="index-14"></span></dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-pg">
@@ -1014,8 +1012,7 @@ the basename of the source file.  In both cases any suffix is removed
 (e.g. foo.gcda for input file dir/foo.c, or
 dir/foo.gcda for output file specified as <em class="xref std std-option">-o dir/foo.o</em>).
 See <a class="reference internal" href="data-file-relocation-to-support-cross-profiling.html#cross-profiling"><em>Data File Relocation to Support Cross-Profiling</em></a>.</p>
-<p><strong class="command">gcov</strong></p>
-</dd></dl>
+<span class="target" id="index-15"></span></dd></dl>
 
 <dl class="option">
 <dt id="cmdoption--coverage">
@@ -1145,8 +1142,8 @@ of option arguments.</p>
 <dl class="option">
 <dt id="cmdoption-dletters">
 <tt class="descname">-dletters</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-d</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dletters" title="Permalink to this definition">¶</a></dt>
-<dd><p>fdump-rtl-<tt class="docutils literal"><span class="pre">pass``Says</span> <span class="pre">to</span> <span class="pre">make</span> <span class="pre">debugging</span> <span class="pre">dumps</span> <span class="pre">during</span> <span class="pre">compilation</span> <span class="pre">at</span> <span class="pre">times</span> <span class="pre">specified</span> <span class="pre">by</span>
-<span class="pre">``letters</span></tt>.  This is used for debugging the RTL-based passes of the
+<dd><p id="index-16">Says to make debugging dumps during compilation at times specified by
+<tt class="docutils literal"><span class="pre">letters</span></tt>.  This is used for debugging the RTL-based passes of the
 compiler.  The file names for most of the dumps are made by appending
 a pass number and a word to the <tt class="docutils literal"><span class="pre">dumpname</span></tt>, and the files are
 created in the directory of the output file. In case of
@@ -2144,7 +2141,7 @@ file name.</p>
 <tt class="descname">-print-multi-directory</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-print-multi-directory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the directory name corresponding to the multilib selected by any
 other switches present in the command line.  This directory is supposed
-to exist in <span class="target" id="index-12"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_EXEC_PREFIX"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_EXEC_PREFIX</span></tt></a>.</p>
+to exist in <span class="target" id="index-17"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_EXEC_PREFIX"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_EXEC_PREFIX</span></tt></a>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -2202,7 +2199,7 @@ program and library directories <strong class="command">gcc</strong> searches-an
 installation problem, cannot exec cpp0: No such file or directory.
 To resolve this you either need to put cpp0 and the other compiler
 components where <strong class="command">gcc</strong> expects to find them, or you can set the environment
-variable <span class="target" id="index-13"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_EXEC_PREFIX"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_EXEC_PREFIX</span></tt></a> to the directory where you installed them.
+variable <span class="target" id="index-18"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_EXEC_PREFIX"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_EXEC_PREFIX</span></tt></a> to the directory where you installed them.
 Don&#8217;t forget the trailing /.
 See <a class="reference internal" href="environment-variables-affecting-gcc.html#environment-variables"><em>Environment Variables Affecting GCC</em></a>.</p>
 </dd></dl>

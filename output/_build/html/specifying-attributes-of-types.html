@@ -122,10 +122,10 @@ attributes.</p>
 <div class="section" id="common-type-attributes">
 <span id="id1"></span><h2>Common Type Attributes<a class="headerlink" href="#common-type-attributes" title="Permalink to this headline">¶</a></h2>
 <p>The following type attributes are supported on most targets.</p>
-<p><tt class="docutils literal"><span class="pre">aligned</span></tt> type attribute
-.. option:: aligned (alignment), -fshort-enums</p>
-<blockquote>
-<div><p>This attribute specifies a minimum alignment (in bytes) for variables
+<span class="target" id="index-2"></span><dl class="option">
+<dt id="cmdoption-fshort-enums">
+<tt class="descname">-fshort-enums</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fshort-enums" title="Permalink to this definition">¶</a></dt>
+<dd><p>This attribute specifies a minimum alignment (in bytes) for variables
 of the specified type.  For example, the declarations:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">S</span> <span class="p">{</span> <span class="kt">short</span> <span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span> <span class="p">}</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">aligned</span> <span class="p">(</span><span class="mi">8</span><span class="p">)));</span>
 <span class="k">typedef</span> <span class="kt">int</span> <span class="n">more_aligned_int</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">aligned</span> <span class="p">(</span><span class="mi">8</span><span class="p">)));</span>
@@ -192,7 +192,7 @@ in an <tt class="docutils literal"><span class="pre">__attribute__</span></tt> s
 alignment.  See your linker documentation for further information.</p>
 <p>Specifying this attribute for <tt class="docutils literal"><span class="pre">struct</span></tt> and <tt class="docutils literal"><span class="pre">union</span></tt> types is
 equivalent to specifying the <tt class="docutils literal"><span class="pre">packed</span></tt> attribute on each of the
-structure or union members.  Specifying the <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fshort-enums"><em class="xref std std-option">-fshort-enums</em></a>
+structure or union members.  Specifying the <a class="reference internal" href="#cmdoption-fshort-enums"><em class="xref std std-option">-fshort-enums</em></a>
 flag on the line is equivalent to specifying the <tt class="docutils literal"><span class="pre">packed</span></tt>
 attribute on all <tt class="docutils literal"><span class="pre">enum</span></tt> definitions.</p>
 <p>In the following example <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">my_packed_struct</span></tt>&#8216;s members are
@@ -216,12 +216,11 @@ be packed too.</p>
 <p>You may only specify this attribute on the definition of an <tt class="docutils literal"><span class="pre">enum</span></tt>,
 <tt class="docutils literal"><span class="pre">struct</span></tt> or <tt class="docutils literal"><span class="pre">union</span></tt>, not on a <tt class="docutils literal"><span class="pre">typedef</span></tt> that does not
 also define the enumerated type, structure or union.</p>
-</div></blockquote>
-<dl class="docutils">
-<dt>bnd_variable_size</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">bnd_variable_size</span></tt> type attribute
-.. index:: Pointer Bounds Checker attributes</p>
-<p>When applied to a structure field, this attribute tells Pointer
+</dd></dl>
+
+<p>bnd_variable_size</p>
+<blockquote>
+<div><span class="target" id="index-3"></span><p id="index-4">When applied to a structure field, this attribute tells Pointer
 Bounds Checker that the size of this field should not be computed
 using static type information.  It may be used to mark variably-sized
 static array fields placed at the end of a structure.</p>
@@ -236,7 +235,7 @@ static array fields placed at the end of a structure.</p>
 </div>
 <p>By using an attribute for the field we may avoid unwanted bound
 violation checks:</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">S</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">S</span>
 <span class="p">{</span>
   <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
   <span class="kt">char</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">bnd_variable_size</span><span class="p">));</span>
@@ -245,9 +244,10 @@ violation checks:</p>
 <span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//OK</span>
 </pre></div>
 </div>
-</dd>
-<dt>deprecated deprecated (<tt class="docutils literal"><span class="pre">msg</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">deprecated</span></tt> type attributeThe <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute results in a warning if the type
+</div></blockquote>
+<p>deprecated deprecated (<tt class="docutils literal"><span class="pre">msg</span></tt>)</p>
+<blockquote>
+<div><p id="index-5">The <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute results in a warning if the type
 is used anywhere in the source file.  This is useful when identifying
 types that are expected to be removed in a future version of a program.
 If possible, the warning also includes the location of the declaration
@@ -270,21 +270,23 @@ deprecated.  Line 5 has no warning because T3 is explicitly
 deprecated.  Similarly for line 6.  The optional <tt class="docutils literal"><span class="pre">msg</span></tt>
 argument, which must be a string, is printed in the warning if
 present.</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute can also be used for functions and
+<p>The <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute can also be used for functions and
 variables (Function Attributes, Variable Attributes.)</p>
-</dd>
-<dt>designated_init</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">designated_init</span></tt> type attributeThis attribute may only be applied to structure types.  It indicates
+</div></blockquote>
+<p>designated_init</p>
+<blockquote>
+<div><p id="index-6">This attribute may only be applied to structure types.  It indicates
 that any initialization of an object of this type must use designated
 initializers rather than positional initializers.  The intent of this
 attribute is to allow the programmer to indicate that a structure&#8217;s
 layout may change, and that therefore relying on positional
 initialization will result in future breakage.</p>
-<p class="last">GCC emits warnings based on this attribute by default; use
+<p>GCC emits warnings based on this attribute by default; use
 <em class="xref std std-option">-Wno-designated-init</em> to suppress them.</p>
-</dd>
-<dt>may_alias</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">may_alias</span></tt> type attributeAccesses through pointers to types with this attribute are not subject
+</div></blockquote>
+<p>may_alias</p>
+<blockquote>
+<div><p id="index-7">Accesses through pointers to types with this attribute are not subject
 to type-based alias analysis, but are instead assumed to be able to alias
 any other type of objects.
 In the context of section 6.5 paragraph 7 of the C99 standard,
@@ -313,19 +315,22 @@ special semantics.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p class="last">If you replaced <tt class="docutils literal"><span class="pre">short_a</span></tt> with <tt class="docutils literal"><span class="pre">short</span></tt> in the variable
+<p>If you replaced <tt class="docutils literal"><span class="pre">short_a</span></tt> with <tt class="docutils literal"><span class="pre">short</span></tt> in the variable
 declaration, the above program would abort when compiled with
 <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstrict-aliasing"><em class="xref std std-option">-fstrict-aliasing</em></a>, which is on by default at <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O2"><em class="xref std std-option">-O2</em></a> or
 above.</p>
-</dd>
-<dt>packed</dt>
-<dd><tt class="docutils literal"><span class="pre">packed</span></tt> type attributeThis attribute, attached to <tt class="docutils literal"><span class="pre">struct</span></tt> or <tt class="docutils literal"><span class="pre">union</span></tt> type
+</div></blockquote>
+<p>packed</p>
+<blockquote>
+<div><p id="index-8">This attribute, attached to <tt class="docutils literal"><span class="pre">struct</span></tt> or <tt class="docutils literal"><span class="pre">union</span></tt> type
 definition, specifies that each member (other than zero-width bit-fields)
 of the structure or union is placed to minimize the memory required.  When
 attached to an <tt class="docutils literal"><span class="pre">enum</span></tt> definition, it indicates that the smallest
-integral type should be used.</dd>
-<dt>transparent_union</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">transparent_union</span></tt> type attributeThis attribute, attached to a <tt class="docutils literal"><span class="pre">union</span></tt> type definition, indicates
+integral type should be used.</p>
+</div></blockquote>
+<p>transparent_union</p>
+<blockquote>
+<div><p id="index-9">This attribute, attached to a <tt class="docutils literal"><span class="pre">union</span></tt> type definition, indicates
 that any function parameter having that union type causes calls to that
 function to be treated in a special way.</p>
 <p>First, the argument corresponding to a transparent union type can be of
@@ -367,23 +372,26 @@ The program can call <tt class="docutils literal"><span class="pre">wait</span><
 </pre></div>
 </div>
 <p>With this interface, <tt class="docutils literal"><span class="pre">wait</span></tt>&#8216;s implementation might look like this:</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="kt">pid_t</span> <span class="nf">wait</span> <span class="p">(</span><span class="kt">wait_status_ptr_t</span> <span class="n">p</span><span class="p">)</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">pid_t</span> <span class="nf">wait</span> <span class="p">(</span><span class="kt">wait_status_ptr_t</span> <span class="n">p</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">return</span> <span class="n">waitpid</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">__ip</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</dd>
-<dt>unused</dt>
-<dd><tt class="docutils literal"><span class="pre">unused</span></tt> type attributeWhen attached to a type (including a <tt class="docutils literal"><span class="pre">union</span></tt> or a <tt class="docutils literal"><span class="pre">struct</span></tt>),
+</div></blockquote>
+<p>unused</p>
+<blockquote>
+<div><p id="index-10">When attached to a type (including a <tt class="docutils literal"><span class="pre">union</span></tt> or a <tt class="docutils literal"><span class="pre">struct</span></tt>),
 this attribute means that variables of that type are meant to appear
 possibly unused.  GCC does not produce a warning for any variables of
 that type, even if the variable appears to do nothing.  This is often
 the case with lock or thread classes, which are usually defined and then
 not referenced, but contain constructors and destructors that have
-nontrivial bookkeeping functions.</dd>
-<dt>visibility</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">visibility</span></tt> type attributeIn C++, attribute visibility (Function Attributes) can also be
+nontrivial bookkeeping functions.</p>
+</div></blockquote>
+<p>visibility</p>
+<blockquote>
+<div><p id="index-11">In C++, attribute visibility (Function Attributes) can also be
 applied to class, struct, union and enum types.  Unlike other type
 attributes, the attribute must appear between the initial keyword and
 the name of the type; it cannot appear after the body of the type.</p>
@@ -393,15 +401,14 @@ particular, if a class is thrown as an exception in one shared object
 and caught in another, the class must have default visibility.
 Otherwise the two shared objects are unable to use the same
 typeinfo node and exception handling will break.</p>
-<p class="last">To specify multiple attributes, separate them by commas within the</p>
-</dd>
-</dl>
+<p>To specify multiple attributes, separate them by commas within the</p>
+</div></blockquote>
 <p>double parentheses: for example, __attribute__ ((aligned (16),
 packed)).</p>
 </div>
 <div class="section" id="arm-type-attributes">
 <span id="id2"></span><h2>ARM Type Attributes<a class="headerlink" href="#arm-type-attributes" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">notshared</span></tt> type attribute, ARMOn those ARM targets that support <tt class="docutils literal"><span class="pre">dllimport</span></tt> (such as Symbian
+<p id="index-12">On those ARM targets that support <tt class="docutils literal"><span class="pre">dllimport</span></tt> (such as Symbian
 OS), you can use the <tt class="docutils literal"><span class="pre">notshared</span></tt> attribute to indicate that the
 virtual table and other similar data for a class should not be
 exported from a DLL.  For example:</p>
@@ -422,7 +429,7 @@ most Symbian OS code uses <tt class="docutils literal"><span class="pre">__decls
 </div>
 <div class="section" id="mep-type-attributes">
 <span id="id3"></span><h2>MeP Type Attributes<a class="headerlink" href="#mep-type-attributes" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">based</span></tt> type attribute, MeP``tiny`` type attribute, MeP``near`` type attribute, MeP``far`` type attribute, MePMany of the MeP variable attributes may be applied to types as well.
+<span class="target" id="index-13"></span><span class="target" id="index-14"></span><span class="target" id="index-15"></span><p id="index-16">Many of the MeP variable attributes may be applied to types as well.
 Specifically, the <tt class="docutils literal"><span class="pre">based</span></tt>, <tt class="docutils literal"><span class="pre">tiny</span></tt>, <tt class="docutils literal"><span class="pre">near</span></tt>, and
 <tt class="docutils literal"><span class="pre">far</span></tt> attributes may be applied to either.  The <tt class="docutils literal"><span class="pre">io</span></tt> and
 <tt class="docutils literal"><span class="pre">cb</span></tt> attributes may not be applied to types.</p>
@@ -431,9 +438,9 @@ Specifically, the <tt class="docutils literal"><span class="pre">based</span></t
 <span id="id4"></span><h2>PowerPC Type Attributes<a class="headerlink" href="#powerpc-type-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Three attributes currently are defined for PowerPC configurations:
 <tt class="docutils literal"><span class="pre">altivec</span></tt>, <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>.</p>
-<p><tt class="docutils literal"><span class="pre">ms_struct</span></tt> type attribute, PowerPC``gcc_struct`` type attribute, PowerPCFor full documentation of the <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>
+<span class="target" id="index-17"></span><p id="index-18">For full documentation of the <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>
 attributes please see the documentation in x86 Type Attributes.</p>
-<p><tt class="docutils literal"><span class="pre">altivec</span></tt> type attribute, PowerPCThe <tt class="docutils literal"><span class="pre">altivec</span></tt> attribute allows one to declare AltiVec vector data
+<p id="index-19">The <tt class="docutils literal"><span class="pre">altivec</span></tt> attribute allows one to declare AltiVec vector data
 types supported by the AltiVec Programming Interface Manual.  The
 attribute requires an argument to specify one of three vector types:
 <tt class="docutils literal"><span class="pre">vector__</span></tt>, <tt class="docutils literal"><span class="pre">pixel__</span></tt> (always followed by unsigned short),
@@ -448,7 +455,7 @@ and <tt class="docutils literal"><span class="pre">bool__</span></tt> (always fo
 </div>
 <div class="section" id="spu-type-attributes">
 <span id="id5"></span><h2>SPU Type Attributes<a class="headerlink" href="#spu-type-attributes" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">spu_vector</span></tt> type attribute, SPUThe SPU supports the <tt class="docutils literal"><span class="pre">spu_vector</span></tt> attribute for types.  This attribute
+<p id="index-20">The SPU supports the <tt class="docutils literal"><span class="pre">spu_vector</span></tt> attribute for types.  This attribute
 allows one to declare vector data types supported by the Sony/Toshiba/IBM SPU
 Language Extensions Specification.  It is intended to support the
 <tt class="docutils literal"><span class="pre">__vector</span></tt> keyword.</p>
@@ -457,18 +464,17 @@ Language Extensions Specification.  It is intended to support the
 <span id="id6"></span><h2>x86 Type Attributes<a class="headerlink" href="#x86-type-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Two attributes are currently defined for x86 configurations:
 <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>.</p>
-<dl class="docutils">
-<dt>ms_struct gcc_struct</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">ms_struct</span></tt> type attribute, x86``gcc_struct`` type attribute, x86If <tt class="docutils literal"><span class="pre">packed</span></tt> is used on a structure, or if bit-fields are used
+<p>ms_struct gcc_struct</p>
+<blockquote>
+<div><span class="target" id="index-21"></span><p id="index-22">If <tt class="docutils literal"><span class="pre">packed</span></tt> is used on a structure, or if bit-fields are used
 it may be that the Microsoft ABI packs them differently
 than GCC normally packs them.  Particularly when moving packed
 data between functions compiled with GCC and the native Microsoft compiler
 (either via function call or as data in a file), it may be necessary to access
 either format.</p>
-<p class="last">Currently <em class="xref std std-option">-m[no-]ms-bitfields</em> is provided for the Microsoft Windows x86
+<p>Currently <em class="xref std std-option">-m[no-]ms-bitfields</em> is provided for the Microsoft Windows x86
 compilers to match the native Microsoft compiler.</p>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 </div>
 

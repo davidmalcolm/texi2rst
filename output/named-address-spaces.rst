@@ -16,7 +16,8 @@ Address space identifiers may be used exactly like any other C type
 qualifier (e.g., ``const`` or ``volatile``).  See the N1275
 document for more details.
 
-AVR Named Address Spaces
+.. _avr-named-address-spaces:
+
 AVR Named Address Spaces
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -32,19 +33,36 @@ and to generate the right instructions to access this data
 without using (inline) assembler code.
 
 __flash
-  ``__flash`` AVR Named Address SpacesThe ``__flash`` qualifier locates data in the
+
+  .. index:: __flash AVR Named Address Spaces
+
+  The ``__flash`` qualifier locates data in the
   ``.progmem.data`` section. Data is read using the ``LPM``
   instruction. Pointers to this address space are 16 bits wide.
 
 __flash1 __flash2 __flash3 __flash4 __flash5
-  ``__flash1`` AVR Named Address Spaces``__flash2`` AVR Named Address Spaces``__flash3`` AVR Named Address Spaces``__flash4`` AVR Named Address Spaces``__flash5`` AVR Named Address SpacesThese are 16-bit address spaces locating data in section
+
+  .. index:: __flash1 AVR Named Address Spaces
+
+  .. index:: __flash2 AVR Named Address Spaces
+
+  .. index:: __flash3 AVR Named Address Spaces
+
+  .. index:: __flash4 AVR Named Address Spaces
+
+  .. index:: __flash5 AVR Named Address Spaces
+
+  These are 16-bit address spaces locating data in section
   ``.progmem``N``.data`` where ``N`` refers to
   address space ``__flash``N````.
   The compiler sets the ``RAMPZ`` segment register appropriately 
   before reading data by means of the ``ELPM`` instruction.
 
 __memx
-  ``__memx`` AVR Named Address SpacesThis is a 24-bit address space that linearizes flash and RAM:
+
+  .. index:: __memx AVR Named Address Spaces
+
+  This is a 24-bit address space that linearizes flash and RAM:
   If the high bit of the address is set, data is read from
   RAM using the lower two bytes as RAM address.
   If the high bit of the address is clear, data is read from flash
@@ -146,7 +164,9 @@ Limitations and caveats
 M32C Named Address Spaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``__far`` M32C Named Address SpacesOn the M32C target, with the R8C and M16C CPU variants, variables
+.. index:: __far M32C Named Address Spaces
+
+On the M32C target, with the R8C and M16C CPU variants, variables
 qualified with ``__far`` are accessed using 32-bit addresses in
 order to access memory beyond the first 64 Ki bytes.  If
 ``__far`` is used with the M32CM or M32C CPU variants, it has no
@@ -155,7 +175,9 @@ effect.
 RL78 Named Address Spaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``__far`` RL78 Named Address SpacesOn the RL78 target, variables qualified with ``__far`` are accessed
+.. index:: __far RL78 Named Address Spaces
+
+On the RL78 target, variables qualified with ``__far`` are accessed
 with 32-bit pointers (20-bit addresses) rather than the default 16-bit
 addresses.  Non-far variables are assumed to appear in the topmost
 64 KiB of the address space.
@@ -163,7 +185,9 @@ addresses.  Non-far variables are assumed to appear in the topmost
 SPU Named Address Spaces
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-``__ea`` SPU Named Address SpacesOn the SPU target variables may be declared as
+.. index:: __ea SPU Named Address Spaces
+
+On the SPU target variables may be declared as
 belonging to another address space by qualifying the type with the
 ``__ea`` address space identifier:
 

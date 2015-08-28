@@ -102,7 +102,19 @@ not doing a link step.
   libc.  These entry points should be supplied through some other
   mechanism when this option is specified.
 
-  :option:`-lgcc`, use with :option:`-nostdlib`:option:`-nostdlib` and unresolved referencesunresolved references and :option:`-nostdlib`:option:`-lgcc`, use with :option:`-nodefaultlibs`:option:`-nodefaultlibs` and unresolved referencesunresolved references and :option:`-nodefaultlibs`One of the standard libraries bypassed by :option:`-nostdlib` and
+  .. index:: -lgcc, use with -nostdlib
+
+  .. index:: -nostdlib and unresolved references
+
+  .. index:: unresolved references and -nostdlib
+
+  .. index:: -lgcc, use with -nodefaultlibs
+
+  .. index:: -nodefaultlibs and unresolved references
+
+  .. index:: unresolved references and -nodefaultlibs
+
+  One of the standard libraries bypassed by :option:`-nostdlib` and
   :option:`-nodefaultlibs` is libgcc.a, a library of internal subroutines
   which GCC uses to overcome shortcomings of particular machines, or special
   needs for some languages.

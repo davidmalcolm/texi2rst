@@ -105,7 +105,7 @@
             
   <div class="section" id="pragmas-accepted-by-gcc">
 <span id="pragmas"></span><h1>Pragmas Accepted by GCC<a class="headerlink" href="#pragmas-accepted-by-gcc" title="Permalink to this headline">¶</a></h1>
-<p id="index-0"><a href="#id1"><span class="problematic" id="id2">``</span></a>#pragma``GCC supports several types of pragmas, primarily in order to compile
+<span class="target" id="index-0"></span><p id="index-1">GCC supports several types of pragmas, primarily in order to compile
 code originally written for other compilers.  Note that in general
 we do not recommend the use of pragmas; See <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>,
 for further explanation.</p>
@@ -114,30 +114,30 @@ for further explanation.</p>
 </ul>
 </div>
 <div class="section" id="arm-pragmas">
-<span id="id3"></span><h2>ARM Pragmas<a class="headerlink" href="#arm-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>ARM Pragmas<a class="headerlink" href="#arm-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>The ARM target defines pragmas for controlling the default addition of
 <tt class="docutils literal"><span class="pre">long_call</span></tt> and <tt class="docutils literal"><span class="pre">short_call</span></tt> attributes to functions.
 See <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>, for information about the effects of these
 attributes.</p>
 <p>long_calls</p>
 <blockquote>
-<div><p id="index-1">Set all subsequent functions to have the <tt class="docutils literal"><span class="pre">long_call</span></tt> attribute.</p>
+<div><p id="index-2">Set all subsequent functions to have the <tt class="docutils literal"><span class="pre">long_call</span></tt> attribute.</p>
 </div></blockquote>
 <p>no_long_calls</p>
 <blockquote>
-<div><p id="index-2">Set all subsequent functions to have the <tt class="docutils literal"><span class="pre">short_call</span></tt> attribute.</p>
+<div><p id="index-3">Set all subsequent functions to have the <tt class="docutils literal"><span class="pre">short_call</span></tt> attribute.</p>
 </div></blockquote>
 <p>long_calls_off</p>
 <blockquote>
-<div><p id="index-3">Do not affect the <tt class="docutils literal"><span class="pre">long_call</span></tt> or <tt class="docutils literal"><span class="pre">short_call</span></tt> attributes of
+<div><p id="index-4">Do not affect the <tt class="docutils literal"><span class="pre">long_call</span></tt> or <tt class="docutils literal"><span class="pre">short_call</span></tt> attributes of
 subsequent functions.</p>
 </div></blockquote>
 </div>
 <div class="section" id="m32c-pragmas">
-<span id="id4"></span><h2>M32C Pragmas<a class="headerlink" href="#m32c-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>M32C Pragmas<a class="headerlink" href="#m32c-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>GCC memregs <tt class="docutils literal"><span class="pre">number</span></tt></p>
 <blockquote>
-<div><p id="index-4">Overrides the command-line option <tt class="docutils literal"><span class="pre">-memregs=</span></tt> for the current
+<div><p id="index-5">Overrides the command-line option <tt class="docutils literal"><span class="pre">-memregs=</span></tt> for the current
 file.  Use with care!  This pragma must be before any function in the
 file, and mixing different memregs values in different objects may
 make them incompatible.  This pragma is useful when a
@@ -146,7 +146,7 @@ as it may allow you to reduce the number of memregs used.</p>
 </div></blockquote>
 <p>ADDRESS <tt class="docutils literal"><span class="pre">name````address</span></tt></p>
 <blockquote>
-<div><p id="index-5">For any declared symbols matching <tt class="docutils literal"><span class="pre">name</span></tt>, this does three things
+<div><p id="index-6">For any declared symbols matching <tt class="docutils literal"><span class="pre">name</span></tt>, this does three things
 to that symbol: it forces the symbol to be located at the given
 address (a number), it forces the symbol to be volatile, and it
 changes the symbol&#8217;s scope to be static.  This pragma exists for
@@ -160,17 +160,17 @@ instead).  Example:</p>
 </div></blockquote>
 </div>
 <div class="section" id="mep-pragmas">
-<span id="id5"></span><h2>MeP Pragmas<a class="headerlink" href="#mep-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>MeP Pragmas<a class="headerlink" href="#mep-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>custom io_volatile (on|off)</p>
 <blockquote>
-<div><p id="index-6">Overrides the command-line option <tt class="docutils literal"><span class="pre">-mio-volatile</span></tt> for the current
+<div><p id="index-7">Overrides the command-line option <tt class="docutils literal"><span class="pre">-mio-volatile</span></tt> for the current
 file.  Note that for compatibility with future GCC releases, this
 option should only be used once before any <tt class="docutils literal"><span class="pre">io</span></tt> variables in each
 file.</p>
 </div></blockquote>
 <p>GCC coprocessor available <tt class="docutils literal"><span class="pre">registers</span></tt></p>
 <blockquote>
-<div><p id="index-7">Specifies which coprocessor registers are available to the register
+<div><p id="index-8">Specifies which coprocessor registers are available to the register
 allocator.  <tt class="docutils literal"><span class="pre">registers</span></tt> may be a single register, register range
 separated by ellipses, or comma-separated list of those.  Example:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma GCC coprocessor available $c0...$c10, $c28</span>
@@ -179,7 +179,7 @@ separated by ellipses, or comma-separated list of those.  Example:</p>
 </div></blockquote>
 <p>GCC coprocessor call_saved <tt class="docutils literal"><span class="pre">registers</span></tt></p>
 <blockquote>
-<div><p id="index-8">Specifies which coprocessor registers are to be saved and restored by
+<div><p id="index-9">Specifies which coprocessor registers are to be saved and restored by
 any function using them.  <tt class="docutils literal"><span class="pre">registers</span></tt> may be a single register,
 register range separated by ellipses, or comma-separated list of
 those.  Example:</p>
@@ -189,7 +189,7 @@ those.  Example:</p>
 </div></blockquote>
 <p>GCC coprocessor subclass &#8216;(A|B|C|D)&#8217; = <tt class="docutils literal"><span class="pre">registers</span></tt></p>
 <blockquote>
-<div><p id="index-9">Creates and defines a register class.  These register classes can be
+<div><p id="index-10">Creates and defines a register class.  These register classes can be
 used by inline <tt class="docutils literal"><span class="pre">asm</span></tt> constructs.  <tt class="docutils literal"><span class="pre">registers</span></tt> may be a single
 register, register range separated by ellipses, or comma-separated
 list of those.  Example:</p>
@@ -201,7 +201,7 @@ list of those.  Example:</p>
 </div></blockquote>
 <p>GCC disinterrupt <tt class="docutils literal"><span class="pre">name</span></tt> , <tt class="docutils literal"><span class="pre">name</span></tt> ...</p>
 <blockquote>
-<div><p id="index-10">For the named functions, the compiler adds code to disable interrupts
+<div><p id="index-11">For the named functions, the compiler adds code to disable interrupts
 for the duration of those functions.  If any functions so named
 are not encountered in the source, a warning is emitted that the pragma is
 not used.  Examples:</p>
@@ -213,7 +213,7 @@ not used.  Examples:</p>
 </div></blockquote>
 <p>GCC call <tt class="docutils literal"><span class="pre">name</span></tt> , <tt class="docutils literal"><span class="pre">name</span></tt> ...</p>
 <blockquote>
-<div><p id="index-11">For the named functions, the compiler always uses a register-indirect
+<div><p id="index-12">For the named functions, the compiler always uses a register-indirect
 call model when calling the named functions.  Examples:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">extern</span> <span class="kt">int</span> <span class="nf">foo</span> <span class="p">();</span>
 <span class="cp">#pragma call foo</span>
@@ -222,7 +222,7 @@ call model when calling the named functions.  Examples:</p>
 </div></blockquote>
 </div>
 <div class="section" id="rs-6000-and-powerpc-pragmas">
-<span id="id6"></span><h2>RS/6000 and PowerPC Pragmas<a class="headerlink" href="#rs-6000-and-powerpc-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>RS/6000 and PowerPC Pragmas<a class="headerlink" href="#rs-6000-and-powerpc-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>The RS/6000 and PowerPC targets define one pragma for controlling
 whether or not the <tt class="docutils literal"><span class="pre">longcall</span></tt> attribute is added to function
 declarations by default.  This pragma overrides the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlongcall"><em class="xref std std-option">-mlongcall</em></a>
@@ -231,7 +231,7 @@ See <a class="reference internal" href="hardware-models-and-configurations.html#
 calls are and are not necessary.</p>
 <p>longcall (1)</p>
 <blockquote>
-<div><p id="index-12">Apply the <tt class="docutils literal"><span class="pre">longcall</span></tt> attribute to all subsequent function
+<div><p id="index-13">Apply the <tt class="docutils literal"><span class="pre">longcall</span></tt> attribute to all subsequent function
 declarations.</p>
 </div></blockquote>
 <dl class="docutils">
@@ -241,17 +241,17 @@ declarations.</dd>
 </dl>
 </div>
 <div class="section" id="darwin-pragmas">
-<span id="id7"></span><h2>Darwin Pragmas<a class="headerlink" href="#darwin-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>Darwin Pragmas<a class="headerlink" href="#darwin-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>The following pragmas are available for all architectures running the
 Darwin operating system.  These are useful for compatibility with other
 Mac OS compilers.</p>
 <p>mark <tt class="docutils literal"><span class="pre">tokens</span></tt>...</p>
 <blockquote>
-<div><p id="index-13">This pragma is accepted, but has no effect.</p>
+<div><p id="index-14">This pragma is accepted, but has no effect.</p>
 </div></blockquote>
 <p>options align=``alignment``</p>
 <blockquote>
-<div><p id="index-14">This pragma sets the alignment of fields in structures.  The values of
+<div><p id="index-15">This pragma sets the alignment of fields in structures.  The values of
 <tt class="docutils literal"><span class="pre">alignment</span></tt> may be <tt class="docutils literal"><span class="pre">mac68k</span></tt>, to emulate m68k alignment, or
 <tt class="docutils literal"><span class="pre">power</span></tt>, to emulate PowerPC alignment.  Uses of this pragma nest
 properly; to restore the previous setting, use <tt class="docutils literal"><span class="pre">reset</span></tt> for the
@@ -259,24 +259,24 @@ properly; to restore the previous setting, use <tt class="docutils literal"><spa
 </div></blockquote>
 <p>segment <tt class="docutils literal"><span class="pre">tokens</span></tt>...</p>
 <blockquote>
-<div><p id="index-15">This pragma is accepted, but has no effect.</p>
+<div><p id="index-16">This pragma is accepted, but has no effect.</p>
 </div></blockquote>
 <p>unused (<tt class="docutils literal"><span class="pre">var</span></tt> [, <tt class="docutils literal"><span class="pre">var</span></tt>]...)</p>
 <blockquote>
-<div><p id="index-16">This pragma declares variables to be possibly unused.  GCC does not
+<div><p id="index-17">This pragma declares variables to be possibly unused.  GCC does not
 produce warnings for the listed variables.  The effect is similar to
 that of the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute, except that this pragma may appear
 anywhere within the variables&#8217; scopes.</p>
 </div></blockquote>
 </div>
 <div class="section" id="solaris-pragmas">
-<span id="id8"></span><h2>Solaris Pragmas<a class="headerlink" href="#solaris-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>Solaris Pragmas<a class="headerlink" href="#solaris-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>The Solaris target supports <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">redefine_extname</span></tt>
 (Symbol-Renaming Pragmas).  It also supports additional
 <tt class="docutils literal"><span class="pre">#pragma</span></tt> directives for compatibility with the system compiler.</p>
 <p>align <tt class="docutils literal"><span class="pre">alignment</span></tt> (<tt class="docutils literal"><span class="pre">variable</span></tt> [, <tt class="docutils literal"><span class="pre">variable</span></tt>]...)</p>
 <blockquote>
-<div><p id="index-17">Increase the minimum alignment of each <tt class="docutils literal"><span class="pre">variable</span></tt> to <tt class="docutils literal"><span class="pre">alignment</span></tt>.
+<div><p id="index-18">Increase the minimum alignment of each <tt class="docutils literal"><span class="pre">variable</span></tt> to <tt class="docutils literal"><span class="pre">alignment</span></tt>.
 This is the same as GCC&#8217;s <tt class="docutils literal"><span class="pre">aligned</span></tt> attribute Variable
 Attributes).  Macro expansion occurs on the arguments to this pragma
 when compiling C and Objective-C.  It does not currently occur when
@@ -285,19 +285,19 @@ release.</p>
 </div></blockquote>
 <p>fini (<tt class="docutils literal"><span class="pre">function</span></tt> [, <tt class="docutils literal"><span class="pre">function</span></tt>]...)</p>
 <blockquote>
-<div><p id="index-18">This pragma causes each listed <tt class="docutils literal"><span class="pre">function</span></tt> to be called after
+<div><p id="index-19">This pragma causes each listed <tt class="docutils literal"><span class="pre">function</span></tt> to be called after
 main, or during shared module unloading, by adding a call to the
 <tt class="docutils literal"><span class="pre">.fini</span></tt> section.</p>
 </div></blockquote>
 <p>init (<tt class="docutils literal"><span class="pre">function</span></tt> [, <tt class="docutils literal"><span class="pre">function</span></tt>]...)</p>
 <blockquote>
-<div><p id="index-19">This pragma causes each listed <tt class="docutils literal"><span class="pre">function</span></tt> to be called during
+<div><p id="index-20">This pragma causes each listed <tt class="docutils literal"><span class="pre">function</span></tt> to be called during
 initialization (before <tt class="docutils literal"><span class="pre">main</span></tt>) or during shared module loading, by
 adding a call to the <tt class="docutils literal"><span class="pre">.init</span></tt> section.</p>
 </div></blockquote>
 </div>
 <div class="section" id="symbol-renaming-pragmas">
-<span id="id9"></span><h2>Symbol-Renaming Pragmas<a class="headerlink" href="#symbol-renaming-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>Symbol-Renaming Pragmas<a class="headerlink" href="#symbol-renaming-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>GCC supports a <tt class="docutils literal"><span class="pre">#pragma</span></tt> directive that changes the name used in
 assembly for a given declaration. While this pragma is supported on all
 platforms, it is intended primarily to provide compatibility with the
@@ -305,7 +305,7 @@ Solaris system headers. This effect can also be achieved using the asm
 labels extension (Asm Labels).</p>
 <p>redefine_extname <tt class="docutils literal"><span class="pre">oldname````newname</span></tt></p>
 <blockquote>
-<div><p id="index-20">This pragma gives the C function <tt class="docutils literal"><span class="pre">oldname</span></tt> the assembly symbol
+<div><p id="index-21">This pragma gives the C function <tt class="docutils literal"><span class="pre">oldname</span></tt> the assembly symbol
 <tt class="docutils literal"><span class="pre">newname</span></tt>.  The preprocessor macro <tt class="docutils literal"><span class="pre">__PRAGMA_REDEFINE_EXTNAME</span></tt>
 is defined if this pragma is available (currently on all platforms).</p>
 <p>This pragma and the asm labels extension interact in a complicated</p>
@@ -327,7 +327,7 @@ always the C-language name.</li>
 </ul>
 </div>
 <div class="section" id="structure-packing-pragmas">
-<span id="id10"></span><h2>Structure-Packing Pragmas<a class="headerlink" href="#structure-packing-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>Structure-Packing Pragmas<a class="headerlink" href="#structure-packing-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>For compatibility with Microsoft Windows compilers, GCC supports a
 set of <tt class="docutils literal"><span class="pre">#pragma</span></tt> directives that change the maximum alignment of
 members of structures (other than zero-width bit-fields), unions, and
@@ -359,13 +359,13 @@ declared.</li>
 </ul>
 </div>
 <div class="section" id="weak-pragmas">
-<span id="id11"></span><h2>Weak Pragmas<a class="headerlink" href="#weak-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>Weak Pragmas<a class="headerlink" href="#weak-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>For compatibility with SVR4, GCC supports a set of <tt class="docutils literal"><span class="pre">#pragma</span></tt>
 directives for declaring symbols to be weak, and defining weak
 aliases.</p>
 <p>#pragma weak <tt class="docutils literal"><span class="pre">symbol</span></tt></p>
 <blockquote>
-<div><p id="index-21">This pragma declares <tt class="docutils literal"><span class="pre">symbol</span></tt> to be weak, as if the declaration
+<div><p id="index-22">This pragma declares <tt class="docutils literal"><span class="pre">symbol</span></tt> to be weak, as if the declaration
 had the attribute of the same name.  The pragma may appear before
 or after the declaration of <tt class="docutils literal"><span class="pre">symbol</span></tt>.  It is not an error for
 <tt class="docutils literal"><span class="pre">symbol</span></tt> to never be defined at all.</p>
@@ -378,7 +378,7 @@ translation unit.</dd>
 </dl>
 </div>
 <div class="section" id="diagnostic-pragmas">
-<span id="id12"></span><h2>Diagnostic Pragmas<a class="headerlink" href="#diagnostic-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>Diagnostic Pragmas<a class="headerlink" href="#diagnostic-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>GCC allows the user to selectively enable or disable certain types of
 diagnostics, and change the kind of the diagnostic.  For example, a
 project&#8217;s policy might require that all sources compile with
@@ -388,7 +388,7 @@ diagnostics and treat them as errors depending on which preprocessor
 macros are defined.</p>
 <p>#pragma GCC diagnostic <tt class="docutils literal"><span class="pre">kind````option</span></tt></p>
 <blockquote>
-<div><p id="index-22">Modifies the disposition of a diagnostic.  Note that not all
+<div><p id="index-23">Modifies the disposition of a diagnostic.  Note that not all
 diagnostics are modifiable; at the moment only warnings (normally
 controlled by -W...) can be controlled, and not all of them.
 Use <em class="xref std std-option">-fdiagnostics-show-option</em> to determine which diagnostics
@@ -431,7 +431,7 @@ restored.</p>
 <p>compilation.</p>
 <p>#pragma message <tt class="docutils literal"><span class="pre">string</span></tt></p>
 <blockquote>
-<div><p id="index-23">Prints <tt class="docutils literal"><span class="pre">string</span></tt> as a compiler message on compilation.  The message
+<div><p id="index-24">Prints <tt class="docutils literal"><span class="pre">string</span></tt> as a compiler message on compilation.  The message
 is informational only, and is neither a compilation warning nor an error.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma message &quot;Compiling &quot; __FILE__ &quot;...&quot;</span>
 </pre></div>
@@ -448,10 +448,10 @@ TODO - Remember to fix this.</p>
 </div></blockquote>
 </div>
 <div class="section" id="visibility-pragmas">
-<span id="id13"></span><h2>Visibility Pragmas<a class="headerlink" href="#visibility-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>Visibility Pragmas<a class="headerlink" href="#visibility-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>#pragma GCC visibility push(<tt class="docutils literal"><span class="pre">visibility</span></tt>) #pragma GCC visibility pop</p>
 <blockquote>
-<div><p id="index-24">This pragma allows the user to set the visibility for multiple
+<div><p id="index-25">This pragma allows the user to set the visibility for multiple
 declarations without having to give each a visibility attribute
 (Function Attributes).</p>
 <p>In C++, #pragma GCC visibility affects only namespace-scope
@@ -461,18 +461,18 @@ member or instantiation, you must use an attribute.</p>
 </div></blockquote>
 </div>
 <div class="section" id="push-pop-macro-pragmas">
-<span id="id14"></span><h2>Push/Pop Macro Pragmas<a class="headerlink" href="#push-pop-macro-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>Push/Pop Macro Pragmas<a class="headerlink" href="#push-pop-macro-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>For compatibility with Microsoft Windows compilers, GCC supports
 #pragma push_macro(<tt class="docutils literal"><span class="pre">&quot;macro_name&quot;</span></tt>)
 and #pragma pop_macro(<tt class="docutils literal"><span class="pre">&quot;macro_name&quot;</span></tt>).</p>
 <p>#pragma push_macro(<tt class="docutils literal"><span class="pre">&quot;macro_name&quot;</span></tt>)</p>
 <blockquote>
-<div><p id="index-25">This pragma saves the value of the macro named as <tt class="docutils literal"><span class="pre">macro_name</span></tt> to
+<div><p id="index-26">This pragma saves the value of the macro named as <tt class="docutils literal"><span class="pre">macro_name</span></tt> to
 the top of the stack for this macro.</p>
 </div></blockquote>
 <p>#pragma pop_macro(<tt class="docutils literal"><span class="pre">&quot;macro_name&quot;</span></tt>)</p>
 <blockquote>
-<div><p id="index-26">This pragma sets the value of the macro named as <tt class="docutils literal"><span class="pre">macro_name</span></tt> to
+<div><p id="index-27">This pragma sets the value of the macro named as <tt class="docutils literal"><span class="pre">macro_name</span></tt> to
 the value on top of the stack for this macro. If the stack for
 <tt class="docutils literal"><span class="pre">macro_name</span></tt> is empty, the value of the macro remains unchanged.</p>
 <p>For example:</p>
@@ -489,10 +489,10 @@ the value on top of the stack for this macro. If the stack for
 <span class="pre">push_macro</span></tt> and restored by <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">pop_macro</span></tt>.</p>
 </div>
 <div class="section" id="function-specific-option-pragmas">
-<span id="id15"></span><h2>Function Specific Option Pragmas<a class="headerlink" href="#function-specific-option-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id13"></span><h2>Function Specific Option Pragmas<a class="headerlink" href="#function-specific-option-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>#pragma GCC target (<tt class="docutils literal"><span class="pre">&quot;string&quot;</span></tt>...)</p>
 <blockquote>
-<div><p id="index-27">This pragma allows you to set target specific options for functions
+<div><p id="index-28">This pragma allows you to set target specific options for functions
 defined later in the source file.  One or more strings can be
 specified.  Each function that is defined after this point is as
 if <tt class="docutils literal"><span class="pre">attribute((target(&quot;STRING&quot;)))</span></tt> was specified for that
@@ -504,7 +504,7 @@ x86, PowerPC, and Nios II targets only.</p>
 </div></blockquote>
 <p>#pragma GCC optimize (<tt class="docutils literal"><span class="pre">&quot;string&quot;</span></tt>...)</p>
 <blockquote>
-<div><p id="index-28">This pragma allows you to set global optimization options for functions
+<div><p id="index-29">This pragma allows you to set global optimization options for functions
 defined later in the source file.  One or more strings can be
 specified.  Each function that is defined after this point is as
 if <tt class="docutils literal"><span class="pre">attribute((optimize(&quot;STRING&quot;)))</span></tt> was specified for that
@@ -514,7 +514,7 @@ See <a class="reference internal" href="declaring-attributes-of-functions.html#f
 </div></blockquote>
 <p>#pragma GCC push_options #pragma GCC pop_options</p>
 <blockquote>
-<div><span class="target" id="index-29"></span><p id="index-30">These pragmas maintain a stack of the current target and optimization
+<div><span class="target" id="index-30"></span><p id="index-31">These pragmas maintain a stack of the current target and optimization
 options.  It is intended for include files where you temporarily want
 to switch to using a different #pragma GCC target or
 #pragma GCC optimize and then to pop back to the previous
@@ -522,16 +522,16 @@ options.</p>
 </div></blockquote>
 <p>#pragma GCC reset_options</p>
 <blockquote>
-<div><p id="index-31">This pragma clears the current <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">target</span></tt> and
+<div><p id="index-32">This pragma clears the current <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">target</span></tt> and
 <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">optimize</span></tt> to use the default switches as specified
 on the command line.</p>
 </div></blockquote>
 </div>
 <div class="section" id="loop-specific-pragmas">
-<span id="id16"></span><h2>Loop-Specific Pragmas<a class="headerlink" href="#loop-specific-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id14"></span><h2>Loop-Specific Pragmas<a class="headerlink" href="#loop-specific-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>#pragma GCC ivdep</p>
 <blockquote>
-<div><p id="index-32">With this pragma, the programmer asserts that there are no loop-carried</p>
+<div><p id="index-33">With this pragma, the programmer asserts that there are no loop-carried</p>
 </div></blockquote>
 <p>dependencies which would prevent consecutive iterations of
 the following loop from executing concurrently with SIMD

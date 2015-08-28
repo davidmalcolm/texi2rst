@@ -43,7 +43,8 @@ Common Variable Attributes
 
 The following attributes are supported on most targets.
 
-``aligned`` variable attribute
+.. index:: aligned variable attribute
+
 aligned (``alignment``)
   This attribute specifies a minimum alignment for the variable or
   structure field, measured in bytes.  For example, the declaration:
@@ -111,7 +112,10 @@ aligned (``alignment``)
   (Common Function Attributes.)
 
 cleanup (``cleanup_function``)
-  ``cleanup`` variable attributeThe ``cleanup`` attribute runs a function when the variable goes
+
+  .. index:: cleanup variable attribute
+
+  The ``cleanup`` attribute runs a function when the variable goes
   out of scope.  This attribute can only be applied to auto function
   scope variables; it may not be applied to parameters or variables
   with static storage duration.  The function must take one parameter,
@@ -127,7 +131,11 @@ cleanup (``cleanup_function``)
 
 .. option:: common, -fcommon, -fno-common
 
-  ``common`` variable attribute``nocommon`` variable attributeThe ``common`` attribute requests GCC to place a variable in
+  .. index:: common variable attribute
+
+  .. index:: nocommon variable attribute
+
+  The ``common`` attribute requests GCC to place a variable in
   'common' storage.  The ``nocommon`` attribute requests the
   opposite-to allocate space for it directly.
 
@@ -135,7 +143,10 @@ cleanup (``cleanup_function``)
   :option:`-fno-common` and :option:`-fcommon` flags respectively.
 
 deprecated deprecated (``msg``)
-  ``deprecated`` variable attributeThe ``deprecated`` attribute results in a warning if the variable
+
+  .. index:: deprecated variable attribute
+
+  The ``deprecated`` attribute results in a warning if the variable
   is used anywhere in the source file.  This is useful when identifying
   variables that are expected to be removed in a future version of a
   program.  The warning also includes the location of the declaration
@@ -158,7 +169,10 @@ deprecated deprecated (``msg``)
   Common Type Attributes).
 
 mode (``mode``)
-  ``mode`` variable attributeThis attribute specifies the data type for the declaration-whichever
+
+  .. index:: mode variable attribute
+
+  This attribute specifies the data type for the declaration-whichever
   type corresponds to the mode ``mode``.  This in effect lets you
   request an integer or floating-point type according to its width.
 
@@ -168,7 +182,10 @@ mode (``mode``)
   or ``__pointer__`` for the mode used to represent pointers.
 
 packed
-  ``packed`` variable attributeThe ``packed`` attribute specifies that a variable or structure field
+
+  .. index:: packed variable attribute
+
+  The ``packed`` attribute specifies that a variable or structure field
   should have the smallest possible alignment-one byte for a variable,
   and one bit for a field, unless you specify a larger value with the
   ``aligned`` attribute.
@@ -191,7 +208,10 @@ packed
   :option:`-Wpacked-bitfield-compat` for more information.
 
 section ("``section-name``")
-  ``section`` variable attributeNormally, the compiler places the objects it generates in sections like
+
+  .. index:: section variable attribute
+
+  Normally, the compiler places the objects it generates in sections like
   ``data`` and ``bss``.  Sometimes, however, you need additional sections,
   or you need certain particular variables to appear in special sections,
   for example to map to special hardware.  The ``section``
@@ -238,7 +258,10 @@ section ("``section-name``")
   section, consider using the facilities of the linker instead.
 
 tls_model ("``tls_model``")
-  ``tls_model`` variable attributeThe ``tls_model`` attribute sets thread-local storage model
+
+  .. index:: tls_model variable attribute
+
+  The ``tls_model`` attribute sets thread-local storage model
   (Thread-Local) of a particular ``__thread`` variable,
   overriding :option:`-ftls-model=` command-line switch on a per-variable
   basis.
@@ -248,12 +271,18 @@ tls_model ("``tls_model``")
   Not all targets support this attribute.
 
 unused
-  ``unused`` variable attributeThis attribute, attached to a variable, means that the variable is meant
+
+  .. index:: unused variable attribute
+
+  This attribute, attached to a variable, means that the variable is meant
   to be possibly unused.  GCC does not produce a warning for this
   variable.
 
 used
-  ``used`` variable attributeThis attribute, attached to a variable with static storage, means that
+
+  .. index:: used variable attribute
+
+  This attribute, attached to a variable with static storage, means that
   the variable must be emitted even if it appears that the variable is not
   referenced.
 
@@ -262,7 +291,10 @@ used
   class itself is instantiated.
 
 vector_size (``bytes``)
-  ``vector_size`` variable attributeThis attribute specifies the vector size for the variable, measured in
+
+  .. index:: vector_size variable attribute
+
+  This attribute specifies the vector size for the variable, measured in
   bytes.  For example, the declaration:
 
   .. code-block:: c++
@@ -289,7 +321,10 @@ vector_size (``bytes``)
   the ``int``.
 
 weak
-  ``weak`` variable attributeThe ``weak`` attribute is described in
+
+  .. index:: weak variable attribute
+
+  The ``weak`` attribute is described in
   Common Function Attributes.
 
   .. _avr-variable-attributes:
@@ -298,7 +333,10 @@ AVR Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 progmem
-  ``progmem`` variable attribute, AVRThe ``progmem`` attribute is used on the AVR to place read-only
+
+  .. index:: progmem variable attribute, AVR
+
+  The ``progmem`` attribute is used on the AVR to place read-only
   data in the non-volatile program memory (flash). The ``progmem``
   attribute accomplishes this by putting respective variables into a
   section whose name starts with ``.progmem``.
@@ -332,7 +370,10 @@ progmem
   an alternate way to locate and access data in flash memory.
 
 io io (``addr``)
-  ``io`` variable attribute, AVRVariables with the ``io`` attribute are used to address
+
+  .. index:: io variable attribute, AVR
+
+  Variables with the ``io`` attribute are used to address
   memory-mapped peripherals in the io address range.
   If an address is specified, the variable
   is assigned that address, and the value is interpreted as an
@@ -355,13 +396,19 @@ io io (``addr``)
     extern volatile int porta __attribute__((io));
 
 io_low io_low (``addr``)
-  ``io_low`` variable attribute, AVRThis is like the ``io`` attribute, but additionally it informs the
+
+  .. index:: io_low variable attribute, AVR
+
+  This is like the ``io`` attribute, but additionally it informs the
   compiler that the object lies in the lower half of the I/O area,
   allowing the use of ``cbi``, ``sbi``, ``sbic`` and ``sbis``
   instructions.
 
 address address (``addr``)
-  ``address`` variable attribute, AVRVariables with the ``address`` attribute are used to address
+
+  .. index:: address variable attribute, AVR
+
+  Variables with the ``address`` attribute are used to address
   memory-mapped peripherals that may lie outside the io address range.
 
   .. code-block:: c++
@@ -376,14 +423,24 @@ Blackfin Variable Attributes
 Three attributes are currently defined for the Blackfin.
 
 l1_data l1_data_A l1_data_B
-  ``l1_data`` variable attribute, Blackfin``l1_data_A`` variable attribute, Blackfin``l1_data_B`` variable attribute, BlackfinUse these attributes on the Blackfin to place the variable into L1 Data SRAM.
+
+  .. index:: l1_data variable attribute, Blackfin
+
+  .. index:: l1_data_A variable attribute, Blackfin
+
+  .. index:: l1_data_B variable attribute, Blackfin
+
+  Use these attributes on the Blackfin to place the variable into L1 Data SRAM.
   Variables with ``l1_data`` attribute are put into the specific section
   named ``.l1.data``. Those with ``l1_data_A`` attribute are put into
   the specific section named ``.l1.data.A``. Those with ``l1_data_B``
   attribute are put into the specific section named ``.l1.data.B``.
 
 l2
-  ``l2`` variable attribute, BlackfinUse this attribute on the Blackfin to place the variable into L2 SRAM.
+
+  .. index:: l2 variable attribute, Blackfin
+
+  Use this attribute on the Blackfin to place the variable into L2 SRAM.
   Variables with ``l2`` attribute are put into the specific section
   named ``.l2.data``.
 
@@ -395,7 +452,9 @@ H8/300 Variable Attributes
 These variable attributes are available for H8/300 targets:
 
 eightbit_data
-  ``eightbit_data`` variable attribute, H8/300
+
+  .. index:: eightbit_data variable attribute, H8/300
+
   .. index:: eight-bit data on the H8/300, H8/300H, and H8S
 
   Use this attribute on the H8/300, H8/300H, and H8S to indicate that the specified
@@ -408,7 +467,9 @@ eightbit_data
   this attribute to work correctly.
 
 tiny_data
-  ``tiny_data`` variable attribute, H8/300
+
+  .. index:: tiny_data variable attribute, H8/300
+
   .. index:: tiny data section on the H8/300H and H8S
 
   Use this attribute on the H8/300H and H8S to indicate that the specified
@@ -425,7 +486,10 @@ IA-64 Variable Attributes
 The IA-64 back end supports the following variable attribute:
 
 model (``model-name``)
-  ``model`` variable attribute, IA-64On IA-64, use this attribute to set the addressability of an object.
+
+  .. index:: model variable attribute, IA-64
+
+  On IA-64, use this attribute to set the addressability of an object.
   At present, the only supported identifier for ``model-name`` is
   ``small``, indicating addressability via 'small' (22-bit)
   addresses (so that their addresses can be loaded with the ``addl``
@@ -441,7 +505,9 @@ M32R/D Variable Attributes
 One attribute is currently defined for the M32R/D.
 
 model (``model-name``)
-  ``model-name`` variable attribute, M32R/D
+
+  .. index:: model-name variable attribute, M32R/D
+
   .. index:: variable addressability on the M32R/D
 
   Use this attribute on the M32R/D to set the addressability of an object.
@@ -470,27 +536,42 @@ addition to these memory regions, the MeP target has a separate 16-bit
 control bus which is specified with ``cb`` attributes.
 
 based
-  ``based`` variable attribute, MePAny variable with the ``based`` attribute is assigned to the
+
+  .. index:: based variable attribute, MeP
+
+  Any variable with the ``based`` attribute is assigned to the
   ``.based`` section, and is accessed with relative to the
   ``$tp`` register.
 
 tiny
-  ``tiny`` variable attribute, MePLikewise, the ``tiny`` attribute assigned variables to the
+
+  .. index:: tiny variable attribute, MeP
+
+  Likewise, the ``tiny`` attribute assigned variables to the
   ``.tiny`` section, relative to the ``$gp`` register.
 
 near
-  ``near`` variable attribute, MePVariables with the ``near`` attribute are assumed to have addresses
+
+  .. index:: near variable attribute, MeP
+
+  Variables with the ``near`` attribute are assumed to have addresses
   that fit in a 24-bit addressing mode.  This is the default for large
   variables (``-mtiny=4`` is the default) but this attribute can
   override ``-mtiny=`` for small variables, or override ``-ml``.
 
 far
-  ``far`` variable attribute, MePVariables with the ``far`` attribute are addressed using a full
+
+  .. index:: far variable attribute, MeP
+
+  Variables with the ``far`` attribute are addressed using a full
   32-bit address.  Since this covers the entire memory space, this
   allows modules to make no assumptions about where variables might be
   stored.
 
-io``io`` variable attribute, MeP io (``addr``)
+io
+.. index:: io variable attribute, MeP
+
+ io (``addr``)
   Variables with the ``io`` attribute are used to address
   memory-mapped peripherals.  If an address is specified, the variable
   is assigned that address, else it is not assigned an address (it is
@@ -501,7 +582,10 @@ io``io`` variable attribute, MeP io (``addr``)
     int timer_count __attribute__((io(0x123)));
 
 cb cb (``addr``)
-  ``cb`` variable attribute, MePVariables with the ``cb`` attribute are used to access the control
+
+  .. index:: cb variable attribute, MeP
+
+  Variables with the ``cb`` attribute are used to access the control
   bus, using special instructions.  ``addr`` indicates the control bus
   address.  Example:
 
@@ -519,11 +603,19 @@ x86 Variable Attributes for additional Windows compatibility
 attributes available on all x86 targets.
 
 dllimport dllexport
-  ``dllimport`` variable attribute``dllexport`` variable attributeThe ``dllimport`` and ``dllexport`` attributes are described in
+
+  .. index:: dllimport variable attribute
+
+  .. index:: dllexport variable attribute
+
+  The ``dllimport`` and ``dllexport`` attributes are described in
   Microsoft Windows Function Attributes.
 
 selectany
-  ``selectany`` variable attributeThe ``selectany`` attribute causes an initialized global variable to
+
+  .. index:: selectany variable attribute
+
+  The ``selectany`` attribute causes an initialized global variable to
   have link-once semantics.  When multiple definitions of the variable are
   encountered by the linker, the first is selected and the remainder are
   discarded.  Following usage by the Microsoft compiler, the linker is told
@@ -543,7 +635,10 @@ selectany
   compilers.
 
 shared
-  ``shared`` variable attributeOn Microsoft Windows, in addition to putting variable definitions in a named
+
+  .. index:: shared variable attribute
+
+  On Microsoft Windows, in addition to putting variable definitions in a named
   section, the section can also be shared among all running copies of an
   executable or DLL.  For example, this small program defines shared data
   by putting it in a named section ``shared`` and marking the section
@@ -575,10 +670,16 @@ PowerPC Variable Attributes
 Three attributes currently are defined for PowerPC configurations:
 ``altivec``, ``ms_struct`` and ``gcc_struct``.
 
-``ms_struct`` variable attribute, PowerPC``gcc_struct`` variable attribute, PowerPCFor full documentation of the struct attributes please see the
+.. index:: ms_struct variable attribute, PowerPC
+
+.. index:: gcc_struct variable attribute, PowerPC
+
+For full documentation of the struct attributes please see the
 documentation in x86 Variable Attributes.
 
-``altivec`` variable attribute, PowerPCFor documentation of ``altivec`` attribute please see the
+.. index:: altivec variable attribute, PowerPC
+
+For documentation of ``altivec`` attribute please see the
 documentation in PowerPC Type Attributes.
 
 .. _spu-variable-attributes:
@@ -586,7 +687,9 @@ documentation in PowerPC Type Attributes.
 SPU Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-``spu_vector`` variable attribute, SPUThe SPU supports the ``spu_vector`` attribute for variables.  For
+.. index:: spu_vector variable attribute, SPU
+
+The SPU supports the ``spu_vector`` attribute for variables.  For
 documentation of this attribute please see the documentation in
 SPU Type Attributes.
 
@@ -599,7 +702,12 @@ Two attributes are currently defined for x86 configurations:
 ``ms_struct`` and ``gcc_struct``.
 
 ms_struct gcc_struct
-  ``ms_struct`` variable attribute, x86``gcc_struct`` variable attribute, x86If ``packed`` is used on a structure, or if bit-fields are used,
+
+  .. index:: ms_struct variable attribute, x86
+
+  .. index:: gcc_struct variable attribute, x86
+
+  If ``packed`` is used on a structure, or if bit-fields are used,
   it may be that the Microsoft ABI lays out the structure differently
   than the way GCC normally does.  Particularly when moving packed
   data between functions compiled with GCC and the native Microsoft compiler
@@ -723,7 +831,10 @@ One attribute is currently defined for xstormy16 configurations:
 ``below100``.
 
 below100
-  ``below100`` variable attribute, Xstormy16If a variable has the ``below100`` attribute (``BELOW100`` is
+
+  .. index:: below100 variable attribute, Xstormy16
+
+  If a variable has the ``below100`` attribute (``BELOW100`` is
   allowed also), GCC places the variable in the first 0x100 bytes of
   memory and use special opcodes to access it.  Such variables are
   placed in either the ``.bss_below100`` section or the

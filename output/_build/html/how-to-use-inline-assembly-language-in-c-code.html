@@ -60,9 +60,17 @@
 <li><a class="reference internal" href="#extended-asm-assembler-instructions-with-c-expression-operands">Extended Asm - Assembler Instructions with C Expression Operands</a></li>
 <li><a class="reference internal" href="#id1">Qualifiers</a></li>
 <li><a class="reference internal" href="#id2">Parameters</a></li>
-<li><a class="reference internal" href="#id3">Remarks</a></li>
+<li><a class="reference internal" href="#id3">Remarks</a><ul>
+<li><a class="reference internal" href="#volatile">Volatile</a></li>
+<li><a class="reference internal" href="#assembler-template">Assembler Template</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#special-format-strings">Special format strings</a><ul>
-<li><a class="reference internal" href="#goto-labels">Goto Labels</a><ul>
+<li><a class="reference internal" href="#output-operands">Output Operands</a></li>
+<li><a class="reference internal" href="#input-operands">Input Operands</a></li>
+<li><a class="reference internal" href="#clobbers">Clobbers</a></li>
+<li><a class="reference internal" href="#goto-labels">Goto Labels</a></li>
+<li><a class="reference internal" href="#x86-operand-modifiers">x86 Operand Modifiers</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#simple-constraints">Simple Constraints</a></li>
@@ -115,9 +123,7 @@
             
   <div class="section" id="how-to-use-inline-assembly-language-in-c-code">
 <span id="using-assembly-language-with-c"></span><h1>How to Use Inline Assembly Language in C Code<a class="headerlink" href="#how-to-use-inline-assembly-language-in-c-code" title="Permalink to this headline">¶</a></h1>
-<p><tt class="docutils literal"><span class="pre">asm</span></tt> keyword
-.. index:: assembly language in C</p>
-<span class="target" id="index-0"></span><p id="index-1">The <tt class="docutils literal"><span class="pre">asm</span></tt> keyword allows you to embed assembler instructions
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">The <tt class="docutils literal"><span class="pre">asm</span></tt> keyword allows you to embed assembler instructions
 within C code.  GCC provides two forms of inline <tt class="docutils literal"><span class="pre">asm</span></tt>
 statements.  A <em class="dfn">basic ``asm``</em> statement is one with no
 operands (Basic Asm), while an <em class="dfn">extended ``asm``</em>
@@ -133,9 +139,7 @@ for a C symbol, or to place a C variable in a specific register.</p>
 </div>
 <div class="section" id="basic-asm-assembler-instructions-without-operands">
 <span id="basic-asm"></span><h2>Basic Asm - Assembler Instructions Without Operands<a class="headerlink" href="#basic-asm-assembler-instructions-without-operands" title="Permalink to this headline">¶</a></h2>
-<p>basic <tt class="docutils literal"><span class="pre">asm</span></tt>
-.. index:: assembly language in C, basic</p>
-<p>A basic <tt class="docutils literal"><span class="pre">asm</span></tt> statement has the following syntax:</p>
+<span class="target" id="index-4"></span><p id="index-5">A basic <tt class="docutils literal"><span class="pre">asm</span></tt> statement has the following syntax:</p>
 <div class="highlight-c++"><pre>asm [ volatile ] ( ``AssemblerInstructions`` )</pre>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">asm</span></tt> keyword is a GNU extension.
@@ -224,9 +228,7 @@ mechanism to provide different assembler strings for different dialects.</p>
 </div>
 <div class="section" id="extended-asm-assembler-instructions-with-c-expression-operands">
 <span id="extended-asm"></span><h2>Extended Asm - Assembler Instructions with C Expression Operands<a class="headerlink" href="#extended-asm-assembler-instructions-with-c-expression-operands" title="Permalink to this headline">¶</a></h2>
-<p>extended <tt class="docutils literal"><span class="pre">asm</span></tt>
-.. index:: assembly language in C, extended</p>
-<p>With extended <tt class="docutils literal"><span class="pre">asm</span></tt> you can read and write C variables from
+<span class="target" id="index-6"></span><p id="index-7">With extended <tt class="docutils literal"><span class="pre">asm</span></tt> you can read and write C variables from
 assembler and perform jumps from assembler code to C labels.
 Extended <tt class="docutils literal"><span class="pre">asm</span></tt> syntax uses colons (:) to delimit
 the operand parameters after the assembler template:</p>
@@ -253,11 +255,11 @@ various <a class="reference internal" href="options-controlling-the-preprocessor
 <dd>The typical use of extended <tt class="docutils literal"><span class="pre">asm</span></tt> statements is to manipulate input
 values to produce output values. However, your <tt class="docutils literal"><span class="pre">asm</span></tt> statements may
 also produce side effects. If so, you may need to use the <tt class="docutils literal"><span class="pre">volatile</span></tt>
-qualifier to disable certain optimizations. See <em class="xref std std-ref">volatile</em>.</dd>
+qualifier to disable certain optimizations. See <a class="reference internal" href="#volatile"><em>Volatile</em></a>.</dd>
 <dt>goto</dt>
 <dd>This qualifier informs the compiler that the <tt class="docutils literal"><span class="pre">asm</span></tt> statement may
 perform a jump to one of the labels listed in the <tt class="docutils literal"><span class="pre">GotoLabels</span></tt>.
-See <em class="xref std std-ref">gotolabels</em>.</dd>
+See <a class="reference internal" href="#gotolabels"><em>Goto Labels</em></a>.</dd>
 </dl>
 </div>
 <div class="section" id="id2">
@@ -266,22 +268,22 @@ See <em class="xref std std-ref">gotolabels</em>.</dd>
 <dt>AssemblerTemplate</dt>
 <dd>This is a literal string that is the template for the assembler code. It is a
 combination of fixed text and tokens that refer to the input, output,
-and goto parameters. See <em class="xref std std-ref">assemblertemplate</em>.</dd>
+and goto parameters. See <a class="reference internal" href="#assemblertemplate"><em>Assembler Template</em></a>.</dd>
 <dt>OutputOperands</dt>
 <dd>A comma-separated list of the C variables modified by the instructions in the
-<tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt>.  An empty list is permitted.  See <em class="xref std std-ref">outputoperands</em>.</dd>
+<tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt>.  An empty list is permitted.  See <a class="reference internal" href="#outputoperands"><em>Output Operands</em></a>.</dd>
 <dt>InputOperands</dt>
 <dd>A comma-separated list of C expressions read by the instructions in the
-<tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt>.  An empty list is permitted.  See <em class="xref std std-ref">inputoperands</em>.</dd>
+<tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt>.  An empty list is permitted.  See <a class="reference internal" href="#inputoperands"><em>Input Operands</em></a>.</dd>
 <dt>Clobbers</dt>
 <dd>A comma-separated list of registers or other values changed by the
 <tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt>, beyond those listed as outputs.
-An empty list is permitted.  See <em class="xref std std-ref">clobbers</em>.</dd>
+An empty list is permitted.  See <a class="reference internal" href="#clobbers"><em>Clobbers</em></a>.</dd>
 <dt>GotoLabels</dt>
 <dd><p class="first">When you are using the <tt class="docutils literal"><span class="pre">goto</span></tt> form of <tt class="docutils literal"><span class="pre">asm</span></tt>, this section contains
 the list of all C labels to which the code in the
 <tt class="docutils literal"><span class="pre">AssemblerTemplate</span></tt> may jump.
-See <em class="xref std std-ref">gotolabels</em>.</p>
+See <a class="reference internal" href="#gotolabels"><em>Goto Labels</em></a>.</p>
 <p><tt class="docutils literal"><span class="pre">asm</span></tt> statements may not perform jumps into other <tt class="docutils literal"><span class="pre">asm</span></tt> statements,
 only to the listed <tt class="docutils literal"><span class="pre">GotoLabels</span></tt>.
 GCC&#8217;s optimizers do not know about other jumps; therefore they cannot take
@@ -316,10 +318,9 @@ example for i386 using <tt class="docutils literal"><span class="pre">asm</span>
 </pre></div>
 </div>
 <p>This code copies <tt class="docutils literal"><span class="pre">src</span></tt> to <tt class="docutils literal"><span class="pre">dst</span></tt> and add 1 to <tt class="docutils literal"><span class="pre">dst</span></tt>.</p>
-<p>Volatile
-Volatile
-~~~~~~~~</p>
-<p>volatile <tt class="docutils literal"><span class="pre">asm````asm</span></tt> volatileGCC&#8217;s optimizers sometimes discard <tt class="docutils literal"><span class="pre">asm</span></tt> statements if they determine
+<div class="section" id="volatile">
+<span id="id4"></span><h3>Volatile<a class="headerlink" href="#volatile" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-8"></span><p id="index-9">GCC&#8217;s optimizers sometimes discard <tt class="docutils literal"><span class="pre">asm</span></tt> statements if they determine
 there is no need for the output variables. Also, the optimizers may move
 code out of loops if they believe that the code will always return the same
 result (i.e. none of its input values change between calls). Using the
@@ -423,10 +424,10 @@ assembly code when optimizing. This can lead to unexpected duplicate symbol
 errors during compilation if your asm code defines symbols or labels.
 Using %=
 (AssemblerTemplate) may help resolve this problem.</p>
-<p>AssemblerTemplate
-Assembler Template
-~~~~~~~~~~~~~~~~~~</p>
-<p><tt class="docutils literal"><span class="pre">asm</span></tt> assembler templateAn assembler template is a literal string containing assembler instructions.
+</div>
+<div class="section" id="assembler-template">
+<span id="assemblertemplate"></span><h3>Assembler Template<a class="headerlink" href="#assembler-template" title="Permalink to this headline">¶</a></h3>
+<p id="index-10">An assembler template is a literal string containing assembler instructions.
 The compiler replaces tokens in the template that refer
 to inputs, outputs, and goto labels,
 and then outputs the resulting string to the assembler. The
@@ -455,6 +456,7 @@ it has no visibility of any
 symbols it references. This may result in GCC discarding those symbols as
 unreferenced unless they are also listed as input, output, or goto operands.</p>
 </div>
+</div>
 <div class="section" id="special-format-strings">
 <h2>Special format strings<a class="headerlink" href="#special-format-strings" title="Permalink to this headline">¶</a></h2>
 <p>In addition to the tokens described by the input, output, and goto operands,
@@ -468,7 +470,7 @@ statement in the entire compilation. This option is useful when creating local
 labels and referring to them multiple times in a single template that
 generates multiple assembler instructions.</dd>
 <dt>%{ %| %}</dt>
-<dd>Outputs {, <a href="#id4"><span class="problematic" id="id5">|</span></a>, and } characters (respectively)
+<dd>Outputs {, <a href="#id5"><span class="problematic" id="id6">|</span></a>, and } characters (respectively)
 into the assembler code.  When unescaped, these characters have special
 meaning to indicate multiple assembler dialects, as described below.</dd>
 </dl>
@@ -512,10 +514,9 @@ assembler template such as this:</p>
 </pre></div>
 </div>
 <p>There is no support for nesting dialect alternatives.</p>
-<p>OutputOperands
-Output Operands
-~~~~~~~~~~~~~~~</p>
-<p><tt class="docutils literal"><span class="pre">asm</span></tt> output operandsAn <tt class="docutils literal"><span class="pre">asm</span></tt> statement has zero or more output operands indicating the names
+<div class="section" id="output-operands">
+<span id="outputoperands"></span><h3>Output Operands<a class="headerlink" href="#output-operands" title="Permalink to this headline">¶</a></h3>
+<p id="index-11">An <tt class="docutils literal"><span class="pre">asm</span></tt> statement has zero or more output operands indicating the names
 of C variables modified by the assembler code.</p>
 <p>In this i386 example, <tt class="docutils literal"><span class="pre">old</span></tt> (referred to in the template string as
 <tt class="docutils literal"><span class="pre">%0</span></tt>) and <tt class="docutils literal"><span class="pre">*Base</span></tt> (as <tt class="docutils literal"><span class="pre">%1</span></tt>) are outputs and <tt class="docutils literal"><span class="pre">Offset</span></tt>
@@ -662,10 +663,10 @@ might already have the current value of the <tt class="docutils literal"><span c
 pointed to by <tt class="docutils literal"><span class="pre">e</span></tt>
 in a register, you can enable it to choose the best location
 for <tt class="docutils literal"><span class="pre">d</span></tt> by specifying both constraints.</p>
-<p>InputOperands
-Input Operands
-~~~~~~~~~~~~~~</p>
-<p><tt class="docutils literal"><span class="pre">asm</span></tt> input operands``asm`` expressionsInput operands make values from C variables and expressions available to the
+</div>
+<div class="section" id="input-operands">
+<span id="inputoperands"></span><h3>Input Operands<a class="headerlink" href="#input-operands" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-12"></span><p id="index-13">Input operands make values from C variables and expressions available to the
 assembly code.</p>
 <p>Operands are separated by commas.  Each operand has this format:</p>
 <div class="highlight-c++"><pre>[ [``asmSymbolicName``] ] ``constraint`` (``cexpression``)</pre>
@@ -749,10 +750,10 @@ the generated assembler code.</p>
    <span class="o">:</span> <span class="s">&quot;r&quot;</span> <span class="p">(</span><span class="n">test</span><span class="p">),</span> <span class="s">&quot;r&quot;</span> <span class="p">(</span><span class="k">new</span><span class="p">),</span> <span class="s">&quot;[result]&quot;</span> <span class="p">(</span><span class="n">old</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>Clobbers
-Clobbers
-~~~~~~~~</p>
-<p><tt class="docutils literal"><span class="pre">asm</span></tt> clobbersWhile the compiler is aware of changes to entries listed in the output
+</div>
+<div class="section" id="clobbers">
+<span id="id7"></span><h3>Clobbers<a class="headerlink" href="#clobbers" title="Permalink to this headline">¶</a></h3>
+<p id="index-14">While the compiler is aware of changes to entries listed in the output
 operands, the inline <tt class="docutils literal"><span class="pre">asm</span></tt> code may modify more than just the outputs. For
 example, calculations may require additional registers, or the processor may
 overwrite a register as a side effect of a particular assembler instruction.
@@ -806,13 +807,13 @@ processor-specific fence instructions.</p>
 for time-sensitive code.  You can use a trick to avoid this if the size of
 the memory being accessed is known at compile time. For example, if accessing
 ten bytes of a string, use a memory input like:</p>
-<p><tt class="docutils literal"><span class="pre">{&quot;m&quot;(</span> <span class="pre">({</span> <span class="pre">struct</span> <span class="pre">{</span> <span class="pre">char</span> <span class="pre">x[10];</span> <span class="pre">}</span> <span class="pre">*p</span> <span class="pre">=</span> <span class="pre">(void</span> <span class="pre">*)ptr</span> <span class="pre">;</span> <span class="pre">*p;</span> <span class="pre">})</span> <span class="pre">)}</span></tt>.</p>
-<p class="last">GotoLabels</p>
+<p class="last"><tt class="docutils literal"><span class="pre">{&quot;m&quot;(</span> <span class="pre">({</span> <span class="pre">struct</span> <span class="pre">{</span> <span class="pre">char</span> <span class="pre">x[10];</span> <span class="pre">}</span> <span class="pre">*p</span> <span class="pre">=</span> <span class="pre">(void</span> <span class="pre">*)ptr</span> <span class="pre">;</span> <span class="pre">*p;</span> <span class="pre">})</span> <span class="pre">)}</span></tt>.</p>
 </dd>
 </dl>
+</div>
 <div class="section" id="goto-labels">
-<h3>Goto Labels<a class="headerlink" href="#goto-labels" title="Permalink to this headline">¶</a></h3>
-<p><tt class="docutils literal"><span class="pre">asm</span></tt> goto labels``asm goto`` allows assembly code to jump to one or more C labels.  The
+<span id="gotolabels"></span><h3>Goto Labels<a class="headerlink" href="#goto-labels" title="Permalink to this headline">¶</a></h3>
+<p id="index-15"><tt class="docutils literal"><span class="pre">asm</span> <span class="pre">goto</span></tt> allows assembly code to jump to one or more C labels.  The
 <tt class="docutils literal"><span class="pre">GotoLabels</span></tt> section in an <tt class="docutils literal"><span class="pre">asm</span> <span class="pre">goto</span></tt> statement contains
 a comma-separated
 list of all C labels to which the assembler code may jump. GCC assumes that
@@ -869,9 +870,9 @@ section when using this approach.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>x86Operandmodifiers
-x86 Operand Modifiers
-~~~~~~~~~~~~~~~~~~~~~</p>
+</div>
+<div class="section" id="x86-operand-modifiers">
+<span id="x86operandmodifiers"></span><h3>x86 Operand Modifiers<a class="headerlink" href="#x86-operand-modifiers" title="Permalink to this headline">¶</a></h3>
 <p>References to input, output, and goto operands in the assembler template
 of extended <tt class="docutils literal"><span class="pre">asm</span></tt> statements can use
 modifiers to affect the way the operands are formatted in
@@ -959,8 +960,7 @@ att and intel dialects of assembler:</p>
 <p><tt class="docutils literal"><span class="pre">%c1</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">2</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">2</span></tt></p>
-<p>x86floatingpointasmoperands
-x86 Floating-Point <tt class="docutils literal"><span class="pre">asm</span></tt> OperandsOn x86 targets, there are several rules on the usage of stack-like registers
+<p id="x86floatingpointasmoperands">x86 Floating-Point <tt class="docutils literal"><span class="pre">asm</span></tt> OperandsOn x86 targets, there are several rules on the usage of stack-like registers
 in the operands of an <tt class="docutils literal"><span class="pre">asm</span></tt>.  These rules apply only to the operands
 that are stack-like registers:</p>
 <ul>
@@ -1028,7 +1028,9 @@ for the compiler to know that <tt class="docutils literal"><span class="pre">fyl
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">asm</span> <span class="p">(</span><span class="s">&quot;fyl2xp1&quot;</span> <span class="o">:</span> <span class="s">&quot;=t&quot;</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;0&quot;</span> <span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s">&quot;u&quot;</span> <span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;st(1)&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p id="constraints">Constraints for <tt class="docutils literal"><span class="pre">asm</span></tt> Operandsoperand constraints, <tt class="docutils literal"><span class="pre">asm``constraints,</span> <span class="pre">``asm````asm</span></tt> constraintsHere are specific details on what constraint letters you can use with
+<p id="constraints">Constraints for <tt class="docutils literal"><span class="pre">asm</span></tt> Operands
+.. index:: operand constraints, asm</p>
+<span class="target" id="index-16"></span><p id="index-17">Here are specific details on what constraint letters you can use with
 <tt class="docutils literal"><span class="pre">asm</span></tt> operands.
 Constraints can say whether
 an operand may be in a register, and which kinds of register; whether the
@@ -1045,54 +1047,46 @@ the addressing register.</p>
 </div>
 </div>
 <div class="section" id="simple-constraints">
-<span id="id6"></span><h3>Simple Constraints<a class="headerlink" href="#simple-constraints" title="Permalink to this headline">¶</a></h3>
-<p id="index-2">The simplest kind of constraint is a string full of letters, each of
+<span id="id8"></span><h3>Simple Constraints<a class="headerlink" href="#simple-constraints" title="Permalink to this headline">¶</a></h3>
+<p id="index-18">The simplest kind of constraint is a string full of letters, each of
 which describes one kind of operand that is permitted.  Here are
 the letters that are allowed:</p>
 <dl class="docutils">
 <dt>whitespace</dt>
-<dd><p class="first">Whitespace characters are ignored and can be inserted at any position
+<dd>Whitespace characters are ignored and can be inserted at any position
 except the first.  This enables each alternative for different operands to
 be visually aligned in the machine description even if they have different
-number of constraints and modifiers.</p>
-<p class="last">m in constraint
-.. index:: memory references in constraints</p>
-</dd>
+number of constraints and modifiers.<span class="target" id="index-19"></span></dd>
 <dt>m</dt>
-<dd><p class="first">A memory operand is allowed, with any kind of address that the machine
+<dd>A memory operand is allowed, with any kind of address that the machine
 supports in general.
 Note that the letter used for the general memory constraint can be
-re-defined by a back end using the <tt class="docutils literal"><span class="pre">TARGET_MEM_CONSTRAINT</span></tt> macro.</p>
-<p class="last" id="index-3">o in constraint</p>
-</dd>
+re-defined by a back end using the <tt class="docutils literal"><span class="pre">TARGET_MEM_CONSTRAINT</span></tt> macro.<span class="target" id="index-21"></span></dd>
 <dt>o</dt>
 <dd><p class="first">A memory operand is allowed, but only if the address is
 <em class="dfn">offsettable</em>.  This means that adding a small integer (actually,
 the width in bytes of the operand, as determined by its machine mode)
 may be added to the address and the result is also a valid memory
 address.</p>
-<p id="index-4">For example, an address which is constant is offsettable; so is an
+<p id="index-23">For example, an address which is constant is offsettable; so is an
 address that is the sum of a register and a constant (as long as a
 slightly larger constant is also within the range of address-offsets
 supported by the machine); but an autoincrement or autodecrement
 address is not offsettable.  More complicated indirect/indexed
 addresses may or may not be offsettable depending on the other
 addressing modes that the machine supports.</p>
-<p>Note that in an output operand which can be matched by another
+<p class="last">Note that in an output operand which can be matched by another
 operand, the constraint letter o is valid only when accompanied
 by both &lt; (if the target machine has predecrement addressing)
 and &gt; (if the target machine has preincrement addressing).</p>
-<p class="last">V in constraint</p>
 </dd>
 <dt>V</dt>
-<dd><p class="first">A memory operand that is not offsettable.  In other words, anything that
-would fit the m constraint but not the o constraint.</p>
-<p class="last">&lt; in constraint</p>
-</dd>
+<dd>A memory operand that is not offsettable.  In other words, anything that
+would fit the m constraint but not the o constraint.</dd>
 </dl>
 <dl class="docutils">
 <dt>&lt;</dt>
-<dd><p class="first">A memory operand with autodecrement addressing (either predecrement or
+<dd>A memory operand with autodecrement addressing (either predecrement or
 postdecrement) is allowed.  In inline <tt class="docutils literal"><span class="pre">asm</span></tt> this constraint is only
 allowed if the operand is used exactly once in an instruction that can
 handle the side-effects.  Not using an operand with &lt; in constraint
@@ -1101,61 +1095,42 @@ instructions isn&#8217;t valid, because the side-effects wouldn&#8217;t be perfo
 or would be performed more than once.  Furthermore, on some targets
 the operand with &lt; in constraint string must be accompanied by
 special instruction suffixes like <tt class="docutils literal"><span class="pre">%U0</span></tt> instruction suffix on PowerPC
-or <tt class="docutils literal"><span class="pre">%P0</span></tt> on IA-64.</p>
-<p class="last">&gt; in constraint</p>
-</dd>
+or <tt class="docutils literal"><span class="pre">%P0</span></tt> on IA-64.</dd>
 </dl>
 <dl class="docutils">
 <dt>&gt;</dt>
-<dd><p class="first">A memory operand with autoincrement addressing (either preincrement or
+<dd>A memory operand with autoincrement addressing (either preincrement or
 postincrement) is allowed.  In inline <tt class="docutils literal"><span class="pre">asm</span></tt> the same restrictions
-as for &lt; apply.</p>
-<p class="last">r in constraint
-.. index:: registers in constraints</p>
-</dd>
+as for &lt; apply.<span class="target" id="index-27"></span></dd>
 <dt>r</dt>
-<dd><p class="first">A register operand is allowed provided that it is in a general
-register.</p>
-<p class="last" id="index-5">i in constraint</p>
-</dd>
+<dd>A register operand is allowed provided that it is in a general
+register.<span class="target" id="index-29"></span></dd>
 <dt>i</dt>
-<dd><p class="first">An immediate integer operand (one with constant value) is allowed.
+<dd>An immediate integer operand (one with constant value) is allowed.
 This includes symbolic constants whose values will be known only at
-assembly time or later.</p>
-<p class="last">n in constraint</p>
-</dd>
+assembly time or later.</dd>
 <dt>n</dt>
-<dd><p class="first">An immediate integer operand with a known numeric value is allowed.
+<dd>An immediate integer operand with a known numeric value is allowed.
 Many systems cannot support assembly-time constants for operands less
 than a word wide.  Constraints for these operands should use n
-rather than i.</p>
-<p class="last">I in constraint</p>
-</dd>
+rather than i.</dd>
 <dt>I, J, K, ... P</dt>
-<dd><p class="first">Other letters in the range I through P may be defined in
+<dd>Other letters in the range I through P may be defined in
 a machine-dependent fashion to permit immediate integer operands with
 explicit integer values in specified ranges.  For example, on the
 68000, I is defined to stand for the range of values 1 to 8.
 This is the range permitted as a shift count in the shift
-instructions.</p>
-<p class="last">E in constraint</p>
-</dd>
+instructions.</dd>
 <dt>E</dt>
-<dd><p class="first">An immediate floating operand (expression code <tt class="docutils literal"><span class="pre">const_double</span></tt>) is
+<dd>An immediate floating operand (expression code <tt class="docutils literal"><span class="pre">const_double</span></tt>) is
 allowed, but only if the target floating point format is the same as
-that of the host machine (on which the compiler is running).</p>
-<p class="last">F in constraint</p>
-</dd>
+that of the host machine (on which the compiler is running).</dd>
 <dt>F</dt>
-<dd><p class="first">An immediate floating operand (expression code <tt class="docutils literal"><span class="pre">const_double</span></tt> or
-<tt class="docutils literal"><span class="pre">const_vector</span></tt>) is allowed.</p>
-<p class="last">G in constraintH in constraint</p>
-</dd>
+<dd>An immediate floating operand (expression code <tt class="docutils literal"><span class="pre">const_double</span></tt> or
+<tt class="docutils literal"><span class="pre">const_vector</span></tt>) is allowed.<span class="target" id="index-35"></span></dd>
 <dt>G, H</dt>
-<dd><p class="first">G and H may be defined in a machine-dependent fashion to
-permit immediate floating operands in particular ranges of values.</p>
-<p class="last">s in constraint</p>
-</dd>
+<dd>G and H may be defined in a machine-dependent fashion to
+permit immediate floating operands in particular ranges of values.</dd>
 <dt>s</dt>
 <dd><p class="first">An immediate integer operand whose value is not an explicit integer is
 allowed.</p>
@@ -1163,7 +1138,7 @@ allowed.</p>
 value not known at compile time, it certainly must allow any known
 value.  So why use s instead of i?  Sometimes it allows
 better code to be generated.</p>
-<p>For example, on the 68000 in a fullword instruction it is possible to
+<p class="last">For example, on the 68000 in a fullword instruction it is possible to
 use an immediate operand; but if the immediate value is between -128
 and 127, better code results from loading the value into a register and
 using the register.  This is because the load into the register can be
@@ -1171,18 +1146,12 @@ done with a moveq instruction.  We arrange for this to happen
 by defining the letter K to mean &#8216;any integer outside the
 range -128 to 127&#8217;, and then specifying Ks in the operand
 constraints.</p>
-<p class="last">g in constraint</p>
 </dd>
 <dt>g</dt>
-<dd><p class="first">Any register, memory or immediate integer operand is allowed, except for
-registers that are not general registers.</p>
-<p class="last">X in constraint</p>
-</dd>
+<dd>Any register, memory or immediate integer operand is allowed, except for
+registers that are not general registers.</dd>
 <dt>X</dt>
-<dd><p class="first">Any operand whatsoever is allowed.</p>
-<p class="last">0 in constraint
-.. index:: digits in constraint</p>
-</dd>
+<dd>Any operand whatsoever is allowed.<span class="target" id="index-40"></span></dd>
 <dt>0, 1, 2, ... 9</dt>
 <dd><p class="first">An operand that matches the specified operand number is allowed.  If a
 digit is used together with letters within the same alternative, the
@@ -1193,7 +1162,7 @@ decimal integer.  There is scant chance for ambiguity, since to-date
 it has never been desirable that 10 be interpreted as matching
 either operand 1 or operand 0.  Should this be desired, one
 can use multiple alternatives instead.</p>
-<span class="target" id="index-6"></span><p id="index-7">This is called a <em class="dfn">matching constraint</em> and what it really means is
+<span class="target" id="index-42"></span><p id="index-43">This is called a <em class="dfn">matching constraint</em> and what it really means is
 that the assembler has only a single operand that fills two roles
 which <tt class="docutils literal"><span class="pre">asm</span></tt> distinguishes.  For example, an add instruction uses
 two input operands and an output operand, but on most CISC
@@ -1201,21 +1170,20 @@ machines an add instruction really has only two operands, one of them an
 input-output operand:</p>
 <div class="highlight-c++"><pre>addl #35,r12</pre>
 </div>
-<p>Matching constraints are used in these circumstances.
+<p class="last">Matching constraints are used in these circumstances.
 More precisely, the two operands that match must include one input-only
 operand and one output-only operand.  Moreover, the digit must be a
 smaller number than the number of the operand that uses it in the
 constraint.</p>
-<span class="target" id="index-8"></span><span class="target" id="index-9"></span><p class="last" id="index-10">p in constraint</p>
-</dd>
+<span class="target" id="index-44"></span><span class="target" id="index-45"></span><span class="target" id="index-46"></span></dd>
 <dt>p</dt>
 <dd><p class="first">An operand that is a valid memory address is allowed.  This is
 for &#8216;load address&#8217; and &#8216;push address&#8217; instructions.</p>
-<p class="last" id="index-11">p in the constraint must be accompanied by <tt class="docutils literal"><span class="pre">address_operand</span></tt>
+<p class="last" id="index-48">p in the constraint must be accompanied by <tt class="docutils literal"><span class="pre">address_operand</span></tt>
 as the predicate in the <tt class="docutils literal"><span class="pre">match_operand</span></tt>.  This predicate interprets
 the mode specified in the <tt class="docutils literal"><span class="pre">match_operand</span></tt> as the mode of the memory
 reference for which the address would be valid.</p>
-<span class="target" id="index-12"></span></dd>
+<span class="target" id="index-49"></span></dd>
 <dt><tt class="docutils literal"><span class="pre">other-letters</span></tt></dt>
 <dd>Other letters can be defined in machine-dependent fashion to stand for
 particular classes of registers or other arbitrary operand types.
@@ -1225,7 +1193,7 @@ for data, address and floating point registers.</dd>
 </div>
 <div class="section" id="multiple-alternative-constraints">
 <span id="multi-alternative"></span><h3>Multiple Alternative Constraints<a class="headerlink" href="#multiple-alternative-constraints" title="Permalink to this headline">¶</a></h3>
-<p id="index-14">Sometimes a single instruction has multiple alternative sets of possible
+<p id="index-51">Sometimes a single instruction has multiple alternative sets of possible
 operands.  For example, on the 68000, a logical-or instruction can combine
 register or an immediate value into memory, or it can combine any kind of
 operand into a register; but it cannot combine one memory location into
@@ -1241,34 +1209,23 @@ must be added to copy the operands so that that alternative applies.
 The alternative requiring the least copying is chosen.  If two alternatives
 need the same amount of copying, the one that comes first is chosen.
 These choices can be altered with the ? and ! characters:</p>
-<p>? in constraint
-.. index:: question mark</p>
-<dl class="docutils">
+<span class="target" id="index-52"></span><dl class="docutils">
 <dt>?</dt>
-<dd><p class="first">Disparage slightly the alternative that the ? appears in,
+<dd>Disparage slightly the alternative that the ? appears in,
 as a choice when no alternative applies exactly.  The compiler regards
 this alternative as one unit more costly for each ? that appears
-in it.</p>
-<p class="last">! in constraint
-.. index:: exclamation point</p>
-</dd>
+in it.<span class="target" id="index-54"></span></dd>
 </dl>
 <dl class="docutils">
 <dt>!</dt>
-<dd><p class="first">Disparage severely the alternative that the ! appears in.
+<dd>Disparage severely the alternative that the ! appears in.
 This alternative can still be used if it fits without reloading,
-but if reloading is needed, some other alternative will be used.</p>
-<p class="last">^ in constraint
-.. index:: caret</p>
-</dd>
+but if reloading is needed, some other alternative will be used.<span class="target" id="index-56"></span></dd>
 </dl>
 <dl class="docutils">
 <dt>^</dt>
-<dd><p class="first">This constraint is analogous to ? but it disparages slightly
-the alternative only if the operand with the ^ needs a reload.</p>
-<p class="last">$ in constraint
-.. index:: dollar sign</p>
-</dd>
+<dd>This constraint is analogous to ? but it disparages slightly
+the alternative only if the operand with the ^ needs a reload.<span class="target" id="index-58"></span></dd>
 </dl>
 <dl class="docutils">
 <dt>$</dt>
@@ -1278,17 +1235,13 @@ the alternative only if the operand with the $ needs a reload.</dd>
 </div>
 <div class="section" id="constraint-modifier-characters">
 <span id="modifiers"></span><h3>Constraint Modifier Characters<a class="headerlink" href="#constraint-modifier-characters" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-15"></span><span class="target" id="index-16"></span><p>Here are constraint modifier characters.</p>
-<p>= in constraint
-=</p>
-<blockquote>
-<div><p>Means that this operand is written to by this instruction:
-the previous value is discarded and replaced by new data.</p>
-<ul class="simple">
-<li>in constraint</li>
-</ul>
-</div></blockquote>
-<ul>
+<span class="target" id="index-60"></span><span class="target" id="index-61"></span><p>Here are constraint modifier characters.</p>
+<dl class="docutils">
+<dt>=</dt>
+<dd>Means that this operand is written to by this instruction:
+the previous value is discarded and replaced by new data.</dd>
+</dl>
+<ul id="index-63">
 <li><p class="first">Means that this operand is both read and written by the instruction.</p>
 <p>When the compiler fixes up the operands to satisfy the constraints,
 it needs to know which operands are read by the instruction and
@@ -1297,9 +1250,7 @@ written; + identifies an operand that is both read and written; all
 other operands are assumed to only be read.</p>
 <p>If you specify = or + in a constraint, you put it in the
 first character of the constraint string.</p>
-<p>&amp; in constraint
-.. index:: earlyclobber operand</p>
-</li>
+<span class="target" id="index-64"></span></li>
 </ul>
 <dl class="docutils">
 <dt>&amp;</dt>
@@ -1319,11 +1270,10 @@ better code when only some of the read operands can be affected by the
 earlyclobber. See, for example, the mulsi3 insn of the ARM.</p>
 <p>Furthermore, if the <em class="dfn">earlyclobber</em> operand is also a read/write
 operand, then that operand is written only after it&#8217;s used.</p>
-<p>&amp; does not obviate the need to write = or +.  As
+<p class="last">&amp; does not obviate the need to write = or +.  As
 <em class="dfn">earlyclobber</em> operands are always written, a read-only
 <em class="dfn">earlyclobber</em> operand is ill-formed and will be rejected by the
 compiler.</p>
-<p class="last">% in constraint</p>
 </dd>
 </dl>
 <dl class="docutils">
@@ -1334,27 +1284,22 @@ two operands if that is the cheapest way to make all operands fit the
 constraints.  % applies to all alternatives and must appear as
 the first character in the constraint.  Only read-only operands can use
 %.</p>
-<p>GCC can only handle one commutative pair in an asm; if you use more,
+<p class="last">GCC can only handle one commutative pair in an asm; if you use more,
 the compiler may fail.  Note that you need not use the modifier if
 the two alternatives are strictly identical; this would only waste
 time in the reload pass.  The modifier is not operational after
 register allocation, so the result of <tt class="docutils literal"><span class="pre">define_peephole2</span></tt>
-and <a href="#id7"><span class="problematic" id="id8">``</span></a>define_split``s performed after reload cannot rely on
+and <a href="#id9"><span class="problematic" id="id10">``</span></a>define_split``s performed after reload cannot rely on
 % to make the intended insn match.</p>
-<p class="last"># in constraint</p>
 </dd>
 </dl>
 <dl class="docutils">
 <dt>#</dt>
-<dd><p class="first">Says that all following characters, up to the next comma, are to be
+<dd>Says that all following characters, up to the next comma, are to be
 ignored as a constraint.  They are significant only for choosing
-register preferences.</p>
-<ul class="last simple">
-<li>in constraint</li>
-</ul>
-</dd>
+register preferences.</dd>
 </dl>
-<ul class="simple">
+<ul class="simple" id="index-68">
 <li>Says that the following character should be ignored when choosing
 register preferences.  * has no effect on the meaning of the
 constraint as a constraint, and no effect on reloading.  For LRA
@@ -1364,7 +1309,7 @@ following character matches the operand.</li>
 </div>
 <div class="section" id="constraints-for-particular-machines">
 <span id="machine-constraints"></span><h3>Constraints for Particular Machines<a class="headerlink" href="#constraints-for-particular-machines" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-17"></span><p id="index-18">Whenever possible, you should use the general-purpose constraint letters
+<span class="target" id="index-69"></span><p id="index-70">Whenever possible, you should use the general-purpose constraint letters
 in <tt class="docutils literal"><span class="pre">asm</span></tt> arguments, since they will convey meaning more readily to
 people reading your code.  Failing that, use the constraint letters
 that usually have very similar meanings across architectures.  The most
@@ -3124,7 +3069,7 @@ instructions).</dd>
 </div>
 <div class="section" id="controlling-names-used-in-assembler-code">
 <span id="asm-labels"></span><h2>Controlling Names Used in Assembler Code<a class="headerlink" href="#controlling-names-used-in-assembler-code" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-19"></span><span class="target" id="index-20"></span><p id="index-21">You can specify the name to be used in the assembler code for a C
+<span class="target" id="index-71"></span><span class="target" id="index-72"></span><p id="index-73">You can specify the name to be used in the assembler code for a C
 function or variable by writing the <tt class="docutils literal"><span class="pre">asm</span></tt> (or <tt class="docutils literal"><span class="pre">__asm__</span></tt>)
 keyword after the declarator as follows:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">foo</span> <span class="k">asm</span> <span class="p">(</span><span class="s">&quot;myfoo&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
@@ -3160,7 +3105,7 @@ Perhaps that will be added.</p>
 </div>
 <div class="section" id="variables-in-specified-registers">
 <span id="explicit-reg-vars"></span><h2>Variables in Specified Registers<a class="headerlink" href="#variables-in-specified-registers" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-22"></span><span class="target" id="index-23"></span><span class="target" id="index-24"></span><p id="index-25">GNU C allows you to put a few global variables into specified hardware
+<span class="target" id="index-74"></span><span class="target" id="index-75"></span><span class="target" id="index-76"></span><p id="index-77">GNU C allows you to put a few global variables into specified hardware
 registers.  You can also specify the register in which an ordinary
 register variable should be allocated.</p>
 <ul>
@@ -3190,7 +3135,7 @@ specified for that operand in the <tt class="docutils literal"><span class="pre"
 </div>
 <div class="section" id="defining-global-register-variables">
 <span id="global-reg-vars"></span><h3>Defining Global Register Variables<a class="headerlink" href="#defining-global-register-variables" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-26"></span><p id="index-27">You can define a global register variable in GNU C like this:</p>
+<span class="target" id="index-78"></span><p id="index-79">You can define a global register variable in GNU C like this:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">register</span> <span class="kt">int</span> <span class="o">*</span><span class="n">foo</span> <span class="nf">asm</span> <span class="p">(</span><span class="s">&quot;a5&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -3219,7 +3164,7 @@ simplified.</p>
 handlers, or from more than one thread of control, because the system
 library routines may temporarily use the register for other things (unless
 you recompile them specially for the task at hand).</p>
-<p><tt class="docutils literal"><span class="pre">qsort</span></tt>, and global register variablesIt is not safe for one function that uses a global register variable to
+<p id="index-80">It is not safe for one function that uses a global register variable to
 call another such function <tt class="docutils literal"><span class="pre">foo</span></tt> by way of a third function
 <tt class="docutils literal"><span class="pre">lose</span></tt> that is compiled without knowledge of this variable (i.e. in a
 different source file in which the variable isn&#8217;t declared).  This is
@@ -3240,9 +3185,7 @@ could clobber the value the caller expects to find there on return.
 Therefore, the function that is the entry point into the part of the
 program that uses the global register variable must explicitly save and
 restore the value that belongs to its caller.</p>
-<p>register variable after <tt class="docutils literal"><span class="pre">longjmp``global</span> <span class="pre">register</span> <span class="pre">after</span> <span class="pre">``longjmp``value</span> <span class="pre">after</span> <span class="pre">``longjmp</span></tt>
-.. index:: longjmp</p>
-<p id="index-28">On most machines, <tt class="docutils literal"><span class="pre">longjmp</span></tt> restores to each global register
+<span class="target" id="index-81"></span><span class="target" id="index-82"></span><span class="target" id="index-83"></span><span class="target" id="index-84"></span><p id="index-85">On most machines, <tt class="docutils literal"><span class="pre">longjmp</span></tt> restores to each global register
 variable the value it had at the time of the <tt class="docutils literal"><span class="pre">setjmp</span></tt>.  On some
 machines, however, <tt class="docutils literal"><span class="pre">longjmp</span></tt> does not change the value of global
 register variables.  To be portable, the function that called <tt class="docutils literal"><span class="pre">setjmp</span></tt>
@@ -3264,7 +3207,7 @@ Of course, it does not do to use more than a few of those.</p>
 </div>
 <div class="section" id="specifying-registers-for-local-variables">
 <span id="local-reg-vars"></span><h3>Specifying Registers for Local Variables<a class="headerlink" href="#specifying-registers-for-local-variables" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-29"></span><span class="target" id="index-30"></span><p id="index-31">You can define a local register variable with a specified register
+<span class="target" id="index-86"></span><span class="target" id="index-87"></span><p id="index-88">You can define a local register variable with a specified register
 like this:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">register</span> <span class="kt">int</span> <span class="o">*</span><span class="n">foo</span> <span class="nf">asm</span> <span class="p">(</span><span class="s">&quot;a5&quot;</span><span class="p">);</span>
 </pre></div>

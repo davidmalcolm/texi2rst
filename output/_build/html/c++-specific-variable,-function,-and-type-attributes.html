@@ -85,9 +85,9 @@
   <div class="section" id="c-specific-variable-function-and-type-attributes">
 <span id="c-attributes"></span><h1>C++-Specific Variable, Function, and Type Attributes<a class="headerlink" href="#c-specific-variable-function-and-type-attributes" title="Permalink to this headline">¶</a></h1>
 <p>Some attributes only make sense for C++ programs.</p>
-<dl class="docutils">
-<dt>abi_tag (&#8220;<tt class="docutils literal"><span class="pre">tag</span></tt>&#8221;, ...)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">abi_tag</span></tt> function attribute``abi_tag`` variable attribute``abi_tag`` type attributeThe <tt class="docutils literal"><span class="pre">abi_tag</span></tt> attribute can be applied to a function, variable, or class
+<p>abi_tag (&#8220;<tt class="docutils literal"><span class="pre">tag</span></tt>&#8221;, ...)</p>
+<blockquote>
+<div><span class="target" id="index-0"></span><span class="target" id="index-1"></span><p id="index-2">The <tt class="docutils literal"><span class="pre">abi_tag</span></tt> attribute can be applied to a function, variable, or class
 declaration.  It modifies the mangled name of the entity to
 incorporate the tag name, in order to distinguish the function or
 class from an earlier version with a different ABI; perhaps the class
@@ -112,15 +112,16 @@ be ignored if applied to an explicit specialization or instantiation.</p>
 not have all the ABI tags used by its subobjects and virtual functions; for users with code
 that needs to coexist with an earlier ABI, using this option can help
 to find all affected types that need to be tagged.</p>
-<p class="last">When a type involving an ABI tag is used as the type of a variable or
+<p>When a type involving an ABI tag is used as the type of a variable or
 return type of a function where that tag is not already present in the
 signature of the function, the tag is automatically applied to the
 variable or function.  <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-Wabi-tag"><em class="xref std std-option">-Wabi-tag</em></a> also warns about this
 situation; this warning can be avoided by explicitly tagging the
 variable or function or moving it into a tagged inline namespace.</p>
-</dd>
-<dt>init_priority (<tt class="docutils literal"><span class="pre">priority</span></tt>)</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">init_priority</span></tt> variable attributeIn Standard C++, objects defined at namespace scope are guaranteed to be
+</div></blockquote>
+<p>init_priority (<tt class="docutils literal"><span class="pre">priority</span></tt>)</p>
+<blockquote>
+<div><p id="index-3">In Standard C++, objects defined at namespace scope are guaranteed to be
 initialized in an order in strict accordance with that of their definitions
 in a given translation unit.  No guarantee is made for initializations
 across translation units.  However, GNU C++ allows users to control the
@@ -134,16 +135,19 @@ inclusive.  Lower numbers indicate a higher priority.</p>
 <span class="n">Some_Class</span>  <span class="n">B</span>  <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">init_priority</span> <span class="p">(</span><span class="mi">543</span><span class="p">)));</span>
 </pre></div>
 </div>
-<p class="last">Note that the particular values of <tt class="docutils literal"><span class="pre">priority</span></tt> do not matter; only their
+<p>Note that the particular values of <tt class="docutils literal"><span class="pre">priority</span></tt> do not matter; only their
 relative ordering.</p>
-</dd>
-<dt>java_interface</dt>
-<dd><tt class="docutils literal"><span class="pre">java_interface</span></tt> type attributeThis type attribute informs C++ that the class is a Java interface.  It may
+</div></blockquote>
+<p>java_interface</p>
+<blockquote>
+<div><p id="index-4">This type attribute informs C++ that the class is a Java interface.  It may
 only be applied to classes declared within an <tt class="docutils literal"><span class="pre">extern</span> <span class="pre">&quot;Java&quot;</span></tt> block.
 Calls to methods declared in this interface are dispatched using GCJ&#8217;s
-interface table mechanism, instead of regular virtual table dispatch.</dd>
-<dt>warn_unused</dt>
-<dd><p class="first"><tt class="docutils literal"><span class="pre">warn_unused</span></tt> type attributeFor C++ types with non-trivial constructors and/or destructors it is
+interface table mechanism, instead of regular virtual table dispatch.</p>
+</div></blockquote>
+<p>warn_unused</p>
+<blockquote>
+<div><p id="index-5">For C++ types with non-trivial constructors and/or destructors it is
 impossible for the compiler to determine whether a variable of this
 type is truly unused if it is not referenced. This type attribute
 informs the compiler that variables of this type should be warned
@@ -154,9 +158,8 @@ such as <tt class="docutils literal"><span class="pre">std::string</span></tt>; 
 control a resource, such as <tt class="docutils literal"><span class="pre">std::mutex</span></tt>.</p>
 <p>This attribute is also accepted in C, but it is unnecessary because C
 does not have constructors or destructors.</p>
-<p class="last">See also Namespace Association.</p>
-</dd>
-</dl>
+<p>See also Namespace Association.</p>
+</div></blockquote>
 </div>
 
 

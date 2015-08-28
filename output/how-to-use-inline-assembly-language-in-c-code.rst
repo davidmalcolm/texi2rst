@@ -3,7 +3,8 @@
 How to Use Inline Assembly Language in C Code
 *********************************************
 
-``asm`` keyword
+.. index:: asm keyword
+
 .. index:: assembly language in C
 
 .. index:: inline assembly language
@@ -36,7 +37,8 @@ for a C symbol, or to place a C variable in a specific register.
 Basic Asm - Assembler Instructions Without Operands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-basic ``asm``
+.. index:: basic asm
+
 .. index:: assembly language in C, basic
 
 A basic ``asm`` statement has the following syntax:
@@ -142,7 +144,8 @@ Here is an example of basic ``asm`` for i386:
 Extended Asm - Assembler Instructions with C Expression Operands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-extended ``asm``
+.. index:: extended asm
+
 .. index:: assembly language in C, extended
 
 With extended ``asm`` you can read and write C variables from 
@@ -248,11 +251,16 @@ example for i386 using ``asm`` might look like this:
 
 This code copies ``src`` to ``dst`` and add 1 to ``dst``.
 
-Volatile
+.. _volatile:
+
 Volatile
 ~~~~~~~~
 
-volatile ``asm````asm`` volatileGCC's optimizers sometimes discard ``asm`` statements if they determine 
+.. index:: volatile asm
+
+.. index:: asm volatile
+
+GCC's optimizers sometimes discard ``asm`` statements if they determine 
 there is no need for the output variables. Also, the optimizers may move 
 code out of loops if they believe that the code will always return the same 
 result (i.e. none of its input values change between calls). Using the 
@@ -369,11 +377,14 @@ errors during compilation if your asm code defines symbols or labels.
 Using %= 
 (AssemblerTemplate) may help resolve this problem.
 
-AssemblerTemplate
+.. _assemblertemplate:
+
 Assembler Template
 ~~~~~~~~~~~~~~~~~~
 
-``asm`` assembler templateAn assembler template is a literal string containing assembler instructions.
+.. index:: asm assembler template
+
+An assembler template is a literal string containing assembler instructions.
 The compiler replaces tokens in the template that refer 
 to inputs, outputs, and goto labels,
 and then outputs the resulting string to the assembler. The 
@@ -479,11 +490,14 @@ corresponds to either
 
 There is no support for nesting dialect alternatives.
 
-OutputOperands
+.. _outputoperands:
+
 Output Operands
 ~~~~~~~~~~~~~~~
 
-``asm`` output operandsAn ``asm`` statement has zero or more output operands indicating the names
+.. index:: asm output operands
+
+An ``asm`` statement has zero or more output operands indicating the names
 of C variables modified by the assembler code.
 
 In this i386 example, ``old`` (referred to in the template string as 
@@ -652,11 +666,16 @@ pointed to by ``e``
 in a register, you can enable it to choose the best location
 for ``d`` by specifying both constraints.
 
-InputOperands
+.. _inputoperands:
+
 Input Operands
 ~~~~~~~~~~~~~~
 
-``asm`` input operands``asm`` expressionsInput operands make values from C variables and expressions available to the 
+.. index:: asm input operands
+
+.. index:: asm expressions
+
+Input operands make values from C variables and expressions available to the 
 assembly code.
 
 Operands are separated by commas.  Each operand has this format:
@@ -754,11 +773,14 @@ Here is an example using symbolic names.
      : [result] "=r"(result) 
      : "r" (test), "r" (new), "[result]" (old));
 
-Clobbers
+.. _clobbers:
+
 Clobbers
 ~~~~~~~~
 
-``asm`` clobbersWhile the compiler is aware of changes to entries listed in the output 
+.. index:: asm clobbers
+
+While the compiler is aware of changes to entries listed in the output 
 operands, the inline ``asm`` code may modify more than just the outputs. For 
 example, calculations may require additional registers, or the processor may 
 overwrite a register as a side effect of a particular assembler instruction. 
@@ -823,11 +845,14 @@ Also, there are two special clobber arguments:
 
   ``{"m"( ({ struct { char x[10]; } *p = (void *)ptr ; *p; }) )}``.
 
-  GotoLabels
+  .. _gotolabels:
+
 Goto Labels
 ~~~~~~~~~~~
 
-``asm`` goto labels``asm goto`` allows assembly code to jump to one or more C labels.  The
+.. index:: asm goto labels
+
+``asm goto`` allows assembly code to jump to one or more C labels.  The
 ``GotoLabels`` section in an ``asm goto`` statement contains 
 a comma-separated 
 list of all C labels to which the assembler code may jump. GCC assumes that 
@@ -893,7 +918,8 @@ The following example shows an ``asm goto`` that uses a memory clobber.
     return -1;
   }
 
-x86Operandmodifiers
+.. _x86operandmodifiers:
+
 x86 Operand Modifiers
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -1048,7 +1074,8 @@ Require a constant operand and print the constant expression with no punctuation
 
 ``2``
 
-x86floatingpointasmoperands
+.. _x86floatingpointasmoperands:
+
 x86 Floating-Point ``asm`` OperandsOn x86 targets, there are several rules on the usage of stack-like registers
 in the operands of an ``asm``.  These rules apply only to the operands
 that are stack-like registers:
@@ -1139,7 +1166,14 @@ for the compiler to know that ``fyl2xp1`` pops both inputs.
 
 .. _constraints:
 
-Constraints for ``asm`` Operandsoperand constraints, ``asm``constraints, ``asm````asm`` constraintsHere are specific details on what constraint letters you can use with
+Constraints for ``asm`` Operands
+.. index:: operand constraints, asm
+
+.. index:: constraints, asm
+
+.. index:: asm constraints
+
+Here are specific details on what constraint letters you can use with
 ``asm`` operands.
 Constraints can say whether
 an operand may be in a register, and which kinds of register; whether the
@@ -1175,7 +1209,8 @@ whitespace
   be visually aligned in the machine description even if they have different
   number of constraints and modifiers.
 
-  m in constraint
+  .. index:: m in constraint
+
   .. index:: memory references in constraints
 
 m
@@ -1186,7 +1221,8 @@ m
 
   .. index:: offsettable address
 
-  o in constraint
+  .. index:: o in constraint
+
 o
   A memory operand is allowed, but only if the address is
   :dfn:`offsettable`.  This means that adding a small integer (actually,
@@ -1209,12 +1245,14 @@ o
   by both < (if the target machine has predecrement addressing)
   and > (if the target machine has preincrement addressing).
 
-  V in constraint
+  .. index:: V in constraint
+
 V
   A memory operand that is not offsettable.  In other words, anything that
   would fit the m constraint but not the o constraint.
 
-  < in constraint
+  .. index:: < in constraint
+
 <
   A memory operand with autodecrement addressing (either predecrement or
   postdecrement) is allowed.  In inline ``asm`` this constraint is only
@@ -1227,13 +1265,15 @@ V
   special instruction suffixes like ``%U0`` instruction suffix on PowerPC
   or ``%P0`` on IA-64.
 
-  > in constraint
+  .. index:: > in constraint
+
 >
   A memory operand with autoincrement addressing (either preincrement or
   postincrement) is allowed.  In inline ``asm`` the same restrictions
   as for < apply.
 
-  r in constraint
+  .. index:: r in constraint
+
   .. index:: registers in constraints
 
 r
@@ -1242,20 +1282,23 @@ r
 
   .. index:: constants in constraints
 
-  i in constraint
+  .. index:: i in constraint
+
 i
   An immediate integer operand (one with constant value) is allowed.
   This includes symbolic constants whose values will be known only at
   assembly time or later.
 
-  n in constraint
+  .. index:: n in constraint
+
 n
   An immediate integer operand with a known numeric value is allowed.
   Many systems cannot support assembly-time constants for operands less
   than a word wide.  Constraints for these operands should use n
   rather than i.
 
-  I in constraint
+  .. index:: I in constraint
+
 I, J, K, ... P
   Other letters in the range I through P may be defined in
   a machine-dependent fashion to permit immediate integer operands with
@@ -1264,23 +1307,29 @@ I, J, K, ... P
   This is the range permitted as a shift count in the shift
   instructions.
 
-  E in constraint
+  .. index:: E in constraint
+
 E
   An immediate floating operand (expression code ``const_double``) is
   allowed, but only if the target floating point format is the same as
   that of the host machine (on which the compiler is running).
 
-  F in constraint
+  .. index:: F in constraint
+
 F
   An immediate floating operand (expression code ``const_double`` or
   ``const_vector``) is allowed.
 
-  G in constraintH in constraint
+  .. index:: G in constraint
+
+  .. index:: H in constraint
+
 G, H
   G and H may be defined in a machine-dependent fashion to
   permit immediate floating operands in particular ranges of values.
 
-  s in constraint
+  .. index:: s in constraint
+
 s
   An immediate integer operand whose value is not an explicit integer is
   allowed.
@@ -1299,16 +1348,19 @@ s
   range -128 to 127', and then specifying Ks in the operand
   constraints.
 
-  g in constraint
+  .. index:: g in constraint
+
 g
   Any register, memory or immediate integer operand is allowed, except for
   registers that are not general registers.
 
-  X in constraint
+  .. index:: X in constraint
+
 X
   Any operand whatsoever is allowed.
 
-  0 in constraint
+  .. index:: 0 in constraint
+
   .. index:: digits in constraint
 
 0, 1, 2, ... 9
@@ -1350,7 +1402,8 @@ X
 
   .. index:: address constraints
 
-  p in constraint
+  .. index:: p in constraint
+
 p
   An operand that is a valid memory address is allowed.  This is
   for 'load address' and 'push address' instructions.
@@ -1400,7 +1453,8 @@ The alternative requiring the least copying is chosen.  If two alternatives
 need the same amount of copying, the one that comes first is chosen.
 These choices can be altered with the ? and ! characters:
 
-? in constraint
+.. index:: ? in constraint
+
 .. index:: question mark
 
 ?
@@ -1409,7 +1463,8 @@ These choices can be altered with the ? and ! characters:
   this alternative as one unit more costly for each ? that appears
   in it.
 
-  ! in constraint
+  .. index:: ! in constraint
+
   .. index:: exclamation point
 
 !
@@ -1417,14 +1472,16 @@ These choices can be altered with the ? and ! characters:
   This alternative can still be used if it fits without reloading,
   but if reloading is needed, some other alternative will be used.
 
-  ^ in constraint
+  .. index:: ^ in constraint
+
   .. index:: caret
 
 ^
   This constraint is analogous to ? but it disparages slightly
   the alternative only if the operand with the ^ needs a reload.
 
-  $ in constraint
+  .. index:: $ in constraint
+
   .. index:: dollar sign
 
 $
@@ -1444,12 +1501,14 @@ Constraint Modifier Characters
 
 Here are constraint modifier characters.
 
-= in constraint
+.. index:: = in constraint
+
 =
   Means that this operand is written to by this instruction:
   the previous value is discarded and replaced by new data.
 
-  + in constraint
+  .. index:: + in constraint
+
 +
   Means that this operand is both read and written by the instruction.
 
@@ -1462,7 +1521,8 @@ Here are constraint modifier characters.
   If you specify = or + in a constraint, you put it in the
   first character of the constraint string.
 
-  & in constraint
+  .. index:: & in constraint
+
   .. index:: earlyclobber operand
 
 &
@@ -1491,7 +1551,8 @@ Here are constraint modifier characters.
   :dfn:`earlyclobber` operand is ill-formed and will be rejected by the
   compiler.
 
-  % in constraint
+  .. index:: % in constraint
+
 %
   Declares the instruction to be commutative for this operand and the
   following operand.  This means that the compiler may interchange the
@@ -1508,13 +1569,15 @@ Here are constraint modifier characters.
   and ``define_split``s performed after reload cannot rely on
   % to make the intended insn match.
 
-  # in constraint
+  .. index:: # in constraint
+
 #
   Says that all following characters, up to the next comma, are to be
   ignored as a constraint.  They are significant only for choosing
   register preferences.
 
-  * in constraint
+  .. index:: * in constraint
+
 *
   Says that the following character should be ignored when choosing
   register preferences.  * has no effect on the meaning of the
@@ -4022,7 +4085,9 @@ handlers, or from more than one thread of control, because the system
 library routines may temporarily use the register for other things (unless
 you recompile them specially for the task at hand).
 
-``qsort``, and global register variablesIt is not safe for one function that uses a global register variable to
+.. index:: qsort, and global register variables
+
+It is not safe for one function that uses a global register variable to
 call another such function ``foo`` by way of a third function
 ``lose`` that is compiled without knowledge of this variable (i.e. in a
 different source file in which the variable isn't declared).  This is
@@ -4046,7 +4111,12 @@ Therefore, the function that is the entry point into the part of the
 program that uses the global register variable must explicitly save and
 restore the value that belongs to its caller.
 
-register variable after ``longjmp``global register after ``longjmp``value after ``longjmp``
+.. index:: register variable after longjmp
+
+.. index:: global register after longjmp
+
+.. index:: value after longjmp
+
 .. index:: longjmp
 
 .. index:: setjmp

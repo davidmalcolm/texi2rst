@@ -5,7 +5,11 @@ Thread-Local Storage
 
 .. index:: Thread-Local Storage
 
-TLS``__thread``Thread-local storage (TLS) is a mechanism by which variables
+.. index:: TLS
+
+.. index:: __thread
+
+Thread-local storage (TLS) is a mechanism by which variables
 are allocated such that there is one instance of the variable per extant
 thread.  The runtime model GCC uses to implement this originates
 in the IA-64 processor-specific ABI, but has since been migrated

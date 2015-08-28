@@ -5,7 +5,19 @@ Additional Floating Types
 
 .. index:: additional floating types
 
-``__float80`` data type``__float128`` data type``w`` floating point suffix``q`` floating point suffix``W`` floating point suffix``Q`` floating point suffixAs an extension, GNU C supports additional floating
+.. index:: __float80 data type
+
+.. index:: __float128 data type
+
+.. index:: w floating point suffix
+
+.. index:: q floating point suffix
+
+.. index:: W floating point suffix
+
+.. index:: Q floating point suffix
+
+As an extension, GNU C supports additional floating
 types, ``__float80`` and ``__float128`` to support 80-bit
 (``XFmode``) and 128-bit (``TFmode``) floating types.
 Support for additional types includes the arithmetic operators:

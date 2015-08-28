@@ -3,7 +3,9 @@
 128-bit Integers
 ****************
 
-``__int128`` data typesAs an extension the integer scalar type ``__int128`` is supported for
+.. index:: __int128 data types
+
+As an extension the integer scalar type ``__int128`` is supported for
 targets which have an integer mode wide enough to hold 128 bits.
 Simply write ``__int128`` for a signed 128-bit integer, or
 ``unsigned __int128`` for an unsigned 128-bit integer.  There is no

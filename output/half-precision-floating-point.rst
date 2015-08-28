@@ -5,7 +5,9 @@ Half-Precision Floating Point
 
 .. index:: half-precision floating point
 
-``__fp16`` data typeOn ARM targets, GCC supports half-precision (16-bit) floating point via
+.. index:: __fp16 data type
+
+On ARM targets, GCC supports half-precision (16-bit) floating point via
 the ``__fp16`` type.  You must enable this type explicitly
 with the :option:`-mfp16-format` command-line option in order to use it.
 

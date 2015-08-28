@@ -242,7 +242,12 @@ These options are defined for AArch64 implementations:
   with :option:`-march` or :option:`-mtune`, those options take precedence
   over the appropriate part of this option.
 
-:option:`-march` and :option:`-mcpu` Feature Modifiers:option:`-march` feature modifiers:option:`-mcpu` feature modifiersFeature modifiers used with :option:`-march` and :option:`-mcpu` can be one
+:option:`-march` and :option:`-mcpu` Feature Modifiers
+.. index:: -march feature modifiers
+
+.. index:: -mcpu feature modifiers
+
+Feature modifiers used with :option:`-march` and :option:`-mcpu` can be one
 the following:
 
 crc
@@ -1555,7 +1560,10 @@ These options are defined for AVR implementations:
   Warn about conversions between address spaces in the case where the
   resulting address space is not contained in the incoming address space.
 
-``EIND`` and Devices with More Than 128 Ki Bytes of Flash``EIND``Pointers in the implementation are 16 bits wide.
+``EIND`` and Devices with More Than 128 Ki Bytes of Flash
+.. index:: EIND
+
+Pointers in the implementation are 16 bits wide.
 The address of a function or label is represented as word address so
 that indirect jumps and calls can target any code address in the
 range of 64 Ki words.
@@ -1679,7 +1687,16 @@ the compiler and are subject to some limitations:
   and the application be linked with :option:`-Wl,--defsym,func_4=0x4`.
   Alternatively, ``func_4`` can be defined in the linker script.
 
-Handling of the ``RAMPD``, ``RAMPX``, ``RAMPY`` and ``RAMPZ`` Special Function Registers``RAMPD````RAMPX````RAMPY````RAMPZ``Some AVR devices support memories larger than the 64 KiB range
+Handling of the ``RAMPD``, ``RAMPX``, ``RAMPY`` and ``RAMPZ`` Special Function Registers
+.. index:: RAMPD
+
+.. index:: RAMPX
+
+.. index:: RAMPY
+
+.. index:: RAMPZ
+
+Some AVR devices support memories larger than the 64 KiB range
 that can be accessed with 16-bit pointers.  To access memory locations
 outside this 64 KiB range, the contentent of a ``RAMP``
 register is used as high part of the address:
@@ -3680,17 +3697,23 @@ These :option:`-m` options are defined for Renesas M32R/D architectures:
 
 .. option:: -missue-rate=number
 
-  missue-rate=``number``Issue ``number`` instructions per cycle.  ``number`` can only be 1
+  .. index:: missue-rate=number
+
+  Issue ``number`` instructions per cycle.  ``number`` can only be 1
   or 2.
 
 .. option:: -mbranch-cost=number
 
-  mbranch-cost=``number````number`` can only be 1 or 2.  If it is 1 then branches are
+  .. index:: mbranch-cost=number
+
+  ``number`` can only be 1 or 2.  If it is 1 then branches are
   preferred over conditional code, if it is 2, then the opposite applies.
 
 .. option:: -mflush-trap=number
 
-  mflush-trap=``number``Specifies the trap number to use to flush the cache.  The default is
+  .. index:: mflush-trap=number
+
+  Specifies the trap number to use to flush the cache.  The default is
   12.  Valid numbers are between 0 and 15 inclusive.
 
 .. option:: -mno-flush-trap
@@ -3699,7 +3722,9 @@ These :option:`-m` options are defined for Renesas M32R/D architectures:
 
 .. option:: -mflush-func=name
 
-  mflush-func=``name``Specifies the name of the operating system function to call to flush
+  .. index:: mflush-func=name
+
+  Specifies the name of the operating system function to call to flush
   the cache.  The default is _flush_cache, but a function call
   is only used if a trap is not available.
 
@@ -5834,7 +5859,11 @@ These are the options defined for the Altera Nios II processor.
 
 .. option:: -mcustom-insn=N
 
-  mcustom-``insn``mno-custom-``insn``Each :option:`-mcustom-``insn``=``N``` option enables use of a
+  .. index:: mcustom-insn
+
+  .. index:: mno-custom-insn
+
+  Each :option:`-mcustom-``insn``=``N``` option enables use of a
   custom instruction with encoding ``N`` when generating code that uses 
   ``insn``.  For example, :option:`-mcustom-fadds=253` generates custom
   instruction 253 for single-precision floating-point add operations instead
@@ -7940,7 +7969,9 @@ These -m options are defined for the SH implementations:
 
 .. option:: -matomic-model=model
 
-  matomic-model=``model``Sets the model of atomic operations and additional parameters as a comma
+  .. index:: matomic-model=model
+
+  Sets the model of atomic operations and additional parameters as a comma
   separated list.  For details on the atomic built-in functions see
   __atomic Builtins.  The following models and parameters are supported:
 
@@ -8020,11 +8051,15 @@ These -m options are defined for the SH implementations:
 
 .. option:: -multcost=number
 
-  multcost=``number``Set the cost to assume for a multiply insn.
+  .. index:: multcost=number
+
+  Set the cost to assume for a multiply insn.
 
 .. option:: -mdiv=strategy
 
-  mdiv=``strategy``Set the division strategy to be used for integer division operations.
+  .. index:: mdiv=strategy
+
+  Set the division strategy to be used for integer division operations.
   For SHmedia ``strategy`` can be one of: 
 
   fp 
@@ -8110,7 +8145,9 @@ These -m options are defined for the SH implementations:
 
 .. option:: -mdivsi3_libfunc=name
 
-  mdivsi3_libfunc=``name``Set the name of the library function used for 32-bit signed division to
+  .. index:: mdivsi3_libfunc=name
+
+  Set the name of the library function used for 32-bit signed division to
   ``name``.
   This only affects the name used in the call and inv:call
   division strategies, and the compiler still expects the same
@@ -8136,7 +8173,9 @@ These -m options are defined for the SH implementations:
 
 .. option:: -mgettrcost=number
 
-  mgettrcost=``number``Set the cost assumed for the ``gettr`` instruction to ``number``.
+  .. index:: mgettrcost=number
+
+  Set the cost assumed for the ``gettr`` instruction to ``number``.
   The default is 2 if :option:`-mpt-fixed` is in effect, 100 otherwise.
 
 .. option:: -mpt-fixed
@@ -8177,7 +8216,9 @@ These -m options are defined for the SH implementations:
 
 .. option:: -mbranch-cost=num
 
-  mbranch-cost=``num``Assume ``num`` to be the cost for a branch instruction.  Higher numbers
+  .. index:: mbranch-cost=num
+
+  Assume ``num`` to be the cost for a branch instruction.  Higher numbers
   make the compiler try to generate more branch-free code if possible.  
   If not specified the value is selected depending on the processor type that
   is being compiled for.
@@ -9104,7 +9145,9 @@ These -m options are defined for the VMS implementations:
 
 .. option:: -mdebug-main=prefix
 
-  mdebug-main=``prefix``Flag the first routine whose name starts with ``prefix`` as the main
+  .. index:: mdebug-main=prefix
+
+  Flag the first routine whose name starts with ``prefix`` as the main
   routine for the debugger.
 
 .. option:: -mmalloc64
@@ -9113,7 +9156,9 @@ These -m options are defined for the VMS implementations:
 
 .. option:: -mpointer-size=size
 
-  mpointer-size=``size``Set the default size of pointers. Possible options for ``size`` are
+  .. index:: mpointer-size=size
+
+  Set the default size of pointers. Possible options for ``size`` are
   32 or short for 32 bit pointers, 64 or long
   for 64 bit pointers, and no for supporting only 32 bit pointers.
   The later option disables ``pragma pointer_size``.
@@ -9455,7 +9500,9 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -masm=dialect
 
-  masm=``dialect``Output assembly instructions using selected ``dialect``.  Also affects
+  .. index:: masm=dialect
+
+  Output assembly instructions using selected ``dialect``.  Also affects
   which dialect is used for basic ``asm`` (Basic Asm) and
   extended ``asm`` (Extended Asm). Supported choices (in dialect
   order) are att or intel. The default is att. Darwin does
@@ -9744,7 +9791,9 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -mtune-ctrl=feature-list
 
-  mtune-ctrl=``feature-list``This option is used to do fine grain control of x86 code generation features.
+  .. index:: mtune-ctrl=feature-list
+
+  This option is used to do fine grain control of x86 code generation features.
   ``feature-list`` is a comma separated list of ``feature`` names. See also
   :option:`-mdump-tune-features`. When specified, the ``feature`` is turned
   on if it is not preceded with ^, otherwise, it is turned off. 
@@ -9958,7 +10007,9 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -mstringop-strategy=alg
 
-  mstringop-strategy=``alg``Override the internal decision heuristic for the particular algorithm to use
+  .. index:: mstringop-strategy=alg
+
+  Override the internal decision heuristic for the particular algorithm to use
   for inlining string operations.  The allowed values for ``alg`` are:
 
   rep_byte rep_4byte rep_8byte
@@ -9972,7 +10023,9 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -mmemcpy-strategy=strategy
 
-  mmemcpy-strategy=``strategy``Override the internal decision heuristic to decide if ``__builtin_memcpy``
+  .. index:: mmemcpy-strategy=strategy
+
+  Override the internal decision heuristic to decide if ``__builtin_memcpy``
   should be inlined and what inline algorithm to use when the expected size
   of the copy operation is known. ``strategy`` 
   is a comma-separated list of ``alg``:``max_size``:``dest_align`` triplets. 
@@ -9985,7 +10038,9 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -mmemset-strategy=strategy
 
-  mmemset-strategy=``strategy``The option is similar to :option:`-mmemcpy-strategy=` except that it is to control
+  .. index:: mmemset-strategy=strategy
+
+  The option is similar to :option:`-mmemcpy-strategy=` except that it is to control
   ``__builtin_memset`` expansion.
 
 .. option:: -momit-leaf-frame-pointer
@@ -10057,7 +10112,9 @@ These -m options are defined for the x86 family of computers.
 
 .. option:: -mstack-protector-guard=guard
 
-  mstack-protector-guard=``guard``Generate stack protection code using canary at ``guard``.  Supported
+  .. index:: mstack-protector-guard=guard
+
+  Generate stack protection code using canary at ``guard``.  Supported
   locations are global for global canary or tls for per-thread
   canary in the TLS block (the default).  This option has effect only when
   :option:`-fstack-protector` or :option:`-fstack-protector-all` is specified.

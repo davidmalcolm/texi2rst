@@ -5,7 +5,77 @@ Fixed-Point Types
 
 .. index:: fixed-point types
 
-``_Fract`` data type``_Accum`` data type``_Sat`` data type``hr`` fixed-suffix``r`` fixed-suffix``lr`` fixed-suffix``llr`` fixed-suffix``uhr`` fixed-suffix``ur`` fixed-suffix``ulr`` fixed-suffix``ullr`` fixed-suffix``hk`` fixed-suffix``k`` fixed-suffix``lk`` fixed-suffix``llk`` fixed-suffix``uhk`` fixed-suffix``uk`` fixed-suffix``ulk`` fixed-suffix``ullk`` fixed-suffix``HR`` fixed-suffix``R`` fixed-suffix``LR`` fixed-suffix``LLR`` fixed-suffix``UHR`` fixed-suffix``UR`` fixed-suffix``ULR`` fixed-suffix``ULLR`` fixed-suffix``HK`` fixed-suffix``K`` fixed-suffix``LK`` fixed-suffix``LLK`` fixed-suffix``UHK`` fixed-suffix``UK`` fixed-suffix``ULK`` fixed-suffix``ULLK`` fixed-suffixAs an extension, GNU C supports fixed-point types as
+.. index:: _Fract data type
+
+.. index:: _Accum data type
+
+.. index:: _Sat data type
+
+.. index:: hr fixed-suffix
+
+.. index:: r fixed-suffix
+
+.. index:: lr fixed-suffix
+
+.. index:: llr fixed-suffix
+
+.. index:: uhr fixed-suffix
+
+.. index:: ur fixed-suffix
+
+.. index:: ulr fixed-suffix
+
+.. index:: ullr fixed-suffix
+
+.. index:: hk fixed-suffix
+
+.. index:: k fixed-suffix
+
+.. index:: lk fixed-suffix
+
+.. index:: llk fixed-suffix
+
+.. index:: uhk fixed-suffix
+
+.. index:: uk fixed-suffix
+
+.. index:: ulk fixed-suffix
+
+.. index:: ullk fixed-suffix
+
+.. index:: HR fixed-suffix
+
+.. index:: R fixed-suffix
+
+.. index:: LR fixed-suffix
+
+.. index:: LLR fixed-suffix
+
+.. index:: UHR fixed-suffix
+
+.. index:: UR fixed-suffix
+
+.. index:: ULR fixed-suffix
+
+.. index:: ULLR fixed-suffix
+
+.. index:: HK fixed-suffix
+
+.. index:: K fixed-suffix
+
+.. index:: LK fixed-suffix
+
+.. index:: LLK fixed-suffix
+
+.. index:: UHK fixed-suffix
+
+.. index:: UK fixed-suffix
+
+.. index:: ULK fixed-suffix
+
+.. index:: ULLK fixed-suffix
+
+As an extension, GNU C supports fixed-point types as
 defined in the N1169 draft of ISO/IEC DTR 18037.  Support for fixed-point
 types in GCC will evolve as the draft technical report changes.
 Calling conventions for any target might also change.  Not all targets

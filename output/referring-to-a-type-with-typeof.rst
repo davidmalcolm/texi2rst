@@ -56,7 +56,8 @@ arithmetic type and evaluates each of its arguments exactly once:
 
 .. index:: underscores in variables in macros
 
-_ in variables in macros
+.. index:: _ in variables in macros
+
 .. index:: local variables in macros
 
 .. index:: variables, local, in macros

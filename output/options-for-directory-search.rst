@@ -59,7 +59,7 @@ libraries and for parts of the compiler:
   The compiler driver program runs one or more of the subprograms
   :command:`cpp`, :command:`cc1`, :command:`as` and :command:`ld`.  It tries
   ``prefix`` as a prefix for each program it tries to run, both with and
-  without ``machine``/``version``/ (Target Options).
+  without ``machine``/``version``/ (see :ref:`target-options`).
 
   For each subprogram to be run, the compiler driver first tries the
   :option:`-B` prefix, if any.  If that name is not found, or if :option:`-B`

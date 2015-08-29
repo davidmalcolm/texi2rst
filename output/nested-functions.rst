@@ -81,7 +81,7 @@ C++ Conference Proceedings, October 17-21, 1988).
 
 A nested function can jump to a label inherited from a containing
 function, provided the label is explicitly declared in the containing
-function (Local Labels).  Such a jump returns instantly to the
+function (see :ref:`local-labels`).  Such a jump returns instantly to the
 containing function, exiting the nested function that did the
 ``goto`` and any intermediate functions as well.  Here is an example:
 

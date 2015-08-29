@@ -35,8 +35,7 @@ we do not make because we think GCC is better without them.
   casts becomes so automatic that they no longer convey useful
   information about the intentions of the programmer.  For functions
   where the return value should never be ignored, use the
-  ``warn_unused_result`` function attribute (Function
-  Attributes).
+  ``warn_unused_result`` function attribute (see :ref:`function-attributes`).
 
 * 
   .. index:: fshort-enums

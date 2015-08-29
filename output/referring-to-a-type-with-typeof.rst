@@ -42,7 +42,7 @@ only if it is an expression of variably modified type or the name of
 such a type.
 
 ``typeof`` is often useful in conjunction with
-statement expressions (Statement Exprs).
+statement expressions (see :ref:`statement-exprs`).
 Here is how the two together can
 be used to define a safe 'maximum' macro which operates on any
 arithmetic type and evaluates each of its arguments exactly once:

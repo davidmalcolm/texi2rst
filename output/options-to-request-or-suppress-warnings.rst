@@ -82,7 +82,7 @@ such as :option:`-Wunused-value`. The combined effect of positive and
 negative forms is that more specific options have priority over less
 specific ones, independently of their position in the command-line. For
 options of the same specificity, the last one takes effect. Options
-enabled or disabled via pragmas (Diagnostic Pragmas) take effect
+enabled or disabled via pragmas (see :ref:`diagnostic-pragmas`) take effect
 as if they appeared at the end of the command-line.
 
 When an unrecognized warning option is requested (e.g.,
@@ -299,7 +299,7 @@ warns that an unrecognized option is present.
   the arguments supplied have types appropriate to the format string
   specified, and that the conversions specified in the format string make
   sense.  This includes standard functions, and others specified by format
-  attributes (Function Attributes), in the ``printf``,
+  attributes (see :ref:`function-attributes`), in the ``printf``,
   ``scanf``, ``strftime`` and ``strfmon`` (an X/Open extension,
   not in the C standard) families (or other target-specific families).
   Which functions are checked without format attributes having been
@@ -686,7 +686,7 @@ warns that an unrecognized option is present.
   (aside from its declaration).
 
   To suppress this warning use the ``unused`` attribute
-  (Variable Attributes).
+  (see :ref:`variable-attributes`).
 
   This warning is also enabled by :option:`-Wunused` together with
   :option:`-Wextra`.
@@ -698,7 +698,7 @@ warns that an unrecognized option is present.
   This warning is enabled by :option:`-Wall`.
 
   To suppress this warning use the ``unused`` attribute
-  (Variable Attributes).
+  (see :ref:`variable-attributes`).
 
   This warning is also enabled by :option:`-Wunused`, which is enabled
   by :option:`-Wall`.
@@ -715,7 +715,7 @@ warns that an unrecognized option is present.
   This warning is enabled by :option:`-Wall`.
 
   To suppress this warning use the ``unused`` attribute
-  (Variable Attributes).
+  (see :ref:`variable-attributes`).
 
 .. option:: -Wunused-local-typedefs , -Wunused-local-typedefs
 
@@ -731,12 +731,12 @@ warns that an unrecognized option is present.
   Warn whenever a function parameter is unused aside from its declaration.
 
   To suppress this warning use the ``unused`` attribute
-  (Variable Attributes).
+  (see :ref:`variable-attributes`).
 
 .. option:: -Wno-unused-result, -Wunused-result
 
   Do not warn if a caller of a function marked with attribute
-  ``warn_unused_result`` (Function Attributes) does not use
+  ``warn_unused_result`` (see :ref:`function-attributes`) does not use
   its return value. The default is :option:`-Wunused-result`.
 
 .. option:: -Wunused-variable, -Wno-unused-variable
@@ -746,7 +746,7 @@ warns that an unrecognized option is present.
   This warning is enabled by :option:`-Wall`.
 
   To suppress this warning use the ``unused`` attribute
-  (Variable Attributes).
+  (see :ref:`variable-attributes`).
 
 .. option:: -Wunused-value, -Wno-unused-value
 
@@ -1857,9 +1857,8 @@ warns that an unrecognized option is present.
 
 .. option:: -Wno-deprecated-declarations, -Wdeprecated-declarations
 
-  Do not warn about uses of functions (Function Attributes),
-  variables (Variable Attributes), and types (Type
-  Attributes) marked as deprecated by using the ``deprecated``
+  Do not warn about uses of functions (see :ref:`function-attributes`),
+  variables (see :ref:`variable-attributes`), and types (see :ref:`type-attributes`) marked as deprecated by using the ``deprecated``
   attribute.
 
 .. option:: -Wno-overflow, -Woverflow
@@ -1884,8 +1883,8 @@ warns that an unrecognized option is present.
     (C and Objective-C only)
 
   Warn if an initialized field without side effects is overridden when
-  using designated initializers (Designated InitsDesignated
-  Initializers).
+  using designated initializers (see :ref:`Designated
+  Initializers <designated-inits>`).
 
   This warning is included in :option:`-Wextra`.  To get other
   :option:`-Wextra` warnings without this one, use :option:`-Wextra
@@ -1898,8 +1897,8 @@ warns that an unrecognized option is present.
     (C and Objective-C only)
 
   Warn if an initialized field with side effects is overridden when
-  using designated initializers (Designated InitsDesignated
-  Initializers).  This warning is enabled by default.
+  using designated initializers (see :ref:`Designated
+  Initializers <designated-inits>`).  This warning is enabled by default.
 
 .. option:: -Wpacked, -Wno-packed
 
@@ -2014,7 +2013,7 @@ warns that an unrecognized option is present.
 
 .. option:: -Winvalid-pch, -Wno-invalid-pch
 
-  Warn if a precompiled header (Precompiled Headers) is found in
+  Warn if a precompiled header (see :ref:`precompiled-headers`) is found in
   the search path but can't be used.
 
 .. option:: -Wlong-long, -Wno-long-long

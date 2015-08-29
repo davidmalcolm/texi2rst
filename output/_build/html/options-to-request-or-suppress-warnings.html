@@ -160,7 +160,7 @@ such as <a class="reference internal" href="#cmdoption-Wunused-value"><em class=
 negative forms is that more specific options have priority over less
 specific ones, independently of their position in the command-line. For
 options of the same specificity, the last one takes effect. Options
-enabled or disabled via pragmas (Diagnostic Pragmas) take effect
+enabled or disabled via pragmas (see <a class="reference internal" href="pragmas-accepted-by-gcc.html#diagnostic-pragmas"><em>Diagnostic Pragmas</em></a>) take effect
 as if they appeared at the end of the command-line.</p>
 <p>When an unrecognized warning option is requested (e.g.,
 <em class="xref std std-option">-Wunknown-warning</em>), GCC emits a diagnostic stating
@@ -381,7 +381,7 @@ because the floating-point literal is a <tt class="docutils literal"><span class
 the arguments supplied have types appropriate to the format string
 specified, and that the conversions specified in the format string make
 sense.  This includes standard functions, and others specified by format
-attributes (Function Attributes), in the <tt class="docutils literal"><span class="pre">printf</span></tt>,
+attributes (see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>), in the <tt class="docutils literal"><span class="pre">printf</span></tt>,
 <tt class="docutils literal"><span class="pre">scanf</span></tt>, <tt class="docutils literal"><span class="pre">strftime</span></tt> and <tt class="docutils literal"><span class="pre">strfmon</span></tt> (an X/Open extension,
 not in the C standard) families (or other target-specific families).
 Which functions are checked without format attributes having been
@@ -806,7 +806,7 @@ This warning is enabled by <a class="reference internal" href="#cmdoption-Wall">
 <dd><p>Warn whenever a function parameter is assigned to, but otherwise unused
 (aside from its declaration).</p>
 <p>To suppress this warning use the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute
-(Variable Attributes).</p>
+(see <a class="reference internal" href="specifying-attributes-of-variables.html#variable-attributes"><em>Specifying Attributes of Variables</em></a>).</p>
 <p>This warning is also enabled by <a class="reference internal" href="#cmdoption-Wunused"><em class="xref std std-option">-Wunused</em></a> together with
 <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.</p>
 </dd></dl>
@@ -818,7 +818,7 @@ This warning is enabled by <a class="reference internal" href="#cmdoption-Wall">
 (aside from its declaration).
 This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
 <p>To suppress this warning use the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute
-(Variable Attributes).</p>
+(see <a class="reference internal" href="specifying-attributes-of-variables.html#variable-attributes"><em>Specifying Attributes of Variables</em></a>).</p>
 <p>This warning is also enabled by <a class="reference internal" href="#cmdoption-Wunused"><em class="xref std std-option">-Wunused</em></a>, which is enabled
 by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
 </dd></dl>
@@ -837,7 +837,7 @@ This warning is enabled by <a class="reference internal" href="#cmdoption-Wall">
 <dd><p>Warn whenever a label is declared but not used.
 This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
 <p>To suppress this warning use the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute
-(Variable Attributes).</p>
+(see <a class="reference internal" href="specifying-attributes-of-variables.html#variable-attributes"><em>Specifying Attributes of Variables</em></a>).</p>
 </dd></dl>
 
 <dl class="option">
@@ -856,14 +856,14 @@ This warning is enabled by <a class="reference internal" href="#cmdoption-Wall">
 <tt class="descname">-Wunused-parameter</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-unused-parameter</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wunused-parameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Warn whenever a function parameter is unused aside from its declaration.</p>
 <p>To suppress this warning use the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute
-(Variable Attributes).</p>
+(see <a class="reference internal" href="specifying-attributes-of-variables.html#variable-attributes"><em>Specifying Attributes of Variables</em></a>).</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-Wno-unused-result">
 <tt class="descname">-Wno-unused-result</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wunused-result</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-unused-result" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do not warn if a caller of a function marked with attribute
-<tt class="docutils literal"><span class="pre">warn_unused_result</span></tt> (Function Attributes) does not use
+<tt class="docutils literal"><span class="pre">warn_unused_result</span></tt> (see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>) does not use
 its return value. The default is <em class="xref std std-option">-Wunused-result</em>.</p>
 </dd></dl>
 
@@ -874,7 +874,7 @@ its return value. The default is <em class="xref std std-option">-Wunused-result
 aside from its declaration.
 This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
 <p>To suppress this warning use the <tt class="docutils literal"><span class="pre">unused</span></tt> attribute
-(Variable Attributes).</p>
+(see <a class="reference internal" href="specifying-attributes-of-variables.html#variable-attributes"><em>Specifying Attributes of Variables</em></a>).</p>
 </dd></dl>
 
 <dl class="option">
@@ -2069,9 +2069,8 @@ cannot be fixed to display these characters distinctly.</p>
 <dl class="option">
 <dt id="cmdoption-Wno-deprecated-declarations">
 <tt class="descname">-Wno-deprecated-declarations</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wdeprecated-declarations</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-deprecated-declarations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not warn about uses of functions (Function Attributes),
-variables (Variable Attributes), and types (Type
-Attributes) marked as deprecated by using the <tt class="docutils literal"><span class="pre">deprecated</span></tt>
+<dd><p>Do not warn about uses of functions (see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>),
+variables (see <a class="reference internal" href="specifying-attributes-of-variables.html#variable-attributes"><em>Specifying Attributes of Variables</em></a>), and types (see <a class="reference internal" href="specifying-attributes-of-types.html#type-attributes"><em>Specifying Attributes of Types</em></a>) marked as deprecated by using the <tt class="docutils literal"><span class="pre">deprecated</span></tt>
 attribute.</p>
 </dd></dl>
 
@@ -2104,8 +2103,8 @@ option can be used to relax the cost model.</p>
 <p class="last">(C and Objective-C only)</p>
 </div>
 <p>Warn if an initialized field without side effects is overridden when
-using designated initializers (Designated InitsDesignated
-Initializers).</p>
+using designated initializers (see <a class="reference internal" href="designated-initializers.html#designated-inits"><em>Designated
+Initializers</em></a>).</p>
 <p>This warning is included in <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a>.  To get other
 <a class="reference internal" href="#cmdoption-Wextra"><em class="xref std std-option">-Wextra</em></a> warnings without this one, use <em class="xref std std-option">-Wextra
 -Wno-override-init</em>.</p>
@@ -2119,8 +2118,8 @@ Initializers).</p>
 <p class="last">(C and Objective-C only)</p>
 </div>
 <p>Warn if an initialized field with side effects is overridden when
-using designated initializers (Designated InitsDesignated
-Initializers).  This warning is enabled by default.</p>
+using designated initializers (see <a class="reference internal" href="designated-initializers.html#designated-inits"><em>Designated
+Initializers</em></a>).  This warning is enabled by default.</p>
 </dd></dl>
 
 <dl class="option">
@@ -2252,7 +2251,7 @@ different size.</p>
 <dl class="option">
 <dt id="cmdoption-Winvalid-pch">
 <tt class="descname">-Winvalid-pch</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-invalid-pch</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Winvalid-pch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Warn if a precompiled header (Precompiled Headers) is found in
+<dd><p>Warn if a precompiled header (see <a class="reference internal" href="using-precompiled-headers.html#precompiled-headers"><em>Using Precompiled Headers</em></a>) is found in
 the search path but can&#8217;t be used.</p>
 </dd></dl>
 

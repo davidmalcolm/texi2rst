@@ -622,9 +622,9 @@ influenced using various <span class="target" id="index-7"></span><tt class="xre
 for more details.</p>
 <p>Generated instrumentation may be controlled by various
 <em class="xref std std-option">-fchkp-*</em> options and by the <tt class="docutils literal"><span class="pre">bnd_variable_size</span></tt>
-structure field attribute (Type Attributes) and
+structure field attribute (see <a class="reference internal" href="specifying-attributes-of-types.html#type-attributes"><em>Specifying Attributes of Types</em></a>) and
 <tt class="docutils literal"><span class="pre">bnd_legacy</span></tt>, and <tt class="docutils literal"><span class="pre">bnd_instrument</span></tt> function attributes
-(Function Attributes).  GCC also provides a number of built-in
+(see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>).  GCC also provides a number of built-in
 functions for controlling the Pointer Bounds Checker.  See <a class="reference internal" href="pointer-bounds-checker-built-in-functions.html#pointer-bounds-checker-builtins"><em>Pointer Bounds Checker Built-in Functions</em></a>, for more information.</p>
 </dd></dl>
 
@@ -739,7 +739,7 @@ Enabled by default.</p>
 <tt class="descname">-fchkp-instrument-marked-only</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-fno-chkp-instrument-marked-only</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fchkp-instrument-marked-only" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instructs Pointer Bounds Checker to instrument only functions
 marked with the <tt class="docutils literal"><span class="pre">bnd_instrument</span></tt> attribute
-(Function Attributes).  Disabled by default.</p>
+(see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>).  Disabled by default.</p>
 </dd></dl>
 
 <dl class="option">
@@ -1036,8 +1036,8 @@ supports locking, the data files will be correctly updated.  Also
 will not happen).</li>
 <li>For profile-directed optimizations, compile the source files again with
 the same optimization and code generation options plus
-<a class="reference internal" href="options-that-control-optimization.html#cmdoption-fbranch-probabilities"><em class="xref std std-option">-fbranch-probabilities</em></a> (Optimize OptionsOptions that
-Control Optimization).</li>
+<a class="reference internal" href="options-that-control-optimization.html#cmdoption-fbranch-probabilities"><em class="xref std std-option">-fbranch-probabilities</em></a> (see <a class="reference internal" href="options-that-control-optimization.html#optimize-options"><em>Options that
+Control Optimization</em></a>).</li>
 <li>For test coverage analysis, use <strong class="command">gcov</strong> to produce human readable
 information from the .gcno and .gcda files.  Refer to the
 <strong class="command">gcov</strong> documentation for further information.</li>
@@ -1055,7 +1055,7 @@ block must be created to hold the instrumentation code.</p>
 <dt id="cmdoption-ftest-coverage">
 <tt class="descname">-ftest-coverage</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-ftest-coverage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Produce a notes file that the <strong class="command">gcov</strong> code-coverage utility
-(Gcov:command:<cite>gcov</cite>-a Test Coverage Program) can use to
+(see <em class="xref std std-ref">gcov</em>) can use to
 show program coverage.  Each source file&#8217;s note file is called
 <tt class="docutils literal"><span class="pre">auxname</span></tt>.gcno.  Refer to the <a class="reference internal" href="#cmdoption-fprofile-arcs"><em class="xref std std-option">-fprofile-arcs</em></a> option
 above for a description of <tt class="docutils literal"><span class="pre">auxname</span></tt> and instructions on how to

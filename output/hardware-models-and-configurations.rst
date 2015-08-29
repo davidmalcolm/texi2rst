@@ -5872,7 +5872,7 @@ These are the options defined for the Altera Nios II processor.
   The following values of ``insn`` are supported.  Except as otherwise
   noted, floating-point operations are expected to be implemented with
   normal IEEE 754 semantics and correspond directly to the C operators or the
-  equivalent GCC built-in functions (Other Builtins).
+  equivalent GCC built-in functions (see :ref:`other-builtins`).
 
   Single-precision floating point:
 
@@ -5976,8 +5976,8 @@ These are the options defined for the Altera Nios II processor.
     Note that you can gain more local control over generation of Nios II custom
   instructions by using the ``target("custom-``insn``=``N``")``
   and ``target("no-custom-``insn``")`` function attributes
-  (Function Attributes)
-  or pragmas (Function Specific Option Pragmas).
+  (see :ref:`function-attributes`)
+  or pragmas (see :ref:`function-specific-option-pragmas`).
 
 .. option:: -mcustom-fpu-cfg=name
 
@@ -6019,8 +6019,8 @@ These are the options defined for the Altera Nios II processor.
 
   Note that you can gain more local control over selection of a FPU
   configuration by using the ``target("custom-fpu-cfg=``name``")``
-  function attribute (Function Attributes)
-  or pragma (Function Specific Option Pragmas).
+  function attribute (see :ref:`function-attributes`)
+  or pragma (see :ref:`function-specific-option-pragmas`).
 
 These additional -m options are available for the Altera Nios II
 ELF (bare-metal) target:
@@ -9184,7 +9184,7 @@ options for that target.
 
   Link an RTP executable against shared libraries rather than static
   libraries.  The options :option:`-static` and :option:`-shared` can
-  also be used for RTPs (Link Options); :option:`-static`
+  also be used for RTPs (see :ref:`link-options`); :option:`-static`
   is the default.
 
 .. option:: -Bstatic, -Bdynamic
@@ -9503,8 +9503,8 @@ These -m options are defined for the x86 family of computers.
   .. index:: masm=dialect
 
   Output assembly instructions using selected ``dialect``.  Also affects
-  which dialect is used for basic ``asm`` (Basic Asm) and
-  extended ``asm`` (Extended Asm). Supported choices (in dialect
+  which dialect is used for basic ``asm`` (see :ref:`basic-asm`) and
+  extended ``asm`` (see :ref:`extended-asm`). Supported choices (in dialect
   order) are att or intel. The default is att. Darwin does
   not support intel.
 

@@ -7,8 +7,8 @@ Label Attributes
 
 GCC allows attributes to be set on C labels.  See :ref:`attribute-syntax`, for 
 details of the exact syntax for using attributes.  Other attributes are 
-available for functions (Function Attributes), variables 
-(Variable Attributes) and for types (Type Attributes).
+available for functions (see :ref:`function-attributes`), variables 
+(see :ref:`variable-attributes`) and for types (see :ref:`type-attributes`).
 
 This example uses the ``cold`` label attribute to indicate the 
 ``ErrorHandling`` branch is unlikely to be taken and that the

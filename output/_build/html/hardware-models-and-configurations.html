@@ -6702,7 +6702,7 @@ of the default behavior of using a library call.</p>
 <p>The following values of <tt class="docutils literal"><span class="pre">insn</span></tt> are supported.  Except as otherwise
 noted, floating-point operations are expected to be implemented with
 normal IEEE 754 semantics and correspond directly to the C operators or the
-equivalent GCC built-in functions (Other Builtins).</p>
+equivalent GCC built-in functions (see <a class="reference internal" href="other-built-in-functions-provided-by-gcc.html#other-builtins"><em>Other Built-in Functions Provided by GCC</em></a>).</p>
 <p>Single-precision floating point:</p>
 <dl class="docutils">
 <dt>fadds, fsubs, fdivs, fmuls</dt>
@@ -6786,8 +6786,8 @@ the most significant half of X.</dd>
 </dl>
 <p>instructions by using the <tt class="docutils literal"><span class="pre">target(&quot;custom-``insn``=``N</span></tt>&#8221;)``
 and <tt class="docutils literal"><span class="pre">target(&quot;no-custom-``insn</span></tt>&#8221;)`` function attributes
-(Function Attributes)
-or pragmas (Function Specific Option Pragmas).</p>
+(see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>)
+or pragmas (see <a class="reference internal" href="pragmas-accepted-by-gcc.html#function-specific-option-pragmas"><em>Function Specific Option Pragmas</em></a>).</p>
 </dd></dl>
 
 <dl class="option">
@@ -6826,8 +6826,8 @@ Custom instruction assignments given by individual
 order of the options on the command line.</p>
 <p>Note that you can gain more local control over selection of a FPU
 configuration by using the <tt class="docutils literal"><span class="pre">target(&quot;custom-fpu-cfg=``name</span></tt>&#8221;)``
-function attribute (Function Attributes)
-or pragma (Function Specific Option Pragmas).</p>
+function attribute (see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>)
+or pragma (see <a class="reference internal" href="pragmas-accepted-by-gcc.html#function-specific-option-pragmas"><em>Function Specific Option Pragmas</em></a>).</p>
 </dd></dl>
 
 <p>These additional -m options are available for the Altera Nios II
@@ -10444,7 +10444,7 @@ defines the preprocessor macro <tt class="docutils literal"><span class="pre">__
 <tt class="descname">-non-static</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-non-static" title="Permalink to this definition">¶</a></dt>
 <dd><p>Link an RTP executable against shared libraries rather than static
 libraries.  The options <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a> and <a class="reference internal" href="options-for-linking.html#cmdoption-shared"><em class="xref std std-option">-shared</em></a> can
-also be used for RTPs (Link Options); <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a>
+also be used for RTPs (see <a class="reference internal" href="options-for-linking.html#link-options"><em>Options for Linking</em></a>); <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a>
 is the default.</p>
 </dd></dl>
 
@@ -10726,8 +10726,8 @@ functional units well, resulting in unstable performance.</dd>
 <dt id="cmdoption-masm">
 <tt class="descname">-masm</tt><tt class="descclassname">=dialect</tt><a class="headerlink" href="#cmdoption-masm" title="Permalink to this definition">¶</a></dt>
 <dd><p id="index-81">Output assembly instructions using selected <tt class="docutils literal"><span class="pre">dialect</span></tt>.  Also affects
-which dialect is used for basic <tt class="docutils literal"><span class="pre">asm</span></tt> (Basic Asm) and
-extended <tt class="docutils literal"><span class="pre">asm</span></tt> (Extended Asm). Supported choices (in dialect
+which dialect is used for basic <tt class="docutils literal"><span class="pre">asm</span></tt> (see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#basic-asm"><em>Basic Asm - Assembler Instructions Without Operands</em></a>) and
+extended <tt class="docutils literal"><span class="pre">asm</span></tt> (see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#extended-asm"><em>Extended Asm - Assembler Instructions with C Expression Operands</em></a>). Supported choices (in dialect
 order) are att or intel. The default is att. Darwin does
 not support intel.</p>
 </dd></dl>

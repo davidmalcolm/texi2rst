@@ -272,13 +272,12 @@ anywhere within the variables&#8217; scopes.</p>
 <div class="section" id="solaris-pragmas">
 <span id="id6"></span><h2>Solaris Pragmas<a class="headerlink" href="#solaris-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>The Solaris target supports <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">redefine_extname</span></tt>
-(Symbol-Renaming Pragmas).  It also supports additional
+(see <a class="reference internal" href="#symbol-renaming-pragmas"><em>Symbol-Renaming Pragmas</em></a>).  It also supports additional
 <tt class="docutils literal"><span class="pre">#pragma</span></tt> directives for compatibility with the system compiler.</p>
 <p>align <tt class="docutils literal"><span class="pre">alignment</span></tt> (<tt class="docutils literal"><span class="pre">variable</span></tt> [, <tt class="docutils literal"><span class="pre">variable</span></tt>]...)</p>
 <blockquote>
 <div><p id="index-18">Increase the minimum alignment of each <tt class="docutils literal"><span class="pre">variable</span></tt> to <tt class="docutils literal"><span class="pre">alignment</span></tt>.
-This is the same as GCC&#8217;s <tt class="docutils literal"><span class="pre">aligned</span></tt> attribute Variable
-Attributes).  Macro expansion occurs on the arguments to this pragma
+This is the same as GCC&#8217;s <tt class="docutils literal"><span class="pre">aligned</span></tt> attribute see <a class="reference internal" href="specifying-attributes-of-variables.html#variable-attributes"><em>Specifying Attributes of Variables</em></a>).  Macro expansion occurs on the arguments to this pragma
 when compiling C and Objective-C.  It does not currently occur when
 compiling C++, but this is a bug which may be fixed in a future
 release.</p>
@@ -302,7 +301,7 @@ adding a call to the <tt class="docutils literal"><span class="pre">.init</span>
 assembly for a given declaration. While this pragma is supported on all
 platforms, it is intended primarily to provide compatibility with the
 Solaris system headers. This effect can also be achieved using the asm
-labels extension (Asm Labels).</p>
+labels extension (see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#asm-labels"><em>Controlling Names Used in Assembler Code</em></a>).</p>
 <p>redefine_extname <tt class="docutils literal"><span class="pre">oldname````newname</span></tt></p>
 <blockquote>
 <div><p id="index-21">This pragma gives the C function <tt class="docutils literal"><span class="pre">oldname</span></tt> the assembly symbol
@@ -337,7 +336,7 @@ to be a small power of two and specifies the new alignment in bytes.</p>
 <li><tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">pack(``n</span></tt>)`` simply sets the new alignment.</li>
 <li><tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">pack()</span></tt> sets the alignment to the one that was in
 effect when compilation started (see also command-line option
-<em class="xref std std-option">-fpack-struct[=``n`</em>]` Code Gen Options).</li>
+<em class="xref std std-option">-fpack-struct[=``n`</em>]` see <a class="reference internal" href="options-for-code-generation-conventions.html#code-gen-options"><em>Options for Code Generation Conventions</em></a>).</li>
 <li><tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">pack(push[,``n</span></tt>])`` pushes the current alignment
 setting on an internal stack and then optionally sets the new alignment.</li>
 <li><tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">pack(pop)</span></tt> restores the alignment setting to the one
@@ -453,7 +452,7 @@ TODO - Remember to fix this.</p>
 <blockquote>
 <div><p id="index-25">This pragma allows the user to set the visibility for multiple
 declarations without having to give each a visibility attribute
-(Function Attributes).</p>
+(see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>).</p>
 <p>In C++, #pragma GCC visibility affects only namespace-scope
 declarations.  Class members and template specializations are not
 affected; if you want to override the visibility for a particular

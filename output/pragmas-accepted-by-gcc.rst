@@ -245,7 +245,7 @@ Solaris Pragmas
 ^^^^^^^^^^^^^^^
 
 The Solaris target supports ``#pragma redefine_extname``
-(Symbol-Renaming Pragmas).  It also supports additional
+(see :ref:`symbol-renaming-pragmas`).  It also supports additional
 ``#pragma`` directives for compatibility with the system compiler.
 
 align ``alignment`` (``variable`` [, ``variable``]...)
@@ -253,8 +253,7 @@ align ``alignment`` (``variable`` [, ``variable``]...)
   .. index:: pragma, align
 
   Increase the minimum alignment of each ``variable`` to ``alignment``.
-  This is the same as GCC's ``aligned`` attribute Variable
-  Attributes).  Macro expansion occurs on the arguments to this pragma
+  This is the same as GCC's ``aligned`` attribute see :ref:`variable-attributes`).  Macro expansion occurs on the arguments to this pragma
   when compiling C and Objective-C.  It does not currently occur when
   compiling C++, but this is a bug which may be fixed in a future
   release.
@@ -284,7 +283,7 @@ GCC supports a ``#pragma`` directive that changes the name used in
 assembly for a given declaration. While this pragma is supported on all
 platforms, it is intended primarily to provide compatibility with the
 Solaris system headers. This effect can also be achieved using the asm
-labels extension (Asm Labels).
+labels extension (see :ref:`asm-labels`).
 
 redefine_extname ``oldname````newname``
 
@@ -328,7 +327,7 @@ to be a small power of two and specifies the new alignment in bytes.
 
 * ``#pragma pack()`` sets the alignment to the one that was in
   effect when compilation started (see also command-line option
-  :option:`-fpack-struct[=``n``]` Code Gen Options).
+  :option:`-fpack-struct[=``n``]` see :ref:`code-gen-options`).
 
 * ``#pragma pack(push[,``n``])`` pushes the current alignment
   setting on an internal stack and then optionally sets the new alignment.
@@ -471,7 +470,7 @@ Visibility Pragmas
 
   This pragma allows the user to set the visibility for multiple
   declarations without having to give each a visibility attribute
-  (Function Attributes).
+  (see :ref:`function-attributes`).
 
   In C++, #pragma GCC visibility affects only namespace-scope
   declarations.  Class members and template specializations are not

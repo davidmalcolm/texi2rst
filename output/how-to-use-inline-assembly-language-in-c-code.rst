@@ -14,8 +14,8 @@ How to Use Inline Assembly Language in C Code
 The ``asm`` keyword allows you to embed assembler instructions
 within C code.  GCC provides two forms of inline ``asm``
 statements.  A :dfn:`basic ``asm``` statement is one with no
-operands (Basic Asm), while an :dfn:`extended ``asm```
-statement (Extended Asm) includes one or more operands.  
+operands (see :ref:`basic-asm`), while an :dfn:`extended ``asm```
+statement (see :ref:`extended-asm`) includes one or more operands.  
 The extended form is preferred for mixing C and assembly language
 within a function, but to include assembly language at
 top level you must use basic ``asm``.
@@ -50,7 +50,7 @@ A basic ``asm`` statement has the following syntax:
 The ``asm`` keyword is a GNU extension.
 When writing code that can be compiled with :option:`-ansi` and the
 various :option:`-std` options, use ``__asm__`` instead of 
-``asm`` (Alternate Keywords).
+``asm`` (see :ref:`alternate-keywords`).
 
 Qualifiers
 ^^^^^^^^^^
@@ -92,7 +92,7 @@ can be used:
 
 * Functions declared
   with the ``naked`` attribute also require basic ``asm``
-  (Function Attributes).
+  (see :ref:`function-attributes`).
 
 Safely accessing C data and calling functions from basic ``asm`` is more 
 complex than it may appear. To access C data, it is better to use extended 
@@ -128,7 +128,7 @@ registers you might use %eax in basic ``asm`` and
 
 On targets such as x86 that support multiple assembler dialects,
 all basic ``asm`` blocks use the assembler dialect specified by the 
-:option:`-masm` command-line option (x86 Options).  
+:option:`-masm` command-line option (see :ref:`x86-options`).  
 Basic ``asm`` provides no
 mechanism to provide different assembler strings for different dialects.
 
@@ -169,7 +169,7 @@ the operand parameters after the assembler template:
 The ``asm`` keyword is a GNU extension.
 When writing code that can be compiled with :option:`-ansi` and the
 various :option:`-std` options, use ``__asm__`` instead of 
-``asm`` (Alternate Keywords).
+``asm`` (see :ref:`alternate-keywords`).
 
 Qualifiers
 ^^^^^^^^^^
@@ -228,9 +228,9 @@ code or to access assembly instructions that are not readily available to C
 programs.
 
 Note that extended ``asm`` statements must be inside a function. Only 
-basic ``asm`` may be outside functions (Basic Asm).
+basic ``asm`` may be outside functions (see :ref:`basic-asm`).
 Functions declared with the ``naked`` attribute also require basic 
-``asm`` (Function Attributes).
+``asm`` (see :ref:`function-attributes`).
 
 While the uses of ``asm`` are many and varied, it may help to think of an 
 ``asm`` statement as a series of low-level instructions that convert input 
@@ -375,7 +375,7 @@ Under certain circumstances, GCC may duplicate (or remove duplicates of) your
 assembly code when optimizing. This can lead to unexpected duplicate symbol 
 errors during compilation if your asm code defines symbols or labels. 
 Using %= 
-(AssemblerTemplate) may help resolve this problem.
+(see :ref:`assemblertemplate`) may help resolve this problem.
 
 .. _assemblertemplate:
 
@@ -392,7 +392,7 @@ string can contain any instructions recognized by the assembler, including
 directives. GCC does not parse the assembler instructions 
 themselves and does not know what they mean or even whether they are valid 
 assembler input. However, it does count the statements 
-(Size of an asm).
+(see :ref:`size-of-an-asm`).
 
 You may place multiple assembler instructions together in a single ``asm`` 
 string, separated by the characters normally used in assembly code for the 
@@ -545,10 +545,10 @@ constraint
   existing value) or + (when reading and writing). When using 
   =, do not assume the location contains the existing value
   on entry to the ``asm``, except 
-  when the operand is tied to an input; InputOperandsInput Operands.
+  when the operand is tied to an input; see :ref:`Input Operands <inputoperands>`.
 
   After the prefix, there must be one or more additional constraints 
-  (Constraints) that describe where the value resides. Common 
+  (see :ref:`constraints`) that describe where the value resides. Common 
   constraints include r for register and m for memory. 
   When you list more than one possible location (for example, ``"=rm"``),
   the compiler chooses the most efficient one based on the current context. 
@@ -556,7 +556,7 @@ constraint
   the optimizers to produce the best possible code. 
   If you must use a specific register, but your Machine Constraints do not
   provide sufficient control to select the specific register you want, 
-  local register variables may provide a solution (Local Reg Vars).
+  local register variables may provide a solution (see :ref:`local-reg-vars`).
 
 cvariablename
   Specifies a C lvalue expression to hold the output, typically a variable name.
@@ -564,7 +564,7 @@ cvariablename
 
   When the compiler selects the registers to use to 
 represent the output operands, it does not use any of the clobbered registers 
-(Clobbers).
+(see :ref:`clobbers`).
 
 Output operand expressions must be lvalues. The compiler cannot check whether 
 the operands have data types that are reasonable for the instruction being 
@@ -577,7 +577,7 @@ Operands using the + constraint modifier count as two operands
 (that is, both as input and output) towards the total maximum of 30 operands
 per ``asm`` statement.
 
-Use the & constraint modifier (Modifiers) on all output
+Use the & constraint modifier (see :ref:`modifiers`) on all output
 operands that must not overlap an input.  Otherwise, 
 GCC may allocate the output operand in the same register as an unrelated 
 input operand, on the assumption that the assembler code consumes its 
@@ -709,7 +709,7 @@ constraint
   the compiler chooses the most efficient one based on the current context.
   If you must use a specific register, but your Machine Constraints do not
   provide sufficient control to select the specific register you want, 
-  local register variables may provide a solution (Local Reg Vars).
+  local register variables may provide a solution (see :ref:`local-reg-vars`).
 
   Input constraints can also be digits (for example, ``"0"``). This indicates 
   that the specified input must be in the same place as the output constraint 
@@ -722,7 +722,7 @@ cexpression
   as input.  The enclosing parentheses are a required part of the syntax.
 
   When the compiler selects the registers to use to represent the input 
-operands, it does not use any of the clobbered registers (Clobbers).
+operands, it does not use any of the clobbered registers (see :ref:`clobbers`).
 
 If there are no output operands but there are input operands, place two 
 consecutive colons where the output operands would go:
@@ -792,7 +792,7 @@ enclosed in double quotes and separated by commas.
 Clobber descriptions may not in any way overlap with an input or output 
 operand. For example, you may not have an operand describing a register class 
 with one member when listing that register in the clobber list. Variables 
-declared to live in specific registers (Explicit Reg Vars) and used 
+declared to live in specific registers (see :ref:`explicit-reg-vars`) and used 
 as ``asm`` input or output operands must have no part mentioned in the 
 clobber description. In particular, there is no way to specify that input 
 operands get modified without also specifying them as output operands.
@@ -859,8 +859,7 @@ list of all C labels to which the assembler code may jump. GCC assumes that
 ``asm`` execution falls through to the next statement (if this is not the 
 case, consider using the ``__builtin_unreachable`` intrinsic after the 
 ``asm`` statement). Optimization of ``asm goto`` may be improved by 
-using the ``hot`` and ``cold`` label attributes (Label 
-Attributes).
+using the ``hot`` and ``cold`` label attributes (see :ref:`label--attributes`).
 
 An ``asm goto`` statement cannot have outputs.
 This is due to an internal restriction of 
@@ -1599,7 +1598,7 @@ in ``asm`` arguments, since they will convey meaning more readily to
 people reading your code.  Failing that, use the constraint letters
 that usually have very similar meanings across architectures.  The most
 commonly used constraints are m and r (for memory and
-general-purpose registers respectively; Simple Constraints), and
+general-purpose registers respectively; see :ref:`simple-constraints`), and
 I, usually the letter indicating the most common
 immediate-constant format.
 
@@ -4029,7 +4028,7 @@ register variable should be allocated.
   to local register variables may be deleted or moved or simplified.
 
   These local variables are sometimes convenient for use with the extended
-  ``asm`` feature (Extended Asm), if you want to write one
+  ``asm`` feature (see :ref:`extended-asm`), if you want to write one
   output of the assembler instruction directly into a particular register.
   (This works provided the register you specify fits the constraints
   specified for that operand in the ``asm``.)
@@ -4169,7 +4168,7 @@ variables, but for a local variable it appears within a function.
 
 Naturally the register name is CPU-dependent, but this is not a
 problem, since specific registers are most often useful with explicit
-assembler instructions (Extended Asm).  Both of these things
+assembler instructions (see :ref:`extended-asm`).  Both of these things
 generally require that you conditionalize your program according to
 CPU type.
 

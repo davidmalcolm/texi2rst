@@ -83,7 +83,7 @@ way around them.
   .. index:: ffloat-store
 
   You can partially avoid this problem by using the :option:`-ffloat-store`
-  option (Optimize Options).
+  option (see :ref:`optimize-options`).
 
 * On AIX and other platforms without weak symbol support, templates
   need to be instantiated explicitly and symbols for static members

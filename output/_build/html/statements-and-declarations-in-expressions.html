@@ -122,7 +122,7 @@ the macro safely as follows:</p>
 the value of an enumeration constant, the width of a bit-field, or
 the initial value of a static variable.</p>
 <p>If you don&#8217;t know the type of the operand, you can still do this, but you
-must use <tt class="docutils literal"><span class="pre">typeof</span></tt> or <tt class="docutils literal"><span class="pre">__auto_type</span></tt> (Typeof).</p>
+must use <tt class="docutils literal"><span class="pre">typeof</span></tt> or <tt class="docutils literal"><span class="pre">__auto_type</span></tt> (see <em class="xref std std-ref">typeof</em>).</p>
 <p>In G++, the result value of a statement expression undergoes array and
 function pointer decay, and is returned by value to the enclosing
 expression.  For instance, if <tt class="docutils literal"><span class="pre">A</span></tt> is a class, then</p>
@@ -165,7 +165,7 @@ bug.)</p>
 <tt class="docutils literal"><span class="pre">switch</span></tt> statement outside the statement expression with a
 <tt class="docutils literal"><span class="pre">case</span></tt> or <tt class="docutils literal"><span class="pre">default</span></tt> label inside the statement expression is
 not permitted.  Jumping into a statement expression with a computed
-<tt class="docutils literal"><span class="pre">goto</span></tt> (Labels as Values) has undefined behavior.
+<tt class="docutils literal"><span class="pre">goto</span></tt> (see <a class="reference internal" href="labels-as-values.html#labels-as-values"><em>Labels as Values</em></a>) has undefined behavior.
 Jumping out of a statement expression is permitted, but if the
 statement expression is part of a larger expression then it is
 unspecified which other subexpressions of that expression have been

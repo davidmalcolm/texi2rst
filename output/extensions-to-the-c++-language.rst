@@ -12,7 +12,7 @@ can also use most of the C language extensions in your C++ programs).  If you
 want to write code that checks whether these features are available, you can
 test for the GNU compiler the same way as for C programs: check for a
 predefined macro ``__GNUC__``.  You can also use ``__GNUG__`` to
-test specifically for GNU C++ (Common Predefined MacrosPredefined MacroscppThe GNU C Preprocessor).
+test specifically for GNU C++ (see :ref:`Predefined Macros <common-predefined-macros>`).
 
 .. toctree::
 

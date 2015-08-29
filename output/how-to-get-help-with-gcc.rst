@@ -11,7 +11,7 @@ ways to find it:
   that brings no response, try gcc@gcc.gnu.org.  For help
   changing GCC, ask gcc@gcc.gnu.org.  If you think you have found
   a bug in GCC, please report it following the instructions at
-  Bug Reporting.
+  see :ref:`bug-reporting`.
 
 * Look in the service directory for someone who might help you for a fee.
   The service directory is found at

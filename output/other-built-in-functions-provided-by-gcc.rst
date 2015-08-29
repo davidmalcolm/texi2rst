@@ -804,7 +804,7 @@ The remaining functions are provided for optimization purposes.
 GCC includes built-in versions of many of the functions in the standard
 C library.  The versions prefixed with ``__builtin_`` are always
 treated as having the same meaning as the C library function even if you
-specify the :option:`-fno-builtin` option.  (C Dialect Options)
+specify the :option:`-fno-builtin` option.  (see :ref:`c-dialect-options`)
 Many of these functions are only optimized in certain cases; if they are
 not optimized in a particular case, a call to the library function is
 emitted.
@@ -1074,7 +1074,7 @@ You may use this built-in function in either a macro or an inline
 function.  However, if you use it in an inlined function and pass an
 argument of the function as the argument to the built-in, GCC 
 never returns 1 when you call the inline function with a string constant
-or compound literal (Compound Literals) and does not return 1
+or compound literal (see :ref:`compound-literals`) and does not return 1
 when you pass a constant numeric value to the inline function unless you
 specify the :option:`-O` option.
 

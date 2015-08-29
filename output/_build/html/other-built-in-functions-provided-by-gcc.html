@@ -93,7 +93,7 @@ recommend general use of these functions.</p>
 <p id="index-394">GCC includes built-in versions of many of the functions in the standard
 C library.  The versions prefixed with <tt class="docutils literal"><span class="pre">__builtin_</span></tt> are always
 treated as having the same meaning as the C library function even if you
-specify the <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fno-builtin"><em class="xref std std-option">-fno-builtin</em></a> option.  (C Dialect Options)
+specify the <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fno-builtin"><em class="xref std std-option">-fno-builtin</em></a> option.  (see <a class="reference internal" href="options-controlling-c-dialect.html#c-dialect-options"><em>Options Controlling C Dialect</em></a>)
 Many of these functions are only optimized in certain cases; if they are
 not optimized in a particular case, a call to the library function is
 emitted.</p>
@@ -321,7 +321,7 @@ a function if it does not.  For example:</p>
 function.  However, if you use it in an inlined function and pass an
 argument of the function as the argument to the built-in, GCC
 never returns 1 when you call the inline function with a string constant
-or compound literal (Compound Literals) and does not return 1
+or compound literal (see <a class="reference internal" href="compound-literals.html#compound-literals"><em>Compound Literals</em></a>) and does not return 1
 when you pass a constant numeric value to the inline function unless you
 specify the <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O"><em class="xref std std-option">-O</em></a> option.</p>
 <p>You may also use <tt class="docutils literal"><span class="pre">__builtin_constant_p</span></tt> in initializers for static

@@ -84,9 +84,9 @@ refers to its address, because that can't be inlined.
 
 Note that certain usages in a function definition can make it unsuitable
 for inline substitution.  Among these usages are: variadic functions, use of
-``alloca``, use of variable-length data types (Variable Length),
-use of computed goto (Labels as Values), use of nonlocal goto,
-and nested functions (Nested Functions).  Using :option:`-Winline`
+``alloca``, use of variable-length data types (see :ref:`variable-length`),
+use of computed goto (see :ref:`labels-as-values`), use of nonlocal goto,
+and nested functions (see :ref:`nested-functions`).  Using :option:`-Winline`
 warns when a function marked ``inline`` could not be substituted,
 and gives the reason for the failure.
 
@@ -103,8 +103,7 @@ and gives the reason for the failure.
 As required by ISO C++, GCC considers member functions defined within
 the body of a class to be marked inline even if they are
 not explicitly declared with the ``inline`` keyword.  You can
-override this with :option:`-fno-default-inline`; C++ Dialect
-OptionsOptions Controlling C++ Dialect.
+override this with :option:`-fno-default-inline`; see :ref:`Options Controlling C++ Dialect <c++-dialect-options>`.
 
 GCC does not inline any functions when not optimizing unless you specify
 the always_inline attribute for the function, like this:

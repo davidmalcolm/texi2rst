@@ -26,7 +26,7 @@ mandated by the target ABI.
 If the operand of ``__alignof__`` is an lvalue rather than a type,
 its value is the required alignment for its type, taking into account
 any minimum alignment specified with GCC's ``__attribute__``
-extension (Variable Attributes).  For example, after this
+extension (see :ref:`variable-attributes`).  For example, after this
 declaration:
 
 .. code-block:: c++

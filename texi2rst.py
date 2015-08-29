@@ -860,14 +860,19 @@ def fixup_xrefs(tree):
         Note that the XML already contains a trailing period.
         """
         def previsit_element(self, element):
-            if element.kind == 'xref':
+            if element.kind in ('xref', 'pxref'):
                 xrefnodename = element.first_element_named('xrefnodename')
                 xrefprinteddesc = element.first_element_named('xrefprinteddesc')
                 ref_desc = self.get_desc(element)
                 ref_name = convert_text_to_label(xrefnodename.get_sole_text().data)
                 ref = Element('ref', {})
                 ref.rst_kind = Ref(ref_desc, ref_name)
-                element.children = [Text('See '), ref]
+                if element.kind == 'xref':
+                    text = 'See '
+                else:
+                    assert element.kind == 'pxref'
+                    text = 'see '
+                element.children = [Text(text), ref]
 
         def get_desc(self, element):
             xrefprinteddesc = element.first_element_named('xrefprinteddesc')

@@ -570,7 +570,7 @@ it.
 
 .. option:: -ftls-model=model
 
-  Alter the thread-local storage model to be used (Thread-Local).
+  Alter the thread-local storage model to be used (see :ref:`thread-local`).
   The ``model`` argument should be one of global-dynamic,
   local-dynamic, initial-exec or local-exec.
   Note that the choice is subject to optimization: the compiler may use

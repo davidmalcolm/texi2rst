@@ -141,11 +141,11 @@ immediately following an attribute declaration with another attribute
 declaration.  See <a class="reference internal" href="attribute-syntax.html#attribute-syntax"><em>Attribute Syntax</em></a>, for the exact rules on
 attribute syntax and placement.</p>
 <p>GCC also supports attributes on
-variable declarations (Variable Attributes),
-labels (Label Attributes),
-and types (Type Attributes).</p>
+variable declarations (see <a class="reference internal" href="specifying-attributes-of-variables.html#variable-attributes"><em>Specifying Attributes of Variables</em></a>),
+labels (see <a class="reference internal" href="label-attributes.html#label-attributes"><em>Label Attributes</em></a>),
+and types (see <a class="reference internal" href="specifying-attributes-of-types.html#type-attributes"><em>Specifying Attributes of Types</em></a>).</p>
 <p>There is some overlap between the purposes of attributes and pragmas
-(PragmasPragmas Accepted by GCC).  It has been
+(see <a class="reference internal" href="pragmas-accepted-by-gcc.html#pragmas"><em>Pragmas Accepted by GCC</em></a>).  It has been
 found convenient to use <tt class="docutils literal"><span class="pre">__attribute__</span></tt> to achieve a natural
 attachment of attributes to their corresponding declarations, whereas
 <tt class="docutils literal"><span class="pre">#pragma</span></tt> is of use for compatibility with other compilers
@@ -180,7 +180,7 @@ measured in bytes.</p>
 <p>You cannot use this attribute to decrease the alignment of a function,
 only to increase it.  However, when you explicitly specify a function
 alignment this overrides the effect of the
-<a class="reference internal" href="options-that-control-optimization.html#cmdoption-falign-functions"><em class="xref std std-option">-falign-functions</em></a> (Optimize Options) option for this
+<a class="reference internal" href="options-that-control-optimization.html#cmdoption-falign-functions"><em class="xref std std-option">-falign-functions</em></a> (see <a class="reference internal" href="options-that-control-optimization.html#optimize-options"><em>Options That Control Optimization</em></a>) option for this
 function.</p>
 <p>Note that the effectiveness of <tt class="docutils literal"><span class="pre">aligned</span></tt> attributes may be
 limited by inherent limitations in your linker.  On many systems, the
@@ -189,7 +189,7 @@ certain maximum alignment.  (For some linkers, the maximum supported
 alignment may be very very small.)  See your linker documentation for
 further information.</p>
 <p>The <tt class="docutils literal"><span class="pre">aligned</span></tt> attribute can also be used for variables and fields
-(Variable Attributes.)</p>
+(see <a class="reference internal" href="specifying-attributes-of-variables.html#variable-attributes"><em>Specifying Attributes of Variables</em></a>.)</p>
 </div></blockquote>
 <p>alloc_align</p>
 <blockquote>
@@ -315,7 +315,7 @@ if you have a constructor that allocates a resource and a destructor
 that deallocates the same resource, both functions typically have the
 same priority.  The priorities for constructor and destructor
 functions are the same as those specified for namespace-scope C++
-objects (C++ Attributes).</p>
+objects (see <a class="reference internal" href="c++-specific-variable,-function,-and-type-attributes.html#c-attributes"><em>C++-Specific Variable, Function, and Type Attributes</em></a>).</p>
 <p>These attributes are not currently implemented for Objective-C.</p>
 </div></blockquote>
 <p>deprecated deprecated (<tt class="docutils literal"><span class="pre">msg</span></tt>)</p>
@@ -336,7 +336,7 @@ do instead.  Note that the warnings only occurs for uses:</p>
 argument, which must be a string, is printed in the warning if
 present.</p>
 <p>The <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute can also be used for variables and
-types (Variable Attributes, Type Attributes.)</p>
+types (see <a class="reference internal" href="specifying-attributes-of-variables.html#variable-attributes"><em>Specifying Attributes of Variables</em></a>, see <a class="reference internal" href="specifying-attributes-of-types.html#type-attributes"><em>Specifying Attributes of Types</em></a>.)</p>
 </div></blockquote>
 <p>error (&#8220;<tt class="docutils literal"><span class="pre">message</span></tt>&#8221;) warning (&#8220;<tt class="docutils literal"><span class="pre">message</span></tt>&#8221;)</p>
 <blockquote>
@@ -686,7 +686,7 @@ optimized away, put</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">asm</span> <span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>(Extended Asm) in the called function, to serve as a special
+<p>(see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#extended-asm"><em>Extended Asm - Assembler Instructions with C Expression Operands</em></a>) in the called function, to serve as a special
 side-effect.</p>
 </div></blockquote>
 <p>nonnull (<tt class="docutils literal"><span class="pre">arg-index</span></tt>, ...)</p>
@@ -974,7 +974,7 @@ an inline method as hidden without marking the whole class as hidden.</p>
 <p>This attribute applies only to the particular namespace body, not to
 other definitions of the same namespace; it is equivalent to using
 #pragma GCC visibility before and after the namespace
-definition (Visibility Pragmas).</p>
+definition (see <a class="reference internal" href="pragmas-accepted-by-gcc.html#visibility-pragmas"><em>Visibility Pragmas</em></a>).</p>
 <p>In C++, if a template argument has limited visibility, this
 restriction is implicitly propagated to the template instantiation.
 Otherwise, template instantiations and specializations default to the
@@ -1087,7 +1087,7 @@ in a parameter to the interrupt attribute like this:</p>
 <blockquote>
 <div><span class="target" id="index-71"></span><span class="target" id="index-72"></span><span class="target" id="index-73"></span><p id="index-74">These attributes specify how a particular function is called.
 These attributes override the
-<a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> and <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmedium-calls"><em class="xref std std-option">-mmedium-calls</em></a> (ARC Options)
+<a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> and <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmedium-calls"><em class="xref std std-option">-mmedium-calls</em></a> (see <a class="reference internal" href="hardware-models-and-configurations.html#arc-options"><em>ARC Options</em></a>)
 command-line switches and <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">long_calls</span></tt> settings.</p>
 <p>For ARC, a function marked with the <tt class="docutils literal"><span class="pre">long_call</span></tt> attribute is
 always called using register-indirect jump-and-link instructions,
@@ -1129,7 +1129,7 @@ alias to the <tt class="docutils literal"><span class="pre">interrupt</span></tt
 <blockquote>
 <div><span class="target" id="index-77"></span><span class="target" id="index-78"></span><p id="index-79">These attributes specify how a particular function is called.
 These attributes override the
-<a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (ARM Options)
+<a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (see <a class="reference internal" href="hardware-models-and-configurations.html#arm-options"><em>ARM Options</em></a>)
 command-line switch and <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">long_calls</span></tt> settings.  For ARM, the
 <tt class="docutils literal"><span class="pre">long_call</span></tt> attribute indicates that the function might be far
 away from the call site and require a different (more expensive)
@@ -1144,7 +1144,7 @@ requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
-(Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
+(see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#basic-asm"><em>Basic Asm - Assembler Instructions Without Operands</em></a>). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</p>
 </div></blockquote>
@@ -1191,7 +1191,7 @@ requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
-(Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
+(see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#basic-asm"><em>Basic Asm - Assembler Instructions Without Operands</em></a>). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</p>
 </div></blockquote>
@@ -1369,7 +1369,7 @@ Epiphany targets:</p>
 <blockquote>
 <div><span class="target" id="index-107"></span><span class="target" id="index-108"></span><p id="index-109">These attributes specify how a particular function is called.
 These attributes override the
-<a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (Adapteva Epiphany Options)
+<a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (see <a class="reference internal" href="hardware-models-and-configurations.html#adapteva-epiphany-options"><em>Adapteva Epiphany Options</em></a>)
 command-line switch and <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">long_calls</span></tt> settings.</p>
 </div></blockquote>
 </div>
@@ -1535,7 +1535,7 @@ requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
-(Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
+(see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#basic-asm"><em>Basic Asm - Assembler Instructions Without Operands</em></a>). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</p>
 </div></blockquote>
@@ -1725,7 +1725,7 @@ have this attribute return using <tt class="docutils literal"><span class="pre">
 <p>long_call near far</p>
 <blockquote>
 <div><span class="target" id="index-143"></span><span class="target" id="index-144"></span><span class="target" id="index-145"></span><p id="index-146">These attributes specify how a particular function is called on MIPS.
-The attributes override the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (MIPS Options)
+The attributes override the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mlong-calls"><em class="xref std std-option">-mlong-calls</em></a> (see <a class="reference internal" href="hardware-models-and-configurations.html#mips-options"><em>MIPS Options</em></a>)
 command-line switch.  The <tt class="docutils literal"><span class="pre">long_call</span></tt> and <tt class="docutils literal"><span class="pre">far</span></tt> attributes are
 synonyms, and cause the compiler to always call
 the function by first loading its address into a register, and then using
@@ -1741,12 +1741,12 @@ A function with the <tt class="docutils literal"><span class="pre">mips16</span>
 while MIPS16 code generation is disabled for functions with the
 <tt class="docutils literal"><span class="pre">nomips16</span></tt> attribute.  These attributes override the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mips16"><em class="xref std std-option">-mips16</em></a> and <em class="xref std std-option">-mno-mips16</em> options on the command line
-(MIPS Options).</p>
+(see <a class="reference internal" href="hardware-models-and-configurations.html#mips-options"><em>MIPS Options</em></a>).</p>
 <p>When compiling files containing mixed MIPS16 and non-MIPS16 code, the
 preprocessor symbol <tt class="docutils literal"><span class="pre">__mips16</span></tt> reflects the setting on the command line,
 not that within individual functions.  Mixed MIPS16 and non-MIPS16 code
 may interact badly with some GCC extensions such as <tt class="docutils literal"><span class="pre">__builtin_apply</span></tt>
-(Constructing Calls).</p>
+(see <a class="reference internal" href="constructing-function-calls.html#constructing-calls"><em>Constructing Function Calls</em></a>).</p>
 </div></blockquote>
 <p>micromips, MIPS nomicromips, MIPS</p>
 <blockquote>
@@ -1756,20 +1756,20 @@ A function with the <tt class="docutils literal"><span class="pre">micromips</sp
 while microMIPS code generation is disabled for functions with the
 <tt class="docutils literal"><span class="pre">nomicromips</span></tt> attribute.  These attributes override the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmicromips"><em class="xref std std-option">-mmicromips</em></a> and <em class="xref std std-option">-mno-micromips</em> options on the command line
-(MIPS Options).</p>
+(see <a class="reference internal" href="hardware-models-and-configurations.html#mips-options"><em>MIPS Options</em></a>).</p>
 <p>When compiling files containing mixed microMIPS and non-microMIPS code, the
 preprocessor symbol <tt class="docutils literal"><span class="pre">__mips_micromips</span></tt> reflects the setting on the
 command line,
 not that within individual functions.  Mixed microMIPS and non-microMIPS code
 may interact badly with some GCC extensions such as <tt class="docutils literal"><span class="pre">__builtin_apply</span></tt>
-(Constructing Calls).</p>
+(see <a class="reference internal" href="constructing-function-calls.html#constructing-calls"><em>Constructing Function Calls</em></a>).</p>
 </div></blockquote>
 <p>nocompression</p>
 <blockquote>
 <div><p id="index-151">On MIPS targets, you can use the <tt class="docutils literal"><span class="pre">nocompression</span></tt> function attribute
 to locally turn off MIPS16 and microMIPS code generation.  This attribute
 overrides the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mips16"><em class="xref std std-option">-mips16</em></a> and <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mmicromips"><em class="xref std std-option">-mmicromips</em></a> options on the
-command line (MIPS Options).</p>
+command line (see <a class="reference internal" href="hardware-models-and-configurations.html#mips-options"><em>MIPS Options</em></a>).</p>
 </div></blockquote>
 </div>
 <div class="section" id="msp430-function-attributes">
@@ -1804,7 +1804,7 @@ requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
-(Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
+(see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#basic-asm"><em>Basic Asm - Assembler Instructions Without Operands</em></a>). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</p>
 </div></blockquote>
@@ -1870,7 +1870,7 @@ requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
-(Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
+(see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#basic-asm"><em>Basic Asm - Assembler Instructions Without Operands</em></a>). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</p>
 </div></blockquote>
@@ -2109,7 +2109,7 @@ requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
-(Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
+(see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#basic-asm"><em>Basic Asm - Assembler Instructions Without Operands</em></a>). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</p>
 </div></blockquote>
@@ -2157,7 +2157,7 @@ requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
-(Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
+(see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#basic-asm"><em>Basic Asm - Assembler Instructions Without Operands</em></a>). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</p>
 </div></blockquote>
@@ -2270,7 +2270,7 @@ requisite function declaration, while allowing the body of the
 function to be assembly code. The specified function will not have
 prologue/epilogue sequences generated by the compiler. Only basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> statements can safely be included in naked functions
-(Basic Asm). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
+(see <a class="reference internal" href="how-to-use-inline-assembly-language-in-c-code.html#basic-asm"><em>Basic Asm - Assembler Instructions Without Operands</em></a>). While using extended <tt class="docutils literal"><span class="pre">asm</span></tt> or a mixture of
 basic <tt class="docutils literal"><span class="pre">asm</span></tt> and C code may appear to work, they cannot be
 depended upon to work reliably and are not supported.</p>
 </div></blockquote>

@@ -154,7 +154,7 @@ accepts:
   See :ref:`An Inline Function is As Fast As a Macro <inline>`.
   Using this option is roughly equivalent to adding the
   ``gnu_inline`` function attribute to all inline functions
-  (Function Attributes).
+  (see :ref:`function-attributes`).
 
   The option :option:`-fno-gnu89-inline` explicitly tells GCC to use the
   C99 semantics for ``inline`` when in C99 or gnu99 mode (i.e., it

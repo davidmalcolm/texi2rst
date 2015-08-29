@@ -154,8 +154,7 @@ An attribute specifier list may appear immediately before the comma,
 ``=`` or semicolon terminating the declaration of an identifier other
 than a function definition.  Such attribute specifiers apply
 to the declared object or function.  Where an
-assembler name for an object or function is specified (Asm
-Labels), the attribute must follow the ``asm``
+assembler name for an object or function is specified (see :ref:`asm-labels`), the attribute must follow the ``asm``
 specification.
 
 An attribute specifier list may, in future, be permitted to appear after

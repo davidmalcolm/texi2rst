@@ -111,10 +111,10 @@ by an attribute specification inside double parentheses.  Some
 attributes are currently defined generically for variables.
 Other attributes are defined for variables on particular target
 systems.  Other attributes are available for functions
-(Function Attributes), labels (Label Attributes) and for
-types (Type Attributes).
+(see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>), labels (see <a class="reference internal" href="label-attributes.html#label-attributes"><em>Label Attributes</em></a>) and for
+types (see <a class="reference internal" href="specifying-attributes-of-types.html#type-attributes"><em>Specifying Attributes of Types</em></a>).
 Other front ends might define more attributes
-(C++ ExtensionsExtensions to the C++ Language).</p>
+(see <a class="reference internal" href="extensions-to-the-c++-language.html#c-extensions"><em>Extensions to the C++ Language</em></a>).</p>
 <p>See <a class="reference internal" href="attribute-syntax.html#attribute-syntax"><em>Attribute Syntax</em></a>, for details of the exact syntax for using
 attributes.</p>
 <div class="toctree-wrapper compound">
@@ -177,7 +177,7 @@ up to a maximum of 8-byte alignment, then specifying <tt class="docutils literal
 in an <tt class="docutils literal"><span class="pre">__attribute__</span></tt> still only provides you with 8-byte
 alignment.  See your linker documentation for further information.</p>
 <p class="last">The <tt class="docutils literal"><span class="pre">aligned</span></tt> attribute can also be used for functions
-(Common Function Attributes.)</p>
+(see <a class="reference internal" href="declaring-attributes-of-functions.html#common-function-attributes"><em>Common Function Attributes</em></a>.)</p>
 </dd>
 </dl>
 <p>cleanup (<tt class="docutils literal"><span class="pre">cleanup_function</span></tt>)</p>
@@ -223,8 +223,8 @@ do instead.  Note that the warning only occurs for uses:</p>
 argument, which must be a string, is printed in the warning if
 present.</p>
 <p>The <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute can also be used for functions and
-types (Common Function Attributes,
-Common Type Attributes).</p>
+types (see <a class="reference internal" href="declaring-attributes-of-functions.html#common-function-attributes"><em>Common Function Attributes</em></a>,
+see <a class="reference internal" href="specifying-attributes-of-types.html#common-type-attributes"><em>Common Type Attributes</em></a>).</p>
 </div></blockquote>
 <p>mode (<tt class="docutils literal"><span class="pre">mode</span></tt>)</p>
 <blockquote>
@@ -304,7 +304,7 @@ section, consider using the facilities of the linker instead.</p>
 <p>tls_model (&#8220;<tt class="docutils literal"><span class="pre">tls_model</span></tt>&#8221;)</p>
 <blockquote>
 <div><p id="index-10">The <tt class="docutils literal"><span class="pre">tls_model</span></tt> attribute sets thread-local storage model
-(Thread-Local) of a particular <tt class="docutils literal"><span class="pre">__thread</span></tt> variable,
+(see <a class="reference internal" href="thread-local-storage.html#thread-local"><em>Thread-Local Storage</em></a>) of a particular <tt class="docutils literal"><span class="pre">__thread</span></tt> variable,
 overriding <em class="xref std std-option">-ftls-model=</em> command-line switch on a per-variable
 basis.
 The <tt class="docutils literal"><span class="pre">tls_model</span></tt> argument should be one of <tt class="docutils literal"><span class="pre">global-dynamic</span></tt>,

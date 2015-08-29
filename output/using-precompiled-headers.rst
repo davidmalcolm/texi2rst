@@ -21,7 +21,7 @@ the headers it contains change.
 
 A precompiled header file is searched for when ``#include`` is
 seen in the compilation.  As it searches for the included file
-(Search PathSearch PathcppThe C Preprocessor) the
+(see :ref:`Search Path <search-path>`) the
 compiler looks for a precompiled header in each directory just before it
 looks for the include file in that directory.  The name searched for is
 the name specified in the ``#include`` with .gch appended.  If

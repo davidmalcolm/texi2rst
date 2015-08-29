@@ -336,7 +336,7 @@ commands.</p>
 <a class="reference internal" href="#cmdoption-dM"><em class="xref std std-option">-dM</em></a>.  To avoid mixing such debug output with the dependency
 rules you should explicitly specify the dependency output file with
 <a class="reference internal" href="#cmdoption-MF"><em class="xref std std-option">-MF</em></a>, or use an environment variable like
-<span class="target" id="index-4"></span><tt class="xref std std-envvar docutils literal"><span class="pre">DEPENDENCIES_OUTPUT</span></tt> (Environment Variables).  Debug output
+<span class="target" id="index-4"></span><tt class="xref std std-envvar docutils literal"><span class="pre">DEPENDENCIES_OUTPUT</span></tt> (see <a class="reference internal" href="environment-variables-affecting-gcc.html#environment-variables"><em>Environment Variables Affecting GCC</em></a>).  Debug output
 will still be sent to the regular output stream as normal.</p>
 <p>Passing <a class="reference internal" href="#cmdoption-M"><em class="xref std std-option">-M</em></a> to the driver implies <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>, and suppresses
 warnings with an implicit <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-w"><em class="xref std std-option">-w</em></a>.</p>
@@ -430,7 +430,7 @@ of the input file, removes any directory components and suffix, and
 applies a .d suffix.</p>
 <p>If <a class="reference internal" href="#cmdoption-MD"><em class="xref std std-option">-MD</em></a> is used in conjunction with <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>, any
 <a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o</em></a> switch is understood to specify the dependency output file
-(dashMF-MF), but if used without <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>, each <a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o</em></a>
+(see <em class="xref std std-ref">-MF</em>), but if used without <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>, each <a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o</em></a>
 is understood to specify a target object file.</p>
 <p>Since <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a> is not implied, <a class="reference internal" href="#cmdoption-MD"><em class="xref std std-option">-MD</em></a> can be used to generate
 a dependency output file as a side-effect of the compilation process.</p>
@@ -446,7 +446,7 @@ header files.</p>
 <dl class="option">
 <dt id="cmdoption-fpch-deps">
 <tt class="descname">-fpch-deps</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fpch-deps" title="Permalink to this definition">¶</a></dt>
-<dd><p>When using precompiled headers (Precompiled Headers), this flag
+<dd><p>When using precompiled headers (see <a class="reference internal" href="using-precompiled-headers.html#precompiled-headers"><em>Using Precompiled Headers</em></a>), this flag
 will cause the dependency-output flags to also list the files from the
 precompiled header&#8217;s dependencies.  If not specified only the
 precompiled header would be listed and not the files that were used to
@@ -457,8 +457,7 @@ header is used.</p>
 <dl class="option">
 <dt id="cmdoption-fpch-preprocess">
 <tt class="descname">-fpch-preprocess</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fpch-preprocess" title="Permalink to this definition">¶</a></dt>
-<dd><p>This option allows use of a precompiled header (Precompiled
-Headers) together with <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>.  It inserts a special <tt class="docutils literal"><span class="pre">#pragma</span></tt>,
+<dd><p>This option allows use of a precompiled header (see <a class="reference internal" href="using-precompiled-headers.html#precompiled-headers"><em>Using Precompiled Headers</em></a>) together with <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>.  It inserts a special <tt class="docutils literal"><span class="pre">#pragma</span></tt>,
 <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">pch_preprocess</span> <span class="pre">&quot;``filename</span></tt>&#8220;`` in the output to mark
 the place where the precompiled header was found, and its <tt class="docutils literal"><span class="pre">filename</span></tt>.
 When <a class="reference internal" href="#cmdoption-fpreprocessed"><em class="xref std std-option">-fpreprocessed</em></a> is in use, GCC recognizes this <tt class="docutils literal"><span class="pre">#pragma</span></tt>

@@ -13,7 +13,7 @@ when searching for various kinds of files.  Some are used to specify other
 aspects of the compilation environment.
 
 Note that you can also specify places to search using options such as
-:option:`-B`, :option:`-I` and :option:`-L` (Directory Options).  These
+:option:`-B`, :option:`-I` and :option:`-L` (see :ref:`directory-options`).  These
 take precedence over places specified using environment variables, which
 in turn take precedence over those specified by the configuration of GCC.
 See :ref:`driver`.
@@ -199,7 +199,7 @@ preprocessor.
 
   In other words, this environment variable is equivalent to combining
   the options :option:`-MM` and :option:`-MF`
-  (Preprocessor Options),
+  (see :ref:`preprocessor-options`),
   with an optional :option:`-MT` switch too.
 
 .. envvar:: SUNPRO_DEPENDENCIESSUNPRO_DEPENDENCIES

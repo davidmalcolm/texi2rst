@@ -13,7 +13,7 @@ counterparts.  GCC allows any integral scalar or pointer type that is
 1, 2, 4 or 8 bytes in length.
 
 These functions are implemented in terms of the __atomic
-builtins (__atomic Builtins).  They should not be used for new
+builtins (see :ref:`__atomic-builtins`).  They should not be used for new
 code which should use the __atomic builtins instead.
 
 Not all operations are supported by all target processors.  If a particular

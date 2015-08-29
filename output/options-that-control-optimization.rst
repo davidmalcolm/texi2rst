@@ -2485,8 +2485,7 @@ section includes experimental options that may produce broken code.
 .. option:: -fbranch-probabilities
 
   After running a program compiled with :option:`-fprofile-arcs`
-  (Debugging OptionsOptions for Debugging Your Program or
-  :command:`gcc`), you can compile it a second time using
+  (see :ref:`debugging-options`), you can compile it a second time using
   :option:`-fbranch-probabilities`, to improve optimizations based on
   the number of times each branch was taken.  When a program
   compiled with :option:`-fprofile-arcs` exits, it saves arc execution

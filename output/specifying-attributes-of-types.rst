@@ -11,8 +11,7 @@ The keyword ``__attribute__`` allows you to specify special
 attributes of types.  Some type attributes apply only to ``struct``
 and ``union`` types, while others can apply to any type defined
 via a ``typedef`` declaration.  Other attributes are defined for
-functions (Function Attributes), labels (Label 
-Attributes) and for variables (Variable Attributes).
+functions (see :ref:`function-attributes`), labels (see :ref:`label--attributes`) and for variables (see :ref:`variable-attributes`).
 
 The ``__attribute__`` keyword is followed by an attribute specification
 inside double parentheses.  
@@ -218,7 +217,7 @@ deprecated deprecated (``msg``)
   present.
 
   The ``deprecated`` attribute can also be used for functions and
-  variables (Function Attributes, Variable Attributes.)
+  variables (see :ref:`function-attributes`, see :ref:`variable-attributes`.)
 
 designated_init
 
@@ -363,7 +362,7 @@ visibility
 
   .. index:: visibility type attribute
 
-  In C++, attribute visibility (Function Attributes) can also be
+  In C++, attribute visibility (see :ref:`function-attributes`) can also be
   applied to class, struct, union and enum types.  Unlike other type
   attributes, the attribute must appear between the initial keyword and
   the name of the type; it cannot appear after the body of the type.

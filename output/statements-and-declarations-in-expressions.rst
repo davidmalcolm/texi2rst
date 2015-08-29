@@ -64,7 +64,7 @@ the value of an enumeration constant, the width of a bit-field, or
 the initial value of a static variable.
 
 If you don't know the type of the operand, you can still do this, but you
-must use ``typeof`` or ``__auto_type`` (Typeof).
+must use ``typeof`` or ``__auto_type`` (see :ref:`typeof`).
 
 In G++, the result value of a statement expression undergoes array and
 function pointer decay, and is returned by value to the enclosing
@@ -115,7 +115,7 @@ Jumping into a statement expression with ``goto`` or using a
 ``switch`` statement outside the statement expression with a
 ``case`` or ``default`` label inside the statement expression is
 not permitted.  Jumping into a statement expression with a computed
-``goto`` (Labels as Values) has undefined behavior.
+``goto`` (see :ref:`labels-as-values`) has undefined behavior.
 Jumping out of a statement expression is permitted, but if the
 statement expression is part of a larger expression then it is
 unspecified which other subexpressions of that expression have been

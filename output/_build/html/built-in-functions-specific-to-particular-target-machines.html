@@ -984,7 +984,7 @@ FR-V instructions.  They must be compile-time constants.</p>
 of an accumulator register.  For example, an <tt class="docutils literal"><span class="pre">acc</span></tt> argument of 2
 selects the ACC2 register.</p>
 <p><tt class="docutils literal"><span class="pre">iacc</span></tt> arguments are similar to <tt class="docutils literal"><span class="pre">acc</span></tt> arguments but specify the
-number of an IACC register.  See Other Built-in Functions
+number of an IACC register.  See see <em class="xref std std-ref">other-built-in-functions</em>
 for more details.</p>
 </div>
 <div class="section" id="directly-mapped-integer-functions">
@@ -1339,7 +1339,7 @@ instructions that are designed to improve the performance of DSP and
 media applications.  It provides instructions that operate on packed
 8-bit/16-bit integer data, Q7, Q15 and Q31 fractional data.</p>
 <p>GCC supports MIPS DSP operations using both the generic
-vector extensions (Vector Extensions) and a collection of
+vector extensions (see <a class="reference internal" href="using-vector-instructions-through-built-in-functions.html#vector-extensions"><em>Using Vector Instructions through Built-in Functions</em></a>) and a collection of
 MIPS-specific built-in functions.  Both kinds of support are
 enabled by the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mdsp"><em class="xref std std-option">-mdsp</em></a> command-line option.</p>
 <p>Revision 2 of the ASE was introduced in the second half of 2006.
@@ -1611,7 +1611,7 @@ Each pair is packed into a 64-bit floating-point register,
 with one element being designated the &#8216;upper half&#8217; and
 the other being designated the &#8216;lower half&#8217;.</p>
 <p>GCC supports paired-single operations using both the generic
-vector extensions (Vector Extensions) and a collection of
+vector extensions (see <a class="reference internal" href="using-vector-instructions-through-built-in-functions.html#vector-extensions"><em>Using Vector Instructions through Built-in Functions</em></a>) and a collection of
 MIPS-specific built-in functions.  Both kinds of support are
 enabled by the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mpaired-single"><em class="xref std std-option">-mpaired-single</em></a> command-line option.</p>
 <p>The vector type associated with paired-single values is usually
@@ -5039,7 +5039,7 @@ preserving the current values of the FR, SZ and PR bits.</p>
 <div class="section" id="sparc-vis-built-in-functions">
 <span id="id55"></span><h2>SPARC VIS Built-in Functions<a class="headerlink" href="#sparc-vis-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC supports SIMD operations on the SPARC using both the generic vector
-extensions (Vector Extensions) as well as built-in functions for
+extensions (see <a class="reference internal" href="using-vector-instructions-through-built-in-functions.html#vector-extensions"><em>Using Vector Instructions through Built-in Functions</em></a>) as well as built-in functions for
 the SPARC Visual Instruction Set (VIS).  When you use the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mvis"><em class="xref std std-option">-mvis</em></a>
 switch, the VIS extension is exposed as the following built-in functions:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">v1si</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">vector_size</span> <span class="p">(</span><span class="mi">4</span><span class="p">)));</span>
@@ -5313,7 +5313,7 @@ supported architecture, using the appropriate flags.  In particular,
 the file containing the CPU detection code should be compiled without
 these options.</p>
 <p>The following machine modes are available for use with MMX built-in functions
-(Vector Extensions): <tt class="docutils literal"><span class="pre">V2SI</span></tt> for a vector of two 32-bit integers,
+(see <a class="reference internal" href="using-vector-instructions-through-built-in-functions.html#vector-extensions"><em>Using Vector Instructions through Built-in Functions</em></a>): <tt class="docutils literal"><span class="pre">V2SI</span></tt> for a vector of two 32-bit integers,
 <tt class="docutils literal"><span class="pre">V4HI</span></tt> for a vector of four 16-bit integers, and <tt class="docutils literal"><span class="pre">V8QI</span></tt> for a
 vector of eight 8-bit integers.  Some of the built-in functions operate on
 MMX registers as a whole 64-bit entity, these use <tt class="docutils literal"><span class="pre">V1DI</span></tt> as their mode.</p>

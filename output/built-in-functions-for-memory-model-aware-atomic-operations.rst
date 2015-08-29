@@ -20,7 +20,7 @@ detailed definitions.
 
 The __atomic builtins can be used with any integral scalar or
 pointer type that is 1, 2, 4, or 8 bytes in length.  16-byte integral
-types are also allowed if __int128 (__int128) is
+types are also allowed if __int128 (see :ref:`__int128`) is
 supported by the architecture.
 
 The four non-arithmetic functions (load, store, exchange, and 

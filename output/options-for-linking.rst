@@ -126,7 +126,7 @@ not doing a link step.
   This ensures that you have no unresolved references to internal GCC
   library subroutines.
   (An example of such an internal subroutine is ``__main``, used to ensure C++
-  constructors are called; Collect2``collect2``gccintGNU Compiler Collection (GCC) Internals.)
+  constructors are called; see :ref:`collect2`.)
 
 .. option:: -pie
 

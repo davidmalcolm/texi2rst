@@ -13,10 +13,10 @@ by an attribute specification inside double parentheses.  Some
 attributes are currently defined generically for variables.
 Other attributes are defined for variables on particular target
 systems.  Other attributes are available for functions
-(Function Attributes), labels (Label Attributes) and for 
-types (Type Attributes).
+(see :ref:`function-attributes`), labels (see :ref:`label-attributes`) and for 
+types (see :ref:`type-attributes`).
 Other front ends might define more attributes
-(C++ ExtensionsExtensions to the C++ Language).
+(see :ref:`Extensions to the C++ Language <c++-extensions>`).
 
 See :ref:`attribute-syntax`, for details of the exact syntax for using
 attributes.
@@ -109,7 +109,7 @@ aligned (``alignment``)
   alignment.  See your linker documentation for further information.
 
   The ``aligned`` attribute can also be used for functions
-  (Common Function Attributes.)
+  (see :ref:`common-function-attributes`.)
 
 cleanup (``cleanup_function``)
 
@@ -165,8 +165,8 @@ deprecated deprecated (``msg``)
   present.
 
   The ``deprecated`` attribute can also be used for functions and
-  types (Common Function Attributes,
-  Common Type Attributes).
+  types (see :ref:`common-function-attributes`,
+  see :ref:`common-type-attributes`).
 
 mode (``mode``)
 
@@ -262,7 +262,7 @@ tls_model ("``tls_model``")
   .. index:: tls_model variable attribute
 
   The ``tls_model`` attribute sets thread-local storage model
-  (Thread-Local) of a particular ``__thread`` variable,
+  (see :ref:`thread-local`) of a particular ``__thread`` variable,
   overriding :option:`-ftls-model=` command-line switch on a per-variable
   basis.
   The ``tls_model`` argument should be one of ``global-dynamic``,

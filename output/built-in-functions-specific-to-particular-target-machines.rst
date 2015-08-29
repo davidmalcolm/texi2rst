@@ -1139,7 +1139,7 @@ of an accumulator register.  For example, an ``acc`` argument of 2
 selects the ACC2 register.
 
 ``iacc`` arguments are similar to ``acc`` arguments but specify the
-number of an IACC register.  See Other Built-in Functions
+number of an IACC register.  See see :ref:`other-built-in-functions`
 for more details.
 
 .. _directly-mapped-integer-functions:
@@ -1811,7 +1811,7 @@ media applications.  It provides instructions that operate on packed
 8-bit/16-bit integer data, Q7, Q15 and Q31 fractional data.
 
 GCC supports MIPS DSP operations using both the generic
-vector extensions (Vector Extensions) and a collection of
+vector extensions (see :ref:`vector-extensions`) and a collection of
 MIPS-specific built-in functions.  Both kinds of support are
 enabled by the :option:`-mdsp` command-line option.
 
@@ -2120,7 +2120,7 @@ with one element being designated the 'upper half' and
 the other being designated the 'lower half'.
 
 GCC supports paired-single operations using both the generic
-vector extensions (Vector Extensions) and a collection of
+vector extensions (see :ref:`vector-extensions`) and a collection of
 MIPS-specific built-in functions.  Both kinds of support are
 enabled by the :option:`-mpaired-single` command-line option.
 
@@ -5847,7 +5847,7 @@ SPARC VIS Built-in Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 GCC supports SIMD operations on the SPARC using both the generic vector
-extensions (Vector Extensions) as well as built-in functions for
+extensions (see :ref:`vector-extensions`) as well as built-in functions for
 the SPARC Visual Instruction Set (VIS).  When you use the :option:`-mvis`
 switch, the VIS extension is exposed as the following built-in functions:
 
@@ -6157,7 +6157,7 @@ the file containing the CPU detection code should be compiled without
 these options.
 
 The following machine modes are available for use with MMX built-in functions
-(Vector Extensions): ``V2SI`` for a vector of two 32-bit integers,
+(see :ref:`vector-extensions`): ``V2SI`` for a vector of two 32-bit integers,
 ``V4HI`` for a vector of four 16-bit integers, and ``V8QI`` for a
 vector of eight 8-bit integers.  Some of the built-in functions operate on
 MMX registers as a whole 64-bit entity, these use ``V1DI`` as their mode.

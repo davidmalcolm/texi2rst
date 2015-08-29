@@ -244,7 +244,7 @@ compilation.
   :option:`-dM`.  To avoid mixing such debug output with the dependency
   rules you should explicitly specify the dependency output file with
   :option:`-MF`, or use an environment variable like
-  :envvar:`DEPENDENCIES_OUTPUT` (Environment Variables).  Debug output
+  :envvar:`DEPENDENCIES_OUTPUT` (see :ref:`environment-variables`).  Debug output
   will still be sent to the regular output stream as normal.
 
   Passing :option:`-M` to the driver implies :option:`-E`, and suppresses
@@ -338,7 +338,7 @@ compilation.
 
   If :option:`-MD` is used in conjunction with :option:`-E`, any
   :option:`-o` switch is understood to specify the dependency output file
-  (dashMF-MF), but if used without :option:`-E`, each :option:`-o`
+  (see :ref:`-MF <dashmf>`), but if used without :option:`-E`, each :option:`-o`
   is understood to specify a target object file.
 
   Since :option:`-E` is not implied, :option:`-MD` can be used to generate
@@ -351,7 +351,7 @@ compilation.
 
 .. option:: -fpch-deps
 
-  When using precompiled headers (Precompiled Headers), this flag
+  When using precompiled headers (see :ref:`precompiled-headers`), this flag
   will cause the dependency-output flags to also list the files from the
   precompiled header's dependencies.  If not specified only the
   precompiled header would be listed and not the files that were used to
@@ -360,8 +360,7 @@ compilation.
 
 .. option:: -fpch-preprocess
 
-  This option allows use of a precompiled header (Precompiled
-  Headers) together with :option:`-E`.  It inserts a special ``#pragma``,
+  This option allows use of a precompiled header (see :ref:`precompiled-headers`) together with :option:`-E`.  It inserts a special ``#pragma``,
   ``#pragma GCC pch_preprocess "``filename``"`` in the output to mark
   the place where the precompiled header was found, and its ``filename``.
   When :option:`-fpreprocessed` is in use, GCC recognizes this ``#pragma``

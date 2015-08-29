@@ -465,9 +465,9 @@ either your program or GCC:
 
   Generated instrumentation may be controlled by various
   :option:`-fchkp-*` options and by the ``bnd_variable_size``
-  structure field attribute (Type Attributes) and
+  structure field attribute (see :ref:`type-attributes`) and
   ``bnd_legacy``, and ``bnd_instrument`` function attributes
-  (Function Attributes).  GCC also provides a number of built-in
+  (see :ref:`function-attributes`).  GCC also provides a number of built-in
   functions for controlling the Pointer Bounds Checker.  See :ref:`pointer-bounds-checker-builtins`, for more information.
 
 .. option:: -fchkp-check-incomplete-type, -fno-chkp-check-incomplete-type
@@ -552,7 +552,7 @@ either your program or GCC:
 
   Instructs Pointer Bounds Checker to instrument only functions
   marked with the ``bnd_instrument`` attribute
-  (Function Attributes).  Disabled by default.
+  (see :ref:`function-attributes`).  Disabled by default.
 
 .. option:: -fchkp-use-wrappers, -fno-chkp-use-wrappers
 
@@ -832,8 +832,8 @@ either your program or GCC:
 
   * For profile-directed optimizations, compile the source files again with
     the same optimization and code generation options plus
-    :option:`-fbranch-probabilities` (Optimize OptionsOptions that
-    Control Optimization).
+    :option:`-fbranch-probabilities` (see :ref:`Options that
+    Control Optimization <optimize-options>`).
 
   * For test coverage analysis, use :command:`gcov` to produce human readable
     information from the .gcno and .gcda files.  Refer to the
@@ -850,7 +850,7 @@ either your program or GCC:
 .. option:: -ftest-coverage
 
   Produce a notes file that the :command:`gcov` code-coverage utility
-  (Gcov:command:`gcov`-a Test Coverage Program) can use to
+  (see :ref:`gcov`) can use to
   show program coverage.  Each source file's note file is called
   ``auxname``.gcno.  Refer to the :option:`-fprofile-arcs` option
   above for a description of ``auxname`` and instructions on how to

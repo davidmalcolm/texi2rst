@@ -5,7 +5,7 @@ Format Checks Specific to Particular Target Machines
 
 For some target machines, GCC supports additional options to the
 format attribute
-(Function AttributesDeclaring Attributes of Functions).
+(see :ref:`Declaring Attributes of Functions <function-attributes>`).
 
 .. toctree::
 

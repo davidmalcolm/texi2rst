@@ -6,6 +6,8 @@ import sys
 import unittest
 import xml.dom.minidom
 
+from node import Node, Element, Comment, Text
+
 """
 gcc.xml created from a gcc build/gcc tree using:
 
@@ -14,98 +16,6 @@ makeinfo --xml -I ABSPATH_OF_SRC/gcc/doc/ -I ABSPATH_OF_SRC/gcc/doc/include ABSP
 TODO:
   map back to the include structure of the underlying .texi files
 """
-
-# A minimal IR for transforming texinfo XML into rst
-
-class Node:
-    def __repr__(self):
-        return 'Node()'
-
-    def dump(self, f_out, depth=0):
-        f_out.write('%s%r\n' %  (' ' * depth, self))
-
-    def is_element(self, kind):
-        if isinstance(self, Element):
-            if self.kind == kind:
-                return True
-
-    def iter_depth_first(self):
-        yield self
-        if isinstance(self, Element):
-            for child in self.children:
-                for item in child.iter_depth_first():
-                    yield item
-
-    def iter_depth_first_edges(self):
-        if isinstance(self, Element):
-            for child in self.children:
-                yield (self, child)
-                for src, dst in child.iter_depth_first_edges():
-                    yield (src, dst)
-
-class Element(Node):
-    def __init__(self, kind, attrs):
-        self.kind = kind
-        self.attrs = attrs
-        self.children = []
-        self.rst_kind = None
-
-    def __repr__(self):
-        return 'Element(%r, %r, %r)' % (self.kind, self.attrs, self.rst_kind)
-
-    def dump(self, f_out, depth=0):
-        f_out.write('%s%r\n' %  (' ' * depth, self))
-        for child in self.children:
-            child.dump(f_out, depth + 1)
-
-    def first_element_named(self, name):
-        for child in self.children:
-            if isinstance(child, Element):
-                if child.kind == name:
-                    return child
-
-    def get_sole_text(self):
-        if len(self.children) == 1:
-            child = self.children[0]
-            if isinstance(child, Text):
-                return child
-
-    def get_first_text(self):
-        for child in self.children:
-            if isinstance(child, Text):
-                return child
-
-    def get_all_text(self):
-        result = ''
-        for child in self.children:
-            if isinstance(child, Text):
-                result += child.data
-            elif isinstance(child, Element):
-                result += child.get_all_text()
-        return result
-
-    def delete_children_named(self, name):
-        new_children = []
-        for child in self.children:
-            if child.is_element(name):
-                continue
-            new_children.append(child)
-        self.children = new_children
-
-class Comment(Node):
-    def __init__(self, data):
-        self.data = data
-
-    def __repr__(self):
-        return 'Comment(%r)' % self.data
-
-class Text(Node):
-    def __init__(self, data):
-        self.data = data
-
-    def __repr__(self):
-        return 'Text(%r)' % self.data
-
 
 # Convert from XML nodes to our easier-to-work-with data structure
 

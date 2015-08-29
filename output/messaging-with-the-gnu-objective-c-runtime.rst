@@ -45,13 +45,13 @@ method.
 To do so, the runtime checks if the class of the receiver implements
 the method
 
-.. code-block:: c++
+.. code-block:: objective-c
 
   + (BOOL) resolveInstanceMethod: (SEL)selector;
 
 in the case of an instance method, or
 
-.. code-block:: c++
+.. code-block:: objective-c
 
   + (BOOL) resolveClassMethod: (SEL)selector;
 

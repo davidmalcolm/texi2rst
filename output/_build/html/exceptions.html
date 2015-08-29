@@ -86,29 +86,30 @@
 <span id="id1"></span><h1>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h1>
 <p>GNU Objective-C provides exception support built into the language, as
 in the following example:</p>
-<div class="highlight-c++"><pre>@try {
-  ...
-     @throw expr;
-  ...
-}
-@catch (AnObjCClass *exc) {
-  ...
-    @throw expr;
-  ...
-    @throw;
-  ...
-}
-@catch (AnotherClass *exc) {
-  ...
-}
-@catch (id allOthers) {
-  ...
-}
-@finally {
-  ...
-    @throw expr;
-  ...
-}</pre>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@try</span> <span class="p">{</span>
+  <span class="p">...</span>
+     <span class="k">@throw</span> <span class="n">expr</span><span class="p">;</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+<span class="k">@catch</span> <span class="p">(</span><span class="n">AnObjCClass</span> <span class="o">*</span><span class="n">exc</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+    <span class="k">@throw</span> <span class="n">expr</span><span class="p">;</span>
+  <span class="p">...</span>
+    <span class="k">@throw</span><span class="p">;</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+<span class="k">@catch</span> <span class="p">(</span><span class="n">AnotherClass</span> <span class="o">*</span><span class="n">exc</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+<span class="k">@catch</span> <span class="p">(</span><span class="kt">id</span> <span class="n">allOthers</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+<span class="k">@finally</span> <span class="p">{</span>
+  <span class="p">...</span>
+    <span class="k">@throw</span> <span class="n">expr</span><span class="p">;</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">&#64;throw</span></tt> statement may appear anywhere in an Objective-C or
 Objective-C++ program; when used inside of a <tt class="docutils literal"><span class="pre">&#64;catch</span></tt> block, the

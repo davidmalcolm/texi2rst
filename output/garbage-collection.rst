@@ -37,7 +37,7 @@ Here is an example of how to use this feature.  Suppose you want to
 implement a class whose instances hold a weak pointer reference; the
 following class does this:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
   @interface WeakPointer : Object
   {

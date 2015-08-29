@@ -85,9 +85,10 @@
   <div class="section" id="synchronization">
 <span id="id1"></span><h1>Synchronization<a class="headerlink" href="#synchronization" title="Permalink to this headline">¶</a></h1>
 <p>GNU Objective-C provides support for synchronized blocks:</p>
-<div class="highlight-c++"><pre>@synchronized (ObjCClass *guard) {
-  ...
-}</pre>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@synchronized</span> <span class="p">(</span><span class="n">ObjCClass</span> <span class="o">*</span><span class="n">guard</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 <p>Upon entering the <tt class="docutils literal"><span class="pre">&#64;synchronized</span></tt> block, a thread of execution
 shall first check whether a lock has been placed on the corresponding

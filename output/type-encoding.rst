@@ -77,11 +77,11 @@ compiler on an i386 machine:
 +-------------------------------------------+-----------------------------------------------------+
 |Objective-C type                           |Compiler encoding                                    |
 +===========================================+=====================================================+
-|.. code-block:: c++                        |``[10i]``                                            |
+|.. code-block:: objective-c                |``[10i]``                                            |
 |                                           |                                                     |
 |  int a[10];                               |                                                     |
 +-------------------------------------------+-----------------------------------------------------+
-|.. code-block:: c++                        |``{?=i[3f]b128i3b131i2c}``                           |
+|.. code-block:: objective-c                |``{?=i[3f]b128i3b131i2c}``                           |
 |                                           |                                                     |
 |  struct {                                 |                                                     |
 |    int i;                                 |                                                     |
@@ -91,7 +91,7 @@ compiler on an i386 machine:
 |    char c;                                |                                                     |
 |  }                                        |                                                     |
 +-------------------------------------------+-----------------------------------------------------+
-|.. code-block:: c++                        |``![16,16i]`` (alignment would depend on the machine)|
+|.. code-block:: objective-c                |``![16,16i]`` (alignment would depend on the machine)|
 |                                           |                                                     |
 |  int a __attribute__ ((vector_size (16)));|                                                     |
 +-------------------------------------------+-----------------------------------------------------+
@@ -116,21 +116,21 @@ argument types.
 
 Note how ``const`` interacts with pointers:
 
-+-------------------+-----------------+
-|Objective-C type   |Compiler encoding|
-+===================+=================+
-|.. code-block:: c++|``ri``           |
-|                   |                 |
-|  const int        |                 |
-+-------------------+-----------------+
-|.. code-block:: c++|``^ri``          |
-|                   |                 |
-|  const int*       |                 |
-+-------------------+-----------------+
-|.. code-block:: c++|``r^i``          |
-|                   |                 |
-|  int *const       |                 |
-+-------------------+-----------------+
++---------------------------+-----------------+
+|Objective-C type           |Compiler encoding|
++===========================+=================+
+|.. code-block:: objective-c|``ri``           |
+|                           |                 |
+|  const int                |                 |
++---------------------------+-----------------+
+|.. code-block:: objective-c|``^ri``          |
+|                           |                 |
+|  const int*               |                 |
++---------------------------+-----------------+
+|.. code-block:: objective-c|``r^i``          |
+|                           |                 |
+|  int *const               |                 |
++---------------------------+-----------------+
 ``const int*`` is a pointer to a ``const int``, and so is
 encoded as ``^ri``.  ``int* const``, instead, is a ``const``
 pointer to an ``int``, and so is encoded as ``r^i``.

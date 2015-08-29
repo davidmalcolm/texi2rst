@@ -3,7 +3,7 @@
 ``compatibility_alias``The keyword ``@compatibility_alias`` allows you to define a class name
 as equivalent to another class name.  For example:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
   @compatibility_alias WOApplication GSWApplication;
 

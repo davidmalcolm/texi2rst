@@ -7,7 +7,7 @@ GNU Objective-C provides constant string objects that are generated
 directly by the compiler.  You declare a constant string object by
 prefixing a C constant string with the character @:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
     id myString = @"this is a constant string object";
 
@@ -22,7 +22,7 @@ a new command line options :option:`-fconstant-string-class=``class-name```.
 The provided class should adhere to a strict structure, the same
 as ``NXConstantString``'s structure:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
   @interface MyConstantStringClass
   {

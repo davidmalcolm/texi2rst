@@ -818,7 +818,13 @@ def fixup_examples(tree):
     list a set of options (e.g. to describe "-O2").
     """
     class ExampleFixer(NoopVisitor):
+        def __init__(self):
+            self.default_lang_stack = ['c++']
+
         def previsit_element(self, element):
+            if hasattr(element, 'default_language'):
+                self.default_lang_stack.append(element.default_language)
+
             if element.kind in ('example', 'smallexample'):
                 example = element
                 # There could be a "group" holding the "pre"
@@ -835,6 +841,10 @@ def fixup_examples(tree):
                         lang = self.guess_language(text.data)
                         example.rst_kind = Directive('code-block', lang)
 
+        def postvisit_element(self, element):
+            if hasattr(element, 'default_language'):
+                self.default_lang_stack.pop()
+
         def guess_language(self, data):
             if 'DO ' in data:
                 return 'fortran'
@@ -842,7 +852,7 @@ def fixup_examples(tree):
                 return 'bash'
             if data.startswith('--'):
                 return 'bash'
-            return 'c++'
+            return self.default_lang_stack[-1]
 
         def handle_option_listing(self, element, pre):
             class OptionWrappingVisitor(NoopVisitor):
@@ -1034,6 +1044,7 @@ def fixup_inline_markup(tree):
 # Top-level conversion routine
 
 def convert_to_rst(tree, ctxt):
+    tree = ctxt.preprocess(tree)
     tree = fixup_comments(tree)
     tree = prune(tree)
     tree = fixup_nodes(tree, ctxt)
@@ -1493,6 +1504,9 @@ class RstOpener:
 class Context:
     def __init__(self):
         self.debug = False
+
+    def preprocess(self, tree):
+        return tree
 
 # Unit tests
 
@@ -2621,6 +2635,24 @@ class FileOpener(RstOpener):
         print('closing')
         f_out.close()
 
+#
+
+class GccContext(Context):
+    def preprocess(self, tree):
+        class GccVisitor(NoopVisitor):
+            def previsit_element(self, element):
+                if element.kind == 'chapter':
+                    for child in element.children:
+                        if child.is_element('sectiontitle'):
+                            text = child.get_sole_text()
+                            if text:
+                                if text.data == 'GNU Objective-C Features':
+                                    element.default_language = 'objective-c'
+
+        v = GccVisitor()
+        v.visit(tree)
+        return tree
+
 # Entrypoint
 
 if __name__ == '__main__':
@@ -2630,7 +2662,7 @@ if __name__ == '__main__':
         with open(sys.argv[1]) as f_in:
             xml_src = f_in.read()
             tree = from_xml_string(xml_src)
-        tree = convert_to_rst(tree, Context())
+        tree = convert_to_rst(tree, GccContext())
         if 1:
             with open('output/gcc.rst', 'w') as f_out:
                 w = RstWriter(f_out, FileOpener('output'))

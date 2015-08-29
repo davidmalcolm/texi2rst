@@ -19,7 +19,7 @@ Using Fast Enumeration
 
 GNU Objective-C provides support for the fast enumeration syntax:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
     id array = ...;
     id object;
@@ -44,7 +44,7 @@ Here is a fully worked-out example using a Foundation library (which
 provides the implementation of ``NSArray``, ``NSString`` and
 ``NSLog``):
 
-.. code-block:: c++
+.. code-block:: objective-c
 
     NSArray *array = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
     NSString *object;
@@ -61,7 +61,7 @@ C99-Like Fast Enumeration Syntax
 
 A c99-like declaration syntax is also allowed:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
     id array = ...;
 
@@ -72,7 +72,7 @@ A c99-like declaration syntax is also allowed:
 
 this is completely equivalent to:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
     id array = ...;
 
@@ -98,7 +98,7 @@ Fast Enumeration Details
 
 Here is a more technical description with the gory details.  Consider the code
 
-.. code-block:: c++
+.. code-block:: objective-c
 
     for (``object expression`` in ``collection expression``)
     {
@@ -160,7 +160,7 @@ enumeration, you need to have it implement the method
                                         count: (unsigned long)len;
 where ``NSFastEnumerationState`` must be defined in your code as follows:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
   typedef struct
   {

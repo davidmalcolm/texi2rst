@@ -5,7 +5,7 @@ Synchronization
 
 GNU Objective-C provides support for synchronized blocks:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
     @synchronized (ObjCClass *guard) {
       ...

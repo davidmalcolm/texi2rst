@@ -97,21 +97,22 @@ class object, which in some cases could be too late.</p>
 <p>Suppose for example you have a <tt class="docutils literal"><span class="pre">FileStream</span></tt> class that declares
 <tt class="docutils literal"><span class="pre">Stdin</span></tt>, <tt class="docutils literal"><span class="pre">Stdout</span></tt> and <tt class="docutils literal"><span class="pre">Stderr</span></tt> as global variables, like
 below:</p>
-<div class="highlight-c++"><pre>FileStream *Stdin = nil;
-FileStream *Stdout = nil;
-FileStream *Stderr = nil;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="n">FileStream</span> <span class="o">*</span><span class="n">Stdin</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="n">FileStream</span> <span class="o">*</span><span class="n">Stdout</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="n">FileStream</span> <span class="o">*</span><span class="n">Stderr</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
 
-@implementation FileStream
+<span class="k">@implementation</span> <span class="nc">FileStream</span>
 
-+ (void)initialize
-{
-    Stdin = [[FileStream new] initWithFd:0];
-    Stdout = [[FileStream new] initWithFd:1];
-    Stderr = [[FileStream new] initWithFd:2];
-}
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">initialize</span>
+<span class="p">{</span>
+    <span class="n">Stdin</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="n">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">Stdout</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="n">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">Stderr</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="n">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">2</span><span class="p">];</span>
+<span class="p">}</span>
 
-/* Other methods here */
-@end</pre>
+<span class="cm">/* Other methods here */</span>
+<span class="k">@end</span>
+</pre></div>
 </div>
 <p>In this example, the initialization of <tt class="docutils literal"><span class="pre">Stdin</span></tt>, <tt class="docutils literal"><span class="pre">Stdout</span></tt> and
 <tt class="docutils literal"><span class="pre">Stderr</span></tt> in <tt class="docutils literal"><span class="pre">+initialize</span></tt> occurs too late.  The programmer can
@@ -123,17 +124,18 @@ object.  The solution would require these variables to be initialized
 just before entering <tt class="docutils literal"><span class="pre">main</span></tt>.</p>
 <p>The correct solution of the above problem is to use the <tt class="docutils literal"><span class="pre">+load</span></tt>
 method instead of <tt class="docutils literal"><span class="pre">+initialize</span></tt>:</p>
-<div class="highlight-c++"><pre>@implementation FileStream
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">FileStream</span>
 
-+ (void)load
-{
-    Stdin = [[FileStream new] initWithFd:0];
-    Stdout = [[FileStream new] initWithFd:1];
-    Stderr = [[FileStream new] initWithFd:2];
-}
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">load</span>
+<span class="p">{</span>
+    <span class="n">Stdin</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="n">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">Stdout</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="n">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">Stderr</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FileStream</span> <span class="n">new</span><span class="p">]</span> <span class="n">initWithFd</span><span class="o">:</span><span class="mi">2</span><span class="p">];</span>
+<span class="p">}</span>
 
-/* Other methods here */
-@end</pre>
+<span class="cm">/* Other methods here */</span>
+<span class="k">@end</span>
+</pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">+load</span></tt> is a method that is not overridden by categories.  If a
 class and a category of it both implement <tt class="docutils literal"><span class="pre">+load</span></tt>, both methods are

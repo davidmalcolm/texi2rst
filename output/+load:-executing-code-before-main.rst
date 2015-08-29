@@ -19,7 +19,7 @@ Suppose for example you have a ``FileStream`` class that declares
 ``Stdin``, ``Stdout`` and ``Stderr`` as global variables, like
 below:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
   FileStream *Stdin = nil;
   FileStream *Stdout = nil;
@@ -49,7 +49,7 @@ just before entering ``main``.
 The correct solution of the above problem is to use the ``+load``
 method instead of ``+initialize``:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
   @implementation FileStream
 

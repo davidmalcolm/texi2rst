@@ -123,11 +123,11 @@ method, it tries to see if the class can dynamically register the
 method.</p>
 <p>To do so, the runtime checks if the class of the receiver implements
 the method</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span> <span class="n">resolveInstanceMethod</span><span class="o">:</span> <span class="p">(</span><span class="n">SEL</span><span class="p">)</span><span class="n">selector</span><span class="p">;</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">+</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span> <span class="nf">resolveInstanceMethod:</span> <span class="p">(</span><span class="kt">SEL</span><span class="p">)</span><span class="nv">selector</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>in the case of an instance method, or</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span> <span class="n">resolveClassMethod</span><span class="o">:</span> <span class="p">(</span><span class="n">SEL</span><span class="p">)</span><span class="n">selector</span><span class="p">;</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">+</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span> <span class="nf">resolveClassMethod:</span> <span class="p">(</span><span class="kt">SEL</span><span class="p">)</span><span class="nv">selector</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>in the case of a class method.  If the class implements it, the

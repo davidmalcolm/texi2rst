@@ -6,7 +6,7 @@ Exceptions
 GNU Objective-C provides exception support built into the language, as
 in the following example:
 
-.. code-block:: c++
+.. code-block:: objective-c
 
     @try {
       ...

@@ -102,10 +102,10 @@
 <div class="section" id="using-fast-enumeration">
 <span id="id2"></span><h2>Using Fast Enumeration<a class="headerlink" href="#using-fast-enumeration" title="Permalink to this headline">¶</a></h2>
 <p>GNU Objective-C provides support for the fast enumeration syntax:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="n">id</span> <span class="n">array</span> <span class="o">=</span> <span class="p">...;</span>
-<span class="n">id</span> <span class="n">object</span><span class="p">;</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="kt">id</span> <span class="n">array</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="kt">id</span> <span class="n">object</span><span class="p">;</span>
 
-<span class="k">for</span> <span class="p">(</span><span class="n">object</span> <span class="n">in</span> <span class="n">array</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">object</span> <span class="k">in</span> <span class="n">array</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="cm">/* Do something with &#39;object&#39; */</span>
 <span class="p">}</span>
@@ -123,30 +123,31 @@ each of them, it assigns it to <tt class="docutils literal"><span class="pre">ob
 <p>Here is a fully worked-out example using a Foundation library (which
 provides the implementation of <tt class="docutils literal"><span class="pre">NSArray</span></tt>, <tt class="docutils literal"><span class="pre">NSString</span></tt> and
 <tt class="docutils literal"><span class="pre">NSLog</span></tt>):</p>
-<div class="highlight-c++"><pre>NSArray *array = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
-NSString *object;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="n">NSArray</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span> <span class="s">@&quot;1&quot;</span><span class="p">,</span> <span class="s">@&quot;2&quot;</span><span class="p">,</span> <span class="s">@&quot;3&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+<span class="n">NSString</span> <span class="o">*</span><span class="n">object</span><span class="p">;</span>
 
-for (object in array)
-  NSLog (@"Iterating over %@", object);</pre>
+<span class="k">for</span> <span class="p">(</span><span class="n">object</span> <span class="k">in</span> <span class="n">array</span><span class="p">)</span>
+  <span class="n">NSLog</span> <span class="p">(</span><span class="s">@&quot;Iterating over %@&quot;</span><span class="p">,</span> <span class="n">object</span><span class="p">);</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="c99-like-fast-enumeration-syntax">
 <span id="id3"></span><h2>C99-Like Fast Enumeration Syntax<a class="headerlink" href="#c99-like-fast-enumeration-syntax" title="Permalink to this headline">¶</a></h2>
 <p>A c99-like declaration syntax is also allowed:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="n">id</span> <span class="n">array</span> <span class="o">=</span> <span class="p">...;</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="kt">id</span> <span class="n">array</span> <span class="o">=</span> <span class="p">...;</span>
 
-<span class="k">for</span> <span class="p">(</span><span class="n">id</span> <span class="n">object</span> <span class="n">in</span> <span class="n">array</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">id</span> <span class="n">object</span> <span class="k">in</span> <span class="n">array</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="cm">/* Do something with &#39;object&#39;  */</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>this is completely equivalent to:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="n">id</span> <span class="n">array</span> <span class="o">=</span> <span class="p">...;</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="kt">id</span> <span class="n">array</span> <span class="o">=</span> <span class="p">...;</span>
 
 <span class="p">{</span>
-  <span class="n">id</span> <span class="n">object</span><span class="p">;</span>
-  <span class="k">for</span> <span class="p">(</span><span class="n">object</span> <span class="n">in</span> <span class="n">array</span><span class="p">)</span>
+  <span class="kt">id</span> <span class="n">object</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">object</span> <span class="k">in</span> <span class="n">array</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="cm">/* Do something with &#39;object&#39;  */</span>
   <span class="p">}</span>
@@ -160,7 +161,7 @@ syntax in Objective-C.</p>
 <div class="section" id="fast-enumeration-details">
 <span id="id4"></span><h2>Fast Enumeration Details<a class="headerlink" href="#fast-enumeration-details" title="Permalink to this headline">¶</a></h2>
 <p>Here is a more technical description with the gory details.  Consider the code</p>
-<div class="highlight-c++"><pre>for (``object expression`` in ``collection expression``)
+<div class="highlight-objective-c"><pre>for (``object expression`` in ``collection expression``)
 {
   ``statements``
 }</pre>
@@ -217,10 +218,10 @@ enumeration, you need to have it implement the method</p>
 </li>
 </ul>
 <p>where <tt class="docutils literal"><span class="pre">NSFastEnumerationState</span></tt> must be defined in your code as follows:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span>
 <span class="p">{</span>
   <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">state</span><span class="p">;</span>
-  <span class="n">id</span>            <span class="o">*</span><span class="n">itemsPtr</span><span class="p">;</span>
+  <span class="kt">id</span>            <span class="o">*</span><span class="n">itemsPtr</span><span class="p">;</span>
   <span class="kt">unsigned</span> <span class="kt">long</span> <span class="o">*</span><span class="n">mutationsPtr</span><span class="p">;</span>
   <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">extra</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
 <span class="p">}</span> <span class="n">NSFastEnumerationState</span><span class="p">;</span>

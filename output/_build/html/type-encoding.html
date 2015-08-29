@@ -231,13 +231,13 @@ compiler on an i386 machine:</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+<tr class="row-even"><td><div class="first last highlight-objective-c"><div class="highlight"><pre><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
 </pre></div>
 </div>
 </td>
 <td><tt class="docutils literal"><span class="pre">[10i]</span></tt></td>
 </tr>
-<tr class="row-odd"><td><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="p">{</span>
+<tr class="row-odd"><td><div class="first last highlight-objective-c"><div class="highlight"><pre><span class="k">struct</span> <span class="p">{</span>
   <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
   <span class="kt">float</span> <span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
   <span class="kt">int</span> <span class="n">a</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
@@ -249,7 +249,7 @@ compiler on an i386 machine:</p>
 </td>
 <td><tt class="docutils literal"><span class="pre">{?=i[3f]b128i3b131i2c}</span></tt></td>
 </tr>
-<tr class="row-even"><td><div class="first last highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">a</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">vector_size</span> <span class="p">(</span><span class="mi">16</span><span class="p">)));</span>
+<tr class="row-even"><td><div class="first last highlight-objective-c"><div class="highlight"><pre><span class="kt">int</span> <span class="n">a</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">vector_size</span> <span class="p">(</span><span class="mi">16</span><span class="p">)));</span>
 </pre></div>
 </div>
 </td>
@@ -300,8 +300,8 @@ argument types.</p>
 <p>Note how <tt class="docutils literal"><span class="pre">const</span></tt> interacts with pointers:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="53%" />
-<col width="47%" />
+<col width="61%" />
+<col width="39%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Objective-C type</th>
@@ -309,19 +309,19 @@ argument types.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">const</span> <span class="kt">int</span>
+<tr class="row-even"><td><div class="first last highlight-objective-c"><div class="highlight"><pre><span class="k">const</span> <span class="kt">int</span>
 </pre></div>
 </div>
 </td>
 <td><tt class="docutils literal"><span class="pre">ri</span></tt></td>
 </tr>
-<tr class="row-odd"><td><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">const</span> <span class="kt">int</span><span class="o">*</span>
+<tr class="row-odd"><td><div class="first last highlight-objective-c"><div class="highlight"><pre><span class="k">const</span> <span class="kt">int</span><span class="o">*</span>
 </pre></div>
 </div>
 </td>
 <td><tt class="docutils literal"><span class="pre">^ri</span></tt></td>
 </tr>
-<tr class="row-even"><td><div class="first last highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="o">*</span><span class="k">const</span>
+<tr class="row-even"><td><div class="first last highlight-objective-c"><div class="highlight"><pre><span class="kt">int</span> <span class="o">*</span><span class="k">const</span>
 </pre></div>
 </div>
 </td>

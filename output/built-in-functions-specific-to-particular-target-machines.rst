@@ -1052,18 +1052,18 @@ register numbers, compile-time constants and run-time values.  In order
 to make this classification clear at a glance, the arguments and return
 values are given the following pseudo types:
 
-===========  =======================  =========  =======================
-Pseudo type  Real C type              Constant?  Description
-===========  =======================  =========  =======================
-``uh``       ``unsigned short``       No         an unsigned halfword
-``uw1``      ``unsigned int``         No         an unsigned word
-``sw1``      ``int``                  No         a signed word
-``uw2``      ``unsigned long long``   No         an unsigned doubleword
-``sw2``      ``long long``            No         a signed doubleword
-``const``    ``int``                  Yes        an integer constant
-``acc``      ``int``                  Yes        an ACC register number
-``iacc``     ``int``                  Yes        an IACC register number
-===========  =======================  =========  =======================
+===========  ======================  =========  =======================
+Pseudo type  Real C type             Constant?  Description
+===========  ======================  =========  =======================
+``uh``       ``unsigned short``      No         an unsigned halfword
+``uw1``      ``unsigned int``        No         an unsigned word
+``sw1``      ``int``                 No         a signed word
+``uw2``      ``unsigned long long``  No         an unsigned doubleword
+``sw2``      ``long long``           No         a signed doubleword
+``const``    ``int``                 Yes        an integer constant
+``acc``      ``int``                 Yes        an ACC register number
+``iacc``     ``int``                 Yes        an IACC register number
+===========  ======================  =========  =======================
 These pseudo types are not defined by GCC, they are simply a notational
 convenience used in this manual.
 
@@ -1319,23 +1319,23 @@ The table below lists the ``v4i8`` and ``v2q15`` operations for which
 hardware support exists.  ``a`` and ``b`` are ``v4i8`` values,
 and ``c`` and ``d`` are ``v2q15`` values.
 
-==========  ================
-C code      MIPS instruction
-==========  ================
-``a + b``   ``addu.qb``
-``c + d``   ``addq.ph``
-``a - b``   ``subu.qb``
-``c - d``   ``subq.ph``
-==========  ================
+=========  ================
+C code     MIPS instruction
+=========  ================
+``a + b``  ``addu.qb``
+``c + d``  ``addq.ph``
+``a - b``  ``subu.qb``
+``c - d``  ``subq.ph``
+=========  ================
 The table below lists the ``v2i16`` operation for which
 hardware support exists for the DSP ASE REV 2.  ``e`` and ``f`` are
 ``v2i16`` values.
 
-==========  ================
-C code      MIPS instruction
-==========  ================
-``e * f``   ``mul.ph``
-==========  ================
+=========  ================
+C code     MIPS instruction
+=========  ================
+``e * f``  ``mul.ph``
+=========  ================
 It is easier to describe the DSP built-in functions if we first define
 the following types:
 
@@ -1725,19 +1725,19 @@ The table below lists the ``v2sf`` operations for which hardware
 support exists.  ``a``, ``b`` and ``c`` are ``v2sf``
 values and ``x`` is an integral value.
 
-=================  =======================
-C code             MIPS instruction
-=================  =======================
-``a + b``          ``add.ps``
-``a - b``          ``sub.ps``
-``-a``             ``neg.ps``
-``a * b``          ``mul.ps``
-``a * b + c``      ``madd.ps``
-``a * b - c``      ``msub.ps``
-``-(a * b + c)``   ``nmadd.ps``
-``-(a * b - c)``   ``nmsub.ps``
-``x ? a : b``      ``movn.ps``/``movz.ps``
-=================  =======================
+================  =======================
+C code            MIPS instruction
+================  =======================
+``a + b``         ``add.ps``
+``a - b``         ``sub.ps``
+``-a``            ``neg.ps``
+``a * b``         ``mul.ps``
+``a * b + c``     ``madd.ps``
+``a * b - c``     ``msub.ps``
+``-(a * b + c)``  ``nmadd.ps``
+``-(a * b - c)``  ``nmsub.ps``
+``x ? a : b``     ``movn.ps``/``movz.ps``
+================  =======================
 Note that the multiply-accumulate instructions can be disabled
 using the command-line option ``-mno-fused-madd``.
 

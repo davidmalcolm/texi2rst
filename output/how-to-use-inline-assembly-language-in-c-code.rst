@@ -968,18 +968,18 @@ Operand  masm=att  masm=intel
 =======  ========  ===================
 The table below shows the list of supported modifiers and their effects.
 
-========  =====================================================================================================  =======  =========  ==========
-Modifier  Description                                                                                            Operand  masm=att   masm=intel
-========  =====================================================================================================  =======  =========  ==========
+========  =====================================================================================================  =======  ========  ==========
+Modifier  Description                                                                                            Operand  masm=att  masm=intel
+========  =====================================================================================================  =======  ========  ==========
 ``z``     Print the opcode suffix for the size of the current integer operand (one of ``b``/``w``/``l``/``q``).  ``%z0``  ``l``
-``b``     Print the QImode name of the register.                                                                 ``%b0``  ``%al``    ``al``
-``h``     Print the QImode name for a 'high' register.                                                           ``%h0``  ``%ah``    ``ah``
-``w``     Print the HImode name of the register.                                                                 ``%w0``  ``%ax``    ``ax``
-``k``     Print the SImode name of the register.                                                                 ``%k0``  ``%eax``   ``eax``
-``q``     Print the DImode name of the register.                                                                 ``%q0``  ``%rax``   ``rax``
-``l``     Print the label name with no punctuation.                                                              ``%l2``  ``.L2``    ``.L2``
-``c``     Require a constant operand and print the constant expression with no punctuation.                      ``%c1``  ``2``      ``2``
-========  =====================================================================================================  =======  =========  ==========
+``b``     Print the QImode name of the register.                                                                 ``%b0``  ``%al``   ``al``
+``h``     Print the QImode name for a 'high' register.                                                           ``%h0``  ``%ah``   ``ah``
+``w``     Print the HImode name of the register.                                                                 ``%w0``  ``%ax``   ``ax``
+``k``     Print the SImode name of the register.                                                                 ``%k0``  ``%eax``  ``eax``
+``q``     Print the DImode name of the register.                                                                 ``%q0``  ``%rax``  ``rax``
+``l``     Print the label name with no punctuation.                                                              ``%l2``  ``.L2``   ``.L2``
+``c``     Require a constant operand and print the constant expression with no punctuation.                      ``%c1``  ``2``     ``2``
+========  =====================================================================================================  =======  ========  ==========
 .. _x86floatingpointasmoperands:
 
 x86 Floating-Point ``asm`` OperandsOn x86 targets, there are several rules on the usage of stack-like registers

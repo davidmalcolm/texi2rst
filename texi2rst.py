@@ -786,21 +786,6 @@ def fixup_multitables(tree, ctxt):
         def previsit_element(self, element):
             if element.kind == 'multitable':
                 element.rst_kind = Table(element, ctxt)
-            elif element.kind == 'entry':
-                # For now, strip out <para> and <smallexample>:
-                new_children = []
-                for child in element.children:
-                    if (child.is_element('para')
-                        or child.is_element('smallexample')):
-                        for grandchild in child.children:
-                            if isinstance(grandchild, Text):
-                                if grandchild.data == '\n':
-                                    continue
-                            new_children.append(grandchild)
-                        continue # dropping the <para>
-                    new_children.append(child)
-                element.children = new_children
-
             element.delete_children_named('columnprototypes')
 
         def postvisit_element(self, element):
@@ -1238,6 +1223,9 @@ class TableLayout:
                 self.components.append(child)
         if debug:
             print('self.components: %r' % (self.components, ))
+
+        self.needs_grid_table = False
+
         for comp in self.components:
             comp.rows = []
             for child in comp.children:
@@ -1251,6 +1239,8 @@ class TableLayout:
                 for child in row.children:
                     if child.is_element('entry'):
                         row.entries.append(child)
+                    if self._entry_needs_grid_table(child):
+                        self.needs_grid_table = True
                 if debug:
                     print('row.entries: %r' % (row.entries, ))
 
@@ -1279,17 +1269,27 @@ class TableLayout:
 
         # Requisition:
         self.width_needed_for_x = {}
-        self.height_needed_for_y = {}
         for x in range(self.num_columns):
-            if debug:
-                print('x: %r' % x)
             for comp in self.components:
                 for y, entry in enumerate(comp.columns[x]):
                     w, h = self._get_requisition(entry)
                     if w > self.width_needed_for_x.get(x, 0):
                         self.width_needed_for_x[x] = w
-                    if h > self.height_needed_for_y.get(y, 0):
-                        self.height_needed_for_y[y] = h
+
+        for comp in self.components:
+            comp.height_needed_for_y = {}
+            for x in range(self.num_columns):
+                for y, entry in enumerate(comp.columns[x]):
+                    w, h = self._get_requisition(entry)
+                    if h > comp.height_needed_for_y.get(y, 0):
+                        comp.height_needed_for_y[y] = h
+
+    def _entry_needs_grid_table(self, entry):
+        for desc in entry.iter_depth_first():
+            if isinstance(desc, Element):
+                if isinstance(desc.rst_kind, Directive):
+                    return True
+        return False
 
     def _get_requisition(self, entry):
         text = self._render_entry(entry)
@@ -1306,9 +1306,54 @@ class TableLayout:
         w = RstWriter(StringIO.StringIO())
         w.visit(entry)
         w.finish()
-        return w.f_out.getvalue()
+        result = w.f_out.getvalue()
+        result = result.rstrip()
+        if 0:
+            print('%r from %r' % (result, entry))
+        return result
 
     def render(self, w):
+        if self.needs_grid_table:
+            self.render_grid_table(w)
+        else:
+            self.render_simple_table(w)
+
+    def render_grid_table(self, w):
+        self.draw_grid_table_border(w, '-')
+        for comp_idx, comp in enumerate(self.components):
+            for y, row in enumerate(comp.rows):
+                # Cope with newlines in "text":
+                lines_at_x = {}
+                for x, entry in enumerate(row.entries):
+                    lines_at_x[x] = (
+                        self._render_entry(entry).splitlines())
+
+                for line_idx in range(comp.height_needed_for_y[y]):
+                    w.write('|')
+                    for x, entry in enumerate(row.entries):
+                        lines = lines_at_x[x]
+                        if line_idx < len(lines):
+                            text = lines[line_idx]
+                        else:
+                            text = ''
+                        w.write(text)
+                        w.write(' ' *
+                                (self.width_needed_for_x[x] - len(text)))
+                        w.write('|')
+                    w.write('\n')
+                if comp_idx == 0:
+                    self.draw_grid_table_border(w, '=')
+                else:
+                    self.draw_grid_table_border(w, '-')
+
+    def draw_grid_table_border(self, w, sep):
+        w.write('+')
+        for x in range(self.num_columns):
+            w.write(sep * self.width_needed_for_x[x])
+            w.write('+')
+        w.write('\n')
+
+    def render_simple_table(self, w):
         self.draw_simple_table_border(w)
         for comp in self.components:
             for y, row in enumerate(comp.rows):
@@ -1317,7 +1362,7 @@ class TableLayout:
                 for x, entry in enumerate(row.entries):
                     lines_at_x[x] = self._render_entry(entry).splitlines()
 
-                for line_idx in range(self.height_needed_for_y[y]):
+                for line_idx in range(comp.height_needed_for_y[y]):
                     # Determine within this line which is the final
                     # non-empty entry, to avoid surplus whitespace
                     # to the right of it.
@@ -2534,19 +2579,27 @@ Operand  masm=att  masm=intel
         tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
         self.assertEqual(
-            u'''=========================================  =====================================================
-Objective-C type                           Compiler encoding
-=========================================  =====================================================
-int a[10];                                                 ``[10i]``
-struct {                                                   ``{?=i[3f]b128i3b131i2c}``
-  int i;
-  float f[3];
-  int a:3;
-  int b:2;
-  char c;
-}
-int a __attribute__ ((vector_size (16)));  ``![16,16i]`` (alignment would depend on the machine)
-=========================================  =====================================================
+            u'''+-------------------------------------------+-----------------------------------------------------+
+|Objective-C type                           |Compiler encoding                                    |
++===========================================+=====================================================+
+|.. code-block:: c++                        |                ``[10i]``                            |
+|                                           |                                                     |
+|  int a[10];                               |                                                     |
++-------------------------------------------+-----------------------------------------------------+
+|.. code-block:: c++                        |                ``{?=i[3f]b128i3b131i2c}``           |
+|                                           |                                                     |
+|  struct {                                 |                                                     |
+|    int i;                                 |                                                     |
+|    float f[3];                            |                                                     |
+|    int a:3;                               |                                                     |
+|    int b:2;                               |                                                     |
+|    char c;                                |                                                     |
+|  }                                        |                                                     |
++-------------------------------------------+-----------------------------------------------------+
+|.. code-block:: c++                        |``![16,16i]`` (alignment would depend on the machine)|
+|                                           |                                                     |
+|  int a __attribute__ ((vector_size (16)));|                                                     |
++-------------------------------------------+-----------------------------------------------------+
 ''',
             out)
 

@@ -902,63 +902,101 @@ following code uses the h and b modifiers for x86:</p>
 </div>
 <p>With no modifiers, this is what the output from the operands would be for the
 att and intel dialects of assembler:</p>
-<p>Operandmasm=attOFFSET FLAT:.L2Operand</p>
-<p>masm=att</p>
-<p>masm=intel</p>
-<p><tt class="docutils literal"><span class="pre">%0</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">%eax</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">eax</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">%1</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">$2</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">2</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">%2</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">$.L2</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">OFFSET</span> <span class="pre">FLAT:.L2</span></tt></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="24%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operand</th>
+<th class="head">masm=att</th>
+<th class="head">masm=intel</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">%0</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">%eax</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">eax</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">%1</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">$2</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">2</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">%2</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">$.L2</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">OFFSET</span> <span class="pre">FLAT:.L2</span></tt></td>
+</tr>
+</tbody>
+</table>
 <p>The table below shows the list of supported modifiers and their effects.</p>
-<p>ModifierPrint the opcode suffix for the size of thOperandmasm=attmasm=intelModifier</p>
-<p>Description</p>
-<p>Operand</p>
-<p>masm=att</p>
-<p>masm=intel</p>
-<p><tt class="docutils literal"><span class="pre">z</span></tt></p>
-<p>Print the opcode suffix for the size of the current integer operand (one of <tt class="docutils literal"><span class="pre">b</span></tt>/<tt class="docutils literal"><span class="pre">w</span></tt>/<tt class="docutils literal"><span class="pre">l</span></tt>/<tt class="docutils literal"><span class="pre">q</span></tt>).</p>
-<p><tt class="docutils literal"><span class="pre">%z0</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">l</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">b</span></tt></p>
-<p>Print the QImode name of the register.</p>
-<p><tt class="docutils literal"><span class="pre">%b0</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">%al</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">al</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">h</span></tt></p>
-<p>Print the QImode name for a &#8216;high&#8217; register.</p>
-<p><tt class="docutils literal"><span class="pre">%h0</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">%ah</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">ah</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">w</span></tt></p>
-<p>Print the HImode name of the register.</p>
-<p><tt class="docutils literal"><span class="pre">%w0</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">%ax</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">ax</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">k</span></tt></p>
-<p>Print the SImode name of the register.</p>
-<p><tt class="docutils literal"><span class="pre">%k0</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">%eax</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">eax</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">q</span></tt></p>
-<p>Print the DImode name of the register.</p>
-<p><tt class="docutils literal"><span class="pre">%q0</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">%rax</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">rax</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">l</span></tt></p>
-<p>Print the label name with no punctuation.</p>
-<p><tt class="docutils literal"><span class="pre">%l2</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">.L2</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">.L2</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">c</span></tt></p>
-<p>Require a constant operand and print the constant expression with no punctuation.</p>
-<p><tt class="docutils literal"><span class="pre">%c1</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">2</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">2</span></tt></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="75%" />
+<col width="5%" />
+<col width="7%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Modifier</th>
+<th class="head">Description</th>
+<th class="head">Operand</th>
+<th class="head">masm=att</th>
+<th class="head">masm=intel</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">z</span></tt></td>
+<td>Print the opcode suffix for the size of the current integer operand (one of <tt class="docutils literal"><span class="pre">b</span></tt>/<tt class="docutils literal"><span class="pre">w</span></tt>/<tt class="docutils literal"><span class="pre">l</span></tt>/<tt class="docutils literal"><span class="pre">q</span></tt>).</td>
+<td><tt class="docutils literal"><span class="pre">%z0</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">l</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">b</span></tt></td>
+<td>Print the QImode name of the register.</td>
+<td><tt class="docutils literal"><span class="pre">%b0</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">%al</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">al</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">h</span></tt></td>
+<td>Print the QImode name for a &#8216;high&#8217; register.</td>
+<td><tt class="docutils literal"><span class="pre">%h0</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">%ah</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">ah</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">w</span></tt></td>
+<td>Print the HImode name of the register.</td>
+<td><tt class="docutils literal"><span class="pre">%w0</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">%ax</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">ax</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">k</span></tt></td>
+<td>Print the SImode name of the register.</td>
+<td><tt class="docutils literal"><span class="pre">%k0</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">%eax</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">eax</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">q</span></tt></td>
+<td>Print the DImode name of the register.</td>
+<td><tt class="docutils literal"><span class="pre">%q0</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">%rax</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">rax</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">l</span></tt></td>
+<td>Print the label name with no punctuation.</td>
+<td><tt class="docutils literal"><span class="pre">%l2</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">.L2</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">.L2</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">c</span></tt></td>
+<td>Require a constant operand and print the constant expression with no punctuation.</td>
+<td><tt class="docutils literal"><span class="pre">%c1</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">2</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">2</span></tt></td>
+</tr>
+</tbody>
+</table>
 <p id="x86floatingpointasmoperands">x86 Floating-Point <tt class="docutils literal"><span class="pre">asm</span></tt> OperandsOn x86 targets, there are several rules on the usage of stack-like registers
 in the operands of an <tt class="docutils literal"><span class="pre">asm</span></tt>.  These rules apply only to the operands
 that are stack-like registers:</p>

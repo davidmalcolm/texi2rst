@@ -15,98 +15,33 @@ The types are encoded in the following way:
 
 .. @sp 1
 
-``_Bool``
-
-``B``
-
-``char``
-
-``c``
-
-``unsigned char``
-
-``C``
-
-``short``
-
-``s``
-
-``unsigned short``
-
-``S``
-
-``int``
-
-``i``
-
-``unsigned int``
-
-``I``
-
-``long``
-
-``l``
-
-``unsigned long``
-
-``L``
-
-``long long``
-
-``q``
-
-``unsigned long long``
-
-``Q``
-
-``float``
-
-``f``
-
-``double``
-
-``d``
-
-``long double``
-
-``D``
-
-``void``
-
-``v``
-
-``id``
-
-``@``
-
-``Class``
-
-``#``
-
-``SEL``
-
-``:``
-
-``char*``
-
-``*``
-
-``enum``
-
-an ``enum`` is encoded exactly as the integer type that the compiler uses for it, which depends on the enumeration
-values.  Often the compiler users ``unsigned int``, which is then encoded as ``I``.
-
-unknown type
-
-``?``
-
-Complex types
-
-``j`` followed by the inner type.  For example ``_Complex double`` is encoded as "jd".
-
-bit-fields
-
-``b`` followed by the starting position of the bit-field, the type of the bit-field and the size of the bit-field (the bit-fields encoding was changed from the NeXT's compiler encoding, see below)
+======================  ====================================================================================================================================================================================================
+``_Bool``               ``B``
+======================  ====================================================================================================================================================================================================
+``char``                ``c``
+``unsigned char``       ``C``
+``short``               ``s``
+``unsigned short``      ``S``
+``int``                 ``i``
+``unsigned int``        ``I``
+``long``                ``l``
+``unsigned long``       ``L``
+``long long``           ``q``
+``unsigned long long``  ``Q``
+``float``               ``f``
+``double``              ``d``
+``long double``         ``D``
+``void``                ``v``
+``id``                  ``@``
+``Class``               ``#``
+``SEL``                 ``:``
+``char*``               ``*``
+``enum``                an ``enum`` is encoded exactly as the integer type that the compiler uses for it, which depends on the enumeration
+                        values.  Often the compiler users ``unsigned int``, which is then encoded as ``I``.
+unknown type            ``?``
+Complex types           ``j`` followed by the inner type.  For example ``_Complex double`` is encoded as "jd".
+bit-fields              ``b`` followed by the starting position of the bit-field, the type of the bit-field and the size of the bit-field (the bit-fields encoding was changed from the NeXT's compiler encoding, see below)
+======================  ====================================================================================================================================================================================================
 
 .. @sp 1
 
@@ -128,121 +63,58 @@ The non-atomic types are encoded as follows:
 
 .. @sp 1
 
-pointers
-
-^ followed by the pointed type.
-
-arrays
-
-[ followed by the number of elements in the array followed by the type of the elements followed by ]
-
-structures
-
-{ followed by the name of the structure (or ? if the structure is unnamed), the = sign, the type of the members and by }
-
-unions
-
-( followed by the name of the structure (or ? if the union is unnamed), the = sign, the type of the members followed by )
-
-vectors
-
-![ followed by the vector_size (the number of bytes composing the vector) followed by a comma, followed by the alignment (in bytes) of the vector, followed by the type of the elements followed by ]
-
+==========  =====================================================================================================================================================================================================
+pointers    ^ followed by the pointed type.
+==========  =====================================================================================================================================================================================================
+arrays      [ followed by the number of elements in the array followed by the type of the elements followed by ]
+structures  { followed by the name of the structure (or ? if the structure is unnamed), the = sign, the type of the members and by }
+unions      ( followed by the name of the structure (or ? if the union is unnamed), the = sign, the type of the members followed by )
+vectors     ![ followed by the vector_size (the number of bytes composing the vector) followed by a comma, followed by the alignment (in bytes) of the vector, followed by the type of the elements followed by ]
+==========  =====================================================================================================================================================================================================
 Here are some types and their encodings, as they are generated by the
 compiler on an i386 machine:
 
-Objective-C type
-
-Compiler encoding
-
-.. code-block:: c++
-
-  int a[10];
-
-``[10i]``
-
-.. code-block:: c++
-
-  struct {
-    int i;
-    float f[3];
-    int a:3;
-    int b:2;
-    char c;
-  }
-
-``{?=i[3f]b128i3b131i2c}``
-
-.. code-block:: c++
-
-  int a __attribute__ ((vector_size (16)));
-
-``![16,16i]`` (alignment would depend on the machine)
-
+=========================================  =====================================================
+Objective-C type                           Compiler encoding
+=========================================  =====================================================
+int a[10];                                 ``[10i]``
+struct {                                   ``{?=i[3f]b128i3b131i2c}``
+  int i;
+  float f[3];
+  int a:3;
+  int b:2;
+  char c;
+}
+int a __attribute__ ((vector_size (16)));  ``![16,16i]`` (alignment would depend on the machine)
+=========================================  =====================================================
 In addition to the types the compiler also encodes the type
 specifiers.  The table below describes the encoding of the current
 Objective-C type specifiers:
 
-Specifier
-
-Encoding
-
-``const``
-
-``r``
-
-``in``
-
-``n``
-
-``inout``
-
-``N``
-
-``out``
-
-``o``
-
-``bycopy``
-
-``O``
-
-``byref``
-
-``R``
-
-``oneway``
-
-``V``
-
+==========  ========
+Specifier   Encoding
+==========  ========
+``const``   ``r``
+``in``      ``n``
+``inout``   ``N``
+``out``     ``o``
+``bycopy``  ``O``
+``byref``   ``R``
+``oneway``  ``V``
+==========  ========
 The type specifiers are encoded just before the type.  Unlike types
 however, the type specifiers are only encoded when they appear in method
 argument types.
 
 Note how ``const`` interacts with pointers:
 
-Objective-C type
-
-Compiler encoding
-
-.. code-block:: c++
-
-  const int
-
-``ri``
-
-.. code-block:: c++
-
-  const int*
-
-``^ri``
-
-.. code-block:: c++
-
-  int *const
-
-``r^i``
-
+================  =================
+Objective-C type  Compiler encoding
+================  =================
+const int         ``ri``
+const int*        ``^ri``
+int *const        ``r^i``
+================  =================
 ``const int*`` is a pointer to a ``const int``, and so is
 encoded as ``^ri``.  ``int* const``, instead, is a ``const``
 pointer to an ``int``, and so is encoded as ``r^i``.

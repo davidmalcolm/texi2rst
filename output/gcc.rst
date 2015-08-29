@@ -79,26 +79,14 @@ Using the GNU Compiler CollectionFor gcc version 6.0.0 (pre-release)(GCC)
 
  0pt plus 1filllRichard M. Stallman and the GCC Developer Community 0pt plus 1filllPublished by:
 
-GNU Press
-
-Website: http://www.gnupress.org
-
-a division of the
-
-General: press@gnu.org
-
-Free Software Foundation
-
-Orders:  sales@gnu.org
-
-51 Franklin Street, Fifth Floor
-
-Tel 617-542-5942
-
-Boston, MA 02110-1301 USA
-
-Fax 617-542-2652
-
+===============================  ================================
+GNU Press                        Website: http://www.gnupress.org
+===============================  ================================
+a division of the                General: press@gnu.org
+Free Software Foundation         Orders:  sales@gnu.org
+51 Franklin Street, Fifth Floor  Tel 617-542-5942
+Boston, MA 02110-1301 USA        Fax 617-542-2652
+===============================  ================================
 Last printed October 2003 for GCC 3.3.1.
 
 Printed copies are available for $45 each.

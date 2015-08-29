@@ -4316,54 +4316,88 @@ The M680x0 <a href="#id24"><span class="problematic" id="id25">``</span></a>cpu`
 68030, 68040, 68060, 68302, 68332
 and cpu32.  The ColdFire <a href="#id26"><span class="problematic" id="id27">``</span></a>cpu``s are given by the table
 below, which also classifies the CPUs into families:</p>
-<p>Family</p>
-<p>-mcpu arguments</p>
-<p>51</p>
-<p>51 51ac 51ag 51cn 51em 51je 51jf 51jg 51jm 51mm 51qe 51qm</p>
-<p>5206</p>
-<p>5202 5204 5206</p>
-<p>5206e</p>
-<p>5206e</p>
-<p>5208</p>
-<p>5207 5208</p>
-<p>5211a</p>
-<p>5210a 5211a</p>
-<p>5213</p>
-<p>5211 5212 5213</p>
-<p>5216</p>
-<p>5214 5216</p>
-<p>52235</p>
-<p>52230 52231 52232 52233 52234 52235</p>
-<p>5225</p>
-<p>5224 5225</p>
-<p>52259</p>
-<p>52252 52254 52255 52256 52258 52259</p>
-<p>5235</p>
-<p>5232 5233 5234 5235 523x</p>
-<p>5249</p>
-<p>5249</p>
-<p>5250</p>
-<p>5250</p>
-<p>5271</p>
-<p>5270 5271</p>
-<p>5272</p>
-<p>5272</p>
-<p>5275</p>
-<p>5274 5275</p>
-<p>5282</p>
-<p>5280 5281 5282 528x</p>
-<p>53017</p>
-<p>53011 53012 53013 53014 53015 53016 53017</p>
-<p>5307</p>
-<p>5307</p>
-<p>5329</p>
-<p>5327 5328 5329 532x</p>
-<p>5373</p>
-<p>5372 5373 537x</p>
-<p>5407</p>
-<p>5407</p>
-<p>5475</p>
-<p>5470 5471 5472 5473 5474 5475 547x 5480 5481 5482 5483 5484 5485</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Family</th>
+<th class="head">-mcpu arguments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>51</td>
+<td>51 51ac 51ag 51cn 51em 51je 51jf 51jg 51jm 51mm 51qe 51qm</td>
+</tr>
+<tr class="row-odd"><td>5206</td>
+<td>5202 5204 5206</td>
+</tr>
+<tr class="row-even"><td>5206e</td>
+<td>5206e</td>
+</tr>
+<tr class="row-odd"><td>5208</td>
+<td>5207 5208</td>
+</tr>
+<tr class="row-even"><td>5211a</td>
+<td>5210a 5211a</td>
+</tr>
+<tr class="row-odd"><td>5213</td>
+<td>5211 5212 5213</td>
+</tr>
+<tr class="row-even"><td>5216</td>
+<td>5214 5216</td>
+</tr>
+<tr class="row-odd"><td>52235</td>
+<td>52230 52231 52232 52233 52234 52235</td>
+</tr>
+<tr class="row-even"><td>5225</td>
+<td>5224 5225</td>
+</tr>
+<tr class="row-odd"><td>52259</td>
+<td>52252 52254 52255 52256 52258 52259</td>
+</tr>
+<tr class="row-even"><td>5235</td>
+<td>5232 5233 5234 5235 523x</td>
+</tr>
+<tr class="row-odd"><td>5249</td>
+<td>5249</td>
+</tr>
+<tr class="row-even"><td>5250</td>
+<td>5250</td>
+</tr>
+<tr class="row-odd"><td>5271</td>
+<td>5270 5271</td>
+</tr>
+<tr class="row-even"><td>5272</td>
+<td>5272</td>
+</tr>
+<tr class="row-odd"><td>5275</td>
+<td>5274 5275</td>
+</tr>
+<tr class="row-even"><td>5282</td>
+<td>5280 5281 5282 528x</td>
+</tr>
+<tr class="row-odd"><td>53017</td>
+<td>53011 53012 53013 53014 53015 53016 53017</td>
+</tr>
+<tr class="row-even"><td>5307</td>
+<td>5307</td>
+</tr>
+<tr class="row-odd"><td>5329</td>
+<td>5327 5328 5329 532x</td>
+</tr>
+<tr class="row-even"><td>5373</td>
+<td>5372 5373 537x</td>
+</tr>
+<tr class="row-odd"><td>5407</td>
+<td>5407</td>
+</tr>
+<tr class="row-even"><td>5475</td>
+<td>5470 5471 5472 5473 5474 5475 547x 5480 5481 5482 5483 5484 5485</td>
+</tr>
+</tbody>
+</table>
 <p><em class="xref std std-option">-mcpu=``cpu``</em> overrides <em class="xref std std-option">-march=``arch``</em> if
 <tt class="docutils literal"><span class="pre">arch</span></tt> is compatible with <tt class="docutils literal"><span class="pre">cpu</span></tt>.  Other combinations of
 <a class="reference internal" href="#cmdoption-mcpu"><em class="xref std std-option">-mcpu</em></a> and <a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a> are rejected.</p>

@@ -100,53 +100,86 @@ about them to use Objective-C.</p>
 These type encodings are used at runtime to find out information about
 selectors and methods and about objects and classes.</p>
 <p>The types are encoded in the following way:</p>
-<p><tt class="docutils literal"><span class="pre">_Bool</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">B</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">char</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">c</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">char</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">C</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">short</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">s</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">S</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">int</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">i</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">I</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">long</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">l</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">L</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">q</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">Q</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">float</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">f</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">double</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">d</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">D</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">void</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">v</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">id</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">&#64;</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">Class</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">#</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">SEL</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">:</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">char*</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">*</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">enum</span></tt></p>
-<p>an <tt class="docutils literal"><span class="pre">enum</span></tt> is encoded exactly as the integer type that the compiler uses for it, which depends on the enumeration
-values.  Often the compiler users <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt>, which is then encoded as <tt class="docutils literal"><span class="pre">I</span></tt>.</p>
-<p>unknown type</p>
-<p><tt class="docutils literal"><span class="pre">?</span></tt></p>
-<p>Complex types</p>
-<p><tt class="docutils literal"><span class="pre">j</span></tt> followed by the inner type.  For example <tt class="docutils literal"><span class="pre">_Complex</span> <span class="pre">double</span></tt> is encoded as &#8220;jd&#8221;.</p>
-<p>bit-fields</p>
-<p><tt class="docutils literal"><span class="pre">b</span></tt> followed by the starting position of the bit-field, the type of the bit-field and the size of the bit-field (the bit-fields encoding was changed from the NeXT&#8217;s compiler encoding, see below)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><tt class="docutils literal"><span class="pre">_Bool</span></tt></th>
+<th class="head"><tt class="docutils literal"><span class="pre">B</span></tt></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">char</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">c</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">char</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">C</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">short</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">s</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">S</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">int</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">i</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">I</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">long</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">l</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">L</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">q</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Q</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">float</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">f</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">double</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">d</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">long</span> <span class="pre">double</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">D</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">v</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">id</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">&#64;</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">Class</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">#</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">SEL</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">:</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">char*</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">*</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">enum</span></tt></td>
+<td>an <tt class="docutils literal"><span class="pre">enum</span></tt> is encoded exactly as the integer type that the compiler uses for it, which depends on the enumeration
+values.  Often the compiler users <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt>, which is then encoded as <tt class="docutils literal"><span class="pre">I</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td>unknown type</td>
+<td><tt class="docutils literal"><span class="pre">?</span></tt></td>
+</tr>
+<tr class="row-even"><td>Complex types</td>
+<td><tt class="docutils literal"><span class="pre">j</span></tt> followed by the inner type.  For example <tt class="docutils literal"><span class="pre">_Complex</span> <span class="pre">double</span></tt> is encoded as &#8220;jd&#8221;.</td>
+</tr>
+<tr class="row-odd"><td>bit-fields</td>
+<td><tt class="docutils literal"><span class="pre">b</span></tt> followed by the starting position of the bit-field, the type of the bit-field and the size of the bit-field (the bit-fields encoding was changed from the NeXT&#8217;s compiler encoding, see below)</td>
+</tr>
+</tbody>
+</table>
 <p>The encoding of bit-fields has changed to allow bit-fields to be
 properly handled by the runtime functions that compute sizes and
 alignments of types that contain bit-fields.  The previous encoding
@@ -160,75 +193,136 @@ inside the object.</p>
 <p>The position in the bit-field is the position, counting in bits, of the
 bit closest to the beginning of the structure.</p>
 <p>The non-atomic types are encoded as follows:</p>
-<p>pointers</p>
-<p>^ followed by the pointed type.</p>
-<p>arrays</p>
-<p>[ followed by the number of elements in the array followed by the type of the elements followed by ]</p>
-<p>structures</p>
-<p>{ followed by the name of the structure (or ? if the structure is unnamed), the = sign, the type of the members and by }</p>
-<p>unions</p>
-<p>( followed by the name of the structure (or ? if the union is unnamed), the = sign, the type of the members followed by )</p>
-<p>vectors</p>
-<p>![ followed by the vector_size (the number of bytes composing the vector) followed by a comma, followed by the alignment (in bytes) of the vector, followed by the type of the elements followed by ]</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="95%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">pointers</th>
+<th class="head">^ followed by the pointed type.</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>arrays</td>
+<td>[ followed by the number of elements in the array followed by the type of the elements followed by ]</td>
+</tr>
+<tr class="row-odd"><td>structures</td>
+<td>{ followed by the name of the structure (or ? if the structure is unnamed), the = sign, the type of the members and by }</td>
+</tr>
+<tr class="row-even"><td>unions</td>
+<td>( followed by the name of the structure (or ? if the union is unnamed), the = sign, the type of the members followed by )</td>
+</tr>
+<tr class="row-odd"><td>vectors</td>
+<td>![ followed by the vector_size (the number of bytes composing the vector) followed by a comma, followed by the alignment (in bytes) of the vector, followed by the type of the elements followed by ]</td>
+</tr>
+</tbody>
+</table>
 <p>Here are some types and their encodings, as they are generated by the
 compiler on an i386 machine:</p>
-<p>Objective-C type</p>
-<p>Compiler encoding</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">[10i]</span></tt></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="p">{</span>
-  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-  <span class="kt">float</span> <span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
-  <span class="kt">int</span> <span class="n">a</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
-  <span class="kt">int</span> <span class="n">b</span><span class="o">:</span><span class="mi">2</span><span class="p">;</span>
-  <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">{?=i[3f]b128i3b131i2c}</span></tt></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">a</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">vector_size</span> <span class="p">(</span><span class="mi">16</span><span class="p">)));</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">![16,16i]</span></tt> (alignment would depend on the machine)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Objective-C type</th>
+<th class="head">Compiler encoding</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>int a[10];</td>
+<td><tt class="docutils literal"><span class="pre">[10i]</span></tt></td>
+</tr>
+<tr class="row-odd"><td>struct {</td>
+<td><tt class="docutils literal"><span class="pre">{?=i[3f]b128i3b131i2c}</span></tt></td>
+</tr>
+<tr class="row-even"><td>int i;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>float f[3];</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>int a:3;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>int b:2;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>char c;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>}</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>int a __attribute__ ((vector_size (16)));</td>
+<td><tt class="docutils literal"><span class="pre">![16,16i]</span></tt> (alignment would depend on the machine)</td>
+</tr>
+</tbody>
+</table>
 <p>In addition to the types the compiler also encodes the type
 specifiers.  The table below describes the encoding of the current
 Objective-C type specifiers:</p>
-<p>Specifier</p>
-<p>Encoding</p>
-<p><tt class="docutils literal"><span class="pre">const</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">r</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">in</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">n</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">inout</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">N</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">out</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">o</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">bycopy</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">O</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">byref</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">R</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">oneway</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">V</span></tt></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Specifier</th>
+<th class="head">Encoding</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">const</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">r</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">in</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">n</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">inout</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">N</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">out</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">o</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">bycopy</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">O</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">byref</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">R</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">oneway</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">V</span></tt></td>
+</tr>
+</tbody>
+</table>
 <p>The type specifiers are encoded just before the type.  Unlike types
 however, the type specifiers are only encoded when they appear in method
 argument types.</p>
 <p>Note how <tt class="docutils literal"><span class="pre">const</span></tt> interacts with pointers:</p>
-<p>Objective-C type</p>
-<p>Compiler encoding</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">const</span> <span class="kt">int</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">ri</span></tt></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">const</span> <span class="kt">int</span><span class="o">*</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">^ri</span></tt></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="o">*</span><span class="k">const</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">r^i</span></tt></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Objective-C type</th>
+<th class="head">Compiler encoding</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>const int</td>
+<td><tt class="docutils literal"><span class="pre">ri</span></tt></td>
+</tr>
+<tr class="row-odd"><td>const int*</td>
+<td><tt class="docutils literal"><span class="pre">^ri</span></tt></td>
+</tr>
+<tr class="row-even"><td>int <a href="#id2"><span class="problematic" id="id3">*</span></a>const</td>
+<td><tt class="docutils literal"><span class="pre">r^i</span></tt></td>
+</tr>
+</tbody>
+</table>
 <p><tt class="docutils literal"><span class="pre">const</span> <span class="pre">int*</span></tt> is a pointer to a <tt class="docutils literal"><span class="pre">const</span> <span class="pre">int</span></tt>, and so is
 encoded as <tt class="docutils literal"><span class="pre">^ri</span></tt>.  <tt class="docutils literal"><span class="pre">int*</span> <span class="pre">const</span></tt>, instead, is a <tt class="docutils literal"><span class="pre">const</span></tt>
 pointer to an <tt class="docutils literal"><span class="pre">int</span></tt>, and so is encoded as <tt class="docutils literal"><span class="pre">r^i</span></tt>.</p>
@@ -245,7 +339,7 @@ as <tt class="docutils literal"><span class="pre">*</span></tt>, and the <tt cla
 </ul>
 </div>
 <div class="section" id="legacy-type-encoding">
-<span id="id2"></span><h2>Legacy Type Encoding<a class="headerlink" href="#legacy-type-encoding" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>Legacy Type Encoding<a class="headerlink" href="#legacy-type-encoding" title="Permalink to this headline">¶</a></h2>
 <p>Unfortunately, historically GCC used to have a number of bugs in its
 encoding code.  The NeXT runtime expects GCC to emit type encodings in
 this historical format (compatible with GCC-3.3), so when using the
@@ -258,7 +352,7 @@ is a typedef.  Also, the &#8216;r&#8217; is only emitted for the outermost type.
 <li>32-bit longs are encoded as &#8216;l&#8217; or &#8216;L&#8217;, but not always.  For typedefs,
 the compiler uses &#8216;i&#8217; or &#8216;I&#8217; instead if encoding a struct field or a
 pointer.</li>
-<li><a href="#id3"><span class="problematic" id="id4">``</span></a>enum``s are always encoded as &#8216;i&#8217; (int) even if they are actually
+<li><a href="#id5"><span class="problematic" id="id6">``</span></a>enum``s are always encoded as &#8216;i&#8217; (int) even if they are actually
 unsigned or long.</li>
 </ul>
 <p>In addition to that, the NeXT runtime uses a different encoding for
@@ -273,7 +367,7 @@ is compiled into <tt class="docutils literal"><span class="pre">&quot;r*&quot;</
 invalid and will cause a compilation error.</p>
 </div>
 <div class="section" id="method-signatures">
-<span id="id5"></span><h2>Method Signatures<a class="headerlink" href="#method-signatures" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>Method Signatures<a class="headerlink" href="#method-signatures" title="Permalink to this headline">¶</a></h2>
 <p>This section documents the encoding of method types, which is rarely
 needed to use Objective-C.  You should skip it at a first reading; the
 runtime provides functions that will work on methods and can walk

@@ -937,42 +937,63 @@ here in tabular form.</p>
 register numbers, compile-time constants and run-time values.  In order
 to make this classification clear at a glance, the arguments and return
 values are given the following pseudo types:</p>
-<p>Pseudo type</p>
-<p>Real C type</p>
-<p>Constant?</p>
-<p>Description</p>
-<p><tt class="docutils literal"><span class="pre">uh</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span></tt></p>
-<p>No</p>
-<p>an unsigned halfword</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt></p>
-<p>No</p>
-<p>an unsigned word</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">int</span></tt></p>
-<p>No</p>
-<p>a signed word</p>
-<p><tt class="docutils literal"><span class="pre">uw2</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt></p>
-<p>No</p>
-<p>an unsigned doubleword</p>
-<p><tt class="docutils literal"><span class="pre">sw2</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt></p>
-<p>No</p>
-<p>a signed doubleword</p>
-<p><tt class="docutils literal"><span class="pre">const</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">int</span></tt></p>
-<p>Yes</p>
-<p>an integer constant</p>
-<p><tt class="docutils literal"><span class="pre">acc</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">int</span></tt></p>
-<p>Yes</p>
-<p>an ACC register number</p>
-<p><tt class="docutils literal"><span class="pre">iacc</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">int</span></tt></p>
-<p>Yes</p>
-<p>an IACC register number</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="35%" />
+<col width="14%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pseudo type</th>
+<th class="head">Real C type</th>
+<th class="head">Constant?</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uh</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span></tt></td>
+<td>No</td>
+<td>an unsigned halfword</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt></td>
+<td>No</td>
+<td>an unsigned word</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sw1</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">int</span></tt></td>
+<td>No</td>
+<td>a signed word</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw2</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></tt></td>
+<td>No</td>
+<td>an unsigned doubleword</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sw2</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></tt></td>
+<td>No</td>
+<td>a signed doubleword</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">const</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">int</span></tt></td>
+<td>Yes</td>
+<td>an integer constant</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">acc</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">int</span></tt></td>
+<td>Yes</td>
+<td>an ACC register number</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">iacc</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">int</span></tt></td>
+<td>Yes</td>
+<td>an IACC register number</td>
+</tr>
+</tbody>
+</table>
 <p>These pseudo types are not defined by GCC, they are simply a notational
 convenience used in this manual.</p>
 <p>Arguments of type <tt class="docutils literal"><span class="pre">uh</span></tt>, <tt class="docutils literal"><span class="pre">uw1</span></tt>, <tt class="docutils literal"><span class="pre">sw1</span></tt>, <tt class="docutils literal"><span class="pre">uw2</span></tt>
@@ -990,310 +1011,432 @@ for more details.</p>
 <div class="section" id="directly-mapped-integer-functions">
 <span id="id13"></span><h3>Directly-Mapped Integer Functions<a class="headerlink" href="#directly-mapped-integer-functions" title="Permalink to this headline">¶</a></h3>
 <p>The functions listed below map directly to FR-V I-type instructions.</p>
-<p>Function prototype</p>
-<p>Example usage</p>
-<p>Assembly output</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__ADDSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __ADDSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">ADDSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SCAN</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __SCAN (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">SCAN</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SCUTSS</span> <span class="pre">(sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __SCUTSS (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">SCUTSS</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SLASS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __SLASS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">SLASS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMASS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__SMASS</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">SMASS</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMSSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__SMSSS</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">SMSSS</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMU</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__SMU</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">SMU</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__SMUL</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __SMUL (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">SMUL</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SUBSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __SUBSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">SUBSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__UMUL</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __UMUL (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">UMUL</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="39%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Function prototype</th>
+<th class="head">Example usage</th>
+<th class="head">Assembly output</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__ADDSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __ADDSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">ADDSS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SCAN</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __SCAN (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">SCAN</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SCUTSS</span> <span class="pre">(sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __SCUTSS (<tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">SCUTSS</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SLASS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __SLASS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">SLASS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMASS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__SMASS</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">SMASS</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMSSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__SMSSS</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">SMSSS</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__SMU</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__SMU</span> <span class="pre">(``a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">SMU</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__SMUL</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __SMUL (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">SMUL</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__SUBSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __SUBSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">SUBSS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__UMUL</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __UMUL (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">UMUL</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="directly-mapped-media-functions">
 <span id="id14"></span><h3>Directly-Mapped Media Functions<a class="headerlink" href="#directly-mapped-media-functions" title="Permalink to this headline">¶</a></h3>
 <p>The functions listed below map directly to FR-V M-type instructions.</p>
-<p>Function prototype</p>
-<p>Example usage</p>
-<p>Assembly output</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MABSHS</span> <span class="pre">(sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MABSHS (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MABSHS</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MADDACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MADDACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MADDACCS</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MADDHSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MADDHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MADDHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MADDHUS</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MADDHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MADDHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MAND</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MAND (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MAND</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MASACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MASACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MASACCS</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MAVEH</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MAVEH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MAVEH</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MBTOH</span> <span class="pre">(uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MBTOH (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MBTOH</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MBTOHE</span> <span class="pre">(uw1</span> <span class="pre">*,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MBTOHE</span> <span class="pre">(&amp;``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MBTOHE</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCLRACC</span> <span class="pre">(acc)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MCLRACC</span> <span class="pre">(``a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MCLRACC</span> <span class="pre">``a``</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCLRACCA</span> <span class="pre">(void)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MCLRACCA</span> <span class="pre">()</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">MCLRACCA</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__Mcop1</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __Mcop1 (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">Mcop1</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__Mcop2</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __Mcop2 (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">Mcop2</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCPLHI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCPLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MCPLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCPLI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCPLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MCPLI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXIS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MCPXIS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MCPXIS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXIU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MCPXIU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MCPXIU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXRS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MCPXRS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MCPXRS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXRU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MCPXRU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MCPXRU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCUT</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCUT (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MCUT</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCUTSS</span> <span class="pre">(acc,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCUTSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MCUTSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDADDACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MDADDACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MDADDACCS</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDASACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MDASACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MDASACCS</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDCUTSSI</span> <span class="pre">(acc,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MDCUTSSI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MDCUTSSI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDPACKH</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MDPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MDPACKH</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDROTLI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MDROTLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MDROTLI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDSUBACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MDSUBACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MDSUBACCS</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDUNPACKH</span> <span class="pre">(uw1</span> <span class="pre">*,</span> <span class="pre">uw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MDUNPACKH</span> <span class="pre">(&amp;``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MDUNPACKH</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MEXPDHD</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MEXPDHD (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MEXPDHD</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MEXPDHW</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MEXPDHW (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MEXPDHW</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHDSETH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MHDSETH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MHDSETH</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHDSETS</span> <span class="pre">(const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHDSETS (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MHDSETS</span> <span class="pre">#``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHSETHIH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETHIH (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MHSETHIH</span> <span class="pre">#``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHSETHIS</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETHIS (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MHSETHIS</span> <span class="pre">#``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHSETLOH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETLOH (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MHSETLOH</span> <span class="pre">#``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHSETLOS</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETLOS (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MHSETLOS</span> <span class="pre">#``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHTOB</span> <span class="pre">(uw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHTOB (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MHTOB</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMACHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MMACHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MMACHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMRDHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MMRDHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MMRDHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMRDHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MMRDHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MMRDHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MMULHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MMULHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MMULHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MMULHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULXHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MMULXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MMULXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULXHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MMULXHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MMULXHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MNOT</span> <span class="pre">(uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MNOT (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MNOT</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MOR</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MOR (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MOR</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MPACKH</span> <span class="pre">(uh,</span> <span class="pre">uh)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MPACKH</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQADDHSS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQADDHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQADDHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQADDHUS</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQADDHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQADDHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXIS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQCPXIS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQCPXIS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXIU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQCPXIU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQCPXIU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXRS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQCPXRS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQCPXRS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXRU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQCPXRU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQCPXRU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQLCLRHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQLCLRHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQLCLRHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQLMTHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQLMTHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQLMTHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQMACHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQMACHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQMACXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQMACXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQMULHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQMULHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQMULHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQMULHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQMULXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQMULXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULXHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQMULXHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQMULXHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSATHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSATHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQSATHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQSLLHI</span> <span class="pre">(uw2,</span> <span class="pre">int)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSLLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQSLLHI</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSRAHI</span> <span class="pre">(sw2,</span> <span class="pre">int)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSRAHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQSRAHI</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSUBHSS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSUBHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQSUBHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQSUBHUS</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSUBHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQSUBHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQXMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQXMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQXMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQXMACXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MQXMACXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MQXMACXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MRDACC</span> <span class="pre">(acc)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MRDACC (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MRDACC</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MRDACCG</span> <span class="pre">(acc)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MRDACCG (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MRDACCG</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MROTLI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MROTLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MROTLI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MROTRI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MROTRI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MROTRI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSATHS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSATHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MSATHS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSATHU</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSATHU (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MSATHU</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSLLHI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSLLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MSLLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSRAHI</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSRAHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MSRAHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSRLHI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSRLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MSRLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MSUBACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MSUBACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MSUBACCS</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSUBHSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSUBHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MSUBHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSUBHUS</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSUBHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MSUBHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MTRAP</span> <span class="pre">(void)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MTRAP</span> <span class="pre">()</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">MTRAP</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MUNPACKH</span> <span class="pre">(uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``b</span></tt> = __MUNPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MUNPACKH</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MWCUT</span> <span class="pre">(uw2,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MWCUT (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MWCUT</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MWTACC</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MWTACC</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MWTACC</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MWTACCG</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">__MWTACCG</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MWTACCG</span> <span class="pre">``a</span></tt>,``b````</p>
-<p><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MXOR</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">``c</span></tt> = __MXOR (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</p>
-<p><tt class="docutils literal"><span class="pre">MXOR</span> <span class="pre">``a</span></tt>,``b``,``c````</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="36%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Function prototype</th>
+<th class="head">Example usage</th>
+<th class="head">Assembly output</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MABSHS</span> <span class="pre">(sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MABSHS (<tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MABSHS</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MADDACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MADDACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MADDACCS</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MADDHSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MADDHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MADDHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MADDHUS</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MADDHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MADDHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MAND</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MAND (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MAND</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MASACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MASACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MASACCS</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MAVEH</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MAVEH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MAVEH</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MBTOH</span> <span class="pre">(uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MBTOH (<tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MBTOH</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MBTOHE</span> <span class="pre">(uw1</span> <span class="pre">*,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MBTOHE</span> <span class="pre">(&amp;``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MBTOHE</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCLRACC</span> <span class="pre">(acc)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MCLRACC</span> <span class="pre">(``a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MCLRACC</span> <span class="pre">``a``</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCLRACCA</span> <span class="pre">(void)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MCLRACCA</span> <span class="pre">()</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">MCLRACCA</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__Mcop1</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __Mcop1 (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">Mcop1</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__Mcop2</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __Mcop2 (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">Mcop2</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCPLHI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCPLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MCPLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCPLI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCPLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MCPLI</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXIS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MCPXIS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MCPXIS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXIU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MCPXIU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MCPXIU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXRS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MCPXRS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MCPXRS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MCPXRU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MCPXRU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MCPXRU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCUT</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCUT (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MCUT</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MCUTSS</span> <span class="pre">(acc,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MCUTSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MCUTSS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDADDACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MDADDACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MDADDACCS</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDASACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MDASACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MDASACCS</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDCUTSSI</span> <span class="pre">(acc,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MDCUTSSI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MDCUTSSI</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDPACKH</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MDPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MDPACKH</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MDROTLI</span> <span class="pre">(uw2,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MDROTLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MDROTLI</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDSUBACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MDSUBACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MDSUBACCS</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MDUNPACKH</span> <span class="pre">(uw1</span> <span class="pre">*,</span> <span class="pre">uw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MDUNPACKH</span> <span class="pre">(&amp;``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MDUNPACKH</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MEXPDHD</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MEXPDHD (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MEXPDHD</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MEXPDHW</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MEXPDHW (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MEXPDHW</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHDSETH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MHDSETH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MHDSETH</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHDSETS</span> <span class="pre">(const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHDSETS (<tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MHDSETS</span> <span class="pre">#``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHSETHIH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETHIH (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MHSETHIH</span> <span class="pre">#``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHSETHIS</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETHIS (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MHSETHIS</span> <span class="pre">#``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHSETLOH</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETLOH (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MHSETLOH</span> <span class="pre">#``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MHSETLOS</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHSETLOS (<tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MHSETLOS</span> <span class="pre">#``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MHTOB</span> <span class="pre">(uw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MHTOB (<tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MHTOB</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMACHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MMACHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MMACHU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMRDHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MMRDHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MMRDHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMRDHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MMRDHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MMRDHU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MMULHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MMULHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MMULHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MMULHU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULXHS</span> <span class="pre">(acc,</span> <span class="pre">sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MMULXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MMULXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MMULXHU</span> <span class="pre">(acc,</span> <span class="pre">uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MMULXHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MMULXHU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MNOT</span> <span class="pre">(uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MNOT (<tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MNOT</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MOR</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MOR (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MOR</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MPACKH</span> <span class="pre">(uh,</span> <span class="pre">uh)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MPACKH</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQADDHSS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQADDHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQADDHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQADDHUS</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQADDHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQADDHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXIS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQCPXIS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQCPXIS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXIU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQCPXIU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQCPXIU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXRS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQCPXRS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQCPXRS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQCPXRU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQCPXRU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQCPXRU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQLCLRHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQLCLRHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQLCLRHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQLMTHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQLMTHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQLMTHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQMACHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQMACHU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMACXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQMACXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQMACXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQMULHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQMULHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQMULHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQMULHU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQMULXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQMULXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQMULXHU</span> <span class="pre">(acc,</span> <span class="pre">uw2,</span> <span class="pre">uw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQMULXHU</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQMULXHU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSATHS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSATHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQSATHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQSLLHI</span> <span class="pre">(uw2,</span> <span class="pre">int)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSLLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQSLLHI</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSRAHI</span> <span class="pre">(sw2,</span> <span class="pre">int)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSRAHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQSRAHI</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sw2</span> <span class="pre">__MQSUBHSS</span> <span class="pre">(sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSUBHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQSUBHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MQSUBHUS</span> <span class="pre">(uw2,</span> <span class="pre">uw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MQSUBHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQSUBHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQXMACHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQXMACHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQXMACHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MQXMACXHS</span> <span class="pre">(acc,</span> <span class="pre">sw2,</span> <span class="pre">sw2)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MQXMACXHS</span> <span class="pre">(``c</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MQXMACXHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MRDACC</span> <span class="pre">(acc)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MRDACC (<tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MRDACC</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MRDACCG</span> <span class="pre">(acc)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MRDACCG (<tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MRDACCG</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MROTLI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MROTLI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MROTLI</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MROTRI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MROTRI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MROTRI</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSATHS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSATHS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MSATHS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSATHU</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSATHU (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MSATHU</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSLLHI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSLLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MSLLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSRAHI</span> <span class="pre">(sw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSRAHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MSRAHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSRLHI</span> <span class="pre">(uw1,</span> <span class="pre">const)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSRLHI (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MSRLHI</span> <span class="pre">``a</span></tt>,#``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MSUBACCS</span> <span class="pre">(acc,</span> <span class="pre">acc)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MSUBACCS</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MSUBACCS</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sw1</span> <span class="pre">__MSUBHSS</span> <span class="pre">(sw1,</span> <span class="pre">sw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSUBHSS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MSUBHSS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MSUBHUS</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MSUBHUS (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MSUBHUS</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MTRAP</span> <span class="pre">(void)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MTRAP</span> <span class="pre">()</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">MTRAP</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw2</span> <span class="pre">__MUNPACKH</span> <span class="pre">(uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``b</span></tt> = __MUNPACKH (<tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MUNPACKH</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MWCUT</span> <span class="pre">(uw2,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MWCUT (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MWCUT</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MWTACC</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MWTACC</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MWTACC</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__MWTACCG</span> <span class="pre">(acc,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">__MWTACCG</span> <span class="pre">(``b</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MWTACCG</span> <span class="pre">``a</span></tt>,``b````</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">uw1</span> <span class="pre">__MXOR</span> <span class="pre">(uw1,</span> <span class="pre">uw1)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">``c</span></tt> = __MXOR (<tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>)``</td>
+<td><tt class="docutils literal"><span class="pre">MXOR</span> <span class="pre">``a</span></tt>,``b``,``c````</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="raw-read-write-functions">
 <span id="id15"></span><h3>Raw Read/Write Functions<a class="headerlink" href="#raw-read-write-functions" title="Permalink to this headline">¶</a></h3>
@@ -1391,23 +1534,50 @@ of a Q7 value can be obtained by multiplying the fractional value by
 <p>The table below lists the <tt class="docutils literal"><span class="pre">v4i8</span></tt> and <tt class="docutils literal"><span class="pre">v2q15</span></tt> operations for which
 hardware support exists.  <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> are <tt class="docutils literal"><span class="pre">v4i8</span></tt> values,
 and <tt class="docutils literal"><span class="pre">c</span></tt> and <tt class="docutils literal"><span class="pre">d</span></tt> are <tt class="docutils literal"><span class="pre">v2q15</span></tt> values.</p>
-<p>C code</p>
-<p>MIPS instruction</p>
-<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">addu.qb</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">c</span> <span class="pre">+</span> <span class="pre">d</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">addq.ph</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">subu.qb</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">c</span> <span class="pre">-</span> <span class="pre">d</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">subq.ph</span></tt></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">C code</th>
+<th class="head">MIPS instruction</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">addu.qb</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">c</span> <span class="pre">+</span> <span class="pre">d</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">addq.ph</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">subu.qb</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">c</span> <span class="pre">-</span> <span class="pre">d</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">subq.ph</span></tt></td>
+</tr>
+</tbody>
+</table>
 <p>The table below lists the <tt class="docutils literal"><span class="pre">v2i16</span></tt> operation for which
 hardware support exists for the DSP ASE REV 2.  <tt class="docutils literal"><span class="pre">e</span></tt> and <tt class="docutils literal"><span class="pre">f</span></tt> are
 <tt class="docutils literal"><span class="pre">v2i16</span></tt> values.</p>
-<p>C code</p>
-<p>MIPS instruction</p>
-<p><tt class="docutils literal"><span class="pre">e</span> <span class="pre">*</span> <span class="pre">f</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">mul.ph</span></tt></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">C code</th>
+<th class="head">MIPS instruction</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">e</span> <span class="pre">*</span> <span class="pre">f</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">mul.ph</span></tt></td>
+</tr>
+</tbody>
+</table>
 <p>It is easier to describe the DSP built-in functions if we first define
 the following types:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">int</span> <span class="n">q31</span><span class="p">;</span>
@@ -1764,26 +1934,46 @@ instruction.</p>
 <p>The table below lists the <tt class="docutils literal"><span class="pre">v2sf</span></tt> operations for which hardware
 support exists.  <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">c</span></tt> are <tt class="docutils literal"><span class="pre">v2sf</span></tt>
 values and <tt class="docutils literal"><span class="pre">x</span></tt> is an integral value.</p>
-<p>C code</p>
-<p>MIPS instruction</p>
-<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">add.ps</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">sub.ps</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">-a</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">neg.ps</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">mul.ps</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">madd.ps</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">-</span> <span class="pre">c</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">msub.ps</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">-(a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">nmadd.ps</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">-(a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">-</span> <span class="pre">c)</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">nmsub.ps</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">x</span> <span class="pre">?</span> <span class="pre">a</span> <span class="pre">:</span> <span class="pre">b</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">movn.ps</span></tt>/<tt class="docutils literal"><span class="pre">movz.ps</span></tt></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">C code</th>
+<th class="head">MIPS instruction</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">add.ps</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">sub.ps</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-a</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">neg.ps</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">mul.ps</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">madd.ps</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">-</span> <span class="pre">c</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">msub.ps</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-(a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">nmadd.ps</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">-(a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">-</span> <span class="pre">c)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">nmsub.ps</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">?</span> <span class="pre">a</span> <span class="pre">:</span> <span class="pre">b</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">movn.ps</span></tt>/<tt class="docutils literal"><span class="pre">movz.ps</span></tt></td>
+</tr>
+</tbody>
+</table>
 <p>Note that the multiply-accumulate instructions can be disabled
 using the command-line option <tt class="docutils literal"><span class="pre">-mno-fused-madd</span></tt>.</p>
 </div>

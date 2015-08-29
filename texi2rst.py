@@ -194,7 +194,9 @@ def from_xml_string(xml_src):
 class Visitor:
     def visit(self, node):
         if isinstance(node, Element):
-            self.previsit_element(node)
+            early_exit = self.previsit_element(node)
+            if early_exit:
+                return
             for child in node.children:
                 self.visit(child)
             self.postvisit_element(node)
@@ -717,6 +719,99 @@ def fixup_table_entry(tree):
     v.visit(tree)
     return tree
 
+def fixup_multitables(tree, ctxt):
+    """
+    Given:
+          <multitable spaces=" " endspaces=" ">
+            <columnprototypes>
+              <columnprototype bracketed="on">Modifier</columnprototype>
+              <columnprototype bracketed="on">Print the opcode suffix for the size of th</columnprototype>
+              <columnprototype bracketed="on">Operand</columnprototype>
+              <columnprototype bracketed="on">masm=att</columnprototype>
+              <columnprototype bracketed="on">masm=intel</columnprototype>
+            </columnprototypes>
+            <thead>
+              <row>
+                <entry command="headitem" spaces=" ">
+                  <para>Modifier </para>
+                </entry>
+                <entry command="tab" spaces=" ">
+                  <para>Description </para>
+                </entry>
+                <entry command="tab" spaces=" ">
+                  <para>Operand </para>
+                </entry>
+                <entry command="tab" spaces=" ">
+                  <para>
+                    <option>masm=att</option>
+                  </para>
+                </entry>
+                <entry command="tab" spaces=" ">
+                  <para>
+                    <option>masm=intel</option>
+                  </para>
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry command="item" spaces=" ">
+                  <para>
+                    <code>z</code>
+                  </para>
+                </entry>
+                <entry command="tab" spaces=" ">
+                  <para>Print the opcode suffix for the size of the current integer operand (one of <code>b</code>/<code>w</code>/<code>l</code>/<code>q</code>).
+</para>
+                </entry>
+                <entry command="tab" spaces=" ">
+                  <para>
+                    <code>%z0</code>
+                  </para>
+                </entry>
+                <entry command="tab" spaces=" ">
+                  <para>
+                    <code>l</code>
+                  </para>
+                </entry>
+                <entry command="tab"> </entry>
+              </row>
+              <row/>
+              ...etc...
+            </tbody>
+          </multitable>
+    convert to a .rst table
+    """
+    class MultitableFixer(NoopVisitor):
+        def previsit_element(self, element):
+            if element.kind == 'multitable':
+                element.rst_kind = Table(element, ctxt)
+            elif element.kind == 'entry':
+                # For now, strip out <para> and <smallexample>:
+                new_children = []
+                for child in element.children:
+                    if (child.is_element('para')
+                        or child.is_element('smallexample')):
+                        for grandchild in child.children:
+                            if isinstance(grandchild, Text):
+                                if grandchild.data == '\n':
+                                    continue
+                            new_children.append(grandchild)
+                        continue # dropping the <para>
+                    new_children.append(child)
+                element.children = new_children
+
+            element.delete_children_named('columnprototypes')
+
+        def postvisit_element(self, element):
+            if ctxt.debug:
+                if element.kind == 'multitable':
+                    element.dump(sys.stdout)
+
+    v = MultitableFixer()
+    v.visit(tree)
+    return tree
+
 def fixup_examples(tree):
     """
     Handle:
@@ -961,6 +1056,7 @@ def convert_to_rst(tree, ctxt):
     tree = split(tree)
     tree = fixup_option_refs(tree)
     tree = fixup_table_entry(tree)
+    tree = fixup_multitables(tree, ctxt)
     tree = fixup_examples(tree)
     tree = fixup_titles(tree)
     tree = fixup_index(tree)
@@ -1132,6 +1228,139 @@ class OutputFile(RstKind):
     def after(self, w):
         w.pop_output_file(self)
 
+class TableLayout:
+    def __init__(self, table_element, debug):
+        if debug:
+            table_element.dump(sys.stdout)
+        self.components = []
+        for child in table_element.children:
+            if child.is_element('thead') or child.is_element('tbody'):
+                self.components.append(child)
+        if debug:
+            print('self.components: %r' % (self.components, ))
+        for comp in self.components:
+            comp.rows = []
+            for child in comp.children:
+                if child.is_element('row'):
+                    comp.rows.append(child)
+            if debug:
+                print('comp.rows: %r' % (comp.rows, ))
+
+            for row in comp.rows:
+                row.entries = []
+                for child in row.children:
+                    if child.is_element('entry'):
+                        row.entries.append(child)
+                if debug:
+                    print('row.entries: %r' % (row.entries, ))
+
+        # If we just have a body, turn the first row into a header:
+        if len(self.components) == 1:
+            thead = Element('thead', {})
+            first_row = self.components[0].rows[0]
+            thead.rows = [first_row]
+            self.components[0].rows = self.components[0].rows[1:]
+            self.components.insert(0, thead)
+
+        self.num_columns = len(self.components[0].rows[0].entries)
+        if debug:
+            print('self.num_columns: %r' % self.num_columns)
+        for comp in self.components:
+            comp.columns = []
+            for idx in range(self.num_columns):
+                column = []
+                for row in comp.rows:
+                    column.append(row.entries[idx])
+                if debug:
+                    print('column: %r' % (column, ))
+                comp.columns.append(column)
+            if debug:
+                print('comp.columns: %r' % (comp.columns, ))
+
+        # Requisition:
+        self.width_needed_for_x = {}
+        self.height_needed_for_y = {}
+        for x in range(self.num_columns):
+            if debug:
+                print('x: %r' % x)
+            for comp in self.components:
+                for y, entry in enumerate(comp.columns[x]):
+                    w, h = self._get_requisition(entry)
+                    if w > self.width_needed_for_x.get(x, 0):
+                        self.width_needed_for_x[x] = w
+                    if h > self.height_needed_for_y.get(y, 0):
+                        self.height_needed_for_y[y] = h
+
+    def _get_requisition(self, entry):
+        text = self._render_entry(entry)
+        if text:
+            lines = text.splitlines()
+            w = max([len(line) for line in lines])
+            h = len(lines)
+            return w, h
+        else:
+            return 0, 0
+
+    def _render_entry(self, entry):
+        # Nested writer
+        w = RstWriter(StringIO.StringIO())
+        w.visit(entry)
+        w.finish()
+        return w.f_out.getvalue()
+
+    def render(self, w):
+        self.draw_simple_table_border(w)
+        for comp in self.components:
+            for y, row in enumerate(comp.rows):
+                # Cope with newlines in "text":
+                lines_at_x = {}
+                for x, entry in enumerate(row.entries):
+                    lines_at_x[x] = self._render_entry(entry).splitlines()
+
+                for line_idx in range(self.height_needed_for_y[y]):
+                    # Determine within this line which is the final
+                    # non-empty entry, to avoid surplus whitespace
+                    # to the right of it.
+                    final_x_with_text = 0
+                    for x, entry in enumerate(row.entries):
+                        if line_idx < len(lines_at_x[x]):
+                            if lines_at_x[x][line_idx]:
+                                final_x_with_text = x
+
+                    for x, entry in enumerate(row.entries):
+                        if x and x <= final_x_with_text:
+                            w.write('  ')
+                        lines = lines_at_x[x]
+                        if line_idx < len(lines):
+                            text = lines[line_idx]
+                        else:
+                            text = ''
+                        w.write(text)
+                        if x < final_x_with_text:
+                            w.write(' ' *
+                                    (self.width_needed_for_x[x] - len(text)))
+                    w.write('\n')
+            self.draw_simple_table_border(w)
+
+    def draw_simple_table_border(self, w):
+        for x in range(self.num_columns):
+            if x:
+                w.write('  ')
+            w.write('=' * self.width_needed_for_x[x])
+        w.write('\n')
+
+class Table(RstKind):
+    def __init__(self, element, ctxt):
+        self.element = element
+        self.ctxt = ctxt
+
+    def before(self, w):
+        table_layout = TableLayout(self.element, self.ctxt.debug)
+        table_layout.render(w)
+
+        # Don't traverse children; we've already rendered them
+        return True
+
 # Output of a converted tree to .rst file
 
 class RstWriter(Visitor):
@@ -1177,7 +1406,7 @@ class RstWriter(Visitor):
 
     def previsit_element(self, element):
         if element.rst_kind:
-            element.rst_kind.before(self)
+            return element.rst_kind.before(self)
         else:
             if 0:
                 print('unhandled element: %r' % (element, ))
@@ -2208,6 +2437,120 @@ class TestIter(Texi2RstTests):
     def assert_edge_from(self, edge, src_element_name, dst_element_name):
         self.assert_is_element(edge[0], src_element_name)
         self.assert_is_element(edge[1], dst_element_name)
+
+class TableTests(Texi2RstTests):
+    def test_multitable(self):
+        xml_src = u'''<multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">Operand</columnprototype> <columnprototype bracketed="on">masm=att</columnprototype> <columnprototype bracketed="on">OFFSET FLAT:.L2</columnprototype></columnprototypes>
+<thead><row><entry command="headitem" spaces=" "><para>Operand </para></entry><entry command="tab" spaces=" "><para>masm=att </para></entry><entry command="tab" spaces=" "><para>masm=intel
+</para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para><code>%0</code>
+</para></entry><entry command="tab" spaces=" "><para><code>%eax</code>
+</para></entry><entry command="tab" spaces=" "><para><code>eax</code>
+</para></entry></row><row><entry command="item" spaces=" "><para><code>%1</code>
+</para></entry><entry command="tab" spaces=" "><para><code>$2</code>
+</para></entry><entry command="tab" spaces=" "><para><code>2</code>
+</para></entry></row><row><entry command="item" spaces=" "><para><code>%2</code>
+</para></entry><entry command="tab" spaces=" "><para><code>$.L2</code>
+</para></entry><entry command="tab" spaces=" "><para><code>OFFSET FLAT:.L2</code>
+</para></entry></row></tbody></multitable>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(
+            u'''=======  ========  ===================
+Operand  masm=att  masm=intel
+=======  ========  ===================
+``%0``   ``%eax``  ``eax``
+``%1``   ``$2``    ``2``
+``%2``   ``$.L2``  ``OFFSET FLAT:.L2``
+=======  ========  ===================
+''',
+            out)
+
+    def test_multitable_without_header(self):
+        xml_src = u'''<multitable spaces=" " endspaces=" ">
+        <columnfractions line=" .25 .75">
+          <columnfraction value=".25"/>
+          <columnfraction value=".75"/>
+        </columnfractions>
+        <tbody>
+          <row>
+            <entry command="item" spaces=" ">
+              <para>Objective-C type
+</para>
+            </entry>
+            <entry command="tab" spaces=" ">
+              <para>Compiler encoding
+</para>
+            </entry>
+          </row>
+          <row>
+            <entry command="item">
+              <smallexample endspaces=" ">
+                <pre xml:space="preserve">int a[10];
+</pre>
+              </smallexample>
+            </entry>
+            <entry command="tab" spaces=" ">
+              <para>
+                <code>[10i]</code>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry command="item">
+              <smallexample endspaces=" ">
+                <pre xml:space="preserve">struct &lbrace;
+  int i;
+  float f[3];
+  int a:3;
+  int b:2;
+  char c;
+&rbrace;
+</pre>
+              </smallexample>
+            </entry>
+            <entry command="tab" spaces=" ">
+              <para>
+                <code>&lbrace;?=i[3f]b128i3b131i2c&rbrace;</code>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry command="item">
+              <smallexample endspaces=" ">
+                <pre xml:space="preserve">int a __attribute__ ((vector_size (16)));
+</pre>
+              </smallexample>
+            </entry>
+            <entry command="tab" spaces=" ">
+              <para><code>![16,16i]</code> (alignment would depend on the machine)
+</para>
+            </entry>
+          </row>
+        </tbody>
+      </multitable>'''
+
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(
+            u'''=========================================  =====================================================
+Objective-C type                           Compiler encoding
+=========================================  =====================================================
+int a[10];                                                 ``[10i]``
+struct {                                                   ``{?=i[3f]b128i3b131i2c}``
+  int i;
+  float f[3];
+  int a:3;
+  int b:2;
+  char c;
+}
+int a __attribute__ ((vector_size (16)));  ``![16,16i]`` (alignment would depend on the machine)
+=========================================  =====================================================
+''',
+            out)
+
+
 
 #
 

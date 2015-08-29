@@ -1052,78 +1052,18 @@ register numbers, compile-time constants and run-time values.  In order
 to make this classification clear at a glance, the arguments and return
 values are given the following pseudo types:
 
-Pseudo type
-
-Real C type
-
-Constant?
-
-Description
-
-``uh`` 
-
-``unsigned short`` 
-
-No
-
-an unsigned halfword
-
-``uw1`` 
-
-``unsigned int`` 
-
-No
-
-an unsigned word
-
-``sw1`` 
-
-``int`` 
-
-No
-
-a signed word
-
-``uw2`` 
-
-``unsigned long long`` 
-
-No
-
-an unsigned doubleword
-
-``sw2`` 
-
-``long long`` 
-
-No
-
-a signed doubleword
-
-``const`` 
-
-``int`` 
-
-Yes
-
-an integer constant
-
-``acc`` 
-
-``int`` 
-
-Yes
-
-an ACC register number
-
-``iacc`` 
-
-``int`` 
-
-Yes
-
-an IACC register number
-
+===========  =======================  =========  =======================
+Pseudo type  Real C type              Constant?  Description
+===========  =======================  =========  =======================
+``uh``       ``unsigned short``       No         an unsigned halfword
+``uw1``      ``unsigned int``         No         an unsigned word
+``sw1``      ``int``                  No         a signed word
+``uw2``      ``unsigned long long``   No         an unsigned doubleword
+``sw2``      ``long long``            No         a signed doubleword
+``const``    ``int``                  Yes        an integer constant
+``acc``      ``int``                  Yes        an ACC register number
+``iacc``     ``int``                  Yes        an IACC register number
+===========  =======================  =========  =======================
 These pseudo types are not defined by GCC, they are simply a notational
 convenience used in this manual.
 
@@ -1149,72 +1089,20 @@ Directly-Mapped Integer Functions
 
 The functions listed below map directly to FR-V I-type instructions.
 
-Function prototype
-
-Example usage
-
-Assembly output
-
-``sw1 __ADDSS (sw1, sw1)``
-
-````c`` = __ADDSS (``a``, ``b``)``
-
-``ADDSS ``a``,``b``,``c````
-
-``sw1 __SCAN (sw1, sw1)``
-
-````c`` = __SCAN (``a``, ``b``)``
-
-``SCAN ``a``,``b``,``c````
-
-``sw1 __SCUTSS (sw1)``
-
-````b`` = __SCUTSS (``a``)``
-
-``SCUTSS ``a``,``b````
-
-``sw1 __SLASS (sw1, sw1)``
-
-````c`` = __SLASS (``a``, ``b``)``
-
-``SLASS ``a``,``b``,``c````
-
-``void __SMASS (sw1, sw1)``
-
-``__SMASS (``a``, ``b``)``
-
-``SMASS ``a``,``b````
-
-``void __SMSSS (sw1, sw1)``
-
-``__SMSSS (``a``, ``b``)``
-
-``SMSSS ``a``,``b````
-
-``void __SMU (sw1, sw1)``
-
-``__SMU (``a``, ``b``)``
-
-``SMU ``a``,``b````
-
-``sw2 __SMUL (sw1, sw1)``
-
-````c`` = __SMUL (``a``, ``b``)``
-
-``SMUL ``a``,``b``,``c````
-
-``sw1 __SUBSS (sw1, sw1)``
-
-````c`` = __SUBSS (``a``, ``b``)``
-
-``SUBSS ``a``,``b``,``c````
-
-``uw2 __UMUL (uw1, uw1)``
-
-````c`` = __UMUL (``a``, ``b``)``
-
-``UMUL ``a``,``b``,``c````
-
+===========================  ==================================  ===========================
+Function prototype           Example usage                       Assembly output
+===========================  ==================================  ===========================
+``sw1 __ADDSS (sw1, sw1)``   ````c`` = __ADDSS (``a``, ``b``)``  ``ADDSS ``a``,``b``,``c````
+``sw1 __SCAN (sw1, sw1)``    ````c`` = __SCAN (``a``, ``b``)``   ``SCAN ``a``,``b``,``c````
+``sw1 __SCUTSS (sw1)``       ````b`` = __SCUTSS (``a``)``        ``SCUTSS ``a``,``b````
+``sw1 __SLASS (sw1, sw1)``   ````c`` = __SLASS (``a``, ``b``)``  ``SLASS ``a``,``b``,``c````
+``void __SMASS (sw1, sw1)``  ``__SMASS (``a``, ``b``)``          ``SMASS ``a``,``b````
+``void __SMSSS (sw1, sw1)``  ``__SMSSS (``a``, ``b``)``          ``SMSSS ``a``,``b````
+``void __SMU (sw1, sw1)``    ``__SMU (``a``, ``b``)``            ``SMU ``a``,``b````
+``sw2 __SMUL (sw1, sw1)``    ````c`` = __SMUL (``a``, ``b``)``   ``SMUL ``a``,``b``,``c````
+``sw1 __SUBSS (sw1, sw1)``   ````c`` = __SUBSS (``a``, ``b``)``  ``SUBSS ``a``,``b``,``c````
+``uw2 __UMUL (uw1, uw1)``    ````c`` = __UMUL (``a``, ``b``)``   ``UMUL ``a``,``b``,``c````
+===========================  ==================================  ===========================
 .. _directly-mapped-media-functions:
 
 Directly-Mapped Media Functions
@@ -1222,540 +1110,98 @@ Directly-Mapped Media Functions
 
 The functions listed below map directly to FR-V M-type instructions.
 
-Function prototype
-
-Example usage
-
-Assembly output
-
-``uw1 __MABSHS (sw1)``
-
-````b`` = __MABSHS (``a``)``
-
-``MABSHS ``a``,``b````
-
-``void __MADDACCS (acc, acc)``
-
-``__MADDACCS (``b``, ``a``)``
-
-``MADDACCS ``a``,``b````
-
-``sw1 __MADDHSS (sw1, sw1)``
-
-````c`` = __MADDHSS (``a``, ``b``)``
-
-``MADDHSS ``a``,``b``,``c````
-
-``uw1 __MADDHUS (uw1, uw1)``
-
-````c`` = __MADDHUS (``a``, ``b``)``
-
-``MADDHUS ``a``,``b``,``c````
-
-``uw1 __MAND (uw1, uw1)``
-
-````c`` = __MAND (``a``, ``b``)``
-
-``MAND ``a``,``b``,``c````
-
-``void __MASACCS (acc, acc)``
-
-``__MASACCS (``b``, ``a``)``
-
-``MASACCS ``a``,``b````
-
-``uw1 __MAVEH (uw1, uw1)``
-
-````c`` = __MAVEH (``a``, ``b``)``
-
-``MAVEH ``a``,``b``,``c````
-
-``uw2 __MBTOH (uw1)``
-
-````b`` = __MBTOH (``a``)``
-
-``MBTOH ``a``,``b````
-
-``void __MBTOHE (uw1 *, uw1)``
-
-``__MBTOHE (&``b``, ``a``)``
-
-``MBTOHE ``a``,``b````
-
-``void __MCLRACC (acc)``
-
-``__MCLRACC (``a``)``
-
-``MCLRACC ``a````
-
-``void __MCLRACCA (void)``
-
-``__MCLRACCA ()``
-
-``MCLRACCA``
-
-``uw1 __Mcop1 (uw1, uw1)``
-
-````c`` = __Mcop1 (``a``, ``b``)``
-
-``Mcop1 ``a``,``b``,``c````
-
-``uw1 __Mcop2 (uw1, uw1)``
-
-````c`` = __Mcop2 (``a``, ``b``)``
-
-``Mcop2 ``a``,``b``,``c````
-
-``uw1 __MCPLHI (uw2, const)``
-
-````c`` = __MCPLHI (``a``, ``b``)``
-
-``MCPLHI ``a``,#``b``,``c````
-
-``uw1 __MCPLI (uw2, const)``
-
-````c`` = __MCPLI (``a``, ``b``)``
-
-``MCPLI ``a``,#``b``,``c````
-
-``void __MCPXIS (acc, sw1, sw1)``
-
-``__MCPXIS (``c``, ``a``, ``b``)``
-
-``MCPXIS ``a``,``b``,``c````
-
-``void __MCPXIU (acc, uw1, uw1)``
-
-``__MCPXIU (``c``, ``a``, ``b``)``
-
-``MCPXIU ``a``,``b``,``c````
-
-``void __MCPXRS (acc, sw1, sw1)``
-
-``__MCPXRS (``c``, ``a``, ``b``)``
-
-``MCPXRS ``a``,``b``,``c````
-
-``void __MCPXRU (acc, uw1, uw1)``
-
-``__MCPXRU (``c``, ``a``, ``b``)``
-
-``MCPXRU ``a``,``b``,``c````
-
-``uw1 __MCUT (acc, uw1)``
-
-````c`` = __MCUT (``a``, ``b``)``
-
-``MCUT ``a``,``b``,``c````
-
-``uw1 __MCUTSS (acc, sw1)``
-
-````c`` = __MCUTSS (``a``, ``b``)``
-
-``MCUTSS ``a``,``b``,``c````
-
-``void __MDADDACCS (acc, acc)``
-
-``__MDADDACCS (``b``, ``a``)``
-
-``MDADDACCS ``a``,``b````
-
-``void __MDASACCS (acc, acc)``
-
-``__MDASACCS (``b``, ``a``)``
-
-``MDASACCS ``a``,``b````
-
-``uw2 __MDCUTSSI (acc, const)``
-
-````c`` = __MDCUTSSI (``a``, ``b``)``
-
-``MDCUTSSI ``a``,#``b``,``c````
-
-``uw2 __MDPACKH (uw2, uw2)``
-
-````c`` = __MDPACKH (``a``, ``b``)``
-
-``MDPACKH ``a``,``b``,``c````
-
-``uw2 __MDROTLI (uw2, const)``
-
-````c`` = __MDROTLI (``a``, ``b``)``
-
-``MDROTLI ``a``,#``b``,``c````
-
-``void __MDSUBACCS (acc, acc)``
-
-``__MDSUBACCS (``b``, ``a``)``
-
-``MDSUBACCS ``a``,``b````
-
-``void __MDUNPACKH (uw1 *, uw2)``
-
-``__MDUNPACKH (&``b``, ``a``)``
-
-``MDUNPACKH ``a``,``b````
-
-``uw2 __MEXPDHD (uw1, const)``
-
-````c`` = __MEXPDHD (``a``, ``b``)``
-
-``MEXPDHD ``a``,#``b``,``c````
-
-``uw1 __MEXPDHW (uw1, const)``
-
-````c`` = __MEXPDHW (``a``, ``b``)``
-
-``MEXPDHW ``a``,#``b``,``c````
-
-``uw1 __MHDSETH (uw1, const)``
-
-````c`` = __MHDSETH (``a``, ``b``)``
-
-``MHDSETH ``a``,#``b``,``c````
-
-``sw1 __MHDSETS (const)``
-
-````b`` = __MHDSETS (``a``)``
-
-``MHDSETS #``a``,``b````
-
-``uw1 __MHSETHIH (uw1, const)``
-
-````b`` = __MHSETHIH (``b``, ``a``)``
-
-``MHSETHIH #``a``,``b````
-
-``sw1 __MHSETHIS (sw1, const)``
-
-````b`` = __MHSETHIS (``b``, ``a``)``
-
-``MHSETHIS #``a``,``b````
-
-``uw1 __MHSETLOH (uw1, const)``
-
-````b`` = __MHSETLOH (``b``, ``a``)``
-
-``MHSETLOH #``a``,``b````
-
-``sw1 __MHSETLOS (sw1, const)``
-
-````b`` = __MHSETLOS (``b``, ``a``)``
-
-``MHSETLOS #``a``,``b````
-
-``uw1 __MHTOB (uw2)``
-
-````b`` = __MHTOB (``a``)``
-
-``MHTOB ``a``,``b````
-
-``void __MMACHS (acc, sw1, sw1)``
-
-``__MMACHS (``c``, ``a``, ``b``)``
-
-``MMACHS ``a``,``b``,``c````
-
-``void __MMACHU (acc, uw1, uw1)``
-
-``__MMACHU (``c``, ``a``, ``b``)``
-
-``MMACHU ``a``,``b``,``c````
-
-``void __MMRDHS (acc, sw1, sw1)``
-
-``__MMRDHS (``c``, ``a``, ``b``)``
-
-``MMRDHS ``a``,``b``,``c````
-
-``void __MMRDHU (acc, uw1, uw1)``
-
-``__MMRDHU (``c``, ``a``, ``b``)``
-
-``MMRDHU ``a``,``b``,``c````
-
-``void __MMULHS (acc, sw1, sw1)``
-
-``__MMULHS (``c``, ``a``, ``b``)``
-
-``MMULHS ``a``,``b``,``c````
-
-``void __MMULHU (acc, uw1, uw1)``
-
-``__MMULHU (``c``, ``a``, ``b``)``
-
-``MMULHU ``a``,``b``,``c````
-
-``void __MMULXHS (acc, sw1, sw1)``
-
-``__MMULXHS (``c``, ``a``, ``b``)``
-
-``MMULXHS ``a``,``b``,``c````
-
-``void __MMULXHU (acc, uw1, uw1)``
-
-``__MMULXHU (``c``, ``a``, ``b``)``
-
-``MMULXHU ``a``,``b``,``c````
-
-``uw1 __MNOT (uw1)``
-
-````b`` = __MNOT (``a``)``
-
-``MNOT ``a``,``b````
-
-``uw1 __MOR (uw1, uw1)``
-
-````c`` = __MOR (``a``, ``b``)``
-
-``MOR ``a``,``b``,``c````
-
-``uw1 __MPACKH (uh, uh)``
-
-````c`` = __MPACKH (``a``, ``b``)``
-
-``MPACKH ``a``,``b``,``c````
-
-``sw2 __MQADDHSS (sw2, sw2)``
-
-````c`` = __MQADDHSS (``a``, ``b``)``
-
-``MQADDHSS ``a``,``b``,``c````
-
-``uw2 __MQADDHUS (uw2, uw2)``
-
-````c`` = __MQADDHUS (``a``, ``b``)``
-
-``MQADDHUS ``a``,``b``,``c````
-
-``void __MQCPXIS (acc, sw2, sw2)``
-
-``__MQCPXIS (``c``, ``a``, ``b``)``
-
-``MQCPXIS ``a``,``b``,``c````
-
-``void __MQCPXIU (acc, uw2, uw2)``
-
-``__MQCPXIU (``c``, ``a``, ``b``)``
-
-``MQCPXIU ``a``,``b``,``c````
-
-``void __MQCPXRS (acc, sw2, sw2)``
-
-``__MQCPXRS (``c``, ``a``, ``b``)``
-
-``MQCPXRS ``a``,``b``,``c````
-
-``void __MQCPXRU (acc, uw2, uw2)``
-
-``__MQCPXRU (``c``, ``a``, ``b``)``
-
-``MQCPXRU ``a``,``b``,``c````
-
-``sw2 __MQLCLRHS (sw2, sw2)``
-
-````c`` = __MQLCLRHS (``a``, ``b``)``
-
-``MQLCLRHS ``a``,``b``,``c````
-
-``sw2 __MQLMTHS (sw2, sw2)``
-
-````c`` = __MQLMTHS (``a``, ``b``)``
-
-``MQLMTHS ``a``,``b``,``c````
-
-``void __MQMACHS (acc, sw2, sw2)``
-
-``__MQMACHS (``c``, ``a``, ``b``)``
-
-``MQMACHS ``a``,``b``,``c````
-
-``void __MQMACHU (acc, uw2, uw2)``
-
-``__MQMACHU (``c``, ``a``, ``b``)``
-
-``MQMACHU ``a``,``b``,``c````
-
-``void __MQMACXHS (acc, sw2, sw2)``
-
-``__MQMACXHS (``c``, ``a``, ``b``)``
-
-``MQMACXHS ``a``,``b``,``c````
-
-``void __MQMULHS (acc, sw2, sw2)``
-
-``__MQMULHS (``c``, ``a``, ``b``)``
-
-``MQMULHS ``a``,``b``,``c````
-
-``void __MQMULHU (acc, uw2, uw2)``
-
-``__MQMULHU (``c``, ``a``, ``b``)``
-
-``MQMULHU ``a``,``b``,``c````
-
-``void __MQMULXHS (acc, sw2, sw2)``
-
-``__MQMULXHS (``c``, ``a``, ``b``)``
-
-``MQMULXHS ``a``,``b``,``c````
-
-``void __MQMULXHU (acc, uw2, uw2)``
-
-``__MQMULXHU (``c``, ``a``, ``b``)``
-
-``MQMULXHU ``a``,``b``,``c````
-
-``sw2 __MQSATHS (sw2, sw2)``
-
-````c`` = __MQSATHS (``a``, ``b``)``
-
-``MQSATHS ``a``,``b``,``c````
-
-``uw2 __MQSLLHI (uw2, int)``
-
-````c`` = __MQSLLHI (``a``, ``b``)``
-
-``MQSLLHI ``a``,``b``,``c````
-
-``sw2 __MQSRAHI (sw2, int)``
-
-````c`` = __MQSRAHI (``a``, ``b``)``
-
-``MQSRAHI ``a``,``b``,``c````
-
-``sw2 __MQSUBHSS (sw2, sw2)``
-
-````c`` = __MQSUBHSS (``a``, ``b``)``
-
-``MQSUBHSS ``a``,``b``,``c````
-
-``uw2 __MQSUBHUS (uw2, uw2)``
-
-````c`` = __MQSUBHUS (``a``, ``b``)``
-
-``MQSUBHUS ``a``,``b``,``c````
-
-``void __MQXMACHS (acc, sw2, sw2)``
-
-``__MQXMACHS (``c``, ``a``, ``b``)``
-
-``MQXMACHS ``a``,``b``,``c````
-
-``void __MQXMACXHS (acc, sw2, sw2)``
-
-``__MQXMACXHS (``c``, ``a``, ``b``)``
-
-``MQXMACXHS ``a``,``b``,``c````
-
-``uw1 __MRDACC (acc)``
-
-````b`` = __MRDACC (``a``)``
-
-``MRDACC ``a``,``b````
-
-``uw1 __MRDACCG (acc)``
-
-````b`` = __MRDACCG (``a``)``
-
-``MRDACCG ``a``,``b````
-
-``uw1 __MROTLI (uw1, const)``
-
-````c`` = __MROTLI (``a``, ``b``)``
-
-``MROTLI ``a``,#``b``,``c````
-
-``uw1 __MROTRI (uw1, const)``
-
-````c`` = __MROTRI (``a``, ``b``)``
-
-``MROTRI ``a``,#``b``,``c````
-
-``sw1 __MSATHS (sw1, sw1)``
-
-````c`` = __MSATHS (``a``, ``b``)``
-
-``MSATHS ``a``,``b``,``c````
-
-``uw1 __MSATHU (uw1, uw1)``
-
-````c`` = __MSATHU (``a``, ``b``)``
-
-``MSATHU ``a``,``b``,``c````
-
-``uw1 __MSLLHI (uw1, const)``
-
-````c`` = __MSLLHI (``a``, ``b``)``
-
-``MSLLHI ``a``,#``b``,``c````
-
-``sw1 __MSRAHI (sw1, const)``
-
-````c`` = __MSRAHI (``a``, ``b``)``
-
-``MSRAHI ``a``,#``b``,``c````
-
-``uw1 __MSRLHI (uw1, const)``
-
-````c`` = __MSRLHI (``a``, ``b``)``
-
-``MSRLHI ``a``,#``b``,``c````
-
-``void __MSUBACCS (acc, acc)``
-
-``__MSUBACCS (``b``, ``a``)``
-
-``MSUBACCS ``a``,``b````
-
-``sw1 __MSUBHSS (sw1, sw1)``
-
-````c`` = __MSUBHSS (``a``, ``b``)``
-
-``MSUBHSS ``a``,``b``,``c````
-
-``uw1 __MSUBHUS (uw1, uw1)``
-
-````c`` = __MSUBHUS (``a``, ``b``)``
-
-``MSUBHUS ``a``,``b``,``c````
-
-``void __MTRAP (void)``
-
-``__MTRAP ()``
-
-``MTRAP``
-
-``uw2 __MUNPACKH (uw1)``
-
-````b`` = __MUNPACKH (``a``)``
-
-``MUNPACKH ``a``,``b````
-
-``uw1 __MWCUT (uw2, uw1)``
-
-````c`` = __MWCUT (``a``, ``b``)``
-
-``MWCUT ``a``,``b``,``c````
-
-``void __MWTACC (acc, uw1)``
-
-``__MWTACC (``b``, ``a``)``
-
-``MWTACC ``a``,``b````
-
-``void __MWTACCG (acc, uw1)``
-
-``__MWTACCG (``b``, ``a``)``
-
-``MWTACCG ``a``,``b````
-
-``uw1 __MXOR (uw1, uw1)``
-
-````c`` = __MXOR (``a``, ``b``)``
-
-``MXOR ``a``,``b``,``c````
-
+====================================  =====================================  ===============================
+Function prototype                    Example usage                          Assembly output
+====================================  =====================================  ===============================
+``uw1 __MABSHS (sw1)``                ````b`` = __MABSHS (``a``)``           ``MABSHS ``a``,``b````
+``void __MADDACCS (acc, acc)``        ``__MADDACCS (``b``, ``a``)``          ``MADDACCS ``a``,``b````
+``sw1 __MADDHSS (sw1, sw1)``          ````c`` = __MADDHSS (``a``, ``b``)``   ``MADDHSS ``a``,``b``,``c````
+``uw1 __MADDHUS (uw1, uw1)``          ````c`` = __MADDHUS (``a``, ``b``)``   ``MADDHUS ``a``,``b``,``c````
+``uw1 __MAND (uw1, uw1)``             ````c`` = __MAND (``a``, ``b``)``      ``MAND ``a``,``b``,``c````
+``void __MASACCS (acc, acc)``         ``__MASACCS (``b``, ``a``)``           ``MASACCS ``a``,``b````
+``uw1 __MAVEH (uw1, uw1)``            ````c`` = __MAVEH (``a``, ``b``)``     ``MAVEH ``a``,``b``,``c````
+``uw2 __MBTOH (uw1)``                 ````b`` = __MBTOH (``a``)``            ``MBTOH ``a``,``b````
+``void __MBTOHE (uw1 *, uw1)``        ``__MBTOHE (&``b``, ``a``)``           ``MBTOHE ``a``,``b````
+``void __MCLRACC (acc)``              ``__MCLRACC (``a``)``                  ``MCLRACC ``a````
+``void __MCLRACCA (void)``            ``__MCLRACCA ()``                      ``MCLRACCA``
+``uw1 __Mcop1 (uw1, uw1)``            ````c`` = __Mcop1 (``a``, ``b``)``     ``Mcop1 ``a``,``b``,``c````
+``uw1 __Mcop2 (uw1, uw1)``            ````c`` = __Mcop2 (``a``, ``b``)``     ``Mcop2 ``a``,``b``,``c````
+``uw1 __MCPLHI (uw2, const)``         ````c`` = __MCPLHI (``a``, ``b``)``    ``MCPLHI ``a``,#``b``,``c````
+``uw1 __MCPLI (uw2, const)``          ````c`` = __MCPLI (``a``, ``b``)``     ``MCPLI ``a``,#``b``,``c````
+``void __MCPXIS (acc, sw1, sw1)``     ``__MCPXIS (``c``, ``a``, ``b``)``     ``MCPXIS ``a``,``b``,``c````
+``void __MCPXIU (acc, uw1, uw1)``     ``__MCPXIU (``c``, ``a``, ``b``)``     ``MCPXIU ``a``,``b``,``c````
+``void __MCPXRS (acc, sw1, sw1)``     ``__MCPXRS (``c``, ``a``, ``b``)``     ``MCPXRS ``a``,``b``,``c````
+``void __MCPXRU (acc, uw1, uw1)``     ``__MCPXRU (``c``, ``a``, ``b``)``     ``MCPXRU ``a``,``b``,``c````
+``uw1 __MCUT (acc, uw1)``             ````c`` = __MCUT (``a``, ``b``)``      ``MCUT ``a``,``b``,``c````
+``uw1 __MCUTSS (acc, sw1)``           ````c`` = __MCUTSS (``a``, ``b``)``    ``MCUTSS ``a``,``b``,``c````
+``void __MDADDACCS (acc, acc)``       ``__MDADDACCS (``b``, ``a``)``         ``MDADDACCS ``a``,``b````
+``void __MDASACCS (acc, acc)``        ``__MDASACCS (``b``, ``a``)``          ``MDASACCS ``a``,``b````
+``uw2 __MDCUTSSI (acc, const)``       ````c`` = __MDCUTSSI (``a``, ``b``)``  ``MDCUTSSI ``a``,#``b``,``c````
+``uw2 __MDPACKH (uw2, uw2)``          ````c`` = __MDPACKH (``a``, ``b``)``   ``MDPACKH ``a``,``b``,``c````
+``uw2 __MDROTLI (uw2, const)``        ````c`` = __MDROTLI (``a``, ``b``)``   ``MDROTLI ``a``,#``b``,``c````
+``void __MDSUBACCS (acc, acc)``       ``__MDSUBACCS (``b``, ``a``)``         ``MDSUBACCS ``a``,``b````
+``void __MDUNPACKH (uw1 *, uw2)``     ``__MDUNPACKH (&``b``, ``a``)``        ``MDUNPACKH ``a``,``b````
+``uw2 __MEXPDHD (uw1, const)``        ````c`` = __MEXPDHD (``a``, ``b``)``   ``MEXPDHD ``a``,#``b``,``c````
+``uw1 __MEXPDHW (uw1, const)``        ````c`` = __MEXPDHW (``a``, ``b``)``   ``MEXPDHW ``a``,#``b``,``c````
+``uw1 __MHDSETH (uw1, const)``        ````c`` = __MHDSETH (``a``, ``b``)``   ``MHDSETH ``a``,#``b``,``c````
+``sw1 __MHDSETS (const)``             ````b`` = __MHDSETS (``a``)``          ``MHDSETS #``a``,``b````
+``uw1 __MHSETHIH (uw1, const)``       ````b`` = __MHSETHIH (``b``, ``a``)``  ``MHSETHIH #``a``,``b````
+``sw1 __MHSETHIS (sw1, const)``       ````b`` = __MHSETHIS (``b``, ``a``)``  ``MHSETHIS #``a``,``b````
+``uw1 __MHSETLOH (uw1, const)``       ````b`` = __MHSETLOH (``b``, ``a``)``  ``MHSETLOH #``a``,``b````
+``sw1 __MHSETLOS (sw1, const)``       ````b`` = __MHSETLOS (``b``, ``a``)``  ``MHSETLOS #``a``,``b````
+``uw1 __MHTOB (uw2)``                 ````b`` = __MHTOB (``a``)``            ``MHTOB ``a``,``b````
+``void __MMACHS (acc, sw1, sw1)``     ``__MMACHS (``c``, ``a``, ``b``)``     ``MMACHS ``a``,``b``,``c````
+``void __MMACHU (acc, uw1, uw1)``     ``__MMACHU (``c``, ``a``, ``b``)``     ``MMACHU ``a``,``b``,``c````
+``void __MMRDHS (acc, sw1, sw1)``     ``__MMRDHS (``c``, ``a``, ``b``)``     ``MMRDHS ``a``,``b``,``c````
+``void __MMRDHU (acc, uw1, uw1)``     ``__MMRDHU (``c``, ``a``, ``b``)``     ``MMRDHU ``a``,``b``,``c````
+``void __MMULHS (acc, sw1, sw1)``     ``__MMULHS (``c``, ``a``, ``b``)``     ``MMULHS ``a``,``b``,``c````
+``void __MMULHU (acc, uw1, uw1)``     ``__MMULHU (``c``, ``a``, ``b``)``     ``MMULHU ``a``,``b``,``c````
+``void __MMULXHS (acc, sw1, sw1)``    ``__MMULXHS (``c``, ``a``, ``b``)``    ``MMULXHS ``a``,``b``,``c````
+``void __MMULXHU (acc, uw1, uw1)``    ``__MMULXHU (``c``, ``a``, ``b``)``    ``MMULXHU ``a``,``b``,``c````
+``uw1 __MNOT (uw1)``                  ````b`` = __MNOT (``a``)``             ``MNOT ``a``,``b````
+``uw1 __MOR (uw1, uw1)``              ````c`` = __MOR (``a``, ``b``)``       ``MOR ``a``,``b``,``c````
+``uw1 __MPACKH (uh, uh)``             ````c`` = __MPACKH (``a``, ``b``)``    ``MPACKH ``a``,``b``,``c````
+``sw2 __MQADDHSS (sw2, sw2)``         ````c`` = __MQADDHSS (``a``, ``b``)``  ``MQADDHSS ``a``,``b``,``c````
+``uw2 __MQADDHUS (uw2, uw2)``         ````c`` = __MQADDHUS (``a``, ``b``)``  ``MQADDHUS ``a``,``b``,``c````
+``void __MQCPXIS (acc, sw2, sw2)``    ``__MQCPXIS (``c``, ``a``, ``b``)``    ``MQCPXIS ``a``,``b``,``c````
+``void __MQCPXIU (acc, uw2, uw2)``    ``__MQCPXIU (``c``, ``a``, ``b``)``    ``MQCPXIU ``a``,``b``,``c````
+``void __MQCPXRS (acc, sw2, sw2)``    ``__MQCPXRS (``c``, ``a``, ``b``)``    ``MQCPXRS ``a``,``b``,``c````
+``void __MQCPXRU (acc, uw2, uw2)``    ``__MQCPXRU (``c``, ``a``, ``b``)``    ``MQCPXRU ``a``,``b``,``c````
+``sw2 __MQLCLRHS (sw2, sw2)``         ````c`` = __MQLCLRHS (``a``, ``b``)``  ``MQLCLRHS ``a``,``b``,``c````
+``sw2 __MQLMTHS (sw2, sw2)``          ````c`` = __MQLMTHS (``a``, ``b``)``   ``MQLMTHS ``a``,``b``,``c````
+``void __MQMACHS (acc, sw2, sw2)``    ``__MQMACHS (``c``, ``a``, ``b``)``    ``MQMACHS ``a``,``b``,``c````
+``void __MQMACHU (acc, uw2, uw2)``    ``__MQMACHU (``c``, ``a``, ``b``)``    ``MQMACHU ``a``,``b``,``c````
+``void __MQMACXHS (acc, sw2, sw2)``   ``__MQMACXHS (``c``, ``a``, ``b``)``   ``MQMACXHS ``a``,``b``,``c````
+``void __MQMULHS (acc, sw2, sw2)``    ``__MQMULHS (``c``, ``a``, ``b``)``    ``MQMULHS ``a``,``b``,``c````
+``void __MQMULHU (acc, uw2, uw2)``    ``__MQMULHU (``c``, ``a``, ``b``)``    ``MQMULHU ``a``,``b``,``c````
+``void __MQMULXHS (acc, sw2, sw2)``   ``__MQMULXHS (``c``, ``a``, ``b``)``   ``MQMULXHS ``a``,``b``,``c````
+``void __MQMULXHU (acc, uw2, uw2)``   ``__MQMULXHU (``c``, ``a``, ``b``)``   ``MQMULXHU ``a``,``b``,``c````
+``sw2 __MQSATHS (sw2, sw2)``          ````c`` = __MQSATHS (``a``, ``b``)``   ``MQSATHS ``a``,``b``,``c````
+``uw2 __MQSLLHI (uw2, int)``          ````c`` = __MQSLLHI (``a``, ``b``)``   ``MQSLLHI ``a``,``b``,``c````
+``sw2 __MQSRAHI (sw2, int)``          ````c`` = __MQSRAHI (``a``, ``b``)``   ``MQSRAHI ``a``,``b``,``c````
+``sw2 __MQSUBHSS (sw2, sw2)``         ````c`` = __MQSUBHSS (``a``, ``b``)``  ``MQSUBHSS ``a``,``b``,``c````
+``uw2 __MQSUBHUS (uw2, uw2)``         ````c`` = __MQSUBHUS (``a``, ``b``)``  ``MQSUBHUS ``a``,``b``,``c````
+``void __MQXMACHS (acc, sw2, sw2)``   ``__MQXMACHS (``c``, ``a``, ``b``)``   ``MQXMACHS ``a``,``b``,``c````
+``void __MQXMACXHS (acc, sw2, sw2)``  ``__MQXMACXHS (``c``, ``a``, ``b``)``  ``MQXMACXHS ``a``,``b``,``c````
+``uw1 __MRDACC (acc)``                ````b`` = __MRDACC (``a``)``           ``MRDACC ``a``,``b````
+``uw1 __MRDACCG (acc)``               ````b`` = __MRDACCG (``a``)``          ``MRDACCG ``a``,``b````
+``uw1 __MROTLI (uw1, const)``         ````c`` = __MROTLI (``a``, ``b``)``    ``MROTLI ``a``,#``b``,``c````
+``uw1 __MROTRI (uw1, const)``         ````c`` = __MROTRI (``a``, ``b``)``    ``MROTRI ``a``,#``b``,``c````
+``sw1 __MSATHS (sw1, sw1)``           ````c`` = __MSATHS (``a``, ``b``)``    ``MSATHS ``a``,``b``,``c````
+``uw1 __MSATHU (uw1, uw1)``           ````c`` = __MSATHU (``a``, ``b``)``    ``MSATHU ``a``,``b``,``c````
+``uw1 __MSLLHI (uw1, const)``         ````c`` = __MSLLHI (``a``, ``b``)``    ``MSLLHI ``a``,#``b``,``c````
+``sw1 __MSRAHI (sw1, const)``         ````c`` = __MSRAHI (``a``, ``b``)``    ``MSRAHI ``a``,#``b``,``c````
+``uw1 __MSRLHI (uw1, const)``         ````c`` = __MSRLHI (``a``, ``b``)``    ``MSRLHI ``a``,#``b``,``c````
+``void __MSUBACCS (acc, acc)``        ``__MSUBACCS (``b``, ``a``)``          ``MSUBACCS ``a``,``b````
+``sw1 __MSUBHSS (sw1, sw1)``          ````c`` = __MSUBHSS (``a``, ``b``)``   ``MSUBHSS ``a``,``b``,``c````
+``uw1 __MSUBHUS (uw1, uw1)``          ````c`` = __MSUBHUS (``a``, ``b``)``   ``MSUBHUS ``a``,``b``,``c````
+``void __MTRAP (void)``               ``__MTRAP ()``                         ``MTRAP``
+``uw2 __MUNPACKH (uw1)``              ````b`` = __MUNPACKH (``a``)``         ``MUNPACKH ``a``,``b````
+``uw1 __MWCUT (uw2, uw1)``            ````c`` = __MWCUT (``a``, ``b``)``     ``MWCUT ``a``,``b``,``c````
+``void __MWTACC (acc, uw1)``          ``__MWTACC (``b``, ``a``)``            ``MWTACC ``a``,``b````
+``void __MWTACCG (acc, uw1)``         ``__MWTACCG (``b``, ``a``)``           ``MWTACCG ``a``,``b````
+``uw1 __MXOR (uw1, uw1)``             ````c`` = __MXOR (``a``, ``b``)``      ``MXOR ``a``,``b``,``c````
+====================================  =====================================  ===============================
 .. _raw-read-write-functions:
 
 Raw Read/Write Functions
@@ -1873,38 +1319,23 @@ The table below lists the ``v4i8`` and ``v2q15`` operations for which
 hardware support exists.  ``a`` and ``b`` are ``v4i8`` values,
 and ``c`` and ``d`` are ``v2q15`` values.
 
-C code
-
-MIPS instruction
-
-``a + b`` 
-
-``addu.qb``
-
-``c + d`` 
-
-``addq.ph``
-
-``a - b`` 
-
-``subu.qb``
-
-``c - d`` 
-
-``subq.ph``
-
+==========  ================
+C code      MIPS instruction
+==========  ================
+``a + b``   ``addu.qb``
+``c + d``   ``addq.ph``
+``a - b``   ``subu.qb``
+``c - d``   ``subq.ph``
+==========  ================
 The table below lists the ``v2i16`` operation for which
 hardware support exists for the DSP ASE REV 2.  ``e`` and ``f`` are
 ``v2i16`` values.
 
-C code
-
-MIPS instruction
-
-``e * f`` 
-
-``mul.ph``
-
+==========  ================
+C code      MIPS instruction
+==========  ================
+``e * f``   ``mul.ph``
+==========  ================
 It is easier to describe the DSP built-in functions if we first define
 the following types:
 
@@ -2294,46 +1725,19 @@ The table below lists the ``v2sf`` operations for which hardware
 support exists.  ``a``, ``b`` and ``c`` are ``v2sf``
 values and ``x`` is an integral value.
 
-C code
-
-MIPS instruction
-
-``a + b`` 
-
-``add.ps``
-
-``a - b`` 
-
-``sub.ps``
-
-``-a`` 
-
-``neg.ps``
-
-``a * b`` 
-
-``mul.ps``
-
-``a * b + c`` 
-
-``madd.ps``
-
-``a * b - c`` 
-
-``msub.ps``
-
-``-(a * b + c)`` 
-
-``nmadd.ps``
-
-``-(a * b - c)`` 
-
-``nmsub.ps``
-
-``x ? a : b`` 
-
-``movn.ps``/``movz.ps``
-
+=================  =======================
+C code             MIPS instruction
+=================  =======================
+``a + b``          ``add.ps``
+``a - b``          ``sub.ps``
+``-a``             ``neg.ps``
+``a * b``          ``mul.ps``
+``a * b + c``      ``madd.ps``
+``a * b - c``      ``msub.ps``
+``-(a * b + c)``   ``nmadd.ps``
+``-(a * b - c)``   ``nmsub.ps``
+``x ? a : b``      ``movn.ps``/``movz.ps``
+=================  =======================
 Note that the multiply-accumulate instructions can be disabled
 using the command-line option ``-mno-fused-madd``.
 

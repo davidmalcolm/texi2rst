@@ -12,6 +12,7 @@ class Parser:
         self.include_paths = include_paths
         self.stack = []
         self.stack_top = None
+        self.have_chapter = False
         self.have_section = False
 
     def parse_file(self, filename):
@@ -67,6 +68,12 @@ class Parser:
             self.stack_top.add_text('\n')
         elif name == 'include':
             self._handle_include(args)
+        elif name == 'chapter':
+            # Close any existing chapter:
+            while self.have_chapter:
+                self.pop()
+            chapter = self.stack_top.add_element('chapter')
+            self.push(chapter)
         elif name == 'section':
             # Close any existing section:
             while self.have_section:
@@ -106,11 +113,15 @@ class Parser:
             print('pushing: %r' % element)
         self.stack.append(element)
         self.stack_top = element
+        if element.kind == 'chapter':
+            self.have_chapter = True
         if element.kind == 'section':
             self.have_section = True
 
     def pop(self):
         old_top = self.stack.pop()
+        if old_top.kind == 'chapter':
+            self.have_chapter = False
         if old_top.kind == 'section':
             self.have_section = False
         self.stack_top = self.stack[-1]
@@ -148,9 +159,10 @@ class Texi2XmlTests(unittest.TestCase):
         tree = p.parse_str(texisrc)
         dom_doc = tree.to_dom_doc()
         xmlstr = dom_doc.toxml()
-        self.assertEqual(('<?xml version="1.0" ?><texinfo>\n'
-                          + '<para>Hello world\n</para>\n</texinfo>'),
-                         xmlstr)
+        self.assertMultiLineEqual(
+            ('<?xml version="1.0" ?><texinfo>\n'
+             + '<para>Hello world\n</para>\n</texinfo>'),
+            xmlstr)
 
     def test_paras(self):
         texisrc = '''Line 1 of para 1.
@@ -192,6 +204,39 @@ Text in section 2.
              '</section><section><para>Text in section 2.\n'
              '</para>\n'
              '</section></texinfo>'),
+            xmlstr)
+
+    def test_chapters(self):
+        texisrc = '''@chapter Chapter 1
+@section Chapter 1 Section 1
+Text in chapter 1 section 1.
+
+@section Chapter  1 Section 2
+Text in chapter 1 section 2.
+
+@chapter chapter 2
+@section chapter 2 Section 1
+Text in chapter 2 section 1.
+
+@section Chapter  1 section 2
+Text in chapter 2 section 2.
+'''
+
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        dom_doc = tree.to_dom_doc()
+        xmlstr = dom_doc.toxml()
+        self.assertMultiLineEqual(
+            ('''<?xml version="1.0" ?><texinfo>
+<chapter><section><para>Text in chapter 1 section 1.
+</para>
+</section><section><para>Text in chapter 1 section 2.
+</para>
+</section></chapter><chapter><section><para>Text in chapter 2 section 1.
+</para>
+</section><section><para>Text in chapter 2 section 2.
+</para>
+</section></chapter></texinfo>'''),
             xmlstr)
 
     def test_variable(self):

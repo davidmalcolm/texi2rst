@@ -30,6 +30,8 @@ class Node:
     def to_dom_node(self, dom_doc):
         if isinstance(self, Element):
             dom_node = dom_doc.createElement(self.kind)
+            for k, v in self.attrs.iteritems():
+                dom_node.setAttribute(k, v)
             for child in self.children:
                 dom_node.appendChild(child.to_dom_node(dom_doc))
             return dom_node
@@ -91,8 +93,8 @@ class Element(Node):
             new_children.append(child)
         self.children = new_children
 
-    def add_element(self, kind):
-        new_child = Element(kind)
+    def add_element(self, kind, **kwargs):
+        new_child = Element(kind, kwargs)
         self.children.append(new_child)
         return new_child
 

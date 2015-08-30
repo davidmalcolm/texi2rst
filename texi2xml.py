@@ -29,9 +29,8 @@ class Parser:
         self.stack_top.add_text('\n')
         for line in content.splitlines():
             self.parse_line(line + '\n')
-        if self.stack_top.kind == 'para':
+        while self.stack_top:
             self.pop()
-            self.stack_top.add_text('\n')
         if 0:
             print
             self.texinfo.dump(sys.stdout)
@@ -50,7 +49,6 @@ class Parser:
         elif line.isspace():
             if self.stack_top.kind == 'para':
                 self.pop()
-                self.stack_top.add_text('\n')
         else:
             while 1:
                 # Look for
@@ -91,14 +89,20 @@ class Parser:
             # Close any existing chapter:
             while self.have_chapter:
                 self.pop()
-            chapter = self.stack_top.add_element('chapter')
+            chapter = self.stack_top.add_element('chapter', spaces=' ')
             self.push(chapter)
+            sectiontitle = chapter.add_element('sectiontitle')
+            sectiontitle.add_text(args)
+            self.stack_top.add_text('\n')
         elif name == 'section':
             # Close any existing section:
             while self.have_section:
                 self.pop()
-            section = self.stack_top.add_element('section')
+            section = self.stack_top.add_element('section', spaces=' ')
             self.push(section)
+            sectiontitle = section.add_element('sectiontitle')
+            sectiontitle.add_text(args)
+            self.stack_top.add_text('\n')
         else:
             m = re.match('^{(.*)}$', args)
             if m:
@@ -143,7 +147,11 @@ class Parser:
             self.have_chapter = False
         if old_top.kind == 'section':
             self.have_section = False
-        self.stack_top = self.stack[-1]
+        if self.stack:
+            self.stack_top = self.stack[-1]
+            self.stack_top.add_text('\n')
+        else:
+            self.stack_top = None
 
 class Texi2XmlTests(unittest.TestCase):
     def test_comment(self):
@@ -229,12 +237,16 @@ Text in section 2.
         dom_doc = tree.to_dom_doc()
         xmlstr = dom_doc.toxml()
         self.assertMultiLineEqual(
-            ('<?xml version="1.0" ?><texinfo>\n'
-             '<section><para>Text in section 1.\n'
-             '</para>\n'
-             '</section><section><para>Text in section 2.\n'
-             '</para>\n'
-             '</section></texinfo>'),
+            ('''<?xml version="1.0" ?><texinfo>
+<section spaces=" "><sectiontitle>Section 1</sectiontitle>
+<para>Text in section 1.
+</para>
+</section>
+<section spaces=" "><sectiontitle>Section 2</sectiontitle>
+<para>Text in section 2.
+</para>
+</section>
+</texinfo>'''),
             xmlstr)
 
     def test_chapters(self):
@@ -242,14 +254,14 @@ Text in section 2.
 @section Chapter 1 Section 1
 Text in chapter 1 section 1.
 
-@section Chapter  1 Section 2
+@section Chapter 1 Section 2
 Text in chapter 1 section 2.
 
-@chapter chapter 2
-@section chapter 2 Section 1
+@chapter Chapter 2
+@section Chapter 2 Section 1
 Text in chapter 2 section 1.
 
-@section Chapter  1 section 2
+@section Chapter 2 Section 2
 Text in chapter 2 section 2.
 '''
 
@@ -257,17 +269,30 @@ Text in chapter 2 section 2.
         tree = p.parse_str(texisrc)
         dom_doc = tree.to_dom_doc()
         xmlstr = dom_doc.toxml()
+        self.maxDiff = 2000
         self.assertMultiLineEqual(
             ('''<?xml version="1.0" ?><texinfo>
-<chapter><section><para>Text in chapter 1 section 1.
+<chapter spaces=" "><sectiontitle>Chapter 1</sectiontitle>
+<section spaces=" "><sectiontitle>Chapter 1 Section 1</sectiontitle>
+<para>Text in chapter 1 section 1.
 </para>
-</section><section><para>Text in chapter 1 section 2.
+</section>
+<section spaces=" "><sectiontitle>Chapter 1 Section 2</sectiontitle>
+<para>Text in chapter 1 section 2.
 </para>
-</section></chapter><chapter><section><para>Text in chapter 2 section 1.
+</section>
+</chapter>
+<chapter spaces=" "><sectiontitle>Chapter 2</sectiontitle>
+<section spaces=" "><sectiontitle>Chapter 2 Section 1</sectiontitle>
+<para>Text in chapter 2 section 1.
 </para>
-</section><section><para>Text in chapter 2 section 2.
+</section>
+<section spaces=" "><sectiontitle>Chapter 2 Section 2</sectiontitle>
+<para>Text in chapter 2 section 2.
 </para>
-</section></chapter></texinfo>'''),
+</section>
+</chapter>
+</texinfo>'''),
             xmlstr)
 
     def test_variable(self):

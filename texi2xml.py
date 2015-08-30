@@ -52,10 +52,29 @@ class Parser:
                 self.pop()
                 self.stack_top.add_text('\n')
         else:
-            if self.stack_top.kind != 'para':
-                para = self.stack_top.add_element('para')
-                self.push(para)
-            self.stack_top.add_text(line)
+            while 1:
+                # Look for
+                #   BEFORE@COMMAND{TEXT}AFTER
+                # turning it into elements.
+                m = re.match(r'^(.*)@([a-z]+)\{(.+?)\}(.*)$', line,
+                             re.MULTILINE | re.DOTALL)
+                if m:
+                    if 0:
+                        print(m.groups())
+                    before, command, text, after = m.groups()
+                    self._handle_text(before)
+                    command_el = self.stack_top.add_element(command)
+                    command_el.add_text(text)
+                    line = after
+                else:
+                    break
+            self._handle_text(line)
+
+    def _handle_text(self, text):
+        if self.stack_top.kind != 'para':
+            para = self.stack_top.add_element('para')
+            self.push(para)
+        self.stack_top.add_text(text)
 
     def _handle_command(self, name, args):
         if 0:
@@ -185,6 +204,18 @@ Line 2 of para 2.
 </texinfo>''',
                                         xmlstr)
 
+    def test_inline(self):
+        texisrc = '''Example of @emph{inline markup}.'''
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        dom_doc = tree.to_dom_doc()
+        xmlstr = dom_doc.toxml()
+        self.assertMultiLineEqual(
+            ('<?xml version="1.0" ?><texinfo>\n'
+             '<para>Example of <emph>inline markup</emph>.'
+             '\n</para>\n</texinfo>'),
+            xmlstr)
+
     def test_sections(self):
         texisrc = '''@section Section 1
 Text in section 1.
@@ -255,7 +286,7 @@ version @value{version-GCC}.
 <ifset>VERSION_PACKAGE</ifset>
 <value>VERSION_PACKAGE</value>
 <end>ifset</end>
-version @value{version-GCC}.
+version <value>version-GCC</value>.
 </para>
 </texinfo>''',
                          xmlstr)

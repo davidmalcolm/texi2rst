@@ -100,6 +100,11 @@ class Element(Node):
         self.children.append(Comment(data))
 
     def add_text(self, data):
+        if self.children:
+            last_child = self.children[-1]
+            if isinstance(last_child, Text):
+                last_child.data += data
+                return
         self.children.append(Text(data))
 
     def to_dom_doc(self):

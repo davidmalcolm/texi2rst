@@ -10,6 +10,9 @@ class Parser:
     def __init__(self, path, include_paths):
         self.path = path
         self.include_paths = include_paths
+        self.stack = []
+        self.stack_top = None
+        self.have_section = False
 
     def parse_file(self, filename):
         with open(filename) as f:
@@ -21,11 +24,13 @@ class Parser:
         Parse texinfo content, into a Node (and a tree below it).
         """
         self.texinfo = Element('texinfo')
-        self.texinfo.add_text('\n')
-        self.curpara = ''
+        self.push(self.texinfo)
+        self.stack_top.add_text('\n')
         for line in content.splitlines():
             self.parse_line(line + '\n')
-        self.flush_any_para()
+        if self.stack_top.kind == 'para':
+            self.pop()
+            self.stack_top.add_text('\n')
         if 0:
             print
             self.texinfo.dump(sys.stdout)
@@ -36,15 +41,20 @@ class Parser:
         if 0:
             print('parse_line(%r)' % line)
         if line.startswith('\input texinfo'):
-            preamble = self.texinfo.add_element('preamble')
+            preamble = self.stack_top.add_element('preamble')
             preamble.add_text(line)
         elif line.startswith('@'):
             m = re.match('@([a-z]*)\s*(.*)', line)
             self._handle_command(m.group(1), m.group(2))
         elif line.isspace():
-            self.flush_any_para()
+            if self.stack_top.kind == 'para':
+                self.pop()
+                self.stack_top.add_text('\n')
         else:
-            self.curpara += line
+            if self.stack_top.kind != 'para':
+                para = self.stack_top.add_element('para')
+                self.push(para)
+            self.stack_top.add_text(line)
 
     def _handle_command(self, name, args):
         if 0:
@@ -53,17 +63,23 @@ class Parser:
             text = args.rstrip()
             if '--' in text:
                 text = '-'
-            self.texinfo.add_comment(name + ' ' + text)
-            self.texinfo.add_text('\n')
+            self.stack_top.add_comment(name + ' ' + text)
+            self.stack_top.add_text('\n')
         elif name == 'include':
             self._handle_include(args)
+        elif name == 'section':
+            # Close any existing section:
+            while self.have_section:
+                self.pop()
+            section = self.stack_top.add_element('section')
+            self.push(section)
         else:
             m = re.match('^{(.*)}$', args)
             if m:
                 args = m.group(1)
-            command = self.texinfo.add_element(name)
+            command = self.stack_top.add_element(name)
             command.add_text(args)
-            self.texinfo.add_text('\n')
+            self.stack_top.add_text('\n')
 
     def _handle_include(self, args):
         """
@@ -85,12 +101,19 @@ class Parser:
                 return
         raise ValueError('file %r not found' % relpath)
 
-    def flush_any_para(self):
-        if self.curpara:
-            para = self.texinfo.add_element('para')
-            para.add_text(self.curpara)
-            self.texinfo.add_text('\n')
-            self.curpara = ''
+    def push(self, element):
+        if 0:
+            print('pushing: %r' % element)
+        self.stack.append(element)
+        self.stack_top = element
+        if element.kind == 'section':
+            self.have_section = True
+
+    def pop(self):
+        old_top = self.stack.pop()
+        if old_top.kind == 'section':
+            self.have_section = False
+        self.stack_top = self.stack[-1]
 
 class Texi2XmlTests(unittest.TestCase):
     def test_comment(self):
@@ -150,6 +173,27 @@ Line 2 of para 2.
 </texinfo>''',
                                         xmlstr)
 
+    def test_sections(self):
+        texisrc = '''@section Section 1
+Text in section 1.
+
+@section Section 2
+Text in section 2.
+'''
+
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        dom_doc = tree.to_dom_doc()
+        xmlstr = dom_doc.toxml()
+        self.assertMultiLineEqual(
+            ('<?xml version="1.0" ?><texinfo>\n'
+             '<section><para>Text in section 1.\n'
+             '</para>\n'
+             '</section><section><para>Text in section 2.\n'
+             '</para>\n'
+             '</section></texinfo>'),
+            xmlstr)
+
     def test_variable(self):
         texisrc = '''It corresponds to the compilers
 @ifset VERSION_PACKAGE
@@ -162,10 +206,10 @@ version @value{version-GCC}.
         dom_doc = tree.to_dom_doc()
         xmlstr = dom_doc.toxml()
         self.assertMultiLineEqual('''<?xml version="1.0" ?><texinfo>
+<para>It corresponds to the compilers
 <ifset>VERSION_PACKAGE</ifset>
 <value>VERSION_PACKAGE</value>
 <end>ifset</end>
-<para>It corresponds to the compilers
 version @value{version-GCC}.
 </para>
 </texinfo>''',

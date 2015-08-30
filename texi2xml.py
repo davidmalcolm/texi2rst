@@ -6,6 +6,18 @@ import unittest
 
 from node import Node, Element, Comment, Text
 
+FULL_LINE_COMMANDS = (
+    'c',
+    'chapter',
+    'comment',
+    'end',
+    'ifset',
+    'include',
+    'section',
+    'set',
+    'setfilename',
+)
+
 class Parser:
     def __init__(self, path, include_paths):
         self.path = path
@@ -43,30 +55,33 @@ class Parser:
         if line.startswith('\input texinfo'):
             preamble = self.stack_top.add_element('preamble')
             preamble.add_text(line)
-        elif line.startswith('@'):
-            m = re.match('@([a-z]*)\s*(.*)', line)
+            return
+        m = re.match('^@([a-z]*)\s*(.*)$', line)
+        if m and m.group(1) in FULL_LINE_COMMANDS:
             self._handle_command(m.group(1), m.group(2))
-        elif line.isspace():
+            return
+        if line.isspace():
             if self.stack_top.kind == 'para':
                 self.pop()
-        else:
-            while 1:
-                # Look for
-                #   BEFORE@COMMAND{TEXT}AFTER
-                # turning it into elements.
-                m = re.match(r'^(.*)@([a-z]+)\{(.+?)\}(.*)$', line,
-                             re.MULTILINE | re.DOTALL)
-                if m:
-                    if 0:
-                        print(m.groups())
-                    before, command, text, after = m.groups()
-                    self._handle_text(before)
-                    command_el = self.stack_top.add_element(command)
-                    command_el.add_text(text)
-                    line = after
-                else:
-                    break
-            self._handle_text(line)
+            return
+
+        while 1:
+            # Look for
+            #   BEFORE@COMMAND{TEXT}AFTER
+            # turning it into elements.
+            m = re.match(r'^([^@]*)@([a-z]+)\{(.+?)\}(.*)$', line,
+                         re.MULTILINE | re.DOTALL)
+            if m:
+                if 0:
+                    print(m.groups())
+                before, command, text, after = m.groups()
+                self._handle_text(before)
+                command_el = self.stack_top.add_element(command)
+                command_el.add_text(text)
+                line = after
+            else:
+                break
+        self._handle_text(line)
 
     def _handle_text(self, text):
         if self.stack_top.kind != 'para':
@@ -222,6 +237,34 @@ Line 2 of para 2.
             ('<?xml version="1.0" ?><texinfo>\n'
              '<para>Example of <emph>inline markup</emph>.'
              '\n</para>\n</texinfo>'),
+            xmlstr)
+
+    def test_multiple_inlines(self):
+        texisrc = '''
+An amendment to the 1990 standard was published in 1995.  This
+amendment added digraphs and @code{__STDC_VERSION__} to the language,
+but otherwise concerned the library.  This amendment is commonly known
+as @dfn{AMD1}; the amended standard is sometimes known as @dfn{C94} or
+@dfn{C95}.  To select this standard in GCC, use the option
+@option{-std=iso9899:199409} (with, as for other standard versions,
+@option{-pedantic} to receive all required diagnostics).
+'''
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        dom_doc = tree.to_dom_doc()
+        xmlstr = dom_doc.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual(
+            ('''<?xml version="1.0" ?><texinfo>
+<para>An amendment to the 1990 standard was published in 1995.  This
+amendment added digraphs and <code>__STDC_VERSION__</code> to the language,
+but otherwise concerned the library.  This amendment is commonly known
+as <dfn>AMD1</dfn>; the amended standard is sometimes known as <dfn>C94</dfn> or
+<dfn>C95</dfn>.  To select this standard in GCC, use the option
+<option>-std=iso9899:199409</option> (with, as for other standard versions,
+<option>-pedantic</option> to receive all required diagnostics).
+</para>
+</texinfo>'''),
             xmlstr)
 
     def test_sections(self):

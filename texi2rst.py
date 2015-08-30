@@ -933,6 +933,7 @@ def fixup_inline_markup(tree):
         <code>TEXT</code>          ``TEXT``
         <dfn>TEXT</dfn>            :dfn:`TEXT`
         <env>TEXT</env>            :envvar:`TEXT`
+        <emph>TEXT</emph>          *TEXT*
         =========================  ==================
         """
         def previsit_element(self, element):
@@ -946,6 +947,8 @@ def fixup_inline_markup(tree):
                 element.rst_kind = InlineMarkup('dfn')
             elif element.kind == 'env':
                 element.rst_kind = InlineMarkup('envvar')
+            elif element.kind == 'emph':
+                element.rst_kind = MatchedInlineMarkup('*')
 
     v = InlineMarkupFixer()
     v.visit(tree)

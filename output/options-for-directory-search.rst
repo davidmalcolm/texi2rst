@@ -138,7 +138,7 @@ libraries and for parts of the compiler:
 
   If additional directories are specified with :option:`-I` options after
   the :option:`-I-` option, these directories are searched for all ``#include``
-  directives.  (Ordinarily all :option:`-I` directories are used
+  directives.  (Ordinarily *all* :option:`-I` directories are used
   this way.)
 
   In addition, the :option:`-I-` option inhibits the use of the current

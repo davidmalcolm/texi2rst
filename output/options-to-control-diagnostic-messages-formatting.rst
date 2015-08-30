@@ -27,7 +27,7 @@ honor these options.
 .. option:: -fdiagnostics-show-location=once
 
   Only meaningful in line-wrapping mode.  Instructs the diagnostic messages
-  reporter to emit source location information once; that is, in
+  reporter to emit source location information *once*; that is, in
   case the message is too long to fit on a single physical line and has to
   be wrapped, the source location won't be emitted (as prefix) again,
   over and over, in subsequent continuation lines.  This is the default

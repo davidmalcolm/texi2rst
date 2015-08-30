@@ -201,7 +201,7 @@ packed
       int x[2] __attribute__ ((packed));
     };
 
-  Note: The 4.1, 4.2 and 4.3 series of GCC ignore the
+  *Note:* The 4.1, 4.2 and 4.3 series of GCC ignore the
   ``packed`` attribute on bit-fields of type ``char``.  This has
   been fixed in GCC 4.4 but the change can lead to differences in the
   structure layout.  See the documentation of
@@ -239,7 +239,7 @@ section ("``section-name``")
     }
 
   Use the ``section`` attribute with
-  global variables and not local variables,
+  *global* variables and not *local* variables,
   as shown in the example.
 
   You may use the ``section`` attribute with initialized or
@@ -619,7 +619,7 @@ selectany
   have link-once semantics.  When multiple definitions of the variable are
   encountered by the linker, the first is selected and the remainder are
   discarded.  Following usage by the Microsoft compiler, the linker is told
-  not to warn about size or content differences of the multiple
+  *not* to warn about size or content differences of the multiple
   definitions.
 
   Although the primary usage of this attribute is for POD types, the

@@ -109,7 +109,7 @@ processor from speculating loads across the operation and from queuing stores
 after the operation.</p>
 <p>All of the routines are described in the Intel documentation to take
 &#8216;an optional list of variables protected by the memory barrier&#8217;.  It&#8217;s
-not clear what is meant by that; it could mean that only the
+not clear what is meant by that; it could mean that <em>only</em> the
 listed variables are protected, or it could mean a list of additional
 variables to be protected.  The list is ignored by GCC which treats it as
 empty.  GCC interprets an empty list as meaning that all globally
@@ -121,7 +121,7 @@ returns the value that had previously been in memory.  That is,</p>
 <div class="highlight-c++"><pre>{ tmp = *ptr; *ptr ``op``= value; return tmp; }
 { tmp = *ptr; *ptr = ~(tmp &amp; value); return tmp; }   // nand</pre>
 </div>
-<p>Note: GCC 4.4 and later implement <tt class="docutils literal"><span class="pre">__sync_fetch_and_nand</span></tt>
+<p><em>Note:</em> GCC 4.4 and later implement <tt class="docutils literal"><span class="pre">__sync_fetch_and_nand</span></tt>
 as <tt class="docutils literal"><span class="pre">*ptr</span> <span class="pre">=</span> <span class="pre">~(tmp</span> <span class="pre">&amp;</span> <span class="pre">value)</span></tt> instead of <tt class="docutils literal"><span class="pre">*ptr</span> <span class="pre">=</span> <span class="pre">~tmp</span> <span class="pre">&amp;</span> <span class="pre">value</span></tt>.</p>
 </div></blockquote>
 <p><tt class="docutils literal"><span class="pre">type</span></tt> __sync_add_and_fetch (<tt class="docutils literal"><span class="pre">type</span></tt> <a href="#id13"><span class="problematic" id="id14">*</span></a>ptr, <tt class="docutils literal"><span class="pre">type</span></tt> value, ...) <tt class="docutils literal"><span class="pre">type</span></tt> __sync_sub_and_fetch (<tt class="docutils literal"><span class="pre">type</span></tt> <a href="#id15"><span class="problematic" id="id16">*</span></a>ptr, <tt class="docutils literal"><span class="pre">type</span></tt> value, ...) <tt class="docutils literal"><span class="pre">type</span></tt> __sync_or_and_fetch (<tt class="docutils literal"><span class="pre">type</span></tt> <a href="#id17"><span class="problematic" id="id18">*</span></a>ptr, <tt class="docutils literal"><span class="pre">type</span></tt> value, ...) <tt class="docutils literal"><span class="pre">type</span></tt> __sync_and_and_fetch (<tt class="docutils literal"><span class="pre">type</span></tt> <a href="#id19"><span class="problematic" id="id20">*</span></a>ptr, <tt class="docutils literal"><span class="pre">type</span></tt> value, ...) <tt class="docutils literal"><span class="pre">type</span></tt> __sync_xor_and_fetch (<tt class="docutils literal"><span class="pre">type</span></tt> <a href="#id21"><span class="problematic" id="id22">*</span></a>ptr, <tt class="docutils literal"><span class="pre">type</span></tt> value, ...) <tt class="docutils literal"><span class="pre">type</span></tt> __sync_nand_and_fetch (<tt class="docutils literal"><span class="pre">type</span></tt> <a href="#id23"><span class="problematic" id="id24">*</span></a>ptr, <tt class="docutils literal"><span class="pre">type</span></tt> value, ...)</p>
@@ -131,7 +131,7 @@ return the new value.  That is,</p>
 <div class="highlight-c++"><pre>{ *ptr ``op``= value; return *ptr; }
 { *ptr = ~(*ptr &amp; value); return *ptr; }   // nand</pre>
 </div>
-<p>Note: GCC 4.4 and later implement <tt class="docutils literal"><span class="pre">__sync_nand_and_fetch</span></tt>
+<p><em>Note:</em> GCC 4.4 and later implement <tt class="docutils literal"><span class="pre">__sync_nand_and_fetch</span></tt>
 as <tt class="docutils literal"><span class="pre">*ptr</span> <span class="pre">=</span> <span class="pre">~(*ptr</span> <span class="pre">&amp;</span> <span class="pre">value)</span></tt> instead of
 <tt class="docutils literal"><span class="pre">*ptr</span> <span class="pre">=</span> <span class="pre">~*ptr</span> <span class="pre">&amp;</span> <span class="pre">value</span></tt>.</p>
 </div></blockquote>
@@ -157,7 +157,7 @@ into <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>, and re
 <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.</p>
 <p>Many targets have only minimal support for such locks, and do not support
 a full exchange operation.  In this case, a target may support reduced
-functionality here by which the only valid value to store is the
+functionality here by which the <em>only</em> valid value to store is the
 immediate constant 1.  The exact value actually stored in <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>
 is implementation defined.</p>
 <p>This built-in function is not a full barrier,

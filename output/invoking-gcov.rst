@@ -198,7 +198,7 @@ The ``information`` is human readable, but designed to be simple
 enough for machine parsing too.
 
 When printing percentages, 0% and 100% are only printed when the values
-are exactly 0% and 100% respectively.  Other values which would
+are *exactly* 0% and 100% respectively.  Other values which would
 conventionally be rounded to 0% or 100% are instead printed as the
 nearest non-boundary value.
 

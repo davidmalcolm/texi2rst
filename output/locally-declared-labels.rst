@@ -27,7 +27,7 @@ or
 Local label declarations must come at the beginning of the block,
 before any ordinary declarations or statements.
 
-The label declaration defines the label name, but does not define
+The label declaration defines the label *name*, but does not define
 the label itself.  You must do this in the usual way, with
 ````label``:``, within the statements of the statement expression.
 

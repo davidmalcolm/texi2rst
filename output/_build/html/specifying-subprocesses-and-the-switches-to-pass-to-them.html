@@ -239,7 +239,7 @@ each time it appears instead of once per compilation.</dd>
 <dd>Substitutes the last file name generated with %u``suffix``, generating a
 new one if there is no such last file name.  In the absence of any
 %u``suffix``, this is just like %g``suffix``, except they don&#8217;t share
-the same suffix space, so %g.s ... %U.s ... %g.s ... %U.s
+the same suffix <em>space</em>, so %g.s ... %U.s ... %g.s ... %U.s
 involves the generation of two distinct file names, one
 for each %g.s and another for each %U.s.  Previously, %U was
 simply substituted with a file name chosen for the previous %u,
@@ -474,7 +474,7 @@ wild card is optional.  Useful for CPP as %{D*&amp;U*&amp;A*}.</dd>
 <dt>%{<tt class="docutils literal"><span class="pre">S</span></tt>:<tt class="docutils literal"><span class="pre">X</span></tt>}</dt>
 <dd>Substitutes <tt class="docutils literal"><span class="pre">X</span></tt>, if the <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-S"><em class="xref std std-option">-S</em></a> switch is given to GCC.</dd>
 <dt>%{!``S``:<tt class="docutils literal"><span class="pre">X</span></tt>}</dt>
-<dd>Substitutes <tt class="docutils literal"><span class="pre">X</span></tt>, if the <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-S"><em class="xref std std-option">-S</em></a> switch is not given to GCC.</dd>
+<dd>Substitutes <tt class="docutils literal"><span class="pre">X</span></tt>, if the <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-S"><em class="xref std std-option">-S</em></a> switch is <em>not</em> given to GCC.</dd>
 <dt>%{<tt class="docutils literal"><span class="pre">S``*:``X</span></tt>}</dt>
 <dd><p class="first">Substitutes <tt class="docutils literal"><span class="pre">X</span></tt> if one or more switches whose names start with
 <tt class="docutils literal"><span class="pre">-S</span></tt> are specified to GCC.  Normally <tt class="docutils literal"><span class="pre">X</span></tt> is substituted only
@@ -495,7 +495,7 @@ string.  For example, a spec string like this:</p>
 <dt>%{.``S``:<tt class="docutils literal"><span class="pre">X</span></tt>}</dt>
 <dd>Substitutes <tt class="docutils literal"><span class="pre">X</span></tt>, if processing a file with suffix <tt class="docutils literal"><span class="pre">S</span></tt>.</dd>
 <dt>%{!.``S``:<tt class="docutils literal"><span class="pre">X</span></tt>}</dt>
-<dd>Substitutes <tt class="docutils literal"><span class="pre">X</span></tt>, if not processing a file with suffix <tt class="docutils literal"><span class="pre">S</span></tt>.</dd>
+<dd>Substitutes <tt class="docutils literal"><span class="pre">X</span></tt>, if <em>not</em> processing a file with suffix <tt class="docutils literal"><span class="pre">S</span></tt>.</dd>
 <dt>%{,``S``:<tt class="docutils literal"><span class="pre">X</span></tt>}</dt>
 <dd>Substitutes <tt class="docutils literal"><span class="pre">X</span></tt>, if processing a file for language <tt class="docutils literal"><span class="pre">S</span></tt>.</dd>
 <dt>%{!,``S``:<tt class="docutils literal"><span class="pre">X</span></tt>}</dt>

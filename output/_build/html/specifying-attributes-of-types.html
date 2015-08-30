@@ -132,7 +132,7 @@ of the specified type.  For example, the declarations:</p>
 </div>
 <p>force the compiler to ensure (as far as it can) that each variable whose
 type is <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">S</span></tt> or <tt class="docutils literal"><span class="pre">more_aligned_int</span></tt> is allocated and
-aligned at least on a 8-byte boundary.  On a SPARC, having all
+aligned <em>at least</em> on a 8-byte boundary.  On a SPARC, having all
 variables of type <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">S</span></tt> aligned to 8-byte boundaries allows
 the compiler to use the <tt class="docutils literal"><span class="pre">ldd</span></tt> and <tt class="docutils literal"><span class="pre">std</span></tt> (doubleword load and
 store) instructions when copying one variable of type <tt class="docutils literal"><span class="pre">struct</span> <span class="pre">S</span></tt> to
@@ -140,7 +140,7 @@ another, thus improving run-time efficiency.</p>
 <p>Note that the alignment of any given <tt class="docutils literal"><span class="pre">struct</span></tt> or <tt class="docutils literal"><span class="pre">union</span></tt> type
 is required by the ISO C standard to be at least a perfect multiple of
 the lowest common multiple of the alignments of all of the members of
-the <tt class="docutils literal"><span class="pre">struct</span></tt> or <tt class="docutils literal"><span class="pre">union</span></tt> in question.  This means that you can
+the <tt class="docutils literal"><span class="pre">struct</span></tt> or <tt class="docutils literal"><span class="pre">union</span></tt> in question.  This means that you <em>can</em>
 effectively adjust the alignment of a <tt class="docutils literal"><span class="pre">struct</span></tt> or <tt class="docutils literal"><span class="pre">union</span></tt>
 type by attaching an <tt class="docutils literal"><span class="pre">aligned</span></tt> attribute to any one of the members
 of such a type, but the notation illustrated in the example above is a

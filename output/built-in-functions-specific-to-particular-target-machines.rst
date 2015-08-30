@@ -257,7 +257,7 @@ result to be in a register.  Where necessary further code will be
 generated to ensure this is true, but for brevity this is not
 described in each case.
 
-Note: Using a built-in to generate an instruction not supported
+*Note:* Using a built-in to generate an instruction not supported
 by a target may cause problems. At present the compiler is not
 guaranteed to detect such misuse, and as a result an internal compiler
 error may be generated.
@@ -668,7 +668,7 @@ arguments and return a ``__v8hi`` result.  The second argument must
 be a 3-bit compile time constants, indicating one the registers I0-I7,
 and the third argument must be an 8-bit compile time constant.
 
-Note: Although the equivalent hardware instructions do not take
+*Note:* Although the equivalent hardware instructions do not take
 an SIMD register as an operand, these builtins overwrite the relevant
 bits of the ``__v8hi`` register provided as the first argument with
 the value loaded from the ``[Ib, u8]`` location in the SDM.
@@ -1301,14 +1301,14 @@ initialized in the same way as aggregates.  For example:
   v2q15 d;
   d = (v2q15) {0.1234 * 0x1.0p15, 0.4567 * 0x1.0p15};
 
-Note: The CPU's endianness determines the order in which values
+*Note:* The CPU's endianness determines the order in which values
 are packed.  On little-endian targets, the first value is the least
 significant and the last value is the most significant.  The opposite
 order applies to big-endian targets.  For example, the code above
 sets the lowest byte of ``a`` to ``1`` on little-endian targets
 and ``4`` on big-endian targets.
 
-Note: Q7, Q15 and Q31 values must be initialized with their integer
+*Note:* Q7, Q15 and Q31 values must be initialized with their integer
 representation.  As shown in this example, the integer representation
 of a Q7 value can be obtained by multiplying the fractional value by
 ``0x1.0p7``.  The equivalent for Q15 values is to multiply by
@@ -1572,7 +1572,7 @@ For example:
   float e, f;
   b = (v2sf) {e, f};
 
-Note: The CPU's endianness determines which value is stored in
+*Note:* The CPU's endianness determines which value is stored in
 the upper half of a register and which value is stored in the lower half.
 On little-endian targets, the first value is the lower one and the second
 value is the upper one.  The opposite order applies to big-endian targets.
@@ -1777,7 +1777,7 @@ v2sf __builtin_mips_abs_ps (v2sf)
 v2sf __builtin_mips_alnv_ps (v2sf, v2sf, int)
   Align variable (``alnv.ps``).
 
-  Note: The value of the third parameter must be 0 or 4
+  *Note:* The value of the third parameter must be 0 or 4
   modulo 8, otherwise the result is unpredictable.  Please read the
   instruction description for details.
 
@@ -2254,7 +2254,7 @@ C and C++ code differs from Motorola's documentation in several ways.
   is treated as four separate arguments.  Wrap the entire argument in
   parentheses for this to work.
 
-Note: Only the ``<altivec.h>`` interface is supported.
+*Note:* Only the ``<altivec.h>`` interface is supported.
 Internally, GCC uses built-in functions to achieve the functionality in
 the aforementioned header file, but they are not supported and are
 subject to change without notice.
@@ -5432,7 +5432,7 @@ implementation differs in several ways.
 
 * The extended version of ``__builtin_expect`` is not supported.
 
-Note: Only the interface described in the aforementioned
+*Note:* Only the interface described in the aforementioned
 specification is supported. Internally, GCC uses built-in functions to
 implement the required functionality, but these are not supported and
 are subject to change without notice.

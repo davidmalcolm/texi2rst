@@ -69,7 +69,7 @@ __ATOMIC_SEQ_CST
   release stores in all threads.
 
   Note that the scope of a C++11 memory model depends on whether or not
-the function being called is a fence (such as
+the function being called is a *fence* (such as
 __atomic_thread_fence).  In a fence, all memory accesses are
 subject to the restrictions of the memory model.  When the function is
 an operation on a location, the restrictions apply only to those
@@ -152,9 +152,9 @@ of ``*``ptr```` is copied into ``*``ret````.
 
 Built-in Functionbool__atomic_compare_exchange_n(``type``*ptr,``type``*expected,``type``desired,boolweak,intsuccess_memmodel,intfailure_memmodel)This built-in function implements an atomic compare and exchange operation.
 This compares the contents of ``*``ptr```` with the contents of
-``*``expected````. If equal, the operation is a read-modify-write
+``*``expected````. If equal, the operation is a *read-modify-write*
 which writes ``desired`` into ``*``ptr````.  If they are not
-equal, the operation is a read and the current contents of
+equal, the operation is a *read* and the current contents of
 ``*``ptr```` is written into ``*``expected````.  ``weak`` is true
 for weak compare_exchange, and false for the strong variation.  Many targets 
 only offer the strong variation and ignore the parameter.  When in doubt, use

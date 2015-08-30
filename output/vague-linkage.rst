@@ -37,7 +37,7 @@ VTables
   and the vtable is only emitted in the translation unit where the key
   method is defined.
 
-  Note: If the chosen key method is later defined as inline, the
+  *Note:* If the chosen key method is later defined as inline, the
   vtable is still emitted in every translation unit that defines it.
   Make sure that any inline virtuals are declared inline in the class
   body, even if they are not defined there.

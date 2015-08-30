@@ -166,7 +166,7 @@ compilation.
   Built-in macros, macros defined on the command line, and macros
   defined in include files are not warned about.
 
-  Note: If a macro is actually used, but only used in skipped
+  *Note:* If a macro is actually used, but only used in skipped
   conditional blocks, then CPP will report it as unused.  To avoid the
   warning in such a case, you might improve the scope of the macro's
   definition by, for example, moving it into the first skipped block.
@@ -386,7 +386,7 @@ compilation.
   recognize the extension, it will treat the file as C; this is the most
   generic mode.
 
-  Note: Previous versions of cpp accepted a :option:`-lang` option
+  *Note:* Previous versions of cpp accepted a :option:`-lang` option
   which selected both the language and the standards conformance level.
   This option has been removed, because it conflicts with the :option:`-l`
   option.
@@ -462,7 +462,7 @@ compilation.
 
   Process ``file`` as if ``#include "file"`` appeared as the first
   line of the primary source file.  However, the first directory searched
-  for ``file`` is the preprocessor's working directory instead of
+  for ``file`` is the preprocessor's working directory *instead of*
   the directory containing the main source file.  If not found there, it
   is searched for in the remainder of the ``#include "..."`` search
   chain as normal.
@@ -482,7 +482,7 @@ compilation.
 
 .. option:: -idirafter dir, -idirafter
 
-  Search ``dir`` for header files, but do it after all
+  Search ``dir`` for header files, but do it *after* all
   directories specified with :option:`-I` and the standard system directories
   have been exhausted.  ``dir`` is treated as a system include directory.
   If ``dir`` begins with ``=``, then the ``=`` will be replaced
@@ -713,8 +713,8 @@ compilation.
 
   .. option:: D, -dD
 
-    Like M except in two respects: it does not include the
-    predefined macros, and it outputs both the #define
+    Like M except in two respects: it does *not* include the
+    predefined macros, and it outputs *both* the #define
     directives and the result of preprocessing.  Both kinds of output go to
     the standard output file.
 

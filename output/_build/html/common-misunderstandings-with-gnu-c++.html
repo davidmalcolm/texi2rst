@@ -103,10 +103,10 @@ give rise to questions of this sort.</p>
 <ul class="simple">
 </ul>
 </div>
-<p id="static-definitions">Declare and Define Static Members
+<p id="static-definitions">Declare <em>and</em> Define Static Members
 .. index:: C++ static data, declaring and defining</p>
-<span class="target" id="index-3"></span><span class="target" id="index-4"></span><p id="index-5">When a class has static data members, it is not enough to declare
-the static member; you must also define it.  For example:</p>
+<span class="target" id="index-3"></span><span class="target" id="index-4"></span><p id="index-5">When a class has static data members, it is not enough to <em>declare</em>
+the static member; you must also <em>define</em> it.  For example:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
   <span class="p">...</span>
@@ -117,7 +117,7 @@ the static member; you must also define it.  For example:</p>
 </div>
 <p>This declaration only establishes that the class <tt class="docutils literal"><span class="pre">Foo</span></tt> has an
 <tt class="docutils literal"><span class="pre">int</span></tt> named <tt class="docutils literal"><span class="pre">Foo::bar</span></tt>, and a member function named
-<tt class="docutils literal"><span class="pre">Foo::method</span></tt>.  But you still need to define both
+<tt class="docutils literal"><span class="pre">Foo::method</span></tt>.  But you still need to define <em>both</em>
 <tt class="docutils literal"><span class="pre">method</span></tt> and <tt class="docutils literal"><span class="pre">bar</span></tt> elsewhere.  According to the ISO
 standard, you must supply an initializer in one (and only one) source
 file, such as:</p>
@@ -235,7 +235,7 @@ do not implement two-stage name lookup correctly.</p>
 </div>
 <div class="section" id="temporaries-may-vanish-before-you-expect">
 <span id="temporaries"></span><h2>Temporaries May Vanish Before You Expect<a class="headerlink" href="#temporaries-may-vanish-before-you-expect" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-9"></span><p id="index-10">It is dangerous to use pointers or references to portions of a
+<span class="target" id="index-9"></span><p id="index-10">It is dangerous to use pointers or references to <em>portions</em> of a
 temporary object.  The compiler may very well delete the object before
 you expect it to, leaving a pointer to garbage.  The most common place
 where this problem crops up is in classes like string classes,

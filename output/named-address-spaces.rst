@@ -29,7 +29,7 @@ needed to read from flash.
 Per default, any data including read-only data is located in RAM
 (the generic address space) so that non-generic address spaces are
 needed to locate read-only data in flash memory
-and to generate the right instructions to access this data
+*and* to generate the right instructions to access this data
 without using (inline) assembler code.
 
 __flash

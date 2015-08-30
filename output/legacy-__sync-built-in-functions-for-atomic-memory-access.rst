@@ -36,7 +36,7 @@ after the operation.
 
 All of the routines are described in the Intel documentation to take
 'an optional list of variables protected by the memory barrier'.  It's
-not clear what is meant by that; it could mean that only the
+not clear what is meant by that; it could mean that *only* the
 listed variables are protected, or it could mean a list of additional
 variables to be protected.  The list is ignored by GCC which treats it as
 empty.  GCC interprets an empty list as meaning that all globally
@@ -64,7 +64,7 @@ accessible variables should be protected.
     { tmp = *ptr; *ptr ``op``= value; return tmp; }
     { tmp = *ptr; *ptr = ~(tmp & value); return tmp; }   // nand
 
-  Note: GCC 4.4 and later implement ``__sync_fetch_and_nand``
+  *Note:* GCC 4.4 and later implement ``__sync_fetch_and_nand``
   as ``*ptr = ~(tmp & value)`` instead of ``*ptr = ~tmp & value``.
 
 ``type`` __sync_add_and_fetch (``type`` *ptr, ``type`` value, ...) ``type`` __sync_sub_and_fetch (``type`` *ptr, ``type`` value, ...) ``type`` __sync_or_and_fetch (``type`` *ptr, ``type`` value, ...) ``type`` __sync_and_and_fetch (``type`` *ptr, ``type`` value, ...) ``type`` __sync_xor_and_fetch (``type`` *ptr, ``type`` value, ...) ``type`` __sync_nand_and_fetch (``type`` *ptr, ``type`` value, ...)
@@ -89,7 +89,7 @@ accessible variables should be protected.
     { *ptr ``op``= value; return *ptr; }
     { *ptr = ~(*ptr & value); return *ptr; }   // nand
 
-  Note: GCC 4.4 and later implement ``__sync_nand_and_fetch``
+  *Note:* GCC 4.4 and later implement ``__sync_nand_and_fetch``
   as ``*ptr = ~(*ptr & value)`` instead of
   ``*ptr = ~*ptr & value``.
 
@@ -125,7 +125,7 @@ __sync_synchronize (...)
 
   Many targets have only minimal support for such locks, and do not support
   a full exchange operation.  In this case, a target may support reduced
-  functionality here by which the only valid value to store is the
+  functionality here by which the *only* valid value to store is the
   immediate constant 1.  The exact value actually stored in ``*``ptr````
   is implementation defined.
 

@@ -59,7 +59,7 @@ many other C implementations (but not in all).  On the other hand,
 variable-length arrays are more elegant.
 
 There are other differences between these two methods.  Space allocated
-with ``alloca`` exists until the containing function returns.
+with ``alloca`` exists until the containing *function* returns.
 The space for a variable-length array is deallocated as soon as the array
 name's scope ends.  (If you use both variable-length arrays and
 ``alloca`` in the same function, deallocation of a variable-length array

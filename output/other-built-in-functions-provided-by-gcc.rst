@@ -985,7 +985,7 @@ depending on the arguments' types.  For example:
       tmp;                                                        \
     })
 
-Note: This construct is only available for C.
+*Note:* This construct is only available for C.
 
 .. index:: __builtin_call_with_static_chain
 
@@ -994,7 +994,7 @@ Built-in Function``type``__builtin_call_with_static_chain(``call_exp``,``pointer
 is passed to the function call in the target's static chain location.
 The result of builtin is the result of the function call.
 
-Note: This builtin is only available for C.
+*Note:* This builtin is only available for C.
 This builtin can be used to call Go closures from C.
 
 .. index:: __builtin_choose_expr
@@ -1032,7 +1032,7 @@ Example:
            when assigning the result to something.  */          \
         (void)0))
 
-Note: This construct is only available for C.  Furthermore, the
+*Note:* This construct is only available for C.  Furthermore, the
 unused expression (``exp1`` or ``exp2`` depending on the value of
 ``const_exp``) may still generate syntax errors.  This may change in
 future revisions.
@@ -1055,7 +1055,7 @@ that GCC can perform constant-folding on expressions involving that
 value.  The argument of the function is the value to test.  The function
 returns the integer 1 if the argument is known to be a compile-time
 constant and 0 if it is not known to be a compile-time constant.  A
-return of 0 does not indicate that the value is not a constant,
+return of 0 does not indicate that the value is *not* a constant,
 but merely that GCC cannot prove it is a constant with the specified
 value of the :option:`-O` option.
 

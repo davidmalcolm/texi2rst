@@ -253,7 +253,7 @@ The preprocessor will also warn if the macro has not been used at the
 time it is redefined or undefined.</p>
 <p>Built-in macros, macros defined on the command line, and macros
 defined in include files are not warned about.</p>
-<p>Note: If a macro is actually used, but only used in skipped
+<p><em>Note:</em> If a macro is actually used, but only used in skipped
 conditional blocks, then CPP will report it as unused.  To avoid the
 warning in such a case, you might improve the scope of the macro&#8217;s
 definition by, for example, moving it into the first skipped block.
@@ -482,7 +482,7 @@ cpp will deduce the language from the extension of the source file:
 extensions for C++ and assembly are also recognized.  If cpp does not
 recognize the extension, it will treat the file as C; this is the most
 generic mode.</p>
-<p>Note: Previous versions of cpp accepted a <em class="xref std std-option">-lang</em> option
+<p><em>Note:</em> Previous versions of cpp accepted a <em class="xref std std-option">-lang</em> option
 which selected both the language and the standards conformance level.
 This option has been removed, because it conflicts with the <em class="xref std std-option">-l</em>
 option.</p>
@@ -559,7 +559,7 @@ used when building the C++ library.)</p>
 <tt class="descname">-include</tt><tt class="descclassname"> file</tt><tt class="descclassname">, </tt><tt class="descname">-include</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-include" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process <tt class="docutils literal"><span class="pre">file</span></tt> as if <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;file&quot;</span></tt> appeared as the first
 line of the primary source file.  However, the first directory searched
-for <tt class="docutils literal"><span class="pre">file</span></tt> is the preprocessor&#8217;s working directory instead of
+for <tt class="docutils literal"><span class="pre">file</span></tt> is the preprocessor&#8217;s working directory <em>instead of</em>
 the directory containing the main source file.  If not found there, it
 is searched for in the remainder of the <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;...&quot;</span></tt> search
 chain as normal.</p>
@@ -581,7 +581,7 @@ specified by <a class="reference internal" href="#cmdoption-include"><em class="
 <dl class="option">
 <dt id="cmdoption-idirafter">
 <tt class="descname">-idirafter</tt><tt class="descclassname"> dir</tt><tt class="descclassname">, </tt><tt class="descname">-idirafter</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-idirafter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Search <tt class="docutils literal"><span class="pre">dir</span></tt> for header files, but do it after all
+<dd><p>Search <tt class="docutils literal"><span class="pre">dir</span></tt> for header files, but do it <em>after</em> all
 directories specified with <a class="reference internal" href="#cmdoption-I"><em class="xref std std-option">-I</em></a> and the standard system directories
 have been exhausted.  <tt class="docutils literal"><span class="pre">dir</span></tt> is treated as a system include directory.
 If <tt class="docutils literal"><span class="pre">dir</span></tt> begins with <tt class="docutils literal"><span class="pre">=</span></tt>, then the <tt class="docutils literal"><span class="pre">=</span></tt> will be replaced
@@ -842,8 +842,8 @@ See <a class="reference internal" href="options-for-debugging-your-program-or-gc
 <dl class="option">
 <dt id="cmdoption-dD">
 <tt class="descname">-dD</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dD" title="Permalink to this definition">¶</a></dt>
-<dd><p>Like M except in two respects: it does not include the
-predefined macros, and it outputs both the #define
+<dd><p>Like M except in two respects: it does <em>not</em> include the
+predefined macros, and it outputs <em>both</em> the #define
 directives and the result of preprocessing.  Both kinds of output go to
 the standard output file.</p>
 </dd></dl>

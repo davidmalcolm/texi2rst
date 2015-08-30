@@ -113,7 +113,7 @@ situations).  If the class declares any non-inline, non-pure virtual
 functions, the first one is chosen as the &#8216;key method&#8217; for the class,
 and the vtable is only emitted in the translation unit where the key
 method is defined.</p>
-<p>Note: If the chosen key method is later defined as inline, the
+<p><em>Note:</em> If the chosen key method is later defined as inline, the
 vtable is still emitted in every translation unit that defines it.
 Make sure that any inline virtuals are declared inline in the class
 body, even if they are not defined there.</p>

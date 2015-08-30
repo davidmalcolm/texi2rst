@@ -17,7 +17,7 @@ warnings.  Each kind has a different purpose:
   number where the problem is apparent.
 
 * :dfn:`Warnings` report other unusual conditions in your code that
-  may indicate a problem, although compilation can (and does)
+  *may* indicate a problem, although compilation can (and does)
   proceed.  Warning messages also report the source file name and line
   number, but include the text warning: to distinguish them
   from error messages.
@@ -37,10 +37,10 @@ GCC always tries to compile your program if possible; it never
 gratuitously rejects a program whose meaning is clear merely because
 (for instance) it fails to conform to a standard.  In some cases,
 however, the C and C++ standards specify that certain extensions are
-forbidden, and a diagnostic must be issued by a conforming
+forbidden, and a diagnostic *must* be issued by a conforming
 compiler.  The :option:`-pedantic` option tells GCC to issue warnings in
 such cases; :option:`-pedantic-errors` says to make them errors instead.
-This does not mean that all non-ISO constructs get warnings
+This does not mean that *all* non-ISO constructs get warnings
 or errors.
 
 See :ref:`Options to Request or Suppress Warnings <warning-options>`, for

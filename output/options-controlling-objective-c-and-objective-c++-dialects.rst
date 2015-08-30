@@ -31,7 +31,7 @@ compilations may also use options specific to the C front-end (e.g.,
 :option:`-Wtraditional`).  Similarly, Objective-C++ compilations may use
 C++-specific options (e.g., :option:`-Wabi`).
 
-Here is a list of options that are only for compiling Objective-C
+Here is a list of options that are *only* for compiling Objective-C
 and Objective-C++ programs:
 
 .. option:: -fconstant-string-class=class-name

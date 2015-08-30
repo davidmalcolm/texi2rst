@@ -251,7 +251,7 @@ immediately follows <tt class="docutils literal"><span class="pre">a</span></tt>
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>Note: The 4.1, 4.2 and 4.3 series of GCC ignore the
+<p><em>Note:</em> The 4.1, 4.2 and 4.3 series of GCC ignore the
 <tt class="docutils literal"><span class="pre">packed</span></tt> attribute on bit-fields of type <tt class="docutils literal"><span class="pre">char</span></tt>.  This has
 been fixed in GCC 4.4 but the change can lead to differences in the
 structure layout.  See the documentation of
@@ -285,7 +285,7 @@ section.  For example, this small program uses several specific section names:</
 </pre></div>
 </div>
 <p>Use the <tt class="docutils literal"><span class="pre">section</span></tt> attribute with
-global variables and not local variables,
+<em>global</em> variables and not <em>local</em> variables,
 as shown in the example.</p>
 <p>You may use the <tt class="docutils literal"><span class="pre">section</span></tt> attribute with initialized or
 uninitialized global variables but the linker requires
@@ -567,7 +567,7 @@ Microsoft Windows Function Attributes.</p>
 have link-once semantics.  When multiple definitions of the variable are
 encountered by the linker, the first is selected and the remainder are
 discarded.  Following usage by the Microsoft compiler, the linker is told
-not to warn about size or content differences of the multiple
+<em>not</em> to warn about size or content differences of the multiple
 definitions.</p>
 <p>Although the primary usage of this attribute is for POD types, the
 attribute can also be applied to global C++ objects that are initialized

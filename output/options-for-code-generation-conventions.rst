@@ -133,7 +133,7 @@ it.
 
   Generate code that allows trapping instructions to throw exceptions.
   Note that this requires platform-specific runtime support that does
-  not exist everywhere.  Moreover, it only allows trapping
+  not exist everywhere.  Moreover, it only allows *trapping*
   instructions to throw exceptions, i.e. memory references or floating-point
   instructions.  It does not allow exceptions to be thrown from
   arbitrary signal handlers such as ``SIGALRM``.

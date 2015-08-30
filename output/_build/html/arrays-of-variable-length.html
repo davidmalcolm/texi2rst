@@ -118,7 +118,7 @@ variable-length arrays.  The function <tt class="docutils literal"><span class="
 many other C implementations (but not in all).  On the other hand,
 variable-length arrays are more elegant.</p>
 <p>There are other differences between these two methods.  Space allocated
-with <tt class="docutils literal"><span class="pre">alloca</span></tt> exists until the containing function returns.
+with <tt class="docutils literal"><span class="pre">alloca</span></tt> exists until the containing <em>function</em> returns.
 The space for a variable-length array is deallocated as soon as the array
 name&#8217;s scope ends.  (If you use both variable-length arrays and
 <tt class="docutils literal"><span class="pre">alloca</span></tt> in the same function, deallocation of a variable-length array

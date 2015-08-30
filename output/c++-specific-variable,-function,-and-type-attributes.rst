@@ -57,7 +57,7 @@ init_priority (``priority``)
 
   In Standard C++, objects defined at namespace scope are guaranteed to be
   initialized in an order in strict accordance with that of their definitions
-  in a given translation unit.  No guarantee is made for initializations
+  *in a given translation unit*.  No guarantee is made for initializations
   across translation units.  However, GNU C++ allows users to control the
   order of initialization of objects defined at namespace scope with the
   ``init_priority`` attribute by specifying a relative ``priority``,

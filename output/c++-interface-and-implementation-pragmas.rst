@@ -14,7 +14,7 @@ user with a way of explicitly directing the compiler to emit entities
 with vague linkage (and debugging information) in a particular
 translation unit.
 
-Note: These ``#pragma``s have been superceded as of GCC 2.7.2
+*Note:* These ``#pragma``s have been superceded as of GCC 2.7.2
 by COMDAT support and the 'key method' heuristic
 mentioned in Vague Linkage.  Using them can actually cause your
 program to grow due to unnecessary out-of-line copies of inline
@@ -24,7 +24,7 @@ functions.
 
   .. index:: #pragma interface
 
-  Use this directive in header files that define object classes, to save
+  Use this directive in *header files* that define object classes, to save
   space in most of the object files that use those classes.  Normally,
   local copies of certain information (backup copies of inline member
   functions, debugging information, and the internal tables that implement
@@ -45,7 +45,7 @@ functions.
 
   .. index:: #pragma implementation
 
-  Use this pragma in a main input file, when you want full output from
+  Use this pragma in a *main input file*, when you want full output from
   included header files to be generated (and made globally visible).  The
   included header file, in turn, should use #pragma interface.
   Backup copies of inline member functions, debugging information, and the

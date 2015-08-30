@@ -41,7 +41,7 @@ options for compiling C++ programs.
 
 The :command:`gcc` program accepts options and file names as operands.  Many
 options have multi-letter names; therefore multiple single-letter options
-may not be grouped: :option:`-dv` is very different from -d
+may *not* be grouped: :option:`-dv` is very different from -d
 -v.
 
 .. index:: order of options

@@ -332,7 +332,7 @@ examples given below, the generated code often requires an operand or
 result to be in a register.  Where necessary further code will be
 generated to ensure this is true, but for brevity this is not
 described in each case.</p>
-<p>Note: Using a built-in to generate an instruction not supported
+<p><em>Note:</em> Using a built-in to generate an instruction not supported
 by a target may cause problems. At present the compiler is not
 guaranteed to detect such misuse, and as a result an internal compiler
 error may be generated.</p>
@@ -610,7 +610,7 @@ the DR0-DR7 DMA setup channels:</p>
 arguments and return a <tt class="docutils literal"><span class="pre">__v8hi</span></tt> result.  The second argument must
 be a 3-bit compile time constants, indicating one the registers I0-I7,
 and the third argument must be an 8-bit compile time constant.</p>
-<p>Note: Although the equivalent hardware instructions do not take
+<p><em>Note:</em> Although the equivalent hardware instructions do not take
 an SIMD register as an operand, these builtins overwrite the relevant
 bits of the <tt class="docutils literal"><span class="pre">__v8hi</span></tt> register provided as the first argument with
 the value loaded from the <tt class="docutils literal"><span class="pre">[Ib,</span> <span class="pre">u8]</span></tt> location in the SDM.</p>
@@ -1519,13 +1519,13 @@ initialized in the same way as aggregates.  For example:</p>
 <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">v2q15</span><span class="p">)</span> <span class="p">{</span><span class="mf">0.1234</span> <span class="o">*</span> <span class="mh">0x1</span><span class="mf">.0</span><span class="n">p15</span><span class="p">,</span> <span class="mf">0.4567</span> <span class="o">*</span> <span class="mh">0x1</span><span class="mf">.0</span><span class="n">p15</span><span class="p">};</span>
 </pre></div>
 </div>
-<p>Note: The CPU&#8217;s endianness determines the order in which values
+<p><em>Note:</em> The CPU&#8217;s endianness determines the order in which values
 are packed.  On little-endian targets, the first value is the least
 significant and the last value is the most significant.  The opposite
 order applies to big-endian targets.  For example, the code above
 sets the lowest byte of <tt class="docutils literal"><span class="pre">a</span></tt> to <tt class="docutils literal"><span class="pre">1</span></tt> on little-endian targets
 and <tt class="docutils literal"><span class="pre">4</span></tt> on big-endian targets.</p>
-<p>Note: Q7, Q15 and Q31 values must be initialized with their integer
+<p><em>Note:</em> Q7, Q15 and Q31 values must be initialized with their integer
 representation.  As shown in this example, the integer representation
 of a Q7 value can be obtained by multiplying the fractional value by
 <tt class="docutils literal"><span class="pre">0x1.0p7</span></tt>.  The equivalent for Q15 values is to multiply by
@@ -1797,7 +1797,7 @@ For example:</p>
 <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">v2sf</span><span class="p">)</span> <span class="p">{</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">};</span>
 </pre></div>
 </div>
-<p>Note: The CPU&#8217;s endianness determines which value is stored in
+<p><em>Note:</em> The CPU&#8217;s endianness determines which value is stored in
 the upper half of a register and which value is stored in the lower half.
 On little-endian targets, the first value is the lower one and the second
 value is the upper one.  The opposite order applies to big-endian targets.
@@ -2001,7 +2001,7 @@ for details on what each instruction does.</p>
 <dd>Absolute value (<tt class="docutils literal"><span class="pre">abs.ps</span></tt>).</dd>
 <dt>v2sf __builtin_mips_alnv_ps (v2sf, v2sf, int)</dt>
 <dd><p class="first">Align variable (<tt class="docutils literal"><span class="pre">alnv.ps</span></tt>).</p>
-<p>Note: The value of the third parameter must be 0 or 4
+<p><em>Note:</em> The value of the third parameter must be 0 or 4
 modulo 8, otherwise the result is unpredictable.  Please read the
 instruction description for details.</p>
 <p class="last">The following multi-instruction functions are also available.</p>
@@ -2392,7 +2392,7 @@ is treated as four separate arguments.  Wrap the entire argument in
 parentheses for this to work.</p>
 </li>
 </ul>
-<p>Note: Only the <tt class="docutils literal"><span class="pre">&lt;altivec.h&gt;</span></tt> interface is supported.
+<p><em>Note:</em> Only the <tt class="docutils literal"><span class="pre">&lt;altivec.h&gt;</span></tt> interface is supported.
 Internally, GCC uses built-in functions to achieve the functionality in
 the aforementioned header file, but they are not supported and are
 subject to change without notice.</p>
@@ -5401,7 +5401,7 @@ parentheses for this to work.</p>
 <li><p class="first">The extended version of <tt class="docutils literal"><span class="pre">__builtin_expect</span></tt> is not supported.</p>
 </li>
 </ul>
-<p>Note: Only the interface described in the aforementioned
+<p><em>Note:</em> Only the interface described in the aforementioned
 specification is supported. Internally, GCC uses built-in functions to
 implement the required functionality, but these are not supported and
 are subject to change without notice.</p>

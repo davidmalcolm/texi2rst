@@ -24,7 +24,7 @@ give rise to questions of this sort.
 
 .. _static-definitions:
 
-Declare and Define Static Members
+Declare *and* Define Static Members
 .. index:: C++ static data, declaring and defining
 
 .. index:: static data in C++, declaring and defining
@@ -33,8 +33,8 @@ Declare and Define Static Members
 
 .. index:: defining static data in C++
 
-When a class has static data members, it is not enough to declare
-the static member; you must also define it.  For example:
+When a class has static data members, it is not enough to *declare*
+the static member; you must also *define* it.  For example:
 
 .. code-block:: c++
 
@@ -47,7 +47,7 @@ the static member; you must also define it.  For example:
 
 This declaration only establishes that the class ``Foo`` has an
 ``int`` named ``Foo::bar``, and a member function named
-``Foo::method``.  But you still need to define both
+``Foo::method``.  But you still need to define *both*
 ``method`` and ``bar`` elsewhere.  According to the ISO
 standard, you must supply an initializer in one (and only one) source
 file, such as:
@@ -199,7 +199,7 @@ Temporaries May Vanish Before You Expect
 
 .. index:: portions of temporary objects, pointers to
 
-It is dangerous to use pointers or references to portions of a
+It is dangerous to use pointers or references to *portions* of a
 temporary object.  The compiler may very well delete the object before
 you expect it to, leaving a pointer to garbage.  The most common place
 where this problem crops up is in classes like string classes,

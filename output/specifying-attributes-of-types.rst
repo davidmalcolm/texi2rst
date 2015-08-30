@@ -56,7 +56,7 @@ The following type attributes are supported on most targets.
 
   force the compiler to ensure (as far as it can) that each variable whose
   type is ``struct S`` or ``more_aligned_int`` is allocated and
-  aligned at least on a 8-byte boundary.  On a SPARC, having all
+  aligned *at least* on a 8-byte boundary.  On a SPARC, having all
   variables of type ``struct S`` aligned to 8-byte boundaries allows
   the compiler to use the ``ldd`` and ``std`` (doubleword load and
   store) instructions when copying one variable of type ``struct S`` to
@@ -65,7 +65,7 @@ The following type attributes are supported on most targets.
   Note that the alignment of any given ``struct`` or ``union`` type
   is required by the ISO C standard to be at least a perfect multiple of
   the lowest common multiple of the alignments of all of the members of
-  the ``struct`` or ``union`` in question.  This means that you can
+  the ``struct`` or ``union`` in question.  This means that you *can*
   effectively adjust the alignment of a ``struct`` or ``union``
   type by attaching an ``aligned`` attribute to any one of the members
   of such a type, but the notation illustrated in the example above is a

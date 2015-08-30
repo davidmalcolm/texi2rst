@@ -350,10 +350,10 @@ optimizations to be performed is desired.
     See below for a documentation of the individual
   parameters controlling inlining and for the defaults of these parameters.
 
-  Note: there may be no value to :option:`-finline-limit` that results
+  *Note:* there may be no value to :option:`-finline-limit` that results
   in default behavior.
 
-  Note: pseudo instruction represents, in this particular context, an
+  *Note:* pseudo instruction represents, in this particular context, an
   abstract measurement of function's size.  In no way does it represent a count
   of assembly instructions and as such its exact meaning might change from one
   release to an another.
@@ -507,7 +507,7 @@ optimizations to be performed is desired.
   Perform a global common subexpression elimination pass.
   This pass also performs global constant and copy propagation.
 
-  Note: When compiling a program using computed gotos, a GCC
+  *Note:* When compiling a program using computed gotos, a GCC
   extension, you may get better run-time performance if you disable
   the global common subexpression elimination pass by adding
   :option:`-fno-gcse` to the command line.

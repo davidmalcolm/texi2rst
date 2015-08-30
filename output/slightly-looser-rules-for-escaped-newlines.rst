@@ -15,7 +15,7 @@ of spaces, horizontal and vertical tabs, and form feeds between the
 backslash and the subsequent newline.  The preprocessor issues a
 warning, but treats it as a valid escaped newline and combines the two
 lines to form a single logical line.  This works within comments and
-tokens, as well as between tokens.  Comments are not treated as
+tokens, as well as between tokens.  Comments are *not* treated as
 whitespace for the purposes of this relaxation, since they have not
 yet been replaced with spaces.
 

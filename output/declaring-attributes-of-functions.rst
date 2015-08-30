@@ -271,7 +271,7 @@ const
   .. index:: pointer arguments
 
   Note that a function that has pointer arguments and examines the data
-  pointed to must not be declared ``const``.  Likewise, a
+  pointed to must *not* be declared ``const``.  Likewise, a
   function that calls a non-``const`` function usually must not be
   ``const``.  It does not make sense for a ``const`` function to
   return ``void``.
@@ -1070,7 +1070,7 @@ visibility ("``visibility_type``")
     Internal visibility is like hidden visibility, but with additional
     processor specific semantics.  Unless otherwise specified by the
     psABI, GCC defines internal visibility to mean that a function is
-    never called from another module.  Compare this with hidden
+    *never* called from another module.  Compare this with hidden
     functions which, while they cannot be referenced directly by other
     modules, can be referenced indirectly via function pointers.  By
     indicating that a function cannot be called from outside the module,
@@ -1421,13 +1421,13 @@ OS_main OS_task
   On AVR, functions with the ``OS_main`` or ``OS_task`` attribute
   do not save/restore any call-saved register in their prologue/epilogue.
 
-  The ``OS_main`` attribute can be used when there is
-  guarantee that interrupts are disabled at the time when the function
+  The ``OS_main`` attribute can be used when there *is
+  guarantee* that interrupts are disabled at the time when the function
   is entered.  This saves resources when the stack pointer has to be
   changed to set up a frame for local variables.
 
-  The ``OS_task`` attribute can be used when there is no
-  guarantee that interrupts are disabled at that time when the function
+  The ``OS_task`` attribute can be used when there is *no
+  guarantee* that interrupts are disabled at that time when the function
   is entered like for, e.g. task functions in a multi-threading operating
   system. In that case, changing the stack pointer register is
   guarded by save/clear/restore of the global interrupt enable flag.
@@ -2041,7 +2041,7 @@ dllimport
   explicitly specify any other visibility.
 
   Currently, the attribute is ignored for inlined functions.  If the
-  attribute is applied to a symbol definition, an error is reported.
+  attribute is applied to a symbol *definition*, an error is reported.
   If a symbol previously declared ``dllimport`` is later defined, the
   attribute is ignored in subsequent references, and a warning is emitted.
   The attribute is also overridden by a subsequent declaration as
@@ -2069,8 +2069,8 @@ dllimport
   the DLL.
 
   One drawback to using this attribute is that a pointer to a
-  variable marked as ``dllimport`` cannot be used as a constant
-  address. However, a pointer to a function with the
+  *variable* marked as ``dllimport`` cannot be used as a constant
+  address. However, a pointer to a *function* with the
   ``dllimport`` attribute can be used as a constant initializer; in
   this case, the address of a stub function in the import lib is
   referenced.  On Microsoft Windows targets, the attribute can be disabled

@@ -929,7 +929,7 @@ so by default the compiler uses standard reload
 <dd><p>When optimizing for size (using <a class="reference internal" href="options-that-control-optimization.html#cmdoption-Os"><em class="xref std std-option">-Os</em></a>), prologues and epilogues
 that have to save or restore a large number of registers are often
 shortened by using call to a special function in libgcc; this is
-referred to as a millicode call.  As these calls can pose
+referred to as a <em>millicode</em> call.  As these calls can pose
 performance issues, and/or cause linking issues when linking in a
 nonstandard way, this option is provided to turn off millicode call
 generation.</p>
@@ -1839,8 +1839,8 @@ saved/restored in function or interrupt service routine
 prologue/epilogue.</p>
 </li>
 <li><p class="first">For indirect calls to functions and computed goto, the linker
-generates stubs. Stubs are jump pads sometimes also called
-trampolines. Thus, the indirect call/jump jumps to such a stub.
+generates <em>stubs</em>. Stubs are jump pads sometimes also called
+<em>trampolines</em>. Thus, the indirect call/jump jumps to such a stub.
 The stub contains a direct jump to the desired address.</p>
 </li>
 <li><p class="first">Linker relaxation must be turned on so that the linker generates
@@ -1883,13 +1883,13 @@ where the vector table is located.</p>
 the following two conditions are met:</p>
 <ul>
 <li><p class="first">The address of a label is taken by means of the <tt class="docutils literal"><span class="pre">gs</span></tt> modifier
-(short for generate stubs) like so:</p>
+(short for <em>generate stubs</em>) like so:</p>
 <div class="highlight-c++"><pre>LDI r24, lo8(gs(``func``))
 LDI r25, hi8(gs(``func``))</pre>
 </div>
 </li>
 <li><p class="first">The final location of that label is in a code segment
-outside the segment where the stubs are located.</p>
+<em>outside</em> the segment where the stubs are located.</p>
 </li>
 </ul>
 </li>
@@ -1906,7 +1906,7 @@ tables you can specify the <a class="reference internal" href="options-for-code-
 <li>If the tools hit a <tt class="docutils literal"><span class="pre">gs()</span></tt> modifier explained above.</li>
 </ul>
 </li>
-<li><p class="first">Jumping to non-symbolic addresses like so is not supported:</p>
+<li><p class="first">Jumping to non-symbolic addresses like so is <em>not</em> supported:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="cm">/* Call function at word address 0x2 */</span>
@@ -2764,7 +2764,7 @@ and hence need not save and restore, any floating-point registers.</p>
 maximum performance.  It is mostly compliant with the IEEE floating-point
 standard.  However, for full compliance, software assistance is
 required.  This option generates code fully IEEE-compliant code
-except that the <tt class="docutils literal"><span class="pre">inexact-flag</span></tt> is not maintained (see below).
+<em>except</em> that the <tt class="docutils literal"><span class="pre">inexact-flag</span></tt> is not maintained (see below).
 If this option is turned on, the preprocessor macro <tt class="docutils literal"><span class="pre">_IEEE_FP</span></tt> is
 defined during compilation.  The resulting code is less efficient but is
 able to correctly support denormalized numbers and exceptional IEEE
@@ -2875,7 +2875,7 @@ generated assembly file.</p>
 see if it can construct it from smaller constants in two or three
 instructions.  If it cannot, it outputs the constant as a literal and
 generates code to load it from the data segment at run time.</p>
-<p>Use this option to require GCC to construct all integer constants
+<p>Use this option to require GCC to construct <em>all</em> integer constants
 using code, even if it takes more instructions (the maximum is six).</p>
 <p>You typically use this option to build a shared library dynamic
 loader.  Itself a shared library, it must relocate itself in memory
@@ -3613,7 +3613,7 @@ used, but this cannot be done directly in cross-compilation.  You must make
 your own arrangements to provide suitable library functions for
 cross-compilation.</p>
 <p><a class="reference internal" href="#cmdoption-msoft-float"><em class="xref std std-option">-msoft-float</em></a> changes the calling convention in the output file;
-therefore, it is only useful if you compile all of a program with
+therefore, it is only useful if you compile <em>all</em> of a program with
 this option.  In particular, you need to compile libgcc.a, the
 library that comes with GCC, with <a class="reference internal" href="#cmdoption-msoft-float"><em class="xref std std-option">-msoft-float</em></a> in order for
 this to work.</p>
@@ -3703,9 +3703,9 @@ and <tt class="docutils literal"><span class="pre">_XOPEN_SOURCE_EXTENDED</span>
 <em class="xref std std-option">-munix=98</em> provides additional predefines for <tt class="docutils literal"><span class="pre">_XOPEN_UNIX</span></tt>,
 <tt class="docutils literal"><span class="pre">_XOPEN_SOURCE_EXTENDED</span></tt>, <tt class="docutils literal"><span class="pre">_INCLUDE__STDC_A1_SOURCE</span></tt> and
 <tt class="docutils literal"><span class="pre">_INCLUDE_XOPEN_SOURCE_500</span></tt>, and the startfile unix98.o.</p>
-<p>It is important to note that this option changes the interfaces
+<p>It is <em>important</em> to note that this option changes the interfaces
 for various library routines.  It also affects the operational behavior
-of the C library.  Thus, extreme care is needed in using this
+of the C library.  Thus, <em>extreme</em> care is needed in using this
 option.</p>
 <p>Library code that is intended to operate with more than one UNIX
 standard must test, set and restore the variable <tt class="docutils literal"><span class="pre">__xpg4_extended_mask</span></tt>
@@ -6241,7 +6241,7 @@ prediction indicates a probable branch.</p>
 <dl class="option">
 <dt id="cmdoption-mbase-addresses">
 <tt class="descname">-mbase-addresses</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-mno-base-addresses</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mbase-addresses" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate (do not generate) code that uses base addresses.  Using a
+<dd><p>Generate (do not generate) code that uses <em>base addresses</em>.  Using a
 base address automatically generates a request (handled by the assembler
 and the linker) for a constant to be set up in a global register.  The
 register is used for one or more base address requests within the range 0
@@ -6338,7 +6338,7 @@ has an effect when used on the command line for the final link step.</p>
 <dl class="option">
 <dt id="cmdoption-mliw">
 <tt class="descname">-mliw</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mliw" title="Permalink to this definition">¶</a></dt>
-<dd><p>Allow the compiler to generate Long Instruction Word
+<dd><p>Allow the compiler to generate <em>Long Instruction Word</em>
 instructions if the target is the AM33 or later.  This is the
 default.  This option defines the preprocessor macro <tt class="docutils literal"><span class="pre">__LIW__</span></tt>.</p>
 </dd></dl>
@@ -6346,7 +6346,7 @@ default.  This option defines the preprocessor macro <tt class="docutils literal
 <dl class="option">
 <dt id="cmdoption-mnoliw">
 <tt class="descname">-mnoliw</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mnoliw" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not allow the compiler to generate Long Instruction Word
+<dd><p>Do not allow the compiler to generate <em>Long Instruction Word</em>
 instructions.  This option defines the preprocessor macro
 <tt class="docutils literal"><span class="pre">__NO_LIW__</span></tt>.</p>
 </dd></dl>
@@ -6354,7 +6354,7 @@ instructions.  This option defines the preprocessor macro
 <dl class="option">
 <dt id="cmdoption-msetlb">
 <tt class="descname">-msetlb</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-msetlb" title="Permalink to this definition">¶</a></dt>
-<dd><p>Allow the compiler to generate the SETLB and Lcc
+<dd><p>Allow the compiler to generate the <em>SETLB</em> and <em>Lcc</em>
 instructions if the target is the AM33 or later.  This is the
 default.  This option defines the preprocessor macro <tt class="docutils literal"><span class="pre">__SETLB__</span></tt>.</p>
 </dd></dl>
@@ -6362,7 +6362,7 @@ default.  This option defines the preprocessor macro <tt class="docutils literal
 <dl class="option">
 <dt id="cmdoption-mnosetlb">
 <tt class="descname">-mnosetlb</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mnosetlb" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not allow the compiler to generate SETLB or Lcc
+<dd><p>Do not allow the compiler to generate <em>SETLB</em> or <em>Lcc</em>
 instructions.  This option defines the preprocessor macro
 <tt class="docutils literal"><span class="pre">__NO_SETLB__</span></tt>.</p>
 </dd></dl>
@@ -8331,7 +8331,7 @@ GCC.</p>
 <tt class="descname">-m64bit-doubles</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-m32bit-doubles</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-m64bit-doubles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make the <tt class="docutils literal"><span class="pre">double</span></tt> data type be 64 bits (<a class="reference internal" href="#cmdoption-m64bit-doubles"><em class="xref std std-option">-m64bit-doubles</em></a>)
 or 32 bits (<em class="xref std std-option">-m32bit-doubles</em>) in size.  The default is
-<em class="xref std std-option">-m32bit-doubles</em>.  Note RX floating-point hardware only
+<em class="xref std std-option">-m32bit-doubles</em>.  <em>Note</em> RX floating-point hardware only
 works on 32-bit values, which is why the default is
 <em class="xref std std-option">-m32bit-doubles</em>.</p>
 </dd></dl>
@@ -8345,7 +8345,7 @@ series and disabled for the RX200 series.</p>
 <p>Floating-point instructions are only generated for 32-bit floating-point
 values, however, so the FPU hardware is not used for doubles if the
 <a class="reference internal" href="#cmdoption-m64bit-doubles"><em class="xref std std-option">-m64bit-doubles</em></a> option is used.</p>
-<p>Note If the <a class="reference internal" href="#cmdoption-fpu"><em class="xref std std-option">-fpu</em></a> option is enabled then
+<p><em>Note</em> If the <a class="reference internal" href="#cmdoption-fpu"><em class="xref std std-option">-fpu</em></a> option is enabled then
 <a class="reference internal" href="options-that-control-optimization.html#cmdoption-funsafe-math-optimizations"><em class="xref std std-option">-funsafe-math-optimizations</em></a> is also enabled automatically.
 This is because the RX FPU instructions are themselves unsafe.</p>
 </dd></dl>
@@ -8509,7 +8509,7 @@ symbol <tt class="docutils literal"><span class="pre">__RX_ALLOW_STRING_INSNS__<
 symbol <tt class="docutils literal"><span class="pre">__RX_DISALLOW_STRING_INSNS__</span></tt>.</p>
 </dd></dl>
 
-<p>Note: The generic GCC command-line option <em class="xref std std-option">-ffixed-``reg``</em>
+<p><em>Note:</em> The generic GCC command-line option <em class="xref std std-option">-ffixed-``reg``</em>
 has special significance to the RX port when used with the
 <tt class="docutils literal"><span class="pre">interrupt</span></tt> function attribute.  This attribute indicates a
 function intended to process fast interrupts.  GCC ensures
@@ -9558,7 +9558,7 @@ your own arrangements to provide suitable library functions for
 cross-compilation.  The embedded targets sparc-<em>-aout and
 sparclite-</em>-* do provide software floating-point support.</p>
 <p><a class="reference internal" href="#cmdoption-msoft-float"><em class="xref std std-option">-msoft-float</em></a> changes the calling convention in the output file;
-therefore, it is only useful if you compile all of a program with
+therefore, it is only useful if you compile <em>all</em> of a program with
 this option.  In particular, you need to compile libgcc.a, the
 library that comes with GCC, with <a class="reference internal" href="#cmdoption-msoft-float"><em class="xref std std-option">-msoft-float</em></a> in order for
 this to work.</p>
@@ -10383,7 +10383,7 @@ default.</p>
 <tt class="descname">-mno-fpu</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-msoft-float</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mno-fpu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate code containing library calls for floating-point.</p>
 <p><a class="reference internal" href="#cmdoption-msoft-float"><em class="xref std std-option">-msoft-float</em></a> changes the calling convention in the output file;
-therefore, it is only useful if you compile all of a program with
+therefore, it is only useful if you compile <em>all</em> of a program with
 this option.  In particular, you need to compile libgcc.a, the
 library that comes with GCC, with <a class="reference internal" href="#cmdoption-msoft-float"><em class="xref std std-option">-msoft-float</em></a> in order for
 this to work.</p>
@@ -10944,7 +10944,7 @@ the system libraries and startup modules.</p>
 default on Solaris 8 and 9 and VxWorks to match the ABI of the Sun
 Studio compilers until version 12.  Later compiler versions (starting
 with Studio 12 Update 1) follow the ABI used by other x86 targets, which
-is the default on Solaris 10 and later.  Only use this option if
+is the default on Solaris 10 and later.  <em>Only</em> use this option if
 you need to remain compatible with existing code produced by those
 previous compiler versions or older versions of GCC.</p>
 </dd></dl>
@@ -11645,7 +11645,7 @@ and multiply/subtract instructions forces the compiler to use separate
 instructions for the multiply and add/subtract operations.  This may be
 desirable in some cases where strict IEEE 754-compliant results are
 required: the fused multiply add/subtract instructions do not round the
-intermediate result, thereby producing results with more bits of
+intermediate result, thereby producing results with <em>more</em> bits of
 precision than specified by the IEEE standard.  Disabling fused multiply
 add/subtract instructions also ensures that the program output is not
 sensitive to the compiler&#8217;s ability to combine multiply and add/subtract

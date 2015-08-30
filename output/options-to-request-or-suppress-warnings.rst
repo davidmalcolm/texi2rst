@@ -117,7 +117,7 @@ warns that an unrecognized option is present.
   Some users try to use :option:`-Wpedantic` to check programs for strict ISO
   C conformance.  They soon find that it does not do quite what they want:
   it finds some non-ISO practices, but not all-only those for which
-  ISO C requires a diagnostic, and some others for which
+  ISO C *requires* a diagnostic, and some others for which
   diagnostics have been added.
 
   A feature to report any failure to conform to ISO C might be useful in
@@ -1104,7 +1104,7 @@ warns that an unrecognized option is present.
   compiler output harder to read.  Using this command-line option tells
   GCC to emit warnings from system headers as if they occurred in user
   code.  However, note that using :option:`-Wall` in conjunction with this
-  option does not warn about unknown pragmas in system
+  option does *not* warn about unknown pragmas in system
   headers-for that, :option:`-Wunknown-pragmas` must also be used.
 
 .. option:: -Wtrampolines, -Wno-trampolines
@@ -1200,7 +1200,7 @@ warns that an unrecognized option is present.
     conversion warnings; for the full set use :option:`-Wtraditional-conversion`.
 
   * Use of ISO C style function definitions.  This warning intentionally is
-    not issued for prototype declarations or variadic functions
+    *not* issued for prototype declarations or variadic functions
     because these ISO C features appear in your code when using
     libiberty's traditional C compatibility macros, ``PARAMS`` and
     ``VPARAMS``.  This warning is also bypassed for nested functions
@@ -2101,7 +2101,7 @@ warns that an unrecognized option is present.
   standard's minimum limit, but very portable programs should avoid
   using longer strings.
 
-  The limit applies after string constant concatenation, and does
+  The limit applies *after* string constant concatenation, and does
   not count the trailing NUL.  In C90, the limit was 509 characters; in
   C99, it was raised to 4095.  C++98 does not specify a normative
   minimum maximum, so we do not diagnose overlength strings in C++.

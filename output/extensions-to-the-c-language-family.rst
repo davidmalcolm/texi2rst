@@ -17,7 +17,7 @@ features in conditional compilation, check for a predefined macro
 
 These extensions are available in C and Objective-C.  Most of them are
 also available in C++.  See :ref:`Extensions to the
-C++ Language <c++-extensions>`, for extensions that apply only to C++.
+C++ Language <c++-extensions>`, for extensions that apply *only* to C++.
 
 Some features that are in ISO C99 but not C90 or C++ are also, as
 extensions, accepted by GCC in C90 mode and in C++.

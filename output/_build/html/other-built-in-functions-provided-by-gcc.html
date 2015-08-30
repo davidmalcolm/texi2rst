@@ -254,12 +254,12 @@ depending on the arguments&#8217; types.  For example:</p>
 <span class="cp">  })</span>
 </pre></div>
 </div>
-<p>Note: This construct is only available for C.</p>
+<p><em>Note:</em> This construct is only available for C.</p>
 <p id="index-398">Built-in Function``type``__builtin_call_with_static_chain(<tt class="docutils literal"><span class="pre">call_exp</span></tt>,``pointer_exp``)The <tt class="docutils literal"><span class="pre">call_exp</span></tt> expression must be a function call, and the
 <tt class="docutils literal"><span class="pre">pointer_exp</span></tt> expression must be a pointer.  The <tt class="docutils literal"><span class="pre">pointer_exp</span></tt>
 is passed to the function call in the target&#8217;s static chain location.
 The result of builtin is the result of the function call.</p>
-<p>Note: This builtin is only available for C.
+<p><em>Note:</em> This builtin is only available for C.
 This builtin can be used to call Go closures from C.</p>
 <p id="index-399">Built-in Function``type``__builtin_choose_expr(<tt class="docutils literal"><span class="pre">const_exp</span></tt>,``exp1``,``exp2``)You can use the built-in function <tt class="docutils literal"><span class="pre">__builtin_choose_expr</span></tt> to
 evaluate code depending on the value of a constant expression.  This
@@ -288,7 +288,7 @@ as <tt class="docutils literal"><span class="pre">exp2</span></tt>.</p>
 <span class="cp">      (void)0))</span>
 </pre></div>
 </div>
-<p>Note: This construct is only available for C.  Furthermore, the
+<p><em>Note:</em> This construct is only available for C.  Furthermore, the
 unused expression (<tt class="docutils literal"><span class="pre">exp1</span></tt> or <tt class="docutils literal"><span class="pre">exp2</span></tt> depending on the value of
 <tt class="docutils literal"><span class="pre">const_exp</span></tt>) may still generate syntax errors.  This may change in
 future revisions.</p>
@@ -305,7 +305,7 @@ that GCC can perform constant-folding on expressions involving that
 value.  The argument of the function is the value to test.  The function
 returns the integer 1 if the argument is known to be a compile-time
 constant and 0 if it is not known to be a compile-time constant.  A
-return of 0 does not indicate that the value is not a constant,
+return of 0 does not indicate that the value is <em>not</em> a constant,
 but merely that GCC cannot prove it is a constant with the specified
 value of the <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O"><em class="xref std std-option">-O</em></a> option.</p>
 <p>You typically use this function in an embedded application where

@@ -142,7 +142,7 @@ release stores in all threads.</p>
 <p class="last">Note that the scope of a C++11 memory model depends on whether or not</p>
 </dd>
 </dl>
-<p>the function being called is a fence (such as
+<p>the function being called is a <em>fence</em> (such as
 __atomic_thread_fence).  In a fence, all memory accesses are
 subject to the restrictions of the memory model.  When the function is
 an operation on a location, the restrictions apply only to those
@@ -196,9 +196,9 @@ and <tt class="docutils literal"><span class="pre">__ATOMIC_CONSUME</span></tt>.
 of <tt class="docutils literal"><span class="pre">*``ptr``</span></tt> is copied into <tt class="docutils literal"><span class="pre">*``ret``</span></tt>.</p>
 <p id="index-6">Built-in Functionbool__atomic_compare_exchange_n(<tt class="docutils literal"><span class="pre">type``*ptr,``type``*expected,``type``desired,boolweak,intsuccess_memmodel,intfailure_memmodel)This</span> <span class="pre">built-in</span> <span class="pre">function</span> <span class="pre">implements</span> <span class="pre">an</span> <span class="pre">atomic</span> <span class="pre">compare</span> <span class="pre">and</span> <span class="pre">exchange</span> <span class="pre">operation.</span>
 <span class="pre">This</span> <span class="pre">compares</span> <span class="pre">the</span> <span class="pre">contents</span> <span class="pre">of</span> <span class="pre">``*``ptr``</span></tt> with the contents of
-<tt class="docutils literal"><span class="pre">*``expected``</span></tt>. If equal, the operation is a read-modify-write
+<tt class="docutils literal"><span class="pre">*``expected``</span></tt>. If equal, the operation is a <em>read-modify-write</em>
 which writes <tt class="docutils literal"><span class="pre">desired</span></tt> into <tt class="docutils literal"><span class="pre">*``ptr``</span></tt>.  If they are not
-equal, the operation is a read and the current contents of
+equal, the operation is a <em>read</em> and the current contents of
 <tt class="docutils literal"><span class="pre">*``ptr``</span></tt> is written into <tt class="docutils literal"><span class="pre">*``expected``</span></tt>.  <tt class="docutils literal"><span class="pre">weak</span></tt> is true
 for weak compare_exchange, and false for the strong variation.  Many targets
 only offer the strong variation and ignore the parameter.  When in doubt, use

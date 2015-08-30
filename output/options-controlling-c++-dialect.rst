@@ -22,7 +22,7 @@ In this example, only :option:`-frepo` is an option meant
 only for C++ programs; you can use the other options with any
 language supported by GCC.
 
-Here is a list of options that are only for compiling C++ programs:
+Here is a list of options that are *only* for compiling C++ programs:
 
 .. option:: -fabi-version=n
 
@@ -434,7 +434,7 @@ Here is a list of options that are only for compiling C++ programs:
   in the directory named by the environment variable :envvar:`VTV_LOGS_DIR` 
   if that is defined or the current working directory otherwise.
 
-  Note:  This feature appends data to the log file. If you want a fresh log
+  Note:  This feature *appends* data to the log file. If you want a fresh log
   file, be sure to delete any existing one.
 
 .. option:: -fvtv-counts
@@ -452,7 +452,7 @@ Here is a list of options that are only for compiling C++ programs:
   for each class, and writes this information to vtv_class_set_sizes.log
   in the same directory.
 
-  Note:  This feature appends data to the log files.  To get fresh log
+  Note:  This feature *appends* data to the log files.  To get fresh log
   files, be sure to delete any existing ones.
 
 .. option:: -fno-weak

@@ -741,7 +741,7 @@ The following options fine tune code generation:
   When optimizing for size (using :option:`-Os`), prologues and epilogues
   that have to save or restore a large number of registers are often
   shortened by using call to a special function in libgcc; this is
-  referred to as a millicode call.  As these calls can pose
+  referred to as a *millicode* call.  As these calls can pose
   performance issues, and/or cause linking issues when linking in a
   nonstandard way, this option is provided to turn off millicode call
   generation.
@@ -1588,8 +1588,8 @@ the compiler and are subject to some limitations:
   prologue/epilogue.
 
 * For indirect calls to functions and computed goto, the linker
-  generates stubs. Stubs are jump pads sometimes also called
-  trampolines. Thus, the indirect call/jump jumps to such a stub.
+  generates *stubs*. Stubs are jump pads sometimes also called
+  *trampolines*. Thus, the indirect call/jump jumps to such a stub.
   The stub contains a direct jump to the desired address.
 
 * Linker relaxation must be turned on so that the linker generates
@@ -1634,7 +1634,7 @@ the compiler and are subject to some limitations:
   the following two conditions are met:
 
   * The address of a label is taken by means of the ``gs`` modifier
-    (short for generate stubs) like so:
+    (short for *generate stubs*) like so:
 
     .. code-block:: c++
 
@@ -1642,7 +1642,7 @@ the compiler and are subject to some limitations:
       LDI r25, hi8(gs(``func``))
 
   * The final location of that label is in a code segment
-    outside the segment where the stubs are located.
+    *outside* the segment where the stubs are located.
 
 * The compiler emits such ``gs`` modifiers for code labels in the
   following situations:
@@ -1661,7 +1661,7 @@ the compiler and are subject to some limitations:
 
   * If the tools hit a ``gs()`` modifier explained above.
 
-* Jumping to non-symbolic addresses like so is not supported:
+* Jumping to non-symbolic addresses like so is *not* supported:
 
   .. code-block:: c++
 
@@ -2454,7 +2454,7 @@ These -m options are defined for the DEC Alpha implementations:
   maximum performance.  It is mostly compliant with the IEEE floating-point
   standard.  However, for full compliance, software assistance is
   required.  This option generates code fully IEEE-compliant code
-  except that the ``inexact-flag`` is not maintained (see below).
+  *except* that the ``inexact-flag`` is not maintained (see below).
   If this option is turned on, the preprocessor macro ``_IEEE_FP`` is
   defined during compilation.  The resulting code is less efficient but is
   able to correctly support denormalized numbers and exceptional IEEE
@@ -2559,7 +2559,7 @@ These -m options are defined for the DEC Alpha implementations:
   instructions.  If it cannot, it outputs the constant as a literal and
   generates code to load it from the data segment at run time.
 
-  Use this option to require GCC to construct all integer constants
+  Use this option to require GCC to construct *all* integer constants
   using code, even if it takes more instructions (the maximum is six).
 
   You typically use this option to build a shared library dynamic
@@ -3170,7 +3170,7 @@ These -m options are defined for the HPPA family of computers:
   cross-compilation.
 
   :option:`-msoft-float` changes the calling convention in the output file;
-  therefore, it is only useful if you compile all of a program with
+  therefore, it is only useful if you compile *all* of a program with
   this option.  In particular, you need to compile libgcc.a, the
   library that comes with GCC, with :option:`-msoft-float` in order for
   this to work.
@@ -3255,9 +3255,9 @@ These -m options are defined for the HPPA family of computers:
   ``_XOPEN_SOURCE_EXTENDED``, ``_INCLUDE__STDC_A1_SOURCE`` and
   ``_INCLUDE_XOPEN_SOURCE_500``, and the startfile unix98.o.
 
-  It is important to note that this option changes the interfaces
+  It is *important* to note that this option changes the interfaces
   for various library routines.  It also affects the operational behavior
-  of the C library.  Thus, extreme care is needed in using this
+  of the C library.  Thus, *extreme* care is needed in using this
   option.
 
   Library code that is intended to operate with more than one UNIX
@@ -5371,7 +5371,7 @@ These options are defined for the MMIX:
 
 .. option:: -mbase-addresses, -mno-base-addresses
 
-  Generate (do not generate) code that uses base addresses.  Using a
+  Generate (do not generate) code that uses *base addresses*.  Using a
   base address automatically generates a request (handled by the assembler
   and the linker) for a constant to be set up in a global register.  The
   register is used for one or more base address requests within the range 0
@@ -5450,25 +5450,25 @@ These :option:`-m` options are defined for Matsushita MN10300 architectures:
 
 .. option:: -mliw
 
-  Allow the compiler to generate Long Instruction Word
+  Allow the compiler to generate *Long Instruction Word*
   instructions if the target is the AM33 or later.  This is the
   default.  This option defines the preprocessor macro ``__LIW__``.
 
 .. option:: -mnoliw
 
-  Do not allow the compiler to generate Long Instruction Word
+  Do not allow the compiler to generate *Long Instruction Word*
   instructions.  This option defines the preprocessor macro
   ``__NO_LIW__``.
 
 .. option:: -msetlb
 
-  Allow the compiler to generate the SETLB and Lcc
+  Allow the compiler to generate the *SETLB* and *Lcc*
   instructions if the target is the AM33 or later.  This is the
   default.  This option defines the preprocessor macro ``__SETLB__``.
 
 .. option:: -mnosetlb
 
-  Do not allow the compiler to generate SETLB or Lcc
+  Do not allow the compiler to generate *SETLB* or *Lcc*
   instructions.  This option defines the preprocessor macro
   ``__NO_SETLB__``.
 
@@ -7230,7 +7230,7 @@ These command-line options are defined for RX targets:
 
   Make the ``double`` data type be 64 bits (:option:`-m64bit-doubles`)
   or 32 bits (:option:`-m32bit-doubles`) in size.  The default is
-  :option:`-m32bit-doubles`.  Note RX floating-point hardware only
+  :option:`-m32bit-doubles`.  *Note* RX floating-point hardware only
   works on 32-bit values, which is why the default is
   :option:`-m32bit-doubles`.
 
@@ -7244,7 +7244,7 @@ These command-line options are defined for RX targets:
   values, however, so the FPU hardware is not used for doubles if the
   :option:`-m64bit-doubles` option is used.
 
-  Note If the :option:`-fpu` option is enabled then
+  *Note* If the :option:`-fpu` option is enabled then
   :option:`-funsafe-math-optimizations` is also enabled automatically.
   This is because the RX FPU instructions are themselves unsafe.
 
@@ -7393,7 +7393,7 @@ These command-line options are defined for RX targets:
   symbol ``__RX_ALLOW_STRING_INSNS__``, otherwise it defines the
   symbol ``__RX_DISALLOW_STRING_INSNS__``.
 
-Note: The generic GCC command-line option :option:`-ffixed-``reg```
+*Note:* The generic GCC command-line option :option:`-ffixed-``reg```
 has special significance to the RX port when used with the
 ``interrupt`` function attribute.  This attribute indicates a
 function intended to process fast interrupts.  GCC ensures
@@ -8291,7 +8291,7 @@ These -m options are supported on the SPARC:
   sparclite-*-* do provide software floating-point support.
 
   :option:`-msoft-float` changes the calling convention in the output file;
-  therefore, it is only useful if you compile all of a program with
+  therefore, it is only useful if you compile *all* of a program with
   this option.  In particular, you need to compile libgcc.a, the
   library that comes with GCC, with :option:`-msoft-float` in order for
   this to work.
@@ -9025,7 +9025,7 @@ Visium Options
   Generate code containing library calls for floating-point.
 
   :option:`-msoft-float` changes the calling convention in the output file;
-  therefore, it is only useful if you compile all of a program with
+  therefore, it is only useful if you compile *all* of a program with
   this option.  In particular, you need to compile libgcc.a, the
   library that comes with GCC, with :option:`-msoft-float` in order for
   this to work.
@@ -9609,7 +9609,7 @@ These -m options are defined for the x86 family of computers.
   default on Solaris 8 and 9 and VxWorks to match the ABI of the Sun
   Studio compilers until version 12.  Later compiler versions (starting
   with Studio 12 Update 1) follow the ABI used by other x86 targets, which
-  is the default on Solaris 10 and later.  Only use this option if
+  is the default on Solaris 10 and later.  *Only* use this option if
   you need to remain compatible with existing code produced by those
   previous compiler versions or older versions of GCC.
 
@@ -10242,7 +10242,7 @@ These options are supported for Xtensa targets:
   instructions for the multiply and add/subtract operations.  This may be
   desirable in some cases where strict IEEE 754-compliant results are
   required: the fused multiply add/subtract instructions do not round the
-  intermediate result, thereby producing results with more bits of
+  intermediate result, thereby producing results with *more* bits of
   precision than specified by the IEEE standard.  Disabling fused multiply
   add/subtract instructions also ensures that the program output is not
   sensitive to the compiler's ability to combine multiply and add/subtract

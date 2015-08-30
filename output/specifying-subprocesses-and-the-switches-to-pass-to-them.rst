@@ -188,7 +188,7 @@ together or combine them with constant text in a single argument.
   Substitutes the last file name generated with %u``suffix``, generating a
   new one if there is no such last file name.  In the absence of any
   %u``suffix``, this is just like %g``suffix``, except they don't share
-  the same suffix space, so %g.s ... %U.s ... %g.s ... %U.s
+  the same suffix *space*, so %g.s ... %U.s ... %g.s ... %U.s
   involves the generation of two distinct file names, one
   for each %g.s and another for each %U.s.  Previously, %U was
   simply substituted with a file name chosen for the previous %u,
@@ -467,7 +467,7 @@ together or combine them with constant text in a single argument.
   Substitutes ``X``, if the :option:`-S` switch is given to GCC.
 
 %{!``S``:``X``}
-  Substitutes ``X``, if the :option:`-S` switch is not given to GCC.
+  Substitutes ``X``, if the :option:`-S` switch is *not* given to GCC.
 
 %{``S``*:``X``}
   Substitutes ``X`` if one or more switches whose names start with
@@ -495,7 +495,7 @@ together or combine them with constant text in a single argument.
   Substitutes ``X``, if processing a file with suffix ``S``.
 
 %{!.``S``:``X``}
-  Substitutes ``X``, if not processing a file with suffix ``S``.
+  Substitutes ``X``, if *not* processing a file with suffix ``S``.
 
 %{,``S``:``X``}
   Substitutes ``X``, if processing a file for language ``S``.

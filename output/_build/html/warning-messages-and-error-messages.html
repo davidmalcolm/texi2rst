@@ -91,7 +91,7 @@ warnings.  Each kind has a different purpose:</p>
 program.  GCC reports errors with the source file name and line
 number where the problem is apparent.</li>
 <li><em class="dfn">Warnings</em> report other unusual conditions in your code that
-may indicate a problem, although compilation can (and does)
+<em>may</em> indicate a problem, although compilation can (and does)
 proceed.  Warning messages also report the source file name and line
 number, but include the text warning: to distinguish them
 from error messages.</li>
@@ -106,10 +106,10 @@ warnings).</p>
 gratuitously rejects a program whose meaning is clear merely because
 (for instance) it fails to conform to a standard.  In some cases,
 however, the C and C++ standards specify that certain extensions are
-forbidden, and a diagnostic must be issued by a conforming
+forbidden, and a diagnostic <em>must</em> be issued by a conforming
 compiler.  The <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-pedantic"><em class="xref std std-option">-pedantic</em></a> option tells GCC to issue warnings in
 such cases; <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-pedantic-errors"><em class="xref std std-option">-pedantic-errors</em></a> says to make them errors instead.
-This does not mean that all non-ISO constructs get warnings
+This does not mean that <em>all</em> non-ISO constructs get warnings
 or errors.</p>
 <p>See <a class="reference internal" href="options-to-request-or-suppress-warnings.html#warning-options"><em>Options to Request or Suppress Warnings</em></a>, for
 more detail on these and related command-line options.</p>

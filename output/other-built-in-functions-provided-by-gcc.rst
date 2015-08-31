@@ -1004,7 +1004,7 @@ evaluate code depending on the value of a constant expression.  This
 built-in function returns ``exp1`` if ``const_exp``, which is an
 integer constant expression, is nonzero.  Otherwise it returns ``exp2``.
 
-This built-in function is analogous to the ? : operator in C,
+This built-in function is analogous to the :samp:`? :` operator in C,
 except that the expression returned has its type unaltered by promotion
 rules.  Also, the built-in function does not evaluate the expression
 that is not chosen.  For example, if ``const_exp`` evaluates to true,
@@ -1044,7 +1044,7 @@ implementing the ISO C11 macros ``CMPLXF``, ``CMPLX`` and
 ``CMPLXL``.  ``real`` and ``imag`` must have the same type, a
 real binary floating-point type, and the result has the corresponding
 complex type with real and imaginary parts ``real`` and ``imag``.
-Unlike ``real`` + I * ``imag``, this works even when
+Unlike :samp:```real`` + I * ``imag```, this works even when
 infinities, NaNs and negative zeros are involved.
 
 .. index:: __builtin_constant_p
@@ -1356,7 +1356,7 @@ Built-in Functiondouble__builtin_nan(constchar*str)This is an implementation of 
 Since ISO C99 defines this function in terms of ``strtod``, which we
 do not implement, a description of the parsing is in order.  The string
 is parsed as by ``strtol``; that is, the base is recognized by
-leading 0 or 0x prefixes.  The number parsed is placed
+leading :samp:`0` or :samp:`0x` prefixes.  The number parsed is placed
 in the significand such that the least significant bit of the number
 is at the least significant bit of the significand.  The number is
 truncated to fit the significand field provided.  The significand is

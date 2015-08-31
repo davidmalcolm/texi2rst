@@ -86,7 +86,7 @@
 <span id="bound-member-functions"></span><h1>Extracting the Function Pointer from a Bound Pointer to Member Function<a class="headerlink" href="#extracting-the-function-pointer-from-a-bound-pointer-to-member-function" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><span class="target" id="index-1"></span><p id="index-2">In C++, pointer to member functions (PMFs) are implemented using a wide
 pointer of sorts to handle all the possible call mechanisms; the PMF
-needs to store information about how to adjust the this pointer,
+needs to store information about how to adjust the <tt class="samp docutils literal"><span class="pre">this</span></tt> pointer,
 and if the function pointed to is virtual, where to find the vtable, and
 where in the vtable to look for the member function.  If you are using
 PMFs in an inner loop, you should really reconsider that decision.  If
@@ -105,7 +105,7 @@ virtual function calls.</p>
 <span class="n">fptr</span> <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">fptr</span><span class="p">)(</span><span class="n">a</span><span class="p">.</span><span class="o">*</span><span class="n">fp</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>For PMF constants (i.e. expressions of the form &amp;Klasse::Member),
+<p>For PMF constants (i.e. expressions of the form <tt class="samp docutils literal"><span class="pre">&amp;Klasse::Member</span></tt>),
 no object is needed to obtain the address of the function.  They can be
 converted to function pointers directly:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">fptr</span> <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="n">fptr</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">A</span><span class="o">::</span><span class="n">foo</span><span class="p">);</span>

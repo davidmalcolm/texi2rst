@@ -92,7 +92,7 @@ use a forward declaration in the parameter list-another GNU extension.
 
 .. index:: parameter forward declaration
 
-The int len before the semicolon is a :dfn:`parameter forward
+The :samp:`int len` before the semicolon is a :dfn:`parameter forward
 declaration`, and it serves the purpose of making the name ``len``
 known when the declaration of ``data`` is parsed.
 

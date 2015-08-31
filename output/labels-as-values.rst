@@ -12,7 +12,7 @@ Labels as Values
 .. index:: address of a label
 
 You can get the address of a label defined in the current function
-(or a containing function) with the unary operator &&.  The
+(or a containing function) with the unary operator :samp:`&&`.  The
 value has type ``void *``.  This value is a constant and can be used
 wherever a constant of that type is valid.  For example:
 

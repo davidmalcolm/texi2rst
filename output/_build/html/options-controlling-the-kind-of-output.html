@@ -109,7 +109,7 @@ library to make an Objective-C program work.</dd>
 <dd>Objective-C source code that should not be preprocessed.</dd>
 <dt><tt class="docutils literal"><span class="pre">file</span></tt>.mm <tt class="docutils literal"><span class="pre">file</span></tt>.M</dt>
 <dd>Objective-C++ source code.  Note that you must link with the libobjc
-library to make an Objective-C++ program work.  Note that .M refers
+library to make an Objective-C++ program work.  Note that <tt class="samp docutils literal"><span class="pre">.M</span></tt> refers
 to a literal capital M.</dd>
 <dt><tt class="docutils literal"><span class="pre">file</span></tt>.mii</dt>
 <dd>Objective-C++ source code that should not be preprocessed.</dd>
@@ -118,9 +118,9 @@ to a literal capital M.</dd>
 precompiled header (default), or C, C++ header file to be turned into an
 Ada spec (via the <a class="reference internal" href="#cmdoption-fdump-ada-spec"><em class="xref std std-option">-fdump-ada-spec</em></a> switch).</dd>
 <dt><tt class="docutils literal"><span class="pre">file</span></tt>.cc <tt class="docutils literal"><span class="pre">file</span></tt>.cp <tt class="docutils literal"><span class="pre">file</span></tt>.cxx <tt class="docutils literal"><span class="pre">file</span></tt>.cpp <tt class="docutils literal"><span class="pre">file</span></tt>.CPP <tt class="docutils literal"><span class="pre">file</span></tt>.c++ <tt class="docutils literal"><span class="pre">file</span></tt>.C</dt>
-<dd>C++ source code that must be preprocessed.  Note that in .cxx,
-the last two letters must both be literally x.  Likewise,
-.C refers to a literal capital C.</dd>
+<dd>C++ source code that must be preprocessed.  Note that in <tt class="samp docutils literal"><span class="pre">.cxx</span></tt>,
+the last two letters must both be literally <tt class="samp docutils literal"><span class="pre">x</span></tt>.  Likewise,
+<tt class="samp docutils literal"><span class="pre">.C</span></tt> refers to a literal capital C.</dd>
 <dt><tt class="docutils literal"><span class="pre">file</span></tt>.mm <tt class="docutils literal"><span class="pre">file</span></tt>.M</dt>
 <dd>Objective-C++ source code that must be preprocessed.</dd>
 <dt><tt class="docutils literal"><span class="pre">file</span></tt>.mii</dt>
@@ -202,7 +202,7 @@ compiler error is encountered.</p>
 <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-x"><em class="xref std std-option">-x</em></a> (or filename suffixes) to tell <strong class="command">gcc</strong> where to start, and
 one of the options <a class="reference internal" href="options-for-linking.html#cmdoption-c"><em class="xref std std-option">-c</em></a>, <a class="reference internal" href="#cmdoption-S"><em class="xref std std-option">-S</em></a>, or <a class="reference internal" href="#cmdoption-E"><em class="xref std std-option">-E</em></a> to say where
 <strong class="command">gcc</strong> is to stop.  Note that some combinations (for example,
--x cpp-output -E) instruct <strong class="command">gcc</strong> to do nothing at all.</p>
+<tt class="samp docutils literal"><span class="pre">-x</span> <span class="pre">cpp-output</span> <span class="pre">-E</span></tt>) instruct <strong class="command">gcc</strong> to do nothing at all.</p>
 <dl class="option">
 <dt id="cmdoption-c">
 <tt class="descname">-c</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-c" title="Permalink to this definition">¶</a></dt>
@@ -210,7 +210,7 @@ one of the options <a class="reference internal" href="options-for-linking.html#
 stage simply is not done.  The ultimate output is in the form of an
 object file for each source file.</p>
 <p>By default, the object file name for a source file is made by replacing
-the suffix .c, .i, .s, etc., with .o.</p>
+the suffix <tt class="samp docutils literal"><span class="pre">.c</span></tt>, <tt class="samp docutils literal"><span class="pre">.i</span></tt>, <tt class="samp docutils literal"><span class="pre">.s</span></tt>, etc., with <tt class="samp docutils literal"><span class="pre">.o</span></tt>.</p>
 <p>Unrecognized input files, not requiring compilation or assembly, are
 ignored.</p>
 </dd></dl>
@@ -222,7 +222,7 @@ ignored.</p>
 is in the form of an assembler code file for each non-assembler input
 file specified.</p>
 <p>By default, the assembler file name for a source file is made by
-replacing the suffix .c, .i, etc., with .s.</p>
+replacing the suffix <tt class="samp docutils literal"><span class="pre">.c</span></tt>, <tt class="samp docutils literal"><span class="pre">.i</span></tt>, etc., with <tt class="samp docutils literal"><span class="pre">.s</span></tt>.</p>
 <p>Input files that don&#8217;t require compilation are ignored.</p>
 </dd></dl>
 
@@ -300,44 +300,44 @@ information may also be printed.</p>
 options understood by the compiler that fit into all specified classes
 and qualifiers.  These are the supported classes:</p>
 <dl class="docutils">
-<dt>optimizers</dt>
+<dt><tt class="samp docutils literal"><span class="pre">optimizers</span></tt></dt>
 <dd>Display all of the optimization options supported by the
 compiler.</dd>
-<dt>warnings</dt>
+<dt><tt class="samp docutils literal"><span class="pre">warnings</span></tt></dt>
 <dd>Display all of the options controlling warning messages
 produced by the compiler.</dd>
-<dt>target</dt>
+<dt><tt class="samp docutils literal"><span class="pre">target</span></tt></dt>
 <dd>Display target-specific options.  Unlike the
 <a class="reference internal" href="#cmdoption--target-help"><em class="xref std std-option">--target-help</em></a> option however, target-specific options of the
 linker and assembler are not displayed.  This is because those
 tools do not currently support the extended <em class="xref std std-option">--help=</em> syntax.</dd>
-<dt>params</dt>
+<dt><tt class="samp docutils literal"><span class="pre">params</span></tt></dt>
 <dd>Display the values recognized by the <a class="reference internal" href="options-that-control-optimization.html#cmdoption--param"><em class="xref std std-option">--param</em></a>
 option.</dd>
 <dt><tt class="docutils literal"><span class="pre">language</span></tt></dt>
 <dd>Display the options supported for <tt class="docutils literal"><span class="pre">language</span></tt>, where
 <tt class="docutils literal"><span class="pre">language</span></tt> is the name of one of the languages supported in this
 version of GCC.</dd>
-<dt>common</dt>
+<dt><tt class="samp docutils literal"><span class="pre">common</span></tt></dt>
 <dd><p class="first">Display the options that are common to all languages.</p>
 <p class="last">These are the supported qualifiers:</p>
 </dd>
-<dt>undocumented</dt>
+<dt><tt class="samp docutils literal"><span class="pre">undocumented</span></tt></dt>
 <dd>Display only those options that are undocumented.</dd>
-<dt>joined</dt>
+<dt><tt class="samp docutils literal"><span class="pre">joined</span></tt></dt>
 <dd>Display options taking an argument that appears after an equal
 sign in the same continuous piece of text, such as:
-&#8211;help=target.</dd>
-<dt>separate</dt>
+<tt class="samp docutils literal"><span class="pre">--help=target</span></tt>.</dd>
+<dt><tt class="samp docutils literal"><span class="pre">separate</span></tt></dt>
 <dd><p class="first">Display options taking an argument that appears as a separate word
-following the original option, such as: -o output-file.</p>
+following the original option, such as: <tt class="samp docutils literal"><span class="pre">-o</span> <span class="pre">output-file</span></tt>.</p>
 <p class="last">Thus for example to display all the undocumented target-specific</p>
 </dd>
 </dl>
 <p>switches supported by the compiler, use:</p>
 <p><em class="xref std std-option">--help=target,undocumented</em>
 The sense of a qualifier can be inverted by prefixing it with the
-^ character, so for example to display all binary warning
+<tt class="samp docutils literal"><span class="pre">^</span></tt> character, so for example to display all binary warning
 options (i.e., ones that are either on or off and that do not take an
 argument) that have a description, use:</p>
 <p><em class="xref std std-option">--help=warnings,^joined,^undocumented</em>
@@ -382,8 +382,8 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
 <dl class="option">
 <dt id="cmdoption-no-canonical-prefixes">
 <tt class="descname">-no-canonical-prefixes</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-no-canonical-prefixes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not expand any symbolic links, resolve references to /../
-or /./, or make the path absolute when generating a relative
+<dd><p>Do not expand any symbolic links, resolve references to <tt class="samp docutils literal"><span class="pre">/../</span></tt>
+or <tt class="samp docutils literal"><span class="pre">/./</span></tt>, or make the path absolute when generating a relative
 prefix.</p>
 </dd></dl>
 
@@ -403,8 +403,8 @@ list.</p>
 </pre></div>
 </div>
 <p>This invokes all subprograms of <strong class="command">gcc</strong> under
-gdb &#8211;args, thus the invocation of <strong class="command">cc1</strong> is
-gdb &#8211;args cc1 ....</p>
+<tt class="samp docutils literal"><span class="pre">gdb</span> <span class="pre">--args</span></tt>, thus the invocation of <strong class="command">cc1</strong> is
+<tt class="samp docutils literal"><span class="pre">gdb</span> <span class="pre">--args</span> <span class="pre">cc1</span> <span class="pre">...</span></tt>.</p>
 </dd></dl>
 
 <dl class="option">

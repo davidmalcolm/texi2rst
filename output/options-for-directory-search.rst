@@ -59,7 +59,7 @@ libraries and for parts of the compiler:
   The compiler driver program runs one or more of the subprograms
   :command:`cpp`, :command:`cc1`, :command:`as` and :command:`ld`.  It tries
   ``prefix`` as a prefix for each program it tries to run, both with and
-  without ``machine``/``version``/ (see :ref:`target-options`).
+  without :samp:```machine``/``version``/` (see :ref:`target-options`).
 
   For each subprogram to be run, the compiler driver first tries the
   :option:`-B` prefix, if any.  If that name is not found, or if :option:`-B`
@@ -78,7 +78,7 @@ libraries and for parts of the compiler:
   options into :option:`-L` options for the linker.  They also apply to
   include files in the preprocessor, because the compiler translates these
   options into :option:`-isystem` options for the preprocessor.  In this case,
-  the compiler appends include to the prefix.
+  the compiler appends :samp:`include` to the prefix.
 
   The runtime support file libgcc.a can also be searched for using
   the :option:`-B` prefix, if needed.  If it is not found there, the two

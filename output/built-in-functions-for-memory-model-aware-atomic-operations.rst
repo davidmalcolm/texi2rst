@@ -5,22 +5,22 @@ Built-in Functions for Memory Model Aware Atomic Operations
 
 The following built-in functions approximately match the requirements
 for C++11 concurrency and memory models.  They are all
-identified by being prefixed with __atomic and most are
+identified by being prefixed with :samp:`__atomic` and most are
 overloaded so that they work with multiple types.
 
-These functions are intended to replace the legacy __sync
+These functions are intended to replace the legacy :samp:`__sync`
 builtins.  The main difference is that the memory model to be used is a
 parameter to the functions.  New code should always use the
-__atomic builtins rather than the __sync builtins.
+:samp:`__atomic` builtins rather than the :samp:`__sync` builtins.
 
-Note that the __atomic builtins assume that programs will
+Note that the :samp:`__atomic` builtins assume that programs will
 conform to the C++11 model for concurrency.  In particular, they assume
 that programs are free of data races.  See the C++11 standard for
 detailed definitions.
 
-The __atomic builtins can be used with any integral scalar or
+The :samp:`__atomic` builtins can be used with any integral scalar or
 pointer type that is 1, 2, 4, or 8 bytes in length.  16-byte integral
-types are also allowed if __int128 (see :ref:`__int128`) is
+types are also allowed if :samp:`__int128` (see :ref:`__int128`) is
 supported by the architecture.
 
 The four non-arithmetic functions (load, store, exchange, and 
@@ -29,7 +29,7 @@ version works on any data type.  If the data type size maps to one
 of the integral sizes that may have lock free support, the generic
 version uses the lock free built-in function.  Otherwise an
 external call is left to be resolved at run time.  This external call is
-the same format with the addition of a size_t parameter inserted
+the same format with the addition of a :samp:`size_t` parameter inserted
 as the first parameter indicating the size of the object being pointed to.
 All objects must be the same size.
 
@@ -70,7 +70,7 @@ __ATOMIC_SEQ_CST
 
   Note that the scope of a C++11 memory model depends on whether or not
 the function being called is a *fence* (such as
-__atomic_thread_fence).  In a fence, all memory accesses are
+:samp:`__atomic_thread_fence`).  In a fence, all memory accesses are
 subject to the restrictions of the memory model.  When the function is
 an operation on a location, the restrictions apply only to those
 memory accesses that could affect or that could depend on the
@@ -78,7 +78,7 @@ location.
 
 Target architectures are encouraged to provide their own patterns for
 each of these built-in functions.  If no target is provided, the original
-non-memory model set of __sync atomic built-in functions are
+non-memory model set of :samp:`__sync` atomic built-in functions are
 used, along with any required synchronization fences surrounding it in
 order to achieve the proper behavior.  Execution in this case is subject
 to the same restrictions as those built-in functions.

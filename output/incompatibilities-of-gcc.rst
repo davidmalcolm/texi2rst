@@ -153,7 +153,7 @@ There are several noteworthy incompatibilities between GNU C and K&R
   .. index:: whitespace
 
 * PCC allows whitespace in the middle of compound assignment operators
-  such as +=.  GCC, following the ISO standard, does not
+  such as :samp:`+=`.  GCC, following the ISO standard, does not
   allow this.
 
   .. index:: apostrophes
@@ -173,14 +173,14 @@ There are several noteworthy incompatibilities between GNU C and K&R
     #endif
 
   The best solution to such a problem is to put the text into an actual
-  C comment delimited by /*...*/.
+  C comment delimited by :samp:`/*...*/`.
 
-* Many user programs contain the declaration long time ();.  In the
+* Many user programs contain the declaration :samp:`long time ();`.  In the
   past, the system header files on many systems did not actually declare
   ``time``, so it did not matter what type your program declared it to
   return.  But in systems with ISO C headers, ``time`` is declared to
   return ``time_t``, and if that is not the same as ``long``, then
-  long time (); is erroneous.
+  :samp:`long time ();` is erroneous.
 
   The solution is to change your program to use appropriate system headers
   (``<time.h>`` on systems with ISO C headers) and not to declare
@@ -231,7 +231,7 @@ There are several noteworthy incompatibilities between GNU C and K&R
 
   .. index:: preprocessing numbers
 
-* GCC complains about program fragments such as 0x74ae-0x4000
+* GCC complains about program fragments such as :samp:`0x74ae-0x4000`
   which appear to be two hexadecimal constants separated by the minus
   operator.  Actually, this string is a single :dfn:`preprocessing token`.
   Each such token must correspond to one token in C.  Since this does not,
@@ -241,9 +241,9 @@ There are several noteworthy incompatibilities between GNU C and K&R
 
   A :dfn:`preprocessing token` is a :dfn:`preprocessing number` if it
   begins with a digit and is followed by letters, underscores, digits,
-  periods and e+, e-, E+, E-, p+,
-  p-, P+, or P- character sequences.  (In strict C90
-  mode, the sequences p+, p-, P+ and P- cannot
+  periods and :samp:`e+`, :samp:`e-`, :samp:`E+`, :samp:`E-`, :samp:`p+`,
+  :samp:`p-`, :samp:`P+`, or :samp:`P-` character sequences.  (In strict C90
+  mode, the sequences :samp:`p+`, :samp:`p-`, :samp:`P+` and :samp:`P-` cannot
   appear in preprocessing numbers.)
 
   To make the above program fragment valid, place whitespace in front of

@@ -99,8 +99,8 @@ execute the input source code, that is a compiler bug.</p>
 <p>However, you must double-check to make sure, because you may have a
 program whose behavior is undefined, which happened by chance to give
 the desired results with another C or C++ compiler.</p>
-<p>For example, in many nonoptimizing compilers, you can write x;
-at the end of a function instead of return x;, with the same
+<p>For example, in many nonoptimizing compilers, you can write <tt class="samp docutils literal"><span class="pre">x;</span></tt>
+at the end of a function instead of <tt class="samp docutils literal"><span class="pre">return</span> <span class="pre">x;</span></tt>, with the same
 results.  But the value of the function is undefined if <tt class="docutils literal"><span class="pre">return</span></tt>
 is omitted; it is not a bug when GCC produces different results.</p>
 <p>Problems often result from expressions with two increment operators,

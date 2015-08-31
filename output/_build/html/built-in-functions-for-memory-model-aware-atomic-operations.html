@@ -88,19 +88,19 @@
 <h1>Built-in Functions for Memory Model Aware Atomic Operations<a class="headerlink" href="#built-in-functions-for-memory-model-aware-atomic-operations" title="Permalink to this headline">¶</a></h1>
 <p>The following built-in functions approximately match the requirements
 for C++11 concurrency and memory models.  They are all
-identified by being prefixed with __atomic and most are
+identified by being prefixed with <tt class="samp docutils literal"><span class="pre">__atomic</span></tt> and most are
 overloaded so that they work with multiple types.</p>
-<p>These functions are intended to replace the legacy __sync
+<p>These functions are intended to replace the legacy <tt class="samp docutils literal"><span class="pre">__sync</span></tt>
 builtins.  The main difference is that the memory model to be used is a
 parameter to the functions.  New code should always use the
-__atomic builtins rather than the __sync builtins.</p>
-<p>Note that the __atomic builtins assume that programs will
+<tt class="samp docutils literal"><span class="pre">__atomic</span></tt> builtins rather than the <tt class="samp docutils literal"><span class="pre">__sync</span></tt> builtins.</p>
+<p>Note that the <tt class="samp docutils literal"><span class="pre">__atomic</span></tt> builtins assume that programs will
 conform to the C++11 model for concurrency.  In particular, they assume
 that programs are free of data races.  See the C++11 standard for
 detailed definitions.</p>
-<p>The __atomic builtins can be used with any integral scalar or
+<p>The <tt class="samp docutils literal"><span class="pre">__atomic</span></tt> builtins can be used with any integral scalar or
 pointer type that is 1, 2, 4, or 8 bytes in length.  16-byte integral
-types are also allowed if __int128 (see <em class="xref std std-ref">__int128</em>) is
+types are also allowed if <tt class="samp docutils literal"><span class="pre">__int128</span></tt> (see <em class="xref std std-ref">__int128</em>) is
 supported by the architecture.</p>
 <p>The four non-arithmetic functions (load, store, exchange, and
 compare_exchange) all have a generic version as well.  This generic
@@ -108,7 +108,7 @@ version works on any data type.  If the data type size maps to one
 of the integral sizes that may have lock free support, the generic
 version uses the lock free built-in function.  Otherwise an
 external call is left to be resolved at run time.  This external call is
-the same format with the addition of a size_t parameter inserted
+the same format with the addition of a <tt class="samp docutils literal"><span class="pre">size_t</span></tt> parameter inserted
 as the first parameter indicating the size of the object being pointed to.
 All objects must be the same size.</p>
 <p>There are 6 different memory models that can be specified.  These map
@@ -143,14 +143,14 @@ release stores in all threads.</p>
 </dd>
 </dl>
 <p>the function being called is a <em>fence</em> (such as
-__atomic_thread_fence).  In a fence, all memory accesses are
+<tt class="samp docutils literal"><span class="pre">__atomic_thread_fence</span></tt>).  In a fence, all memory accesses are
 subject to the restrictions of the memory model.  When the function is
 an operation on a location, the restrictions apply only to those
 memory accesses that could affect or that could depend on the
 location.</p>
 <p>Target architectures are encouraged to provide their own patterns for
 each of these built-in functions.  If no target is provided, the original
-non-memory model set of __sync atomic built-in functions are
+non-memory model set of <tt class="samp docutils literal"><span class="pre">__sync</span></tt> atomic built-in functions are
 used, along with any required synchronization fences surrounding it in
 order to achieve the proper behavior.  Execution in this case is subject
 to the same restrictions as those built-in functions.</p>

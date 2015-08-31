@@ -139,7 +139,7 @@ with the list being a single string constant.</li>
 </ul>
 <p>An <em class="dfn">attribute specifier list</em> is a sequence of one or more attribute
 specifiers, not separated by any other tokens.</p>
-<p>You may optionally specify attribute names with __
+<p>You may optionally specify attribute names with <tt class="samp docutils literal"><span class="pre">__</span></tt>
 preceding and following the name.
 This allows you to use them in header files without
 being concerned about a possible macro of the same name.  For example,
@@ -267,7 +267,7 @@ non-returning function returning <tt class="docutils literal"><span class="pre">
 </div>
 <p>specifies the type &#8216;pointer to 8-byte-aligned pointer to <tt class="docutils literal"><span class="pre">char</span></tt>&#8216;.
 Note again that this does not work with most attributes; for example,
-the usage of aligned and noreturn attributes given above
+the usage of <tt class="samp docutils literal"><span class="pre">aligned</span></tt> and <tt class="samp docutils literal"><span class="pre">noreturn</span></tt> attributes given above
 is not yet supported.</p>
 <p>For compatibility with existing code written for compiler versions that
 did not implement attributes on nested declarators, some laxity is

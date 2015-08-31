@@ -89,14 +89,14 @@ supports them in C90 mode and in C++.  GCC also supports complex integer data
 types which are not part of ISO C99.  You can declare complex types
 using the keyword <tt class="docutils literal"><span class="pre">_Complex</span></tt>.  As an extension, the older GNU
 keyword <tt class="docutils literal"><span class="pre">__complex__</span></tt> is also supported.</p>
-<p>For example, _Complex double x; declares <tt class="docutils literal"><span class="pre">x</span></tt> as a
+<p>For example, <tt class="samp docutils literal"><span class="pre">_Complex</span> <span class="pre">double</span> <span class="pre">x;</span></tt> declares <tt class="docutils literal"><span class="pre">x</span></tt> as a
 variable whose real part and imaginary part are both of type
-<tt class="docutils literal"><span class="pre">double</span></tt>.  _Complex short int y; declares <tt class="docutils literal"><span class="pre">y</span></tt> to
+<tt class="docutils literal"><span class="pre">double</span></tt>.  <tt class="samp docutils literal"><span class="pre">_Complex</span> <span class="pre">short</span> <span class="pre">int</span> <span class="pre">y;</span></tt> declares <tt class="docutils literal"><span class="pre">y</span></tt> to
 have real and imaginary parts of type <tt class="docutils literal"><span class="pre">short</span> <span class="pre">int</span></tt>; this is not
 likely to be useful, but it shows that the set of complex types is
 complete.</p>
-<p>To write a constant with a complex data type, use the suffix i or
-j (either one; they are equivalent).  For example, <tt class="docutils literal"><span class="pre">2.5fi</span></tt>
+<p>To write a constant with a complex data type, use the suffix <tt class="samp docutils literal"><span class="pre">i</span></tt> or
+<tt class="samp docutils literal"><span class="pre">j</span></tt> (either one; they are equivalent).  For example, <tt class="docutils literal"><span class="pre">2.5fi</span></tt>
 has type <tt class="docutils literal"><span class="pre">_Complex</span> <span class="pre">float</span></tt> and <tt class="docutils literal"><span class="pre">3i</span></tt> has type
 <tt class="docutils literal"><span class="pre">_Complex</span> <span class="pre">int</span></tt>.  Such a constant always has a pure imaginary
 value, but you can form any complex value you like by adding one to a
@@ -111,7 +111,7 @@ floating type, you should use the ISO C99 functions <tt class="docutils literal"
 <tt class="docutils literal"><span class="pre">creal</span></tt>, <tt class="docutils literal"><span class="pre">creall</span></tt>, <tt class="docutils literal"><span class="pre">cimagf</span></tt>, <tt class="docutils literal"><span class="pre">cimag</span></tt> and
 <tt class="docutils literal"><span class="pre">cimagl</span></tt>, declared in <tt class="docutils literal"><span class="pre">&lt;complex.h&gt;</span></tt> and also provided as
 built-in functions by GCC.</p>
-<p id="index-5">The operator ~ performs complex conjugation when used on a value
+<p id="index-5">The operator <tt class="samp docutils literal"><span class="pre">~</span></tt> performs complex conjugation when used on a value
 with a complex type.  This is a GNU extension; for values of
 floating type, you should use the ISO C99 functions <tt class="docutils literal"><span class="pre">conjf</span></tt>,
 <tt class="docutils literal"><span class="pre">conj</span></tt> and <tt class="docutils literal"><span class="pre">conjl</span></tt>, declared in <tt class="docutils literal"><span class="pre">&lt;complex.h&gt;</span></tt> and also

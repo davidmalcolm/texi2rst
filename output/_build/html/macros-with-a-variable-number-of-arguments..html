@@ -91,7 +91,7 @@ example:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define debug(format, ...) fprintf (stderr, format, __VA_ARGS__)</span>
 </pre></div>
 </div>
-<p>Here ... is a <em class="dfn">variable argument</em>.  In the invocation of
+<p>Here <tt class="samp docutils literal"><span class="pre">...</span></tt> is a <em class="dfn">variable argument</em>.  In the invocation of
 such a macro, it represents the zero or more tokens until the closing
 parenthesis that ends the invocation, including any commas.  This set of
 tokens replaces the identifier <tt class="docutils literal"><span class="pre">__VA_ARGS__</span></tt> in the macro body
@@ -118,11 +118,11 @@ way.  In the above examples, the compiler would complain, though since
 the expansion of the macro still has the extra comma after the format
 string.</p>
 <p>To help solve this problem, CPP behaves specially for variable arguments
-used with the token paste operator, ##.  If instead you write</p>
+used with the token paste operator, <tt class="samp docutils literal"><span class="pre">##</span></tt>.  If instead you write</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="cp">#define debug(format, ...) fprintf (stderr, format, ## __VA_ARGS__)</span>
 </pre></div>
 </div>
-<p>and if the variable arguments are omitted or empty, the ##
+<p>and if the variable arguments are omitted or empty, the <tt class="samp docutils literal"><span class="pre">##</span></tt>
 operator causes the preprocessor to remove the comma before it.  If you
 do provide some variable arguments in your macro invocation, GNU CPP
 does not complain about the paste operation and instead places the

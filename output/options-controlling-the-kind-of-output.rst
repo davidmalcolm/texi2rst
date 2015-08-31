@@ -34,7 +34,7 @@ compilation is done:
 
 ``file``.mm ``file``.M
   Objective-C++ source code.  Note that you must link with the libobjc
-  library to make an Objective-C++ program work.  Note that .M refers
+  library to make an Objective-C++ program work.  Note that :samp:`.M` refers
   to a literal capital M.
 
 ``file``.mii
@@ -46,9 +46,9 @@ compilation is done:
   Ada spec (via the :option:`-fdump-ada-spec` switch).
 
 ``file``.cc ``file``.cp ``file``.cxx ``file``.cpp ``file``.CPP ``file``.c++ ``file``.C
-  C++ source code that must be preprocessed.  Note that in .cxx,
-  the last two letters must both be literally x.  Likewise,
-  .C refers to a literal capital C.
+  C++ source code that must be preprocessed.  Note that in :samp:`.cxx`,
+  the last two letters must both be literally :samp:`x`.  Likewise,
+  :samp:`.C` refers to a literal capital C.
 
 ``file``.mm ``file``.M
   Objective-C++ source code that must be preprocessed.
@@ -150,7 +150,7 @@ If you only want some of the stages of compilation, you can use
 :option:`-x` (or filename suffixes) to tell :command:`gcc` where to start, and
 one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
 :command:`gcc` is to stop.  Note that some combinations (for example,
--x cpp-output -E) instruct :command:`gcc` to do nothing at all.
+:samp:`-x cpp-output -E`) instruct :command:`gcc` to do nothing at all.
 
 .. option:: -c
 
@@ -159,7 +159,7 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   object file for each source file.
 
   By default, the object file name for a source file is made by replacing
-  the suffix .c, .i, .s, etc., with .o.
+  the suffix :samp:`.c`, :samp:`.i`, :samp:`.s`, etc., with :samp:`.o`.
 
   Unrecognized input files, not requiring compilation or assembly, are
   ignored.
@@ -171,7 +171,7 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   file specified.
 
   By default, the assembler file name for a source file is made by
-  replacing the suffix .c, .i, etc., with .s.
+  replacing the suffix :samp:`.c`, :samp:`.i`, etc., with :samp:`.s`.
 
   Input files that don't require compilation are ignored.
 
@@ -238,21 +238,21 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   options understood by the compiler that fit into all specified classes
   and qualifiers.  These are the supported classes:
 
-  optimizers
+  :samp:`optimizers`
     Display all of the optimization options supported by the
     compiler.
 
-  warnings
+  :samp:`warnings`
     Display all of the options controlling warning messages
     produced by the compiler.
 
-  target
+  :samp:`target`
     Display target-specific options.  Unlike the
     :option:`--target-help` option however, target-specific options of the
     linker and assembler are not displayed.  This is because those
     tools do not currently support the extended :option:`--help=` syntax.
 
-  params
+  :samp:`params`
     Display the values recognized by the :option:`--param`
     option.
 
@@ -261,29 +261,29 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
     ``language`` is the name of one of the languages supported in this
     version of GCC.
 
-  common
+  :samp:`common`
     Display the options that are common to all languages.
 
     These are the supported qualifiers:
 
-  undocumented
+  :samp:`undocumented`
     Display only those options that are undocumented.
 
-  joined
+  :samp:`joined`
     Display options taking an argument that appears after an equal
     sign in the same continuous piece of text, such as:
-    --help=target.
+    :samp:`--help=target`.
 
-  separate
+  :samp:`separate`
     Display options taking an argument that appears as a separate word
-    following the original option, such as: -o output-file.
+    following the original option, such as: :samp:`-o output-file`.
 
     Thus for example to display all the undocumented target-specific
   switches supported by the compiler, use:
 
   :option:`--help=target,undocumented`
   The sense of a qualifier can be inverted by prefixing it with the
-  ^ character, so for example to display all binary warning
+  :samp:`^` character, so for example to display all binary warning
   options (i.e., ones that are either on or off and that do not take an
   argument) that have a description, use:
 
@@ -335,8 +335,8 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
 
 .. option:: -no-canonical-prefixes
 
-  Do not expand any symbolic links, resolve references to /../
-  or /./, or make the path absolute when generating a relative
+  Do not expand any symbolic links, resolve references to :samp:`/../`
+  or :samp:`/./`, or make the path absolute when generating a relative
   prefix.
 
 .. option:: --version, -version
@@ -354,8 +354,8 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
     gcc -c t.c -wrapper gdb,--args
 
   This invokes all subprograms of :command:`gcc` under
-  gdb --args, thus the invocation of :command:`cc1` is
-  gdb --args cc1 ....
+  :samp:`gdb --args`, thus the invocation of :command:`cc1` is
+  :samp:`gdb --args cc1 ...`.
 
 .. option:: -fplugin=name.so
 

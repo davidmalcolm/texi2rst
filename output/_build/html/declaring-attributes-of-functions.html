@@ -167,8 +167,8 @@ alias for another symbol, which must be specified.  For instance,</p>
 <span class="kt">void</span> <span class="nf">f</span> <span class="p">()</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">weak</span><span class="p">,</span> <span class="n">alias</span> <span class="p">(</span><span class="s">&quot;__f&quot;</span><span class="p">)));</span>
 </pre></div>
 </div>
-<p>defines f to be a weak alias for __f.  In C++, the
-mangled name for the target must be used.  It is an error if __f
+<p>defines <tt class="samp docutils literal"><span class="pre">f</span></tt> to be a weak alias for <tt class="samp docutils literal"><span class="pre">__f</span></tt>.  In C++, the
+mangled name for the target must be used.  It is an error if <tt class="samp docutils literal"><span class="pre">__f</span></tt>
 is not defined in the same translation unit.</p>
 <p>This attribute requires assembler and object file support,
 and may not be available on all targets.</p>
@@ -400,9 +400,9 @@ MinGW targets, <tt class="docutils literal"><span class="pre">ms_printf</span></
 <tt class="docutils literal"><span class="pre">ms_strftime</span></tt> are also present.
 <tt class="docutils literal"><span class="pre">archetype</span></tt> values such as <tt class="docutils literal"><span class="pre">printf</span></tt> refer to the formats accepted
 by the system&#8217;s C runtime library,
-while values prefixed with <a href="#id31"><span class="problematic" id="id32">gnu_</span></a> always refer
+while values prefixed with <tt class="samp docutils literal"><span class="pre">gnu_</span></tt> always refer
 to the formats accepted by the GNU C Library.  On Microsoft Windows
-targets, values prefixed with <a href="#id33"><span class="problematic" id="id34">ms_</span></a> refer to the formats accepted by the
+targets, values prefixed with <tt class="samp docutils literal"><span class="pre">ms_</span></tt> refer to the formats accepted by the
 msvcrt.dll library.
 The parameter <tt class="docutils literal"><span class="pre">string-index</span></tt>
 specifies which argument is the format string argument (starting
@@ -758,10 +758,10 @@ command line.  Arguments can either be numbers or strings.  Numbers
 are assumed to be an optimization level.  Strings that begin with
 <tt class="docutils literal"><span class="pre">O</span></tt> are assumed to be an optimization option, while other options
 are assumed to be used with a <tt class="docutils literal"><span class="pre">-f</span></tt> prefix.  You can also use the
-#pragma GCC optimize pragma to set the optimization options
+<tt class="samp docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">optimize</span></tt> pragma to set the optimization options
 that affect more than one function.
 See <a class="reference internal" href="pragmas-accepted-by-gcc.html#function-specific-option-pragmas"><em>Function Specific Option Pragmas</em></a>, for details about the
-#pragma GCC optimize pragma.</p>
+<tt class="samp docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">optimize</span></tt> pragma.</p>
 <p>This can be used for instance to have frequently-executed functions
 compiled with more aggressive optimization options that produce faster
 and larger code, while other functions can be compiled with less
@@ -858,10 +858,10 @@ to specify that a function is to
 be compiled with different target options than specified on the
 command line.  This can be used for instance to have functions
 compiled with a different ISA (instruction set architecture) than the
-default.  You can also use the #pragma GCC target pragma to set
+default.  You can also use the <tt class="samp docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">target</span></tt> pragma to set
 more than one function to be compiled with specific target options.
 See <a class="reference internal" href="pragmas-accepted-by-gcc.html#function-specific-option-pragmas"><em>Function Specific Option Pragmas</em></a>, for details about the
-#pragma GCC target pragma.</p>
+<tt class="samp docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">target</span></tt> pragma.</p>
 <p>For instance, on an x86, you could declare one function with the
 <tt class="docutils literal"><span class="pre">target(&quot;sse4.1,arch=core2&quot;)</span></tt> attribute and another with
 <tt class="docutils literal"><span class="pre">target(&quot;sse4a,arch=amdfam10&quot;)</span></tt>.  This is equivalent to
@@ -878,7 +878,7 @@ family are used).</p>
 </div>
 <p>You can either use multiple
 strings separated by commas to specify multiple options,
-or separate the options with a comma (,) within a single string.</p>
+or separate the options with a comma (<tt class="samp docutils literal"><span class="pre">,</span></tt>) within a single string.</p>
 <p>The options supported are specific to each target; refer to x86
 Function Attributes, PowerPC Function Attributes, and
 Nios II Function Attributes, for details.</p>
@@ -946,7 +946,7 @@ overridden by another module.</p>
 <p class="last">All visibilities are supported on many, but not all, ELF targets</p>
 </dd>
 </dl>
-<p>(supported when the assembler supports the .visibility
+<p>(supported when the assembler supports the <tt class="samp docutils literal"><span class="pre">.visibility</span></tt>
 pseudo-op).  Default visibility is supported everywhere.  Hidden
 visibility is supported on Darwin targets.</p>
 <p>The visibility attribute should be applied only to declarations that
@@ -973,7 +973,7 @@ an inline method as hidden without marking the whole class as hidden.</p>
 </div>
 <p>This attribute applies only to the particular namespace body, not to
 other definitions of the same namespace; it is equivalent to using
-#pragma GCC visibility before and after the namespace
+<tt class="samp docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">visibility</span></tt> before and after the namespace
 definition (see <a class="reference internal" href="pragmas-accepted-by-gcc.html#visibility-pragmas"><em>Visibility Pragmas</em></a>).</p>
 <p>In C++, if a template argument has limited visibility, this
 restriction is implicitly propagated to the template instantiation.
@@ -1134,7 +1134,7 @@ command-line switch and <tt class="docutils literal"><span class="pre">#pragma</
 <tt class="docutils literal"><span class="pre">long_call</span></tt> attribute indicates that the function might be far
 away from the call site and require a different (more expensive)
 calling sequence.   The <tt class="docutils literal"><span class="pre">short_call</span></tt> attribute always places
-the offset to the function from the call site into the BL
+the offset to the function from the call site into the <tt class="samp docutils literal"><span class="pre">BL</span></tt>
 instruction directly.</p>
 </div></blockquote>
 <p>naked</p>
@@ -1900,9 +1900,9 @@ allows specification of target-specific compilation options.</p>
 <p>When compiling for Nios II, the following options are allowed:</p>
 <p>custom-<tt class="docutils literal"><span class="pre">insn``=``N</span></tt> no-custom-<tt class="docutils literal"><span class="pre">insn</span></tt></p>
 <blockquote>
-<div><span class="target" id="index-171"></span><p id="index-172">Each custom-<tt class="docutils literal"><span class="pre">insn``=``N</span></tt> attribute locally enables use of a
+<div><span class="target" id="index-171"></span><p id="index-172">Each <tt class="samp docutils literal"><span class="pre">custom-``insn``=``N``</span></tt> attribute locally enables use of a
 custom instruction with encoding <tt class="docutils literal"><span class="pre">N</span></tt> when generating code that uses
-<tt class="docutils literal"><span class="pre">insn</span></tt>.  Similarly, no-custom-<tt class="docutils literal"><span class="pre">insn</span></tt> locally inhibits use of
+<tt class="docutils literal"><span class="pre">insn</span></tt>.  Similarly, <tt class="samp docutils literal"><span class="pre">no-custom-``insn``</span></tt> locally inhibits use of
 the custom instruction <tt class="docutils literal"><span class="pre">insn</span></tt>.
 These target attributes correspond to the
 <em class="xref std std-option">-mcustom-``insn``=``N``</em> and <em class="xref std std-option">-mno-custom-``insn``</em>
@@ -1952,7 +1952,7 @@ the PowerPC V2.05 architecture.</p>
 </div></blockquote>
 <p>dlmzb no-dlmzb</p>
 <blockquote>
-<div><p id="index-180">Generate code that uses (does not use) the string-search dlmzb
+<div><p id="index-180">Generate code that uses (does not use) the string-search <tt class="samp docutils literal"><span class="pre">dlmzb</span></tt>
 instruction on the IBM 405, 440, 464 and 476 processors.  This instruction is
 generated by default when targeting those processors.</p>
 </div></blockquote>

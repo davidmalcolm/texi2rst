@@ -272,8 +272,8 @@ DWARF extensions from later standard versions is allowed.</p>
 <dd><p>Produce compressed debug sections in DWARF format, if that is supported.
 If <tt class="docutils literal"><span class="pre">type</span></tt> is not given, the default type depends on the capabilities
 of the assembler and linker used.  <tt class="docutils literal"><span class="pre">type</span></tt> may be one of
-none (don&#8217;t compress debug sections), zlib (use zlib
-compression in ELF gABI format), or zlib-gnu (use zlib
+<tt class="samp docutils literal"><span class="pre">none</span></tt> (don&#8217;t compress debug sections), <tt class="samp docutils literal"><span class="pre">zlib</span></tt> (use zlib
+compression in ELF gABI format), or <tt class="samp docutils literal"><span class="pre">zlib-gnu</span></tt> (use zlib
 compression in traditional GNU format).  If the linker doesn&#8217;t support
 writing compressed debug sections, the option is rejected.  Otherwise,
 if the assembler does not support them, <a class="reference internal" href="#cmdoption-gz"><em class="xref std std-option">-gz</em></a> is silently ignored
@@ -782,8 +782,8 @@ of the final representation and the second compilation, preventing even
 <span class="target" id="index-11"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a> to say <em class="xref std std-option">-fcompare-debug-not-overridden</em>,
 which GCC rejects as an invalid option in any actual compilation
 (rather than preprocessing, assembly or linking).  To get just a
-warning, setting <span class="target" id="index-12"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a> to -w%n-fcompare-debug
-not overridden will do.</p>
+warning, setting <span class="target" id="index-12"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_COMPARE_DEBUG"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COMPARE_DEBUG</span></tt></a> to <tt class="samp docutils literal"><span class="pre">-w%n-fcompare-debug</span>
+<span class="pre">not</span> <span class="pre">overridden</span></tt> will do.</p>
 </dd></dl>
 
 <dl class="option">
@@ -847,16 +847,16 @@ between different object files within the same program.</p>
 <a class="reference internal" href="#cmdoption-femit-struct-debug-reduced"><em class="xref std std-option">-femit-struct-debug-reduced</em></a> and <a class="reference internal" href="#cmdoption-femit-struct-debug-baseonly"><em class="xref std std-option">-femit-struct-debug-baseonly</em></a>,
 which serves for most needs.</p>
 <p>A specification has the syntax</p>
-<p>[dir:<a href="#id1"><span class="problematic" id="id2">|</span></a>ind:][ord:<a href="#id3"><span class="problematic" id="id4">|</span></a>gen:](any|sys|base|none)</p>
+<p>[<tt class="samp docutils literal"><span class="pre">dir:`|:samp:`ind:</span></tt>][<tt class="samp docutils literal"><span class="pre">ord:`|:samp:`gen:</span></tt>](<tt class="samp docutils literal"><span class="pre">any`|:samp:`sys`|:samp:`base`|:samp:`none</span></tt>)</p>
 <p>The optional first word limits the specification to
-structs that are used directly (dir:) or used indirectly (ind:).
+structs that are used directly (<tt class="samp docutils literal"><span class="pre">dir:</span></tt>) or used indirectly (<tt class="samp docutils literal"><span class="pre">ind:</span></tt>).
 A struct type is used directly when it is the type of a variable, member.
 Indirect uses arise through pointers to structs.
 That is, when use of an incomplete struct is valid, the use is indirect.
 An example is
-struct one direct; struct two * indirect;.</p>
+<tt class="samp docutils literal"><span class="pre">struct</span> <span class="pre">one</span> <span class="pre">direct;</span> <span class="pre">struct</span> <span class="pre">two</span> <span class="pre">*</span> <span class="pre">indirect;</span></tt>.</p>
 <p>The optional second word limits the specification to
-ordinary structs (ord:) or generic structs (gen:).
+ordinary structs (<tt class="samp docutils literal"><span class="pre">ord:</span></tt>) or generic structs (<tt class="samp docutils literal"><span class="pre">gen:</span></tt>).
 Generic structs are a bit complicated to explain.
 For C++, these are non-explicit specializations of template classes,
 or non-template classes within the above.
@@ -864,14 +864,14 @@ Other programming languages have generics,
 but <a class="reference internal" href="#cmdoption-femit-struct-debug-detailed"><em class="xref std std-option">-femit-struct-debug-detailed</em></a> does not yet implement them.</p>
 <p>The third word specifies the source files for those
 structs for which the compiler should emit debug information.
-The values none and any have the normal meaning.
-The value base means that
+The values <tt class="samp docutils literal"><span class="pre">none</span></tt> and <tt class="samp docutils literal"><span class="pre">any</span></tt> have the normal meaning.
+The value <tt class="samp docutils literal"><span class="pre">base</span></tt> means that
 the base of name of the file in which the type declaration appears
 must match the base of the name of the main compilation file.
 In practice, this means that when compiling foo.c, debug information
 is generated for types declared in that file and foo.h,
 but not other header files.
-The value sys means those types satisfying base
+The value <tt class="samp docutils literal"><span class="pre">sys</span></tt> means those types satisfying <tt class="samp docutils literal"><span class="pre">base</span></tt>
 or declared in system or compiler headers.</p>
 <p>You may need to experiment to determine the best settings for your application.</p>
 <p>The default is <em class="xref std std-option">-femit-struct-debug-detailed=all</em>.</p>
@@ -1562,7 +1562,7 @@ in a sequence.</p>
 <p>Dump a representation of the tree structure for the entire translation
 unit to a file.  The file name is made by appending .tu to the
 source file name, and the file is created in the same directory as the
-output file.  If the -<tt class="docutils literal"><span class="pre">options</span></tt> form is used, <tt class="docutils literal"><span class="pre">options</span></tt>
+output file.  If the <tt class="samp docutils literal"><span class="pre">-``options``</span></tt> form is used, <tt class="docutils literal"><span class="pre">options</span></tt>
 controls the details of the dump as described for the
 <em class="xref std std-option">-fdump-tree</em> options.</p>
 </dd></dl>
@@ -1577,7 +1577,7 @@ controls the details of the dump as described for the
 <p>Dump a representation of each class&#8217;s hierarchy and virtual function
 table layout to a file.  The file name is made by appending
 .class to the source file name, and the file is created in the
-same directory as the output file.  If the -<tt class="docutils literal"><span class="pre">options</span></tt> form
+same directory as the output file.  If the <tt class="samp docutils literal"><span class="pre">-``options``</span></tt> form
 is used, <tt class="docutils literal"><span class="pre">options</span></tt> controls the details of the dump as described
 for the <em class="xref std std-option">-fdump-tree</em> options.</p>
 </dd></dl>
@@ -1613,10 +1613,10 @@ the current command-line options.</p>
 <tt class="descname">-fdump-statistics-option</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-fdump-statistics</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fdump-statistics-option" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable and control dumping of pass statistics in a separate file.  The
 file name is generated by appending a suffix ending in
-.statistics to the source file name, and the file is created in
-the same directory as the output file.  If the -<tt class="docutils literal"><span class="pre">option</span></tt>
-form is used, -stats causes counters to be summed over the
-whole compilation unit while -details dumps every event as
+<tt class="samp docutils literal"><span class="pre">.statistics</span></tt> to the source file name, and the file is created in
+the same directory as the output file.  If the <tt class="samp docutils literal"><span class="pre">-``option``</span></tt>
+form is used, <tt class="samp docutils literal"><span class="pre">-stats</span></tt> causes counters to be summed over the
+whole compilation unit while <tt class="samp docutils literal"><span class="pre">-details</span></tt> dumps every event as
 the passes generate them.  The default with no option is to sum
 counters for each function compiled.</p>
 </dd></dl>
@@ -1629,8 +1629,8 @@ language tree to a file.  The file name is generated by appending a
 switch-specific suffix to the source file name, and the file is
 created in the same directory as the output file. In case of
 =``filename`` option, the dump is output on the given file
-instead of the auto named dump files.  If the -<tt class="docutils literal"><span class="pre">options</span></tt>
-form is used, <tt class="docutils literal"><span class="pre">options</span></tt> is a list of - separated options
+instead of the auto named dump files.  If the <tt class="samp docutils literal"><span class="pre">-``options``</span></tt>
+form is used, <tt class="docutils literal"><span class="pre">options</span></tt> is a list of <tt class="samp docutils literal"><span class="pre">-</span></tt> separated options
 which control the details of the dump.  Not all options are applicable
 to all dumps; those that are not meaningful are ignored.  The
 following options are available</p>
@@ -1903,8 +1903,8 @@ is made by appending .vrp to the source file name.</p>
 <dt id="cmdoption-fopt-info">
 <tt class="descname">-fopt-info</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fopt-info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Controls optimization dumps from various optimization passes. If the
--<tt class="docutils literal"><span class="pre">options</span></tt> form is used, <tt class="docutils literal"><span class="pre">options</span></tt> is a list of
-- separated option keywords to select the dump details and
+<tt class="samp docutils literal"><span class="pre">-``options``</span></tt> form is used, <tt class="docutils literal"><span class="pre">options</span></tt> is a list of
+<tt class="samp docutils literal"><span class="pre">-</span></tt> separated option keywords to select the dump details and
 optimizations.</p>
 <p>The <tt class="docutils literal"><span class="pre">options</span></tt> can be divided into two groups: options describing the
 verbosity of the dump, and options describing which optimizations
@@ -1927,7 +1927,7 @@ control which information to include in the output.</dd>
 transformations, more detailed messages about decisions etc.</dd>
 <dt>all</dt>
 <dd><p class="first">Print detailed optimization information. This includes
-optimized, missed, and note.</p>
+<tt class="samp docutils literal"><span class="pre">optimized</span></tt>, <tt class="samp docutils literal"><span class="pre">missed</span></tt>, and <tt class="samp docutils literal"><span class="pre">note</span></tt>.</p>
 <p class="last">One or more of the following option keywords can be used to describe a</p>
 </dd>
 </dl>
@@ -1947,7 +1947,7 @@ the optimization groups listed above.</p>
 <p class="last">If <tt class="docutils literal"><span class="pre">options</span></tt> is</p>
 </dd>
 </dl>
-<p>omitted, it defaults to optimized-optall, which means to dump all
+<p>omitted, it defaults to <tt class="samp docutils literal"><span class="pre">optimized-optall</span></tt>, which means to dump all
 info about successful optimizations from all the passes.</p>
 <p>If the <tt class="docutils literal"><span class="pre">filename</span></tt> is provided, then the dumps from all the
 applicable optimizations are concatenated into the <tt class="docutils literal"><span class="pre">filename</span></tt>.
@@ -2149,8 +2149,8 @@ to exist in <span class="target" id="index-17"></span><a class="reference intern
 <tt class="descname">-print-multi-lib</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-print-multi-lib" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the mapping from multilib directory names to compiler switches
 that enable them.  The directory name is separated from the switches by
-;, and each switch starts with an &#64; instead of the
--, without spaces between multiple switches.  This is supposed to
+<tt class="samp docutils literal"><span class="pre">;</span></tt>, and each switch starts with an <tt class="samp docutils literal"><span class="pre">&#64;</span></tt> instead of the
+<tt class="samp docutils literal"><span class="pre">-</span></tt>, without spaces between multiple switches.  This is supposed to
 ease shell processing.</p>
 </dd></dl>
 
@@ -2196,11 +2196,11 @@ but you do want to link with libgcc.a.  You can do:</p>
 <dd><p>Print the name of the configured installation directory and a list of
 program and library directories <strong class="command">gcc</strong> searches-and don&#8217;t do anything else.</p>
 <p>This is useful when <strong class="command">gcc</strong> prints the error message
-installation problem, cannot exec cpp0: No such file or directory.
+<tt class="samp docutils literal"><span class="pre">installation</span> <span class="pre">problem,</span> <span class="pre">cannot</span> <span class="pre">exec</span> <span class="pre">cpp0:</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></tt>.
 To resolve this you either need to put cpp0 and the other compiler
 components where <strong class="command">gcc</strong> expects to find them, or you can set the environment
 variable <span class="target" id="index-18"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_EXEC_PREFIX"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_EXEC_PREFIX</span></tt></a> to the directory where you installed them.
-Don&#8217;t forget the trailing /.
+Don&#8217;t forget the trailing <tt class="samp docutils literal"><span class="pre">/</span></tt>.
 See <a class="reference internal" href="environment-variables-affecting-gcc.html#environment-variables"><em>Environment Variables Affecting GCC</em></a>.</p>
 </dd></dl>
 
@@ -2226,7 +2226,7 @@ a suffix-and don&#8217;t do anything else.</p>
 <dt id="cmdoption-dumpmachine">
 <tt class="descname">-dumpmachine</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dumpmachine" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the compiler&#8217;s target machine (for example,
-i686-pc-linux-gnu)-and don&#8217;t do anything else.</p>
+<tt class="samp docutils literal"><span class="pre">i686-pc-linux-gnu</span></tt>)-and don&#8217;t do anything else.</p>
 </dd></dl>
 
 <dl class="option">

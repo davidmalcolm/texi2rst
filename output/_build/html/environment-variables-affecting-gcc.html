@@ -101,7 +101,7 @@ localization information which allows GCC to work with different
 national conventions.  GCC inspects the locale categories
 <span class="target" id="index-2"></span><tt class="xref std std-envvar docutils literal"><span class="pre">LC_CTYPE</span></tt> and <span class="target" id="index-3"></span><tt class="xref std std-envvar docutils literal"><span class="pre">LC_MESSAGES</span></tt> if it has been configured to do
 so.  These locale categories can be set to any value supported by your
-installation.  A typical value is en_GB.UTF-8 for English in the United
+installation.  A typical value is <tt class="samp docutils literal"><span class="pre">en_GB.UTF-8</span></tt> for English in the United
 Kingdom encoded in UTF-8.</p>
 <p>The <span class="target" id="index-4"></span><tt class="xref std std-envvar docutils literal"><span class="pre">LC_CTYPE</span></tt> environment variable specifies character
 classification.  GCC uses it to determine the character boundaries in
@@ -155,7 +155,7 @@ of <tt class="docutils literal"><span class="pre">prefix</span></tt> when you ra
 used for linking.</p>
 <p>In addition, the prefix is used in an unusual way in finding the
 directories to search for header files.  For each of the standard
-directories whose name normally begins with /usr/local/lib/gcc
+directories whose name normally begins with <tt class="samp docutils literal"><span class="pre">/usr/local/lib/gcc</span></tt>
 (more precisely, with the value of <span class="target" id="index-17"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_INCLUDE_DIR</span></tt>), GCC tries
 replacing that beginning with the specified prefix to produce an
 alternate directory name.  Thus, with <em class="xref std std-option">-Bfoo/</em>, GCC searches
@@ -231,7 +231,7 @@ paths given with <a class="reference internal" href="options-controlling-the-pre
 search its current working directory.  Empty elements can appear at the
 beginning or end of a path.  For instance, if the value of
 <span class="target" id="index-30"></span><tt class="xref std std-envvar docutils literal"><span class="pre">CPATH</span></tt> is <tt class="docutils literal"><span class="pre">:/special/include</span></tt>, that has the same
-effect as -I. -I/special/include.</p>
+effect as <tt class="samp docutils literal"><span class="pre">-I.</span> <span class="pre">-I/special/include</span></tt>.</p>
 </dd></dl>
 
 <dl class="envvar">
@@ -244,7 +244,7 @@ output.</p>
 <p>The value of <span class="target" id="index-32"></span><tt class="xref std std-envvar docutils literal"><span class="pre">DEPENDENCIES_OUTPUT</span></tt> can be just a file name, in
 which case the Make rules are written to that file, guessing the target
 name from the source file name.  Or the value can have the form
-<tt class="docutils literal"><span class="pre">file````target</span></tt>, in which case the rules are written to
+:samp:<tt class="docutils literal"><span class="pre">`file````target`</span></tt>, in which case the rules are written to
 file <tt class="docutils literal"><span class="pre">file</span></tt> using <tt class="docutils literal"><span class="pre">target</span></tt> as the target name.</p>
 <p>In other words, this environment variable is equivalent to combining
 the options <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-MM"><em class="xref std std-option">-MM</em></a> and <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-MF"><em class="xref std std-option">-MF</em></a>

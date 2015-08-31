@@ -30,7 +30,7 @@ extensions, accepted by GCC in C90 mode and in C++.
   As in Algol and Pascal, lexical scoping of functions. <nested-functions>
   Dispatching a call to another function. <constructing-calls>
   ``typeof``: referring to the type of an expression. <typeof>
-  Omitting the middle operand of a ?: expression. <conditionals>
+  Omitting the middle operand of a :samp:`?:` expression. <conditionals>
   128-bit integers-``__int128``. <__int128>
   Double-word integers-``long long int``. <long-long>
   Data types for complex numbers. <complex>
@@ -64,7 +64,7 @@ extensions, accepted by GCC in C90 mode and in C++.
   Prototype declarations and old-style definitions. <function-prototypes>
   C++ comments are recognized. <c++-comments>
   Dollar sign is allowed in identifiers. <dollar-signs>
-  \e stands for the character ESC. <character-escapes>
+  :samp:`\e` stands for the character ESC. <character-escapes>
   Inquiring about the alignment of a type or variable. <alignment>
   Defining inline functions (as fast as macros). <inline>
   What constitutes an access to a volatile object. <volatiles>
@@ -91,7 +91,7 @@ extensions, accepted by GCC in C90 mode and in C++.
   Pragmas accepted by GCC. <pragmas>
   Unnamed struct/union fields within structs/unions. <unnamed-fields>
   Per-thread variables. <thread-local>
-  Binary constants using the 0b prefix. <binary-constants>
+  Binary constants using the :samp:`0b` prefix. <binary-constants>
 
 .. toctree::
 

@@ -195,26 +195,26 @@ bit closest to the beginning of the structure.</p>
 <p>The non-atomic types are encoded as follows:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="5%" />
-<col width="95%" />
+<col width="4%" />
+<col width="96%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">pointers</th>
-<th class="head">^ followed by the pointed type.</th>
+<th class="head"><tt class="samp docutils literal"><span class="pre">^</span></tt> followed by the pointed type.</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>arrays</td>
-<td>[ followed by the number of elements in the array followed by the type of the elements followed by ]</td>
+<td><tt class="samp docutils literal"><span class="pre">[</span></tt> followed by the number of elements in the array followed by the type of the elements followed by <tt class="samp docutils literal"><span class="pre">]</span></tt></td>
 </tr>
 <tr class="row-odd"><td>structures</td>
-<td>{ followed by the name of the structure (or ? if the structure is unnamed), the = sign, the type of the members and by }</td>
+<td><tt class="samp docutils literal"><span class="pre">{</span></tt> followed by the name of the structure (or <tt class="samp docutils literal"><span class="pre">?</span></tt> if the structure is unnamed), the <tt class="samp docutils literal"><span class="pre">=</span></tt> sign, the type of the members and by <tt class="samp docutils literal"><span class="pre">}</span></tt></td>
 </tr>
 <tr class="row-even"><td>unions</td>
-<td>( followed by the name of the structure (or ? if the union is unnamed), the = sign, the type of the members followed by )</td>
+<td><tt class="samp docutils literal"><span class="pre">(</span></tt> followed by the name of the structure (or <tt class="samp docutils literal"><span class="pre">?</span></tt> if the union is unnamed), the <tt class="samp docutils literal"><span class="pre">=</span></tt> sign, the type of the members followed by <tt class="samp docutils literal"><span class="pre">)</span></tt></td>
 </tr>
 <tr class="row-odd"><td>vectors</td>
-<td>![ followed by the vector_size (the number of bytes composing the vector) followed by a comma, followed by the alignment (in bytes) of the vector, followed by the type of the elements followed by ]</td>
+<td><tt class="samp docutils literal"><span class="pre">![</span></tt> followed by the vector_size (the number of bytes composing the vector) followed by a comma, followed by the alignment (in bytes) of the vector, followed by the type of the elements followed by <tt class="samp docutils literal"><span class="pre">]</span></tt></td>
 </tr>
 </tbody>
 </table>

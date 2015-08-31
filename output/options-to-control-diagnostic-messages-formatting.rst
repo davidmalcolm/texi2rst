@@ -45,12 +45,12 @@ honor these options.
 
   .. index:: GCC_COLORS environment variable
 
-  Use color in diagnostics.  ``WHEN`` is never, always,
-  or auto.  The default depends on how the compiler has been configured,
-  it can be any of the above ``WHEN`` options or also never
+  Use color in diagnostics.  ``WHEN`` is :samp:`never`, :samp:`always`,
+  or :samp:`auto`.  The default depends on how the compiler has been configured,
+  it can be any of the above ``WHEN`` options or also :samp:`never`
   if :envvar:`GCC_COLORS` environment variable isn't present in the environment,
-  and auto otherwise.
-  auto means to use color only when the standard error is a terminal.
+  and :samp:`auto` otherwise.
+  :samp:`auto` means to use color only when the standard error is a terminal.
   The forms :option:`-fdiagnostics-color` and :option:`-fno-diagnostics-color` are
   aliases for :option:`-fdiagnostics-color=always` and
   :option:`-fdiagnostics-color=never`, respectively.
@@ -63,19 +63,19 @@ honor these options.
   character attributes.)  These substring values are integers in decimal
   representation and can be concatenated with semicolons.
   Common values to concatenate include
-  1 for bold,
-  4 for underline,
-  5 for blink,
-  7 for inverse,
-  39 for default foreground color,
-  30 to 37 for foreground colors,
-  90 to 97 for 16-color mode foreground colors,
-  38;5;0 to 38;5;255
+  :samp:`1` for bold,
+  :samp:`4` for underline,
+  :samp:`5` for blink,
+  :samp:`7` for inverse,
+  :samp:`39` for default foreground color,
+  :samp:`30` to :samp:`37` for foreground colors,
+  :samp:`90` to :samp:`97` for 16-color mode foreground colors,
+  :samp:`38;5;0` to :samp:`38;5;255`
   for 88-color and 256-color modes foreground colors,
-  49 for default background color,
-  40 to 47 for background colors,
-  100 to 107 for 16-color mode background colors,
-  and 48;5;0 to 48;5;255
+  :samp:`49` for default background color,
+  :samp:`40` to :samp:`47` for background colors,
+  :samp:`100` to :samp:`107` for 16-color mode background colors,
+  and :samp:`48;5;0` to :samp:`48;5;255`
   for 88-color and 256-color modes background colors.
 
   The default :envvar:`GCC_COLORS` is
@@ -84,9 +84,9 @@ honor these options.
 
     error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01
 
-  where 01;31 is bold red, 01;35 is bold magenta,
-  01;36 is bold cyan, 01;32 is bold green and
-  01 is bold. Setting :envvar:`GCC_COLORS` to the empty
+  where :samp:`01;31` is bold red, :samp:`01;35` is bold magenta,
+  :samp:`01;36` is bold cyan, :samp:`01;32` is bold green and
+  :samp:`01` is bold. Setting :envvar:`GCC_COLORS` to the empty
   string disables colors.
   Supported capabilities are as follows.
 
@@ -118,8 +118,8 @@ honor these options.
 
     .. index:: locus GCC_COLORS capability
 
-    SGR substring for location information, file:line or
-    file:line:column etc.
+    SGR substring for location information, :samp:`file:line` or
+    :samp:`file:line:column` etc.
 
   quote=
 

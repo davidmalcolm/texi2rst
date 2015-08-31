@@ -314,16 +314,16 @@ objects behave unspecified when being assigned.  For example:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The C++ standard specifies that Base::Base is only called once
+<p>The C++ standard specifies that <tt class="samp docutils literal"><span class="pre">Base::Base</span></tt> is only called once
 when constructing or copy-constructing a Derived object.  It is
-unspecified whether Base::operator= is called more than once when
+unspecified whether <tt class="samp docutils literal"><span class="pre">Base::operator=</span></tt> is called more than once when
 the implicit copy-assignment for Derived objects is invoked (as it is
-inside func in the example).</p>
+inside <tt class="samp docutils literal"><span class="pre">func</span></tt> in the example).</p>
 <p>G++ implements the &#8216;intuitive&#8217; algorithm for copy-assignment: assign all
 direct bases, then assign all members.  In that algorithm, the virtual
 base subobject can be encountered more than once.  In the example, copying
-proceeds in the following order: val, name (via
-<tt class="docutils literal"><span class="pre">strdup</span></tt>), bval, and name again.</p>
+proceeds in the following order: <tt class="samp docutils literal"><span class="pre">val</span></tt>, <tt class="samp docutils literal"><span class="pre">name</span></tt> (via
+<tt class="docutils literal"><span class="pre">strdup</span></tt>), <tt class="samp docutils literal"><span class="pre">bval</span></tt>, and <tt class="samp docutils literal"><span class="pre">name</span></tt> again.</p>
 <p>If application code relies on copy-assignment, a user-defined
 copy-assignment operator removes any uncertainties.  With such an
 operator, the application can define whether and how the virtual base

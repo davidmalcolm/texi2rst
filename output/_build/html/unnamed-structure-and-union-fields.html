@@ -99,7 +99,7 @@ without names.  For example:</p>
 </pre></div>
 </div>
 <p>In this example, you are able to access members of the unnamed
-union with code like foo.b.  Note that only unnamed structs and
+union with code like <tt class="samp docutils literal"><span class="pre">foo.b</span></tt>.  Note that only unnamed structs and
 unions are allowed, you may not have, for example, an unnamed
 <tt class="docutils literal"><span class="pre">int</span></tt>.</p>
 <p>You must never create such structures that cause ambiguous field definitions.
@@ -112,14 +112,14 @@ For example, in this structure:</p>
 <span class="p">}</span> <span class="n">foo</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>it is ambiguous which <tt class="docutils literal"><span class="pre">a</span></tt> is being referred to with foo.a.
+<p>it is ambiguous which <tt class="docutils literal"><span class="pre">a</span></tt> is being referred to with <tt class="samp docutils literal"><span class="pre">foo.a</span></tt>.
 The compiler gives errors for such constructs.</p>
 <p id="index-2">Unless <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fms-extensions"><em class="xref std std-option">-fms-extensions</em></a> is used, the unnamed field must be a
-structure or union definition without a tag (for example, struct
-{ int a; };).  If <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fms-extensions"><em class="xref std std-option">-fms-extensions</em></a> is used, the field may
-also be a definition with a tag such as struct foo { int a;
-};, a reference to a previously defined structure or union such as
-struct foo;, or a reference to a <tt class="docutils literal"><span class="pre">typedef</span></tt> name for a
+structure or union definition without a tag (for example, <tt class="samp docutils literal"><span class="pre">struct</span>
+<em> <span class="pre">int</span> <span class="pre">a;</span> </em><span class="pre">;</span></tt>).  If <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fms-extensions"><em class="xref std std-option">-fms-extensions</em></a> is used, the field may
+also be a definition with a tag such as <tt class="samp docutils literal"><span class="pre">struct</span> <span class="pre">foo</span> <em> <span class="pre">int</span> <span class="pre">a;</span>
+</em><span class="pre">;</span></tt>, a reference to a previously defined structure or union such as
+<tt class="samp docutils literal"><span class="pre">struct</span> <span class="pre">foo;</span></tt>, or a reference to a <tt class="docutils literal"><span class="pre">typedef</span></tt> name for a
 previously defined structure or union type.</p>
 <p id="index-3">The option <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fplan9-extensions"><em class="xref std std-option">-fplan9-extensions</em></a> enables
 <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fms-extensions"><em class="xref std std-option">-fms-extensions</em></a> as well as two other extensions.  First, a

@@ -41,8 +41,8 @@ options for compiling C++ programs.
 
 The :command:`gcc` program accepts options and file names as operands.  Many
 options have multi-letter names; therefore multiple single-letter options
-may *not* be grouped: :option:`-dv` is very different from -d
--v.
+may *not* be grouped: :option:`-dv` is very different from :samp:`-d
+-v`.
 
 .. index:: order of options
 
@@ -54,11 +54,11 @@ options of the same kind; for example, if you specify :option:`-L` more
 than once, the directories are searched in the order specified.  Also,
 the placement of the :option:`-l` option is significant.
 
-Many options have long names starting with -f or with
--W-for example,
+Many options have long names starting with :samp:`-f` or with
+:samp:`-W`-for example,
 :option:`-fmove-loop-invariants`, :option:`-Wformat` and so on.  Most of
 these have both positive and negative forms; the negative form of
-:option:`-ffoo` is :option:`-fno-foo`.  This manual documents
+:samp:`-ffoo` is :samp:`-fno-foo`.  This manual documents
 only one of these two forms, whichever one is not the default.
 
 .. man end

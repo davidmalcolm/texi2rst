@@ -89,17 +89,17 @@ decimal notation, such as <tt class="docutils literal"><span class="pre">1.55e1<
 <tt class="docutils literal"><span class="pre">0x1.fp3</span></tt> written in hexadecimal format.  As a GNU extension, GCC
 supports this in C90 mode (except in some cases when strictly
 conforming) and in C++.  In that format the
-0x hex introducer and the p or P exponent field are
+<tt class="samp docutils literal"><span class="pre">0x</span></tt> hex introducer and the <tt class="samp docutils literal"><span class="pre">p</span></tt> or <tt class="samp docutils literal"><span class="pre">P</span></tt> exponent field are
 mandatory.  The exponent is a decimal number that indicates the power of
-2 by which the significant part is multiplied.  Thus 0x1.f is</p>
+2 by which the significant part is multiplied.  Thus <tt class="samp docutils literal"><span class="pre">0x1.f</span></tt> is</p>
 <p>$1 {15over16}$,</p>
 <p>1 15/16,
-p3 multiplies it by 8, and the value of <tt class="docutils literal"><span class="pre">0x1.fp3</span></tt>
+<tt class="samp docutils literal"><span class="pre">p3</span></tt> multiplies it by 8, and the value of <tt class="docutils literal"><span class="pre">0x1.fp3</span></tt>
 is the same as <tt class="docutils literal"><span class="pre">1.55e1</span></tt>.</p>
 <p>Unlike for floating-point numbers in the decimal notation the exponent
 is always required in the hexadecimal notation.  Otherwise the compiler
 would not be able to resolve the ambiguity of, e.g., <tt class="docutils literal"><span class="pre">0x1.f</span></tt>.  This
-could mean <tt class="docutils literal"><span class="pre">1.0f</span></tt> or <tt class="docutils literal"><span class="pre">1.9375</span></tt> since f is also the
+could mean <tt class="docutils literal"><span class="pre">1.0f</span></tt> or <tt class="docutils literal"><span class="pre">1.9375</span></tt> since <tt class="samp docutils literal"><span class="pre">f</span></tt> is also the
 extension for floating-point constants of type <tt class="docutils literal"><span class="pre">float</span></tt>.</p>
 </div>
 

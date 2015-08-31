@@ -5,7 +5,7 @@ Constant String Objects
 
 GNU Objective-C provides constant string objects that are generated
 directly by the compiler.  You declare a constant string object by
-prefixing a C constant string with the character @:
+prefixing a C constant string with the character :samp:`@`:
 
 .. code-block:: objective-c
 

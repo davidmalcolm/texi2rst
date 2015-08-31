@@ -19,7 +19,7 @@ warnings.  Each kind has a different purpose:
 * :dfn:`Warnings` report other unusual conditions in your code that
   *may* indicate a problem, although compilation can (and does)
   proceed.  Warning messages also report the source file name and line
-  number, but include the text warning: to distinguish them
+  number, but include the text :samp:`warning:` to distinguish them
   from error messages.
 
 Warnings may indicate danger points where you should check to make sure

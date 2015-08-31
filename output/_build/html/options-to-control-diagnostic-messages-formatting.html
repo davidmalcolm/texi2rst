@@ -121,12 +121,12 @@ a message which is too long to fit on a single line.</dd>
 <dl class="option">
 <dt id="cmdoption-fdiagnostics-color">
 <tt class="descname">-fdiagnostics-color</tt><tt class="descclassname">[=WHEN]</tt><a class="headerlink" href="#cmdoption-fdiagnostics-color" title="Permalink to this definition">¶</a></dt>
-<dd><span class="target" id="index-3"></span><p id="index-4">Use color in diagnostics.  <tt class="docutils literal"><span class="pre">WHEN</span></tt> is never, always,
-or auto.  The default depends on how the compiler has been configured,
-it can be any of the above <tt class="docutils literal"><span class="pre">WHEN</span></tt> options or also never
+<dd><span class="target" id="index-3"></span><p id="index-4">Use color in diagnostics.  <tt class="docutils literal"><span class="pre">WHEN</span></tt> is <tt class="samp docutils literal"><span class="pre">never</span></tt>, <tt class="samp docutils literal"><span class="pre">always</span></tt>,
+or <tt class="samp docutils literal"><span class="pre">auto</span></tt>.  The default depends on how the compiler has been configured,
+it can be any of the above <tt class="docutils literal"><span class="pre">WHEN</span></tt> options or also <tt class="samp docutils literal"><span class="pre">never</span></tt>
 if <span class="target" id="index-5"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> environment variable isn&#8217;t present in the environment,
-and auto otherwise.
-auto means to use color only when the standard error is a terminal.
+and <tt class="samp docutils literal"><span class="pre">auto</span></tt> otherwise.
+<tt class="samp docutils literal"><span class="pre">auto</span></tt> means to use color only when the standard error is a terminal.
 The forms <a class="reference internal" href="#cmdoption-fdiagnostics-color"><em class="xref std std-option">-fdiagnostics-color</em></a> and <em class="xref std std-option">-fno-diagnostics-color</em> are
 aliases for <em class="xref std std-option">-fdiagnostics-color=always</em> and
 <em class="xref std std-option">-fdiagnostics-color=never</em>, respectively.</p>
@@ -138,27 +138,27 @@ of your text terminal for permitted values and their meanings as
 character attributes.)  These substring values are integers in decimal
 representation and can be concatenated with semicolons.
 Common values to concatenate include
-1 for bold,
-4 for underline,
-5 for blink,
-7 for inverse,
-39 for default foreground color,
-30 to 37 for foreground colors,
-90 to 97 for 16-color mode foreground colors,
-38;5;0 to 38;5;255
+<tt class="samp docutils literal"><span class="pre">1</span></tt> for bold,
+<tt class="samp docutils literal"><span class="pre">4</span></tt> for underline,
+<tt class="samp docutils literal"><span class="pre">5</span></tt> for blink,
+<tt class="samp docutils literal"><span class="pre">7</span></tt> for inverse,
+<tt class="samp docutils literal"><span class="pre">39</span></tt> for default foreground color,
+<tt class="samp docutils literal"><span class="pre">30</span></tt> to <tt class="samp docutils literal"><span class="pre">37</span></tt> for foreground colors,
+<tt class="samp docutils literal"><span class="pre">90</span></tt> to <tt class="samp docutils literal"><span class="pre">97</span></tt> for 16-color mode foreground colors,
+<tt class="samp docutils literal"><span class="pre">38;5;0</span></tt> to <tt class="samp docutils literal"><span class="pre">38;5;255</span></tt>
 for 88-color and 256-color modes foreground colors,
-49 for default background color,
-40 to 47 for background colors,
-100 to 107 for 16-color mode background colors,
-and 48;5;0 to 48;5;255
+<tt class="samp docutils literal"><span class="pre">49</span></tt> for default background color,
+<tt class="samp docutils literal"><span class="pre">40</span></tt> to <tt class="samp docutils literal"><span class="pre">47</span></tt> for background colors,
+<tt class="samp docutils literal"><span class="pre">100</span></tt> to <tt class="samp docutils literal"><span class="pre">107</span></tt> for 16-color mode background colors,
+and <tt class="samp docutils literal"><span class="pre">48;5;0</span></tt> to <tt class="samp docutils literal"><span class="pre">48;5;255</span></tt>
 for 88-color and 256-color modes background colors.</p>
 <p>The default <span class="target" id="index-7"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> is</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">error</span><span class="o">=</span><span class="mo">01</span><span class="p">;</span><span class="mi">31</span><span class="o">:</span><span class="n">warning</span><span class="o">=</span><span class="mo">01</span><span class="p">;</span><span class="mi">35</span><span class="o">:</span><span class="n">note</span><span class="o">=</span><span class="mo">01</span><span class="p">;</span><span class="mi">36</span><span class="o">:</span><span class="n">caret</span><span class="o">=</span><span class="mo">01</span><span class="p">;</span><span class="mi">32</span><span class="o">:</span><span class="n">locus</span><span class="o">=</span><span class="mo">01</span><span class="o">:</span><span class="n">quote</span><span class="o">=</span><span class="mo">01</span>
 </pre></div>
 </div>
-<p>where 01;31 is bold red, 01;35 is bold magenta,
-01;36 is bold cyan, 01;32 is bold green and
-01 is bold. Setting <span class="target" id="index-8"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> to the empty
+<p>where <tt class="samp docutils literal"><span class="pre">01;31</span></tt> is bold red, <tt class="samp docutils literal"><span class="pre">01;35</span></tt> is bold magenta,
+<tt class="samp docutils literal"><span class="pre">01;36</span></tt> is bold cyan, <tt class="samp docutils literal"><span class="pre">01;32</span></tt> is bold green and
+<tt class="samp docutils literal"><span class="pre">01</span></tt> is bold. Setting <span class="target" id="index-8"></span><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_COLORS</span></tt> to the empty
 string disables colors.
 Supported capabilities are as follows.</p>
 <p>error=</p>
@@ -179,8 +179,8 @@ Supported capabilities are as follows.</p>
 </div></blockquote>
 <p>locus=</p>
 <blockquote>
-<div><p id="index-13">SGR substring for location information, <a class="reference external" href="file:line">file:line</a> or
-<a class="reference external" href="file:line:column">file:line:column</a> etc.</p>
+<div><p id="index-13">SGR substring for location information, <tt class="samp docutils literal"><span class="pre">file:line</span></tt> or
+<tt class="samp docutils literal"><span class="pre">file:line:column</span></tt> etc.</p>
 </div></blockquote>
 <p>quote=</p>
 <blockquote>

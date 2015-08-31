@@ -147,9 +147,9 @@ messages.</p>
 </dd></dl>
 
 <p>You can request many specific warnings with options beginning with
--W, for example <a class="reference internal" href="#cmdoption-Wimplicit"><em class="xref std std-option">-Wimplicit</em></a> to request warnings on
+<tt class="samp docutils literal"><span class="pre">-W</span></tt>, for example <a class="reference internal" href="#cmdoption-Wimplicit"><em class="xref std std-option">-Wimplicit</em></a> to request warnings on
 implicit declarations.  Each of these specific warning options also
-has a negative form beginning -Wno- to turn off warnings; for
+has a negative form beginning <tt class="samp docutils literal"><span class="pre">-Wno-</span></tt> to turn off warnings; for
 example, <em class="xref std std-option">-Wno-implicit</em>.  This manual lists only one of the
 two forms, whichever is not the default.  For further
 language-specific options also refer to C++ Dialect Options and
@@ -183,7 +183,7 @@ this option (though a rare few require <a class="reference internal" href="optio
 without this option, certain GNU extensions and traditional C and C++
 features are supported as well.  With this option, they are rejected.</p>
 <p><a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> does not cause warning messages for use of the
-alternate keywords whose names begin and end with __.  Pedantic
+alternate keywords whose names begin and end with <tt class="samp docutils literal"><span class="pre">__</span></tt>.  Pedantic
 warnings are also disabled in the expression that follows
 <tt class="docutils literal"><span class="pre">__extension__</span></tt>.  However, only system header files should use
 these escape routes; application programs should avoid them.
@@ -198,7 +198,7 @@ some instances, but would require considerable additional work and would
 be quite different from <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a>.  We don&#8217;t have plans to
 support such a feature in the near future.</p>
 <p>Where the standard specified with <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> represents a GNU
-extended dialect of C, such as gnu90 or gnu99, there is a
+extended dialect of C, such as <tt class="samp docutils literal"><span class="pre">gnu90</span></tt> or <tt class="samp docutils literal"><span class="pre">gnu99</span></tt>, there is a
 corresponding <em class="dfn">base standard</em>, the version of ISO C on which the GNU
 extended dialect is based.  Warnings from <a class="reference internal" href="#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> are given
 where they are required by the base standard.  (It does not make sense
@@ -315,8 +315,8 @@ This warning is enabled by <a class="reference internal" href="#cmdoption-Wall">
 <dl class="option">
 <dt id="cmdoption-Wcomment">
 <tt class="descname">-Wcomment</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-comment</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wcomment" title="Permalink to this definition">¶</a></dt>
-<dd><p>Warn whenever a comment-start sequence /* appears in a /*
-comment, or whenever a Backslash-Newline appears in a // comment.
+<dd><p>Warn whenever a comment-start sequence <tt class="samp docutils literal"><span class="pre">/*</span></tt> appears in a <tt class="samp docutils literal"><span class="pre">/*</span></tt>
+comment, or whenever a Backslash-Newline appears in a <tt class="samp docutils literal"><span class="pre">//</span></tt> comment.
 This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
 </dd></dl>
 
@@ -424,7 +424,7 @@ contain NUL bytes.</p>
 <tt class="docutils literal"><span class="pre">printf</span></tt> or <tt class="docutils literal"><span class="pre">scanf</span></tt> format function.  The C standard specifies
 that such arguments are ignored.</p>
 <p>Where the unused arguments lie between used arguments that are
-specified with $ operand number specifications, normally
+specified with <tt class="samp docutils literal"><span class="pre">$</span></tt> operand number specifications, normally
 warnings are still given, since the implementation could not know what
 type to pass to <tt class="docutils literal"><span class="pre">va_arg</span></tt> to skip the unused arguments.  However,
 in the case of <tt class="docutils literal"><span class="pre">scanf</span></tt> formats, this option suppresses the
@@ -463,7 +463,7 @@ functions that represent possible security problems.  At present, this
 warns about calls to <tt class="docutils literal"><span class="pre">printf</span></tt> and <tt class="docutils literal"><span class="pre">scanf</span></tt> functions where the
 format string is not a string literal and there are no format arguments,
 as in <tt class="docutils literal"><span class="pre">printf</span> <span class="pre">(foo);</span></tt>.  This may be a security hole if the format
-string came from untrusted input and contains %n.  (This is
+string came from untrusted input and contains <tt class="samp docutils literal"><span class="pre">%n</span></tt>.  (This is
 currently a subset of what <a class="reference internal" href="#cmdoption-Wformat-nonliteral"><em class="xref std std-option">-Wformat-nonliteral</em></a> warns about, but
 in future warnings may be added to <a class="reference internal" href="#cmdoption-Wformat-security"><em class="xref std std-option">-Wformat-security</em></a> that are not
 included in <a class="reference internal" href="#cmdoption-Wformat-nonliteral"><em class="xref std std-option">-Wformat-nonliteral</em></a>.)</p>
@@ -1298,19 +1298,19 @@ In traditional C macro replacement takes place within string literals,
 but in ISO C it does not.</li>
 <li>In traditional C, some preprocessor directives did not exist.
 Traditional preprocessors only considered a line to be a directive
-if the # appeared in column 1 on the line.  Therefore
+if the <tt class="samp docutils literal"><span class="pre">#</span></tt> appeared in column 1 on the line.  Therefore
 <a class="reference internal" href="#cmdoption-Wtraditional"><em class="xref std std-option">-Wtraditional</em></a> warns about directives that traditional C
-understands but ignores because the # does not appear as the
+understands but ignores because the <tt class="samp docutils literal"><span class="pre">#</span></tt> does not appear as the
 first character on the line.  It also suggests you hide directives like
 <tt class="docutils literal"><span class="pre">#pragma</span></tt> not understood by traditional C by indenting them.  Some
 traditional implementations do not recognize <tt class="docutils literal"><span class="pre">#elif</span></tt>, so this option
 suggests avoiding it altogether.</li>
 <li>A function-like macro that appears without arguments.</li>
 <li>The unary plus operator.</li>
-<li>The U integer constant suffix, or the F or L floating-point
-constant suffixes.  (Traditional C does support the L suffix on integer
+<li>The <tt class="samp docutils literal"><span class="pre">U</span></tt> integer constant suffix, or the <tt class="samp docutils literal"><span class="pre">F</span></tt> or <tt class="samp docutils literal"><span class="pre">L</span></tt> floating-point
+constant suffixes.  (Traditional C does support the <tt class="samp docutils literal"><span class="pre">L</span></tt> suffix on integer
 constants.)  Note, these suffixes appear in macros defined in the system
-headers of most modern systems, e.g. the _MIN/_MAX macros in <tt class="docutils literal"><span class="pre">&lt;limits.h&gt;</span></tt>.
+headers of most modern systems, e.g. the <tt class="samp docutils literal"><span class="pre">_MIN</span></tt>/<tt class="samp docutils literal"><span class="pre">_MAX</span></tt> macros in <tt class="docutils literal"><span class="pre">&lt;limits.h&gt;</span></tt>.
 Use of these macros in user code might normally lead to spurious
 warnings, however GCC&#8217;s integrated preprocessor has enough context to
 avoid warning in these cases.</li>
@@ -2013,7 +2013,7 @@ warnings without this one, use <em class="xref std std-option">-Wextra -Wno-miss
 <dl class="option">
 <dt id="cmdoption-Wno-multichar">
 <tt class="descname">-Wno-multichar</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wmultichar</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wno-multichar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do not warn if a multicharacter constant (&#8216;FOOF&#8217;) is used.
+<dd><p>Do not warn if a multicharacter constant (<tt class="samp docutils literal"><span class="pre">'FOOF'</span></tt>) is used.
 Usually they indicate a typo in the user&#8217;s code, as they have
 implementation-defined values, and should not be used in portable code.</p>
 </dd></dl>

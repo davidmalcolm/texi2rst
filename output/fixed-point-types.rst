@@ -139,50 +139,50 @@ Support for fixed-point types includes:
 
 Use a suffix in a fixed-point literal constant:
 
-* hr or HR for ``short _Fract`` and
+* :samp:`hr` or :samp:`HR` for ``short _Fract`` and
   ``_Sat short _Fract``
 
-* r or R for ``_Fract`` and ``_Sat _Fract``
+* :samp:`r` or :samp:`R` for ``_Fract`` and ``_Sat _Fract``
 
-* lr or LR for ``long _Fract`` and
+* :samp:`lr` or :samp:`LR` for ``long _Fract`` and
   ``_Sat long _Fract``
 
-* llr or LLR for ``long long _Fract`` and
+* :samp:`llr` or :samp:`LLR` for ``long long _Fract`` and
   ``_Sat long long _Fract``
 
-* uhr or UHR for ``unsigned short _Fract`` and
+* :samp:`uhr` or :samp:`UHR` for ``unsigned short _Fract`` and
   ``_Sat unsigned short _Fract``
 
-* ur or UR for ``unsigned _Fract`` and
+* :samp:`ur` or :samp:`UR` for ``unsigned _Fract`` and
   ``_Sat unsigned _Fract``
 
-* ulr or ULR for ``unsigned long _Fract`` and
+* :samp:`ulr` or :samp:`ULR` for ``unsigned long _Fract`` and
   ``_Sat unsigned long _Fract``
 
-* ullr or ULLR for ``unsigned long long _Fract``
+* :samp:`ullr` or :samp:`ULLR` for ``unsigned long long _Fract``
   and ``_Sat unsigned long long _Fract``
 
-* hk or HK for ``short _Accum`` and
+* :samp:`hk` or :samp:`HK` for ``short _Accum`` and
   ``_Sat short _Accum``
 
-* k or K for ``_Accum`` and ``_Sat _Accum``
+* :samp:`k` or :samp:`K` for ``_Accum`` and ``_Sat _Accum``
 
-* lk or LK for ``long _Accum`` and
+* :samp:`lk` or :samp:`LK` for ``long _Accum`` and
   ``_Sat long _Accum``
 
-* llk or LLK for ``long long _Accum`` and
+* :samp:`llk` or :samp:`LLK` for ``long long _Accum`` and
   ``_Sat long long _Accum``
 
-* uhk or UHK for ``unsigned short _Accum`` and
+* :samp:`uhk` or :samp:`UHK` for ``unsigned short _Accum`` and
   ``_Sat unsigned short _Accum``
 
-* uk or UK for ``unsigned _Accum`` and
+* :samp:`uk` or :samp:`UK` for ``unsigned _Accum`` and
   ``_Sat unsigned _Accum``
 
-* ulk or ULK for ``unsigned long _Accum`` and
+* :samp:`ulk` or :samp:`ULK` for ``unsigned long _Accum`` and
   ``_Sat unsigned long _Accum``
 
-* ullk or ULLK for ``unsigned long long _Accum``
+* :samp:`ullk` or :samp:`ULLK` for ``unsigned long long _Accum``
   and ``_Sat unsigned long long _Accum``
 
 GCC support of fixed-point types as specified by the draft technical report

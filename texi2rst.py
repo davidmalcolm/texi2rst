@@ -934,6 +934,7 @@ def fixup_inline_markup(tree):
         <dfn>TEXT</dfn>            :dfn:`TEXT`
         <env>TEXT</env>            :envvar:`TEXT`
         <emph>TEXT</emph>          *TEXT*
+        <samp>TEXT</samp>          :samp:`TEXT`
         =========================  ==================
         """
         def previsit_element(self, element):
@@ -949,6 +950,8 @@ def fixup_inline_markup(tree):
                 element.rst_kind = InlineMarkup('envvar')
             elif element.kind == 'emph':
                 element.rst_kind = MatchedInlineMarkup('*')
+            elif element.kind == 'samp':
+                element.rst_kind = InlineMarkup('samp')
 
     v = InlineMarkupFixer()
     v.visit(tree)
@@ -2561,6 +2564,12 @@ class GccContext(Context):
                             if text:
                                 if text.data == 'GNU Objective-C Features':
                                     element.default_language = 'objective-c'
+                # Fixups for issue #1:
+                if element.kind == 'option':
+                    all_text = element.get_all_text()
+                    if all_text in ('-fflag', '-ffoo', '-fno-foo'):
+                        element.kind = 'samp'
+                        element.children = [Text(all_text)]
 
         v = GccVisitor()
         v.visit(tree)

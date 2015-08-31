@@ -393,13 +393,13 @@ macros are defined.
 
   Modifies the disposition of a diagnostic.  Note that not all
   diagnostics are modifiable; at the moment only warnings (normally
-  controlled by -W...) can be controlled, and not all of them.
+  controlled by :samp:`-W...`) can be controlled, and not all of them.
   Use :option:`-fdiagnostics-show-option` to determine which diagnostics
   are controllable and which option controls them.
 
-  ``kind`` is error to treat this diagnostic as an error,
-  warning to treat it like a warning (even if :option:`-Werror` is
-  in effect), or ignored if the diagnostic is to be ignored.
+  ``kind`` is :samp:`error` to treat this diagnostic as an error,
+  :samp:`warning` to treat it like a warning (even if :option:`-Werror` is
+  in effect), or :samp:`ignored` if the diagnostic is to be ignored.
   ``option`` is a double quoted string that matches the command-line
   option.
 
@@ -456,8 +456,8 @@ compilation.
 
     TODO(Remember to fix this)
 
-  prints /tmp/file.c:4: note: #pragma message:
-  TODO - Remember to fix this.
+  prints :samp:`/tmp/file.c:4: note: #pragma message:
+  TODO - Remember to fix this`.
 
   .. _visibility-pragmas:
 
@@ -472,7 +472,7 @@ Visibility Pragmas
   declarations without having to give each a visibility attribute
   (see :ref:`function-attributes`).
 
-  In C++, #pragma GCC visibility affects only namespace-scope
+  In C++, :samp:`#pragma GCC visibility` affects only namespace-scope
   declarations.  Class members and template specializations are not
   affected; if you want to override the visibility for a particular
   member or instantiation, you must use an attribute.
@@ -483,8 +483,8 @@ Push/Pop Macro Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^
 
 For compatibility with Microsoft Windows compilers, GCC supports
-#pragma push_macro(``"macro_name"``)
-and #pragma pop_macro(``"macro_name"``).
+:samp:`#pragma push_macro(``"macro_name"``)`
+and :samp:`#pragma pop_macro(``"macro_name"``)`.
 
 #pragma push_macro(``"macro_name"``)
 
@@ -555,8 +555,8 @@ Function Specific Option Pragmas
 
   These pragmas maintain a stack of the current target and optimization
   options.  It is intended for include files where you temporarily want
-  to switch to using a different #pragma GCC target or
-  #pragma GCC optimize and then to pop back to the previous
+  to switch to using a different :samp:`#pragma GCC target` or
+  :samp:`#pragma GCC optimize` and then to pop back to the previous
   options.
 
 #pragma GCC reset_options

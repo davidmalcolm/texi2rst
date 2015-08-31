@@ -111,7 +111,7 @@ languages, are documented in a separate manual.  See :ref:`Introduction <top>`.
 
   You can compile C or C++ programs. <g++-and-gcc>
   Language standards supported by GCC. <standards>
-  Command options supported by gcc. <invoking-gcc>
+  Command options supported by :samp:`gcc`. <invoking-gcc>
   How GCC implements the ISO C specification. <c-implementation>
   How GCC implements the ISO C++ specification. <c++-implementation>
   GNU extensions to the C language family. <c-extensions>
@@ -920,11 +920,11 @@ notice like this when it starts in an interactive mode:
 .. code-block:: c++
 
   ``program`` Copyright (C) ``year`` ``name of author`` 
-  This program comes with ABSOLUTELY NO WARRANTY; for details type show w.
+  This program comes with ABSOLUTELY NO WARRANTY; for details type :samp:`show w`.
   This is free software, and you are welcome to redistribute it
-  under certain conditions; type show c for details.
+  under certain conditions; type :samp:`show c` for details.
 
-The hypothetical commands show w and show c should show
+The hypothetical commands :samp:`show w` and :samp:`show c` should show
 the appropriate parts of the General Public License.  Of course, your
 program's commands might be different; for a GUI interface, you would
 use an 'about box'.
@@ -1664,7 +1664,7 @@ alphabetical order.
 * Peter Gerwinski for various bug fixes and the Pascal front end.
 
 * Kaveh R. Ghazi for his direction via the steering committee, amazing
-  work to make -W -Wall -W* -Werror useful, and 
+  work to make :samp:`-W -Wall -W* -Werror` useful, and 
   testing GCC on a plethora of platforms.  Kaveh extends his gratitude to
   the CAIP Center at Rutgers University for providing him with computing
   resources to work on Free Software from the late 1980s to 2010.
@@ -2658,8 +2658,8 @@ place.
 Option Index
 ============
 
-GCC's command line options are indexed here without any initial -
-or --.  Where an option has both positive and negative forms
+GCC's command line options are indexed here without any initial :samp:`-`
+or :samp:`--`.  Where an option has both positive and negative forms
 (such as :option:`-f``option``` and :option:`-fno-``option```),
 relevant entries in the manual are indexed under the most appropriate
 form; it may sometimes be useful to look up both forms.

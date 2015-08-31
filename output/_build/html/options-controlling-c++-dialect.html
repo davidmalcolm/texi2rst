@@ -155,7 +155,7 @@ normally unnecessary because the C++ standard specifies that
 return value even without this option.  In all other cases, when
 <tt class="docutils literal"><span class="pre">operator</span> <span class="pre">new</span></tt> has a non-empty exception specification, memory
 exhaustion is signalled by throwing <tt class="docutils literal"><span class="pre">std::bad_alloc</span></tt>.  See also
-new (nothrow).</p>
+<tt class="samp docutils literal"><span class="pre">new</span> <span class="pre">(nothrow)</span></tt>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -523,7 +523,7 @@ pointer is detected at run time, an error is reported and execution of the
 program is immediately halted.</p>
 <p>This option causes run-time data structures to be built at program startup,
 which are used for verifying the vtable pointers.
-The options std and preinit
+The options <tt class="samp docutils literal"><span class="pre">std</span></tt> and <tt class="samp docutils literal"><span class="pre">preinit</span></tt>
 control the timing of when these data structures are built.  In both cases the
 data structures are built before execution reaches <tt class="docutils literal"><span class="pre">main</span></tt>.  Using
 <em class="xref std std-option">-fvtable-verify=std</em> causes the data structures to be built after
@@ -531,8 +531,8 @@ shared libraries have been loaded and initialized.
 <em class="xref std std-option">-fvtable-verify=preinit</em> causes them to be built before shared
 libraries have been loaded and initialized.</p>
 <p>If this option appears multiple times in the command line with different
-values specified, none takes highest priority over both std and
-preinit; preinit takes priority over std.</p>
+values specified, <tt class="samp docutils literal"><span class="pre">none</span></tt> takes highest priority over both <tt class="samp docutils literal"><span class="pre">std</span></tt> and
+<tt class="samp docutils literal"><span class="pre">preinit</span></tt>; <tt class="samp docutils literal"><span class="pre">preinit</span></tt> takes priority over <tt class="samp docutils literal"><span class="pre">std</span></tt>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -746,7 +746,7 @@ For example:</p>
 <p class="last">(C++ and Objective-C++ only)</p>
 </div>
 <p>Warn when a narrowing conversion prohibited by C++11 occurs within
-{ }, e.g.</p>
+<tt class="samp docutils literal"><em> </em></tt>, e.g.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="p">{</span> <span class="mf">2.2</span> <span class="p">};</span> <span class="c1">// error: narrowing from double to int</span>
 </pre></div>
 </div>
@@ -848,7 +848,7 @@ one of the effective C++ recommendations.  However, the check is
 extended to warn about the lack of virtual destructor in accessible
 non-polymorphic bases classes too.</p>
 <p>When selecting this option, be aware that the standard library
-headers do not obey all of these guidelines; use grep -v
+headers do not obey all of these guidelines; use <tt class="samp docutils literal"><span class="pre">grep</span> <span class="pre">-v</span></tt>
 to filter out those warnings.</p>
 </dd></dl>
 
@@ -876,7 +876,7 @@ But this use is not portable across different compilers.</p>
 <p>Disable warnings when non-templatized friend functions are declared
 within a template.  Since the advent of explicit template specification
 support in G++, if the name of the friend is an unqualified-id (i.e.,
-friend foo(int)), the C++ language specification demands that the
+<tt class="samp docutils literal"><span class="pre">friend</span> <span class="pre">foo(int)</span></tt>), the C++ language specification demands that the
 friend declare or define an ordinary, nontemplate function.  (Section
 14.5.3).  Before G++ implemented explicit specification, unqualified-ids
 could be interpreted as a particular specialization of a templatized

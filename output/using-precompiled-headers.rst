@@ -24,7 +24,7 @@ seen in the compilation.  As it searches for the included file
 (see :ref:`Search Path <search-path>`) the
 compiler looks for a precompiled header in each directory just before it
 looks for the include file in that directory.  The name searched for is
-the name specified in the ``#include`` with .gch appended.  If
+the name specified in the ``#include`` with :samp:`.gch` appended.  If
 the precompiled header file can't be used, it is ignored.
 
 For instance, if you have ``#include "all.h"``, and you have

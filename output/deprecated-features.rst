@@ -26,13 +26,13 @@ that are now deprecated:
   parameters, as C++ demands.  This feature has been removed, except where
   it is required for backwards compatibility.   See :ref:`backwards-compatibility`.
 
-  G++ allows a virtual function returning void * to be overridden
+  G++ allows a virtual function returning :samp:`void *` to be overridden
 by one returning a different pointer type.  This extension to the
 covariant return type rules is now deprecated and will be removed from a
 future version.
 
-The G++ minimum and maximum operators (<? and >?) and
-their compound forms (<?=) and >?=) have been deprecated
+The G++ minimum and maximum operators (:samp:`<?` and :samp:`>?`) and
+their compound forms (:samp:`<?=`) and :samp:`>?=`) have been deprecated
 and are now removed from G++.  Code using these operators should be
 modified to use ``std::min`` and ``std::max`` instead.
 
@@ -53,7 +53,7 @@ and other places where they are not permitted by the standard is
 deprecated and will be removed from a future version of G++.
 
 G++ allows floating-point literals to appear in integral constant expressions,
-e.g.  enum E { e = int(2.2 * 3.7) } 
+e.g. :samp:` enum E { e = int(2.2 * 3.7) } `
 This extension is deprecated and will be removed from a future version.
 
 G++ allows static data members of const floating-point type to be declared

@@ -11,7 +11,7 @@ Non-Lvalue Arrays May Have Subscripts
 
 In ISO C99, arrays that are not lvalues still decay to pointers, and
 may be subscripted, although they may not be modified or used after
-the next sequence point and the unary & operator may not be
+the next sequence point and the unary :samp:`&` operator may not be
 applied to them.  As an extension, GNU C allows such arrays to be
 subscripted in C90 mode, though otherwise they do not decay to
 pointers outside C99 mode.  For example,

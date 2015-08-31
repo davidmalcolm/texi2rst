@@ -41,7 +41,7 @@ libraries and debuggers on certain systems.
   Sun CC to copy the argument into a local variable; local variables
   are always properly aligned.  A third solution is to modify the function
   that uses the pointer to dereference it via the following function
-  ``access_double`` instead of directly with *:
+  ``access_double`` instead of directly with :samp:`*`:
 
   .. code-block:: c++
 
@@ -118,7 +118,7 @@ libraries and debuggers on certain systems.
   the application linked with libstdc++.a must include the
   :option:`-Wl,-brtl` flag on the link line.  G++ cannot impose this
   because this option may interfere with the semantics of the user
-  program and users may not always use g++ to link his or her
+  program and users may not always use :samp:`g++` to link his or her
   application.  Applications are not required to use the
   :option:`-Wl,-brtl` flag on the link line-the rest of the
   libstdc++.a library which is not dependent on the symbol
@@ -133,17 +133,17 @@ libraries and debuggers on certain systems.
 * AIX on the RS/6000 provides support (NLS) for environments outside of
   the United States.  Compilers and assemblers use NLS to support
   locale-specific representations of various objects including
-  floating-point numbers (. vs , for separating decimal
+  floating-point numbers (:samp:`.` vs :samp:`,` for separating decimal
   fractions).  There have been problems reported where the library linked
   with GCC does not produce the same floating-point formats that the
   assembler accepts.  If you have this problem, set the :envvar:`LANG`
-  environment variable to C or En_US.
+  environment variable to :samp:`C` or :samp:`En_US`.
 
 * 
   .. index:: fdollars-in-identifiers
 
   Even if you specify :option:`-fdollars-in-identifiers`,
-  you cannot successfully use $ in identifiers on the RS/6000 due
+  you cannot successfully use :samp:`$` in identifiers on the RS/6000 due
   to a restriction in the IBM assembler.  GAS supports these
   identifiers.
 

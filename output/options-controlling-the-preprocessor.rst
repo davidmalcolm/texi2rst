@@ -66,7 +66,7 @@ compilation.
 
 -D ``name``=``definition``
   The contents of ``definition`` are tokenized and processed as if
-  they appeared during translation phase three in a #define
+  they appeared during translation phase three in a :samp:`#define`
   directive.  In particular, the definition will be truncated by
   embedded newline characters.
 
@@ -126,15 +126,15 @@ compilation.
 
 .. option:: -Wcomment, -Wcomments
 
-  Warn whenever a comment-start sequence /* appears in a /*
-  comment, or whenever a backslash-newline appears in a // comment.
+  Warn whenever a comment-start sequence :samp:`/*` appears in a :samp:`/*`
+  comment, or whenever a backslash-newline appears in a :samp:`//` comment.
   (Both forms have the same effect.)
 
 .. option:: -Wtrigraphs
 
   .. _wtrigraphs:
   Most trigraphs in comments cannot affect the meaning of the program.
-  However, a trigraph that would form an escaped newline (??/ at
+  However, a trigraph that would form an escaped newline (:samp:`??/` at
   the end of a line) can, by changing where the comment begins or ends.
   Therefore, only trigraphs that would form escaped newlines produce
   warnings inside a comment.
@@ -142,7 +142,7 @@ compilation.
   This option is implied by :option:`-Wall`.  If :option:`-Wall` is not
   given, this option is still enabled unless trigraphs are enabled.  To
   get trigraph conversion without warnings, but get the other
-  :option:`-Wall` warnings, use -trigraphs -Wall -Wno-trigraphs.
+  :option:`-Wall` warnings, use :samp:`-trigraphs -Wall -Wno-trigraphs`.
 
 .. option:: -Wtraditional
 
@@ -153,7 +153,7 @@ compilation.
 .. option:: -Wundef
 
   Warn whenever an identifier which is not a macro is encountered in an
-  #if directive, outside of defined.  Such identifiers are
+  :samp:`#if` directive, outside of :samp:`defined`.  Such identifiers are
   replaced with zero.
 
 .. option:: -Wunused-macros
@@ -179,7 +179,7 @@ compilation.
 
 .. option:: -Wendif-labels
 
-  Warn whenever an #else or an #endif are followed by text.
+  Warn whenever an :samp:`#else` or an :samp:`#endif` are followed by text.
   This usually happens in code of the form
 
   .. code-block:: c++
@@ -218,7 +218,7 @@ compilation.
 
   Issue all the mandatory diagnostics, and make all mandatory diagnostics
   into errors.  This includes mandatory diagnostics that GCC issues
-  without -pedantic but treats as warnings.
+  without :samp:`-pedantic` but treats as warnings.
 
 .. option:: -M
 
@@ -237,7 +237,7 @@ compilation.
   object file name consists of the name of the source file with any
   suffix replaced with object file suffix and with any leading directory
   parts removed.  If there are many included files then the rule is
-  split into several lines using \-newline.  The rule has no
+  split into several lines using :samp:`\`-newline.  The rule has no
   commands.
 
   This option does not suppress the preprocessor's debug output, such as
@@ -257,7 +257,7 @@ compilation.
   directly or indirectly, from such a header.
 
   This implies that the choice of angle brackets or double quotes in an
-  #include directive does not in itself determine whether that
+  :samp:`#include` directive does not in itself determine whether that
   header will appear in :option:`-MM` dependency output.  This is a
   slight change in semantics from GCC versions 3.0 and earlier.
 
@@ -302,7 +302,7 @@ compilation.
 
   Change the target of the rule emitted by dependency generation.  By
   default CPP takes the name of the main input file, deletes any
-  directory components and any file suffix such as .c, and
+  directory components and any file suffix such as :samp:`.c`, and
   appends the platform's usual object suffix.  The result is the target.
 
   An :option:`-MT` option will set the target to be exactly the string you
@@ -381,7 +381,7 @@ compilation.
   nothing to do with standards conformance or extensions; it merely
   selects which base syntax to expect.  If you give none of these options,
   cpp will deduce the language from the extension of the source file:
-  .c, .cc, .m, or .S.  Some other common
+  :samp:`.c`, :samp:`.cc`, :samp:`.m`, or :samp:`.S`.  Some other common
   extensions for C++ and assembly are also recognized.  If cpp does not
   recognize the extension, it will treat the file as C; this is the most
   generic mode.
@@ -400,7 +400,7 @@ compilation.
   may be one of:
 
   c90 c89 iso9899:1990
-    The ISO C standard from 1990.  c90 is the customary shorthand for
+    The ISO C standard from 1990.  :samp:`c90` is the customary shorthand for
     this version of the standard.
 
     The :option:`-ansi` option is equivalent to :option:`-std=c90`.
@@ -439,7 +439,7 @@ compilation.
   ``#include "``file``"``; they are not searched for
   ``#include <``file``>``.  If additional directories are
   specified with :option:`-I` options after the :option:`-I-`, those
-  directories are searched for all #include directives.
+  directories are searched for all :samp:`#include` directives.
 
   In addition, :option:`-I-` inhibits the use of the directory of the current
   file directory as the first search directory for ``#include
@@ -492,7 +492,7 @@ compilation.
 
   Specify ``prefix`` as the prefix for subsequent :option:`-iwithprefix`
   options.  If the prefix represents a directory, you should include the
-  final /.
+  final :samp:`/`.
 
 .. option:: -iwithprefix dir, -iwithprefix, -iwithprefixbefore
 
@@ -556,7 +556,7 @@ compilation.
 .. option:: -fdollars-in-identifiers
 
   .. _fdollars-in-identifiers:
-  Accept $ in identifiers.
+  Accept :samp:`$` in identifiers.
 
 .. option:: -fextended-identifiers
 
@@ -578,7 +578,7 @@ compilation.
   a tokenizer for the front ends.
 
   :option:`-fpreprocessed` is implicit if the input file has one of the
-  extensions .i, .ii or .mi.  These are the
+  extensions :samp:`.i`, :samp:`.ii` or :samp:`.mi`.  These are the
   extensions that GCC uses for preprocessed files created by
   :option:`-save-temps`.
 
@@ -599,7 +599,7 @@ compilation.
 
   .. code-block:: c++
 
-    {P:/file/path;F:/includer/path;L:``line_num``;C:``col_num``;S:``system_header_p``;M:``map_address``;E:``macro_expansion_p``,loc:``location``}
+    {:samp:`P`:/file/path;:samp:`F`:/includer/path;:samp:`L`:``line_num``;:samp:`C`:``col_num``;:samp:`S`:``system_header_p``;:samp:`M`:``map_address``;:samp:`E`:``macro_expansion_p``,:samp:`loc`:``location``}
 
   When used without :option:`-E`, this option has no effect.
 
@@ -611,15 +611,15 @@ compilation.
   option makes the preprocessor and the compiler consume more
   memory. The ``level`` parameter can be used to choose the level of
   precision of token location tracking thus decreasing the memory
-  consumption if necessary. Value 0 of ``level`` de-activates
+  consumption if necessary. Value :samp:`0` of ``level`` de-activates
   this option just as if no :option:`-ftrack-macro-expansion` was present
-  on the command line. Value 1 tracks tokens locations in a
+  on the command line. Value :samp:`1` tracks tokens locations in a
   degraded mode for the sake of minimal memory overhead. In this mode
   all tokens resulting from the expansion of an argument of a
-  function-like macro have the same location. Value 2 tracks
+  function-like macro have the same location. Value :samp:`2` tracks
   tokens locations completely. This value is the most memory hungry.
   When this option is given no argument, the default parameter value is
-  2.
+  :samp:`2`.
 
   Note that ``-ftrack-macro-expansion=2`` is activated by default.
 
@@ -695,7 +695,7 @@ compilation.
 
   .. option:: M, -dM
 
-    Instead of the normal output, generate a list of #define
+    Instead of the normal output, generate a list of :samp:`#define`
     directives for all the macros defined during the execution of the
     preprocessor, including predefined macros.  This gives you a way of
     finding out what is predefined in your version of the preprocessor.
@@ -713,26 +713,26 @@ compilation.
 
   .. option:: D, -dD
 
-    Like M except in two respects: it does *not* include the
-    predefined macros, and it outputs *both* the #define
+    Like :samp:`M` except in two respects: it does *not* include the
+    predefined macros, and it outputs *both* the :samp:`#define`
     directives and the result of preprocessing.  Both kinds of output go to
     the standard output file.
 
   .. option:: N, -dN
 
-    Like D, but emit only the macro names, not their expansions.
+    Like :samp:`D`, but emit only the macro names, not their expansions.
 
   .. option:: I, -dI
 
-    Output #include directives in addition to the result of
+    Output :samp:`#include` directives in addition to the result of
     preprocessing.
 
   .. option:: U, -dU
 
-    Like D except that only macros that are expanded, or whose
+    Like :samp:`D` except that only macros that are expanded, or whose
     definedness is tested in preprocessor directives, are output; the
     output is delayed until the use or test of the macro; and
-    #undef directives are also output for macros tested but
+    :samp:`#undef` directives are also output for macros tested but
     undefined at the time.
 
 .. option:: -P
@@ -752,7 +752,7 @@ compilation.
   causes the preprocessor to treat comments as tokens in their own right.
   For example, comments appearing at the start of what would be a
   directive line have the effect of turning that line into an ordinary
-  source line, since the first token on the line is no longer a #.
+  source line, since the first token on the line is no longer a :samp:`#`.
 
 -CC
   Do not discard comments, including during macro expansion.  This is
@@ -775,9 +775,9 @@ compilation.
 .. option:: -trigraphs
 
   Process trigraph sequences.
-  These are three-character sequences, all starting with ??, that
+  These are three-character sequences, all starting with :samp:`??`, that
   are defined by ISO C to stand for single characters.  For example,
-  ??/ stands for \, so '??/n' is a character
+  :samp:`??/` stands for :samp:`\`, so :samp:`'??/n'` is a character
   constant for a newline.  By default, GCC ignores trigraphs, but in
   standard-conforming modes it converts them.  See the :option:`-std` and
   :option:`-ansi` options.
@@ -808,9 +808,9 @@ compilation.
 
   Print the name of each header file used, in addition to other normal
   activities.  Each name is indented to show how deep in the
-  #include stack it is.  Precompiled header files are also
+  :samp:`#include` stack it is.  Precompiled header files are also
   printed, even if they are found to be invalid; an invalid precompiled
-  header file is printed with ...x and a valid one with ...! .
+  header file is printed with :samp:`...x` and a valid one with :samp:`...!` .
 
 .. option:: -version
 

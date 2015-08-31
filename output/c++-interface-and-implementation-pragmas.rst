@@ -30,16 +30,16 @@ functions.
   functions, debugging information, and the internal tables that implement
   virtual functions) must be kept in each object file that includes class
   definitions.  You can use this pragma to avoid such duplication.  When a
-  header file containing #pragma interface is included in a
+  header file containing :samp:`#pragma interface` is included in a
   compilation, this auxiliary information is not generated (unless
-  the main input source file itself uses #pragma implementation).
+  the main input source file itself uses :samp:`#pragma implementation`).
   Instead, the object files contain references to be resolved at link
   time.
 
   The second form of this directive is useful for the case where you have
   multiple headers with the same name in different directories.  If you
-  use this form, you must specify the same string to #pragma
-  implementation.
+  use this form, you must specify the same string to :samp:`#pragma
+  implementation`.
 
 #pragma implementation #pragma implementation "``objects``.h"
 
@@ -47,7 +47,7 @@ functions.
 
   Use this pragma in a *main input file*, when you want full output from
   included header files to be generated (and made globally visible).  The
-  included header file, in turn, should use #pragma interface.
+  included header file, in turn, should use :samp:`#pragma interface`.
   Backup copies of inline member functions, debugging information, and the
   internal tables used to implement virtual functions are all generated in
   implementation files.
@@ -58,20 +58,20 @@ functions.
 
   .. index:: naming convention, implementation headers
 
-  If you use #pragma implementation with no argument, it applies to
+  If you use :samp:`#pragma implementation` with no argument, it applies to
   an include file with the same basenameA file's :dfn:`basename`
   is the name stripped of all leading path information and of trailing
-  suffixes, such as .h or .C or .cc.
+  suffixes, such as :samp:`.h` or :samp:`.C` or :samp:`.cc`.
 
    as your source
   file.  For example, in allclass.cc, giving just
-  #pragma implementation
-  by itself is equivalent to #pragma implementation "allclass.h".
+  :samp:`#pragma implementation`
+  by itself is equivalent to :samp:`#pragma implementation "allclass.h"`.
 
   Use the string argument if you want a single implementation file to
   include code from multiple header files.  (You must also use
-  #include to include the header file; #pragma
-  implementation only specifies how to use the file-it doesn't actually
+  :samp:`#include` to include the header file; :samp:`#pragma
+  implementation` only specifies how to use the file-it doesn't actually
   include it.)
 
   There is no way to split up the contents of a single header file into
@@ -83,11 +83,11 @@ functions.
 
 .. index:: pragmas in C++, effect on inlining
 
-#pragma implementation and #pragma interface also have an
+:samp:`#pragma implementation` and :samp:`#pragma interface` also have an
 effect on function inlining.
 
-If you define a class in a header file marked with #pragma
-interface, the effect on an inline function defined in that class is
+If you define a class in a header file marked with :samp:`#pragma
+interface`, the effect on an inline function defined in that class is
 similar to an explicit ``extern`` declaration-the compiler emits
 no code at all to define an independent version of the function.  Its
 definition is used only for inlining with its callers.
@@ -95,7 +95,7 @@ definition is used only for inlining with its callers.
 .. index:: fno-implement-inlines
 
 Conversely, when you include the same header file in a main source file
-that declares it as #pragma implementation, the compiler emits
+that declares it as :samp:`#pragma implementation`, the compiler emits
 code for the function itself; this defines a version of the function
 that can be found via pointers (or by callers compiled without
 inlining).  If all calls to the function can be inlined, you can avoid

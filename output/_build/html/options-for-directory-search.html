@@ -140,7 +140,7 @@ include files, and data files of the compiler itself.</p>
 <p>The compiler driver program runs one or more of the subprograms
 <strong class="command">cpp</strong>, <strong class="command">cc1</strong>, <strong class="command">as</strong> and <strong class="command">ld</strong>.  It tries
 <tt class="docutils literal"><span class="pre">prefix</span></tt> as a prefix for each program it tries to run, both with and
-without <tt class="docutils literal"><span class="pre">machine</span></tt>/<tt class="docutils literal"><span class="pre">version</span></tt>/ (see <a class="reference internal" href="specifying-target-machine-and-compiler-version.html#target-options"><em>Specifying Target Machine and Compiler Version</em></a>).</p>
+without :samp:<tt class="docutils literal"><span class="pre">`machine</span></tt>/<tt class="docutils literal"><span class="pre">version</span></tt>/` (see <a class="reference internal" href="specifying-target-machine-and-compiler-version.html#target-options"><em>Specifying Target Machine and Compiler Version</em></a>).</p>
 <p>For each subprogram to be run, the compiler driver first tries the
 <em class="xref std std-option">-B</em> prefix, if any.  If that name is not found, or if <em class="xref std std-option">-B</em>
 is not specified, the driver tries two standard prefixes,
@@ -156,7 +156,7 @@ to libraries in the linker, because the compiler translates these
 options into <em class="xref std std-option">-L</em> options for the linker.  They also apply to
 include files in the preprocessor, because the compiler translates these
 options into <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-isystem"><em class="xref std std-option">-isystem</em></a> options for the preprocessor.  In this case,
-the compiler appends include to the prefix.</p>
+the compiler appends <tt class="samp docutils literal"><span class="pre">include</span></tt> to the prefix.</p>
 <p>The runtime support file libgcc.a can also be searched for using
 the <em class="xref std std-option">-B</em> prefix, if needed.  If it is not found there, the two
 standard prefixes above are tried, and that is all.  The file is left

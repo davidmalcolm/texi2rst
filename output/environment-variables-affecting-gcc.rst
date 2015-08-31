@@ -33,7 +33,7 @@ See :ref:`driver`.
   national conventions.  GCC inspects the locale categories
   :envvar:`LC_CTYPE` and :envvar:`LC_MESSAGES` if it has been configured to do
   so.  These locale categories can be set to any value supported by your
-  installation.  A typical value is en_GB.UTF-8 for English in the United
+  installation.  A typical value is :samp:`en_GB.UTF-8` for English in the United
   Kingdom encoded in UTF-8.
 
   The :envvar:`LC_CTYPE` environment variable specifies character
@@ -90,7 +90,7 @@ See :ref:`driver`.
 
   In addition, the prefix is used in an unusual way in finding the
   directories to search for header files.  For each of the standard
-  directories whose name normally begins with /usr/local/lib/gcc
+  directories whose name normally begins with :samp:`/usr/local/lib/gcc`
   (more precisely, with the value of :envvar:`GCC_INCLUDE_DIR`), GCC tries
   replacing that beginning with the specified prefix to produce an
   alternate directory name.  Thus, with :option:`-Bfoo/`, GCC searches
@@ -177,7 +177,7 @@ preprocessor.
   search its current working directory.  Empty elements can appear at the
   beginning or end of a path.  For instance, if the value of
   :envvar:`CPATH` is ``:/special/include``, that has the same
-  effect as -I. -I/special/include.
+  effect as :samp:`-I. -I/special/include`.
 
   .. man end
      man begin ENVIRONMENT
@@ -194,7 +194,7 @@ preprocessor.
   The value of :envvar:`DEPENDENCIES_OUTPUT` can be just a file name, in
   which case the Make rules are written to that file, guessing the target
   name from the source file name.  Or the value can have the form
-  ``file````target``, in which case the rules are written to
+  :samp:```file````target```, in which case the rules are written to
   file ``file`` using ``target`` as the target name.
 
   In other words, this environment variable is equivalent to combining

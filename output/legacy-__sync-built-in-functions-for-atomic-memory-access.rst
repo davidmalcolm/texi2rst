@@ -4,7 +4,7 @@ Legacy ``__sync`` Built-in Functions for Atomic Memory AccessThe following built
 are intended to be compatible with those described
 in the Intel Itanium Processor-specific Application Binary Interface,
 section 7.4.  As such, they depart from normal GCC practice by not using
-the __builtin_ prefix and also by being overloaded so that they
+the :samp:`__builtin_` prefix and also by being overloaded so that they
 work on multiple types.
 
 The definition given in the Intel documentation allows only for the use of
@@ -12,16 +12,16 @@ the types ``int``, ``long``, ``long long`` or their unsigned
 counterparts.  GCC allows any integral scalar or pointer type that is
 1, 2, 4 or 8 bytes in length.
 
-These functions are implemented in terms of the __atomic
+These functions are implemented in terms of the :samp:`__atomic`
 builtins (see :ref:`__atomic-builtins`).  They should not be used for new
-code which should use the __atomic builtins instead.
+code which should use the :samp:`__atomic` builtins instead.
 
 Not all operations are supported by all target processors.  If a particular
 operation cannot be implemented on the target processor, a warning is
 generated and a call to an external function is generated.  The external
 function carries the same name as the built-in version,
 with an additional suffix
-_``n`` where ``n`` is the size of the data type.
+:samp:`_``n``` where ``n`` is the size of the data type.
 
 .. ??? Should we have a mechanism to suppress this warning?  This is almost
    useful for implementing the operation under the control of an external

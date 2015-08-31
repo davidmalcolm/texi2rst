@@ -384,14 +384,14 @@ built-in.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">nop</span>
 </pre></div>
 </div>
-<p id="index-10">Built-in Functionint__builtin_arc_norm(int``src``)Only valid if the norm instruction is available through the
+<p id="index-10">Built-in Functionint__builtin_arc_norm(int``src``)Only valid if the <tt class="samp docutils literal"><span class="pre">norm</span></tt> instruction is available through the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mnorm"><em class="xref std std-option">-mnorm</em></a> option or by default with <em class="xref std std-option">-mcpu=ARC700</em>.
 Generates:</p>
 <div class="highlight-c++"><pre>norm  ``dest``, ``src``</pre>
 </div>
 <p>Where the value in <tt class="docutils literal"><span class="pre">dest</span></tt> will be the result returned from the
 built-in.</p>
-<p id="index-11">Built-in Functionshort int__builtin_arc_normw(shortint``src``)Only valid if the normw instruction is available through the
+<p id="index-11">Built-in Functionshort int__builtin_arc_normw(shortint``src``)Only valid if the <tt class="samp docutils literal"><span class="pre">normw</span></tt> instruction is available through the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mnorm"><em class="xref std std-option">-mnorm</em></a> option or by default with <em class="xref std std-option">-mcpu=ARC700</em>.
 Generates:</p>
 <div class="highlight-c++"><pre>normw  ``dest``, ``src``</pre>
@@ -2173,7 +2173,7 @@ For example:</p>
 <p>GCC provides other MIPS-specific built-in functions:</p>
 <dl class="docutils">
 <dt>void __builtin_mips_cache (int <tt class="docutils literal"><span class="pre">op</span></tt>, const volatile void <a href="#id43"><span class="problematic" id="id44">*</span></a><tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
-<dd>Insert a cache instruction with operands <tt class="docutils literal"><span class="pre">op</span></tt> and <tt class="docutils literal"><span class="pre">addr</span></tt>.
+<dd>Insert a <tt class="samp docutils literal"><span class="pre">cache</span></tt> instruction with operands <tt class="docutils literal"><span class="pre">op</span></tt> and <tt class="docutils literal"><span class="pre">addr</span></tt>.
 GCC defines the preprocessor macro <tt class="docutils literal"><span class="pre">___GCC_HAVE_BUILTIN_MIPS_CACHE</span></tt>
 when this function is available.</dd>
 <dt>unsigned int __builtin_mips_get_fcsr (void) void __builtin_mips_set_fcsr (unsigned int <tt class="docutils literal"><span class="pre">value</span></tt>)</dt>
@@ -4461,11 +4461,11 @@ additional functions are available:</p>
                                  <span class="n">vector</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Note that the vec_ld and vec_st built-in functions always
-generate the AltiVec LVX and STVX instructions even
-if the VSX instruction set is available.  The vec_vsx_ld and
-vec_vsx_st built-in functions always generate the VSX LXVD2X,
-LXVW4X, STXVD2X, and STXVW4X instructions.</p>
+<p>Note that the <tt class="samp docutils literal"><span class="pre">vec_ld</span></tt> and <tt class="samp docutils literal"><span class="pre">vec_st</span></tt> built-in functions always
+generate the AltiVec <tt class="samp docutils literal"><span class="pre">LVX</span></tt> and <tt class="samp docutils literal"><span class="pre">STVX</span></tt> instructions even
+if the VSX instruction set is available.  The <tt class="samp docutils literal"><span class="pre">vec_vsx_ld</span></tt> and
+<tt class="samp docutils literal"><span class="pre">vec_vsx_st</span></tt> built-in functions always generate the VSX <tt class="samp docutils literal"><span class="pre">LXVD2X</span></tt>,
+<tt class="samp docutils literal"><span class="pre">LXVW4X</span></tt>, <tt class="samp docutils literal"><span class="pre">STXVD2X</span></tt>, and <tt class="samp docutils literal"><span class="pre">STXVW4X</span></tt> instructions.</p>
 <p>If the ISA 2.07 additions to the vector/scalar (power8-vector)
 instruction set is available, the following additional functions are
 available for both 32-bit and 64-bit targets.  For 64-bit targets, you
@@ -5200,15 +5200,15 @@ not be rolled-back in case of an transaction abort.</p>
 <span id="id52"></span><h2>SH Built-in Functions<a class="headerlink" href="#sh-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>The following built-in functions are supported on the SH1, SH2, SH3 and SH4
 families of processors:</p>
-<p id="index-61">Built-in Functionvoid__builtin_set_thread_pointer(void*``ptr``)Sets the GBR register to the specified value <tt class="docutils literal"><span class="pre">ptr</span></tt>.  This is usually
+<p id="index-61">Built-in Functionvoid__builtin_set_thread_pointer(void*``ptr``)Sets the <tt class="samp docutils literal"><span class="pre">GBR</span></tt> register to the specified value <tt class="docutils literal"><span class="pre">ptr</span></tt>.  This is usually
 used by system code that manages threads and execution contexts.  The compiler
-normally does not generate code that modifies the contents of GBR and
-thus the value is preserved across function calls.  Changing the GBR
+normally does not generate code that modifies the contents of <tt class="samp docutils literal"><span class="pre">GBR</span></tt> and
+thus the value is preserved across function calls.  Changing the <tt class="samp docutils literal"><span class="pre">GBR</span></tt>
 value in user code must be done with caution, since the compiler might use
-GBR in order to access thread local variables.</p>
-<p id="index-62">Built-in Functionvoid <a href="#id53"><span class="problematic" id="id54">*</span></a>__builtin_thread_pointer(void)Returns the value that is currently set in the GBR register.
+<tt class="samp docutils literal"><span class="pre">GBR</span></tt> in order to access thread local variables.</p>
+<p id="index-62">Built-in Functionvoid <a href="#id53"><span class="problematic" id="id54">*</span></a>__builtin_thread_pointer(void)Returns the value that is currently set in the <tt class="samp docutils literal"><span class="pre">GBR</span></tt> register.
 Memory loads and stores that use the thread pointer as a base address are
-turned into GBR based displacement loads and stores, if possible.
+turned into <tt class="samp docutils literal"><span class="pre">GBR</span></tt> based displacement loads and stores, if possible.
 For example:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">my_tcb</span>
 <span class="p">{</span>
@@ -5217,13 +5217,13 @@ For example:</p>
 
 <span class="kt">int</span> <span class="nf">get_tcb_value</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="c1">// Generate mov.l @(8,gbr),r0 instruction</span>
+  <span class="c1">// Generate :samp:`mov.l @(8,gbr),r0` instruction</span>
   <span class="k">return</span> <span class="p">((</span><span class="n">my_tcb</span><span class="o">*</span><span class="p">)</span><span class="n">__builtin_thread_pointer</span> <span class="p">())</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p id="index-63">Built-in Functionunsigned int__builtin_sh_get_fpscr(void)Returns the value that is currently set in the FPSCR register.</p>
-<p id="index-64">Built-in Functionvoid__builtin_sh_set_fpscr(unsignedint``val``)Sets the FPSCR register to the specified value <tt class="docutils literal"><span class="pre">val</span></tt>, while
+<p id="index-63">Built-in Functionunsigned int__builtin_sh_get_fpscr(void)Returns the value that is currently set in the <tt class="samp docutils literal"><span class="pre">FPSCR</span></tt> register.</p>
+<p id="index-64">Built-in Functionvoid__builtin_sh_set_fpscr(unsignedint``val``)Sets the <tt class="samp docutils literal"><span class="pre">FPSCR</span></tt> register to the specified value <tt class="docutils literal"><span class="pre">val</span></tt>, while
 preserving the current values of the FR, SZ and PR bits.</p>
 </div>
 <div class="section" id="sparc-vis-built-in-functions">

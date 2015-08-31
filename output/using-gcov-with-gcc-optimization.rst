@@ -2,7 +2,7 @@
 
 Using :command:`gcov` with GCC OptimizationIf you plan to use :command:`gcov` to help optimize your code, you must
 first compile your program with two special GCC options:
--fprofile-arcs -ftest-coverage.  Aside from that, you can use any
+:samp:`-fprofile-arcs -ftest-coverage`.  Aside from that, you can use any
 other GCC options; but if you want to prove that every single line
 in your program was executed, you should not compile with optimization
 at the same time.  On some machines the optimizer can eliminate some

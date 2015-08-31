@@ -71,7 +71,7 @@ AssemblerInstructions
   You may place multiple assembler instructions together in a single ``asm`` 
   string, separated by the characters normally used in assembly code for the 
   system. A combination that works in most places is a newline to break the 
-  line, plus a tab character (written as \n\t).
+  line, plus a tab character (written as :samp:`\n\t`).
   Some assemblers allow semicolons as a line separator. However, 
   note that some assembler dialects use semicolons to start a comment. 
 
@@ -120,11 +120,11 @@ those symbols as unreferenced.
 
 The compiler copies the assembler instructions in a basic ``asm`` 
 verbatim to the assembly language output file, without 
-processing dialects or any of the % operators that are available with
+processing dialects or any of the :samp:`%` operators that are available with
 extended ``asm``. This results in minor differences between basic 
 ``asm`` strings and extended ``asm`` templates. For example, to refer to 
-registers you might use %eax in basic ``asm`` and
-%%eax in extended ``asm``.
+registers you might use :samp:`%eax` in basic ``asm`` and
+:samp:`%%eax` in extended ``asm``.
 
 On targets such as x86 that support multiple assembler dialects,
 all basic ``asm`` blocks use the assembler dialect specified by the 
@@ -150,7 +150,7 @@ Extended Asm - Assembler Instructions with C Expression Operands
 
 With extended ``asm`` you can read and write C variables from 
 assembler and perform jumps from assembler code to C labels.  
-Extended ``asm`` syntax uses colons (:) to delimit
+Extended ``asm`` syntax uses colons (:samp:`:`) to delimit
 the operand parameters after the assembler template:
 
 .. code-block:: c++
@@ -374,7 +374,7 @@ referencing a variable in the subsequent code, for example:
 Under certain circumstances, GCC may duplicate (or remove duplicates of) your 
 assembly code when optimizing. This can lead to unexpected duplicate symbol 
 errors during compilation if your asm code defines symbols or labels. 
-Using %= 
+Using :samp:`%=` 
 (see :ref:`assemblertemplate`) may help resolve this problem.
 
 .. _assemblertemplate:
@@ -398,7 +398,7 @@ You may place multiple assembler instructions together in a single ``asm``
 string, separated by the characters normally used in assembly code for the 
 system. A combination that works in most places is a newline to break the 
 line, plus a tab character to move to the instruction field (written as 
-\n\t). 
+:samp:`\n\t`). 
 Some assemblers allow semicolons as a line separator. However, note 
 that some assembler dialects use semicolons to start a comment. 
 
@@ -424,7 +424,7 @@ In addition to the tokens described by the input, output, and goto operands,
 these tokens have special meanings in the assembler template:
 
 %% 
-  Outputs a single % into the assembler code.
+  Outputs a single :samp:`%` into the assembler code.
 
 %= 
   Outputs a number that is unique to each instance of the ``asm`` 
@@ -433,7 +433,7 @@ these tokens have special meanings in the assembler template:
   generates multiple assembler instructions. 
 
 %{ %| %}
-  Outputs {, |, and } characters (respectively)
+  Outputs :samp:`{`, :samp:`|`, and :samp:`}` characters (respectively)
   into the assembler code.  When unescaped, these characters have special
   meaning to indicate multiple assembler dialects, as described below.
 
@@ -461,7 +461,7 @@ braces than the number of dialects the compiler supports, the construct
 outputs nothing.
 
 For example, if an x86 compiler supports two dialects
-(att, intel), an 
+(:samp:`att`, :samp:`intel`), an 
 assembler template such as this:
 
 .. code-block:: c++
@@ -526,7 +526,7 @@ asmSymbolicName
   Specifies a symbolic name for the operand.
   Reference the name in the assembler template 
   by enclosing it in square brackets 
-  (i.e. %[Value]). The scope of the name is the ``asm`` statement 
+  (i.e. :samp:`%[Value]`). The scope of the name is the ``asm`` statement 
   that contains the definition. Any valid C variable name is acceptable, 
   including names already defined in the surrounding code. No two operands 
   within the same ``asm`` statement can use the same symbolic name.
@@ -534,22 +534,22 @@ asmSymbolicName
   When not using an ``asmSymbolicName``, use the (zero-based) position
   of the operand 
   in the list of operands in the assembler template. For example if there are 
-  three output operands, use %0 in the template to refer to the first, 
-  %1 for the second, and %2 for the third. 
+  three output operands, use :samp:`%0` in the template to refer to the first, 
+  :samp:`%1` for the second, and :samp:`%2` for the third. 
 
 constraint
   A string constant specifying constraints on the placement of the operand; 
   See :ref:`constraints`, for details.
 
-  Output constraints must begin with either = (a variable overwriting an 
-  existing value) or + (when reading and writing). When using 
-  =, do not assume the location contains the existing value
+  Output constraints must begin with either :samp:`=` (a variable overwriting an 
+  existing value) or :samp:`+` (when reading and writing). When using 
+  :samp:`=`, do not assume the location contains the existing value
   on entry to the ``asm``, except 
   when the operand is tied to an input; see :ref:`Input Operands <inputoperands>`.
 
   After the prefix, there must be one or more additional constraints 
   (see :ref:`constraints`) that describe where the value resides. Common 
-  constraints include r for register and m for memory. 
+  constraints include :samp:`r` for register and :samp:`m` for memory. 
   When you list more than one possible location (for example, ``"=rm"``),
   the compiler chooses the most efficient one based on the current context. 
   If you list as many alternates as the ``asm`` statement allows, you permit 
@@ -573,11 +573,11 @@ example a bit-field), the constraint must allow a register. In that case, GCC
 uses the register as the output of the ``asm``, and then stores that 
 register into the output. 
 
-Operands using the + constraint modifier count as two operands 
+Operands using the :samp:`+` constraint modifier count as two operands 
 (that is, both as input and output) towards the total maximum of 30 operands
 per ``asm`` statement.
 
-Use the & constraint modifier (see :ref:`modifiers`) on all output
+Use the :samp:`&` constraint modifier (see :ref:`modifiers`) on all output
 operands that must not overlap an input.  Otherwise, 
 GCC may allocate the output operand in the same register as an unrelated 
 input operand, on the assumption that the assembler code consumes its 
@@ -591,13 +591,13 @@ registers which *might* be shared by ``a``, and GCC considers those
 registers to be inputs to the asm. As above, GCC assumes that such input
 registers are consumed before any outputs are written. This assumption may 
 result in incorrect behavior if the asm writes to ``a`` before using 
-``b``. Combining the & modifier with the register constraint on ``a``
+``b``. Combining the :samp:`&` modifier with the register constraint on ``a``
 ensures that modifying ``a`` does not affect the address referenced by 
 ``b``. Otherwise, the location of ``b`` 
 is undefined if ``a`` is modified before using ``b``.
 
-``asm`` supports operand modifiers on operands (for example %k2 
-instead of simply %2). Typically these qualifiers are hardware 
+``asm`` supports operand modifiers on operands (for example :samp:`%k2` 
+instead of simply :samp:`%2`). Typically these qualifiers are hardware 
 dependent. The list of supported modifiers for x86 is found at 
 x86Operandmodifiersx86 Operand modifiers.
 
@@ -622,9 +622,9 @@ than that of the last output operand. In this i386 example, that makes
        : "r" (Mask)
        : "cc");
 
-That code overwrites the variable ``Index`` (=),
-placing the value in a register (r).
-Using the generic r constraint instead of a constraint for a specific 
+That code overwrites the variable ``Index`` (:samp:`=`),
+placing the value in a register (:samp:`r`).
+Using the generic :samp:`r` constraint instead of a constraint for a specific 
 register allows the compiler to pick the register to use, which can result 
 in more efficient code. This may not be possible if an assembler instruction 
 requires a specific register.
@@ -688,7 +688,7 @@ asmSymbolicName
   Specifies a symbolic name for the operand.
   Reference the name in the assembler template 
   by enclosing it in square brackets 
-  (i.e. %[Value]). The scope of the name is the ``asm`` statement 
+  (i.e. :samp:`%[Value]`). The scope of the name is the ``asm`` statement 
   that contains the definition. Any valid C variable name is acceptable, 
   including names already defined in the surrounding code. No two operands 
   within the same ``asm`` statement can use the same symbolic name.
@@ -697,15 +697,15 @@ asmSymbolicName
   of the operand 
   in the list of operands in the assembler template. For example if there are
   two output operands and three inputs,
-  use %2 in the template to refer to the first input operand,
-  %3 for the second, and %4 for the third. 
+  use :samp:`%2` in the template to refer to the first input operand,
+  :samp:`%3` for the second, and :samp:`%4` for the third. 
 
 constraint
   A string constant specifying constraints on the placement of the operand; 
   See :ref:`constraints`, for details.
 
-  Input constraint strings may not begin with either = or +.
-  When you list more than one possible location (for example, "irm"), 
+  Input constraint strings may not begin with either :samp:`=` or :samp:`+`.
+  When you list more than one possible location (for example, :samp:`"irm"`), 
   the compiler chooses the most efficient one based on the current context.
   If you must use a specific register, but your Machine Constraints do not
   provide sufficient control to select the specific register you want, 
@@ -715,7 +715,7 @@ constraint
   that the specified input must be in the same place as the output constraint 
   at the (zero-based) index in the output constraint list. 
   When using ``asmSymbolicName`` syntax for the output operands,
-  you may use these names (enclosed in brackets []) instead of digits.
+  you may use these names (enclosed in brackets :samp:`[]`) instead of digits.
 
 cexpression
   This is the C variable or expression being passed to the ``asm`` statement 
@@ -745,8 +745,8 @@ that never gets used. Note, however, that if the code that follows the
 optimizers may discard the ``asm`` statement as unneeded 
 (see Volatile).
 
-``asm`` supports operand modifiers on operands (for example %k2 
-instead of simply %2). Typically these qualifiers are hardware 
+``asm`` supports operand modifiers on operands (for example :samp:`%k2` 
+instead of simply :samp:`%2`). Typically these qualifiers are hardware 
 dependent. The list of supported modifiers for x86 is found at 
 x86Operandmodifiersx86 Operand modifiers.
 
@@ -873,14 +873,14 @@ Also note that an ``asm goto`` statement is always implicitly
 considered volatile.
 
 To reference a label in the assembler template,
-prefix it with %l (lowercase L) followed 
+prefix it with :samp:`%l` (lowercase :samp:`L`) followed 
 by its (zero-based) position in ``GotoLabels`` plus the number of input 
 operands.  For example, if the ``asm`` has three inputs and references two 
-labels, refer to the first label as %l3 and the second as %l4).
+labels, refer to the first label as :samp:`%l3` and the second as :samp:`%l4`).
 
 Alternately, you can reference labels using the actual C label name enclosed
 in brackets.  For example, to reference a label named ``carry``, you can
-use %l[carry].  The label must still be listed in the ``GotoLabels``
+use :samp:`%l[carry]`.  The label must still be listed in the ``GotoLabels``
 section when using this approach.
 
 Here is an example of ``asm goto`` for i386:
@@ -926,7 +926,7 @@ References to input, output, and goto operands in the assembler template
 of extended ``asm`` statements can use 
 modifiers to affect the way the operands are formatted in 
 the code output to the assembler. For example, the 
-following code uses the h and b modifiers for x86:
+following code uses the :samp:`h` and :samp:`b` modifiers for x86:
 
 .. code-block:: c++
 
@@ -957,7 +957,7 @@ The rest of this discussion uses the following code for illustrative purposes.
   }
 
 With no modifiers, this is what the output from the operands would be for the 
-att and intel dialects of assembler:
+:samp:`att` and :samp:`intel` dialects of assembler:
 
 =======  ========  ===================
 Operand  masm=att  masm=intel
@@ -1018,8 +1018,8 @@ that are stack-like registers:
   the output.
 
   To prevent this from happening,
-  if any input operand uses the f constraint, all output register
-  constraints must use the & early-clobber modifier.
+  if any input operand uses the :samp:`f` constraint, all output register
+  constraints must use the :samp:`&` early-clobber modifier.
 
   The example above is correctly written as:
 
@@ -1033,7 +1033,7 @@ that are stack-like registers:
   this in the constraints.
 
   Output operands must specifically indicate which register an output
-  appears in after an ``asm``.  =f is not allowed: the operand
+  appears in after an ``asm``.  :samp:`=f` is not allowed: the operand
   constraints must select a class with a single register.
 
 * Output operands may not be 'inserted' between existing stack registers.
@@ -1087,7 +1087,7 @@ operand can be a memory reference, and which kinds of address; whether the
 operand may be an immediate constant, and which possible values it may
 have.  Constraints can also require two operands to match.
 Side-effects aren't allowed in operands of inline ``asm``, unless
-< or > constraints are used, because there is no guarantee
+:samp:`<` or :samp:`>` constraints are used, because there is no guarantee
 that the side-effects will happen exactly once in an instruction that can update
 the addressing register.
 
@@ -1119,7 +1119,7 @@ whitespace
 
   .. index:: memory references in constraints
 
-m
+:samp:`m`
   A memory operand is allowed, with any kind of address that the machine
   supports in general.
   Note that the letter used for the general memory constraint can be
@@ -1129,7 +1129,7 @@ m
 
   .. index:: o in constraint
 
-o
+:samp:`o`
   A memory operand is allowed, but only if the address is
   :dfn:`offsettable`.  This means that adding a small integer (actually,
   the width in bytes of the operand, as determined by its machine mode)
@@ -1147,42 +1147,42 @@ o
   addressing modes that the machine supports.
 
   Note that in an output operand which can be matched by another
-  operand, the constraint letter o is valid only when accompanied
-  by both < (if the target machine has predecrement addressing)
-  and > (if the target machine has preincrement addressing).
+  operand, the constraint letter :samp:`o` is valid only when accompanied
+  by both :samp:`<` (if the target machine has predecrement addressing)
+  and :samp:`>` (if the target machine has preincrement addressing).
 
   .. index:: V in constraint
 
-V
+:samp:`V`
   A memory operand that is not offsettable.  In other words, anything that
-  would fit the m constraint but not the o constraint.
+  would fit the :samp:`m` constraint but not the :samp:`o` constraint.
 
   .. index:: < in constraint
 
-<
+:samp:`<`
   A memory operand with autodecrement addressing (either predecrement or
   postdecrement) is allowed.  In inline ``asm`` this constraint is only
   allowed if the operand is used exactly once in an instruction that can
-  handle the side-effects.  Not using an operand with < in constraint
+  handle the side-effects.  Not using an operand with :samp:`<` in constraint
   string in the inline ``asm`` pattern at all or using it in multiple
   instructions isn't valid, because the side-effects wouldn't be performed
   or would be performed more than once.  Furthermore, on some targets
-  the operand with < in constraint string must be accompanied by
+  the operand with :samp:`<` in constraint string must be accompanied by
   special instruction suffixes like ``%U0`` instruction suffix on PowerPC
   or ``%P0`` on IA-64.
 
   .. index:: > in constraint
 
->
+:samp:`>`
   A memory operand with autoincrement addressing (either preincrement or
   postincrement) is allowed.  In inline ``asm`` the same restrictions
-  as for < apply.
+  as for :samp:`<` apply.
 
   .. index:: r in constraint
 
   .. index:: registers in constraints
 
-r
+:samp:`r`
   A register operand is allowed provided that it is in a general
   register.
 
@@ -1190,39 +1190,39 @@ r
 
   .. index:: i in constraint
 
-i
+:samp:`i`
   An immediate integer operand (one with constant value) is allowed.
   This includes symbolic constants whose values will be known only at
   assembly time or later.
 
   .. index:: n in constraint
 
-n
+:samp:`n`
   An immediate integer operand with a known numeric value is allowed.
   Many systems cannot support assembly-time constants for operands less
-  than a word wide.  Constraints for these operands should use n
-  rather than i.
+  than a word wide.  Constraints for these operands should use :samp:`n`
+  rather than :samp:`i`.
 
   .. index:: I in constraint
 
-I, J, K, ... P
-  Other letters in the range I through P may be defined in
+:samp:`I`, :samp:`J`, :samp:`K`, ... :samp:`P`
+  Other letters in the range :samp:`I` through :samp:`P` may be defined in
   a machine-dependent fashion to permit immediate integer operands with
   explicit integer values in specified ranges.  For example, on the
-  68000, I is defined to stand for the range of values 1 to 8.
+  68000, :samp:`I` is defined to stand for the range of values 1 to 8.
   This is the range permitted as a shift count in the shift
   instructions.
 
   .. index:: E in constraint
 
-E
+:samp:`E`
   An immediate floating operand (expression code ``const_double``) is
   allowed, but only if the target floating point format is the same as
   that of the host machine (on which the compiler is running).
 
   .. index:: F in constraint
 
-F
+:samp:`F`
   An immediate floating operand (expression code ``const_double`` or
   ``const_vector``) is allowed.
 
@@ -1230,46 +1230,46 @@ F
 
   .. index:: H in constraint
 
-G, H
-  G and H may be defined in a machine-dependent fashion to
+:samp:`G`, :samp:`H`
+  :samp:`G` and :samp:`H` may be defined in a machine-dependent fashion to
   permit immediate floating operands in particular ranges of values.
 
   .. index:: s in constraint
 
-s
+:samp:`s`
   An immediate integer operand whose value is not an explicit integer is
   allowed.
 
   This might appear strange; if an insn allows a constant operand with a
   value not known at compile time, it certainly must allow any known
-  value.  So why use s instead of i?  Sometimes it allows
+  value.  So why use :samp:`s` instead of :samp:`i`?  Sometimes it allows
   better code to be generated.
 
   For example, on the 68000 in a fullword instruction it is possible to
   use an immediate operand; but if the immediate value is between -128
   and 127, better code results from loading the value into a register and
   using the register.  This is because the load into the register can be
-  done with a moveq instruction.  We arrange for this to happen
-  by defining the letter K to mean 'any integer outside the
-  range -128 to 127', and then specifying Ks in the operand
+  done with a :samp:`moveq` instruction.  We arrange for this to happen
+  by defining the letter :samp:`K` to mean 'any integer outside the
+  range -128 to 127', and then specifying :samp:`Ks` in the operand
   constraints.
 
   .. index:: g in constraint
 
-g
+:samp:`g`
   Any register, memory or immediate integer operand is allowed, except for
   registers that are not general registers.
 
   .. index:: X in constraint
 
-X
+:samp:`X`
   Any operand whatsoever is allowed.
 
   .. index:: 0 in constraint
 
   .. index:: digits in constraint
 
-0, 1, 2, ... 9
+:samp:`0`, :samp:`1`, :samp:`2`, ... :samp:`9`
   An operand that matches the specified operand number is allowed.  If a
   digit is used together with letters within the same alternative, the
   digit should come last.
@@ -1277,7 +1277,7 @@ X
   This number is allowed to be more than a single digit.  If multiple
   digits are encountered consecutively, they are interpreted as a single
   decimal integer.  There is scant chance for ambiguity, since to-date
-  it has never been desirable that 10 be interpreted as matching
+  it has never been desirable that :samp:`10` be interpreted as matching
   either operand 1 *or* operand 0.  Should this be desired, one
   can use multiple alternatives instead.
 
@@ -1310,13 +1310,13 @@ X
 
   .. index:: p in constraint
 
-p
+:samp:`p`
   An operand that is a valid memory address is allowed.  This is
   for 'load address' and 'push address' instructions.
 
   .. index:: address_operand
 
-  p in the constraint must be accompanied by ``address_operand``
+  :samp:`p` in the constraint must be accompanied by ``address_operand``
   as the predicate in the ``match_operand``.  This predicate interprets
   the mode specified in the ``match_operand`` as the mode of the memory
   reference for which the address would be valid.
@@ -1328,7 +1328,7 @@ p
 ``other-letters``
   Other letters can be defined in machine-dependent fashion to stand for
   particular classes of registers or other arbitrary operand types.
-  d, a and f are defined on the 68000/68020 to stand
+  :samp:`d`, :samp:`a` and :samp:`f` are defined on the 68000/68020 to stand
   for data, address and floating point registers.
 
   .. _multi-alternative:
@@ -1357,16 +1357,16 @@ Otherwise, for each alternative, the compiler counts how many instructions
 must be added to copy the operands so that that alternative applies.
 The alternative requiring the least copying is chosen.  If two alternatives
 need the same amount of copying, the one that comes first is chosen.
-These choices can be altered with the ? and ! characters:
+These choices can be altered with the :samp:`?` and :samp:`!` characters:
 
 .. index:: ? in constraint
 
 .. index:: question mark
 
 ?
-  Disparage slightly the alternative that the ? appears in,
+  Disparage slightly the alternative that the :samp:`?` appears in,
   as a choice when no alternative applies exactly.  The compiler regards
-  this alternative as one unit more costly for each ? that appears
+  this alternative as one unit more costly for each :samp:`?` that appears
   in it.
 
   .. index:: ! in constraint
@@ -1374,7 +1374,7 @@ These choices can be altered with the ? and ! characters:
   .. index:: exclamation point
 
 !
-  Disparage severely the alternative that the ! appears in.
+  Disparage severely the alternative that the :samp:`!` appears in.
   This alternative can still be used if it fits without reloading,
   but if reloading is needed, some other alternative will be used.
 
@@ -1383,16 +1383,16 @@ These choices can be altered with the ? and ! characters:
   .. index:: caret
 
 ^
-  This constraint is analogous to ? but it disparages slightly
-  the alternative only if the operand with the ^ needs a reload.
+  This constraint is analogous to :samp:`?` but it disparages slightly
+  the alternative only if the operand with the :samp:`^` needs a reload.
 
   .. index:: $ in constraint
 
   .. index:: dollar sign
 
 $
-  This constraint is analogous to ! but it disparages severely
-  the alternative only if the operand with the $ needs a reload.
+  This constraint is analogous to :samp:`!` but it disparages severely
+  the alternative only if the operand with the :samp:`$` needs a reload.
 
   .. _modifiers:
 
@@ -1420,11 +1420,11 @@ Here are constraint modifier characters.
 
   When the compiler fixes up the operands to satisfy the constraints,
   it needs to know which operands are read by the instruction and
-  which are written by it.  = identifies an operand which is only
-  written; + identifies an operand that is both read and written; all
+  which are written by it.  :samp:`=` identifies an operand which is only
+  written; :samp:`+` identifies an operand that is both read and written; all
   other operands are assumed to only be read.
 
-  If you specify = or + in a constraint, you put it in the
+  If you specify :samp:`=` or :samp:`+` in a constraint, you put it in the
   first character of the constraint string.
 
   .. index:: & in constraint
@@ -1438,21 +1438,21 @@ Here are constraint modifier characters.
   in a register that is read by the instruction or as part of any memory
   address.
 
-  & applies only to the alternative in which it is written.  In
+  :samp:`&` applies only to the alternative in which it is written.  In
   constraints with multiple alternatives, sometimes one alternative
-  requires & while others do not.  See, for example, the
-  movdf insn of the 68000.
+  requires :samp:`&` while others do not.  See, for example, the
+  :samp:`movdf` insn of the 68000.
 
   A operand which is read by the instruction can be tied to an earlyclobber
   operand if its only use as an input occurs before the early result is
   written.  Adding alternatives of this form often allows GCC to produce
   better code when only some of the read operands can be affected by the
-  earlyclobber. See, for example, the mulsi3 insn of the ARM.
+  earlyclobber. See, for example, the :samp:`mulsi3` insn of the ARM.
 
   Furthermore, if the :dfn:`earlyclobber` operand is also a read/write
   operand, then that operand is written only after it's used.
 
-  & does not obviate the need to write = or +.  As
+  :samp:`&` does not obviate the need to write :samp:`=` or :samp:`+`.  As
   :dfn:`earlyclobber` operands are always written, a read-only
   :dfn:`earlyclobber` operand is ill-formed and will be rejected by the
   compiler.
@@ -1463,9 +1463,9 @@ Here are constraint modifier characters.
   Declares the instruction to be commutative for this operand and the
   following operand.  This means that the compiler may interchange the
   two operands if that is the cheapest way to make all operands fit the
-  constraints.  % applies to all alternatives and must appear as
+  constraints.  :samp:`%` applies to all alternatives and must appear as
   the first character in the constraint.  Only read-only operands can use
-  %.
+  :samp:`%`.
 
   GCC can only handle one commutative pair in an asm; if you use more,
   the compiler may fail.  Note that you need not use the modifier if
@@ -1473,7 +1473,7 @@ Here are constraint modifier characters.
   time in the reload pass.  The modifier is not operational after
   register allocation, so the result of ``define_peephole2``
   and ``define_split``s performed after reload cannot rely on
-  % to make the intended insn match.
+  :samp:`%` to make the intended insn match.
 
   .. index:: # in constraint
 
@@ -1486,9 +1486,9 @@ Here are constraint modifier characters.
 
 *
   Says that the following character should be ignored when choosing
-  register preferences.  * has no effect on the meaning of the
+  register preferences.  :samp:`*` has no effect on the meaning of the
   constraint as a constraint, and no effect on reloading.  For LRA
-  * additionally disparages slightly the alternative if the
+  :samp:`*` additionally disparages slightly the alternative if the
   following character matches the operand.
 
   .. _machine-constraints:
@@ -1504,9 +1504,9 @@ Whenever possible, you should use the general-purpose constraint letters
 in ``asm`` arguments, since they will convey meaning more readily to
 people reading your code.  Failing that, use the constraint letters
 that usually have very similar meanings across architectures.  The most
-commonly used constraints are m and r (for memory and
+commonly used constraints are :samp:`m` and :samp:`r` (for memory and
 general-purpose registers respectively; see :ref:`simple-constraints`), and
-I, usually the letter indicating the most common
+:samp:`I`, usually the letter indicating the most common
 immediate-constant format.
 
 Each architecture defines additional constraints.  These constraints
@@ -1658,17 +1658,17 @@ ARM family-config/arm/constraints.md
     Integer in the range -4095 to 4095
 
   K
-    Integer that satisfies constraint I when inverted (ones complement)
+    Integer that satisfies constraint :samp:`I` when inverted (ones complement)
 
   L
-    Integer that satisfies constraint I when negated (twos complement)
+    Integer that satisfies constraint :samp:`I` when negated (twos complement)
 
   M
     Integer in the range 0 to 32
 
   Q
     A memory reference where the exact address is in a single register
-    ('m' is preferable for ``asm`` statements)
+    (':samp:`m`' is preferable for ``asm`` statements)
 
   R
     An item in the constant pool
@@ -1697,7 +1697,7 @@ AVR family-config/avr/constraints.md
     Registers from r16 to r31
 
   w
-    Registers from r24 to r31.  These registers can be used in adiw command
+    Registers from r24 to r31.  These registers can be used in :samp:`adiw` command
 
   e
     Pointer register (r26-r31)
@@ -2132,7 +2132,7 @@ Intel IA-64-config/ia64/ia64.h
     Branch register
 
   c
-    Predicate register (c as in 'conditional')
+    Predicate register (:samp:`c` as in 'conditional')
 
   d
     Application register residing in M-unit
@@ -2144,9 +2144,9 @@ Intel IA-64-config/ia64/ia64.h
     Floating-point register
 
   m
-    Memory operand.  If used together with < or >,
+    Memory operand.  If used together with :samp:`<` or :samp:`>`,
     the operand can have postincrement and postdecrement which
-    require printing with %Pn on IA-64.
+    require printing with :samp:`%Pn` on IA-64.
 
   G
     Floating-point constant 0.0 or 1.0
@@ -2183,13 +2183,13 @@ Intel IA-64-config/ia64/ia64.h
 
   S
     Memory operand except postincrement and postdecrement.  This is
-    now roughly the same as m when not used together with <
-    or >.
+    now roughly the same as :samp:`m` when not used together with :samp:`<`
+    or :samp:`>`.
 
 M32C-config/m32c/m32c.c
 
   Rsp Rfb Rsb
-    $sp, $fb, $sb.
+    :samp:`$sp`, :samp:`$fb`, :samp:`$sb`.
 
   Rcr
     Any control register, when they're 16 bits wide (nothing if control
@@ -2797,7 +2797,7 @@ PDP-11-config/pdp11/constraints.md
 
   K
     An integer constant that does not meet the constraints for codes
-    I or J.
+    :samp:`I` or :samp:`J`.
 
   L
     The integer constant 1.
@@ -2902,31 +2902,31 @@ PowerPC and IBM RS6000-config/rs6000/constraints.md
     instructions.
 
   h
-    MQ, CTR, or LINK register
+    :samp:`MQ`, :samp:`CTR`, or :samp:`LINK` register
 
   q
-    MQ register
+    :samp:`MQ` register
 
   c
-    CTR register
+    :samp:`CTR` register
 
   l
-    LINK register
+    :samp:`LINK` register
 
   x
-    CR register (condition register) number 0
+    :samp:`CR` register (condition register) number 0
 
   y
-    CR register (condition register)
+    :samp:`CR` register (condition register)
 
   z
-    XER[CA] carry bit (part of the XER register)
+    :samp:`XER[CA]` carry bit (part of the XER register)
 
   I
     Signed 16-bit constant
 
   J
-    Unsigned 16-bit constant shifted left 16 bits (use L instead for
+    Unsigned 16-bit constant shifted left 16 bits (use :samp:`L` instead for
     ``SImode`` constants)
 
   K
@@ -2958,11 +2958,11 @@ PowerPC and IBM RS6000-config/rs6000/constraints.md
   m
     Memory operand.
     Normally, ``m`` does not allow addresses that update the base register.
-    If < or > constraint is also used, they are allowed and
+    If :samp:`<` or :samp:`>` constraint is also used, they are allowed and
     therefore on PowerPC targets in that case it is only safe
-    to use m<> in an ``asm`` statement if that ``asm`` statement
+    to use :samp:`m<>` in an ``asm`` statement if that ``asm`` statement
     accesses the operand exactly once.  The ``asm`` statement must also
-    use %U``<opno>`` as a placeholder for the 'update' flag in the
+    use :samp:`%U``<opno>``` as a placeholder for the 'update' flag in the
     corresponding load or store instruction.  For example:
 
     .. code-block:: c++
@@ -2980,23 +2980,23 @@ PowerPC and IBM RS6000-config/rs6000/constraints.md
   es
     A 'stable' memory operand; that is, one which does not include any
     automodification of the base register.  This used to be useful when
-    m allowed automodification of the base register, but as those are now only
-    allowed when < or > is used, es is basically the same
-    as m without < and >.
+    :samp:`m` allowed automodification of the base register, but as those are now only
+    allowed when :samp:`<` or :samp:`>` is used, :samp:`es` is basically the same
+    as :samp:`m` without :samp:`<` and :samp:`>`.
 
   Q
     Memory operand that is an offset from a register (it is usually better
-    to use m or es in ``asm`` statements)
+    to use :samp:`m` or :samp:`es` in ``asm`` statements)
 
   Z
     Memory operand that is an indexed or indirect from a register (it is
-    usually better to use m or es in ``asm`` statements)
+    usually better to use :samp:`m` or :samp:`es` in ``asm`` statements)
 
   R
     AIX TOC entry
 
   a
-    Address operand that is an indexed or indirect from a register (p is
+    Address operand that is an indexed or indirect from a register (:samp:`p` is
     preferable for ``asm`` statements)
 
   S
@@ -3250,7 +3250,7 @@ SPARC-config/sparc/sparc.h
     lower floating-point register on the SPARC-V9 architecture.
 
   e
-    Floating-point register.  It is equivalent to f on the
+    Floating-point register.  It is equivalent to :samp:`f` on the
     SPARC-V8 architecture and contains both lower and upper
     floating-point registers on the SPARC-V9 architecture.
 
@@ -3296,8 +3296,8 @@ SPARC-config/sparc/sparc.h
     signed immediate)
 
   N
-    Same as K, except that it verifies that bits that are not in the
-    lower 32-bit range are all zero.  Must be used instead of K for
+    Same as :samp:`K`, except that it verifies that bits that are not in the
+    lower 32-bit range are all zero.  Must be used instead of :samp:`K` for
     modes wider than ``SImode``
 
   O
@@ -3334,7 +3334,7 @@ SPARC-config/sparc/sparc.h
     Even register
 
   W
-    Memory address for e constraint registers
+    Memory address for :samp:`e` constraint registers
 
   w
     Memory address with only a base register
@@ -3494,9 +3494,9 @@ TILE-Gx-config/tilegx/constraints.md
     (-129 ... 126).
 
   m
-    Memory operand.  If used together with < or >, the
-    operand can have postincrement which requires printing with %In
-    and %in on TILE-Gx.  For example:
+    Memory operand.  If used together with :samp:`<` or :samp:`>`, the
+    operand can have postincrement which requires printing with :samp:`%In`
+    and :samp:`%in` on TILE-Gx.  For example:
 
     .. code-block:: c++
 
@@ -3526,7 +3526,7 @@ TILE-Gx-config/tilegx/constraints.md
 
   U
     Memory operand except postincrement.  This is roughly the same as
-    m when not used together with < or >.
+    :samp:`m` when not used together with :samp:`<` or :samp:`>`.
 
   W
     An 8-element vector constant with identical elements.
@@ -3560,9 +3560,9 @@ TILEPro-config/tilepro/constraints.md
     (-129 ... 126).
 
   m
-    Memory operand.  If used together with < or >, the
-    operand can have postincrement which requires printing with %In
-    and %in on TILEPro.  For example:
+    Memory operand.  If used together with :samp:`<` or :samp:`>`, the
+    operand can have postincrement which requires printing with :samp:`%In`
+    and :samp:`%in` on TILEPro.  For example:
 
     .. code-block:: c++
 
@@ -3590,7 +3590,7 @@ TILEPro-config/tilepro/constraints.md
 
   U
     Memory operand except postincrement.  This is roughly the same as
-    m when not used together with < or >.
+    :samp:`m` when not used together with :samp:`<` or :samp:`>`.
 
   W
     A 4-element vector constant with identical elements.
@@ -3871,8 +3871,8 @@ keyword after the declarator as follows:
   int foo asm ("myfoo") = 2;
 
 This specifies that the name to be used for the variable ``foo`` in
-the assembler code should be myfoo rather than the usual
-_foo.
+the assembler code should be :samp:`myfoo` rather than the usual
+:samp:`_foo`.
 
 On systems where an underscore is normally prepended to the name of a C
 function or variable, this feature allows you to define names for the
@@ -4143,7 +4143,7 @@ does this by counting the number of instructions in the pattern of the
 instruction supported by that processor.  (When working out the number
 of instructions, it assumes that any occurrence of a newline or of
 whatever statement separator character is supported by the assembler -
-typically ; - indicates the end of an instruction.)
+typically :samp:`;` - indicates the end of an instruction.)
 
 Normally, GCC's estimate is adequate to ensure that correct
 code is generated, but it is possible to confuse the compiler if you use

@@ -1,11 +1,11 @@
 .. _binary-constants:
 
-Binary Constants using the 0b Prefix
+Binary Constants using the :samp:`0b` Prefix
 .. index:: Binary constants using the 0b prefix
 
 Integer constants can be written as binary constants, consisting of a
-sequence of 0 and 1 digits, prefixed by 0b or
-0B.  This is particularly useful in environments that operate a
+sequence of :samp:`0` and :samp:`1` digits, prefixed by :samp:`0b` or
+:samp:`0B`.  This is particularly useful in environments that operate a
 lot on the bit level (like microcontrollers).
 
 The following statements are identical:
@@ -18,6 +18,6 @@ The following statements are identical:
   i = 0b101010;
 
 The type of these constants follows the same rules as for octal or
-hexadecimal integer constants, so suffixes like L or UL
+hexadecimal integer constants, so suffixes like :samp:`L` or :samp:`UL`
 can be applied.
 

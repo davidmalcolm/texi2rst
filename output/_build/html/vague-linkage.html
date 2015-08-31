@@ -121,12 +121,12 @@ body, even if they are not defined there.</p>
 <p><tt class="docutils literal"><span class="pre">type_info</span></tt> objects</p>
 <blockquote>
 <div><span class="target" id="index-2"></span><p id="index-3">C++ requires information about types to be written out in order to
-implement dynamic_cast, typeid and exception handling.
-For polymorphic classes (classes with virtual functions), the type_info
-object is written out along with the vtable so that dynamic_cast
+implement <tt class="samp docutils literal"><span class="pre">dynamic_cast</span></tt>, <tt class="samp docutils literal"><span class="pre">typeid</span></tt> and exception handling.
+For polymorphic classes (classes with virtual functions), the <tt class="samp docutils literal"><span class="pre">type_info</span></tt>
+object is written out along with the vtable so that <tt class="samp docutils literal"><span class="pre">dynamic_cast</span></tt>
 can determine the dynamic type of a class object at run time.  For all
-other types, we write out the type_info object when it is used: when
-applying typeid to an expression, throwing an object, or
+other types, we write out the <tt class="samp docutils literal"><span class="pre">type_info</span></tt> object when it is used: when
+applying <tt class="samp docutils literal"><span class="pre">typeid</span></tt> to an expression, throwing an object, or
 referring to a type in a catch clause or exception specification.</p>
 </div></blockquote>
 <dl class="docutils">

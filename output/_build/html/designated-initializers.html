@@ -92,7 +92,7 @@ indices or structure field names they apply to, and GNU C allows this as
 an extension in C90 mode as well.  This extension is not
 implemented in GNU C++.</p>
 <p>To specify an array index, write
-[<tt class="docutils literal"><span class="pre">index</span></tt>] = before the element value.  For example,</p>
+<tt class="samp docutils literal"><span class="pre">[``index`</span></tt>] =` before the element value.  For example,</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">29</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">15</span> <span class="p">};</span>
 </pre></div>
 </div>
@@ -103,10 +103,10 @@ implemented in GNU C++.</p>
 <p>The index values must be constant expressions, even if the array being
 initialized is automatic.</p>
 <p>An alternative syntax for this that has been obsolete since GCC 2.5 but
-GCC still accepts is to write [<tt class="docutils literal"><span class="pre">index</span></tt>] before the element
-value, with no =.</p>
+GCC still accepts is to write <tt class="samp docutils literal"><span class="pre">[``index`</span></tt>]` before the element
+value, with no <tt class="samp docutils literal"><span class="pre">=</span></tt>.</p>
 <p>To initialize a range of elements to the same value, write
-[<tt class="docutils literal"><span class="pre">first</span></tt> ... <tt class="docutils literal"><span class="pre">last</span></tt>] = <tt class="docutils literal"><span class="pre">value</span></tt>.  This is a GNU
+<tt class="samp docutils literal"><span class="pre">[``first`</span></tt> ... <tt class="docutils literal"><span class="pre">last</span></tt>] = <tt class="docutils literal"><span class="pre">value`</span></tt>.  This is a GNU
 extension.  For example,</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">widths</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">[</span><span class="mi">0</span> <span class="p">...</span> <span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span> <span class="p">...</span> <span class="mi">99</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span> <span class="p">};</span>
 </pre></div>
@@ -116,7 +116,7 @@ not for each initialized field by the range initializer.</p>
 <p>Note that the length of the array is the highest value specified
 plus one.</p>
 <p>In a structure initializer, specify the name of a field to initialize
-with .``fieldname`` = before the element value.  For example,
+with <tt class="samp docutils literal"><span class="pre">.``fieldname`</span></tt> =` before the element value.  For example,
 given the following structure,</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">point</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span> <span class="p">};</span>
 </pre></div>
@@ -130,13 +130,13 @@ given the following structure,</p>
 </pre></div>
 </div>
 <p>Another syntax that has the same meaning, obsolete since GCC 2.5, is
-<tt class="docutils literal"><span class="pre">fieldname</span></tt>:, as shown here:</p>
+:samp:<tt class="docutils literal"><span class="pre">`fieldname</span></tt>:<a href="#id1"><span class="problematic" id="id2">`</span></a>, as shown here:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">point</span> <span class="n">p</span> <span class="o">=</span> <span class="p">{</span> <span class="n">y</span><span class="o">:</span> <span class="n">yvalue</span><span class="p">,</span> <span class="n">x</span><span class="o">:</span> <span class="n">xvalue</span> <span class="p">};</span>
 </pre></div>
 </div>
 <p>Omitted field members are implicitly initialized the same as objects
 that have static storage duration.</p>
-<p id="index-4">The [<tt class="docutils literal"><span class="pre">index</span></tt>] or .``fieldname`` is known as a
+<p id="index-4">The <tt class="samp docutils literal"><span class="pre">[``index`</span></tt>]` or <tt class="samp docutils literal"><span class="pre">.``fieldname``</span></tt> is known as a
 <em class="dfn">designator</em>.  You can also use a designator (or the obsolete colon
 syntax) when initializing a union, to specify which element of the union
 should be used.  For example,</p>
@@ -168,11 +168,11 @@ For example:</p>
       <span class="p">[</span><span class="sc">&#39;\f&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="sc">&#39;\n&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="sc">&#39;\r&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">};</span>
 </pre></div>
 </div>
-<p id="index-5">You can also write a series of .``fieldname`` and
-[<tt class="docutils literal"><span class="pre">index</span></tt>] designators before an = to specify a
+<p id="index-5">You can also write a series of <tt class="samp docutils literal"><span class="pre">.``fieldname``</span></tt> and
+<tt class="samp docutils literal"><span class="pre">[``index`</span></tt>]` designators before an <tt class="samp docutils literal"><span class="pre">=</span></tt> to specify a
 nested subobject to initialize; the list is taken relative to the
 subobject corresponding to the closest surrounding brace pair.  For
-example, with the struct point declaration above:</p>
+example, with the <tt class="samp docutils literal"><span class="pre">struct</span> <span class="pre">point</span></tt> declaration above:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">struct</span> <span class="n">point</span> <span class="n">ptarray</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">y</span> <span class="o">=</span> <span class="n">yv2</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span> <span class="n">xv2</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span> <span class="n">xv0</span> <span class="p">};</span>
 </pre></div>
 </div>

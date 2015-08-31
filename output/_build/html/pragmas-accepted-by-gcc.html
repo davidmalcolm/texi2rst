@@ -389,12 +389,12 @@ macros are defined.</p>
 <blockquote>
 <div><p id="index-23">Modifies the disposition of a diagnostic.  Note that not all
 diagnostics are modifiable; at the moment only warnings (normally
-controlled by -W...) can be controlled, and not all of them.
+controlled by <tt class="samp docutils literal"><span class="pre">-W...</span></tt>) can be controlled, and not all of them.
 Use <em class="xref std std-option">-fdiagnostics-show-option</em> to determine which diagnostics
 are controllable and which option controls them.</p>
-<p><tt class="docutils literal"><span class="pre">kind</span></tt> is error to treat this diagnostic as an error,
-warning to treat it like a warning (even if <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Werror"><em class="xref std std-option">-Werror</em></a> is
-in effect), or ignored if the diagnostic is to be ignored.
+<p><tt class="docutils literal"><span class="pre">kind</span></tt> is <tt class="samp docutils literal"><span class="pre">error</span></tt> to treat this diagnostic as an error,
+<tt class="samp docutils literal"><span class="pre">warning</span></tt> to treat it like a warning (even if <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Werror"><em class="xref std std-option">-Werror</em></a> is
+in effect), or <tt class="samp docutils literal"><span class="pre">ignored</span></tt> if the diagnostic is to be ignored.
 <tt class="docutils literal"><span class="pre">option</span></tt> is a double quoted string that matches the command-line
 option.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma GCC diagnostic warning &quot;-Wformat&quot;</span>
@@ -442,8 +442,8 @@ information.  For example,</p>
 
 TODO(Remember to fix this)</pre>
 </div>
-<p>prints /tmp/file.c:4: note: #pragma message:
-TODO - Remember to fix this.</p>
+<p>prints <tt class="samp docutils literal"><span class="pre">/tmp/file.c:4:</span> <span class="pre">note:</span> <span class="pre">#pragma</span> <span class="pre">message:</span>
+<span class="pre">TODO</span> <span class="pre">-</span> <span class="pre">Remember</span> <span class="pre">to</span> <span class="pre">fix</span> <span class="pre">this</span></tt>.</p>
 </div></blockquote>
 </div>
 <div class="section" id="visibility-pragmas">
@@ -453,7 +453,7 @@ TODO - Remember to fix this.</p>
 <div><p id="index-25">This pragma allows the user to set the visibility for multiple
 declarations without having to give each a visibility attribute
 (see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>).</p>
-<p>In C++, #pragma GCC visibility affects only namespace-scope
+<p>In C++, <tt class="samp docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">visibility</span></tt> affects only namespace-scope
 declarations.  Class members and template specializations are not
 affected; if you want to override the visibility for a particular
 member or instantiation, you must use an attribute.</p>
@@ -462,8 +462,8 @@ member or instantiation, you must use an attribute.</p>
 <div class="section" id="push-pop-macro-pragmas">
 <span id="id12"></span><h2>Push/Pop Macro Pragmas<a class="headerlink" href="#push-pop-macro-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>For compatibility with Microsoft Windows compilers, GCC supports
-#pragma push_macro(<tt class="docutils literal"><span class="pre">&quot;macro_name&quot;</span></tt>)
-and #pragma pop_macro(<tt class="docutils literal"><span class="pre">&quot;macro_name&quot;</span></tt>).</p>
+<tt class="samp docutils literal"><span class="pre">#pragma</span> <span class="pre">push_macro(`</span></tt>&#8220;macro_name&#8221;<tt class="docutils literal"><span class="pre">)`</span>
+<span class="pre">and</span> <span class="pre">:samp:`#pragma</span> <span class="pre">pop_macro(</span></tt>&#8220;macro_name&#8221;<a href="#id13"><span class="problematic" id="id14">``</span></a>)`.</p>
 <p>#pragma push_macro(<tt class="docutils literal"><span class="pre">&quot;macro_name&quot;</span></tt>)</p>
 <blockquote>
 <div><p id="index-26">This pragma saves the value of the macro named as <tt class="docutils literal"><span class="pre">macro_name</span></tt> to
@@ -488,7 +488,7 @@ the value on top of the stack for this macro. If the stack for
 <span class="pre">push_macro</span></tt> and restored by <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">pop_macro</span></tt>.</p>
 </div>
 <div class="section" id="function-specific-option-pragmas">
-<span id="id13"></span><h2>Function Specific Option Pragmas<a class="headerlink" href="#function-specific-option-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id15"></span><h2>Function Specific Option Pragmas<a class="headerlink" href="#function-specific-option-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>#pragma GCC target (<tt class="docutils literal"><span class="pre">&quot;string&quot;</span></tt>...)</p>
 <blockquote>
 <div><p id="index-28">This pragma allows you to set target specific options for functions
@@ -515,8 +515,8 @@ See <a class="reference internal" href="declaring-attributes-of-functions.html#f
 <blockquote>
 <div><span class="target" id="index-30"></span><p id="index-31">These pragmas maintain a stack of the current target and optimization
 options.  It is intended for include files where you temporarily want
-to switch to using a different #pragma GCC target or
-#pragma GCC optimize and then to pop back to the previous
+to switch to using a different <tt class="samp docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">target</span></tt> or
+<tt class="samp docutils literal"><span class="pre">#pragma</span> <span class="pre">GCC</span> <span class="pre">optimize</span></tt> and then to pop back to the previous
 options.</p>
 </div></blockquote>
 <p>#pragma GCC reset_options</p>
@@ -527,7 +527,7 @@ on the command line.</p>
 </div></blockquote>
 </div>
 <div class="section" id="loop-specific-pragmas">
-<span id="id14"></span><h2>Loop-Specific Pragmas<a class="headerlink" href="#loop-specific-pragmas" title="Permalink to this headline">¶</a></h2>
+<span id="id16"></span><h2>Loop-Specific Pragmas<a class="headerlink" href="#loop-specific-pragmas" title="Permalink to this headline">¶</a></h2>
 <p>#pragma GCC ivdep</p>
 <blockquote>
 <div><p id="index-33">With this pragma, the programmer asserts that there are no loop-carried</p>

@@ -102,8 +102,8 @@ alias ("``target``")
     void __f () { /* Do something. */; }
     void f () __attribute__ ((weak, alias ("__f")));
 
-  defines f to be a weak alias for __f.  In C++, the
-  mangled name for the target must be used.  It is an error if __f
+  defines :samp:`f` to be a weak alias for :samp:`__f`.  In C++, the
+  mangled name for the target must be used.  It is an error if :samp:`__f`
   is not defined in the same translation unit.
 
   This attribute requires assembler and object file support,
@@ -405,9 +405,9 @@ flatten
   ``ms_strftime`` are also present.
   ``archetype`` values such as ``printf`` refer to the formats accepted
   by the system's C runtime library,
-  while values prefixed with gnu_ always refer
+  while values prefixed with :samp:`gnu_` always refer
   to the formats accepted by the GNU C Library.  On Microsoft Windows
-  targets, values prefixed with ms_ refer to the formats accepted by the
+  targets, values prefixed with :samp:`ms_` refer to the formats accepted by the
   msvcrt.dll library.
   The parameter ``string-index``
   specifies which argument is the format string argument (starting
@@ -844,10 +844,10 @@ optimize
   are assumed to be an optimization level.  Strings that begin with
   ``O`` are assumed to be an optimization option, while other options
   are assumed to be used with a ``-f`` prefix.  You can also use the
-  #pragma GCC optimize pragma to set the optimization options
+  :samp:`#pragma GCC optimize` pragma to set the optimization options
   that affect more than one function.
   See :ref:`function-specific-option-pragmas`, for details about the
-  #pragma GCC optimize pragma.
+  :samp:`#pragma GCC optimize` pragma.
 
   This can be used for instance to have frequently-executed functions
   compiled with more aggressive optimization options that produce faster
@@ -977,10 +977,10 @@ target (``options``)
   be compiled with different target options than specified on the
   command line.  This can be used for instance to have functions
   compiled with a different ISA (instruction set architecture) than the
-  default.  You can also use the #pragma GCC target pragma to set
+  default.  You can also use the :samp:`#pragma GCC target` pragma to set
   more than one function to be compiled with specific target options.
   See :ref:`function-specific-option-pragmas`, for details about the
-  #pragma GCC target pragma.
+  :samp:`#pragma GCC target` pragma.
 
   For instance, on an x86, you could declare one function with the
   ``target("sse4.1,arch=core2")`` attribute and another with
@@ -1000,7 +1000,7 @@ target (``options``)
 
   You can either use multiple
   strings separated by commas to specify multiple options,
-  or separate the options with a comma (,) within a single string.
+  or separate the options with a comma (:samp:`,`) within a single string.
 
   The options supported are specific to each target; refer to x86
   Function Attributes, PowerPC Function Attributes, and
@@ -1084,7 +1084,7 @@ visibility ("``visibility_type``")
     overridden by another module.
 
     All visibilities are supported on many, but not all, ELF targets
-  (supported when the assembler supports the .visibility
+  (supported when the assembler supports the :samp:`.visibility`
   pseudo-op).  Default visibility is supported everywhere.  Hidden
   visibility is supported on Darwin targets.
 
@@ -1117,7 +1117,7 @@ visibility ("``visibility_type``")
 
   This attribute applies only to the particular namespace body, not to
   other definitions of the same namespace; it is equivalent to using
-  #pragma GCC visibility before and after the namespace
+  :samp:`#pragma GCC visibility` before and after the namespace
   definition (see :ref:`visibility-pragmas`).
 
   In C++, if a template argument has limited visibility, this
@@ -1336,7 +1336,7 @@ long_call short_call
   ``long_call`` attribute indicates that the function might be far
   away from the call site and require a different (more expensive)
   calling sequence.   The ``short_call`` attribute always places
-  the offset to the function from the call site into the BL
+  the offset to the function from the call site into the :samp:`BL`
   instruction directly.
 
 naked
@@ -2386,9 +2386,9 @@ target (``options``)
 
     .. index:: target("no-custom-insn") function attribute, Nios II
 
-    Each custom-``insn``=``N`` attribute locally enables use of a
+    Each :samp:`custom-``insn``=``N``` attribute locally enables use of a
     custom instruction with encoding ``N`` when generating code that uses 
-    ``insn``.  Similarly, no-custom-``insn`` locally inhibits use of
+    ``insn``.  Similarly, :samp:`no-custom-``insn``` locally inhibits use of
     the custom instruction ``insn``.
     These target attributes correspond to the
     :option:`-mcustom-``insn``=``N``` and :option:`-mno-custom-``insn```
@@ -2459,7 +2459,7 @@ target (``options``)
 
     .. index:: target("dlmzb") function attribute, PowerPC
 
-    Generate code that uses (does not use) the string-search dlmzb
+    Generate code that uses (does not use) the string-search :samp:`dlmzb`
     instruction on the IBM 405, 440, 464 and 476 processors.  This instruction is
     generated by default when targeting those processors.
 

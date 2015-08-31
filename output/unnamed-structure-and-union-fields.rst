@@ -24,7 +24,7 @@ without names.  For example:
   } foo;
 
 In this example, you are able to access members of the unnamed
-union with code like foo.b.  Note that only unnamed structs and
+union with code like :samp:`foo.b`.  Note that only unnamed structs and
 unions are allowed, you may not have, for example, an unnamed
 ``int``.
 
@@ -40,17 +40,17 @@ For example, in this structure:
     };
   } foo;
 
-it is ambiguous which ``a`` is being referred to with foo.a.
+it is ambiguous which ``a`` is being referred to with :samp:`foo.a`.
 The compiler gives errors for such constructs.
 
 .. index:: fms-extensions
 
 Unless :option:`-fms-extensions` is used, the unnamed field must be a
-structure or union definition without a tag (for example, struct
-{ int a; };).  If :option:`-fms-extensions` is used, the field may
-also be a definition with a tag such as struct foo { int a;
-};, a reference to a previously defined structure or union such as
-struct foo;, or a reference to a ``typedef`` name for a
+structure or union definition without a tag (for example, :samp:`struct
+{ int a; };`).  If :option:`-fms-extensions` is used, the field may
+also be a definition with a tag such as :samp:`struct foo { int a;
+};`, a reference to a previously defined structure or union such as
+:samp:`struct foo;`, or a reference to a ``typedef`` name for a
 previously defined structure or union type.
 
 .. index:: fplan9-extensions

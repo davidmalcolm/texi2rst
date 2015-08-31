@@ -28,7 +28,7 @@ accepts:
   predefined macros such as ``unix`` and ``vax`` that identify the
   type of system you are using.  It also enables the undesirable and
   rarely used ISO trigraph feature.  For the C compiler,
-  it disables recognition of C++ style // comments as well as
+  it disables recognition of C++ style :samp:`//` comments as well as
   the ``inline`` keyword.
 
   The alternate keywords ``__asm__``, ``__extension__``,
@@ -61,9 +61,9 @@ accepts:
   Supported by GCC <standards>`, for details of these standard versions.  This option
   is currently only supported when compiling C or C++.
 
-  The compiler can accept several base standards, such as c90 or
-  c++98, and GNU dialects of those standards, such as
-  gnu90 or gnu++98.  When a base standard is specified, the
+  The compiler can accept several base standards, such as :samp:`c90` or
+  :samp:`c++98`, and GNU dialects of those standards, such as
+  :samp:`gnu90` or :samp:`gnu++98`.  When a base standard is specified, the
   compiler accepts all programs following that standard plus those
   using GNU extensions that do not contradict it.  For example,
   :option:`-std=c90` turns off certain features of GCC that are
@@ -76,7 +76,7 @@ accepts:
   strict-conforming programs may be rejected.  The particular standard
   is used by :option:`-Wpedantic` to identify which features are GNU
   extensions given that version of the standard. For example
-  :option:`-std=gnu90 -Wpedantic` warns about C++ style //
+  :option:`-std=gnu90 -Wpedantic` warns about C++ style :samp:`//`
   comments, while :option:`-std=gnu99 -Wpedantic` does not.
 
   A value for this option must be provided; possible values are
@@ -94,24 +94,24 @@ accepts:
     (mainly but not entirely relating to optional C99 features from
     Annexes F and G).  See
     http://gcc.gnu.org/c99status.html for more information.  The
-    names c9x and iso9899:199x are deprecated.
+    names :samp:`c9x` and :samp:`iso9899:199x` are deprecated.
 
   c11 c1x iso9899:2011
     ISO C11, the 2011 revision of the ISO C standard.  This standard is
     substantially completely supported, modulo bugs, floating-point issues
     (mainly but not entirely relating to optional C11 features from
     Annexes F and G) and the optional Annexes K (Bounds-checking
-    interfaces) and L (Analyzability).  The name c1x is deprecated.
+    interfaces) and L (Analyzability).  The name :samp:`c1x` is deprecated.
 
   gnu90 gnu89
     GNU dialect of ISO C90 (including some C99 features).
 
   gnu99 gnu9x
-    GNU dialect of ISO C99.  The name gnu9x is deprecated.
+    GNU dialect of ISO C99.  The name :samp:`gnu9x` is deprecated.
 
   gnu11 gnu1x
     GNU dialect of ISO C11.  This is the default for C code.
-    The name gnu1x is deprecated.
+    The name :samp:`gnu1x` is deprecated.
 
   c++98 c++03
     The 1998 ISO C++ standard plus the 2003 technical corrigendum and some
@@ -123,19 +123,19 @@ accepts:
 
   c++11 c++0x
     The 2011 ISO C++ standard plus amendments.
-    The name c++0x is deprecated.
+    The name :samp:`c++0x` is deprecated.
 
   gnu++11 gnu++0x
     GNU dialect of :option:`-std=c++11`.
-    The name gnu++0x is deprecated.
+    The name :samp:`gnu++0x` is deprecated.
 
   c++14 c++1y
     The 2014 ISO C++ standard plus amendments.
-    The name c++1y is deprecated.
+    The name :samp:`c++1y` is deprecated.
 
   gnu++14 gnu++1y
     GNU dialect of :option:`-std=c++14`.
-    The name gnu++1y is deprecated.
+    The name :samp:`gnu++1y` is deprecated.
 
   c++1z
     The next revision of the ISO C++ standard, tentatively planned for
@@ -174,10 +174,10 @@ accepts:
 
   Besides declarations, the file indicates, in comments, the origin of
   each declaration (source file and line), whether the declaration was
-  implicit, prototyped or unprototyped (I, N for new or
-  O for old, respectively, in the first character after the line
+  implicit, prototyped or unprototyped (:samp:`I`, :samp:`N` for new or
+  :samp:`O` for old, respectively, in the first character after the line
   number and the colon), and whether it came from a declaration or a
-  definition (C or F, respectively, in the following
+  definition (:samp:`C` or :samp:`F`, respectively, in the following
   character).  In the case of function definitions, a K&R-style list of
   arguments followed by their declarations is also provided, inside
   comments, after the declaration.
@@ -209,7 +209,7 @@ accepts:
   .. index:: built-in functions
 
   Don't recognize built-in functions that do not begin with
-  __builtin_ as prefix.  See :ref:`Other built-in
+  :samp:`__builtin_` as prefix.  See :ref:`Other built-in
   functions provided by GCC <other-builtins>`, for details of the functions affected,
   including those which are not built-in functions when :option:`-ansi` or
   :option:`-std` options for strict ISO C conformance are used because they
@@ -232,7 +232,7 @@ accepts:
 
   With the :option:`-fno-builtin-``function``` option
   only the built-in function ``function`` is
-  disabled.  ``function`` must not begin with __builtin_.  If a
+  disabled.  ``function`` must not begin with :samp:`__builtin_`.  If a
   function is named that is not built-in in this version of GCC, this
   option is ignored.  There is no corresponding
   :option:`-fbuiltin-``function``` option; if you wish to enable

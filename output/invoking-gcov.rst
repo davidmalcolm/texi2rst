@@ -65,16 +65,16 @@ gpl(7), gfdl(7), fsf-funding(7), gcc(1) and the Info entry for @file{gcc}.
   produce an output file called a.c##x.h.gcov instead of
   x.h.gcov.  This can be useful if x.h is included in
   multiple source files and you want to see the individual
-  contributions.  If you use the -p option, both the including
+  contributions.  If you use the :samp:`-p` option, both the including
   and included file names will be complete path names.
 
 -p --preserve-paths
   Preserve complete path information in the names of generated
   .gcov files.  Without this option, just the filename component is
-  used.  With this option, all directories are used, with / characters
-  translated to # characters, . directory components
+  used.  With this option, all directories are used, with :samp:`/` characters
+  translated to :samp:`#` characters, . directory components
   removed and unremoveable ..
-  components renamed to ^.  This is useful if sourcefiles are in several
+  components renamed to :samp:`^`.  This is useful if sourcefiles are in several
   different directories.
 
 -r --relative-only
@@ -159,14 +159,14 @@ One .gcov file is produced for each source (or header) file
 containing code,
 which was compiled to produce the data files.  The ``mangledname`` part
 of the output file name is usually simply the source file name, but can
-be something more complicated if the -l or -p options are
+be something more complicated if the :samp:`-l` or :samp:`-p` options are
 given.  Refer to those options for details.
 
 If you invoke :command:`gcov` with multiple input files, the
 contributions from each input file are summed.  Typically you would
 invoke it with the same list of files as the final link of your executable.
 
-The .gcov files contain the : separated fields along with
+The .gcov files contain the :samp:`:` separated fields along with
 program source code.  The format is
 
 .. code-block:: c++
@@ -174,9 +174,9 @@ program source code.  The format is
   ``execution_count``:``line_number``:``source line text``
 
 Additional block information may succeed each line, when requested by
-command line option.  The ``execution_count`` is - for lines
-containing no code.  Unexecuted lines are marked ##### or
-====, depending on whether they are reachable by
+command line option.  The ``execution_count`` is :samp:`-` for lines
+containing no code.  Unexecuted lines are marked :samp:`#####` or
+:samp:`====`, depending on whether they are reachable by
 non-exceptional paths or only exceptional paths such as C++ exception
 handlers, respectively.
 
@@ -203,7 +203,7 @@ conventionally be rounded to 0% or 100% are instead printed as the
 nearest non-boundary value.
 
 When using :command:`gcov`, you must first compile your program with two
-special GCC options: -fprofile-arcs -ftest-coverage.
+special GCC options: :samp:`-fprofile-arcs -ftest-coverage`.
 This tells the compiler to generate additional information needed by
 gcov (basically a flow graph of the program) and also includes
 additional code in the object files for generating the extra profiling

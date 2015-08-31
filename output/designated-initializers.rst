@@ -21,7 +21,7 @@ an extension in C90 mode as well.  This extension is not
 implemented in GNU C++.
 
 To specify an array index, write
-[``index``] = before the element value.  For example,
+:samp:`[``index``] =` before the element value.  For example,
 
 .. code-block:: c++
 
@@ -37,11 +37,11 @@ The index values must be constant expressions, even if the array being
 initialized is automatic.
 
 An alternative syntax for this that has been obsolete since GCC 2.5 but
-GCC still accepts is to write [``index``] before the element
-value, with no =.
+GCC still accepts is to write :samp:`[``index``]` before the element
+value, with no :samp:`=`.
 
 To initialize a range of elements to the same value, write
-[``first`` ... ``last``] = ``value``.  This is a GNU
+:samp:`[``first`` ... ``last``] = ``value```.  This is a GNU
 extension.  For example,
 
 .. code-block:: c++
@@ -55,7 +55,7 @@ Note that the length of the array is the highest value specified
 plus one.
 
 In a structure initializer, specify the name of a field to initialize
-with .``fieldname`` = before the element value.  For example,
+with :samp:`.``fieldname`` =` before the element value.  For example,
 given the following structure,
 
 .. code-block:: c++
@@ -75,7 +75,7 @@ is equivalent to
   struct point p = { xvalue, yvalue };
 
 Another syntax that has the same meaning, obsolete since GCC 2.5, is
-``fieldname``:, as shown here:
+:samp:```fieldname``:`, as shown here:
 
 .. code-block:: c++
 
@@ -86,7 +86,7 @@ that have static storage duration.
 
 .. index:: designators
 
-The [``index``] or .``fieldname`` is known as a
+The :samp:`[``index``]` or :samp:`.``fieldname``` is known as a
 :dfn:`designator`.  You can also use a designator (or the obsolete colon
 syntax) when initializing a union, to specify which element of the union
 should be used.  For example,
@@ -129,11 +129,11 @@ For example:
 
 .. index:: designator lists
 
-You can also write a series of .``fieldname`` and
-[``index``] designators before an = to specify a
+You can also write a series of :samp:`.``fieldname``` and
+:samp:`[``index``]` designators before an :samp:`=` to specify a
 nested subobject to initialize; the list is taken relative to the
 subobject corresponding to the closest surrounding brace pair.  For
-example, with the struct point declaration above:
+example, with the :samp:`struct point` declaration above:
 
 .. code-block:: c++
 

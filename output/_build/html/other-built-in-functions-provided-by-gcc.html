@@ -265,7 +265,7 @@ This builtin can be used to call Go closures from C.</p>
 evaluate code depending on the value of a constant expression.  This
 built-in function returns <tt class="docutils literal"><span class="pre">exp1</span></tt> if <tt class="docutils literal"><span class="pre">const_exp</span></tt>, which is an
 integer constant expression, is nonzero.  Otherwise it returns <tt class="docutils literal"><span class="pre">exp2</span></tt>.</p>
-<p>This built-in function is analogous to the ? : operator in C,
+<p>This built-in function is analogous to the <tt class="samp docutils literal"><span class="pre">?</span> <span class="pre">:</span></tt> operator in C,
 except that the expression returned has its type unaltered by promotion
 rules.  Also, the built-in function does not evaluate the expression
 that is not chosen.  For example, if <tt class="docutils literal"><span class="pre">const_exp</span></tt> evaluates to true,
@@ -297,7 +297,7 @@ implementing the ISO C11 macros <tt class="docutils literal"><span class="pre">C
 <tt class="docutils literal"><span class="pre">CMPLXL</span></tt>.  <tt class="docutils literal"><span class="pre">real</span></tt> and <tt class="docutils literal"><span class="pre">imag</span></tt> must have the same type, a
 real binary floating-point type, and the result has the corresponding
 complex type with real and imaginary parts <tt class="docutils literal"><span class="pre">real</span></tt> and <tt class="docutils literal"><span class="pre">imag</span></tt>.
-Unlike <tt class="docutils literal"><span class="pre">real</span></tt> + I * <tt class="docutils literal"><span class="pre">imag</span></tt>, this works even when
+Unlike :samp:<tt class="docutils literal"><span class="pre">`real</span></tt> + I * <tt class="docutils literal"><span class="pre">imag`</span></tt>, this works even when
 infinities, NaNs and negative zeros are involved.</p>
 <p id="index-401">Built-in Functionint__builtin_constant_p(<tt class="docutils literal"><span class="pre">exp</span></tt>)You can use the built-in function <tt class="docutils literal"><span class="pre">__builtin_constant_p</span></tt> to
 determine if a value is known to be constant at compile time and hence
@@ -516,7 +516,7 @@ does not do default promotion from float to double.</p>
 <p>Since ISO C99 defines this function in terms of <tt class="docutils literal"><span class="pre">strtod</span></tt>, which we
 do not implement, a description of the parsing is in order.  The string
 is parsed as by <tt class="docutils literal"><span class="pre">strtol</span></tt>; that is, the base is recognized by
-leading 0 or 0x prefixes.  The number parsed is placed
+leading <tt class="samp docutils literal"><span class="pre">0</span></tt> or <tt class="samp docutils literal"><span class="pre">0x</span></tt> prefixes.  The number parsed is placed
 in the significand such that the least significant bit of the number
 is at the least significant bit of the significand.  The number is
 truncated to fit the significand field provided.  The significand is

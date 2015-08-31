@@ -37,9 +37,9 @@ specified by the C standard but is usually two.
 Support for decimal floating types includes the arithmetic operators
 add, subtract, multiply, divide; unary arithmetic operators;
 relational operators; equality operators; and conversions to and from
-integer and other floating types.  Use a suffix df or
-DF in a literal constant of type ``_Decimal32``, dd
-or DD for ``_Decimal64``, and dl or DL for
+integer and other floating types.  Use a suffix :samp:`df` or
+:samp:`DF` in a literal constant of type ``_Decimal32``, :samp:`dd`
+or :samp:`DD` for ``_Decimal64``, and :samp:`dl` or :samp:`DL` for
 ``_Decimal128``.
 
 GCC support of decimal float as specified by the draft technical report

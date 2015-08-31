@@ -36,8 +36,8 @@ If you are not sure whether you have found a bug, here are some guidelines:
   program whose behavior is undefined, which happened by chance to give
   the desired results with another C or C++ compiler.
 
-  For example, in many nonoptimizing compilers, you can write x;
-  at the end of a function instead of return x;, with the same
+  For example, in many nonoptimizing compilers, you can write :samp:`x;`
+  at the end of a function instead of :samp:`return x;`, with the same
   results.  But the value of the function is undefined if ``return``
   is omitted; it is not a bug when GCC produces different results.
 

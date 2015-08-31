@@ -54,10 +54,10 @@ You have the following options for dealing with template instantiations:
   .. index:: frepo
 
   Compile your template-using code with :option:`-frepo`.  The compiler
-  generates files with the extension .rpo listing all of the
+  generates files with the extension :samp:`.rpo` listing all of the
   template instantiations used in the corresponding object files that
-  could be instantiated there; the link wrapper, collect2,
-  then updates the .rpo files to tell the compiler where to place
+  could be instantiated there; the link wrapper, :samp:`collect2`,
+  then updates the :samp:`.rpo` files to tell the compiler where to place
   those instantiations and rebuild any affected object files.  The
   link-time overhead is negligible after the first pass, as the compiler
   continues to place the instantiations in the same files.
@@ -104,7 +104,7 @@ You have the following options for dealing with template instantiations:
 
   If you are using Cfront-model code, you can probably get away with not
   using :option:`-fno-implicit-templates` when compiling files that don't
-  #include the member template definitions.
+  :samp:`#include` the member template definitions.
 
   If you use one big file to do the instantiations, you may want to
   compile it without :option:`-fno-implicit-templates` so you get all of the

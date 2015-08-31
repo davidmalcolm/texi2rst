@@ -70,7 +70,7 @@ following class does this:
   @end
 
 Weak pointers are supported through a new type character specifier
-represented by the ! character.  The
+represented by the :samp:`!` character.  The
 ``class_ivar_set_gcinvisible()`` function adds or removes this
 specifier to the string type description of the instance variable named
 as argument.

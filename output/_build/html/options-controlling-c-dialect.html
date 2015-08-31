@@ -98,7 +98,7 @@ such as the <tt class="docutils literal"><span class="pre">asm</span></tt> and <
 predefined macros such as <tt class="docutils literal"><span class="pre">unix</span></tt> and <tt class="docutils literal"><span class="pre">vax</span></tt> that identify the
 type of system you are using.  It also enables the undesirable and
 rarely used ISO trigraph feature.  For the C compiler,
-it disables recognition of C++ style // comments as well as
+it disables recognition of C++ style <tt class="samp docutils literal"><span class="pre">//</span></tt> comments as well as
 the <tt class="docutils literal"><span class="pre">inline</span></tt> keyword.</p>
 <p>The alternate keywords <tt class="docutils literal"><span class="pre">__asm__</span></tt>, <tt class="docutils literal"><span class="pre">__extension__</span></tt>,
 <tt class="docutils literal"><span class="pre">__inline__</span></tt> and <tt class="docutils literal"><span class="pre">__typeof__</span></tt> continue to work despite
@@ -128,9 +128,9 @@ affected.</p>
 <dd><p>Determine the language standard. See <a class="reference internal" href="language-standards-supported-by-gcc.html#standards"><em>Language Standards
 Supported by GCC</em></a>, for details of these standard versions.  This option
 is currently only supported when compiling C or C++.</p>
-<p>The compiler can accept several base standards, such as c90 or
-c++98, and GNU dialects of those standards, such as
-gnu90 or gnu++98.  When a base standard is specified, the
+<p>The compiler can accept several base standards, such as <tt class="samp docutils literal"><span class="pre">c90</span></tt> or
+<tt class="samp docutils literal"><span class="pre">c++98</span></tt>, and GNU dialects of those standards, such as
+<tt class="samp docutils literal"><span class="pre">gnu90</span></tt> or <tt class="samp docutils literal"><span class="pre">gnu++98</span></tt>.  When a base standard is specified, the
 compiler accepts all programs following that standard plus those
 using GNU extensions that do not contradict it.  For example,
 <em class="xref std std-option">-std=c90</em> turns off certain features of GCC that are
@@ -143,7 +143,7 @@ those features change the meaning of the base standard.  As a result, some
 strict-conforming programs may be rejected.  The particular standard
 is used by <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wpedantic"><em class="xref std std-option">-Wpedantic</em></a> to identify which features are GNU
 extensions given that version of the standard. For example
-<em class="xref std std-option">-std=gnu90 -Wpedantic</em> warns about C++ style //
+<em class="xref std std-option">-std=gnu90 -Wpedantic</em> warns about C++ style <tt class="samp docutils literal"><span class="pre">//</span></tt>
 comments, while <em class="xref std std-option">-std=gnu99 -Wpedantic</em> does not.</p>
 <p>A value for this option must be provided; possible values are</p>
 <dl class="docutils">
@@ -158,20 +158,20 @@ bugs and floating-point issues
 (mainly but not entirely relating to optional C99 features from
 Annexes F and G).  See
 <a class="reference external" href="http://gcc.gnu.org/c99status.html">http://gcc.gnu.org/c99status.html</a> for more information.  The
-names c9x and iso9899:199x are deprecated.</dd>
+names <tt class="samp docutils literal"><span class="pre">c9x</span></tt> and <tt class="samp docutils literal"><span class="pre">iso9899:199x</span></tt> are deprecated.</dd>
 <dt>c11 c1x iso9899:2011</dt>
 <dd>ISO C11, the 2011 revision of the ISO C standard.  This standard is
 substantially completely supported, modulo bugs, floating-point issues
 (mainly but not entirely relating to optional C11 features from
 Annexes F and G) and the optional Annexes K (Bounds-checking
-interfaces) and L (Analyzability).  The name c1x is deprecated.</dd>
+interfaces) and L (Analyzability).  The name <tt class="samp docutils literal"><span class="pre">c1x</span></tt> is deprecated.</dd>
 <dt>gnu90 gnu89</dt>
 <dd>GNU dialect of ISO C90 (including some C99 features).</dd>
 <dt>gnu99 gnu9x</dt>
-<dd>GNU dialect of ISO C99.  The name gnu9x is deprecated.</dd>
+<dd>GNU dialect of ISO C99.  The name <tt class="samp docutils literal"><span class="pre">gnu9x</span></tt> is deprecated.</dd>
 <dt>gnu11 gnu1x</dt>
 <dd>GNU dialect of ISO C11.  This is the default for C code.
-The name gnu1x is deprecated.</dd>
+The name <tt class="samp docutils literal"><span class="pre">gnu1x</span></tt> is deprecated.</dd>
 <dt>c++98 c++03</dt>
 <dd>The 1998 ISO C++ standard plus the 2003 technical corrigendum and some
 additional defect reports. Same as <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> for C++ code.</dd>
@@ -180,16 +180,16 @@ additional defect reports. Same as <a class="reference internal" href="#cmdoptio
 C++ code.</dd>
 <dt>c++11 c++0x</dt>
 <dd>The 2011 ISO C++ standard plus amendments.
-The name c++0x is deprecated.</dd>
+The name <tt class="samp docutils literal"><span class="pre">c++0x</span></tt> is deprecated.</dd>
 <dt>gnu++11 gnu++0x</dt>
 <dd>GNU dialect of <em class="xref std std-option">-std=c++11</em>.
-The name gnu++0x is deprecated.</dd>
+The name <tt class="samp docutils literal"><span class="pre">gnu++0x</span></tt> is deprecated.</dd>
 <dt>c++14 c++1y</dt>
 <dd>The 2014 ISO C++ standard plus amendments.
-The name c++1y is deprecated.</dd>
+The name <tt class="samp docutils literal"><span class="pre">c++1y</span></tt> is deprecated.</dd>
 <dt>gnu++14 gnu++1y</dt>
 <dd>GNU dialect of <em class="xref std std-option">-std=c++14</em>.
-The name gnu++1y is deprecated.</dd>
+The name <tt class="samp docutils literal"><span class="pre">gnu++1y</span></tt> is deprecated.</dd>
 <dt>c++1z</dt>
 <dd>The next revision of the ISO C++ standard, tentatively planned for
 2017.  Support is highly experimental, and will almost certainly
@@ -228,10 +228,10 @@ declared and/or defined in a translation unit, including those in header
 files.  This option is silently ignored in any language other than C.</p>
 <p>Besides declarations, the file indicates, in comments, the origin of
 each declaration (source file and line), whether the declaration was
-implicit, prototyped or unprototyped (I, N for new or
-O for old, respectively, in the first character after the line
+implicit, prototyped or unprototyped (<tt class="samp docutils literal"><span class="pre">I</span></tt>, <tt class="samp docutils literal"><span class="pre">N</span></tt> for new or
+<tt class="samp docutils literal"><span class="pre">O</span></tt> for old, respectively, in the first character after the line
 number and the colon), and whether it came from a declaration or a
-definition (C or F, respectively, in the following
+definition (<tt class="samp docutils literal"><span class="pre">C</span></tt> or <tt class="samp docutils literal"><span class="pre">F</span></tt>, respectively, in the following
 character).  In the case of function definitions, a K&amp;R-style list of
 arguments followed by their declarations is also provided, inside
 comments, after the declaration.</p>
@@ -265,7 +265,7 @@ switch only affects the <tt class="docutils literal"><span class="pre">asm</span
 <dt id="cmdoption-fno-builtin">
 <tt class="descname">-fno-builtin</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fno-builtin" title="Permalink to this definition">¶</a></dt>
 <dd><p id="index-5">Don&#8217;t recognize built-in functions that do not begin with
-__builtin_ as prefix.  See <a class="reference internal" href="other-built-in-functions-provided-by-gcc.html#other-builtins"><em>Other built-in
+<tt class="samp docutils literal"><span class="pre">__builtin_</span></tt> as prefix.  See <a class="reference internal" href="other-built-in-functions-provided-by-gcc.html#other-builtins"><em>Other built-in
 functions provided by GCC</em></a>, for details of the functions affected,
 including those which are not built-in functions when <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> or
 <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-std"><em class="xref std std-option">-std</em></a> options for strict ISO C conformance are used because they
@@ -286,7 +286,7 @@ warnings are given with <a class="reference internal" href="options-to-request-o
 known not to modify global memory.</p>
 <p>With the <em class="xref std std-option">-fno-builtin-``function``</em> option
 only the built-in function <tt class="docutils literal"><span class="pre">function</span></tt> is
-disabled.  <tt class="docutils literal"><span class="pre">function</span></tt> must not begin with __builtin_.  If a
+disabled.  <tt class="docutils literal"><span class="pre">function</span></tt> must not begin with <tt class="samp docutils literal"><span class="pre">__builtin_</span></tt>.  If a
 function is named that is not built-in in this version of GCC, this
 option is ignored.  There is no corresponding
 <em class="xref std std-option">-fbuiltin-``function``</em> option; if you wish to enable

@@ -15,15 +15,15 @@ types which are not part of ISO C99.  You can declare complex types
 using the keyword ``_Complex``.  As an extension, the older GNU
 keyword ``__complex__`` is also supported.
 
-For example, _Complex double x; declares ``x`` as a
+For example, :samp:`_Complex double x;` declares ``x`` as a
 variable whose real part and imaginary part are both of type
-``double``.  _Complex short int y; declares ``y`` to
+``double``.  :samp:`_Complex short int y;` declares ``y`` to
 have real and imaginary parts of type ``short int``; this is not
 likely to be useful, but it shows that the set of complex types is
 complete.
 
-To write a constant with a complex data type, use the suffix i or
-j (either one; they are equivalent).  For example, ``2.5fi``
+To write a constant with a complex data type, use the suffix :samp:`i` or
+:samp:`j` (either one; they are equivalent).  For example, ``2.5fi``
 has type ``_Complex float`` and ``3i`` has type
 ``_Complex int``.  Such a constant always has a pure imaginary
 value, but you can form any complex value you like by adding one to a
@@ -46,7 +46,7 @@ built-in functions by GCC.
 
 .. index:: complex conjugation
 
-The operator ~ performs complex conjugation when used on a value
+The operator :samp:`~` performs complex conjugation when used on a value
 with a complex type.  This is a GNU extension; for values of
 floating type, you should use the ISO C99 functions ``conjf``,
 ``conj`` and ``conjl``, declared in ``<complex.h>`` and also

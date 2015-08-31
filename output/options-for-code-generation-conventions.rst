@@ -13,9 +13,9 @@ These machine-independent options control the interface conventions
 used in code generation.
 
 Most of them have both positive and negative forms; the negative form
-of :option:`-ffoo` is :option:`-fno-foo`.  In the table below, only
+of :samp:`-ffoo` is :samp:`-fno-foo`.  In the table below, only
 one of the forms is listed-the one that is not the default.  You
-can figure out the other form by either removing no- or adding
+can figure out the other form by either removing :samp:`no-` or adding
 it.
 
 .. option:: -fbounds-check
@@ -28,11 +28,11 @@ it.
 .. option:: -fstack-reuse=reuse-level
 
   This option controls stack space reuse for user declared local/auto variables
-  and compiler generated temporaries.  ``reuse_level`` can be all,
-  named_vars, or none. all enables stack reuse for all
-  local variables and temporaries, named_vars enables the reuse only for
-  user defined local variables with names, and none disables stack reuse
-  completely. The default value is all. The option is needed when the
+  and compiler generated temporaries.  ``reuse_level`` can be :samp:`all`,
+  :samp:`named_vars`, or :samp:`none`. :samp:`all` enables stack reuse for all
+  local variables and temporaries, :samp:`named_vars` enables the reuse only for
+  user defined local variables with names, and :samp:`none` disables stack reuse
+  completely. The default value is :samp:`all`. The option is needed when the
   program extends the lifetime of a scoped local variable or a compiler generated
   temporary beyond the end point defined by the language.  When a lifetime of
   a variable ends, and if the variable lives in memory, the optimizing compiler
@@ -474,8 +474,8 @@ it.
   excludes any inline function defined in files whose pathnames
   contain /bits/stl or include/sys.
 
-  If, for some reason, you want to include letter , in one of
-  ``sym``, write \,. For example,
+  If, for some reason, you want to include letter :samp:`,` in one of
+  ``sym``, write :samp:`\,`. For example,
   :option:`-finstrument-functions-exclude-file-list='\,\,tmp'`
   (note the single quote surrounding the option).
 
@@ -503,9 +503,9 @@ it.
   operating system or the language runtime must do that.  The switch causes
   generation of code to ensure that they see the stack being extended.
 
-  You can additionally specify a string parameter: no means no
-  checking, generic means force the use of old-style checking,
-  specific means use the best checking method and is equivalent
+  You can additionally specify a string parameter: :samp:`no` means no
+  checking, :samp:`generic` means force the use of old-style checking,
+  :samp:`specific` means use the best checking method and is equivalent
   to bare :option:`-fstack-check`.
 
   Old-style checking is a generic mechanism that requires no specific
@@ -522,7 +522,7 @@ it.
     generic implementation, code performance is hampered.
 
   Note that old-style stack checking is also the fallback method for
-  specific if no target support has been added in the compiler.
+  :samp:`specific` if no target support has been added in the compiler.
 
 .. option:: -fstack-limit-register=reg
 
@@ -532,7 +532,7 @@ it.
   the signal is raised before the stack overruns the boundary, so
   it is possible to catch the signal without taking special precautions.
 
-  For instance, if the stack starts at absolute address 0x80000000
+  For instance, if the stack starts at absolute address :samp:`0x80000000`
   and grows downwards, you can use the flags
   :option:`-fstack-limit-symbol=__stack_limit` and
   :option:`-Wl,--defsym,__stack_limit=0x7ffe0000` to enforce a stack limit
@@ -571,14 +571,14 @@ it.
 .. option:: -ftls-model=model
 
   Alter the thread-local storage model to be used (see :ref:`thread-local`).
-  The ``model`` argument should be one of global-dynamic,
-  local-dynamic, initial-exec or local-exec.
+  The ``model`` argument should be one of :samp:`global-dynamic`,
+  :samp:`local-dynamic`, :samp:`initial-exec` or :samp:`local-exec`.
   Note that the choice is subject to optimization: the compiler may use
   a more efficient model for symbols not visible outside of the translation
   unit, or if :option:`-fpic` is not given on the command line.
 
-  The default without :option:`-fpic` is initial-exec; with
-  :option:`-fpic` the default is global-dynamic.
+  The default without :option:`-fpic` is :samp:`initial-exec`; with
+  :option:`-fpic` the default is :samp:`global-dynamic`.
 
 .. option:: -fvisibility=[default|internal|hidden|protected]
 
@@ -590,12 +590,12 @@ it.
   It is strongly recommended that you use this in any shared objects
   you distribute.
 
-  Despite the nomenclature, default always means public; i.e.,
+  Despite the nomenclature, :samp:`default` always means public; i.e.,
   available to be linked against from outside the shared object.
-  protected and internal are pretty useless in real-world
-  usage so the only other commonly used option is hidden.
+  :samp:`protected` and :samp:`internal` are pretty useless in real-world
+  usage so the only other commonly used option is :samp:`hidden`.
   The default if :option:`-fvisibility` isn't specified is
-  default, i.e., make every symbol public.
+  :samp:`default`, i.e., make every symbol public.
 
   A good explanation of the benefits offered by ensuring ELF
   symbols have the correct visibility is given by 'How To Write
@@ -640,7 +640,7 @@ it.
   Note that :option:`-fvisibility` does affect C++ vague linkage
   entities. This means that, for instance, an exception class that is
   be thrown between DSOs must be explicitly marked with default
-  visibility so that the type_info nodes are unified between
+  visibility so that the :samp:`type_info` nodes are unified between
   the DSOs.
 
   An overview of these techniques, their benefits and how to use them

@@ -106,7 +106,7 @@ not explicitly declared with the ``inline`` keyword.  You can
 override this with :option:`-fno-default-inline`; see :ref:`Options Controlling C++ Dialect <c++-dialect-options>`.
 
 GCC does not inline any functions when not optimizing unless you specify
-the always_inline attribute for the function, like this:
+the :samp:`always_inline` attribute for the function, like this:
 
 .. code-block:: c++
 

@@ -119,7 +119,7 @@ Another solution is to modify the function that is compiled with
 Sun CC to copy the argument into a local variable; local variables
 are always properly aligned.  A third solution is to modify the function
 that uses the pointer to dereference it via the following function
-<tt class="docutils literal"><span class="pre">access_double</span></tt> instead of directly with <a href="#id2"><span class="problematic" id="id3">*</span></a>:</p>
+<tt class="docutils literal"><span class="pre">access_double</span></tt> instead of directly with <tt class="samp docutils literal"><span class="pre">*</span></tt>:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kr">inline</span> <span class="kt">double</span>
 <span class="nf">access_double</span> <span class="p">(</span><span class="kt">double</span> <span class="o">*</span><span class="n">unaligned_ptr</span><span class="p">)</span>
 <span class="p">{</span>
@@ -191,7 +191,7 @@ enabled so that symbol merging can occur.  To utilize this feature,
 the application linked with libstdc++.a must include the
 <em class="xref std std-option">-Wl,-brtl</em> flag on the link line.  G++ cannot impose this
 because this option may interfere with the semantics of the user
-program and users may not always use g++ to link his or her
+program and users may not always use <tt class="samp docutils literal"><span class="pre">g++</span></tt> to link his or her
 application.  Applications are not required to use the
 <em class="xref std std-option">-Wl,-brtl</em> flag on the link line-the rest of the
 libstdc++.a library which is not dependent on the symbol
@@ -206,14 +206,14 @@ exported by the application (<em class="xref std std-option">-Wl,-brtl,-bE:expor
 <li><p class="first">AIX on the RS/6000 provides support (NLS) for environments outside of
 the United States.  Compilers and assemblers use NLS to support
 locale-specific representations of various objects including
-floating-point numbers (. vs , for separating decimal
+floating-point numbers (<tt class="samp docutils literal"><span class="pre">.</span></tt> vs <tt class="samp docutils literal"><span class="pre">,</span></tt> for separating decimal
 fractions).  There have been problems reported where the library linked
 with GCC does not produce the same floating-point formats that the
 assembler accepts.  If you have this problem, set the <span class="target" id="index-0"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-LANG"><tt class="xref std std-envvar docutils literal"><span class="pre">LANG</span></tt></a>
-environment variable to C or En_US.</p>
+environment variable to <tt class="samp docutils literal"><span class="pre">C</span></tt> or <tt class="samp docutils literal"><span class="pre">En_US</span></tt>.</p>
 </li>
 <li><p id="index-1">Even if you specify <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-fdollars-in-identifiers"><em class="xref std std-option">-fdollars-in-identifiers</em></a>,
-you cannot successfully use $ in identifiers on the RS/6000 due
+you cannot successfully use <tt class="samp docutils literal"><span class="pre">$</span></tt> in identifiers on the RS/6000 due
 to a restriction in the IBM assembler.  GAS supports these
 identifiers.</p>
 </li>

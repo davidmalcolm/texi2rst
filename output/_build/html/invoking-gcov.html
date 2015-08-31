@@ -138,15 +138,15 @@ a.c, then running <strong class="command">gcov</strong> on the file a.c will
 produce an output file called a.c##x.h.gcov instead of
 x.h.gcov.  This can be useful if x.h is included in
 multiple source files and you want to see the individual
-contributions.  If you use the -p option, both the including
+contributions.  If you use the <tt class="samp docutils literal"><span class="pre">-p</span></tt> option, both the including
 and included file names will be complete path names.</dd>
 <dt>-p &#8211;preserve-paths</dt>
 <dd>Preserve complete path information in the names of generated
 .gcov files.  Without this option, just the filename component is
-used.  With this option, all directories are used, with / characters
-translated to # characters, . directory components
+used.  With this option, all directories are used, with <tt class="samp docutils literal"><span class="pre">/</span></tt> characters
+translated to <tt class="samp docutils literal"><span class="pre">#</span></tt> characters, . directory components
 removed and unremoveable ..
-components renamed to ^.  This is useful if sourcefiles are in several
+components renamed to <tt class="samp docutils literal"><span class="pre">^</span></tt>.  This is useful if sourcefiles are in several
 different directories.</dd>
 <dt>-r &#8211;relative-only</dt>
 <dd>Only output information about source files with a relative pathname
@@ -220,19 +220,19 @@ One .gcov file is produced for each source (or header) file
 containing code,
 which was compiled to produce the data files.  The <tt class="docutils literal"><span class="pre">mangledname</span></tt> part
 of the output file name is usually simply the source file name, but can
-be something more complicated if the -l or -p options are
+be something more complicated if the <tt class="samp docutils literal"><span class="pre">-l</span></tt> or <tt class="samp docutils literal"><span class="pre">-p</span></tt> options are
 given.  Refer to those options for details.</p>
 <p>If you invoke <strong class="command">gcov</strong> with multiple input files, the
 contributions from each input file are summed.  Typically you would
 invoke it with the same list of files as the final link of your executable.</p>
-<p>The .gcov files contain the : separated fields along with
+<p>The .gcov files contain the <tt class="samp docutils literal"><span class="pre">:</span></tt> separated fields along with
 program source code.  The format is</p>
 <div class="highlight-c++"><pre>``execution_count``:``line_number``:``source line text``</pre>
 </div>
 <p>Additional block information may succeed each line, when requested by
-command line option.  The <tt class="docutils literal"><span class="pre">execution_count</span></tt> is - for lines
-containing no code.  Unexecuted lines are marked ##### or
-====, depending on whether they are reachable by
+command line option.  The <tt class="docutils literal"><span class="pre">execution_count</span></tt> is <tt class="samp docutils literal"><span class="pre">-</span></tt> for lines
+containing no code.  Unexecuted lines are marked <tt class="samp docutils literal"><span class="pre">#####</span></tt> or
+<tt class="samp docutils literal"><span class="pre">====</span></tt>, depending on whether they are reachable by
 non-exceptional paths or only exceptional paths such as C++ exception
 handlers, respectively.</p>
 <p>Some lines of information at the start have <tt class="docutils literal"><span class="pre">line_number</span></tt> of zero.
@@ -251,7 +251,7 @@ are <em>exactly</em> 0% and 100% respectively.  Other values which would
 conventionally be rounded to 0% or 100% are instead printed as the
 nearest non-boundary value.</p>
 <p>When using <strong class="command">gcov</strong>, you must first compile your program with two
-special GCC options: -fprofile-arcs -ftest-coverage.
+special GCC options: <tt class="samp docutils literal"><span class="pre">-fprofile-arcs</span> <span class="pre">-ftest-coverage</span></tt>.
 This tells the compiler to generate additional information needed by
 gcov (basically a flow graph of the program) and also includes
 additional code in the object files for generating the extra profiling

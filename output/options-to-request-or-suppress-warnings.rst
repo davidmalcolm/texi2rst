@@ -68,9 +68,9 @@ warnings but control the kinds of diagnostics produced by GCC.
   messages.
 
 You can request many specific warnings with options beginning with
--W, for example :option:`-Wimplicit` to request warnings on
+:samp:`-W`, for example :option:`-Wimplicit` to request warnings on
 implicit declarations.  Each of these specific warning options also
-has a negative form beginning -Wno- to turn off warnings; for
+has a negative form beginning :samp:`-Wno-` to turn off warnings; for
 example, :option:`-Wno-implicit`.  This manual lists only one of the
 two forms, whichever is not the default.  For further
 language-specific options also refer to C++ Dialect Options and
@@ -108,7 +108,7 @@ warns that an unrecognized option is present.
   features are supported as well.  With this option, they are rejected.
 
   :option:`-Wpedantic` does not cause warning messages for use of the
-  alternate keywords whose names begin and end with __.  Pedantic
+  alternate keywords whose names begin and end with :samp:`__`.  Pedantic
   warnings are also disabled in the expression that follows
   ``__extension__``.  However, only system header files should use
   these escape routes; application programs should avoid them.
@@ -126,7 +126,7 @@ warns that an unrecognized option is present.
   support such a feature in the near future.
 
   Where the standard specified with :option:`-std` represents a GNU
-  extended dialect of C, such as gnu90 or gnu99, there is a
+  extended dialect of C, such as :samp:`gnu90` or :samp:`gnu99`, there is a
   corresponding :dfn:`base standard`, the version of ISO C on which the GNU
   extended dialect is based.  Warnings from :option:`-Wpedantic` are given
   where they are required by the base standard.  (It does not make sense
@@ -242,8 +242,8 @@ warns that an unrecognized option is present.
 
 .. option:: -Wcomment, -Wno-comment
 
-  Warn whenever a comment-start sequence /* appears in a /*
-  comment, or whenever a Backslash-Newline appears in a // comment.
+  Warn whenever a comment-start sequence :samp:`/*` appears in a :samp:`/*`
+  comment, or whenever a Backslash-Newline appears in a :samp:`//` comment.
   This warning is enabled by :option:`-Wall`.
 
 .. option:: -Wno-coverage-mismatch
@@ -340,7 +340,7 @@ warns that an unrecognized option is present.
     that such arguments are ignored.
 
     Where the unused arguments lie between used arguments that are
-    specified with $ operand number specifications, normally
+    specified with :samp:`$` operand number specifications, normally
     warnings are still given, since the implementation could not know what
     type to pass to ``va_arg`` to skip the unused arguments.  However,
     in the case of ``scanf`` formats, this option suppresses the
@@ -371,7 +371,7 @@ warns that an unrecognized option is present.
     warns about calls to ``printf`` and ``scanf`` functions where the
     format string is not a string literal and there are no format arguments,
     as in ``printf (foo);``.  This may be a security hole if the format
-    string came from untrusted input and contains %n.  (This is
+    string came from untrusted input and contains :samp:`%n`.  (This is
     currently a subset of what :option:`-Wformat-nonliteral` warns about, but
     in future warnings may be added to :option:`-Wformat-security` that are not
     included in :option:`-Wformat-nonliteral`.)
@@ -1148,9 +1148,9 @@ warns that an unrecognized option is present.
 
   * In traditional C, some preprocessor directives did not exist.
     Traditional preprocessors only considered a line to be a directive
-    if the # appeared in column 1 on the line.  Therefore
+    if the :samp:`#` appeared in column 1 on the line.  Therefore
     :option:`-Wtraditional` warns about directives that traditional C
-    understands but ignores because the # does not appear as the
+    understands but ignores because the :samp:`#` does not appear as the
     first character on the line.  It also suggests you hide directives like
     ``#pragma`` not understood by traditional C by indenting them.  Some
     traditional implementations do not recognize ``#elif``, so this option
@@ -1160,10 +1160,10 @@ warns that an unrecognized option is present.
 
   * The unary plus operator.
 
-  * The U integer constant suffix, or the F or L floating-point
-    constant suffixes.  (Traditional C does support the L suffix on integer
+  * The :samp:`U` integer constant suffix, or the :samp:`F` or :samp:`L` floating-point
+    constant suffixes.  (Traditional C does support the :samp:`L` suffix on integer
     constants.)  Note, these suffixes appear in macros defined in the system
-    headers of most modern systems, e.g. the _MIN/_MAX macros in ``<limits.h>``.
+    headers of most modern systems, e.g. the :samp:`_MIN`/:samp:`_MAX` macros in ``<limits.h>``.
     Use of these macros in user code might normally lead to spurious
     warnings, however GCC's integrated preprocessor has enough context to
     avoid warning in these cases.
@@ -1797,7 +1797,7 @@ warns that an unrecognized option is present.
 
 .. option:: -Wno-multichar, -Wmultichar
 
-  Do not warn if a multicharacter constant ('FOOF') is used.
+  Do not warn if a multicharacter constant (:samp:`'FOOF'`) is used.
   Usually they indicate a typo in the user's code, as they have
   implementation-defined values, and should not be used in portable code.
 

@@ -89,7 +89,7 @@ Here is a list of options that are *only* for compiling C++ programs:
   return value even without this option.  In all other cases, when
   ``operator new`` has a non-empty exception specification, memory
   exhaustion is signalled by throwing ``std::bad_alloc``.  See also
-  new (nothrow).
+  :samp:`new (nothrow)`.
 
 .. option:: -fconstexpr-depth=n
 
@@ -411,7 +411,7 @@ Here is a list of options that are *only* for compiling C++ programs:
 
   This option causes run-time data structures to be built at program startup,
   which are used for verifying the vtable pointers.  
-  The options std and preinit
+  The options :samp:`std` and :samp:`preinit`
   control the timing of when these data structures are built.  In both cases the
   data structures are built before execution reaches ``main``.  Using
   :option:`-fvtable-verify=std` causes the data structures to be built after
@@ -420,8 +420,8 @@ Here is a list of options that are *only* for compiling C++ programs:
   libraries have been loaded and initialized.
 
   If this option appears multiple times in the command line with different
-  values specified, none takes highest priority over both std and
-  preinit; preinit takes priority over std.
+  values specified, :samp:`none` takes highest priority over both :samp:`std` and
+  :samp:`preinit`; :samp:`preinit` takes priority over :samp:`std`.
 
 .. option:: -fvtv-debug
 
@@ -632,7 +632,7 @@ have meanings only for C++ programs:
     (C++ and Objective-C++ only)
 
   Warn when a narrowing conversion prohibited by C++11 occurs within
-  { }, e.g.
+  :samp:`{ }`, e.g.
 
   .. code-block:: c++
 
@@ -740,7 +740,7 @@ The following :option:`-W...` options are not affected by :option:`-Wall`.
   non-polymorphic bases classes too.
 
   When selecting this option, be aware that the standard library
-  headers do not obey all of these guidelines; use grep -v
+  headers do not obey all of these guidelines; use :samp:`grep -v`
   to filter out those warnings.
 
 .. option:: -Wstrict-null-sentinel , -Wstrict-null-sentinel, -Wno-strict-null-sentinel
@@ -764,7 +764,7 @@ The following :option:`-W...` options are not affected by :option:`-Wall`.
   Disable warnings when non-templatized friend functions are declared
   within a template.  Since the advent of explicit template specification
   support in G++, if the name of the friend is an unqualified-id (i.e.,
-  friend foo(int)), the C++ language specification demands that the
+  :samp:`friend foo(int)`), the C++ language specification demands that the
   friend declare or define an ordinary, nontemplate function.  (Section
   14.5.3).  Before G++ implemented explicit specification, unqualified-ids
   could be interpreted as a particular specialization of a templatized

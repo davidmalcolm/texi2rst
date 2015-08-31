@@ -86,20 +86,20 @@
 <div></div></blockquote>
 <div class="section" id="compiling-c-programs">
 <span id="invoking-g"></span><h1>Compiling C++ Programs<a class="headerlink" href="#compiling-c-programs" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="index-0"></span><p id="index-1">C++ source files conventionally use one of the suffixes .C,
-.cc, .cpp, .CPP, .c++, .cp, or
-.cxx; C++ header files often use .hh, .hpp,
-.H, or (for shared template code) .tcc; and
-preprocessed C++ files use the suffix .ii.  GCC recognizes
+<span class="target" id="index-0"></span><p id="index-1">C++ source files conventionally use one of the suffixes <tt class="samp docutils literal"><span class="pre">.C</span></tt>,
+<tt class="samp docutils literal"><span class="pre">.cc</span></tt>, <tt class="samp docutils literal"><span class="pre">.cpp</span></tt>, <tt class="samp docutils literal"><span class="pre">.CPP</span></tt>, <tt class="samp docutils literal"><span class="pre">.c++</span></tt>, <tt class="samp docutils literal"><span class="pre">.cp</span></tt>, or
+<tt class="samp docutils literal"><span class="pre">.cxx</span></tt>; C++ header files often use <tt class="samp docutils literal"><span class="pre">.hh</span></tt>, <tt class="samp docutils literal"><span class="pre">.hpp</span></tt>,
+<tt class="samp docutils literal"><span class="pre">.H</span></tt>, or (for shared template code) <tt class="samp docutils literal"><span class="pre">.tcc</span></tt>; and
+preprocessed C++ files use the suffix <tt class="samp docutils literal"><span class="pre">.ii</span></tt>.  GCC recognizes
 files with these names and compiles them as C++ programs even if you
 call the compiler the same way as for compiling C programs (usually
 with the name <strong class="command">gcc</strong>).</p>
 <span class="target" id="index-2"></span><p id="index-3">However, the use of <strong class="command">gcc</strong> does not add the C++ library.
 <strong class="command">g++</strong> is a program that calls GCC and automatically specifies linking
-against the C++ library.  It treats .c,
-.h and .i files as C++ source files instead of C source
+against the C++ library.  It treats <tt class="samp docutils literal"><span class="pre">.c</span></tt>,
+<tt class="samp docutils literal"><span class="pre">.h</span></tt> and <tt class="samp docutils literal"><span class="pre">.i</span></tt> files as C++ source files instead of C source
 files unless <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-x"><em class="xref std std-option">-x</em></a> is used.  This program is also useful when
-precompiling a C header file with a .h extension for use in C++
+precompiling a C header file with a <tt class="samp docutils literal"><span class="pre">.h</span></tt> extension for use in C++
 compilations.  On many systems, <strong class="command">g++</strong> is also installed with
 the name <strong class="command">c++</strong>.</p>
 <p id="index-4">When you compile C++ programs, you may specify many of the same

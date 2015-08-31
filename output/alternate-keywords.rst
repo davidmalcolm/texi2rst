@@ -20,7 +20,7 @@ eventually be the default) or :option:`-std=c99` (or the equivalent
 :option:`-std=iso9899:1999`), or an option for a later standard
 version, is used.
 
-The way to solve these problems is to put __ at the beginning and
+The way to solve these problems is to put :samp:`__` at the beginning and
 end of each problematical keyword.  For example, use ``__asm__``
 instead of ``asm``, and ``__inline__`` instead of ``inline``.
 

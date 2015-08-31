@@ -127,7 +127,7 @@ we do not make because we think GCC is better without them.
   certain library facilities.  This is actually incorrect usage in an ISO
   C program, because the ISO C standard says that a conforming
   freestanding implementation should define ``__STDC__`` even though it
-  does not have the library facilities.  gcc -ansi -pedantic is a
+  does not have the library facilities.  :samp:`gcc -ansi -pedantic` is a
   conforming freestanding implementation, and it is therefore required to
   define ``__STDC__``, even though it does not come with an ISO C
   library.
@@ -135,7 +135,7 @@ we do not make because we think GCC is better without them.
   Sometimes people say that defining ``__STDC__`` in a compiler that
   does not completely conform to the ISO C standard somehow violates the
   standard.  This is illogical.  The standard is a standard for compilers
-  that claim to support ISO C, such as gcc -ansi-not for other
+  that claim to support ISO C, such as :samp:`gcc -ansi`-not for other
   compilers such as plain :command:`gcc`.  Whatever the ISO C standard says
   is relevant to the design of plain :command:`gcc` without :option:`-ansi` only
   for pragmatic reasons, not as a requirement.
@@ -220,7 +220,7 @@ we do not make because we think GCC is better without them.
   There is no guarantee (in either the C or the C++ standard language
   definitions) that the increments will be evaluated in any particular
   order.  Either increment might happen first.  ``func`` might get the
-  arguments 2, 3, or it might get 3, 2, or even 2, 2.
+  arguments :samp:`2, 3`, or it might get :samp:`3, 2`, or even :samp:`2, 2`.
 
 * Making certain warnings into errors by default.
 

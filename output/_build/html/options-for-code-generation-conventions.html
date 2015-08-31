@@ -87,9 +87,9 @@
 <span class="target" id="index-0"></span><span class="target" id="index-1"></span><p id="index-2">These machine-independent options control the interface conventions
 used in code generation.</p>
 <p>Most of them have both positive and negative forms; the negative form
-of <em class="xref std std-option">-ffoo</em> is <em class="xref std std-option">-fno-foo</em>.  In the table below, only
+of <tt class="samp docutils literal"><span class="pre">-ffoo</span></tt> is <tt class="samp docutils literal"><span class="pre">-fno-foo</span></tt>.  In the table below, only
 one of the forms is listed-the one that is not the default.  You
-can figure out the other form by either removing no- or adding
+can figure out the other form by either removing <tt class="samp docutils literal"><span class="pre">no-</span></tt> or adding
 it.</p>
 <dl class="option">
 <dt id="cmdoption-fbounds-check">
@@ -104,11 +104,11 @@ this option defaults to true and false respectively.</p>
 <dt id="cmdoption-fstack-reuse">
 <tt class="descname">-fstack-reuse</tt><tt class="descclassname">=reuse-level</tt><a class="headerlink" href="#cmdoption-fstack-reuse" title="Permalink to this definition">¶</a></dt>
 <dd><p>This option controls stack space reuse for user declared local/auto variables
-and compiler generated temporaries.  <tt class="docutils literal"><span class="pre">reuse_level</span></tt> can be all,
-named_vars, or none. all enables stack reuse for all
-local variables and temporaries, named_vars enables the reuse only for
-user defined local variables with names, and none disables stack reuse
-completely. The default value is all. The option is needed when the
+and compiler generated temporaries.  <tt class="docutils literal"><span class="pre">reuse_level</span></tt> can be <tt class="samp docutils literal"><span class="pre">all</span></tt>,
+<tt class="samp docutils literal"><span class="pre">named_vars</span></tt>, or <tt class="samp docutils literal"><span class="pre">none</span></tt>. <tt class="samp docutils literal"><span class="pre">all</span></tt> enables stack reuse for all
+local variables and temporaries, <tt class="samp docutils literal"><span class="pre">named_vars</span></tt> enables the reuse only for
+user defined local variables with names, and <tt class="samp docutils literal"><span class="pre">none</span></tt> disables stack reuse
+completely. The default value is <tt class="samp docutils literal"><span class="pre">all</span></tt>. The option is needed when the
 program extends the lifetime of a scoped local variable or a compiler generated
 temporary beyond the end point defined by the language.  When a lifetime of
 a variable ends, and if the variable lives in memory, the optimizing compiler
@@ -570,8 +570,8 @@ considered to be a match.</p>
 <p><em class="xref std std-option">-finstrument-functions-exclude-file-list=/bits/stl,include/sys</em>
 excludes any inline function defined in files whose pathnames
 contain /bits/stl or include/sys.</p>
-<p>If, for some reason, you want to include letter , in one of
-<tt class="docutils literal"><span class="pre">sym</span></tt>, write ,. For example,
+<p>If, for some reason, you want to include letter <tt class="samp docutils literal"><span class="pre">,</span></tt> in one of
+<tt class="docutils literal"><span class="pre">sym</span></tt>, write <tt class="samp docutils literal"><span class="pre">,</span></tt>. For example,
 <em class="xref std std-option">-finstrument-functions-exclude-file-list=',,tmp'</em>
 (note the single quote surrounding the option).</p>
 </dd></dl>
@@ -601,9 +601,9 @@ detected on nearly all systems if there is only one stack.</p>
 <p>Note that this switch does not actually cause checking to be done; the
 operating system or the language runtime must do that.  The switch causes
 generation of code to ensure that they see the stack being extended.</p>
-<p>You can additionally specify a string parameter: no means no
-checking, generic means force the use of old-style checking,
-specific means use the best checking method and is equivalent
+<p>You can additionally specify a string parameter: <tt class="samp docutils literal"><span class="pre">no</span></tt> means no
+checking, <tt class="samp docutils literal"><span class="pre">generic</span></tt> means force the use of old-style checking,
+<tt class="samp docutils literal"><span class="pre">specific</span></tt> means use the best checking method and is equivalent
 to bare <a class="reference internal" href="#cmdoption-fstack-check"><em class="xref std std-option">-fstack-check</em></a>.</p>
 <p>Old-style checking is a generic mechanism that requires no specific
 target support in the compiler but comes with the following drawbacks:</p>
@@ -617,7 +617,7 @@ a warning is issued by the compiler.</li>
 generic implementation, code performance is hampered.</li>
 </ul>
 <p>Note that old-style stack checking is also the fallback method for
-specific if no target support has been added in the compiler.</p>
+<tt class="samp docutils literal"><span class="pre">specific</span></tt> if no target support has been added in the compiler.</p>
 </dd></dl>
 
 <dl class="option">
@@ -628,7 +628,7 @@ either the value of a register or the address of a symbol.  If a larger
 stack is required, a signal is raised at run time.  For most targets,
 the signal is raised before the stack overruns the boundary, so
 it is possible to catch the signal without taking special precautions.</p>
-<p>For instance, if the stack starts at absolute address 0x80000000
+<p>For instance, if the stack starts at absolute address <tt class="samp docutils literal"><span class="pre">0x80000000</span></tt>
 and grows downwards, you can use the flags
 <em class="xref std std-option">-fstack-limit-symbol=__stack_limit</em> and
 <em class="xref std std-option">-Wl,--defsym,__stack_limit=0x7ffe0000</em> to enforce a stack limit
@@ -671,13 +671,13 @@ Not all targets provide complete support for this switch.</p>
 <dt id="cmdoption-ftls-model">
 <tt class="descname">-ftls-model</tt><tt class="descclassname">=model</tt><a class="headerlink" href="#cmdoption-ftls-model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alter the thread-local storage model to be used (see <a class="reference internal" href="thread-local-storage.html#thread-local"><em>Thread-Local Storage</em></a>).
-The <tt class="docutils literal"><span class="pre">model</span></tt> argument should be one of global-dynamic,
-local-dynamic, initial-exec or local-exec.
+The <tt class="docutils literal"><span class="pre">model</span></tt> argument should be one of <tt class="samp docutils literal"><span class="pre">global-dynamic</span></tt>,
+<tt class="samp docutils literal"><span class="pre">local-dynamic</span></tt>, <tt class="samp docutils literal"><span class="pre">initial-exec</span></tt> or <tt class="samp docutils literal"><span class="pre">local-exec</span></tt>.
 Note that the choice is subject to optimization: the compiler may use
 a more efficient model for symbols not visible outside of the translation
 unit, or if <a class="reference internal" href="#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a> is not given on the command line.</p>
-<p>The default without <a class="reference internal" href="#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a> is initial-exec; with
-<a class="reference internal" href="#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a> the default is global-dynamic.</p>
+<p>The default without <a class="reference internal" href="#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a> is <tt class="samp docutils literal"><span class="pre">initial-exec</span></tt>; with
+<a class="reference internal" href="#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a> the default is <tt class="samp docutils literal"><span class="pre">global-dynamic</span></tt>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -690,12 +690,12 @@ load times of shared object libraries, produce more optimized
 code, provide near-perfect API export and prevent symbol clashes.
 It is strongly recommended that you use this in any shared objects
 you distribute.</p>
-<p>Despite the nomenclature, default always means public; i.e.,
+<p>Despite the nomenclature, <tt class="samp docutils literal"><span class="pre">default</span></tt> always means public; i.e.,
 available to be linked against from outside the shared object.
-protected and internal are pretty useless in real-world
-usage so the only other commonly used option is hidden.
+<tt class="samp docutils literal"><span class="pre">protected</span></tt> and <tt class="samp docutils literal"><span class="pre">internal</span></tt> are pretty useless in real-world
+usage so the only other commonly used option is <tt class="samp docutils literal"><span class="pre">hidden</span></tt>.
 The default if <a class="reference internal" href="#cmdoption-fvisibility"><em class="xref std std-option">-fvisibility</em></a> isn&#8217;t specified is
-default, i.e., make every symbol public.</p>
+<tt class="samp docutils literal"><span class="pre">default</span></tt>, i.e., make every symbol public.</p>
 <p>A good explanation of the benefits offered by ensuring ELF
 symbols have the correct visibility is given by &#8216;How To Write
 Shared Libraries&#8217; by Ulrich Drepper (which can be found at
@@ -735,7 +735,7 @@ declarations should be treated as hidden.</p>
 <p>Note that <a class="reference internal" href="#cmdoption-fvisibility"><em class="xref std std-option">-fvisibility</em></a> does affect C++ vague linkage
 entities. This means that, for instance, an exception class that is
 be thrown between DSOs must be explicitly marked with default
-visibility so that the type_info nodes are unified between
+visibility so that the <tt class="samp docutils literal"><span class="pre">type_info</span></tt> nodes are unified between
 the DSOs.</p>
 <p>An overview of these techniques, their benefits and how to use them
 is at <a class="reference external" href="http://gcc.gnu.org//wiki//Visibility">http://gcc.gnu.org//wiki//Visibility</a>.</p>

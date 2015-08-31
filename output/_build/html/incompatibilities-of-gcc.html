@@ -185,7 +185,7 @@ be a letter.  The underscore _ counts as a letter.&#8217;, but GCC also
 allows dollar signs in identifiers.</p>
 </li>
 <li id="index-16"><p class="first">PCC allows whitespace in the middle of compound assignment operators
-such as +=.  GCC, following the ISO standard, does not
+such as <tt class="samp docutils literal"><span class="pre">+=</span></tt>.  GCC, following the ISO standard, does not
 allow this.</p>
 <span class="target" id="index-17"></span></li>
 <li id="index-18"><p class="first">GCC complains about unterminated character constants inside of
@@ -199,14 +199,14 @@ example, this code would produce an error:</p>
 </pre></div>
 </div>
 <p>The best solution to such a problem is to put the text into an actual
-C comment delimited by /<em>...</em>/.</p>
+C comment delimited by <tt class="samp docutils literal"><span class="pre">/*...*/</span></tt>.</p>
 </li>
-<li><p class="first">Many user programs contain the declaration long time ();.  In the
+<li><p class="first">Many user programs contain the declaration <tt class="samp docutils literal"><span class="pre">long</span> <span class="pre">time</span> <span class="pre">();</span></tt>.  In the
 past, the system header files on many systems did not actually declare
 <tt class="docutils literal"><span class="pre">time</span></tt>, so it did not matter what type your program declared it to
 return.  But in systems with ISO C headers, <tt class="docutils literal"><span class="pre">time</span></tt> is declared to
 return <tt class="docutils literal"><span class="pre">time_t</span></tt>, and if that is not the same as <tt class="docutils literal"><span class="pre">long</span></tt>, then
-long time (); is erroneous.</p>
+<tt class="samp docutils literal"><span class="pre">long</span> <span class="pre">time</span> <span class="pre">();</span></tt> is erroneous.</p>
 <p>The solution is to change your program to use appropriate system headers
 (<tt class="docutils literal"><span class="pre">&lt;time.h&gt;</span></tt> on systems with ISO C headers) and not to declare
 <tt class="docutils literal"><span class="pre">time</span></tt> if the system header files declare it, or failing that to
@@ -240,7 +240,7 @@ but still returns small structures and unions in registers.</p>
 <p id="index-22">You can tell GCC to use a compatible convention for all structure and
 union returning with the option <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fpcc-struct-return"><em class="xref std std-option">-fpcc-struct-return</em></a>.</p>
 <span class="target" id="index-23"></span></li>
-<li id="index-24"><p class="first">GCC complains about program fragments such as 0x74ae-0x4000
+<li id="index-24"><p class="first">GCC complains about program fragments such as <tt class="samp docutils literal"><span class="pre">0x74ae-0x4000</span></tt>
 which appear to be two hexadecimal constants separated by the minus
 operator.  Actually, this string is a single <em class="dfn">preprocessing token</em>.
 Each such token must correspond to one token in C.  Since this does not,
@@ -249,9 +249,9 @@ is meant is an operator and two values, the ISO C standard specifically
 requires that this be treated as erroneous.</p>
 <p>A <em class="dfn">preprocessing token</em> is a <em class="dfn">preprocessing number</em> if it
 begins with a digit and is followed by letters, underscores, digits,
-periods and e+, e-, E+, E-, p+,
-p-, P+, or P- character sequences.  (In strict C90
-mode, the sequences p+, p-, P+ and P- cannot
+periods and <tt class="samp docutils literal"><span class="pre">e+</span></tt>, <tt class="samp docutils literal"><span class="pre">e-</span></tt>, <tt class="samp docutils literal"><span class="pre">E+</span></tt>, <tt class="samp docutils literal"><span class="pre">E-</span></tt>, <tt class="samp docutils literal"><span class="pre">p+</span></tt>,
+<tt class="samp docutils literal"><span class="pre">p-</span></tt>, <tt class="samp docutils literal"><span class="pre">P+</span></tt>, or <tt class="samp docutils literal"><span class="pre">P-</span></tt> character sequences.  (In strict C90
+mode, the sequences <tt class="samp docutils literal"><span class="pre">p+</span></tt>, <tt class="samp docutils literal"><span class="pre">p-</span></tt>, <tt class="samp docutils literal"><span class="pre">P+</span></tt> and <tt class="samp docutils literal"><span class="pre">P-</span></tt> cannot
 appear in preprocessing numbers.)</p>
 <p>To make the above program fragment valid, place whitespace in front of
 the minus sign.  This whitespace will end the preprocessing number.</p>

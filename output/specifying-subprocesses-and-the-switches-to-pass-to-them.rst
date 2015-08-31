@@ -36,7 +36,7 @@ character on the line, which can be one of the following:
 
     .. index:: %include_noerr
 
-    Just like %include, but do not generate an error message if the include
+    Just like :samp:`%include`, but do not generate an error message if the include
     file cannot be found.
 
   %rename ``old_name````new_name``
@@ -53,11 +53,11 @@ character on the line, which can be one of the following:
   spec did not exist, then nothing happens.)  Otherwise, if the spec
   does not currently exist a new spec is created.  If the spec does
   exist then its contents are overridden by the text of this
-  directive, unless the first character of that text is the +
+  directive, unless the first character of that text is the :samp:`+`
   character, in which case the text is appended to the spec.
 
 [``suffix``]:
-  Creates a new [``suffix``] spec pair.  All lines after this directive
+  Creates a new :samp:`[``suffix``] spec` pair.  All lines after this directive
   and up to the next directive or blank line are considered to make up the
   spec string for the indicated suffix.  When the compiler encounters an
   input file with the named suffix, it processes the spec string in
@@ -68,10 +68,10 @@ character on the line, which can be one of the following:
     .ZZ:
     z-compile -input %i
 
-  This says that any input file whose name ends in .ZZ should be
-  passed to the program z-compile, which should be invoked with the
+  This says that any input file whose name ends in :samp:`.ZZ` should be
+  passed to the program :samp:`z-compile`, which should be invoked with the
   command-line switch :option:`-input` and with the result of performing the
-  %i substitution.  (See below.)
+  :samp:`%i` substitution.  (See below.)
 
   As an alternative to providing a spec string, the text following a
   suffix directive can be one of the following:
@@ -130,24 +130,24 @@ Here is a small example of a spec file:
   *lib:
   --start-group -lgcc -lc -leval1 --end-group %(old_lib)
 
-This example renames the spec called lib to old_lib and
-then overrides the previous definition of lib with a new one.
+This example renames the spec called :samp:`lib` to :samp:`old_lib` and
+then overrides the previous definition of :samp:`lib` with a new one.
 The new definition adds in some extra command-line options before
 including the text of the old definition.
 
 :dfn:`Spec strings` are a list of command-line options to be passed to their
 corresponding program.  In addition, the spec strings can contain
-%-prefixed sequences to substitute variable text or to
+:samp:`%`-prefixed sequences to substitute variable text or to
 conditionally insert text into the command line.  Using these constructs
 it is possible to generate quite complex command lines.
 
-Here is a table of all defined %-sequences for spec
+Here is a table of all defined :samp:`%`-sequences for spec
 strings.  Note that spaces are not generated automatically around the
 results of expanding these sequences.  Therefore you can concatenate them
 together or combine them with constant text in a single argument.
 
 %%
-  Substitute one % into the program name or argument.
+  Substitute one :samp:`%` into the program name or argument.
 
 %i
   Substitute the name of the input file being processed.
@@ -158,94 +158,94 @@ together or combine them with constant text in a single argument.
   and not including the directory.
 
 %B
-  This is the same as %b, but include the file suffix (text after
+  This is the same as :samp:`%b`, but include the file suffix (text after
   the last period).
 
 %d
-  Marks the argument containing or following the %d as a
+  Marks the argument containing or following the :samp:`%d` as a
   temporary file name, so that that file is deleted if GCC exits
-  successfully.  Unlike %g, this contributes no text to the
+  successfully.  Unlike :samp:`%g`, this contributes no text to the
   argument.
 
 %g``suffix``
   Substitute a file name that has suffix ``suffix`` and is chosen
   once per compilation, and mark the argument in the same way as
-  %d.  To reduce exposure to denial-of-service attacks, the file
+  :samp:`%d`.  To reduce exposure to denial-of-service attacks, the file
   name is now chosen in a way that is hard to predict even when previously
-  chosen file names are known.  For example, %g.s ... %g.o ... %g.s
-  might turn into ccUVUUAU.s ccXYAXZ12.o ccUVUUAU.s.  ``suffix`` matches
-  the regexp [.A-Za-z]* or the special string %O, which is
-  treated exactly as if %O had been preprocessed.  Previously, %g
+  chosen file names are known.  For example, :samp:`%g.s ... %g.o ... %g.s`
+  might turn into :samp:`ccUVUUAU.s ccXYAXZ12.o ccUVUUAU.s`.  ``suffix`` matches
+  the regexp :samp:`[.A-Za-z]*` or the special string :samp:`%O`, which is
+  treated exactly as if :samp:`%O` had been preprocessed.  Previously, :samp:`%g`
   was simply substituted with a file name chosen once per compilation,
   without regard to any appended suffix (which was therefore treated
   just like ordinary text), making such attacks more likely to succeed.
 
 %u``suffix``
-  Like %g, but generates a new temporary file name
+  Like :samp:`%g`, but generates a new temporary file name
   each time it appears instead of once per compilation.
 
 %U``suffix``
-  Substitutes the last file name generated with %u``suffix``, generating a
+  Substitutes the last file name generated with :samp:`%u``suffix```, generating a
   new one if there is no such last file name.  In the absence of any
-  %u``suffix``, this is just like %g``suffix``, except they don't share
-  the same suffix *space*, so %g.s ... %U.s ... %g.s ... %U.s
+  :samp:`%u``suffix```, this is just like :samp:`%g``suffix```, except they don't share
+  the same suffix *space*, so :samp:`%g.s ... %U.s ... %g.s ... %U.s`
   involves the generation of two distinct file names, one
-  for each %g.s and another for each %U.s.  Previously, %U was
-  simply substituted with a file name chosen for the previous %u,
+  for each :samp:`%g.s` and another for each :samp:`%U.s`.  Previously, :samp:`%U` was
+  simply substituted with a file name chosen for the previous :samp:`%u`,
   without regard to any appended suffix.
 
 %j``suffix``
   Substitutes the name of the ``HOST_BIT_BUCKET``, if any, and if it is
   writable, and if :option:`-save-temps` is not used; 
   otherwise, substitute the name
-  of a temporary file, just like %u.  This temporary file is not
+  of a temporary file, just like :samp:`%u`.  This temporary file is not
   meant for communication between processes, but rather as a junk
   disposal mechanism.
 
 %|``suffix`` %m``suffix``
-  Like %g, except if :option:`-pipe` is in effect.  In that case
-  %| substitutes a single dash and %m substitutes nothing at
+  Like :samp:`%g`, except if :option:`-pipe` is in effect.  In that case
+  :samp:`%|` substitutes a single dash and :samp:`%m` substitutes nothing at
   all.  These are the two most common ways to instruct a program that it
   should read from standard input or write to standard output.  If you
-  need something more elaborate you can use an %{pipe:``X``}
+  need something more elaborate you can use an :samp:`%{pipe:``X``}`
   construct: see for example f/lang-specs.h.
 
 %.``SUFFIX``
   Substitutes ``.SUFFIX`` for the suffixes of a matched switch's args
-  when it is subsequently output with %*.  ``SUFFIX`` is
+  when it is subsequently output with :samp:`%*`.  ``SUFFIX`` is
   terminated by the next space or %.
 
 %w
-  Marks the argument containing or following the %w as the
+  Marks the argument containing or following the :samp:`%w` as the
   designated output file of this compilation.  This puts the argument
-  into the sequence of arguments that %o substitutes.
+  into the sequence of arguments that :samp:`%o` substitutes.
 
 %o
   Substitutes the names of all the output files, with spaces
   automatically placed around them.  You should write spaces
-  around the %o as well or the results are undefined.
-  %o is for use in the specs for running the linker.
+  around the :samp:`%o` as well or the results are undefined.
+  :samp:`%o` is for use in the specs for running the linker.
   Input files whose names have no recognized suffix are not compiled
   at all, but they are included among the output files, so they are
   linked.
 
 %O
   Substitutes the suffix for object files.  Note that this is
-  handled specially when it immediately follows %g, %u, or %U,
+  handled specially when it immediately follows :samp:`%g, %u, or %U`,
   because of the need for those to form complete file names.  The
-  handling is such that %O is treated exactly as if it had already
-  been substituted, except that %g, %u, and %U do not currently
-  support additional ``suffix`` characters following %O as they do
-  following, for example, .o.
+  handling is such that :samp:`%O` is treated exactly as if it had already
+  been substituted, except that :samp:`%g, %u, and %U` do not currently
+  support additional ``suffix`` characters following :samp:`%O` as they do
+  following, for example, :samp:`.o`.
 
 %p
   Substitutes the standard macro predefinitions for the
   current target machine.  Use this when running :command:`cpp`.
 
 %P
-  Like %p, but puts __ before and after the name of each
-  predefined macro, except for macros that start with __ or with
-  _``L``, where ``L`` is an uppercase letter.  This is for ISO
+  Like :samp:`%p`, but puts :samp:`__` before and after the name of each
+  predefined macro, except for macros that start with :samp:`__` or with
+  :samp:`_``L```, where ``L`` is an uppercase letter.  This is for ISO
   C.
 
 %I
@@ -276,10 +276,10 @@ together or combine them with constant text in a single argument.
   Substitute the contents of spec string ``name`` at this point.
 
 %x{``option``}
-  Accumulate an option for %X.
+  Accumulate an option for :samp:`%X`.
 
 %X
-  Output the accumulated linker options specified by :option:`-Wl` or a %x
+  Output the accumulated linker options specified by :option:`-Wl` or a :samp:`%x`
   spec string.
 
 %Y
@@ -300,7 +300,7 @@ together or combine them with constant text in a single argument.
 %l
   Process the ``link`` spec.  This is the spec for computing the
   command line passed to the linker.  Typically it makes use of the
-  %L %G %S %D and %E sequences.
+  :samp:`%L %G %S %D and %E` sequences.
 
 %D
   Dump out a :option:`-L` option for each directory that GCC believes might
@@ -343,8 +343,8 @@ together or combine them with constant text in a single argument.
 
 %<``S``
   Remove all occurrences of ``-S`` from the command line.  Note-this
-  command is position dependent.  % commands in the spec string
-  before this one see ``-S``, % commands in the spec string
+  command is position dependent.  :samp:`%` commands in the spec string
+  before this one see ``-S``, :samp:`%` commands in the spec string
   after this one do not.
 
 %:``function``(``args``)
@@ -442,7 +442,7 @@ together or combine them with constant text in a single argument.
   If that switch is not specified, this substitutes nothing.  Note that
   the leading dash is omitted when specifying this option, and it is
   automatically inserted if the substitution is performed.  Thus the spec
-  string %{foo} matches the command-line option :option:`-foo`
+  string :samp:`%{foo}` matches the command-line option :option:`-foo`
   and outputs the command-line option :option:`-foo`.
 
 %W{``S``}
@@ -454,14 +454,14 @@ together or combine them with constant text in a single argument.
   with ``-S``, but which also take an argument.  This is used for
   switches like :option:`-o`, :option:`-D`, :option:`-I`, etc.
   GCC considers :option:`-o foo` as being
-  one switch whose name starts with o.  %{o*} substitutes this
+  one switch whose name starts with :samp:`o`.  %{o*} substitutes this
   text, including the space.  Thus two arguments are generated.
 
 %{``S``*&``T``*}
   Like %{``S``*}, but preserve order of ``S`` and ``T`` options
   (the order of ``S`` and ``T`` in the spec is not significant).
   There can be any number of ampersand-separated variables; for each the
-  wild card is optional.  Useful for CPP as %{D*&U*&A*}.
+  wild card is optional.  Useful for CPP as :samp:`%{D*&U*&A*}`.
 
 %{``S``:``X``}
   Substitutes ``X``, if the :option:`-S` switch is given to GCC.
@@ -505,9 +505,9 @@ together or combine them with constant text in a single argument.
 
 %{``S``|``P``:``X``}
   Substitutes ``X`` if either ``-S`` or ``-P`` is given to
-  GCC.  This may be combined with !, ., ,, and
+  GCC.  This may be combined with :samp:`!`, :samp:`.`, :samp:`,`, and
   ``*`` sequences as well, although they have a stronger binding than
-  the |.  If ``%*`` appears in ``X``, all of the
+  the :samp:`|`.  If ``%*`` appears in ``X``, all of the
   alternatives must be starred, and only the first matching alternative
   is substituted.
 
@@ -534,7 +534,7 @@ together or combine them with constant text in a single argument.
   ``,``, ``!``, ``|``, and ``*`` as needed.
 
   The conditional text ``X`` in a %{``S``:``X``} or similar
-construct may contain other nested % constructs or spaces, or
+construct may contain other nested :samp:`%` constructs or spaces, or
 even newlines.  They are processed as usual, as described above.
 Trailing white space in ``X`` is ignored.  White space may also
 appear anywhere on the left side of the colon in these constructs,
@@ -547,7 +547,7 @@ handled specifically in these constructs.  If another value of
 switch value is ignored, except with {``S``*} where ``S`` is
 just one letter, which passes all matching options.
 
-The character | at the beginning of the predicate text is used to
+The character :samp:`|` at the beginning of the predicate text is used to
 indicate that a command should be piped to the following command, but
 only if :option:`-pipe` is specified.
 

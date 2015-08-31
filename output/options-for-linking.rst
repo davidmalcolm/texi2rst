@@ -43,9 +43,9 @@ not doing a link step.
 
   It makes a difference where in the command you write this option; the
   linker searches and processes libraries and object files in the order they
-  are specified.  Thus, foo.o -lz bar.o searches library z
+  are specified.  Thus, :samp:`foo.o -lz bar.o` searches library :samp:`z`
   after file foo.o but before bar.o.  If bar.o refers
-  to functions in z, those functions may not be loaded.
+  to functions in :samp:`z`, those functions may not be loaded.
 
   The linker searches a standard list of directories for the library,
   which is actually a file named lib``library``.a.  The linker
@@ -60,7 +60,7 @@ not doing a link step.
   been referenced but not defined.  But if the file that is found is an
   ordinary object file, it is linked in the usual fashion.  The only
   difference between using an :option:`-l` option and specifying a file name
-  is that :option:`-l` surrounds ``library`` with lib and .a
+  is that :option:`-l` surrounds ``library`` with :samp:`lib` and :samp:`.a`
   and searches several directories.
 
 .. option:: -lobjc
@@ -158,9 +158,9 @@ not doing a link step.
   form an executable.  Not all systems support this option.  For predictable
   results, you must also specify the same set of options used for compilation
   (:option:`-fpic`, :option:`-fPIC`, or model suboptions) when
-  you specify this linker option.On some systems, gcc -shared
+  you specify this linker option.On some systems, :samp:`gcc -shared`
   needs to build supplementary stub code for constructors to work.  On
-  multi-libbed systems, gcc -shared must select the correct support
+  multi-libbed systems, :samp:`gcc -shared` must select the correct support
   libraries to link against.  Failing to supply the correct flags may lead
   to subtle defects.  Supplying them in cases where they are not necessary
   is innocuous.

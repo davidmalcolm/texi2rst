@@ -109,7 +109,7 @@ specs file.</p>
 </div></blockquote>
 <p>%include_noerr &lt;<tt class="docutils literal"><span class="pre">file</span></tt>&gt;</p>
 <blockquote>
-<div><p id="index-2">Just like %include, but do not generate an error message if the include
+<div><p id="index-2">Just like <tt class="samp docutils literal"><span class="pre">%include</span></tt>, but do not generate an error message if the include
 file cannot be found.</p>
 </div></blockquote>
 <p>%rename <tt class="docutils literal"><span class="pre">old_name````new_name</span></tt></p>
@@ -125,10 +125,10 @@ results in an empty string then the spec is deleted.  (Or, if the
 spec did not exist, then nothing happens.)  Otherwise, if the spec
 does not currently exist a new spec is created.  If the spec does
 exist then its contents are overridden by the text of this
-directive, unless the first character of that text is the +
+directive, unless the first character of that text is the <tt class="samp docutils literal"><span class="pre">+</span></tt>
 character, in which case the text is appended to the spec.</dd>
 <dt>[<tt class="docutils literal"><span class="pre">suffix</span></tt>]:</dt>
-<dd><p class="first">Creates a new [<tt class="docutils literal"><span class="pre">suffix</span></tt>] spec pair.  All lines after this directive
+<dd><p class="first">Creates a new <tt class="samp docutils literal"><span class="pre">[``suffix`</span></tt>] spec` pair.  All lines after this directive
 and up to the next directive or blank line are considered to make up the
 spec string for the indicated suffix.  When the compiler encounters an
 input file with the named suffix, it processes the spec string in
@@ -137,10 +137,10 @@ order to work out how to compile that file.  For example:</p>
 <span class="n">z</span><span class="o">-</span><span class="n">compile</span> <span class="o">-</span><span class="n">input</span> <span class="o">%</span><span class="n">i</span>
 </pre></div>
 </div>
-<p>This says that any input file whose name ends in .ZZ should be
-passed to the program z-compile, which should be invoked with the
+<p>This says that any input file whose name ends in <tt class="samp docutils literal"><span class="pre">.ZZ</span></tt> should be
+passed to the program <tt class="samp docutils literal"><span class="pre">z-compile</span></tt>, which should be invoked with the
 command-line switch <em class="xref std std-option">-input</em> and with the result of performing the
-%i substitution.  (See below.)</p>
+<tt class="samp docutils literal"><span class="pre">%i</span></tt> substitution.  (See below.)</p>
 <p>As an alternative to providing a spec string, the text following a
 suffix directive can be one of the following:</p>
 <dl class="docutils">
@@ -190,22 +190,22 @@ startfile    Object files to include at the start of the link</pre>
 <span class="o">--</span><span class="n">start</span><span class="o">-</span><span class="n">group</span> <span class="o">-</span><span class="n">lgcc</span> <span class="o">-</span><span class="n">lc</span> <span class="o">-</span><span class="n">leval1</span> <span class="o">--</span><span class="n">end</span><span class="o">-</span><span class="n">group</span> <span class="o">%</span><span class="p">(</span><span class="n">old_lib</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This example renames the spec called lib to old_lib and
-then overrides the previous definition of lib with a new one.
+<p>This example renames the spec called <tt class="samp docutils literal"><span class="pre">lib</span></tt> to <tt class="samp docutils literal"><span class="pre">old_lib</span></tt> and
+then overrides the previous definition of <tt class="samp docutils literal"><span class="pre">lib</span></tt> with a new one.
 The new definition adds in some extra command-line options before
 including the text of the old definition.</p>
 <p><em class="dfn">Spec strings</em> are a list of command-line options to be passed to their
 corresponding program.  In addition, the spec strings can contain
-%-prefixed sequences to substitute variable text or to
+<tt class="samp docutils literal"><span class="pre">%</span></tt>-prefixed sequences to substitute variable text or to
 conditionally insert text into the command line.  Using these constructs
 it is possible to generate quite complex command lines.</p>
-<p>Here is a table of all defined %-sequences for spec
+<p>Here is a table of all defined <tt class="samp docutils literal"><span class="pre">%</span></tt>-sequences for spec
 strings.  Note that spaces are not generated automatically around the
 results of expanding these sequences.  Therefore you can concatenate them
 together or combine them with constant text in a single argument.</p>
 <dl class="docutils">
 <dt>%%</dt>
-<dd>Substitute one % into the program name or argument.</dd>
+<dd>Substitute one <tt class="samp docutils literal"><span class="pre">%</span></tt> into the program name or argument.</dd>
 <dt>%i</dt>
 <dd>Substitute the name of the input file being processed.</dd>
 <dt>%b</dt>
@@ -213,82 +213,82 @@ together or combine them with constant text in a single argument.</p>
 This is the substring up to (and not including) the last period
 and not including the directory.</dd>
 <dt>%B</dt>
-<dd>This is the same as %b, but include the file suffix (text after
+<dd>This is the same as <tt class="samp docutils literal"><span class="pre">%b</span></tt>, but include the file suffix (text after
 the last period).</dd>
 <dt>%d</dt>
-<dd>Marks the argument containing or following the %d as a
+<dd>Marks the argument containing or following the <tt class="samp docutils literal"><span class="pre">%d</span></tt> as a
 temporary file name, so that that file is deleted if GCC exits
-successfully.  Unlike %g, this contributes no text to the
+successfully.  Unlike <tt class="samp docutils literal"><span class="pre">%g</span></tt>, this contributes no text to the
 argument.</dd>
 <dt>%g``suffix``</dt>
 <dd>Substitute a file name that has suffix <tt class="docutils literal"><span class="pre">suffix</span></tt> and is chosen
 once per compilation, and mark the argument in the same way as
-%d.  To reduce exposure to denial-of-service attacks, the file
+<tt class="samp docutils literal"><span class="pre">%d</span></tt>.  To reduce exposure to denial-of-service attacks, the file
 name is now chosen in a way that is hard to predict even when previously
-chosen file names are known.  For example, %g.s ... %g.o ... %g.s
-might turn into ccUVUUAU.s ccXYAXZ12.o ccUVUUAU.s.  <tt class="docutils literal"><span class="pre">suffix</span></tt> matches
-the regexp [.A-Za-z]* or the special string %O, which is
-treated exactly as if %O had been preprocessed.  Previously, %g
+chosen file names are known.  For example, <tt class="samp docutils literal"><span class="pre">%g.s</span> <span class="pre">...</span> <span class="pre">%g.o</span> <span class="pre">...</span> <span class="pre">%g.s</span></tt>
+might turn into <tt class="samp docutils literal"><span class="pre">ccUVUUAU.s</span> <span class="pre">ccXYAXZ12.o</span> <span class="pre">ccUVUUAU.s</span></tt>.  <tt class="docutils literal"><span class="pre">suffix</span></tt> matches
+the regexp <tt class="samp docutils literal"><span class="pre">[.A-Za-z]*</span></tt> or the special string <tt class="samp docutils literal"><span class="pre">%O</span></tt>, which is
+treated exactly as if <tt class="samp docutils literal"><span class="pre">%O</span></tt> had been preprocessed.  Previously, <tt class="samp docutils literal"><span class="pre">%g</span></tt>
 was simply substituted with a file name chosen once per compilation,
 without regard to any appended suffix (which was therefore treated
 just like ordinary text), making such attacks more likely to succeed.</dd>
 <dt>%u``suffix``</dt>
-<dd>Like %g, but generates a new temporary file name
+<dd>Like <tt class="samp docutils literal"><span class="pre">%g</span></tt>, but generates a new temporary file name
 each time it appears instead of once per compilation.</dd>
 <dt>%U``suffix``</dt>
-<dd>Substitutes the last file name generated with %u``suffix``, generating a
+<dd>Substitutes the last file name generated with <tt class="samp docutils literal"><span class="pre">%u``suffix``</span></tt>, generating a
 new one if there is no such last file name.  In the absence of any
-%u``suffix``, this is just like %g``suffix``, except they don&#8217;t share
-the same suffix <em>space</em>, so %g.s ... %U.s ... %g.s ... %U.s
+<tt class="samp docutils literal"><span class="pre">%u``suffix``</span></tt>, this is just like <tt class="samp docutils literal"><span class="pre">%g``suffix``</span></tt>, except they don&#8217;t share
+the same suffix <em>space</em>, so <tt class="samp docutils literal"><span class="pre">%g.s</span> <span class="pre">...</span> <span class="pre">%U.s</span> <span class="pre">...</span> <span class="pre">%g.s</span> <span class="pre">...</span> <span class="pre">%U.s</span></tt>
 involves the generation of two distinct file names, one
-for each %g.s and another for each %U.s.  Previously, %U was
-simply substituted with a file name chosen for the previous %u,
+for each <tt class="samp docutils literal"><span class="pre">%g.s</span></tt> and another for each <tt class="samp docutils literal"><span class="pre">%U.s</span></tt>.  Previously, <tt class="samp docutils literal"><span class="pre">%U</span></tt> was
+simply substituted with a file name chosen for the previous <tt class="samp docutils literal"><span class="pre">%u</span></tt>,
 without regard to any appended suffix.</dd>
 <dt>%j``suffix``</dt>
 <dd>Substitutes the name of the <tt class="docutils literal"><span class="pre">HOST_BIT_BUCKET</span></tt>, if any, and if it is
 writable, and if <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-save-temps"><em class="xref std std-option">-save-temps</em></a> is not used;
 otherwise, substitute the name
-of a temporary file, just like %u.  This temporary file is not
+of a temporary file, just like <tt class="samp docutils literal"><span class="pre">%u</span></tt>.  This temporary file is not
 meant for communication between processes, but rather as a junk
 disposal mechanism.</dd>
 <dt>%|``suffix`` %m``suffix``</dt>
-<dd>Like %g, except if <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-pipe"><em class="xref std std-option">-pipe</em></a> is in effect.  In that case
-%| substitutes a single dash and %m substitutes nothing at
+<dd>Like <tt class="samp docutils literal"><span class="pre">%g</span></tt>, except if <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-pipe"><em class="xref std std-option">-pipe</em></a> is in effect.  In that case
+<tt class="samp docutils literal"><span class="pre">%|</span></tt> substitutes a single dash and <tt class="samp docutils literal"><span class="pre">%m</span></tt> substitutes nothing at
 all.  These are the two most common ways to instruct a program that it
 should read from standard input or write to standard output.  If you
-need something more elaborate you can use an %{pipe:<tt class="docutils literal"><span class="pre">X</span></tt>}
+need something more elaborate you can use an <tt class="samp docutils literal"><span class="pre">%{pipe:``X`</span></tt>}`
 construct: see for example f/lang-specs.h.</dd>
 <dt>%.``SUFFIX``</dt>
 <dd>Substitutes <tt class="docutils literal"><span class="pre">.SUFFIX</span></tt> for the suffixes of a matched switch&#8217;s args
-when it is subsequently output with %*.  <tt class="docutils literal"><span class="pre">SUFFIX</span></tt> is
+when it is subsequently output with <tt class="samp docutils literal"><span class="pre">%*</span></tt>.  <tt class="docutils literal"><span class="pre">SUFFIX</span></tt> is
 terminated by the next space or %.</dd>
 <dt>%w</dt>
-<dd>Marks the argument containing or following the %w as the
+<dd>Marks the argument containing or following the <tt class="samp docutils literal"><span class="pre">%w</span></tt> as the
 designated output file of this compilation.  This puts the argument
-into the sequence of arguments that %o substitutes.</dd>
+into the sequence of arguments that <tt class="samp docutils literal"><span class="pre">%o</span></tt> substitutes.</dd>
 <dt>%o</dt>
 <dd>Substitutes the names of all the output files, with spaces
 automatically placed around them.  You should write spaces
-around the %o as well or the results are undefined.
-%o is for use in the specs for running the linker.
+around the <tt class="samp docutils literal"><span class="pre">%o</span></tt> as well or the results are undefined.
+<tt class="samp docutils literal"><span class="pre">%o</span></tt> is for use in the specs for running the linker.
 Input files whose names have no recognized suffix are not compiled
 at all, but they are included among the output files, so they are
 linked.</dd>
 <dt>%O</dt>
 <dd>Substitutes the suffix for object files.  Note that this is
-handled specially when it immediately follows %g, %u, or %U,
+handled specially when it immediately follows <tt class="samp docutils literal"><span class="pre">%g,</span> <span class="pre">%u,</span> <span class="pre">or</span> <span class="pre">%U</span></tt>,
 because of the need for those to form complete file names.  The
-handling is such that %O is treated exactly as if it had already
-been substituted, except that %g, %u, and %U do not currently
-support additional <tt class="docutils literal"><span class="pre">suffix</span></tt> characters following %O as they do
-following, for example, .o.</dd>
+handling is such that <tt class="samp docutils literal"><span class="pre">%O</span></tt> is treated exactly as if it had already
+been substituted, except that <tt class="samp docutils literal"><span class="pre">%g,</span> <span class="pre">%u,</span> <span class="pre">and</span> <span class="pre">%U</span></tt> do not currently
+support additional <tt class="docutils literal"><span class="pre">suffix</span></tt> characters following <tt class="samp docutils literal"><span class="pre">%O</span></tt> as they do
+following, for example, <tt class="samp docutils literal"><span class="pre">.o</span></tt>.</dd>
 <dt>%p</dt>
 <dd>Substitutes the standard macro predefinitions for the
 current target machine.  Use this when running <strong class="command">cpp</strong>.</dd>
 <dt>%P</dt>
-<dd>Like %p, but puts __ before and after the name of each
-predefined macro, except for macros that start with __ or with
-<span class="target" id="l">`L`</span>, where <tt class="docutils literal"><span class="pre">L</span></tt> is an uppercase letter.  This is for ISO
+<dd>Like <tt class="samp docutils literal"><span class="pre">%p</span></tt>, but puts <tt class="samp docutils literal"><span class="pre">__</span></tt> before and after the name of each
+predefined macro, except for macros that start with <tt class="samp docutils literal"><span class="pre">__</span></tt> or with
+<tt class="samp docutils literal"><span class="pre">_``L``</span></tt>, where <tt class="docutils literal"><span class="pre">L</span></tt> is an uppercase letter.  This is for ISO
 C.</dd>
 <dt>%I</dt>
 <dd>Substitute any of <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-iprefix"><em class="xref std std-option">-iprefix</em></a> (made from <span class="target" id="index-4"></span><a class="reference internal" href="environment-variables-affecting-gcc.html#envvar-GCC_EXEC_PREFIX"><tt class="xref std std-envvar docutils literal"><span class="pre">GCC_EXEC_PREFIX</span></tt></a>),
@@ -313,9 +313,9 @@ Use this when inconsistent options are detected.</dd>
 <dt>%(<tt class="docutils literal"><span class="pre">name</span></tt>)</dt>
 <dd>Substitute the contents of spec string <tt class="docutils literal"><span class="pre">name</span></tt> at this point.</dd>
 <dt>%x{<tt class="docutils literal"><span class="pre">option</span></tt>}</dt>
-<dd>Accumulate an option for %X.</dd>
+<dd>Accumulate an option for <tt class="samp docutils literal"><span class="pre">%X</span></tt>.</dd>
 <dt>%X</dt>
-<dd>Output the accumulated linker options specified by <a class="reference internal" href="options-for-linking.html#cmdoption-Wl"><em class="xref std std-option">-Wl</em></a> or a %x
+<dd>Output the accumulated linker options specified by <a class="reference internal" href="options-for-linking.html#cmdoption-Wl"><em class="xref std std-option">-Wl</em></a> or a <tt class="samp docutils literal"><span class="pre">%x</span></tt>
 spec string.</dd>
 <dt>%Y</dt>
 <dd>Output the accumulated assembler options specified by <a class="reference internal" href="passing-options-to-the-assembler.html#cmdoption-Wa"><em class="xref std std-option">-Wa</em></a>.</dd>
@@ -331,7 +331,7 @@ needed.</dd>
 <dt>%l</dt>
 <dd>Process the <tt class="docutils literal"><span class="pre">link</span></tt> spec.  This is the spec for computing the
 command line passed to the linker.  Typically it makes use of the
-%L %G %S %D and %E sequences.</dd>
+<tt class="samp docutils literal"><span class="pre">%L</span> <span class="pre">%G</span> <span class="pre">%S</span> <span class="pre">%D</span> <span class="pre">and</span> <span class="pre">%E</span></tt> sequences.</dd>
 <dt>%D</dt>
 <dd>Dump out a <em class="xref std std-option">-L</em> option for each directory that GCC believes might
 contain startup files.  If the target supports multilibs then the
@@ -364,8 +364,8 @@ Note that each comma in the substituted string is replaced by
 a single space.</dd>
 <dt>%&lt;<tt class="docutils literal"><span class="pre">S</span></tt></dt>
 <dd>Remove all occurrences of <tt class="docutils literal"><span class="pre">-S</span></tt> from the command line.  Note-this
-command is position dependent.  % commands in the spec string
-before this one see <tt class="docutils literal"><span class="pre">-S</span></tt>, % commands in the spec string
+command is position dependent.  <tt class="samp docutils literal"><span class="pre">%</span></tt> commands in the spec string
+before this one see <tt class="docutils literal"><span class="pre">-S</span></tt>, <tt class="samp docutils literal"><span class="pre">%</span></tt> commands in the spec string
 after this one do not.</dd>
 <dt>%:<tt class="docutils literal"><span class="pre">function``(``args</span></tt>)</dt>
 <dd><p class="first">Call the named function <tt class="docutils literal"><span class="pre">function</span></tt>, passing it <tt class="docutils literal"><span class="pre">args</span></tt>.
@@ -454,7 +454,7 @@ in the <a class="reference internal" href="options-controlling-the-kind-of-outpu
 If that switch is not specified, this substitutes nothing.  Note that
 the leading dash is omitted when specifying this option, and it is
 automatically inserted if the substitution is performed.  Thus the spec
-string %{foo} matches the command-line option <em class="xref std std-option">-foo</em>
+string <tt class="samp docutils literal"><span class="pre">%</span><em><span class="pre">foo</span></em></tt> matches the command-line option <em class="xref std std-option">-foo</em>
 and outputs the command-line option <em class="xref std std-option">-foo</em>.</dd>
 <dt>%W{<tt class="docutils literal"><span class="pre">S</span></tt>}</dt>
 <dd>Like %{<tt class="docutils literal"><span class="pre">S</span></tt>} but mark last argument supplied within as a file to be
@@ -464,13 +464,13 @@ deleted on failure.</dd>
 with <tt class="docutils literal"><span class="pre">-S</span></tt>, but which also take an argument.  This is used for
 switches like <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-o"><em class="xref std std-option">-o</em></a>, <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-D"><em class="xref std std-option">-D</em></a>, <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-I"><em class="xref std std-option">-I</em></a>, etc.
 GCC considers <em class="xref std std-option">-o foo</em> as being
-one switch whose name starts with o.  %{o*} substitutes this
+one switch whose name starts with <tt class="samp docutils literal"><span class="pre">o</span></tt>.  %{o*} substitutes this
 text, including the space.  Thus two arguments are generated.</dd>
 <dt>%{<a href="#id5"><span class="problematic" id="id6">``</span></a>S``*&amp;``T``*}</dt>
 <dd>Like %{<tt class="docutils literal"><span class="pre">S``*},</span> <span class="pre">but</span> <span class="pre">preserve</span> <span class="pre">order</span> <span class="pre">of</span> <span class="pre">``S</span></tt> and <tt class="docutils literal"><span class="pre">T</span></tt> options
 (the order of <tt class="docutils literal"><span class="pre">S</span></tt> and <tt class="docutils literal"><span class="pre">T</span></tt> in the spec is not significant).
 There can be any number of ampersand-separated variables; for each the
-wild card is optional.  Useful for CPP as %{D*&amp;U*&amp;A*}.</dd>
+wild card is optional.  Useful for CPP as <tt class="samp docutils literal"><span class="pre">%</span><em><span class="pre">D*&amp;U*&amp;A*</span></em></tt>.</dd>
 <dt>%{<tt class="docutils literal"><span class="pre">S</span></tt>:<tt class="docutils literal"><span class="pre">X</span></tt>}</dt>
 <dd>Substitutes <tt class="docutils literal"><span class="pre">X</span></tt>, if the <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-S"><em class="xref std std-option">-S</em></a> switch is given to GCC.</dd>
 <dt>%{!``S``:<tt class="docutils literal"><span class="pre">X</span></tt>}</dt>
@@ -502,9 +502,9 @@ string.  For example, a spec string like this:</p>
 <dd>Substitutes <tt class="docutils literal"><span class="pre">X</span></tt>, if not processing a file for language <tt class="docutils literal"><span class="pre">S</span></tt>.</dd>
 <dt>%{<tt class="docutils literal"><span class="pre">S``|``P</span></tt>:<tt class="docutils literal"><span class="pre">X</span></tt>}</dt>
 <dd><p class="first">Substitutes <tt class="docutils literal"><span class="pre">X</span></tt> if either <tt class="docutils literal"><span class="pre">-S</span></tt> or <tt class="docutils literal"><span class="pre">-P</span></tt> is given to
-GCC.  This may be combined with !, ., ,, and
+GCC.  This may be combined with <tt class="samp docutils literal"><span class="pre">!</span></tt>, <tt class="samp docutils literal"><span class="pre">.</span></tt>, <tt class="samp docutils literal"><span class="pre">,</span></tt>, and
 <tt class="docutils literal"><span class="pre">*</span></tt> sequences as well, although they have a stronger binding than
-the <a href="#id7"><span class="problematic" id="id8">|</span></a>.  If <tt class="docutils literal"><span class="pre">%*</span></tt> appears in <tt class="docutils literal"><span class="pre">X</span></tt>, all of the
+the <tt class="samp docutils literal"><span class="pre">|</span></tt>.  If <tt class="docutils literal"><span class="pre">%*</span></tt> appears in <tt class="docutils literal"><span class="pre">X</span></tt>, all of the
 alternatives must be starred, and only the first matching alternative
 is substituted.</p>
 <p>For example, a spec string like this:</p>
@@ -528,7 +528,7 @@ be as many clauses as you need.  This may be combined with <tt class="docutils l
 <p class="last">The conditional text <tt class="docutils literal"><span class="pre">X</span></tt> in a %{<tt class="docutils literal"><span class="pre">S</span></tt>:<tt class="docutils literal"><span class="pre">X</span></tt>} or similar</p>
 </dd>
 </dl>
-<p>construct may contain other nested % constructs or spaces, or
+<p>construct may contain other nested <tt class="samp docutils literal"><span class="pre">%</span></tt> constructs or spaces, or
 even newlines.  They are processed as usual, as described above.
 Trailing white space in <tt class="docutils literal"><span class="pre">X</span></tt> is ignored.  White space may also
 appear anywhere on the left side of the colon in these constructs,
@@ -539,7 +539,7 @@ handled specifically in these constructs.  If another value of
 <em class="xref std std-option">-W</em> switch is found later in the command line, the earlier
 switch value is ignored, except with {<tt class="docutils literal"><span class="pre">S``*}</span> <span class="pre">where</span> <span class="pre">``S</span></tt> is
 just one letter, which passes all matching options.</p>
-<p>The character | at the beginning of the predicate text is used to
+<p>The character <tt class="samp docutils literal"><span class="pre">|</span></tt> at the beginning of the predicate text is used to
 indicate that a command should be piped to the following command, but
 only if <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-pipe"><em class="xref std std-option">-pipe</em></a> is specified.</p>
 <p>It is built into GCC which switches take arguments and which do not.

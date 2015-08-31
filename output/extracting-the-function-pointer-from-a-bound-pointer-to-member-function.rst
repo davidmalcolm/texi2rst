@@ -11,7 +11,7 @@ Extracting the Function Pointer from a Bound Pointer to Member Function
 
 In C++, pointer to member functions (PMFs) are implemented using a wide
 pointer of sorts to handle all the possible call mechanisms; the PMF
-needs to store information about how to adjust the this pointer,
+needs to store information about how to adjust the :samp:`this` pointer,
 and if the function pointed to is virtual, where to find the vtable, and
 where in the vtable to look for the member function.  If you are using
 PMFs in an inner loop, you should really reconsider that decision.  If
@@ -34,7 +34,7 @@ The syntax for this extension is
 
   fptr p = (fptr)(a.*fp);
 
-For PMF constants (i.e. expressions of the form &Klasse::Member),
+For PMF constants (i.e. expressions of the form :samp:`&Klasse::Member`),
 no object is needed to obtain the address of the function.  They can be
 converted to function pointers directly:
 

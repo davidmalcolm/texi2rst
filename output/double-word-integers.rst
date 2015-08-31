@@ -17,9 +17,9 @@ ISO C99 supports data types for integers that are at least 64 bits wide,
 and as an extension GCC supports them in C90 mode and in C++.
 Simply write ``long long int`` for a signed integer, or
 ``unsigned long long int`` for an unsigned integer.  To make an
-integer constant of type ``long long int``, add the suffix LL
+integer constant of type ``long long int``, add the suffix :samp:`LL`
 to the integer.  To make an integer constant of type ``unsigned long
-long int``, add the suffix ULL to the integer.
+long int``, add the suffix :samp:`ULL` to the integer.
 
 You can use these types in arithmetic like any other integer types.
 Addition, subtraction, and bitwise boolean operations on these types

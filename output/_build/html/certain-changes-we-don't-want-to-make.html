@@ -178,14 +178,14 @@ all the features of ISO C, the correct answer to these questions is
 certain library facilities.  This is actually incorrect usage in an ISO
 C program, because the ISO C standard says that a conforming
 freestanding implementation should define <tt class="docutils literal"><span class="pre">__STDC__</span></tt> even though it
-does not have the library facilities.  gcc -ansi -pedantic is a
+does not have the library facilities.  <tt class="samp docutils literal"><span class="pre">gcc</span> <span class="pre">-ansi</span> <span class="pre">-pedantic</span></tt> is a
 conforming freestanding implementation, and it is therefore required to
 define <tt class="docutils literal"><span class="pre">__STDC__</span></tt>, even though it does not come with an ISO C
 library.</p>
 <p>Sometimes people say that defining <tt class="docutils literal"><span class="pre">__STDC__</span></tt> in a compiler that
 does not completely conform to the ISO C standard somehow violates the
 standard.  This is illogical.  The standard is a standard for compilers
-that claim to support ISO C, such as gcc -ansi-not for other
+that claim to support ISO C, such as <tt class="samp docutils literal"><span class="pre">gcc</span> <span class="pre">-ansi</span></tt>-not for other
 compilers such as plain <strong class="command">gcc</strong>.  Whatever the ISO C standard says
 is relevant to the design of plain <strong class="command">gcc</strong> without <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> only
 for pragmatic reasons, not as a requirement.</p>
@@ -254,7 +254,7 @@ from one compiler to another:</p>
 <p>There is no guarantee (in either the C or the C++ standard language
 definitions) that the increments will be evaluated in any particular
 order.  Either increment might happen first.  <tt class="docutils literal"><span class="pre">func</span></tt> might get the
-arguments 2, 3, or it might get 3, 2, or even 2, 2.</p>
+arguments <tt class="samp docutils literal"><span class="pre">2,</span> <span class="pre">3</span></tt>, or it might get <tt class="samp docutils literal"><span class="pre">3,</span> <span class="pre">2</span></tt>, or even <tt class="samp docutils literal"><span class="pre">2,</span> <span class="pre">2</span></tt>.</p>
 </li>
 <li><p class="first">Making certain warnings into errors by default.</p>
 <p>Some ISO C testsuites report failure when the compiler does not produce

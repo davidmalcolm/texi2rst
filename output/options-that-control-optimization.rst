@@ -184,11 +184,11 @@ See :ref:`overall-options`, for examples.
   If you use multiple :option:`-O` options, with or without level numbers,
   the last such option is the one that is effective.
 
-Options of the form :option:`-f``flag``` specify machine-independent
+Options of the form :samp:`-fflag` specify machine-independent
 flags.  Most flags have both positive and negative forms; the negative
-form of :option:`-ffoo` is :option:`-fno-foo`.  In the table
+form of :samp:`-ffoo` is :samp:`-fno-foo`.  In the table
 below, only one of the forms is listed-the one you typically 
-use.  You can figure out the other form by either removing no-
+use.  You can figure out the other form by either removing :samp:`no-`
 or adding it.
 
 The following options control specific optimizations.  They are either
@@ -700,8 +700,8 @@ optimizations to be performed is desired.
 .. option:: -fira-algorithm=algorithm
 
   Use the specified coloring algorithm for the integrated register
-  allocator.  The ``algorithm`` argument can be priority, which
-  specifies Chow's priority coloring, or CB, which specifies
+  allocator.  The ``algorithm`` argument can be :samp:`priority`, which
+  specifies Chow's priority coloring, or :samp:`CB`, which specifies
   Chaitin-Briggs coloring.  Chaitin-Briggs coloring is not implemented
   for all architectures, but for those targets that do support it, it is
   the default because it generates better code.
@@ -1528,23 +1528,23 @@ optimizations to be performed is desired.
 .. option:: -fvect-cost-model=model
 
   Alter the cost model used for vectorization.  The ``model`` argument
-  should be one of unlimited, dynamic or cheap.
-  With the unlimited model the vectorized code-path is assumed
-  to be profitable while with the dynamic model a runtime check
+  should be one of :samp:`unlimited`, :samp:`dynamic` or :samp:`cheap`.
+  With the :samp:`unlimited` model the vectorized code-path is assumed
+  to be profitable while with the :samp:`dynamic` model a runtime check
   guards the vectorized code-path to enable it only for iteration
   counts that will likely execute faster than when executing the original
-  scalar loop.  The cheap model disables vectorization of
+  scalar loop.  The :samp:`cheap` model disables vectorization of
   loops where doing so would be cost prohibitive for example due to
   required runtime checks for data dependence or alignment but otherwise
-  is equal to the dynamic model.
+  is equal to the :samp:`dynamic` model.
   The default cost model depends on other optimization flags and is
-  either dynamic or cheap.
+  either :samp:`dynamic` or :samp:`cheap`.
 
 .. option:: -fsimd-cost-model=model
 
   Alter the cost model used for vectorization of loops marked with the OpenMP
   or Cilk Plus simd directive.  The ``model`` argument should be one of
-  unlimited, dynamic, cheap.  All values of ``model``
+  :samp:`unlimited`, :samp:`dynamic`, :samp:`cheap`.  All values of ``model``
   have the same meaning as described in :option:`-fvect-cost-model` and by
   default a cost model defined with :option:`-fvect-cost-model` is used.
 
@@ -1788,7 +1788,7 @@ optimizations to be performed is desired.
   are greater than this value, then their values are used instead.
 
   If ``n`` is not specified or is zero, use a machine-dependent default
-  which is very likely to be 1, meaning no alignment.
+  which is very likely to be :samp:`1`, meaning no alignment.
 
   Enabled at levels :option:`-O2`, :option:`-O3`.
 
@@ -2065,23 +2065,23 @@ optimizations to be performed is desired.
   You can also specify :option:`-flto=jobserver` to use GNU make's
   job server mode to determine the number of parallel jobs. This
   is useful when the Makefile calling GCC is already executing in parallel.
-  You must prepend a + to the command recipe in the parent Makefile
+  You must prepend a :samp:`+` to the command recipe in the parent Makefile
   for this to work.  This option likely only works if :envvar:`MAKE` is
   GNU make.
 
 .. option:: -flto-partition=alg
 
   Specify the partitioning algorithm used by the link-time optimizer.
-  The value is either 1to1 to specify a partitioning mirroring
-  the original source files or balanced to specify partitioning
-  into equally sized chunks (whenever possible) or max to create
-  new partition for every symbol where possible.  Specifying none
+  The value is either :samp:`1to1` to specify a partitioning mirroring
+  the original source files or :samp:`balanced` to specify partitioning
+  into equally sized chunks (whenever possible) or :samp:`max` to create
+  new partition for every symbol where possible.  Specifying :samp:`none`
   as an algorithm disables partitioning and streaming completely. 
-  The default value is balanced. While 1to1 can be used
-  as an workaround for various code ordering issues, the max
+  The default value is :samp:`balanced`. While :samp:`1to1` can be used
+  as an workaround for various code ordering issues, the :samp:`max`
   partitioning is intended for internal testing only.
-  The value one specifies that exactly one partition should be
-  used while the value none bypasses partitioning and executes
+  The value :samp:`one` specifies that exactly one partition should be
+  used while the value :samp:`none` bypasses partitioning and executes
   the link-time optimization step directly from the WPA phase.
 
 .. option:: -flto-odr-type-merging
@@ -2495,10 +2495,10 @@ section includes experimental options that may produce broken code.
   and the same optimization options for both compilations.
 
   With :option:`-fbranch-probabilities`, GCC puts a
-  REG_BR_PROB note on each JUMP_INSN and CALL_INSN.
+  :samp:`REG_BR_PROB` note on each :samp:`JUMP_INSN` and :samp:`CALL_INSN`.
   These can be used to improve optimization.  Currently, they are only
   used in one place: in reorg.c, instead of guessing which path a
-  branch is most likely to take, the REG_BR_PROB values are used to
+  branch is most likely to take, the :samp:`REG_BR_PROB` values are used to
   exactly determine which path is taken more often.
 
 .. option:: -fprofile-values

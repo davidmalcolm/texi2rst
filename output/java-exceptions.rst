@@ -21,12 +21,12 @@ Sample problematic code is:
     }
 
 The usual effect of an incorrect guess is a link failure, complaining of
-a missing routine called __gxx_personality_v0.
+a missing routine called :samp:`__gxx_personality_v0`.
 
 You can inform the compiler that Java exceptions are to be used in a
 translation unit, irrespective of what it might think, by writing
-#pragma GCC java_exceptions at the head of the file.  This
-#pragma must appear before any functions that throw or catch
+:samp:`#pragma GCC java_exceptions` at the head of the file.  This
+:samp:`#pragma` must appear before any functions that throw or catch
 exceptions, or run destructors when exceptions are thrown through them.
 
 You cannot mix Java and C++ exceptions in the same translation unit.  It

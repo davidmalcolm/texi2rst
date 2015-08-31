@@ -20,7 +20,7 @@ example:
 
   #define debug(format, ...) fprintf (stderr, format, __VA_ARGS__)
 
-Here ... is a :dfn:`variable argument`.  In the invocation of
+Here :samp:`...` is a :dfn:`variable argument`.  In the invocation of
 such a macro, it represents the zero or more tokens until the closing
 parenthesis that ends the invocation, including any commas.  This set of
 tokens replaces the identifier ``__VA_ARGS__`` in the macro body
@@ -55,13 +55,13 @@ the expansion of the macro still has the extra comma after the format
 string.
 
 To help solve this problem, CPP behaves specially for variable arguments
-used with the token paste operator, ##.  If instead you write
+used with the token paste operator, :samp:`##`.  If instead you write
 
 .. code-block:: c++
 
   #define debug(format, ...) fprintf (stderr, format, ## __VA_ARGS__)
 
-and if the variable arguments are omitted or empty, the ##
+and if the variable arguments are omitted or empty, the :samp:`##`
 operator causes the preprocessor to remove the comma before it.  If you
 do provide some variable arguments in your macro invocation, GNU CPP
 does not complain about the paste operation and instead places the

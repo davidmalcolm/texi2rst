@@ -7,11 +7,11 @@ Compiling C++ Programs
 
 .. index:: C++ source file suffixes
 
-C++ source files conventionally use one of the suffixes .C,
-.cc, .cpp, .CPP, .c++, .cp, or
-.cxx; C++ header files often use .hh, .hpp,
-.H, or (for shared template code) .tcc; and
-preprocessed C++ files use the suffix .ii.  GCC recognizes
+C++ source files conventionally use one of the suffixes :samp:`.C`,
+:samp:`.cc`, :samp:`.cpp`, :samp:`.CPP`, :samp:`.c++`, :samp:`.cp`, or
+:samp:`.cxx`; C++ header files often use :samp:`.hh`, :samp:`.hpp`,
+:samp:`.H`, or (for shared template code) :samp:`.tcc`; and
+preprocessed C++ files use the suffix :samp:`.ii`.  GCC recognizes
 files with these names and compiles them as C++ programs even if you
 call the compiler the same way as for compiling C programs (usually
 with the name :command:`gcc`).
@@ -22,10 +22,10 @@ with the name :command:`gcc`).
 
 However, the use of :command:`gcc` does not add the C++ library.
 :command:`g++` is a program that calls GCC and automatically specifies linking
-against the C++ library.  It treats .c,
-.h and .i files as C++ source files instead of C source
+against the C++ library.  It treats :samp:`.c`,
+:samp:`.h` and :samp:`.i` files as C++ source files instead of C source
 files unless :option:`-x` is used.  This program is also useful when
-precompiling a C header file with a .h extension for use in C++
+precompiling a C header file with a :samp:`.h` extension for use in C++
 compilations.  On many systems, :command:`g++` is also installed with
 the name :command:`c++`.
 

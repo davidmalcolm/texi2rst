@@ -364,7 +364,7 @@ Built-in Functionvoid__builtin_arc_nop(void)Generates:
 
 .. index:: __builtin_arc_norm
 
-Built-in Functionint__builtin_arc_norm(int``src``)Only valid if the norm instruction is available through the
+Built-in Functionint__builtin_arc_norm(int``src``)Only valid if the :samp:`norm` instruction is available through the
 :option:`-mnorm` option or by default with :option:`-mcpu=ARC700`.
 Generates:
 
@@ -377,7 +377,7 @@ built-in.
 
 .. index:: __builtin_arc_normw
 
-Built-in Functionshort int__builtin_arc_normw(shortint``src``)Only valid if the normw instruction is available through the
+Built-in Functionshort int__builtin_arc_normw(shortint``src``)Only valid if the :samp:`normw` instruction is available through the
 :option:`-mnorm` option or by default with :option:`-mcpu=ARC700`.
 Generates:
 
@@ -1974,7 +1974,7 @@ Other MIPS Built-in Functions
 GCC provides other MIPS-specific built-in functions:
 
 void __builtin_mips_cache (int ``op``, const volatile void *``addr``)
-  Insert a cache instruction with operands ``op`` and ``addr``.
+  Insert a :samp:`cache` instruction with operands ``op`` and ``addr``.
   GCC defines the preprocessor macro ``___GCC_HAVE_BUILTIN_MIPS_CACHE``
   when this function is available.
 
@@ -4329,11 +4329,11 @@ additional functions are available:
   vector unsigned char vec_xxsldi (vector unsigned char,
                                    vector unsigned char, int);
 
-Note that the vec_ld and vec_st built-in functions always
-generate the AltiVec LVX and STVX instructions even
-if the VSX instruction set is available.  The vec_vsx_ld and
-vec_vsx_st built-in functions always generate the VSX LXVD2X,
-LXVW4X, STXVD2X, and STXVW4X instructions.
+Note that the :samp:`vec_ld` and :samp:`vec_st` built-in functions always
+generate the AltiVec :samp:`LVX` and :samp:`STVX` instructions even
+if the VSX instruction set is available.  The :samp:`vec_vsx_ld` and
+:samp:`vec_vsx_st` built-in functions always generate the VSX :samp:`LXVD2X`,
+:samp:`LXVW4X`, :samp:`STXVD2X`, and :samp:`STXVW4X` instructions.
 
 If the ISA 2.07 additions to the vector/scalar (power8-vector)
 instruction set is available, the following additional functions are
@@ -5209,18 +5209,18 @@ families of processors:
 
 .. index:: __builtin_set_thread_pointer
 
-Built-in Functionvoid__builtin_set_thread_pointer(void*``ptr``)Sets the GBR register to the specified value ``ptr``.  This is usually
+Built-in Functionvoid__builtin_set_thread_pointer(void*``ptr``)Sets the :samp:`GBR` register to the specified value ``ptr``.  This is usually
 used by system code that manages threads and execution contexts.  The compiler
-normally does not generate code that modifies the contents of GBR and
-thus the value is preserved across function calls.  Changing the GBR
+normally does not generate code that modifies the contents of :samp:`GBR` and
+thus the value is preserved across function calls.  Changing the :samp:`GBR`
 value in user code must be done with caution, since the compiler might use
-GBR in order to access thread local variables.
+:samp:`GBR` in order to access thread local variables.
 
 .. index:: __builtin_thread_pointer
 
-Built-in Functionvoid *__builtin_thread_pointer(void)Returns the value that is currently set in the GBR register.
+Built-in Functionvoid *__builtin_thread_pointer(void)Returns the value that is currently set in the :samp:`GBR` register.
 Memory loads and stores that use the thread pointer as a base address are
-turned into GBR based displacement loads and stores, if possible.
+turned into :samp:`GBR` based displacement loads and stores, if possible.
 For example:
 
 .. code-block:: c++
@@ -5232,17 +5232,17 @@ For example:
 
   int get_tcb_value (void)
   {
-    // Generate mov.l @(8,gbr),r0 instruction
+    // Generate :samp:`mov.l @(8,gbr),r0` instruction
     return ((my_tcb*)__builtin_thread_pointer ())->c;
   }
 
 .. index:: __builtin_sh_get_fpscr
 
-Built-in Functionunsigned int__builtin_sh_get_fpscr(void)Returns the value that is currently set in the FPSCR register.
+Built-in Functionunsigned int__builtin_sh_get_fpscr(void)Returns the value that is currently set in the :samp:`FPSCR` register.
 
 .. index:: __builtin_sh_set_fpscr
 
-Built-in Functionvoid__builtin_sh_set_fpscr(unsignedint``val``)Sets the FPSCR register to the specified value ``val``, while
+Built-in Functionvoid__builtin_sh_set_fpscr(unsignedint``val``)Sets the :samp:`FPSCR` register to the specified value ``val``, while
 preserving the current values of the FR, SZ and PR bits.
 
 .. _sparc-vis-built-in-functions:

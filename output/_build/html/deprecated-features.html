@@ -104,14 +104,14 @@ should work just fine for standard-conforming code.</dd>
 indicate an unspecified number of parameters (like C), rather than no
 parameters, as C++ demands.  This feature has been removed, except where
 it is required for backwards compatibility.   See <a class="reference internal" href="backwards-compatibility.html#backwards-compatibility"><em>Backwards Compatibility</em></a>.</p>
-<p class="last">G++ allows a virtual function returning void * to be overridden</p>
+<p class="last">G++ allows a virtual function returning <tt class="samp docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt> to be overridden</p>
 </dd>
 </dl>
 <p>by one returning a different pointer type.  This extension to the
 covariant return type rules is now deprecated and will be removed from a
 future version.</p>
-<p>The G++ minimum and maximum operators (&lt;? and &gt;?) and
-their compound forms (&lt;?=) and &gt;?=) have been deprecated
+<p>The G++ minimum and maximum operators (<tt class="samp docutils literal"><span class="pre">&lt;?</span></tt> and <tt class="samp docutils literal"><span class="pre">&gt;?</span></tt>) and
+their compound forms (<tt class="samp docutils literal"><span class="pre">&lt;?=</span></tt>) and <tt class="samp docutils literal"><span class="pre">&gt;?=</span></tt>) have been deprecated
 and are now removed from G++.  Code using these operators should be
 modified to use <tt class="docutils literal"><span class="pre">std::min</span></tt> and <tt class="docutils literal"><span class="pre">std::max</span></tt> instead.</p>
 <p>The named return value extension has been deprecated, and is now
@@ -126,7 +126,7 @@ removed from G++.</p>
 and other places where they are not permitted by the standard is
 deprecated and will be removed from a future version of G++.</p>
 <p>G++ allows floating-point literals to appear in integral constant expressions,
-e.g.  enum E { e = int(2.2 * 3.7) }
+e.g. :samp:` enum E { e = int(2.2 * 3.7) } `
 This extension is deprecated and will be removed from a future version.</p>
 <p>G++ allows static data members of const floating-point type to be declared
 with an initializer in a class definition. The standard only allows

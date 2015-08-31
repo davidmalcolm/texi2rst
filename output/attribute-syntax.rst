@@ -55,7 +55,7 @@ each attribute is one of the following:
 An :dfn:`attribute specifier list` is a sequence of one or more attribute
 specifiers, not separated by any other tokens.
 
-You may optionally specify attribute names with __
+You may optionally specify attribute names with :samp:`__`
 preceding and following the name.
 This allows you to use them in header files without
 being concerned about a possible macro of the same name.  For example,
@@ -214,7 +214,7 @@ non-returning function returning ``void``'.  As another example,
 
 specifies the type 'pointer to 8-byte-aligned pointer to ``char``'.
 Note again that this does not work with most attributes; for example,
-the usage of aligned and noreturn attributes given above
+the usage of :samp:`aligned` and :samp:`noreturn` attributes given above
 is not yet supported.
 
 For compatibility with existing code written for compiler versions that

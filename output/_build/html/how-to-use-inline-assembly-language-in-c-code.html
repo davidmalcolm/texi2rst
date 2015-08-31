@@ -166,7 +166,7 @@ does not know what they mean or even whether they are valid assembler input.</p>
 <p class="last">You may place multiple assembler instructions together in a single <tt class="docutils literal"><span class="pre">asm</span></tt>
 string, separated by the characters normally used in assembly code for the
 system. A combination that works in most places is a newline to break the
-line, plus a tab character (written as nt).
+line, plus a tab character (written as <tt class="samp docutils literal"><span class="pre">nt</span></tt>).
 Some assemblers allow semicolons as a line separator. However,
 note that some assembler dialects use semicolons to start a comment.</p>
 </dd>
@@ -210,11 +210,11 @@ visibility of any symbols it references. This may result in GCC discarding
 those symbols as unreferenced.</p>
 <p>The compiler copies the assembler instructions in a basic <tt class="docutils literal"><span class="pre">asm</span></tt>
 verbatim to the assembly language output file, without
-processing dialects or any of the % operators that are available with
+processing dialects or any of the <tt class="samp docutils literal"><span class="pre">%</span></tt> operators that are available with
 extended <tt class="docutils literal"><span class="pre">asm</span></tt>. This results in minor differences between basic
 <tt class="docutils literal"><span class="pre">asm</span></tt> strings and extended <tt class="docutils literal"><span class="pre">asm</span></tt> templates. For example, to refer to
-registers you might use %eax in basic <tt class="docutils literal"><span class="pre">asm</span></tt> and
-%%eax in extended <tt class="docutils literal"><span class="pre">asm</span></tt>.</p>
+registers you might use <tt class="samp docutils literal"><span class="pre">%eax</span></tt> in basic <tt class="docutils literal"><span class="pre">asm</span></tt> and
+<tt class="samp docutils literal"><span class="pre">%%eax</span></tt> in extended <tt class="docutils literal"><span class="pre">asm</span></tt>.</p>
 <p>On targets such as x86 that support multiple assembler dialects,
 all basic <tt class="docutils literal"><span class="pre">asm</span></tt> blocks use the assembler dialect specified by the
 <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-masm"><em class="xref std std-option">-masm</em></a> command-line option (see <a class="reference internal" href="hardware-models-and-configurations.html#x86-options"><em>x86 Options</em></a>).
@@ -230,7 +230,7 @@ mechanism to provide different assembler strings for different dialects.</p>
 <span id="extended-asm"></span><h2>Extended Asm - Assembler Instructions with C Expression Operands<a class="headerlink" href="#extended-asm-assembler-instructions-with-c-expression-operands" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-6"></span><p id="index-7">With extended <tt class="docutils literal"><span class="pre">asm</span></tt> you can read and write C variables from
 assembler and perform jumps from assembler code to C labels.
-Extended <tt class="docutils literal"><span class="pre">asm</span></tt> syntax uses colons (:) to delimit
+Extended <tt class="docutils literal"><span class="pre">asm</span></tt> syntax uses colons (<tt class="samp docutils literal"><span class="pre">:</span></tt>) to delimit
 the operand parameters after the assembler template:</p>
 <div class="highlight-c++"><pre>asm [volatile] ( ``AssemblerTemplate``
                  : ``OutputOperands``
@@ -422,7 +422,7 @@ referencing a variable in the subsequent code, for example:</p>
 <p>Under certain circumstances, GCC may duplicate (or remove duplicates of) your
 assembly code when optimizing. This can lead to unexpected duplicate symbol
 errors during compilation if your asm code defines symbols or labels.
-Using %=
+Using <tt class="samp docutils literal"><span class="pre">%=</span></tt>
 (see <a class="reference internal" href="#assemblertemplate"><em>Assembler Template</em></a>) may help resolve this problem.</p>
 </div>
 <div class="section" id="assembler-template">
@@ -440,7 +440,7 @@ assembler input. However, it does count the statements
 string, separated by the characters normally used in assembly code for the
 system. A combination that works in most places is a newline to break the
 line, plus a tab character to move to the instruction field (written as
-nt).
+<tt class="samp docutils literal"><span class="pre">nt</span></tt>).
 Some assemblers allow semicolons as a line separator. However, note
 that some assembler dialects use semicolons to start a comment.</p>
 <p>Do not expect a sequence of <tt class="docutils literal"><span class="pre">asm</span></tt> statements to remain perfectly
@@ -463,14 +463,14 @@ unreferenced unless they are also listed as input, output, or goto operands.</p>
 these tokens have special meanings in the assembler template:</p>
 <dl class="docutils">
 <dt>%%</dt>
-<dd>Outputs a single % into the assembler code.</dd>
+<dd>Outputs a single <tt class="samp docutils literal"><span class="pre">%</span></tt> into the assembler code.</dd>
 <dt>%=</dt>
 <dd>Outputs a number that is unique to each instance of the <tt class="docutils literal"><span class="pre">asm</span></tt>
 statement in the entire compilation. This option is useful when creating local
 labels and referring to them multiple times in a single template that
 generates multiple assembler instructions.</dd>
 <dt>%{ %| %}</dt>
-<dd>Outputs {, <a href="#id5"><span class="problematic" id="id6">|</span></a>, and } characters (respectively)
+<dd>Outputs <tt class="samp docutils literal"><span class="pre">{</span></tt>, <tt class="samp docutils literal"><span class="pre">|</span></tt>, and <tt class="samp docutils literal"><span class="pre">}</span></tt> characters (respectively)
 into the assembler code.  When unescaped, these characters have special
 meaning to indicate multiple assembler dialects, as described below.</dd>
 </dl>
@@ -494,7 +494,7 @@ when using dialect #0 to compile the code,
 braces than the number of dialects the compiler supports, the construct
 outputs nothing.</p>
 <p>For example, if an x86 compiler supports two dialects
-(att, intel), an
+(<tt class="samp docutils literal"><span class="pre">att</span></tt>, <tt class="samp docutils literal"><span class="pre">intel</span></tt>), an
 assembler template such as this:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="s">&quot;bt{l %[Offset],%[Base] | %[Base],%[Offset]}; jc %l2&quot;</span>
 </pre></div>
@@ -540,27 +540,27 @@ of C variables modified by the assembler code.</p>
 <dd><p class="first">Specifies a symbolic name for the operand.
 Reference the name in the assembler template
 by enclosing it in square brackets
-(i.e. %[Value]). The scope of the name is the <tt class="docutils literal"><span class="pre">asm</span></tt> statement
+(i.e. <tt class="samp docutils literal"><span class="pre">%[Value]</span></tt>). The scope of the name is the <tt class="docutils literal"><span class="pre">asm</span></tt> statement
 that contains the definition. Any valid C variable name is acceptable,
 including names already defined in the surrounding code. No two operands
 within the same <tt class="docutils literal"><span class="pre">asm</span></tt> statement can use the same symbolic name.</p>
 <p class="last">When not using an <tt class="docutils literal"><span class="pre">asmSymbolicName</span></tt>, use the (zero-based) position
 of the operand
 in the list of operands in the assembler template. For example if there are
-three output operands, use %0 in the template to refer to the first,
-%1 for the second, and %2 for the third.</p>
+three output operands, use <tt class="samp docutils literal"><span class="pre">%0</span></tt> in the template to refer to the first,
+<tt class="samp docutils literal"><span class="pre">%1</span></tt> for the second, and <tt class="samp docutils literal"><span class="pre">%2</span></tt> for the third.</p>
 </dd>
 <dt>constraint</dt>
 <dd><p class="first">A string constant specifying constraints on the placement of the operand;
 See <em class="xref std std-ref">constraints</em>, for details.</p>
-<p>Output constraints must begin with either = (a variable overwriting an
-existing value) or + (when reading and writing). When using
-=, do not assume the location contains the existing value
+<p>Output constraints must begin with either <tt class="samp docutils literal"><span class="pre">=</span></tt> (a variable overwriting an
+existing value) or <tt class="samp docutils literal"><span class="pre">+</span></tt> (when reading and writing). When using
+<tt class="samp docutils literal"><span class="pre">=</span></tt>, do not assume the location contains the existing value
 on entry to the <tt class="docutils literal"><span class="pre">asm</span></tt>, except
 when the operand is tied to an input; see <a class="reference internal" href="#inputoperands"><em>Input Operands</em></a>.</p>
 <p class="last">After the prefix, there must be one or more additional constraints
 (see <em class="xref std std-ref">constraints</em>) that describe where the value resides. Common
-constraints include r for register and m for memory.
+constraints include <tt class="samp docutils literal"><span class="pre">r</span></tt> for register and <tt class="samp docutils literal"><span class="pre">m</span></tt> for memory.
 When you list more than one possible location (for example, <tt class="docutils literal"><span class="pre">&quot;=rm&quot;</span></tt>),
 the compiler chooses the most efficient one based on the current context.
 If you list as many alternates as the <tt class="docutils literal"><span class="pre">asm</span></tt> statement allows, you permit
@@ -583,10 +583,10 @@ executed. For output expressions that are not directly addressable (for
 example a bit-field), the constraint must allow a register. In that case, GCC
 uses the register as the output of the <tt class="docutils literal"><span class="pre">asm</span></tt>, and then stores that
 register into the output.</p>
-<p>Operands using the + constraint modifier count as two operands
+<p>Operands using the <tt class="samp docutils literal"><span class="pre">+</span></tt> constraint modifier count as two operands
 (that is, both as input and output) towards the total maximum of 30 operands
 per <tt class="docutils literal"><span class="pre">asm</span></tt> statement.</p>
-<p>Use the &amp; constraint modifier (see <a class="reference internal" href="#modifiers"><em>Constraint Modifier Characters</em></a>) on all output
+<p>Use the <tt class="samp docutils literal"><span class="pre">&amp;</span></tt> constraint modifier (see <a class="reference internal" href="#modifiers"><em>Constraint Modifier Characters</em></a>) on all output
 operands that must not overlap an input.  Otherwise,
 GCC may allocate the output operand in the same register as an unrelated
 input operand, on the assumption that the assembler code consumes its
@@ -599,12 +599,12 @@ registers which <em>might</em> be shared by <tt class="docutils literal"><span c
 registers to be inputs to the asm. As above, GCC assumes that such input
 registers are consumed before any outputs are written. This assumption may
 result in incorrect behavior if the asm writes to <tt class="docutils literal"><span class="pre">a</span></tt> before using
-<tt class="docutils literal"><span class="pre">b</span></tt>. Combining the &amp; modifier with the register constraint on <tt class="docutils literal"><span class="pre">a</span></tt>
+<tt class="docutils literal"><span class="pre">b</span></tt>. Combining the <tt class="samp docutils literal"><span class="pre">&amp;</span></tt> modifier with the register constraint on <tt class="docutils literal"><span class="pre">a</span></tt>
 ensures that modifying <tt class="docutils literal"><span class="pre">a</span></tt> does not affect the address referenced by
 <tt class="docutils literal"><span class="pre">b</span></tt>. Otherwise, the location of <tt class="docutils literal"><span class="pre">b</span></tt>
 is undefined if <tt class="docutils literal"><span class="pre">a</span></tt> is modified before using <tt class="docutils literal"><span class="pre">b</span></tt>.</p>
-<p><tt class="docutils literal"><span class="pre">asm</span></tt> supports operand modifiers on operands (for example %k2
-instead of simply %2). Typically these qualifiers are hardware
+<p><tt class="docutils literal"><span class="pre">asm</span></tt> supports operand modifiers on operands (for example <tt class="samp docutils literal"><span class="pre">%k2</span></tt>
+instead of simply <tt class="samp docutils literal"><span class="pre">%2</span></tt>). Typically these qualifiers are hardware
 dependent. The list of supported modifiers for x86 is found at
 x86Operandmodifiersx86 Operand modifiers.</p>
 <p>If the C code that follows the <tt class="docutils literal"><span class="pre">asm</span></tt> makes no use of any of the output
@@ -625,9 +625,9 @@ than that of the last output operand. In this i386 example, that makes
      <span class="o">:</span> <span class="s">&quot;cc&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>That code overwrites the variable <tt class="docutils literal"><span class="pre">Index</span></tt> (=),
-placing the value in a register (r).
-Using the generic r constraint instead of a constraint for a specific
+<p>That code overwrites the variable <tt class="docutils literal"><span class="pre">Index</span></tt> (<tt class="samp docutils literal"><span class="pre">=</span></tt>),
+placing the value in a register (<tt class="samp docutils literal"><span class="pre">r</span></tt>).
+Using the generic <tt class="samp docutils literal"><span class="pre">r</span></tt> constraint instead of a constraint for a specific
 register allows the compiler to pick the register to use, which can result
 in more efficient code. This may not be possible if an assembler instruction
 requires a specific register.</p>
@@ -676,7 +676,7 @@ assembly code.</p>
 <dd><p class="first">Specifies a symbolic name for the operand.
 Reference the name in the assembler template
 by enclosing it in square brackets
-(i.e. %[Value]). The scope of the name is the <tt class="docutils literal"><span class="pre">asm</span></tt> statement
+(i.e. <tt class="samp docutils literal"><span class="pre">%[Value]</span></tt>). The scope of the name is the <tt class="docutils literal"><span class="pre">asm</span></tt> statement
 that contains the definition. Any valid C variable name is acceptable,
 including names already defined in the surrounding code. No two operands
 within the same <tt class="docutils literal"><span class="pre">asm</span></tt> statement can use the same symbolic name.</p>
@@ -684,14 +684,14 @@ within the same <tt class="docutils literal"><span class="pre">asm</span></tt> s
 of the operand
 in the list of operands in the assembler template. For example if there are
 two output operands and three inputs,
-use %2 in the template to refer to the first input operand,
-%3 for the second, and %4 for the third.</p>
+use <tt class="samp docutils literal"><span class="pre">%2</span></tt> in the template to refer to the first input operand,
+<tt class="samp docutils literal"><span class="pre">%3</span></tt> for the second, and <tt class="samp docutils literal"><span class="pre">%4</span></tt> for the third.</p>
 </dd>
 <dt>constraint</dt>
 <dd><p class="first">A string constant specifying constraints on the placement of the operand;
 See <em class="xref std std-ref">constraints</em>, for details.</p>
-<p>Input constraint strings may not begin with either = or +.
-When you list more than one possible location (for example, &#8220;irm&#8221;),
+<p>Input constraint strings may not begin with either <tt class="samp docutils literal"><span class="pre">=</span></tt> or <tt class="samp docutils literal"><span class="pre">+</span></tt>.
+When you list more than one possible location (for example, <tt class="samp docutils literal"><span class="pre">&quot;irm&quot;</span></tt>),
 the compiler chooses the most efficient one based on the current context.
 If you must use a specific register, but your Machine Constraints do not
 provide sufficient control to select the specific register you want,
@@ -700,7 +700,7 @@ local register variables may provide a solution (see <a class="reference interna
 that the specified input must be in the same place as the output constraint
 at the (zero-based) index in the output constraint list.
 When using <tt class="docutils literal"><span class="pre">asmSymbolicName</span></tt> syntax for the output operands,
-you may use these names (enclosed in brackets []) instead of digits.</p>
+you may use these names (enclosed in brackets <tt class="samp docutils literal"><span class="pre">[]</span></tt>) instead of digits.</p>
 </dd>
 <dt>cexpression</dt>
 <dd><p class="first">This is the C variable or expression being passed to the <tt class="docutils literal"><span class="pre">asm</span></tt> statement
@@ -727,8 +727,8 @@ that never gets used. Note, however, that if the code that follows the
 <tt class="docutils literal"><span class="pre">asm</span></tt> statement makes no use of any of the output operands, the GCC
 optimizers may discard the <tt class="docutils literal"><span class="pre">asm</span></tt> statement as unneeded
 (see Volatile).</p>
-<p><tt class="docutils literal"><span class="pre">asm</span></tt> supports operand modifiers on operands (for example %k2
-instead of simply %2). Typically these qualifiers are hardware
+<p><tt class="docutils literal"><span class="pre">asm</span></tt> supports operand modifiers on operands (for example <tt class="samp docutils literal"><span class="pre">%k2</span></tt>
+instead of simply <tt class="samp docutils literal"><span class="pre">%2</span></tt>). Typically these qualifiers are hardware
 dependent. The list of supported modifiers for x86 is found at
 x86Operandmodifiersx86 Operand modifiers.</p>
 <p>In this example using the fictitious <tt class="docutils literal"><span class="pre">combine</span></tt> instruction, the
@@ -752,7 +752,7 @@ the generated assembler code.</p>
 </div>
 </div>
 <div class="section" id="clobbers">
-<span id="id7"></span><h3>Clobbers<a class="headerlink" href="#clobbers" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h3>Clobbers<a class="headerlink" href="#clobbers" title="Permalink to this headline">¶</a></h3>
 <p id="index-14">While the compiler is aware of changes to entries listed in the output
 operands, the inline <tt class="docutils literal"><span class="pre">asm</span></tt> code may modify more than just the outputs. For
 example, calculations may require additional registers, or the processor may
@@ -831,13 +831,13 @@ necessary after the <tt class="docutils literal"><span class="pre">asm</span></t
 <p>Also note that an <tt class="docutils literal"><span class="pre">asm</span> <span class="pre">goto</span></tt> statement is always implicitly
 considered volatile.</p>
 <p>To reference a label in the assembler template,
-prefix it with %l (lowercase L) followed
+prefix it with <tt class="samp docutils literal"><span class="pre">%l</span></tt> (lowercase <tt class="samp docutils literal"><span class="pre">L</span></tt>) followed
 by its (zero-based) position in <tt class="docutils literal"><span class="pre">GotoLabels</span></tt> plus the number of input
 operands.  For example, if the <tt class="docutils literal"><span class="pre">asm</span></tt> has three inputs and references two
-labels, refer to the first label as %l3 and the second as %l4).</p>
+labels, refer to the first label as <tt class="samp docutils literal"><span class="pre">%l3</span></tt> and the second as <tt class="samp docutils literal"><span class="pre">%l4</span></tt>).</p>
 <p>Alternately, you can reference labels using the actual C label name enclosed
 in brackets.  For example, to reference a label named <tt class="docutils literal"><span class="pre">carry</span></tt>, you can
-use %l[carry].  The label must still be listed in the <tt class="docutils literal"><span class="pre">GotoLabels</span></tt>
+use <tt class="samp docutils literal"><span class="pre">%l[carry]</span></tt>.  The label must still be listed in the <tt class="docutils literal"><span class="pre">GotoLabels</span></tt>
 section when using this approach.</p>
 <p>Here is an example of <tt class="docutils literal"><span class="pre">asm</span> <span class="pre">goto</span></tt> for i386:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">asm</span> <span class="nf">goto</span> <span class="p">(</span>
@@ -876,7 +876,7 @@ section when using this approach.</p>
 of extended <tt class="docutils literal"><span class="pre">asm</span></tt> statements can use
 modifiers to affect the way the operands are formatted in
 the code output to the assembler. For example, the
-following code uses the h and b modifiers for x86:</p>
+following code uses the <tt class="samp docutils literal"><span class="pre">h</span></tt> and <tt class="samp docutils literal"><span class="pre">b</span></tt> modifiers for x86:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">uint16_t</span>  <span class="n">num</span><span class="p">;</span>
 <span class="k">asm</span> <span class="nf">volatile</span> <span class="p">(</span><span class="s">&quot;xchg %h0, %b0&quot;</span> <span class="o">:</span> <span class="s">&quot;+a&quot;</span> <span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">);</span>
 </pre></div>
@@ -901,7 +901,7 @@ following code uses the h and b modifiers for x86:</p>
 </pre></div>
 </div>
 <p>With no modifiers, this is what the output from the operands would be for the
-att and intel dialects of assembler:</p>
+<tt class="samp docutils literal"><span class="pre">att</span></tt> and <tt class="samp docutils literal"><span class="pre">intel</span></tt> dialects of assembler:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="21%" />
@@ -1027,8 +1027,8 @@ deeper after the <tt class="docutils literal"><span class="pre">asm</span></tt> 
 reload may think that it can use the same register for both the input and
 the output.</p>
 <p>To prevent this from happening,
-if any input operand uses the f constraint, all output register
-constraints must use the &amp; early-clobber modifier.</p>
+if any input operand uses the <tt class="samp docutils literal"><span class="pre">f</span></tt> constraint, all output register
+constraints must use the <tt class="samp docutils literal"><span class="pre">&amp;</span></tt> early-clobber modifier.</p>
 <p>The example above is correctly written as:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">asm</span> <span class="p">(</span><span class="s">&quot;foo&quot;</span> <span class="o">:</span> <span class="s">&quot;=&amp;t&quot;</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;f&quot;</span> <span class="p">(</span><span class="n">b</span><span class="p">));</span>
 </pre></div>
@@ -1039,7 +1039,7 @@ output operands fall in this category-GCC has no other way to
 know which registers the outputs appear in unless you indicate
 this in the constraints.</p>
 <p>Output operands must specifically indicate which register an output
-appears in after an <tt class="docutils literal"><span class="pre">asm</span></tt>.  =f is not allowed: the operand
+appears in after an <tt class="docutils literal"><span class="pre">asm</span></tt>.  <tt class="samp docutils literal"><span class="pre">=f</span></tt> is not allowed: the operand
 constraints must select a class with a single register.</p>
 </li>
 <li><p class="first">Output operands may not be &#8216;inserted&#8217; between existing stack registers.
@@ -1075,7 +1075,7 @@ operand can be a memory reference, and which kinds of address; whether the
 operand may be an immediate constant, and which possible values it may
 have.  Constraints can also require two operands to match.
 Side-effects aren&#8217;t allowed in operands of inline <tt class="docutils literal"><span class="pre">asm</span></tt>, unless
-&lt; or &gt; constraints are used, because there is no guarantee
+<tt class="samp docutils literal"><span class="pre">&lt;</span></tt> or <tt class="samp docutils literal"><span class="pre">&gt;</span></tt> constraints are used, because there is no guarantee
 that the side-effects will happen exactly once in an instruction that can update
 the addressing register.</p>
 <div class="toctree-wrapper compound">
@@ -1084,7 +1084,7 @@ the addressing register.</p>
 </div>
 </div>
 <div class="section" id="simple-constraints">
-<span id="id8"></span><h3>Simple Constraints<a class="headerlink" href="#simple-constraints" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>Simple Constraints<a class="headerlink" href="#simple-constraints" title="Permalink to this headline">¶</a></h3>
 <p id="index-18">The simplest kind of constraint is a string full of letters, each of
 which describes one kind of operand that is permitted.  Here are
 the letters that are allowed:</p>
@@ -1094,12 +1094,12 @@ the letters that are allowed:</p>
 except the first.  This enables each alternative for different operands to
 be visually aligned in the machine description even if they have different
 number of constraints and modifiers.<span class="target" id="index-19"></span></dd>
-<dt>m</dt>
+<dt><tt class="samp docutils literal"><span class="pre">m</span></tt></dt>
 <dd>A memory operand is allowed, with any kind of address that the machine
 supports in general.
 Note that the letter used for the general memory constraint can be
 re-defined by a back end using the <tt class="docutils literal"><span class="pre">TARGET_MEM_CONSTRAINT</span></tt> macro.<span class="target" id="index-21"></span></dd>
-<dt>o</dt>
+<dt><tt class="samp docutils literal"><span class="pre">o</span></tt></dt>
 <dd><p class="first">A memory operand is allowed, but only if the address is
 <em class="dfn">offsettable</em>.  This means that adding a small integer (actually,
 the width in bytes of the operand, as determined by its machine mode)
@@ -1113,90 +1113,86 @@ address is not offsettable.  More complicated indirect/indexed
 addresses may or may not be offsettable depending on the other
 addressing modes that the machine supports.</p>
 <p class="last">Note that in an output operand which can be matched by another
-operand, the constraint letter o is valid only when accompanied
-by both &lt; (if the target machine has predecrement addressing)
-and &gt; (if the target machine has preincrement addressing).</p>
+operand, the constraint letter <tt class="samp docutils literal"><span class="pre">o</span></tt> is valid only when accompanied
+by both <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> (if the target machine has predecrement addressing)
+and <tt class="samp docutils literal"><span class="pre">&gt;</span></tt> (if the target machine has preincrement addressing).</p>
 </dd>
-<dt>V</dt>
+<dt><tt class="samp docutils literal"><span class="pre">V</span></tt></dt>
 <dd>A memory operand that is not offsettable.  In other words, anything that
-would fit the m constraint but not the o constraint.</dd>
-</dl>
-<dl class="docutils">
-<dt>&lt;</dt>
+would fit the <tt class="samp docutils literal"><span class="pre">m</span></tt> constraint but not the <tt class="samp docutils literal"><span class="pre">o</span></tt> constraint.</dd>
+<dt><tt class="samp docutils literal"><span class="pre">&lt;</span></tt></dt>
 <dd>A memory operand with autodecrement addressing (either predecrement or
 postdecrement) is allowed.  In inline <tt class="docutils literal"><span class="pre">asm</span></tt> this constraint is only
 allowed if the operand is used exactly once in an instruction that can
-handle the side-effects.  Not using an operand with &lt; in constraint
+handle the side-effects.  Not using an operand with <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> in constraint
 string in the inline <tt class="docutils literal"><span class="pre">asm</span></tt> pattern at all or using it in multiple
 instructions isn&#8217;t valid, because the side-effects wouldn&#8217;t be performed
 or would be performed more than once.  Furthermore, on some targets
-the operand with &lt; in constraint string must be accompanied by
+the operand with <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> in constraint string must be accompanied by
 special instruction suffixes like <tt class="docutils literal"><span class="pre">%U0</span></tt> instruction suffix on PowerPC
 or <tt class="docutils literal"><span class="pre">%P0</span></tt> on IA-64.</dd>
-</dl>
-<dl class="docutils">
-<dt>&gt;</dt>
+<dt><tt class="samp docutils literal"><span class="pre">&gt;</span></tt></dt>
 <dd>A memory operand with autoincrement addressing (either preincrement or
 postincrement) is allowed.  In inline <tt class="docutils literal"><span class="pre">asm</span></tt> the same restrictions
-as for &lt; apply.<span class="target" id="index-27"></span></dd>
-<dt>r</dt>
+as for <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> apply.<span class="target" id="index-27"></span></dd>
+<dt><tt class="samp docutils literal"><span class="pre">r</span></tt></dt>
 <dd>A register operand is allowed provided that it is in a general
 register.<span class="target" id="index-29"></span></dd>
-<dt>i</dt>
+<dt><tt class="samp docutils literal"><span class="pre">i</span></tt></dt>
 <dd>An immediate integer operand (one with constant value) is allowed.
 This includes symbolic constants whose values will be known only at
 assembly time or later.</dd>
-<dt>n</dt>
+<dt><tt class="samp docutils literal"><span class="pre">n</span></tt></dt>
 <dd>An immediate integer operand with a known numeric value is allowed.
 Many systems cannot support assembly-time constants for operands less
-than a word wide.  Constraints for these operands should use n
-rather than i.</dd>
-<dt>I, J, K, ... P</dt>
-<dd>Other letters in the range I through P may be defined in
+than a word wide.  Constraints for these operands should use <tt class="samp docutils literal"><span class="pre">n</span></tt>
+rather than <tt class="samp docutils literal"><span class="pre">i</span></tt>.</dd>
+<dt><tt class="samp docutils literal"><span class="pre">I</span></tt>, <tt class="samp docutils literal"><span class="pre">J</span></tt>, <tt class="samp docutils literal"><span class="pre">K</span></tt>, ... <tt class="samp docutils literal"><span class="pre">P</span></tt></dt>
+<dd>Other letters in the range <tt class="samp docutils literal"><span class="pre">I</span></tt> through <tt class="samp docutils literal"><span class="pre">P</span></tt> may be defined in
 a machine-dependent fashion to permit immediate integer operands with
 explicit integer values in specified ranges.  For example, on the
-68000, I is defined to stand for the range of values 1 to 8.
+68000, <tt class="samp docutils literal"><span class="pre">I</span></tt> is defined to stand for the range of values 1 to 8.
 This is the range permitted as a shift count in the shift
 instructions.</dd>
-<dt>E</dt>
+<dt><tt class="samp docutils literal"><span class="pre">E</span></tt></dt>
 <dd>An immediate floating operand (expression code <tt class="docutils literal"><span class="pre">const_double</span></tt>) is
 allowed, but only if the target floating point format is the same as
 that of the host machine (on which the compiler is running).</dd>
-<dt>F</dt>
+<dt><tt class="samp docutils literal"><span class="pre">F</span></tt></dt>
 <dd>An immediate floating operand (expression code <tt class="docutils literal"><span class="pre">const_double</span></tt> or
 <tt class="docutils literal"><span class="pre">const_vector</span></tt>) is allowed.<span class="target" id="index-35"></span></dd>
-<dt>G, H</dt>
-<dd>G and H may be defined in a machine-dependent fashion to
+<dt><tt class="samp docutils literal"><span class="pre">G</span></tt>, <tt class="samp docutils literal"><span class="pre">H</span></tt></dt>
+<dd><tt class="samp docutils literal"><span class="pre">G</span></tt> and <tt class="samp docutils literal"><span class="pre">H</span></tt> may be defined in a machine-dependent fashion to
 permit immediate floating operands in particular ranges of values.</dd>
-<dt>s</dt>
+<dt><tt class="samp docutils literal"><span class="pre">s</span></tt></dt>
 <dd><p class="first">An immediate integer operand whose value is not an explicit integer is
 allowed.</p>
 <p>This might appear strange; if an insn allows a constant operand with a
 value not known at compile time, it certainly must allow any known
-value.  So why use s instead of i?  Sometimes it allows
+value.  So why use <tt class="samp docutils literal"><span class="pre">s</span></tt> instead of <tt class="samp docutils literal"><span class="pre">i</span></tt>?  Sometimes it allows
 better code to be generated.</p>
 <p class="last">For example, on the 68000 in a fullword instruction it is possible to
 use an immediate operand; but if the immediate value is between -128
 and 127, better code results from loading the value into a register and
 using the register.  This is because the load into the register can be
-done with a moveq instruction.  We arrange for this to happen
-by defining the letter K to mean &#8216;any integer outside the
-range -128 to 127&#8217;, and then specifying Ks in the operand
+done with a <tt class="samp docutils literal"><span class="pre">moveq</span></tt> instruction.  We arrange for this to happen
+by defining the letter <tt class="samp docutils literal"><span class="pre">K</span></tt> to mean &#8216;any integer outside the
+range -128 to 127&#8217;, and then specifying <tt class="samp docutils literal"><span class="pre">Ks</span></tt> in the operand
 constraints.</p>
 </dd>
-<dt>g</dt>
+<dt><tt class="samp docutils literal"><span class="pre">g</span></tt></dt>
 <dd>Any register, memory or immediate integer operand is allowed, except for
 registers that are not general registers.</dd>
-<dt>X</dt>
+<dt><tt class="samp docutils literal"><span class="pre">X</span></tt></dt>
 <dd>Any operand whatsoever is allowed.<span class="target" id="index-40"></span></dd>
-<dt>0, 1, 2, ... 9</dt>
+<dt><tt class="samp docutils literal"><span class="pre">0</span></tt>, <tt class="samp docutils literal"><span class="pre">1</span></tt>, <tt class="samp docutils literal"><span class="pre">2</span></tt>, ... <tt class="samp docutils literal"><span class="pre">9</span></tt></dt>
 <dd><p class="first">An operand that matches the specified operand number is allowed.  If a
 digit is used together with letters within the same alternative, the
 digit should come last.</p>
 <p>This number is allowed to be more than a single digit.  If multiple
 digits are encountered consecutively, they are interpreted as a single
 decimal integer.  There is scant chance for ambiguity, since to-date
-it has never been desirable that 10 be interpreted as matching
+it has never been desirable that <tt class="samp docutils literal"><span class="pre">10</span></tt> be interpreted as matching
 either operand 1 <em>or</em> operand 0.  Should this be desired, one
 can use multiple alternatives instead.</p>
 <span class="target" id="index-42"></span><p id="index-43">This is called a <em class="dfn">matching constraint</em> and what it really means is
@@ -1213,10 +1209,10 @@ operand and one output-only operand.  Moreover, the digit must be a
 smaller number than the number of the operand that uses it in the
 constraint.</p>
 <span class="target" id="index-44"></span><span class="target" id="index-45"></span><span class="target" id="index-46"></span></dd>
-<dt>p</dt>
+<dt><tt class="samp docutils literal"><span class="pre">p</span></tt></dt>
 <dd><p class="first">An operand that is a valid memory address is allowed.  This is
 for &#8216;load address&#8217; and &#8216;push address&#8217; instructions.</p>
-<p class="last" id="index-48">p in the constraint must be accompanied by <tt class="docutils literal"><span class="pre">address_operand</span></tt>
+<p class="last" id="index-48"><tt class="samp docutils literal"><span class="pre">p</span></tt> in the constraint must be accompanied by <tt class="docutils literal"><span class="pre">address_operand</span></tt>
 as the predicate in the <tt class="docutils literal"><span class="pre">match_operand</span></tt>.  This predicate interprets
 the mode specified in the <tt class="docutils literal"><span class="pre">match_operand</span></tt> as the mode of the memory
 reference for which the address would be valid.</p>
@@ -1224,7 +1220,7 @@ reference for which the address would be valid.</p>
 <dt><tt class="docutils literal"><span class="pre">other-letters</span></tt></dt>
 <dd>Other letters can be defined in machine-dependent fashion to stand for
 particular classes of registers or other arbitrary operand types.
-d, a and f are defined on the 68000/68020 to stand
+<tt class="samp docutils literal"><span class="pre">d</span></tt>, <tt class="samp docutils literal"><span class="pre">a</span></tt> and <tt class="samp docutils literal"><span class="pre">f</span></tt> are defined on the 68000/68020 to stand
 for data, address and floating point registers.</dd>
 </dl>
 </div>
@@ -1245,29 +1241,29 @@ Otherwise, for each alternative, the compiler counts how many instructions
 must be added to copy the operands so that that alternative applies.
 The alternative requiring the least copying is chosen.  If two alternatives
 need the same amount of copying, the one that comes first is chosen.
-These choices can be altered with the ? and ! characters:</p>
+These choices can be altered with the <tt class="samp docutils literal"><span class="pre">?</span></tt> and <tt class="samp docutils literal"><span class="pre">!</span></tt> characters:</p>
 <span class="target" id="index-52"></span><dl class="docutils">
 <dt>?</dt>
-<dd>Disparage slightly the alternative that the ? appears in,
+<dd>Disparage slightly the alternative that the <tt class="samp docutils literal"><span class="pre">?</span></tt> appears in,
 as a choice when no alternative applies exactly.  The compiler regards
-this alternative as one unit more costly for each ? that appears
+this alternative as one unit more costly for each <tt class="samp docutils literal"><span class="pre">?</span></tt> that appears
 in it.<span class="target" id="index-54"></span></dd>
 </dl>
 <dl class="docutils">
 <dt>!</dt>
-<dd>Disparage severely the alternative that the ! appears in.
+<dd>Disparage severely the alternative that the <tt class="samp docutils literal"><span class="pre">!</span></tt> appears in.
 This alternative can still be used if it fits without reloading,
 but if reloading is needed, some other alternative will be used.<span class="target" id="index-56"></span></dd>
 </dl>
 <dl class="docutils">
 <dt>^</dt>
-<dd>This constraint is analogous to ? but it disparages slightly
-the alternative only if the operand with the ^ needs a reload.<span class="target" id="index-58"></span></dd>
+<dd>This constraint is analogous to <tt class="samp docutils literal"><span class="pre">?</span></tt> but it disparages slightly
+the alternative only if the operand with the <tt class="samp docutils literal"><span class="pre">^</span></tt> needs a reload.<span class="target" id="index-58"></span></dd>
 </dl>
 <dl class="docutils">
 <dt>$</dt>
-<dd>This constraint is analogous to ! but it disparages severely
-the alternative only if the operand with the $ needs a reload.</dd>
+<dd>This constraint is analogous to <tt class="samp docutils literal"><span class="pre">!</span></tt> but it disparages severely
+the alternative only if the operand with the <tt class="samp docutils literal"><span class="pre">$</span></tt> needs a reload.</dd>
 </dl>
 </div>
 <div class="section" id="constraint-modifier-characters">
@@ -1282,10 +1278,10 @@ the previous value is discarded and replaced by new data.</dd>
 <li><p class="first">Means that this operand is both read and written by the instruction.</p>
 <p>When the compiler fixes up the operands to satisfy the constraints,
 it needs to know which operands are read by the instruction and
-which are written by it.  = identifies an operand which is only
-written; + identifies an operand that is both read and written; all
+which are written by it.  <tt class="samp docutils literal"><span class="pre">=</span></tt> identifies an operand which is only
+written; <tt class="samp docutils literal"><span class="pre">+</span></tt> identifies an operand that is both read and written; all
 other operands are assumed to only be read.</p>
-<p>If you specify = or + in a constraint, you put it in the
+<p>If you specify <tt class="samp docutils literal"><span class="pre">=</span></tt> or <tt class="samp docutils literal"><span class="pre">+</span></tt> in a constraint, you put it in the
 first character of the constraint string.</p>
 <span class="target" id="index-64"></span></li>
 </ul>
@@ -1296,18 +1292,18 @@ first character of the constraint string.</p>
 finished using the input operands.  Therefore, this operand may not lie
 in a register that is read by the instruction or as part of any memory
 address.</p>
-<p>&amp; applies only to the alternative in which it is written.  In
+<p><tt class="samp docutils literal"><span class="pre">&amp;</span></tt> applies only to the alternative in which it is written.  In
 constraints with multiple alternatives, sometimes one alternative
-requires &amp; while others do not.  See, for example, the
-movdf insn of the 68000.</p>
+requires <tt class="samp docutils literal"><span class="pre">&amp;</span></tt> while others do not.  See, for example, the
+<tt class="samp docutils literal"><span class="pre">movdf</span></tt> insn of the 68000.</p>
 <p>A operand which is read by the instruction can be tied to an earlyclobber
 operand if its only use as an input occurs before the early result is
 written.  Adding alternatives of this form often allows GCC to produce
 better code when only some of the read operands can be affected by the
-earlyclobber. See, for example, the mulsi3 insn of the ARM.</p>
+earlyclobber. See, for example, the <tt class="samp docutils literal"><span class="pre">mulsi3</span></tt> insn of the ARM.</p>
 <p>Furthermore, if the <em class="dfn">earlyclobber</em> operand is also a read/write
 operand, then that operand is written only after it&#8217;s used.</p>
-<p class="last">&amp; does not obviate the need to write = or +.  As
+<p class="last"><tt class="samp docutils literal"><span class="pre">&amp;</span></tt> does not obviate the need to write <tt class="samp docutils literal"><span class="pre">=</span></tt> or <tt class="samp docutils literal"><span class="pre">+</span></tt>.  As
 <em class="dfn">earlyclobber</em> operands are always written, a read-only
 <em class="dfn">earlyclobber</em> operand is ill-formed and will be rejected by the
 compiler.</p>
@@ -1318,16 +1314,16 @@ compiler.</p>
 <dd><p class="first">Declares the instruction to be commutative for this operand and the
 following operand.  This means that the compiler may interchange the
 two operands if that is the cheapest way to make all operands fit the
-constraints.  % applies to all alternatives and must appear as
+constraints.  <tt class="samp docutils literal"><span class="pre">%</span></tt> applies to all alternatives and must appear as
 the first character in the constraint.  Only read-only operands can use
-%.</p>
+<tt class="samp docutils literal"><span class="pre">%</span></tt>.</p>
 <p class="last">GCC can only handle one commutative pair in an asm; if you use more,
 the compiler may fail.  Note that you need not use the modifier if
 the two alternatives are strictly identical; this would only waste
 time in the reload pass.  The modifier is not operational after
 register allocation, so the result of <tt class="docutils literal"><span class="pre">define_peephole2</span></tt>
-and <a href="#id9"><span class="problematic" id="id10">``</span></a>define_split``s performed after reload cannot rely on
-% to make the intended insn match.</p>
+and <a href="#id7"><span class="problematic" id="id8">``</span></a>define_split``s performed after reload cannot rely on
+<tt class="samp docutils literal"><span class="pre">%</span></tt> to make the intended insn match.</p>
 </dd>
 </dl>
 <dl class="docutils">
@@ -1338,9 +1334,9 @@ register preferences.</dd>
 </dl>
 <ul class="simple" id="index-68">
 <li>Says that the following character should be ignored when choosing
-register preferences.  * has no effect on the meaning of the
+register preferences.  <tt class="samp docutils literal"><span class="pre">*</span></tt> has no effect on the meaning of the
 constraint as a constraint, and no effect on reloading.  For LRA
-* additionally disparages slightly the alternative if the
+<tt class="samp docutils literal"><span class="pre">*</span></tt> additionally disparages slightly the alternative if the
 following character matches the operand.</li>
 </ul>
 </div>
@@ -1350,9 +1346,9 @@ following character matches the operand.</li>
 in <tt class="docutils literal"><span class="pre">asm</span></tt> arguments, since they will convey meaning more readily to
 people reading your code.  Failing that, use the constraint letters
 that usually have very similar meanings across architectures.  The most
-commonly used constraints are m and r (for memory and
+commonly used constraints are <tt class="samp docutils literal"><span class="pre">m</span></tt> and <tt class="samp docutils literal"><span class="pre">r</span></tt> (for memory and
 general-purpose registers respectively; see <a class="reference internal" href="#simple-constraints"><em>Simple Constraints</em></a>), and
-I, usually the letter indicating the most common
+<tt class="samp docutils literal"><span class="pre">I</span></tt>, usually the letter indicating the most common
 immediate-constant format.</p>
 <p>Each architecture defines additional constraints.  These constraints
 are used by the compiler itself for instruction generation, as well as
@@ -1470,14 +1466,14 @@ multiple of 2</dd>
 <dt>J</dt>
 <dd>Integer in the range -4095 to 4095</dd>
 <dt>K</dt>
-<dd>Integer that satisfies constraint I when inverted (ones complement)</dd>
+<dd>Integer that satisfies constraint <tt class="samp docutils literal"><span class="pre">I</span></tt> when inverted (ones complement)</dd>
 <dt>L</dt>
-<dd>Integer that satisfies constraint I when negated (twos complement)</dd>
+<dd>Integer that satisfies constraint <tt class="samp docutils literal"><span class="pre">I</span></tt> when negated (twos complement)</dd>
 <dt>M</dt>
 <dd>Integer in the range 0 to 32</dd>
 <dt>Q</dt>
 <dd>A memory reference where the exact address is in a single register
-(&#8216;m&#8217; is preferable for <tt class="docutils literal"><span class="pre">asm</span></tt> statements)</dd>
+(&#8216;<tt class="samp docutils literal"><span class="pre">m</span></tt>&#8216; is preferable for <tt class="docutils literal"><span class="pre">asm</span></tt> statements)</dd>
 <dt>R</dt>
 <dd>An item in the constant pool</dd>
 <dt>S</dt>
@@ -1500,7 +1496,7 @@ multiple of 2</dd>
 <dt>d</dt>
 <dd>Registers from r16 to r31</dd>
 <dt>w</dt>
-<dd>Registers from r24 to r31.  These registers can be used in adiw command</dd>
+<dd>Registers from r24 to r31.  These registers can be used in <tt class="samp docutils literal"><span class="pre">adiw</span></tt> command</dd>
 <dt>e</dt>
 <dd>Pointer register (r26-r31)</dd>
 <dt>b</dt>
@@ -1824,7 +1820,7 @@ integer store instruction</dd>
 <dt>b</dt>
 <dd>Branch register</dd>
 <dt>c</dt>
-<dd>Predicate register (c as in &#8216;conditional&#8217;)</dd>
+<dd>Predicate register (<tt class="samp docutils literal"><span class="pre">c</span></tt> as in &#8216;conditional&#8217;)</dd>
 <dt>d</dt>
 <dd>Application register residing in M-unit</dd>
 <dt>e</dt>
@@ -1832,9 +1828,9 @@ integer store instruction</dd>
 <dt>f</dt>
 <dd>Floating-point register</dd>
 <dt>m</dt>
-<dd>Memory operand.  If used together with &lt; or &gt;,
+<dd>Memory operand.  If used together with <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> or <tt class="samp docutils literal"><span class="pre">&gt;</span></tt>,
 the operand can have postincrement and postdecrement which
-require printing with %Pn on IA-64.</dd>
+require printing with <tt class="samp docutils literal"><span class="pre">%Pn</span></tt> on IA-64.</dd>
 <dt>G</dt>
 <dd>Floating-point constant 0.0 or 1.0</dd>
 <dt>I</dt>
@@ -1859,15 +1855,15 @@ require printing with %Pn on IA-64.</dd>
 <dd>Integer constant in the range 1 to 4 for <tt class="docutils literal"><span class="pre">shladd</span></tt> instruction</dd>
 <dt>S</dt>
 <dd>Memory operand except postincrement and postdecrement.  This is
-now roughly the same as m when not used together with &lt;
-or &gt;.</dd>
+now roughly the same as <tt class="samp docutils literal"><span class="pre">m</span></tt> when not used together with <tt class="samp docutils literal"><span class="pre">&lt;</span></tt>
+or <tt class="samp docutils literal"><span class="pre">&gt;</span></tt>.</dd>
 </dl>
 </div></blockquote>
 <p>M32C-config/m32c/m32c.c</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>Rsp Rfb Rsb</dt>
-<dd>$sp, $fb, $sb.</dd>
+<dd><tt class="samp docutils literal"><span class="pre">$sp</span></tt>, <tt class="samp docutils literal"><span class="pre">$fb</span></tt>, <tt class="samp docutils literal"><span class="pre">$sb</span></tt>.</dd>
 <dt>Rcr</dt>
 <dd>Any control register, when they&#8217;re 16 bits wide (nothing if control
 registers are 24 bits wide)</dd>
@@ -2316,7 +2312,7 @@ memory with a single instruction.</dd>
 <dd>An integer constant whose low order 16 bits are zero.</dd>
 <dt>K</dt>
 <dd>An integer constant that does not meet the constraints for codes
-I or J.</dd>
+<tt class="samp docutils literal"><span class="pre">I</span></tt> or <tt class="samp docutils literal"><span class="pre">J</span></tt>.</dd>
 <dt>L</dt>
 <dd>The integer constant 1.</dd>
 <dt>M</dt>
@@ -2391,23 +2387,23 @@ offset) after the opcode.</dd>
 <dd>A memory address that will work with the <tt class="docutils literal"><span class="pre">lq</span></tt> and <tt class="docutils literal"><span class="pre">stq</span></tt>
 instructions.</dd>
 <dt>h</dt>
-<dd>MQ, CTR, or LINK register</dd>
+<dd><tt class="samp docutils literal"><span class="pre">MQ</span></tt>, <tt class="samp docutils literal"><span class="pre">CTR</span></tt>, or <tt class="samp docutils literal"><span class="pre">LINK</span></tt> register</dd>
 <dt>q</dt>
-<dd>MQ register</dd>
+<dd><tt class="samp docutils literal"><span class="pre">MQ</span></tt> register</dd>
 <dt>c</dt>
-<dd>CTR register</dd>
+<dd><tt class="samp docutils literal"><span class="pre">CTR</span></tt> register</dd>
 <dt>l</dt>
-<dd>LINK register</dd>
+<dd><tt class="samp docutils literal"><span class="pre">LINK</span></tt> register</dd>
 <dt>x</dt>
-<dd>CR register (condition register) number 0</dd>
+<dd><tt class="samp docutils literal"><span class="pre">CR</span></tt> register (condition register) number 0</dd>
 <dt>y</dt>
-<dd>CR register (condition register)</dd>
+<dd><tt class="samp docutils literal"><span class="pre">CR</span></tt> register (condition register)</dd>
 <dt>z</dt>
-<dd>XER[CA] carry bit (part of the XER register)</dd>
+<dd><tt class="samp docutils literal"><span class="pre">XER[CA]</span></tt> carry bit (part of the XER register)</dd>
 <dt>I</dt>
 <dd>Signed 16-bit constant</dd>
 <dt>J</dt>
-<dd>Unsigned 16-bit constant shifted left 16 bits (use L instead for
+<dd>Unsigned 16-bit constant shifted left 16 bits (use <tt class="samp docutils literal"><span class="pre">L</span></tt> instead for
 <tt class="docutils literal"><span class="pre">SImode</span></tt> constants)</dd>
 <dt>K</dt>
 <dd>Unsigned 16-bit constant</dd>
@@ -2430,11 +2426,11 @@ three instructions</dd>
 <dt>m</dt>
 <dd><p class="first">Memory operand.
 Normally, <tt class="docutils literal"><span class="pre">m</span></tt> does not allow addresses that update the base register.
-If &lt; or &gt; constraint is also used, they are allowed and
+If <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> or <tt class="samp docutils literal"><span class="pre">&gt;</span></tt> constraint is also used, they are allowed and
 therefore on PowerPC targets in that case it is only safe
-to use m&lt;&gt; in an <tt class="docutils literal"><span class="pre">asm</span></tt> statement if that <tt class="docutils literal"><span class="pre">asm</span></tt> statement
+to use <tt class="samp docutils literal"><span class="pre">m&lt;&gt;</span></tt> in an <tt class="docutils literal"><span class="pre">asm</span></tt> statement if that <tt class="docutils literal"><span class="pre">asm</span></tt> statement
 accesses the operand exactly once.  The <tt class="docutils literal"><span class="pre">asm</span></tt> statement must also
-use %U``&lt;opno&gt;`` as a placeholder for the &#8216;update&#8217; flag in the
+use <tt class="samp docutils literal"><span class="pre">%U``&lt;opno&gt;``</span></tt> as a placeholder for the &#8216;update&#8217; flag in the
 corresponding load or store instruction.  For example:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">asm</span> <span class="p">(</span><span class="s">&quot;st%U0 %1,%0&quot;</span> <span class="o">:</span> <span class="s">&quot;=m&lt;&gt;&quot;</span> <span class="p">(</span><span class="n">mem</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;r&quot;</span> <span class="p">(</span><span class="n">val</span><span class="p">));</span>
 </pre></div>
@@ -2448,19 +2444,19 @@ corresponding load or store instruction.  For example:</p>
 <dt>es</dt>
 <dd>A &#8216;stable&#8217; memory operand; that is, one which does not include any
 automodification of the base register.  This used to be useful when
-m allowed automodification of the base register, but as those are now only
-allowed when &lt; or &gt; is used, es is basically the same
-as m without &lt; and &gt;.</dd>
+<tt class="samp docutils literal"><span class="pre">m</span></tt> allowed automodification of the base register, but as those are now only
+allowed when <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> or <tt class="samp docutils literal"><span class="pre">&gt;</span></tt> is used, <tt class="samp docutils literal"><span class="pre">es</span></tt> is basically the same
+as <tt class="samp docutils literal"><span class="pre">m</span></tt> without <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> and <tt class="samp docutils literal"><span class="pre">&gt;</span></tt>.</dd>
 <dt>Q</dt>
 <dd>Memory operand that is an offset from a register (it is usually better
-to use m or es in <tt class="docutils literal"><span class="pre">asm</span></tt> statements)</dd>
+to use <tt class="samp docutils literal"><span class="pre">m</span></tt> or <tt class="samp docutils literal"><span class="pre">es</span></tt> in <tt class="docutils literal"><span class="pre">asm</span></tt> statements)</dd>
 <dt>Z</dt>
 <dd>Memory operand that is an indexed or indirect from a register (it is
-usually better to use m or es in <tt class="docutils literal"><span class="pre">asm</span></tt> statements)</dd>
+usually better to use <tt class="samp docutils literal"><span class="pre">m</span></tt> or <tt class="samp docutils literal"><span class="pre">es</span></tt> in <tt class="docutils literal"><span class="pre">asm</span></tt> statements)</dd>
 <dt>R</dt>
 <dd>AIX TOC entry</dd>
 <dt>a</dt>
-<dd>Address operand that is an indexed or indirect from a register (p is
+<dd>Address operand that is an indexed or indirect from a register (<tt class="samp docutils literal"><span class="pre">p</span></tt> is
 preferable for <tt class="docutils literal"><span class="pre">asm</span></tt> statements)</dd>
 <dt>S</dt>
 <dd>Constant suitable as a 64-bit mask operand</dd>
@@ -2652,7 +2648,7 @@ pre/post increment/decrement addressing.</dd>
 <dd>Floating-point register on the SPARC-V8 architecture and
 lower floating-point register on the SPARC-V9 architecture.</dd>
 <dt>e</dt>
-<dd>Floating-point register.  It is equivalent to f on the
+<dd>Floating-point register.  It is equivalent to <tt class="samp docutils literal"><span class="pre">f</span></tt> on the
 SPARC-V8 architecture and contains both lower and upper
 floating-point registers on the SPARC-V9 architecture.</dd>
 <dt>c</dt>
@@ -2685,8 +2681,8 @@ signed immediate)</dd>
 <dd>A constant in the range supported by <tt class="docutils literal"><span class="pre">movrcc</span></tt> instructions (10-bit
 signed immediate)</dd>
 <dt>N</dt>
-<dd>Same as K, except that it verifies that bits that are not in the
-lower 32-bit range are all zero.  Must be used instead of K for
+<dd>Same as <tt class="samp docutils literal"><span class="pre">K</span></tt>, except that it verifies that bits that are not in the
+lower 32-bit range are all zero.  Must be used instead of <tt class="samp docutils literal"><span class="pre">K</span></tt> for
 modes wider than <tt class="docutils literal"><span class="pre">SImode</span></tt></dd>
 <dt>O</dt>
 <dd>The constant 4096</dd>
@@ -2713,7 +2709,7 @@ instruction sequence</dd>
 <dt>U</dt>
 <dd>Even register</dd>
 <dt>W</dt>
-<dd>Memory address for e constraint registers</dd>
+<dd>Memory address for <tt class="samp docutils literal"><span class="pre">e</span></tt> constraint registers</dd>
 <dt>w</dt>
 <dd>Memory address with only a base register</dd>
 <dt>Y</dt>
@@ -2832,9 +2828,9 @@ register, from r0 to r10.</dd>
 <dd>Integer constant that fits in one signed byte when incremented by one
 (-129 ... 126).</dd>
 <dt>m</dt>
-<dd><p class="first">Memory operand.  If used together with &lt; or &gt;, the
-operand can have postincrement which requires printing with %In
-and %in on TILE-Gx.  For example:</p>
+<dd><p class="first">Memory operand.  If used together with <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> or <tt class="samp docutils literal"><span class="pre">&gt;</span></tt>, the
+operand can have postincrement which requires printing with <tt class="samp docutils literal"><span class="pre">%In</span></tt>
+and <tt class="samp docutils literal"><span class="pre">%in</span></tt> on TILE-Gx.  For example:</p>
 <div class="last highlight-c++"><div class="highlight"><pre><span class="k">asm</span> <span class="p">(</span><span class="s">&quot;st_add %I0,%1,%i0&quot;</span> <span class="o">:</span> <span class="s">&quot;=m&lt;&gt;&quot;</span> <span class="p">(</span><span class="o">*</span><span class="n">mem</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;r&quot;</span> <span class="p">(</span><span class="n">val</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -2856,7 +2852,7 @@ and %in on TILE-Gx.  For example:</p>
 <dd>A 16-bit fragment of a got, tls, or pc-relative reference.</dd>
 <dt>U</dt>
 <dd>Memory operand except postincrement.  This is roughly the same as
-m when not used together with &lt; or &gt;.</dd>
+<tt class="samp docutils literal"><span class="pre">m</span></tt> when not used together with <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> or <tt class="samp docutils literal"><span class="pre">&gt;</span></tt>.</dd>
 <dt>W</dt>
 <dd>An 8-element vector constant with identical elements.</dd>
 <dt>Y</dt>
@@ -2883,9 +2879,9 @@ register, from r0 to r10.</dd>
 <dd>Integer constant that fits in one signed byte when incremented by one
 (-129 ... 126).</dd>
 <dt>m</dt>
-<dd><p class="first">Memory operand.  If used together with &lt; or &gt;, the
-operand can have postincrement which requires printing with %In
-and %in on TILEPro.  For example:</p>
+<dd><p class="first">Memory operand.  If used together with <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> or <tt class="samp docutils literal"><span class="pre">&gt;</span></tt>, the
+operand can have postincrement which requires printing with <tt class="samp docutils literal"><span class="pre">%In</span></tt>
+and <tt class="samp docutils literal"><span class="pre">%in</span></tt> on TILEPro.  For example:</p>
 <div class="last highlight-c++"><div class="highlight"><pre><span class="k">asm</span> <span class="p">(</span><span class="s">&quot;swadd %I0,%1,%i0&quot;</span> <span class="o">:</span> <span class="s">&quot;=m&lt;&gt;&quot;</span> <span class="p">(</span><span class="n">mem</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;r&quot;</span> <span class="p">(</span><span class="n">val</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -2906,7 +2902,7 @@ and %in on TILEPro.  For example:</p>
 reference.</dd>
 <dt>U</dt>
 <dd>Memory operand except postincrement.  This is roughly the same as
-m when not used together with &lt; or &gt;.</dd>
+<tt class="samp docutils literal"><span class="pre">m</span></tt> when not used together with <tt class="samp docutils literal"><span class="pre">&lt;</span></tt> or <tt class="samp docutils literal"><span class="pre">&gt;</span></tt>.</dd>
 <dt>W</dt>
 <dd>A 4-element vector constant with identical elements.</dd>
 <dt>Y</dt>
@@ -3113,8 +3109,8 @@ keyword after the declarator as follows:</p>
 </pre></div>
 </div>
 <p>This specifies that the name to be used for the variable <tt class="docutils literal"><span class="pre">foo</span></tt> in
-the assembler code should be myfoo rather than the usual
-_foo.</p>
+the assembler code should be <tt class="samp docutils literal"><span class="pre">myfoo</span></tt> rather than the usual
+<tt class="samp docutils literal"><span class="pre">_foo</span></tt>.</p>
 <p>On systems where an underscore is normally prepended to the name of a C
 function or variable, this feature allows you to define names for the
 linker that do not start with an underscore.</p>
@@ -3310,7 +3306,7 @@ does this by counting the number of instructions in the pattern of the
 instruction supported by that processor.  (When working out the number
 of instructions, it assumes that any occurrence of a newline or of
 whatever statement separator character is supported by the assembler -
-typically ; - indicates the end of an instruction.)</p>
+typically <tt class="samp docutils literal"><span class="pre">;</span></tt> - indicates the end of an instruction.)</p>
 <p>Normally, GCC&#8217;s estimate is adequate to ensure that correct
 code is generated, but it is possible to confuse the compiler if you use
 pseudo instructions or assembler macros that expand into multiple real

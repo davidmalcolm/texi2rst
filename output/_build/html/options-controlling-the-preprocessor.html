@@ -140,7 +140,7 @@ normal preprocessing and compilation.</p>
 <dl class="docutils">
 <dt>-D <tt class="docutils literal"><span class="pre">name``=``definition</span></tt></dt>
 <dd><p class="first">The contents of <tt class="docutils literal"><span class="pre">definition</span></tt> are tokenized and processed as if
-they appeared during translation phase three in a #define
+they appeared during translation phase three in a <tt class="samp docutils literal"><span class="pre">#define</span></tt>
 directive.  In particular, the definition will be truncated by
 embedded newline characters.</p>
 <p>If you are invoking the preprocessor from a shell or shell-like
@@ -209,8 +209,8 @@ control them.</p>
 <dl class="option">
 <dt id="cmdoption-Wcomment">
 <tt class="descname">-Wcomment</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wcomments</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wcomment" title="Permalink to this definition">¶</a></dt>
-<dd><p>Warn whenever a comment-start sequence /* appears in a /*
-comment, or whenever a backslash-newline appears in a // comment.
+<dd><p>Warn whenever a comment-start sequence <tt class="samp docutils literal"><span class="pre">/*</span></tt> appears in a <tt class="samp docutils literal"><span class="pre">/*</span></tt>
+comment, or whenever a backslash-newline appears in a <tt class="samp docutils literal"><span class="pre">//</span></tt> comment.
 (Both forms have the same effect.)</p>
 </dd></dl>
 
@@ -218,14 +218,14 @@ comment, or whenever a backslash-newline appears in a // comment.
 <dt id="cmdoption-Wtrigraphs">
 <tt class="descname">-Wtrigraphs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wtrigraphs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Most trigraphs in comments cannot affect the meaning of the program.
-However, a trigraph that would form an escaped newline (??/ at
+However, a trigraph that would form an escaped newline (<tt class="samp docutils literal"><span class="pre">??/</span></tt> at
 the end of a line) can, by changing where the comment begins or ends.
 Therefore, only trigraphs that would form escaped newlines produce
 warnings inside a comment.</p>
 <p>This option is implied by <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.  If <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> is not
 given, this option is still enabled unless trigraphs are enabled.  To
 get trigraph conversion without warnings, but get the other
-<a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> warnings, use -trigraphs -Wall -Wno-trigraphs.</p>
+<a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a> warnings, use <tt class="samp docutils literal"><span class="pre">-trigraphs</span> <span class="pre">-Wall</span> <span class="pre">-Wno-trigraphs</span></tt>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -240,7 +240,7 @@ equivalent, and problematic constructs which should be avoided.</p>
 <dt id="cmdoption-Wundef">
 <tt class="descname">-Wundef</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wundef" title="Permalink to this definition">¶</a></dt>
 <dd><p>Warn whenever an identifier which is not a macro is encountered in an
-#if directive, outside of defined.  Such identifiers are
+<tt class="samp docutils literal"><span class="pre">#if</span></tt> directive, outside of <tt class="samp docutils literal"><span class="pre">defined</span></tt>.  Such identifiers are
 replaced with zero.</p>
 </dd></dl>
 
@@ -267,7 +267,7 @@ Alternatively, you could provide a dummy use with something like:</p>
 <dl class="option">
 <dt id="cmdoption-Wendif-labels">
 <tt class="descname">-Wendif-labels</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wendif-labels" title="Permalink to this definition">¶</a></dt>
-<dd><p>Warn whenever an #else or an #endif are followed by text.
+<dd><p>Warn whenever an <tt class="samp docutils literal"><span class="pre">#else</span></tt> or an <tt class="samp docutils literal"><span class="pre">#endif</span></tt> are followed by text.
 This usually happens in code of the form</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="cp">#if FOO</span>
 <span class="p">...</span>
@@ -314,7 +314,7 @@ code.</p>
 <tt class="descname">-pedantic-errors</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pedantic-errors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Issue all the mandatory diagnostics, and make all mandatory diagnostics
 into errors.  This includes mandatory diagnostics that GCC issues
-without -pedantic but treats as warnings.</p>
+without <tt class="samp docutils literal"><span class="pre">-pedantic</span></tt> but treats as warnings.</p>
 </dd></dl>
 
 <dl class="option">
@@ -330,7 +330,7 @@ the included files, including those coming from <a class="reference internal" hr
 object file name consists of the name of the source file with any
 suffix replaced with object file suffix and with any leading directory
 parts removed.  If there are many included files then the rule is
-split into several lines using -newline.  The rule has no
+split into several lines using :samp:<a href="#id1"><span class="problematic" id="id2">`</span></a>`-newline.  The rule has no
 commands.</p>
 <p>This option does not suppress the preprocessor&#8217;s debug output, such as
 <a class="reference internal" href="#cmdoption-dM"><em class="xref std std-option">-dM</em></a>.  To avoid mixing such debug output with the dependency
@@ -349,7 +349,7 @@ warnings with an implicit <a class="reference internal" href="options-to-request
 system header directories, nor header files that are included,
 directly or indirectly, from such a header.</p>
 <p>This implies that the choice of angle brackets or double quotes in an
-#include directive does not in itself determine whether that
+<tt class="samp docutils literal"><span class="pre">#include</span></tt> directive does not in itself determine whether that
 header will appear in <a class="reference internal" href="#cmdoption-MM"><em class="xref std std-option">-MM</em></a> dependency output.  This is a
 slight change in semantics from GCC versions 3.0 and earlier.</p>
 </dd></dl>
@@ -398,7 +398,7 @@ files without updating the Makefile to match.</p>
 <tt class="descname">-MT</tt><tt class="descclassname"> target</tt><tt class="descclassname">, </tt><tt class="descname">-MT</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-MT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the target of the rule emitted by dependency generation.  By
 default CPP takes the name of the main input file, deletes any
-directory components and any file suffix such as .c, and
+directory components and any file suffix such as <tt class="samp docutils literal"><span class="pre">.c</span></tt>, and
 appends the platform&#8217;s usual object suffix.  The result is the target.</p>
 <p>An <a class="reference internal" href="#cmdoption-MT"><em class="xref std std-option">-MT</em></a> option will set the target to be exactly the string you
 specify.  If you want multiple targets, you can specify them as a single
@@ -478,7 +478,7 @@ current directory.</p>
 nothing to do with standards conformance or extensions; it merely
 selects which base syntax to expect.  If you give none of these options,
 cpp will deduce the language from the extension of the source file:
-.c, .cc, .m, or .S.  Some other common
+<tt class="samp docutils literal"><span class="pre">.c</span></tt>, <tt class="samp docutils literal"><span class="pre">.cc</span></tt>, <tt class="samp docutils literal"><span class="pre">.m</span></tt>, or <tt class="samp docutils literal"><span class="pre">.S</span></tt>.  Some other common
 extensions for C++ and assembly are also recognized.  If cpp does not
 recognize the extension, it will treat the file as C; this is the most
 generic mode.</p>
@@ -497,7 +497,7 @@ knows about C and C++ standards; others may be added in the future.</p>
 may be one of:</p>
 <dl class="docutils">
 <dt>c90 c89 iso9899:1990</dt>
-<dd><p class="first">The ISO C standard from 1990.  c90 is the customary shorthand for
+<dd><p class="first">The ISO C standard from 1990.  <tt class="samp docutils literal"><span class="pre">c90</span></tt> is the customary shorthand for
 this version of the standard.</p>
 <p class="last">The <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> option is equivalent to <em class="xref std std-option">-std=c90</em>.</p>
 </dd>
@@ -531,10 +531,10 @@ options before <a class="reference internal" href="options-for-directory-search.
 <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;``file</span></tt>&#8220;<tt class="docutils literal"><span class="pre">;</span> <span class="pre">they</span> <span class="pre">are</span> <span class="pre">not</span> <span class="pre">searched</span> <span class="pre">for</span>
 <span class="pre">``#include</span> <span class="pre">&lt;``file</span></tt>&gt;``.  If additional directories are
 specified with <a class="reference internal" href="#cmdoption-I"><em class="xref std std-option">-I</em></a> options after the <a class="reference internal" href="options-for-directory-search.html#cmdoption-I-"><em class="xref std std-option">-I-</em></a>, those
-directories are searched for all #include directives.</p>
+directories are searched for all <tt class="samp docutils literal"><span class="pre">#include</span></tt> directives.</p>
 <p>In addition, <a class="reference internal" href="options-for-directory-search.html#cmdoption-I-"><em class="xref std std-option">-I-</em></a> inhibits the use of the directory of the current
 file directory as the first search directory for <tt class="docutils literal"><span class="pre">#include</span>
-<span class="pre">&quot;``file</span></tt>&#8220;<a href="#id1"><span class="problematic" id="id2">``</span></a>.
+<span class="pre">&quot;``file</span></tt>&#8220;<a href="#id3"><span class="problematic" id="id4">``</span></a>.
 This option has been deprecated.</p>
 </dd></dl>
 
@@ -593,7 +593,7 @@ by the sysroot prefix; see <a class="reference internal" href="options-for-direc
 <tt class="descname">-iprefix</tt><tt class="descclassname"> prefix</tt><tt class="descclassname">, </tt><tt class="descname">-iprefix</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-iprefix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specify <tt class="docutils literal"><span class="pre">prefix</span></tt> as the prefix for subsequent <a class="reference internal" href="#cmdoption-iwithprefix"><em class="xref std std-option">-iwithprefix</em></a>
 options.  If the prefix represents a directory, you should include the
-final /.</p>
+final <tt class="samp docutils literal"><span class="pre">/</span></tt>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -666,7 +666,7 @@ files previously preprocessed with <tt class="docutils literal"><span class="pre
 <dl class="option">
 <dt id="cmdoption-fdollars-in-identifiers">
 <tt class="descname">-fdollars-in-identifiers</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-fdollars-in-identifiers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Accept $ in identifiers.</p>
+<dd><p>Accept <tt class="samp docutils literal"><span class="pre">$</span></tt> in identifiers.</p>
 </dd></dl>
 
 <dl class="option">
@@ -693,7 +693,7 @@ pass a file preprocessed with <a class="reference internal" href="#cmdoption-C">
 problems.  In this mode the integrated preprocessor is little more than
 a tokenizer for the front ends.</p>
 <p><a class="reference internal" href="#cmdoption-fpreprocessed"><em class="xref std std-option">-fpreprocessed</em></a> is implicit if the input file has one of the
-extensions .i, .ii or .mi.  These are the
+extensions <tt class="samp docutils literal"><span class="pre">.i</span></tt>, <tt class="samp docutils literal"><span class="pre">.ii</span></tt> or <tt class="samp docutils literal"><span class="pre">.mi</span></tt>.  These are the
 extensions that GCC uses for preprocessed files created by
 <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-save-temps"><em class="xref std std-option">-save-temps</em></a>.</p>
 </dd></dl>
@@ -715,7 +715,7 @@ ignored.  The default is 8.</p>
 token in the output is preceded by the dump of the map its location
 belongs to.  The dump of the map holding the location of a token would
 be:</p>
-<div class="highlight-c++"><pre>{P:/file/path;F:/includer/path;L:``line_num``;C:``col_num``;S:``system_header_p``;M:``map_address``;E:``macro_expansion_p``,loc:``location``}</pre>
+<div class="highlight-c++"><pre>{:samp:`P`:/file/path;:samp:`F`:/includer/path;:samp:`L`:``line_num``;:samp:`C`:``col_num``;:samp:`S`:``system_header_p``;:samp:`M`:``map_address``;:samp:`E`:``macro_expansion_p``,:samp:`loc`:``location``}</pre>
 </div>
 <p>When used without <a class="reference internal" href="options-controlling-the-kind-of-output.html#cmdoption-E"><em class="xref std std-option">-E</em></a>, this option has no effect.</p>
 </dd></dl>
@@ -729,15 +729,15 @@ when a compilation error occurs in a macro expansion. Using this
 option makes the preprocessor and the compiler consume more
 memory. The <tt class="docutils literal"><span class="pre">level</span></tt> parameter can be used to choose the level of
 precision of token location tracking thus decreasing the memory
-consumption if necessary. Value 0 of <tt class="docutils literal"><span class="pre">level</span></tt> de-activates
+consumption if necessary. Value <tt class="samp docutils literal"><span class="pre">0</span></tt> of <tt class="docutils literal"><span class="pre">level</span></tt> de-activates
 this option just as if no <a class="reference internal" href="#cmdoption-ftrack-macro-expansion"><em class="xref std std-option">-ftrack-macro-expansion</em></a> was present
-on the command line. Value 1 tracks tokens locations in a
+on the command line. Value <tt class="samp docutils literal"><span class="pre">1</span></tt> tracks tokens locations in a
 degraded mode for the sake of minimal memory overhead. In this mode
 all tokens resulting from the expansion of an argument of a
-function-like macro have the same location. Value 2 tracks
+function-like macro have the same location. Value <tt class="samp docutils literal"><span class="pre">2</span></tt> tracks
 tokens locations completely. This value is the most memory hungry.
 When this option is given no argument, the default parameter value is
-2.</p>
+<tt class="samp docutils literal"><span class="pre">2</span></tt>.</p>
 <p>Note that <tt class="docutils literal"><span class="pre">-ftrack-macro-expansion=2</span></tt> is activated by default.</p>
 </dd></dl>
 
@@ -825,7 +825,7 @@ conflicts, the result is undefined.</p>
 <dl class="option">
 <dt id="cmdoption-dM">
 <tt class="descname">-dM</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dM" title="Permalink to this definition">¶</a></dt>
-<dd><p>Instead of the normal output, generate a list of #define
+<dd><p>Instead of the normal output, generate a list of <tt class="samp docutils literal"><span class="pre">#define</span></tt>
 directives for all the macros defined during the execution of the
 preprocessor, including predefined macros.  This gives you a way of
 finding out what is predefined in your version of the preprocessor.
@@ -842,8 +842,8 @@ See <a class="reference internal" href="options-for-debugging-your-program-or-gc
 <dl class="option">
 <dt id="cmdoption-dD">
 <tt class="descname">-dD</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dD" title="Permalink to this definition">¶</a></dt>
-<dd><p>Like M except in two respects: it does <em>not</em> include the
-predefined macros, and it outputs <em>both</em> the #define
+<dd><p>Like <tt class="samp docutils literal"><span class="pre">M</span></tt> except in two respects: it does <em>not</em> include the
+predefined macros, and it outputs <em>both</em> the <tt class="samp docutils literal"><span class="pre">#define</span></tt>
 directives and the result of preprocessing.  Both kinds of output go to
 the standard output file.</p>
 </dd></dl>
@@ -851,23 +851,23 @@ the standard output file.</p>
 <dl class="option">
 <dt id="cmdoption-dN">
 <tt class="descname">-dN</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dN" title="Permalink to this definition">¶</a></dt>
-<dd><p>Like D, but emit only the macro names, not their expansions.</p>
+<dd><p>Like <tt class="samp docutils literal"><span class="pre">D</span></tt>, but emit only the macro names, not their expansions.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-dI">
 <tt class="descname">-dI</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Output #include directives in addition to the result of
+<dd><p>Output <tt class="samp docutils literal"><span class="pre">#include</span></tt> directives in addition to the result of
 preprocessing.</p>
 </dd></dl>
 
 <dl class="last option">
 <dt id="cmdoption-dU">
 <tt class="descname">-dU</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-dU" title="Permalink to this definition">¶</a></dt>
-<dd><p>Like D except that only macros that are expanded, or whose
+<dd><p>Like <tt class="samp docutils literal"><span class="pre">D</span></tt> except that only macros that are expanded, or whose
 definedness is tested in preprocessor directives, are output; the
 output is delayed until the use or test of the macro; and
-#undef directives are also output for macros tested but
+<tt class="samp docutils literal"><span class="pre">#undef</span></tt> directives are also output for macros tested but
 undefined at the time.</p>
 </dd></dl>
 
@@ -893,7 +893,7 @@ along with the directive.</p>
 causes the preprocessor to treat comments as tokens in their own right.
 For example, comments appearing at the start of what would be a
 directive line have the effect of turning that line into an ordinary
-source line, since the first token on the line is no longer a #.</p>
+source line, since the first token on the line is no longer a <tt class="samp docutils literal"><span class="pre">#</span></tt>.</p>
 </dd></dl>
 
 <table class="docutils option-list" frame="void" rules="none">
@@ -925,9 +925,9 @@ opposed to ISO C preprocessors.</p>
 <dt id="cmdoption-trigraphs">
 <tt class="descname">-trigraphs</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-trigraphs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process trigraph sequences.
-These are three-character sequences, all starting with ??, that
+These are three-character sequences, all starting with <tt class="samp docutils literal"><span class="pre">??</span></tt>, that
 are defined by ISO C to stand for single characters.  For example,
-??/ stands for , so &#8216;??/n&#8217; is a character
+<tt class="samp docutils literal"><span class="pre">??/</span></tt> stands for <tt class="samp docutils literal"><span class="pre">`,</span> <span class="pre">so</span> <span class="pre">:samp:</span></tt>&#8216;??/n&#8217;` is a character
 constant for a newline.  By default, GCC ignores trigraphs, but in
 standard-conforming modes it converts them.  See the <a class="reference internal" href="#cmdoption-std"><em class="xref std std-option">-std</em></a> and
 <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> options.</p>
@@ -963,9 +963,9 @@ execution, and report the final form of the include path.</p>
 <tt class="descname">-H</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-H" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the name of each header file used, in addition to other normal
 activities.  Each name is indented to show how deep in the
-#include stack it is.  Precompiled header files are also
+<tt class="samp docutils literal"><span class="pre">#include</span></tt> stack it is.  Precompiled header files are also
 printed, even if they are found to be invalid; an invalid precompiled
-header file is printed with ...x and a valid one with ...! .</p>
+header file is printed with <tt class="samp docutils literal"><span class="pre">...x</span></tt> and a valid one with <tt class="samp docutils literal"><span class="pre">...!</span></tt> .</p>
 </dd></dl>
 
 <dl class="option">

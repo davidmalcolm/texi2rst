@@ -260,11 +260,11 @@ and a good debugging experience.</p>
 the last such option is the one that is effective.</p>
 </dd></dl>
 
-<p>Options of the form <em class="xref std std-option">-f``flag``</em> specify machine-independent
+<p>Options of the form <tt class="samp docutils literal"><span class="pre">-fflag</span></tt> specify machine-independent
 flags.  Most flags have both positive and negative forms; the negative
-form of <em class="xref std std-option">-ffoo</em> is <em class="xref std std-option">-fno-foo</em>.  In the table
+form of <tt class="samp docutils literal"><span class="pre">-ffoo</span></tt> is <tt class="samp docutils literal"><span class="pre">-fno-foo</span></tt>.  In the table
 below, only one of the forms is listed-the one you typically
-use.  You can figure out the other form by either removing no-
+use.  You can figure out the other form by either removing <tt class="samp docutils literal"><span class="pre">no-</span></tt>
 or adding it.</p>
 <p>The following options control specific optimizations.  They are either
 activated by <a class="reference internal" href="#cmdoption-O"><em class="xref std std-option">-O</em></a> options or are related to ones that are.  You
@@ -829,8 +829,8 @@ size register sets.</p>
 <dt id="cmdoption-fira-algorithm">
 <tt class="descname">-fira-algorithm</tt><tt class="descclassname">=algorithm</tt><a class="headerlink" href="#cmdoption-fira-algorithm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use the specified coloring algorithm for the integrated register
-allocator.  The <tt class="docutils literal"><span class="pre">algorithm</span></tt> argument can be priority, which
-specifies Chow&#8217;s priority coloring, or CB, which specifies
+allocator.  The <tt class="docutils literal"><span class="pre">algorithm</span></tt> argument can be <tt class="samp docutils literal"><span class="pre">priority</span></tt>, which
+specifies Chow&#8217;s priority coloring, or <tt class="samp docutils literal"><span class="pre">CB</span></tt>, which specifies
 Chaitin-Briggs coloring.  Chaitin-Briggs coloring is not implemented
 for all architectures, but for those targets that do support it, it is
 the default because it generates better code.</p>
@@ -1804,17 +1804,17 @@ and <a class="reference internal" href="#cmdoption-ftree-slp-vectorize"><em clas
 <dt id="cmdoption-fvect-cost-model">
 <tt class="descname">-fvect-cost-model</tt><tt class="descclassname">=model</tt><a class="headerlink" href="#cmdoption-fvect-cost-model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alter the cost model used for vectorization.  The <tt class="docutils literal"><span class="pre">model</span></tt> argument
-should be one of unlimited, dynamic or cheap.
-With the unlimited model the vectorized code-path is assumed
-to be profitable while with the dynamic model a runtime check
+should be one of <tt class="samp docutils literal"><span class="pre">unlimited</span></tt>, <tt class="samp docutils literal"><span class="pre">dynamic</span></tt> or <tt class="samp docutils literal"><span class="pre">cheap</span></tt>.
+With the <tt class="samp docutils literal"><span class="pre">unlimited</span></tt> model the vectorized code-path is assumed
+to be profitable while with the <tt class="samp docutils literal"><span class="pre">dynamic</span></tt> model a runtime check
 guards the vectorized code-path to enable it only for iteration
 counts that will likely execute faster than when executing the original
-scalar loop.  The cheap model disables vectorization of
+scalar loop.  The <tt class="samp docutils literal"><span class="pre">cheap</span></tt> model disables vectorization of
 loops where doing so would be cost prohibitive for example due to
 required runtime checks for data dependence or alignment but otherwise
-is equal to the dynamic model.
+is equal to the <tt class="samp docutils literal"><span class="pre">dynamic</span></tt> model.
 The default cost model depends on other optimization flags and is
-either dynamic or cheap.</p>
+either <tt class="samp docutils literal"><span class="pre">dynamic</span></tt> or <tt class="samp docutils literal"><span class="pre">cheap</span></tt>.</p>
 </dd></dl>
 
 <dl class="option">
@@ -1822,7 +1822,7 @@ either dynamic or cheap.</p>
 <tt class="descname">-fsimd-cost-model</tt><tt class="descclassname">=model</tt><a class="headerlink" href="#cmdoption-fsimd-cost-model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alter the cost model used for vectorization of loops marked with the OpenMP
 or Cilk Plus simd directive.  The <tt class="docutils literal"><span class="pre">model</span></tt> argument should be one of
-unlimited, dynamic, cheap.  All values of <tt class="docutils literal"><span class="pre">model</span></tt>
+<tt class="samp docutils literal"><span class="pre">unlimited</span></tt>, <tt class="samp docutils literal"><span class="pre">dynamic</span></tt>, <tt class="samp docutils literal"><span class="pre">cheap</span></tt>.  All values of <tt class="docutils literal"><span class="pre">model</span></tt>
 have the same meaning as described in <a class="reference internal" href="#cmdoption-fvect-cost-model"><em class="xref std std-option">-fvect-cost-model</em></a> and by
 default a cost model defined with <a class="reference internal" href="#cmdoption-fvect-cost-model"><em class="xref std std-option">-fvect-cost-model</em></a> is used.</p>
 </dd></dl>
@@ -2064,7 +2064,7 @@ equivalent and mean that labels are not aligned.</p>
 <p>If <a class="reference internal" href="#cmdoption-falign-loops"><em class="xref std std-option">-falign-loops</em></a> or <a class="reference internal" href="#cmdoption-falign-jumps"><em class="xref std std-option">-falign-jumps</em></a> are applicable and
 are greater than this value, then their values are used instead.</p>
 <p>If <tt class="docutils literal"><span class="pre">n</span></tt> is not specified or is zero, use a machine-dependent default
-which is very likely to be 1, meaning no alignment.</p>
+which is very likely to be <tt class="samp docutils literal"><span class="pre">1</span></tt>, meaning no alignment.</p>
 <p>Enabled at levels <a class="reference internal" href="#cmdoption-O2"><em class="xref std std-option">-O2</em></a>, <a class="reference internal" href="#cmdoption-O3"><em class="xref std std-option">-O3</em></a>.</p>
 </dd></dl>
 
@@ -2312,7 +2312,7 @@ used.  The default value for <tt class="docutils literal"><span class="pre">n</s
 <p>You can also specify <em class="xref std std-option">-flto=jobserver</em> to use GNU make&#8217;s
 job server mode to determine the number of parallel jobs. This
 is useful when the Makefile calling GCC is already executing in parallel.
-You must prepend a + to the command recipe in the parent Makefile
+You must prepend a <tt class="samp docutils literal"><span class="pre">+</span></tt> to the command recipe in the parent Makefile
 for this to work.  This option likely only works if <span class="target" id="index-3"></span><tt class="xref std std-envvar docutils literal"><span class="pre">MAKE</span></tt> is
 GNU make.</p>
 </dd></dl>
@@ -2321,16 +2321,16 @@ GNU make.</p>
 <dt id="cmdoption-flto-partition">
 <tt class="descname">-flto-partition</tt><tt class="descclassname">=alg</tt><a class="headerlink" href="#cmdoption-flto-partition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specify the partitioning algorithm used by the link-time optimizer.
-The value is either 1to1 to specify a partitioning mirroring
-the original source files or balanced to specify partitioning
-into equally sized chunks (whenever possible) or max to create
-new partition for every symbol where possible.  Specifying none
+The value is either <tt class="samp docutils literal"><span class="pre">1to1</span></tt> to specify a partitioning mirroring
+the original source files or <tt class="samp docutils literal"><span class="pre">balanced</span></tt> to specify partitioning
+into equally sized chunks (whenever possible) or <tt class="samp docutils literal"><span class="pre">max</span></tt> to create
+new partition for every symbol where possible.  Specifying <tt class="samp docutils literal"><span class="pre">none</span></tt>
 as an algorithm disables partitioning and streaming completely.
-The default value is balanced. While 1to1 can be used
-as an workaround for various code ordering issues, the max
+The default value is <tt class="samp docutils literal"><span class="pre">balanced</span></tt>. While <tt class="samp docutils literal"><span class="pre">1to1</span></tt> can be used
+as an workaround for various code ordering issues, the <tt class="samp docutils literal"><span class="pre">max</span></tt>
 partitioning is intended for internal testing only.
-The value one specifies that exactly one partition should be
-used while the value none bypasses partitioning and executes
+The value <tt class="samp docutils literal"><span class="pre">one</span></tt> specifies that exactly one partition should be
+used while the value <tt class="samp docutils literal"><span class="pre">none</span></tt> bypasses partitioning and executes
 the link-time optimization step directly from the WPA phase.</p>
 </dd></dl>
 
@@ -2755,10 +2755,10 @@ file.  The information in this data file is very dependent on the
 structure of the generated code, so you must use the same source code
 and the same optimization options for both compilations.</p>
 <p>With <a class="reference internal" href="#cmdoption-fbranch-probabilities"><em class="xref std std-option">-fbranch-probabilities</em></a>, GCC puts a
-REG_BR_PROB note on each JUMP_INSN and CALL_INSN.
+<tt class="samp docutils literal"><span class="pre">REG_BR_PROB</span></tt> note on each <tt class="samp docutils literal"><span class="pre">JUMP_INSN</span></tt> and <tt class="samp docutils literal"><span class="pre">CALL_INSN</span></tt>.
 These can be used to improve optimization.  Currently, they are only
 used in one place: in reorg.c, instead of guessing which path a
-branch is most likely to take, the REG_BR_PROB values are used to
+branch is most likely to take, the <tt class="samp docutils literal"><span class="pre">REG_BR_PROB</span></tt> values are used to
 exactly determine which path is taken more often.</p>
 </dd></dl>
 

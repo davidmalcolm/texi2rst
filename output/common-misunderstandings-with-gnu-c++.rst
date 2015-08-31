@@ -289,17 +289,17 @@ objects behave unspecified when being assigned.  For example:
     d1 = d2;
   }
 
-The C++ standard specifies that Base::Base is only called once
+The C++ standard specifies that :samp:`Base::Base` is only called once
 when constructing or copy-constructing a Derived object.  It is
-unspecified whether Base::operator= is called more than once when
+unspecified whether :samp:`Base::operator=` is called more than once when
 the implicit copy-assignment for Derived objects is invoked (as it is
-inside func in the example).
+inside :samp:`func` in the example).
 
 G++ implements the 'intuitive' algorithm for copy-assignment: assign all
 direct bases, then assign all members.  In that algorithm, the virtual
 base subobject can be encountered more than once.  In the example, copying
-proceeds in the following order: val, name (via
-``strdup``), bval, and name again.
+proceeds in the following order: :samp:`val`, :samp:`name` (via
+``strdup``), :samp:`bval`, and :samp:`name` again.
 
 If application code relies on copy-assignment, a user-defined
 copy-assignment operator removes any uncertainties.  With such an

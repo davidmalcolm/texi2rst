@@ -144,14 +144,14 @@ full-expression.  As a result, well-defined C code that takes the
 address of a subobject of a compound literal can be undefined in C++,
 so the C++ compiler rejects the conversion of a temporary array to a pointer.
 For instance, if the array compound literal example above appeared
-inside a function, any subsequent use of foo in C++ has
+inside a function, any subsequent use of <tt class="samp docutils literal"><span class="pre">foo</span></tt> in C++ has
 undefined behavior because the lifetime of the array ends after the
-declaration of foo.</p>
+declaration of <tt class="samp docutils literal"><span class="pre">foo</span></tt>.</p>
 <p>As an optimization, the C++ compiler sometimes gives array compound
 literals longer lifetimes: when the array either appears outside a
-function or has const-qualified type.  If foo and its
-initializer had elements of char <a href="#id2"><span class="problematic" id="id3">*</span></a>const type rather than
-char <a href="#id4"><span class="problematic" id="id5">*</span></a>, or if foo were a global variable, the array
+function or has const-qualified type.  If <tt class="samp docutils literal"><span class="pre">foo</span></tt> and its
+initializer had elements of <tt class="samp docutils literal"><span class="pre">char</span> <span class="pre">*const</span></tt> type rather than
+<tt class="samp docutils literal"><span class="pre">char</span> <span class="pre">*</span></tt>, or if <tt class="samp docutils literal"><span class="pre">foo</span></tt> were a global variable, the array
 would have static storage duration.  But it is probably safest just to
 avoid the use of array compound literals in code compiled as C++.</p>
 </div>

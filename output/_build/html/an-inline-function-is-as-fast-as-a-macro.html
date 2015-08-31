@@ -152,7 +152,7 @@ the body of a class to be marked inline even if they are
 not explicitly declared with the <tt class="docutils literal"><span class="pre">inline</span></tt> keyword.  You can
 override this with <em class="xref std std-option">-fno-default-inline</em>; see <a class="reference internal" href="options-controlling-c++-dialect.html#c-dialect-options"><em>Options Controlling C++ Dialect</em></a>.</p>
 <p>GCC does not inline any functions when not optimizing unless you specify
-the always_inline attribute for the function, like this:</p>
+the <tt class="samp docutils literal"><span class="pre">always_inline</span></tt> attribute for the function, like this:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="cm">/* Prototype.  */</span>
 <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">foo</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="p">)</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">always_inline</span><span class="p">));</span>
 </pre></div>

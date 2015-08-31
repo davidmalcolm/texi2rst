@@ -375,8 +375,8 @@ visibility
   typeinfo node and exception handling will break.
 
   To specify multiple attributes, separate them by commas within the
-double parentheses: for example, __attribute__ ((aligned (16),
-packed)).
+double parentheses: for example, :samp:`__attribute__ ((aligned (16),
+packed))`.
 
 .. _arm-type-attributes:
 

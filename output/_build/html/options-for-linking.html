@@ -122,9 +122,9 @@ alternative with the library as a separate argument is only for
 POSIX compliance and is not recommended.)</p>
 <p>It makes a difference where in the command you write this option; the
 linker searches and processes libraries and object files in the order they
-are specified.  Thus, foo.o -lz bar.o searches library z
+are specified.  Thus, <tt class="samp docutils literal"><span class="pre">foo.o</span> <span class="pre">-lz</span> <span class="pre">bar.o</span></tt> searches library <tt class="samp docutils literal"><span class="pre">z</span></tt>
 after file foo.o but before bar.o.  If bar.o refers
-to functions in z, those functions may not be loaded.</p>
+to functions in <tt class="samp docutils literal"><span class="pre">z</span></tt>, those functions may not be loaded.</p>
 <p>The linker searches a standard list of directories for the library,
 which is actually a file named lib``library``.a.  The linker
 then uses this file as if it had been specified precisely by name.</p>
@@ -136,7 +136,7 @@ scanning through it for members which define symbols that have so far
 been referenced but not defined.  But if the file that is found is an
 ordinary object file, it is linked in the usual fashion.  The only
 difference between using an <em class="xref std std-option">-l</em> option and specifying a file name
-is that <em class="xref std std-option">-l</em> surrounds <tt class="docutils literal"><span class="pre">library</span></tt> with lib and .a
+is that <em class="xref std std-option">-l</em> surrounds <tt class="docutils literal"><span class="pre">library</span></tt> with <tt class="samp docutils literal"><span class="pre">lib</span></tt> and <tt class="samp docutils literal"><span class="pre">.a</span></tt>
 and searches several directories.</p>
 </dd></dl>
 
@@ -237,9 +237,9 @@ libraries.  On other systems, this option has no effect.</p>
 form an executable.  Not all systems support this option.  For predictable
 results, you must also specify the same set of options used for compilation
 (<a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fpic"><em class="xref std std-option">-fpic</em></a>, <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fPIC"><em class="xref std std-option">-fPIC</em></a>, or model suboptions) when
-you specify this linker option.On some systems, gcc -shared
+you specify this linker option.On some systems, <tt class="samp docutils literal"><span class="pre">gcc</span> <span class="pre">-shared</span></tt>
 needs to build supplementary stub code for constructors to work.  On
-multi-libbed systems, gcc -shared must select the correct support
+multi-libbed systems, <tt class="samp docutils literal"><span class="pre">gcc</span> <span class="pre">-shared</span></tt> must select the correct support
 libraries to link against.  Failing to supply the correct flags may lead
 to subtle defects.  Supplying them in cases where they are not necessary
 is innocuous.</p>

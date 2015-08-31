@@ -46,11 +46,11 @@ Integers
 
   Bitwise operators act on the representation of the value including
   both the sign and value bits, where the sign bit is considered
-  immediately above the highest-value value bit.  Signed >> acts
+  immediately above the highest-value value bit.  Signed :samp:`>>` acts
   on negative numbers by sign extension.
 
   GCC does not use the latitude given in C99 and C11 only to treat certain
-  aspects of signed << as undefined, but this is subject to
+  aspects of signed :samp:`<<` as undefined, but this is subject to
   change.
 
 * The sign of the remainder on integer division (C90 6.3.5).

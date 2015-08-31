@@ -24,7 +24,7 @@ test specifically for GNU C++ (see :ref:`Predefined Macros <common-predefined-ma
   Methods for ensuring that exactly one copy of
                           each needed template instantiation is emitted. <template-instantiation>
   You can extract a function pointer to the
-                          method denoted by a ->* or .* expression. <bound-member-functions>
+                          method denoted by a :samp:`->*` or :samp:`.*` expression. <bound-member-functions>
   Variable, function, and type attributes for C++ only. <c++-attributes>
   Declaring multiple function versions. <function-multiversioning>
   Strong using-directives for namespace association. <namespace-association>

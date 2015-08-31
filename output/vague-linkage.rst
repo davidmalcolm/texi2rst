@@ -49,12 +49,12 @@ VTables
   .. index:: RTTI
 
   C++ requires information about types to be written out in order to
-  implement dynamic_cast, typeid and exception handling.
-  For polymorphic classes (classes with virtual functions), the type_info
-  object is written out along with the vtable so that dynamic_cast
+  implement :samp:`dynamic_cast`, :samp:`typeid` and exception handling.
+  For polymorphic classes (classes with virtual functions), the :samp:`type_info`
+  object is written out along with the vtable so that :samp:`dynamic_cast`
   can determine the dynamic type of a class object at run time.  For all
-  other types, we write out the type_info object when it is used: when
-  applying typeid to an expression, throwing an object, or
+  other types, we write out the :samp:`type_info` object when it is used: when
+  applying :samp:`typeid` to an expression, throwing an object, or
   referring to a type in a catch clause or exception specification.
 
 Template Instantiations

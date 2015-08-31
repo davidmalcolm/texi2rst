@@ -23,8 +23,8 @@ types, ``__float80`` and ``__float128`` to support 80-bit
 Support for additional types includes the arithmetic operators:
 add, subtract, multiply, divide; unary arithmetic operators;
 relational operators; equality operators; and conversions to and from
-integer and other floating types.  Use a suffix w or W
-in a literal constant of type ``__float80`` and q or Q
+integer and other floating types.  Use a suffix :samp:`w` or :samp:`W`
+in a literal constant of type ``__float80`` and :samp:`q` or :samp:`Q`
 for ``_float128``.  You can declare complex types using the
 corresponding internal complex type, ``XCmode`` for ``__float80``
 type and ``TCmode`` for ``__float128`` type:

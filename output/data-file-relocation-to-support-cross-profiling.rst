@@ -28,7 +28,7 @@ For example, if the object file /user/build/foo.o was built with
 /user/build/foo.gcda when running on the target system.  This will
 fail if the corresponding directory does not exist and it is unable to create
 it.  This can be overcome by, for example, setting the environment as
-GCOV_PREFIX=/target/run and GCOV_PREFIX_STRIP=1.  Such a
+:samp:`GCOV_PREFIX=/target/run` and :samp:`GCOV_PREFIX_STRIP=1`.  Such a
 setting will name the data file /target/run/build/foo.gcda.
 
 You must move the data files to the expected directory tree in order to

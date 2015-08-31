@@ -129,10 +129,10 @@ model.</p>
 <p>You have the following options for dealing with template instantiations:</p>
 <ul>
 <li><p id="index-1">Compile your template-using code with <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-frepo"><em class="xref std std-option">-frepo</em></a>.  The compiler
-generates files with the extension .rpo listing all of the
+generates files with the extension <tt class="samp docutils literal"><span class="pre">.rpo</span></tt> listing all of the
 template instantiations used in the corresponding object files that
-could be instantiated there; the link wrapper, collect2,
-then updates the .rpo files to tell the compiler where to place
+could be instantiated there; the link wrapper, <tt class="samp docutils literal"><span class="pre">collect2</span></tt>,
+then updates the <tt class="samp docutils literal"><span class="pre">.rpo</span></tt> files to tell the compiler where to place
 those instantiations and rebuild any affected object files.  The
 link-time overhead is negligible after the first pass, as the compiler
 continues to place the instantiations in the same files.</p>
@@ -171,7 +171,7 @@ like</p>
 library from those.</p>
 <p>If you are using Cfront-model code, you can probably get away with not
 using <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fno-implicit-templates"><em class="xref std std-option">-fno-implicit-templates</em></a> when compiling files that don&#8217;t
-#include the member template definitions.</p>
+<tt class="samp docutils literal"><span class="pre">#include</span></tt> the member template definitions.</p>
 <p>If you use one big file to do the instantiations, you may want to
 compile it without <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fno-implicit-templates"><em class="xref std std-option">-fno-implicit-templates</em></a> so you get all of the
 instances required by your explicit instantiations (but not by any

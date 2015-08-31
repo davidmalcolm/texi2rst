@@ -21,11 +21,11 @@ implementation-defined behavior.
   constant expression that controls conditional inclusion may have a
   negative value (C90 6.8.1, C99 and C11 6.10.1).
 
-* The places that are searched for an included <> delimited
+* The places that are searched for an included :samp:`<>` delimited
   header, and how the places are specified or the header is
   identified (C90 6.8.2, C99 and C11 6.10.2).
 
-* How the named source file is searched for in an included ""
+* How the named source file is searched for in an included :samp:`""`
   delimited header (C90 6.8.2, C99 and C11 6.10.2).
 
 * The method by which preprocessing tokens (possibly resulting from
@@ -35,8 +35,8 @@ implementation-defined behavior.
 * The nesting limit for ``#include`` processing (C90 6.8.2, C99
   and C11 6.10.2).
 
-* Whether the # operator inserts a \ character before
-  the \ character that begins a universal character name in a
+* Whether the :samp:`#` operator inserts a :samp:`\` character before
+  the :samp:`\` character that begins a universal character name in a
   character constant or string literal (C99 and C11 6.10.3.2).
 
 * The behavior on each recognized non-``STDC #pragma``

@@ -67,10 +67,6 @@ You have freedom to copy and modify this GNU Manual, like GNU
      software.  Copies published by the Free Software Foundation raise
      funds for GNU development.
 
-The GNU Compiler Collection. <(gcc)>
-The GNU C++ compiler. <(gcc)>
-:command:`gcov`-a test coverage program. <(gcc)-gcov>
-:command:`gcov-tool`-an offline gcda profile processing program. <(gcc)-gcov-tool>
 This file documents the use of the GNU compilers.
 
 .. _top:

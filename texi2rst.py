@@ -522,6 +522,54 @@ def fixup_table_entry(tree):
     """
     class TableEntryFixer(NoopVisitor):
         def previsit_element(self, element):
+            # Convert:
+            #   <itemformat command="COMMAND">TEXT</itemformat>
+            # into:
+            #   <COMMAND>TEXT</command>
+            # which will typically be later converted to an
+            # appropriate markup form.
+            if element.kind == 'itemformat':
+                if 'command' in element.attrs:
+                    command = element.attrs['command']
+                    # Typically we can't nest inline markup, but
+                    # Sphinx's "samp" supports this syntax:
+                    #   :samp:`print 1+{variable}`
+                    # (http://sphinx-doc.org/markup/inline.html#role-samp)
+                    # which we can use to fake it to one level
+                    # of nesting.  Hence given e.g.
+                    #   <itemformat command="code">-misel=<var>yes/no</var></itemformat>
+                    # we can turn it into:
+                    #   <itemformat><samp>-misel={yes/no}</samp></itemformat>
+                    if len(element.children) > 1:
+                        max_child_len = 0
+                        for child in element.children:
+                            if isinstance(child, Element):
+                                if len(child.children) > max_child_len:
+                                    max_child_len = len(child.children)
+                        if max_child_len == 1:
+                            if 0:
+                                old_xml = element.toxml()
+                            element.kind = 'samp'
+                            new_text = ''
+                            for child in element.children:
+                                if isinstance(child, Element):
+                                    new_text += '{%s}' % child.get_all_text()
+                                elif isinstance(child, Text):
+                                    new_text += child.data
+                            element.children = [Text(new_text)]
+                            if 0:
+                                print('flattened %s to %s'
+                                      % (old_xml, element.toxml()))
+                        else:
+                            if 0:
+                                print('itemformat was too complex to flatten: %s'
+                                      % element.toxml())
+                    else:
+                        element.kind = command
+                        text = element.get_all_text().rstrip()
+                        element.children = [Text(text)]
+                    return
+
             if element.kind == 'tableentry':
                 tableterm = element.first_element_named('tableterm')
                 tableitem = element.first_element_named('tableitem')
@@ -1816,13 +1864,13 @@ class TableEntryTests(Texi2RstTests):
         out = self.make_rst_string(doc)
         self.maxDiff = 3000
         self.assertEqual(
-            u'''``file``.c
+            u''':samp:`{file}.c`
   C source code that must be preprocessed.
 
-``file``.i
+:samp:`{file}.i`
   C source code that should not be preprocessed.
 
-``file``.ii
+:samp:`{file}.ii`
   C++ source code that should not be preprocessed.
 
 ''',
@@ -1865,11 +1913,28 @@ with ISO C90 are disabled). Same as <option>-ansi</option> for C code.
         tree = from_xml_string(xml_src)
         tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
-        self.assertEqual(u'''c90 c89 iso9899:1990
+        self.assertEqual(u''':samp:`c90` :samp:`c89` :samp:`iso9899:1990`
   Support all ISO C90 programs (certain GNU extensions that conflict
   with ISO C90 are disabled). Same as :option:`-ansi` for C code.
 
 ''', out)
+
+    def test_itemformat_command_flattening(self):
+        xml_src = u'''<texinfo>
+<para><itemformat command="code">-misel=<var>yes/no</var></itemformat></para>
+<para><itemformat command="samp">default </itemformat>
+</para>
+</texinfo>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(
+            u''':samp:`-misel={yes/no}`
+
+:samp:`default`
+
+''',
+            out)
 
 class CodeFragmentTests(Texi2RstTests):
     def test_smallexample_option(self):

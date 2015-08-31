@@ -18,6 +18,7 @@ FULL_LINE_COMMANDS = (
     'section',
     'set',
     'setfilename',
+    'settitle',
 )
 
 class Parser:
@@ -211,6 +212,8 @@ class Parser:
                 line = m.group(1)
             command = self.stack_top.add_element(name)
             command.add_text(line.strip())
+            if name == 'settitle':
+                command.attrs['spaces'] = ' '
             self.stack_top.add_text('\n')
 
     def _parse_command_args(self, line):
@@ -464,6 +467,16 @@ Text in chapter 2 section 2.
 </texinfo>'''),
             xmlstr)
 
+    def test_settitle(self):
+        texisrc = '@settitle Using the GNU Compiler Collection (GCC)\n'
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual('''<texinfo>
+<settitle spaces=" ">Using the GNU Compiler Collection (GCC)</settitle>
+</texinfo>''',
+                         xmlstr)
 
     def test_set(self):
         texisrc = '''

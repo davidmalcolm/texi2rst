@@ -15,6 +15,7 @@ FULL_LINE_COMMANDS = (
     'end',
     'ifset',
     'include',
+    'paragraphindent',
     'section',
     'set',
     'setfilename',
@@ -203,6 +204,13 @@ class Parser:
             key, value = self._parse_command_args(line)
             command = self.stack_top.add_element(name)
             command.attrs['name'] = key
+            command.attrs['line'] = line
+            command.add_text(value)
+            self.stack_top.add_text('\n')
+        elif name == 'paragraphindent':
+            key, value = self._parse_command_args(line)
+            command = self.stack_top.add_element(name)
+            command.attrs['value'] = key
             command.attrs['line'] = line
             command.add_text(value)
             self.stack_top.add_text('\n')
@@ -475,6 +483,17 @@ Text in chapter 2 section 2.
         self.maxDiff = 2000
         self.assertMultiLineEqual('''<texinfo>
 <settitle spaces=" ">Using the GNU Compiler Collection (GCC)</settitle>
+</texinfo>''',
+                         xmlstr)
+
+    def test_paragraphindent(self):
+        texisrc = '@paragraphindent 1\n'
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual('''<texinfo>
+<paragraphindent value="1" line=" 1"></paragraphindent>
 </texinfo>''',
                          xmlstr)
 

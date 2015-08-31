@@ -89,10 +89,10 @@ to mark lock critical sections for hardware lock elision.
 These must be specified in addition to an existing memory model to
 atomic intrinsics.</p>
 <dl class="docutils">
-<dt>__ATOMIC_HLE_ACQUIRE</dt>
+<dt><tt class="docutils literal"><span class="pre">__ATOMIC_HLE_ACQUIRE</span></tt></dt>
 <dd>Start lock elision on a lock variable.
 Memory model must be <tt class="docutils literal"><span class="pre">__ATOMIC_ACQUIRE</span></tt> or stronger.</dd>
-<dt>__ATOMIC_HLE_RELEASE</dt>
+<dt><tt class="docutils literal"><span class="pre">__ATOMIC_HLE_RELEASE</span></tt></dt>
 <dd><p class="first">End lock elision on a lock variable.
 Memory model must be <tt class="docutils literal"><span class="pre">__ATOMIC_RELEASE</span></tt> or stronger.</p>
 <p class="last">When a lock acquire fails it is required for good performance to abort</p>

@@ -16,64 +16,64 @@ into an executable file.
 For any given input file, the file name suffix determines what kind of
 compilation is done:
 
-``file``.c
+:samp:`{file}.c`
   C source code that must be preprocessed.
 
-``file``.i
+:samp:`{file}.i`
   C source code that should not be preprocessed.
 
-``file``.ii
+:samp:`{file}.ii`
   C++ source code that should not be preprocessed.
 
-``file``.m
+:samp:`{file}.m`
   Objective-C source code.  Note that you must link with the libobjc
   library to make an Objective-C program work.
 
-``file``.mi
+:samp:`{file}.mi`
   Objective-C source code that should not be preprocessed.
 
-``file``.mm ``file``.M
+:samp:`{file}.mm` :samp:`{file}.M`
   Objective-C++ source code.  Note that you must link with the libobjc
   library to make an Objective-C++ program work.  Note that :samp:`.M` refers
   to a literal capital M.
 
-``file``.mii
+:samp:`{file}.mii`
   Objective-C++ source code that should not be preprocessed.
 
-``file``.h
+:samp:`{file}.h`
   C, C++, Objective-C or Objective-C++ header file to be turned into a
   precompiled header (default), or C, C++ header file to be turned into an
   Ada spec (via the :option:`-fdump-ada-spec` switch).
 
-``file``.cc ``file``.cp ``file``.cxx ``file``.cpp ``file``.CPP ``file``.c++ ``file``.C
+:samp:`{file}.cc` :samp:`{file}.cp` :samp:`{file}.cxx` :samp:`{file}.cpp` :samp:`{file}.CPP` :samp:`{file}.c++` :samp:`{file}.C`
   C++ source code that must be preprocessed.  Note that in :samp:`.cxx`,
   the last two letters must both be literally :samp:`x`.  Likewise,
   :samp:`.C` refers to a literal capital C.
 
-``file``.mm ``file``.M
+:samp:`{file}.mm` :samp:`{file}.M`
   Objective-C++ source code that must be preprocessed.
 
-``file``.mii
+:samp:`{file}.mii`
   Objective-C++ source code that should not be preprocessed.
 
-``file``.hh ``file``.H ``file``.hp ``file``.hxx ``file``.hpp ``file``.HPP ``file``.h++ ``file``.tcc
+:samp:`{file}.hh` :samp:`{file}.H` :samp:`{file}.hp` :samp:`{file}.hxx` :samp:`{file}.hpp` :samp:`{file}.HPP` :samp:`{file}.h++` :samp:`{file}.tcc`
   C++ header file to be turned into a precompiled header or Ada spec.
 
-``file``.f ``file``.for ``file``.ftn
+:samp:`{file}.f` :samp:`{file}.for` :samp:`{file}.ftn`
   Fixed form Fortran source code that should not be preprocessed.
 
-``file``.F ``file``.FOR ``file``.fpp ``file``.FPP ``file``.FTN
+:samp:`{file}.F` :samp:`{file}.FOR` :samp:`{file}.fpp` :samp:`{file}.FPP` :samp:`{file}.FTN`
   Fixed form Fortran source code that must be preprocessed (with the traditional
   preprocessor).
 
-``file``.f90 ``file``.f95 ``file``.f03 ``file``.f08
+:samp:`{file}.f90` :samp:`{file}.f95` :samp:`{file}.f03` :samp:`{file}.f08`
   Free form Fortran source code that should not be preprocessed.
 
-``file``.F90 ``file``.F95 ``file``.F03 ``file``.F08
+:samp:`{file}.F90` :samp:`{file}.F95` :samp:`{file}.F03` :samp:`{file}.F08`
   Free form Fortran source code that must be preprocessed (with the
   traditional preprocessor).
 
-``file``.go
+:samp:`{file}.go`
   Go source code.
 
   .. FIXME: Descriptions of Java file types.
@@ -82,14 +82,14 @@ compilation is done:
      @var{file}.zip
      @var{file}.jar
 
-``file``.ads
+:samp:`{file}.ads`
   Ada source code file that contains a library unit declaration (a
   declaration of a package, subprogram, or generic, or a generic
   instantiation), or a library unit renaming declaration (a package,
   generic, or subprogram renaming declaration).  Such files are also
   called :dfn:`specs`.
 
-``file``.adb
+:samp:`{file}.adb`
   Ada source code file containing a library unit body (a subprogram or
   package body).  Such files are also called :dfn:`bodies`.
 
@@ -100,10 +100,10 @@ compilation is done:
      Ratfor:
      @var{file}.r
 
-``file``.s
+:samp:`{file}.s`
   Assembler code.
 
-``file``.S ``file``.sx
+:samp:`{file}.S` :samp:`{file}.sx`
   Assembler code that must be preprocessed.
 
 ``other``
@@ -114,7 +114,7 @@ compilation is done:
 
 You can specify the input language explicitly with the :option:`-x` option:
 
--x ``language``
+:samp:`-x {language}`
   Specify explicitly the ``language`` for the following input files
   (rather than letting the compiler choose a default based on the file
   name suffix).  This option applies to all following input files until
@@ -132,7 +132,7 @@ You can specify the input language explicitly with the :option:`-x` option:
     go
     java
 
--x none
+``-x none``
   Turn off any specification of a language, so that subsequent files are
   handled according to their file name suffixes (as they are if :option:`-x`
   has not been used at all).
@@ -233,48 +233,48 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   options for each tool.  For some targets extra target-specific
   information may also be printed.
 
---help={``class``|[^]``qualifier``}[,...]
+:samp:`--help={{class}{|[}^{]}{qualifier}}{[},...{]}`
   Print (on the standard output) a description of the command-line
   options understood by the compiler that fit into all specified classes
   and qualifiers.  These are the supported classes:
 
-  :samp:`optimizers`
+  optimizers
     Display all of the optimization options supported by the
     compiler.
 
-  :samp:`warnings`
+  warnings
     Display all of the options controlling warning messages
     produced by the compiler.
 
-  :samp:`target`
+  target
     Display target-specific options.  Unlike the
     :option:`--target-help` option however, target-specific options of the
     linker and assembler are not displayed.  This is because those
     tools do not currently support the extended :option:`--help=` syntax.
 
-  :samp:`params`
+  params
     Display the values recognized by the :option:`--param`
     option.
 
-  ``language``
+  language
     Display the options supported for ``language``, where
     ``language`` is the name of one of the languages supported in this
     version of GCC.
 
-  :samp:`common`
+  common
     Display the options that are common to all languages.
 
     These are the supported qualifiers:
 
-  :samp:`undocumented`
+  undocumented
     Display only those options that are undocumented.
 
-  :samp:`joined`
+  joined
     Display options taking an argument that appears after an equal
     sign in the same continuous piece of text, such as:
     :samp:`--help=target`.
 
-  :samp:`separate`
+  separate
     Display options taking an argument that appears as a separate word
     following the original option, such as: :samp:`-o output-file`.
 
@@ -393,7 +393,7 @@ one of the options :option:`-c`, :option:`-S`, or :option:`-E` to say where
   .. This file is designed to be included in manuals that use
      expandargv.
 
-@``file``
+:samp:`@{file}`
   Read command-line options from ``file``.  The options read are
   inserted in place of the original @``file`` option.  If ``file``
   does not exist, or cannot be read, then the option will be treated

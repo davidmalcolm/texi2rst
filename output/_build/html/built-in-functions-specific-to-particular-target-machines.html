@@ -258,13 +258,13 @@ The two letters after the <tt class="docutils literal"><span class="pre">n</span
 parameters to the function.</p>
 <p>The letters represent the following data types:</p>
 <dl class="docutils">
-<dt>&lt;no letter&gt;</dt>
+<dt><tt class="docutils literal"><span class="pre">&lt;no</span> <span class="pre">letter&gt;</span></tt></dt>
 <dd><tt class="docutils literal"><span class="pre">void</span></tt> for return type and no parameter for parameter types.</dd>
-<dt>i</dt>
+<dt><tt class="docutils literal"><span class="pre">i</span></tt></dt>
 <dd><tt class="docutils literal"><span class="pre">int</span></tt> for return type and parameter type</dd>
-<dt>f</dt>
+<dt><tt class="docutils literal"><span class="pre">f</span></tt></dt>
 <dd><tt class="docutils literal"><span class="pre">float</span></tt> for return type and parameter type</dd>
-<dt>p</dt>
+<dt><tt class="docutils literal"><span class="pre">p</span></tt></dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt> for return type and parameter type</p>
 <p class="last">And the function names are:</p>
 </dd>
@@ -1444,39 +1444,39 @@ for more details.</p>
 instructions to access memory.  These functions generate
 <tt class="docutils literal"><span class="pre">membar</span></tt> instructions to flush the I/O load and stores where
 appropriate, as described in Fujitsu&#8217;s manual described above.</p>
-<p>unsigned char __builtin_read8 (void <a href="#id16"><span class="problematic" id="id17">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)unsigned short __builtin_read16 (void <a href="#id18"><span class="problematic" id="id19">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)unsigned long __builtin_read32 (void <a href="#id20"><span class="problematic" id="id21">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)
-unsigned long long __builtin_read64 (void <a href="#id22"><span class="problematic" id="id23">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>)</p>
+<p><tt class="samp docutils literal"><span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">__builtin_read8</span> <span class="pre">(void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="pre">)</span></tt><tt class="samp docutils literal"><span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">__builtin_read16</span> <span class="pre">(void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="pre">)</span></tt><tt class="samp docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">__builtin_read32</span> <span class="pre">(void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="pre">)</span></tt>
+<tt class="samp docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">__builtin_read64</span> <span class="pre">(void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="pre">)</span></tt></p>
 <blockquote>
-<div>void __builtin_write8 (void <a href="#id24"><span class="problematic" id="id25">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned char <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write16 (void <a href="#id26"><span class="problematic" id="id27">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned short <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write32 (void <a href="#id28"><span class="problematic" id="id29">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned long <tt class="docutils literal"><span class="pre">datum</span></tt>)void __builtin_write64 (void <a href="#id30"><span class="problematic" id="id31">*</span></a><tt class="docutils literal"><span class="pre">data</span></tt>, unsigned long long <tt class="docutils literal"><span class="pre">datum</span></tt>).. _other-built-in-functions:</div></blockquote>
+<div><tt class="samp docutils literal"><span class="pre">void</span> <span class="pre">__builtin_write8</span> <span class="pre">(void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="pre">,</span> <span class="pre">unsigned</span> <span class="pre">char</span> <em><span class="pre">datum</span></em><span class="pre">)</span></tt><tt class="samp docutils literal"><span class="pre">void</span> <span class="pre">__builtin_write16</span> <span class="pre">(void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="pre">,</span> <span class="pre">unsigned</span> <span class="pre">short</span> <em><span class="pre">datum</span></em><span class="pre">)</span></tt><tt class="samp docutils literal"><span class="pre">void</span> <span class="pre">__builtin_write32</span> <span class="pre">(void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="pre">,</span> <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">datum</span></em><span class="pre">)</span></tt><tt class="samp docutils literal"><span class="pre">void</span> <span class="pre">__builtin_write64</span> <span class="pre">(void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="pre">,</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">datum</span></em><span class="pre">)</span></tt>.. _other-built-in-functions:</div></blockquote>
 </div>
 <div class="section" id="other-built-in-functions">
 <h3>Other Built-in Functions<a class="headerlink" href="#other-built-in-functions" title="Permalink to this headline">¶</a></h3>
 <p>This section describes built-in functions that are not named after
 a specific FR-V instruction.</p>
 <dl class="docutils">
-<dt>sw2 __IACCreadll (iacc <tt class="docutils literal"><span class="pre">reg</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sw2</span> <span class="pre">__IACCreadll</span> <span class="pre">(iacc</span> <em><span class="pre">reg</span></em><span class="pre">)</span></tt></dt>
 <dd>Return the full 64-bit value of IACC0.  The <tt class="docutils literal"><span class="pre">reg</span></tt> argument is reserved
 for future expansion and must be 0.</dd>
-<dt>sw1 __IACCreadl (iacc <tt class="docutils literal"><span class="pre">reg</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sw1</span> <span class="pre">__IACCreadl</span> <span class="pre">(iacc</span> <em><span class="pre">reg</span></em><span class="pre">)</span></tt></dt>
 <dd>Return the value of IACC0H if <tt class="docutils literal"><span class="pre">reg</span></tt> is 0 and IACC0L if <tt class="docutils literal"><span class="pre">reg</span></tt> is 1.
 Other values of <tt class="docutils literal"><span class="pre">reg</span></tt> are rejected as invalid.</dd>
-<dt>void __IACCsetll (iacc <tt class="docutils literal"><span class="pre">reg</span></tt>, sw2 <tt class="docutils literal"><span class="pre">x</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">void</span> <span class="pre">__IACCsetll</span> <span class="pre">(iacc</span> <em><span class="pre">reg</span></em><span class="pre">,</span> <span class="pre">sw2</span> <em><span class="pre">x</span></em><span class="pre">)</span></tt></dt>
 <dd>Set the full 64-bit value of IACC0 to <tt class="docutils literal"><span class="pre">x</span></tt>.  The <tt class="docutils literal"><span class="pre">reg</span></tt> argument
 is reserved for future expansion and must be 0.</dd>
-<dt>void __IACCsetl (iacc <tt class="docutils literal"><span class="pre">reg</span></tt>, sw1 <tt class="docutils literal"><span class="pre">x</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">void</span> <span class="pre">__IACCsetl</span> <span class="pre">(iacc</span> <em><span class="pre">reg</span></em><span class="pre">,</span> <span class="pre">sw1</span> <em><span class="pre">x</span></em><span class="pre">)</span></tt></dt>
 <dd>Set IACC0H to <tt class="docutils literal"><span class="pre">x</span></tt> if <tt class="docutils literal"><span class="pre">reg</span></tt> is 0 and IACC0L to <tt class="docutils literal"><span class="pre">x</span></tt> if <tt class="docutils literal"><span class="pre">reg</span></tt>
 is 1.  Other values of <tt class="docutils literal"><span class="pre">reg</span></tt> are rejected as invalid.</dd>
-<dt>void __data_prefetch0 (const void <a href="#id32"><span class="problematic" id="id33">*</span></a><tt class="docutils literal"><span class="pre">x</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">void</span> <span class="pre">__data_prefetch0</span> <span class="pre">(const</span> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">x</span></em><span class="pre">)</span></tt></dt>
 <dd>Use the <tt class="docutils literal"><span class="pre">dcpl</span></tt> instruction to load the contents of address <tt class="docutils literal"><span class="pre">x</span></tt>
 into the data cache.</dd>
-<dt>void __data_prefetch (const void <a href="#id34"><span class="problematic" id="id35">*</span></a><tt class="docutils literal"><span class="pre">x</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">void</span> <span class="pre">__data_prefetch</span> <span class="pre">(const</span> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">x</span></em><span class="pre">)</span></tt></dt>
 <dd>Use the <tt class="docutils literal"><span class="pre">nldub</span></tt> instruction to load the contents of address <tt class="docutils literal"><span class="pre">x</span></tt>
 into the data cache.  The instruction is issued in slot I1.</dd>
 </dl>
 </div>
 </div>
 <div class="section" id="mips-dsp-built-in-functions">
-<span id="id36"></span><h2>MIPS DSP Built-in Functions<a class="headerlink" href="#mips-dsp-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id16"></span><h2>MIPS DSP Built-in Functions<a class="headerlink" href="#mips-dsp-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>The MIPS DSP Application-Specific Extension (ASE) includes new
 instructions that are designed to improve the performance of DSP and
 media applications.  It provides instructions that operate on packed
@@ -1774,7 +1774,7 @@ for details on what each instruction does.</p>
 </div>
 </div>
 <div class="section" id="mips-paired-single-support">
-<span id="id37"></span><h2>MIPS Paired-Single Support<a class="headerlink" href="#mips-paired-single-support" title="Permalink to this headline">¶</a></h2>
+<span id="id17"></span><h2>MIPS Paired-Single Support<a class="headerlink" href="#mips-paired-single-support" title="Permalink to this headline">¶</a></h2>
 <p>The MIPS64 architecture includes a number of instructions that
 operate on pairs of single-precision floating-point values.
 Each pair is packed into a 64-bit floating-point register,
@@ -1805,7 +1805,7 @@ For example, the code above sets the lower half of <tt class="docutils literal">
 <tt class="docutils literal"><span class="pre">1.5</span></tt> on little-endian targets and <tt class="docutils literal"><span class="pre">9.1</span></tt> on big-endian targets.</p>
 </div>
 <div class="section" id="mips-loongson-built-in-functions">
-<span id="id38"></span><h2>MIPS Loongson Built-in Functions<a class="headerlink" href="#mips-loongson-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id18"></span><h2>MIPS Loongson Built-in Functions<a class="headerlink" href="#mips-loongson-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides intrinsics to access the SIMD instructions provided by the
 ST Microelectronics Loongson-2E and -2F processors.  These intrinsics,
 available after inclusion of the <tt class="docutils literal"><span class="pre">loongson.h</span></tt> header file,
@@ -1930,7 +1930,7 @@ instruction.</p>
 </ul>
 </div>
 <div class="section" id="paired-single-arithmetic">
-<span id="id39"></span><h3>Paired-Single Arithmetic<a class="headerlink" href="#paired-single-arithmetic" title="Permalink to this headline">¶</a></h3>
+<span id="id19"></span><h3>Paired-Single Arithmetic<a class="headerlink" href="#paired-single-arithmetic" title="Permalink to this headline">¶</a></h3>
 <p>The table below lists the <tt class="docutils literal"><span class="pre">v2sf</span></tt> operations for which hardware
 support exists.  <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">c</span></tt> are <tt class="docutils literal"><span class="pre">v2sf</span></tt>
 values and <tt class="docutils literal"><span class="pre">x</span></tt> is an integral value.</p>
@@ -1978,28 +1978,28 @@ values and <tt class="docutils literal"><span class="pre">x</span></tt> is an in
 using the command-line option <tt class="docutils literal"><span class="pre">-mno-fused-madd</span></tt>.</p>
 </div>
 <div class="section" id="paired-single-built-in-functions">
-<span id="id40"></span><h3>Paired-Single Built-in Functions<a class="headerlink" href="#paired-single-built-in-functions" title="Permalink to this headline">¶</a></h3>
+<span id="id20"></span><h3>Paired-Single Built-in Functions<a class="headerlink" href="#paired-single-built-in-functions" title="Permalink to this headline">¶</a></h3>
 <p>The following paired-single functions map directly to a particular
 MIPS instruction.  Please refer to the architecture specification
 for details on what each instruction does.</p>
 <dl class="docutils">
-<dt>v2sf __builtin_mips_pll_ps (v2sf, v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_pll_ps</span> <span class="pre">(v2sf,</span> <span class="pre">v2sf)</span></tt></dt>
 <dd>Pair lower lower (<tt class="docutils literal"><span class="pre">pll.ps</span></tt>).</dd>
-<dt>v2sf __builtin_mips_pul_ps (v2sf, v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_pul_ps</span> <span class="pre">(v2sf,</span> <span class="pre">v2sf)</span></tt></dt>
 <dd>Pair upper lower (<tt class="docutils literal"><span class="pre">pul.ps</span></tt>).</dd>
-<dt>v2sf __builtin_mips_plu_ps (v2sf, v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_plu_ps</span> <span class="pre">(v2sf,</span> <span class="pre">v2sf)</span></tt></dt>
 <dd>Pair lower upper (<tt class="docutils literal"><span class="pre">plu.ps</span></tt>).</dd>
-<dt>v2sf __builtin_mips_puu_ps (v2sf, v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_puu_ps</span> <span class="pre">(v2sf,</span> <span class="pre">v2sf)</span></tt></dt>
 <dd>Pair upper upper (<tt class="docutils literal"><span class="pre">puu.ps</span></tt>).</dd>
-<dt>v2sf __builtin_mips_cvt_ps_s (float, float)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_cvt_ps_s</span> <span class="pre">(float,</span> <span class="pre">float)</span></tt></dt>
 <dd>Convert pair to paired single (<tt class="docutils literal"><span class="pre">cvt.ps.s</span></tt>).</dd>
-<dt>float __builtin_mips_cvt_s_pl (v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">float</span> <span class="pre">__builtin_mips_cvt_s_pl</span> <span class="pre">(v2sf)</span></tt></dt>
 <dd>Convert pair lower to single (<tt class="docutils literal"><span class="pre">cvt.s.pl</span></tt>).</dd>
-<dt>float __builtin_mips_cvt_s_pu (v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">float</span> <span class="pre">__builtin_mips_cvt_s_pu</span> <span class="pre">(v2sf)</span></tt></dt>
 <dd>Convert pair upper to single (<tt class="docutils literal"><span class="pre">cvt.s.pu</span></tt>).</dd>
-<dt>v2sf __builtin_mips_abs_ps (v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_abs_ps</span> <span class="pre">(v2sf)</span></tt></dt>
 <dd>Absolute value (<tt class="docutils literal"><span class="pre">abs.ps</span></tt>).</dd>
-<dt>v2sf __builtin_mips_alnv_ps (v2sf, v2sf, int)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_alnv_ps</span> <span class="pre">(v2sf,</span> <span class="pre">v2sf,</span> <span class="pre">int)</span></tt></dt>
 <dd><p class="first">Align variable (<tt class="docutils literal"><span class="pre">alnv.ps</span></tt>).</p>
 <p><em>Note:</em> The value of the third parameter must be 0 or 4
 modulo 8, otherwise the result is unpredictable.  Please read the
@@ -2012,7 +2012,7 @@ instruction description for details.</p>
 <tt class="docutils literal"><span class="pre">ole</span></tt>, <tt class="docutils literal"><span class="pre">ule</span></tt>, <tt class="docutils literal"><span class="pre">sf</span></tt>, <tt class="docutils literal"><span class="pre">ngle</span></tt>, <tt class="docutils literal"><span class="pre">seq</span></tt>, <tt class="docutils literal"><span class="pre">ngl</span></tt>,
 <tt class="docutils literal"><span class="pre">lt</span></tt>, <tt class="docutils literal"><span class="pre">nge</span></tt>, <tt class="docutils literal"><span class="pre">le</span></tt> or <tt class="docutils literal"><span class="pre">ngt</span></tt>.</p>
 <dl class="docutils">
-<dt>v2sf __builtin_mips_movt_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>) v2sf __builtin_mips_movf_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_movt_c_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">c</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">d</span></em><span class="pre">)</span></tt> <tt class="samp docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_movf_c_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">c</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">d</span></em><span class="pre">)</span></tt></dt>
 <dd><p class="first">Conditional move based on floating-point comparison (<tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">movt.ps</span></tt>/<tt class="docutils literal"><span class="pre">movf.ps</span></tt>).</p>
 <p>The <tt class="docutils literal"><span class="pre">movt</span></tt> functions return the value <tt class="docutils literal"><span class="pre">x</span></tt> computed by:</p>
@@ -2023,7 +2023,7 @@ movt.ps ``x``,``d``,``cc``</pre>
 <p class="last">The <tt class="docutils literal"><span class="pre">movf</span></tt> functions are similar but use <tt class="docutils literal"><span class="pre">movf.ps</span></tt> instead
 of <tt class="docutils literal"><span class="pre">movt.ps</span></tt>.</p>
 </dd>
-<dt>int __builtin_mips_upper_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_lower_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_upper_c_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">)</span></tt> <tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_lower_c_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">)</span></tt></dt>
 <dd><p class="first">Comparison of two paired-single values (<tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">bc1t</span></tt>/<tt class="docutils literal"><span class="pre">bc1f</span></tt>).</p>
 <p>These functions compare <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> using <tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``
@@ -2044,7 +2044,7 @@ and return either the upper or lower half of the result.  For example:</p>
 </dl>
 </div>
 <div class="section" id="mips-3d-built-in-functions">
-<span id="id41"></span><h3>MIPS-3D Built-in Functions<a class="headerlink" href="#mips-3d-built-in-functions" title="Permalink to this headline">¶</a></h3>
+<span id="id21"></span><h3>MIPS-3D Built-in Functions<a class="headerlink" href="#mips-3d-built-in-functions" title="Permalink to this headline">¶</a></h3>
 <p>The MIPS-3D Application-Specific Extension (ASE) includes additional
 paired-single instructions that are designed to improve the performance
 of 3D graphics operations.  Support for these instructions is controlled
@@ -2053,22 +2053,22 @@ by the <a class="reference internal" href="hardware-models-and-configurations.ht
 instruction.  Please refer to the architecture specification for
 more details on what each instruction does.</p>
 <dl class="docutils">
-<dt>v2sf __builtin_mips_addr_ps (v2sf, v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_addr_ps</span> <span class="pre">(v2sf,</span> <span class="pre">v2sf)</span></tt></dt>
 <dd>Reduction add (<tt class="docutils literal"><span class="pre">addr.ps</span></tt>).</dd>
-<dt>v2sf __builtin_mips_mulr_ps (v2sf, v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_mulr_ps</span> <span class="pre">(v2sf,</span> <span class="pre">v2sf)</span></tt></dt>
 <dd>Reduction multiply (<tt class="docutils literal"><span class="pre">mulr.ps</span></tt>).</dd>
-<dt>v2sf __builtin_mips_cvt_pw_ps (v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_cvt_pw_ps</span> <span class="pre">(v2sf)</span></tt></dt>
 <dd>Convert paired single to paired word (<tt class="docutils literal"><span class="pre">cvt.pw.ps</span></tt>).</dd>
-<dt>v2sf __builtin_mips_cvt_ps_pw (v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_cvt_ps_pw</span> <span class="pre">(v2sf)</span></tt></dt>
 <dd>Convert paired word to paired single (<tt class="docutils literal"><span class="pre">cvt.ps.pw</span></tt>).</dd>
-<dt>float __builtin_mips_recip1_s (float) double __builtin_mips_recip1_d (double) v2sf __builtin_mips_recip1_ps (v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">float</span> <span class="pre">__builtin_mips_recip1_s</span> <span class="pre">(float)</span></tt> <tt class="docutils literal"><span class="pre">double</span> <span class="pre">__builtin_mips_recip1_d</span> <span class="pre">(double)</span></tt> <tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_recip1_ps</span> <span class="pre">(v2sf)</span></tt></dt>
 <dd>Reduced-precision reciprocal (sequence step 1) (<tt class="docutils literal"><span class="pre">recip1.``fmt``</span></tt>).</dd>
-<dt>float __builtin_mips_recip2_s (float, float) double __builtin_mips_recip2_d (double, double) v2sf __builtin_mips_recip2_ps (v2sf, v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">float</span> <span class="pre">__builtin_mips_recip2_s</span> <span class="pre">(float,</span> <span class="pre">float)</span></tt> <tt class="docutils literal"><span class="pre">double</span> <span class="pre">__builtin_mips_recip2_d</span> <span class="pre">(double,</span> <span class="pre">double)</span></tt> <tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_recip2_ps</span> <span class="pre">(v2sf,</span> <span class="pre">v2sf)</span></tt></dt>
 <dd>Reduced-precision reciprocal (sequence step 2) (<tt class="docutils literal"><span class="pre">recip2.``fmt``</span></tt>).</dd>
-<dt>float __builtin_mips_rsqrt1_s (float) double __builtin_mips_rsqrt1_d (double) v2sf __builtin_mips_rsqrt1_ps (v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">float</span> <span class="pre">__builtin_mips_rsqrt1_s</span> <span class="pre">(float)</span></tt> <tt class="docutils literal"><span class="pre">double</span> <span class="pre">__builtin_mips_rsqrt1_d</span> <span class="pre">(double)</span></tt> <tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_rsqrt1_ps</span> <span class="pre">(v2sf)</span></tt></dt>
 <dd>Reduced-precision reciprocal square root (sequence step 1)
 (<tt class="docutils literal"><span class="pre">rsqrt1.``fmt``</span></tt>).</dd>
-<dt>float __builtin_mips_rsqrt2_s (float, float) double __builtin_mips_rsqrt2_d (double, double) v2sf __builtin_mips_rsqrt2_ps (v2sf, v2sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">float</span> <span class="pre">__builtin_mips_rsqrt2_s</span> <span class="pre">(float,</span> <span class="pre">float)</span></tt> <tt class="docutils literal"><span class="pre">double</span> <span class="pre">__builtin_mips_rsqrt2_d</span> <span class="pre">(double,</span> <span class="pre">double)</span></tt> <tt class="docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_rsqrt2_ps</span> <span class="pre">(v2sf,</span> <span class="pre">v2sf)</span></tt></dt>
 <dd><p class="first">Reduced-precision reciprocal square root (sequence step 2)
 (<tt class="docutils literal"><span class="pre">rsqrt2.``fmt``</span></tt>).</p>
 <p class="last">The following multi-instruction functions are also available.</p>
@@ -2079,7 +2079,7 @@ more details on what each instruction does.</p>
 <tt class="docutils literal"><span class="pre">ole</span></tt>, <tt class="docutils literal"><span class="pre">ule</span></tt>, <tt class="docutils literal"><span class="pre">sf</span></tt>, <tt class="docutils literal"><span class="pre">ngle</span></tt>, <tt class="docutils literal"><span class="pre">seq</span></tt>,
 <tt class="docutils literal"><span class="pre">ngl</span></tt>, <tt class="docutils literal"><span class="pre">lt</span></tt>, <tt class="docutils literal"><span class="pre">nge</span></tt>, <tt class="docutils literal"><span class="pre">le</span></tt> or <tt class="docutils literal"><span class="pre">ngt</span></tt>.</p>
 <dl class="docutils">
-<dt>int __builtin_mips_cabs_``cond``_s (float <tt class="docutils literal"><span class="pre">a</span></tt>, float <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_cabs_``cond``_d (double <tt class="docutils literal"><span class="pre">a</span></tt>, double <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_cabs_</span><em><span class="pre">cond</span></em><span class="pre">_s</span> <span class="pre">(float</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">float</span> <em><span class="pre">b</span></em><span class="pre">)</span></tt> <tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_cabs_</span><em><span class="pre">cond</span></em><span class="pre">_d</span> <span class="pre">(double</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">double</span> <em><span class="pre">b</span></em><span class="pre">)</span></tt></dt>
 <dd><p class="first">Absolute comparison of two scalar values (<tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.``fmt````,
 <tt class="docutils literal"><span class="pre">bc1t</span></tt>/<tt class="docutils literal"><span class="pre">bc1f</span></tt>).</p>
 <p>These functions compare <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> using <tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.s``
@@ -2093,7 +2093,7 @@ For example:</p>
 </pre></div>
 </div>
 </dd>
-<dt>int __builtin_mips_upper_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_lower_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_upper_cabs_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">)</span></tt> <tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_lower_cabs_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">)</span></tt></dt>
 <dd><p class="first">Absolute comparison of two paired-single values (<tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">bc1t</span></tt>/<tt class="docutils literal"><span class="pre">bc1f</span></tt>).</p>
 <p>These functions compare <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> using <tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.ps``
@@ -2111,7 +2111,7 @@ and return either the upper or lower half of the result.  For example:</p>
 </pre></div>
 </div>
 </dd>
-<dt>v2sf __builtin_mips_movt_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>) v2sf __builtin_mips_movf_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_movt_cabs_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">c</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">d</span></em><span class="pre">)</span></tt> <tt class="samp docutils literal"><span class="pre">v2sf</span> <span class="pre">__builtin_mips_movf_cabs_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">c</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">d</span></em><span class="pre">)</span></tt></dt>
 <dd><p class="first">Conditional move based on absolute comparison (<tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">movt.ps</span></tt>/<tt class="docutils literal"><span class="pre">movf.ps</span></tt>).</p>
 <p>The <tt class="docutils literal"><span class="pre">movt</span></tt> functions return the value <tt class="docutils literal"><span class="pre">x</span></tt> computed by:</p>
@@ -2122,7 +2122,7 @@ movt.ps ``x``,``d``,``cc``</pre>
 <p class="last">The <tt class="docutils literal"><span class="pre">movf</span></tt> functions are similar but use <tt class="docutils literal"><span class="pre">movf.ps</span></tt> instead
 of <tt class="docutils literal"><span class="pre">movt.ps</span></tt>.</p>
 </dd>
-<dt>int __builtin_mips_any_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_all_c_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_any_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>) int __builtin_mips_all_cabs_``cond``_ps (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_any_c_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">)</span></tt> <tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_all_c_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">)</span></tt> <tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_any_cabs_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">)</span></tt> <tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_all_cabs_</span><em><span class="pre">cond</span></em><span class="pre">_ps</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">)</span></tt></dt>
 <dd><p class="first">Comparison of two paired-single values
 (<tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``/<tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">bc1any2t</span></tt>/<tt class="docutils literal"><span class="pre">bc1any2f</span></tt>).</p>
@@ -2143,7 +2143,7 @@ For example:</p>
 </pre></div>
 </div>
 </dd>
-<dt>int __builtin_mips_any_c_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>) int __builtin_mips_all_c_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>) int __builtin_mips_any_cabs_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>) int __builtin_mips_all_cabs_``cond``_4s (v2sf <tt class="docutils literal"><span class="pre">a</span></tt>, v2sf <tt class="docutils literal"><span class="pre">b</span></tt>, v2sf <tt class="docutils literal"><span class="pre">c</span></tt>, v2sf <tt class="docutils literal"><span class="pre">d</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_any_c_</span><em><span class="pre">cond</span></em><span class="pre">_4s</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">c</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">d</span></em><span class="pre">)</span></tt> <tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_all_c_</span><em><span class="pre">cond</span></em><span class="pre">_4s</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">c</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">d</span></em><span class="pre">)</span></tt> <tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_any_cabs_</span><em><span class="pre">cond</span></em><span class="pre">_4s</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">c</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">d</span></em><span class="pre">)</span></tt> <tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_mips_all_cabs_</span><em><span class="pre">cond</span></em><span class="pre">_4s</span> <span class="pre">(v2sf</span> <em><span class="pre">a</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">b</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">c</span></em><span class="pre">,</span> <span class="pre">v2sf</span> <em><span class="pre">d</span></em><span class="pre">)</span></tt></dt>
 <dd><p class="first">Comparison of four paired-single values
 (<tt class="docutils literal"><span class="pre">c.``cond</span></tt>.ps``/<tt class="docutils literal"><span class="pre">cabs.``cond</span></tt>.ps``,
 <tt class="docutils literal"><span class="pre">bc1any4t</span></tt>/<tt class="docutils literal"><span class="pre">bc1any4f</span></tt>).</p>
@@ -2169,14 +2169,14 @@ For example:</p>
 </div>
 </div>
 <div class="section" id="other-mips-built-in-functions">
-<span id="id42"></span><h2>Other MIPS Built-in Functions<a class="headerlink" href="#other-mips-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id22"></span><h2>Other MIPS Built-in Functions<a class="headerlink" href="#other-mips-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides other MIPS-specific built-in functions:</p>
 <dl class="docutils">
-<dt>void __builtin_mips_cache (int <tt class="docutils literal"><span class="pre">op</span></tt>, const volatile void <a href="#id43"><span class="problematic" id="id44">*</span></a><tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">void</span> <span class="pre">__builtin_mips_cache</span> <span class="pre">(int</span> <em><span class="pre">op</span></em><span class="pre">,</span> <span class="pre">const</span> <span class="pre">volatile</span> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">addr</span></em><span class="pre">)</span></tt></dt>
 <dd>Insert a <tt class="samp docutils literal"><span class="pre">cache</span></tt> instruction with operands <tt class="docutils literal"><span class="pre">op</span></tt> and <tt class="docutils literal"><span class="pre">addr</span></tt>.
 GCC defines the preprocessor macro <tt class="docutils literal"><span class="pre">___GCC_HAVE_BUILTIN_MIPS_CACHE</span></tt>
 when this function is available.</dd>
-<dt>unsigned int __builtin_mips_get_fcsr (void) void __builtin_mips_set_fcsr (unsigned int <tt class="docutils literal"><span class="pre">value</span></tt>)</dt>
+<dt><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">__builtin_mips_get_fcsr</span> <span class="pre">(void)</span></tt> <tt class="samp docutils literal"><span class="pre">void</span> <span class="pre">__builtin_mips_set_fcsr</span> <span class="pre">(unsigned</span> <span class="pre">int</span> <em><span class="pre">value</span></em><span class="pre">)</span></tt></dt>
 <dd><p class="first">Get and set the contents of the floating-point control and status register
 (FPU control register 31).  These functions are only available in hard-float
 code but can be called in both MIPS16 and non-MIPS16 contexts.</p>
@@ -2186,21 +2186,21 @@ register except the condition codes, which GCC assumes are preserved.</p>
 </dl>
 </div>
 <div class="section" id="msp430-built-in-functions">
-<span id="id45"></span><h2>MSP430 Built-in Functions<a class="headerlink" href="#msp430-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id23"></span><h2>MSP430 Built-in Functions<a class="headerlink" href="#msp430-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides a couple of special builtin functions to aid in the
 writing of interrupt handlers in C.</p>
 <dl class="docutils">
-<dt>__bic_SR_register_on_exit (int <tt class="docutils literal"><span class="pre">mask</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">__bic_SR_register_on_exit</span> <span class="pre">(int</span> <em><span class="pre">mask</span></em><span class="pre">)</span></tt></dt>
 <dd>This clears the indicated bits in the saved copy of the status register
 currently residing on the stack.  This only works inside interrupt
 handlers and the changes to the status register will only take affect
 once the handler returns.</dd>
-<dt>__bis_SR_register_on_exit (int <tt class="docutils literal"><span class="pre">mask</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">__bis_SR_register_on_exit</span> <span class="pre">(int</span> <em><span class="pre">mask</span></em><span class="pre">)</span></tt></dt>
 <dd>This sets the indicated bits in the saved copy of the status register
 currently residing on the stack.  This only works inside interrupt
 handlers and the changes to the status register will only take affect
 once the handler returns.</dd>
-<dt>__delay_cycles (long long <tt class="docutils literal"><span class="pre">cycles</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">__delay_cycles</span> <span class="pre">(long</span> <span class="pre">long</span> <em><span class="pre">cycles</span></em><span class="pre">)</span></tt></dt>
 <dd>This inserts an instruction sequence that takes exactly <tt class="docutils literal"><span class="pre">cycles</span></tt>
 cycles (between 0 and about 17E9) to complete.  The inserted sequence
 may use jumps, loops, or no-ops, and does not interfere with any other
@@ -2211,7 +2211,7 @@ builtin is exact.</dd>
 </dl>
 </div>
 <div class="section" id="nds32-built-in-functions">
-<span id="id46"></span><h2>NDS32 Built-in Functions<a class="headerlink" href="#nds32-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id24"></span><h2>NDS32 Built-in Functions<a class="headerlink" href="#nds32-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the NDS32 target:</p>
 <p id="index-20">Built-in Functionvoid__builtin_nds32_isync(int*``addr``)Insert an ISYNC instruction into the instruction stream where
 <tt class="docutils literal"><span class="pre">addr</span></tt> is an instruction address for serialization.</p>
@@ -2224,35 +2224,35 @@ builtin is exact.</dd>
 <p id="index-27">Built-in Functionvoid__builtin_nds32_setgie_dis(void)Disable global interrupt.</p>
 </div>
 <div class="section" id="picochip-built-in-functions">
-<span id="id47"></span><h2>picoChip Built-in Functions<a class="headerlink" href="#picochip-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id25"></span><h2>picoChip Built-in Functions<a class="headerlink" href="#picochip-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides an interface to selected machine instructions from the
 picoChip instruction set.</p>
 <dl class="docutils">
-<dt>int __builtin_sbc (int <tt class="docutils literal"><span class="pre">value</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_sbc</span> <span class="pre">(int</span> <em><span class="pre">value</span></em><span class="pre">)</span></tt></dt>
 <dd>Sign bit count.  Return the number of consecutive bits in <tt class="docutils literal"><span class="pre">value</span></tt>
 that have the same value as the sign bit.  The result is the number of
 leading sign bits minus one, giving the number of redundant sign bits in
 <tt class="docutils literal"><span class="pre">value</span></tt>.</dd>
-<dt>int __builtin_byteswap (int <tt class="docutils literal"><span class="pre">value</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_byteswap</span> <span class="pre">(int</span> <em><span class="pre">value</span></em><span class="pre">)</span></tt></dt>
 <dd>Byte swap.  Return the result of swapping the upper and lower bytes of
 <tt class="docutils literal"><span class="pre">value</span></tt>.</dd>
-<dt>int __builtin_brev (int <tt class="docutils literal"><span class="pre">value</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_brev</span> <span class="pre">(int</span> <em><span class="pre">value</span></em><span class="pre">)</span></tt></dt>
 <dd>Bit reversal.  Return the result of reversing the bits in
 <tt class="docutils literal"><span class="pre">value</span></tt>.  Bit 15 is swapped with bit 0, bit 14 is swapped with bit 1,
 and so on.</dd>
-<dt>int __builtin_adds (int <tt class="docutils literal"><span class="pre">x</span></tt>, int <tt class="docutils literal"><span class="pre">y</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_adds</span> <span class="pre">(int</span> <em><span class="pre">x</span></em><span class="pre">,</span> <span class="pre">int</span> <em><span class="pre">y</span></em><span class="pre">)</span></tt></dt>
 <dd>Saturating addition.  Return the result of adding <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>,
 storing the value 32767 if the result overflows.</dd>
-<dt>int __builtin_subs (int <tt class="docutils literal"><span class="pre">x</span></tt>, int <tt class="docutils literal"><span class="pre">y</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">int</span> <span class="pre">__builtin_subs</span> <span class="pre">(int</span> <em><span class="pre">x</span></em><span class="pre">,</span> <span class="pre">int</span> <em><span class="pre">y</span></em><span class="pre">)</span></tt></dt>
 <dd>Saturating subtraction.  Return the result of subtracting <tt class="docutils literal"><span class="pre">y</span></tt> from
 <tt class="docutils literal"><span class="pre">x</span></tt>, storing the value -32768 if the result overflows.</dd>
-<dt>void __builtin_halt (void)</dt>
+<dt><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__builtin_halt</span> <span class="pre">(void)</span></tt></dt>
 <dd>Halt.  The processor stops execution.  This built-in is useful for
 implementing assertions.</dd>
 </dl>
 </div>
 <div class="section" id="powerpc-built-in-functions">
-<span id="id48"></span><h2>PowerPC Built-in Functions<a class="headerlink" href="#powerpc-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id26"></span><h2>PowerPC Built-in Functions<a class="headerlink" href="#powerpc-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the PowerPC family of
 processors:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">float</span> <span class="nf">__builtin_recipdivf</span> <span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">);</span>
@@ -4889,7 +4889,7 @@ integer that is 0 or 1.  The third argument to these builtin functions
 must be a constant integer in the range of 0 to 15.</p>
 </div>
 <div class="section" id="powerpc-hardware-transactional-memory-built-in-functions">
-<span id="id49"></span><h2>PowerPC Hardware Transactional Memory Built-in Functions<a class="headerlink" href="#powerpc-hardware-transactional-memory-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id27"></span><h2>PowerPC Hardware Transactional Memory Built-in Functions<a class="headerlink" href="#powerpc-hardware-transactional-memory-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides two interfaces for accessing the Hardware Transactional
 Memory (HTM) instructions available on some of the PowerPC family
 of processors (eg, POWER8).  The two interfaces come in a low level
@@ -5069,7 +5069,7 @@ section that will work on either PowerPC or S/390:</p>
 </div>
 </div>
 <div class="section" id="rx-built-in-functions">
-<span id="id50"></span><h2>RX Built-in Functions<a class="headerlink" href="#rx-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id28"></span><h2>RX Built-in Functions<a class="headerlink" href="#rx-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC supports some of the RX instructions which cannot be expressed in
 the C programming language via the use of built-in functions.  The
 following functions are supported:</p>
@@ -5121,7 +5121,7 @@ bit in the processor status word.</p>
 <p id="index-48">Built-in Functionvoid__builtin_rx_wait(void)Generates the <tt class="docutils literal"><span class="pre">wait</span></tt> machine instruction.</p>
 </div>
 <div class="section" id="s-390-system-z-built-in-functions">
-<span id="id51"></span><h2>S/390 System z Built-in Functions<a class="headerlink" href="#s-390-system-z-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id29"></span><h2>S/390 System z Built-in Functions<a class="headerlink" href="#s-390-system-z-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p id="index-49">Built-in Functionint__builtin_tbegin(void*)Generates the <tt class="docutils literal"><span class="pre">tbegin</span></tt> machine instruction starting a
 non-constraint hardware transaction.  If the parameter is non-NULL the
 memory area is used to store the transaction diagnostic buffer and
@@ -5145,16 +5145,16 @@ undefined state when reaching the abort code.</p>
 <p>Macros for the possible return codes of tbegin are defined in the
 <tt class="docutils literal"><span class="pre">htmintrin.h</span></tt> header file:</p>
 <dl class="docutils">
-<dt>_HTM_TBEGIN_STARTED</dt>
+<dt><tt class="docutils literal"><span class="pre">_HTM_TBEGIN_STARTED</span></tt></dt>
 <dd><tt class="docutils literal"><span class="pre">tbegin</span></tt> has been executed as part of normal processing.  The
 transaction body is supposed to be executed.</dd>
-<dt>_HTM_TBEGIN_INDETERMINATE</dt>
+<dt><tt class="docutils literal"><span class="pre">_HTM_TBEGIN_INDETERMINATE</span></tt></dt>
 <dd>The transaction was aborted due to an indeterminate condition which
 might be persistent.</dd>
-<dt>_HTM_TBEGIN_TRANSIENT</dt>
+<dt><tt class="docutils literal"><span class="pre">_HTM_TBEGIN_TRANSIENT</span></tt></dt>
 <dd>The transaction aborted due to a transient failure.  The transaction
 should be re-executed in that case.</dd>
-<dt>_HTM_TBEGIN_PERSISTENT</dt>
+<dt><tt class="docutils literal"><span class="pre">_HTM_TBEGIN_PERSISTENT</span></tt></dt>
 <dd>The transaction aborted due to a persistent failure.  Re-execution
 under same circumstances will not be productive.</dd>
 </dl>
@@ -5197,7 +5197,7 @@ is written to the first arguments location.  The store operation will
 not be rolled-back in case of an transaction abort.</p>
 </div>
 <div class="section" id="sh-built-in-functions">
-<span id="id52"></span><h2>SH Built-in Functions<a class="headerlink" href="#sh-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id30"></span><h2>SH Built-in Functions<a class="headerlink" href="#sh-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>The following built-in functions are supported on the SH1, SH2, SH3 and SH4
 families of processors:</p>
 <p id="index-61">Built-in Functionvoid__builtin_set_thread_pointer(void*``ptr``)Sets the <tt class="samp docutils literal"><span class="pre">GBR</span></tt> register to the specified value <tt class="docutils literal"><span class="pre">ptr</span></tt>.  This is usually
@@ -5206,7 +5206,7 @@ normally does not generate code that modifies the contents of <tt class="samp do
 thus the value is preserved across function calls.  Changing the <tt class="samp docutils literal"><span class="pre">GBR</span></tt>
 value in user code must be done with caution, since the compiler might use
 <tt class="samp docutils literal"><span class="pre">GBR</span></tt> in order to access thread local variables.</p>
-<p id="index-62">Built-in Functionvoid <a href="#id53"><span class="problematic" id="id54">*</span></a>__builtin_thread_pointer(void)Returns the value that is currently set in the <tt class="samp docutils literal"><span class="pre">GBR</span></tt> register.
+<p id="index-62">Built-in Functionvoid <a href="#id31"><span class="problematic" id="id32">*</span></a>__builtin_thread_pointer(void)Returns the value that is currently set in the <tt class="samp docutils literal"><span class="pre">GBR</span></tt> register.
 Memory loads and stores that use the thread pointer as a base address are
 turned into <tt class="samp docutils literal"><span class="pre">GBR</span></tt> based displacement loads and stores, if possible.
 For example:</p>
@@ -5227,7 +5227,7 @@ For example:</p>
 preserving the current values of the FR, SZ and PR bits.</p>
 </div>
 <div class="section" id="sparc-vis-built-in-functions">
-<span id="id55"></span><h2>SPARC VIS Built-in Functions<a class="headerlink" href="#sparc-vis-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id33"></span><h2>SPARC VIS Built-in Functions<a class="headerlink" href="#sparc-vis-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC supports SIMD operations on the SPARC using both the generic vector
 extensions (see <a class="reference internal" href="using-vector-instructions-through-built-in-functions.html#vector-extensions"><em>Using Vector Instructions through Built-in Functions</em></a>) as well as built-in functions for
 the SPARC Visual Instruction Set (VIS).  When you use the <a class="reference internal" href="hardware-models-and-configurations.html#cmdoption-mvis"><em class="xref std std-option">-mvis</em></a>
@@ -5364,7 +5364,7 @@ functions also become available:</p>
 </div>
 </div>
 <div class="section" id="spu-built-in-functions">
-<span id="id56"></span><h2>SPU Built-in Functions<a class="headerlink" href="#spu-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id34"></span><h2>SPU Built-in Functions<a class="headerlink" href="#spu-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides extensions for the SPU processor as described in the
 Sony/Toshiba/IBM SPU Language Extensions Specification, which can be
 found at <a class="reference external" href="http://cell.scei.co.jp/">http://cell.scei.co.jp/</a> or
@@ -5407,7 +5407,7 @@ implement the required functionality, but these are not supported and
 are subject to change without notice.</p>
 </div>
 <div class="section" id="ti-c6x-built-in-functions">
-<span id="id57"></span><h2>TI C6X Built-in Functions<a class="headerlink" href="#ti-c6x-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id35"></span><h2>TI C6X Built-in Functions<a class="headerlink" href="#ti-c6x-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides intrinsics to access certain instructions of the TI C6X
 processors.  These intrinsics, listed below, are available after
 inclusion of the <tt class="docutils literal"><span class="pre">c6x_intrinsics.h</span></tt> header file.  They map directly
@@ -5442,7 +5442,7 @@ to C6X instructions.</p>
 </div>
 </div>
 <div class="section" id="tile-gx-built-in-functions">
-<span id="id58"></span><h2>TILE-Gx Built-in Functions<a class="headerlink" href="#tile-gx-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id36"></span><h2>TILE-Gx Built-in Functions<a class="headerlink" href="#tile-gx-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides intrinsics to access every instruction of the TILE-Gx
 processor.  The intrinsics are of the form:</p>
 <div class="highlight-c++"><pre>unsigned long long __insn_``op`` (...)</pre>
@@ -5466,7 +5466,7 @@ guarantee that no network operations before it are reordered with
 those after it.</p>
 </div>
 <div class="section" id="tilepro-built-in-functions">
-<span id="id59"></span><h2>TILEPro Built-in Functions<a class="headerlink" href="#tilepro-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id37"></span><h2>TILEPro Built-in Functions<a class="headerlink" href="#tilepro-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>GCC provides intrinsics to access every instruction of the TILEPro
 processor.  The intrinsics are of the form:</p>
 <div class="highlight-c++"><pre>unsigned __insn_``op`` (...)</pre>
@@ -5492,7 +5492,7 @@ guarantee that no network operations before it are reordered with
 those after it.</p>
 </div>
 <div class="section" id="x86-built-in-functions">
-<span id="id60"></span><h2>x86 Built-in Functions<a class="headerlink" href="#x86-built-in-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id38"></span><h2>x86 Built-in Functions<a class="headerlink" href="#x86-built-in-functions" title="Permalink to this headline">¶</a></h2>
 <p>These built-in functions are available for the x86-32 and x86-64 family
 of computers, depending on the command-line switches used.</p>
 <p>If you specify command-line switches such as <em class="xref std std-option">-msse</em>,
@@ -5525,7 +5525,7 @@ mode.  All of them implement the function that is part of the name.</p>
 </div>
 <p>The following built-in function is always available.</p>
 <dl class="docutils">
-<dt>void __builtin_ia32_pause (void)</dt>
+<dt><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__builtin_ia32_pause</span> <span class="pre">(void)</span></tt></dt>
 <dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">pause</span></tt> machine instruction with a compiler memory
 barrier.</p>
 <p class="last">The following floating-point built-in functions are made available in the</p>
@@ -5533,9 +5533,9 @@ barrier.</p>
 </dl>
 <p>64-bit mode.</p>
 <dl class="docutils">
-<dt>__float128 __builtin_infq (void)</dt>
+<dt><tt class="docutils literal"><span class="pre">__float128</span> <span class="pre">__builtin_infq</span> <span class="pre">(void)</span></tt></dt>
 <dd>Similar to <tt class="docutils literal"><span class="pre">__builtin_inf</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">__float128</span></tt>.</dd>
-<dt>__float128 __builtin_huge_valq (void)</dt>
+<dt><tt class="docutils literal"><span class="pre">__float128</span> <span class="pre">__builtin_huge_valq</span> <span class="pre">(void)</span></tt></dt>
 <dd><p class="first">Similar to <tt class="docutils literal"><span class="pre">__builtin_huge_val</span></tt>, except the return type is <tt class="docutils literal"><span class="pre">__float128</span></tt>.</p>
 <p class="last" id="index-66">The following built-in functions are always available and can be used to</p>
 </dd>
@@ -5570,43 +5570,43 @@ don&#8217;t support constructor priority.</p>
 is of type <tt class="docutils literal"><span class="pre">cpuname</span></tt>
 and returns <tt class="docutils literal"><span class="pre">0</span></tt> otherwise. The following CPU names can be detected:</p>
 <dl class="docutils">
-<dt>intel</dt>
+<dt><tt class="samp docutils literal"><span class="pre">intel</span></tt></dt>
 <dd>Intel CPU.</dd>
-<dt>atom</dt>
+<dt><tt class="samp docutils literal"><span class="pre">atom</span></tt></dt>
 <dd>Intel Atom CPU.</dd>
-<dt>core2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">core2</span></tt></dt>
 <dd>Intel Core 2 CPU.</dd>
-<dt>corei7</dt>
+<dt><tt class="samp docutils literal"><span class="pre">corei7</span></tt></dt>
 <dd>Intel Core i7 CPU.</dd>
-<dt>nehalem</dt>
+<dt><tt class="samp docutils literal"><span class="pre">nehalem</span></tt></dt>
 <dd>Intel Core i7 Nehalem CPU.</dd>
-<dt>westmere</dt>
+<dt><tt class="samp docutils literal"><span class="pre">westmere</span></tt></dt>
 <dd>Intel Core i7 Westmere CPU.</dd>
-<dt>sandybridge</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sandybridge</span></tt></dt>
 <dd>Intel Core i7 Sandy Bridge CPU.</dd>
-<dt>amd</dt>
+<dt><tt class="samp docutils literal"><span class="pre">amd</span></tt></dt>
 <dd>AMD CPU.</dd>
-<dt>amdfam10h</dt>
+<dt><tt class="samp docutils literal"><span class="pre">amdfam10h</span></tt></dt>
 <dd>AMD Family 10h CPU.</dd>
-<dt>barcelona</dt>
+<dt><tt class="samp docutils literal"><span class="pre">barcelona</span></tt></dt>
 <dd>AMD Family 10h Barcelona CPU.</dd>
-<dt>shanghai</dt>
+<dt><tt class="samp docutils literal"><span class="pre">shanghai</span></tt></dt>
 <dd>AMD Family 10h Shanghai CPU.</dd>
-<dt>istanbul</dt>
+<dt><tt class="samp docutils literal"><span class="pre">istanbul</span></tt></dt>
 <dd>AMD Family 10h Istanbul CPU.</dd>
-<dt>btver1</dt>
+<dt><tt class="samp docutils literal"><span class="pre">btver1</span></tt></dt>
 <dd>AMD Family 14h CPU.</dd>
-<dt>amdfam15h</dt>
+<dt><tt class="samp docutils literal"><span class="pre">amdfam15h</span></tt></dt>
 <dd>AMD Family 15h CPU.</dd>
-<dt>bdver1</dt>
+<dt><tt class="samp docutils literal"><span class="pre">bdver1</span></tt></dt>
 <dd>AMD Family 15h Bulldozer version 1.</dd>
-<dt>bdver2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">bdver2</span></tt></dt>
 <dd>AMD Family 15h Bulldozer version 2.</dd>
-<dt>bdver3</dt>
+<dt><tt class="samp docutils literal"><span class="pre">bdver3</span></tt></dt>
 <dd>AMD Family 15h Bulldozer version 3.</dd>
-<dt>bdver4</dt>
+<dt><tt class="samp docutils literal"><span class="pre">bdver4</span></tt></dt>
 <dd>AMD Family 15h Bulldozer version 4.</dd>
-<dt>btver2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">btver2</span></tt></dt>
 <dd><p class="first">AMD Family 16h CPU.</p>
 <p class="last">Here is an example:</p>
 </dd>
@@ -5625,29 +5625,29 @@ and returns <tt class="docutils literal"><span class="pre">0</span></tt> otherwi
 supports <tt class="docutils literal"><span class="pre">feature</span></tt>
 and returns <tt class="docutils literal"><span class="pre">0</span></tt> otherwise. The following features can be detected:</p>
 <dl class="docutils">
-<dt>cmov</dt>
+<dt><tt class="samp docutils literal"><span class="pre">cmov</span></tt></dt>
 <dd>CMOV instruction.</dd>
-<dt>mmx</dt>
+<dt><tt class="samp docutils literal"><span class="pre">mmx</span></tt></dt>
 <dd>MMX instructions.</dd>
-<dt>popcnt</dt>
+<dt><tt class="samp docutils literal"><span class="pre">popcnt</span></tt></dt>
 <dd>POPCNT instruction.</dd>
-<dt>sse</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sse</span></tt></dt>
 <dd>SSE instructions.</dd>
-<dt>sse2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sse2</span></tt></dt>
 <dd>SSE2 instructions.</dd>
-<dt>sse3</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sse3</span></tt></dt>
 <dd>SSE3 instructions.</dd>
-<dt>ssse3</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ssse3</span></tt></dt>
 <dd>SSSE3 instructions.</dd>
-<dt>sse4.1</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sse4.1</span></tt></dt>
 <dd>SSE4.1 instructions.</dd>
-<dt>sse4.2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sse4.2</span></tt></dt>
 <dd>SSE4.2 instructions.</dd>
-<dt>avx</dt>
+<dt><tt class="samp docutils literal"><span class="pre">avx</span></tt></dt>
 <dd>AVX instructions.</dd>
-<dt>avx2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">avx2</span></tt></dt>
 <dd>AVX2 instructions.</dd>
-<dt>avx512f</dt>
+<dt><tt class="samp docutils literal"><span class="pre">avx512f</span></tt></dt>
 <dd><p class="first">AVX512F instructions.</p>
 <p class="last">Here is an example:</p>
 </dd>
@@ -5810,19 +5810,19 @@ All of them generate the machine instruction that is part of the name.</p>
 </div>
 <p>The following built-in functions are available when <em class="xref std std-option">-msse</em> is used.</p>
 <dl class="docutils">
-<dt>v4sf __builtin_ia32_loadups (float <a href="#id61"><span class="problematic" id="id62">*</span></a>)</dt>
+<dt><tt class="docutils literal"><span class="pre">v4sf</span> <span class="pre">__builtin_ia32_loadups</span> <span class="pre">(float</span> <span class="pre">*)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movups</span></tt> machine instruction as a load from memory.</dd>
-<dt>void __builtin_ia32_storeups (float <a href="#id63"><span class="problematic" id="id64">*</span></a>, v4sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__builtin_ia32_storeups</span> <span class="pre">(float</span> <span class="pre">*,</span> <span class="pre">v4sf)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movups</span></tt> machine instruction as a store to memory.</dd>
-<dt>v4sf __builtin_ia32_loadss (float <a href="#id65"><span class="problematic" id="id66">*</span></a>)</dt>
+<dt><tt class="docutils literal"><span class="pre">v4sf</span> <span class="pre">__builtin_ia32_loadss</span> <span class="pre">(float</span> <span class="pre">*)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movss</span></tt> machine instruction as a load from memory.</dd>
-<dt>v4sf __builtin_ia32_loadhps (v4sf, const v2sf <a href="#id67"><span class="problematic" id="id68">*</span></a>)</dt>
+<dt><tt class="docutils literal"><span class="pre">v4sf</span> <span class="pre">__builtin_ia32_loadhps</span> <span class="pre">(v4sf,</span> <span class="pre">const</span> <span class="pre">v2sf</span> <span class="pre">*)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movhps</span></tt> machine instruction as a load from memory.</dd>
-<dt>v4sf __builtin_ia32_loadlps (v4sf, const v2sf <a href="#id69"><span class="problematic" id="id70">*</span></a>)</dt>
+<dt><tt class="docutils literal"><span class="pre">v4sf</span> <span class="pre">__builtin_ia32_loadlps</span> <span class="pre">(v4sf,</span> <span class="pre">const</span> <span class="pre">v2sf</span> <span class="pre">*)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movlps</span></tt> machine instruction as a load from memory</dd>
-<dt>void __builtin_ia32_storehps (v2sf <a href="#id71"><span class="problematic" id="id72">*</span></a>, v4sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__builtin_ia32_storehps</span> <span class="pre">(v2sf</span> <span class="pre">*,</span> <span class="pre">v4sf)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">movhps</span></tt> machine instruction as a store to memory.</dd>
-<dt>void __builtin_ia32_storelps (v2sf <a href="#id73"><span class="problematic" id="id74">*</span></a>, v4sf)</dt>
+<dt><tt class="docutils literal"><span class="pre">void</span> <span class="pre">__builtin_ia32_storelps</span> <span class="pre">(v2sf</span> <span class="pre">*,</span> <span class="pre">v4sf)</span></tt></dt>
 <dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">movlps</span></tt> machine instruction as a store to memory.</p>
 <p class="last">The following built-in functions are available when <em class="xref std std-option">-msse2</em> is used.</p>
 </dd>
@@ -6091,26 +6091,26 @@ name.</p>
 <p>The following built-in functions are available when <em class="xref std std-option">-msse4.1</em> is
 used.</p>
 <dl class="docutils">
-<dt>v4sf __builtin_ia32_vec_set_v4sf (v4sf, float, const int)</dt>
+<dt><tt class="docutils literal"><span class="pre">v4sf</span> <span class="pre">__builtin_ia32_vec_set_v4sf</span> <span class="pre">(v4sf,</span> <span class="pre">float,</span> <span class="pre">const</span> <span class="pre">int)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">insertps</span></tt> machine instruction.</dd>
-<dt>int __builtin_ia32_vec_ext_v16qi (v16qi, const int)</dt>
+<dt><tt class="docutils literal"><span class="pre">int</span> <span class="pre">__builtin_ia32_vec_ext_v16qi</span> <span class="pre">(v16qi,</span> <span class="pre">const</span> <span class="pre">int)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">pextrb</span></tt> machine instruction.</dd>
-<dt>v16qi __builtin_ia32_vec_set_v16qi (v16qi, int, const int)</dt>
+<dt><tt class="docutils literal"><span class="pre">v16qi</span> <span class="pre">__builtin_ia32_vec_set_v16qi</span> <span class="pre">(v16qi,</span> <span class="pre">int,</span> <span class="pre">const</span> <span class="pre">int)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">pinsrb</span></tt> machine instruction.</dd>
-<dt>v4si __builtin_ia32_vec_set_v4si (v4si, int, const int)</dt>
+<dt><tt class="docutils literal"><span class="pre">v4si</span> <span class="pre">__builtin_ia32_vec_set_v4si</span> <span class="pre">(v4si,</span> <span class="pre">int,</span> <span class="pre">const</span> <span class="pre">int)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">pinsrd</span></tt> machine instruction.</dd>
-<dt>v2di __builtin_ia32_vec_set_v2di (v2di, long long, const int)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2di</span> <span class="pre">__builtin_ia32_vec_set_v2di</span> <span class="pre">(v2di,</span> <span class="pre">long</span> <span class="pre">long,</span> <span class="pre">const</span> <span class="pre">int)</span></tt></dt>
 <dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">pinsrq</span></tt> machine instruction in 64bit mode.</p>
 <p class="last">The following built-in functions are changed to generate new SSE4.1</p>
 </dd>
 </dl>
 <p>instructions when <em class="xref std std-option">-msse4.1</em> is used.</p>
 <dl class="docutils">
-<dt>float __builtin_ia32_vec_ext_v4sf (v4sf, const int)</dt>
+<dt><tt class="docutils literal"><span class="pre">float</span> <span class="pre">__builtin_ia32_vec_ext_v4sf</span> <span class="pre">(v4sf,</span> <span class="pre">const</span> <span class="pre">int)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">extractps</span></tt> machine instruction.</dd>
-<dt>int __builtin_ia32_vec_ext_v4si (v4si, const int)</dt>
+<dt><tt class="docutils literal"><span class="pre">int</span> <span class="pre">__builtin_ia32_vec_ext_v4si</span> <span class="pre">(v4si,</span> <span class="pre">const</span> <span class="pre">int)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">pextrd</span></tt> machine instruction.</dd>
-<dt>long long __builtin_ia32_vec_ext_v2di (v2di, const int)</dt>
+<dt><tt class="docutils literal"><span class="pre">long</span> <span class="pre">long</span> <span class="pre">__builtin_ia32_vec_ext_v2di</span> <span class="pre">(v2di,</span> <span class="pre">const</span> <span class="pre">int)</span></tt></dt>
 <dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">pextrq</span></tt> machine instruction in 64bit mode.</p>
 <p class="last">The following built-in functions are available when <em class="xref std std-option">-msse4.2</em> is</p>
 </dd>
@@ -6137,25 +6137,25 @@ name.</p>
 <p>The following built-in functions are available when <em class="xref std std-option">-msse4.2</em> is
 used.</p>
 <dl class="docutils">
-<dt>unsigned int __builtin_ia32_crc32qi (unsigned int, unsigned char)</dt>
+<dt><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">__builtin_ia32_crc32qi</span> <span class="pre">(unsigned</span> <span class="pre">int,</span> <span class="pre">unsigned</span> <span class="pre">char)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">crc32b</span></tt> machine instruction.</dd>
-<dt>unsigned int __builtin_ia32_crc32hi (unsigned int, unsigned short)</dt>
+<dt><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">__builtin_ia32_crc32hi</span> <span class="pre">(unsigned</span> <span class="pre">int,</span> <span class="pre">unsigned</span> <span class="pre">short)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">crc32w</span></tt> machine instruction.</dd>
-<dt>unsigned int __builtin_ia32_crc32si (unsigned int, unsigned int)</dt>
+<dt><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">__builtin_ia32_crc32si</span> <span class="pre">(unsigned</span> <span class="pre">int,</span> <span class="pre">unsigned</span> <span class="pre">int)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">crc32l</span></tt> machine instruction.</dd>
-<dt>unsigned long long __builtin_ia32_crc32di (unsigned long long, unsigned long long)</dt>
+<dt><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">__builtin_ia32_crc32di</span> <span class="pre">(unsigned</span> <span class="pre">long</span> <span class="pre">long,</span> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long)</span></tt></dt>
 <dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">crc32q</span></tt> machine instruction.</p>
 <p class="last">The following built-in functions are changed to generate new SSE4.2</p>
 </dd>
 </dl>
 <p>instructions when <em class="xref std std-option">-msse4.2</em> is used.</p>
 <dl class="docutils">
-<dt>int __builtin_popcount (unsigned int)</dt>
+<dt><tt class="docutils literal"><span class="pre">int</span> <span class="pre">__builtin_popcount</span> <span class="pre">(unsigned</span> <span class="pre">int)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">popcntl</span></tt> machine instruction.</dd>
-<dt>int __builtin_popcountl (unsigned long)</dt>
+<dt><tt class="docutils literal"><span class="pre">int</span> <span class="pre">__builtin_popcountl</span> <span class="pre">(unsigned</span> <span class="pre">long)</span></tt></dt>
 <dd>Generates the <tt class="docutils literal"><span class="pre">popcntl</span></tt> or <tt class="docutils literal"><span class="pre">popcntq</span></tt> machine instruction,
 depending on the size of <tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></tt>.</dd>
-<dt>int __builtin_popcountll (unsigned long long)</dt>
+<dt><tt class="docutils literal"><span class="pre">int</span> <span class="pre">__builtin_popcountll</span> <span class="pre">(unsigned</span> <span class="pre">long</span> <span class="pre">long)</span></tt></dt>
 <dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">popcntq</span></tt> machine instruction.</p>
 <p class="last">The following built-in functions are available when <em class="xref std std-option">-mavx</em> is</p>
 </dd>
@@ -6482,7 +6482,7 @@ name.</p>
 <p>The following built-in function is available when <em class="xref std std-option">-mpclmul</em> is
 used.</p>
 <dl class="docutils">
-<dt>v2di __builtin_ia32_pclmulqdq128 (v2di, v2di, const int)</dt>
+<dt><tt class="docutils literal"><span class="pre">v2di</span> <span class="pre">__builtin_ia32_pclmulqdq128</span> <span class="pre">(v2di,</span> <span class="pre">v2di,</span> <span class="pre">const</span> <span class="pre">int)</span></tt></dt>
 <dd><p class="first">Generates the <tt class="docutils literal"><span class="pre">pclmulqdq</span></tt> machine instruction.</p>
 <p class="last">The following built-in function is available when <em class="xref std std-option">-mfsgsbase</em> is</p>
 </dd>
@@ -6792,7 +6792,7 @@ x86 transactional memory intrinsics should be used instead.</p>
 </div>
 </div>
 <div class="section" id="x86-transactional-memory-intrinsics">
-<span id="id75"></span><h2>x86 Transactional Memory Intrinsics<a class="headerlink" href="#x86-transactional-memory-intrinsics" title="Permalink to this headline">¶</a></h2>
+<span id="id39"></span><h2>x86 Transactional Memory Intrinsics<a class="headerlink" href="#x86-transactional-memory-intrinsics" title="Permalink to this headline">¶</a></h2>
 <p>These hardware transactional memory intrinsics for x86 allow you to use
 memory transactions with RTM (Restricted Transactional Memory).
 This support is enabled with the <em class="xref std std-option">-mrtm</em> option.
@@ -6811,18 +6811,18 @@ explicitly tested).</p>
 are undone and an abort code encoded as a bit mask is returned.
 The following macros are defined:</p>
 <dl class="docutils">
-<dt>_XABORT_EXPLICIT</dt>
+<dt><tt class="docutils literal"><span class="pre">_XABORT_EXPLICIT</span></tt></dt>
 <dd>Transaction was explicitly aborted with <tt class="docutils literal"><span class="pre">_xabort</span></tt>.  The parameter passed
 to <tt class="docutils literal"><span class="pre">_xabort</span></tt> is available with <tt class="docutils literal"><span class="pre">_XABORT_CODE(status)</span></tt>.</dd>
-<dt>_XABORT_RETRY</dt>
+<dt><tt class="docutils literal"><span class="pre">_XABORT_RETRY</span></tt></dt>
 <dd>Transaction retry is possible.</dd>
-<dt>_XABORT_CONFLICT</dt>
+<dt><tt class="docutils literal"><span class="pre">_XABORT_CONFLICT</span></tt></dt>
 <dd>Transaction abort due to a memory conflict with another thread.</dd>
-<dt>_XABORT_CAPACITY</dt>
+<dt><tt class="docutils literal"><span class="pre">_XABORT_CAPACITY</span></tt></dt>
 <dd>Transaction abort due to the transaction using too much memory.</dd>
-<dt>_XABORT_DEBUG</dt>
+<dt><tt class="docutils literal"><span class="pre">_XABORT_DEBUG</span></tt></dt>
 <dd>Transaction abort due to a debug trap.</dd>
-<dt>_XABORT_NESTED</dt>
+<dt><tt class="docutils literal"><span class="pre">_XABORT_NESTED</span></tt></dt>
 <dd><p class="first">Transaction abort in an inner nested transaction.</p>
 <p class="last">There is no guarantee</p>
 </dd>

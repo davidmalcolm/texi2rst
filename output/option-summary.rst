@@ -6,7 +6,7 @@ Option Summary
 Here is a summary of all the options, grouped by type.  Explanations are
 in the following sections.
 
-Overall Options
+*Overall Options*
   See :ref:`Options Controlling the Kind of Output <overall-options>`.
 
   :option:`-c`  :option:`-S`  :option:`-E`  :option:`-o` ``file``  :option:`-no-canonical-prefixes`  
@@ -15,7 +15,7 @@ Overall Options
   :option:`--version` :option:`-wrapper` @``file`` :option:`-fplugin=```file`` :option:`-fplugin-arg-```name``=``arg``  
   :option:`-fdump-ada-spec`[:option:`-slim`] :option:`-fada-spec-parent=```unit`` :option:`-fdump-go-spec=```file``
 
-C Language Options
+*C Language Options*
   See :ref:`Options Controlling C Dialect <c-dialect-options>`.
 
   :option:`-ansi`  :option:`-std=```standard``  :option:`-fgnu89-inline` 
@@ -27,7 +27,7 @@ C Language Options
   :option:`-fsigned-bitfields`  :option:`-fsigned-char` 
   :option:`-funsigned-bitfields`  :option:`-funsigned-char`
 
-C++ Language Options
+*C++ Language Options*
   See :ref:`Options Controlling C++ Dialect <c++-dialect-options>`.
 
   :option:`-fabi-version=```n``  :option:`-fno-access-control`  :option:`-fcheck-new` 
@@ -59,7 +59,7 @@ C++ Language Options
   :option:`-Woverloaded-virtual`  :option:`-Wno-pmf-conversions` 
   :option:`-Wsign-promo`
 
-Objective-C and Objective-C++ Language Options
+*Objective-C and Objective-C++ Language Options*
   See :ref:`Options Controlling
   Objective-C and Objective-C++ Dialects <objective-c-and-objective-c++-dialect-options>`.
 
@@ -83,7 +83,7 @@ Objective-C and Objective-C++ Language Options
   :option:`-Wstrict-selector-match` 
   :option:`-Wundeclared-selector`
 
-Language Independent Options
+*Language Independent Options*
   See :ref:`Options to Control Diagnostic Messages Formatting <language-independent-options>`.
 
   :option:`-fmessage-length=```n``  
@@ -91,7 +91,7 @@ Language Independent Options
   :option:`-fdiagnostics-color=`[auto|never|always]  
   :option:`-fno-diagnostics-show-option` :option:`-fno-diagnostics-show-caret`
 
-Warning Options
+*Warning Options*
   See :ref:`Options to Request or Suppress Warnings <warning-options>`.
 
   :option:`-fsyntax-only`  :option:`-fmax-errors=```n``  :option:`-Wpedantic` 
@@ -148,14 +148,14 @@ Warning Options
   :option:`-Wvla` :option:`-Wvolatile-register-var`  :option:`-Wwrite-strings` 
   :option:`-Wzero-as-null-pointer-constant`
 
-C and Objective-C-only Warning Options
+*C and Objective-C-only Warning Options*
   :option:`-Wbad-function-cast`  :option:`-Wmissing-declarations` 
   :option:`-Wmissing-parameter-type`  :option:`-Wmissing-prototypes`  :option:`-Wnested-externs` 
   :option:`-Wold-style-declaration`  :option:`-Wold-style-definition` 
   :option:`-Wstrict-prototypes`  :option:`-Wtraditional`  :option:`-Wtraditional-conversion` 
   :option:`-Wdeclaration-after-statement` :option:`-Wpointer-sign`
 
-Debugging Options
+*Debugging Options*
   See :ref:`Options for Debugging Your Program or GCC <debugging-options>`.
 
   :option:`-d```letters``  :option:`-dumpspecs`  :option:`-dumpmachine`  :option:`-dumpversion` 
@@ -233,7 +233,7 @@ Debugging Options
   :option:`-print-sysroot` :option:`-print-sysroot-headers-suffix` 
   :option:`-save-temps` :option:`-save-temps=cwd` :option:`-save-temps=obj` :option:`-time`[=``file``]
 
-Optimization Options
+*Optimization Options*
   See :ref:`Options that Control Optimization <optimize-options>`.
 
   :option:`-faggressive-loop-optimizations` :option:`-falign-functions[=```n``] 
@@ -321,7 +321,7 @@ Optimization Options
   :option:`--param` ``name``=``value``
   :option:`-O`  :option:`-O0`  :option:`-O1`  :option:`-O2`  :option:`-O3`  :option:`-Os` :option:`-Ofast` :option:`-Og`
 
-Preprocessor Options
+*Preprocessor Options*
   See :ref:`Options Controlling the Preprocessor <preprocessor-options>`.
 
   :option:`-A```question``=``answer`` 
@@ -338,12 +338,12 @@ Preprocessor Options
   :option:`-remap` :option:`-trigraphs`  :option:`-undef`  :option:`-U```macro``  
   :option:`-Wp,```option`` :option:`-Xpreprocessor` ``option`` :option:`-no-integrated-cpp`
 
-Assembler Option
+*Assembler Option*
   See :ref:`Passing Options to the Assembler <assembler-options>`.
 
   :option:`-Wa,```option``  :option:`-Xassembler` ``option``
 
-Linker Options
+*Linker Options*
   See :ref:`Options for Linking <link-options>`.
 
   .. code-block:: c++
@@ -357,14 +357,14 @@ Linker Options
     -T ``script``  -Wl,``option``  -Xlinker ``option`` 
     -u ``symbol`` -z ``keyword``
 
-Directory Options
+*Directory Options*
   See :ref:`Options for Directory Search <directory-options>`.
 
   :option:`-B```prefix`` :option:`-I```dir`` :option:`-iplugindir=```dir`` 
   :option:`-iquote```dir`` :option:`-L```dir`` :option:`-specs=```file`` :option:`-I-` 
   :option:`--sysroot=```dir`` :option:`--no-sysroot-suffix`
 
-Machine Dependent Options
+*Machine Dependent Options*
   See :ref:`Hardware Models and Configurations <submodel-options>`.
 
   .. This list is ordered alphanumerically by subsection name.
@@ -985,7 +985,7 @@ Machine Dependent Options
   *zSeries Options*
   See S/390 and zSeries Options.
 
-Code Generation Options
+*Code Generation Options*
   See :ref:`Options for Code Generation Conventions <code-gen-options>`.
 
   :option:`-fcall-saved-```reg``  :option:`-fcall-used-```reg`` 

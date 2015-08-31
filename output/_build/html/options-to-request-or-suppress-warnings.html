@@ -337,17 +337,12 @@ case of very minor changes such as bug fixes to an existing code-base.
 Completely disabling the warning is not recommended.</p>
 </dd></dl>
 
-<table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-W<var>no-cpp</var></span></kbd></td>
-<td><p class="first">(C, Objective-C, C++, Objective-C++ and Fortran only)</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">-Wno-cpp</span></tt></dt>
+<dd><p class="first">(C, Objective-C, C++, Objective-C++ and Fortran only)</p>
 <p class="last">Suppress warning messages emitted by <tt class="docutils literal"><span class="pre">#warning</span></tt> directives.</p>
-</td></tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <dl class="option">
 <dt id="cmdoption-Wdouble-promotion">
 <tt class="descname">-Wdouble-promotion</tt><tt class="descclassname"> </tt><tt class="descclassname">, </tt><tt class="descname">-Wdouble-promotion</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-double-promotion</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Wdouble-promotion" title="Permalink to this definition">¶</a></dt>
@@ -1041,26 +1036,26 @@ undefined signed overflow when estimating how many iterations a loop
 requires, in particular when determining whether a loop will be
 executed at all.</p>
 <dl class="docutils">
-<dt>-Wstrict-overflow=1</dt>
+<dt><tt class="docutils literal"><span class="pre">-Wstrict-overflow=1</span></tt></dt>
 <dd>Warn about cases that are both questionable and easy to avoid.  For
 example,  with <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstrict-overflow"><em class="xref std std-option">-fstrict-overflow</em></a>, the compiler simplifies
 <tt class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">x</span></tt> to <tt class="docutils literal"><span class="pre">1</span></tt>.  This level of
 <a class="reference internal" href="#cmdoption-Wstrict-overflow"><em class="xref std std-option">-Wstrict-overflow</em></a> is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>; higher levels
 are not, and must be explicitly requested.</dd>
-<dt>-Wstrict-overflow=2</dt>
+<dt><tt class="docutils literal"><span class="pre">-Wstrict-overflow=2</span></tt></dt>
 <dd>Also warn about other cases where a comparison is simplified to a
 constant.  For example: <tt class="docutils literal"><span class="pre">abs</span> <span class="pre">(x)</span> <span class="pre">&gt;=</span> <span class="pre">0</span></tt>.  This can only be
 simplified when <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstrict-overflow"><em class="xref std std-option">-fstrict-overflow</em></a> is in effect, because
 <tt class="docutils literal"><span class="pre">abs</span> <span class="pre">(INT_MIN)</span></tt> overflows to <tt class="docutils literal"><span class="pre">INT_MIN</span></tt>, which is less than
 zero.  <a class="reference internal" href="#cmdoption-Wstrict-overflow"><em class="xref std std-option">-Wstrict-overflow</em></a> (with no level) is the same as
 <em class="xref std std-option">-Wstrict-overflow=2</em>.</dd>
-<dt>-Wstrict-overflow=3</dt>
+<dt><tt class="docutils literal"><span class="pre">-Wstrict-overflow=3</span></tt></dt>
 <dd>Also warn about other cases where a comparison is simplified.  For
 example: <tt class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">1</span></tt> is simplified to <tt class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></tt>.</dd>
-<dt>-Wstrict-overflow=4</dt>
+<dt><tt class="docutils literal"><span class="pre">-Wstrict-overflow=4</span></tt></dt>
 <dd>Also warn about other simplifications not covered by the above cases.
 For example: <tt class="docutils literal"><span class="pre">(x</span> <span class="pre">*</span> <span class="pre">10)</span> <span class="pre">/</span> <span class="pre">5</span></tt> is simplified to <tt class="docutils literal"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">2</span></tt>.</dd>
-<dt>-Wstrict-overflow=5</dt>
+<dt><tt class="docutils literal"><span class="pre">-Wstrict-overflow=5</span></tt></dt>
 <dd>Also warn about cases where the compiler reduces the magnitude of a
 constant involved in a comparison.  For example: <tt class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">&gt;</span> <span class="pre">y</span></tt> is
 simplified to <tt class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;=</span> <span class="pre">y</span></tt>.  This is reported only at the
@@ -1137,17 +1132,11 @@ suggestions of <a class="reference internal" href="#cmdoption-Wsuggest-final-typ
 annotations.</p>
 </dd></dl>
 
-<table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-W<var>suggest-override</var></span></kbd></td>
-</tr>
-<tr><td>&nbsp;</td><td>Warn about overriding virtual functions that are not marked with the override
-keyword.</td></tr>
-</tbody>
-</table>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">-Wsuggest-override</span></tt></dt>
+<dd>Warn about overriding virtual functions that are not marked with the override
+keyword.</dd>
+</dl>
 <dl class="option">
 <dt id="cmdoption-Warray-bounds">
 <tt class="descname">-Warray-bounds</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">-Wno-array-bounds</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-Warray-bounds" title="Permalink to this definition">¶</a></dt>
@@ -1155,10 +1144,10 @@ keyword.</td></tr>
 (default for <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O2"><em class="xref std std-option">-O2</em></a> and above). It warns about subscripts to arrays
 that are always out of bounds. This warning is enabled by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>.</p>
 <dl class="docutils">
-<dt>-Warray-bounds=1</dt>
+<dt><tt class="docutils literal"><span class="pre">-Warray-bounds=1</span></tt></dt>
 <dd>This is the warning level of <a class="reference internal" href="#cmdoption-Warray-bounds"><em class="xref std std-option">-Warray-bounds</em></a> and is enabled
 by <a class="reference internal" href="#cmdoption-Wall"><em class="xref std std-option">-Wall</em></a>; higher levels are not, and must be explicitly requested.</dd>
-<dt>-Warray-bounds=2</dt>
+<dt><tt class="docutils literal"><span class="pre">-Warray-bounds=2</span></tt></dt>
 <dd>This warning level also warns about out of bounds access for
 arrays at the end of a struct and for arrays accessed through
 pointers. This warning level may give a larger number of
@@ -2382,23 +2371,16 @@ when preparing code to use with the <tt class="docutils literal"><span class="pr
 from the decimal floating-point extension to C99.</p>
 </dd></dl>
 
-<table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-W<var>no-designated-init</var></span></kbd></td>
-</tr>
-<tr><td>&nbsp;</td><td><div class="first admonition note">
+<p><tt class="docutils literal"><span class="pre">-Wno-designated-init</span></tt></p>
+<blockquote>
+<div><div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">(C and Objective-C only)</p>
 </div>
-<p class="last">Suppress warnings when a positional initializer is used to initialize
+<p>Suppress warnings when a positional initializer is used to initialize
 a structure that has been marked with the <tt class="docutils literal"><span class="pre">designated_init</span></tt>
 attribute.</p>
-</td></tr>
-</tbody>
-</table>
+</div></blockquote>
 </div>
 
 

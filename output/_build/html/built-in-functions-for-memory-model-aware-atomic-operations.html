@@ -122,21 +122,21 @@ these.</p>
 synchronization requirements with other threads.  They are listed here
 in approximately ascending order of strength.</p>
 <dl class="docutils">
-<dt>__ATOMIC_RELAXED</dt>
+<dt><tt class="docutils literal"><span class="pre">__ATOMIC_RELAXED</span></tt></dt>
 <dd>No barriers or synchronization.</dd>
-<dt>__ATOMIC_CONSUME</dt>
+<dt><tt class="docutils literal"><span class="pre">__ATOMIC_CONSUME</span></tt></dt>
 <dd>Data dependency only for both barrier and synchronization with another
 thread.</dd>
-<dt>__ATOMIC_ACQUIRE</dt>
+<dt><tt class="docutils literal"><span class="pre">__ATOMIC_ACQUIRE</span></tt></dt>
 <dd>Barrier to hoisting of code and synchronizes with release (or stronger)
 semantic stores from another thread.</dd>
-<dt>__ATOMIC_RELEASE</dt>
+<dt><tt class="docutils literal"><span class="pre">__ATOMIC_RELEASE</span></tt></dt>
 <dd>Barrier to sinking of code and synchronizes with acquire (or stronger)
 semantic loads from another thread.</dd>
-<dt>__ATOMIC_ACQ_REL</dt>
+<dt><tt class="docutils literal"><span class="pre">__ATOMIC_ACQ_REL</span></tt></dt>
 <dd>Barrier in both directions and synchronizes with acquire loads and
 release stores in another thread.</dd>
-<dt>__ATOMIC_SEQ_CST</dt>
+<dt><tt class="docutils literal"><span class="pre">__ATOMIC_SEQ_CST</span></tt></dt>
 <dd><p class="first">Barrier in both directions and synchronizes with acquire loads and
 release stores in all threads.</p>
 <p class="last">Note that the scope of a C++11 memory model depends on whether or not</p>

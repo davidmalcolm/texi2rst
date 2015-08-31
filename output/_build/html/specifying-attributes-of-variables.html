@@ -125,7 +125,7 @@ attributes.</p>
 <span id="id1"></span><h2>Common Variable Attributes<a class="headerlink" href="#common-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>The following attributes are supported on most targets.</p>
 <dl class="docutils" id="index-2">
-<dt>aligned (<tt class="docutils literal"><span class="pre">alignment</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">aligned</span> <span class="pre">(</span><em><span class="pre">alignment</span></em><span class="pre">)</span></tt></dt>
 <dd><p class="first">This attribute specifies a minimum alignment for the variable or
 structure field, measured in bytes.  For example, the declaration:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">x</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">aligned</span> <span class="p">(</span><span class="mi">16</span><span class="p">)))</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -180,7 +180,7 @@ alignment.  See your linker documentation for further information.</p>
 (see <a class="reference internal" href="declaring-attributes-of-functions.html#common-function-attributes"><em>Common Function Attributes</em></a>.)</p>
 </dd>
 </dl>
-<p>cleanup (<tt class="docutils literal"><span class="pre">cleanup_function</span></tt>)</p>
+<p><tt class="samp docutils literal"><span class="pre">cleanup</span> <span class="pre">(</span><em><span class="pre">cleanup_function</span></em><span class="pre">)</span></tt></p>
 <blockquote>
 <div><p id="index-3">The <tt class="docutils literal"><span class="pre">cleanup</span></tt> attribute runs a function when the variable goes
 out of scope.  This attribute can only be applied to auto function
@@ -205,7 +205,7 @@ opposite-to allocate space for it directly.</p>
 <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fno-common"><em class="xref std std-option">-fno-common</em></a> and <a class="reference internal" href="#cmdoption-fcommon"><em class="xref std std-option">-fcommon</em></a> flags respectively.</p>
 </dd></dl>
 
-<p>deprecated deprecated (<tt class="docutils literal"><span class="pre">msg</span></tt>)</p>
+<p><tt class="docutils literal"><span class="pre">deprecated</span></tt> <tt class="samp docutils literal"><span class="pre">deprecated</span> <span class="pre">(</span><em><span class="pre">msg</span></em><span class="pre">)</span></tt></p>
 <blockquote>
 <div><p id="index-6">The <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute results in a warning if the variable
 is used anywhere in the source file.  This is useful when identifying
@@ -226,7 +226,7 @@ present.</p>
 types (see <a class="reference internal" href="declaring-attributes-of-functions.html#common-function-attributes"><em>Common Function Attributes</em></a>,
 see <a class="reference internal" href="specifying-attributes-of-types.html#common-type-attributes"><em>Common Type Attributes</em></a>).</p>
 </div></blockquote>
-<p>mode (<tt class="docutils literal"><span class="pre">mode</span></tt>)</p>
+<p><tt class="samp docutils literal"><span class="pre">mode</span> <span class="pre">(</span><em><span class="pre">mode</span></em><span class="pre">)</span></tt></p>
 <blockquote>
 <div><p id="index-7">This attribute specifies the data type for the declaration-whichever
 type corresponds to the mode <tt class="docutils literal"><span class="pre">mode</span></tt>.  This in effect lets you
@@ -236,7 +236,7 @@ indicate the mode corresponding to a one-byte integer, <tt class="docutils liter
 <tt class="docutils literal"><span class="pre">__word__</span></tt> for the mode of a one-word integer, and <tt class="docutils literal"><span class="pre">pointer</span></tt>
 or <tt class="docutils literal"><span class="pre">__pointer__</span></tt> for the mode used to represent pointers.</p>
 </div></blockquote>
-<p>packed</p>
+<p><tt class="docutils literal"><span class="pre">packed</span></tt></p>
 <blockquote>
 <div><p id="index-8">The <tt class="docutils literal"><span class="pre">packed</span></tt> attribute specifies that a variable or structure field
 should have the smallest possible alignment-one byte for a variable,
@@ -257,7 +257,7 @@ been fixed in GCC 4.4 but the change can lead to differences in the
 structure layout.  See the documentation of
 <a class="reference internal" href="options-to-request-or-suppress-warnings.html#cmdoption-Wpacked-bitfield-compat"><em class="xref std std-option">-Wpacked-bitfield-compat</em></a> for more information.</p>
 </div></blockquote>
-<p>section (&#8220;<tt class="docutils literal"><span class="pre">section-name</span></tt>&#8221;)</p>
+<p><tt class="samp docutils literal"><span class="pre">section</span> <span class="pre">(&quot;</span><em><span class="pre">section-name</span></em><span class="pre">&quot;)</span></tt></p>
 <blockquote>
 <div><p id="index-9">Normally, the compiler places the objects it generates in sections like
 <tt class="docutils literal"><span class="pre">data</span></tt> and <tt class="docutils literal"><span class="pre">bss</span></tt>.  Sometimes, however, you need additional sections,
@@ -301,7 +301,7 @@ attribute is not available on all platforms.
 If you need to map the entire contents of a module to a particular
 section, consider using the facilities of the linker instead.</p>
 </div></blockquote>
-<p>tls_model (&#8220;<tt class="docutils literal"><span class="pre">tls_model</span></tt>&#8221;)</p>
+<p><tt class="samp docutils literal"><span class="pre">tls_model</span> <span class="pre">(&quot;</span><em><span class="pre">tls_model</span></em><span class="pre">&quot;)</span></tt></p>
 <blockquote>
 <div><p id="index-10">The <tt class="docutils literal"><span class="pre">tls_model</span></tt> attribute sets thread-local storage model
 (see <a class="reference internal" href="thread-local-storage.html#thread-local"><em>Thread-Local Storage</em></a>) of a particular <tt class="docutils literal"><span class="pre">__thread</span></tt> variable,
@@ -311,13 +311,13 @@ The <tt class="docutils literal"><span class="pre">tls_model</span></tt> argumen
 <tt class="docutils literal"><span class="pre">local-dynamic</span></tt>, <tt class="docutils literal"><span class="pre">initial-exec</span></tt> or <tt class="docutils literal"><span class="pre">local-exec</span></tt>.</p>
 <p>Not all targets support this attribute.</p>
 </div></blockquote>
-<p>unused</p>
+<p><tt class="docutils literal"><span class="pre">unused</span></tt></p>
 <blockquote>
 <div><p id="index-11">This attribute, attached to a variable, means that the variable is meant
 to be possibly unused.  GCC does not produce a warning for this
 variable.</p>
 </div></blockquote>
-<p>used</p>
+<p><tt class="docutils literal"><span class="pre">used</span></tt></p>
 <blockquote>
 <div><p id="index-12">This attribute, attached to a variable with static storage, means that
 the variable must be emitted even if it appears that the variable is not
@@ -326,7 +326,7 @@ referenced.</p>
 attribute also means that the member is instantiated if the
 class itself is instantiated.</p>
 </div></blockquote>
-<p>vector_size (<tt class="docutils literal"><span class="pre">bytes</span></tt>)</p>
+<p><tt class="samp docutils literal"><span class="pre">vector_size</span> <span class="pre">(</span><em><span class="pre">bytes</span></em><span class="pre">)</span></tt></p>
 <blockquote>
 <div><p id="index-13">This attribute specifies the vector size for the variable, measured in
 bytes.  For example, the declaration:</p>
@@ -348,7 +348,7 @@ size as a corresponding scalar.  For example, the declaration:</p>
 <p>is invalid even if the size of the structure is the same as the size of
 the <tt class="docutils literal"><span class="pre">int</span></tt>.</p>
 </div></blockquote>
-<p>weak</p>
+<p><tt class="docutils literal"><span class="pre">weak</span></tt></p>
 <blockquote>
 <div><p id="index-14">The <tt class="docutils literal"><span class="pre">weak</span></tt> attribute is described in
 Common Function Attributes.</p>
@@ -356,7 +356,7 @@ Common Function Attributes.</p>
 </div>
 <div class="section" id="avr-variable-attributes">
 <span id="id2"></span><h2>AVR Variable Attributes<a class="headerlink" href="#avr-variable-attributes" title="Permalink to this headline">¶</a></h2>
-<p>progmem</p>
+<p><tt class="docutils literal"><span class="pre">progmem</span></tt></p>
 <blockquote>
 <div><p id="index-15">The <tt class="docutils literal"><span class="pre">progmem</span></tt> attribute is used on the AVR to place read-only
 data in the non-volatile program memory (flash). The <tt class="docutils literal"><span class="pre">progmem</span></tt>
@@ -386,7 +386,7 @@ normally resides in the data memory (RAM).</p>
 <p>See also the AVR Named Address Spaces section for
 an alternate way to locate and access data in flash memory.</p>
 </div></blockquote>
-<p>io io (<tt class="docutils literal"><span class="pre">addr</span></tt>)</p>
+<p><tt class="docutils literal"><span class="pre">io</span></tt> <tt class="samp docutils literal"><span class="pre">io</span> <span class="pre">(</span><em><span class="pre">addr</span></em><span class="pre">)</span></tt></p>
 <blockquote>
 <div><p id="index-16">Variables with the <tt class="docutils literal"><span class="pre">io</span></tt> attribute are used to address
 memory-mapped peripherals in the io address range.
@@ -406,14 +406,14 @@ Example:</p>
 </pre></div>
 </div>
 </div></blockquote>
-<p>io_low io_low (<tt class="docutils literal"><span class="pre">addr</span></tt>)</p>
+<p><tt class="docutils literal"><span class="pre">io_low</span></tt> <tt class="samp docutils literal"><span class="pre">io_low</span> <span class="pre">(</span><em><span class="pre">addr</span></em><span class="pre">)</span></tt></p>
 <blockquote>
 <div><p id="index-17">This is like the <tt class="docutils literal"><span class="pre">io</span></tt> attribute, but additionally it informs the
 compiler that the object lies in the lower half of the I/O area,
 allowing the use of <tt class="docutils literal"><span class="pre">cbi</span></tt>, <tt class="docutils literal"><span class="pre">sbi</span></tt>, <tt class="docutils literal"><span class="pre">sbic</span></tt> and <tt class="docutils literal"><span class="pre">sbis</span></tt>
 instructions.</p>
 </div></blockquote>
-<p>address address (<tt class="docutils literal"><span class="pre">addr</span></tt>)</p>
+<p><tt class="docutils literal"><span class="pre">address</span></tt> <tt class="samp docutils literal"><span class="pre">address</span> <span class="pre">(</span><em><span class="pre">addr</span></em><span class="pre">)</span></tt></p>
 <blockquote>
 <div><p id="index-18">Variables with the <tt class="docutils literal"><span class="pre">address</span></tt> attribute are used to address
 memory-mapped peripherals that may lie outside the io address range.</p>
@@ -425,7 +425,7 @@ memory-mapped peripherals that may lie outside the io address range.</p>
 <div class="section" id="blackfin-variable-attributes">
 <span id="id3"></span><h2>Blackfin Variable Attributes<a class="headerlink" href="#blackfin-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Three attributes are currently defined for the Blackfin.</p>
-<p>l1_data l1_data_A l1_data_B</p>
+<p><tt class="docutils literal"><span class="pre">l1_data</span></tt> <tt class="docutils literal"><span class="pre">l1_data_A</span></tt> <tt class="docutils literal"><span class="pre">l1_data_B</span></tt></p>
 <blockquote>
 <div><span class="target" id="index-19"></span><span class="target" id="index-20"></span><p id="index-21">Use these attributes on the Blackfin to place the variable into L1 Data SRAM.
 Variables with <tt class="docutils literal"><span class="pre">l1_data</span></tt> attribute are put into the specific section
@@ -433,7 +433,7 @@ named <tt class="docutils literal"><span class="pre">.l1.data</span></tt>. Those
 the specific section named <tt class="docutils literal"><span class="pre">.l1.data.A</span></tt>. Those with <tt class="docutils literal"><span class="pre">l1_data_B</span></tt>
 attribute are put into the specific section named <tt class="docutils literal"><span class="pre">.l1.data.B</span></tt>.</p>
 </div></blockquote>
-<p>l2</p>
+<p><tt class="docutils literal"><span class="pre">l2</span></tt></p>
 <blockquote>
 <div><p id="index-22">Use this attribute on the Blackfin to place the variable into L2 SRAM.
 Variables with <tt class="docutils literal"><span class="pre">l2</span></tt> attribute are put into the specific section
@@ -443,7 +443,7 @@ named <tt class="docutils literal"><span class="pre">.l2.data</span></tt>.</p>
 <div class="section" id="h8-300-variable-attributes">
 <span id="id4"></span><h2>H8/300 Variable Attributes<a class="headerlink" href="#h8-300-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These variable attributes are available for H8/300 targets:</p>
-<p>eightbit_data</p>
+<p><tt class="docutils literal"><span class="pre">eightbit_data</span></tt></p>
 <blockquote>
 <div><span class="target" id="index-23"></span><p id="index-24">Use this attribute on the H8/300, H8/300H, and H8S to indicate that the specified
 variable should be placed into the eight-bit data section.
@@ -453,7 +453,7 @@ on data in the eight-bit data area.  Note the eight-bit data area is limited to
 <p>You must use GAS and GLD from GNU binutils version 2.7 or later for
 this attribute to work correctly.</p>
 </div></blockquote>
-<p>tiny_data</p>
+<p><tt class="docutils literal"><span class="pre">tiny_data</span></tt></p>
 <blockquote>
 <div><span class="target" id="index-25"></span><p id="index-26">Use this attribute on the H8/300H and H8S to indicate that the specified
 variable should be placed into the tiny data section.
@@ -465,7 +465,7 @@ slightly under 32KB of data.</p>
 <div class="section" id="ia-64-variable-attributes">
 <span id="id5"></span><h2>IA-64 Variable Attributes<a class="headerlink" href="#ia-64-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>The IA-64 back end supports the following variable attribute:</p>
-<p>model (<tt class="docutils literal"><span class="pre">model-name</span></tt>)</p>
+<p><tt class="samp docutils literal"><span class="pre">model</span> <span class="pre">(</span><em><span class="pre">model-name</span></em><span class="pre">)</span></tt></p>
 <blockquote>
 <div><p id="index-27">On IA-64, use this attribute to set the addressability of an object.
 At present, the only supported identifier for <tt class="docutils literal"><span class="pre">model-name</span></tt> is
@@ -479,7 +479,7 @@ defined by shared libraries.</p>
 <div class="section" id="m32r-d-variable-attributes">
 <span id="id6"></span><h2>M32R/D Variable Attributes<a class="headerlink" href="#m32r-d-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>One attribute is currently defined for the M32R/D.</p>
-<p>model (<tt class="docutils literal"><span class="pre">model-name</span></tt>)</p>
+<p><tt class="samp docutils literal"><span class="pre">model</span> <span class="pre">(</span><em><span class="pre">model-name</span></em><span class="pre">)</span></tt></p>
 <blockquote>
 <div><span class="target" id="index-28"></span><p id="index-29">Use this attribute on the M32R/D to set the addressability of an object.
 The identifier <tt class="docutils literal"><span class="pre">model-name</span></tt> is one of <tt class="docutils literal"><span class="pre">small</span></tt>, <tt class="docutils literal"><span class="pre">medium</span></tt>,
@@ -501,36 +501,36 @@ is addressed relative to the <tt class="docutils literal"><span class="pre">$tp<
 space is a 65536-byte region relative to the <tt class="docutils literal"><span class="pre">$gp</span></tt> register.  In
 addition to these memory regions, the MeP target has a separate 16-bit
 control bus which is specified with <tt class="docutils literal"><span class="pre">cb</span></tt> attributes.</p>
-<p>based</p>
+<p><tt class="docutils literal"><span class="pre">based</span></tt></p>
 <blockquote>
 <div><p id="index-30">Any variable with the <tt class="docutils literal"><span class="pre">based</span></tt> attribute is assigned to the
 <tt class="docutils literal"><span class="pre">.based</span></tt> section, and is accessed with relative to the
 <tt class="docutils literal"><span class="pre">$tp</span></tt> register.</p>
 </div></blockquote>
-<p>tiny</p>
+<p><tt class="docutils literal"><span class="pre">tiny</span></tt></p>
 <blockquote>
 <div><p id="index-31">Likewise, the <tt class="docutils literal"><span class="pre">tiny</span></tt> attribute assigned variables to the
 <tt class="docutils literal"><span class="pre">.tiny</span></tt> section, relative to the <tt class="docutils literal"><span class="pre">$gp</span></tt> register.</p>
 </div></blockquote>
-<p>near</p>
+<p><tt class="docutils literal"><span class="pre">near</span></tt></p>
 <blockquote>
 <div><p id="index-32">Variables with the <tt class="docutils literal"><span class="pre">near</span></tt> attribute are assumed to have addresses
 that fit in a 24-bit addressing mode.  This is the default for large
 variables (<tt class="docutils literal"><span class="pre">-mtiny=4</span></tt> is the default) but this attribute can
 override <tt class="docutils literal"><span class="pre">-mtiny=</span></tt> for small variables, or override <tt class="docutils literal"><span class="pre">-ml</span></tt>.</p>
 </div></blockquote>
-<p>far</p>
+<p><tt class="docutils literal"><span class="pre">far</span></tt></p>
 <blockquote>
 <div><p id="index-33">Variables with the <tt class="docutils literal"><span class="pre">far</span></tt> attribute are addressed using a full
 32-bit address.  Since this covers the entire memory space, this
 allows modules to make no assumptions about where variables might be
 stored.</p>
 </div></blockquote>
-<p>io
+<p><tt class="docutils literal"><span class="pre">io</span></tt>
 .. index:: io variable attribute, MeP</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>io (<tt class="docutils literal"><span class="pre">addr</span></tt>)</dt>
+<dt><tt class="samp docutils literal"><span class="pre">io</span> <span class="pre">(</span><em><span class="pre">addr</span></em><span class="pre">)</span></tt></dt>
 <dd><p class="first">Variables with the <tt class="docutils literal"><span class="pre">io</span></tt> attribute are used to address
 memory-mapped peripherals.  If an address is specified, the variable
 is assigned that address, else it is not assigned an address (it is
@@ -541,7 +541,7 @@ assumed some other module assigns an address).  Example:</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>cb cb (<tt class="docutils literal"><span class="pre">addr</span></tt>)</p>
+<p><tt class="docutils literal"><span class="pre">cb</span></tt> <tt class="samp docutils literal"><span class="pre">cb</span> <span class="pre">(</span><em><span class="pre">addr</span></em><span class="pre">)</span></tt></p>
 <blockquote>
 <div><p id="index-34">Variables with the <tt class="docutils literal"><span class="pre">cb</span></tt> attribute are used to access the control
 bus, using special instructions.  <tt class="docutils literal"><span class="pre">addr</span></tt> indicates the control bus
@@ -556,12 +556,12 @@ address.  Example:</p>
 <p>You can use these attributes on Microsoft Windows targets.
 x86 Variable Attributes for additional Windows compatibility
 attributes available on all x86 targets.</p>
-<p>dllimport dllexport</p>
+<p><tt class="docutils literal"><span class="pre">dllimport</span></tt> <tt class="docutils literal"><span class="pre">dllexport</span></tt></p>
 <blockquote>
 <div><span class="target" id="index-35"></span><p id="index-36">The <tt class="docutils literal"><span class="pre">dllimport</span></tt> and <tt class="docutils literal"><span class="pre">dllexport</span></tt> attributes are described in
 Microsoft Windows Function Attributes.</p>
 </div></blockquote>
-<p>selectany</p>
+<p><tt class="docutils literal"><span class="pre">selectany</span></tt></p>
 <blockquote>
 <div><p id="index-37">The <tt class="docutils literal"><span class="pre">selectany</span></tt> attribute causes an initialized global variable to
 have link-once semantics.  When multiple definitions of the variable are
@@ -580,7 +580,7 @@ targets.  You can use <tt class="docutils literal"><span class="pre">__declspec<
 <tt class="docutils literal"><span class="pre">__attribute__</span> <span class="pre">((selectany))</span></tt> for compatibility with other
 compilers.</p>
 </div></blockquote>
-<p>shared</p>
+<p><tt class="docutils literal"><span class="pre">shared</span></tt></p>
 <blockquote>
 <div><p id="index-38">On Microsoft Windows, in addition to putting variable definitions in a named
 section, the section can also be shared among all running copies of an
@@ -623,7 +623,7 @@ SPU Type Attributes.</p>
 <span id="id11"></span><h2>x86 Variable Attributes<a class="headerlink" href="#x86-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Two attributes are currently defined for x86 configurations:
 <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>.</p>
-<p>ms_struct gcc_struct</p>
+<p><tt class="docutils literal"><span class="pre">ms_struct</span></tt> <tt class="docutils literal"><span class="pre">gcc_struct</span></tt></p>
 <blockquote>
 <div><span class="target" id="index-43"></span><p id="index-44">If <tt class="docutils literal"><span class="pre">packed</span></tt> is used on a structure, or if bit-fields are used,
 it may be that the Microsoft ABI lays out the structure differently
@@ -736,7 +736,7 @@ still affect the alignment of the structure:</p>
 <span id="id12"></span><h2>Xstormy16 Variable Attributes<a class="headerlink" href="#xstormy16-variable-attributes" title="Permalink to this headline">¶</a></h2>
 <p>One attribute is currently defined for xstormy16 configurations:
 <tt class="docutils literal"><span class="pre">below100</span></tt>.</p>
-<p>below100</p>
+<p><tt class="docutils literal"><span class="pre">below100</span></tt></p>
 <blockquote>
 <div><p id="index-45">If a variable has the <tt class="docutils literal"><span class="pre">below100</span></tt> attribute (<tt class="docutils literal"><span class="pre">BELOW100</span></tt> is
 allowed also), GCC places the variable in the first 0x100 bytes of

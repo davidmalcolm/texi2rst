@@ -127,13 +127,13 @@ See :ref:`driver`.
   When the compiler is configured to allow multibyte characters,
   the following values for :envvar:`LANG` are recognized:
 
-  C-JIS
+  :samp:`C-JIS`
     Recognize JIS characters.
 
-  C-SJIS
+  :samp:`C-SJIS`
     Recognize SJIS characters.
 
-  C-EUCJP
+  :samp:`C-EUCJP`
     Recognize EUCJP characters.
 
     If :envvar:`LANG` is not defined, or if it has some other value, then the

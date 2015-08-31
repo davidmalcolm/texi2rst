@@ -45,7 +45,7 @@ The following attributes are supported on most targets.
 
 .. index:: aligned variable attribute
 
-aligned (``alignment``)
+:samp:`aligned ({alignment})`
   This attribute specifies a minimum alignment for the variable or
   structure field, measured in bytes.  For example, the declaration:
 
@@ -111,7 +111,7 @@ aligned (``alignment``)
   The ``aligned`` attribute can also be used for functions
   (see :ref:`common-function-attributes`.)
 
-cleanup (``cleanup_function``)
+:samp:`cleanup ({cleanup_function})`
 
   .. index:: cleanup variable attribute
 
@@ -142,7 +142,7 @@ cleanup (``cleanup_function``)
   These attributes override the default chosen by the
   :option:`-fno-common` and :option:`-fcommon` flags respectively.
 
-deprecated deprecated (``msg``)
+``deprecated`` :samp:`deprecated ({msg})`
 
   .. index:: deprecated variable attribute
 
@@ -168,7 +168,7 @@ deprecated deprecated (``msg``)
   types (see :ref:`common-function-attributes`,
   see :ref:`common-type-attributes`).
 
-mode (``mode``)
+:samp:`mode ({mode})`
 
   .. index:: mode variable attribute
 
@@ -181,7 +181,7 @@ mode (``mode``)
   ``__word__`` for the mode of a one-word integer, and ``pointer``
   or ``__pointer__`` for the mode used to represent pointers.
 
-packed
+``packed``
 
   .. index:: packed variable attribute
 
@@ -207,7 +207,7 @@ packed
   structure layout.  See the documentation of
   :option:`-Wpacked-bitfield-compat` for more information.
 
-section ("``section-name``")
+:samp:`section ("{section-name}")`
 
   .. index:: section variable attribute
 
@@ -257,7 +257,7 @@ section ("``section-name``")
   If you need to map the entire contents of a module to a particular
   section, consider using the facilities of the linker instead.
 
-tls_model ("``tls_model``")
+:samp:`tls_model ("{tls_model}")`
 
   .. index:: tls_model variable attribute
 
@@ -270,7 +270,7 @@ tls_model ("``tls_model``")
 
   Not all targets support this attribute.
 
-unused
+``unused``
 
   .. index:: unused variable attribute
 
@@ -278,7 +278,7 @@ unused
   to be possibly unused.  GCC does not produce a warning for this
   variable.
 
-used
+``used``
 
   .. index:: used variable attribute
 
@@ -290,7 +290,7 @@ used
   attribute also means that the member is instantiated if the
   class itself is instantiated.
 
-vector_size (``bytes``)
+:samp:`vector_size ({bytes})`
 
   .. index:: vector_size variable attribute
 
@@ -320,7 +320,7 @@ vector_size (``bytes``)
   is invalid even if the size of the structure is the same as the size of
   the ``int``.
 
-weak
+``weak``
 
   .. index:: weak variable attribute
 
@@ -332,7 +332,7 @@ weak
 AVR Variable Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-progmem
+``progmem``
 
   .. index:: progmem variable attribute, AVR
 
@@ -369,7 +369,7 @@ progmem
   See also the AVR Named Address Spaces section for
   an alternate way to locate and access data in flash memory.
 
-io io (``addr``)
+``io`` :samp:`io ({addr})`
 
   .. index:: io variable attribute, AVR
 
@@ -395,7 +395,7 @@ io io (``addr``)
 
     extern volatile int porta __attribute__((io));
 
-io_low io_low (``addr``)
+``io_low`` :samp:`io_low ({addr})`
 
   .. index:: io_low variable attribute, AVR
 
@@ -404,7 +404,7 @@ io_low io_low (``addr``)
   allowing the use of ``cbi``, ``sbi``, ``sbic`` and ``sbis``
   instructions.
 
-address address (``addr``)
+``address`` :samp:`address ({addr})`
 
   .. index:: address variable attribute, AVR
 
@@ -422,7 +422,7 @@ Blackfin Variable Attributes
 
 Three attributes are currently defined for the Blackfin.
 
-l1_data l1_data_A l1_data_B
+``l1_data`` ``l1_data_A`` ``l1_data_B``
 
   .. index:: l1_data variable attribute, Blackfin
 
@@ -436,7 +436,7 @@ l1_data l1_data_A l1_data_B
   the specific section named ``.l1.data.A``. Those with ``l1_data_B``
   attribute are put into the specific section named ``.l1.data.B``.
 
-l2
+``l2``
 
   .. index:: l2 variable attribute, Blackfin
 
@@ -451,7 +451,7 @@ H8/300 Variable Attributes
 
 These variable attributes are available for H8/300 targets:
 
-eightbit_data
+``eightbit_data``
 
   .. index:: eightbit_data variable attribute, H8/300
 
@@ -466,7 +466,7 @@ eightbit_data
   You must use GAS and GLD from GNU binutils version 2.7 or later for
   this attribute to work correctly.
 
-tiny_data
+``tiny_data``
 
   .. index:: tiny_data variable attribute, H8/300
 
@@ -485,7 +485,7 @@ IA-64 Variable Attributes
 
 The IA-64 back end supports the following variable attribute:
 
-model (``model-name``)
+:samp:`model ({model-name})`
 
   .. index:: model variable attribute, IA-64
 
@@ -504,7 +504,7 @@ M32R/D Variable Attributes
 
 One attribute is currently defined for the M32R/D.
 
-model (``model-name``)
+:samp:`model ({model-name})`
 
   .. index:: model-name variable attribute, M32R/D
 
@@ -535,7 +535,7 @@ space is a 65536-byte region relative to the ``$gp`` register.  In
 addition to these memory regions, the MeP target has a separate 16-bit
 control bus which is specified with ``cb`` attributes.
 
-based
+``based``
 
   .. index:: based variable attribute, MeP
 
@@ -543,14 +543,14 @@ based
   ``.based`` section, and is accessed with relative to the
   ``$tp`` register.
 
-tiny
+``tiny``
 
   .. index:: tiny variable attribute, MeP
 
   Likewise, the ``tiny`` attribute assigned variables to the
   ``.tiny`` section, relative to the ``$gp`` register.
 
-near
+``near``
 
   .. index:: near variable attribute, MeP
 
@@ -559,7 +559,7 @@ near
   variables (``-mtiny=4`` is the default) but this attribute can
   override ``-mtiny=`` for small variables, or override ``-ml``.
 
-far
+``far``
 
   .. index:: far variable attribute, MeP
 
@@ -568,10 +568,10 @@ far
   allows modules to make no assumptions about where variables might be
   stored.
 
-io
+``io``
 .. index:: io variable attribute, MeP
 
- io (``addr``)
+ :samp:`io ({addr})`
   Variables with the ``io`` attribute are used to address
   memory-mapped peripherals.  If an address is specified, the variable
   is assigned that address, else it is not assigned an address (it is
@@ -581,7 +581,7 @@ io
 
     int timer_count __attribute__((io(0x123)));
 
-cb cb (``addr``)
+``cb`` :samp:`cb ({addr})`
 
   .. index:: cb variable attribute, MeP
 
@@ -602,7 +602,7 @@ You can use these attributes on Microsoft Windows targets.
 x86 Variable Attributes for additional Windows compatibility
 attributes available on all x86 targets.
 
-dllimport dllexport
+``dllimport`` ``dllexport``
 
   .. index:: dllimport variable attribute
 
@@ -611,7 +611,7 @@ dllimport dllexport
   The ``dllimport`` and ``dllexport`` attributes are described in
   Microsoft Windows Function Attributes.
 
-selectany
+``selectany``
 
   .. index:: selectany variable attribute
 
@@ -634,7 +634,7 @@ selectany
   ``__attribute__ ((selectany))`` for compatibility with other
   compilers.
 
-shared
+``shared``
 
   .. index:: shared variable attribute
 
@@ -701,7 +701,7 @@ x86 Variable Attributes
 Two attributes are currently defined for x86 configurations:
 ``ms_struct`` and ``gcc_struct``.
 
-ms_struct gcc_struct
+``ms_struct`` ``gcc_struct``
 
   .. index:: ms_struct variable attribute, x86
 
@@ -830,7 +830,7 @@ Xstormy16 Variable Attributes
 One attribute is currently defined for xstormy16 configurations:
 ``below100``.
 
-below100
+``below100``
 
   .. index:: below100 variable attribute, Xstormy16
 

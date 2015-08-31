@@ -8,11 +8,11 @@ to mark lock critical sections for hardware lock elision.
 These must be specified in addition to an existing memory model to 
 atomic intrinsics.
 
-__ATOMIC_HLE_ACQUIRE
+``__ATOMIC_HLE_ACQUIRE``
   Start lock elision on a lock variable.
   Memory model must be ``__ATOMIC_ACQUIRE`` or stronger.
 
-__ATOMIC_HLE_RELEASE
+``__ATOMIC_HLE_RELEASE``
   End lock elision on a lock variable.
   Memory model must be ``__ATOMIC_RELEASE`` or stronger.
 

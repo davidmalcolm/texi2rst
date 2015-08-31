@@ -42,7 +42,7 @@ VTables
   Make sure that any inline virtuals are declared inline in the class
   body, even if they are not defined there.
 
-``type_info`` objects
+:samp:`{type_info} objects`
 
   .. index:: type_info
 

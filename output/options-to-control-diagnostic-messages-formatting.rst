@@ -33,7 +33,7 @@ honor these options.
   over and over, in subsequent continuation lines.  This is the default
   behavior.
 
--fdiagnostics-show-location=every-line
+``-fdiagnostics-show-location=every-line``
   Only meaningful in line-wrapping mode.  Instructs the diagnostic
   messages reporter to emit the same source location information (as
   prefix) for physical lines that result from the process of breaking
@@ -90,38 +90,38 @@ honor these options.
   string disables colors.
   Supported capabilities are as follows.
 
-  error=
+  ``error=``
 
     .. index:: error GCC_COLORS capability
 
     SGR substring for error: markers.
 
-  warning=
+  ``warning=``
 
     .. index:: warning GCC_COLORS capability
 
     SGR substring for warning: markers.
 
-  note=
+  ``note=``
 
     .. index:: note GCC_COLORS capability
 
     SGR substring for note: markers.
 
-  caret=
+  ``caret=``
 
     .. index:: caret GCC_COLORS capability
 
     SGR substring for caret line.
 
-  locus=
+  ``locus=``
 
     .. index:: locus GCC_COLORS capability
 
     SGR substring for location information, :samp:`file:line` or
     :samp:`file:line:column` etc.
 
-  quote=
+  ``quote=``
 
     .. index:: quote GCC_COLORS capability
 

@@ -341,10 +341,10 @@ optimizations to be performed is desired.
   The :option:`-finline-limit=``n``` option sets some of these parameters
   as follows:
 
-  max-inline-insns-single
+  ``max-inline-insns-single``
     is set to ``n``/2.
 
-  max-inline-insns-auto
+  ``max-inline-insns-auto``
     is set to ``n``/2.
 
     See below for a documentation of the individual
@@ -711,19 +711,19 @@ optimizations to be performed is desired.
   Use specified regions for the integrated register allocator.  The
   ``region`` argument should be one of the following:
 
-  all
+  :samp:`all`
     Use all loops as register allocation regions.
     This can give the best results for machines with a small and/or
     irregular register set.
 
-  mixed
+  :samp:`mixed`
     Use all loops except for loops with small register pressure 
     as the regions.  This value usually gives
     the best results in most cases and for most architectures,
     and is enabled by default when compiling with optimization for speed
     (:option:`-O`, :option:`-O2`, ...).
 
-  one
+  :samp:`one`
     Use all functions as a single region.  
     This typically results in the smallest code size, and is enabled by default for
     :option:`-Os` or :option:`-O0`.
@@ -2703,29 +2703,29 @@ section includes experimental options that may produce broken code.
   In each case, the ``value`` is an integer.  The allowable choices for
   ``name`` are:
 
-  predictable-branch-outcome
+  ``predictable-branch-outcome``
     When branch is predicted to be taken with probability lower than this threshold
     (in percent), then it is considered well predictable. The default is 10.
 
-  max-crossjump-edges
+  ``max-crossjump-edges``
     The maximum number of incoming edges to consider for cross-jumping.
     The algorithm used by :option:`-fcrossjumping` is O(N^2) in
     the number of edges incoming to each block.  Increasing values mean
     more aggressive optimization, making the compilation time increase with
     probably small improvement in executable size.
 
-  min-crossjump-insns
+  ``min-crossjump-insns``
     The minimum number of instructions that must be matched at the end
     of two blocks before cross-jumping is performed on them.  This
     value is ignored in the case where all instructions in the block being
     cross-jumped from are matched.  The default value is 5.
 
-  max-grow-copy-bb-insns
+  ``max-grow-copy-bb-insns``
     The maximum code size expansion factor when copying basic blocks
     instead of jumping.  The expansion is relative to a jump instruction.
     The default value is 8.
 
-  max-goto-duplication-insns
+  ``max-goto-duplication-insns``
     The maximum number of instructions to duplicate to a block that jumps
     to a computed goto.  To avoid O(N^2) behavior in a number of
     passes, GCC factors computed gotos early in the compilation process,
@@ -2733,7 +2733,7 @@ section includes experimental options that may produce broken code.
     end of a basic blocks with no more than max-goto-duplication-insns are
     unfactored.  The default value is 8.
 
-  max-delay-slot-insn-search
+  ``max-delay-slot-insn-search``
     The maximum number of instructions to consider when looking for an
     instruction to fill a delay slot.  If more than this arbitrary number of
     instructions are searched, the time savings from filling the delay slot
@@ -2741,7 +2741,7 @@ section includes experimental options that may produce broken code.
     aggressive optimization, making the compilation time increase with probably
     small improvement in execution time.
 
-  max-delay-slot-live-search
+  ``max-delay-slot-live-search``
     When trying to fill delay slots, the maximum number of instructions to
     consider when searching for a block with valid live register
     information.  Increasing this arbitrarily chosen value means more
@@ -2749,29 +2749,29 @@ section includes experimental options that may produce broken code.
     should be removed when the delay slot code is rewritten to maintain the
     control-flow graph.
 
-  max-gcse-memory
+  ``max-gcse-memory``
     The approximate maximum amount of memory that can be allocated in
     order to perform the global common subexpression elimination
     optimization.  If more memory than specified is required, the
     optimization is not done.
 
-  max-gcse-insertion-ratio
+  ``max-gcse-insertion-ratio``
     If the ratio of expression insertions to deletions is larger than this value
     for any expression, then RTL PRE inserts or removes the expression and thus
     leaves partially redundant computations in the instruction stream.  The default value is 20.
 
-  max-pending-list-length
+  ``max-pending-list-length``
     The maximum number of pending dependencies scheduling allows
     before flushing the current state and starting over.  Large functions
     with few branches or calls can create excessively large lists which
     needlessly consume memory and resources.
 
-  max-modulo-backtrack-attempts
+  ``max-modulo-backtrack-attempts``
     The maximum number of backtrack attempts the scheduler should make
     when modulo scheduling a loop.  Larger values can exponentially increase
     compilation time.
 
-  max-inline-insns-single
+  ``max-inline-insns-single``
     Several parameters control the tree inliner used in GCC.
     This number sets the maximum number of instructions (counted in GCC's
     internal representation) in a single function that the tree inliner
@@ -2779,7 +2779,7 @@ section includes experimental options that may produce broken code.
     inline and methods implemented in a class declaration (C++).
     The default value is 400.
 
-  max-inline-insns-auto
+  ``max-inline-insns-auto``
     When you use :option:`-finline-functions` (included in :option:`-O3`),
     a lot of functions that would otherwise not be considered for inlining
     by the compiler are investigated.  To those functions, a different
@@ -2787,13 +2787,13 @@ section includes experimental options that may produce broken code.
     be applied.
     The default value is 40.
 
-  inline-min-speedup
+  ``inline-min-speedup``
     When estimated performance improvement of caller + callee runtime exceeds this
     threshold (in precent), the function can be inlined regardless the limit on
     :option:`--param max-inline-insns-single` and :option:`--param
     max-inline-insns-auto`.
 
-  large-function-insns
+  ``large-function-insns``
     The limit specifying really large functions.  For functions larger than this
     limit after inlining, inlining is constrained by
     :option:`--param large-function-growth`.  This parameter is useful primarily
@@ -2801,12 +2801,12 @@ section includes experimental options that may produce broken code.
     back end.
     The default value is 2700.
 
-  large-function-growth
+  ``large-function-growth``
     Specifies maximal growth of large function caused by inlining in percents.
     The default value is 100 which limits large function growth to 2.0 times
     the original size.
 
-  large-unit-insns
+  ``large-unit-insns``
     The limit specifying large translation unit.  Growth caused by inlining of
     units larger than this limit is limited by :option:`--param inline-unit-growth`.
     For small units this might be too tight.
@@ -2818,27 +2818,27 @@ section includes experimental options that may produce broken code.
     smaller units, the size is increased to :option:`--param large-unit-insns`
     before applying :option:`--param inline-unit-growth`.  The default is 10000.
 
-  inline-unit-growth
+  ``inline-unit-growth``
     Specifies maximal overall growth of the compilation unit caused by inlining.
     The default value is 20 which limits unit growth to 1.2 times the original
     size. Cold functions (either marked cold via an attribute or by profile
     feedback) are not accounted into the unit size.
 
-  ipcp-unit-growth
+  ``ipcp-unit-growth``
     Specifies maximal overall growth of the compilation unit caused by
     interprocedural constant propagation.  The default value is 10 which limits
     unit growth to 1.1 times the original size.
 
-  large-stack-frame
+  ``large-stack-frame``
     The limit specifying large stack frames.  While inlining the algorithm is trying
     to not grow past this limit too much.  The default value is 256 bytes.
 
-  large-stack-frame-growth
+  ``large-stack-frame-growth``
     Specifies maximal growth of large stack frames caused by inlining in percents.
     The default value is 1000 which limits large stack frame growth to 11 times
     the original size.
 
-  max-inline-insns-recursive max-inline-insns-recursive-auto
+  ``max-inline-insns-recursive`` ``max-inline-insns-recursive-auto``
     Specifies the maximum number of instructions an out-of-line copy of a
     self-recursive inline
     function can grow into by performing recursive inlining.
@@ -2850,7 +2850,7 @@ section includes experimental options that may produce broken code.
     enabled; :option:`--param max-inline-insns-recursive-auto` applies instead.  The
     default value is 450.
 
-  max-inline-recursive-depth max-inline-recursive-depth-auto
+  ``max-inline-recursive-depth`` ``max-inline-recursive-depth-auto``
     Specifies the maximum recursion depth used for recursive inlining.
 
     :option:`--param max-inline-recursive-depth` applies to functions
@@ -2859,7 +2859,7 @@ section includes experimental options that may produce broken code.
     enabled; :option:`--param max-inline-recursive-depth-auto` applies instead.  The
     default value is 8.
 
-  min-inline-recursive-probability
+  ``min-inline-recursive-probability``
     Recursive inlining is profitable only for function having deep recursion
     in average and can hurt for function having little recursion depth by
     increasing the prologue size or complexity of function body to other
@@ -2871,34 +2871,34 @@ section includes experimental options that may produce broken code.
     whose probability exceeds the given threshold (in percents).
     The default value is 10.
 
-  early-inlining-insns
+  ``early-inlining-insns``
     Specify growth that the early inliner can make.  In effect it increases
     the amount of inlining for code having a large abstraction penalty.
     The default value is 14.
 
-  max-early-inliner-iterations
+  ``max-early-inliner-iterations``
     Limit of iterations of the early inliner.  This basically bounds
     the number of nested indirect calls the early inliner can resolve.
     Deeper chains are still handled by late inlining.
 
-  comdat-sharing-probability
+  ``comdat-sharing-probability``
     Probability (in percent) that C++ inline function with comdat visibility
     are shared across multiple compilation units.  The default value is 20.
 
-  profile-func-internal-id
+  ``profile-func-internal-id``
     A parameter to control whether to use function internal id in profile
     database lookup. If the value is 0, the compiler uses an id that
     is based on function assembler name and filename, which makes old profile
     data more tolerant to source changes such as function reordering etc.
     The default value is 0.
 
-  min-vect-loop-bound
+  ``min-vect-loop-bound``
     The minimum number of iterations under which loops are not vectorized
     when :option:`-ftree-vectorize` is used.  The number of iterations after
     vectorization needs to be greater than the value specified by this option
     to allow vectorization.  The default value is 0.
 
-  gcse-cost-distance-ratio
+  ``gcse-cost-distance-ratio``
     Scaling factor in calculation of maximum distance an expression
     can be moved by GCSE optimizations.  This is currently supported only in the
     code hoisting pass.  The bigger the ratio, the more aggressive code hoisting
@@ -2906,7 +2906,7 @@ section includes experimental options that may produce broken code.
     less than gcse-unrestricted-cost.  Specifying 0 disables
     hoisting of simple expressions.  The default value is 10.
 
-  gcse-unrestricted-cost
+  ``gcse-unrestricted-cost``
     Cost, roughly measured as the cost of a single typical machine
     instruction, at which GCSE optimizations do not constrain
     the distance an expression can travel.  This is currently
@@ -2915,138 +2915,138 @@ section includes experimental options that may produce broken code.
     allows all expressions to travel unrestricted distances.
     The default value is 3.
 
-  max-hoist-depth
+  ``max-hoist-depth``
     The depth of search in the dominator tree for expressions to hoist.
     This is used to avoid quadratic behavior in hoisting algorithm.
     The value of 0 does not limit on the search, but may slow down compilation
     of huge functions.  The default value is 30.
 
-  max-tail-merge-comparisons
+  ``max-tail-merge-comparisons``
     The maximum amount of similar bbs to compare a bb with.  This is used to
     avoid quadratic behavior in tree tail merging.  The default value is 10.
 
-  max-tail-merge-iterations
+  ``max-tail-merge-iterations``
     The maximum amount of iterations of the pass over the function.  This is used to
     limit compilation time in tree tail merging.  The default value is 2.
 
-  max-unrolled-insns
+  ``max-unrolled-insns``
     The maximum number of instructions that a loop may have to be unrolled.
     If a loop is unrolled, this parameter also determines how many times
     the loop code is unrolled.
 
-  max-average-unrolled-insns
+  ``max-average-unrolled-insns``
     The maximum number of instructions biased by probabilities of their execution
     that a loop may have to be unrolled.  If a loop is unrolled,
     this parameter also determines how many times the loop code is unrolled.
 
-  max-unroll-times
+  ``max-unroll-times``
     The maximum number of unrollings of a single loop.
 
-  max-peeled-insns
+  ``max-peeled-insns``
     The maximum number of instructions that a loop may have to be peeled.
     If a loop is peeled, this parameter also determines how many times
     the loop code is peeled.
 
-  max-peel-times
+  ``max-peel-times``
     The maximum number of peelings of a single loop.
 
-  max-peel-branches
+  ``max-peel-branches``
     The maximum number of branches on the hot path through the peeled sequence.
 
-  max-completely-peeled-insns
+  ``max-completely-peeled-insns``
     The maximum number of insns of a completely peeled loop.
 
-  max-completely-peel-times
+  ``max-completely-peel-times``
     The maximum number of iterations of a loop to be suitable for complete peeling.
 
-  max-completely-peel-loop-nest-depth
+  ``max-completely-peel-loop-nest-depth``
     The maximum depth of a loop nest suitable for complete peeling.
 
-  max-unswitch-insns
+  ``max-unswitch-insns``
     The maximum number of insns of an unswitched loop.
 
-  max-unswitch-level
+  ``max-unswitch-level``
     The maximum number of branches unswitched in a single loop.
 
-  lim-expensive
+  ``lim-expensive``
     The minimum cost of an expensive expression in the loop invariant motion.
 
-  iv-consider-all-candidates-bound
+  ``iv-consider-all-candidates-bound``
     Bound on number of candidates for induction variables, below which
     all candidates are considered for each use in induction variable
     optimizations.  If there are more candidates than this,
     only the most relevant ones are considered to avoid quadratic time complexity.
 
-  iv-max-considered-uses
+  ``iv-max-considered-uses``
     The induction variable optimizations give up on loops that contain more
     induction variable uses.
 
-  iv-always-prune-cand-set-bound
+  ``iv-always-prune-cand-set-bound``
     If the number of candidates in the set is smaller than this value,
     always try to remove unnecessary ivs from the set
     when adding a new one.
 
-  scev-max-expr-size
+  ``scev-max-expr-size``
     Bound on size of expressions used in the scalar evolutions analyzer.
     Large expressions slow the analyzer.
 
-  scev-max-expr-complexity
+  ``scev-max-expr-complexity``
     Bound on the complexity of the expressions in the scalar evolutions analyzer.
     Complex expressions slow the analyzer.
 
-  omega-max-vars
+  ``omega-max-vars``
     The maximum number of variables in an Omega constraint system.
     The default value is 128.
 
-  omega-max-geqs
+  ``omega-max-geqs``
     The maximum number of inequalities in an Omega constraint system.
     The default value is 256.
 
-  omega-max-eqs
+  ``omega-max-eqs``
     The maximum number of equalities in an Omega constraint system.
     The default value is 128.
 
-  omega-max-wild-cards
+  ``omega-max-wild-cards``
     The maximum number of wildcard variables that the Omega solver is
     able to insert.  The default value is 18.
 
-  omega-hash-table-size
+  ``omega-hash-table-size``
     The size of the hash table in the Omega solver.  The default value is
     550.
 
-  omega-max-keys
+  ``omega-max-keys``
     The maximal number of keys used by the Omega solver.  The default
     value is 500.
 
-  omega-eliminate-redundant-constraints
+  ``omega-eliminate-redundant-constraints``
     When set to 1, use expensive methods to eliminate all redundant
     constraints.  The default value is 0.
 
-  vect-max-version-for-alignment-checks
+  ``vect-max-version-for-alignment-checks``
     The maximum number of run-time checks that can be performed when
     doing loop versioning for alignment in the vectorizer.
 
-  vect-max-version-for-alias-checks
+  ``vect-max-version-for-alias-checks``
     The maximum number of run-time checks that can be performed when
     doing loop versioning for alias in the vectorizer.
 
-  vect-max-peeling-for-alignment
+  ``vect-max-peeling-for-alignment``
     The maximum number of loop peels to enhance access alignment
     for vectorizer. Value -1 means 'no limit'.
 
-  max-iterations-to-track
+  ``max-iterations-to-track``
     The maximum number of iterations of a loop the brute-force algorithm
     for analysis of the number of iterations of the loop tries to evaluate.
 
-  hot-bb-count-ws-permille
+  ``hot-bb-count-ws-permille``
     A basic block profile count is considered hot if it contributes to 
     the given permillage (i.e. 0...1000) of the entire profiled execution.
 
-  hot-bb-frequency-fraction
+  ``hot-bb-frequency-fraction``
     Select fraction of the entry block frequency of executions of basic block in
     function given basic block needs to have to be considered hot.
 
-  max-predicted-iterations
+  ``max-predicted-iterations``
     The maximum number of loop iterations we predict statically.  This is useful
     in cases where a function contains a single loop with known bound and
     another loop with unknown bound.
@@ -3054,20 +3054,20 @@ section includes experimental options that may produce broken code.
     the unknown number of iterations average to roughly 10.  This means that the
     loop without bounds appears artificially cold relative to the other one.
 
-  builtin-expect-probability
+  ``builtin-expect-probability``
     Control the probability of the expression having the specified value. This
     parameter takes a percentage (i.e. 0 ... 100) as input.
     The default probability of 90 is obtained empirically.
 
-  align-threshold
+  ``align-threshold``
     Select fraction of the maximal frequency of executions of a basic block in
     a function to align the basic block.
 
-  align-loop-iterations
+  ``align-loop-iterations``
     A loop expected to iterate at least the selected number of iterations is
     aligned.
 
-  tracer-dynamic-coverage tracer-dynamic-coverage-feedback
+  ``tracer-dynamic-coverage`` ``tracer-dynamic-coverage-feedback``
     This value is used to limit superblock formation once the given percentage of
     executed instructions is covered.  This limits unnecessary code size
     expansion.
@@ -3077,17 +3077,17 @@ section includes experimental options that may produce broken code.
     feedback is available.  The real profiles (as opposed to statically estimated
     ones) are much less balanced allowing the threshold to be larger value.
 
-  tracer-max-code-growth
+  ``tracer-max-code-growth``
     Stop tail duplication once code growth has reached given percentage.  This is
     a rather artificial limit, as most of the duplicates are eliminated later in
     cross jumping, so it may be set to much higher values than is the desired code
     growth.
 
-  tracer-min-branch-ratio
+  ``tracer-min-branch-ratio``
     Stop reverse growth when the reverse probability of best edge is less than this
     threshold (in percent).
 
-  tracer-min-branch-ratio tracer-min-branch-ratio-feedback
+  ``tracer-min-branch-ratio`` ``tracer-min-branch-ratio-feedback``
     Stop forward growth if the best edge has probability lower than this
     threshold.
 
@@ -3096,15 +3096,15 @@ section includes experimental options that may produce broken code.
     for compilation with profile feedback needs to be more conservative (higher) in
     order to make tracer effective.
 
-  max-cse-path-length
+  ``max-cse-path-length``
     The maximum number of basic blocks on path that CSE considers.
     The default is 10.
 
-  max-cse-insns
+  ``max-cse-insns``
     The maximum number of instructions CSE processes before flushing.
     The default is 1000.
 
-  ggc-min-expand
+  ``ggc-min-expand``
     GCC uses a garbage collector to manage its own memory allocation.  This
     parameter specifies the minimum percentage by which the garbage
     collector's heap should be allowed to expand between collections.
@@ -3120,7 +3120,7 @@ section includes experimental options that may produce broken code.
     every opportunity.  This is extremely slow, but can be useful for
     debugging.
 
-  ggc-min-heapsize
+  ``ggc-min-heapsize``
     Minimum size of the garbage collector's heap before it begins bothering
     to collect garbage.  The first collection occurs after the heap expands
     by ggc-min-expand% beyond ggc-min-heapsize.  Again,
@@ -3136,18 +3136,18 @@ section includes experimental options that may produce broken code.
     parameter and ggc-min-expand to zero causes a full collection
     to occur at every opportunity.
 
-  max-reload-search-insns
+  ``max-reload-search-insns``
     The maximum number of instruction reload should look backward for equivalent
     register.  Increasing values mean more aggressive optimization, making the
     compilation time increase with probably slightly better performance.
     The default value is 100.
 
-  max-cselib-memory-locations
+  ``max-cselib-memory-locations``
     The maximum number of memory locations cselib should take into account.
     Increasing values mean more aggressive optimization, making the compilation time
     increase with probably slightly better performance.  The default value is 500.
 
-  reorder-blocks-duplicate reorder-blocks-duplicate-feedback
+  ``reorder-blocks-duplicate`` ``reorder-blocks-duplicate-feedback``
     Used by the basic block reordering pass to decide whether to use unconditional
     branch or duplicate the code on its destination.  Code is duplicated when its
     estimated size is smaller than this value multiplied by the estimated size of
@@ -3159,143 +3159,143 @@ section includes experimental options that may produce broken code.
     reorder-block-duplicate since information about the hot spots is more
     accurate.
 
-  max-sched-ready-insns
+  ``max-sched-ready-insns``
     The maximum number of instructions ready to be issued the scheduler should
     consider at any given time during the first scheduling pass.  Increasing
     values mean more thorough searches, making the compilation time increase
     with probably little benefit.  The default value is 100.
 
-  max-sched-region-blocks
+  ``max-sched-region-blocks``
     The maximum number of blocks in a region to be considered for
     interblock scheduling.  The default value is 10.
 
-  max-pipeline-region-blocks
+  ``max-pipeline-region-blocks``
     The maximum number of blocks in a region to be considered for
     pipelining in the selective scheduler.  The default value is 15.
 
-  max-sched-region-insns
+  ``max-sched-region-insns``
     The maximum number of insns in a region to be considered for
     interblock scheduling.  The default value is 100.
 
-  max-pipeline-region-insns
+  ``max-pipeline-region-insns``
     The maximum number of insns in a region to be considered for
     pipelining in the selective scheduler.  The default value is 200.
 
-  min-spec-prob
+  ``min-spec-prob``
     The minimum probability (in percents) of reaching a source block
     for interblock speculative scheduling.  The default value is 40.
 
-  max-sched-extend-regions-iters
+  ``max-sched-extend-regions-iters``
     The maximum number of iterations through CFG to extend regions.
     A value of 0 (the default) disables region extensions.
 
-  max-sched-insn-conflict-delay
+  ``max-sched-insn-conflict-delay``
     The maximum conflict delay for an insn to be considered for speculative motion.
     The default value is 3.
 
-  sched-spec-prob-cutoff
+  ``sched-spec-prob-cutoff``
     The minimal probability of speculation success (in percents), so that
     speculative insns are scheduled.
     The default value is 40.
 
-  sched-spec-state-edge-prob-cutoff
+  ``sched-spec-state-edge-prob-cutoff``
     The minimum probability an edge must have for the scheduler to save its
     state across it.
     The default value is 10.
 
-  sched-mem-true-dep-cost
+  ``sched-mem-true-dep-cost``
     Minimal distance (in CPU cycles) between store and load targeting same
     memory locations.  The default value is 1.
 
-  selsched-max-lookahead
+  ``selsched-max-lookahead``
     The maximum size of the lookahead window of selective scheduling.  It is a
     depth of search for available instructions.
     The default value is 50.
 
-  selsched-max-sched-times
+  ``selsched-max-sched-times``
     The maximum number of times that an instruction is scheduled during
     selective scheduling.  This is the limit on the number of iterations
     through which the instruction may be pipelined.  The default value is 2.
 
-  selsched-max-insns-to-rename
+  ``selsched-max-insns-to-rename``
     The maximum number of best instructions in the ready list that are considered
     for renaming in the selective scheduler.  The default value is 2.
 
-  sms-min-sc
+  ``sms-min-sc``
     The minimum value of stage count that swing modulo scheduler
     generates.  The default value is 2.
 
-  max-last-value-rtl
+  ``max-last-value-rtl``
     The maximum size measured as number of RTLs that can be recorded in an expression
     in combiner for a pseudo register as last known value of that register.  The default
     is 10000.
 
-  max-combine-insns
+  ``max-combine-insns``
     The maximum number of instructions the RTL combiner tries to combine.
     The default value is 2 at :option:`-Og` and 4 otherwise.
 
-  integer-share-limit
+  ``integer-share-limit``
     Small integer constants can use a shared data structure, reducing the
     compiler's memory usage and increasing its speed.  This sets the maximum
     value of a shared integer constant.  The default value is 256.
 
-  ssp-buffer-size
+  ``ssp-buffer-size``
     The minimum size of buffers (i.e. arrays) that receive stack smashing
     protection when :option:`-fstack-protection` is used.
 
-  min-size-for-stack-sharing
+  ``min-size-for-stack-sharing``
     The minimum size of variables taking part in stack slot sharing when not
     optimizing. The default value is 32.
 
-  max-jump-thread-duplication-stmts
+  ``max-jump-thread-duplication-stmts``
     Maximum number of statements allowed in a block that needs to be
     duplicated when threading jumps.
 
-  max-fields-for-field-sensitive
+  ``max-fields-for-field-sensitive``
     Maximum number of fields in a structure treated in
     a field sensitive manner during pointer analysis.  The default is zero
     for :option:`-O0` and :option:`-O1`,
     and 100 for :option:`-Os`, :option:`-O2`, and :option:`-O3`.
 
-  prefetch-latency
+  ``prefetch-latency``
     Estimate on average number of instructions that are executed before
     prefetch finishes.  The distance prefetched ahead is proportional
     to this constant.  Increasing this number may also lead to less
     streams being prefetched (see simultaneous-prefetches).
 
-  simultaneous-prefetches
+  ``simultaneous-prefetches``
     Maximum number of prefetches that can run at the same time.
 
-  l1-cache-line-size
+  ``l1-cache-line-size``
     The size of cache line in L1 cache, in bytes.
 
-  l1-cache-size
+  ``l1-cache-size``
     The size of L1 cache, in kilobytes.
 
-  l2-cache-size
+  ``l2-cache-size``
     The size of L2 cache, in kilobytes.
 
-  min-insn-to-prefetch-ratio
+  ``min-insn-to-prefetch-ratio``
     The minimum ratio between the number of instructions and the
     number of prefetches to enable prefetching in a loop.
 
-  prefetch-min-insn-to-mem-ratio
+  ``prefetch-min-insn-to-mem-ratio``
     The minimum ratio between the number of instructions and the
     number of memory references to enable prefetching in a loop.
 
-  use-canonical-types
+  ``use-canonical-types``
     Whether the compiler should use the 'canonical' type system.  By
     default, this should always be 1, which uses a more efficient internal
     mechanism for comparing types in C++ and Objective-C++.  However, if
     bugs in the canonical type system are causing compilation failures,
     set this value to 0 to disable canonical types.
 
-  switch-conversion-max-branch-ratio
+  ``switch-conversion-max-branch-ratio``
     Switch initialization conversion refuses to create arrays that are
     bigger than switch-conversion-max-branch-ratio times the number of
     branches in the switch.
 
-  max-partial-antic-length
+  ``max-partial-antic-length``
     Maximum length of the partial antic set computed during the tree
     partial redundancy elimination optimization (:option:`-ftree-pre`) when
     optimizing at :option:`-O3` and above.  For some sorts of source code
@@ -3305,13 +3305,13 @@ section includes experimental options that may produce broken code.
     which prevents the runaway behavior.  Setting a value of 0 for
     this parameter allows an unlimited set length.
 
-  sccvn-max-scc-size
+  ``sccvn-max-scc-size``
     Maximum size of a strongly connected component (SCC) during SCCVN
     processing.  If this limit is hit, SCCVN processing for the whole
     function is not done and optimizations depending on it are
     disabled.  The default maximum SCC size is 10000.
 
-  sccvn-max-alias-queries-per-access
+  ``sccvn-max-alias-queries-per-access``
     Maximum number of alias-oracle queries we perform when looking for
     redundancies for loads and stores.  If this limit is hit the search
     is aborted and the load or store is not considered redundant.  The
@@ -3319,14 +3319,14 @@ section includes experimental options that may produce broken code.
     stores on all paths from the load to the function entry.
     The default maxmimum number of queries is 1000.
 
-  ira-max-loops-num
+  ``ira-max-loops-num``
     IRA uses regional register allocation by default.  If a function
     contains more loops than the number given by this parameter, only at most
     the given number of the most frequently-executed loops form regions
     for regional register allocation.  The default value of the
     parameter is 100.
 
-  ira-max-conflict-table-size 
+  ``ira-max-conflict-table-size``
     Although IRA uses a sophisticated algorithm to compress the conflict
     table, the table can still require excessive amounts of memory for
     huge functions.  If the conflict table for a function could be more
@@ -3335,7 +3335,7 @@ section includes experimental options that may produce broken code.
     algorithm that does not require building a pseudo-register conflict table.  
     The default value of the parameter is 2000.
 
-  ira-loop-reserved-regs
+  ``ira-loop-reserved-regs``
     IRA can be used to evaluate more accurate register pressure in loops
     for decisions to move loop invariants (see :option:`-O3`).  The number
     of available registers reserved for some other purposes is given
@@ -3343,7 +3343,7 @@ section includes experimental options that may produce broken code.
     the minimal number of registers needed by typical instructions.
     This value is the best found from numerous experiments.
 
-  lra-inheritance-ebb-probability-cutoff
+  ``lra-inheritance-ebb-probability-cutoff``
     LRA tries to reuse values reloaded in registers in subsequent insns.
     This optimization is called inheritance.  EBB is used as a region to
     do this optimization.  The parameter defines a minimal fall-through
@@ -3351,21 +3351,21 @@ section includes experimental options that may produce broken code.
     LRA.  The default value of the parameter is 40.  The value was chosen
     from numerous runs of SPEC2000 on x86-64.
 
-  loop-invariant-max-bbs-in-loop
+  ``loop-invariant-max-bbs-in-loop``
     Loop invariant motion can be very expensive, both in compilation time and
     in amount of needed compile-time memory, with very large loops.  Loops
     with more basic blocks than this parameter won't have loop invariant
     motion optimization performed on them.  The default value of the
     parameter is 1000 for :option:`-O1` and 10000 for :option:`-O2` and above.
 
-  loop-max-datarefs-for-datadeps
+  ``loop-max-datarefs-for-datadeps``
     Building data dapendencies is expensive for very large loops.  This
     parameter limits the number of data references in loops that are
     considered for data dependence analysis.  These large loops are no
     handled by the optimizations using loop data dependencies.
     The default value is 1000.
 
-  max-vartrack-size
+  ``max-vartrack-size``
     Sets a maximum number of hash table slots to use during variable
     tracking dataflow analysis of any function.  If this limit is exceeded
     with variable tracking at assignments enabled, analysis for that
@@ -3374,7 +3374,7 @@ section includes experimental options that may produce broken code.
     tracking analysis is completely disabled for the function.  Setting
     the parameter to zero makes it unlimited.
 
-  max-vartrack-expr-depth
+  ``max-vartrack-expr-depth``
     Sets a maximum number of recursion levels when attempting to map
     variable names or debug temporaries to value expressions.  This trades
     compilation time for more complete debug information.  If this is set too
@@ -3383,20 +3383,20 @@ section includes experimental options that may produce broken code.
     enable the compiler to find more complex debug expressions, but compile
     time and memory use may grow.  The default is 12.
 
-  min-nondebug-insn-uid
+  ``min-nondebug-insn-uid``
     Use uids starting at this parameter for nondebug insns.  The range below
     the parameter is reserved exclusively for debug insns created by
     :option:`-fvar-tracking-assignments`, but debug insns may get
     (non-overlapping) uids above it if the reserved range is exhausted.
 
-  ipa-sra-ptr-growth-factor
+  ``ipa-sra-ptr-growth-factor``
     IPA-SRA replaces a pointer to an aggregate with one or more new
     parameters only when their cumulative size is less or equal to
     ipa-sra-ptr-growth-factor times the size of the original
     pointer parameter.
 
-    sra-max-scalarization-size-Ospeed
-  sra-max-scalarization-size-Osize
+    ``sra-max-scalarization-size-Ospeed``
+  ``sra-max-scalarization-size-Osize``
     The two Scalar Reduction of Aggregates passes (SRA and IPA-SRA) aim to
     replace scalar parts of aggregates with uses of independent scalar
     variables.  These parameters control the maximum size, in storage units,
@@ -3405,124 +3405,124 @@ section includes experimental options that may produce broken code.
     (sra-max-scalarization-size-Ospeed) or size
     (sra-max-scalarization-size-Osize) respectively.
 
-  tm-max-aggregate-size
+  ``tm-max-aggregate-size``
     When making copies of thread-local variables in a transaction, this
     parameter specifies the size in bytes after which variables are
     saved with the logging functions as opposed to save/restore code
     sequence pairs.  This option only applies when using
     :option:`-fgnu-tm`.
 
-  graphite-max-nb-scop-params
+  ``graphite-max-nb-scop-params``
     To avoid exponential effects in the Graphite loop transforms, the
     number of parameters in a Static Control Part (SCoP) is bounded.  The
     default value is 10 parameters.  A variable whose value is unknown at
     compilation time and defined outside a SCoP is a parameter of the SCoP.
 
-  graphite-max-bbs-per-function
+  ``graphite-max-bbs-per-function``
     To avoid exponential effects in the detection of SCoPs, the size of
     the functions analyzed by Graphite is bounded.  The default value is
     100 basic blocks.
 
-  loop-block-tile-size
+  ``loop-block-tile-size``
     Loop blocking or strip mining transforms, enabled with
     :option:`-floop-block` or :option:`-floop-strip-mine`, strip mine each
     loop in the loop nest by a given number of iterations.  The strip
     length can be changed using the loop-block-tile-size
     parameter.  The default value is 51 iterations.
 
-  loop-unroll-jam-size
+  ``loop-unroll-jam-size``
     Specify the unroll factor for the :option:`-floop-unroll-and-jam` option.  The 
     default value is 4.
 
-  loop-unroll-jam-depth
+  ``loop-unroll-jam-depth``
     Specify the dimension to be unrolled (counting from the most inner loop)
     for the  :option:`-floop-unroll-and-jam`.  The default value is 2.
 
-  ipa-cp-value-list-size
+  ``ipa-cp-value-list-size``
     IPA-CP attempts to track all possible values and types passed to a function's
     parameter in order to propagate them and perform devirtualization.
     ipa-cp-value-list-size is the maximum number of values and types it
     stores per one formal parameter of a function.
 
-  ipa-cp-eval-threshold
+  ``ipa-cp-eval-threshold``
     IPA-CP calculates its own score of cloning profitability heuristics
     and performs those cloning opportunities with scores that exceed
     ipa-cp-eval-threshold.
 
-  ipa-cp-recursion-penalty
+  ``ipa-cp-recursion-penalty``
     Percentage penalty the recursive functions will receive when they
     are evaluated for cloning.
 
-  ipa-cp-single-call-penalty
+  ``ipa-cp-single-call-penalty``
     Percentage penalty functions containg a single call to another
     function will receive when they are evaluated for cloning.
 
-  ipa-max-agg-items
+  ``ipa-max-agg-items``
     IPA-CP is also capable to propagate a number of scalar values passed
     in an aggregate. ipa-max-agg-items controls the maximum
     number of such values per one parameter.
 
-  ipa-cp-loop-hint-bonus
+  ``ipa-cp-loop-hint-bonus``
     When IPA-CP determines that a cloning candidate would make the number
     of iterations of a loop known, it adds a bonus of
     ipa-cp-loop-hint-bonus to the profitability score of
     the candidate.
 
-  ipa-cp-array-index-hint-bonus
+  ``ipa-cp-array-index-hint-bonus``
     When IPA-CP determines that a cloning candidate would make the index of
     an array access known, it adds a bonus of
     ipa-cp-array-index-hint-bonus to the profitability
     score of the candidate.
 
-  ipa-max-aa-steps
+  ``ipa-max-aa-steps``
     During its analysis of function bodies, IPA-CP employs alias analysis
     in order to track values pointed to by function parameters.  In order
     not spend too much time analyzing huge functions, it gives up and
     consider all memory clobbered after examining
     ipa-max-aa-steps statements modifying memory.
 
-  lto-partitions
+  ``lto-partitions``
     Specify desired number of partitions produced during WHOPR compilation.
     The number of partitions should exceed the number of CPUs used for compilation.
     The default value is 32.
 
-  lto-minpartition
+  ``lto-minpartition``
     Size of minimal partition for WHOPR (in estimated instructions).
     This prevents expenses of splitting very small programs into too many
     partitions.
 
-  cxx-max-namespaces-for-diagnostic-help
+  ``cxx-max-namespaces-for-diagnostic-help``
     The maximum number of namespaces to consult for suggestions when C++
     name lookup fails for an identifier.  The default is 1000.
 
-  sink-frequency-threshold
+  ``sink-frequency-threshold``
     The maximum relative execution frequency (in percents) of the target block
     relative to a statement's original block to allow statement sinking of a
     statement.  Larger numbers result in more aggressive statement sinking.
     The default value is 75.  A small positive adjustment is applied for
     statements with memory operands as those are even more profitable so sink.
 
-  max-stores-to-sink
+  ``max-stores-to-sink``
     The maximum number of conditional stores paires that can be sunk.  Set to 0
     if either vectorization (:option:`-ftree-vectorize`) or if-conversion
     (:option:`-ftree-loop-if-convert`) is disabled.  The default is 2.
 
-  allow-store-data-races
+  ``allow-store-data-races``
     Allow optimizers to introduce new data races on stores.
     Set to 1 to allow, otherwise to 0.  This option is enabled by default
     at optimization level :option:`-Ofast`.
 
-  case-values-threshold
+  ``case-values-threshold``
     The smallest number of different values for which it is best to use a
     jump-table instead of a tree of conditional branches.  If the value is
     0, use the default for the machine.  The default is 0.
 
-  tree-reassoc-width
+  ``tree-reassoc-width``
     Set the maximum number of instructions executed in parallel in
     reassociated tree. This parameter overrides target dependent
     heuristics used by default if has non zero value.
 
-  sched-pressure-algorithm
+  ``sched-pressure-algorithm``
     Choose between the two available implementations of
     :option:`-fsched-pressure`.  Algorithm 1 is the original implementation
     and is the more likely to prevent instructions from being reordered.
@@ -3534,66 +3534,66 @@ section includes experimental options that may produce broken code.
 
     The default choice depends on the target.
 
-  max-slsr-cand-scan
+  ``max-slsr-cand-scan``
     Set the maximum number of existing candidates that are considered when
     seeking a basis for a new straight-line strength reduction candidate.
 
-  asan-globals
+  ``asan-globals``
     Enable buffer overflow detection for global objects.  This kind
     of protection is enabled by default if you are using
     :option:`-fsanitize=address` option.
     To disable global objects protection use :option:`--param asan-globals=0`.
 
-  asan-stack
+  ``asan-stack``
     Enable buffer overflow detection for stack objects.  This kind of
     protection is enabled by default when using:option:`-fsanitize=address`.
     To disable stack protection use :option:`--param asan-stack=0` option.
 
-  asan-instrument-reads
+  ``asan-instrument-reads``
     Enable buffer overflow detection for memory reads.  This kind of
     protection is enabled by default when using :option:`-fsanitize=address`.
     To disable memory reads protection use
     :option:`--param asan-instrument-reads=0`.
 
-  asan-instrument-writes
+  ``asan-instrument-writes``
     Enable buffer overflow detection for memory writes.  This kind of
     protection is enabled by default when using :option:`-fsanitize=address`.
     To disable memory writes protection use
     :option:`--param asan-instrument-writes=0` option.
 
-  asan-memintrin
+  ``asan-memintrin``
     Enable detection for built-in functions.  This kind of protection
     is enabled by default when using :option:`-fsanitize=address`.
     To disable built-in functions protection use
     :option:`--param asan-memintrin=0`.
 
-  asan-use-after-return
+  ``asan-use-after-return``
     Enable detection of use-after-return.  This kind of protection
     is enabled by default when using :option:`-fsanitize=address` option.
     To disable use-after-return detection use 
     :option:`--param asan-use-after-return=0`.
 
-  asan-instrumentation-with-call-threshold
+  ``asan-instrumentation-with-call-threshold``
     If number of memory accesses in function being instrumented
     is greater or equal to this number, use callbacks instead of inline checks.
     E.g. to disable inline code use
     :option:`--param asan-instrumentation-with-call-threshold=0`.
 
-  chkp-max-ctor-size
+  ``chkp-max-ctor-size``
     Static constructors generated by Pointer Bounds Checker may become very
     large and significantly increase compile time at optimization level
     :option:`-O1` and higher.  This parameter is a maximum nubmer of statements
     in a single generated constructor.  Default value is 5000.
 
-  max-fsm-thread-path-insns
+  ``max-fsm-thread-path-insns``
     Maximum number of instructions to copy when duplicating blocks on a
     finite state automaton jump thread path.  The default is 100.
 
-  max-fsm-thread-length
+  ``max-fsm-thread-length``
     Maximum number of basic blocks on a finite state automaton jump thread
     path.  The default is 10.
 
-  max-fsm-thread-paths
+  ``max-fsm-thread-paths``
     Maximum number of new jump thread paths to create for a finite state
     automaton.  The default is 50.
 

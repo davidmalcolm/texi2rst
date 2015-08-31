@@ -147,54 +147,54 @@ extensions given that version of the standard. For example
 comments, while <em class="xref std std-option">-std=gnu99 -Wpedantic</em> does not.</p>
 <p>A value for this option must be provided; possible values are</p>
 <dl class="docutils">
-<dt>c90 c89 iso9899:1990</dt>
+<dt><tt class="samp docutils literal"><span class="pre">c90</span></tt> <tt class="samp docutils literal"><span class="pre">c89</span></tt> <tt class="samp docutils literal"><span class="pre">iso9899:1990</span></tt></dt>
 <dd>Support all ISO C90 programs (certain GNU extensions that conflict
 with ISO C90 are disabled). Same as <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> for C code.</dd>
-<dt>iso9899:199409</dt>
+<dt><tt class="samp docutils literal"><span class="pre">iso9899:199409</span></tt></dt>
 <dd>ISO C90 as modified in amendment 1.</dd>
-<dt>c99 c9x iso9899:1999 iso9899:199x</dt>
+<dt><tt class="samp docutils literal"><span class="pre">c99</span></tt> <tt class="samp docutils literal"><span class="pre">c9x</span></tt> <tt class="samp docutils literal"><span class="pre">iso9899:1999</span></tt> <tt class="samp docutils literal"><span class="pre">iso9899:199x</span></tt></dt>
 <dd>ISO C99.  This standard is substantially completely supported, modulo
 bugs and floating-point issues
 (mainly but not entirely relating to optional C99 features from
 Annexes F and G).  See
 <a class="reference external" href="http://gcc.gnu.org/c99status.html">http://gcc.gnu.org/c99status.html</a> for more information.  The
 names <tt class="samp docutils literal"><span class="pre">c9x</span></tt> and <tt class="samp docutils literal"><span class="pre">iso9899:199x</span></tt> are deprecated.</dd>
-<dt>c11 c1x iso9899:2011</dt>
+<dt><tt class="samp docutils literal"><span class="pre">c11</span></tt> <tt class="samp docutils literal"><span class="pre">c1x</span></tt> <tt class="samp docutils literal"><span class="pre">iso9899:2011</span></tt></dt>
 <dd>ISO C11, the 2011 revision of the ISO C standard.  This standard is
 substantially completely supported, modulo bugs, floating-point issues
 (mainly but not entirely relating to optional C11 features from
 Annexes F and G) and the optional Annexes K (Bounds-checking
 interfaces) and L (Analyzability).  The name <tt class="samp docutils literal"><span class="pre">c1x</span></tt> is deprecated.</dd>
-<dt>gnu90 gnu89</dt>
+<dt><tt class="samp docutils literal"><span class="pre">gnu90</span></tt> <tt class="samp docutils literal"><span class="pre">gnu89</span></tt></dt>
 <dd>GNU dialect of ISO C90 (including some C99 features).</dd>
-<dt>gnu99 gnu9x</dt>
+<dt><tt class="samp docutils literal"><span class="pre">gnu99</span></tt> <tt class="samp docutils literal"><span class="pre">gnu9x</span></tt></dt>
 <dd>GNU dialect of ISO C99.  The name <tt class="samp docutils literal"><span class="pre">gnu9x</span></tt> is deprecated.</dd>
-<dt>gnu11 gnu1x</dt>
+<dt><tt class="samp docutils literal"><span class="pre">gnu11</span></tt> <tt class="samp docutils literal"><span class="pre">gnu1x</span></tt></dt>
 <dd>GNU dialect of ISO C11.  This is the default for C code.
 The name <tt class="samp docutils literal"><span class="pre">gnu1x</span></tt> is deprecated.</dd>
-<dt>c++98 c++03</dt>
+<dt><tt class="samp docutils literal"><span class="pre">c++98</span></tt> <tt class="samp docutils literal"><span class="pre">c++03</span></tt></dt>
 <dd>The 1998 ISO C++ standard plus the 2003 technical corrigendum and some
 additional defect reports. Same as <a class="reference internal" href="#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> for C++ code.</dd>
-<dt>gnu++98 gnu++03</dt>
+<dt><tt class="samp docutils literal"><span class="pre">gnu++98</span></tt> <tt class="samp docutils literal"><span class="pre">gnu++03</span></tt></dt>
 <dd>GNU dialect of <em class="xref std std-option">-std=c++98</em>.  This is the default for
 C++ code.</dd>
-<dt>c++11 c++0x</dt>
+<dt><tt class="samp docutils literal"><span class="pre">c++11</span></tt> <tt class="samp docutils literal"><span class="pre">c++0x</span></tt></dt>
 <dd>The 2011 ISO C++ standard plus amendments.
 The name <tt class="samp docutils literal"><span class="pre">c++0x</span></tt> is deprecated.</dd>
-<dt>gnu++11 gnu++0x</dt>
+<dt><tt class="samp docutils literal"><span class="pre">gnu++11</span></tt> <tt class="samp docutils literal"><span class="pre">gnu++0x</span></tt></dt>
 <dd>GNU dialect of <em class="xref std std-option">-std=c++11</em>.
 The name <tt class="samp docutils literal"><span class="pre">gnu++0x</span></tt> is deprecated.</dd>
-<dt>c++14 c++1y</dt>
+<dt><tt class="samp docutils literal"><span class="pre">c++14</span></tt> <tt class="samp docutils literal"><span class="pre">c++1y</span></tt></dt>
 <dd>The 2014 ISO C++ standard plus amendments.
 The name <tt class="samp docutils literal"><span class="pre">c++1y</span></tt> is deprecated.</dd>
-<dt>gnu++14 gnu++1y</dt>
+<dt><tt class="samp docutils literal"><span class="pre">gnu++14</span></tt> <tt class="samp docutils literal"><span class="pre">gnu++1y</span></tt></dt>
 <dd>GNU dialect of <em class="xref std std-option">-std=c++14</em>.
 The name <tt class="samp docutils literal"><span class="pre">gnu++1y</span></tt> is deprecated.</dd>
-<dt>c++1z</dt>
+<dt><tt class="samp docutils literal"><span class="pre">c++1z</span></tt></dt>
 <dd>The next revision of the ISO C++ standard, tentatively planned for
 2017.  Support is highly experimental, and will almost certainly
 change in incompatible ways in future releases.</dd>
-<dt>gnu++1z</dt>
+<dt><tt class="samp docutils literal"><span class="pre">gnu++1z</span></tt></dt>
 <dd>GNU dialect of <em class="xref std std-option">-std=c++1z</em>.  Support is highly experimental,
 and will almost certainly change in incompatible ways in future
 releases.</dd>

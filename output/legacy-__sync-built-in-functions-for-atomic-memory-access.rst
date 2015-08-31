@@ -42,7 +42,7 @@ variables to be protected.  The list is ignored by GCC which treats it as
 empty.  GCC interprets an empty list as meaning that all globally
 accessible variables should be protected.
 
-``type`` __sync_fetch_and_add (``type`` *ptr, ``type`` value, ...) ``type`` __sync_fetch_and_sub (``type`` *ptr, ``type`` value, ...) ``type`` __sync_fetch_and_or (``type`` *ptr, ``type`` value, ...) ``type`` __sync_fetch_and_and (``type`` *ptr, ``type`` value, ...) ``type`` __sync_fetch_and_xor (``type`` *ptr, ``type`` value, ...) ``type`` __sync_fetch_and_nand (``type`` *ptr, ``type`` value, ...)
+:samp:`{type} __sync_fetch_and_add ({type} *ptr, {type} value, ...)` :samp:`{type} __sync_fetch_and_sub ({type} *ptr, {type} value, ...)` :samp:`{type} __sync_fetch_and_or ({type} *ptr, {type} value, ...)` :samp:`{type} __sync_fetch_and_and ({type} *ptr, {type} value, ...)` :samp:`{type} __sync_fetch_and_xor ({type} *ptr, {type} value, ...)` :samp:`{type} __sync_fetch_and_nand ({type} *ptr, {type} value, ...)`
 
   .. index:: __sync_fetch_and_add
 
@@ -67,7 +67,7 @@ accessible variables should be protected.
   *Note:* GCC 4.4 and later implement ``__sync_fetch_and_nand``
   as ``*ptr = ~(tmp & value)`` instead of ``*ptr = ~tmp & value``.
 
-``type`` __sync_add_and_fetch (``type`` *ptr, ``type`` value, ...) ``type`` __sync_sub_and_fetch (``type`` *ptr, ``type`` value, ...) ``type`` __sync_or_and_fetch (``type`` *ptr, ``type`` value, ...) ``type`` __sync_and_and_fetch (``type`` *ptr, ``type`` value, ...) ``type`` __sync_xor_and_fetch (``type`` *ptr, ``type`` value, ...) ``type`` __sync_nand_and_fetch (``type`` *ptr, ``type`` value, ...)
+:samp:`{type} __sync_add_and_fetch ({type} *ptr, {type} value, ...)` :samp:`{type} __sync_sub_and_fetch ({type} *ptr, {type} value, ...)` :samp:`{type} __sync_or_and_fetch ({type} *ptr, {type} value, ...)` :samp:`{type} __sync_and_and_fetch ({type} *ptr, {type} value, ...)` :samp:`{type} __sync_xor_and_fetch ({type} *ptr, {type} value, ...)` :samp:`{type} __sync_nand_and_fetch ({type} *ptr, {type} value, ...)`
 
   .. index:: __sync_add_and_fetch
 
@@ -93,7 +93,7 @@ accessible variables should be protected.
   as ``*ptr = ~(*ptr & value)`` instead of
   ``*ptr = ~*ptr & value``.
 
-bool __sync_bool_compare_and_swap (``type`` *ptr, ``type`` oldval, ``type`` newval, ...) ``type`` __sync_val_compare_and_swap (``type`` *ptr, ``type`` oldval, ``type`` newval, ...)
+:samp:`bool __sync_bool_compare_and_swap ({type} *ptr, {type} oldval, {type} newval, ...)` :samp:`{type} __sync_val_compare_and_swap ({type} *ptr, {type} oldval, {type} newval, ...)`
 
   .. index:: __sync_bool_compare_and_swap
 
@@ -108,13 +108,13 @@ bool __sync_bool_compare_and_swap (``type`` *ptr, ``type`` oldval, ``type`` newv
   ``newval`` is written.  The 'val' version returns the contents
   of ``*``ptr```` before the operation.
 
-__sync_synchronize (...)
+``__sync_synchronize (...)``
 
   .. index:: __sync_synchronize
 
   This built-in function issues a full memory barrier.
 
-``type`` __sync_lock_test_and_set (``type`` *ptr, ``type`` value, ...)
+:samp:`{type} __sync_lock_test_and_set ({type} *ptr, {type} value, ...)`
 
   .. index:: __sync_lock_test_and_set
 
@@ -136,7 +136,7 @@ __sync_synchronize (...)
   be globally visible yet, and previous memory loads may not yet be
   satisfied.
 
-void __sync_lock_release (``type`` *ptr, ...)
+:samp:`void __sync_lock_release ({type} *ptr, ...)`
 
   .. index:: __sync_lock_release
 

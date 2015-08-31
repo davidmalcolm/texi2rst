@@ -115,13 +115,13 @@ needed to read from flash.</p>
 needed to locate read-only data in flash memory
 <em>and</em> to generate the right instructions to access this data
 without using (inline) assembler code.</p>
-<p>__flash</p>
+<p><tt class="docutils literal"><span class="pre">__flash</span></tt></p>
 <blockquote>
 <div><p id="index-1">The <tt class="docutils literal"><span class="pre">__flash</span></tt> qualifier locates data in the
 <tt class="docutils literal"><span class="pre">.progmem.data</span></tt> section. Data is read using the <tt class="docutils literal"><span class="pre">LPM</span></tt>
 instruction. Pointers to this address space are 16 bits wide.</p>
 </div></blockquote>
-<p>__flash1 __flash2 __flash3 __flash4 __flash5</p>
+<p><tt class="docutils literal"><span class="pre">__flash1</span></tt> <tt class="docutils literal"><span class="pre">__flash2</span></tt> <tt class="docutils literal"><span class="pre">__flash3</span></tt> <tt class="docutils literal"><span class="pre">__flash4</span></tt> <tt class="docutils literal"><span class="pre">__flash5</span></tt></p>
 <blockquote>
 <div><span class="target" id="index-2"></span><span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span><p id="index-6">These are 16-bit address spaces locating data in section
 <tt class="docutils literal"><span class="pre">.progmem``N</span></tt>.data`` where <tt class="docutils literal"><span class="pre">N</span></tt> refers to
@@ -129,7 +129,7 @@ address space <tt class="docutils literal"><span class="pre">__flash``N``</span>
 The compiler sets the <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> segment register appropriately
 before reading data by means of the <tt class="docutils literal"><span class="pre">ELPM</span></tt> instruction.</p>
 </div></blockquote>
-<p>__memx</p>
+<p><tt class="docutils literal"><span class="pre">__memx</span></tt></p>
 <blockquote>
 <div><p id="index-7">This is a 24-bit address space that linearizes flash and RAM:
 If the high bit of the address is set, data is read from

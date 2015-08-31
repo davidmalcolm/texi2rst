@@ -32,7 +32,7 @@ needed to locate read-only data in flash memory
 *and* to generate the right instructions to access this data
 without using (inline) assembler code.
 
-__flash
+``__flash``
 
   .. index:: __flash AVR Named Address Spaces
 
@@ -40,7 +40,7 @@ __flash
   ``.progmem.data`` section. Data is read using the ``LPM``
   instruction. Pointers to this address space are 16 bits wide.
 
-__flash1 __flash2 __flash3 __flash4 __flash5
+``__flash1`` ``__flash2`` ``__flash3`` ``__flash4`` ``__flash5``
 
   .. index:: __flash1 AVR Named Address Spaces
 
@@ -58,7 +58,7 @@ __flash1 __flash2 __flash3 __flash4 __flash5
   The compiler sets the ``RAMPZ`` segment register appropriately 
   before reading data by means of the ``ELPM`` instruction.
 
-__memx
+``__memx``
 
   .. index:: __memx AVR Named Address Spaces
 

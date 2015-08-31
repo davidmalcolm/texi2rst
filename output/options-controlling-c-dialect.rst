@@ -81,14 +81,14 @@ accepts:
 
   A value for this option must be provided; possible values are
 
-  c90 c89 iso9899:1990
+  :samp:`c90` :samp:`c89` :samp:`iso9899:1990`
     Support all ISO C90 programs (certain GNU extensions that conflict
     with ISO C90 are disabled). Same as :option:`-ansi` for C code.
 
-  iso9899:199409
+  :samp:`iso9899:199409`
     ISO C90 as modified in amendment 1.
 
-  c99 c9x iso9899:1999 iso9899:199x
+  :samp:`c99` :samp:`c9x` :samp:`iso9899:1999` :samp:`iso9899:199x`
     ISO C99.  This standard is substantially completely supported, modulo
     bugs and floating-point issues
     (mainly but not entirely relating to optional C99 features from
@@ -96,53 +96,53 @@ accepts:
     http://gcc.gnu.org/c99status.html for more information.  The
     names :samp:`c9x` and :samp:`iso9899:199x` are deprecated.
 
-  c11 c1x iso9899:2011
+  :samp:`c11` :samp:`c1x` :samp:`iso9899:2011`
     ISO C11, the 2011 revision of the ISO C standard.  This standard is
     substantially completely supported, modulo bugs, floating-point issues
     (mainly but not entirely relating to optional C11 features from
     Annexes F and G) and the optional Annexes K (Bounds-checking
     interfaces) and L (Analyzability).  The name :samp:`c1x` is deprecated.
 
-  gnu90 gnu89
+  :samp:`gnu90` :samp:`gnu89`
     GNU dialect of ISO C90 (including some C99 features).
 
-  gnu99 gnu9x
+  :samp:`gnu99` :samp:`gnu9x`
     GNU dialect of ISO C99.  The name :samp:`gnu9x` is deprecated.
 
-  gnu11 gnu1x
+  :samp:`gnu11` :samp:`gnu1x`
     GNU dialect of ISO C11.  This is the default for C code.
     The name :samp:`gnu1x` is deprecated.
 
-  c++98 c++03
+  :samp:`c++98` :samp:`c++03`
     The 1998 ISO C++ standard plus the 2003 technical corrigendum and some
     additional defect reports. Same as :option:`-ansi` for C++ code.
 
-  gnu++98 gnu++03
+  :samp:`gnu++98` :samp:`gnu++03`
     GNU dialect of :option:`-std=c++98`.  This is the default for
     C++ code.
 
-  c++11 c++0x
+  :samp:`c++11` :samp:`c++0x`
     The 2011 ISO C++ standard plus amendments.
     The name :samp:`c++0x` is deprecated.
 
-  gnu++11 gnu++0x
+  :samp:`gnu++11` :samp:`gnu++0x`
     GNU dialect of :option:`-std=c++11`.
     The name :samp:`gnu++0x` is deprecated.
 
-  c++14 c++1y
+  :samp:`c++14` :samp:`c++1y`
     The 2014 ISO C++ standard plus amendments.
     The name :samp:`c++1y` is deprecated.
 
-  gnu++14 gnu++1y
+  :samp:`gnu++14` :samp:`gnu++1y`
     GNU dialect of :option:`-std=c++14`.
     The name :samp:`gnu++1y` is deprecated.
 
-  c++1z
+  :samp:`c++1z`
     The next revision of the ISO C++ standard, tentatively planned for
     2017.  Support is highly experimental, and will almost certainly
     change in incompatible ways in future releases.
 
-  gnu++1z
+  :samp:`gnu++1z`
     GNU dialect of :option:`-std=c++1z`.  Support is highly experimental,
     and will almost certainly change in incompatible ways in future
     releases.

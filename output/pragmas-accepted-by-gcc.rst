@@ -39,19 +39,19 @@ The ARM target defines pragmas for controlling the default addition of
 See :ref:`function-attributes`, for information about the effects of these
 attributes.
 
-long_calls
+``long_calls``
 
   .. index:: pragma, long_calls
 
   Set all subsequent functions to have the ``long_call`` attribute.
 
-no_long_calls
+``no_long_calls``
 
   .. index:: pragma, no_long_calls
 
   Set all subsequent functions to have the ``short_call`` attribute.
 
-long_calls_off
+``long_calls_off``
 
   .. index:: pragma, long_calls_off
 
@@ -63,7 +63,7 @@ long_calls_off
 M32C Pragmas
 ^^^^^^^^^^^^
 
-GCC memregs ``number``
+:samp:`GCC memregs {number}`
 
   .. index:: pragma, memregs
 
@@ -74,7 +74,7 @@ GCC memregs ``number``
   performance-critical function uses a memreg for temporary values,
   as it may allow you to reduce the number of memregs used.
 
-ADDRESS ``name````address``
+:samp:`ADDRESS {name}{address}`
 
   .. index:: pragma, address
 
@@ -96,7 +96,7 @@ ADDRESS ``name````address``
 MeP Pragmas
 ^^^^^^^^^^^
 
-custom io_volatile (on|off)
+``custom io_volatile (on|off)``
 
   .. index:: pragma, custom io_volatile
 
@@ -105,7 +105,7 @@ custom io_volatile (on|off)
   option should only be used once before any ``io`` variables in each
   file.
 
-GCC coprocessor available ``registers``
+:samp:`GCC coprocessor available {registers}`
 
   .. index:: pragma, coprocessor available
 
@@ -117,7 +117,7 @@ GCC coprocessor available ``registers``
 
     #pragma GCC coprocessor available $c0...$c10, $c28
 
-GCC coprocessor call_saved ``registers``
+:samp:`GCC coprocessor call_saved {registers}`
 
   .. index:: pragma, coprocessor call_saved
 
@@ -130,7 +130,7 @@ GCC coprocessor call_saved ``registers``
 
     #pragma GCC coprocessor call_saved $c4...$c6, $c31
 
-GCC coprocessor subclass '(A|B|C|D)' = ``registers``
+:samp:`GCC coprocessor subclass '(A|B|C|D)' = {registers}`
 
   .. index:: pragma, coprocessor subclass
 
@@ -145,7 +145,7 @@ GCC coprocessor subclass '(A|B|C|D)' = ``registers``
 
     asm ("cpfoo %0" : "=B" (x));
 
-GCC disinterrupt ``name`` , ``name`` ...
+:samp:`GCC disinterrupt {name} , {name} ...`
 
   .. index:: pragma, disinterrupt
 
@@ -160,7 +160,7 @@ GCC disinterrupt ``name`` , ``name`` ...
     #pragma disinterrupt bar, grill
     int foo () { ... }
 
-GCC call ``name`` , ``name`` ...
+:samp:`GCC call {name} , {name} ...`
 
   .. index:: pragma, call
 
@@ -184,14 +184,14 @@ option, but not the ``longcall`` and ``shortcall`` attributes.
 See :ref:`rs-6000-and-powerpc-options`, for more information about when long
 calls are and are not necessary.
 
-longcall (1)
+``longcall (1)``
 
   .. index:: pragma, longcall
 
   Apply the ``longcall`` attribute to all subsequent function
   declarations.
 
-longcall (0)
+``longcall (0)``
   Do not apply the ``longcall`` attribute to subsequent function
   declarations.
 
@@ -208,13 +208,13 @@ The following pragmas are available for all architectures running the
 Darwin operating system.  These are useful for compatibility with other
 Mac OS compilers.
 
-mark ``tokens``...
+:samp:`mark {tokens}...`
 
   .. index:: pragma, mark
 
   This pragma is accepted, but has no effect.
 
-options align=``alignment``
+:samp:`options align={alignment}`
 
   .. index:: pragma, options align
 
@@ -224,13 +224,13 @@ options align=``alignment``
   properly; to restore the previous setting, use ``reset`` for the
   ``alignment``.
 
-segment ``tokens``...
+:samp:`segment {tokens}...`
 
   .. index:: pragma, segment
 
   This pragma is accepted, but has no effect.
 
-unused (``var`` [, ``var``]...)
+:samp:`unused ({var} [, {var}]...)`
 
   .. index:: pragma, unused
 
@@ -248,7 +248,7 @@ The Solaris target supports ``#pragma redefine_extname``
 (see :ref:`symbol-renaming-pragmas`).  It also supports additional
 ``#pragma`` directives for compatibility with the system compiler.
 
-align ``alignment`` (``variable`` [, ``variable``]...)
+:samp:`align {alignment} ({variable} [, {variable}]...)`
 
   .. index:: pragma, align
 
@@ -258,7 +258,7 @@ align ``alignment`` (``variable`` [, ``variable``]...)
   compiling C++, but this is a bug which may be fixed in a future
   release.
 
-fini (``function`` [, ``function``]...)
+:samp:`fini ({function} [, {function}]...)`
 
   .. index:: pragma, fini
 
@@ -266,7 +266,7 @@ fini (``function`` [, ``function``]...)
   main, or during shared module unloading, by adding a call to the
   ``.fini`` section.
 
-init (``function`` [, ``function``]...)
+:samp:`init ({function} [, {function}]...)`
 
   .. index:: pragma, init
 
@@ -285,7 +285,7 @@ platforms, it is intended primarily to provide compatibility with the
 Solaris system headers. This effect can also be achieved using the asm
 labels extension (see :ref:`asm-labels`).
 
-redefine_extname ``oldname````newname``
+:samp:`redefine_extname {oldname}{newname}`
 
   .. index:: pragma, redefine_extname
 
@@ -360,7 +360,7 @@ For compatibility with SVR4, GCC supports a set of ``#pragma``
 directives for declaring symbols to be weak, and defining weak
 aliases.
 
-#pragma weak ``symbol``
+:samp:`#pragma weak {symbol}`
 
   .. index:: pragma, weak
 
@@ -369,7 +369,7 @@ aliases.
   or after the declaration of ``symbol``.  It is not an error for
   ``symbol`` to never be defined at all.
 
-#pragma weak ``symbol1`` = ``symbol2``
+:samp:`#pragma weak {symbol1} = {symbol2}`
   This pragma declares ``symbol1`` to be a weak alias of ``symbol2``.
   It is an error if ``symbol2`` is not defined in the current
   translation unit.
@@ -387,7 +387,7 @@ specific types of warnings.  Or, a project might selectively enable
 diagnostics and treat them as errors depending on which preprocessor
 macros are defined.
 
-#pragma GCC diagnostic ``kind````option``
+:samp:`#pragma GCC diagnostic {kind}{option}`
 
   .. index:: pragma, diagnostic
 
@@ -414,7 +414,7 @@ macros are defined.
   to the state as of that point in the source file.  Thus, pragmas occurring
   after a line do not affect diagnostics caused by that line.
 
-#pragma GCC diagnostic push #pragma GCC diagnostic pop
+``#pragma GCC diagnostic push`` ``#pragma GCC diagnostic pop``
   Causes GCC to remember the state of the diagnostics as of each
   ``push``, and restore to that point at each ``pop``.  If a
   ``pop`` has no matching ``push``, the command-line options are
@@ -435,7 +435,7 @@ macros are defined.
   GCC also offers a simple mechanism for printing messages during
 compilation.
 
-#pragma message ``string``
+:samp:`#pragma message {string}`
 
   .. index:: pragma, diagnostic
 
@@ -464,7 +464,7 @@ compilation.
 Visibility Pragmas
 ^^^^^^^^^^^^^^^^^^
 
-#pragma GCC visibility push(``visibility``) #pragma GCC visibility pop
+:samp:`#pragma GCC visibility push({visibility})` ``#pragma GCC visibility pop``
 
   .. index:: pragma, visibility
 
@@ -486,14 +486,14 @@ For compatibility with Microsoft Windows compilers, GCC supports
 :samp:`#pragma push_macro(``"macro_name"``)`
 and :samp:`#pragma pop_macro(``"macro_name"``)`.
 
-#pragma push_macro(``"macro_name"``)
+:samp:`#pragma push_macro({"macro_name"})`
 
   .. index:: pragma, push_macro
 
   This pragma saves the value of the macro named as ``macro_name`` to
   the top of the stack for this macro.
 
-#pragma pop_macro(``"macro_name"``)
+:samp:`#pragma pop_macro({"macro_name"})`
 
   .. index:: pragma, pop_macro
 
@@ -520,7 +520,7 @@ push_macro`` and restored by ``#pragma pop_macro``.
 Function Specific Option Pragmas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#pragma GCC target (``"string"``...)
+:samp:`#pragma GCC target ({"string"}...)`
 
   .. index:: pragma GCC target
 
@@ -535,7 +535,7 @@ Function Specific Option Pragmas
   The ``#pragma GCC target`` pragma is presently implemented for
   x86, PowerPC, and Nios II targets only.
 
-#pragma GCC optimize (``"string"``...)
+:samp:`#pragma GCC optimize ({"string"}...)`
 
   .. index:: pragma GCC optimize
 
@@ -547,7 +547,7 @@ Function Specific Option Pragmas
   See :ref:`function-attributes`, for more information about the
   ``optimize`` attribute and the attribute syntax.
 
-#pragma GCC push_options #pragma GCC pop_options
+``#pragma GCC push_options`` ``#pragma GCC pop_options``
 
   .. index:: pragma GCC push_options
 
@@ -559,7 +559,7 @@ Function Specific Option Pragmas
   :samp:`#pragma GCC optimize` and then to pop back to the previous
   options.
 
-#pragma GCC reset_options
+``#pragma GCC reset_options``
 
   .. index:: pragma GCC reset_options
 
@@ -572,7 +572,7 @@ Function Specific Option Pragmas
 Loop-Specific Pragmas
 ^^^^^^^^^^^^^^^^^^^^^
 
-#pragma GCC ivdep
+``#pragma GCC ivdep``
 
   .. index:: pragma GCC ivdep
 

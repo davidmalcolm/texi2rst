@@ -176,16 +176,16 @@ parameters to the function.
 
 The letters represent the following data types:
 
-<no letter>
+``<no letter>``
   ``void`` for return type and no parameter for parameter types.
 
-i
+``i``
   ``int`` for return type and parameter type
 
-f
+``f``
   ``float`` for return type and parameter type
 
-p
+``p``
   ``void *`` for return type and parameter type
 
   And the function names are:
@@ -1212,9 +1212,9 @@ instructions to access memory.  These functions generate
 ``membar`` instructions to flush the I/O load and stores where
 appropriate, as described in Fujitsu's manual described above.
 
-unsigned char __builtin_read8 (void *``data``)unsigned short __builtin_read16 (void *``data``)unsigned long __builtin_read32 (void *``data``)
-unsigned long long __builtin_read64 (void *``data``)
-  void __builtin_write8 (void *``data``, unsigned char ``datum``)void __builtin_write16 (void *``data``, unsigned short ``datum``)void __builtin_write32 (void *``data``, unsigned long ``datum``)void __builtin_write64 (void *``data``, unsigned long long ``datum``).. _other-built-in-functions:
+:samp:`unsigned char __builtin_read8 (void *{data})`:samp:`unsigned short __builtin_read16 (void *{data})`:samp:`unsigned long __builtin_read32 (void *{data})`
+:samp:`unsigned long long __builtin_read64 (void *{data})`
+  :samp:`void __builtin_write8 (void *{data}, unsigned char {datum})`:samp:`void __builtin_write16 (void *{data}, unsigned short {datum})`:samp:`void __builtin_write32 (void *{data}, unsigned long {datum})`:samp:`void __builtin_write64 (void *{data}, unsigned long long {datum})`.. _other-built-in-functions:
 
 Other Built-in Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1222,27 +1222,27 @@ Other Built-in Functions
 This section describes built-in functions that are not named after
 a specific FR-V instruction.
 
-sw2 __IACCreadll (iacc ``reg``)
+:samp:`sw2 __IACCreadll (iacc {reg})`
   Return the full 64-bit value of IACC0.  The ``reg`` argument is reserved
   for future expansion and must be 0.
 
-sw1 __IACCreadl (iacc ``reg``)
+:samp:`sw1 __IACCreadl (iacc {reg})`
   Return the value of IACC0H if ``reg`` is 0 and IACC0L if ``reg`` is 1.
   Other values of ``reg`` are rejected as invalid.
 
-void __IACCsetll (iacc ``reg``, sw2 ``x``)
+:samp:`void __IACCsetll (iacc {reg}, sw2 {x})`
   Set the full 64-bit value of IACC0 to ``x``.  The ``reg`` argument
   is reserved for future expansion and must be 0.
 
-void __IACCsetl (iacc ``reg``, sw1 ``x``)
+:samp:`void __IACCsetl (iacc {reg}, sw1 {x})`
   Set IACC0H to ``x`` if ``reg`` is 0 and IACC0L to ``x`` if ``reg``
   is 1.  Other values of ``reg`` are rejected as invalid.
 
-void __data_prefetch0 (const void *``x``)
+:samp:`void __data_prefetch0 (const void *{x})`
   Use the ``dcpl`` instruction to load the contents of address ``x``
   into the data cache.
 
-void __data_prefetch (const void *``x``)
+:samp:`void __data_prefetch (const void *{x})`
   Use the ``nldub`` instruction to load the contents of address ``x``
   into the data cache.  The instruction is issued in slot I1.
 
@@ -1750,31 +1750,31 @@ The following paired-single functions map directly to a particular
 MIPS instruction.  Please refer to the architecture specification
 for details on what each instruction does.
 
-v2sf __builtin_mips_pll_ps (v2sf, v2sf)
+``v2sf __builtin_mips_pll_ps (v2sf, v2sf)``
   Pair lower lower (``pll.ps``).
 
-v2sf __builtin_mips_pul_ps (v2sf, v2sf)
+``v2sf __builtin_mips_pul_ps (v2sf, v2sf)``
   Pair upper lower (``pul.ps``).
 
-v2sf __builtin_mips_plu_ps (v2sf, v2sf)
+``v2sf __builtin_mips_plu_ps (v2sf, v2sf)``
   Pair lower upper (``plu.ps``).
 
-v2sf __builtin_mips_puu_ps (v2sf, v2sf)
+``v2sf __builtin_mips_puu_ps (v2sf, v2sf)``
   Pair upper upper (``puu.ps``).
 
-v2sf __builtin_mips_cvt_ps_s (float, float)
+``v2sf __builtin_mips_cvt_ps_s (float, float)``
   Convert pair to paired single (``cvt.ps.s``).
 
-float __builtin_mips_cvt_s_pl (v2sf)
+``float __builtin_mips_cvt_s_pl (v2sf)``
   Convert pair lower to single (``cvt.s.pl``).
 
-float __builtin_mips_cvt_s_pu (v2sf)
+``float __builtin_mips_cvt_s_pu (v2sf)``
   Convert pair upper to single (``cvt.s.pu``).
 
-v2sf __builtin_mips_abs_ps (v2sf)
+``v2sf __builtin_mips_abs_ps (v2sf)``
   Absolute value (``abs.ps``).
 
-v2sf __builtin_mips_alnv_ps (v2sf, v2sf, int)
+``v2sf __builtin_mips_alnv_ps (v2sf, v2sf, int)``
   Align variable (``alnv.ps``).
 
   *Note:* The value of the third parameter must be 0 or 4
@@ -1787,7 +1787,7 @@ In each case, ``cond`` can be any of the 16 floating-point conditions:
 ``ole``, ``ule``, ``sf``, ``ngle``, ``seq``, ``ngl``,
 ``lt``, ``nge``, ``le`` or ``ngt``.
 
-v2sf __builtin_mips_movt_c_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``) v2sf __builtin_mips_movf_c_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)
+:samp:`v2sf __builtin_mips_movt_c_{cond}_ps (v2sf {a}, v2sf {b}, v2sf {c}, v2sf {d})` :samp:`v2sf __builtin_mips_movf_c_{cond}_ps (v2sf {a}, v2sf {b}, v2sf {c}, v2sf {d})`
   Conditional move based on floating-point comparison (``c.``cond``.ps``,
   ``movt.ps``/``movf.ps``).
 
@@ -1802,7 +1802,7 @@ v2sf __builtin_mips_movt_c_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf
   The ``movf`` functions are similar but use ``movf.ps`` instead
   of ``movt.ps``.
 
-int __builtin_mips_upper_c_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mips_lower_c_``cond``_ps (v2sf ``a``, v2sf ``b``)
+:samp:`int __builtin_mips_upper_c_{cond}_ps (v2sf {a}, v2sf {b})` :samp:`int __builtin_mips_lower_c_{cond}_ps (v2sf {a}, v2sf {b})`
   Comparison of two paired-single values (``c.``cond``.ps``,
   ``bc1t``/``bc1f``).
 
@@ -1836,29 +1836,29 @@ The functions listed below map directly to a particular MIPS-3D
 instruction.  Please refer to the architecture specification for
 more details on what each instruction does.
 
-v2sf __builtin_mips_addr_ps (v2sf, v2sf)
+``v2sf __builtin_mips_addr_ps (v2sf, v2sf)``
   Reduction add (``addr.ps``).
 
-v2sf __builtin_mips_mulr_ps (v2sf, v2sf)
+``v2sf __builtin_mips_mulr_ps (v2sf, v2sf)``
   Reduction multiply (``mulr.ps``).
 
-v2sf __builtin_mips_cvt_pw_ps (v2sf)
+``v2sf __builtin_mips_cvt_pw_ps (v2sf)``
   Convert paired single to paired word (``cvt.pw.ps``).
 
-v2sf __builtin_mips_cvt_ps_pw (v2sf)
+``v2sf __builtin_mips_cvt_ps_pw (v2sf)``
   Convert paired word to paired single (``cvt.ps.pw``).
 
-float __builtin_mips_recip1_s (float) double __builtin_mips_recip1_d (double) v2sf __builtin_mips_recip1_ps (v2sf)
+``float __builtin_mips_recip1_s (float)`` ``double __builtin_mips_recip1_d (double)`` ``v2sf __builtin_mips_recip1_ps (v2sf)``
   Reduced-precision reciprocal (sequence step 1) (``recip1.``fmt````).
 
-float __builtin_mips_recip2_s (float, float) double __builtin_mips_recip2_d (double, double) v2sf __builtin_mips_recip2_ps (v2sf, v2sf)
+``float __builtin_mips_recip2_s (float, float)`` ``double __builtin_mips_recip2_d (double, double)`` ``v2sf __builtin_mips_recip2_ps (v2sf, v2sf)``
   Reduced-precision reciprocal (sequence step 2) (``recip2.``fmt````).
 
-float __builtin_mips_rsqrt1_s (float) double __builtin_mips_rsqrt1_d (double) v2sf __builtin_mips_rsqrt1_ps (v2sf)
+``float __builtin_mips_rsqrt1_s (float)`` ``double __builtin_mips_rsqrt1_d (double)`` ``v2sf __builtin_mips_rsqrt1_ps (v2sf)``
   Reduced-precision reciprocal square root (sequence step 1)
   (``rsqrt1.``fmt````).
 
-float __builtin_mips_rsqrt2_s (float, float) double __builtin_mips_rsqrt2_d (double, double) v2sf __builtin_mips_rsqrt2_ps (v2sf, v2sf)
+``float __builtin_mips_rsqrt2_s (float, float)`` ``double __builtin_mips_rsqrt2_d (double, double)`` ``v2sf __builtin_mips_rsqrt2_ps (v2sf, v2sf)``
   Reduced-precision reciprocal square root (sequence step 2)
   (``rsqrt2.``fmt````).
 
@@ -1868,7 +1868,7 @@ In each case, ``cond`` can be any of the 16 floating-point conditions:
 ``ole``, ``ule``, ``sf``, ``ngle``, ``seq``,
 ``ngl``, ``lt``, ``nge``, ``le`` or ``ngt``.
 
-int __builtin_mips_cabs_``cond``_s (float ``a``, float ``b``) int __builtin_mips_cabs_``cond``_d (double ``a``, double ``b``)
+:samp:`int __builtin_mips_cabs_{cond}_s (float {a}, float {b})` :samp:`int __builtin_mips_cabs_{cond}_d (double {a}, double {b})`
   Absolute comparison of two scalar values (``cabs.``cond``.``fmt````,
   ``bc1t``/``bc1f``).
 
@@ -1884,7 +1884,7 @@ int __builtin_mips_cabs_``cond``_s (float ``a``, float ``b``) int __builtin_mips
     else
       false ();
 
-int __builtin_mips_upper_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mips_lower_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``)
+:samp:`int __builtin_mips_upper_cabs_{cond}_ps (v2sf {a}, v2sf {b})` :samp:`int __builtin_mips_lower_cabs_{cond}_ps (v2sf {a}, v2sf {b})`
   Absolute comparison of two paired-single values (``cabs.``cond``.ps``,
   ``bc1t``/``bc1f``).
 
@@ -1904,7 +1904,7 @@ int __builtin_mips_upper_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin
     else
       lower_halves_are_unequal ();
 
-v2sf __builtin_mips_movt_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``) v2sf __builtin_mips_movf_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)
+:samp:`v2sf __builtin_mips_movt_cabs_{cond}_ps (v2sf {a}, v2sf {b}, v2sf {c}, v2sf {d})` :samp:`v2sf __builtin_mips_movf_cabs_{cond}_ps (v2sf {a}, v2sf {b}, v2sf {c}, v2sf {d})`
   Conditional move based on absolute comparison (``cabs.``cond``.ps``,
   ``movt.ps``/``movf.ps``).
 
@@ -1919,7 +1919,7 @@ v2sf __builtin_mips_movt_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``, v2sf ``c``, v
   The ``movf`` functions are similar but use ``movf.ps`` instead
   of ``movt.ps``.
 
-int __builtin_mips_any_c_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mips_all_c_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mips_any_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mips_all_cabs_``cond``_ps (v2sf ``a``, v2sf ``b``)
+:samp:`int __builtin_mips_any_c_{cond}_ps (v2sf {a}, v2sf {b})` :samp:`int __builtin_mips_all_c_{cond}_ps (v2sf {a}, v2sf {b})` :samp:`int __builtin_mips_any_cabs_{cond}_ps (v2sf {a}, v2sf {b})` :samp:`int __builtin_mips_all_cabs_{cond}_ps (v2sf {a}, v2sf {b})`
   Comparison of two paired-single values
   (``c.``cond``.ps``/``cabs.``cond``.ps``,
   ``bc1any2t``/``bc1any2f``).
@@ -1942,7 +1942,7 @@ int __builtin_mips_any_c_``cond``_ps (v2sf ``a``, v2sf ``b``) int __builtin_mips
     else
       one_is_false ();
 
-int __builtin_mips_any_c_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``) int __builtin_mips_all_c_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``) int __builtin_mips_any_cabs_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``) int __builtin_mips_all_cabs_``cond``_4s (v2sf ``a``, v2sf ``b``, v2sf ``c``, v2sf ``d``)
+:samp:`int __builtin_mips_any_c_{cond}_4s (v2sf {a}, v2sf {b}, v2sf {c}, v2sf {d})` :samp:`int __builtin_mips_all_c_{cond}_4s (v2sf {a}, v2sf {b}, v2sf {c}, v2sf {d})` :samp:`int __builtin_mips_any_cabs_{cond}_4s (v2sf {a}, v2sf {b}, v2sf {c}, v2sf {d})` :samp:`int __builtin_mips_all_cabs_{cond}_4s (v2sf {a}, v2sf {b}, v2sf {c}, v2sf {d})`
   Comparison of four paired-single values
   (``c.``cond``.ps``/``cabs.``cond``.ps``,
   ``bc1any4t``/``bc1any4f``).
@@ -1973,12 +1973,12 @@ Other MIPS Built-in Functions
 
 GCC provides other MIPS-specific built-in functions:
 
-void __builtin_mips_cache (int ``op``, const volatile void *``addr``)
+:samp:`void __builtin_mips_cache (int {op}, const volatile void *{addr})`
   Insert a :samp:`cache` instruction with operands ``op`` and ``addr``.
   GCC defines the preprocessor macro ``___GCC_HAVE_BUILTIN_MIPS_CACHE``
   when this function is available.
 
-unsigned int __builtin_mips_get_fcsr (void) void __builtin_mips_set_fcsr (unsigned int ``value``)
+``unsigned int __builtin_mips_get_fcsr (void)`` :samp:`void __builtin_mips_set_fcsr (unsigned int {value})`
   Get and set the contents of the floating-point control and status register
   (FPU control register 31).  These functions are only available in hard-float
   code but can be called in both MIPS16 and non-MIPS16 contexts.
@@ -1994,19 +1994,19 @@ MSP430 Built-in Functions
 GCC provides a couple of special builtin functions to aid in the
 writing of interrupt handlers in C.
 
-__bic_SR_register_on_exit (int ``mask``)
+:samp:`__bic_SR_register_on_exit (int {mask})`
   This clears the indicated bits in the saved copy of the status register
   currently residing on the stack.  This only works inside interrupt
   handlers and the changes to the status register will only take affect
   once the handler returns.
 
-__bis_SR_register_on_exit (int ``mask``)
+:samp:`__bis_SR_register_on_exit (int {mask})`
   This sets the indicated bits in the saved copy of the status register
   currently residing on the stack.  This only works inside interrupt
   handlers and the changes to the status register will only take affect
   once the handler returns.
 
-__delay_cycles (long long ``cycles``)
+:samp:`__delay_cycles (long long {cycles})`
   This inserts an instruction sequence that takes exactly ``cycles``
   cycles (between 0 and about 17E9) to complete.  The inserted sequence
   may use jumps, loops, or no-ops, and does not interfere with any other
@@ -2063,30 +2063,30 @@ picoChip Built-in Functions
 GCC provides an interface to selected machine instructions from the
 picoChip instruction set.
 
-int __builtin_sbc (int ``value``)
+:samp:`int __builtin_sbc (int {value})`
   Sign bit count.  Return the number of consecutive bits in ``value``
   that have the same value as the sign bit.  The result is the number of
   leading sign bits minus one, giving the number of redundant sign bits in
   ``value``.
 
-int __builtin_byteswap (int ``value``)
+:samp:`int __builtin_byteswap (int {value})`
   Byte swap.  Return the result of swapping the upper and lower bytes of
   ``value``.
 
-int __builtin_brev (int ``value``)
+:samp:`int __builtin_brev (int {value})`
   Bit reversal.  Return the result of reversing the bits in
   ``value``.  Bit 15 is swapped with bit 0, bit 14 is swapped with bit 1,
   and so on.
 
-int __builtin_adds (int ``x``, int ``y``)
+:samp:`int __builtin_adds (int {x}, int {y})`
   Saturating addition.  Return the result of adding ``x`` and ``y``,
   storing the value 32767 if the result overflows.
 
-int __builtin_subs (int ``x``, int ``y``)
+:samp:`int __builtin_subs (int {x}, int {y})`
   Saturating subtraction.  Return the result of subtracting ``y`` from
   ``x``, storing the value -32768 if the result overflows.
 
-void __builtin_halt (void)
+``void __builtin_halt (void)``
   Halt.  The processor stops execution.  This built-in is useful for
   implementing assertions.
 
@@ -5113,19 +5113,19 @@ undefined state when reaching the abort code.
 Macros for the possible return codes of tbegin are defined in the
 ``htmintrin.h`` header file:
 
-_HTM_TBEGIN_STARTED
+``_HTM_TBEGIN_STARTED``
   ``tbegin`` has been executed as part of normal processing.  The
   transaction body is supposed to be executed.
 
-_HTM_TBEGIN_INDETERMINATE
+``_HTM_TBEGIN_INDETERMINATE``
   The transaction was aborted due to an indeterminate condition which
   might be persistent.
 
-_HTM_TBEGIN_TRANSIENT
+``_HTM_TBEGIN_TRANSIENT``
   The transaction aborted due to a transient failure.  The transaction
   should be re-executed in that case.
 
-_HTM_TBEGIN_PERSISTENT
+``_HTM_TBEGIN_PERSISTENT``
   The transaction aborted due to a persistent failure.  Re-execution
   under same circumstances will not be productive.
 
@@ -5589,19 +5589,19 @@ mode.  All of them implement the function that is part of the name.
 
 The following built-in function is always available.
 
-void __builtin_ia32_pause (void)
+``void __builtin_ia32_pause (void)``
   Generates the ``pause`` machine instruction with a compiler memory
   barrier.
 
   The following floating-point built-in functions are made available in the
 64-bit mode.
 
-__float128 __builtin_infq (void)
+``__float128 __builtin_infq (void)``
   Similar to ``__builtin_inf``, except the return type is ``__float128``.
 
   .. index:: __builtin_infq
 
-__float128 __builtin_huge_valq (void)
+``__float128 __builtin_huge_valq (void)``
   Similar to ``__builtin_huge_val``, except the return type is ``__float128``.
 
   .. index:: __builtin_huge_valq
@@ -5645,61 +5645,61 @@ Built-in Functionint__builtin_cpu_is(constchar*``cpuname``)This function returns
 is of type ``cpuname``
 and returns ``0`` otherwise. The following CPU names can be detected:
 
-intel
+:samp:`intel`
   Intel CPU.
 
-atom
+:samp:`atom`
   Intel Atom CPU.
 
-core2
+:samp:`core2`
   Intel Core 2 CPU.
 
-corei7
+:samp:`corei7`
   Intel Core i7 CPU.
 
-nehalem
+:samp:`nehalem`
   Intel Core i7 Nehalem CPU.
 
-westmere
+:samp:`westmere`
   Intel Core i7 Westmere CPU.
 
-sandybridge
+:samp:`sandybridge`
   Intel Core i7 Sandy Bridge CPU.
 
-amd
+:samp:`amd`
   AMD CPU.
 
-amdfam10h
+:samp:`amdfam10h`
   AMD Family 10h CPU.
 
-barcelona
+:samp:`barcelona`
   AMD Family 10h Barcelona CPU.
 
-shanghai
+:samp:`shanghai`
   AMD Family 10h Shanghai CPU.
 
-istanbul
+:samp:`istanbul`
   AMD Family 10h Istanbul CPU.
 
-btver1
+:samp:`btver1`
   AMD Family 14h CPU.
 
-amdfam15h
+:samp:`amdfam15h`
   AMD Family 15h CPU.
 
-bdver1
+:samp:`bdver1`
   AMD Family 15h Bulldozer version 1.
 
-bdver2
+:samp:`bdver2`
   AMD Family 15h Bulldozer version 2.
 
-bdver3
+:samp:`bdver3`
   AMD Family 15h Bulldozer version 3.
 
-bdver4
+:samp:`bdver4`
   AMD Family 15h Bulldozer version 4.
 
-btver2
+:samp:`btver2`
   AMD Family 16h CPU.
 
   Here is an example:
@@ -5721,40 +5721,40 @@ Built-in Functionint__builtin_cpu_supports(constchar*``feature``)This function r
 supports ``feature``
 and returns ``0`` otherwise. The following features can be detected:
 
-cmov
+:samp:`cmov`
   CMOV instruction.
 
-mmx
+:samp:`mmx`
   MMX instructions.
 
-popcnt
+:samp:`popcnt`
   POPCNT instruction.
 
-sse
+:samp:`sse`
   SSE instructions.
 
-sse2
+:samp:`sse2`
   SSE2 instructions.
 
-sse3
+:samp:`sse3`
   SSE3 instructions.
 
-ssse3
+:samp:`ssse3`
   SSSE3 instructions.
 
-sse4.1
+:samp:`sse4.1`
   SSE4.1 instructions.
 
-sse4.2
+:samp:`sse4.2`
   SSE4.2 instructions.
 
-avx
+:samp:`avx`
   AVX instructions.
 
-avx2
+:samp:`avx2`
   AVX2 instructions.
 
-avx512f
+:samp:`avx512f`
   AVX512F instructions.
 
   Here is an example:
@@ -5924,25 +5924,25 @@ All of them generate the machine instruction that is part of the name.
 
 The following built-in functions are available when :option:`-msse` is used.
 
-v4sf __builtin_ia32_loadups (float *)
+``v4sf __builtin_ia32_loadups (float *)``
   Generates the ``movups`` machine instruction as a load from memory.
 
-void __builtin_ia32_storeups (float *, v4sf)
+``void __builtin_ia32_storeups (float *, v4sf)``
   Generates the ``movups`` machine instruction as a store to memory.
 
-v4sf __builtin_ia32_loadss (float *)
+``v4sf __builtin_ia32_loadss (float *)``
   Generates the ``movss`` machine instruction as a load from memory.
 
-v4sf __builtin_ia32_loadhps (v4sf, const v2sf *)
+``v4sf __builtin_ia32_loadhps (v4sf, const v2sf *)``
   Generates the ``movhps`` machine instruction as a load from memory.
 
-v4sf __builtin_ia32_loadlps (v4sf, const v2sf *)
+``v4sf __builtin_ia32_loadlps (v4sf, const v2sf *)``
   Generates the ``movlps`` machine instruction as a load from memory
 
-void __builtin_ia32_storehps (v2sf *, v4sf)
+``void __builtin_ia32_storehps (v2sf *, v4sf)``
   Generates the ``movhps`` machine instruction as a store to memory.
 
-void __builtin_ia32_storelps (v2sf *, v4sf)
+``void __builtin_ia32_storelps (v2sf *, v4sf)``
   Generates the ``movlps`` machine instruction as a store to memory.
 
   The following built-in functions are available when :option:`-msse2` is used.
@@ -6220,31 +6220,31 @@ name.
 The following built-in functions are available when :option:`-msse4.1` is
 used.
 
-v4sf __builtin_ia32_vec_set_v4sf (v4sf, float, const int)
+``v4sf __builtin_ia32_vec_set_v4sf (v4sf, float, const int)``
   Generates the ``insertps`` machine instruction.
 
-int __builtin_ia32_vec_ext_v16qi (v16qi, const int)
+``int __builtin_ia32_vec_ext_v16qi (v16qi, const int)``
   Generates the ``pextrb`` machine instruction.
 
-v16qi __builtin_ia32_vec_set_v16qi (v16qi, int, const int)
+``v16qi __builtin_ia32_vec_set_v16qi (v16qi, int, const int)``
   Generates the ``pinsrb`` machine instruction.
 
-v4si __builtin_ia32_vec_set_v4si (v4si, int, const int)
+``v4si __builtin_ia32_vec_set_v4si (v4si, int, const int)``
   Generates the ``pinsrd`` machine instruction.
 
-v2di __builtin_ia32_vec_set_v2di (v2di, long long, const int)
+``v2di __builtin_ia32_vec_set_v2di (v2di, long long, const int)``
   Generates the ``pinsrq`` machine instruction in 64bit mode.
 
   The following built-in functions are changed to generate new SSE4.1
 instructions when :option:`-msse4.1` is used.
 
-float __builtin_ia32_vec_ext_v4sf (v4sf, const int)
+``float __builtin_ia32_vec_ext_v4sf (v4sf, const int)``
   Generates the ``extractps`` machine instruction.
 
-int __builtin_ia32_vec_ext_v4si (v4si, const int)
+``int __builtin_ia32_vec_ext_v4si (v4si, const int)``
   Generates the ``pextrd`` machine instruction.
 
-long long __builtin_ia32_vec_ext_v2di (v2di, const int)
+``long long __builtin_ia32_vec_ext_v2di (v2di, const int)``
   Generates the ``pextrq`` machine instruction in 64bit mode.
 
   The following built-in functions are available when :option:`-msse4.2` is
@@ -6272,29 +6272,29 @@ name.
 The following built-in functions are available when :option:`-msse4.2` is
 used.
 
-unsigned int __builtin_ia32_crc32qi (unsigned int, unsigned char)
+``unsigned int __builtin_ia32_crc32qi (unsigned int, unsigned char)``
   Generates the ``crc32b`` machine instruction.
 
-unsigned int __builtin_ia32_crc32hi (unsigned int, unsigned short)
+``unsigned int __builtin_ia32_crc32hi (unsigned int, unsigned short)``
   Generates the ``crc32w`` machine instruction.
 
-unsigned int __builtin_ia32_crc32si (unsigned int, unsigned int)
+``unsigned int __builtin_ia32_crc32si (unsigned int, unsigned int)``
   Generates the ``crc32l`` machine instruction.
 
-unsigned long long __builtin_ia32_crc32di (unsigned long long, unsigned long long)
+``unsigned long long __builtin_ia32_crc32di (unsigned long long, unsigned long long)``
   Generates the ``crc32q`` machine instruction.
 
   The following built-in functions are changed to generate new SSE4.2
 instructions when :option:`-msse4.2` is used.
 
-int __builtin_popcount (unsigned int)
+``int __builtin_popcount (unsigned int)``
   Generates the ``popcntl`` machine instruction.
 
-int __builtin_popcountl (unsigned long)
+``int __builtin_popcountl (unsigned long)``
   Generates the ``popcntl`` or ``popcntq`` machine instruction,
   depending on the size of ``unsigned long``.
 
-int __builtin_popcountll (unsigned long long)
+``int __builtin_popcountll (unsigned long long)``
   Generates the ``popcntq`` machine instruction.
 
   The following built-in functions are available when :option:`-mavx` is
@@ -6626,7 +6626,7 @@ name.
 The following built-in function is available when :option:`-mpclmul` is
 used.
 
-v2di __builtin_ia32_pclmulqdq128 (v2di, v2di, const int)
+``v2di __builtin_ia32_pclmulqdq128 (v2di, v2di, const int)``
   Generates the ``pclmulqdq`` machine instruction.
 
   The following built-in function is available when :option:`-mfsgsbase` is
@@ -6994,23 +6994,23 @@ If the transaction aborts, all side-effects
 are undone and an abort code encoded as a bit mask is returned.
 The following macros are defined:
 
-_XABORT_EXPLICIT
+``_XABORT_EXPLICIT``
   Transaction was explicitly aborted with ``_xabort``.  The parameter passed
   to ``_xabort`` is available with ``_XABORT_CODE(status)``.
 
-_XABORT_RETRY
+``_XABORT_RETRY``
   Transaction retry is possible.
 
-_XABORT_CONFLICT
+``_XABORT_CONFLICT``
   Transaction abort due to a memory conflict with another thread.
 
-_XABORT_CAPACITY
+``_XABORT_CAPACITY``
   Transaction abort due to the transaction using too much memory.
 
-_XABORT_DEBUG
+``_XABORT_DEBUG``
   Transaction abort due to a debug trap.
 
-_XABORT_NESTED
+``_XABORT_NESTED``
   Transaction abort in an inner nested transaction.
 
   There is no guarantee

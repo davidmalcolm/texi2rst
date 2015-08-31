@@ -5,7 +5,7 @@ C++-Specific Variable, Function, and Type Attributes
 
 Some attributes only make sense for C++ programs.
 
-abi_tag ("``tag``", ...)
+:samp:`abi_tag ("{tag}", ...)`
 
   .. index:: abi_tag function attribute
 
@@ -51,7 +51,7 @@ abi_tag ("``tag``", ...)
   situation; this warning can be avoided by explicitly tagging the
   variable or function or moving it into a tagged inline namespace.
 
-init_priority (``priority``)
+:samp:`init_priority ({priority})`
 
   .. index:: init_priority variable attribute
 
@@ -75,7 +75,7 @@ init_priority (``priority``)
   Note that the particular values of ``priority`` do not matter; only their
   relative ordering.
 
-java_interface
+``java_interface``
 
   .. index:: java_interface type attribute
 
@@ -84,7 +84,7 @@ java_interface
   Calls to methods declared in this interface are dispatched using GCJ's
   interface table mechanism, instead of regular virtual table dispatch.
 
-warn_unused
+``warn_unused``
 
   .. index:: warn_unused type attribute
 

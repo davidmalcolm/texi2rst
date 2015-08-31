@@ -28,7 +28,7 @@ This example uses the ``cold`` label attribute to indicate the
      printf("no error\n");
      return 1;
 
-unused
+``unused``
 
   .. index:: unused label attribute
 
@@ -38,7 +38,7 @@ unused
   could be useful in cases where the code that jumps to the label is
   contained within an ``#ifdef`` conditional.
 
-hot
+``hot``
 
   .. index:: hot label attribute
 
@@ -47,7 +47,7 @@ hot
   annotated.  This attribute is used in cases where ``__builtin_expect``
   cannot be used, for instance with computed goto or ``asm goto``.
 
-cold
+``cold``
 
   .. index:: cold label attribute
 

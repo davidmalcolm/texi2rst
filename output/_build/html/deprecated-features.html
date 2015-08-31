@@ -93,13 +93,13 @@ cases, the feature might be gone already.</p>
 <p>While the list below is not exhaustive, it documents some of the options
 that are now deprecated:</p>
 <dl class="docutils">
-<dt>-fexternal-templates -falt-external-templates</dt>
+<dt><tt class="docutils literal"><span class="pre">-fexternal-templates</span></tt> <tt class="docutils literal"><span class="pre">-falt-external-templates</span></tt></dt>
 <dd>These are two of the many ways for G++ to implement template
 instantiation.  See <a class="reference internal" href="where's-the-template?.html#template-instantiation"><em>Where&#8217;s the Template?</em></a>.  The C++ standard clearly
 defines how template definitions have to be organized across
 implementation units.  G++ has an implicit instantiation mechanism that
 should work just fine for standard-conforming code.</dd>
-<dt>-fstrict-prototype -fno-strict-prototype</dt>
+<dt><tt class="docutils literal"><span class="pre">-fstrict-prototype</span></tt> <tt class="docutils literal"><span class="pre">-fno-strict-prototype</span></tt></dt>
 <dd><p class="first">Previously it was possible to use an empty prototype parameter list to
 indicate an unspecified number of parameters (like C), rather than no
 parameters, as C++ demands.  This feature has been removed, except where

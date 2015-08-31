@@ -177,7 +177,7 @@ either your program or GCC:
   Produce debugging information in Alpha/VMS debug format (if that is
   supported).  This is the format used by DEBUG on Alpha/VMS systems.
 
--g``level`` -ggdb``level`` -gstabs``level`` -gcoff``level`` -gxcoff``level`` -gvms``level``
+:samp:`-g{level}` :samp:`-ggdb{level}` :samp:`-gstabs{level}` :samp:`-gcoff{level}` :samp:`-gxcoff{level}` :samp:`-gvms{level}`
   Request debugging information and also use ``level`` to specify how
   much information.  The default level is 2.
 
@@ -879,12 +879,12 @@ either your program or GCC:
   Compiler users should use regular options for enabling/disabling
   passes instead.
 
-  -fdisable-ipa-``pass``
+  :samp:`-fdisable-ipa-{pass}`
     Disable IPA pass ``pass``. ``pass`` is the pass name.  If the same pass is
     statically invoked in the compiler multiple times, the pass name should be
     appended with a sequential number starting from 1.
 
-  -fdisable-rtl-``pass`` -fdisable-rtl-``pass``=``range-list``
+  :samp:`-fdisable-rtl-{pass}` :samp:`-fdisable-rtl-{pass}={range-list}`
     Disable RTL pass ``pass``.  ``pass`` is the pass name.  If the same pass is
     statically invoked in the compiler multiple times, the pass name should be
     appended with a sequential number starting from 1.  ``range-list`` is a 
@@ -896,20 +896,20 @@ either your program or GCC:
     function header of a dump file, and the pass names can be dumped by using
     option :option:`-fdump-passes`.
 
-  -fdisable-tree-``pass`` -fdisable-tree-``pass``=``range-list``
+  :samp:`-fdisable-tree-{pass}` :samp:`-fdisable-tree-{pass}={range-list}`
     Disable tree pass ``pass``.  See :option:`-fdisable-rtl` for the description of
     option arguments.
 
-  -fenable-ipa-``pass``
+  :samp:`-fenable-ipa-{pass}`
     Enable IPA pass ``pass``.  ``pass`` is the pass name.  If the same pass is
     statically invoked in the compiler multiple times, the pass name should be
     appended with a sequential number starting from 1.
 
-  -fenable-rtl-``pass`` -fenable-rtl-``pass``=``range-list``
+  :samp:`-fenable-rtl-{pass}` :samp:`-fenable-rtl-{pass}={range-list}`
     Enable RTL pass ``pass``.  See :option:`-fdisable-rtl` for option argument
     description and examples.
 
-  -fenable-tree-``pass`` -fenable-tree-``pass``=``range-list``
+  :samp:`-fenable-tree-{pass}` :samp:`-fenable-tree-{pass}={range-list}`
     Enable tree pass ``pass``.  See :option:`-fdisable-rtl` for the description
     of option arguments.
 
@@ -1260,14 +1260,14 @@ either your program or GCC:
   in the same directory as the output file.  The following dumps are
   possible:
 
-  all
+  :samp:`all`
     Enables all inter-procedural analysis dumps.
 
-  cgraph
+  :samp:`cgraph`
     Dumps information about call-graph optimization, unused function removal,
     and inlining decisions.
 
-  inline
+  :samp:`inline`
     Dump after function inlining.
 
 .. option:: -fdump-passes
@@ -1299,17 +1299,17 @@ either your program or GCC:
   to all dumps; those that are not meaningful are ignored.  The
   following options are available
 
-  address
+  :samp:`address`
     Print the address of each node.  Usually this is not meaningful as it
     changes according to the environment and source file.  Its primary use
     is for tying up a dump file with a debug environment.
 
-  asmname
+  :samp:`asmname`
     If ``DECL_ASSEMBLER_NAME`` has been set for a given decl, use that
     in the dump instead of ``DECL_NAME``.  Its primary use is ease of
     use working backward from mangled names in the assembly file.
 
-  slim
+  :samp:`slim`
     When dumping front-end intermediate representations, inhibit dumping
     of members of a scope or body of a function merely because that scope
     has been reached.  Only dump such items when they are directly reachable
@@ -1321,22 +1321,22 @@ either your program or GCC:
     When dumping RTL, print the RTL in slim (condensed) form instead of
     the default LISP-like representation.
 
-  raw
+  :samp:`raw`
     Print a raw representation of the tree.  By default, trees are
     pretty-printed into a C-like representation.
 
-  details
+  :samp:`details`
     Enable more detailed dumps (not honored by every dump option). Also
     include information from the optimization passes.
 
-  stats
+  :samp:`stats`
     Enable dumping various statistics about the pass (not honored by every dump
     option).
 
-  blocks
+  :samp:`blocks`
     Enable showing basic block boundaries (disabled in raw dumps).
 
-  graph
+  :samp:`graph`
     For each of the other indicated dump files (:option:`-fdump-rtl-``pass```),
     dump a representation of the control flow graph suitable for viewing with
     GraphViz to ``file``.``passid``.``pass``.dot.  Each function in
@@ -1346,37 +1346,37 @@ either your program or GCC:
     This option currently only works for RTL dumps, and the RTL is always
     dumped in slim form.
 
-  vops
+  :samp:`vops`
     Enable showing virtual operands for every statement.
 
-  lineno
+  :samp:`lineno`
     Enable showing line numbers for statements.
 
-  uid
+  :samp:`uid`
     Enable showing the unique ID (``DECL_UID``) for each variable.
 
-  verbose
+  :samp:`verbose`
     Enable showing the tree dump for each statement.
 
-  eh
+  :samp:`eh`
     Enable showing the EH region number holding each statement.
 
-  scev
+  :samp:`scev`
     Enable showing scalar evolution analysis details.
 
-  optimized
+  :samp:`optimized`
     Enable showing optimization information (only available in certain
     passes).
 
-  missed
+  :samp:`missed`
     Enable showing missed optimization information (only available in certain
     passes).
 
-  note
+  :samp:`note`
     Enable other detailed optimization information (only available in
     certain passes).
 
-  =``filename``
+  :samp:`={filename}`
     Instead of an auto named dump file, output into the given file
     name. The file names stdout and stderr are treated
     specially and are considered already open standard streams. For
@@ -1392,11 +1392,11 @@ either your program or GCC:
     given for the same pass, then the latter option overrides the earlier
     one.
 
-  all
+  :samp:`all`
     Turn on all options, except raw, slim, verbose
     and lineno.
 
-  optall
+  :samp:`optall`
     Turn on all optimization options, i.e., optimized,
     missed, and note.
 
@@ -1546,40 +1546,40 @@ either your program or GCC:
 
   The following options control the dump verbosity:
 
-  optimized
+  :samp:`optimized`
     Print information when an optimization is successfully applied. It is
     up to a pass to decide which information is relevant. For example, the
     vectorizer passes print the source location of loops which are
     successfully vectorized.
 
-  missed
+  :samp:`missed`
     Print information about missed optimizations. Individual passes
     control which information to include in the output.
 
-  note
+  :samp:`note`
     Print verbose information about optimizations, such as certain
     transformations, more detailed messages about decisions etc.
 
-  all
+  :samp:`all`
     Print detailed optimization information. This includes
     :samp:`optimized`, :samp:`missed`, and :samp:`note`.
 
     One or more of the following option keywords can be used to describe a
   group of optimizations:
 
-  ipa
+  :samp:`ipa`
     Enable dumps from all interprocedural optimizations.
 
-  loop
+  :samp:`loop`
     Enable dumps from all loop optimizations.
 
-  inline
+  :samp:`inline`
     Enable dumps from all inlining optimizations.
 
-  vec
+  :samp:`vec`
     Enable dumps from all vectorization optimizations.
 
-  optall
+  :samp:`optall`
     Enable dumps from all optimizations. This is a superset of
     the optimization groups listed above.
 

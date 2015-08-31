@@ -11,7 +11,7 @@ Binary Compatibility
 
 Binary compatibility encompasses several related concepts:
 
-application binary interface (ABI)
+:dfn:`application binary interface (ABI)`
   The set of runtime conventions followed by all of the tools that deal
   with binary representations of a program, including compilers, assemblers,
   linkers, and language runtime support.
@@ -19,7 +19,7 @@ application binary interface (ABI)
   by multiple interested parties.  Others are simply the way things are
   actually done by a particular set of tools.
 
-ABI conformance
+:dfn:`ABI conformance`
   A compiler conforms to an ABI if it generates code that follows all of
   the specifications enumerated by that ABI.
   A library conforms to an ABI if it is implemented according to that ABI.
@@ -27,11 +27,11 @@ ABI conformance
   to that ABI and does not contain source code that specifically changes
   behavior specified by the ABI.
 
-calling conventions
+:dfn:`calling conventions`
   Calling conventions are a subset of an ABI that specify of how arguments
   are passed and function results are returned.
 
-interoperability
+:dfn:`interoperability`
   Different sets of tools are interoperable if they generate files that
   can be used in the same program.  The set of tools includes compilers,
   assemblers, linkers, libraries, header files, startup files, and debuggers.
@@ -39,19 +39,19 @@ interoperability
   they implement the same ABI.  This applies to different versions of the
   same tools as well as tools from different vendors.
 
-intercallability
+:dfn:`intercallability`
   Whether a function in a binary built by one set of tools can call a
   function in a binary built by a different set of tools is a subset
   of interoperability.
 
-implementation-defined features
+:dfn:`implementation-defined features`
   Language standards include lists of implementation-defined features whose
   behavior can vary from one implementation to another.  Some of these
   features are normally covered by a platform's ABI and others are not.
   The features that are not covered by an ABI generally affect how a
   program behaves, but not intercallability.
 
-compatibility
+:dfn:`compatibility`
   Conformance to the same ABI and the same behavior of implementation-defined
   features are both relevant for compatibility.
 

@@ -288,7 +288,7 @@ supported).  This is the format used by DEBUG on Alpha/VMS systems.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt>-g``level`` -ggdb``level`` -gstabs``level`` -gcoff``level`` -gxcoff``level`` -gvms``level``</dt>
+<dt><tt class="samp docutils literal"><span class="pre">-g</span><em><span class="pre">level</span></em></tt> <tt class="samp docutils literal"><span class="pre">-ggdb</span><em><span class="pre">level</span></em></tt> <tt class="samp docutils literal"><span class="pre">-gstabs</span><em><span class="pre">level</span></em></tt> <tt class="samp docutils literal"><span class="pre">-gcoff</span><em><span class="pre">level</span></em></tt> <tt class="samp docutils literal"><span class="pre">-gxcoff</span><em><span class="pre">level</span></em></tt> <tt class="samp docutils literal"><span class="pre">-gvms</span><em><span class="pre">level</span></em></tt></dt>
 <dd><p class="first">Request debugging information and also use <tt class="docutils literal"><span class="pre">level</span></tt> to specify how
 much information.  The default level is 2.</p>
 <p>Level 0 produces no debug information at all.  Thus, <em class="xref std std-option">-g0</em> negates
@@ -1090,11 +1090,11 @@ optimization passes.  These options are intended for use for debugging GCC.
 Compiler users should use regular options for enabling/disabling
 passes instead.</p>
 <dl class="docutils">
-<dt>-fdisable-ipa-<tt class="docutils literal"><span class="pre">pass</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-fdisable-ipa-</span><em><span class="pre">pass</span></em></tt></dt>
 <dd>Disable IPA pass <tt class="docutils literal"><span class="pre">pass</span></tt>. <tt class="docutils literal"><span class="pre">pass</span></tt> is the pass name.  If the same pass is
 statically invoked in the compiler multiple times, the pass name should be
 appended with a sequential number starting from 1.</dd>
-<dt>-fdisable-rtl-<tt class="docutils literal"><span class="pre">pass</span></tt> -fdisable-rtl-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-fdisable-rtl-</span><em><span class="pre">pass</span></em></tt> <tt class="samp docutils literal"><span class="pre">-fdisable-rtl-</span><em><span class="pre">pass</span></em><span class="pre">=</span><em><span class="pre">range-list</span></em></tt></dt>
 <dd>Disable RTL pass <tt class="docutils literal"><span class="pre">pass</span></tt>.  <tt class="docutils literal"><span class="pre">pass</span></tt> is the pass name.  If the same pass is
 statically invoked in the compiler multiple times, the pass name should be
 appended with a sequential number starting from 1.  <tt class="docutils literal"><span class="pre">range-list</span></tt> is a
@@ -1105,17 +1105,17 @@ function&#8217;s call graph node&#8217;s <tt class="docutils literal"><span clas
 the <tt class="docutils literal"><span class="pre">pass</span></tt> is disabled for that function.  The <tt class="docutils literal"><span class="pre">uid</span></tt> is shown in the
 function header of a dump file, and the pass names can be dumped by using
 option <a class="reference internal" href="#cmdoption-fdump-passes"><em class="xref std std-option">-fdump-passes</em></a>.</dd>
-<dt>-fdisable-tree-<tt class="docutils literal"><span class="pre">pass</span></tt> -fdisable-tree-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-fdisable-tree-</span><em><span class="pre">pass</span></em></tt> <tt class="samp docutils literal"><span class="pre">-fdisable-tree-</span><em><span class="pre">pass</span></em><span class="pre">=</span><em><span class="pre">range-list</span></em></tt></dt>
 <dd>Disable tree pass <tt class="docutils literal"><span class="pre">pass</span></tt>.  See <em class="xref std std-option">-fdisable-rtl</em> for the description of
 option arguments.</dd>
-<dt>-fenable-ipa-<tt class="docutils literal"><span class="pre">pass</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-fenable-ipa-</span><em><span class="pre">pass</span></em></tt></dt>
 <dd>Enable IPA pass <tt class="docutils literal"><span class="pre">pass</span></tt>.  <tt class="docutils literal"><span class="pre">pass</span></tt> is the pass name.  If the same pass is
 statically invoked in the compiler multiple times, the pass name should be
 appended with a sequential number starting from 1.</dd>
-<dt>-fenable-rtl-<tt class="docutils literal"><span class="pre">pass</span></tt> -fenable-rtl-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-fenable-rtl-</span><em><span class="pre">pass</span></em></tt> <tt class="samp docutils literal"><span class="pre">-fenable-rtl-</span><em><span class="pre">pass</span></em><span class="pre">=</span><em><span class="pre">range-list</span></em></tt></dt>
 <dd>Enable RTL pass <tt class="docutils literal"><span class="pre">pass</span></tt>.  See <em class="xref std std-option">-fdisable-rtl</em> for option argument
 description and examples.</dd>
-<dt>-fenable-tree-<tt class="docutils literal"><span class="pre">pass</span></tt> -fenable-tree-<tt class="docutils literal"><span class="pre">pass``=``range-list</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-fenable-tree-</span><em><span class="pre">pass</span></em></tt> <tt class="samp docutils literal"><span class="pre">-fenable-tree-</span><em><span class="pre">pass</span></em><span class="pre">=</span><em><span class="pre">range-list</span></em></tt></dt>
 <dd><p class="first">Enable tree pass <tt class="docutils literal"><span class="pre">pass</span></tt>.  See <em class="xref std std-option">-fdisable-rtl</em> for the description
 of option arguments.</p>
 <p class="last">Here are some examples showing uses of these options.</p>
@@ -1591,12 +1591,12 @@ switch specific suffix to the source file name, and the file is created
 in the same directory as the output file.  The following dumps are
 possible:</p>
 <dl class="docutils">
-<dt>all</dt>
+<dt><tt class="samp docutils literal"><span class="pre">all</span></tt></dt>
 <dd>Enables all inter-procedural analysis dumps.</dd>
-<dt>cgraph</dt>
+<dt><tt class="samp docutils literal"><span class="pre">cgraph</span></tt></dt>
 <dd>Dumps information about call-graph optimization, unused function removal,
 and inlining decisions.</dd>
-<dt>inline</dt>
+<dt><tt class="samp docutils literal"><span class="pre">inline</span></tt></dt>
 <dd>Dump after function inlining.</dd>
 </dl>
 </dd></dl>
@@ -1635,15 +1635,15 @@ which control the details of the dump.  Not all options are applicable
 to all dumps; those that are not meaningful are ignored.  The
 following options are available</p>
 <dl class="docutils">
-<dt>address</dt>
+<dt><tt class="samp docutils literal"><span class="pre">address</span></tt></dt>
 <dd>Print the address of each node.  Usually this is not meaningful as it
 changes according to the environment and source file.  Its primary use
 is for tying up a dump file with a debug environment.</dd>
-<dt>asmname</dt>
+<dt><tt class="samp docutils literal"><span class="pre">asmname</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">DECL_ASSEMBLER_NAME</span></tt> has been set for a given decl, use that
 in the dump instead of <tt class="docutils literal"><span class="pre">DECL_NAME</span></tt>.  Its primary use is ease of
 use working backward from mangled names in the assembly file.</dd>
-<dt>slim</dt>
+<dt><tt class="samp docutils literal"><span class="pre">slim</span></tt></dt>
 <dd><p class="first">When dumping front-end intermediate representations, inhibit dumping
 of members of a scope or body of a function merely because that scope
 has been reached.  Only dump such items when they are directly reachable
@@ -1653,18 +1653,18 @@ bodies of control structures.</p>
 <p class="last">When dumping RTL, print the RTL in slim (condensed) form instead of
 the default LISP-like representation.</p>
 </dd>
-<dt>raw</dt>
+<dt><tt class="samp docutils literal"><span class="pre">raw</span></tt></dt>
 <dd>Print a raw representation of the tree.  By default, trees are
 pretty-printed into a C-like representation.</dd>
-<dt>details</dt>
+<dt><tt class="samp docutils literal"><span class="pre">details</span></tt></dt>
 <dd>Enable more detailed dumps (not honored by every dump option). Also
 include information from the optimization passes.</dd>
-<dt>stats</dt>
+<dt><tt class="samp docutils literal"><span class="pre">stats</span></tt></dt>
 <dd>Enable dumping various statistics about the pass (not honored by every dump
 option).</dd>
-<dt>blocks</dt>
+<dt><tt class="samp docutils literal"><span class="pre">blocks</span></tt></dt>
 <dd>Enable showing basic block boundaries (disabled in raw dumps).</dd>
-<dt>graph</dt>
+<dt><tt class="samp docutils literal"><span class="pre">graph</span></tt></dt>
 <dd><p class="first">For each of the other indicated dump files (<em class="xref std std-option">-fdump-rtl-``pass``</em>),
 dump a representation of the control flow graph suitable for viewing with
 GraphViz to <tt class="docutils literal"><span class="pre">file</span></tt>.``passid``.``pass``.dot.  Each function in
@@ -1673,28 +1673,28 @@ all in a single plot.</p>
 <p class="last">This option currently only works for RTL dumps, and the RTL is always
 dumped in slim form.</p>
 </dd>
-<dt>vops</dt>
+<dt><tt class="samp docutils literal"><span class="pre">vops</span></tt></dt>
 <dd>Enable showing virtual operands for every statement.</dd>
-<dt>lineno</dt>
+<dt><tt class="samp docutils literal"><span class="pre">lineno</span></tt></dt>
 <dd>Enable showing line numbers for statements.</dd>
-<dt>uid</dt>
+<dt><tt class="samp docutils literal"><span class="pre">uid</span></tt></dt>
 <dd>Enable showing the unique ID (<tt class="docutils literal"><span class="pre">DECL_UID</span></tt>) for each variable.</dd>
-<dt>verbose</dt>
+<dt><tt class="samp docutils literal"><span class="pre">verbose</span></tt></dt>
 <dd>Enable showing the tree dump for each statement.</dd>
-<dt>eh</dt>
+<dt><tt class="samp docutils literal"><span class="pre">eh</span></tt></dt>
 <dd>Enable showing the EH region number holding each statement.</dd>
-<dt>scev</dt>
+<dt><tt class="samp docutils literal"><span class="pre">scev</span></tt></dt>
 <dd>Enable showing scalar evolution analysis details.</dd>
-<dt>optimized</dt>
+<dt><tt class="samp docutils literal"><span class="pre">optimized</span></tt></dt>
 <dd>Enable showing optimization information (only available in certain
 passes).</dd>
-<dt>missed</dt>
+<dt><tt class="samp docutils literal"><span class="pre">missed</span></tt></dt>
 <dd>Enable showing missed optimization information (only available in certain
 passes).</dd>
-<dt>note</dt>
+<dt><tt class="samp docutils literal"><span class="pre">note</span></tt></dt>
 <dd>Enable other detailed optimization information (only available in
 certain passes).</dd>
-<dt>=``filename``</dt>
+<dt><tt class="samp docutils literal"><span class="pre">=</span><em><span class="pre">filename</span></em></tt></dt>
 <dd><p class="first">Instead of an auto named dump file, output into the given file
 name. The file names stdout and stderr are treated
 specially and are considered already open standard streams. For
@@ -1708,10 +1708,10 @@ output on to stderr. If two conflicting dump filenames are
 given for the same pass, then the latter option overrides the earlier
 one.</p>
 </dd>
-<dt>all</dt>
+<dt><tt class="samp docutils literal"><span class="pre">all</span></tt></dt>
 <dd>Turn on all options, except raw, slim, verbose
 and lineno.</dd>
-<dt>optall</dt>
+<dt><tt class="samp docutils literal"><span class="pre">optall</span></tt></dt>
 <dd><p class="first">Turn on all optimization options, i.e., optimized,
 missed, and note.</p>
 <p class="last">The following tree dumps are possible:</p>
@@ -1914,18 +1914,18 @@ the later options override the earlier options on the command
 line.</p>
 <p>The following options control the dump verbosity:</p>
 <dl class="docutils">
-<dt>optimized</dt>
+<dt><tt class="samp docutils literal"><span class="pre">optimized</span></tt></dt>
 <dd>Print information when an optimization is successfully applied. It is
 up to a pass to decide which information is relevant. For example, the
 vectorizer passes print the source location of loops which are
 successfully vectorized.</dd>
-<dt>missed</dt>
+<dt><tt class="samp docutils literal"><span class="pre">missed</span></tt></dt>
 <dd>Print information about missed optimizations. Individual passes
 control which information to include in the output.</dd>
-<dt>note</dt>
+<dt><tt class="samp docutils literal"><span class="pre">note</span></tt></dt>
 <dd>Print verbose information about optimizations, such as certain
 transformations, more detailed messages about decisions etc.</dd>
-<dt>all</dt>
+<dt><tt class="samp docutils literal"><span class="pre">all</span></tt></dt>
 <dd><p class="first">Print detailed optimization information. This includes
 <tt class="samp docutils literal"><span class="pre">optimized</span></tt>, <tt class="samp docutils literal"><span class="pre">missed</span></tt>, and <tt class="samp docutils literal"><span class="pre">note</span></tt>.</p>
 <p class="last">One or more of the following option keywords can be used to describe a</p>
@@ -1933,15 +1933,15 @@ transformations, more detailed messages about decisions etc.</dd>
 </dl>
 <p>group of optimizations:</p>
 <dl class="docutils">
-<dt>ipa</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ipa</span></tt></dt>
 <dd>Enable dumps from all interprocedural optimizations.</dd>
-<dt>loop</dt>
+<dt><tt class="samp docutils literal"><span class="pre">loop</span></tt></dt>
 <dd>Enable dumps from all loop optimizations.</dd>
-<dt>inline</dt>
+<dt><tt class="samp docutils literal"><span class="pre">inline</span></tt></dt>
 <dd>Enable dumps from all inlining optimizations.</dd>
-<dt>vec</dt>
+<dt><tt class="samp docutils literal"><span class="pre">vec</span></tt></dt>
 <dd>Enable dumps from all vectorization optimizations.</dd>
-<dt>optall</dt>
+<dt><tt class="samp docutils literal"><span class="pre">optall</span></tt></dt>
 <dd><p class="first">Enable dumps from all optimizations. This is a superset of
 the optimization groups listed above.</p>
 <p class="last">If <tt class="docutils literal"><span class="pre">options</span></tt> is</p>

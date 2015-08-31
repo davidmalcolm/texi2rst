@@ -93,12 +93,12 @@ compatibilities.  <em>All such backwards compatibility features are
 liable to disappear in future versions of G++.</em> They should be considered
 deprecated.   See <a class="reference internal" href="deprecated-features.html#deprecated-features"><em>Deprecated Features</em></a>.</p>
 <dl class="docutils">
-<dt>For scope</dt>
+<dt><tt class="docutils literal"><span class="pre">For</span> <span class="pre">scope</span></tt></dt>
 <dd>If a variable is declared at for scope, it used to remain in scope until
 the end of the scope that contained the for statement (rather than just
 within the for scope).  G++ retains this, but issues a warning, if such a
 variable is accessed outside the for scope.</dd>
-<dt>Implicit C language</dt>
+<dt><tt class="docutils literal"><span class="pre">Implicit</span> <span class="pre">C</span> <span class="pre">language</span></tt></dt>
 <dd>Old C system header files did not contain an <tt class="docutils literal"><span class="pre">extern</span> <span class="pre">&quot;C&quot;</span> <span class="pre">{...}</span></tt>
 scope to set the language.  On such systems, all header files are
 implicitly scoped inside a C language scope.  Also, an empty prototype

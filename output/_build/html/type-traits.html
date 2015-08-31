@@ -89,61 +89,61 @@ compile-time determination of
 various characteristics of a type (or of a
 pair of types).</p>
 <dl class="docutils">
-<dt>__has_nothrow_assign (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__has_nothrow_assign</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is const qualified or is a reference type then the trait is
 false.  Otherwise if <tt class="docutils literal"><span class="pre">__has_trivial_assign</span> <span class="pre">(type)</span></tt> is true then the trait
 is true, else if <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type with copy assignment
 operators that are known not to throw an exception then the trait is true,
 else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type,
 (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__has_nothrow_copy (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__has_nothrow_copy</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">__has_trivial_copy</span> <span class="pre">(type)</span></tt> is true then the trait is true, else if
 <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type with copy constructors that
 are known not to throw an exception then the trait is true, else it is false.
 Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type, (possibly cv-qualified)
 <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__has_nothrow_constructor (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__has_nothrow_constructor</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">__has_trivial_constructor</span> <span class="pre">(type)</span></tt> is true then the trait is
 true, else if <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type (or array
 thereof) with a default constructor that is known not to throw an
 exception then the trait is true, else it is false.  Requires:
 <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type, (possibly cv-qualified)
 <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__has_trivial_assign (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__has_trivial_assign</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is const qualified or is a reference type then the trait is
 false.  Otherwise if <tt class="docutils literal"><span class="pre">__is_pod</span> <span class="pre">(type)</span></tt> is true then the trait is
 true, else if <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type with a trivial
 copy assignment ([class.copy]) then the trait is true, else it is
 false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type, (possibly
 cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__has_trivial_copy (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__has_trivial_copy</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">__is_pod</span> <span class="pre">(type)</span></tt> is true or <tt class="docutils literal"><span class="pre">type</span></tt> is a reference type
 then the trait is true, else if <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type
 with a trivial copy constructor ([class.copy]) then the trait
 is true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
 type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__has_trivial_constructor (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__has_trivial_constructor</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">__is_pod</span> <span class="pre">(type)</span></tt> is true then the trait is true, else if
 <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type (or array thereof) with a
 trivial default constructor ([class.ctor]) then the trait is true,
 else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
 type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__has_trivial_destructor (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__has_trivial_destructor</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">__is_pod</span> <span class="pre">(type)</span></tt> is true or <tt class="docutils literal"><span class="pre">type</span></tt> is a reference type then
 the trait is true, else if <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class or union type (or
 array thereof) with a trivial destructor ([class.dtor]) then the trait
 is true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
 type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__has_virtual_destructor (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__has_virtual_destructor</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a class type with a virtual destructor
 ([class.dtor]) then the trait is true, else it is false.  Requires:
 <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type, (possibly cv-qualified)
 <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__is_abstract (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__is_abstract</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is an abstract class ([class.abstract]) then the trait
 is true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
 type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__is_base_of (base_type, derived_type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__is_base_of</span> <span class="pre">(base_type,</span> <span class="pre">derived_type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">base_type</span></tt> is a base class of <tt class="docutils literal"><span class="pre">derived_type</span></tt>
 ([class.derived]) then the trait is true, otherwise it is false.
 Top-level cv qualifications of <tt class="docutils literal"><span class="pre">base_type</span></tt> and
@@ -153,10 +153,10 @@ class type is considered is own base.  Requires: if <tt class="docutils literal"
 <tt class="docutils literal"><span class="pre">base_type</span></tt> and <tt class="docutils literal"><span class="pre">derived_type</span></tt> are not the same type
 (disregarding cv-qualifiers), <tt class="docutils literal"><span class="pre">derived_type</span></tt> shall be a complete
 type.  Diagnostic is produced if this requirement is not met.</dd>
-<dt>__is_class (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__is_class</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a cv class type, and not a union type
 ([basic.compound]) the trait is true, else it is false.</dd>
-<dt>__is_empty (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__is_empty</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">__is_class</span> <span class="pre">(type)</span></tt> is false then the trait is false.
 Otherwise <tt class="docutils literal"><span class="pre">type</span></tt> is considered empty if and only if: <tt class="docutils literal"><span class="pre">type</span></tt>
 has no non-static data members, or all non-static data members, if
@@ -166,33 +166,33 @@ has no base classes <tt class="docutils literal"><span class="pre">base_type</sp
 <tt class="docutils literal"><span class="pre">__is_empty</span> <span class="pre">(base_type)</span></tt> is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall
 be a complete type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array
 of unknown bound.</dd>
-<dt>__is_enum (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__is_enum</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a cv enumeration type ([basic.compound]) the trait is
 true, else it is false.</dd>
-<dt>__is_literal_type (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__is_literal_type</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a literal type ([basic.types]) the trait is
 true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type,
 (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__is_pod (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__is_pod</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a cv POD type ([basic.types]) then the trait is true,
 else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete type,
 (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__is_polymorphic (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__is_polymorphic</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a polymorphic class ([class.virtual]) then the trait
 is true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
 type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__is_standard_layout (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__is_standard_layout</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a standard-layout type ([basic.types]) the trait is
 true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
 type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__is_trivial (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__is_trivial</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a trivial type ([basic.types]) the trait is
 true, else it is false.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be a complete
 type, (possibly cv-qualified) <tt class="docutils literal"><span class="pre">void</span></tt>, or an array of unknown bound.</dd>
-<dt>__is_union (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__is_union</span> <span class="pre">(type)</span></tt></dt>
 <dd>If <tt class="docutils literal"><span class="pre">type</span></tt> is a cv union type ([basic.compound]) the trait is
 true, else it is false.</dd>
-<dt>__underlying_type (type)</dt>
+<dt><tt class="docutils literal"><span class="pre">__underlying_type</span> <span class="pre">(type)</span></tt></dt>
 <dd>The underlying type of <tt class="docutils literal"><span class="pre">type</span></tt>.  Requires: <tt class="docutils literal"><span class="pre">type</span></tt> shall be
 an enumeration type ([dcl.enum]).</dd>
 </dl>

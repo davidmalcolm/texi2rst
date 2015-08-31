@@ -90,7 +90,7 @@ The following attributes are supported on most targets.
 
 .. Keep this table alphabetized by attribute name.  Treat _ as space.
 
-alias ("``target``")
+:samp:`alias ("{target}")`
 
   .. index:: alias function attribute
 
@@ -109,7 +109,7 @@ alias ("``target``")
   This attribute requires assembler and object file support,
   and may not be available on all targets.
 
-aligned (``alignment``)
+:samp:`aligned ({alignment})`
 
   .. index:: aligned function attribute
 
@@ -132,7 +132,7 @@ aligned (``alignment``)
   The ``aligned`` attribute can also be used for variables and fields
   (see :ref:`variable-attributes`.)
 
-alloc_align
+``alloc_align``
 
   .. index:: alloc_align function attribute
 
@@ -154,7 +154,7 @@ alloc_align
   declares that ``my_memalign`` returns memory with minimum alignment
   given by parameter 1.
 
-alloc_size
+``alloc_size``
 
   .. index:: alloc_size function attribute
 
@@ -180,7 +180,7 @@ alloc_size
   the product of parameter 1 and 2 and that ``my_realloc`` returns memory
   of the size given by parameter 2.
 
-always_inline
+``always_inline``
 
   .. index:: always_inline function attribute
 
@@ -192,7 +192,7 @@ always_inline
   or may not inline it depending on optimization level and a failure
   to inline an indirect call may or may not be diagnosed.
 
-artificial
+``artificial``
 
   .. index:: artificial function attribute
 
@@ -202,7 +202,7 @@ artificial
   or using the caller location for all instructions within the inlined
   body.
 
-assume_aligned
+``assume_aligned``
 
   .. index:: assume_aligned function attribute
 
@@ -222,7 +222,7 @@ assume_aligned
   that ``my_alloc2`` returns a pointer whose value modulo 32 is equal
   to 8.
 
-bnd_instrument
+``bnd_instrument``
 
   .. index:: bnd_instrument function attribute
 
@@ -230,7 +230,7 @@ bnd_instrument
   compiler that the function should be instrumented when compiled
   with the :option:`-fchkp-instrument-marked-only` option.
 
-bnd_legacy
+``bnd_legacy``
 
   .. index:: bnd_legacy function attribute
 
@@ -240,7 +240,7 @@ bnd_legacy
   compiler that the function should not be instrumented when compiled
   with the :option:`-fcheck-pointer-bounds` option.
 
-cold
+``cold``
 
   .. index:: cold function attribute
 
@@ -257,7 +257,7 @@ cold
   When profile feedback is available, via :option:`-fprofile-use`, cold functions
   are automatically detected and this attribute is ignored.
 
-const
+``const``
 
   .. index:: const function attribute
 
@@ -276,7 +276,7 @@ const
   ``const``.  It does not make sense for a ``const`` function to
   return ``void``.
 
-constructor destructor constructor (``priority``) destructor (``priority``)
+``constructor`` ``destructor`` :samp:`constructor ({priority})` :samp:`destructor ({priority})`
 
   .. index:: constructor function attribute
 
@@ -302,7 +302,7 @@ constructor destructor constructor (``priority``) destructor (``priority``)
 
   These attributes are not currently implemented for Objective-C.
 
-deprecated deprecated (``msg``)
+``deprecated`` :samp:`deprecated ({msg})`
 
   .. index:: deprecated function attribute
 
@@ -327,7 +327,7 @@ deprecated deprecated (``msg``)
   The ``deprecated`` attribute can also be used for variables and
   types (see :ref:`variable-attributes`, see :ref:`type-attributes`.)
 
-error ("``message``") warning ("``message``")
+:samp:`error ("{message}")` :samp:`warning ("{message}")`
 
   .. index:: error function attribute
 
@@ -349,7 +349,7 @@ error ("``message``") warning ("``message``")
   earlier and with exact location of the call even in presence of inline
   functions or when not emitting debugging information.
 
-externally_visible
+``externally_visible``
 
   .. index:: externally_visible function attribute
 
@@ -366,7 +366,7 @@ externally_visible
   For other linkers that cannot generate resolution file,
   explicit ``externally_visible`` attributes are still necessary.
 
-flatten
+``flatten``
 
   .. index:: flatten function attribute
 
@@ -504,7 +504,7 @@ flatten
   See :ref:`Format Checks Specific to Particular
   Target Machines <target-format-checks>`.
 
-gnu_inline
+``gnu_inline``
 
   .. index:: gnu_inline function attribute
 
@@ -544,7 +544,7 @@ gnu_inline
   but it still requires the ``inline`` keyword to enable its special
   behavior.
 
-hot
+``hot``
 
   .. index:: hot function attribute
 
@@ -557,7 +557,7 @@ hot
   When profile feedback is available, via :option:`-fprofile-use`, hot functions
   are automatically detected and this attribute is ignored.
 
-ifunc ("``resolver``")
+:samp:`ifunc ("{resolver}")`
 
   .. index:: ifunc function attribute
 
@@ -608,14 +608,14 @@ ifunc ("``resolver``")
   Indirect functions cannot be weak.  Binutils version 2.20.1 or higher
   and GNU C Library version 2.11.1 are required to use this feature.
 
-interrupt interrupt_handler
+``interrupt`` ``interrupt_handler``
   Many GCC back ends support attributes to indicate that a function is
   an interrupt handler, which tells the compiler to generate function
   entry and exit sequences that differ from those from regular
   functions.  The exact syntax and behavior are target-specific;
   refer to the following subsections for details.
 
-leaf
+``leaf``
 
   .. index:: leaf function attribute
 
@@ -642,7 +642,7 @@ leaf
   for example, by using the link-time optimization.  For this reason the
   attribute is not allowed on types to annotate indirect calls.
 
-malloc
+``malloc``
 
   .. index:: malloc function attribute
 
@@ -659,7 +659,7 @@ malloc
   like ``realloc`` do not have this property, as they can return a
   pointer to storage containing pointers.
 
-no_icf
+``no_icf``
 
   .. index:: no_icf function attribute
 
@@ -674,7 +674,7 @@ no_icf
   generated at entry and exit of most user-compiled functions.
   Functions with this attribute are not so instrumented.
 
-no_reorder
+``no_reorder``
 
   .. index:: no_reorder function attribute
 
@@ -686,7 +686,7 @@ no_reorder
   as the :option:`-fno-toplevel-reorder` option, but only applies to the
   marked symbols.
 
-no_sanitize_address no_address_safety_analysis
+``no_sanitize_address`` ``no_address_safety_analysis``
 
   .. index:: no_sanitize_address function attribute
 
@@ -697,7 +697,7 @@ no_sanitize_address no_address_safety_analysis
   ``no_sanitize_address`` attribute, new code should use
   ``no_sanitize_address``.
 
-no_sanitize_thread
+``no_sanitize_thread``
 
   .. index:: no_sanitize_thread function attribute
 
@@ -705,7 +705,7 @@ no_sanitize_thread
   to inform the compiler that it should not instrument memory accesses
   in the function when compiling with the :option:`-fsanitize=thread` option.
 
-no_sanitize_undefined
+``no_sanitize_undefined``
 
   .. index:: no_sanitize_undefined function attribute
 
@@ -722,7 +722,7 @@ no_sanitize_undefined
   ``no_split_stack`` attribute do not have that prologue, and thus
   may run with only a small amount of stack space available.
 
-noclone
+``noclone``
 
   .. index:: noclone function attribute
 
@@ -731,7 +731,7 @@ noclone
   and which is (currently) performed by interprocedural constant
   propagation.
 
-noinline
+``noinline``
 
   .. index:: noinline function attribute
 
@@ -754,7 +754,7 @@ noinline
   (see :ref:`extended-asm`) in the called function, to serve as a special
   side-effect.
 
-nonnull (``arg-index``, ...)
+:samp:`nonnull ({arg-index}, ...)`
 
   .. index:: nonnull function attribute
 
@@ -786,7 +786,7 @@ nonnull (``arg-index``, ...)
     my_memcpy (void *dest, const void *src, size_t len)
             __attribute__((nonnull));
 
-noreturn
+``noreturn``
 
   .. index:: noreturn function attribute
 
@@ -824,7 +824,7 @@ noreturn
   It does not make sense for a ``noreturn`` function to have a return
   type other than ``void``.
 
-nothrow
+``nothrow``
 
   .. index:: nothrow function attribute
 
@@ -834,7 +834,7 @@ nothrow
   with the notable exceptions of ``qsort`` and ``bsearch`` that
   take function pointer arguments.
 
-optimize
+``optimize``
 
   .. index:: optimize function attribute
 
@@ -854,7 +854,7 @@ optimize
   and larger code, while other functions can be compiled with less
   aggressive options.
 
-pure
+``pure``
 
   .. index:: pure function attribute
 
@@ -879,7 +879,7 @@ pure
   depending on volatile memory or other system resource, that may change between
   two consecutive calls (such as ``feof`` in a multithreading environment).
 
-returns_nonnull
+``returns_nonnull``
 
   .. index:: returns_nonnull function attribute
 
@@ -894,7 +894,7 @@ returns_nonnull
   lets the compiler optimize callers based on the knowledge
   that the return value will never be null.
 
-returns_twice
+``returns_twice``
 
   .. index:: returns_twice function attribute
 
@@ -908,7 +908,7 @@ returns_twice
   The ``longjmp``-like counterpart of such function, if any, might need
   to be marked with the ``noreturn`` attribute.
 
-section ("``section-name``")
+:samp:`section ("{section-name}")`
 
   .. index:: section function attribute
 
@@ -931,7 +931,7 @@ section ("``section-name``")
   If you need to map the entire contents of a module to a particular
   section, consider using the facilities of the linker instead.
 
-sentinel
+``sentinel``
 
   .. index:: sentinel function attribute
 
@@ -960,7 +960,7 @@ sentinel
   The warnings for missing or incorrect sentinels are enabled with
   :option:`-Wformat`.
 
-stack_protect
+``stack_protect``
 
   .. index:: stack_protect function attribute
 
@@ -968,7 +968,7 @@ stack_protect
   flags fstack-protector or fstack-protector-strong
   or fstack-protector-explicit are set.
 
-target (``options``)
+:samp:`target ({options})`
 
   .. index:: target function attribute
 
@@ -1006,7 +1006,7 @@ target (``options``)
   Function Attributes, PowerPC Function Attributes, and
   Nios II Function Attributes, for details.
 
-unused
+``unused``
 
   .. index:: unused function attribute
 
@@ -1014,7 +1014,7 @@ unused
   to be possibly unused.  GCC does not produce a warning for this
   function.
 
-used
+``used``
 
   .. index:: used function attribute
 
@@ -1027,7 +1027,7 @@ used
   attribute also means that the function is instantiated if the
   class itself is instantiated.
 
-visibility ("``visibility_type``")
+:samp:`visibility ("{visibility_type}")`
 
   .. index:: visibility function attribute
 
@@ -1046,7 +1046,7 @@ visibility ("``visibility_type``")
 
   .. keep this list of visibilities in alphabetical order.
 
-  default
+  ``default``
     Default visibility is the normal case for the object file format.
     This value is available for the visibility attribute to override other
     options that may change the assumed visibility of entities.
@@ -1060,13 +1060,13 @@ visibility ("``visibility_type``")
 
     Default visibility corresponds to 'external linkage' in the language.
 
-  hidden
+  ``hidden``
     Hidden visibility indicates that the entity declared has a new
     form of linkage, which we call 'hidden linkage'.  Two
     declarations of an object with hidden linkage refer to the same object
     if they are in the same shared object.
 
-  internal
+  ``internal``
     Internal visibility is like hidden visibility, but with additional
     processor specific semantics.  Unless otherwise specified by the
     psABI, GCC defines internal visibility to mean that a function is
@@ -1077,7 +1077,7 @@ visibility ("``visibility_type``")
     GCC may for instance omit the load of a PIC register since it is known
     that the calling function loaded the correct value.
 
-  protected
+  ``protected``
     Protected visibility is like default visibility except that it
     indicates that references within the defining module bind to the
     definition in that module.  That is, the declared entity cannot be
@@ -1128,7 +1128,7 @@ visibility ("``visibility_type``")
   If both the template and enclosing class have explicit visibility, the
   visibility from the template is used.
 
-warn_unused_result
+``warn_unused_result``
 
   .. index:: warn_unused_result function attribute
 
@@ -1150,7 +1150,7 @@ warn_unused_result
 
   results in warning on line 5.
 
-weak
+``weak``
 
   .. index:: weak function attribute
 
@@ -1161,7 +1161,7 @@ weak
   for ELF targets, and also for a.out targets when using the GNU assembler
   and linker.
 
-weakref weakref ("``target``")
+``weakref`` :samp:`weakref ("{target}")`
 
   .. index:: weakref function attribute
 
@@ -1197,7 +1197,7 @@ weakref weakref ("``target``")
   At present, a declaration to which ``weakref`` is attached can
   only be ``static``.
 
-lower upper either
+``lower`` ``upper`` ``either``
 
   .. index:: lower memory region on the MSP430
 
@@ -1240,7 +1240,7 @@ ARC Function Attributes
 
 These function attributes are supported by the ARC back end:
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, ARC
 
@@ -1259,7 +1259,7 @@ interrupt
   Permissible values for this parameter are: ``ilink1`` and
   ``ilink2``.
 
-long_call medium_call short_call
+``long_call`` ``medium_call`` ``short_call``
 
   .. index:: long_call function attribute, ARC
 
@@ -1292,7 +1292,7 @@ ARM Function Attributes
 
 These function attributes are supported for ARM targets:
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, ARM
 
@@ -1314,14 +1314,14 @@ interrupt
   On ARMv7-M the interrupt type is ignored, and the attribute means the function
   may be called with a word-aligned stack pointer.
 
-isr
+``isr``
 
   .. index:: isr function attribute, ARM
 
   Use this attribute on ARM to write Interrupt Service Routines. This is an
   alias to the ``interrupt`` attribute above.
 
-long_call short_call
+``long_call`` ``short_call``
 
   .. index:: long_call function attribute, ARM
 
@@ -1339,7 +1339,7 @@ long_call short_call
   the offset to the function from the call site into the :samp:`BL`
   instruction directly.
 
-naked
+``naked``
 
   .. index:: naked function attribute, ARM
 
@@ -1352,7 +1352,7 @@ naked
   basic ``asm`` and C code may appear to work, they cannot be
   depended upon to work reliably and are not supported.
 
-pcs
+``pcs``
 
   .. index:: pcs function attribute, ARM
 
@@ -1382,7 +1382,7 @@ AVR Function Attributes
 
 These function attributes are supported by the AVR back end:
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, AVR
 
@@ -1399,7 +1399,7 @@ interrupt
   ``interrupt`` are specified for the same function, ``signal``
   is silently ignored.
 
-naked
+``naked``
 
   .. index:: naked function attribute, AVR
 
@@ -1412,7 +1412,7 @@ naked
   basic ``asm`` and C code may appear to work, they cannot be
   depended upon to work reliably and are not supported.
 
-OS_main OS_task
+``OS_main`` ``OS_task``
 
   .. index:: OS_main function attribute, AVR
 
@@ -1442,7 +1442,7 @@ OS_main OS_task
     or a frame pointer whereas ``OS_main`` and ``OS_task`` do this
     as needed.
 
-signal
+``signal``
 
   .. index:: signal function attribute, AVR
 
@@ -1470,7 +1470,7 @@ Blackfin Function Attributes
 
 These function attributes are supported by the Blackfin back end:
 
-exception_handler
+``exception_handler``
 
   .. index:: exception_handler function attribute
 
@@ -1481,7 +1481,7 @@ exception_handler
   exit sequences suitable for use in an exception handler when this
   attribute is present.
 
-interrupt_handler
+``interrupt_handler``
 
   .. index:: interrupt_handler function attribute, Blackfin
 
@@ -1490,7 +1490,7 @@ interrupt_handler
   generates function entry and exit sequences suitable for use in an
   interrupt handler when this attribute is present.
 
-kspisusp
+``kspisusp``
 
   .. index:: kspisusp function attribute, Blackfin
 
@@ -1500,7 +1500,7 @@ kspisusp
   or ``nmi_handler``, code is generated to load the stack pointer
   from the USP register in the function prologue.
 
-l1_text
+``l1_text``
 
   .. index:: l1_text function attribute, Blackfin
 
@@ -1509,7 +1509,7 @@ l1_text
   With :option:`-mfdpic`, function calls with a such function as the callee
   or caller uses inlined PLT.
 
-l2
+``l2``
 
   .. index:: l2 function attribute, Blackfin
 
@@ -1518,7 +1518,7 @@ l2
   ``.l2.text``. With :option:`-mfdpic`, callers of such functions use
   an inlined PLT.
 
-longcall shortcall
+``longcall`` ``shortcall``
 
   .. index:: indirect calls, Blackfin
 
@@ -1533,7 +1533,7 @@ longcall shortcall
   enough for the shorter calling sequence to be used.  These attributes
   override the :option:`-mlongcall` switch.
 
-nesting
+``nesting``
 
   .. index:: nesting function attribute, Blackfin
 
@@ -1543,7 +1543,7 @@ nesting
   ``exception_handler`` or ``nmi_handler`` to indicate that the function
   entry code should enable nested interrupts or exceptions.
 
-nmi_handler
+``nmi_handler``
 
   .. index:: nmi_handler function attribute, Blackfin
 
@@ -1554,7 +1554,7 @@ nmi_handler
   exit sequences suitable for use in an NMI handler when this
   attribute is present.
 
-saveall
+``saveall``
 
   .. index:: saveall function attribute, Blackfin
 
@@ -1571,7 +1571,7 @@ CR16 Function Attributes
 
 These function attributes are supported by the CR16 back end:
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, CR16
 
@@ -1587,7 +1587,7 @@ Epiphany Function Attributes
 
 These function attributes are supported by the Epiphany back end:
 
-disinterrupt
+``disinterrupt``
 
   .. index:: disinterrupt function attribute, Epiphany
 
@@ -1595,7 +1595,7 @@ disinterrupt
   instructions to disable interrupts for the duration of the given
   function.
 
-forwarder_section
+``forwarder_section``
 
   .. index:: forwarder_section function attribute, Epiphany
 
@@ -1605,7 +1605,7 @@ forwarder_section
   to transfer control.  The single parameter identifies the section where
   the trampoline is placed.
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, Epiphany
 
@@ -1649,7 +1649,7 @@ interrupt
                          forwarder_section ("tramp")))
       external_dma_handler ();
 
-long_call short_call
+``long_call`` ``short_call``
 
   .. index:: long_call function attribute, Epiphany
 
@@ -1669,7 +1669,7 @@ H8/300 Function Attributes
 
 These function attributes are available for H8/300 targets:
 
-function_vector
+``function_vector``
 
   .. index:: function_vector function attribute, H8/300
 
@@ -1680,7 +1680,7 @@ function_vector
   and 64 entries on the H8/300H and H8S)
   and shares space with the interrupt vector.
 
-interrupt_handler
+``interrupt_handler``
 
   .. index:: interrupt_handler function attribute, H8/300
 
@@ -1689,7 +1689,7 @@ interrupt_handler
   generates function entry and exit sequences suitable for use in an
   interrupt handler when this attribute is present.
 
-saveall
+``saveall``
 
   .. index:: saveall function attribute, H8/300
 
@@ -1706,7 +1706,7 @@ IA-64 Function Attributes
 
 These function attributes are supported on IA-64 targets:
 
-syscall_linkage
+``syscall_linkage``
 
   .. index:: syscall_linkage function attribute, IA-64
 
@@ -1716,7 +1716,7 @@ syscall_linkage
   the input registers.  This also prevents kernel data from leaking into
   application code.
 
-version_id
+``version_id``
 
   .. index:: version_id function attribute, IA-64
 
@@ -1738,7 +1738,7 @@ M32C Function Attributes
 
 These function attributes are supported by the M32C back end:
 
-bank_switch
+``bank_switch``
 
   .. index:: bank_switch function attribute, M32C
 
@@ -1746,7 +1746,7 @@ bank_switch
   prologue and epilogue to use bank switching to preserve the registers
   rather than saving them on the stack.
 
-fast_interrupt
+``fast_interrupt``
 
   .. index:: fast_interrupt function attribute, M32C
 
@@ -1755,7 +1755,7 @@ fast_interrupt
   ``interrupt`` attribute, except that ``freit`` is used to return
   instead of ``reit``.
 
-function_vector
+``function_vector``
 
   .. index:: function_vector function attribute, M16C/M32C
 
@@ -1793,7 +1793,7 @@ function_vector
 
   This attribute is ignored for R8C target.
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, M32C
 
@@ -1809,7 +1809,7 @@ M32R/D Function Attributes
 
 These function attributes are supported by the M32R/D back end:
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, M32R/D
 
@@ -1818,7 +1818,7 @@ interrupt
   function entry and exit sequences suitable for use in an interrupt handler
   when this attribute is present.
 
-model (``model-name``)
+:samp:`model ({model-name})`
 
   .. index:: model function attribute, M32R/D
 
@@ -1849,7 +1849,7 @@ m68k Function Attributes
 
 These function attributes are supported by the m68k back end:
 
-interrupt interrupt_handler
+``interrupt`` ``interrupt_handler``
 
   .. index:: interrupt function attribute, m68k
 
@@ -1860,7 +1860,7 @@ interrupt interrupt_handler
   generates function entry and exit sequences suitable for use in an
   interrupt handler when this attribute is present.  Either name may be used.
 
-interrupt_thread
+``interrupt_thread``
 
   .. index:: interrupt_thread function attribute, fido
 
@@ -1877,7 +1877,7 @@ MCORE Function Attributes
 
 These function attributes are supported by the MCORE back end:
 
-naked
+``naked``
 
   .. index:: naked function attribute, MCORE
 
@@ -1897,7 +1897,7 @@ MeP Function Attributes
 
 These function attributes are supported by the MeP back end:
 
-disinterrupt
+``disinterrupt``
 
   .. index:: disinterrupt function attribute, MeP
 
@@ -1905,7 +1905,7 @@ disinterrupt
   instructions to disable interrupts for the duration of the given
   function.
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, MeP
 
@@ -1914,7 +1914,7 @@ interrupt
   function entry and exit sequences suitable for use in an interrupt handler
   when this attribute is present.
 
-near
+``near``
 
   .. index:: near function attribute, MeP
 
@@ -1922,7 +1922,7 @@ near
   function is close enough to use the normal calling convention,
   overriding the :option:`-mtf` command-line option.
 
-far
+``far``
 
   .. index:: far function attribute, MeP
 
@@ -1930,7 +1930,7 @@ far
   that assumes the called function is too far away for the built-in
   addressing modes.
 
-vliw
+``vliw``
 
   .. index:: vliw function attribute, MeP
 
@@ -1946,7 +1946,7 @@ MicroBlaze Function Attributes
 
 These function attributes are supported on MicroBlaze targets:
 
-save_volatiles
+``save_volatiles``
 
   .. index:: save_volatiles function attribute, MicroBlaze
 
@@ -1956,7 +1956,7 @@ save_volatiles
   function, only volatiles used by the function are saved.  A normal function
   return is generated instead of a return from interrupt.
 
-break_handler
+``break_handler``
 
   .. index:: break_handler function attribute, MicroBlaze
 
@@ -1980,7 +1980,7 @@ Microsoft Windows Function Attributes
 The following attributes are available on Microsoft Windows and Symbian OS
 targets.
 
-dllexport
+``dllexport``
 
   .. index:: dllexport function attribute
 
@@ -2019,7 +2019,7 @@ dllexport
   .def file with an ``EXPORTS`` section or, with GNU ld, using
   the :option:`--export-all` linker flag.
 
-dllimport
+``dllimport``
 
   .. index:: dllimport function attribute
 
@@ -2083,7 +2083,7 @@ MIPS Function Attributes
 
 These function attributes are supported by the MIPS back end:
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, MIPS
 
@@ -2095,21 +2095,21 @@ interrupt
   You can use the following attributes to modify the behavior
   of an interrupt handler:
 
-  use_shadow_register_set
+  ``use_shadow_register_set``
 
     .. index:: use_shadow_register_set function attribute, MIPS
 
     Assume that the handler uses a shadow register set, instead of
     the main general-purpose registers.
 
-  keep_interrupts_masked
+  ``keep_interrupts_masked``
 
     .. index:: keep_interrupts_masked function attribute, MIPS
 
     Keep interrupts masked for the whole function.  Without this attribute,
     GCC tries to reenable interrupts for as much of the function as it can.
 
-  use_debug_exception_return
+  ``use_debug_exception_return``
 
     .. index:: use_debug_exception_return function attribute, MIPS
 
@@ -2134,7 +2134,7 @@ interrupt
                          keep_interrupts_masked,
                          use_debug_exception_return)) v7 ();
 
-long_call near far
+``long_call`` ``near`` ``far``
 
   .. index:: indirect calls, MIPS
 
@@ -2153,7 +2153,7 @@ long_call near far
   effect; it specifies that non-PIC calls should be made using the more
   efficient ``jal`` instruction.
 
-mips16 nomips16
+``mips16`` ``nomips16``
 
   .. index:: mips16 function attribute, MIPS
 
@@ -2173,7 +2173,7 @@ mips16 nomips16
   may interact badly with some GCC extensions such as ``__builtin_apply``
   (see :ref:`constructing-calls`).
 
-micromips, MIPS nomicromips, MIPS
+``micromips, MIPS`` ``nomicromips, MIPS``
 
   .. index:: micromips function attribute
 
@@ -2194,7 +2194,7 @@ micromips, MIPS nomicromips, MIPS
   may interact badly with some GCC extensions such as ``__builtin_apply``
   (see :ref:`constructing-calls`).
 
-nocompression
+``nocompression``
 
   .. index:: nocompression function attribute, MIPS
 
@@ -2210,7 +2210,7 @@ MSP430 Function Attributes
 
 These function attributes are supported by the MSP430 back end:
 
-critical
+``critical``
 
   .. index:: critical function attribute, MSP430
 
@@ -2219,7 +2219,7 @@ critical
   have the ``naked`` or ``reentrant`` attributes.  They can have
   the ``interrupt`` attribute.
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, MSP430
 
@@ -2237,7 +2237,7 @@ interrupt
   the names ``watchdog`` for vector 26, ``nmi`` for vector 30 and
   ``reset`` for vector 31 are recognized.
 
-naked
+``naked``
 
   .. index:: naked function attribute, MSP430
 
@@ -2250,7 +2250,7 @@ naked
   basic ``asm`` and C code may appear to work, they cannot be
   depended upon to work reliably and are not supported.
 
-reentrant
+``reentrant``
 
   .. index:: reentrant function attribute, MSP430
 
@@ -2259,7 +2259,7 @@ reentrant
   or ``critical`` attributes.  They can have the ``interrupt``
   attribute.
 
-wakeup
+``wakeup``
 
   .. index:: wakeup function attribute, MSP430
 
@@ -2275,7 +2275,7 @@ NDS32 Function Attributes
 
 These function attributes are supported by the NDS32 back end:
 
-exception
+``exception``
 
   .. index:: exception function attribute
 
@@ -2285,7 +2285,7 @@ exception
   is an exception handler.  The compiler will generate corresponding sections
   for use in an exception handler.
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, NDS32
 
@@ -2294,19 +2294,19 @@ interrupt
   for use in an interrupt handler.  You can use the following attributes
   to modify the behavior:
 
-  nested
+  ``nested``
 
     .. index:: nested function attribute, NDS32
 
     This interrupt service routine is interruptible.
 
-  not_nested
+  ``not_nested``
 
     .. index:: not_nested function attribute, NDS32
 
     This interrupt service routine is not interruptible.
 
-  nested_ready
+  ``nested_ready``
 
     .. index:: nested_ready function attribute, NDS32
 
@@ -2314,21 +2314,21 @@ interrupt
     (global interrupt enable) is set.  This allows interrupt service routine to
     finish some short critical code before enabling interrupts.
 
-  save_all
+  ``save_all``
 
     .. index:: save_all function attribute, NDS32
 
     The system will help save all registers into stack before entering
     interrupt handler.
 
-  partial_save
+  ``partial_save``
 
     .. index:: partial_save function attribute, NDS32
 
     The system will help save caller registers into stack before entering
     interrupt handler.
 
-naked
+``naked``
 
   .. index:: naked function attribute, NDS32
 
@@ -2341,7 +2341,7 @@ naked
   basic ``asm`` and C code may appear to work, they cannot be
   depended upon to work reliably and are not supported.
 
-reset
+``reset``
 
   .. index:: reset function attribute, NDS32
 
@@ -2352,13 +2352,13 @@ reset
   for use in a reset handler.  You can use the following attributes
   to provide extra exception handling:
 
-  nmi
+  ``nmi``
 
     .. index:: nmi function attribute, NDS32
 
     Provide a user-defined function to handle NMI exception.
 
-  warm
+  ``warm``
 
     .. index:: warm function attribute, NDS32
 
@@ -2371,7 +2371,7 @@ Nios II Function Attributes
 
 These function attributes are supported by the Nios II back end:
 
-target (``options``)
+:samp:`target ({options})`
 
   .. index:: target function attribute
 
@@ -2380,7 +2380,7 @@ target (``options``)
 
   When compiling for Nios II, the following options are allowed:
 
-  custom-``insn``=``N`` no-custom-``insn``
+  :samp:`custom-{insn}={N}` :samp:`no-custom-{insn}`
 
     .. index:: target("custom-insn=N") function attribute, Nios II
 
@@ -2395,7 +2395,7 @@ target (``options``)
     command-line options, and support the same set of ``insn`` keywords.
     See :ref:`nios-ii-options`, for more information.
 
-  custom-fpu-cfg=``name``
+  :samp:`custom-fpu-cfg={name}`
 
     .. index:: target("custom-fpu-cfg=name") function attribute, Nios II
 
@@ -2411,7 +2411,7 @@ PowerPC Function Attributes
 
 These function attributes are supported by the PowerPC back end:
 
-longcall shortcall
+``longcall`` ``shortcall``
 
   .. index:: indirect calls, PowerPC
 
@@ -2430,7 +2430,7 @@ longcall shortcall
   See :ref:`rs-6000-and-powerpc-options`, for more information on whether long
   calls are necessary.
 
-target (``options``)
+:samp:`target ({options})`
 
   .. index:: target function attribute
 
@@ -2439,7 +2439,7 @@ target (``options``)
 
   On the PowerPC, the following options are allowed:
 
-  altivec no-altivec
+  :samp:`altivec` :samp:`no-altivec`
 
     .. index:: target("altivec") function attribute, PowerPC
 
@@ -2447,7 +2447,7 @@ target (``options``)
     32-bit code, you cannot enable AltiVec instructions unless
     :option:`-mabi=altivec` is used on the command line.
 
-  cmpb no-cmpb
+  :samp:`cmpb` :samp:`no-cmpb`
 
     .. index:: target("cmpb") function attribute, PowerPC
 
@@ -2455,7 +2455,7 @@ target (``options``)
     implemented on the POWER6 processor and other processors that support
     the PowerPC V2.05 architecture.
 
-  dlmzb no-dlmzb
+  :samp:`dlmzb` :samp:`no-dlmzb`
 
     .. index:: target("dlmzb") function attribute, PowerPC
 
@@ -2463,7 +2463,7 @@ target (``options``)
     instruction on the IBM 405, 440, 464 and 476 processors.  This instruction is
     generated by default when targeting those processors.
 
-  fprnd no-fprnd
+  :samp:`fprnd` :samp:`no-fprnd`
 
     .. index:: target("fprnd") function attribute, PowerPC
 
@@ -2471,20 +2471,20 @@ target (``options``)
     instructions implemented on the POWER5+ processor and other processors
     that support the PowerPC V2.03 architecture.
 
-  hard-dfp no-hard-dfp
+  :samp:`hard-dfp` :samp:`no-hard-dfp`
 
     .. index:: target("hard-dfp") function attribute, PowerPC
 
     Generate code that uses (does not use) the decimal floating-point
     instructions implemented on some POWER processors.
 
-  isel no-isel
+  :samp:`isel` :samp:`no-isel`
 
     .. index:: target("isel") function attribute, PowerPC
 
     Generate code that uses (does not use) ISEL instruction.
 
-  mfcrf no-mfcrf
+  :samp:`mfcrf` :samp:`no-mfcrf`
 
     .. index:: target("mfcrf") function attribute, PowerPC
 
@@ -2492,7 +2492,7 @@ target (``options``)
     register field instruction implemented on the POWER4 processor and
     other processors that support the PowerPC V2.01 architecture.
 
-  mfpgpr no-mfpgpr
+  :samp:`mfpgpr` :samp:`no-mfpgpr`
 
     .. index:: target("mfpgpr") function attribute, PowerPC
 
@@ -2500,7 +2500,7 @@ target (``options``)
     purpose register instructions implemented on the POWER6X processor and
     other processors that support the extended PowerPC V2.05 architecture.
 
-  mulhw no-mulhw
+  :samp:`mulhw` :samp:`no-mulhw`
 
     .. index:: target("mulhw") function attribute, PowerPC
 
@@ -2509,14 +2509,14 @@ target (``options``)
     These instructions are generated by default when targeting those
     processors.
 
-  multiple no-multiple
+  :samp:`multiple` :samp:`no-multiple`
 
     .. index:: target("multiple") function attribute, PowerPC
 
     Generate code that uses (does not use) the load multiple word
     instructions and the store multiple word instructions.
 
-  update no-update
+  :samp:`update` :samp:`no-update`
 
     .. index:: target("update") function attribute, PowerPC
 
@@ -2524,7 +2524,7 @@ target (``options``)
     that update the base register to the address of the calculated memory
     location.
 
-  popcntb no-popcntb
+  :samp:`popcntb` :samp:`no-popcntb`
 
     .. index:: target("popcntb") function attribute, PowerPC
 
@@ -2533,7 +2533,7 @@ target (``options``)
     processor and other processors that support the PowerPC V2.02
     architecture.
 
-  popcntd no-popcntd
+  :samp:`popcntd` :samp:`no-popcntd`
 
     .. index:: target("popcntd") function attribute, PowerPC
 
@@ -2541,7 +2541,7 @@ target (``options``)
     implemented on the POWER7 processor and other processors that support
     the PowerPC V2.06 architecture.
 
-  powerpc-gfxopt no-powerpc-gfxopt
+  :samp:`powerpc-gfxopt` :samp:`no-powerpc-gfxopt`
 
     .. index:: target("powerpc-gfxopt") function attribute, PowerPC
 
@@ -2549,7 +2549,7 @@ target (``options``)
     architecture instructions in the Graphics group, including
     floating-point select.
 
-  powerpc-gpopt no-powerpc-gpopt
+  :samp:`powerpc-gpopt` :samp:`no-powerpc-gpopt`
 
     .. index:: target("powerpc-gpopt") function attribute, PowerPC
 
@@ -2557,7 +2557,7 @@ target (``options``)
     architecture instructions in the General Purpose group, including
     floating-point square root.
 
-  recip-precision no-recip-precision
+  :samp:`recip-precision` :samp:`no-recip-precision`
 
     .. index:: target("recip-precision") function attribute, PowerPC
 
@@ -2565,7 +2565,7 @@ target (``options``)
     provide higher-precision estimates than is mandated by the PowerPC
     ABI.
 
-  string no-string
+  :samp:`string` :samp:`no-string`
 
     .. index:: target("string") function attribute, PowerPC
 
@@ -2573,7 +2573,7 @@ target (``options``)
     and the store string word instructions to save multiple registers and
     do small block moves.
 
-  vsx no-vsx
+  :samp:`vsx` :samp:`no-vsx`
 
     .. index:: target("vsx") function attribute, PowerPC
 
@@ -2583,7 +2583,7 @@ target (``options``)
     cannot enable VSX or AltiVec instructions unless
     :option:`-mabi=altivec` is used on the command line.
 
-  friz no-friz
+  :samp:`friz` :samp:`no-friz`
 
     .. index:: target("friz") function attribute, PowerPC
 
@@ -2593,28 +2593,28 @@ target (``options``)
     point.  The ``friz`` instruction does not return the same value if
     the floating-point number is too large to fit in an integer.
 
-  avoid-indexed-addresses no-avoid-indexed-addresses
+  :samp:`avoid-indexed-addresses` :samp:`no-avoid-indexed-addresses`
 
     .. index:: target("avoid-indexed-addresses") function attribute, PowerPC
 
     Generate code that tries to avoid (not avoid) the use of indexed load
     or store instructions.
 
-  paired no-paired
+  :samp:`paired` :samp:`no-paired`
 
     .. index:: target("paired") function attribute, PowerPC
 
     Generate code that uses (does not use) the generation of PAIRED simd
     instructions.
 
-  longcall no-longcall
+  :samp:`longcall` :samp:`no-longcall`
 
     .. index:: target("longcall") function attribute, PowerPC
 
     Generate code that assumes (does not assume) that all calls are far
     away so that a longer more expensive calling sequence is required.
 
-  cpu=``CPU``
+  :samp:`cpu={CPU}`
 
     .. index:: target("cpu=CPU") function attribute, PowerPC
 
@@ -2623,7 +2623,7 @@ target (``options``)
     generating 32-bit code, VSX and AltiVec instructions are not generated
     unless you use the :option:`-mabi=altivec` option on the command line.
 
-  tune=``TUNE``
+  :samp:`tune={TUNE}`
 
     .. index:: target("tune=TUNE") function attribute, PowerPC
 
@@ -2644,7 +2644,7 @@ RL78 Function Attributes
 
 These function attributes are supported by the RL78 back end:
 
-interrupt brk_interrupt
+``interrupt`` ``brk_interrupt``
 
   .. index:: interrupt function attribute, RL78
 
@@ -2659,7 +2659,7 @@ interrupt brk_interrupt
   handlers intended to be used with the ``BRK`` opcode (i.e. those
   that must end with ``RETB`` instead of ``RETI``).
 
-naked
+``naked``
 
   .. index:: naked function attribute, RL78
 
@@ -2679,7 +2679,7 @@ RX Function Attributes
 
 These function attributes are supported by the RX back end:
 
-fast_interrupt
+``fast_interrupt``
 
   .. index:: fast_interrupt function attribute, RX
 
@@ -2688,7 +2688,7 @@ fast_interrupt
   ``interrupt`` attribute, except that ``freit`` is used to return
   instead of ``reit``.
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, RX
 
@@ -2721,7 +2721,7 @@ interrupt
     void __attribute__ ((interrupt (RXD1_VECT,RXD2_VECT,"dct","$default")))
     	txd1_handler ();
 
-naked
+``naked``
 
   .. index:: naked function attribute, RX
 
@@ -2734,7 +2734,7 @@ naked
   basic ``asm`` and C code may appear to work, they cannot be
   depended upon to work reliably and are not supported.
 
-vector
+``vector``
 
   .. index:: vector function attribute, RX
 
@@ -2750,7 +2750,7 @@ S/390 Function Attributes
 
 These function attributes are supported on the S/390:
 
-hotpatch (``halfwords-before-function-label``,``halfwords-after-function-label``)
+:samp:`hotpatch ({halfwords-before-function-label},{halfwords-after-function-label})`
 
   .. index:: hotpatch function attribute, S/390
 
@@ -2772,7 +2772,7 @@ SH Function Attributes
 
 These function attributes are supported on the SH family of processors:
 
-function_vector
+``function_vector``
 
   .. index:: function_vector function attribute, SH
 
@@ -2794,7 +2794,7 @@ function_vector
   made to the same function, it saves 2 bytes of code per each of these
   calls.
 
-interrupt_handler
+``interrupt_handler``
 
   .. index:: interrupt_handler function attribute, SH
 
@@ -2803,7 +2803,7 @@ interrupt_handler
   generates function entry and exit sequences suitable for use in an
   interrupt handler when this attribute is present.
 
-nosave_low_regs
+``nosave_low_regs``
 
   .. index:: nosave_low_regs function attribute, SH
 
@@ -2812,14 +2812,14 @@ nosave_low_regs
   and SH4* targets that have a second R0..R7 register bank for non-reentrant
   interrupt handlers.
 
-renesas
+``renesas``
 
   .. index:: renesas function attribute, SH
 
   On SH targets this attribute specifies that the function or struct follows the
   Renesas ABI.
 
-resbank
+``resbank``
 
   .. index:: resbank function attribute, SH
 
@@ -2834,7 +2834,7 @@ resbank
   banks are stacked in first-in last-out (FILO) sequence.  Restoration
   from the bank is executed by issuing a RESBANK instruction.
 
-sp_switch
+``sp_switch``
 
   .. index:: sp_switch function attribute, SH
 
@@ -2849,7 +2849,7 @@ sp_switch
     void f () __attribute__ ((interrupt_handler,
                               sp_switch ("alt_stack")));
 
-trap_exit
+``trap_exit``
 
   .. index:: trap_exit function attribute, SH
 
@@ -2857,7 +2857,7 @@ trap_exit
   ``trapa`` instead of ``rte``.  This attribute expects an integer
   argument specifying the trap number to be used.
 
-trapa_handler
+``trapa_handler``
 
   .. index:: trapa_handler function attribute, SH
 
@@ -2871,7 +2871,7 @@ SPU Function Attributes
 
 These function attributes are supported by the SPU back end:
 
-naked
+``naked``
 
   .. index:: naked function attribute, SPU
 
@@ -2899,7 +2899,7 @@ Visium Function Attributes
 
 These function attributes are supported by the Visium back end:
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, Visium
 
@@ -2926,7 +2926,7 @@ These function attributes are supported by the x86 back end:
   pass arguments.  This is
   useful to override the effects of the :option:`-mrtd` switch.
 
-fastcall
+``fastcall``
 
   .. index:: fastcall function attribute, x86-32
 
@@ -2939,7 +2939,7 @@ fastcall
   pops the arguments off the stack.  If the number of arguments is variable all
   arguments are pushed on the stack.
 
-thiscall
+``thiscall``
 
   .. index:: thiscall function attribute, x86-32
 
@@ -2955,7 +2955,7 @@ thiscall
   As a GCC extension, this calling convention can be used for C functions
   and for static member methods.
 
-ms_abi sysv_abi
+``ms_abi`` ``sysv_abi``
 
   .. index:: ms_abi function attribute, x86
 
@@ -2971,7 +2971,7 @@ ms_abi sysv_abi
   Note, the ``ms_abi`` attribute for Microsoft Windows 64-bit targets currently
   requires the :option:`-maccumulate-outgoing-args` option.
 
-callee_pop_aggregate_return (``number``)
+:samp:`callee_pop_aggregate_return ({number})`
 
   .. index:: callee_pop_aggregate_return function attribute, x86
 
@@ -2986,7 +2986,7 @@ callee_pop_aggregate_return (``number``)
   the compiler assumes that the
   caller pops the stack for hidden pointer.
 
-ms_hook_prologue
+``ms_hook_prologue``
 
   .. index:: ms_hook_prologue function attribute, x86
 
@@ -2995,7 +2995,7 @@ ms_hook_prologue
   prologue used in Win32 API functions in Microsoft Windows XP Service Pack 2
   and newer.
 
-regparm (``number``)
+:samp:`regparm ({number})`
 
   .. index:: regparm function attribute, x86
 
@@ -3018,7 +3018,7 @@ regparm (``number``)
   disabled with the linker or the loader if desired, to avoid the
   problem.)
 
-sseregparm
+``sseregparm``
 
   .. index:: sseregparm function attribute, x86
 
@@ -3028,7 +3028,7 @@ sseregparm
   variable number of arguments continue to pass all of their
   floating-point arguments on the stack.
 
-force_align_arg_pointer
+``force_align_arg_pointer``
 
   .. index:: force_align_arg_pointer function attribute, x86
 
@@ -3038,7 +3038,7 @@ force_align_arg_pointer
   This supports mixing legacy codes that run with a 4-byte aligned stack
   with modern codes that keep a 16-byte stack for SSE compatibility.
 
-stdcall
+``stdcall``
 
   .. index:: stdcall function attribute, x86-32
 
@@ -3048,7 +3048,7 @@ stdcall
   assume that the called function pops off the stack space used to
   pass arguments, unless it takes a variable number of arguments.
 
-target (``options``)
+:samp:`target ({options})`
 
   .. index:: target function attribute
 
@@ -3057,155 +3057,155 @@ target (``options``)
 
   On the x86, the following options are allowed:
 
-  abm no-abm
+  :samp:`abm` :samp:`no-abm`
 
     .. index:: target("abm") function attribute, x86
 
     Enable/disable the generation of the advanced bit instructions.
 
-  aes no-aes
+  :samp:`aes` :samp:`no-aes`
 
     .. index:: target("aes") function attribute, x86
 
     Enable/disable the generation of the AES instructions.
 
-  default
+  :samp:`default`
 
     .. index:: target("default") function attribute, x86
 
     See :ref:`function-multiversioning`, where it is used to specify the
     default function version.
 
-  mmx no-mmx
+  :samp:`mmx` :samp:`no-mmx`
 
     .. index:: target("mmx") function attribute, x86
 
     Enable/disable the generation of the MMX instructions.
 
-  pclmul no-pclmul
+  :samp:`pclmul` :samp:`no-pclmul`
 
     .. index:: target("pclmul") function attribute, x86
 
     Enable/disable the generation of the PCLMUL instructions.
 
-  popcnt no-popcnt
+  :samp:`popcnt` :samp:`no-popcnt`
 
     .. index:: target("popcnt") function attribute, x86
 
     Enable/disable the generation of the POPCNT instruction.
 
-  sse no-sse
+  :samp:`sse` :samp:`no-sse`
 
     .. index:: target("sse") function attribute, x86
 
     Enable/disable the generation of the SSE instructions.
 
-  sse2 no-sse2
+  :samp:`sse2` :samp:`no-sse2`
 
     .. index:: target("sse2") function attribute, x86
 
     Enable/disable the generation of the SSE2 instructions.
 
-  sse3 no-sse3
+  :samp:`sse3` :samp:`no-sse3`
 
     .. index:: target("sse3") function attribute, x86
 
     Enable/disable the generation of the SSE3 instructions.
 
-  sse4 no-sse4
+  :samp:`sse4` :samp:`no-sse4`
 
     .. index:: target("sse4") function attribute, x86
 
     Enable/disable the generation of the SSE4 instructions (both SSE4.1
     and SSE4.2).
 
-  sse4.1 no-sse4.1
+  :samp:`sse4.1` :samp:`no-sse4.1`
 
     .. index:: target("sse4.1") function attribute, x86
 
     Enable/disable the generation of the sse4.1 instructions.
 
-  sse4.2 no-sse4.2
+  :samp:`sse4.2` :samp:`no-sse4.2`
 
     .. index:: target("sse4.2") function attribute, x86
 
     Enable/disable the generation of the sse4.2 instructions.
 
-  sse4a no-sse4a
+  :samp:`sse4a` :samp:`no-sse4a`
 
     .. index:: target("sse4a") function attribute, x86
 
     Enable/disable the generation of the SSE4A instructions.
 
-  fma4 no-fma4
+  :samp:`fma4` :samp:`no-fma4`
 
     .. index:: target("fma4") function attribute, x86
 
     Enable/disable the generation of the FMA4 instructions.
 
-  xop no-xop
+  :samp:`xop` :samp:`no-xop`
 
     .. index:: target("xop") function attribute, x86
 
     Enable/disable the generation of the XOP instructions.
 
-  lwp no-lwp
+  :samp:`lwp` :samp:`no-lwp`
 
     .. index:: target("lwp") function attribute, x86
 
     Enable/disable the generation of the LWP instructions.
 
-  ssse3 no-ssse3
+  :samp:`ssse3` :samp:`no-ssse3`
 
     .. index:: target("ssse3") function attribute, x86
 
     Enable/disable the generation of the SSSE3 instructions.
 
-  cld no-cld
+  :samp:`cld` :samp:`no-cld`
 
     .. index:: target("cld") function attribute, x86
 
     Enable/disable the generation of the CLD before string moves.
 
-  fancy-math-387 no-fancy-math-387
+  :samp:`fancy-math-387` :samp:`no-fancy-math-387`
 
     .. index:: target("fancy-math-387") function attribute, x86
 
     Enable/disable the generation of the ``sin``, ``cos``, and
     ``sqrt`` instructions on the 387 floating-point unit.
 
-  fused-madd no-fused-madd
+  :samp:`fused-madd` :samp:`no-fused-madd`
 
     .. index:: target("fused-madd") function attribute, x86
 
     Enable/disable the generation of the fused multiply/add instructions.
 
-  ieee-fp no-ieee-fp
+  :samp:`ieee-fp` :samp:`no-ieee-fp`
 
     .. index:: target("ieee-fp") function attribute, x86
 
     Enable/disable the generation of floating point that depends on IEEE arithmetic.
 
-  inline-all-stringops no-inline-all-stringops
+  :samp:`inline-all-stringops` :samp:`no-inline-all-stringops`
 
     .. index:: target("inline-all-stringops") function attribute, x86
 
     Enable/disable inlining of string operations.
 
-  inline-stringops-dynamically no-inline-stringops-dynamically
+  :samp:`inline-stringops-dynamically` :samp:`no-inline-stringops-dynamically`
 
     .. index:: target("inline-stringops-dynamically") function attribute, x86
 
     Enable/disable the generation of the inline code to do small string
     operations and calling the library routines for large operations.
 
-  align-stringops no-align-stringops
+  :samp:`align-stringops` :samp:`no-align-stringops`
 
     .. index:: target("align-stringops") function attribute, x86
 
     Do/do not align destination of inlined string operations.
 
-  recip no-recip
+  :samp:`recip` :samp:`no-recip`
 
     .. index:: target("recip") function attribute, x86
 
@@ -3213,19 +3213,19 @@ target (``options``)
     instructions followed an additional Newton-Raphson step instead of
     doing a floating-point division.
 
-  arch=``ARCH``
+  :samp:`arch={ARCH}`
 
     .. index:: target("arch=ARCH") function attribute, x86
 
     Specify the architecture to generate code for in compiling the function.
 
-  tune=``TUNE``
+  :samp:`tune={TUNE}`
 
     .. index:: target("tune=TUNE") function attribute, x86
 
     Specify the architecture to tune for in compiling the function.
 
-  fpmath=``FPMATH``
+  :samp:`fpmath={FPMATH}`
 
     .. index:: target("fpmath=FPMATH") function attribute, x86
 
@@ -3247,7 +3247,7 @@ Xstormy16 Function Attributes
 
 These function attributes are supported by the Xstormy16 back end:
 
-interrupt
+``interrupt``
 
   .. index:: interrupt function attribute, Xstormy16
 

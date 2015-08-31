@@ -425,9 +425,9 @@ specified individually by using <em class="xref std std-option">--param ``name``
 The <em class="xref std std-option">-finline-limit=``n``</em> option sets some of these parameters
 as follows:</p>
 <dl class="docutils">
-<dt>max-inline-insns-single</dt>
+<dt><tt class="docutils literal"><span class="pre">max-inline-insns-single</span></tt></dt>
 <dd>is set to <tt class="docutils literal"><span class="pre">n</span></tt>/2.</dd>
-<dt>max-inline-insns-auto</dt>
+<dt><tt class="docutils literal"><span class="pre">max-inline-insns-auto</span></tt></dt>
 <dd><p class="first">is set to <tt class="docutils literal"><span class="pre">n</span></tt>/2.</p>
 <p class="last">See below for a documentation of the individual</p>
 </dd>
@@ -842,17 +842,17 @@ the default because it generates better code.</p>
 <dd><p>Use specified regions for the integrated register allocator.  The
 <tt class="docutils literal"><span class="pre">region</span></tt> argument should be one of the following:</p>
 <dl class="docutils">
-<dt>all</dt>
+<dt><tt class="samp docutils literal"><span class="pre">all</span></tt></dt>
 <dd>Use all loops as register allocation regions.
 This can give the best results for machines with a small and/or
 irregular register set.</dd>
-<dt>mixed</dt>
+<dt><tt class="samp docutils literal"><span class="pre">mixed</span></tt></dt>
 <dd>Use all loops except for loops with small register pressure
 as the regions.  This value usually gives
 the best results in most cases and for most architectures,
 and is enabled by default when compiling with optimization for speed
 (<a class="reference internal" href="#cmdoption-O"><em class="xref std std-option">-O</em></a>, <a class="reference internal" href="#cmdoption-O2"><em class="xref std std-option">-O2</em></a>, ...).</dd>
-<dt>one</dt>
+<dt><tt class="samp docutils literal"><span class="pre">one</span></tt></dt>
 <dd>Use all functions as a single region.
 This typically results in the smallest code size, and is enabled by default for
 <a class="reference internal" href="#cmdoption-Os"><em class="xref std std-option">-Os</em></a> or <a class="reference internal" href="#cmdoption-O0"><em class="xref std std-option">-O0</em></a>.</dd>
@@ -2989,94 +2989,94 @@ without notice in future releases.</p>
 <p>In each case, the <tt class="docutils literal"><span class="pre">value</span></tt> is an integer.  The allowable choices for
 <tt class="docutils literal"><span class="pre">name</span></tt> are:</p>
 <dl class="docutils">
-<dt>predictable-branch-outcome</dt>
+<dt><tt class="docutils literal"><span class="pre">predictable-branch-outcome</span></tt></dt>
 <dd>When branch is predicted to be taken with probability lower than this threshold
 (in percent), then it is considered well predictable. The default is 10.</dd>
-<dt>max-crossjump-edges</dt>
+<dt><tt class="docutils literal"><span class="pre">max-crossjump-edges</span></tt></dt>
 <dd>The maximum number of incoming edges to consider for cross-jumping.
 The algorithm used by <a class="reference internal" href="#cmdoption-fcrossjumping"><em class="xref std std-option">-fcrossjumping</em></a> is O(N^2) in
 the number of edges incoming to each block.  Increasing values mean
 more aggressive optimization, making the compilation time increase with
 probably small improvement in executable size.</dd>
-<dt>min-crossjump-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">min-crossjump-insns</span></tt></dt>
 <dd>The minimum number of instructions that must be matched at the end
 of two blocks before cross-jumping is performed on them.  This
 value is ignored in the case where all instructions in the block being
 cross-jumped from are matched.  The default value is 5.</dd>
-<dt>max-grow-copy-bb-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-grow-copy-bb-insns</span></tt></dt>
 <dd>The maximum code size expansion factor when copying basic blocks
 instead of jumping.  The expansion is relative to a jump instruction.
 The default value is 8.</dd>
-<dt>max-goto-duplication-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-goto-duplication-insns</span></tt></dt>
 <dd>The maximum number of instructions to duplicate to a block that jumps
 to a computed goto.  To avoid O(N^2) behavior in a number of
 passes, GCC factors computed gotos early in the compilation process,
 and unfactors them as late as possible.  Only computed jumps at the
 end of a basic blocks with no more than max-goto-duplication-insns are
 unfactored.  The default value is 8.</dd>
-<dt>max-delay-slot-insn-search</dt>
+<dt><tt class="docutils literal"><span class="pre">max-delay-slot-insn-search</span></tt></dt>
 <dd>The maximum number of instructions to consider when looking for an
 instruction to fill a delay slot.  If more than this arbitrary number of
 instructions are searched, the time savings from filling the delay slot
 are minimal, so stop searching.  Increasing values mean more
 aggressive optimization, making the compilation time increase with probably
 small improvement in execution time.</dd>
-<dt>max-delay-slot-live-search</dt>
+<dt><tt class="docutils literal"><span class="pre">max-delay-slot-live-search</span></tt></dt>
 <dd>When trying to fill delay slots, the maximum number of instructions to
 consider when searching for a block with valid live register
 information.  Increasing this arbitrarily chosen value means more
 aggressive optimization, increasing the compilation time.  This parameter
 should be removed when the delay slot code is rewritten to maintain the
 control-flow graph.</dd>
-<dt>max-gcse-memory</dt>
+<dt><tt class="docutils literal"><span class="pre">max-gcse-memory</span></tt></dt>
 <dd>The approximate maximum amount of memory that can be allocated in
 order to perform the global common subexpression elimination
 optimization.  If more memory than specified is required, the
 optimization is not done.</dd>
-<dt>max-gcse-insertion-ratio</dt>
+<dt><tt class="docutils literal"><span class="pre">max-gcse-insertion-ratio</span></tt></dt>
 <dd>If the ratio of expression insertions to deletions is larger than this value
 for any expression, then RTL PRE inserts or removes the expression and thus
 leaves partially redundant computations in the instruction stream.  The default value is 20.</dd>
-<dt>max-pending-list-length</dt>
+<dt><tt class="docutils literal"><span class="pre">max-pending-list-length</span></tt></dt>
 <dd>The maximum number of pending dependencies scheduling allows
 before flushing the current state and starting over.  Large functions
 with few branches or calls can create excessively large lists which
 needlessly consume memory and resources.</dd>
-<dt>max-modulo-backtrack-attempts</dt>
+<dt><tt class="docutils literal"><span class="pre">max-modulo-backtrack-attempts</span></tt></dt>
 <dd>The maximum number of backtrack attempts the scheduler should make
 when modulo scheduling a loop.  Larger values can exponentially increase
 compilation time.</dd>
-<dt>max-inline-insns-single</dt>
+<dt><tt class="docutils literal"><span class="pre">max-inline-insns-single</span></tt></dt>
 <dd>Several parameters control the tree inliner used in GCC.
 This number sets the maximum number of instructions (counted in GCC&#8217;s
 internal representation) in a single function that the tree inliner
 considers for inlining.  This only affects functions declared
 inline and methods implemented in a class declaration (C++).
 The default value is 400.</dd>
-<dt>max-inline-insns-auto</dt>
+<dt><tt class="docutils literal"><span class="pre">max-inline-insns-auto</span></tt></dt>
 <dd>When you use <a class="reference internal" href="#cmdoption-finline-functions"><em class="xref std std-option">-finline-functions</em></a> (included in <a class="reference internal" href="#cmdoption-O3"><em class="xref std std-option">-O3</em></a>),
 a lot of functions that would otherwise not be considered for inlining
 by the compiler are investigated.  To those functions, a different
 (more restrictive) limit compared to functions declared inline can
 be applied.
 The default value is 40.</dd>
-<dt>inline-min-speedup</dt>
+<dt><tt class="docutils literal"><span class="pre">inline-min-speedup</span></tt></dt>
 <dd>When estimated performance improvement of caller + callee runtime exceeds this
 threshold (in precent), the function can be inlined regardless the limit on
 <em class="xref std std-option">--param max-inline-insns-single</em> and <em class="xref std std-option">--param
 max-inline-insns-auto</em>.</dd>
-<dt>large-function-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">large-function-insns</span></tt></dt>
 <dd>The limit specifying really large functions.  For functions larger than this
 limit after inlining, inlining is constrained by
 <em class="xref std std-option">--param large-function-growth</em>.  This parameter is useful primarily
 to avoid extreme compilation time caused by non-linear algorithms used by the
 back end.
 The default value is 2700.</dd>
-<dt>large-function-growth</dt>
+<dt><tt class="docutils literal"><span class="pre">large-function-growth</span></tt></dt>
 <dd>Specifies maximal growth of large function caused by inlining in percents.
 The default value is 100 which limits large function growth to 2.0 times
 the original size.</dd>
-<dt>large-unit-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">large-unit-insns</span></tt></dt>
 <dd>The limit specifying large translation unit.  Growth caused by inlining of
 units larger than this limit is limited by <em class="xref std std-option">--param inline-unit-growth</em>.
 For small units this might be too tight.
@@ -3087,23 +3087,23 @@ large units consisting of small inlineable functions, however, the overall unit
 growth limit is needed to avoid exponential explosion of code size.  Thus for
 smaller units, the size is increased to <em class="xref std std-option">--param large-unit-insns</em>
 before applying <em class="xref std std-option">--param inline-unit-growth</em>.  The default is 10000.</dd>
-<dt>inline-unit-growth</dt>
+<dt><tt class="docutils literal"><span class="pre">inline-unit-growth</span></tt></dt>
 <dd>Specifies maximal overall growth of the compilation unit caused by inlining.
 The default value is 20 which limits unit growth to 1.2 times the original
 size. Cold functions (either marked cold via an attribute or by profile
 feedback) are not accounted into the unit size.</dd>
-<dt>ipcp-unit-growth</dt>
+<dt><tt class="docutils literal"><span class="pre">ipcp-unit-growth</span></tt></dt>
 <dd>Specifies maximal overall growth of the compilation unit caused by
 interprocedural constant propagation.  The default value is 10 which limits
 unit growth to 1.1 times the original size.</dd>
-<dt>large-stack-frame</dt>
+<dt><tt class="docutils literal"><span class="pre">large-stack-frame</span></tt></dt>
 <dd>The limit specifying large stack frames.  While inlining the algorithm is trying
 to not grow past this limit too much.  The default value is 256 bytes.</dd>
-<dt>large-stack-frame-growth</dt>
+<dt><tt class="docutils literal"><span class="pre">large-stack-frame-growth</span></tt></dt>
 <dd>Specifies maximal growth of large stack frames caused by inlining in percents.
 The default value is 1000 which limits large stack frame growth to 11 times
 the original size.</dd>
-<dt>max-inline-insns-recursive max-inline-insns-recursive-auto</dt>
+<dt><tt class="docutils literal"><span class="pre">max-inline-insns-recursive</span></tt> <tt class="docutils literal"><span class="pre">max-inline-insns-recursive-auto</span></tt></dt>
 <dd><p class="first">Specifies the maximum number of instructions an out-of-line copy of a
 self-recursive inline
 function can grow into by performing recursive inlining.</p>
@@ -3114,7 +3114,7 @@ happens only when <a class="reference internal" href="#cmdoption-finline-functio
 enabled; <em class="xref std std-option">--param max-inline-insns-recursive-auto</em> applies instead.  The
 default value is 450.</p>
 </dd>
-<dt>max-inline-recursive-depth max-inline-recursive-depth-auto</dt>
+<dt><tt class="docutils literal"><span class="pre">max-inline-recursive-depth</span></tt> <tt class="docutils literal"><span class="pre">max-inline-recursive-depth-auto</span></tt></dt>
 <dd><p class="first">Specifies the maximum recursion depth used for recursive inlining.</p>
 <p class="last"><em class="xref std std-option">--param max-inline-recursive-depth</em> applies to functions
 declared inline.  For functions not declared inline, recursive inlining
@@ -3122,7 +3122,7 @@ happens only when <a class="reference internal" href="#cmdoption-finline-functio
 enabled; <em class="xref std std-option">--param max-inline-recursive-depth-auto</em> applies instead.  The
 default value is 8.</p>
 </dd>
-<dt>min-inline-recursive-probability</dt>
+<dt><tt class="docutils literal"><span class="pre">min-inline-recursive-probability</span></tt></dt>
 <dd><p class="first">Recursive inlining is profitable only for function having deep recursion
 in average and can hurt for function having little recursion depth by
 increasing the prologue size or complexity of function body to other
@@ -3133,36 +3133,36 @@ given call expression.  This parameter limits inlining only to call expressions
 whose probability exceeds the given threshold (in percents).
 The default value is 10.</p>
 </dd>
-<dt>early-inlining-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">early-inlining-insns</span></tt></dt>
 <dd>Specify growth that the early inliner can make.  In effect it increases
 the amount of inlining for code having a large abstraction penalty.
 The default value is 14.</dd>
-<dt>max-early-inliner-iterations</dt>
+<dt><tt class="docutils literal"><span class="pre">max-early-inliner-iterations</span></tt></dt>
 <dd>Limit of iterations of the early inliner.  This basically bounds
 the number of nested indirect calls the early inliner can resolve.
 Deeper chains are still handled by late inlining.</dd>
-<dt>comdat-sharing-probability</dt>
+<dt><tt class="docutils literal"><span class="pre">comdat-sharing-probability</span></tt></dt>
 <dd>Probability (in percent) that C++ inline function with comdat visibility
 are shared across multiple compilation units.  The default value is 20.</dd>
-<dt>profile-func-internal-id</dt>
+<dt><tt class="docutils literal"><span class="pre">profile-func-internal-id</span></tt></dt>
 <dd>A parameter to control whether to use function internal id in profile
 database lookup. If the value is 0, the compiler uses an id that
 is based on function assembler name and filename, which makes old profile
 data more tolerant to source changes such as function reordering etc.
 The default value is 0.</dd>
-<dt>min-vect-loop-bound</dt>
+<dt><tt class="docutils literal"><span class="pre">min-vect-loop-bound</span></tt></dt>
 <dd>The minimum number of iterations under which loops are not vectorized
 when <a class="reference internal" href="#cmdoption-ftree-vectorize"><em class="xref std std-option">-ftree-vectorize</em></a> is used.  The number of iterations after
 vectorization needs to be greater than the value specified by this option
 to allow vectorization.  The default value is 0.</dd>
-<dt>gcse-cost-distance-ratio</dt>
+<dt><tt class="docutils literal"><span class="pre">gcse-cost-distance-ratio</span></tt></dt>
 <dd>Scaling factor in calculation of maximum distance an expression
 can be moved by GCSE optimizations.  This is currently supported only in the
 code hoisting pass.  The bigger the ratio, the more aggressive code hoisting
 is with simple expressions, i.e., the expressions that have cost
 less than gcse-unrestricted-cost.  Specifying 0 disables
 hoisting of simple expressions.  The default value is 10.</dd>
-<dt>gcse-unrestricted-cost</dt>
+<dt><tt class="docutils literal"><span class="pre">gcse-unrestricted-cost</span></tt></dt>
 <dd>Cost, roughly measured as the cost of a single typical machine
 instruction, at which GCSE optimizations do not constrain
 the distance an expression can travel.  This is currently
@@ -3170,122 +3170,122 @@ supported only in the code hoisting pass.  The lesser the cost,
 the more aggressive code hoisting is.  Specifying 0
 allows all expressions to travel unrestricted distances.
 The default value is 3.</dd>
-<dt>max-hoist-depth</dt>
+<dt><tt class="docutils literal"><span class="pre">max-hoist-depth</span></tt></dt>
 <dd>The depth of search in the dominator tree for expressions to hoist.
 This is used to avoid quadratic behavior in hoisting algorithm.
 The value of 0 does not limit on the search, but may slow down compilation
 of huge functions.  The default value is 30.</dd>
-<dt>max-tail-merge-comparisons</dt>
+<dt><tt class="docutils literal"><span class="pre">max-tail-merge-comparisons</span></tt></dt>
 <dd>The maximum amount of similar bbs to compare a bb with.  This is used to
 avoid quadratic behavior in tree tail merging.  The default value is 10.</dd>
-<dt>max-tail-merge-iterations</dt>
+<dt><tt class="docutils literal"><span class="pre">max-tail-merge-iterations</span></tt></dt>
 <dd>The maximum amount of iterations of the pass over the function.  This is used to
 limit compilation time in tree tail merging.  The default value is 2.</dd>
-<dt>max-unrolled-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-unrolled-insns</span></tt></dt>
 <dd>The maximum number of instructions that a loop may have to be unrolled.
 If a loop is unrolled, this parameter also determines how many times
 the loop code is unrolled.</dd>
-<dt>max-average-unrolled-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-average-unrolled-insns</span></tt></dt>
 <dd>The maximum number of instructions biased by probabilities of their execution
 that a loop may have to be unrolled.  If a loop is unrolled,
 this parameter also determines how many times the loop code is unrolled.</dd>
-<dt>max-unroll-times</dt>
+<dt><tt class="docutils literal"><span class="pre">max-unroll-times</span></tt></dt>
 <dd>The maximum number of unrollings of a single loop.</dd>
-<dt>max-peeled-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-peeled-insns</span></tt></dt>
 <dd>The maximum number of instructions that a loop may have to be peeled.
 If a loop is peeled, this parameter also determines how many times
 the loop code is peeled.</dd>
-<dt>max-peel-times</dt>
+<dt><tt class="docutils literal"><span class="pre">max-peel-times</span></tt></dt>
 <dd>The maximum number of peelings of a single loop.</dd>
-<dt>max-peel-branches</dt>
+<dt><tt class="docutils literal"><span class="pre">max-peel-branches</span></tt></dt>
 <dd>The maximum number of branches on the hot path through the peeled sequence.</dd>
-<dt>max-completely-peeled-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-completely-peeled-insns</span></tt></dt>
 <dd>The maximum number of insns of a completely peeled loop.</dd>
-<dt>max-completely-peel-times</dt>
+<dt><tt class="docutils literal"><span class="pre">max-completely-peel-times</span></tt></dt>
 <dd>The maximum number of iterations of a loop to be suitable for complete peeling.</dd>
-<dt>max-completely-peel-loop-nest-depth</dt>
+<dt><tt class="docutils literal"><span class="pre">max-completely-peel-loop-nest-depth</span></tt></dt>
 <dd>The maximum depth of a loop nest suitable for complete peeling.</dd>
-<dt>max-unswitch-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-unswitch-insns</span></tt></dt>
 <dd>The maximum number of insns of an unswitched loop.</dd>
-<dt>max-unswitch-level</dt>
+<dt><tt class="docutils literal"><span class="pre">max-unswitch-level</span></tt></dt>
 <dd>The maximum number of branches unswitched in a single loop.</dd>
-<dt>lim-expensive</dt>
+<dt><tt class="docutils literal"><span class="pre">lim-expensive</span></tt></dt>
 <dd>The minimum cost of an expensive expression in the loop invariant motion.</dd>
-<dt>iv-consider-all-candidates-bound</dt>
+<dt><tt class="docutils literal"><span class="pre">iv-consider-all-candidates-bound</span></tt></dt>
 <dd>Bound on number of candidates for induction variables, below which
 all candidates are considered for each use in induction variable
 optimizations.  If there are more candidates than this,
 only the most relevant ones are considered to avoid quadratic time complexity.</dd>
-<dt>iv-max-considered-uses</dt>
+<dt><tt class="docutils literal"><span class="pre">iv-max-considered-uses</span></tt></dt>
 <dd>The induction variable optimizations give up on loops that contain more
 induction variable uses.</dd>
-<dt>iv-always-prune-cand-set-bound</dt>
+<dt><tt class="docutils literal"><span class="pre">iv-always-prune-cand-set-bound</span></tt></dt>
 <dd>If the number of candidates in the set is smaller than this value,
 always try to remove unnecessary ivs from the set
 when adding a new one.</dd>
-<dt>scev-max-expr-size</dt>
+<dt><tt class="docutils literal"><span class="pre">scev-max-expr-size</span></tt></dt>
 <dd>Bound on size of expressions used in the scalar evolutions analyzer.
 Large expressions slow the analyzer.</dd>
-<dt>scev-max-expr-complexity</dt>
+<dt><tt class="docutils literal"><span class="pre">scev-max-expr-complexity</span></tt></dt>
 <dd>Bound on the complexity of the expressions in the scalar evolutions analyzer.
 Complex expressions slow the analyzer.</dd>
-<dt>omega-max-vars</dt>
+<dt><tt class="docutils literal"><span class="pre">omega-max-vars</span></tt></dt>
 <dd>The maximum number of variables in an Omega constraint system.
 The default value is 128.</dd>
-<dt>omega-max-geqs</dt>
+<dt><tt class="docutils literal"><span class="pre">omega-max-geqs</span></tt></dt>
 <dd>The maximum number of inequalities in an Omega constraint system.
 The default value is 256.</dd>
-<dt>omega-max-eqs</dt>
+<dt><tt class="docutils literal"><span class="pre">omega-max-eqs</span></tt></dt>
 <dd>The maximum number of equalities in an Omega constraint system.
 The default value is 128.</dd>
-<dt>omega-max-wild-cards</dt>
+<dt><tt class="docutils literal"><span class="pre">omega-max-wild-cards</span></tt></dt>
 <dd>The maximum number of wildcard variables that the Omega solver is
 able to insert.  The default value is 18.</dd>
-<dt>omega-hash-table-size</dt>
+<dt><tt class="docutils literal"><span class="pre">omega-hash-table-size</span></tt></dt>
 <dd>The size of the hash table in the Omega solver.  The default value is
 550.</dd>
-<dt>omega-max-keys</dt>
+<dt><tt class="docutils literal"><span class="pre">omega-max-keys</span></tt></dt>
 <dd>The maximal number of keys used by the Omega solver.  The default
 value is 500.</dd>
-<dt>omega-eliminate-redundant-constraints</dt>
+<dt><tt class="docutils literal"><span class="pre">omega-eliminate-redundant-constraints</span></tt></dt>
 <dd>When set to 1, use expensive methods to eliminate all redundant
 constraints.  The default value is 0.</dd>
-<dt>vect-max-version-for-alignment-checks</dt>
+<dt><tt class="docutils literal"><span class="pre">vect-max-version-for-alignment-checks</span></tt></dt>
 <dd>The maximum number of run-time checks that can be performed when
 doing loop versioning for alignment in the vectorizer.</dd>
-<dt>vect-max-version-for-alias-checks</dt>
+<dt><tt class="docutils literal"><span class="pre">vect-max-version-for-alias-checks</span></tt></dt>
 <dd>The maximum number of run-time checks that can be performed when
 doing loop versioning for alias in the vectorizer.</dd>
-<dt>vect-max-peeling-for-alignment</dt>
+<dt><tt class="docutils literal"><span class="pre">vect-max-peeling-for-alignment</span></tt></dt>
 <dd>The maximum number of loop peels to enhance access alignment
 for vectorizer. Value -1 means &#8216;no limit&#8217;.</dd>
-<dt>max-iterations-to-track</dt>
+<dt><tt class="docutils literal"><span class="pre">max-iterations-to-track</span></tt></dt>
 <dd>The maximum number of iterations of a loop the brute-force algorithm
 for analysis of the number of iterations of the loop tries to evaluate.</dd>
-<dt>hot-bb-count-ws-permille</dt>
+<dt><tt class="docutils literal"><span class="pre">hot-bb-count-ws-permille</span></tt></dt>
 <dd>A basic block profile count is considered hot if it contributes to
 the given permillage (i.e. 0...1000) of the entire profiled execution.</dd>
-<dt>hot-bb-frequency-fraction</dt>
+<dt><tt class="docutils literal"><span class="pre">hot-bb-frequency-fraction</span></tt></dt>
 <dd>Select fraction of the entry block frequency of executions of basic block in
 function given basic block needs to have to be considered hot.</dd>
-<dt>max-predicted-iterations</dt>
+<dt><tt class="docutils literal"><span class="pre">max-predicted-iterations</span></tt></dt>
 <dd>The maximum number of loop iterations we predict statically.  This is useful
 in cases where a function contains a single loop with known bound and
 another loop with unknown bound.
 The known number of iterations is predicted correctly, while
 the unknown number of iterations average to roughly 10.  This means that the
 loop without bounds appears artificially cold relative to the other one.</dd>
-<dt>builtin-expect-probability</dt>
+<dt><tt class="docutils literal"><span class="pre">builtin-expect-probability</span></tt></dt>
 <dd>Control the probability of the expression having the specified value. This
 parameter takes a percentage (i.e. 0 ... 100) as input.
 The default probability of 90 is obtained empirically.</dd>
-<dt>align-threshold</dt>
+<dt><tt class="docutils literal"><span class="pre">align-threshold</span></tt></dt>
 <dd>Select fraction of the maximal frequency of executions of a basic block in
 a function to align the basic block.</dd>
-<dt>align-loop-iterations</dt>
+<dt><tt class="docutils literal"><span class="pre">align-loop-iterations</span></tt></dt>
 <dd>A loop expected to iterate at least the selected number of iterations is
 aligned.</dd>
-<dt>tracer-dynamic-coverage tracer-dynamic-coverage-feedback</dt>
+<dt><tt class="docutils literal"><span class="pre">tracer-dynamic-coverage</span></tt> <tt class="docutils literal"><span class="pre">tracer-dynamic-coverage-feedback</span></tt></dt>
 <dd><p class="first">This value is used to limit superblock formation once the given percentage of
 executed instructions is covered.  This limits unnecessary code size
 expansion.</p>
@@ -3294,15 +3294,15 @@ is used only when profile
 feedback is available.  The real profiles (as opposed to statically estimated
 ones) are much less balanced allowing the threshold to be larger value.</p>
 </dd>
-<dt>tracer-max-code-growth</dt>
+<dt><tt class="docutils literal"><span class="pre">tracer-max-code-growth</span></tt></dt>
 <dd>Stop tail duplication once code growth has reached given percentage.  This is
 a rather artificial limit, as most of the duplicates are eliminated later in
 cross jumping, so it may be set to much higher values than is the desired code
 growth.</dd>
-<dt>tracer-min-branch-ratio</dt>
+<dt><tt class="docutils literal"><span class="pre">tracer-min-branch-ratio</span></tt></dt>
 <dd>Stop reverse growth when the reverse probability of best edge is less than this
 threshold (in percent).</dd>
-<dt>tracer-min-branch-ratio tracer-min-branch-ratio-feedback</dt>
+<dt><tt class="docutils literal"><span class="pre">tracer-min-branch-ratio</span></tt> <tt class="docutils literal"><span class="pre">tracer-min-branch-ratio-feedback</span></tt></dt>
 <dd><p class="first">Stop forward growth if the best edge has probability lower than this
 threshold.</p>
 <p class="last">Similarly to tracer-dynamic-coverage two values are present, one for
@@ -3310,13 +3310,13 @@ compilation for profile feedback and one for compilation without.  The value
 for compilation with profile feedback needs to be more conservative (higher) in
 order to make tracer effective.</p>
 </dd>
-<dt>max-cse-path-length</dt>
+<dt><tt class="docutils literal"><span class="pre">max-cse-path-length</span></tt></dt>
 <dd>The maximum number of basic blocks on path that CSE considers.
 The default is 10.</dd>
-<dt>max-cse-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-cse-insns</span></tt></dt>
 <dd>The maximum number of instructions CSE processes before flushing.
 The default is 1000.</dd>
-<dt>ggc-min-expand</dt>
+<dt><tt class="docutils literal"><span class="pre">ggc-min-expand</span></tt></dt>
 <dd><p class="first">GCC uses a garbage collector to manage its own memory allocation.  This
 parameter specifies the minimum percentage by which the garbage
 collector&#8217;s heap should be allowed to expand between collections.
@@ -3331,7 +3331,7 @@ ggc-min-heapsize to zero causes a full collection to occur at
 every opportunity.  This is extremely slow, but can be useful for
 debugging.</p>
 </dd>
-<dt>ggc-min-heapsize</dt>
+<dt><tt class="docutils literal"><span class="pre">ggc-min-heapsize</span></tt></dt>
 <dd><p class="first">Minimum size of the garbage collector&#8217;s heap before it begins bothering
 to collect garbage.  The first collection occurs after the heap expands
 by ggc-min-expand% beyond ggc-min-heapsize.  Again,
@@ -3346,16 +3346,16 @@ very large effectively disables garbage collection.  Setting this
 parameter and ggc-min-expand to zero causes a full collection
 to occur at every opportunity.</p>
 </dd>
-<dt>max-reload-search-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-reload-search-insns</span></tt></dt>
 <dd>The maximum number of instruction reload should look backward for equivalent
 register.  Increasing values mean more aggressive optimization, making the
 compilation time increase with probably slightly better performance.
 The default value is 100.</dd>
-<dt>max-cselib-memory-locations</dt>
+<dt><tt class="docutils literal"><span class="pre">max-cselib-memory-locations</span></tt></dt>
 <dd>The maximum number of memory locations cselib should take into account.
 Increasing values mean more aggressive optimization, making the compilation time
 increase with probably slightly better performance.  The default value is 500.</dd>
-<dt>reorder-blocks-duplicate reorder-blocks-duplicate-feedback</dt>
+<dt><tt class="docutils literal"><span class="pre">reorder-blocks-duplicate</span></tt> <tt class="docutils literal"><span class="pre">reorder-blocks-duplicate-feedback</span></tt></dt>
 <dd><p class="first">Used by the basic block reordering pass to decide whether to use unconditional
 branch or duplicate the code on its destination.  Code is duplicated when its
 estimated size is smaller than this value multiplied by the estimated size of
@@ -3366,112 +3366,112 @@ feedback is available.  It may be set to higher values than
 reorder-block-duplicate since information about the hot spots is more
 accurate.</p>
 </dd>
-<dt>max-sched-ready-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-sched-ready-insns</span></tt></dt>
 <dd>The maximum number of instructions ready to be issued the scheduler should
 consider at any given time during the first scheduling pass.  Increasing
 values mean more thorough searches, making the compilation time increase
 with probably little benefit.  The default value is 100.</dd>
-<dt>max-sched-region-blocks</dt>
+<dt><tt class="docutils literal"><span class="pre">max-sched-region-blocks</span></tt></dt>
 <dd>The maximum number of blocks in a region to be considered for
 interblock scheduling.  The default value is 10.</dd>
-<dt>max-pipeline-region-blocks</dt>
+<dt><tt class="docutils literal"><span class="pre">max-pipeline-region-blocks</span></tt></dt>
 <dd>The maximum number of blocks in a region to be considered for
 pipelining in the selective scheduler.  The default value is 15.</dd>
-<dt>max-sched-region-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-sched-region-insns</span></tt></dt>
 <dd>The maximum number of insns in a region to be considered for
 interblock scheduling.  The default value is 100.</dd>
-<dt>max-pipeline-region-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-pipeline-region-insns</span></tt></dt>
 <dd>The maximum number of insns in a region to be considered for
 pipelining in the selective scheduler.  The default value is 200.</dd>
-<dt>min-spec-prob</dt>
+<dt><tt class="docutils literal"><span class="pre">min-spec-prob</span></tt></dt>
 <dd>The minimum probability (in percents) of reaching a source block
 for interblock speculative scheduling.  The default value is 40.</dd>
-<dt>max-sched-extend-regions-iters</dt>
+<dt><tt class="docutils literal"><span class="pre">max-sched-extend-regions-iters</span></tt></dt>
 <dd>The maximum number of iterations through CFG to extend regions.
 A value of 0 (the default) disables region extensions.</dd>
-<dt>max-sched-insn-conflict-delay</dt>
+<dt><tt class="docutils literal"><span class="pre">max-sched-insn-conflict-delay</span></tt></dt>
 <dd>The maximum conflict delay for an insn to be considered for speculative motion.
 The default value is 3.</dd>
-<dt>sched-spec-prob-cutoff</dt>
+<dt><tt class="docutils literal"><span class="pre">sched-spec-prob-cutoff</span></tt></dt>
 <dd>The minimal probability of speculation success (in percents), so that
 speculative insns are scheduled.
 The default value is 40.</dd>
-<dt>sched-spec-state-edge-prob-cutoff</dt>
+<dt><tt class="docutils literal"><span class="pre">sched-spec-state-edge-prob-cutoff</span></tt></dt>
 <dd>The minimum probability an edge must have for the scheduler to save its
 state across it.
 The default value is 10.</dd>
-<dt>sched-mem-true-dep-cost</dt>
+<dt><tt class="docutils literal"><span class="pre">sched-mem-true-dep-cost</span></tt></dt>
 <dd>Minimal distance (in CPU cycles) between store and load targeting same
 memory locations.  The default value is 1.</dd>
-<dt>selsched-max-lookahead</dt>
+<dt><tt class="docutils literal"><span class="pre">selsched-max-lookahead</span></tt></dt>
 <dd>The maximum size of the lookahead window of selective scheduling.  It is a
 depth of search for available instructions.
 The default value is 50.</dd>
-<dt>selsched-max-sched-times</dt>
+<dt><tt class="docutils literal"><span class="pre">selsched-max-sched-times</span></tt></dt>
 <dd>The maximum number of times that an instruction is scheduled during
 selective scheduling.  This is the limit on the number of iterations
 through which the instruction may be pipelined.  The default value is 2.</dd>
-<dt>selsched-max-insns-to-rename</dt>
+<dt><tt class="docutils literal"><span class="pre">selsched-max-insns-to-rename</span></tt></dt>
 <dd>The maximum number of best instructions in the ready list that are considered
 for renaming in the selective scheduler.  The default value is 2.</dd>
-<dt>sms-min-sc</dt>
+<dt><tt class="docutils literal"><span class="pre">sms-min-sc</span></tt></dt>
 <dd>The minimum value of stage count that swing modulo scheduler
 generates.  The default value is 2.</dd>
-<dt>max-last-value-rtl</dt>
+<dt><tt class="docutils literal"><span class="pre">max-last-value-rtl</span></tt></dt>
 <dd>The maximum size measured as number of RTLs that can be recorded in an expression
 in combiner for a pseudo register as last known value of that register.  The default
 is 10000.</dd>
-<dt>max-combine-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-combine-insns</span></tt></dt>
 <dd>The maximum number of instructions the RTL combiner tries to combine.
 The default value is 2 at <a class="reference internal" href="#cmdoption-Og"><em class="xref std std-option">-Og</em></a> and 4 otherwise.</dd>
-<dt>integer-share-limit</dt>
+<dt><tt class="docutils literal"><span class="pre">integer-share-limit</span></tt></dt>
 <dd>Small integer constants can use a shared data structure, reducing the
 compiler&#8217;s memory usage and increasing its speed.  This sets the maximum
 value of a shared integer constant.  The default value is 256.</dd>
-<dt>ssp-buffer-size</dt>
+<dt><tt class="docutils literal"><span class="pre">ssp-buffer-size</span></tt></dt>
 <dd>The minimum size of buffers (i.e. arrays) that receive stack smashing
 protection when <em class="xref std std-option">-fstack-protection</em> is used.</dd>
-<dt>min-size-for-stack-sharing</dt>
+<dt><tt class="docutils literal"><span class="pre">min-size-for-stack-sharing</span></tt></dt>
 <dd>The minimum size of variables taking part in stack slot sharing when not
 optimizing. The default value is 32.</dd>
-<dt>max-jump-thread-duplication-stmts</dt>
+<dt><tt class="docutils literal"><span class="pre">max-jump-thread-duplication-stmts</span></tt></dt>
 <dd>Maximum number of statements allowed in a block that needs to be
 duplicated when threading jumps.</dd>
-<dt>max-fields-for-field-sensitive</dt>
+<dt><tt class="docutils literal"><span class="pre">max-fields-for-field-sensitive</span></tt></dt>
 <dd>Maximum number of fields in a structure treated in
 a field sensitive manner during pointer analysis.  The default is zero
 for <a class="reference internal" href="#cmdoption-O0"><em class="xref std std-option">-O0</em></a> and <em class="xref std std-option">-O1</em>,
 and 100 for <a class="reference internal" href="#cmdoption-Os"><em class="xref std std-option">-Os</em></a>, <a class="reference internal" href="#cmdoption-O2"><em class="xref std std-option">-O2</em></a>, and <a class="reference internal" href="#cmdoption-O3"><em class="xref std std-option">-O3</em></a>.</dd>
-<dt>prefetch-latency</dt>
+<dt><tt class="docutils literal"><span class="pre">prefetch-latency</span></tt></dt>
 <dd>Estimate on average number of instructions that are executed before
 prefetch finishes.  The distance prefetched ahead is proportional
 to this constant.  Increasing this number may also lead to less
 streams being prefetched (see simultaneous-prefetches).</dd>
-<dt>simultaneous-prefetches</dt>
+<dt><tt class="docutils literal"><span class="pre">simultaneous-prefetches</span></tt></dt>
 <dd>Maximum number of prefetches that can run at the same time.</dd>
-<dt>l1-cache-line-size</dt>
+<dt><tt class="docutils literal"><span class="pre">l1-cache-line-size</span></tt></dt>
 <dd>The size of cache line in L1 cache, in bytes.</dd>
-<dt>l1-cache-size</dt>
+<dt><tt class="docutils literal"><span class="pre">l1-cache-size</span></tt></dt>
 <dd>The size of L1 cache, in kilobytes.</dd>
-<dt>l2-cache-size</dt>
+<dt><tt class="docutils literal"><span class="pre">l2-cache-size</span></tt></dt>
 <dd>The size of L2 cache, in kilobytes.</dd>
-<dt>min-insn-to-prefetch-ratio</dt>
+<dt><tt class="docutils literal"><span class="pre">min-insn-to-prefetch-ratio</span></tt></dt>
 <dd>The minimum ratio between the number of instructions and the
 number of prefetches to enable prefetching in a loop.</dd>
-<dt>prefetch-min-insn-to-mem-ratio</dt>
+<dt><tt class="docutils literal"><span class="pre">prefetch-min-insn-to-mem-ratio</span></tt></dt>
 <dd>The minimum ratio between the number of instructions and the
 number of memory references to enable prefetching in a loop.</dd>
-<dt>use-canonical-types</dt>
+<dt><tt class="docutils literal"><span class="pre">use-canonical-types</span></tt></dt>
 <dd>Whether the compiler should use the &#8216;canonical&#8217; type system.  By
 default, this should always be 1, which uses a more efficient internal
 mechanism for comparing types in C++ and Objective-C++.  However, if
 bugs in the canonical type system are causing compilation failures,
 set this value to 0 to disable canonical types.</dd>
-<dt>switch-conversion-max-branch-ratio</dt>
+<dt><tt class="docutils literal"><span class="pre">switch-conversion-max-branch-ratio</span></tt></dt>
 <dd>Switch initialization conversion refuses to create arrays that are
 bigger than switch-conversion-max-branch-ratio times the number of
 branches in the switch.</dd>
-<dt>max-partial-antic-length</dt>
+<dt><tt class="docutils literal"><span class="pre">max-partial-antic-length</span></tt></dt>
 <dd>Maximum length of the partial antic set computed during the tree
 partial redundancy elimination optimization (<a class="reference internal" href="#cmdoption-ftree-pre"><em class="xref std std-option">-ftree-pre</em></a>) when
 optimizing at <a class="reference internal" href="#cmdoption-O3"><em class="xref std std-option">-O3</em></a> and above.  For some sorts of source code
@@ -3480,25 +3480,25 @@ consuming all of the memory available on the host machine.  This
 parameter sets a limit on the length of the sets that are computed,
 which prevents the runaway behavior.  Setting a value of 0 for
 this parameter allows an unlimited set length.</dd>
-<dt>sccvn-max-scc-size</dt>
+<dt><tt class="docutils literal"><span class="pre">sccvn-max-scc-size</span></tt></dt>
 <dd>Maximum size of a strongly connected component (SCC) during SCCVN
 processing.  If this limit is hit, SCCVN processing for the whole
 function is not done and optimizations depending on it are
 disabled.  The default maximum SCC size is 10000.</dd>
-<dt>sccvn-max-alias-queries-per-access</dt>
+<dt><tt class="docutils literal"><span class="pre">sccvn-max-alias-queries-per-access</span></tt></dt>
 <dd>Maximum number of alias-oracle queries we perform when looking for
 redundancies for loads and stores.  If this limit is hit the search
 is aborted and the load or store is not considered redundant.  The
 number of queries is algorithmically limited to the number of
 stores on all paths from the load to the function entry.
 The default maxmimum number of queries is 1000.</dd>
-<dt>ira-max-loops-num</dt>
+<dt><tt class="docutils literal"><span class="pre">ira-max-loops-num</span></tt></dt>
 <dd>IRA uses regional register allocation by default.  If a function
 contains more loops than the number given by this parameter, only at most
 the given number of the most frequently-executed loops form regions
 for regional register allocation.  The default value of the
 parameter is 100.</dd>
-<dt>ira-max-conflict-table-size</dt>
+<dt><tt class="docutils literal"><span class="pre">ira-max-conflict-table-size</span></tt></dt>
 <dd>Although IRA uses a sophisticated algorithm to compress the conflict
 table, the table can still require excessive amounts of memory for
 huge functions.  If the conflict table for a function could be more
@@ -3506,33 +3506,33 @@ than the size in MB given by this parameter, the register allocator
 instead uses a faster, simpler, and lower-quality
 algorithm that does not require building a pseudo-register conflict table.
 The default value of the parameter is 2000.</dd>
-<dt>ira-loop-reserved-regs</dt>
+<dt><tt class="docutils literal"><span class="pre">ira-loop-reserved-regs</span></tt></dt>
 <dd>IRA can be used to evaluate more accurate register pressure in loops
 for decisions to move loop invariants (see <a class="reference internal" href="#cmdoption-O3"><em class="xref std std-option">-O3</em></a>).  The number
 of available registers reserved for some other purposes is given
 by this parameter.  The default value of the parameter is 2, which is
 the minimal number of registers needed by typical instructions.
 This value is the best found from numerous experiments.</dd>
-<dt>lra-inheritance-ebb-probability-cutoff</dt>
+<dt><tt class="docutils literal"><span class="pre">lra-inheritance-ebb-probability-cutoff</span></tt></dt>
 <dd>LRA tries to reuse values reloaded in registers in subsequent insns.
 This optimization is called inheritance.  EBB is used as a region to
 do this optimization.  The parameter defines a minimal fall-through
 edge probability in percentage used to add BB to inheritance EBB in
 LRA.  The default value of the parameter is 40.  The value was chosen
 from numerous runs of SPEC2000 on x86-64.</dd>
-<dt>loop-invariant-max-bbs-in-loop</dt>
+<dt><tt class="docutils literal"><span class="pre">loop-invariant-max-bbs-in-loop</span></tt></dt>
 <dd>Loop invariant motion can be very expensive, both in compilation time and
 in amount of needed compile-time memory, with very large loops.  Loops
 with more basic blocks than this parameter won&#8217;t have loop invariant
 motion optimization performed on them.  The default value of the
 parameter is 1000 for <em class="xref std std-option">-O1</em> and 10000 for <a class="reference internal" href="#cmdoption-O2"><em class="xref std std-option">-O2</em></a> and above.</dd>
-<dt>loop-max-datarefs-for-datadeps</dt>
+<dt><tt class="docutils literal"><span class="pre">loop-max-datarefs-for-datadeps</span></tt></dt>
 <dd>Building data dapendencies is expensive for very large loops.  This
 parameter limits the number of data references in loops that are
 considered for data dependence analysis.  These large loops are no
 handled by the optimizations using loop data dependencies.
 The default value is 1000.</dd>
-<dt>max-vartrack-size</dt>
+<dt><tt class="docutils literal"><span class="pre">max-vartrack-size</span></tt></dt>
 <dd>Sets a maximum number of hash table slots to use during variable
 tracking dataflow analysis of any function.  If this limit is exceeded
 with variable tracking at assignments enabled, analysis for that
@@ -3540,7 +3540,7 @@ function is retried without it, after removing all debug insns from
 the function.  If the limit is exceeded even without debug insns, var
 tracking analysis is completely disabled for the function.  Setting
 the parameter to zero makes it unlimited.</dd>
-<dt>max-vartrack-expr-depth</dt>
+<dt><tt class="docutils literal"><span class="pre">max-vartrack-expr-depth</span></tt></dt>
 <dd>Sets a maximum number of recursion levels when attempting to map
 variable names or debug temporaries to value expressions.  This trades
 compilation time for more complete debug information.  If this is set too
@@ -3548,19 +3548,19 @@ low, value expressions that are available and could be represented in
 debug information may end up not being used; setting this higher may
 enable the compiler to find more complex debug expressions, but compile
 time and memory use may grow.  The default is 12.</dd>
-<dt>min-nondebug-insn-uid</dt>
+<dt><tt class="docutils literal"><span class="pre">min-nondebug-insn-uid</span></tt></dt>
 <dd>Use uids starting at this parameter for nondebug insns.  The range below
 the parameter is reserved exclusively for debug insns created by
 <a class="reference internal" href="options-for-debugging-your-program-or-gcc.html#cmdoption-fvar-tracking-assignments"><em class="xref std std-option">-fvar-tracking-assignments</em></a>, but debug insns may get
 (non-overlapping) uids above it if the reserved range is exhausted.</dd>
-<dt>ipa-sra-ptr-growth-factor</dt>
+<dt><tt class="docutils literal"><span class="pre">ipa-sra-ptr-growth-factor</span></tt></dt>
 <dd><p class="first">IPA-SRA replaces a pointer to an aggregate with one or more new
 parameters only when their cumulative size is less or equal to
 ipa-sra-ptr-growth-factor times the size of the original
 pointer parameter.</p>
-<p class="last">sra-max-scalarization-size-Ospeed</p>
+<p class="last"><tt class="docutils literal"><span class="pre">sra-max-scalarization-size-Ospeed</span></tt></p>
 </dd>
-<dt>sra-max-scalarization-size-Osize</dt>
+<dt><tt class="docutils literal"><span class="pre">sra-max-scalarization-size-Osize</span></tt></dt>
 <dd>The two Scalar Reduction of Aggregates passes (SRA and IPA-SRA) aim to
 replace scalar parts of aggregates with uses of independent scalar
 variables.  These parameters control the maximum size, in storage units,
@@ -3568,102 +3568,102 @@ of aggregate which is considered for replacement when compiling for
 speed
 (sra-max-scalarization-size-Ospeed) or size
 (sra-max-scalarization-size-Osize) respectively.</dd>
-<dt>tm-max-aggregate-size</dt>
+<dt><tt class="docutils literal"><span class="pre">tm-max-aggregate-size</span></tt></dt>
 <dd>When making copies of thread-local variables in a transaction, this
 parameter specifies the size in bytes after which variables are
 saved with the logging functions as opposed to save/restore code
 sequence pairs.  This option only applies when using
 <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-fgnu-tm"><em class="xref std std-option">-fgnu-tm</em></a>.</dd>
-<dt>graphite-max-nb-scop-params</dt>
+<dt><tt class="docutils literal"><span class="pre">graphite-max-nb-scop-params</span></tt></dt>
 <dd>To avoid exponential effects in the Graphite loop transforms, the
 number of parameters in a Static Control Part (SCoP) is bounded.  The
 default value is 10 parameters.  A variable whose value is unknown at
 compilation time and defined outside a SCoP is a parameter of the SCoP.</dd>
-<dt>graphite-max-bbs-per-function</dt>
+<dt><tt class="docutils literal"><span class="pre">graphite-max-bbs-per-function</span></tt></dt>
 <dd>To avoid exponential effects in the detection of SCoPs, the size of
 the functions analyzed by Graphite is bounded.  The default value is
 100 basic blocks.</dd>
-<dt>loop-block-tile-size</dt>
+<dt><tt class="docutils literal"><span class="pre">loop-block-tile-size</span></tt></dt>
 <dd>Loop blocking or strip mining transforms, enabled with
 <a class="reference internal" href="#cmdoption-floop-block"><em class="xref std std-option">-floop-block</em></a> or <a class="reference internal" href="#cmdoption-floop-strip-mine"><em class="xref std std-option">-floop-strip-mine</em></a>, strip mine each
 loop in the loop nest by a given number of iterations.  The strip
 length can be changed using the loop-block-tile-size
 parameter.  The default value is 51 iterations.</dd>
-<dt>loop-unroll-jam-size</dt>
+<dt><tt class="docutils literal"><span class="pre">loop-unroll-jam-size</span></tt></dt>
 <dd>Specify the unroll factor for the <a class="reference internal" href="#cmdoption-floop-unroll-and-jam"><em class="xref std std-option">-floop-unroll-and-jam</em></a> option.  The
 default value is 4.</dd>
-<dt>loop-unroll-jam-depth</dt>
+<dt><tt class="docutils literal"><span class="pre">loop-unroll-jam-depth</span></tt></dt>
 <dd>Specify the dimension to be unrolled (counting from the most inner loop)
 for the  <a class="reference internal" href="#cmdoption-floop-unroll-and-jam"><em class="xref std std-option">-floop-unroll-and-jam</em></a>.  The default value is 2.</dd>
-<dt>ipa-cp-value-list-size</dt>
+<dt><tt class="docutils literal"><span class="pre">ipa-cp-value-list-size</span></tt></dt>
 <dd>IPA-CP attempts to track all possible values and types passed to a function&#8217;s
 parameter in order to propagate them and perform devirtualization.
 ipa-cp-value-list-size is the maximum number of values and types it
 stores per one formal parameter of a function.</dd>
-<dt>ipa-cp-eval-threshold</dt>
+<dt><tt class="docutils literal"><span class="pre">ipa-cp-eval-threshold</span></tt></dt>
 <dd>IPA-CP calculates its own score of cloning profitability heuristics
 and performs those cloning opportunities with scores that exceed
 ipa-cp-eval-threshold.</dd>
-<dt>ipa-cp-recursion-penalty</dt>
+<dt><tt class="docutils literal"><span class="pre">ipa-cp-recursion-penalty</span></tt></dt>
 <dd>Percentage penalty the recursive functions will receive when they
 are evaluated for cloning.</dd>
-<dt>ipa-cp-single-call-penalty</dt>
+<dt><tt class="docutils literal"><span class="pre">ipa-cp-single-call-penalty</span></tt></dt>
 <dd>Percentage penalty functions containg a single call to another
 function will receive when they are evaluated for cloning.</dd>
-<dt>ipa-max-agg-items</dt>
+<dt><tt class="docutils literal"><span class="pre">ipa-max-agg-items</span></tt></dt>
 <dd>IPA-CP is also capable to propagate a number of scalar values passed
 in an aggregate. ipa-max-agg-items controls the maximum
 number of such values per one parameter.</dd>
-<dt>ipa-cp-loop-hint-bonus</dt>
+<dt><tt class="docutils literal"><span class="pre">ipa-cp-loop-hint-bonus</span></tt></dt>
 <dd>When IPA-CP determines that a cloning candidate would make the number
 of iterations of a loop known, it adds a bonus of
 ipa-cp-loop-hint-bonus to the profitability score of
 the candidate.</dd>
-<dt>ipa-cp-array-index-hint-bonus</dt>
+<dt><tt class="docutils literal"><span class="pre">ipa-cp-array-index-hint-bonus</span></tt></dt>
 <dd>When IPA-CP determines that a cloning candidate would make the index of
 an array access known, it adds a bonus of
 ipa-cp-array-index-hint-bonus to the profitability
 score of the candidate.</dd>
-<dt>ipa-max-aa-steps</dt>
+<dt><tt class="docutils literal"><span class="pre">ipa-max-aa-steps</span></tt></dt>
 <dd>During its analysis of function bodies, IPA-CP employs alias analysis
 in order to track values pointed to by function parameters.  In order
 not spend too much time analyzing huge functions, it gives up and
 consider all memory clobbered after examining
 ipa-max-aa-steps statements modifying memory.</dd>
-<dt>lto-partitions</dt>
+<dt><tt class="docutils literal"><span class="pre">lto-partitions</span></tt></dt>
 <dd>Specify desired number of partitions produced during WHOPR compilation.
 The number of partitions should exceed the number of CPUs used for compilation.
 The default value is 32.</dd>
-<dt>lto-minpartition</dt>
+<dt><tt class="docutils literal"><span class="pre">lto-minpartition</span></tt></dt>
 <dd>Size of minimal partition for WHOPR (in estimated instructions).
 This prevents expenses of splitting very small programs into too many
 partitions.</dd>
-<dt>cxx-max-namespaces-for-diagnostic-help</dt>
+<dt><tt class="docutils literal"><span class="pre">cxx-max-namespaces-for-diagnostic-help</span></tt></dt>
 <dd>The maximum number of namespaces to consult for suggestions when C++
 name lookup fails for an identifier.  The default is 1000.</dd>
-<dt>sink-frequency-threshold</dt>
+<dt><tt class="docutils literal"><span class="pre">sink-frequency-threshold</span></tt></dt>
 <dd>The maximum relative execution frequency (in percents) of the target block
 relative to a statement&#8217;s original block to allow statement sinking of a
 statement.  Larger numbers result in more aggressive statement sinking.
 The default value is 75.  A small positive adjustment is applied for
 statements with memory operands as those are even more profitable so sink.</dd>
-<dt>max-stores-to-sink</dt>
+<dt><tt class="docutils literal"><span class="pre">max-stores-to-sink</span></tt></dt>
 <dd>The maximum number of conditional stores paires that can be sunk.  Set to 0
 if either vectorization (<a class="reference internal" href="#cmdoption-ftree-vectorize"><em class="xref std std-option">-ftree-vectorize</em></a>) or if-conversion
 (<a class="reference internal" href="#cmdoption-ftree-loop-if-convert"><em class="xref std std-option">-ftree-loop-if-convert</em></a>) is disabled.  The default is 2.</dd>
-<dt>allow-store-data-races</dt>
+<dt><tt class="docutils literal"><span class="pre">allow-store-data-races</span></tt></dt>
 <dd>Allow optimizers to introduce new data races on stores.
 Set to 1 to allow, otherwise to 0.  This option is enabled by default
 at optimization level <a class="reference internal" href="#cmdoption-Ofast"><em class="xref std std-option">-Ofast</em></a>.</dd>
-<dt>case-values-threshold</dt>
+<dt><tt class="docutils literal"><span class="pre">case-values-threshold</span></tt></dt>
 <dd>The smallest number of different values for which it is best to use a
 jump-table instead of a tree of conditional branches.  If the value is
 0, use the default for the machine.  The default is 0.</dd>
-<dt>tree-reassoc-width</dt>
+<dt><tt class="docutils literal"><span class="pre">tree-reassoc-width</span></tt></dt>
 <dd>Set the maximum number of instructions executed in parallel in
 reassociated tree. This parameter overrides target dependent
 heuristics used by default if has non zero value.</dd>
-<dt>sched-pressure-algorithm</dt>
+<dt><tt class="docutils literal"><span class="pre">sched-pressure-algorithm</span></tt></dt>
 <dd><p class="first">Choose between the two available implementations of
 <a class="reference internal" href="#cmdoption-fsched-pressure"><em class="xref std std-option">-fsched-pressure</em></a>.  Algorithm 1 is the original implementation
 and is the more likely to prevent instructions from being reordered.
@@ -3674,55 +3674,55 @@ having a regular register file and accurate register pressure classes.
 See haifa-sched.c in the GCC sources for more details.</p>
 <p class="last">The default choice depends on the target.</p>
 </dd>
-<dt>max-slsr-cand-scan</dt>
+<dt><tt class="docutils literal"><span class="pre">max-slsr-cand-scan</span></tt></dt>
 <dd>Set the maximum number of existing candidates that are considered when
 seeking a basis for a new straight-line strength reduction candidate.</dd>
-<dt>asan-globals</dt>
+<dt><tt class="docutils literal"><span class="pre">asan-globals</span></tt></dt>
 <dd>Enable buffer overflow detection for global objects.  This kind
 of protection is enabled by default if you are using
 <em class="xref std std-option">-fsanitize=address</em> option.
 To disable global objects protection use <em class="xref std std-option">--param asan-globals=0</em>.</dd>
-<dt>asan-stack</dt>
+<dt><tt class="docutils literal"><span class="pre">asan-stack</span></tt></dt>
 <dd>Enable buffer overflow detection for stack objects.  This kind of
 protection is enabled by default when using:option:<cite>-fsanitize=address</cite>.
 To disable stack protection use <em class="xref std std-option">--param asan-stack=0</em> option.</dd>
-<dt>asan-instrument-reads</dt>
+<dt><tt class="docutils literal"><span class="pre">asan-instrument-reads</span></tt></dt>
 <dd>Enable buffer overflow detection for memory reads.  This kind of
 protection is enabled by default when using <em class="xref std std-option">-fsanitize=address</em>.
 To disable memory reads protection use
 <em class="xref std std-option">--param asan-instrument-reads=0</em>.</dd>
-<dt>asan-instrument-writes</dt>
+<dt><tt class="docutils literal"><span class="pre">asan-instrument-writes</span></tt></dt>
 <dd>Enable buffer overflow detection for memory writes.  This kind of
 protection is enabled by default when using <em class="xref std std-option">-fsanitize=address</em>.
 To disable memory writes protection use
 <em class="xref std std-option">--param asan-instrument-writes=0</em> option.</dd>
-<dt>asan-memintrin</dt>
+<dt><tt class="docutils literal"><span class="pre">asan-memintrin</span></tt></dt>
 <dd>Enable detection for built-in functions.  This kind of protection
 is enabled by default when using <em class="xref std std-option">-fsanitize=address</em>.
 To disable built-in functions protection use
 <em class="xref std std-option">--param asan-memintrin=0</em>.</dd>
-<dt>asan-use-after-return</dt>
+<dt><tt class="docutils literal"><span class="pre">asan-use-after-return</span></tt></dt>
 <dd>Enable detection of use-after-return.  This kind of protection
 is enabled by default when using <em class="xref std std-option">-fsanitize=address</em> option.
 To disable use-after-return detection use
 <em class="xref std std-option">--param asan-use-after-return=0</em>.</dd>
-<dt>asan-instrumentation-with-call-threshold</dt>
+<dt><tt class="docutils literal"><span class="pre">asan-instrumentation-with-call-threshold</span></tt></dt>
 <dd>If number of memory accesses in function being instrumented
 is greater or equal to this number, use callbacks instead of inline checks.
 E.g. to disable inline code use
 <em class="xref std std-option">--param asan-instrumentation-with-call-threshold=0</em>.</dd>
-<dt>chkp-max-ctor-size</dt>
+<dt><tt class="docutils literal"><span class="pre">chkp-max-ctor-size</span></tt></dt>
 <dd>Static constructors generated by Pointer Bounds Checker may become very
 large and significantly increase compile time at optimization level
 <em class="xref std std-option">-O1</em> and higher.  This parameter is a maximum nubmer of statements
 in a single generated constructor.  Default value is 5000.</dd>
-<dt>max-fsm-thread-path-insns</dt>
+<dt><tt class="docutils literal"><span class="pre">max-fsm-thread-path-insns</span></tt></dt>
 <dd>Maximum number of instructions to copy when duplicating blocks on a
 finite state automaton jump thread path.  The default is 100.</dd>
-<dt>max-fsm-thread-length</dt>
+<dt><tt class="docutils literal"><span class="pre">max-fsm-thread-length</span></tt></dt>
 <dd>Maximum number of basic blocks on a finite state automaton jump thread
 path.  The default is 10.</dd>
-<dt>max-fsm-thread-paths</dt>
+<dt><tt class="docutils literal"><span class="pre">max-fsm-thread-paths</span></tt></dt>
 <dd>Maximum number of new jump thread paths to create for a finite state
 automaton.  The default is 50.</dd>
 </dl>

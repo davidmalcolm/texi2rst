@@ -261,7 +261,7 @@ warns that an unrecognized option is present.
   case of very minor changes such as bug fixes to an existing code-base.
   Completely disabling the warning is not recommended.
 
--Wno-cpp
+``-Wno-cpp``
   (C, Objective-C, C++, Objective-C++ and Fortran only)
 
   Suppress warning messages emitted by ``#warning`` directives.
@@ -918,14 +918,14 @@ warns that an unrecognized option is present.
   requires, in particular when determining whether a loop will be
   executed at all.
 
-  -Wstrict-overflow=1
+  ``-Wstrict-overflow=1``
     Warn about cases that are both questionable and easy to avoid.  For
     example,  with :option:`-fstrict-overflow`, the compiler simplifies
     ``x + 1 > x`` to ``1``.  This level of
     :option:`-Wstrict-overflow` is enabled by :option:`-Wall`; higher levels
     are not, and must be explicitly requested.
 
-  -Wstrict-overflow=2
+  ``-Wstrict-overflow=2``
     Also warn about other cases where a comparison is simplified to a
     constant.  For example: ``abs (x) >= 0``.  This can only be
     simplified when :option:`-fstrict-overflow` is in effect, because
@@ -933,15 +933,15 @@ warns that an unrecognized option is present.
     zero.  :option:`-Wstrict-overflow` (with no level) is the same as
     :option:`-Wstrict-overflow=2`.
 
-  -Wstrict-overflow=3
+  ``-Wstrict-overflow=3``
     Also warn about other cases where a comparison is simplified.  For
     example: ``x + 1 > 1`` is simplified to ``x > 0``.
 
-  -Wstrict-overflow=4
+  ``-Wstrict-overflow=4``
     Also warn about other simplifications not covered by the above cases.
     For example: ``(x * 10) / 5`` is simplified to ``x * 2``.
 
-  -Wstrict-overflow=5
+  ``-Wstrict-overflow=5``
     Also warn about cases where the compiler reduces the magnitude of a
     constant involved in a comparison.  For example: ``x + 2 > y`` is
     simplified to ``x + 1 >= y``.  This is reported only at the
@@ -1007,7 +1007,7 @@ warns that an unrecognized option is present.
   suggestions of :option:`-Wsuggest-final-types` and then rebuild with new
   annotations.
 
--Wsuggest-override
+``-Wsuggest-override``
   Warn about overriding virtual functions that are not marked with the override
   keyword.
 
@@ -1017,11 +1017,11 @@ warns that an unrecognized option is present.
   (default for :option:`-O2` and above). It warns about subscripts to arrays
   that are always out of bounds. This warning is enabled by :option:`-Wall`.
 
-  -Warray-bounds=1
+  ``-Warray-bounds=1``
     This is the warning level of :option:`-Warray-bounds` and is enabled
     by :option:`-Wall`; higher levels are not, and must be explicitly requested.
 
-  -Warray-bounds=2
+  ``-Warray-bounds=2``
     This warning level also warns about out of bounds access for
     arrays at the end of a struct and for arrays accessed through
     pointers. This warning level may give a larger number of
@@ -2121,7 +2121,7 @@ warns that an unrecognized option is present.
   when preparing code to use with the ``FLOAT_CONST_DECIMAL64`` pragma
   from the decimal floating-point extension to C99.
 
--Wno-designated-init 
+``-Wno-designated-init``
 
   .. note::
 

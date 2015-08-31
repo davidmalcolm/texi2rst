@@ -13,14 +13,14 @@ cases, the feature might be gone already.
 While the list below is not exhaustive, it documents some of the options
 that are now deprecated:
 
--fexternal-templates -falt-external-templates
+``-fexternal-templates`` ``-falt-external-templates``
   These are two of the many ways for G++ to implement template
   instantiation.  See :ref:`template-instantiation`.  The C++ standard clearly
   defines how template definitions have to be organized across
   implementation units.  G++ has an implicit instantiation mechanism that
   should work just fine for standard-conforming code.
 
--fstrict-prototype -fno-strict-prototype
+``-fstrict-prototype`` ``-fno-strict-prototype``
   Previously it was possible to use an empty prototype parameter list to
   indicate an unspecified number of parameters (like C), rather than no
   parameters, as C++ demands.  This feature has been removed, except where

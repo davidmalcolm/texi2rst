@@ -64,7 +64,7 @@ compilation.
 
   Predefine ``name`` as a macro, with definition ``1``.
 
--D ``name``=``definition``
+:samp:`-D {name}={definition}`
   The contents of ``definition`` are tokenized and processed as if
   they appeared during translation phase three in a :samp:`#define`
   directive.  In particular, the definition will be truncated by
@@ -399,36 +399,36 @@ compilation.
   ``standard``
   may be one of:
 
-  c90 c89 iso9899:1990
+  ``c90`` ``c89`` ``iso9899:1990``
     The ISO C standard from 1990.  :samp:`c90` is the customary shorthand for
     this version of the standard.
 
     The :option:`-ansi` option is equivalent to :option:`-std=c90`.
 
-  iso9899:199409
+  ``iso9899:199409``
     The 1990 C standard, as amended in 1994.
 
-  iso9899:1999 c99 iso9899:199x c9x
+  ``iso9899:1999`` ``c99`` ``iso9899:199x`` ``c9x``
     The revised ISO C standard, published in December 1999.  Before
     publication, this was known as C9X.
 
-  iso9899:2011 c11 c1x
+  ``iso9899:2011`` ``c11`` ``c1x``
     The revised ISO C standard, published in December 2011.  Before
     publication, this was known as C1X.
 
-  gnu90 gnu89
+  ``gnu90`` ``gnu89``
     The 1990 C standard plus GNU extensions.  This is the default.
 
-  gnu99 gnu9x
+  ``gnu99`` ``gnu9x``
     The 1999 C standard plus GNU extensions.
 
-  gnu11 gnu1x
+  ``gnu11`` ``gnu1x``
     The 2011 C standard plus GNU extensions.
 
-  c++98
+  ``c++98``
     The 1998 ISO C++ standard plus amendments.
 
-  gnu++98
+  ``gnu++98``
     The same as :option:`-std=c++98` plus GNU extensions.  This is the
     default for C++ code.
 
@@ -682,11 +682,11 @@ compilation.
   ``predicate``(``answer``)`, which is still supported, because
   it does not use shell special characters.
 
--A -``predicate``=``answer``
+:samp:`-A -{predicate}={answer}`
   Cancel an assertion with the predicate ``predicate`` and answer
   ``answer``.
 
--dCHARS
+``-dCHARS``
   ``CHARS`` is a sequence of one or more of the following characters,
   and must not be preceded by a space.  Other characters are interpreted
   by the compiler proper, or reserved for future versions of GCC, and so
@@ -754,7 +754,7 @@ compilation.
   directive line have the effect of turning that line into an ordinary
   source line, since the first token on the line is no longer a :samp:`#`.
 
--CC
+``-CC``
   Do not discard comments, including during macro expansion.  This is
   like :option:`-C`, except that comments contained within macros are
   also passed through to the output file where the macro is expanded.

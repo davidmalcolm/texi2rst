@@ -340,13 +340,13 @@ over the appropriate part of this option.</p>
 <p id="index-5">Feature modifiers used with <a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a> and <a class="reference internal" href="#cmdoption-mcpu"><em class="xref std std-option">-mcpu</em></a> can be one
 the following:</p>
 <dl class="docutils">
-<dt>crc</dt>
+<dt><tt class="samp docutils literal"><span class="pre">crc</span></tt></dt>
 <dd>Enable CRC extension.</dd>
-<dt>crypto</dt>
+<dt><tt class="samp docutils literal"><span class="pre">crypto</span></tt></dt>
 <dd>Enable Crypto extension.  This implies Advanced SIMD is enabled.</dd>
-<dt>fp</dt>
+<dt><tt class="samp docutils literal"><span class="pre">fp</span></tt></dt>
 <dd>Enable floating-point instructions.</dd>
-<dt>simd</dt>
+<dt><tt class="samp docutils literal"><span class="pre">simd</span></tt></dt>
 <dd>Enable Advanced SIMD instructions.  This implies floating-point instructions
 are enabled.  This is the default for all current possible values for options
 <a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a> and <em class="xref std std-option">-mcpu=</em>.</dd>
@@ -459,7 +459,7 @@ predominantly need at function start can make your programs smaller and
 faster by avoiding unnecessary mode switches.</p>
 <p><tt class="docutils literal"><span class="pre">mode</span></tt> can be set to one the following values:</p>
 <dl class="docutils">
-<dt>caller</dt>
+<dt><tt class="samp docutils literal"><span class="pre">caller</span></tt></dt>
 <dd>Any mode at function entry is valid, and retained or restored when
 the function returns, and when it calls other functions.
 This mode is useful for compiling libraries or other compilation units
@@ -468,14 +468,14 @@ prevailing FPU modes, and the convenience of being able to use a single
 object file outweighs the size and speed overhead for any extra
 mode switching that might be needed, compared with what would be needed
 with a more specific choice of prevailing FPU mode.</dd>
-<dt>truncate</dt>
+<dt><tt class="samp docutils literal"><span class="pre">truncate</span></tt></dt>
 <dd>This is the mode used for floating-point calculations with
 truncating (i.e. round towards zero) rounding mode.  That includes
 conversion from floating point to integer.</dd>
-<dt>round-nearest</dt>
+<dt><tt class="samp docutils literal"><span class="pre">round-nearest</span></tt></dt>
 <dd>This is the mode used for floating-point calculations with
 round-to-nearest-or-even rounding mode.</dd>
-<dt>int</dt>
+<dt><tt class="samp docutils literal"><span class="pre">int</span></tt></dt>
 <dd><p class="first">This is the mode used to perform integer calculations in the FPU, e.g.
 integer multiply, or integer multiply-and-accumulate.</p>
 <p class="last">The default is <em class="xref std std-option">-mfp-mode=caller</em></p>
@@ -548,7 +548,7 @@ parameters for <tt class="docutils literal"><span class="pre">cpu</span></tt>.  
 available for backward compatibility and convenience.  Supported
 values for <tt class="docutils literal"><span class="pre">cpu</span></tt> are</p>
 <span class="target" id="index-7"></span><dl class="docutils" id="index-8">
-<dt>ARC600</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ARC600</span></tt></dt>
 <dd>Compile for ARC600.  Aliases: <em class="xref std std-option">-mA6</em>, <em class="xref std std-option">-mARC600</em>.</dd>
 </dl>
 <dl class="option">
@@ -970,13 +970,13 @@ This is the default.</p>
 <dd><p>Fine-tune size optimization with regards to instruction lengths and alignment.
 The recognized values for <tt class="docutils literal"><span class="pre">level</span></tt> are:</p>
 <dl class="docutils">
-<dt>0</dt>
+<dt><tt class="samp docutils literal"><span class="pre">0</span></tt></dt>
 <dd>No size optimization.  This level is deprecated and treated like <tt class="samp docutils literal"><span class="pre">1</span></tt>.</dd>
-<dt>1</dt>
+<dt><tt class="samp docutils literal"><span class="pre">1</span></tt></dt>
 <dd>Short instructions are used opportunistically.</dd>
-<dt>2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">2</span></tt></dt>
 <dd>In addition, alignment of loops and of code after barriers are dropped.</dd>
-<dt>3</dt>
+<dt><tt class="samp docutils literal"><span class="pre">3</span></tt></dt>
 <dd><p class="first">In addition, optional data alignment is dropped, and the option Os is enabled.</p>
 <p class="last">This defaults to <tt class="samp docutils literal"><span class="pre">3</span></tt> when <a class="reference internal" href="options-that-control-optimization.html#cmdoption-Os"><em class="xref std std-option">-Os</em></a> is in effect.  Otherwise,</p>
 </dd>
@@ -991,17 +991,17 @@ The recognized values for <tt class="docutils literal"><span class="pre">level</
 by <em class="xref std std-option">-mcpu=</em>.</p>
 <p>Supported values for <tt class="docutils literal"><span class="pre">cpu</span></tt> are</p>
 <dl class="docutils">
-<dt>ARC600</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ARC600</span></tt></dt>
 <dd>Tune for ARC600 cpu.</dd>
-<dt>ARC601</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ARC601</span></tt></dt>
 <dd>Tune for ARC601 cpu.</dd>
-<dt>ARC700</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ARC700</span></tt></dt>
 <dd>Tune for ARC700 cpu with standard multiplier block.</dd>
-<dt>ARC700-xmac</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ARC700-xmac</span></tt></dt>
 <dd>Tune for ARC700 cpu with XMAC block.</dd>
-<dt>ARC725D</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ARC725D</span></tt></dt>
 <dd>Tune for ARC725D cpu.</dd>
-<dt>ARC750D</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ARC750D</span></tt></dt>
 <dd>Tune for ARC750D cpu.</dd>
 </dl>
 </dd></dl>
@@ -1616,67 +1616,67 @@ by default.</p>
 <p>The default for this option is <tt class="samp docutils literal"><span class="pre">avr2</span></tt>.</p>
 <p>GCC supports the following AVR devices and ISAs:</p>
 <dl class="docutils">
-<dt>avr2</dt>
+<dt><tt class="docutils literal"><span class="pre">avr2</span></tt></dt>
 <dd><p class="first">&#8216;Classic&#8217; devices with up to 8 KiB of program memory.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">attiny22</span></tt>, <tt class="docutils literal"><span class="pre">attiny26</span></tt>, <tt class="docutils literal"><span class="pre">at90c8534</span></tt>, <tt class="docutils literal"><span class="pre">at90s2313</span></tt>, <tt class="docutils literal"><span class="pre">at90s2323</span></tt>, <tt class="docutils literal"><span class="pre">at90s2333</span></tt>, <tt class="docutils literal"><span class="pre">at90s2343</span></tt>, <tt class="docutils literal"><span class="pre">at90s4414</span></tt>, <tt class="docutils literal"><span class="pre">at90s4433</span></tt>, <tt class="docutils literal"><span class="pre">at90s4434</span></tt>, <tt class="docutils literal"><span class="pre">at90s8515</span></tt>, <tt class="docutils literal"><span class="pre">at90s8535</span></tt>.</p>
 </dd>
-<dt>avr25</dt>
+<dt><tt class="docutils literal"><span class="pre">avr25</span></tt></dt>
 <dd><p class="first">&#8216;Classic&#8217; devices with up to 8 KiB of program memory and with the <tt class="docutils literal"><span class="pre">MOVW</span></tt> instruction.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">ata5272</span></tt>, <tt class="docutils literal"><span class="pre">ata6616c</span></tt>, <tt class="docutils literal"><span class="pre">attiny13</span></tt>, <tt class="docutils literal"><span class="pre">attiny13a</span></tt>, <tt class="docutils literal"><span class="pre">attiny2313</span></tt>, <tt class="docutils literal"><span class="pre">attiny2313a</span></tt>, <tt class="docutils literal"><span class="pre">attiny24</span></tt>, <tt class="docutils literal"><span class="pre">attiny24a</span></tt>, <tt class="docutils literal"><span class="pre">attiny25</span></tt>, <tt class="docutils literal"><span class="pre">attiny261</span></tt>, <tt class="docutils literal"><span class="pre">attiny261a</span></tt>, <tt class="docutils literal"><span class="pre">attiny43u</span></tt>, <tt class="docutils literal"><span class="pre">attiny4313</span></tt>, <tt class="docutils literal"><span class="pre">attiny44</span></tt>, <tt class="docutils literal"><span class="pre">attiny44a</span></tt>, <tt class="docutils literal"><span class="pre">attiny441</span></tt>, <tt class="docutils literal"><span class="pre">attiny45</span></tt>, <tt class="docutils literal"><span class="pre">attiny461</span></tt>, <tt class="docutils literal"><span class="pre">attiny461a</span></tt>, <tt class="docutils literal"><span class="pre">attiny48</span></tt>, <tt class="docutils literal"><span class="pre">attiny828</span></tt>, <tt class="docutils literal"><span class="pre">attiny84</span></tt>, <tt class="docutils literal"><span class="pre">attiny84a</span></tt>, <tt class="docutils literal"><span class="pre">attiny841</span></tt>, <tt class="docutils literal"><span class="pre">attiny85</span></tt>, <tt class="docutils literal"><span class="pre">attiny861</span></tt>, <tt class="docutils literal"><span class="pre">attiny861a</span></tt>, <tt class="docutils literal"><span class="pre">attiny87</span></tt>, <tt class="docutils literal"><span class="pre">attiny88</span></tt>, <tt class="docutils literal"><span class="pre">at86rf401</span></tt>.</p>
 </dd>
-<dt>avr3</dt>
+<dt><tt class="docutils literal"><span class="pre">avr3</span></tt></dt>
 <dd><p class="first">&#8216;Classic&#8217; devices with 16 KiB up to 64 KiB of  program memory.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">at43usb355</span></tt>, <tt class="docutils literal"><span class="pre">at76c711</span></tt>.</p>
 </dd>
-<dt>avr31</dt>
+<dt><tt class="docutils literal"><span class="pre">avr31</span></tt></dt>
 <dd><p class="first">&#8216;Classic&#8217; devices with 128 KiB of program memory.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">atmega103</span></tt>, <tt class="docutils literal"><span class="pre">at43usb320</span></tt>.</p>
 </dd>
-<dt>avr35</dt>
+<dt><tt class="docutils literal"><span class="pre">avr35</span></tt></dt>
 <dd><p class="first">&#8216;Classic&#8217; devices with 16 KiB up to 64 KiB of program memory and with the <tt class="docutils literal"><span class="pre">MOVW</span></tt> instruction.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">ata5505</span></tt>, <tt class="docutils literal"><span class="pre">ata6617c</span></tt>, <tt class="docutils literal"><span class="pre">ata664251</span></tt>, <tt class="docutils literal"><span class="pre">atmega16u2</span></tt>, <tt class="docutils literal"><span class="pre">atmega32u2</span></tt>, <tt class="docutils literal"><span class="pre">atmega8u2</span></tt>, <tt class="docutils literal"><span class="pre">attiny1634</span></tt>, <tt class="docutils literal"><span class="pre">attiny167</span></tt>, <tt class="docutils literal"><span class="pre">at90usb162</span></tt>, <tt class="docutils literal"><span class="pre">at90usb82</span></tt>.</p>
 </dd>
-<dt>avr4</dt>
+<dt><tt class="docutils literal"><span class="pre">avr4</span></tt></dt>
 <dd><p class="first">&#8216;Enhanced&#8217; devices with up to 8 KiB of program memory.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">ata6285</span></tt>, <tt class="docutils literal"><span class="pre">ata6286</span></tt>, <tt class="docutils literal"><span class="pre">ata6289</span></tt>, <tt class="docutils literal"><span class="pre">ata6612c</span></tt>, <tt class="docutils literal"><span class="pre">atmega48</span></tt>, <tt class="docutils literal"><span class="pre">atmega48a</span></tt>, <tt class="docutils literal"><span class="pre">atmega48p</span></tt>, <tt class="docutils literal"><span class="pre">atmega48pa</span></tt>, <tt class="docutils literal"><span class="pre">atmega8</span></tt>, <tt class="docutils literal"><span class="pre">atmega8a</span></tt>, <tt class="docutils literal"><span class="pre">atmega8hva</span></tt>, <tt class="docutils literal"><span class="pre">atmega8515</span></tt>, <tt class="docutils literal"><span class="pre">atmega8535</span></tt>, <tt class="docutils literal"><span class="pre">atmega88</span></tt>, <tt class="docutils literal"><span class="pre">atmega88a</span></tt>, <tt class="docutils literal"><span class="pre">atmega88p</span></tt>, <tt class="docutils literal"><span class="pre">atmega88pa</span></tt>, <tt class="docutils literal"><span class="pre">at90pwm1</span></tt>, <tt class="docutils literal"><span class="pre">at90pwm2</span></tt>, <tt class="docutils literal"><span class="pre">at90pwm2b</span></tt>, <tt class="docutils literal"><span class="pre">at90pwm3</span></tt>, <tt class="docutils literal"><span class="pre">at90pwm3b</span></tt>, <tt class="docutils literal"><span class="pre">at90pwm81</span></tt>.</p>
 </dd>
-<dt>avr5</dt>
+<dt><tt class="docutils literal"><span class="pre">avr5</span></tt></dt>
 <dd><p class="first">&#8216;Enhanced&#8217; devices with 16 KiB up to 64 KiB of program memory.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">ata5702m322</span></tt>, <tt class="docutils literal"><span class="pre">ata5782</span></tt>, <tt class="docutils literal"><span class="pre">ata5790</span></tt>, <tt class="docutils literal"><span class="pre">ata5790n</span></tt>, <tt class="docutils literal"><span class="pre">ata5795</span></tt>, <tt class="docutils literal"><span class="pre">ata5831</span></tt>, <tt class="docutils literal"><span class="pre">ata6613c</span></tt>, <tt class="docutils literal"><span class="pre">ata6614q</span></tt>, <tt class="docutils literal"><span class="pre">atmega16</span></tt>, <tt class="docutils literal"><span class="pre">atmega16a</span></tt>, <tt class="docutils literal"><span class="pre">atmega16hva</span></tt>, <tt class="docutils literal"><span class="pre">atmega16hva2</span></tt>, <tt class="docutils literal"><span class="pre">atmega16hvb</span></tt>, <tt class="docutils literal"><span class="pre">atmega16hvbrevb</span></tt>, <tt class="docutils literal"><span class="pre">atmega16m1</span></tt>, <tt class="docutils literal"><span class="pre">atmega16u4</span></tt>, <tt class="docutils literal"><span class="pre">atmega161</span></tt>, <tt class="docutils literal"><span class="pre">atmega162</span></tt>, <tt class="docutils literal"><span class="pre">atmega163</span></tt>, <tt class="docutils literal"><span class="pre">atmega164a</span></tt>, <tt class="docutils literal"><span class="pre">atmega164p</span></tt>, <tt class="docutils literal"><span class="pre">atmega164pa</span></tt>, <tt class="docutils literal"><span class="pre">atmega165</span></tt>, <tt class="docutils literal"><span class="pre">atmega165a</span></tt>, <tt class="docutils literal"><span class="pre">atmega165p</span></tt>, <tt class="docutils literal"><span class="pre">atmega165pa</span></tt>, <tt class="docutils literal"><span class="pre">atmega168</span></tt>, <tt class="docutils literal"><span class="pre">atmega168a</span></tt>, <tt class="docutils literal"><span class="pre">atmega168p</span></tt>, <tt class="docutils literal"><span class="pre">atmega168pa</span></tt>, <tt class="docutils literal"><span class="pre">atmega169</span></tt>, <tt class="docutils literal"><span class="pre">atmega169a</span></tt>, <tt class="docutils literal"><span class="pre">atmega169p</span></tt>, <tt class="docutils literal"><span class="pre">atmega169pa</span></tt>, <tt class="docutils literal"><span class="pre">atmega32</span></tt>, <tt class="docutils literal"><span class="pre">atmega32a</span></tt>, <tt class="docutils literal"><span class="pre">atmega32c1</span></tt>, <tt class="docutils literal"><span class="pre">atmega32hvb</span></tt>, <tt class="docutils literal"><span class="pre">atmega32hvbrevb</span></tt>, <tt class="docutils literal"><span class="pre">atmega32m1</span></tt>, <tt class="docutils literal"><span class="pre">atmega32u4</span></tt>, <tt class="docutils literal"><span class="pre">atmega32u6</span></tt>, <tt class="docutils literal"><span class="pre">atmega323</span></tt>, <tt class="docutils literal"><span class="pre">atmega324a</span></tt>, <tt class="docutils literal"><span class="pre">atmega324p</span></tt>, <tt class="docutils literal"><span class="pre">atmega324pa</span></tt>, <tt class="docutils literal"><span class="pre">atmega325</span></tt>, <tt class="docutils literal"><span class="pre">atmega325a</span></tt>, <tt class="docutils literal"><span class="pre">atmega325p</span></tt>, <tt class="docutils literal"><span class="pre">atmega325pa</span></tt>, <tt class="docutils literal"><span class="pre">atmega3250</span></tt>, <tt class="docutils literal"><span class="pre">atmega3250a</span></tt>, <tt class="docutils literal"><span class="pre">atmega3250p</span></tt>, <tt class="docutils literal"><span class="pre">atmega3250pa</span></tt>, <tt class="docutils literal"><span class="pre">atmega328</span></tt>, <tt class="docutils literal"><span class="pre">atmega328p</span></tt>, <tt class="docutils literal"><span class="pre">atmega329</span></tt>, <tt class="docutils literal"><span class="pre">atmega329a</span></tt>, <tt class="docutils literal"><span class="pre">atmega329p</span></tt>, <tt class="docutils literal"><span class="pre">atmega329pa</span></tt>, <tt class="docutils literal"><span class="pre">atmega3290</span></tt>, <tt class="docutils literal"><span class="pre">atmega3290a</span></tt>, <tt class="docutils literal"><span class="pre">atmega3290p</span></tt>, <tt class="docutils literal"><span class="pre">atmega3290pa</span></tt>, <tt class="docutils literal"><span class="pre">atmega406</span></tt>, <tt class="docutils literal"><span class="pre">atmega64</span></tt>, <tt class="docutils literal"><span class="pre">atmega64a</span></tt>, <tt class="docutils literal"><span class="pre">atmega64c1</span></tt>, <tt class="docutils literal"><span class="pre">atmega64hve</span></tt>, <tt class="docutils literal"><span class="pre">atmega64hve2</span></tt>, <tt class="docutils literal"><span class="pre">atmega64m1</span></tt>, <tt class="docutils literal"><span class="pre">atmega64rfr2</span></tt>, <tt class="docutils literal"><span class="pre">atmega640</span></tt>, <tt class="docutils literal"><span class="pre">atmega644</span></tt>, <tt class="docutils literal"><span class="pre">atmega644a</span></tt>, <tt class="docutils literal"><span class="pre">atmega644p</span></tt>, <tt class="docutils literal"><span class="pre">atmega644pa</span></tt>, <tt class="docutils literal"><span class="pre">atmega644rfr2</span></tt>, <tt class="docutils literal"><span class="pre">atmega645</span></tt>, <tt class="docutils literal"><span class="pre">atmega645a</span></tt>, <tt class="docutils literal"><span class="pre">atmega645p</span></tt>, <tt class="docutils literal"><span class="pre">atmega6450</span></tt>, <tt class="docutils literal"><span class="pre">atmega6450a</span></tt>, <tt class="docutils literal"><span class="pre">atmega6450p</span></tt>, <tt class="docutils literal"><span class="pre">atmega649</span></tt>, <tt class="docutils literal"><span class="pre">atmega649a</span></tt>, <tt class="docutils literal"><span class="pre">atmega649p</span></tt>, <tt class="docutils literal"><span class="pre">atmega6490</span></tt>, <tt class="docutils literal"><span class="pre">atmega6490a</span></tt>, <tt class="docutils literal"><span class="pre">atmega6490p</span></tt>, <tt class="docutils literal"><span class="pre">at90can32</span></tt>, <tt class="docutils literal"><span class="pre">at90can64</span></tt>, <tt class="docutils literal"><span class="pre">at90pwm161</span></tt>, <tt class="docutils literal"><span class="pre">at90pwm216</span></tt>, <tt class="docutils literal"><span class="pre">at90pwm316</span></tt>, <tt class="docutils literal"><span class="pre">at90scr100</span></tt>, <tt class="docutils literal"><span class="pre">at90usb646</span></tt>, <tt class="docutils literal"><span class="pre">at90usb647</span></tt>, <tt class="docutils literal"><span class="pre">at94k</span></tt>, <tt class="docutils literal"><span class="pre">m3000</span></tt>.</p>
 </dd>
-<dt>avr51</dt>
+<dt><tt class="docutils literal"><span class="pre">avr51</span></tt></dt>
 <dd><p class="first">&#8216;Enhanced&#8217; devices with 128 KiB of program memory.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">atmega128</span></tt>, <tt class="docutils literal"><span class="pre">atmega128a</span></tt>, <tt class="docutils literal"><span class="pre">atmega128rfa1</span></tt>, <tt class="docutils literal"><span class="pre">atmega128rfr2</span></tt>, <tt class="docutils literal"><span class="pre">atmega1280</span></tt>, <tt class="docutils literal"><span class="pre">atmega1281</span></tt>, <tt class="docutils literal"><span class="pre">atmega1284</span></tt>, <tt class="docutils literal"><span class="pre">atmega1284p</span></tt>, <tt class="docutils literal"><span class="pre">atmega1284rfr2</span></tt>, <tt class="docutils literal"><span class="pre">at90can128</span></tt>, <tt class="docutils literal"><span class="pre">at90usb1286</span></tt>, <tt class="docutils literal"><span class="pre">at90usb1287</span></tt>.</p>
 </dd>
-<dt>avr6</dt>
+<dt><tt class="docutils literal"><span class="pre">avr6</span></tt></dt>
 <dd><p class="first">&#8216;Enhanced&#8217; devices with 3-byte PC, i.e. with more than 128 KiB of program memory.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">atmega256rfr2</span></tt>, <tt class="docutils literal"><span class="pre">atmega2560</span></tt>, <tt class="docutils literal"><span class="pre">atmega2561</span></tt>, <tt class="docutils literal"><span class="pre">atmega2564rfr2</span></tt>.</p>
 </dd>
-<dt>avrxmega2</dt>
+<dt><tt class="docutils literal"><span class="pre">avrxmega2</span></tt></dt>
 <dd><p class="first">&#8216;XMEGA&#8217; devices with more than 8 KiB and up to 64 KiB of program memory.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">atxmega16a4</span></tt>, <tt class="docutils literal"><span class="pre">atxmega16a4u</span></tt>, <tt class="docutils literal"><span class="pre">atxmega16c4</span></tt>, <tt class="docutils literal"><span class="pre">atxmega16d4</span></tt>, <tt class="docutils literal"><span class="pre">atxmega16e5</span></tt>, <tt class="docutils literal"><span class="pre">atxmega32a4</span></tt>, <tt class="docutils literal"><span class="pre">atxmega32a4u</span></tt>, <tt class="docutils literal"><span class="pre">atxmega32c3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega32c4</span></tt>, <tt class="docutils literal"><span class="pre">atxmega32d3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega32d4</span></tt>, <tt class="docutils literal"><span class="pre">atxmega32e5</span></tt>, <tt class="docutils literal"><span class="pre">atxmega8e5</span></tt>.</p>
 </dd>
-<dt>avrxmega4</dt>
+<dt><tt class="docutils literal"><span class="pre">avrxmega4</span></tt></dt>
 <dd><p class="first">&#8216;XMEGA&#8217; devices with more than 64 KiB and up to 128 KiB of program memory.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">atxmega64a3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega64a3u</span></tt>, <tt class="docutils literal"><span class="pre">atxmega64a4u</span></tt>, <tt class="docutils literal"><span class="pre">atxmega64b1</span></tt>, <tt class="docutils literal"><span class="pre">atxmega64b3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega64c3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega64d3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega64d4</span></tt>.</p>
 </dd>
-<dt>avrxmega5</dt>
+<dt><tt class="docutils literal"><span class="pre">avrxmega5</span></tt></dt>
 <dd><p class="first">&#8216;XMEGA&#8217; devices with more than 64 KiB and up to 128 KiB of program memory and more than 64 KiB of RAM.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">atxmega64a1</span></tt>, <tt class="docutils literal"><span class="pre">atxmega64a1u</span></tt>.</p>
 </dd>
-<dt>avrxmega6</dt>
+<dt><tt class="docutils literal"><span class="pre">avrxmega6</span></tt></dt>
 <dd><p class="first">&#8216;XMEGA&#8217; devices with more than 128 KiB of program memory.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">atxmega128a3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega128a3u</span></tt>, <tt class="docutils literal"><span class="pre">atxmega128b1</span></tt>, <tt class="docutils literal"><span class="pre">atxmega128b3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega128c3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega128d3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega128d4</span></tt>, <tt class="docutils literal"><span class="pre">atxmega192a3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega192a3u</span></tt>, <tt class="docutils literal"><span class="pre">atxmega192c3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega192d3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega256a3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega256a3b</span></tt>, <tt class="docutils literal"><span class="pre">atxmega256a3bu</span></tt>, <tt class="docutils literal"><span class="pre">atxmega256a3u</span></tt>, <tt class="docutils literal"><span class="pre">atxmega256c3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega256d3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega384c3</span></tt>, <tt class="docutils literal"><span class="pre">atxmega384d3</span></tt>.</p>
 </dd>
-<dt>avrxmega7</dt>
+<dt><tt class="docutils literal"><span class="pre">avrxmega7</span></tt></dt>
 <dd><p class="first">&#8216;XMEGA&#8217; devices with more than 128 KiB of program memory and more than 64 KiB of RAM.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">atxmega128a1</span></tt>, <tt class="docutils literal"><span class="pre">atxmega128a1u</span></tt>, <tt class="docutils literal"><span class="pre">atxmega128a4u</span></tt>.</p>
 </dd>
-<dt>avrtiny</dt>
+<dt><tt class="docutils literal"><span class="pre">avrtiny</span></tt></dt>
 <dd><p class="first">&#8216;TINY&#8217; Tiny core devices with 512 B up to 4 KiB of program memory.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">attiny10</span></tt>, <tt class="docutils literal"><span class="pre">attiny20</span></tt>, <tt class="docutils literal"><span class="pre">attiny4</span></tt>, <tt class="docutils literal"><span class="pre">attiny40</span></tt>, <tt class="docutils literal"><span class="pre">attiny5</span></tt>, <tt class="docutils literal"><span class="pre">attiny9</span></tt>.</p>
 </dd>
-<dt>avr1</dt>
+<dt><tt class="docutils literal"><span class="pre">avr1</span></tt></dt>
 <dd><p class="first">This ISA is implemented by the minimal AVR core and supported for assembler only.</p>
 <p class="last"><tt class="docutils literal"><span class="pre">mcu</span></tt> = <tt class="docutils literal"><span class="pre">attiny11</span></tt>, <tt class="docutils literal"><span class="pre">attiny12</span></tt>, <tt class="docutils literal"><span class="pre">attiny15</span></tt>, <tt class="docutils literal"><span class="pre">attiny28</span></tt>, <tt class="docutils literal"><span class="pre">at90s1200</span></tt>.</p>
 </dd>
@@ -1965,7 +1965,7 @@ triggered by the <em class="xref std std-option">-mmcu=</em> command-line option
 <p>For even more AVR-specific built-in macros see
 AVR Named Address Spaces and AVR Built-in Functions.</p>
 <dl class="docutils">
-<dt>__AVR_ARCH__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_ARCH__</span></tt></dt>
 <dd><p class="first">Build-in macro that resolves to a decimal number that identifies the
 architecture and depends on the <em class="xref std std-option">-mmcu=``mcu``</em> option.
 Possible values are:</p>
@@ -1982,7 +1982,7 @@ If <tt class="docutils literal"><span class="pre">mcu</span></tt> specifies a de
 accordingly. For example, with <em class="xref std std-option">-mmcu=atmega8</em> the macro is
 defined to <tt class="docutils literal"><span class="pre">4</span></tt>.</p>
 </dd>
-<dt>__AVR_``Device``__</dt>
+<dt><tt class="samp docutils literal"><span class="pre">__AVR_</span><em><span class="pre">Device</span></em><span class="pre">__</span></tt></dt>
 <dd><p class="first">Setting <em class="xref std std-option">-mmcu=``device``</em> defines this built-in macro which reflects
 the device&#8217;s name. For example, <em class="xref std std-option">-mmcu=atmega8</em> defines the
 built-in macro <tt class="docutils literal"><span class="pre">__AVR_ATmega8__</span></tt>, <em class="xref std std-option">-mmcu=attiny261a</em> defines
@@ -1995,71 +1995,71 @@ the device name as from the AVR user manual. The difference between
 <p class="last">If <tt class="docutils literal"><span class="pre">device</span></tt> is not a device but only a core architecture like
 <tt class="samp docutils literal"><span class="pre">avr51</span></tt>, this macro is not defined.</p>
 </dd>
-<dt>__AVR_DEVICE_NAME__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_DEVICE_NAME__</span></tt></dt>
 <dd><p class="first">Setting <em class="xref std std-option">-mmcu=``device``</em> defines this built-in macro to
 the device&#8217;s name. For example, with <em class="xref std std-option">-mmcu=atmega8</em> the macro
 is defined to <tt class="docutils literal"><span class="pre">atmega8</span></tt>.</p>
 <p class="last">If <tt class="docutils literal"><span class="pre">device</span></tt> is not a device but only a core architecture like
 <tt class="samp docutils literal"><span class="pre">avr51</span></tt>, this macro is not defined.</p>
 </dd>
-<dt>__AVR_XMEGA__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_XMEGA__</span></tt></dt>
 <dd>The device / architecture belongs to the XMEGA family of devices.</dd>
-<dt>__AVR_HAVE_ELPM__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_HAVE_ELPM__</span></tt></dt>
 <dd>The device has the the <tt class="docutils literal"><span class="pre">ELPM</span></tt> instruction.</dd>
-<dt>__AVR_HAVE_ELPMX__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_HAVE_ELPMX__</span></tt></dt>
 <dd>The device has the <tt class="docutils literal"><span class="pre">ELPM</span> <span class="pre">R``n</span></tt>,Z`` and <tt class="docutils literal"><span class="pre">ELPM</span>
 <span class="pre">R``n</span></tt>,Z+`` instructions.</dd>
-<dt>__AVR_HAVE_MOVW__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_HAVE_MOVW__</span></tt></dt>
 <dd>The device has the <tt class="docutils literal"><span class="pre">MOVW</span></tt> instruction to perform 16-bit
 register-register moves.</dd>
-<dt>__AVR_HAVE_LPMX__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_HAVE_LPMX__</span></tt></dt>
 <dd>The device has the <tt class="docutils literal"><span class="pre">LPM</span> <span class="pre">R``n</span></tt>,Z`` and
 <tt class="docutils literal"><span class="pre">LPM</span> <span class="pre">R``n</span></tt>,Z+`` instructions.</dd>
-<dt>__AVR_HAVE_MUL__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_HAVE_MUL__</span></tt></dt>
 <dd>The device has a hardware multiplier.</dd>
-<dt>__AVR_HAVE_JMP_CALL__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_HAVE_JMP_CALL__</span></tt></dt>
 <dd>The device has the <tt class="docutils literal"><span class="pre">JMP</span></tt> and <tt class="docutils literal"><span class="pre">CALL</span></tt> instructions.
 This is the case for devices with at least 16 KiB of program
 memory.</dd>
-<dt>__AVR_HAVE_EIJMP_EICALL__ __AVR_3_BYTE_PC__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_HAVE_EIJMP_EICALL__</span></tt> <tt class="docutils literal"><span class="pre">__AVR_3_BYTE_PC__</span></tt></dt>
 <dd>The device has the <tt class="docutils literal"><span class="pre">EIJMP</span></tt> and <tt class="docutils literal"><span class="pre">EICALL</span></tt> instructions.
 This is the case for devices with more than 128 KiB of program memory.
 This also means that the program counter
 (PC) is 3 bytes wide.</dd>
-<dt>__AVR_2_BYTE_PC__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_2_BYTE_PC__</span></tt></dt>
 <dd>The program counter (PC) is 2 bytes wide. This is the case for devices
 with up to 128 KiB of program memory.</dd>
-<dt>__AVR_HAVE_8BIT_SP__ __AVR_HAVE_16BIT_SP__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_HAVE_8BIT_SP__</span></tt> <tt class="docutils literal"><span class="pre">__AVR_HAVE_16BIT_SP__</span></tt></dt>
 <dd>The stack pointer (SP) register is treated as 8-bit respectively
 16-bit register by the compiler.
 The definition of these macros is affected by <a class="reference internal" href="#cmdoption-mtiny-stack"><em class="xref std std-option">-mtiny-stack</em></a>.</dd>
-<dt>__AVR_HAVE_SPH__ __AVR_SP8__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_HAVE_SPH__</span></tt> <tt class="docutils literal"><span class="pre">__AVR_SP8__</span></tt></dt>
 <dd>The device has the SPH (high part of stack pointer) special function
 register or has an 8-bit stack pointer, respectively.
 The definition of these macros is affected by <em class="xref std std-option">-mmcu=</em> and
 in the cases of <em class="xref std std-option">-mmcu=avr2</em> and <em class="xref std std-option">-mmcu=avr25</em> also
 by <a class="reference internal" href="#cmdoption-msp8"><em class="xref std std-option">-msp8</em></a>.</dd>
-<dt>__AVR_HAVE_RAMPD__ __AVR_HAVE_RAMPX__ __AVR_HAVE_RAMPY__ __AVR_HAVE_RAMPZ__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_HAVE_RAMPD__</span></tt> <tt class="docutils literal"><span class="pre">__AVR_HAVE_RAMPX__</span></tt> <tt class="docutils literal"><span class="pre">__AVR_HAVE_RAMPY__</span></tt> <tt class="docutils literal"><span class="pre">__AVR_HAVE_RAMPZ__</span></tt></dt>
 <dd>The device has the <tt class="docutils literal"><span class="pre">RAMPD</span></tt>, <tt class="docutils literal"><span class="pre">RAMPX</span></tt>, <tt class="docutils literal"><span class="pre">RAMPY</span></tt>,
 <tt class="docutils literal"><span class="pre">RAMPZ</span></tt> special function register, respectively.</dd>
-<dt>__NO_INTERRUPTS__</dt>
+<dt><tt class="docutils literal"><span class="pre">__NO_INTERRUPTS__</span></tt></dt>
 <dd>This macro reflects the <a class="reference internal" href="#cmdoption-mno-interrupts"><em class="xref std std-option">-mno-interrupts</em></a> command-line option.</dd>
-<dt>__AVR_ERRATA_SKIP__ __AVR_ERRATA_SKIP_JMP_CALL__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_ERRATA_SKIP__</span></tt> <tt class="docutils literal"><span class="pre">__AVR_ERRATA_SKIP_JMP_CALL__</span></tt></dt>
 <dd>Some AVR devices (AT90S8515, ATmega103) must not skip 32-bit
 instructions because of a hardware erratum.  Skip instructions are
 <tt class="docutils literal"><span class="pre">SBRS</span></tt>, <tt class="docutils literal"><span class="pre">SBRC</span></tt>, <tt class="docutils literal"><span class="pre">SBIS</span></tt>, <tt class="docutils literal"><span class="pre">SBIC</span></tt> and <tt class="docutils literal"><span class="pre">CPSE</span></tt>.
 The second macro is only defined if <tt class="docutils literal"><span class="pre">__AVR_HAVE_JMP_CALL__</span></tt> is also
 set.</dd>
-<dt>__AVR_ISA_RMW__</dt>
+<dt><tt class="docutils literal"><span class="pre">__AVR_ISA_RMW__</span></tt></dt>
 <dd>The device has Read-Modify-Write instructions (XCH, LAC, LAS and LAT).</dd>
-<dt>__AVR_SFR_OFFSET__=``offset``</dt>
+<dt><tt class="samp docutils literal"><span class="pre">__AVR_SFR_OFFSET__=</span><em><span class="pre">offset</span></em></tt></dt>
 <dd>Instructions that can address I/O special function registers directly
 like <tt class="docutils literal"><span class="pre">IN</span></tt>, <tt class="docutils literal"><span class="pre">OUT</span></tt>, <tt class="docutils literal"><span class="pre">SBI</span></tt>, etc. may use a different
 address as if addressed by an instruction to access RAM like <tt class="docutils literal"><span class="pre">LD</span></tt>
 or <tt class="docutils literal"><span class="pre">STS</span></tt>. This offset depends on the device architecture and has
 to be subtracted from the RAM address in order to get the
 respective I/O address.</dd>
-<dt>__WITH_AVRLIBC__</dt>
+<dt><tt class="docutils literal"><span class="pre">__WITH_AVRLIBC__</span></tt></dt>
 <dd>The compiler is configured to be used together with AVR-Libc.
 See the <em class="xref std std-option">--with-avrlibc</em> configure option.</dd>
 </dl>
@@ -2621,7 +2621,7 @@ This is by default ON.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt>-mmacosx-version-min=``version``</dt>
+<dt><tt class="samp docutils literal"><span class="pre">-mmacosx-version-min=</span><em><span class="pre">version</span></em></tt></dt>
 <dd><p class="first">The earliest version of MacOS X that this executable will run on
 is <tt class="docutils literal"><span class="pre">version</span></tt>.  Typical values of <tt class="docutils literal"><span class="pre">version</span></tt> include <tt class="docutils literal"><span class="pre">10.1</span></tt>,
 <tt class="docutils literal"><span class="pre">10.2</span></tt>, and <tt class="docutils literal"><span class="pre">10.3.9</span></tt>.</p>
@@ -2635,7 +2635,7 @@ are compatible with as many systems and code bases as possible.</p>
 <dt id="cmdoption-mkernel">
 <tt class="descname">-mkernel</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mkernel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable kernel development mode.  The <a class="reference internal" href="#cmdoption-mkernel"><em class="xref std std-option">-mkernel</em></a> option sets
-<a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a>, <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fno-common"><em class="xref std std-option">-fno-common</em></a>, <em class="xref std std-option">-fno-use-cxa-atexit</em>,
+<a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a>, <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fno-common"><em class="xref std std-option">-fno-common</em></a>, <em class="xref std std-option">-fno-use-cxa-atexit</em>,
 <em class="xref std std-option">-fno-exceptions</em>, <em class="xref std std-option">-fno-non-call-exceptions</em>,
 <em class="xref std std-option">-fapple-kext</em>, <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fno-weak"><em class="xref std std-option">-fno-weak</em></a> and <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fno-rtti"><em class="xref std std-option">-fno-rtti</em></a> where
 applicable.  This mode also sets <em class="xref std std-option">-mno-altivec</em>,
@@ -2793,17 +2793,17 @@ option <em class="xref std std-option">-ieee_with_inexact</em>.</p>
 Other Alpha compilers call this option <em class="xref std std-option">-fptm ``trap-mode``</em>.
 The trap mode can be set to one of four values:</p>
 <dl class="docutils">
-<dt>n</dt>
+<dt><tt class="samp docutils literal"><span class="pre">n</span></tt></dt>
 <dd>This is the default (normal) setting.  The only traps that are enabled
 are the ones that cannot be disabled in software (e.g., division by zero
 trap).</dd>
-<dt>u</dt>
+<dt><tt class="samp docutils literal"><span class="pre">u</span></tt></dt>
 <dd>In addition to the traps enabled by <tt class="samp docutils literal"><span class="pre">n</span></tt>, underflow traps are enabled
 as well.</dd>
-<dt>su</dt>
+<dt><tt class="samp docutils literal"><span class="pre">su</span></tt></dt>
 <dd>Like <tt class="samp docutils literal"><span class="pre">u</span></tt>, but the instructions are marked to be safe for software
 completion (see Alpha architecture manual for details).</dd>
-<dt>sui</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sui</span></tt></dt>
 <dd>Like <tt class="samp docutils literal"><span class="pre">su</span></tt>, but inexact traps are enabled as well.</dd>
 </dl>
 </dd></dl>
@@ -2815,15 +2815,15 @@ completion (see Alpha architecture manual for details).</dd>
 <em class="xref std std-option">-fprm ``rounding-mode``</em>.  The <tt class="docutils literal"><span class="pre">rounding-mode</span></tt> can be one
 of:</p>
 <dl class="docutils">
-<dt>n</dt>
+<dt><tt class="samp docutils literal"><span class="pre">n</span></tt></dt>
 <dd>Normal IEEE rounding mode.  Floating-point numbers are rounded towards
 the nearest machine number or towards the even machine number in case
 of a tie.</dd>
-<dt>m</dt>
+<dt><tt class="samp docutils literal"><span class="pre">m</span></tt></dt>
 <dd>Round towards minus infinity.</dd>
-<dt>c</dt>
+<dt><tt class="samp docutils literal"><span class="pre">c</span></tt></dt>
 <dd>Chopped rounding mode.  Floating-point numbers are rounded towards zero.</dd>
-<dt>d</dt>
+<dt><tt class="samp docutils literal"><span class="pre">d</span></tt></dt>
 <dd>Dynamic rounding mode.  A field in the floating-point control register
 (<tt class="docutils literal"><span class="pre">fpcr</span></tt>, see Alpha architecture reference manual) controls the
 rounding mode in effect.  The C library initializes this register for
@@ -2843,13 +2843,13 @@ in determining the exact location that caused a floating-point trap.
 Depending on the requirements of an application, different levels of
 precisions can be selected:</p>
 <dl class="docutils">
-<dt>p</dt>
+<dt><tt class="samp docutils literal"><span class="pre">p</span></tt></dt>
 <dd>Program precision.  This option is the default and means a trap handler
 can only identify which program caused a floating-point exception.</dd>
-<dt>f</dt>
+<dt><tt class="samp docutils literal"><span class="pre">f</span></tt></dt>
 <dd>Function precision.  The trap handler can determine the function that
 caused a floating-point exception.</dd>
-<dt>i</dt>
+<dt><tt class="samp docutils literal"><span class="pre">i</span></tt></dt>
 <dd><p class="first">Instruction precision.  The trap handler can determine the exact
 instruction that caused a floating-point exception.</p>
 <p class="last">Other Alpha compilers provide the equivalent options called</p>
@@ -2952,17 +2952,17 @@ you specify.  If you do not specify a processor type, GCC defaults
 to the processor on which the compiler was built.</p>
 <p>Supported values for <tt class="docutils literal"><span class="pre">cpu_type</span></tt> are</p>
 <dl class="docutils">
-<dt>ev4 ev45 21064</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ev4</span></tt> <tt class="samp docutils literal"><span class="pre">ev45</span></tt> <tt class="samp docutils literal"><span class="pre">21064</span></tt></dt>
 <dd>Schedules as an EV4 and has no instruction set extensions.</dd>
-<dt>ev5 21164</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ev5</span></tt> <tt class="samp docutils literal"><span class="pre">21164</span></tt></dt>
 <dd>Schedules as an EV5 and has no instruction set extensions.</dd>
-<dt>ev56 21164a</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ev56</span></tt> <tt class="samp docutils literal"><span class="pre">21164a</span></tt></dt>
 <dd>Schedules as an EV5 and supports the BWX extension.</dd>
-<dt>pca56 21164pc 21164PC</dt>
+<dt><tt class="samp docutils literal"><span class="pre">pca56</span></tt> <tt class="samp docutils literal"><span class="pre">21164pc</span></tt> <tt class="samp docutils literal"><span class="pre">21164PC</span></tt></dt>
 <dd>Schedules as an EV5 and supports the BWX and MAX extensions.</dd>
-<dt>ev6 21264</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ev6</span></tt> <tt class="samp docutils literal"><span class="pre">21264</span></tt></dt>
 <dd>Schedules as an EV6 and supports the BWX, FIX, and MAX extensions.</dd>
-<dt>ev67 21264a</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ev67</span></tt> <tt class="samp docutils literal"><span class="pre">21264a</span></tt></dt>
 <dd><p class="first">Schedules as an EV6 and supports the BWX, CIX, FIX, and MAX extensions.</p>
 <p class="last">Native toolchains also support the value <tt class="samp docutils literal"><span class="pre">native</span></tt>,</p>
 </dd>
@@ -2992,9 +2992,9 @@ dependent on the memory access patterns used by the application
 and the size of the external cache on the machine.</p>
 <p>Valid options for <tt class="docutils literal"><span class="pre">time</span></tt> are</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">number</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">number</span></tt></dt>
 <dd>A decimal number representing clock cycles.</dd>
-<dt>L1 L2 L3 main</dt>
+<dt><tt class="samp docutils literal"><span class="pre">L1</span></tt> <tt class="samp docutils literal"><span class="pre">L2</span></tt> <tt class="samp docutils literal"><span class="pre">L3</span></tt> <tt class="samp docutils literal"><span class="pre">main</span></tt></dt>
 <dd>The compiler contains estimates of the number of clock cycles for
 &#8216;typical&#8217; EV4 &amp; EV5 hardware for the Level 1, 2 &amp; 3 caches
 (also called Dcache, Scache, and Bcache), as well as to main memory.
@@ -3716,7 +3716,7 @@ as appropriate.  Most GNU software doesn&#8217;t provide this capability.</p>
 <dt id="cmdoption-nolibdld">
 <tt class="descname">-nolibdld</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-nolibdld" title="Permalink to this definition">¶</a></dt>
 <dd><p>Suppress the generation of link options to search libdld.sl when the
-<a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified on HP-UX 10 and later.</p>
+<a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified on HP-UX 10 and later.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3724,10 +3724,10 @@ as appropriate.  Most GNU software doesn&#8217;t provide this capability.</p>
 <tt class="descname">-static</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-static" title="Permalink to this definition">¶</a></dt>
 <dd><p>The HP-UX implementation of setlocale in libc has a dependency on
 libdld.sl.  There isn&#8217;t an archive version of libdld.sl.  Thus,
-when the <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified, special link options
+when the <a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified, special link options
 are needed to resolve this dependency.</p>
 <p>On HP-UX 10 and later, the GCC driver adds the necessary options to
-link with libdld.sl when the <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified.
+link with libdld.sl when the <a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified.
 This causes the resulting binary to be dynamic.  On the 64-bit port,
 the linkers generate dynamic binaries by default in any case.  The
 <a class="reference internal" href="#cmdoption-nolibdld"><em class="xref std std-option">-nolibdld</em></a> option can be used to prevent the GCC driver from
@@ -4685,35 +4685,23 @@ not presently supported with <a class="reference internal" href="#cmdoption-mpcr
 the system.</p>
 </dd></dl>
 
-<table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-m<var>sep-data</var></span></kbd></td>
-<td>Generate code that allows the data segment to be located in a different
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">-msep-data</span></tt></dt>
+<dd>Generate code that allows the data segment to be located in a different
 area of memory from the text segment.  This allows for execute-in-place in
 an environment without virtual memory management.  This option implies
-<a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fPIC"><em class="xref std std-option">-fPIC</em></a>.</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-m<var>no-sep-data</var></span></kbd></td>
-<td>Generate code that assumes that the data segment follows the text segment.
-This is the default.</td></tr>
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-m<var>id-shared-library</var></span></kbd></td>
-</tr>
-<tr><td>&nbsp;</td><td>Generate code that supports shared libraries via the library ID method.
+<a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fPIC"><em class="xref std std-option">-fPIC</em></a>.</dd>
+<dt><tt class="docutils literal"><span class="pre">-mno-sep-data</span></tt></dt>
+<dd>Generate code that assumes that the data segment follows the text segment.
+This is the default.</dd>
+<dt><tt class="docutils literal"><span class="pre">-mid-shared-library</span></tt></dt>
+<dd>Generate code that supports shared libraries via the library ID method.
 This allows for execute-in-place and shared libraries in an environment
-without virtual memory management.  This option implies <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fPIC"><em class="xref std std-option">-fPIC</em></a>.</td></tr>
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-m<var>no-id-shared-library</var></span></kbd></td>
-</tr>
-<tr><td>&nbsp;</td><td>Generate code that doesn&#8217;t assume ID-based shared libraries are being used.
-This is the default.</td></tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>-mshared-library-id=n</dt>
+without virtual memory management.  This option implies <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fPIC"><em class="xref std std-option">-fPIC</em></a>.</dd>
+<dt><tt class="docutils literal"><span class="pre">-mno-id-shared-library</span></tt></dt>
+<dd>Generate code that doesn&#8217;t assume ID-based shared libraries are being used.
+This is the default.</dd>
+<dt><tt class="docutils literal"><span class="pre">-mshared-library-id=n</span></tt></dt>
 <dd>Specifies the identification number of the ID-based shared library being
 compiled.  Specifying a value of 0 generates more compact code; specifying
 other values forces the allocation of that number to the current
@@ -5157,21 +5145,21 @@ where <tt class="docutils literal"><span class="pre">X</span></tt> is a major ve
 </dd></dl>
 
 <dl class="docutils">
-<dt>-mxl-mode-<tt class="docutils literal"><span class="pre">app-model</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-mxl-mode-</span><em><span class="pre">app-model</span></em></tt></dt>
 <dd><p class="first">Select application model <tt class="docutils literal"><span class="pre">app-model</span></tt>.  Valid models are</p>
 <dl class="docutils">
-<dt>executable</dt>
+<dt><tt class="samp docutils literal"><span class="pre">executable</span></tt></dt>
 <dd>normal executable (default), uses startup code crt0.o.</dd>
-<dt>xmdstub</dt>
+<dt><tt class="samp docutils literal"><span class="pre">xmdstub</span></tt></dt>
 <dd>for use with Xilinx Microprocessor Debugger (XMD) based
 software intrusive debug agent called xmdstub. This uses startup file
 crt1.o and sets the start address of the program to 0x800.</dd>
-<dt>bootstrap</dt>
+<dt><tt class="samp docutils literal"><span class="pre">bootstrap</span></tt></dt>
 <dd>for applications that are loaded using a bootloader.
 This model uses startup file crt2.o which does not contain a processor
 reset vector handler. This is suitable for transferring control on a
 processor reset to the bootloader rather than the application.</dd>
-<dt>novectors</dt>
+<dt><tt class="samp docutils literal"><span class="pre">novectors</span></tt></dt>
 <dd><p class="first">for applications that do not require any of the
 MicroBlaze vectors. This option may be useful for applications running
 within a monitoring application. This model uses crt3.o as a startup file.</p>
@@ -5377,7 +5365,7 @@ for regression testing of mixed MIPS16/non-MIPS16 code generation, and is
 not intended for ordinary use in compiling user code.</p>
 </dd></dl>
 
-<p>-minterlink-compressed
+<p><tt class="docutils literal"><span class="pre">-minterlink-compressed</span></tt>
 .. option:: -mno-interlink-compressed, -minterlink-compressed</p>
 <blockquote>
 <div><p>Require (do not require) that code using the standard (uncompressed) MIPS ISA
@@ -5438,7 +5426,7 @@ systems.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt>-mshared -mno-shared</dt>
+<dt><tt class="docutils literal"><span class="pre">-mshared</span></tt> <tt class="docutils literal"><span class="pre">-mno-shared</span></tt></dt>
 <dd><p class="first">Generate (do not generate) code that is fully position-independent,
 and that can therefore be linked into shared libraries.  This option
 only affects <a class="reference internal" href="#cmdoption-mabicalls"><em class="xref std std-option">-mabicalls</em></a>.</p>
@@ -5821,17 +5809,17 @@ This option is only meaningful in conjunction with <a class="reference internal"
 <dd><p>Specify whether GCC may generate code that reads from executable sections.
 There are three possible settings:</p>
 <dl class="docutils">
-<dt>-mcode-readable=yes</dt>
+<dt><tt class="docutils literal"><span class="pre">-mcode-readable=yes</span></tt></dt>
 <dd>Instructions may freely access executable sections.  This is the
 default setting.</dd>
-<dt>-mcode-readable=pcrel</dt>
+<dt><tt class="docutils literal"><span class="pre">-mcode-readable=pcrel</span></tt></dt>
 <dd>MIPS16 PC-relative load instructions can access executable sections,
 but other instructions must not do so.  This option is useful on 4KSc
 and 4KSd processors when the code TLBs have the Read Inhibit bit set.
 It is also useful on processors that can be configured to have a dual
 instruction/data SRAM interface and that, like the M4K, automatically
 redirect PC-relative loads to the instruction RAM.</dd>
-<dt>-mcode-readable=no</dt>
+<dt><tt class="docutils literal"><span class="pre">-mcode-readable=no</span></tt></dt>
 <dd>Instructions must not access executable sections.  This option can be
 useful on targets that are configured to have a dual instruction/data
 SRAM interface but that (unlike the M4K) do not automatically redirect
@@ -5935,7 +5923,7 @@ separate multiply, add, subtract and negate instructions.</p>
 assembler files (with a <tt class="samp docutils literal"><span class="pre">.s</span></tt> suffix) when assembling them.</p>
 </dd></dl>
 
-<p>-mfix-24k
+<p><tt class="docutils literal"><span class="pre">-mfix-24k</span></tt>
 .. option:: -mno-fix-24k, -mfix-24k</p>
 <blockquote>
 <div>Work around the 24K E48 (lost data on stores during refill) errata.
@@ -6059,14 +6047,14 @@ restriction for functions it compiles itself.  It expects non-GCC
 functions (such as hand-written assembly code) to do the same.</p>
 <p>The option has three forms:</p>
 <dl class="docutils">
-<dt>-mr10k-cache-barrier=load-store</dt>
+<dt><tt class="docutils literal"><span class="pre">-mr10k-cache-barrier=load-store</span></tt></dt>
 <dd>Insert a cache barrier before a load or store that might be
 speculatively executed and that might have side effects even
 if aborted.</dd>
-<dt>-mr10k-cache-barrier=store</dt>
+<dt><tt class="docutils literal"><span class="pre">-mr10k-cache-barrier=store</span></tt></dt>
 <dd>Insert a cache barrier before a store that might be speculatively
 executed and that might have side effects even if aborted.</dd>
-<dt>-mr10k-cache-barrier=none</dt>
+<dt><tt class="docutils literal"><span class="pre">-mr10k-cache-barrier=none</span></tt></dt>
 <dd>Disable the insertion of cache barriers.  This is the default setting.</dd>
 </dl>
 </dd></dl>
@@ -6608,14 +6596,14 @@ which must be a power of 2 between 4 and 512.</p>
 <tt class="descname">-mcmodel</tt><tt class="descclassname">=code-model</tt><a class="headerlink" href="#cmdoption-mcmodel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the code model to one of</p>
 <dl class="docutils">
-<dt><tt class="samp docutils literal"><span class="pre">small</span></tt></dt>
+<dt>small</dt>
 <dd>All the data and read-only data segments must be within 512KB addressing space.
 The text segment must be within 16MB addressing space.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">medium</span></tt></dt>
+<dt>medium</dt>
 <dd>The data segment must be within 512KB while the read-only data segment can be
 within 4GB addressing space.  The text segment should be still within 16MB
 addressing space.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">large</span></tt></dt>
+<dt>large</dt>
 <dd>All the text and data segments can be within 4GB addressing space.</dd>
 </dl>
 </dd></dl>
@@ -6644,31 +6632,31 @@ into the small data or BSS sections instead of the normal data or BSS
 sections.  The default value of <tt class="docutils literal"><span class="pre">num</span></tt> is 8.</p>
 </dd></dl>
 
-<p>-mgpopt=``option``
+<p><tt class="samp docutils literal"><span class="pre">-mgpopt=</span><em><span class="pre">option</span></em></tt>
 .. option:: -mgpopt, -mno-gpopt</p>
 <blockquote>
 <div><p>Generate (do not generate) GP-relative accesses.  The following
 <tt class="docutils literal"><span class="pre">option</span></tt> names are recognized:</p>
 <dl class="docutils">
-<dt>none</dt>
+<dt><tt class="samp docutils literal"><span class="pre">none</span></tt></dt>
 <dd>Do not generate GP-relative accesses.</dd>
-<dt>local</dt>
+<dt><tt class="samp docutils literal"><span class="pre">local</span></tt></dt>
 <dd>Generate GP-relative accesses for small data objects that are not
 external or weak.  Also use GP-relative addressing for objects that
 have been explicitly placed in a small data section via a <tt class="docutils literal"><span class="pre">section</span></tt>
 attribute.</dd>
-<dt>global</dt>
+<dt><tt class="samp docutils literal"><span class="pre">global</span></tt></dt>
 <dd>As for <tt class="samp docutils literal"><span class="pre">local</span></tt>, but also generate GP-relative accesses for
 small data objects that are external or weak.  If you use this option,
 you must ensure that all parts of your program (including libraries) are
 compiled with the same <a class="reference internal" href="#cmdoption-G"><em class="xref std std-option">-G</em></a> setting.</dd>
-<dt>data</dt>
+<dt><tt class="samp docutils literal"><span class="pre">data</span></tt></dt>
 <dd>Generate GP-relative accesses for all data objects in the program.  If you
 use this option, the entire data and BSS segments
 of your program must fit in 64K of memory and you must use an appropriate
 linker script to allocate them within the addressible range of the
 global pointer.</dd>
-<dt>all</dt>
+<dt><tt class="samp docutils literal"><span class="pre">all</span></tt></dt>
 <dd><p class="first">Generate GP-relative addresses for function pointers as well as data
 pointers.  If you use this option, the entire text, data, and BSS segments
 of your program must fit in 64K of memory and you must use an appropriate
@@ -6739,55 +6727,55 @@ normal IEEE 754 semantics and correspond directly to the C operators or the
 equivalent GCC built-in functions (see <a class="reference internal" href="other-built-in-functions-provided-by-gcc.html#other-builtins"><em>Other Built-in Functions Provided by GCC</em></a>).</p>
 <p>Single-precision floating point:</p>
 <dl class="docutils">
-<dt><tt class="samp docutils literal"><span class="pre">fadds</span></tt>, <tt class="samp docutils literal"><span class="pre">fsubs</span></tt>, <tt class="samp docutils literal"><span class="pre">fdivs</span></tt>, <tt class="samp docutils literal"><span class="pre">fmuls</span></tt></dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">fadds</span></em><span class="pre">,</span> <em><span class="pre">fsubs</span></em><span class="pre">,</span> <em><span class="pre">fdivs</span></em><span class="pre">,</span> <em><span class="pre">fmuls</span></em></tt></dt>
 <dd>Binary arithmetic operations.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fnegs</span></tt></dt>
+<dt>fnegs</dt>
 <dd>Unary negation.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fabss</span></tt></dt>
+<dt>fabss</dt>
 <dd>Unary absolute value.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fcmpeqs</span></tt>, <tt class="samp docutils literal"><span class="pre">fcmpges</span></tt>, <tt class="samp docutils literal"><span class="pre">fcmpgts</span></tt>, <tt class="samp docutils literal"><span class="pre">fcmples</span></tt>, <tt class="samp docutils literal"><span class="pre">fcmplts</span></tt>, <tt class="samp docutils literal"><span class="pre">fcmpnes</span></tt></dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">fcmpeqs</span></em><span class="pre">,</span> <em><span class="pre">fcmpges</span></em><span class="pre">,</span> <em><span class="pre">fcmpgts</span></em><span class="pre">,</span> <em><span class="pre">fcmples</span></em><span class="pre">,</span> <em><span class="pre">fcmplts</span></em><span class="pre">,</span> <em><span class="pre">fcmpnes</span></em></tt></dt>
 <dd>Comparison operations.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fmins</span></tt>, <tt class="samp docutils literal"><span class="pre">fmaxs</span></tt></dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">fmins</span></em><span class="pre">,</span> <em><span class="pre">fmaxs</span></em></tt></dt>
 <dd>Floating-point minimum and maximum.  These instructions are only
 generated if <a class="reference internal" href="options-that-control-optimization.html#cmdoption-ffinite-math-only"><em class="xref std std-option">-ffinite-math-only</em></a> is specified.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fsqrts</span></tt></dt>
+<dt>fsqrts</dt>
 <dd>Unary square root operation.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fcoss</span></tt>, <tt class="samp docutils literal"><span class="pre">fsins</span></tt>, <tt class="samp docutils literal"><span class="pre">ftans</span></tt>, <tt class="samp docutils literal"><span class="pre">fatans</span></tt>, <tt class="samp docutils literal"><span class="pre">fexps</span></tt>, <tt class="samp docutils literal"><span class="pre">flogs</span></tt></dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">fcoss</span></em><span class="pre">,</span> <em><span class="pre">fsins</span></em><span class="pre">,</span> <em><span class="pre">ftans</span></em><span class="pre">,</span> <em><span class="pre">fatans</span></em><span class="pre">,</span> <em><span class="pre">fexps</span></em><span class="pre">,</span> <em><span class="pre">flogs</span></em></tt></dt>
 <dd><p class="first">Floating-point trigonometric and exponential functions.  These instructions
 are only generated if <a class="reference internal" href="options-that-control-optimization.html#cmdoption-funsafe-math-optimizations"><em class="xref std std-option">-funsafe-math-optimizations</em></a> is also specified.</p>
 <p class="last">Double-precision floating point:</p>
 </dd>
-<dt><tt class="samp docutils literal"><span class="pre">faddd</span></tt>, <tt class="samp docutils literal"><span class="pre">fsubd</span></tt>, <tt class="samp docutils literal"><span class="pre">fdivd</span></tt>, <tt class="samp docutils literal"><span class="pre">fmuld</span></tt></dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">faddd</span></em><span class="pre">,</span> <em><span class="pre">fsubd</span></em><span class="pre">,</span> <em><span class="pre">fdivd</span></em><span class="pre">,</span> <em><span class="pre">fmuld</span></em></tt></dt>
 <dd>Binary arithmetic operations.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fnegd</span></tt></dt>
+<dt>fnegd</dt>
 <dd>Unary negation.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fabsd</span></tt></dt>
+<dt>fabsd</dt>
 <dd>Unary absolute value.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fcmpeqd</span></tt>, <tt class="samp docutils literal"><span class="pre">fcmpged</span></tt>, <tt class="samp docutils literal"><span class="pre">fcmpgtd</span></tt>, <tt class="samp docutils literal"><span class="pre">fcmpled</span></tt>, <tt class="samp docutils literal"><span class="pre">fcmpltd</span></tt>, <tt class="samp docutils literal"><span class="pre">fcmpned</span></tt></dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">fcmpeqd</span></em><span class="pre">,</span> <em><span class="pre">fcmpged</span></em><span class="pre">,</span> <em><span class="pre">fcmpgtd</span></em><span class="pre">,</span> <em><span class="pre">fcmpled</span></em><span class="pre">,</span> <em><span class="pre">fcmpltd</span></em><span class="pre">,</span> <em><span class="pre">fcmpned</span></em></tt></dt>
 <dd>Comparison operations.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fmind</span></tt>, <tt class="samp docutils literal"><span class="pre">fmaxd</span></tt></dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">fmind</span></em><span class="pre">,</span> <em><span class="pre">fmaxd</span></em></tt></dt>
 <dd>Double-precision minimum and maximum.  These instructions are only
 generated if <a class="reference internal" href="options-that-control-optimization.html#cmdoption-ffinite-math-only"><em class="xref std std-option">-ffinite-math-only</em></a> is specified.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fsqrtd</span></tt></dt>
+<dt>fsqrtd</dt>
 <dd>Unary square root operation.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fcosd</span></tt>, <tt class="samp docutils literal"><span class="pre">fsind</span></tt>, <tt class="samp docutils literal"><span class="pre">ftand</span></tt>, <tt class="samp docutils literal"><span class="pre">fatand</span></tt>, <tt class="samp docutils literal"><span class="pre">fexpd</span></tt>, <tt class="samp docutils literal"><span class="pre">flogd</span></tt></dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">fcosd</span></em><span class="pre">,</span> <em><span class="pre">fsind</span></em><span class="pre">,</span> <em><span class="pre">ftand</span></em><span class="pre">,</span> <em><span class="pre">fatand</span></em><span class="pre">,</span> <em><span class="pre">fexpd</span></em><span class="pre">,</span> <em><span class="pre">flogd</span></em></tt></dt>
 <dd><p class="first">Double-precision trigonometric and exponential functions.  These instructions
 are only generated if <a class="reference internal" href="options-that-control-optimization.html#cmdoption-funsafe-math-optimizations"><em class="xref std std-option">-funsafe-math-optimizations</em></a> is also specified.</p>
 <p class="last">Conversions:</p>
 </dd>
-<dt><tt class="samp docutils literal"><span class="pre">fextsd</span></tt></dt>
+<dt>fextsd</dt>
 <dd>Conversion from single precision to double precision.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">ftruncds</span></tt></dt>
+<dt>ftruncds</dt>
 <dd>Conversion from double precision to single precision.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fixsi</span></tt>, <tt class="samp docutils literal"><span class="pre">fixsu</span></tt>, <tt class="samp docutils literal"><span class="pre">fixdi</span></tt>, <tt class="samp docutils literal"><span class="pre">fixdu</span></tt></dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">fixsi</span></em><span class="pre">,</span> <em><span class="pre">fixsu</span></em><span class="pre">,</span> <em><span class="pre">fixdi</span></em><span class="pre">,</span> <em><span class="pre">fixdu</span></em></tt></dt>
 <dd>Conversion from floating point to signed or unsigned integer types, with
 truncation towards zero.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">round</span></tt></dt>
+<dt>round</dt>
 <dd>Conversion from single-precision floating point to signed integer,
 rounding to the nearest integer and ties away from zero.
 This corresponds to the <tt class="docutils literal"><span class="pre">__builtin_lroundf</span></tt> function when
 <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fno-math-errno"><em class="xref std std-option">-fno-math-errno</em></a> is used.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">floatis</span></tt>, <tt class="samp docutils literal"><span class="pre">floatus</span></tt>, <tt class="samp docutils literal"><span class="pre">floatid</span></tt>, <tt class="samp docutils literal"><span class="pre">floatud</span></tt></dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">floatis</span></em><span class="pre">,</span> <em><span class="pre">floatus</span></em><span class="pre">,</span> <em><span class="pre">floatid</span></em><span class="pre">,</span> <em><span class="pre">floatud</span></em></tt></dt>
 <dd><p class="first">Conversion from signed or unsigned integer types to floating-point types.</p>
 <p class="last">In addition, all of the following transfer instructions for internal</p>
 </dd>
@@ -6805,15 +6793,15 @@ GCC automatically generates the necessary code sequences to write
 register X and/or read register Y when double-precision floating-point
 instructions are used.</p>
 <dl class="docutils">
-<dt><tt class="samp docutils literal"><span class="pre">fwrx</span></tt></dt>
+<dt>fwrx</dt>
 <dd>Write <tt class="docutils literal"><span class="pre">src1</span></tt> into the least significant half of X and <tt class="docutils literal"><span class="pre">src2</span></tt> into
 the most significant half of X.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">fwry</span></tt></dt>
+<dt>fwry</dt>
 <dd>Write <tt class="docutils literal"><span class="pre">src1</span></tt> into Y.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">frdxhi</span></tt>, <tt class="samp docutils literal"><span class="pre">frdxlo</span></tt></dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">frdxhi</span></em><span class="pre">,</span> <em><span class="pre">frdxlo</span></em></tt></dt>
 <dd>Read the most or least (respectively) significant half of X and store it in
 <tt class="docutils literal"><span class="pre">dest</span></tt>.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">frdy</span></tt></dt>
+<dt>frdy</dt>
 <dd><p class="first">Read the value of Y and store it into <tt class="docutils literal"><span class="pre">dest</span></tt>.</p>
 <p class="last">Note that you can gain more local control over generation of Nios II custom</p>
 </dd>
@@ -7060,23 +7048,16 @@ option may suffer from poor performance of byte (char) manipulation,
 since the DSP AE does not provide hardware support for byte load/stores.</p>
 </dd></dl>
 
-<table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-m<var>symbol-as-address</var></span></kbd></td>
-</tr>
-<tr><td>&nbsp;</td><td>Enable the compiler to directly use a symbol name as an address in a
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">-msymbol-as-address</span></tt></dt>
+<dd>Enable the compiler to directly use a symbol name as an address in a
 load/store instruction, without first loading it into a
 register.  Typically, the use of this option generates larger
 programs, which run faster than when the option isn&#8217;t used.  However, the
 results vary from program to program, so it is left as a user option,
-rather than being permanently enabled.</td></tr>
-<tr><td class="option-group" colspan="2">
-<kbd><span class="option">-m<var>no-inefficient-warnings</var></span></kbd></td>
-</tr>
-<tr><td>&nbsp;</td><td>Disables warnings about the generation of inefficient code.  These
+rather than being permanently enabled.</dd>
+<dt><tt class="docutils literal"><span class="pre">-mno-inefficient-warnings</span></tt></dt>
+<dd>Disables warnings about the generation of inefficient code.  These
 warnings can be generated, for example, when compiling code that
 performs byte-level memory operations on the MAC AE type.  The MAC AE has
 no hardware support for byte-level memory operations, so all byte
@@ -7084,9 +7065,8 @@ load/stores must be synthesized from word load/store operations.  This is
 inefficient and a warning is generated to indicate
 that you should rewrite the code to avoid byte operations, or to target
 an AE type that has the necessary hardware support.  This option disables
-these warnings.</td></tr>
-</tbody>
-</table>
+these warnings.</dd>
+</dl>
 </div>
 <div class="section" id="powerpc-options">
 <span id="id69"></span><h2>PowerPC Options<a class="headerlink" href="#powerpc-options" title="Permalink to this headline">¶</a></h2>
@@ -7384,7 +7364,7 @@ This is a PowerPC 32-bit SYSV ABI option.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt>-misel=``yes/no``</dt>
+<dt><tt class="samp docutils literal"><span class="pre">-misel=</span><em><span class="pre">yes/no</span></em></tt></dt>
 <dd>This switch has been deprecated.  Use <a class="reference internal" href="#cmdoption-misel"><em class="xref std std-option">-misel</em></a> and
 <em class="xref std std-option">-mno-isel</em> instead.</dd>
 </dl>
@@ -7403,7 +7383,7 @@ instructions.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt>-mspe=``yes/no``</dt>
+<dt><tt class="samp docutils literal"><span class="pre">-mspe=</span><em><span class="pre">yes/no</span></em></tt></dt>
 <dd>This option has been deprecated.  Use <a class="reference internal" href="#cmdoption-mspe"><em class="xref std std-option">-mspe</em></a> and
 <em class="xref std std-option">-mno-spe</em> instead.</dd>
 </dl>
@@ -7821,15 +7801,15 @@ instructions.</p>
 by the target during instruction scheduling.  The argument
 <tt class="docutils literal"><span class="pre">dependence_type</span></tt> takes one of the following values:</p>
 <dl class="docutils">
-<dt><tt class="samp docutils literal"><span class="pre">no</span></tt></dt>
+<dt>no</dt>
 <dd>No dependence is costly.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">all</span></tt></dt>
+<dt>all</dt>
 <dd>All dependences are costly.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">true_store_to_load</span></tt></dt>
+<dt>true_store_to_load</dt>
 <dd>A true dependence from store to load is costly.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">store_to_load</span></tt></dt>
+<dt>store_to_load</dt>
 <dd>Any dependence from store to load is costly.</dd>
-<dt><tt class="docutils literal"><span class="pre">number</span></tt></dt>
+<dt>number</dt>
 <dd>Any dependence for which the latency is greater than or equal to
 <tt class="docutils literal"><span class="pre">number</span></tt> is costly.</dd>
 </dl>
@@ -7842,16 +7822,16 @@ by the target during instruction scheduling.  The argument
 the second scheduling pass.  The argument <tt class="docutils literal"><span class="pre">scheme</span></tt> takes one of the
 following values:</p>
 <dl class="docutils">
-<dt><tt class="samp docutils literal"><span class="pre">no</span></tt></dt>
+<dt>no</dt>
 <dd>Don&#8217;t insert NOPs.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">pad</span></tt></dt>
+<dt>pad</dt>
 <dd>Pad with NOPs any dispatch group that has vacant issue slots,
 according to the scheduler&#8217;s grouping.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">regroup_exact</span></tt></dt>
+<dt>regroup_exact</dt>
 <dd>Insert NOPs to force costly dependent insns into
 separate groups.  Insert exactly as many NOPs as needed to force an insn
 to a new group, according to the estimated processor grouping.</dd>
-<dt><tt class="docutils literal"><span class="pre">number</span></tt></dt>
+<dt>number</dt>
 <dd>Insert NOPs to force costly dependent insns into
 separate groups.  Insert <tt class="docutils literal"><span class="pre">number</span></tt> NOPs to force an insn to a new group.</dd>
 </dl>
@@ -8207,25 +8187,25 @@ roots.</p>
 may be used.  <tt class="docutils literal"><span class="pre">opt</span></tt> is a comma-separated list of options, which may
 be preceded by a <tt class="docutils literal"><span class="pre">!</span></tt> to invert the option:</p>
 <dl class="docutils">
-<dt>all</dt>
+<dt><tt class="samp docutils literal"><span class="pre">all</span></tt></dt>
 <dd>Enable all estimate instructions.</dd>
-<dt>default</dt>
+<dt><tt class="samp docutils literal"><span class="pre">default</span></tt></dt>
 <dd>Enable the default instructions, equivalent to <a class="reference internal" href="#cmdoption-mrecip"><em class="xref std std-option">-mrecip</em></a>.</dd>
-<dt>none</dt>
+<dt><tt class="samp docutils literal"><span class="pre">none</span></tt></dt>
 <dd>Disable all estimate instructions, equivalent to <em class="xref std std-option">-mno-recip</em>.</dd>
-<dt>div</dt>
+<dt><tt class="samp docutils literal"><span class="pre">div</span></tt></dt>
 <dd>Enable the reciprocal approximation instructions for both
 single and double precision.</dd>
-<dt>divf</dt>
+<dt><tt class="samp docutils literal"><span class="pre">divf</span></tt></dt>
 <dd>Enable the single-precision reciprocal approximation instructions.</dd>
-<dt>divd</dt>
+<dt><tt class="samp docutils literal"><span class="pre">divd</span></tt></dt>
 <dd>Enable the double-precision reciprocal approximation instructions.</dd>
-<dt>rsqrt</dt>
+<dt><tt class="samp docutils literal"><span class="pre">rsqrt</span></tt></dt>
 <dd>Enable the reciprocal square root approximation instructions for both
 single and double precision.</dd>
-<dt>rsqrtf</dt>
+<dt><tt class="samp docutils literal"><span class="pre">rsqrtf</span></tt></dt>
 <dd>Enable the single-precision reciprocal square root approximation instructions.</dd>
-<dt>rsqrtd</dt>
+<dt><tt class="samp docutils literal"><span class="pre">rsqrtd</span></tt></dt>
 <dd><p class="first">Enable the double-precision reciprocal square root approximation instructions.</p>
 <p class="last">So, for example, <em class="xref std std-option">-mrecip=all,!rsqrtd</em> enables</p>
 </dd>
@@ -8807,7 +8787,7 @@ largest NOP like instructions the architecture allows (maximum
 </dd></dl>
 
 <dl class="docutils">
-<dt>-m2e</dt>
+<dt><tt class="docutils literal"><span class="pre">-m2e</span></tt></dt>
 <dd>Generate code for the SH2e.</dd>
 </dl>
 <dl class="option">
@@ -9158,10 +9138,10 @@ which is incompatible with the SH ABI.</p>
 separated list.  For details on the atomic built-in functions see
 __atomic Builtins.  The following models and parameters are supported:</p>
 <dl class="docutils">
-<dt>none</dt>
+<dt><tt class="samp docutils literal"><span class="pre">none</span></tt></dt>
 <dd>Disable compiler generated atomic sequences and emit library calls for atomic
 operations.  This is the default if the target is not <tt class="docutils literal"><span class="pre">sh*-*-linux*</span></tt>.</dd>
-<dt>soft-gusa</dt>
+<dt><tt class="samp docutils literal"><span class="pre">soft-gusa</span></tt></dt>
 <dd>Generate GNU/Linux compatible gUSA software atomic sequences for the atomic
 built-in functions.  The generated atomic sequences require additional support
 from the interrupt/exception handling code of the system and are only suitable
@@ -9170,21 +9150,21 @@ the target is <tt class="docutils literal"><span class="pre">sh*-*-linux*</span>
 this option also partially utilizes the hardware atomic instructions
 <tt class="docutils literal"><span class="pre">movli.l</span></tt> and <tt class="docutils literal"><span class="pre">movco.l</span></tt> to create more efficient code, unless
 <tt class="samp docutils literal"><span class="pre">strict</span></tt> is specified.</dd>
-<dt>soft-tcb</dt>
+<dt><tt class="samp docutils literal"><span class="pre">soft-tcb</span></tt></dt>
 <dd>Generate software atomic sequences that use a variable in the thread control
 block.  This is a variation of the gUSA sequences which can also be used on
 SH1* and SH2* targets.  The generated atomic sequences require additional
 support from the interrupt/exception handling code of the system and are only
 suitable for single-core systems.  When using this model, the <tt class="samp docutils literal"><span class="pre">gbr-offset=</span></tt>
 parameter has to be specified as well.</dd>
-<dt>soft-imask</dt>
+<dt><tt class="samp docutils literal"><span class="pre">soft-imask</span></tt></dt>
 <dd>Generate software atomic sequences that temporarily disable interrupts by
 setting <tt class="docutils literal"><span class="pre">SR.IMASK</span> <span class="pre">=</span> <span class="pre">1111</span></tt>.  This model works only when the program runs
 in privileged mode and is only suitable for single-core systems.  Additional
 support from the interrupt/exception handling code of the system is not
 required.  This model is enabled by default when the target is
 <tt class="docutils literal"><span class="pre">sh*-*-linux*</span></tt> and SH1* or SH2*.</dd>
-<dt>hard-llcs</dt>
+<dt><tt class="samp docutils literal"><span class="pre">hard-llcs</span></tt></dt>
 <dd>Generate hardware atomic sequences using the <tt class="docutils literal"><span class="pre">movli.l</span></tt> and <tt class="docutils literal"><span class="pre">movco.l</span></tt>
 instructions only.  This is only available on SH4A and is suitable for
 multi-core systems.  Since the hardware instructions support only 32 bit atomic
@@ -9193,13 +9173,13 @@ Code compiled with this option is also compatible with other software
 atomic model interrupt/exception handling systems if executed on an SH4A
 system.  Additional support from the interrupt/exception handling code of the
 system is not required for this model.</dd>
-<dt>gbr-offset=</dt>
+<dt><tt class="samp docutils literal"><span class="pre">gbr-offset=</span></tt></dt>
 <dd>This parameter specifies the offset in bytes of the variable in the thread
 control block structure that should be used by the generated atomic sequences
 when the <tt class="samp docutils literal"><span class="pre">soft-tcb</span></tt> model has been selected.  For other models this
 parameter is ignored.  The specified value must be an integer multiple of four
 and in the range 0-1020.</dd>
-<dt>strict</dt>
+<dt><tt class="samp docutils literal"><span class="pre">strict</span></tt></dt>
 <dd>This parameter prevents mixed usage of multiple atomic models, even if they
 are compatible, and makes the compiler generate atomic sequences of the
 specified model only.</dd>
@@ -9246,33 +9226,33 @@ when the target is <tt class="docutils literal"><span class="pre">sh*-*-linux*</
 <dd><p id="index-65">Set the division strategy to be used for integer division operations.
 For SHmedia <tt class="docutils literal"><span class="pre">strategy</span></tt> can be one of:</p>
 <dl class="docutils">
-<dt>fp</dt>
+<dt><tt class="samp docutils literal"><span class="pre">fp</span></tt></dt>
 <dd>Performs the operation in floating point.  This has a very high latency,
 but needs only a few instructions, so it might be a good choice if
 your code has enough easily-exploitable ILP to allow the compiler to
 schedule the floating-point instructions together with other instructions.
 Division by zero causes a floating-point exception.</dd>
-<dt>inv</dt>
+<dt><tt class="samp docutils literal"><span class="pre">inv</span></tt></dt>
 <dd>Uses integer operations to calculate the inverse of the divisor,
 and then multiplies the dividend with the inverse.  This strategy allows
 CSE and hoisting of the inverse calculation.  Division by zero calculates
 an unspecified result, but does not trap.</dd>
-<dt>inv:minlat</dt>
+<dt><tt class="samp docutils literal"><span class="pre">inv:minlat</span></tt></dt>
 <dd>A variant of <tt class="samp docutils literal"><span class="pre">inv</span></tt> where, if no CSE or hoisting opportunities
 have been found, or if the entire operation has been hoisted to the same
 place, the last stages of the inverse calculation are intertwined with the
 final multiply to reduce the overall latency, at the expense of using a few
 more instructions, and thus offering fewer scheduling opportunities with
 other code.</dd>
-<dt>call</dt>
+<dt><tt class="samp docutils literal"><span class="pre">call</span></tt></dt>
 <dd>Calls a library function that usually implements the <tt class="samp docutils literal"><span class="pre">inv:minlat</span></tt>
 strategy.
 This gives high code density for <tt class="docutils literal"><span class="pre">m5-*media-nofpu</span></tt> compilations.</dd>
-<dt>call2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">call2</span></tt></dt>
 <dd>Uses a different entry point of the same library function, where it
 assumes that a pointer to a lookup table has already been set up, which
 exposes the pointer load to CSE and code hoisting optimizations.</dd>
-<dt>inv:call inv:call2 inv:fp</dt>
+<dt><tt class="samp docutils literal"><span class="pre">inv:call</span></tt> <tt class="samp docutils literal"><span class="pre">inv:call2</span></tt> <tt class="samp docutils literal"><span class="pre">inv:fp</span></tt></dt>
 <dd>Use the <tt class="samp docutils literal"><span class="pre">inv</span></tt> algorithm for initial
 code generation, but if the code stays unoptimized, revert to the <tt class="samp docutils literal"><span class="pre">call</span></tt>,
 <tt class="samp docutils literal"><span class="pre">call2</span></tt>, or <tt class="samp docutils literal"><span class="pre">fp</span></tt> strategies, respectively.  Note that the
@@ -9281,7 +9261,7 @@ separate instruction, so it is possible that all the integer instructions
 are hoisted out, but the marker for the side effect stays where it is.
 A recombination to floating-point operations or a call is not possible
 in that case.</dd>
-<dt>inv20u inv20l</dt>
+<dt><tt class="samp docutils literal"><span class="pre">inv20u</span></tt> <tt class="samp docutils literal"><span class="pre">inv20l</span></tt></dt>
 <dd><p class="first">Variants of the <tt class="samp docutils literal"><span class="pre">inv:minlat</span></tt> strategy.  In the case
 that the inverse calculation is not separated from the multiply, they speed
 up division where the dividend fits into 20 bits (plus sign where applicable)
@@ -9290,17 +9270,17 @@ slows down the case of larger dividends.  <tt class="samp docutils literal"><spa
 a small dividend to be unlikely, and <tt class="samp docutils literal"><span class="pre">inv20l</span></tt> assumes it to be likely.</p>
 <p class="last">For targets other than SHmedia <tt class="docutils literal"><span class="pre">strategy</span></tt> can be one of:</p>
 </dd>
-<dt>call-div1</dt>
+<dt><tt class="samp docutils literal"><span class="pre">call-div1</span></tt></dt>
 <dd>Calls a library function that uses the single-step division instruction
 <tt class="docutils literal"><span class="pre">div1</span></tt> to perform the operation.  Division by zero calculates an
 unspecified result and does not trap.  This is the default except for SH4,
 SH2A and SHcompact.</dd>
-<dt>call-fp</dt>
+<dt><tt class="samp docutils literal"><span class="pre">call-fp</span></tt></dt>
 <dd>Calls a library function that performs the operation in double precision
 floating point.  Division by zero causes a floating-point exception.  This is
 the default for SHcompact with FPU.  Specifying this for targets that do not
 have a double precision FPU defaults to <tt class="docutils literal"><span class="pre">call-div1</span></tt>.</dd>
-<dt>call-table</dt>
+<dt><tt class="samp docutils literal"><span class="pre">call-table</span></tt></dt>
 <dd><p class="first">Calls a library function that uses a lookup table for small divisors and
 the <tt class="docutils literal"><span class="pre">div1</span></tt> instruction with case distinction for larger divisors.  Division
 by zero calculates an unspecified result and does not trap.  This is the default
@@ -9797,21 +9777,21 @@ to 64 bits.</p>
 <tt class="descname">-mcmodel</tt><tt class="descclassname">=which</tt><a class="headerlink" href="#cmdoption-mcmodel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the code model to one of</p>
 <dl class="docutils">
-<dt>medlow</dt>
+<dt><tt class="samp docutils literal"><span class="pre">medlow</span></tt></dt>
 <dd>The Medium/Low code model: 64-bit addresses, programs
 must be linked in the low 32 bits of memory.  Programs can be statically
 or dynamically linked.</dd>
-<dt>medmid</dt>
+<dt><tt class="samp docutils literal"><span class="pre">medmid</span></tt></dt>
 <dd>The Medium/Middle code model: 64-bit addresses, programs
 must be linked in the low 44 bits of memory, the text and data segments must
 be less than 2GB in size and the data segment must be located within 2GB of
 the text segment.</dd>
-<dt>medany</dt>
+<dt><tt class="samp docutils literal"><span class="pre">medany</span></tt></dt>
 <dd>The Medium/Anywhere code model: 64-bit addresses, programs
 may be linked anywhere in memory, the text and data segments must be less
 than 2GB in size and the data segment must be located within 2GB of the
 text segment.</dd>
-<dt>embmedany</dt>
+<dt><tt class="samp docutils literal"><span class="pre">embmedany</span></tt></dt>
 <dd>The Medium/Anywhere code model for embedded systems:
 64-bit addresses, the text and data segments must be less than 2GB in
 size, both starting anywhere in memory (determined at link time).  The
@@ -9825,15 +9805,15 @@ are statically linked and PIC is not supported.</dd>
 <tt class="descname">-mmemory-model</tt><tt class="descclassname">=mem-model</tt><a class="headerlink" href="#cmdoption-mmemory-model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the memory model in force on the processor to one of</p>
 <dl class="docutils">
-<dt>default</dt>
+<dt><tt class="samp docutils literal"><span class="pre">default</span></tt></dt>
 <dd>The default memory model for the processor and operating system.</dd>
-<dt>rmo</dt>
+<dt><tt class="samp docutils literal"><span class="pre">rmo</span></tt></dt>
 <dd>Relaxed Memory Order</dd>
-<dt>pso</dt>
+<dt><tt class="samp docutils literal"><span class="pre">pso</span></tt></dt>
 <dd>Partial Store Order</dd>
-<dt>tso</dt>
+<dt><tt class="samp docutils literal"><span class="pre">tso</span></tt></dt>
 <dd>Total Store Order</dd>
-<dt>sc</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sc</span></tt></dt>
 <dd><p class="first">Sequential Consistency</p>
 <p class="last">These memory models are formally defined in Appendix D of the Sparc V9</p>
 </dd>
@@ -10477,8 +10457,8 @@ defines the preprocessor macro <tt class="docutils literal"><span class="pre">__
 <dt id="cmdoption-non-static">
 <tt class="descname">-non-static</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-non-static" title="Permalink to this definition">¶</a></dt>
 <dd><p>Link an RTP executable against shared libraries rather than static
-libraries.  The options <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a> and <a class="reference internal" href="options-for-linking.html#cmdoption-shared"><em class="xref std std-option">-shared</em></a> can
-also be used for RTPs (see <a class="reference internal" href="options-for-linking.html#link-options"><em>Options for Linking</em></a>); <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a>
+libraries.  The options <a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a> and <a class="reference internal" href="options-for-linking.html#cmdoption-shared"><em class="xref std std-option">-shared</em></a> can
+also be used for RTPs (see <a class="reference internal" href="options-for-linking.html#link-options"><em>Options for Linking</em></a>); <a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a>
 is the default.</p>
 </dd></dl>
 
@@ -10518,141 +10498,141 @@ indicated.  Specifying <em class="xref std std-option">-march=``cpu-type``</em> 
 <em class="xref std std-option">-mtune=``cpu-type``</em>.</p>
 <p>The choices for <tt class="docutils literal"><span class="pre">cpu-type</span></tt> are:</p>
 <dl class="docutils">
-<dt>native</dt>
+<dt><tt class="samp docutils literal"><span class="pre">native</span></tt></dt>
 <dd>This selects the CPU to generate code for at compilation time by determining
 the processor type of the compiling machine.  Using <em class="xref std std-option">-march=native</em>
 enables all instruction subsets supported by the local machine (hence
 the result might not run on different machines).  Using <em class="xref std std-option">-mtune=native</em>
 produces code optimized for the local machine under the constraints
 of the selected instruction set.</dd>
-<dt>i386</dt>
+<dt><tt class="samp docutils literal"><span class="pre">i386</span></tt></dt>
 <dd>Original Intel i386 CPU.</dd>
-<dt>i486</dt>
+<dt><tt class="samp docutils literal"><span class="pre">i486</span></tt></dt>
 <dd>Intel i486 CPU.  (No scheduling is implemented for this chip.)</dd>
-<dt>i586 pentium</dt>
+<dt><tt class="samp docutils literal"><span class="pre">i586</span></tt> <tt class="samp docutils literal"><span class="pre">pentium</span></tt></dt>
 <dd>Intel Pentium CPU with no MMX support.</dd>
-<dt>pentium-mmx</dt>
+<dt><tt class="samp docutils literal"><span class="pre">pentium-mmx</span></tt></dt>
 <dd>Intel Pentium MMX CPU, based on Pentium core with MMX instruction set support.</dd>
-<dt>pentiumpro</dt>
+<dt><tt class="samp docutils literal"><span class="pre">pentiumpro</span></tt></dt>
 <dd>Intel Pentium Pro CPU.</dd>
-<dt>i686</dt>
+<dt><tt class="samp docutils literal"><span class="pre">i686</span></tt></dt>
 <dd>When used with <a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a>, the Pentium Pro
 instruction set is used, so the code runs on all i686 family chips.
 When used with <a class="reference internal" href="#cmdoption-mtune"><em class="xref std std-option">-mtune</em></a>, it has the same meaning as <tt class="samp docutils literal"><span class="pre">generic</span></tt>.</dd>
-<dt>pentium2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">pentium2</span></tt></dt>
 <dd>Intel Pentium II CPU, based on Pentium Pro core with MMX instruction set
 support.</dd>
-<dt>pentium3 pentium3m</dt>
+<dt><tt class="samp docutils literal"><span class="pre">pentium3</span></tt> <tt class="samp docutils literal"><span class="pre">pentium3m</span></tt></dt>
 <dd>Intel Pentium III CPU, based on Pentium Pro core with MMX and SSE instruction
 set support.</dd>
-<dt>pentium-m</dt>
+<dt><tt class="samp docutils literal"><span class="pre">pentium-m</span></tt></dt>
 <dd>Intel Pentium M; low-power version of Intel Pentium III CPU
 with MMX, SSE and SSE2 instruction set support.  Used by Centrino notebooks.</dd>
-<dt>pentium4 pentium4m</dt>
+<dt><tt class="samp docutils literal"><span class="pre">pentium4</span></tt> <tt class="samp docutils literal"><span class="pre">pentium4m</span></tt></dt>
 <dd>Intel Pentium 4 CPU with MMX, SSE and SSE2 instruction set support.</dd>
-<dt>prescott</dt>
+<dt><tt class="samp docutils literal"><span class="pre">prescott</span></tt></dt>
 <dd>Improved version of Intel Pentium 4 CPU with MMX, SSE, SSE2 and SSE3 instruction
 set support.</dd>
-<dt>nocona</dt>
+<dt><tt class="samp docutils literal"><span class="pre">nocona</span></tt></dt>
 <dd>Improved version of Intel Pentium 4 CPU with 64-bit extensions, MMX, SSE,
 SSE2 and SSE3 instruction set support.</dd>
-<dt>core2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">core2</span></tt></dt>
 <dd>Intel Core 2 CPU with 64-bit extensions, MMX, SSE, SSE2, SSE3 and SSSE3
 instruction set support.</dd>
-<dt>nehalem</dt>
+<dt><tt class="samp docutils literal"><span class="pre">nehalem</span></tt></dt>
 <dd>Intel Nehalem CPU with 64-bit extensions, MMX, SSE, SSE2, SSE3, SSSE3,
 SSE4.1, SSE4.2 and POPCNT instruction set support.</dd>
-<dt>westmere</dt>
+<dt><tt class="samp docutils literal"><span class="pre">westmere</span></tt></dt>
 <dd>Intel Westmere CPU with 64-bit extensions, MMX, SSE, SSE2, SSE3, SSSE3,
 SSE4.1, SSE4.2, POPCNT, AES and PCLMUL instruction set support.</dd>
-<dt>sandybridge</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sandybridge</span></tt></dt>
 <dd>Intel Sandy Bridge CPU with 64-bit extensions, MMX, SSE, SSE2, SSE3, SSSE3,
 SSE4.1, SSE4.2, POPCNT, AVX, AES and PCLMUL instruction set support.</dd>
-<dt>ivybridge</dt>
+<dt><tt class="samp docutils literal"><span class="pre">ivybridge</span></tt></dt>
 <dd>Intel Ivy Bridge CPU with 64-bit extensions, MMX, SSE, SSE2, SSE3, SSSE3,
 SSE4.1, SSE4.2, POPCNT, AVX, AES, PCLMUL, FSGSBASE, RDRND and F16C
 instruction set support.</dd>
-<dt>haswell</dt>
+<dt><tt class="samp docutils literal"><span class="pre">haswell</span></tt></dt>
 <dd>Intel Haswell CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3, SSSE3,
 SSE4.1, SSE4.2, POPCNT, AVX, AVX2, AES, PCLMUL, FSGSBASE, RDRND, FMA,
 BMI, BMI2 and F16C instruction set support.</dd>
-<dt>broadwell</dt>
+<dt><tt class="samp docutils literal"><span class="pre">broadwell</span></tt></dt>
 <dd>Intel Broadwell CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3, SSSE3,
 SSE4.1, SSE4.2, POPCNT, AVX, AVX2, AES, PCLMUL, FSGSBASE, RDRND, FMA,
 BMI, BMI2, F16C, RDSEED, ADCX and PREFETCHW instruction set support.</dd>
-<dt>bonnell</dt>
+<dt><tt class="samp docutils literal"><span class="pre">bonnell</span></tt></dt>
 <dd>Intel Bonnell CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3 and SSSE3
 instruction set support.</dd>
-<dt>silvermont</dt>
+<dt><tt class="samp docutils literal"><span class="pre">silvermont</span></tt></dt>
 <dd>Intel Silvermont CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3, SSSE3,
 SSE4.1, SSE4.2, POPCNT, AES, PCLMUL and RDRND instruction set support.</dd>
-<dt>knl</dt>
+<dt><tt class="samp docutils literal"><span class="pre">knl</span></tt></dt>
 <dd>Intel Knight&#8217;s Landing CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3,
 SSSE3, SSE4.1, SSE4.2, POPCNT, AVX, AVX2, AES, PCLMUL, FSGSBASE, RDRND, FMA,
 BMI, BMI2, F16C, RDSEED, ADCX, PREFETCHW, AVX512F, AVX512PF, AVX512ER and
 AVX512CD instruction set support.</dd>
-<dt>k6</dt>
+<dt><tt class="samp docutils literal"><span class="pre">k6</span></tt></dt>
 <dd>AMD K6 CPU with MMX instruction set support.</dd>
-<dt>k6-2 k6-3</dt>
+<dt><tt class="samp docutils literal"><span class="pre">k6-2</span></tt> <tt class="samp docutils literal"><span class="pre">k6-3</span></tt></dt>
 <dd>Improved versions of AMD K6 CPU with MMX and 3DNow! instruction set support.</dd>
-<dt>athlon athlon-tbird</dt>
+<dt><tt class="samp docutils literal"><span class="pre">athlon</span></tt> <tt class="samp docutils literal"><span class="pre">athlon-tbird</span></tt></dt>
 <dd>AMD Athlon CPU with MMX, 3dNOW!, enhanced 3DNow! and SSE prefetch instructions
 support.</dd>
-<dt>athlon-4 athlon-xp athlon-mp</dt>
+<dt><tt class="samp docutils literal"><span class="pre">athlon-4</span></tt> <tt class="samp docutils literal"><span class="pre">athlon-xp</span></tt> <tt class="samp docutils literal"><span class="pre">athlon-mp</span></tt></dt>
 <dd>Improved AMD Athlon CPU with MMX, 3DNow!, enhanced 3DNow! and full SSE
 instruction set support.</dd>
-<dt>k8 opteron athlon64 athlon-fx</dt>
+<dt><tt class="samp docutils literal"><span class="pre">k8</span></tt> <tt class="samp docutils literal"><span class="pre">opteron</span></tt> <tt class="samp docutils literal"><span class="pre">athlon64</span></tt> <tt class="samp docutils literal"><span class="pre">athlon-fx</span></tt></dt>
 <dd>Processors based on the AMD K8 core with x86-64 instruction set support,
 including the AMD Opteron, Athlon 64, and Athlon 64 FX processors.
 (This supersets MMX, SSE, SSE2, 3DNow!, enhanced 3DNow! and 64-bit
 instruction set extensions.)</dd>
-<dt>k8-sse3 opteron-sse3 athlon64-sse3</dt>
+<dt><tt class="samp docutils literal"><span class="pre">k8-sse3</span></tt> <tt class="samp docutils literal"><span class="pre">opteron-sse3</span></tt> <tt class="samp docutils literal"><span class="pre">athlon64-sse3</span></tt></dt>
 <dd>Improved versions of AMD K8 cores with SSE3 instruction set support.</dd>
-<dt>amdfam10 barcelona</dt>
+<dt><tt class="samp docutils literal"><span class="pre">amdfam10</span></tt> <tt class="samp docutils literal"><span class="pre">barcelona</span></tt></dt>
 <dd>CPUs based on AMD Family 10h cores with x86-64 instruction set support.  (This
 supersets MMX, SSE, SSE2, SSE3, SSE4A, 3DNow!, enhanced 3DNow!, ABM and 64-bit
 instruction set extensions.)</dd>
-<dt>bdver1</dt>
+<dt><tt class="samp docutils literal"><span class="pre">bdver1</span></tt></dt>
 <dd>CPUs based on AMD Family 15h cores with x86-64 instruction set support.  (This
 supersets FMA4, AVX, XOP, LWP, AES, PCL_MUL, CX16, MMX, SSE, SSE2, SSE3, SSE4A,
 SSSE3, SSE4.1, SSE4.2, ABM and 64-bit instruction set extensions.)</dd>
-<dt>bdver2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">bdver2</span></tt></dt>
 <dd>AMD Family 15h core based CPUs with x86-64 instruction set support.  (This
 supersets BMI, TBM, F16C, FMA, FMA4, AVX, XOP, LWP, AES, PCL_MUL, CX16, MMX,
 SSE, SSE2, SSE3, SSE4A, SSSE3, SSE4.1, SSE4.2, ABM and 64-bit instruction set
 extensions.)</dd>
-<dt>bdver3</dt>
+<dt><tt class="samp docutils literal"><span class="pre">bdver3</span></tt></dt>
 <dd>AMD Family 15h core based CPUs with x86-64 instruction set support.  (This
 supersets BMI, TBM, F16C, FMA, FMA4, FSGSBASE, AVX, XOP, LWP, AES,
 PCL_MUL, CX16, MMX, SSE, SSE2, SSE3, SSE4A, SSSE3, SSE4.1, SSE4.2, ABM and
 64-bit instruction set extensions.</dd>
-<dt>bdver4</dt>
+<dt><tt class="samp docutils literal"><span class="pre">bdver4</span></tt></dt>
 <dd>AMD Family 15h core based CPUs with x86-64 instruction set support.  (This
 supersets BMI, BMI2, TBM, F16C, FMA, FMA4, FSGSBASE, AVX, AVX2, XOP, LWP,
 AES, PCL_MUL, CX16, MOVBE, MMX, SSE, SSE2, SSE3, SSE4A, SSSE3, SSE4.1,
 SSE4.2, ABM and 64-bit instruction set extensions.</dd>
-<dt>btver1</dt>
+<dt><tt class="samp docutils literal"><span class="pre">btver1</span></tt></dt>
 <dd>CPUs based on AMD Family 14h cores with x86-64 instruction set support.  (This
 supersets MMX, SSE, SSE2, SSE3, SSSE3, SSE4A, CX16, ABM and 64-bit
 instruction set extensions.)</dd>
-<dt>btver2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">btver2</span></tt></dt>
 <dd>CPUs based on AMD Family 16h cores with x86-64 instruction set support. This
 includes MOVBE, F16C, BMI, AVX, PCL_MUL, AES, SSE4.2, SSE4.1, CX16, ABM,
 SSE4A, SSSE3, SSE3, SSE2, SSE, MMX and 64-bit instruction set extensions.</dd>
-<dt>winchip-c6</dt>
+<dt><tt class="samp docutils literal"><span class="pre">winchip-c6</span></tt></dt>
 <dd>IDT WinChip C6 CPU, dealt in same way as i486 with additional MMX instruction
 set support.</dd>
-<dt>winchip2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">winchip2</span></tt></dt>
 <dd>IDT WinChip 2 CPU, dealt in same way as i486 with additional MMX and 3DNow!
 instruction set support.</dd>
-<dt>c3</dt>
+<dt><tt class="samp docutils literal"><span class="pre">c3</span></tt></dt>
 <dd>VIA C3 CPU with MMX and 3DNow! instruction set support.  (No scheduling is
 implemented for this chip.)</dd>
-<dt>c3-2</dt>
+<dt><tt class="samp docutils literal"><span class="pre">c3-2</span></tt></dt>
 <dd>VIA C3-2 (Nehemiah/C5XL) CPU with MMX and SSE instruction set support.
 (No scheduling is
 implemented for this chip.)</dd>
-<dt>geode</dt>
+<dt><tt class="samp docutils literal"><span class="pre">geode</span></tt></dt>
 <dd>AMD Geode embedded processor with MMX and 3DNow! instruction set support.</dd>
 </dl>
 </dd></dl>
@@ -10672,7 +10652,7 @@ but still runs on i686 machines.</p>
 <p>The choices for <tt class="docutils literal"><span class="pre">cpu-type</span></tt> are the same as for <a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a>.
 In addition, <a class="reference internal" href="#cmdoption-mtune"><em class="xref std std-option">-mtune</em></a> supports 2 extra choices for <tt class="docutils literal"><span class="pre">cpu-type</span></tt>:</p>
 <dl class="docutils">
-<dt>generic</dt>
+<dt><tt class="samp docutils literal"><span class="pre">generic</span></tt></dt>
 <dd><p class="first">Produce code optimized for the most common IA32//AMD64//EM64T processors.
 If you know the CPU on which your code will run, then you should use
 the corresponding <a class="reference internal" href="#cmdoption-mtune"><em class="xref std std-option">-mtune</em></a> or <a class="reference internal" href="#cmdoption-march"><em class="xref std std-option">-march</em></a> option instead of
@@ -10689,7 +10669,7 @@ generic instruction set applicable to all processors.  In contrast,
 <a class="reference internal" href="#cmdoption-mtune"><em class="xref std std-option">-mtune</em></a> indicates the processor (or, in this case, collection of
 processors) for which the code is optimized.</p>
 </dd>
-<dt>intel</dt>
+<dt><tt class="samp docutils literal"><span class="pre">intel</span></tt></dt>
 <dd><p class="first">Produce code optimized for the most current Intel processors, which are
 Haswell and Silvermont for this version of GCC.  If you know the CPU
 on which your code will run, then you should use the corresponding
@@ -10722,7 +10702,7 @@ processors) for which the code is optimized.</p>
 <dd><p>Generate floating-point arithmetic for selected unit <tt class="docutils literal"><span class="pre">unit</span></tt>.  The choices
 for <tt class="docutils literal"><span class="pre">unit</span></tt> are:</p>
 <dl class="docutils">
-<dt>387</dt>
+<dt><tt class="samp docutils literal"><span class="pre">387</span></tt></dt>
 <dd><p class="first">Use the standard 387 floating-point coprocessor present on the majority of chips and
 emulated otherwise.  Code compiled with this option runs almost everywhere.
 The temporary results are computed in 80-bit precision instead of the precision
@@ -10730,7 +10710,7 @@ specified by the type, resulting in slightly different results compared to most
 of other chips.  See <a class="reference internal" href="options-that-control-optimization.html#cmdoption-ffloat-store"><em class="xref std std-option">-ffloat-store</em></a> for more detailed description.</p>
 <p class="last">This is the default choice for x86-32 targets.</p>
 </dd>
-<dt>sse</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sse</span></tt></dt>
 <dd><p class="first">Use scalar floating-point instructions present in the SSE instruction set.
 This instruction set is supported by Pentium III and newer chips,
 and in the AMD line
@@ -10747,7 +10727,7 @@ the numerical instability problems of 387 code, but may break some existing
 code that expects temporaries to be 80 bits.</p>
 <p class="last">This is the default choice for the x86-64 compiler.</p>
 </dd>
-<dt>sse,387 sse+387 both</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sse,387</span></tt> <tt class="samp docutils literal"><span class="pre">sse+387</span></tt> <tt class="samp docutils literal"><span class="pre">both</span></tt></dt>
 <dd>Attempt to utilize both instruction sets at once.  This effectively doubles the
 amount of available registers, and on chips with separate execution units for
 387 and SSE the execution resources too.  Use this option with care, as it is
@@ -11181,19 +11161,19 @@ doesn&#8217;t need <a class="reference internal" href="#cmdoption-mrecip"><em cl
 may be used.  <tt class="docutils literal"><span class="pre">opt</span></tt> is a comma-separated list of options, which may
 be preceded by a <tt class="samp docutils literal"><span class="pre">!</span></tt> to invert the option:</p>
 <dl class="docutils">
-<dt>all</dt>
+<dt><tt class="samp docutils literal"><span class="pre">all</span></tt></dt>
 <dd>Enable all estimate instructions.</dd>
-<dt>default</dt>
+<dt><tt class="samp docutils literal"><span class="pre">default</span></tt></dt>
 <dd>Enable the default instructions, equivalent to <a class="reference internal" href="#cmdoption-mrecip"><em class="xref std std-option">-mrecip</em></a>.</dd>
-<dt>none</dt>
+<dt><tt class="samp docutils literal"><span class="pre">none</span></tt></dt>
 <dd>Disable all estimate instructions, equivalent to <em class="xref std std-option">-mno-recip</em>.</dd>
-<dt>div</dt>
+<dt><tt class="samp docutils literal"><span class="pre">div</span></tt></dt>
 <dd>Enable the approximation for scalar division.</dd>
-<dt>vec-div</dt>
+<dt><tt class="samp docutils literal"><span class="pre">vec-div</span></tt></dt>
 <dd>Enable the approximation for vectorized division.</dd>
-<dt>sqrt</dt>
+<dt><tt class="samp docutils literal"><span class="pre">sqrt</span></tt></dt>
 <dd>Enable the approximation for scalar square root.</dd>
-<dt>vec-sqrt</dt>
+<dt><tt class="samp docutils literal"><span class="pre">vec-sqrt</span></tt></dt>
 <dd><p class="first">Enable the approximation for vectorized square root.</p>
 <p class="last">So, for example, <em class="xref std std-option">-mrecip=all,!sqrt</em> enables</p>
 </dd>
@@ -11311,11 +11291,11 @@ inline code for small blocks and a library call for large blocks.</p>
 <dd><p id="index-83">Override the internal decision heuristic for the particular algorithm to use
 for inlining string operations.  The allowed values for <tt class="docutils literal"><span class="pre">alg</span></tt> are:</p>
 <dl class="docutils">
-<dt>rep_byte rep_4byte rep_8byte</dt>
+<dt><tt class="samp docutils literal"><span class="pre">rep_byte</span></tt> <tt class="samp docutils literal"><span class="pre">rep_4byte</span></tt> <tt class="samp docutils literal"><span class="pre">rep_8byte</span></tt></dt>
 <dd>Expand using i386 <tt class="docutils literal"><span class="pre">rep</span></tt> prefix of the specified size.</dd>
-<dt>byte_loop loop unrolled_loop</dt>
+<dt><tt class="samp docutils literal"><span class="pre">byte_loop</span></tt> <tt class="samp docutils literal"><span class="pre">loop</span></tt> <tt class="samp docutils literal"><span class="pre">unrolled_loop</span></tt></dt>
 <dd>Expand into an inline loop.</dd>
-<dt>libcall</dt>
+<dt><tt class="samp docutils literal"><span class="pre">libcall</span></tt></dt>
 <dd>Always use a library call.</dd>
 </dl>
 </dd></dl>

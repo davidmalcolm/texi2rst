@@ -16,13 +16,13 @@ compatibilities.  *All such backwards compatibility features are
 liable to disappear in future versions of G++.* They should be considered
 deprecated.   See :ref:`deprecated-features`.
 
-For scope
+``For scope``
   If a variable is declared at for scope, it used to remain in scope until
   the end of the scope that contained the for statement (rather than just
   within the for scope).  G++ retains this, but issues a warning, if such a
   variable is accessed outside the for scope.
 
-Implicit C language
+``Implicit C language``
   Old C system header files did not contain an ``extern "C" {...}``
   scope to set the language.  On such systems, all header files are
   implicitly scoped inside a C language scope.  Also, an empty prototype

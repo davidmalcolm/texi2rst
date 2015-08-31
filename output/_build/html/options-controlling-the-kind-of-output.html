@@ -96,61 +96,61 @@ into an executable file.</p>
 <p id="index-0">For any given input file, the file name suffix determines what kind of
 compilation is done:</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.c</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.c</span></tt></dt>
 <dd>C source code that must be preprocessed.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.i</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.i</span></tt></dt>
 <dd>C source code that should not be preprocessed.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.ii</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.ii</span></tt></dt>
 <dd>C++ source code that should not be preprocessed.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.m</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.m</span></tt></dt>
 <dd>Objective-C source code.  Note that you must link with the libobjc
 library to make an Objective-C program work.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.mi</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.mi</span></tt></dt>
 <dd>Objective-C source code that should not be preprocessed.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.mm <tt class="docutils literal"><span class="pre">file</span></tt>.M</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.mm</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.M</span></tt></dt>
 <dd>Objective-C++ source code.  Note that you must link with the libobjc
 library to make an Objective-C++ program work.  Note that <tt class="samp docutils literal"><span class="pre">.M</span></tt> refers
 to a literal capital M.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.mii</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.mii</span></tt></dt>
 <dd>Objective-C++ source code that should not be preprocessed.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.h</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.h</span></tt></dt>
 <dd>C, C++, Objective-C or Objective-C++ header file to be turned into a
 precompiled header (default), or C, C++ header file to be turned into an
 Ada spec (via the <a class="reference internal" href="#cmdoption-fdump-ada-spec"><em class="xref std std-option">-fdump-ada-spec</em></a> switch).</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.cc <tt class="docutils literal"><span class="pre">file</span></tt>.cp <tt class="docutils literal"><span class="pre">file</span></tt>.cxx <tt class="docutils literal"><span class="pre">file</span></tt>.cpp <tt class="docutils literal"><span class="pre">file</span></tt>.CPP <tt class="docutils literal"><span class="pre">file</span></tt>.c++ <tt class="docutils literal"><span class="pre">file</span></tt>.C</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.cc</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.cp</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.cxx</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.cpp</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.CPP</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.c++</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.C</span></tt></dt>
 <dd>C++ source code that must be preprocessed.  Note that in <tt class="samp docutils literal"><span class="pre">.cxx</span></tt>,
 the last two letters must both be literally <tt class="samp docutils literal"><span class="pre">x</span></tt>.  Likewise,
 <tt class="samp docutils literal"><span class="pre">.C</span></tt> refers to a literal capital C.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.mm <tt class="docutils literal"><span class="pre">file</span></tt>.M</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.mm</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.M</span></tt></dt>
 <dd>Objective-C++ source code that must be preprocessed.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.mii</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.mii</span></tt></dt>
 <dd>Objective-C++ source code that should not be preprocessed.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.hh <tt class="docutils literal"><span class="pre">file</span></tt>.H <tt class="docutils literal"><span class="pre">file</span></tt>.hp <tt class="docutils literal"><span class="pre">file</span></tt>.hxx <tt class="docutils literal"><span class="pre">file</span></tt>.hpp <tt class="docutils literal"><span class="pre">file</span></tt>.HPP <tt class="docutils literal"><span class="pre">file</span></tt>.h++ <tt class="docutils literal"><span class="pre">file</span></tt>.tcc</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.hh</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.H</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.hp</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.hxx</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.hpp</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.HPP</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.h++</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.tcc</span></tt></dt>
 <dd>C++ header file to be turned into a precompiled header or Ada spec.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.f <tt class="docutils literal"><span class="pre">file</span></tt>.for <tt class="docutils literal"><span class="pre">file</span></tt>.ftn</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.f</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.for</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.ftn</span></tt></dt>
 <dd>Fixed form Fortran source code that should not be preprocessed.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.F <tt class="docutils literal"><span class="pre">file</span></tt>.FOR <tt class="docutils literal"><span class="pre">file</span></tt>.fpp <tt class="docutils literal"><span class="pre">file</span></tt>.FPP <tt class="docutils literal"><span class="pre">file</span></tt>.FTN</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.F</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.FOR</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.fpp</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.FPP</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.FTN</span></tt></dt>
 <dd>Fixed form Fortran source code that must be preprocessed (with the traditional
 preprocessor).</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.f90 <tt class="docutils literal"><span class="pre">file</span></tt>.f95 <tt class="docutils literal"><span class="pre">file</span></tt>.f03 <tt class="docutils literal"><span class="pre">file</span></tt>.f08</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.f90</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.f95</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.f03</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.f08</span></tt></dt>
 <dd>Free form Fortran source code that should not be preprocessed.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.F90 <tt class="docutils literal"><span class="pre">file</span></tt>.F95 <tt class="docutils literal"><span class="pre">file</span></tt>.F03 <tt class="docutils literal"><span class="pre">file</span></tt>.F08</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.F90</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.F95</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.F03</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.F08</span></tt></dt>
 <dd>Free form Fortran source code that must be preprocessed (with the
 traditional preprocessor).</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.go</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.go</span></tt></dt>
 <dd>Go source code.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.ads</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.ads</span></tt></dt>
 <dd>Ada source code file that contains a library unit declaration (a
 declaration of a package, subprogram, or generic, or a generic
 instantiation), or a library unit renaming declaration (a package,
 generic, or subprogram renaming declaration).  Such files are also
 called <em class="dfn">specs</em>.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.adb</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.adb</span></tt></dt>
 <dd>Ada source code file containing a library unit body (a subprogram or
 package body).  Such files are also called <em class="dfn">bodies</em>.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.s</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.s</span></tt></dt>
 <dd>Assembler code.</dd>
-<dt><tt class="docutils literal"><span class="pre">file</span></tt>.S <tt class="docutils literal"><span class="pre">file</span></tt>.sx</dt>
+<dt><tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.S</span></tt> <tt class="samp docutils literal"><em><span class="pre">file</span></em><span class="pre">.sx</span></tt></dt>
 <dd>Assembler code that must be preprocessed.</dd>
 <dt><tt class="docutils literal"><span class="pre">other</span></tt></dt>
 <dd>An object file to be fed straight into linking.
@@ -158,7 +158,7 @@ Any file name with no recognized suffix is treated this way.</dd>
 </dl>
 <p id="index-1">You can specify the input language explicitly with the <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-x"><em class="xref std std-option">-x</em></a> option:</p>
 <dl class="docutils">
-<dt>-x <tt class="docutils literal"><span class="pre">language</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-x</span> <em><span class="pre">language</span></em></tt></dt>
 <dd><p class="first">Specify explicitly the <tt class="docutils literal"><span class="pre">language</span></tt> for the following input files
 (rather than letting the compiler choose a default based on the file
 name suffix).  This option applies to all following input files until
@@ -175,18 +175,11 @@ the next <a class="reference internal" href="options-controlling-the-preprocesso
 </pre></div>
 </div>
 </dd>
-</dl>
-<table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-x <var>none</var></span></kbd></td>
-<td>Turn off any specification of a language, so that subsequent files are
+<dt><tt class="docutils literal"><span class="pre">-x</span> <span class="pre">none</span></tt></dt>
+<dd>Turn off any specification of a language, so that subsequent files are
 handled according to their file name suffixes (as they are if <a class="reference internal" href="options-controlling-the-preprocessor.html#cmdoption-x"><em class="xref std std-option">-x</em></a>
-has not been used at all).</td></tr>
-</tbody>
-</table>
+has not been used at all).</dd>
+</dl>
 <dl class="option">
 <dt id="cmdoption-pass-exit-codes">
 <tt class="descname">-pass-exit-codes</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-pass-exit-codes" title="Permalink to this definition">¶</a></dt>
@@ -295,40 +288,40 @@ information may also be printed.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt>&#8211;help={<tt class="docutils literal"><span class="pre">class``|[^]``qualifier</span></tt>}[,...]</dt>
+<dt><tt class="samp docutils literal"><span class="pre">--help=</span><em><span class="pre">{class</span></em><em><span class="pre">|[</span></em><span class="pre">^</span><em><span class="pre">]</span></em><em><span class="pre">qualifier</span></em><span class="pre">}</span><em><span class="pre">[</span></em><span class="pre">,...</span><em><span class="pre">]</span></em></tt></dt>
 <dd><p class="first">Print (on the standard output) a description of the command-line
 options understood by the compiler that fit into all specified classes
 and qualifiers.  These are the supported classes:</p>
 <dl class="docutils">
-<dt><tt class="samp docutils literal"><span class="pre">optimizers</span></tt></dt>
+<dt>optimizers</dt>
 <dd>Display all of the optimization options supported by the
 compiler.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">warnings</span></tt></dt>
+<dt>warnings</dt>
 <dd>Display all of the options controlling warning messages
 produced by the compiler.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">target</span></tt></dt>
+<dt>target</dt>
 <dd>Display target-specific options.  Unlike the
 <a class="reference internal" href="#cmdoption--target-help"><em class="xref std std-option">--target-help</em></a> option however, target-specific options of the
 linker and assembler are not displayed.  This is because those
 tools do not currently support the extended <em class="xref std std-option">--help=</em> syntax.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">params</span></tt></dt>
+<dt>params</dt>
 <dd>Display the values recognized by the <a class="reference internal" href="options-that-control-optimization.html#cmdoption--param"><em class="xref std std-option">--param</em></a>
 option.</dd>
-<dt><tt class="docutils literal"><span class="pre">language</span></tt></dt>
+<dt>language</dt>
 <dd>Display the options supported for <tt class="docutils literal"><span class="pre">language</span></tt>, where
 <tt class="docutils literal"><span class="pre">language</span></tt> is the name of one of the languages supported in this
 version of GCC.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">common</span></tt></dt>
+<dt>common</dt>
 <dd><p class="first">Display the options that are common to all languages.</p>
 <p class="last">These are the supported qualifiers:</p>
 </dd>
-<dt><tt class="samp docutils literal"><span class="pre">undocumented</span></tt></dt>
+<dt>undocumented</dt>
 <dd>Display only those options that are undocumented.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">joined</span></tt></dt>
+<dt>joined</dt>
 <dd>Display options taking an argument that appears after an equal
 sign in the same continuous piece of text, such as:
 <tt class="samp docutils literal"><span class="pre">--help=target</span></tt>.</dd>
-<dt><tt class="samp docutils literal"><span class="pre">separate</span></tt></dt>
+<dt>separate</dt>
 <dd><p class="first">Display options taking an argument that appears as a separate word
 following the original option, such as: <tt class="samp docutils literal"><span class="pre">-o</span> <span class="pre">output-file</span></tt>.</p>
 <p class="last">Thus for example to display all the undocumented target-specific</p>
@@ -451,7 +444,7 @@ other language.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt>&#64;``file``</dt>
+<dt><tt class="samp docutils literal"><span class="pre">&#64;</span><em><span class="pre">file</span></em></tt></dt>
 <dd><p class="first">Read command-line options from <tt class="docutils literal"><span class="pre">file</span></tt>.  The options read are
 inserted in place of the original &#64;``file`` option.  If <tt class="docutils literal"><span class="pre">file</span></tt>
 does not exist, or cannot be read, then the option will be treated

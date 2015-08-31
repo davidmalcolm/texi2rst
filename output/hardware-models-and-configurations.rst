@@ -250,16 +250,16 @@ These options are defined for AArch64 implementations:
 Feature modifiers used with :option:`-march` and :option:`-mcpu` can be one
 the following:
 
-crc
+:samp:`crc`
   Enable CRC extension.
 
-crypto
+:samp:`crypto`
   Enable Crypto extension.  This implies Advanced SIMD is enabled.
 
-fp
+:samp:`fp`
   Enable floating-point instructions.
 
-simd
+:samp:`simd`
   Enable Advanced SIMD instructions.  This implies floating-point instructions
   are enabled.  This is the default for all current possible values for options
   :option:`-march` and :option:`-mcpu=`.
@@ -353,7 +353,7 @@ These :samp:`-m` options are defined for Adapteva Epiphany:
 
   ``mode`` can be set to one the following values:
 
-  caller
+  :samp:`caller`
     Any mode at function entry is valid, and retained or restored when
     the function returns, and when it calls other functions.
     This mode is useful for compiling libraries or other compilation units
@@ -363,16 +363,16 @@ These :samp:`-m` options are defined for Adapteva Epiphany:
     mode switching that might be needed, compared with what would be needed
     with a more specific choice of prevailing FPU mode.
 
-  truncate
+  :samp:`truncate`
     This is the mode used for floating-point calculations with
     truncating (i.e. round towards zero) rounding mode.  That includes
     conversion from floating point to integer.
 
-  round-nearest
+  :samp:`round-nearest`
     This is the mode used for floating-point calculations with
     round-to-nearest-or-even rounding mode.
 
-  int
+  :samp:`int`
     This is the mode used to perform integer calculations in the FPU, e.g.
     integer multiply, or integer multiply-and-accumulate.
 
@@ -441,7 +441,7 @@ is being compiled:
 
   .. index:: mARC600
 
-  ARC600
+  :samp:`ARC600`
     Compile for ARC600.  Aliases: :option:`-mA6`, :option:`-mARC600`.
 
   .. option:: ARC601, -mARC601
@@ -772,16 +772,16 @@ The following options fine tune code generation:
   Fine-tune size optimization with regards to instruction lengths and alignment.
   The recognized values for ``level`` are:
 
-  0
+  :samp:`0`
     No size optimization.  This level is deprecated and treated like :samp:`1`.
 
-  1
+  :samp:`1`
     Short instructions are used opportunistically.
 
-  2
+  :samp:`2`
     In addition, alignment of loops and of code after barriers are dropped.
 
-  3
+  :samp:`3`
     In addition, optional data alignment is dropped, and the option Os is enabled.
 
     This defaults to :samp:`3` when :option:`-Os` is in effect.  Otherwise,
@@ -794,22 +794,22 @@ The following options fine tune code generation:
 
   Supported values for ``cpu`` are
 
-  ARC600
+  :samp:`ARC600`
     Tune for ARC600 cpu.
 
-  ARC601
+  :samp:`ARC601`
     Tune for ARC601 cpu.
 
-  ARC700
+  :samp:`ARC700`
     Tune for ARC700 cpu with standard multiplier block.
 
-  ARC700-xmac
+  :samp:`ARC700-xmac`
     Tune for ARC700 cpu with XMAC block.
 
-  ARC725D
+  :samp:`ARC725D`
     Tune for ARC725D cpu.
 
-  ARC750D
+  :samp:`ARC750D`
     Tune for ARC750D cpu.
 
 .. option:: -mmultcost=num
@@ -1367,82 +1367,82 @@ These options are defined for AVR implementations:
         gcc/config/avr/avr-mcus.def
      Please do not edit manually.
 
-  avr2
+  ``avr2``
     'Classic' devices with up to 8 KiB of program memory.
 
     ``mcu`` = ``attiny22``, ``attiny26``, ``at90c8534``, ``at90s2313``, ``at90s2323``, ``at90s2333``, ``at90s2343``, ``at90s4414``, ``at90s4433``, ``at90s4434``, ``at90s8515``, ``at90s8535``.
 
-  avr25
+  ``avr25``
     'Classic' devices with up to 8 KiB of program memory and with the ``MOVW`` instruction.
 
     ``mcu`` = ``ata5272``, ``ata6616c``, ``attiny13``, ``attiny13a``, ``attiny2313``, ``attiny2313a``, ``attiny24``, ``attiny24a``, ``attiny25``, ``attiny261``, ``attiny261a``, ``attiny43u``, ``attiny4313``, ``attiny44``, ``attiny44a``, ``attiny441``, ``attiny45``, ``attiny461``, ``attiny461a``, ``attiny48``, ``attiny828``, ``attiny84``, ``attiny84a``, ``attiny841``, ``attiny85``, ``attiny861``, ``attiny861a``, ``attiny87``, ``attiny88``, ``at86rf401``.
 
-  avr3
+  ``avr3``
     'Classic' devices with 16 KiB up to 64 KiB of  program memory.
 
     ``mcu`` = ``at43usb355``, ``at76c711``.
 
-  avr31
+  ``avr31``
     'Classic' devices with 128 KiB of program memory.
 
     ``mcu`` = ``atmega103``, ``at43usb320``.
 
-  avr35
+  ``avr35``
     'Classic' devices with 16 KiB up to 64 KiB of program memory and with the ``MOVW`` instruction.
 
     ``mcu`` = ``ata5505``, ``ata6617c``, ``ata664251``, ``atmega16u2``, ``atmega32u2``, ``atmega8u2``, ``attiny1634``, ``attiny167``, ``at90usb162``, ``at90usb82``.
 
-  avr4
+  ``avr4``
     'Enhanced' devices with up to 8 KiB of program memory.
 
     ``mcu`` = ``ata6285``, ``ata6286``, ``ata6289``, ``ata6612c``, ``atmega48``, ``atmega48a``, ``atmega48p``, ``atmega48pa``, ``atmega8``, ``atmega8a``, ``atmega8hva``, ``atmega8515``, ``atmega8535``, ``atmega88``, ``atmega88a``, ``atmega88p``, ``atmega88pa``, ``at90pwm1``, ``at90pwm2``, ``at90pwm2b``, ``at90pwm3``, ``at90pwm3b``, ``at90pwm81``.
 
-  avr5
+  ``avr5``
     'Enhanced' devices with 16 KiB up to 64 KiB of program memory.
 
     ``mcu`` = ``ata5702m322``, ``ata5782``, ``ata5790``, ``ata5790n``, ``ata5795``, ``ata5831``, ``ata6613c``, ``ata6614q``, ``atmega16``, ``atmega16a``, ``atmega16hva``, ``atmega16hva2``, ``atmega16hvb``, ``atmega16hvbrevb``, ``atmega16m1``, ``atmega16u4``, ``atmega161``, ``atmega162``, ``atmega163``, ``atmega164a``, ``atmega164p``, ``atmega164pa``, ``atmega165``, ``atmega165a``, ``atmega165p``, ``atmega165pa``, ``atmega168``, ``atmega168a``, ``atmega168p``, ``atmega168pa``, ``atmega169``, ``atmega169a``, ``atmega169p``, ``atmega169pa``, ``atmega32``, ``atmega32a``, ``atmega32c1``, ``atmega32hvb``, ``atmega32hvbrevb``, ``atmega32m1``, ``atmega32u4``, ``atmega32u6``, ``atmega323``, ``atmega324a``, ``atmega324p``, ``atmega324pa``, ``atmega325``, ``atmega325a``, ``atmega325p``, ``atmega325pa``, ``atmega3250``, ``atmega3250a``, ``atmega3250p``, ``atmega3250pa``, ``atmega328``, ``atmega328p``, ``atmega329``, ``atmega329a``, ``atmega329p``, ``atmega329pa``, ``atmega3290``, ``atmega3290a``, ``atmega3290p``, ``atmega3290pa``, ``atmega406``, ``atmega64``, ``atmega64a``, ``atmega64c1``, ``atmega64hve``, ``atmega64hve2``, ``atmega64m1``, ``atmega64rfr2``, ``atmega640``, ``atmega644``, ``atmega644a``, ``atmega644p``, ``atmega644pa``, ``atmega644rfr2``, ``atmega645``, ``atmega645a``, ``atmega645p``, ``atmega6450``, ``atmega6450a``, ``atmega6450p``, ``atmega649``, ``atmega649a``, ``atmega649p``, ``atmega6490``, ``atmega6490a``, ``atmega6490p``, ``at90can32``, ``at90can64``, ``at90pwm161``, ``at90pwm216``, ``at90pwm316``, ``at90scr100``, ``at90usb646``, ``at90usb647``, ``at94k``, ``m3000``.
 
-  avr51
+  ``avr51``
     'Enhanced' devices with 128 KiB of program memory.
 
     ``mcu`` = ``atmega128``, ``atmega128a``, ``atmega128rfa1``, ``atmega128rfr2``, ``atmega1280``, ``atmega1281``, ``atmega1284``, ``atmega1284p``, ``atmega1284rfr2``, ``at90can128``, ``at90usb1286``, ``at90usb1287``.
 
-  avr6
+  ``avr6``
     'Enhanced' devices with 3-byte PC, i.e. with more than 128 KiB of program memory.
 
     ``mcu`` = ``atmega256rfr2``, ``atmega2560``, ``atmega2561``, ``atmega2564rfr2``.
 
-  avrxmega2
+  ``avrxmega2``
     'XMEGA' devices with more than 8 KiB and up to 64 KiB of program memory.
 
     ``mcu`` = ``atxmega16a4``, ``atxmega16a4u``, ``atxmega16c4``, ``atxmega16d4``, ``atxmega16e5``, ``atxmega32a4``, ``atxmega32a4u``, ``atxmega32c3``, ``atxmega32c4``, ``atxmega32d3``, ``atxmega32d4``, ``atxmega32e5``, ``atxmega8e5``.
 
-  avrxmega4
+  ``avrxmega4``
     'XMEGA' devices with more than 64 KiB and up to 128 KiB of program memory.
 
     ``mcu`` = ``atxmega64a3``, ``atxmega64a3u``, ``atxmega64a4u``, ``atxmega64b1``, ``atxmega64b3``, ``atxmega64c3``, ``atxmega64d3``, ``atxmega64d4``.
 
-  avrxmega5
+  ``avrxmega5``
     'XMEGA' devices with more than 64 KiB and up to 128 KiB of program memory and more than 64 KiB of RAM.
 
     ``mcu`` = ``atxmega64a1``, ``atxmega64a1u``.
 
-  avrxmega6
+  ``avrxmega6``
     'XMEGA' devices with more than 128 KiB of program memory.
 
     ``mcu`` = ``atxmega128a3``, ``atxmega128a3u``, ``atxmega128b1``, ``atxmega128b3``, ``atxmega128c3``, ``atxmega128d3``, ``atxmega128d4``, ``atxmega192a3``, ``atxmega192a3u``, ``atxmega192c3``, ``atxmega192d3``, ``atxmega256a3``, ``atxmega256a3b``, ``atxmega256a3bu``, ``atxmega256a3u``, ``atxmega256c3``, ``atxmega256d3``, ``atxmega384c3``, ``atxmega384d3``.
 
-  avrxmega7
+  ``avrxmega7``
     'XMEGA' devices with more than 128 KiB of program memory and more than 64 KiB of RAM.
 
     ``mcu`` = ``atxmega128a1``, ``atxmega128a1u``, ``atxmega128a4u``.
 
-  avrtiny
+  ``avrtiny``
     'TINY' Tiny core devices with 512 B up to 4 KiB of program memory.
 
     ``mcu`` = ``attiny10``, ``attiny20``, ``attiny4``, ``attiny40``, ``attiny5``, ``attiny9``.
 
-  avr1
+  ``avr1``
     This ISA is implemented by the minimal AVR core and supported for assembler only.
 
     ``mcu`` = ``attiny11``, ``attiny12``, ``attiny15``, ``attiny28``, ``at90s1200``.
@@ -1736,7 +1736,7 @@ triggered by the :option:`-mmcu=` command-line option.
 For even more AVR-specific built-in macros see
 AVR Named Address Spaces and AVR Built-in Functions.
 
-__AVR_ARCH__
+``__AVR_ARCH__``
   Build-in macro that resolves to a decimal number that identifies the
   architecture and depends on the :option:`-mmcu=``mcu``` option.
   Possible values are:
@@ -1758,7 +1758,7 @@ __AVR_ARCH__
   accordingly. For example, with :option:`-mmcu=atmega8` the macro is
   defined to ``4``.
 
-__AVR_``Device``__
+:samp:`__AVR_{Device}__`
   Setting :option:`-mmcu=``device``` defines this built-in macro which reflects
   the device's name. For example, :option:`-mmcu=atmega8` defines the
   built-in macro ``__AVR_ATmega8__``, :option:`-mmcu=attiny261a` defines
@@ -1773,7 +1773,7 @@ __AVR_``Device``__
   If ``device`` is not a device but only a core architecture like
   :samp:`avr51`, this macro is not defined.
 
-__AVR_DEVICE_NAME__
+``__AVR_DEVICE_NAME__``
   Setting :option:`-mmcu=``device``` defines this built-in macro to
   the device's name. For example, with :option:`-mmcu=atmega8` the macro
   is defined to ``atmega8``.
@@ -1781,72 +1781,72 @@ __AVR_DEVICE_NAME__
   If ``device`` is not a device but only a core architecture like
   :samp:`avr51`, this macro is not defined.
 
-__AVR_XMEGA__
+``__AVR_XMEGA__``
   The device / architecture belongs to the XMEGA family of devices.
 
-__AVR_HAVE_ELPM__
+``__AVR_HAVE_ELPM__``
   The device has the the ``ELPM`` instruction.
 
-__AVR_HAVE_ELPMX__
+``__AVR_HAVE_ELPMX__``
   The device has the ``ELPM R``n``,Z`` and ``ELPM
   R``n``,Z+`` instructions.
 
-__AVR_HAVE_MOVW__
+``__AVR_HAVE_MOVW__``
   The device has the ``MOVW`` instruction to perform 16-bit
   register-register moves.
 
-__AVR_HAVE_LPMX__
+``__AVR_HAVE_LPMX__``
   The device has the ``LPM R``n``,Z`` and
   ``LPM R``n``,Z+`` instructions.
 
-__AVR_HAVE_MUL__
+``__AVR_HAVE_MUL__``
   The device has a hardware multiplier.
 
-__AVR_HAVE_JMP_CALL__
+``__AVR_HAVE_JMP_CALL__``
   The device has the ``JMP`` and ``CALL`` instructions.
   This is the case for devices with at least 16 KiB of program
   memory.
 
-__AVR_HAVE_EIJMP_EICALL__ __AVR_3_BYTE_PC__
+``__AVR_HAVE_EIJMP_EICALL__`` ``__AVR_3_BYTE_PC__``
   The device has the ``EIJMP`` and ``EICALL`` instructions.
   This is the case for devices with more than 128 KiB of program memory.
   This also means that the program counter
   (PC) is 3 bytes wide.
 
-__AVR_2_BYTE_PC__
+``__AVR_2_BYTE_PC__``
   The program counter (PC) is 2 bytes wide. This is the case for devices
   with up to 128 KiB of program memory.
 
-__AVR_HAVE_8BIT_SP__ __AVR_HAVE_16BIT_SP__
+``__AVR_HAVE_8BIT_SP__`` ``__AVR_HAVE_16BIT_SP__``
   The stack pointer (SP) register is treated as 8-bit respectively
   16-bit register by the compiler.
   The definition of these macros is affected by :option:`-mtiny-stack`.
 
-__AVR_HAVE_SPH__ __AVR_SP8__
+``__AVR_HAVE_SPH__`` ``__AVR_SP8__``
   The device has the SPH (high part of stack pointer) special function
   register or has an 8-bit stack pointer, respectively.
   The definition of these macros is affected by :option:`-mmcu=` and
   in the cases of :option:`-mmcu=avr2` and :option:`-mmcu=avr25` also
   by :option:`-msp8`.
 
-__AVR_HAVE_RAMPD__ __AVR_HAVE_RAMPX__ __AVR_HAVE_RAMPY__ __AVR_HAVE_RAMPZ__
+``__AVR_HAVE_RAMPD__`` ``__AVR_HAVE_RAMPX__`` ``__AVR_HAVE_RAMPY__`` ``__AVR_HAVE_RAMPZ__``
   The device has the ``RAMPD``, ``RAMPX``, ``RAMPY``,
   ``RAMPZ`` special function register, respectively.
 
-__NO_INTERRUPTS__
+``__NO_INTERRUPTS__``
   This macro reflects the :option:`-mno-interrupts` command-line option.
 
-__AVR_ERRATA_SKIP__ __AVR_ERRATA_SKIP_JMP_CALL__
+``__AVR_ERRATA_SKIP__`` ``__AVR_ERRATA_SKIP_JMP_CALL__``
   Some AVR devices (AT90S8515, ATmega103) must not skip 32-bit
   instructions because of a hardware erratum.  Skip instructions are
   ``SBRS``, ``SBRC``, ``SBIS``, ``SBIC`` and ``CPSE``.
   The second macro is only defined if ``__AVR_HAVE_JMP_CALL__`` is also
   set.
 
-__AVR_ISA_RMW__
+``__AVR_ISA_RMW__``
   The device has Read-Modify-Write instructions (XCH, LAC, LAS and LAT).
 
-__AVR_SFR_OFFSET__=``offset``
+:samp:`__AVR_SFR_OFFSET__={offset}`
   Instructions that can address I/O special function registers directly
   like ``IN``, ``OUT``, ``SBI``, etc. may use a different
   address as if addressed by an instruction to access RAM like ``LD``
@@ -1854,7 +1854,7 @@ __AVR_SFR_OFFSET__=``offset``
   to be subtracted from the RAM address in order to get the
   respective I/O address.
 
-__WITH_AVRLIBC__
+``__WITH_AVRLIBC__``
   The compiler is configured to be used together with AVR-Libc.
   See the :option:`--with-avrlibc` configure option.
 
@@ -2332,7 +2332,7 @@ restrictive subtype of any of its input files.
 
   Emit debugging information for all symbols and types.
 
--mmacosx-version-min=``version``
+:samp:`-mmacosx-version-min={version}`
   The earliest version of MacOS X that this executable will run on
   is ``version``.  Typical values of ``version`` include ``10.1``,
   ``10.2``, and ``10.3.9``.
@@ -2479,20 +2479,20 @@ These :samp:`-m` options are defined for the DEC Alpha implementations:
   Other Alpha compilers call this option :option:`-fptm ``trap-mode```.
   The trap mode can be set to one of four values:
 
-  n
+  :samp:`n`
     This is the default (normal) setting.  The only traps that are enabled
     are the ones that cannot be disabled in software (e.g., division by zero
     trap).
 
-  u
+  :samp:`u`
     In addition to the traps enabled by :samp:`n`, underflow traps are enabled
     as well.
 
-  su
+  :samp:`su`
     Like :samp:`u`, but the instructions are marked to be safe for software
     completion (see Alpha architecture manual for details).
 
-  sui
+  :samp:`sui`
     Like :samp:`su`, but inexact traps are enabled as well.
 
 .. option:: -mfp-rounding-mode=rounding-mode
@@ -2501,18 +2501,18 @@ These :samp:`-m` options are defined for the DEC Alpha implementations:
   :option:`-fprm ``rounding-mode```.  The ``rounding-mode`` can be one
   of:
 
-  n
+  :samp:`n`
     Normal IEEE rounding mode.  Floating-point numbers are rounded towards
     the nearest machine number or towards the even machine number in case
     of a tie.
 
-  m
+  :samp:`m`
     Round towards minus infinity.
 
-  c
+  :samp:`c`
     Chopped rounding mode.  Floating-point numbers are rounded towards zero.
 
-  d
+  :samp:`d`
     Dynamic rounding mode.  A field in the floating-point control register
     (``fpcr``, see Alpha architecture reference manual) controls the
     rounding mode in effect.  The C library initializes this register for
@@ -2529,15 +2529,15 @@ These :samp:`-m` options are defined for the DEC Alpha implementations:
   Depending on the requirements of an application, different levels of
   precisions can be selected:
 
-  p
+  :samp:`p`
     Program precision.  This option is the default and means a trap handler
     can only identify which program caused a floating-point exception.
 
-  f
+  :samp:`f`
     Function precision.  The trap handler can determine the function that
     caused a floating-point exception.
 
-  i
+  :samp:`i`
     Instruction precision.  The trap handler can determine the exact
     instruction that caused a floating-point exception.
 
@@ -2629,22 +2629,22 @@ These :samp:`-m` options are defined for the DEC Alpha implementations:
 
   Supported values for ``cpu_type`` are
 
-  ev4 ev45 21064
+  :samp:`ev4` :samp:`ev45` :samp:`21064`
     Schedules as an EV4 and has no instruction set extensions.
 
-  ev5 21164
+  :samp:`ev5` :samp:`21164`
     Schedules as an EV5 and has no instruction set extensions.
 
-  ev56 21164a
+  :samp:`ev56` :samp:`21164a`
     Schedules as an EV5 and supports the BWX extension.
 
-  pca56 21164pc 21164PC
+  :samp:`pca56` :samp:`21164pc` :samp:`21164PC`
     Schedules as an EV5 and supports the BWX and MAX extensions.
 
-  ev6 21264
+  :samp:`ev6` :samp:`21264`
     Schedules as an EV6 and supports the BWX, FIX, and MAX extensions.
 
-  ev67 21264a
+  :samp:`ev67` :samp:`21264a`
     Schedules as an EV6 and supports the BWX, CIX, FIX, and MAX extensions.
 
     Native toolchains also support the value :samp:`native`,
@@ -2671,10 +2671,10 @@ These :samp:`-m` options are defined for the DEC Alpha implementations:
 
   Valid options for ``time`` are
 
-  ``number``
+  :samp:`number`
     A decimal number representing clock cycles.
 
-  L1 L2 L3 main
+  :samp:`L1` :samp:`L2` :samp:`L3` :samp:`main`
     The compiler contains estimates of the number of clock cycles for
     'typical' EV4 & EV5 hardware for the Level 1, 2 & 3 caches
     (also called Dcache, Scache, and Bcache), as well as to main memory.
@@ -4044,26 +4044,26 @@ are given below.
   Do not (do) assume that unaligned memory references are handled by
   the system.
 
--msep-data
+``-msep-data``
   Generate code that allows the data segment to be located in a different
   area of memory from the text segment.  This allows for execute-in-place in
   an environment without virtual memory management.  This option implies
   :option:`-fPIC`.
 
--mno-sep-data
+``-mno-sep-data``
   Generate code that assumes that the data segment follows the text segment.
   This is the default.
 
--mid-shared-library
+``-mid-shared-library``
   Generate code that supports shared libraries via the library ID method.
   This allows for execute-in-place and shared libraries in an environment
   without virtual memory management.  This option implies :option:`-fPIC`.
 
--mno-id-shared-library
+``-mno-id-shared-library``
   Generate code that doesn't assume ID-based shared libraries are being used.
   This is the default.
 
--mshared-library-id=n
+``-mshared-library-id=n``
   Specifies the identification number of the ID-based shared library being
   compiled.  Specifying a value of 0 generates more compact code; specifying
   other values forces the allocation of that number to the current
@@ -4404,24 +4404,24 @@ MicroBlaze Options
 
   Use reorder instructions (swap and byte reversed load/store).
 
--mxl-mode-``app-model``
+:samp:`-mxl-mode-{app-model}`
   Select application model ``app-model``.  Valid models are
 
-  executable
+  :samp:`executable`
     normal executable (default), uses startup code crt0.o.
 
-  xmdstub
+  :samp:`xmdstub`
     for use with Xilinx Microprocessor Debugger (XMD) based
     software intrusive debug agent called xmdstub. This uses startup file
     crt1.o and sets the start address of the program to 0x800.
 
-  bootstrap
+  :samp:`bootstrap`
     for applications that are loaded using a bootloader.
     This model uses startup file crt2.o which does not contain a processor
     reset vector handler. This is suitable for transferring control on a
     processor reset to the bootloader rather than the application.
 
-  novectors
+  :samp:`novectors`
     for applications that do not require any of the
     MicroBlaze vectors. This option may be useful for applications running
     within a monitoring application. This model uses crt3.o as a startup file.
@@ -4599,7 +4599,7 @@ MIPS Options
   for regression testing of mixed MIPS16/non-MIPS16 code generation, and is
   not intended for ordinary use in compiling user code.
 
--minterlink-compressed
+``-minterlink-compressed``
 .. option:: -mno-interlink-compressed, -minterlink-compressed
 
   Require (do not require) that code using the standard (uncompressed) MIPS ISA
@@ -4659,7 +4659,7 @@ MIPS Options
   dynamic objects.  :option:`-mabicalls` is the default for SVR4-based
   systems.
 
--mshared -mno-shared
+``-mshared`` ``-mno-shared``
   Generate (do not generate) code that is fully position-independent,
   and that can therefore be linked into shared libraries.  This option
   only affects :option:`-mabicalls`.
@@ -4991,11 +4991,11 @@ MIPS Options
   Specify whether GCC may generate code that reads from executable sections.
   There are three possible settings:
 
-  -mcode-readable=yes
+  ``-mcode-readable=yes``
     Instructions may freely access executable sections.  This is the
     default setting.
 
-  -mcode-readable=pcrel
+  ``-mcode-readable=pcrel``
     MIPS16 PC-relative load instructions can access executable sections,
     but other instructions must not do so.  This option is useful on 4KSc
     and 4KSd processors when the code TLBs have the Read Inhibit bit set.
@@ -5003,7 +5003,7 @@ MIPS Options
     instruction/data SRAM interface and that, like the M4K, automatically
     redirect PC-relative loads to the instruction RAM.
 
-  -mcode-readable=no
+  ``-mcode-readable=no``
     Instructions must not access executable sections.  This option can be
     useful on targets that are configured to have a dual instruction/data
     SRAM interface but that (unlike the M4K) do not automatically redirect
@@ -5090,7 +5090,7 @@ MIPS Options
   Tell the MIPS assembler to not run its preprocessor over user
   assembler files (with a :samp:`.s` suffix) when assembling them.
 
--mfix-24k
+``-mfix-24k``
 .. option:: -mno-fix-24k, -mfix-24k
 
   Work around the 24K E48 (lost data on stores during refill) errata.
@@ -5211,16 +5211,16 @@ MIPS Options
 
   The option has three forms:
 
-  -mr10k-cache-barrier=load-store
+  ``-mr10k-cache-barrier=load-store``
     Insert a cache barrier before a load or store that might be
     speculatively executed and that might have side effects even
     if aborted.
 
-  -mr10k-cache-barrier=store
+  ``-mr10k-cache-barrier=store``
     Insert a cache barrier before a store that might be speculatively
     executed and that might have side effects even if aborted.
 
-  -mr10k-cache-barrier=none
+  ``-mr10k-cache-barrier=none``
     Disable the insertion of cache barriers.  This is the default setting.
 
 .. option:: -mflush-func=func
@@ -5673,16 +5673,16 @@ These options are defined for NDS32 implementations:
 
   Set the code model to one of
 
-  :samp:`small`
+  small
     All the data and read-only data segments must be within 512KB addressing space.
     The text segment must be within 16MB addressing space.
 
-  :samp:`medium`
+  medium
     The data segment must be within 512KB while the read-only data segment can be
     within 4GB addressing space.  The text segment should be still within 16MB
     addressing space.
 
-  :samp:`large`
+  large
     All the text and data segments can be within 4GB addressing space.
 
 .. option:: -mctor-dtor
@@ -5712,35 +5712,35 @@ These are the options defined for the Altera Nios II processor.
   into the small data or BSS sections instead of the normal data or BSS
   sections.  The default value of ``num`` is 8.
 
--mgpopt=``option``
+:samp:`-mgpopt={option}`
 .. option:: -mgpopt, -mno-gpopt
 
   Generate (do not generate) GP-relative accesses.  The following 
   ``option`` names are recognized:
 
-  none
+  :samp:`none`
     Do not generate GP-relative accesses.
 
-  local
+  :samp:`local`
     Generate GP-relative accesses for small data objects that are not 
     external or weak.  Also use GP-relative addressing for objects that
     have been explicitly placed in a small data section via a ``section``
     attribute.
 
-  global
+  :samp:`global`
     As for :samp:`local`, but also generate GP-relative accesses for
     small data objects that are external or weak.  If you use this option,
     you must ensure that all parts of your program (including libraries) are
     compiled with the same :option:`-G` setting.
 
-  data
+  :samp:`data`
     Generate GP-relative accesses for all data objects in the program.  If you
     use this option, the entire data and BSS segments
     of your program must fit in 64K of memory and you must use an appropriate
     linker script to allocate them within the addressible range of the
     global pointer.
 
-  all
+  :samp:`all`
     Generate GP-relative addresses for function pointers as well as data
     pointers.  If you use this option, the entire text, data, and BSS segments
     of your program must fit in 64K of memory and you must use an appropriate
@@ -5807,73 +5807,73 @@ These are the options defined for the Altera Nios II processor.
 
   Single-precision floating point:
 
-  :samp:`fadds`, :samp:`fsubs`, :samp:`fdivs`, :samp:`fmuls`
+  :samp:`{fadds}, {fsubs}, {fdivs}, {fmuls}`
     Binary arithmetic operations.
 
-  :samp:`fnegs`
+  fnegs
     Unary negation.
 
-  :samp:`fabss`
+  fabss
     Unary absolute value.
 
-  :samp:`fcmpeqs`, :samp:`fcmpges`, :samp:`fcmpgts`, :samp:`fcmples`, :samp:`fcmplts`, :samp:`fcmpnes`
+  :samp:`{fcmpeqs}, {fcmpges}, {fcmpgts}, {fcmples}, {fcmplts}, {fcmpnes}`
     Comparison operations.
 
-  :samp:`fmins`, :samp:`fmaxs`
+  :samp:`{fmins}, {fmaxs}`
     Floating-point minimum and maximum.  These instructions are only
     generated if :option:`-ffinite-math-only` is specified.
 
-  :samp:`fsqrts`
+  fsqrts
     Unary square root operation.
 
-  :samp:`fcoss`, :samp:`fsins`, :samp:`ftans`, :samp:`fatans`, :samp:`fexps`, :samp:`flogs`
+  :samp:`{fcoss}, {fsins}, {ftans}, {fatans}, {fexps}, {flogs}`
     Floating-point trigonometric and exponential functions.  These instructions
     are only generated if :option:`-funsafe-math-optimizations` is also specified.
 
     Double-precision floating point:
 
-  :samp:`faddd`, :samp:`fsubd`, :samp:`fdivd`, :samp:`fmuld`
+  :samp:`{faddd}, {fsubd}, {fdivd}, {fmuld}`
     Binary arithmetic operations.
 
-  :samp:`fnegd`
+  fnegd
     Unary negation.
 
-  :samp:`fabsd`
+  fabsd
     Unary absolute value.
 
-  :samp:`fcmpeqd`, :samp:`fcmpged`, :samp:`fcmpgtd`, :samp:`fcmpled`, :samp:`fcmpltd`, :samp:`fcmpned`
+  :samp:`{fcmpeqd}, {fcmpged}, {fcmpgtd}, {fcmpled}, {fcmpltd}, {fcmpned}`
     Comparison operations.
 
-  :samp:`fmind`, :samp:`fmaxd`
+  :samp:`{fmind}, {fmaxd}`
     Double-precision minimum and maximum.  These instructions are only
     generated if :option:`-ffinite-math-only` is specified.
 
-  :samp:`fsqrtd`
+  fsqrtd
     Unary square root operation.
 
-  :samp:`fcosd`, :samp:`fsind`, :samp:`ftand`, :samp:`fatand`, :samp:`fexpd`, :samp:`flogd`
+  :samp:`{fcosd}, {fsind}, {ftand}, {fatand}, {fexpd}, {flogd}`
     Double-precision trigonometric and exponential functions.  These instructions
     are only generated if :option:`-funsafe-math-optimizations` is also specified.
 
     Conversions:
 
-  :samp:`fextsd`
+  fextsd
     Conversion from single precision to double precision.
 
-  :samp:`ftruncds`
+  ftruncds
     Conversion from double precision to single precision.
 
-  :samp:`fixsi`, :samp:`fixsu`, :samp:`fixdi`, :samp:`fixdu`
+  :samp:`{fixsi}, {fixsu}, {fixdi}, {fixdu}`
     Conversion from floating point to signed or unsigned integer types, with
     truncation towards zero.
 
-  :samp:`round`
+  round
     Conversion from single-precision floating point to signed integer,
     rounding to the nearest integer and ties away from zero.
     This corresponds to the ``__builtin_lroundf`` function when
     :option:`-fno-math-errno` is used.
 
-  :samp:`floatis`, :samp:`floatus`, :samp:`floatid`, :samp:`floatud`
+  :samp:`{floatis}, {floatus}, {floatid}, {floatud}`
     Conversion from signed or unsigned integer types to floating-point types.
 
     In addition, all of the following transfer instructions for internal
@@ -5890,18 +5890,18 @@ These are the options defined for the Altera Nios II processor.
   register X and/or read register Y when double-precision floating-point
   instructions are used.
 
-  :samp:`fwrx`
+  fwrx
     Write ``src1`` into the least significant half of X and ``src2`` into
     the most significant half of X.
 
-  :samp:`fwry`
+  fwry
     Write ``src1`` into Y.
 
-  :samp:`frdxhi`, :samp:`frdxlo`
+  :samp:`{frdxhi}, {frdxlo}`
     Read the most or least (respectively) significant half of X and store it in
     ``dest``.
 
-  :samp:`frdy`
+  frdy
     Read the value of Y and store it into ``dest``.
 
     Note that you can gain more local control over generation of Nios II custom
@@ -6118,7 +6118,7 @@ These :samp:`-m` options are defined for picoChip implementations:
   option may suffer from poor performance of byte (char) manipulation,
   since the DSP AE does not provide hardware support for byte load/stores.
 
--msymbol-as-address
+``-msymbol-as-address``
   Enable the compiler to directly use a symbol name as an address in a
   load/store instruction, without first loading it into a
   register.  Typically, the use of this option generates larger
@@ -6126,7 +6126,7 @@ These :samp:`-m` options are defined for picoChip implementations:
   results vary from program to program, so it is left as a user option,
   rather than being permanently enabled.
 
--mno-inefficient-warnings
+``-mno-inefficient-warnings``
   Disables warnings about the generation of inefficient code.  These
   warnings can be generated, for example, when compiling code that
   performs byte-level memory operations on the MAC AE type.  The MAC AE has
@@ -6422,7 +6422,7 @@ These :samp:`-m` options are defined for the IBM RS/6000 and PowerPC:
 
   This switch enables or disables the generation of ISEL instructions.
 
--misel=``yes/no``
+:samp:`-misel={yes/no}`
   This switch has been deprecated.  Use :option:`-misel` and
   :option:`-mno-isel` instead.
 
@@ -6436,7 +6436,7 @@ These :samp:`-m` options are defined for the IBM RS/6000 and PowerPC:
   This switch enables or disables the generation of PAIRED simd
   instructions.
 
--mspe=``yes/no``
+:samp:`-mspe={yes/no}`
   This option has been deprecated.  Use :option:`-mspe` and
   :option:`-mno-spe` instead.
 
@@ -6785,19 +6785,19 @@ These :samp:`-m` options are defined for the IBM RS/6000 and PowerPC:
   by the target during instruction scheduling.  The argument
   ``dependence_type`` takes one of the following values:
 
-  :samp:`no`
+  no
     No dependence is costly.
 
-  :samp:`all`
+  all
     All dependences are costly.
 
-  :samp:`true_store_to_load`
+  true_store_to_load
     A true dependence from store to load is costly.
 
-  :samp:`store_to_load`
+  store_to_load
     Any dependence from store to load is costly.
 
-  ``number``
+  number
     Any dependence for which the latency is greater than or equal to 
     ``number`` is costly.
 
@@ -6807,19 +6807,19 @@ These :samp:`-m` options are defined for the IBM RS/6000 and PowerPC:
   the second scheduling pass.  The argument ``scheme`` takes one of the
   following values:
 
-  :samp:`no`
+  no
     Don't insert NOPs.
 
-  :samp:`pad`
+  pad
     Pad with NOPs any dispatch group that has vacant issue slots,
     according to the scheduler's grouping.
 
-  :samp:`regroup_exact`
+  regroup_exact
     Insert NOPs to force costly dependent insns into
     separate groups.  Insert exactly as many NOPs as needed to force an insn
     to a new group, according to the estimated processor grouping.
 
-  ``number``
+  number
     Insert NOPs to force costly dependent insns into
     separate groups.  Insert ``number`` NOPs to force an insn to a new group.
 
@@ -7106,33 +7106,33 @@ These :samp:`-m` options are defined for the IBM RS/6000 and PowerPC:
   may be used.  ``opt`` is a comma-separated list of options, which may
   be preceded by a ``!`` to invert the option:
 
-  all
+  :samp:`all`
     Enable all estimate instructions.
 
-  default 
+  :samp:`default`
     Enable the default instructions, equivalent to :option:`-mrecip`.
 
-  none 
+  :samp:`none`
     Disable all estimate instructions, equivalent to :option:`-mno-recip`.
 
-  div 
+  :samp:`div`
     Enable the reciprocal approximation instructions for both 
     single and double precision.
 
-  divf 
+  :samp:`divf`
     Enable the single-precision reciprocal approximation instructions.
 
-  divd 
+  :samp:`divd`
     Enable the double-precision reciprocal approximation instructions.
 
-  rsqrt 
+  :samp:`rsqrt`
     Enable the reciprocal square root approximation instructions for both
     single and double precision.
 
-  rsqrtf 
+  :samp:`rsqrtf`
     Enable the single-precision reciprocal square root approximation instructions.
 
-  rsqrtd 
+  :samp:`rsqrtd`
     Enable the double-precision reciprocal square root approximation instructions.
 
     So, for example, :option:`-mrecip=all,!rsqrtd` enables
@@ -7652,7 +7652,7 @@ These :samp:`-m` options are defined for the SH implementations:
 
   Generate code for the SH2.
 
--m2e
+``-m2e``
   Generate code for the SH2e.
 
 .. option:: -m2a-nofpu
@@ -7906,11 +7906,11 @@ These :samp:`-m` options are defined for the SH implementations:
   separated list.  For details on the atomic built-in functions see
   __atomic Builtins.  The following models and parameters are supported:
 
-  none
+  :samp:`none`
     Disable compiler generated atomic sequences and emit library calls for atomic
     operations.  This is the default if the target is not ``sh*-*-linux*``.
 
-  soft-gusa
+  :samp:`soft-gusa`
     Generate GNU/Linux compatible gUSA software atomic sequences for the atomic
     built-in functions.  The generated atomic sequences require additional support
     from the interrupt/exception handling code of the system and are only suitable
@@ -7920,7 +7920,7 @@ These :samp:`-m` options are defined for the SH implementations:
     ``movli.l`` and ``movco.l`` to create more efficient code, unless
     :samp:`strict` is specified.  
 
-  soft-tcb
+  :samp:`soft-tcb`
     Generate software atomic sequences that use a variable in the thread control
     block.  This is a variation of the gUSA sequences which can also be used on
     SH1* and SH2* targets.  The generated atomic sequences require additional
@@ -7928,7 +7928,7 @@ These :samp:`-m` options are defined for the SH implementations:
     suitable for single-core systems.  When using this model, the :samp:`gbr-offset=`
     parameter has to be specified as well.
 
-  soft-imask
+  :samp:`soft-imask`
     Generate software atomic sequences that temporarily disable interrupts by
     setting ``SR.IMASK = 1111``.  This model works only when the program runs
     in privileged mode and is only suitable for single-core systems.  Additional
@@ -7936,7 +7936,7 @@ These :samp:`-m` options are defined for the SH implementations:
     required.  This model is enabled by default when the target is
     ``sh*-*-linux*`` and SH1* or SH2*.
 
-  hard-llcs
+  :samp:`hard-llcs`
     Generate hardware atomic sequences using the ``movli.l`` and ``movco.l``
     instructions only.  This is only available on SH4A and is suitable for
     multi-core systems.  Since the hardware instructions support only 32 bit atomic
@@ -7946,14 +7946,14 @@ These :samp:`-m` options are defined for the SH implementations:
     system.  Additional support from the interrupt/exception handling code of the
     system is not required for this model.
 
-  gbr-offset=
+  :samp:`gbr-offset=`
     This parameter specifies the offset in bytes of the variable in the thread
     control block structure that should be used by the generated atomic sequences
     when the :samp:`soft-tcb` model has been selected.  For other models this
     parameter is ignored.  The specified value must be an integer multiple of four
     and in the range 0-1020.
 
-  strict
+  :samp:`strict`
     This parameter prevents mixed usage of multiple atomic models, even if they
     are compatible, and makes the compiler generate atomic sequences of the
     specified model only.
@@ -7993,20 +7993,20 @@ These :samp:`-m` options are defined for the SH implementations:
   Set the division strategy to be used for integer division operations.
   For SHmedia ``strategy`` can be one of: 
 
-  fp 
+  :samp:`fp`
     Performs the operation in floating point.  This has a very high latency,
     but needs only a few instructions, so it might be a good choice if
     your code has enough easily-exploitable ILP to allow the compiler to
     schedule the floating-point instructions together with other instructions.
     Division by zero causes a floating-point exception.
 
-  inv
+  :samp:`inv`
     Uses integer operations to calculate the inverse of the divisor,
     and then multiplies the dividend with the inverse.  This strategy allows
     CSE and hoisting of the inverse calculation.  Division by zero calculates
     an unspecified result, but does not trap.
 
-  inv:minlat
+  :samp:`inv:minlat`
     A variant of :samp:`inv` where, if no CSE or hoisting opportunities
     have been found, or if the entire operation has been hoisted to the same
     place, the last stages of the inverse calculation are intertwined with the
@@ -8014,17 +8014,17 @@ These :samp:`-m` options are defined for the SH implementations:
     more instructions, and thus offering fewer scheduling opportunities with
     other code.
 
-  call
+  :samp:`call`
     Calls a library function that usually implements the :samp:`inv:minlat`
     strategy.
     This gives high code density for ``m5-*media-nofpu`` compilations.
 
-  call2
+  :samp:`call2`
     Uses a different entry point of the same library function, where it
     assumes that a pointer to a lookup table has already been set up, which
     exposes the pointer load to CSE and code hoisting optimizations.
 
-  inv:call inv:call2 inv:fp
+  :samp:`inv:call` :samp:`inv:call2` :samp:`inv:fp`
     Use the :samp:`inv` algorithm for initial
     code generation, but if the code stays unoptimized, revert to the :samp:`call`,
     :samp:`call2`, or :samp:`fp` strategies, respectively.  Note that the
@@ -8034,7 +8034,7 @@ These :samp:`-m` options are defined for the SH implementations:
     A recombination to floating-point operations or a call is not possible
     in that case.
 
-  inv20u inv20l
+  :samp:`inv20u` :samp:`inv20l`
     Variants of the :samp:`inv:minlat` strategy.  In the case
     that the inverse calculation is not separated from the multiply, they speed
     up division where the dividend fits into 20 bits (plus sign where applicable)
@@ -8044,19 +8044,19 @@ These :samp:`-m` options are defined for the SH implementations:
 
     For targets other than SHmedia ``strategy`` can be one of:
 
-  call-div1
+  :samp:`call-div1`
     Calls a library function that uses the single-step division instruction
     ``div1`` to perform the operation.  Division by zero calculates an
     unspecified result and does not trap.  This is the default except for SH4,
     SH2A and SHcompact.
 
-  call-fp
+  :samp:`call-fp`
     Calls a library function that performs the operation in double precision
     floating point.  Division by zero causes a floating-point exception.  This is
     the default for SHcompact with FPU.  Specifying this for targets that do not
     have a double precision FPU defaults to ``call-div1``.
 
-  call-table
+  :samp:`call-table`
     Calls a library function that uses a lookup table for small divisors and
     the ``div1`` instruction with case distinction for larger divisors.  Division
     by zero calculates an unspecified result and does not trap.  This is the default
@@ -8508,24 +8508,24 @@ on SPARC-V9 processors in 64-bit environments:
 
   Set the code model to one of
 
-  medlow
+  :samp:`medlow`
     The Medium/Low code model: 64-bit addresses, programs
     must be linked in the low 32 bits of memory.  Programs can be statically
     or dynamically linked.
 
-  medmid
+  :samp:`medmid`
     The Medium/Middle code model: 64-bit addresses, programs
     must be linked in the low 44 bits of memory, the text and data segments must
     be less than 2GB in size and the data segment must be located within 2GB of
     the text segment.
 
-  medany
+  :samp:`medany`
     The Medium/Anywhere code model: 64-bit addresses, programs
     may be linked anywhere in memory, the text and data segments must be less
     than 2GB in size and the data segment must be located within 2GB of the
     text segment.
 
-  embmedany
+  :samp:`embmedany`
     The Medium/Anywhere code model for embedded systems:
     64-bit addresses, the text and data segments must be less than 2GB in
     size, both starting anywhere in memory (determined at link time).  The
@@ -8536,19 +8536,19 @@ on SPARC-V9 processors in 64-bit environments:
 
   Set the memory model in force on the processor to one of
 
-  default
+  :samp:`default`
     The default memory model for the processor and operating system.
 
-  rmo
+  :samp:`rmo`
     Relaxed Memory Order
 
-  pso
+  :samp:`pso`
     Partial Store Order
 
-  tso
+  :samp:`tso`
     Total Store Order
 
-  sc
+  :samp:`sc`
     Sequential Consistency
 
     These memory models are formally defined in Appendix D of the Sparc V9
@@ -9153,7 +9153,7 @@ These :samp:`-m` options are defined for the x86 family of computers.
 
   The choices for ``cpu-type`` are:
 
-  native
+  :samp:`native`
     This selects the CPU to generate code for at compilation time by determining
     the processor type of the compiling machine.  Using :option:`-march=native`
     enables all instruction subsets supported by the local machine (hence
@@ -9161,173 +9161,173 @@ These :samp:`-m` options are defined for the x86 family of computers.
     produces code optimized for the local machine under the constraints
     of the selected instruction set.  
 
-  i386
+  :samp:`i386`
     Original Intel i386 CPU.
 
-  i486
+  :samp:`i486`
     Intel i486 CPU.  (No scheduling is implemented for this chip.)
 
-  i586 pentium
+  :samp:`i586` :samp:`pentium`
     Intel Pentium CPU with no MMX support.
 
-  pentium-mmx
+  :samp:`pentium-mmx`
     Intel Pentium MMX CPU, based on Pentium core with MMX instruction set support.
 
-  pentiumpro
+  :samp:`pentiumpro`
     Intel Pentium Pro CPU.
 
-  i686
+  :samp:`i686`
     When used with :option:`-march`, the Pentium Pro
     instruction set is used, so the code runs on all i686 family chips.
     When used with :option:`-mtune`, it has the same meaning as :samp:`generic`.
 
-  pentium2
+  :samp:`pentium2`
     Intel Pentium II CPU, based on Pentium Pro core with MMX instruction set
     support.
 
-  pentium3 pentium3m
+  :samp:`pentium3` :samp:`pentium3m`
     Intel Pentium III CPU, based on Pentium Pro core with MMX and SSE instruction
     set support.
 
-  pentium-m
+  :samp:`pentium-m`
     Intel Pentium M; low-power version of Intel Pentium III CPU
     with MMX, SSE and SSE2 instruction set support.  Used by Centrino notebooks.
 
-  pentium4 pentium4m
+  :samp:`pentium4` :samp:`pentium4m`
     Intel Pentium 4 CPU with MMX, SSE and SSE2 instruction set support.
 
-  prescott
+  :samp:`prescott`
     Improved version of Intel Pentium 4 CPU with MMX, SSE, SSE2 and SSE3 instruction
     set support.
 
-  nocona
+  :samp:`nocona`
     Improved version of Intel Pentium 4 CPU with 64-bit extensions, MMX, SSE,
     SSE2 and SSE3 instruction set support.
 
-  core2
+  :samp:`core2`
     Intel Core 2 CPU with 64-bit extensions, MMX, SSE, SSE2, SSE3 and SSSE3
     instruction set support.
 
-  nehalem
+  :samp:`nehalem`
     Intel Nehalem CPU with 64-bit extensions, MMX, SSE, SSE2, SSE3, SSSE3,
     SSE4.1, SSE4.2 and POPCNT instruction set support.
 
-  westmere
+  :samp:`westmere`
     Intel Westmere CPU with 64-bit extensions, MMX, SSE, SSE2, SSE3, SSSE3,
     SSE4.1, SSE4.2, POPCNT, AES and PCLMUL instruction set support.
 
-  sandybridge
+  :samp:`sandybridge`
     Intel Sandy Bridge CPU with 64-bit extensions, MMX, SSE, SSE2, SSE3, SSSE3,
     SSE4.1, SSE4.2, POPCNT, AVX, AES and PCLMUL instruction set support.
 
-  ivybridge
+  :samp:`ivybridge`
     Intel Ivy Bridge CPU with 64-bit extensions, MMX, SSE, SSE2, SSE3, SSSE3,
     SSE4.1, SSE4.2, POPCNT, AVX, AES, PCLMUL, FSGSBASE, RDRND and F16C
     instruction set support.
 
-  haswell
+  :samp:`haswell`
     Intel Haswell CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3, SSSE3,
     SSE4.1, SSE4.2, POPCNT, AVX, AVX2, AES, PCLMUL, FSGSBASE, RDRND, FMA,
     BMI, BMI2 and F16C instruction set support.
 
-  broadwell
+  :samp:`broadwell`
     Intel Broadwell CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3, SSSE3,
     SSE4.1, SSE4.2, POPCNT, AVX, AVX2, AES, PCLMUL, FSGSBASE, RDRND, FMA,
     BMI, BMI2, F16C, RDSEED, ADCX and PREFETCHW instruction set support.
 
-  bonnell
+  :samp:`bonnell`
     Intel Bonnell CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3 and SSSE3
     instruction set support.
 
-  silvermont
+  :samp:`silvermont`
     Intel Silvermont CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3, SSSE3,
     SSE4.1, SSE4.2, POPCNT, AES, PCLMUL and RDRND instruction set support.
 
-  knl
+  :samp:`knl`
     Intel Knight's Landing CPU with 64-bit extensions, MOVBE, MMX, SSE, SSE2, SSE3,
     SSSE3, SSE4.1, SSE4.2, POPCNT, AVX, AVX2, AES, PCLMUL, FSGSBASE, RDRND, FMA,
     BMI, BMI2, F16C, RDSEED, ADCX, PREFETCHW, AVX512F, AVX512PF, AVX512ER and
     AVX512CD instruction set support.
 
-  k6
+  :samp:`k6`
     AMD K6 CPU with MMX instruction set support.
 
-  k6-2 k6-3
+  :samp:`k6-2` :samp:`k6-3`
     Improved versions of AMD K6 CPU with MMX and 3DNow! instruction set support.
 
-  athlon athlon-tbird
+  :samp:`athlon` :samp:`athlon-tbird`
     AMD Athlon CPU with MMX, 3dNOW!, enhanced 3DNow! and SSE prefetch instructions
     support.
 
-  athlon-4 athlon-xp athlon-mp
+  :samp:`athlon-4` :samp:`athlon-xp` :samp:`athlon-mp`
     Improved AMD Athlon CPU with MMX, 3DNow!, enhanced 3DNow! and full SSE
     instruction set support.
 
-  k8 opteron athlon64 athlon-fx
+  :samp:`k8` :samp:`opteron` :samp:`athlon64` :samp:`athlon-fx`
     Processors based on the AMD K8 core with x86-64 instruction set support,
     including the AMD Opteron, Athlon 64, and Athlon 64 FX processors.
     (This supersets MMX, SSE, SSE2, 3DNow!, enhanced 3DNow! and 64-bit
     instruction set extensions.)
 
-  k8-sse3 opteron-sse3 athlon64-sse3
+  :samp:`k8-sse3` :samp:`opteron-sse3` :samp:`athlon64-sse3`
     Improved versions of AMD K8 cores with SSE3 instruction set support.
 
-  amdfam10 barcelona
+  :samp:`amdfam10` :samp:`barcelona`
     CPUs based on AMD Family 10h cores with x86-64 instruction set support.  (This
     supersets MMX, SSE, SSE2, SSE3, SSE4A, 3DNow!, enhanced 3DNow!, ABM and 64-bit
     instruction set extensions.)
 
-  bdver1
+  :samp:`bdver1`
     CPUs based on AMD Family 15h cores with x86-64 instruction set support.  (This
     supersets FMA4, AVX, XOP, LWP, AES, PCL_MUL, CX16, MMX, SSE, SSE2, SSE3, SSE4A,
     SSSE3, SSE4.1, SSE4.2, ABM and 64-bit instruction set extensions.)
 
-  bdver2
+  :samp:`bdver2`
     AMD Family 15h core based CPUs with x86-64 instruction set support.  (This
     supersets BMI, TBM, F16C, FMA, FMA4, AVX, XOP, LWP, AES, PCL_MUL, CX16, MMX,
     SSE, SSE2, SSE3, SSE4A, SSSE3, SSE4.1, SSE4.2, ABM and 64-bit instruction set 
     extensions.)
 
-  bdver3
+  :samp:`bdver3`
     AMD Family 15h core based CPUs with x86-64 instruction set support.  (This
     supersets BMI, TBM, F16C, FMA, FMA4, FSGSBASE, AVX, XOP, LWP, AES, 
     PCL_MUL, CX16, MMX, SSE, SSE2, SSE3, SSE4A, SSSE3, SSE4.1, SSE4.2, ABM and 
     64-bit instruction set extensions.
 
-  bdver4
+  :samp:`bdver4`
     AMD Family 15h core based CPUs with x86-64 instruction set support.  (This
     supersets BMI, BMI2, TBM, F16C, FMA, FMA4, FSGSBASE, AVX, AVX2, XOP, LWP, 
     AES, PCL_MUL, CX16, MOVBE, MMX, SSE, SSE2, SSE3, SSE4A, SSSE3, SSE4.1, 
     SSE4.2, ABM and 64-bit instruction set extensions.
 
-  btver1
+  :samp:`btver1`
     CPUs based on AMD Family 14h cores with x86-64 instruction set support.  (This
     supersets MMX, SSE, SSE2, SSE3, SSSE3, SSE4A, CX16, ABM and 64-bit
     instruction set extensions.)
 
-  btver2
+  :samp:`btver2`
     CPUs based on AMD Family 16h cores with x86-64 instruction set support. This
     includes MOVBE, F16C, BMI, AVX, PCL_MUL, AES, SSE4.2, SSE4.1, CX16, ABM,
     SSE4A, SSSE3, SSE3, SSE2, SSE, MMX and 64-bit instruction set extensions.
 
-  winchip-c6
+  :samp:`winchip-c6`
     IDT WinChip C6 CPU, dealt in same way as i486 with additional MMX instruction
     set support.
 
-  winchip2
+  :samp:`winchip2`
     IDT WinChip 2 CPU, dealt in same way as i486 with additional MMX and 3DNow!
     instruction set support.
 
-  c3
+  :samp:`c3`
     VIA C3 CPU with MMX and 3DNow! instruction set support.  (No scheduling is
     implemented for this chip.)
 
-  c3-2
+  :samp:`c3-2`
     VIA C3-2 (Nehemiah/C5XL) CPU with MMX and SSE instruction set support.
     (No scheduling is
     implemented for this chip.)
 
-  geode
+  :samp:`geode`
     AMD Geode embedded processor with MMX and 3DNow! instruction set support.
 
 .. option:: -mtune=cpu-type
@@ -9345,7 +9345,7 @@ These :samp:`-m` options are defined for the x86 family of computers.
   The choices for ``cpu-type`` are the same as for :option:`-march`.
   In addition, :option:`-mtune` supports 2 extra choices for ``cpu-type``:
 
-  generic
+  :samp:`generic`
     Produce code optimized for the most common IA32//AMD64//EM64T processors.
     If you know the CPU on which your code will run, then you should use
     the corresponding :option:`-mtune` or :option:`-march` option instead of
@@ -9364,7 +9364,7 @@ These :samp:`-m` options are defined for the x86 family of computers.
     :option:`-mtune` indicates the processor (or, in this case, collection of
     processors) for which the code is optimized.
 
-  intel
+  :samp:`intel`
     Produce code optimized for the most current Intel processors, which are
     Haswell and Silvermont for this version of GCC.  If you know the CPU
     on which your code will run, then you should use the corresponding
@@ -9393,7 +9393,7 @@ These :samp:`-m` options are defined for the x86 family of computers.
   Generate floating-point arithmetic for selected unit ``unit``.  The choices
   for ``unit`` are:
 
-  387
+  :samp:`387`
     Use the standard 387 floating-point coprocessor present on the majority of chips and
     emulated otherwise.  Code compiled with this option runs almost everywhere.
     The temporary results are computed in 80-bit precision instead of the precision
@@ -9402,7 +9402,7 @@ These :samp:`-m` options are defined for the x86 family of computers.
 
     This is the default choice for x86-32 targets.
 
-  sse
+  :samp:`sse`
     Use scalar floating-point instructions present in the SSE instruction set.
     This instruction set is supported by Pentium III and newer chips,
     and in the AMD line
@@ -9422,7 +9422,7 @@ These :samp:`-m` options are defined for the x86 family of computers.
 
     This is the default choice for the x86-64 compiler.
 
-  sse,387 sse+387 both
+  :samp:`sse,387` :samp:`sse+387` :samp:`both`
     Attempt to utilize both instruction sets at once.  This effectively doubles the
     amount of available registers, and on chips with separate execution units for
     387 and SSE the execution resources too.  Use this option with care, as it is
@@ -9825,25 +9825,25 @@ These :samp:`-m` options are defined for the x86 family of computers.
   may be used.  ``opt`` is a comma-separated list of options, which may
   be preceded by a :samp:`!` to invert the option:
 
-  all
+  :samp:`all`
     Enable all estimate instructions.
 
-  default
+  :samp:`default`
     Enable the default instructions, equivalent to :option:`-mrecip`.
 
-  none
+  :samp:`none`
     Disable all estimate instructions, equivalent to :option:`-mno-recip`.
 
-  div
+  :samp:`div`
     Enable the approximation for scalar division.
 
-  vec-div
+  :samp:`vec-div`
     Enable the approximation for vectorized division.
 
-  sqrt
+  :samp:`sqrt`
     Enable the approximation for scalar square root.
 
-  vec-sqrt
+  :samp:`vec-sqrt`
     Enable the approximation for vectorized square root.
 
     So, for example, :option:`-mrecip=all,!sqrt` enables
@@ -9943,13 +9943,13 @@ These :samp:`-m` options are defined for the x86 family of computers.
   Override the internal decision heuristic for the particular algorithm to use
   for inlining string operations.  The allowed values for ``alg`` are:
 
-  rep_byte rep_4byte rep_8byte
+  :samp:`rep_byte` :samp:`rep_4byte` :samp:`rep_8byte`
     Expand using i386 ``rep`` prefix of the specified size.
 
-  byte_loop loop unrolled_loop
+  :samp:`byte_loop` :samp:`loop` :samp:`unrolled_loop`
     Expand into an inline loop.
 
-  libcall
+  :samp:`libcall`
     Always use a library call.
 
 .. option:: -mmemcpy-strategy=strategy

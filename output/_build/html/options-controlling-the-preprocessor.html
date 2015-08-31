@@ -138,7 +138,7 @@ normal preprocessing and compilation.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt>-D <tt class="docutils literal"><span class="pre">name``=``definition</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-D</span> <em><span class="pre">name</span></em><span class="pre">=</span><em><span class="pre">definition</span></em></tt></dt>
 <dd><p class="first">The contents of <tt class="docutils literal"><span class="pre">definition</span></tt> are tokenized and processed as if
 they appeared during translation phase three in a <tt class="samp docutils literal"><span class="pre">#define</span></tt>
 directive.  In particular, the definition will be truncated by
@@ -496,28 +496,28 @@ knows about C and C++ standards; others may be added in the future.</p>
 <p><tt class="docutils literal"><span class="pre">standard</span></tt>
 may be one of:</p>
 <dl class="docutils">
-<dt>c90 c89 iso9899:1990</dt>
+<dt><tt class="docutils literal"><span class="pre">c90</span></tt> <tt class="docutils literal"><span class="pre">c89</span></tt> <tt class="docutils literal"><span class="pre">iso9899:1990</span></tt></dt>
 <dd><p class="first">The ISO C standard from 1990.  <tt class="samp docutils literal"><span class="pre">c90</span></tt> is the customary shorthand for
 this version of the standard.</p>
 <p class="last">The <a class="reference internal" href="options-controlling-c-dialect.html#cmdoption-ansi"><em class="xref std std-option">-ansi</em></a> option is equivalent to <em class="xref std std-option">-std=c90</em>.</p>
 </dd>
-<dt>iso9899:199409</dt>
+<dt><tt class="docutils literal"><span class="pre">iso9899:199409</span></tt></dt>
 <dd>The 1990 C standard, as amended in 1994.</dd>
-<dt>iso9899:1999 c99 iso9899:199x c9x</dt>
+<dt><tt class="docutils literal"><span class="pre">iso9899:1999</span></tt> <tt class="docutils literal"><span class="pre">c99</span></tt> <tt class="docutils literal"><span class="pre">iso9899:199x</span></tt> <tt class="docutils literal"><span class="pre">c9x</span></tt></dt>
 <dd>The revised ISO C standard, published in December 1999.  Before
 publication, this was known as C9X.</dd>
-<dt>iso9899:2011 c11 c1x</dt>
+<dt><tt class="docutils literal"><span class="pre">iso9899:2011</span></tt> <tt class="docutils literal"><span class="pre">c11</span></tt> <tt class="docutils literal"><span class="pre">c1x</span></tt></dt>
 <dd>The revised ISO C standard, published in December 2011.  Before
 publication, this was known as C1X.</dd>
-<dt>gnu90 gnu89</dt>
+<dt><tt class="docutils literal"><span class="pre">gnu90</span></tt> <tt class="docutils literal"><span class="pre">gnu89</span></tt></dt>
 <dd>The 1990 C standard plus GNU extensions.  This is the default.</dd>
-<dt>gnu99 gnu9x</dt>
+<dt><tt class="docutils literal"><span class="pre">gnu99</span></tt> <tt class="docutils literal"><span class="pre">gnu9x</span></tt></dt>
 <dd>The 1999 C standard plus GNU extensions.</dd>
-<dt>gnu11 gnu1x</dt>
+<dt><tt class="docutils literal"><span class="pre">gnu11</span></tt> <tt class="docutils literal"><span class="pre">gnu1x</span></tt></dt>
 <dd>The 2011 C standard plus GNU extensions.</dd>
-<dt>c++98</dt>
+<dt><tt class="docutils literal"><span class="pre">c++98</span></tt></dt>
 <dd>The 1998 ISO C++ standard plus amendments.</dd>
-<dt>gnu++98</dt>
+<dt><tt class="docutils literal"><span class="pre">gnu++98</span></tt></dt>
 <dd>The same as <em class="xref std std-option">-std=c++98</em> plus GNU extensions.  This is the
 default for C++ code.</dd>
 </dl>
@@ -807,17 +807,11 @@ it does not use shell special characters.</p>
 </dd></dl>
 
 <dl class="docutils">
-<dt>-A -<tt class="docutils literal"><span class="pre">predicate``=``answer</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-A</span> <span class="pre">-</span><em><span class="pre">predicate</span></em><span class="pre">=</span><em><span class="pre">answer</span></em></tt></dt>
 <dd>Cancel an assertion with the predicate <tt class="docutils literal"><span class="pre">predicate</span></tt> and answer
 <tt class="docutils literal"><span class="pre">answer</span></tt>.</dd>
-</dl>
-<table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-d<var>CHARS</var></span></kbd></td>
-<td><p class="first"><tt class="docutils literal"><span class="pre">CHARS</span></tt> is a sequence of one or more of the following characters,
+<dt><tt class="docutils literal"><span class="pre">-dCHARS</span></tt></dt>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">CHARS</span></tt> is a sequence of one or more of the following characters,
 and must not be preceded by a space.  Other characters are interpreted
 by the compiler proper, or reserved for future versions of GCC, and so
 are silently ignored.  If you specify characters whose behavior
@@ -871,9 +865,8 @@ output is delayed until the use or test of the macro; and
 undefined at the time.</p>
 </dd></dl>
 
-</td></tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <dl class="option">
 <dt id="cmdoption-P">
 <tt class="descname">-P</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-P" title="Permalink to this definition">¶</a></dt>
@@ -896,13 +889,9 @@ directive line have the effect of turning that line into an ordinary
 source line, since the first token on the line is no longer a <tt class="samp docutils literal"><span class="pre">#</span></tt>.</p>
 </dd></dl>
 
-<table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-C<var>C</var></span></kbd></td>
-<td><p class="first">Do not discard comments, including during macro expansion.  This is
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">-CC</span></tt></dt>
+<dd><p class="first">Do not discard comments, including during macro expansion.  This is
 like <a class="reference internal" href="#cmdoption-C"><em class="xref std std-option">-C</em></a>, except that comments contained within macros are
 also passed through to the output file where the macro is expanded.</p>
 <p>In addition to the side-effects of the <a class="reference internal" href="#cmdoption-C"><em class="xref std std-option">-C</em></a> option, the
@@ -911,9 +900,8 @@ to be converted to C-style comments.  This is to prevent later use
 of that macro from inadvertently commenting out the remainder of
 the source line.</p>
 <p class="last">The <em class="xref std std-option">-CC</em> option is generally used to support lint comments.</p>
-</td></tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <dl class="option">
 <dt id="cmdoption-traditional-cpp">
 <tt class="descname">-traditional-cpp</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-traditional-cpp" title="Permalink to this definition">¶</a></dt>

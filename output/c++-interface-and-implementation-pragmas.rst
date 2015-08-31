@@ -20,7 +20,7 @@ mentioned in Vague Linkage.  Using them can actually cause your
 program to grow due to unnecessary out-of-line copies of inline
 functions.
 
-#pragma interface #pragma interface "``subdir``/``objects``.h"
+``#pragma interface`` :samp:`#pragma interface "{subdir}/{objects}.h"`
 
   .. index:: #pragma interface
 
@@ -41,7 +41,7 @@ functions.
   use this form, you must specify the same string to :samp:`#pragma
   implementation`.
 
-#pragma implementation #pragma implementation "``objects``.h"
+``#pragma implementation`` :samp:`#pragma implementation "{objects}.h"`
 
   .. index:: #pragma implementation
 

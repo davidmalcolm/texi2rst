@@ -217,7 +217,7 @@ be packed too.</p>
 also define the enumerated type, structure or union.</p>
 </dd></dl>
 
-<p>bnd_variable_size</p>
+<p><tt class="docutils literal"><span class="pre">bnd_variable_size</span></tt></p>
 <blockquote>
 <div><span class="target" id="index-3"></span><p id="index-4">When applied to a structure field, this attribute tells Pointer
 Bounds Checker that the size of this field should not be computed
@@ -244,7 +244,7 @@ violation checks:</p>
 </pre></div>
 </div>
 </div></blockquote>
-<p>deprecated deprecated (<tt class="docutils literal"><span class="pre">msg</span></tt>)</p>
+<p><tt class="docutils literal"><span class="pre">deprecated</span></tt> <tt class="samp docutils literal"><span class="pre">deprecated</span> <span class="pre">(</span><em><span class="pre">msg</span></em><span class="pre">)</span></tt></p>
 <blockquote>
 <div><p id="index-5">The <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute results in a warning if the type
 is used anywhere in the source file.  This is useful when identifying
@@ -272,7 +272,7 @@ present.</p>
 <p>The <tt class="docutils literal"><span class="pre">deprecated</span></tt> attribute can also be used for functions and
 variables (see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>, see <a class="reference internal" href="specifying-attributes-of-variables.html#variable-attributes"><em>Specifying Attributes of Variables</em></a>.)</p>
 </div></blockquote>
-<p>designated_init</p>
+<p><tt class="docutils literal"><span class="pre">designated_init</span></tt></p>
 <blockquote>
 <div><p id="index-6">This attribute may only be applied to structure types.  It indicates
 that any initialization of an object of this type must use designated
@@ -283,7 +283,7 @@ initialization will result in future breakage.</p>
 <p>GCC emits warnings based on this attribute by default; use
 <em class="xref std std-option">-Wno-designated-init</em> to suppress them.</p>
 </div></blockquote>
-<p>may_alias</p>
+<p><tt class="docutils literal"><span class="pre">may_alias</span></tt></p>
 <blockquote>
 <div><p id="index-7">Accesses through pointers to types with this attribute are not subject
 to type-based alias analysis, but are instead assumed to be able to alias
@@ -319,7 +319,7 @@ declaration, the above program would abort when compiled with
 <a class="reference internal" href="options-that-control-optimization.html#cmdoption-fstrict-aliasing"><em class="xref std std-option">-fstrict-aliasing</em></a>, which is on by default at <a class="reference internal" href="options-that-control-optimization.html#cmdoption-O2"><em class="xref std std-option">-O2</em></a> or
 above.</p>
 </div></blockquote>
-<p>packed</p>
+<p><tt class="docutils literal"><span class="pre">packed</span></tt></p>
 <blockquote>
 <div><p id="index-8">This attribute, attached to <tt class="docutils literal"><span class="pre">struct</span></tt> or <tt class="docutils literal"><span class="pre">union</span></tt> type
 definition, specifies that each member (other than zero-width bit-fields)
@@ -327,7 +327,7 @@ of the structure or union is placed to minimize the memory required.  When
 attached to an <tt class="docutils literal"><span class="pre">enum</span></tt> definition, it indicates that the smallest
 integral type should be used.</p>
 </div></blockquote>
-<p>transparent_union</p>
+<p><tt class="docutils literal"><span class="pre">transparent_union</span></tt></p>
 <blockquote>
 <div><p id="index-9">This attribute, attached to a <tt class="docutils literal"><span class="pre">union</span></tt> type definition, indicates
 that any function parameter having that union type causes calls to that
@@ -378,7 +378,7 @@ The program can call <tt class="docutils literal"><span class="pre">wait</span><
 </pre></div>
 </div>
 </div></blockquote>
-<p>unused</p>
+<p><tt class="docutils literal"><span class="pre">unused</span></tt></p>
 <blockquote>
 <div><p id="index-10">When attached to a type (including a <tt class="docutils literal"><span class="pre">union</span></tt> or a <tt class="docutils literal"><span class="pre">struct</span></tt>),
 this attribute means that variables of that type are meant to appear
@@ -388,7 +388,7 @@ the case with lock or thread classes, which are usually defined and then
 not referenced, but contain constructors and destructors that have
 nontrivial bookkeeping functions.</p>
 </div></blockquote>
-<p>visibility</p>
+<p><tt class="docutils literal"><span class="pre">visibility</span></tt></p>
 <blockquote>
 <div><p id="index-11">In C++, attribute visibility (see <a class="reference internal" href="declaring-attributes-of-functions.html#function-attributes"><em>Declaring Attributes of Functions</em></a>) can also be
 applied to class, struct, union and enum types.  Unlike other type
@@ -463,7 +463,7 @@ Language Extensions Specification.  It is intended to support the
 <span id="id6"></span><h2>x86 Type Attributes<a class="headerlink" href="#x86-type-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Two attributes are currently defined for x86 configurations:
 <tt class="docutils literal"><span class="pre">ms_struct</span></tt> and <tt class="docutils literal"><span class="pre">gcc_struct</span></tt>.</p>
-<p>ms_struct gcc_struct</p>
+<p><tt class="docutils literal"><span class="pre">ms_struct</span></tt> <tt class="docutils literal"><span class="pre">gcc_struct</span></tt></p>
 <blockquote>
 <div><span class="target" id="index-21"></span><p id="index-22">If <tt class="docutils literal"><span class="pre">packed</span></tt> is used on a structure, or if bit-fields are used
 it may be that the Microsoft ABI packs them differently

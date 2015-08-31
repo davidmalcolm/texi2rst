@@ -113,41 +113,41 @@ gpl(7), gfdl(7), fsf-funding(7), gcc(1), gcov(1) and the Info entry for
 &#64;file{gcc}.
 &#64;c man end</p>
 <dl class="docutils">
-<dt>-h &#8211;help</dt>
+<dt><tt class="docutils literal"><span class="pre">-h</span></tt> <tt class="docutils literal"><span class="pre">--help</span></tt></dt>
 <dd>Display help about using <strong class="command">gcov-tool</strong> (on the standard output), and
 exit without doing any further processing.</dd>
-<dt>-v &#8211;version</dt>
+<dt><tt class="docutils literal"><span class="pre">-v</span></tt> <tt class="docutils literal"><span class="pre">--version</span></tt></dt>
 <dd>Display the <strong class="command">gcov-tool</strong> version number (on the standard output),
 and exit without doing any further processing.</dd>
-<dt>merge</dt>
+<dt><tt class="docutils literal"><span class="pre">merge</span></tt></dt>
 <dd><p class="first">Merge two profile directories.</p>
 <dl class="last docutils">
-<dt>-v &#8211;verbose</dt>
+<dt><tt class="docutils literal"><span class="pre">-v</span></tt> <tt class="docutils literal"><span class="pre">--verbose</span></tt></dt>
 <dd>Set the verbose mode.</dd>
-<dt>-o <tt class="docutils literal"><span class="pre">directory</span></tt> &#8211;output <tt class="docutils literal"><span class="pre">directory</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-o</span> <em><span class="pre">directory</span></em></tt> <tt class="samp docutils literal"><span class="pre">--output</span> <em><span class="pre">directory</span></em></tt></dt>
 <dd>Set the output profile directory. Default output directory name is
 <tt class="docutils literal"><span class="pre">merged_profile</span></tt>.</dd>
-<dt>-w <tt class="docutils literal"><span class="pre">w1</span></tt>,``w2`` &#8211;weight <tt class="docutils literal"><span class="pre">w1</span></tt>,``w2``</dt>
+<dt><tt class="samp docutils literal"><span class="pre">-w</span> <em><span class="pre">w1</span></em><span class="pre">,</span><em><span class="pre">w2</span></em></tt> <tt class="samp docutils literal"><span class="pre">--weight</span> <em><span class="pre">w1</span></em><span class="pre">,</span><em><span class="pre">w2</span></em></tt></dt>
 <dd>Set the merge weights of the <tt class="docutils literal"><span class="pre">directory1</span></tt> and <tt class="docutils literal"><span class="pre">directory2</span></tt>,
 respectively. The default weights are 1 for both.</dd>
 </dl>
 </dd>
-<dt>rewrite</dt>
+<dt><tt class="docutils literal"><span class="pre">rewrite</span></tt></dt>
 <dd><p class="first">Read the specified profile directory and rewrite to a new directory.</p>
 <dl class="last docutils">
-<dt>-v &#8211;verbose</dt>
+<dt><tt class="docutils literal"><span class="pre">-v</span></tt> <tt class="docutils literal"><span class="pre">--verbose</span></tt></dt>
 <dd>Set the verbose mode.</dd>
-<dt>-o <tt class="docutils literal"><span class="pre">directory</span></tt> &#8211;output <tt class="docutils literal"><span class="pre">directory</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-o</span> <em><span class="pre">directory</span></em></tt> <tt class="samp docutils literal"><span class="pre">--output</span> <em><span class="pre">directory</span></em></tt></dt>
 <dd>Set the output profile directory. Default output name is <tt class="docutils literal"><span class="pre">rewrite_profile</span></tt>.</dd>
-<dt>-s <tt class="docutils literal"><span class="pre">float_or_simple-frac_value</span></tt> &#8211;scale <tt class="docutils literal"><span class="pre">float_or_simple-frac_value</span></tt></dt>
+<dt><tt class="samp docutils literal"><span class="pre">-s</span> <em><span class="pre">float_or_simple-frac_value</span></em></tt> <tt class="samp docutils literal"><span class="pre">--scale</span> <em><span class="pre">float_or_simple-frac_value</span></em></tt></dt>
 <dd>Scale the profile counters. The specified value can be in floating point value,
 or simple fraction value form, such 1, 2, 2/3, and 5/3.</dd>
-<dt>-n <tt class="docutils literal"><span class="pre">long_long_value</span></tt> &#8211;normalize &lt;long_long_value&gt;</dt>
+<dt><tt class="samp docutils literal"><span class="pre">-n</span> <em><span class="pre">long_long_value</span></em></tt> <tt class="docutils literal"><span class="pre">--normalize</span> <span class="pre">&lt;long_long_value&gt;</span></tt></dt>
 <dd>Normalize the profile. The specified value is the max counter value
 in the new profile.</dd>
 </dl>
 </dd>
-<dt>overlap</dt>
+<dt><tt class="docutils literal"><span class="pre">overlap</span></tt></dt>
 <dd><p class="first">Computer the overlap score between the two specified profile directories.
 The overlap score is computed based on the arc profiles. It is defined as
 the sum of min (p1_counter[i] / p1_sum_all, p2_counter[i] / p2_sum_all),
@@ -155,17 +155,17 @@ for all arc counter i, where p1_counter[i] and p2_counter[i] are two
 matched counters and p1_sum_all and p2_sum_all are the sum of counter
 values in profile 1 and profile 2, respectively.</p>
 <dl class="last docutils">
-<dt>-v &#8211;verbose</dt>
+<dt><tt class="docutils literal"><span class="pre">-v</span></tt> <tt class="docutils literal"><span class="pre">--verbose</span></tt></dt>
 <dd>Set the verbose mode.</dd>
-<dt>-h &#8211;hotonly</dt>
+<dt><tt class="docutils literal"><span class="pre">-h</span></tt> <tt class="docutils literal"><span class="pre">--hotonly</span></tt></dt>
 <dd>Only print info for hot objects/functions.</dd>
-<dt>-f &#8211;function</dt>
+<dt><tt class="docutils literal"><span class="pre">-f</span></tt> <tt class="docutils literal"><span class="pre">--function</span></tt></dt>
 <dd>Print function level overlap score.</dd>
-<dt>-F &#8211;fullname</dt>
+<dt><tt class="docutils literal"><span class="pre">-F</span></tt> <tt class="docutils literal"><span class="pre">--fullname</span></tt></dt>
 <dd>Print full gcda filename.</dd>
-<dt>-o &#8211;object</dt>
+<dt><tt class="docutils literal"><span class="pre">-o</span></tt> <tt class="docutils literal"><span class="pre">--object</span></tt></dt>
 <dd>Print object level overlap score.</dd>
-<dt>-t <tt class="docutils literal"><span class="pre">float</span></tt> &#8211;hot_threshold &lt;float&gt;</dt>
+<dt><tt class="samp docutils literal"><span class="pre">-t</span> <em><span class="pre">float</span></em></tt> <tt class="docutils literal"><span class="pre">--hot_threshold</span> <span class="pre">&lt;float&gt;</span></tt></dt>
 <dd>Set the threshold for hot counter value.</dd>
 </dl>
 </dd>

@@ -45,26 +45,26 @@ The memory models integrate both barriers to code motion as well as
 synchronization requirements with other threads.  They are listed here
 in approximately ascending order of strength.
 
-__ATOMIC_RELAXED
+``__ATOMIC_RELAXED``
   No barriers or synchronization.
 
-__ATOMIC_CONSUME
+``__ATOMIC_CONSUME``
   Data dependency only for both barrier and synchronization with another
   thread.
 
-__ATOMIC_ACQUIRE
+``__ATOMIC_ACQUIRE``
   Barrier to hoisting of code and synchronizes with release (or stronger)
   semantic stores from another thread.
 
-__ATOMIC_RELEASE
+``__ATOMIC_RELEASE``
   Barrier to sinking of code and synchronizes with acquire (or stronger)
   semantic loads from another thread.
 
-__ATOMIC_ACQ_REL
+``__ATOMIC_ACQ_REL``
   Barrier in both directions and synchronizes with acquire loads and
   release stores in another thread.
 
-__ATOMIC_SEQ_CST
+``__ATOMIC_SEQ_CST``
   Barrier in both directions and synchronizes with acquire loads and
   release stores in all threads.
 

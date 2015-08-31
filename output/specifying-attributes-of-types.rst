@@ -152,7 +152,7 @@ The following type attributes are supported on most targets.
   ``struct`` or ``union``, not on a ``typedef`` that does not
   also define the enumerated type, structure or union.
 
-bnd_variable_size
+``bnd_variable_size``
 
   .. index:: bnd_variable_size type attribute
 
@@ -186,7 +186,7 @@ bnd_variable_size
     S *p = (S *)malloc (sizeof(S) + 100);
     p->data[10] = 0; //OK
 
-deprecated deprecated (``msg``)
+``deprecated`` :samp:`deprecated ({msg})`
 
   .. index:: deprecated type attribute
 
@@ -219,7 +219,7 @@ deprecated deprecated (``msg``)
   The ``deprecated`` attribute can also be used for functions and
   variables (see :ref:`function-attributes`, see :ref:`variable-attributes`.)
 
-designated_init
+``designated_init``
 
   .. index:: designated_init type attribute
 
@@ -233,7 +233,7 @@ designated_init
   GCC emits warnings based on this attribute by default; use
   :option:`-Wno-designated-init` to suppress them.
 
-may_alias
+``may_alias``
 
   .. index:: may_alias type attribute
 
@@ -275,7 +275,7 @@ may_alias
   :option:`-fstrict-aliasing`, which is on by default at :option:`-O2` or
   above.
 
-packed
+``packed``
 
   .. index:: packed type attribute
 
@@ -285,7 +285,7 @@ packed
   attached to an ``enum`` definition, it indicates that the smallest
   integral type should be used.
 
-transparent_union
+``transparent_union``
 
   .. index:: transparent_union type attribute
 
@@ -346,7 +346,7 @@ transparent_union
       return waitpid (-1, p.__ip, 0);
     }
 
-unused
+``unused``
 
   .. index:: unused type attribute
 
@@ -358,7 +358,7 @@ unused
   not referenced, but contain constructors and destructors that have
   nontrivial bookkeeping functions.
 
-visibility
+``visibility``
 
   .. index:: visibility type attribute
 
@@ -476,7 +476,7 @@ x86 Type Attributes
 Two attributes are currently defined for x86 configurations:
 ``ms_struct`` and ``gcc_struct``.
 
-ms_struct gcc_struct
+``ms_struct`` ``gcc_struct``
 
   .. index:: ms_struct type attribute, x86
 

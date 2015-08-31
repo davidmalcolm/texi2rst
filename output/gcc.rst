@@ -67,7 +67,7 @@ You have freedom to copy and modify this GNU Manual, like GNU
      software.  Copies published by the Free Software Foundation raise
      funds for GNU development.
 
-Software developmentThe GNU Compiler Collection. <(gcc)>
+The GNU Compiler Collection. <(gcc)>
 The GNU C++ compiler. <(gcc)>
 :command:`gcov`-a test coverage program. <(gcc)-gcov>
 :command:`gcov-tool`-an offline gcda profile processing program. <(gcc)-gcov-tool>
@@ -77,7 +77,7 @@ Using the GNU Compiler CollectionFor gcc version 6.0.0 (pre-release)(GCC)
 .. Even if there are no authors, the second titlepage line should be
    forced to the bottom of the page.
 
- 0pt plus 1filllRichard M. Stallman and the GCC Developer Community 0pt plus 1filllPublished by:
+Richard M. Stallman and the GCC Developer CommunityPublished by:
 
 ===============================  ================================
 GNU Press                        Website: http://www.gnupress.org

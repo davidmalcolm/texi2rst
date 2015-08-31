@@ -233,6 +233,7 @@ def prune(tree):
             if not isinstance(child, Element):
                 return False
             if child.kind in ('filename', 'preamble', 'setfilename', 'clear',
+                              'dircategory', 'vskip',
                               'set', 'macro', 'settitle',
                               'defcodeindex', 'syncodeindex',
                               'paragraphindent',

@@ -2635,7 +2635,7 @@ are compatible with as many systems and code bases as possible.</p>
 <dt id="cmdoption-mkernel">
 <tt class="descname">-mkernel</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-mkernel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable kernel development mode.  The <a class="reference internal" href="#cmdoption-mkernel"><em class="xref std std-option">-mkernel</em></a> option sets
-<a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a>, <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fno-common"><em class="xref std std-option">-fno-common</em></a>, <em class="xref std std-option">-fno-use-cxa-atexit</em>,
+<a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a>, <a class="reference internal" href="options-for-code-generation-conventions.html#cmdoption-fno-common"><em class="xref std std-option">-fno-common</em></a>, <em class="xref std std-option">-fno-use-cxa-atexit</em>,
 <em class="xref std std-option">-fno-exceptions</em>, <em class="xref std std-option">-fno-non-call-exceptions</em>,
 <em class="xref std std-option">-fapple-kext</em>, <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fno-weak"><em class="xref std std-option">-fno-weak</em></a> and <a class="reference internal" href="options-controlling-c++-dialect.html#cmdoption-fno-rtti"><em class="xref std std-option">-fno-rtti</em></a> where
 applicable.  This mode also sets <em class="xref std std-option">-mno-altivec</em>,
@@ -3716,7 +3716,7 @@ as appropriate.  Most GNU software doesn&#8217;t provide this capability.</p>
 <dt id="cmdoption-nolibdld">
 <tt class="descname">-nolibdld</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-nolibdld" title="Permalink to this definition">¶</a></dt>
 <dd><p>Suppress the generation of link options to search libdld.sl when the
-<a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified on HP-UX 10 and later.</p>
+<a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified on HP-UX 10 and later.</p>
 </dd></dl>
 
 <dl class="option">
@@ -3724,10 +3724,10 @@ as appropriate.  Most GNU software doesn&#8217;t provide this capability.</p>
 <tt class="descname">-static</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-static" title="Permalink to this definition">¶</a></dt>
 <dd><p>The HP-UX implementation of setlocale in libc has a dependency on
 libdld.sl.  There isn&#8217;t an archive version of libdld.sl.  Thus,
-when the <a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified, special link options
+when the <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified, special link options
 are needed to resolve this dependency.</p>
 <p>On HP-UX 10 and later, the GCC driver adds the necessary options to
-link with libdld.sl when the <a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified.
+link with libdld.sl when the <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a> option is specified.
 This causes the resulting binary to be dynamic.  On the 64-bit port,
 the linkers generate dynamic binaries by default in any case.  The
 <a class="reference internal" href="#cmdoption-nolibdld"><em class="xref std std-option">-nolibdld</em></a> option can be used to prevent the GCC driver from
@@ -10457,8 +10457,8 @@ defines the preprocessor macro <tt class="docutils literal"><span class="pre">__
 <dt id="cmdoption-non-static">
 <tt class="descname">-non-static</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-non-static" title="Permalink to this definition">¶</a></dt>
 <dd><p>Link an RTP executable against shared libraries rather than static
-libraries.  The options <a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a> and <a class="reference internal" href="options-for-linking.html#cmdoption-shared"><em class="xref std std-option">-shared</em></a> can
-also be used for RTPs (see <a class="reference internal" href="options-for-linking.html#link-options"><em>Options for Linking</em></a>); <a class="reference internal" href="#cmdoption-static"><em class="xref std std-option">-static</em></a>
+libraries.  The options <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a> and <a class="reference internal" href="options-for-linking.html#cmdoption-shared"><em class="xref std std-option">-shared</em></a> can
+also be used for RTPs (see <a class="reference internal" href="options-for-linking.html#link-options"><em>Options for Linking</em></a>); <a class="reference internal" href="options-for-linking.html#cmdoption-static"><em class="xref std std-option">-static</em></a>
 is the default.</p>
 </dd></dl>
 

@@ -73,24 +73,6 @@ The GNU C++ compiler. <(gcc)>
 :command:`gcov-tool`-an offline gcda profile processing program. <(gcc)-gcov-tool>
 This file documents the use of the GNU compilers.
 
-Using the GNU Compiler CollectionFor gcc version 6.0.0 (pre-release)(GCC)
-.. Even if there are no authors, the second titlepage line should be
-   forced to the bottom of the page.
-
-Richard M. Stallman and the GCC Developer CommunityPublished by:
-
-===============================  ================================
-GNU Press                        Website: http://www.gnupress.org
-===============================  ================================
-a division of the                General: press@gnu.org
-Free Software Foundation         Orders:  sales@gnu.org
-51 Franklin Street, Fifth Floor  Tel 617-542-5942
-Boston, MA 02110-1301 USA        Fax 617-542-2652
-===============================  ================================
-Last printed October 2003 for GCC 3.3.1.
-
-Printed copies are available for $45 each.
-
 .. _top:
 
 Introduction

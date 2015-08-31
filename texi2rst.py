@@ -234,6 +234,7 @@ def prune(tree):
                 return False
             if child.kind in ('filename', 'preamble', 'setfilename', 'clear',
                               'dircategory', 'vskip',
+                              'titlepage',
                               'set', 'macro', 'settitle',
                               'defcodeindex', 'syncodeindex',
                               'paragraphindent',

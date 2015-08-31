@@ -1,4 +1,5 @@
 import argparse
+from collections import deque
 import os
 import re
 import sys
@@ -26,6 +27,8 @@ class Parser:
         self.stack_top = None
         self.have_chapter = False
         self.have_section = False
+        self.have_para = False
+        self.tokens = deque()
 
     def parse_file(self, filename):
         with open(filename) as f:
@@ -39,8 +42,7 @@ class Parser:
         self.texinfo = Element('texinfo')
         self.push(self.texinfo)
         self.stack_top.add_text('\n')
-        for line in content.splitlines():
-            self.parse_line(line + '\n')
+        self._parse_content(content)
         while self.stack_top:
             self.pop()
         if 0:
@@ -49,42 +51,119 @@ class Parser:
             print
         return self.texinfo
 
-    def parse_line(self, line):
+    def _parse_content(self, text):
         if 0:
-            print('parse_line(%r)' % line)
-        if line.startswith('\input texinfo'):
-            preamble = self.stack_top.add_element('preamble')
-            preamble.add_text(line)
-            return
-        m = re.match('^@([a-z]*)\s*(.*)$', line)
-        if m and m.group(1) in FULL_LINE_COMMANDS:
-            self._handle_command(m.group(1), m.group(2))
-            return
-        if line.isspace():
-            if self.stack_top.kind == 'para':
-                self.pop()
-            return
-
-        while 1:
-            # Look for
-            #   BEFORE@COMMAND{TEXT}AFTER
-            # turning it into elements.
-            m = re.match(r'^([^@]*)@([a-z]+)\{(.+?)\}(.*)$', line,
-                         re.MULTILINE | re.DOTALL)
-            if m:
-                if 0:
-                    print(m.groups())
-                before, command, text, after = m.groups()
-                self._handle_text(before)
-                command_el = self.stack_top.add_element(command)
-                command_el.add_text(text)
-                line = after
-            else:
+            print(list(self._tokenize(text)))
+        # Add the tokens from "text" to the front of the deque
+        # (.extendleft reverses the order, so we need to pre-reverse them
+        # to get them in the correct order)
+        self.tokens.extendleft(list(self._tokenize(text))[::-1])
+        while True:
+            tok0 = self.peek_token()
+            tok1 = self.peek_token(1)
+            tok2 = self.peek_token(2)
+            if 0:
+                print('tok0: %r' % tok0)
+                print('  tok1: %r' % tok1)
+                print('  tok2: %r' % tok2)
+            if tok0 is None:
                 break
-        self._handle_text(line)
+            if tok0.startswith('\input texinfo'):
+                line = tok0
+                self.consume_token()
+                tok = self.consume_token()
+                while tok != '\n':
+                    line += tok
+                    tok = self.consume_token()
+                preamble = self.stack_top.add_element('preamble')
+                preamble.add_text(line + '\n')
+                continue
+            if tok0 == '@':
+                if tok2 == '{':
+                    if 0:
+                        print('got inline markup')
+                    command = tok1
+                    self.consume_n_tokens(3)
+                    inner = ''
+                    while 1:
+                        tok = self.consume_token()
+                        if tok == '}':
+                            break
+                        inner += tok
+                    command_el = self.stack_top.add_element(command)
+                    command_el.add_text(inner)
+                    continue
+                if tok1 and (tok2 == '\n' or tok2 is None):
+                    if tok2:
+                        line = '%s%s%s' % (tok0, tok1, tok2)
+                    else:
+                        line = '%s%s' % (tok0, tok1)
+                    if 0:
+                        print('got line: %r' % line)
+                    m = re.match('^@([a-z]*)\s*(.*)$', line)
+                    if m and m.group(1) in FULL_LINE_COMMANDS:
+                        self.consume_n_tokens(3)
+                        # FIXME: tokens should be inserted at front
+                        # for processing immediately after the @include,
+                        # whereas we're doing them at the back!
+                        self._handle_command(m.group(1), m.group(2))
+                        continue
+            elif tok0 == '\n' and (tok1 == '\n' or tok1 is None):
+                # Blank line:
+                if 0:
+                    print('blank line')
+                if self.stack_top.kind == 'para':
+                    self._handle_text(tok0)
+                    self.pop()
+                self.consume_n_tokens(2)
+                continue
+            elif tok0 == '\n':
+                if self.have_para:
+                    self._handle_text(tok0)
+                self.consume_token()
+                continue
+            self._handle_text(tok0)
+            self.consume_token()
+
+    def peek_token(self, n=0):
+        if len(self.tokens) >= n + 1:
+            return self.tokens[n]
+        else:
+            return None
+
+    def consume_token(self):
+        if self.tokens:
+            token = self.tokens.popleft()
+            if 0:
+                print('consuming: %r' % token)
+            return token
+
+    def consume_n_tokens(self, n):
+        for i in range(n):
+            self.consume_token()
+
+    def _tokenize(self, text):
+        """
+        Split up text into '@', '{', '}', '\n', and runs of everything else,
+        yielding the results.
+        """
+        SPECIAL_CHARS = '@{}\n'
+        accum = ''
+        for ch in text:
+            if ch in SPECIAL_CHARS:
+                if accum:
+                    yield accum
+                accum = ''
+                yield ch
+            else:
+                accum += ch
+        if accum:
+            yield accum
 
     def _handle_text(self, text):
-        if self.stack_top.kind != 'para':
+        if 0:
+            print('_handle_text(%r)' % text)
+        if self.stack_top.kind != 'para' and text != '\n':
             para = self.stack_top.add_element('para')
             self.push(para)
         self.stack_top.add_text(text)
@@ -96,7 +175,7 @@ class Parser:
             text = args.rstrip()
             if '--' in text:
                 text = '-'
-            self.stack_top.add_comment(name + ' ' + text)
+            self.stack_top.add_comment(' ' + name + ' ' + text + ' ')
             self.stack_top.add_text('\n')
         elif name == 'include':
             self._handle_include(args)
@@ -139,12 +218,14 @@ class Parser:
                     print('opening %r (for %r)' % (candidate_path, relpath))
                 with open(candidate_path) as f:
                     content = f.read()
-                for line in content.splitlines():
-                    self.parse_line(line + '\n')
+                self._parse_content(content)
                 if 1:
                     print('end of %r (for %r)' % (candidate_path, relpath))
                 return
-        raise ValueError('file %r not found' % relpath)
+        if 0:
+            raise ValueError('file %r not found' % relpath)
+        else:
+            print('file %r not found' % relpath)
 
     def push(self, element):
         if 0:
@@ -155,13 +236,19 @@ class Parser:
             self.have_chapter = True
         if element.kind == 'section':
             self.have_section = True
+        if element.kind == 'para':
+            self.have_para = True
 
     def pop(self):
         old_top = self.stack.pop()
+        if 0:
+            print('popping: %r' % old_top)
         if old_top.kind == 'chapter':
             self.have_chapter = False
         if old_top.kind == 'section':
             self.have_section = False
+        if old_top.kind == 'para':
+            self.have_para = False
         if self.stack:
             self.stack_top = self.stack[-1]
             self.stack_top.add_text('\n')
@@ -175,9 +262,10 @@ class Texi2XmlTests(unittest.TestCase):
         tree = p.parse_str(texisrc)
         dom_doc = tree.to_dom_doc()
         xmlstr = dom_doc.toxml()
-        self.assertMultiLineEqual(xmlstr,
-                         ('<?xml version="1.0" ?><texinfo>\n'
-                          + '<!--c This is a comment.-->\n</texinfo>'))
+        self.assertMultiLineEqual(
+            ('<?xml version="1.0" ?><texinfo>\n'
+             + '<!-- c This is a comment. -->\n</texinfo>'),
+            xmlstr)
 
     def test_preamble(self):
         texisrc = '''\input texinfo  @c -*-texinfo-*-
@@ -188,15 +276,16 @@ class Texi2XmlTests(unittest.TestCase):
         tree = p.parse_str(texisrc)
         dom_doc = tree.to_dom_doc()
         xmlstr = dom_doc.toxml()
-        self.assertMultiLineEqual(xmlstr,
-                         '''<?xml version="1.0" ?><texinfo>
+        self.assertMultiLineEqual(
+            '''<?xml version="1.0" ?><texinfo>
 <preamble>\\input texinfo  @c -*-texinfo-*-
-</preamble><!--c %**start of header-->
+</preamble><!-- c %**start of header -->
 <setfilename>gcc.info</setfilename>
-</texinfo>''')
+</texinfo>''',
+            xmlstr)
 
     def test_para(self):
-        texisrc = 'Hello world'
+        texisrc = 'Hello world\n'
         p = Parser('', [])
         tree = p.parse_str(texisrc)
         dom_doc = tree.to_dom_doc()
@@ -228,15 +317,14 @@ Line 2 of para 2.
                                         xmlstr)
 
     def test_inline(self):
-        texisrc = '''Example of @emph{inline markup}.'''
+        texisrc = '''Example of @emph{inline markup}.\n'''
         p = Parser('', [])
         tree = p.parse_str(texisrc)
         dom_doc = tree.to_dom_doc()
         xmlstr = dom_doc.toxml()
         self.assertMultiLineEqual(
             ('<?xml version="1.0" ?><texinfo>\n'
-             '<para>Example of <emph>inline markup</emph>.'
-             '\n</para>\n</texinfo>'),
+             '<para>Example of <emph>inline markup</emph>.\n</para>\n</texinfo>'),
             xmlstr)
 
     def test_multiple_inlines(self):
@@ -263,6 +351,24 @@ as <dfn>AMD1</dfn>; the amended standard is sometimes known as <dfn>C94</dfn> or
 <dfn>C95</dfn>.  To select this standard in GCC, use the option
 <option>-std=iso9899:199409</option> (with, as for other standard versions,
 <option>-pedantic</option> to receive all required diagnostics).
+</para>
+</texinfo>'''),
+            xmlstr)
+
+    def test_multiline_inlines(self):
+        texisrc = '''
+whole standard including all the library facilities; a @dfn{conforming
+freestanding implementation} is only required to provide certain
+'''
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        dom_doc = tree.to_dom_doc()
+        xmlstr = dom_doc.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual(
+            ('''<?xml version="1.0" ?><texinfo>
+<para>whole standard including all the library facilities; a <dfn>conforming
+freestanding implementation</dfn> is only required to provide certain
 </para>
 </texinfo>'''),
             xmlstr)

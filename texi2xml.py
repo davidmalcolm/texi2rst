@@ -12,6 +12,7 @@ FULL_LINE_COMMANDS = (
     'chapter',
     'clear',
     'comment',
+    'copying',
     'defcodeindex',
     'end',
     'ifset',
@@ -22,6 +23,7 @@ FULL_LINE_COMMANDS = (
     'setfilename',
     'settitle',
     'syncodeindex',
+    'titlepage',
 )
 
 class Parser:
@@ -202,6 +204,21 @@ class Parser:
             sectiontitle = section.add_element('sectiontitle')
             sectiontitle.add_text(line.strip())
             self.stack_top.add_text('\n')
+        elif name in ('copying', 'titlepage'):
+            env = self.stack_top.add_element(name, endspaces=' ')
+            self.push(env)
+            self.stack_top.add_text('\n')
+        elif name == 'end':
+            env = line.strip()
+            if 0:
+                print('env: %r' % env)
+            if env in ('copying', 'titlepage'):
+                if 0:
+                    print('stack: %r' % (self.stack, ))
+                while 1:
+                    old_top = self.pop(inject_newline=False)
+                    if old_top.kind == env:
+                        break
         elif name in ('set', 'clear'):
             key, value = self._parse_command_args(line)
             command = self.stack_top.add_element(name)
@@ -280,7 +297,7 @@ class Parser:
         if element.kind == 'para':
             self.have_para = True
 
-    def pop(self):
+    def pop(self, inject_newline=True):
         old_top = self.stack.pop()
         if 0:
             print('popping: %r' % old_top)
@@ -292,9 +309,11 @@ class Parser:
             self.have_para = False
         if self.stack:
             self.stack_top = self.stack[-1]
-            self.stack_top.add_text('\n')
+            if inject_newline:
+                self.stack_top.add_text('\n')
         else:
             self.stack_top = None
+        return old_top
 
 class Texi2XmlTests(unittest.TestCase):
     def test_comment(self):
@@ -521,6 +540,22 @@ Text in chapter 2 section 2.
 </texinfo>''',
                          xmlstr)
 
+    def test_copying(self):
+        texisrc = '''
+@copying
+Text goes here.
+@end copying
+'''
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual('''<texinfo>
+<copying endspaces=" ">
+<para>Text goes here.
+</para></copying></texinfo>''',
+                         xmlstr)
+
     def test_set(self):
         texisrc = '''
 @set version-GCC 6.0.0
@@ -566,7 +601,6 @@ version @value{version-GCC}.
 <para>It corresponds to the compilers
 <ifset>VERSION_PACKAGE</ifset>
 <value>VERSION_PACKAGE</value>
-<end>ifset</end>
 version <value>version-GCC</value>.
 </para>
 </texinfo>''',

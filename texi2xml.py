@@ -12,6 +12,7 @@ FULL_LINE_COMMANDS = (
     'chapter',
     'clear',
     'comment',
+    'defcodeindex',
     'end',
     'ifset',
     'include',
@@ -20,6 +21,7 @@ FULL_LINE_COMMANDS = (
     'set',
     'setfilename',
     'settitle',
+    'syncodeindex',
 )
 
 class Parser:
@@ -207,12 +209,20 @@ class Parser:
             command.attrs['line'] = line
             command.add_text(value)
             self.stack_top.add_text('\n')
-        elif name == 'paragraphindent':
+        elif name in ('defcodeindex', 'paragraphindent'):
             key, value = self._parse_command_args(line)
             command = self.stack_top.add_element(name)
             command.attrs['value'] = key
             command.attrs['line'] = line
             command.add_text(value)
+            self.stack_top.add_text('\n')
+        elif name == 'syncodeindex':
+            key, value = self._parse_command_args(line)
+            command = self.stack_top.add_element(name)
+            command.attrs['from'] = key
+            command.attrs['to'] = value
+            command.attrs['line'] = line
+            command.add_text('')
             self.stack_top.add_text('\n')
         else:
             m = re.match('^{(.*)}$', line)
@@ -494,6 +504,20 @@ Text in chapter 2 section 2.
         self.maxDiff = 2000
         self.assertMultiLineEqual('''<texinfo>
 <paragraphindent value="1" line=" 1"></paragraphindent>
+</texinfo>''',
+                         xmlstr)
+
+    def test_defcodeindex(self):
+        texisrc = '''@defcodeindex op
+@syncodeindex fn cp
+'''
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual('''<texinfo>
+<defcodeindex value="op" line=" op"></defcodeindex>
+<syncodeindex from="fn" to="cp" line=" fn cp"></syncodeindex>
 </texinfo>''',
                          xmlstr)
 

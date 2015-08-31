@@ -10,6 +10,7 @@ from node import Node, Element, Comment, Text
 FULL_LINE_COMMANDS = (
     'c',
     'chapter',
+    'clear',
     'comment',
     'end',
     'ifset',
@@ -100,7 +101,7 @@ class Parser:
                         line = '%s%s' % (tok0, tok1)
                     if 0:
                         print('got line: %r' % line)
-                    m = re.match('^@([a-z]*)\s*(.*)$', line)
+                    m = re.match('^@([a-z]*)(\s*.*)$', line)
                     if m and m.group(1) in FULL_LINE_COMMANDS:
                         self.consume_n_tokens(3)
                         # FIXME: tokens should be inserted at front
@@ -168,17 +169,17 @@ class Parser:
             self.push(para)
         self.stack_top.add_text(text)
 
-    def _handle_command(self, name, args):
+    def _handle_command(self, name, line):
         if 0:
-            print('_handle_command(%r, %r)' % (name, args))
+            print('_handle_command(%r, %r)' % (name, line))
         if name in ('c', 'comment'):
-            text = args.rstrip()
-            if '--' in text:
-                text = '-'
-            self.stack_top.add_comment(' ' + name + ' ' + text + ' ')
+            line = line.replace('--', '-')
+            if '--' in line:
+                line = '-'
+            self.stack_top.add_comment(' ' + name + line + ' ')
             self.stack_top.add_text('\n')
         elif name == 'include':
-            self._handle_include(args)
+            self._handle_include(line)
         elif name == 'chapter':
             # Close any existing chapter:
             while self.have_chapter:
@@ -186,7 +187,7 @@ class Parser:
             chapter = self.stack_top.add_element('chapter', spaces=' ')
             self.push(chapter)
             sectiontitle = chapter.add_element('sectiontitle')
-            sectiontitle.add_text(args)
+            sectiontitle.add_text(line.strip())
             self.stack_top.add_text('\n')
         elif name == 'section':
             # Close any existing section:
@@ -195,22 +196,41 @@ class Parser:
             section = self.stack_top.add_element('section', spaces=' ')
             self.push(section)
             sectiontitle = section.add_element('sectiontitle')
-            sectiontitle.add_text(args)
+            sectiontitle.add_text(line.strip())
+            self.stack_top.add_text('\n')
+        elif name in ('set', 'clear'):
+            key, value = self._parse_command_args(line)
+            command = self.stack_top.add_element(name)
+            command.attrs['name'] = key
+            command.attrs['line'] = line
+            command.add_text(value)
             self.stack_top.add_text('\n')
         else:
-            m = re.match('^{(.*)}$', args)
+            m = re.match('^{(.*)}$', line)
             if m:
-                args = m.group(1)
+                line = m.group(1)
             command = self.stack_top.add_element(name)
-            command.add_text(args)
+            command.add_text(line.strip())
             self.stack_top.add_text('\n')
 
-    def _handle_include(self, args):
+    def _parse_command_args(self, line):
+        if 0:
+            print('line: %r' % line)
+        m = re.match('^\s*(\S+)\s+(.*)$', line)
+        if m:
+            key, value = m.groups()
+            value = value.rstrip()
+        else:
+            key = line.lstrip()
+            value = ''
+        return key, value
+
+    def _handle_include(self, line):
         """
         For now, always expand included content directly
         inline.
         """
-        relpath = args.strip()
+        relpath = line.strip()
         for dirname in [self.path] + self.include_paths:
             candidate_path = os.path.join(dirname, relpath)
             if os.path.exists(candidate_path):
@@ -442,6 +462,37 @@ Text in chapter 2 section 2.
 </section>
 </chapter>
 </texinfo>'''),
+            xmlstr)
+
+
+    def test_set(self):
+        texisrc = '''
+@set version-GCC 6.0.0
+@set DEVELOPMENT
+@set VERSION_PACKAGE (GCC)''' + ' ' + '''
+'''
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual('''<texinfo>
+<set name="version-GCC" line=" version-GCC 6.0.0">6.0.0</set>
+<set name="DEVELOPMENT" line=" DEVELOPMENT"></set>
+<set name="VERSION_PACKAGE" line=" VERSION_PACKAGE (GCC) ">(GCC)</set>
+</texinfo>''',
+                         xmlstr)
+
+
+    def test_clear(self):
+        texisrc = '@clear INTERNALS\n'
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<clear name="INTERNALS" line=" INTERNALS"></clear>
+</texinfo>''',
             xmlstr)
 
     def test_variable(self):

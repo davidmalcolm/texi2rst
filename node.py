@@ -1,4 +1,5 @@
 # A minimal IR for transforming texinfo XML into rst
+from collections import OrderedDict
 import unittest
 
 class Node:
@@ -27,6 +28,37 @@ class Node:
                 for src, dst in child.iter_depth_first_edges():
                     yield (src, dst)
 
+    def toxml(self):
+        """
+        XML printer, preserving attribute ordering
+        (minidom appears to sort the attribute names
+        https://hg.python.org/cpython/file/2.7/Lib/xml/dom/minidom.py#l800)
+        """
+        def escape(data):
+            #data = data.replace('"', '&quot;')
+            data = data.replace('>', '&gt;')
+            data = data.replace('<', '&lt;')
+            data = data.replace('&', '&amp;')
+            return data
+
+        if isinstance(self, Element):
+            result = '<%s' % self.kind
+            for k, v in self.attrs.iteritems():
+                result += ' %s="%s"' % (k, v)
+            if self.children:
+                result += '>'
+                for child in self.children:
+                    result += child.toxml()
+                result += '</%s>' % self.kind
+            else:
+                result += '/>'
+            return result
+        elif isinstance(self, Comment):
+            return '<!--%s-->' % self.data
+        else:
+            assert isinstance(self, Text)
+            return escape(self.data)
+
     def to_dom_node(self, dom_doc):
         if isinstance(self, Element):
             dom_node = dom_doc.createElement(self.kind)
@@ -47,7 +79,7 @@ class Element(Node):
         if attrs:
             self.attrs = attrs
         else:
-            self.attrs = {}
+            self.attrs = OrderedDict()
         self.children = []
         self.rst_kind = None
 

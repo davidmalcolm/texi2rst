@@ -174,10 +174,10 @@ class Parser:
                     pre = menudescription.add_element('pre')
                     pre.attrs['xml:space'] = 'preserve'
                     pre.add_text(desc + '\n')
+                    self._pre = pre
                 else:
-                    print("can't handle line: %r" % line)
-                    if self.debug:
-                        raise ValueError(line)
+                    assert self._pre
+                    self._pre.add_text(line + '\n')
                 had_newline = 1
                 continue
             had_newline = 0
@@ -310,12 +310,12 @@ class Parser:
             env = line.strip()
             if self.debug:
                 print('@end of env: %r' % env)
-            if env in ('copying', 'titlepage', 'itemize'):
+            if env in ('copying', 'titlepage', 'itemize', 'menu'):
                 if self.debug:
                     print('stack: %r' % (self._stack, ))
                 while 1:
                     inject_newline = False
-                    if env == 'itemize':
+                    if env in ('itemize', 'menu'):
                         inject_newline = True
                     old_top = self.pop(inject_newline)
                     if old_top.kind == env:
@@ -768,6 +768,31 @@ This is item 2
 </pre></menudescription></menuentry></menu>
 </texinfo>''',
             xmlstr)
+
+    def test_menu_with_multiline_item(self):
+        texisrc = '''
+@menu
+* Item one::       Description one.
+* Item two::       Description two
+                   continues here.
+* Item three::     Description three.
+@end menu
+'''
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 20000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<menu endspaces=" ">
+<menuentry leadingtext="* "><menunode separator="::       ">Item one</menunode><menudescription><pre xml:space="preserve">Description one.
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::       ">Item two</menunode><menudescription><pre xml:space="preserve">Description two
+                   continues here.
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::     ">Item three</menunode><menudescription><pre xml:space="preserve">Description three.
+</pre></menudescription></menuentry></menu>
+</texinfo>''',
+            xmlstr)
+
 
     def test_text_quotes(self):
         texisrc = "\nfoo ``bar'' baz\n"

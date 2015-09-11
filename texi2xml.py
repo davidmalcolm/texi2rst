@@ -196,7 +196,36 @@ class Parser:
         if self.stack_top.kind != 'para' and text != '\n':
             para = self.stack_top.add_element('para')
             self.push(para)
-        self.stack_top.add_text(text)
+
+        # Entity replacement
+        ENTITIES = {"``": 'textldquo',
+                    "''": 'textrdquo'}
+        # Split up "text" into fragments, either text,
+        # or things that must become entities
+        # Split it up one entity at a time.
+        split = [text]
+        for splitter in ENTITIES:
+            if self.debug:
+                print('splitter: %r' % splitter)
+                print('old split: %r' % split)
+            new_split = []
+            for s in split:
+                for frag in s.split(splitter):
+                    new_split.append(frag)
+                    new_split.append(splitter)
+                # Remove stray final splitter:
+                new_split = new_split[:-1]
+            split = new_split
+            if self.debug:
+                print('new split: %r' % split)
+        if self.debug:
+            print(split)
+
+        for frag in split:
+            if frag in ENTITIES:
+                self.stack_top.add_entity(ENTITIES[frag])
+            else:
+                self.stack_top.add_text(frag)
 
     def _handle_command(self, name, line):
         if self.debug:
@@ -679,6 +708,19 @@ This is item 2
         self.assertMultiLineEqual(
             '''<texinfo>
 <para>Copyright &copyright; 2015  John Doe.
+</para>
+</texinfo>''',
+            xmlstr)
+
+    def test_text_quotes(self):
+        texisrc = "\nfoo ``bar'' baz\n"
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<para>foo &textldquo;bar&textrdquo; baz
 </para>
 </texinfo>''',
             xmlstr)

@@ -199,7 +199,8 @@ class Parser:
 
         # Entity replacement
         ENTITIES = {"``": 'textldquo',
-                    "''": 'textrdquo'}
+                    "''": 'textrdquo',
+                    "'":  'textrsquo'}
         # Split up "text" into fragments, either text,
         # or things that must become entities
         # Split it up one entity at a time.
@@ -210,6 +211,9 @@ class Parser:
                 print('old split: %r' % split)
             new_split = []
             for s in split:
+                if s in ENTITIES:
+                    new_split.append(s)
+                    continue
                 for frag in s.split(splitter):
                     new_split.append(frag)
                     new_split.append(splitter)
@@ -721,6 +725,19 @@ This is item 2
         self.assertMultiLineEqual(
             '''<texinfo>
 <para>foo &textldquo;bar&textrdquo; baz
+</para>
+</texinfo>''',
+            xmlstr)
+
+    def test_text_quote(self):
+        texisrc = "\nfoo's bar\n"
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<para>foo&textrsquo;s bar
 </para>
 </texinfo>''',
             xmlstr)

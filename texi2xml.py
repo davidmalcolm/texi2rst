@@ -97,6 +97,11 @@ class Parser:
                 had_newline = 1
                 continue
             if tok0 == '@':
+                if tok1 == '.':
+                    self.stack_top.add_entity('eosperiod')
+                    tok = self.consume_n_tokens(2)
+                    had_newline = 0
+                    continue
                 if tok2 == '{':
                     if 0:
                         print('got inline markup')
@@ -860,6 +865,19 @@ This is item 2
         self.assertMultiLineEqual(
             '''<texinfo>
 <para>foo&textrsquo;s bar
+</para>
+</texinfo>''',
+            xmlstr)
+
+    def test_eosperiod(self):
+        texisrc = "\nHello world@.\n"
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<para>Hello world&eosperiod;
 </para>
 </texinfo>''',
             xmlstr)

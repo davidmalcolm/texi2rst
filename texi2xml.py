@@ -23,6 +23,7 @@ FULL_LINE_COMMANDS = (
     'item',
     'itemize',
     'menu',
+    'opindex',
     'paragraphindent',
     'section',
     'set',
@@ -277,13 +278,19 @@ class Parser:
                 line = '-'
             self.stack_top.add_comment(' ' + name + line + ' ')
             self.stack_top.add_text('\n')
-        elif name in ('cindex', 'findex'):
-            cindex = self.stack_top.add_element(name)
+        elif name in ('cindex', 'findex', 'opindex'):
+            kind = name
+            if name == 'opindex':
+                kind = 'indexcommand'
+            outer = self.stack_top.add_element(kind)
             index = {'cindex': 'cp',
-                     'findex': 'fn'}
-            cindex.attrs['index'] = index[name]
-            cindex.attrs['spaces'] = ' '
-            indexterm = cindex.add_element('indexterm')
+                     'findex': 'fn',
+                     'opindex': 'op'}
+            if name == 'opindex':
+                outer.attrs['command'] = name
+            outer.attrs['index'] = index[name]
+            outer.attrs['spaces'] = ' '
+            indexterm = outer.add_element('indexterm')
             indexterm.attrs['index'] = index[name]
             if name in self.index_count:
                 self.index_count[name] += 1
@@ -292,6 +299,8 @@ class Parser:
             indexterm.attrs['number'] = '%i' % self.index_count[name]
             if name == 'findex':
                 indexterm.attrs['mergedindex'] = 'cp'
+            if name == 'opindex':
+                indexterm.attrs['incode'] = '1'
             indexterm.add_text(line.strip())
             self.stack_top.add_text('\n')
         elif name == 'include':
@@ -693,6 +702,18 @@ Text in chapter 2 section 2.
         self.assertMultiLineEqual('''<texinfo>
 <findex index="fn" spaces=" "><indexterm index="fn" number="1" mergedindex="cp">first</indexterm></findex>
 <findex index="fn" spaces=" "><indexterm index="fn" number="2" mergedindex="cp">second</indexterm></findex>
+</texinfo>''',
+                         xmlstr)
+
+    def test_opindex(self):
+        texisrc = '\n@opindex first\n@opindex second\n'
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual('''<texinfo>
+<indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="1" incode="1">first</indexterm></indexcommand>
+<indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="2" incode="1">second</indexterm></indexcommand>
 </texinfo>''',
                          xmlstr)
 

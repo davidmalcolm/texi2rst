@@ -102,8 +102,7 @@ class Parser:
                         if tok == '}':
                             break
                         inner += tok
-                    command_el = self.stack_top.add_element(command)
-                    command_el.add_text(inner)
+                    self._handle_inline_markup(command, inner)
                     had_newline = 0
                     continue
                 if tok1 and had_newline:
@@ -333,6 +332,13 @@ class Parser:
             raise ValueError('file %r not found' % relpath)
         else:
             print('file %r not found' % relpath)
+
+    def _handle_inline_markup(self, command, inner):
+        if command == 'copyright':
+            self.stack_top.add_entity('copyright')
+            return
+        command_el = self.stack_top.add_element(command)
+        command_el.add_text(inner)
 
     def push(self, element):
         if self.debug:
@@ -661,6 +667,19 @@ This is item 2
         self.assertMultiLineEqual(
             '''<texinfo>
 <clear name="INTERNALS" line=" INTERNALS"></clear>
+</texinfo>''',
+            xmlstr)
+
+    def test_copyright(self):
+        texisrc = '\nCopyright @copyright{} 2015  John Doe.\n'
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<para>Copyright &copyright; 2015  John Doe.
+</para>
 </texinfo>''',
             xmlstr)
 

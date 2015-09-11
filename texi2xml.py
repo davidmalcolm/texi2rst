@@ -20,6 +20,7 @@ FULL_LINE_COMMANDS = (
     'include',
     'item',
     'itemize',
+    'menu',
     'paragraphindent',
     'section',
     'set',
@@ -153,6 +154,32 @@ class Parser:
                 self.consume_token()
                 had_newline = 1
                 continue
+            elif self.stack_top.kind == 'menu':
+                line = tok0
+                self.consume_token()
+                tok = self.consume_token()
+                while tok != '\n':
+                    line += tok
+                    tok = self.consume_token()
+                leadingtext = '* '
+                m = re.match(r'\* (.*)(::\s*)(.*)', line)
+                if m:
+                    title, separator, desc = m.groups()
+                    menuentry = self.stack_top.add_element('menuentry')
+                    menuentry.attrs['leadingtext'] = leadingtext
+                    menunode = menuentry.add_element('menunode')
+                    menunode.add_text(title)
+                    menunode.attrs['separator'] = separator
+                    menudescription = menuentry.add_element('menudescription')
+                    pre = menudescription.add_element('pre')
+                    pre.attrs['xml:space'] = 'preserve'
+                    pre.add_text(desc + '\n')
+                else:
+                    print("can't handle line: %r" % line)
+                    if self.debug:
+                        raise ValueError(line)
+                had_newline = 1
+                continue
             had_newline = 0
             self._handle_text(tok0)
             self.consume_token()
@@ -262,7 +289,7 @@ class Parser:
             sectiontitle = section.add_element('sectiontitle')
             sectiontitle.add_text(line.strip())
             self.stack_top.add_text('\n')
-        elif name in ('copying', 'titlepage', 'itemize'):
+        elif name in ('copying', 'titlepage', 'itemize', 'menu'):
             if self.debug:
                 print('name: %r' % name)
             env = self.stack_top.add_element(name)
@@ -717,6 +744,28 @@ This is item 2
             '''<texinfo>
 <para>Copyright &copyright; 2015  John Doe.
 </para>
+</texinfo>''',
+            xmlstr)
+
+    def test_menu(self):
+        texisrc = '''
+@menu
+* Item one::       Description one.
+* Item two::       Description two.
+* Item three::     Description three.
+@end menu
+'''
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 20000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<menu endspaces=" ">
+<menuentry leadingtext="* "><menunode separator="::       ">Item one</menunode><menudescription><pre xml:space="preserve">Description one.
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::       ">Item two</menunode><menudescription><pre xml:space="preserve">Description two.
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::     ">Item three</menunode><menudescription><pre xml:space="preserve">Description three.
+</pre></menudescription></menuentry></menu>
 </texinfo>''',
             xmlstr)
 

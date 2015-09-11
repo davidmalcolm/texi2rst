@@ -8,6 +8,7 @@ import unittest
 from node import Node, Element, Comment, Text
 
 FULL_LINE_COMMANDS = (
+    'author',
     'c',
     'chapter',
     'clear',
@@ -328,7 +329,7 @@ class Parser:
                 line = m.group(1)
             command = self.stack_top.add_element(name)
             command.add_text(line.strip())
-            if name == 'settitle':
+            if name in ('settitle', 'author'):
                 command.attrs['spaces'] = ' '
             self.stack_top.add_text('\n')
 

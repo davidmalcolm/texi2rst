@@ -27,6 +27,7 @@ FULL_LINE_COMMANDS = (
     'settitle',
     'syncodeindex',
     'titlepage',
+    'vskip',
 )
 
 class Parser:
@@ -328,7 +329,9 @@ class Parser:
             if m:
                 line = m.group(1)
             command = self.stack_top.add_element(name)
-            command.add_text(line.strip())
+            if name != 'vskip':
+                line = line.strip()
+            command.add_text(line)
             if name in ('settitle', 'author'):
                 command.attrs['spaces'] = ' '
             self.stack_top.add_text('\n')
@@ -740,6 +743,18 @@ This is item 2
             '''<texinfo>
 <para>foo&textrsquo;s bar
 </para>
+</texinfo>''',
+            xmlstr)
+
+    def test_vskip(self):
+        texisrc = "\n@vskip 0pt plus 1filll\n"
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<vskip> 0pt plus 1filll</vskip>
 </texinfo>''',
             xmlstr)
 

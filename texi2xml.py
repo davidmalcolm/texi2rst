@@ -17,6 +17,8 @@ FULL_LINE_COMMANDS = (
     'end',
     'ifset',
     'include',
+    'item',
+    'itemize',
     'paragraphindent',
     'section',
     'set',
@@ -27,10 +29,11 @@ FULL_LINE_COMMANDS = (
 )
 
 class Parser:
-    def __init__(self, path, include_paths):
+    def __init__(self, path, include_paths, debug=0):
         self.path = path
         self.include_paths = include_paths
-        self.stack = []
+        self.debug = debug
+        self._stack = []
         self.stack_top = None
         self.have_chapter = False
         self.have_section = False
@@ -59,17 +62,18 @@ class Parser:
         return self.texinfo
 
     def _parse_content(self, text):
-        if 0:
+        if self.debug:
             print(list(self._tokenize(text)))
         # Add the tokens from "text" to the front of the deque
         # (.extendleft reverses the order, so we need to pre-reverse them
         # to get them in the correct order)
         self.tokens.extendleft(list(self._tokenize(text))[::-1])
+        had_newline = 1
         while True:
             tok0 = self.peek_token()
             tok1 = self.peek_token(1)
             tok2 = self.peek_token(2)
-            if 0:
+            if self.debug:
                 print('tok0: %r' % tok0)
                 print('  tok1: %r' % tok1)
                 print('  tok2: %r' % tok2)
@@ -84,6 +88,7 @@ class Parser:
                     tok = self.consume_token()
                 preamble = self.stack_top.add_element('preamble')
                 preamble.add_text(line + '\n')
+                had_newline = 1
                 continue
             if tok0 == '@':
                 if tok2 == '{':
@@ -99,21 +104,37 @@ class Parser:
                         inner += tok
                     command_el = self.stack_top.add_element(command)
                     command_el.add_text(inner)
+                    had_newline = 0
                     continue
-                if tok1 and (tok2 == '\n' or tok2 is None):
-                    if tok2:
-                        line = '%s%s%s' % (tok0, tok1, tok2)
-                    else:
-                        line = '%s%s' % (tok0, tok1)
-                    if 0:
-                        print('got line: %r' % line)
-                    m = re.match('^@([a-z]*)(\s*.*)$', line)
+                if tok1 and had_newline:
+                    # Do we have a full-line command?
+                    m = re.match('^([a-z]*)(\s*.*)$', tok1)
+                    if self.debug:
+                        print(m.groups())
                     if m and m.group(1) in FULL_LINE_COMMANDS:
-                        self.consume_n_tokens(3)
-                        # FIXME: tokens should be inserted at front
-                        # for processing immediately after the @include,
-                        # whereas we're doing them at the back!
-                        self._handle_command(m.group(1), m.group(2))
+                        idx = 2
+                        while 1:
+                            tok = self.peek_token(idx)
+                            if not tok:
+                                break
+                            if tok == '\n':
+                                break
+                            idx += 1
+                        # Consume everything on the line
+                        line = []
+                        for i in range(idx):
+                            line.append(self.consume_token())
+                        self.consume_token() # '\n'
+                        if self.debug:
+                            print('line: %r' % line)
+                        # Drop the '@' tok1:
+                        line = line[2:]
+                        # Add the rest of tok1:
+                        line = [m.group(2)] + line
+                        if self.debug:
+                            print('line: %r' % line)
+                        self._handle_command(m.group(1), ''.join(line))
+                        had_newline = 1
                         continue
             elif tok0 == '\n' and (tok1 == '\n' or tok1 is None):
                 # Blank line:
@@ -123,12 +144,15 @@ class Parser:
                     self._handle_text(tok0)
                     self.pop()
                 self.consume_n_tokens(2)
+                had_newline = 1
                 continue
             elif tok0 == '\n':
                 if self.have_para:
                     self._handle_text(tok0)
                 self.consume_token()
+                had_newline = 1
                 continue
+            had_newline = 0
             self._handle_text(tok0)
             self.consume_token()
 
@@ -141,7 +165,7 @@ class Parser:
     def consume_token(self):
         if self.tokens:
             token = self.tokens.popleft()
-            if 0:
+            if self.debug:
                 print('consuming: %r' % token)
             return token
 
@@ -176,7 +200,7 @@ class Parser:
         self.stack_top.add_text(text)
 
     def _handle_command(self, name, line):
-        if 0:
+        if self.debug:
             print('_handle_command(%r, %r)' % (name, line))
         if name in ('c', 'comment'):
             line = line.replace('--', '-')
@@ -204,19 +228,35 @@ class Parser:
             sectiontitle = section.add_element('sectiontitle')
             sectiontitle.add_text(line.strip())
             self.stack_top.add_text('\n')
-        elif name in ('copying', 'titlepage'):
-            env = self.stack_top.add_element(name, endspaces=' ')
+        elif name in ('copying', 'titlepage', 'itemize'):
+            if self.debug:
+                print('name: %r' % name)
+            env = self.stack_top.add_element(name)
             self.push(env)
+            if name == 'itemize':
+                line = line.strip()
+                if line.startswith('@'):
+                    commandarg = line[1:]
+                    env.attrs['commandarg'] = commandarg
+                    env.attrs['spaces'] = ' '
+                    itemprepend = env.add_element('itemprepend')
+                    formattingcommand = \
+                       itemprepend.add_element('formattingcommand')
+                    formattingcommand.attrs['command'] = commandarg
+            env.attrs['endspaces'] =' '
             self.stack_top.add_text('\n')
         elif name == 'end':
             env = line.strip()
-            if 0:
-                print('env: %r' % env)
-            if env in ('copying', 'titlepage'):
-                if 0:
-                    print('stack: %r' % (self.stack, ))
+            if self.debug:
+                print('@end of env: %r' % env)
+            if env in ('copying', 'titlepage', 'itemize'):
+                if self.debug:
+                    print('stack: %r' % (self._stack, ))
                 while 1:
-                    old_top = self.pop(inject_newline=False)
+                    inject_newline = False
+                    if env == 'itemize':
+                        inject_newline = True
+                    old_top = self.pop(inject_newline)
                     if old_top.kind == env:
                         break
         elif name in ('set', 'clear'):
@@ -241,6 +281,15 @@ class Parser:
             command.attrs['line'] = line
             command.add_text('')
             self.stack_top.add_text('\n')
+        elif name == 'item':
+            key, value = self._parse_command_args(line)
+            if self.stack_top.kind == 'listitem':
+                self.pop(inject_newline=False)
+            listitem = self.stack_top.add_element('listitem')
+            self.push(listitem)
+            prepend = listitem.add_element('prepend')
+            prepend.add_entity('bullet') # FIXME
+            self.stack_top.add_text('\n')
         else:
             m = re.match('^{(.*)}$', line)
             if m:
@@ -252,7 +301,7 @@ class Parser:
             self.stack_top.add_text('\n')
 
     def _parse_command_args(self, line):
-        if 0:
+        if self.debug:
             print('line: %r' % line)
         m = re.match('^\s*(\S+)\s+(.*)$', line)
         if m:
@@ -286,9 +335,9 @@ class Parser:
             print('file %r not found' % relpath)
 
     def push(self, element):
-        if 0:
+        if self.debug:
             print('pushing: %r' % element)
-        self.stack.append(element)
+        self._stack.append(element)
         self.stack_top = element
         if element.kind == 'chapter':
             self.have_chapter = True
@@ -298,8 +347,8 @@ class Parser:
             self.have_para = True
 
     def pop(self, inject_newline=True):
-        old_top = self.stack.pop()
-        if 0:
+        old_top = self._stack.pop()
+        if self.debug:
             print('popping: %r' % old_top)
         if old_top.kind == 'chapter':
             self.have_chapter = False
@@ -307,8 +356,10 @@ class Parser:
             self.have_section = False
         if old_top.kind == 'para':
             self.have_para = False
-        if self.stack:
-            self.stack_top = self.stack[-1]
+        if old_top.kind == 'listitem':
+            inject_newline = False
+        if self._stack:
+            self.stack_top = self._stack[-1]
             if inject_newline:
                 self.stack_top.add_text('\n')
         else:
@@ -555,6 +606,33 @@ Text goes here.
 <para>Text goes here.
 </para></copying></texinfo>''',
                          xmlstr)
+
+    def test_itemize(self):
+        texisrc = '''
+@itemize @bullet
+@item
+This is item 1
+
+@item
+This is item 2
+@end itemize
+'''
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
+<listitem><prepend>&bullet;</prepend>
+<para>This is item 1
+</para>
+</listitem><listitem><prepend>&bullet;</prepend>
+<para>This is item 2
+</para>
+</listitem></itemize>
+</texinfo>''',
+            xmlstr)
 
     def test_set(self):
         texisrc = '''

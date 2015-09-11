@@ -55,6 +55,8 @@ class Node:
             return result
         elif isinstance(self, Comment):
             return '<!--%s-->' % self.data
+        elif isinstance(self, Entity):
+            return '&%s;' % self.name
         else:
             assert isinstance(self, Text)
             return escape(self.data)
@@ -77,7 +79,7 @@ class Element(Node):
     def __init__(self, kind, attrs=None):
         self.kind = kind
         if attrs:
-            self.attrs = attrs
+            self.attrs = OrderedDict(attrs)
         else:
             self.attrs = OrderedDict()
         self.children = []
@@ -141,6 +143,9 @@ class Element(Node):
                 return
         self.children.append(Text(data))
 
+    def add_entity(self, name):
+        self.children.append(Entity(name))
+
     def to_dom_doc(self):
         from xml.dom.minidom import getDOMImplementation
         impl = getDOMImplementation()
@@ -163,6 +168,13 @@ class Text(Node):
 
     def __repr__(self):
         return 'Text(%r)' % self.data
+
+class Entity(Node):
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return 'Entity(%r)' % self.name
 
 class NodeTests(unittest.TestCase):
     def test_node_to_dom(self):

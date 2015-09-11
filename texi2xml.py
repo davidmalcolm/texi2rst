@@ -11,11 +11,13 @@ FULL_LINE_COMMANDS = (
     'author',
     'c',
     'chapter',
+    'cindex',
     'clear',
     'comment',
     'copying',
     'defcodeindex',
     'end',
+    'findex',
     'ifset',
     'include',
     'item',
@@ -42,6 +44,7 @@ class Parser:
         self.have_section = False
         self.have_para = False
         self.tokens = deque()
+        self.index_count = {}
 
     def parse_file(self, filename):
         with open(filename) as f:
@@ -268,6 +271,23 @@ class Parser:
             if '--' in line:
                 line = '-'
             self.stack_top.add_comment(' ' + name + line + ' ')
+            self.stack_top.add_text('\n')
+        elif name in ('cindex', 'findex'):
+            cindex = self.stack_top.add_element(name)
+            index = {'cindex': 'cp',
+                     'findex': 'fn'}
+            cindex.attrs['index'] = index[name]
+            cindex.attrs['spaces'] = ' '
+            indexterm = cindex.add_element('indexterm')
+            indexterm.attrs['index'] = index[name]
+            if name in self.index_count:
+                self.index_count[name] += 1
+            else:
+                self.index_count[name] = 1
+            indexterm.attrs['number'] = '%i' % self.index_count[name]
+            if name == 'findex':
+                indexterm.attrs['mergedindex'] = 'cp'
+            indexterm.add_text(line.strip())
             self.stack_top.add_text('\n')
         elif name == 'include':
             self._handle_include(line)
@@ -644,6 +664,30 @@ Text in chapter 2 section 2.
         self.maxDiff = 2000
         self.assertMultiLineEqual('''<texinfo>
 <paragraphindent value="1" line=" 1"></paragraphindent>
+</texinfo>''',
+                         xmlstr)
+
+    def test_cindex(self):
+        texisrc = '\n@cindex first\n@cindex second\n'
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual('''<texinfo>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">first</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="2">second</indexterm></cindex>
+</texinfo>''',
+                         xmlstr)
+
+    def test_findex(self):
+        texisrc = '\n@findex first\n@findex second\n'
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual('''<texinfo>
+<findex index="fn" spaces=" "><indexterm index="fn" number="1" mergedindex="cp">first</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="2" mergedindex="cp">second</indexterm></findex>
 </texinfo>''',
                          xmlstr)
 

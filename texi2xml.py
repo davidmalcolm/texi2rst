@@ -495,79 +495,66 @@ class Parser:
         return old_top
 
 class Texi2XmlTests(unittest.TestCase):
-    def test_comment(self):
-        texisrc = '@c This is a comment.'
-        p = Parser('', [])
+    def assert_xml_conversion(self, texisrc, expectedxmlstr, debug=0):
+        p = Parser('', [], debug=debug)
         tree = p.parse_str(texisrc)
-        dom_doc = tree.to_dom_doc()
-        xmlstr = dom_doc.toxml()
-        self.assertMultiLineEqual(
-            ('<?xml version="1.0" ?><texinfo>\n'
-             + '<!-- c This is a comment. -->\n</texinfo>'),
-            xmlstr)
+        xmlstr = tree.toxml()
+        self.maxDiff = 10000
+        self.assertMultiLineEqual(expectedxmlstr, xmlstr)
+
+    def test_comment(self):
+        self.assert_xml_conversion(
+            '@c This is a comment.',
+
+            '<texinfo>\n'
+             + '<!-- c This is a comment. -->\n</texinfo>')
 
     def test_preamble(self):
-        texisrc = '''\input texinfo  @c -*-texinfo-*-
+        self.assert_xml_conversion(
+            '''\input texinfo  @c -*-texinfo-*-
 @c %**start of header
 @setfilename gcc.info
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        dom_doc = tree.to_dom_doc()
-        xmlstr = dom_doc.toxml()
-        self.assertMultiLineEqual(
-            '''<?xml version="1.0" ?><texinfo>
+''',
+            '''<texinfo>
 <preamble>\\input texinfo  @c -*-texinfo-*-
 </preamble><!-- c %**start of header -->
 <setfilename>gcc.info</setfilename>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_para(self):
-        texisrc = 'Hello world\n'
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        dom_doc = tree.to_dom_doc()
-        xmlstr = dom_doc.toxml()
-        self.assertMultiLineEqual(
-            ('<?xml version="1.0" ?><texinfo>\n'
-             + '<para>Hello world\n</para>\n</texinfo>'),
-            xmlstr)
+        self.assert_xml_conversion(
+            'Hello world\n',
+
+            ('<texinfo>\n'
+             + '<para>Hello world\n</para>\n</texinfo>'))
 
     def test_paras(self):
-        texisrc = '''Line 1 of para 1.
+        self.assert_xml_conversion(
+            '''Line 1 of para 1.
 Line 2 of para 1.
 
 Line 1 of para 2.
 Line 2 of para 2.
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        dom_doc = tree.to_dom_doc()
-        xmlstr = dom_doc.toxml()
-        self.assertMultiLineEqual('''<?xml version="1.0" ?><texinfo>
+''',
+            '''<texinfo>
 <para>Line 1 of para 1.
 Line 2 of para 1.
 </para>
 <para>Line 1 of para 2.
 Line 2 of para 2.
 </para>
-</texinfo>''',
-                                        xmlstr)
+</texinfo>''')
 
     def test_inline(self):
-        texisrc = '''Example of @emph{inline markup}.\n'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        dom_doc = tree.to_dom_doc()
-        xmlstr = dom_doc.toxml()
-        self.assertMultiLineEqual(
-            ('<?xml version="1.0" ?><texinfo>\n'
-             '<para>Example of <emph>inline markup</emph>.\n</para>\n</texinfo>'),
-            xmlstr)
+        self.assert_xml_conversion(
+            '''Example of @emph{inline markup}.\n''',
+
+            ('<texinfo>\n'
+             '<para>Example of <emph>inline markup</emph>.\n</para>\n</texinfo>'))
 
     def test_multiple_inlines(self):
-        texisrc = '''
+        self.assert_xml_conversion(
+            '''
 An amendment to the 1990 standard was published in 1995.  This
 amendment added digraphs and @code{__STDC_VERSION__} to the language,
 but otherwise concerned the library.  This amendment is commonly known
@@ -575,14 +562,8 @@ as @dfn{AMD1}; the amended standard is sometimes known as @dfn{C94} or
 @dfn{C95}.  To select this standard in GCC, use the option
 @option{-std=iso9899:199409} (with, as for other standard versions,
 @option{-pedantic} to receive all required diagnostics).
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        dom_doc = tree.to_dom_doc()
-        xmlstr = dom_doc.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
-            ('''<?xml version="1.0" ?><texinfo>
+''',
+            '''<texinfo>
 <para>An amendment to the 1990 standard was published in 1995.  This
 amendment added digraphs and <code>__STDC_VERSION__</code> to the language,
 but otherwise concerned the library.  This amendment is commonly known
@@ -591,41 +572,29 @@ as <dfn>AMD1</dfn>; the amended standard is sometimes known as <dfn>C94</dfn> or
 <option>-std=iso9899:199409</option> (with, as for other standard versions,
 <option>-pedantic</option> to receive all required diagnostics).
 </para>
-</texinfo>'''),
-            xmlstr)
+</texinfo>''')
 
     def test_multiline_inlines(self):
-        texisrc = '''
+        self.assert_xml_conversion(
+            '''
 whole standard including all the library facilities; a @dfn{conforming
 freestanding implementation} is only required to provide certain
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        dom_doc = tree.to_dom_doc()
-        xmlstr = dom_doc.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
-            ('''<?xml version="1.0" ?><texinfo>
+''',
+            '''<texinfo>
 <para>whole standard including all the library facilities; a <dfn>conforming
 freestanding implementation</dfn> is only required to provide certain
 </para>
-</texinfo>'''),
-            xmlstr)
+</texinfo>''')
 
     def test_sections(self):
-        texisrc = '''@section Section 1
+        self.assert_xml_conversion(
+            '''@section Section 1
 Text in section 1.
 
 @section Section 2
 Text in section 2.
-'''
-
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        dom_doc = tree.to_dom_doc()
-        xmlstr = dom_doc.toxml()
-        self.assertMultiLineEqual(
-            ('''<?xml version="1.0" ?><texinfo>
+''',
+            '''<texinfo>
 <section spaces=" "><sectiontitle>Section 1</sectiontitle>
 <para>Text in section 1.
 </para>
@@ -634,11 +603,11 @@ Text in section 2.
 <para>Text in section 2.
 </para>
 </section>
-</texinfo>'''),
-            xmlstr)
+</texinfo>''')
 
     def test_chapters(self):
-        texisrc = '''@chapter Chapter 1
+        self.assert_xml_conversion(
+            '''@chapter Chapter 1
 @section Chapter 1 Section 1
 Text in chapter 1 section 1.
 
@@ -651,15 +620,8 @@ Text in chapter 2 section 1.
 
 @section Chapter 2 Section 2
 Text in chapter 2 section 2.
-'''
-
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        dom_doc = tree.to_dom_doc()
-        xmlstr = dom_doc.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
-            ('''<?xml version="1.0" ?><texinfo>
+''',
+            '''<texinfo>
 <chapter spaces=" "><sectiontitle>Chapter 1</sectiontitle>
 <section spaces=" "><sectiontitle>Chapter 1 Section 1</sectiontitle>
 <para>Text in chapter 1 section 1.
@@ -680,99 +642,76 @@ Text in chapter 2 section 2.
 </para>
 </section>
 </chapter>
-</texinfo>'''),
-            xmlstr)
+</texinfo>''')
 
     def test_settitle(self):
-        texisrc = '@settitle Using the GNU Compiler Collection (GCC)\n'
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual('''<texinfo>
+        self.assert_xml_conversion(
+            '@settitle Using the GNU Compiler Collection (GCC)\n',
+
+            '''<texinfo>
 <settitle spaces=" ">Using the GNU Compiler Collection (GCC)</settitle>
-</texinfo>''',
-                         xmlstr)
+</texinfo>''')
 
     def test_paragraphindent(self):
-        texisrc = '@paragraphindent 1\n'
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual('''<texinfo>
+        self.assert_xml_conversion(
+            '@paragraphindent 1\n',
+
+            '''<texinfo>
 <paragraphindent value="1" line=" 1"></paragraphindent>
-</texinfo>''',
-                         xmlstr)
+</texinfo>''')
 
     def test_cindex(self):
-        texisrc = '\n@cindex first\n@cindex second\n'
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual('''<texinfo>
+        self.assert_xml_conversion(
+            '\n@cindex first\n@cindex second\n',
+
+            '''<texinfo>
 <cindex index="cp" spaces=" "><indexterm index="cp" number="1">first</indexterm></cindex>
 <cindex index="cp" spaces=" "><indexterm index="cp" number="2">second</indexterm></cindex>
-</texinfo>''',
-                         xmlstr)
+</texinfo>''')
 
     def test_findex(self):
-        texisrc = '\n@findex first\n@findex second\n'
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual('''<texinfo>
+        self.assert_xml_conversion(
+            '\n@findex first\n@findex second\n',
+
+            '''<texinfo>
 <findex index="fn" spaces=" "><indexterm index="fn" number="1" mergedindex="cp">first</indexterm></findex>
 <findex index="fn" spaces=" "><indexterm index="fn" number="2" mergedindex="cp">second</indexterm></findex>
-</texinfo>''',
-                         xmlstr)
+</texinfo>''')
 
     def test_opindex(self):
-        texisrc = '\n@opindex first\n@opindex second\n'
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual('''<texinfo>
+        self.assert_xml_conversion(
+            '\n@opindex first\n@opindex second\n',
+
+            '''<texinfo>
 <indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="1" incode="1">first</indexterm></indexcommand>
 <indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="2" incode="1">second</indexterm></indexcommand>
-</texinfo>''',
-                         xmlstr)
+</texinfo>''')
 
     def test_defcodeindex(self):
-        texisrc = '''@defcodeindex op
+        self.assert_xml_conversion(
+            '''@defcodeindex op
 @syncodeindex fn cp
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual('''<texinfo>
+''',
+            '''<texinfo>
 <defcodeindex value="op" line=" op"></defcodeindex>
 <syncodeindex from="fn" to="cp" line=" fn cp"></syncodeindex>
-</texinfo>''',
-                         xmlstr)
+</texinfo>''')
 
     def test_copying(self):
-        texisrc = '''
+        self.assert_xml_conversion(
+            '''
 @copying
 Text goes here.
 @end copying
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual('''<texinfo>
+''',
+            '''<texinfo>
 <copying endspaces=" ">
 <para>Text goes here.
-</para></copying></texinfo>''',
-                         xmlstr)
+</para></copying></texinfo>''')
 
     def test_itemize(self):
-        texisrc = '''
+        self.assert_xml_conversion(
+            '''
 @itemize @bullet
 @item
 This is item 1
@@ -780,12 +719,7 @@ This is item 1
 @item
 This is item 2
 @end itemize
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
+''',
             '''<texinfo>
 <itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
 <listitem><prepend>&bullet;</prepend>
@@ -795,105 +729,77 @@ This is item 2
 <para>This is item 2
 </para>
 </listitem></itemize>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_set(self):
-        texisrc = '''
+        self.assert_xml_conversion(
+            '''
 @set version-GCC 6.0.0
 @set DEVELOPMENT
 @set VERSION_PACKAGE (GCC)''' + ' ' + '''
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual('''<texinfo>
+''',
+            '''<texinfo>
 <set name="version-GCC" line=" version-GCC 6.0.0">6.0.0</set>
 <set name="DEVELOPMENT" line=" DEVELOPMENT"></set>
 <set name="VERSION_PACKAGE" line=" VERSION_PACKAGE (GCC) ">(GCC)</set>
-</texinfo>''',
-                         xmlstr)
-
+</texinfo>''')
 
     def test_clear(self):
-        texisrc = '@clear INTERNALS\n'
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
+        self.assert_xml_conversion(
+            '@clear INTERNALS\n',
+
             '''<texinfo>
 <clear name="INTERNALS" line=" INTERNALS"></clear>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_copyright(self):
-        texisrc = '\nCopyright @copyright{} 2015  John Doe.\n'
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
+        self.assert_xml_conversion(
+            '\nCopyright @copyright{} 2015  John Doe.\n',
+
             '''<texinfo>
 <para>Copyright &copyright; 2015  John Doe.
 </para>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_email(self):
-        texisrc = '''
+        self.assert_xml_conversion(
+            '''
 Send mail to
 @email{jdoe@@example.com} or @email{jbloggs@@example.co.uk}.
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
+''',
             '''<texinfo>
 <para>Send mail to
 <email><emailaddress>jdoe&arobase;example.com</emailaddress></email> or <email><emailaddress>jbloggs&arobase;example.co.uk</emailaddress></email>.
 </para>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_menu(self):
-        texisrc = '''
+        self.assert_xml_conversion(
+            '''
 @menu
 * Item one::       Description one.
 * Item two::       Description two.
 * Item three::     Description three.
 @end menu
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 20000
-        self.assertMultiLineEqual(
+''',
             '''<texinfo>
 <menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::       ">Item one</menunode><menudescription><pre xml:space="preserve">Description one.
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::       ">Item two</menunode><menudescription><pre xml:space="preserve">Description two.
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::     ">Item three</menunode><menudescription><pre xml:space="preserve">Description three.
 </pre></menudescription></menuentry></menu>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_menu_with_multiline_item(self):
-        texisrc = '''
+        self.assert_xml_conversion(
+            '''
 @menu
 * Item one::       Description one.
 * Item two::       Description two
                    continues here.
 * Item three::     Description three.
 @end menu
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 20000
-        self.assertMultiLineEqual(
+''',
             '''<texinfo>
 <menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::       ">Item one</menunode><menudescription><pre xml:space="preserve">Description one.
@@ -901,113 +807,83 @@ Send mail to
                    continues here.
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::     ">Item three</menunode><menudescription><pre xml:space="preserve">Description three.
 </pre></menudescription></menuentry></menu>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_page(self):
-        texisrc = '\n@page\n'
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 20000
-        self.assertMultiLineEqual(
+        self.assert_xml_conversion(
+            '\n@page\n',
+
             '''<texinfo>
 <page></page>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_smallexample(self):
-        texisrc = '''
+        self.assert_xml_conversion(
+            '''
 @smallexample
 #define foo() bar
 foo
 baz
 @end smallexample
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
+''',
             '''<texinfo>
 <smallexample endspaces=" ">
 <pre xml:space="preserve">#define foo() bar
 foo
 baz
 </pre></smallexample>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_text_quotes(self):
-        texisrc = "\nfoo ``bar'' baz\n"
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
+        self.assert_xml_conversion(
+            "\nfoo ``bar'' baz\n",
+
             '''<texinfo>
 <para>foo &textldquo;bar&textrdquo; baz
 </para>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_text_quote(self):
-        texisrc = "\nfoo's bar\n"
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
+        self.assert_xml_conversion(
+            "\nfoo's bar\n",
+
             '''<texinfo>
 <para>foo&textrsquo;s bar
 </para>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_eosperiod(self):
-        texisrc = "\nHello world@.\n"
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
+        self.assert_xml_conversion(
+            "\nHello world@.\n",
+
             '''<texinfo>
 <para>Hello world&eosperiod;
 </para>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_vskip(self):
-        texisrc = "\n@vskip 0pt plus 1filll\n"
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
-        self.maxDiff = 2000
-        self.assertMultiLineEqual(
+        self.assert_xml_conversion(
+            "\n@vskip 0pt plus 1filll\n",
+
             '''<texinfo>
 <vskip> 0pt plus 1filll</vskip>
-</texinfo>''',
-            xmlstr)
+</texinfo>''')
 
     def test_variable(self):
-        texisrc = '''It corresponds to the compilers
+        self.assert_xml_conversion(
+            '''It corresponds to the compilers
 @ifset VERSION_PACKAGE
 @value{VERSION_PACKAGE}
 @end ifset
 version @value{version-GCC}.
-'''
-        p = Parser('', [])
-        tree = p.parse_str(texisrc)
-        dom_doc = tree.to_dom_doc()
-        xmlstr = dom_doc.toxml()
-        self.assertMultiLineEqual('''<?xml version="1.0" ?><texinfo>
+''',
+            '''<texinfo>
 <para>It corresponds to the compilers
 <ifset>VERSION_PACKAGE</ifset>
 <value>VERSION_PACKAGE</value>
 version <value>version-GCC</value>.
 </para>
-</texinfo>''',
-                         xmlstr)
+</texinfo>''')
 
 if __name__ == '__main__':
     unittest.main()

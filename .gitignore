@@ -1,4 +1,5 @@
 *~
+*.pyc
 
 output/_build/doctrees/
 output/_build/html/_sources/

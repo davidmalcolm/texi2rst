@@ -36,6 +36,19 @@ FULL_LINE_COMMANDS = (
     'vskip',
 )
 
+def add_text_with_lstrip(element, str_):
+    '''Strip leading spaces and add 'spaces' attr'''
+    spaces = ''
+    while str_ and str_[0].isspace():
+        ch = str_[0]
+        if ch == '\n':
+            ch = '\\n'
+        spaces += ch
+        str_ = str_[1:]
+    element.add_text(str_)
+    if spaces:
+        element.attrs['spaces'] = spaces
+
 class Parser:
     def __init__(self, path, include_paths, debug=0):
         self.path = path
@@ -458,6 +471,37 @@ class Parser:
         command_el = self.stack_top.add_element(command)
         if command == 'email':
             command_el = command_el.add_element('emailaddress')
+        if command == 'xref':
+            args = inner.split(',')
+            if self.debug:
+                print('xref args: %r' % args)
+            label = args[0]
+            label = label.replace(' ', '-')
+            label = label.replace('\n', '-')
+            label = label.replace('+', '_002b')
+            command_el.attrs['label'] = label
+            if len(args) == 1:
+                command_el.add_element('xrefnodename').add_text(args[0])
+                return
+            if len(args) == 2:
+                command_el.add_element('xrefnodename').add_text(args[0])
+                command_el.add_element('xrefinfoname').add_text(args[1])
+                return
+            if len(args) >= 3:
+                name = args[1]
+                desc = args[2]
+            if name == '' or name.isspace():
+                name = args[0]
+            command_el.add_element('xrefnodename').add_text(name)
+            xrefprinteddesc = command_el.add_element('xrefprinteddesc')
+            add_text_with_lstrip(xrefprinteddesc, desc)
+            if len(args) == 5:
+                xrefinfofile = command_el.add_element('xrefinfofile')
+                add_text_with_lstrip(xrefinfofile, args[3])
+                xrefprintedname = command_el.add_element('xrefprintedname')
+                add_text_with_lstrip(xrefprintedname, args[4])
+                command_el.attrs['manual'] = args[3].lstrip()
+            return
         self._insert_text_with_entities(command_el, inner)
 
     def push(self, element):
@@ -884,6 +928,52 @@ version @value{version-GCC}.
 version <value>version-GCC</value>.
 </para>
 </texinfo>''')
+
+class XrefTests(Texi2XmlTests):
+    def test_one_arg(self):
+        self.assert_xml_conversion(
+            '''
+@xref{Option Index}, for an index to GCC's options.
+''',
+            '''<texinfo>
+<xref label="Option-Index"><xrefnodename>Option Index</xrefnodename></xref><para>, for an index to GCC&textrsquo;s options.
+</para>
+</texinfo>''')
+
+    def test_two_args(self):
+        self.assert_xml_conversion(
+            '''
+By default, GCC provides some extensions to the C++ language; @xref{C++
+Dialect Options,Options Controlling C++ Dialect}.  Use of the
+''',
+
+            '''<texinfo>
+<para>By default, GCC provides some extensions to the C++ language; <xref label="C_002b_002b-Dialect-Options"><xrefnodename>C++
+Dialect Options</xrefnodename><xrefinfoname>Options Controlling C++ Dialect</xrefinfoname></xref>.  Use of the
+</para>
+</texinfo>''')
+
+    def test_three_args_with_empty_second_arg(self):
+        self.assert_xml_conversion(
+            '''
+errors rather than warnings).  @xref{C Dialect Options,,Options
+Controlling C Dialect}.
+''',
+
+            '''<texinfo>
+<para>errors rather than warnings).  <xref label="C-Dialect-Options"><xrefnodename>C Dialect Options</xrefnodename><xrefprinteddesc>Options
+Controlling C Dialect</xrefprinteddesc></xref>.
+</para>
+</texinfo>''')
+
+    def test_five_args(self):
+        self.assert_xml_conversion(
+            '''@xref{Top,,
+Introduction, gccint, GNU Compiler Collection (GCC) Internals}''',
+
+            '''<texinfo>
+<xref label="Top" manual="gccint"><xrefnodename>Top</xrefnodename><xrefprinteddesc spaces="\\n">Introduction</xrefprinteddesc><xrefinfofile spaces=" ">gccint</xrefinfofile><xrefprintedname spaces=" ">GNU Compiler Collection (GCC) Internals</xrefprintedname></xref></texinfo>''')
+
 
 if __name__ == '__main__':
     unittest.main()

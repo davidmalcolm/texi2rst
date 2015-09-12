@@ -30,6 +30,7 @@ FULL_LINE_COMMANDS = (
     'set',
     'setfilename',
     'settitle',
+    'smallexample',
     'syncodeindex',
     'titlepage',
     'vskip',
@@ -157,6 +158,11 @@ class Parser:
                     self.pop()
                 self.consume_n_tokens(2)
                 had_newline = 1
+                continue
+            elif self.stack_top.kind == 'pre':
+                self.stack_top.add_text(tok0)
+                self.consume_token()
+                had_newline = tok0 == '\n'
                 continue
             elif tok0 == '\n':
                 if self.have_para:
@@ -324,7 +330,8 @@ class Parser:
             sectiontitle = section.add_element('sectiontitle')
             sectiontitle.add_text(line.strip())
             self.stack_top.add_text('\n')
-        elif name in ('copying', 'titlepage', 'itemize', 'menu'):
+        elif name in ('copying', 'titlepage', 'itemize', 'menu',
+                      'smallexample'):
             if self.debug:
                 print('name: %r' % name)
             env = self.stack_top.add_element(name)
@@ -341,16 +348,21 @@ class Parser:
                     formattingcommand.attrs['command'] = commandarg
             env.attrs['endspaces'] =' '
             self.stack_top.add_text('\n')
+            if name == 'smallexample':
+                pre = self.stack_top.add_element('pre')
+                pre.attrs['xml:space'] = 'preserve'
+                self.push(pre)
         elif name == 'end':
             env = line.strip()
             if self.debug:
                 print('@end of env: %r' % env)
-            if env in ('copying', 'titlepage', 'itemize', 'menu'):
+            if env in ('copying', 'titlepage', 'itemize', 'menu',
+                       'smallexample'):
                 if self.debug:
                     print('stack: %r' % (self._stack, ))
                 while 1:
                     inject_newline = False
-                    if env in ('itemize', 'menu'):
+                    if env in ('itemize', 'menu', 'smallexample'):
                         inject_newline = True
                     old_top = self.pop(inject_newline)
                     if old_top.kind == env:
@@ -462,6 +474,8 @@ class Parser:
         if old_top.kind == 'para':
             self.have_para = False
         if old_top.kind == 'listitem':
+            inject_newline = False
+        if old_top.kind == 'pre':
             inject_newline = False
         if self._stack:
             self.stack_top = self._stack[-1]
@@ -873,6 +887,28 @@ This is item 2
         self.assertMultiLineEqual(
             '''<texinfo>
 <page></page>
+</texinfo>''',
+            xmlstr)
+
+    def test_smallexample(self):
+        texisrc = '''
+@smallexample
+#define foo() bar
+foo
+baz
+@end smallexample
+'''
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<smallexample endspaces=" ">
+<pre xml:space="preserve">#define foo() bar
+foo
+baz
+</pre></smallexample>
 </texinfo>''',
             xmlstr)
 

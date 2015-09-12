@@ -24,6 +24,7 @@ FULL_LINE_COMMANDS = (
     'itemize',
     'menu',
     'opindex',
+    'page',
     'paragraphindent',
     'section',
     'set',
@@ -863,6 +864,17 @@ This is item 2
 </texinfo>''',
             xmlstr)
 
+    def test_page(self):
+        texisrc = '\n@page\n'
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 20000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<page></page>
+</texinfo>''',
+            xmlstr)
 
     def test_text_quotes(self):
         texisrc = "\nfoo ``bar'' baz\n"

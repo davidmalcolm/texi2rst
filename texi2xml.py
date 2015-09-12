@@ -235,17 +235,16 @@ class Parser:
         if accum:
             yield accum
 
-    def _handle_text(self, text):
-        if 0:
-            print('_handle_text(%r)' % text)
-        if self.stack_top.kind != 'para' and text != '\n':
-            para = self.stack_top.add_element('para')
-            self.push(para)
-
+    def _insert_text_with_entities(self, element, text):
+        """
+        Add text (a string) to the given element, converting
+        certain character sequences to entities.
+        """
         # Entity replacement
         ENTITIES = {"``": 'textldquo',
                     "''": 'textrdquo',
-                    "'":  'textrsquo'}
+                    "'":  'textrsquo',
+                    "@@": 'arobase'}
         # Split up "text" into fragments, either text,
         # or things that must become entities
         # Split it up one entity at a time.
@@ -272,9 +271,17 @@ class Parser:
 
         for frag in split:
             if frag in ENTITIES:
-                self.stack_top.add_entity(ENTITIES[frag])
+                element.add_entity(ENTITIES[frag])
             else:
-                self.stack_top.add_text(frag)
+                element.add_text(frag)
+
+    def _handle_text(self, text):
+        if 0:
+            print('_handle_text(%r)' % text)
+        if self.stack_top.kind != 'para' and text != '\n':
+            para = self.stack_top.add_element('para')
+            self.push(para)
+        self._insert_text_with_entities(self.stack_top, text)
 
     def _handle_command(self, name, line):
         if self.debug:
@@ -449,7 +456,9 @@ class Parser:
             self.stack_top.add_entity('copyright')
             return
         command_el = self.stack_top.add_element(command)
-        command_el.add_text(inner)
+        if command == 'email':
+            command_el = command_el.add_element('emailaddress')
+        self._insert_text_with_entities(command_el, inner)
 
     def push(self, element):
         if self.debug:
@@ -828,6 +837,23 @@ This is item 2
         self.assertMultiLineEqual(
             '''<texinfo>
 <para>Copyright &copyright; 2015  John Doe.
+</para>
+</texinfo>''',
+            xmlstr)
+
+    def test_email(self):
+        texisrc = '''
+Send mail to
+@email{jdoe@@example.com} or @email{jbloggs@@example.co.uk}.
+'''
+        p = Parser('', [])
+        tree = p.parse_str(texisrc)
+        xmlstr = tree.toxml()
+        self.maxDiff = 2000
+        self.assertMultiLineEqual(
+            '''<texinfo>
+<para>Send mail to
+<email><emailaddress>jdoe&arobase;example.com</emailaddress></email> or <email><emailaddress>jbloggs&arobase;example.co.uk</emailaddress></email>.
 </para>
 </texinfo>''',
             xmlstr)

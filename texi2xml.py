@@ -36,8 +36,12 @@ FULL_LINE_COMMANDS = (
     'vskip',
 )
 
-def add_text_with_lstrip(element, str_):
-    '''Strip leading spaces and add 'spaces' attr'''
+def add_stripped_text(element, str_, attr_recipient=None):
+    '''
+    Add str_ to element, stripping any leading spaces,
+    and, if so adding 'spaces' attr to "attr_recipient" element,
+    using "element" by default.
+    '''
     spaces = ''
     while str_ and str_[0].isspace():
         ch = str_[0]
@@ -46,8 +50,10 @@ def add_text_with_lstrip(element, str_):
         spaces += ch
         str_ = str_[1:]
     element.add_text(str_)
+    if attr_recipient is None:
+        attr_recipient = element
     if spaces:
-        element.attrs['spaces'] = spaces
+        attr_recipient.attrs['spaces'] = spaces
 
 class Parser:
     def __init__(self, path, include_paths, debug=0):
@@ -316,7 +322,6 @@ class Parser:
             if name == 'opindex':
                 outer.attrs['command'] = name
             outer.attrs['index'] = index[name]
-            outer.attrs['spaces'] = ' '
             indexterm = outer.add_element('indexterm')
             indexterm.attrs['index'] = index[name]
             if name in self.index_count:
@@ -328,7 +333,7 @@ class Parser:
                 indexterm.attrs['mergedindex'] = 'cp'
             if name == 'opindex':
                 indexterm.attrs['incode'] = '1'
-            indexterm.add_text(line.strip())
+            add_stripped_text(indexterm, line, outer)
             self.stack_top.add_text('\n')
         elif name == 'include':
             self._handle_include(line)
@@ -336,19 +341,19 @@ class Parser:
             # Close any existing chapter:
             while self.have_chapter:
                 self.pop()
-            chapter = self.stack_top.add_element('chapter', spaces=' ')
+            chapter = self.stack_top.add_element('chapter')
             self.push(chapter)
             sectiontitle = chapter.add_element('sectiontitle')
-            sectiontitle.add_text(line.strip())
+            add_stripped_text(sectiontitle, line, chapter)
             self.stack_top.add_text('\n')
         elif name == 'section':
             # Close any existing section:
             while self.have_section:
                 self.pop()
-            section = self.stack_top.add_element('section', spaces=' ')
+            section = self.stack_top.add_element('section')
             self.push(section)
             sectiontitle = section.add_element('sectiontitle')
-            sectiontitle.add_text(line.strip())
+            add_stripped_text(sectiontitle, line, section)
             self.stack_top.add_text('\n')
         elif name in ('copying', 'titlepage', 'itemize', 'menu',
                       'smallexample'):
@@ -494,12 +499,12 @@ class Parser:
                 name = args[0]
             command_el.add_element('xrefnodename').add_text(name)
             xrefprinteddesc = command_el.add_element('xrefprinteddesc')
-            add_text_with_lstrip(xrefprinteddesc, desc)
+            add_stripped_text(xrefprinteddesc, desc)
             if len(args) == 5:
                 xrefinfofile = command_el.add_element('xrefinfofile')
-                add_text_with_lstrip(xrefinfofile, args[3])
+                add_stripped_text(xrefinfofile, args[3])
                 xrefprintedname = command_el.add_element('xrefprintedname')
-                add_text_with_lstrip(xrefprintedname, args[4])
+                add_stripped_text(xrefprintedname, args[4])
                 command_el.attrs['manual'] = args[3].lstrip()
             return
         self._insert_text_with_entities(command_el, inner)

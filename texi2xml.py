@@ -271,6 +271,7 @@ class Parser:
             print('_insert_text_with_entities: %r' % text)
         # Entity replacement
         ENTITIES = {"@/": 'slashbreak',
+                    "---": 'textmdash',
                     "``": 'textldquo',
                     "''": 'textrdquo',
                     "'":  'textrsquo',
@@ -973,6 +974,20 @@ Objective-C++ and features available in Objective-C are also available
 <para>compiler by its own name, or as GCC&eosperiod;  Either is correct.
 </para>
 </texinfo>''')
+
+    def test_mdash(self):
+        self.assert_xml_conversion(
+            '''
+Many options have long names starting with @samp{-f} or with
+@samp{-W}---for example,
+''',
+
+            '''<texinfo>
+<para>Many options have long names starting with <samp>-f</samp> or with
+<samp>-W</samp>&textmdash;for example,
+</para>
+</texinfo>''')
+
 
 class XrefTests(Texi2XmlTests):
     def test_one_arg(self):

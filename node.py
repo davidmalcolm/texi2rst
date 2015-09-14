@@ -28,7 +28,7 @@ class Node:
                 for src, dst in child.iter_depth_first_edges():
                     yield (src, dst)
 
-    def toxml(self):
+    def toxml(self, dtd_line=None):
         """
         XML printer, preserving attribute ordering
         (minidom appears to sort the attribute names
@@ -42,7 +42,12 @@ class Node:
             return data
 
         if isinstance(self, Element):
-            result = '<%s' % self.kind
+            if dtd_line:
+                result = '<?xml version="1.0"?>\n'
+                result += '%s\n' % dtd_line
+            else:
+                result = ''
+            result += '<%s' % self.kind
             for k, v in self.attrs.iteritems():
                 result += ' %s="%s"' % (k, v)
             if self.children:
@@ -177,7 +182,7 @@ class Entity(Node):
         return 'Entity(%r)' % self.name
 
 class NodeTests(unittest.TestCase):
-    def test_node_to_dom(self):
+    def make_tree(self):
         a = Element('A')
         b = Element('B')
         c = Element('C')
@@ -185,7 +190,10 @@ class NodeTests(unittest.TestCase):
         b.children = [Text('within b'),
                       Comment('ignore'),
                       Text('also within b')]
+        return a
 
+    def test_node_to_dom(self):
+        a = self.make_tree()
         xmldom = a.to_dom_doc()
         xmlstr = xmldom.toprettyxml(indent='  ')
         self.assertEqual(xmlstr,
@@ -200,6 +208,22 @@ class NodeTests(unittest.TestCase):
   <C/>
 </A>
 '''))
+
+    def test_node_to_xmlstr(self):
+        a = self.make_tree()
+        xmlstr = a.toxml()
+        self.assertMultiLineEqual(
+            xmlstr,
+            '<A><B>within b<!--ignore-->also within b</B>foo<C/></A>')
+
+    def test_header(self):
+        a = Element('A')
+        xmlstr = a.toxml(dtd_line='<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V5.0//EN" "http://www.gnu.org/software/texinfo/dtd/5.0/texinfo.dtd">')
+        self.assertMultiLineEqual(
+            xmlstr,
+            '''<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V5.0//EN" "http://www.gnu.org/software/texinfo/dtd/5.0/texinfo.dtd">
+<A/>''')
 
 if __name__ == '__main__':
     unittest.main()

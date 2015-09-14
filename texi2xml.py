@@ -7,6 +7,8 @@ import unittest
 
 from node import Node, Element, Comment, Text
 
+DTD_LINE = '<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V5.0//EN" "http://www.gnu.org/software/texinfo/dtd/5.0/texinfo.dtd">'
+
 FULL_LINE_COMMANDS = (
     'author',
     'c',
@@ -56,10 +58,12 @@ def add_stripped_text(element, str_, attr_recipient=None):
         attr_recipient.attrs['spaces'] = spaces
 
 class Parser:
-    def __init__(self, path, include_paths, debug=0):
+    def __init__(self, path, include_paths, debug=0, with_dtd=0, filename=None):
         self.path = path
         self.include_paths = include_paths
         self.debug = debug
+        self.with_dtd = with_dtd
+        self.filename = filename
         self._stack = []
         self.stack_top = None
         self.have_chapter = False
@@ -78,8 +82,15 @@ class Parser:
         Parse texinfo content, into a Node (and a tree below it).
         """
         self.texinfo = Element('texinfo')
+        if self.with_dtd:
+            self.texinfo.attrs['xml:lang'] = "en"
         self.push(self.texinfo)
         self.stack_top.add_text('\n')
+        if self.filename:
+            filename = self.texinfo.add_element('filename')
+            filename.attrs['file'] = self.filename
+            filename.add_text('')
+            self.stack_top.add_text('\n')
         self._parse_content(content)
         while self.stack_top:
             self.pop()
@@ -563,10 +574,17 @@ class Parser:
 
 
 class Texi2XmlTests(unittest.TestCase):
-    def assert_xml_conversion(self, texisrc, expectedxmlstr, debug=0):
-        p = Parser('', [], debug=debug)
+    def assert_xml_conversion(self, texisrc, expectedxmlstr, debug=0, with_dtd=0, filename=None):
+        p = Parser('', [],
+                   debug=debug,
+                   with_dtd=with_dtd,
+                   filename=filename)
         tree = p.parse_str(texisrc)
-        xmlstr = tree.toxml()
+        if with_dtd:
+            dtd_line = DTD_LINE
+        else:
+            dtd_line = None
+        xmlstr = tree.toxml(dtd_line)
         self.maxDiff = 10000
         self.assertMultiLineEqual(expectedxmlstr, xmlstr)
 
@@ -592,6 +610,18 @@ class PreambleTests(Texi2XmlTests):
 </preamble><!-- c %**start of header -->
 <setfilename>gcc.info</setfilename>
 </texinfo>''')
+
+    def test_dtd(self):
+        self.assert_xml_conversion(
+            '',
+
+            '''<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V5.0//EN" "http://www.gnu.org/software/texinfo/dtd/5.0/texinfo.dtd">
+<texinfo xml:lang="en">
+<filename file="gcc.xml"></filename>
+</texinfo>''',
+            with_dtd=1,
+            filename='gcc.xml')
 
 
 class ParaTests(Texi2XmlTests):

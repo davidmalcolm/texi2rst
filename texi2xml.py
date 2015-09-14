@@ -127,6 +127,11 @@ class Parser:
                         self.tokens.appendleft(tok1)
                     had_newline = 0
                     continue
+                if tok1 == '@':
+                    self.stack_top.add_entity('arobase')
+                    self.consume_n_tokens(2)
+                    had_newline = 0
+                    continue
                 if tok2 == '{':
                     if 0:
                         print('got inline markup')
@@ -262,6 +267,8 @@ class Parser:
         Add text (a string) to the given element, converting
         certain character sequences to entities.
         """
+        if self.debug:
+            print('_insert_text_with_entities: %r' % text)
         # Entity replacement
         ENTITIES = {"@/": 'slashbreak',
                     "``": 'textldquo',
@@ -918,6 +925,19 @@ class MenuTests(Texi2XmlTests):
 
 
 class TextTests(Texi2XmlTests):
+    def test_arobase_at_line_start(self):
+        self.assert_xml_conversion(
+            '''enumeration (only for Objective-C), method attributes and the
+@@optional and @@required keywords in protocols.  GCC supports
+Objective-C++ and features available in Objective-C are also available
+''',
+            '''<texinfo>
+<para>enumeration (only for Objective-C), method attributes and the
+&arobase;optional and &arobase;required keywords in protocols.  GCC supports
+Objective-C++ and features available in Objective-C are also available
+</para>
+</texinfo>''')
+
     def test_text_quotes(self):
         self.assert_xml_conversion(
             "\nfoo ``bar'' baz\n",

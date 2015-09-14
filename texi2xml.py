@@ -119,8 +119,11 @@ class Parser:
                 had_newline = 1
                 continue
             if tok0 == '@':
-                if tok1.startswith('.'):
-                    self.stack_top.add_entity('eosperiod')
+                if tok1.startswith('.') or tok1.startswith(':'):
+                    ch = tok1[0]
+                    ENTITIES = {'.': 'eosperiod',
+                                ':': 'noeos'}
+                    self.stack_top.add_entity(ENTITIES[ch])
                     self.consume_n_tokens(2)
                     tok1 = tok1[1:]
                     if tok1:
@@ -271,6 +274,7 @@ class Parser:
             print('_insert_text_with_entities: %r' % text)
         # Entity replacement
         ENTITIES = {"@/": 'slashbreak',
+                    "@:": 'noeos',
                     "---": 'textmdash',
                     "``": 'textldquo',
                     "''": 'textrdquo',
@@ -985,6 +989,20 @@ Many options have long names starting with @samp{-f} or with
             '''<texinfo>
 <para>Many options have long names starting with <samp>-f</samp> or with
 <samp>-W</samp>&textmdash;for example,
+</para>
+</texinfo>''')
+
+
+    def test_noeos(self):
+        self.assert_xml_conversion(
+            '''
+Warn about ISO C constructs that are outside of the common subset of
+ISO C and ISO C++, e.g.@: request for implicit conversion from
+''',
+
+            '''<texinfo>
+<para>Warn about ISO C constructs that are outside of the common subset of
+ISO C and ISO C++, e.g.&noeos; request for implicit conversion from
 </para>
 </texinfo>''')
 

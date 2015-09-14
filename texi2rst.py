@@ -6,7 +6,7 @@ import sys
 import unittest
 import xml.dom.minidom
 
-from node import Node, Element, Comment, Text
+from node import Node, Element, Comment, Text, Visitor, NoopVisitor
 
 """
 gcc.xml created from a gcc build/gcc tree using:
@@ -98,49 +98,6 @@ def from_xml_string(xml_src):
     tree = convert_from_xml(dom)
     tree = fixup_whitespace(tree)
     return tree
-
-# Visitor base class
-
-class Visitor:
-    def visit(self, node):
-        if isinstance(node, Element):
-            early_exit = self.previsit_element(node)
-            if early_exit:
-                return
-            for child in node.children:
-                self.visit(child)
-            self.postvisit_element(node)
-        elif isinstance(node, Comment):
-            self.visit_comment(node)
-        elif  isinstance(node, Text):
-            self.visit_text(node)
-        else:
-            raise ValueError('unknown node: %r' % (node, ))
-
-    def previsit_element(self, element):
-        raise NotImplementedError
-
-    def postvisit_element(self, element):
-        raise NotImplementedError
-
-    def visit_comment(self, comment):
-        raise NotImplementedError
-
-    def visit_text(self, text):
-        raise NotImplementedError
-
-class NoopVisitor(Visitor):
-    def previsit_element(self, element):
-        pass
-
-    def postvisit_element(self, element):
-        pass
-
-    def visit_comment(self, comment):
-        pass
-
-    def visit_text(self, text):
-        pass
 
 def for_each_node_below(node):
     if isinstance(node, Element):

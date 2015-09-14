@@ -1,11 +1,10 @@
-import argparse
-from collections import deque
+from collections import deque, OrderedDict
 import os
 import re
 import sys
 import unittest
 
-from node import Node, Element, Comment, Text
+from node import Node, Element, Comment, Text, NoopVisitor
 
 DTD_LINE = '<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V5.0//EN" "http://www.gnu.org/software/texinfo/dtd/5.0/texinfo.dtd">'
 
@@ -25,6 +24,7 @@ FULL_LINE_COMMANDS = (
     'item',
     'itemize',
     'menu',
+    'node',
     'opindex',
     'page',
     'paragraphindent',
@@ -35,6 +35,7 @@ FULL_LINE_COMMANDS = (
     'smallexample',
     'syncodeindex',
     'titlepage',
+    'top',
     'vskip',
 )
 
@@ -57,6 +58,30 @@ def add_stripped_text(element, str_, attr_recipient=None):
     if spaces:
         attr_recipient.attrs['spaces'] = spaces
 
+def escape_text(text):
+    text = text.replace(' ', '-')
+    text = text.replace('\n', '-')
+    text = text.replace('+', '_002b')
+    return text
+
+class TexiNode(Element):
+    """
+    An @node within a .texi file.
+    """
+    def __init__(self):
+        Element.__init__(self, 'node')
+        # These attrs are all strings, for lookup within Parser.node_dict
+        self.next = None
+        self.prev = None
+        self.up = None
+        # This is a list of strings:
+        #self.child_nodes = []
+
+    def __repr__(self):
+        return ('TexiNode(%r, %r, rst_kind=%r, next=%r, prev=%r, up=%r)'
+                % (self.kind, self.attrs, self.rst_kind,
+                   self.next, self.prev, self.up))
+
 class Parser:
     def __init__(self, path, include_paths, debug=0, with_dtd=0, filename=None):
         self.path = path
@@ -71,6 +96,9 @@ class Parser:
         self.have_para = False
         self.tokens = deque()
         self.index_count = {}
+        self.last_node = None
+        self.top_node = None
+        self.node_dict = OrderedDict()
 
     def parse_file(self, filename):
         with open(filename) as f:
@@ -94,6 +122,7 @@ class Parser:
         self._parse_content(content)
         while self.stack_top:
             self.pop()
+        self._fixup_nodes()
         if 0:
             print
             self.texinfo.dump(sys.stdout)
@@ -452,6 +481,23 @@ class Parser:
             prepend = listitem.add_element('prepend')
             prepend.add_entity('bullet') # FIXME
             self.stack_top.add_text('\n')
+        elif name == 'node':
+            args = line.split(',')
+            if self.debug:
+                print('node args: %r' % args)
+            node = TexiNode()
+            self.stack_top.children.append(node)
+            node.attrs['name'] = escape_text(args[0].strip())
+            self.stack_top.add_text('\n')
+            self.last_node = node
+            nodename = node.add_element('nodename')
+            add_stripped_text(nodename, args[0], node)
+            self.node_dict[args[0].strip()] = node
+            node.name = args[0].strip()
+            node.args = args
+            # (we create the other child elements in _fixup_nodes)
+        elif name == 'top':
+            self.top_node = self.last_node
         else:
             m = re.match('^{(.*)}$', line)
             if m:
@@ -511,10 +557,7 @@ class Parser:
             args = inner.split(',')
             if self.debug:
                 print('xref args: %r' % args)
-            label = args[0]
-            label = label.replace(' ', '-')
-            label = label.replace('\n', '-')
-            label = label.replace('+', '_002b')
+            label = escape_text(args[0])
             command_el.attrs['label'] = label
             if len(args) == 1:
                 command_el.add_element('xrefnodename').add_text(args[0])
@@ -574,6 +617,46 @@ class Parser:
             self.stack_top = None
         return old_top
 
+    def _fixup_nodes(self):
+        # Automatic wiring up of next/prev/up for @node
+        node_names = list(self.node_dict)
+        for i, name in enumerate(node_names):
+            node = self.node_dict[name]
+            #print repr(name), repr(node)
+            def add_ptr(node, name, arg_idx, auto_name):
+                """
+                Add <nodenext>, <nodeprev>, <nodeup>
+                """
+                if arg_idx < len(node.args):
+                    arg = arg = node.args[arg_idx]
+                    ptrnode = node.add_element(name)
+                    add_stripped_text(ptrnode, arg)
+                else:
+                    if auto_name:
+                        ptrnode = node.add_element(name)
+                        ptrnode.attrs['automatic'] = 'on'
+                        ptrnode.add_text(auto_name)
+
+            # For now, put everything after top in one list below the
+            # top node:
+
+            if i + 1 < len(node_names):
+                auto_next_name = node_names[i + 1]
+            else:
+                auto_next_name = None
+            add_ptr(node, 'nodenext', 1, auto_next_name)
+
+            if i > 1:
+                auto_prev_name = node_names[i - 1]
+            else:
+                auto_prev_name = None
+            add_ptr(node, 'nodeprev', 2, auto_prev_name)
+
+            add_ptr(node, 'nodeup', 3, self.top_node.name)
+
+        if self.debug:
+            for k in self.node_dict:
+                print repr(k), repr(self.node_dict[k])
 
 class Texi2XmlTests(unittest.TestCase):
     def assert_xml_conversion(self, texisrc, expectedxmlstr, debug=0, with_dtd=0, filename=None):
@@ -1054,6 +1137,35 @@ ISO C and ISO C++, e.g.&noeos; request for implicit conversion from
 </para>
 </texinfo>''')
 
+
+class NodeTests(Texi2XmlTests):
+    def test_four_args(self):
+        self.assert_xml_conversion(
+            '''
+@node Top, G++ and GCC,, (DIR)
+@top Introduction
+''',
+            '''<texinfo>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext spaces=" ">G++ and GCC</nodenext><nodeprev></nodeprev><nodeup spaces=" ">(DIR)</nodeup></node>
+</texinfo>''')
+
+    def test_automatic(self):
+        self.assert_xml_conversion(
+            '''
+@node Top, G++ and GCC,, (DIR)
+@top Introduction
+
+@node G++ and GCC
+
+@node Standards
+''',
+            '''<texinfo>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext spaces=" ">G++ and GCC</nodenext><nodeprev></nodeprev><nodeup spaces=" ">(DIR)</nodeup></node>
+
+<node name="G_002b_002b-and-GCC" spaces=" "><nodename>G++ and GCC</nodename><nodenext automatic="on">Standards</nodenext><nodeup automatic="on">Top</nodeup></node>
+
+<node name="Standards" spaces=" "><nodename>Standards</nodename><nodeprev automatic="on">G++ and GCC</nodeprev><nodeup automatic="on">Top</nodeup></node>
+</texinfo>''')
 
 class XrefTests(Texi2XmlTests):
     def test_one_arg(self):

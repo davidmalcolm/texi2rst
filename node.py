@@ -181,6 +181,57 @@ class Entity(Node):
     def __repr__(self):
         return 'Entity(%r)' % self.name
 
+# Visitor base class
+
+class Visitor:
+    def visit(self, node):
+        if isinstance(node, Element):
+            early_exit = self.previsit_element(node)
+            if early_exit:
+                return
+            for child in node.children:
+                self.visit(child)
+            self.postvisit_element(node)
+        elif isinstance(node, Comment):
+            self.visit_comment(node)
+        elif isinstance(node, Text):
+            self.visit_text(node)
+        elif isinstance(node, Entity):
+            self.visit_entity(node)
+        else:
+            raise ValueError('unknown node: %r' % (node, ))
+
+    def previsit_element(self, element):
+        raise NotImplementedError
+
+    def postvisit_element(self, element):
+        raise NotImplementedError
+
+    def visit_comment(self, comment):
+        raise NotImplementedError
+
+    def visit_text(self, text):
+        raise NotImplementedError
+
+    def visit_entity(self, entity):
+        raise NotImplementedError
+
+class NoopVisitor(Visitor):
+    def previsit_element(self, element):
+        pass
+
+    def postvisit_element(self, element):
+        pass
+
+    def visit_comment(self, comment):
+        pass
+
+    def visit_text(self, text):
+        pass
+
+    def visit_entity(self, entity):
+        pass
+
 class NodeTests(unittest.TestCase):
     def make_tree(self):
         a = Element('A')

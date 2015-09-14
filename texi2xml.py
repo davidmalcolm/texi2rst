@@ -85,8 +85,8 @@ class Parser:
         if self.with_dtd:
             self.texinfo.attrs['xml:lang'] = "en"
         self.push(self.texinfo)
-        self.stack_top.add_text('\n')
         if self.filename:
+            self.stack_top.add_text('\n')
             filename = self.texinfo.add_element('filename')
             filename.attrs['file'] = self.filename
             filename.add_text('')
@@ -208,6 +208,8 @@ class Parser:
             elif tok0 == '\n':
                 if self.have_para:
                     self._handle_text(tok0)
+                else:
+                    self.stack_top.add_text(tok0)
                 self.consume_token()
                 had_newline = 1
                 continue
@@ -594,14 +596,28 @@ class CommentTests(Texi2XmlTests):
         self.assert_xml_conversion(
             '@c This is a comment.',
 
-            '<texinfo>\n'
-             + '<!-- c This is a comment. -->\n</texinfo>')
+            '<texinfo><!-- c This is a comment. -->\n</texinfo>')
 
+    def test_blank_lines(self):
+        self.assert_xml_conversion(
+            '''
+@c -have to add text:  beginning of chapter 8
+
+@c
+@c anything else?                       --mew 10feb93
+''',
+            '''<texinfo>
+<!-- c -have to add text:  beginning of chapter 8 -->
+
+<!-- c -->
+<!-- c anything else?                       -mew 10feb93 -->
+</texinfo>''')
 
 class PreambleTests(Texi2XmlTests):
     def test_preamble(self):
         self.assert_xml_conversion(
-            '''\input texinfo  @c -*-texinfo-*-
+            '''
+\input texinfo  @c -*-texinfo-*-
 @c %**start of header
 @setfilename gcc.info
 ''',
@@ -629,12 +645,12 @@ class ParaTests(Texi2XmlTests):
         self.assert_xml_conversion(
             'Hello world\n',
 
-            ('<texinfo>\n'
-             + '<para>Hello world\n</para>\n</texinfo>'))
+            '<texinfo><para>Hello world\n</para>\n</texinfo>')
 
     def test_paras(self):
         self.assert_xml_conversion(
-            '''Line 1 of para 1.
+            '''
+Line 1 of para 1.
 Line 2 of para 1.
 
 Line 1 of para 2.
@@ -655,8 +671,7 @@ class InlineTests(Texi2XmlTests):
         self.assert_xml_conversion(
             '''Example of @emph{inline markup}.\n''',
 
-            ('<texinfo>\n'
-             '<para>Example of <emph>inline markup</emph>.\n</para>\n</texinfo>'))
+            ('<texinfo><para>Example of <emph>inline markup</emph>.\n</para>\n</texinfo>'))
 
     def test_multiple_inlines(self):
         self.assert_xml_conversion(
@@ -726,7 +741,8 @@ Send mail to
 class StructuralTests(Texi2XmlTests):
     def test_sections(self):
         self.assert_xml_conversion(
-            '''@section Section 1
+            '''
+@section Section 1
 Text in section 1.
 
 @section Section 2
@@ -745,7 +761,8 @@ Text in section 2.
 
     def test_chapters(self):
         self.assert_xml_conversion(
-            '''@chapter Chapter 1
+            '''
+@chapter Chapter 1
 @section Chapter 1 Section 1
 Text in chapter 1 section 1.
 
@@ -784,7 +801,7 @@ Text in chapter 2 section 2.
 
     def test_settitle(self):
         self.assert_xml_conversion(
-            '@settitle Using the GNU Compiler Collection (GCC)\n',
+            '\n@settitle Using the GNU Compiler Collection (GCC)\n',
 
             '''<texinfo>
 <settitle spaces=" ">Using the GNU Compiler Collection (GCC)</settitle>
@@ -821,7 +838,8 @@ class IndexTests(Texi2XmlTests):
 
     def test_defcodeindex(self):
         self.assert_xml_conversion(
-            '''@defcodeindex op
+            '''
+@defcodeindex op
 @syncodeindex fn cp
 ''',
             '''<texinfo>
@@ -898,7 +916,7 @@ class VariableTests(Texi2XmlTests):
 
     def test_clear(self):
         self.assert_xml_conversion(
-            '@clear INTERNALS\n',
+            '\n@clear INTERNALS\n',
 
             '''<texinfo>
 <clear name="INTERNALS" line=" INTERNALS"></clear>
@@ -912,8 +930,7 @@ class VariableTests(Texi2XmlTests):
 @end ifset
 version @value{version-GCC}.
 ''',
-            '''<texinfo>
-<para>It corresponds to the compilers
+            '''<texinfo><para>It corresponds to the compilers
 <ifset>VERSION_PACKAGE</ifset>
 <value>VERSION_PACKAGE</value>
 version <value>version-GCC</value>.
@@ -962,7 +979,8 @@ class MenuTests(Texi2XmlTests):
 class TextTests(Texi2XmlTests):
     def test_arobase_at_line_start(self):
         self.assert_xml_conversion(
-            '''enumeration (only for Objective-C), method attributes and the
+            '''
+enumeration (only for Objective-C), method attributes and the
 @@optional and @@required keywords in protocols.  GCC supports
 Objective-C++ and features available in Objective-C are also available
 ''',
@@ -1076,7 +1094,8 @@ Controlling C Dialect</xrefprinteddesc></xref>.
 
     def test_five_args(self):
         self.assert_xml_conversion(
-            '''@xref{Top,,
+            '''
+@xref{Top,,
 Introduction, gccint, GNU Compiler Collection (GCC) Internals}''',
 
             '''<texinfo>
@@ -1104,9 +1123,7 @@ class OtherTests(Texi2XmlTests):
         self.assert_xml_conversion(
             '@paragraphindent 1\n',
 
-            '''<texinfo>
-<paragraphindent value="1" line=" 1"></paragraphindent>
-</texinfo>''')
+            '<texinfo><paragraphindent value="1" line=" 1"></paragraphindent>\n</texinfo>')
 
 
 if __name__ == '__main__':

@@ -119,9 +119,12 @@ class Parser:
                 had_newline = 1
                 continue
             if tok0 == '@':
-                if tok1 == '.':
+                if tok1.startswith('.'):
                     self.stack_top.add_entity('eosperiod')
-                    tok = self.consume_n_tokens(2)
+                    self.consume_n_tokens(2)
+                    tok1 = tok1[1:]
+                    if tok1:
+                        self.tokens.appendleft(tok1)
                     had_newline = 0
                     continue
                 if tok2 == '{':
@@ -930,6 +933,14 @@ class TextTests(Texi2XmlTests):
 </para>
 </texinfo>''')
 
+    def test_eosperiod_2(self):
+        self.assert_xml_conversion(
+            "\ncompiler by its own name, or as GCC@.  Either is correct.\n",
+
+            '''<texinfo>
+<para>compiler by its own name, or as GCC&eosperiod;  Either is correct.
+</para>
+</texinfo>''')
 
 class XrefTests(Texi2XmlTests):
     def test_one_arg(self):

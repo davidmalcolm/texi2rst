@@ -263,7 +263,8 @@ class Parser:
         certain character sequences to entities.
         """
         # Entity replacement
-        ENTITIES = {"``": 'textldquo',
+        ENTITIES = {"@/": 'slashbreak',
+                    "``": 'textldquo',
                     "''": 'textrdquo',
                     "'":  'textrsquo',
                     "@@": 'arobase'}
@@ -479,6 +480,8 @@ class Parser:
         command_el = self.stack_top.add_element(command)
         if command == 'email':
             command_el = command_el.add_element('emailaddress')
+        if command == 'uref':
+            command_el = command_el.add_element('urefurl')
         if command == 'xref':
             args = inner.split(',')
             if self.debug:
@@ -665,6 +668,15 @@ Send mail to
             '''<texinfo>
 <para>Send mail to
 <email><emailaddress>jdoe&arobase;example.com</emailaddress></email> or <email><emailaddress>jbloggs&arobase;example.co.uk</emailaddress></email>.
+</para>
+</texinfo>''')
+
+    def test_uref(self):
+        self.assert_xml_conversion(
+            "\nsee @uref{http://gcc.gnu.org/projects/@/cxx0x.html}. To select this\n",
+
+            '''<texinfo>
+<para>see <uref><urefurl>http://gcc.gnu.org/projects/&slashbreak;cxx0x.html</urefurl></uref>. To select this
 </para>
 </texinfo>''')
 

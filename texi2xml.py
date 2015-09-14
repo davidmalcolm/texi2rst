@@ -543,6 +543,7 @@ class Parser:
             self.stack_top = None
         return old_top
 
+
 class Texi2XmlTests(unittest.TestCase):
     def assert_xml_conversion(self, texisrc, expectedxmlstr, debug=0):
         p = Parser('', [], debug=debug)
@@ -551,6 +552,8 @@ class Texi2XmlTests(unittest.TestCase):
         self.maxDiff = 10000
         self.assertMultiLineEqual(expectedxmlstr, xmlstr)
 
+
+class CommentTests(Texi2XmlTests):
     def test_comment(self):
         self.assert_xml_conversion(
             '@c This is a comment.',
@@ -558,6 +561,8 @@ class Texi2XmlTests(unittest.TestCase):
             '<texinfo>\n'
              + '<!-- c This is a comment. -->\n</texinfo>')
 
+
+class PreambleTests(Texi2XmlTests):
     def test_preamble(self):
         self.assert_xml_conversion(
             '''\input texinfo  @c -*-texinfo-*-
@@ -570,6 +575,8 @@ class Texi2XmlTests(unittest.TestCase):
 <setfilename>gcc.info</setfilename>
 </texinfo>''')
 
+
+class ParaTests(Texi2XmlTests):
     def test_para(self):
         self.assert_xml_conversion(
             'Hello world\n',
@@ -594,6 +601,8 @@ Line 2 of para 2.
 </para>
 </texinfo>''')
 
+
+class InlineTests(Texi2XmlTests):
     def test_inline(self):
         self.assert_xml_conversion(
             '''Example of @emph{inline markup}.\n''',
@@ -635,6 +644,29 @@ freestanding implementation</dfn> is only required to provide certain
 </para>
 </texinfo>''')
 
+    def test_copyright(self):
+        self.assert_xml_conversion(
+            '\nCopyright @copyright{} 2015  John Doe.\n',
+
+            '''<texinfo>
+<para>Copyright &copyright; 2015  John Doe.
+</para>
+</texinfo>''')
+
+    def test_email(self):
+        self.assert_xml_conversion(
+            '''
+Send mail to
+@email{jdoe@@example.com} or @email{jbloggs@@example.co.uk}.
+''',
+            '''<texinfo>
+<para>Send mail to
+<email><emailaddress>jdoe&arobase;example.com</emailaddress></email> or <email><emailaddress>jbloggs&arobase;example.co.uk</emailaddress></email>.
+</para>
+</texinfo>''')
+
+
+class StructuralTests(Texi2XmlTests):
     def test_sections(self):
         self.assert_xml_conversion(
             '''@section Section 1
@@ -701,14 +733,8 @@ Text in chapter 2 section 2.
 <settitle spaces=" ">Using the GNU Compiler Collection (GCC)</settitle>
 </texinfo>''')
 
-    def test_paragraphindent(self):
-        self.assert_xml_conversion(
-            '@paragraphindent 1\n',
 
-            '''<texinfo>
-<paragraphindent value="1" line=" 1"></paragraphindent>
-</texinfo>''')
-
+class IndexTests(Texi2XmlTests):
     def test_cindex(self):
         self.assert_xml_conversion(
             '\n@cindex first\n@cindex second\n',
@@ -746,6 +772,7 @@ Text in chapter 2 section 2.
 <syncodeindex from="fn" to="cp" line=" fn cp"></syncodeindex>
 </texinfo>''')
 
+class EnvironmentTests(Texi2XmlTests):
     def test_copying(self):
         self.assert_xml_conversion(
             '''
@@ -780,6 +807,25 @@ This is item 2
 </listitem></itemize>
 </texinfo>''')
 
+    def test_smallexample(self):
+        self.assert_xml_conversion(
+            '''
+@smallexample
+#define foo() bar
+foo
+baz
+@end smallexample
+''',
+            '''<texinfo>
+<smallexample endspaces=" ">
+<pre xml:space="preserve">#define foo() bar
+foo
+baz
+</pre></smallexample>
+</texinfo>''')
+
+
+class VariableTests(Texi2XmlTests):
     def test_set(self):
         self.assert_xml_conversion(
             '''
@@ -801,27 +847,24 @@ This is item 2
 <clear name="INTERNALS" line=" INTERNALS"></clear>
 </texinfo>''')
 
-    def test_copyright(self):
+    def test_variable(self):
         self.assert_xml_conversion(
-            '\nCopyright @copyright{} 2015  John Doe.\n',
-
-            '''<texinfo>
-<para>Copyright &copyright; 2015  John Doe.
-</para>
-</texinfo>''')
-
-    def test_email(self):
-        self.assert_xml_conversion(
-            '''
-Send mail to
-@email{jdoe@@example.com} or @email{jbloggs@@example.co.uk}.
+            '''It corresponds to the compilers
+@ifset VERSION_PACKAGE
+@value{VERSION_PACKAGE}
+@end ifset
+version @value{version-GCC}.
 ''',
             '''<texinfo>
-<para>Send mail to
-<email><emailaddress>jdoe&arobase;example.com</emailaddress></email> or <email><emailaddress>jbloggs&arobase;example.co.uk</emailaddress></email>.
+<para>It corresponds to the compilers
+<ifset>VERSION_PACKAGE</ifset>
+<value>VERSION_PACKAGE</value>
+version <value>version-GCC</value>.
 </para>
 </texinfo>''')
 
+
+class MenuTests(Texi2XmlTests):
     def test_menu(self):
         self.assert_xml_conversion(
             '''
@@ -858,31 +901,8 @@ Send mail to
 </pre></menudescription></menuentry></menu>
 </texinfo>''')
 
-    def test_page(self):
-        self.assert_xml_conversion(
-            '\n@page\n',
 
-            '''<texinfo>
-<page></page>
-</texinfo>''')
-
-    def test_smallexample(self):
-        self.assert_xml_conversion(
-            '''
-@smallexample
-#define foo() bar
-foo
-baz
-@end smallexample
-''',
-            '''<texinfo>
-<smallexample endspaces=" ">
-<pre xml:space="preserve">#define foo() bar
-foo
-baz
-</pre></smallexample>
-</texinfo>''')
-
+class TextTests(Texi2XmlTests):
     def test_text_quotes(self):
         self.assert_xml_conversion(
             "\nfoo ``bar'' baz\n",
@@ -910,29 +930,6 @@ baz
 </para>
 </texinfo>''')
 
-    def test_vskip(self):
-        self.assert_xml_conversion(
-            "\n@vskip 0pt plus 1filll\n",
-
-            '''<texinfo>
-<vskip> 0pt plus 1filll</vskip>
-</texinfo>''')
-
-    def test_variable(self):
-        self.assert_xml_conversion(
-            '''It corresponds to the compilers
-@ifset VERSION_PACKAGE
-@value{VERSION_PACKAGE}
-@end ifset
-version @value{version-GCC}.
-''',
-            '''<texinfo>
-<para>It corresponds to the compilers
-<ifset>VERSION_PACKAGE</ifset>
-<value>VERSION_PACKAGE</value>
-version <value>version-GCC</value>.
-</para>
-</texinfo>''')
 
 class XrefTests(Texi2XmlTests):
     def test_one_arg(self):
@@ -978,6 +975,32 @@ Introduction, gccint, GNU Compiler Collection (GCC) Internals}''',
 
             '''<texinfo>
 <xref label="Top" manual="gccint"><xrefnodename>Top</xrefnodename><xrefprinteddesc spaces="\\n">Introduction</xrefprinteddesc><xrefinfofile spaces=" ">gccint</xrefinfofile><xrefprintedname spaces=" ">GNU Compiler Collection (GCC) Internals</xrefprintedname></xref></texinfo>''')
+
+
+class OtherTests(Texi2XmlTests):
+    def test_page(self):
+        self.assert_xml_conversion(
+            '\n@page\n',
+
+            '''<texinfo>
+<page></page>
+</texinfo>''')
+
+    def test_vskip(self):
+        self.assert_xml_conversion(
+            "\n@vskip 0pt plus 1filll\n",
+
+            '''<texinfo>
+<vskip> 0pt plus 1filll</vskip>
+</texinfo>''')
+
+    def test_paragraphindent(self):
+        self.assert_xml_conversion(
+            '@paragraphindent 1\n',
+
+            '''<texinfo>
+<paragraphindent value="1" line=" 1"></paragraphindent>
+</texinfo>''')
 
 
 if __name__ == '__main__':

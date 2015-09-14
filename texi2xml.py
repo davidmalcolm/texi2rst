@@ -34,6 +34,7 @@ FULL_LINE_COMMANDS = (
     'settitle',
     'smallexample',
     'syncodeindex',
+    'table',
     'titlepage',
     'top',
     'vskip',
@@ -414,21 +415,22 @@ class Parser:
             add_stripped_text(sectiontitle, line, section)
             self.stack_top.add_text('\n')
         elif name in ('copying', 'titlepage', 'itemize', 'menu',
-                      'smallexample'):
+                      'smallexample', 'table'):
             if self.debug:
                 print('name: %r' % name)
             env = self.stack_top.add_element(name)
             self.push(env)
-            if name == 'itemize':
+            if name in ('itemize', 'table'):
                 line = line.strip()
                 if line.startswith('@'):
                     commandarg = line[1:]
                     env.attrs['commandarg'] = commandarg
                     env.attrs['spaces'] = ' '
-                    itemprepend = env.add_element('itemprepend')
-                    formattingcommand = \
-                       itemprepend.add_element('formattingcommand')
-                    formattingcommand.attrs['command'] = commandarg
+                    if name == 'itemize':
+                        itemprepend = env.add_element('itemprepend')
+                        formattingcommand = \
+                                            itemprepend.add_element('formattingcommand')
+                        formattingcommand.attrs['command'] = commandarg
             env.attrs['endspaces'] =' '
             self.stack_top.add_text('\n')
             if name == 'smallexample':
@@ -440,7 +442,7 @@ class Parser:
             if self.debug:
                 print('@end of env: %r' % env)
             if env in ('copying', 'titlepage', 'itemize', 'menu',
-                       'smallexample'):
+                       'smallexample', 'table'):
                 if self.debug:
                     print('stack: %r' % (self._stack, ))
                 while 1:
@@ -476,11 +478,28 @@ class Parser:
             key, value = self._parse_command_args(line)
             if self.stack_top.kind == 'listitem':
                 self.pop(inject_newline=False)
-            listitem = self.stack_top.add_element('listitem')
-            self.push(listitem)
-            prepend = listitem.add_element('prepend')
-            prepend.add_entity('bullet') # FIXME
-            self.stack_top.add_text('\n')
+            if self.stack_top.kind == 'tableitem':
+                self.pop(inject_newline=False)
+                self.pop(inject_newline=False)
+            if self.stack_top.kind == 'itemize':
+                listitem = self.stack_top.add_element('listitem')
+                self.push(listitem)
+                prepend = listitem.add_element('prepend')
+                prepend.add_entity('bullet') # FIXME
+                self.stack_top.add_text('\n')
+            elif self.stack_top.kind == 'table':
+                table = self.stack_top
+                tableentry = self.stack_top.add_element('tableentry')
+                self.push(tableentry)
+                tableterm = tableentry.add_element('tableterm')
+                item = tableterm.add_element('item')
+                itemformat = item.add_element('itemformat')
+                itemformat.attrs['command'] = table.attrs['commandarg']
+                add_stripped_text(itemformat, line, item)
+                tableterm.add_text('\n')
+                tableitem = self.stack_top.add_element('tableitem')
+                self.push(tableitem)
+                return
         elif name == 'node':
             args = line.split(',')
             if self.debug:
@@ -1212,6 +1231,28 @@ Introduction, gccint, GNU Compiler Collection (GCC) Internals}''',
 
             '''<texinfo>
 <xref label="Top" manual="gccint"><xrefnodename>Top</xrefnodename><xrefprinteddesc spaces="\\n">Introduction</xrefprinteddesc><xrefinfofile spaces=" ">gccint</xrefinfofile><xrefprintedname spaces=" ">GNU Compiler Collection (GCC) Internals</xrefprintedname></xref></texinfo>''')
+
+
+class TableTests(Texi2XmlTests):
+    def test_dfn_table(self):
+        self.assert_xml_conversion(
+            '''
+@table @dfn
+@item first item
+Description of first item.
+
+@item second item
+Description of second item.
+@end table
+''',
+            '''<texinfo>
+<table commandarg="dfn" spaces=" " endspaces=" ">
+<tableentry><tableterm><item spaces=" "><itemformat command="dfn">first item</itemformat></item>
+</tableterm><tableitem><para>Description of first item.
+</para>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="dfn">second item</itemformat></item>
+</tableterm><tableitem><para>Description of second item.
+</para></tableitem></tableentry></table></texinfo>''')
 
 
 class OtherTests(Texi2XmlTests):

@@ -19,10 +19,13 @@ FULL_LINE_COMMANDS = (
     'defcodeindex',
     'end',
     'findex',
+    'ifnottex',
     'ifset',
+    'iftex',
     'include',
     'item',
     'itemize',
+    'macro',
     'menu',
     'node',
     'opindex',
@@ -100,6 +103,8 @@ class Parser:
         self.last_node = None
         self.top_node = None
         self.node_dict = OrderedDict()
+        self.cur_macro_defn = None
+        self.macros = OrderedDict()
 
     def parse_file(self, filename):
         with open(filename) as f:
@@ -124,6 +129,7 @@ class Parser:
         while self.stack_top:
             self.pop()
         self._fixup_nodes()
+        self._strip_conditionals()
         if 0:
             print
             self.texinfo.dump(sys.stdout)
@@ -173,24 +179,26 @@ class Parser:
                         self.tokens.appendleft(tok1)
                     had_newline = 0
                     continue
+                if nextch == ' ':
+                    spacecmd = self.stack_top.add_element('spacecmd')
+                    spacecmd.attrs['type'] = 'spc'
+                    self.consume_n_tokens(2)
+                    tok1 = tok1[1:]
+                    if tok1:
+                        self.tokens.appendleft(tok1)
+                    had_newline = 0
+                    continue
                 if tok1 == '@':
                     self.stack_top.add_entity('arobase')
                     self.consume_n_tokens(2)
                     had_newline = 0
                     continue
-                    continue
-                if tok2 == '{':
-                    if 0:
-                        print('got inline markup')
-                    command = tok1
-                    self.consume_n_tokens(3)
-                    inner = ''
-                    while 1:
-                        tok = self.consume_token()
-                        if tok == '}':
-                            break
-                        inner += tok
-                    self._handle_inline_markup(command, inner)
+                if tok1 == '\n':
+                    # '@' on the end of a line: line continuation
+                    # http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Def-Cmd-Continuation-Lines.html
+                    spacecmd = self.stack_top.add_element('spacecmd')
+                    spacecmd.attrs['type'] = 'nl'
+                    self.consume_n_tokens(2)
                     had_newline = 0
                     continue
                 if tok1 and had_newline:
@@ -223,20 +231,54 @@ class Parser:
                         self._handle_command(m.group(1), ''.join(line))
                         had_newline = 1
                         continue
+                if tok2 == '{':
+                    if 0:
+                        print('got inline markup')
+                    command = tok1
+                    self.consume_n_tokens(3)
+                    inner = ''
+                    nesting = 1
+                    while 1:
+                        tok = self.consume_token()
+                        if tok == '{':
+                            nesting += 1
+                        if tok == '}':
+                            nesting -= 1
+                            if nesting == 0:
+                                break
+                        inner += tok
+                    self._handle_inline_markup(command, inner)
+                    if command not in self.macros:
+                        had_newline = 0
+                    continue
+                # inline markup without braces
+                self.consume_n_tokens(2)
+                if self.debug:
+                    print('tok1: %r' % tok1)
+                m = re.match('(\S+)(.*)', tok1)
+                if not m:
+                    raise ValueError('tok1: %r' % tok1)
+                command = m.group(1)
+                rest_of_tok1 = m.group(2)
+                if rest_of_tok1:
+                    self.tokens.appendleft(rest_of_tok1)
+                self._handle_inline_markup(command, '')
+                had_newline = 0
+                continue
+            elif self.stack_top.kind == 'pre':
+                self.stack_top.add_text(tok0)
+                self.consume_token()
+                had_newline = tok0 == '\n'
+                continue
             elif tok0 == '\n' and (tok1 == '\n' or tok1 is None):
                 # Blank line:
-                if 0:
+                if self.debug:
                     print('blank line')
                 if self.stack_top.kind == 'para':
                     self._handle_text(tok0)
                     self.pop()
                 self.consume_n_tokens(2)
                 had_newline = 1
-                continue
-            elif self.stack_top.kind == 'pre':
-                self.stack_top.add_text(tok0)
-                self.consume_token()
-                had_newline = tok0 == '\n'
                 continue
             elif tok0 == '\n':
                 if self.have_para:
@@ -419,8 +461,39 @@ class Parser:
             sectiontitle = section.add_element('sectiontitle')
             add_stripped_text(sectiontitle, line, section)
             self.stack_top.add_text('\n')
+        elif name == 'macro':
+            m = re.match(r'\s*(\S+)\{(.*)\}', line)
+            if m:
+                macro_name, formalarg = m.groups()
+            else:
+                m = re.match(r'\s*(\S+)\s*', line)
+                macro_name = m.group(1)
+                formalarg = None
+
+            # Capture tokens up to the next "@end macro"
+            tokens = []
+            while 1:
+                tok0 = self.peek_token()
+                tok1 = self.peek_token(1)
+                tok2 = self.peek_token(2)
+                if tok0 == '@' and tok1 == 'end macro' and tok2 == '\n':
+                    break
+                tokens.append(tok0)
+                self.consume_token()
+            macro_el = self.stack_top.add_element('macro')
+            macro_el.attrs['name'] = macro_name
+            macro_el.attrs['line'] = line
+            if formalarg:
+                formalarg_el = macro_el.add_element('formalarg')
+                formalarg_el.add_text(formalarg)
+            macro_el.add_text(''.join(tokens))
+            if self.debug:
+                print('defined macro %r as %r' % (macro_name, tokens))
+            self.macros[macro_name] = tokens
+            return
         elif name in ('copying', 'titlepage', 'itemize', 'menu',
-                      'smallexample', 'table'):
+                      'smallexample', 'table',
+                      'iftex', 'ifnottex'):
             if self.debug:
                 print('name: %r' % name)
             env = self.stack_top.add_element(name)
@@ -447,7 +520,7 @@ class Parser:
             if self.debug:
                 print('@end of env: %r' % env)
             if env in ('copying', 'titlepage', 'itemize', 'menu',
-                       'smallexample', 'table'):
+                       'smallexample', 'table', 'iftex', 'ifnottex'):
                 if self.debug:
                     print('stack: %r' % (self._stack, ))
                 while 1:
@@ -572,6 +645,20 @@ class Parser:
         if self.debug:
             print('_handle_inline_markup: command: %r inner: %r'
                   % (command, inner))
+        if command in self.macros:
+            if self.debug:
+                print('expanding macro: %r' % command)
+            macro_def = self.macros[command]
+            new_tokens = []
+            for token in macro_def:
+                if token == '\\body\\': # FIXME
+                    new_tokens += self._tokenize(inner)
+                else:
+                    new_tokens.append(token)
+            if self.debug:
+                print('adding tokens: %r' % new_tokens)
+            self.tokens.extendleft(new_tokens[::-1])
+            return
         if command in ('copyright', 'dots'):
             self.stack_top.add_entity(command)
             return
@@ -684,6 +771,30 @@ class Parser:
         if self.debug:
             for k in self.node_dict:
                 print repr(k), repr(self.node_dict[k])
+
+    def _strip_conditionals(self):
+        """
+        Postprocessing step to (optionally) eliminate things like
+        <iftex> entirely, and eliminate e.g. <ifnottex>
+        """
+        class ConditionalFixer(NoopVisitor):
+            def previsit_element(self, element):
+                new_children = []
+                for child in element.children:
+                    if child.is_element('iftex'):
+                        # Drop this entirely
+                        continue
+                    elif child.is_element('ifnottex'):
+                        # Eliminate the element, moving
+                        # the grandchildren up:
+                        for grandchild in child.children:
+                            new_children.append(grandchild)
+                    else:
+                        new_children.append(child)
+                element.children = new_children
+
+        v = ConditionalFixer()
+        v.visit(self.texinfo)
 
 class Texi2XmlTests(unittest.TestCase):
     def assert_xml_conversion(self, texisrc, expectedxmlstr, debug=0, with_dtd=0, filename=None):
@@ -1282,6 +1393,48 @@ Description of second item.
 </para></tableitem></tableentry></table></texinfo>''')
 
 
+class MacroTests(Texi2XmlTests):
+    def test_macro(self):
+        self.assert_xml_conversion(
+            r'''
+@macro gccoptlist{body}
+@smallexample
+\body\
+@end smallexample
+@end macro
+
+@iftex
+@alias gol = *
+@end iftex
+@ifnottex
+@macro gol
+@end macro
+@end ifnottex
+
+@gccoptlist{-c  -S  -E  -o @var{file}  -no-canonical-prefixes  @gol
+-pipe  -pass-exit-codes  @gol
+-x @var{language}  -v  -###  --help@r{[}=@var{class}@r{[},@dots{}@r{]]}  --target-help  @gol
+--version -wrapper @@@var{file} -fplugin=@var{file} -fplugin-arg-@var{name}=@var{arg}  @gol
+-fdump-ada-spec@r{[}-slim@r{]} -fada-spec-parent=@var{unit} -fdump-go-spec=@var{file}}
+''',
+
+            '''<texinfo>
+<macro name="gccoptlist" line=" gccoptlist{body}"><formalarg>body</formalarg>@smallexample
+\\body\\
+@end smallexample
+</macro>
+
+<macro name="gol" line=" gol"></macro>
+<smallexample endspaces=" ">
+<pre xml:space="preserve">-c  -S  -E  -o <var>file</var>  -no-canonical-prefixes  
+-pipe  -pass-exit-codes  
+-x <var>language</var>  -v  -###  --help<r>[</r>=<var>class</var><r>[</r>,&dots;<r>]]</r>  --target-help  
+--version -wrapper &arobase;<var>file</var> -fplugin=<var>file</var> -fplugin-arg-<var>name</var>=<var>arg</var>  
+-fdump-ada-spec<r>[</r>-slim<r>]</r> -fada-spec-parent=<var>unit</var> -fdump-go-spec=<var>file</var>
+</pre></smallexample>
+</texinfo>''')
+
+
 class OtherTests(Texi2XmlTests):
     def test_page(self):
         self.assert_xml_conversion(
@@ -1304,6 +1457,35 @@ class OtherTests(Texi2XmlTests):
             '@paragraphindent 1\n',
 
             '<texinfo><paragraphindent value="1" line=" 1"></paragraphindent>\n</texinfo>')
+
+    def test_trailing_at(self):
+        self.assert_xml_conversion(
+            '''
+Warn for suspicious calls to the @code{memset} built-in function, if the
+second argument is not zero and the third argument is zero.  This warns e.g.@
+about @code{memset (buf, sizeof buf, 0)} where most probably
+@code{memset (buf, 0, sizeof buf)} was meant instead.
+''',
+           '''<texinfo>
+<para>Warn for suspicious calls to the <code>memset</code> built-in function, if the
+second argument is not zero and the third argument is zero.  This warns e.g.<spacecmd type="nl"/>about <code>memset (buf, sizeof buf, 0)</code> where most probably
+<code>memset (buf, 0, sizeof buf)</code> was meant instead.
+</para>
+</texinfo>''')
+
+    def test_at_space(self):
+        self.assert_xml_conversion(
+            '''
+Generate .debug_pubnames and .debug_pubtypes sections in a format
+suitable for conversion into a GDB@ index.  This option is only useful
+with a linker that can produce GDB@ index version 7.
+''',
+           '''<texinfo>
+<para>Generate .debug_pubnames and .debug_pubtypes sections in a format
+suitable for conversion into a GDB<spacecmd type="spc"/>index.  This option is only useful
+with a linker that can produce GDB<spacecmd type="spc"/>index version 7.
+</para>
+</texinfo>''')
 
 
 if __name__ == '__main__':

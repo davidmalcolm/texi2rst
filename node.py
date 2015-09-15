@@ -35,10 +35,10 @@ class Node:
         https://hg.python.org/cpython/file/2.7/Lib/xml/dom/minidom.py#l800)
         """
         def escape(data):
+            data = data.replace('&', '&amp;')
             #data = data.replace('"', '&quot;')
             data = data.replace('>', '&gt;')
             data = data.replace('<', '&lt;')
-            data = data.replace('&', '&amp;')
             return data
 
         if isinstance(self, Element):

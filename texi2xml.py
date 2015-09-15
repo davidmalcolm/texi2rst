@@ -160,11 +160,13 @@ class Parser:
                 had_newline = 1
                 continue
             if tok0 == '@':
-                if tok1.startswith('.') or tok1.startswith(':'):
-                    ch = tok1[0]
+                nextch = tok1[0]
+                if nextch in ('.', ':', '{', '}'):
                     ENTITIES = {'.': 'eosperiod',
+                                '{': 'lbrace',
+                                '}': 'rbrace',
                                 ':': 'noeos'}
-                    self.stack_top.add_entity(ENTITIES[ch])
+                    self.stack_top.add_entity(ENTITIES[nextch])
                     self.consume_n_tokens(2)
                     tok1 = tok1[1:]
                     if tok1:
@@ -175,6 +177,7 @@ class Parser:
                     self.stack_top.add_entity('arobase')
                     self.consume_n_tokens(2)
                     had_newline = 0
+                    continue
                     continue
                 if tok2 == '{':
                     if 0:
@@ -316,7 +319,9 @@ class Parser:
         if self.debug:
             print('_insert_text_with_entities: %r' % text)
         # Entity replacement
-        ENTITIES = {"@/": 'slashbreak',
+        ENTITIES = {"@{": 'lbrace',
+                    "@}": 'rbrace',
+                    "@/": 'slashbreak',
                     "@:": 'noeos',
                     "---": 'textmdash',
                     "``": 'textldquo',
@@ -564,8 +569,11 @@ class Parser:
             print('file %r not found' % relpath)
 
     def _handle_inline_markup(self, command, inner):
-        if command == 'copyright':
-            self.stack_top.add_entity('copyright')
+        if self.debug:
+            print('_handle_inline_markup: command: %r inner: %r'
+                  % (command, inner))
+        if command in ('copyright', 'dots'):
+            self.stack_top.add_entity(command)
             return
         command_el = self.stack_top.add_element(command)
         if command == 'email':
@@ -688,6 +696,8 @@ class Texi2XmlTests(unittest.TestCase):
             dtd_line = DTD_LINE
         else:
             dtd_line = None
+        if debug:
+            tree.dump(sys.stdout)
         xmlstr = tree.toxml(dtd_line)
         self.maxDiff = 10000
         self.assertMultiLineEqual(expectedxmlstr, xmlstr)
@@ -998,6 +1008,23 @@ baz
 <pre xml:space="preserve">#define foo() bar
 foo
 baz
+</pre></smallexample>
+</texinfo>''')
+
+    def test_code_example(self):
+        self.assert_xml_conversion(
+            '''
+@smallexample
+int a;
+@dots{}
+if (!a > 1) @{ @dots{} @}
+@end smallexample
+''',
+            '''<texinfo>
+<smallexample endspaces=" ">
+<pre xml:space="preserve">int a;
+&dots;
+if (!a &gt; 1) &lbrace; &dots; &rbrace;
 </pre></smallexample>
 </texinfo>''')
 

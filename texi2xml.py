@@ -167,9 +167,10 @@ class Parser:
                 continue
             if tok0 == '@':
                 nextch = tok1[0]
-                if nextch in ('.', ':', '{', '}'):
+                if nextch in ('.', ':', '{', '}', '*'):
                     ENTITIES = {'.': 'eosperiod',
                                 '{': 'lbrace',
+                                '*': 'linebreak',
                                 '}': 'rbrace',
                                 ':': 'noeos'}
                     self.stack_top.add_entity(ENTITIES[nextch])
@@ -1484,6 +1485,18 @@ with a linker that can produce GDB@ index version 7.
 <para>Generate .debug_pubnames and .debug_pubtypes sections in a format
 suitable for conversion into a GDB<spacecmd type="spc"/>index.  This option is only useful
 with a linker that can produce GDB<spacecmd type="spc"/>index version 7.
+</para>
+</texinfo>''')
+
+    def test_linebreak(self):
+        self.assert_xml_conversion(
+            '''
+Last printed October 2003 for GCC 3.3.1.@*
+Printed copies are available for $45 each.
+''',
+            '''<texinfo>
+<para>Last printed October 2003 for GCC 3.3.1.&linebreak;
+Printed copies are available for $45 each.
 </para>
 </texinfo>''')
 

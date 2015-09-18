@@ -19,6 +19,7 @@ FULL_LINE_COMMANDS = (
     'defcodeindex',
     'display',
     'end',
+    'enumerate',
     'findex',
     'group',
     'ifnottex',
@@ -458,7 +459,7 @@ class Parser:
         elif name == 'chapter':
             # Close any existing chapter:
             while self.have_chapter:
-                self.pop()
+                self.pop(why='chapter')
             chapter = self.stack_top.add_element('chapter')
             self.push(chapter)
             sectiontitle = chapter.add_element('sectiontitle')
@@ -503,14 +504,14 @@ class Parser:
                 print('defined macro %r as %r' % (macro_name, tokens))
             self.macros[macro_name] = tokens
             return
-        elif name in ('copying', 'titlepage', 'itemize', 'menu',
+        elif name in ('copying', 'titlepage', 'itemize', 'enumerate', 'menu',
                       'smallexample', 'table', 'group', 'display',
                       'iftex', 'ifnottex'):
             if self.debug:
                 print('name: %r' % name)
             env = self.stack_top.add_element(name)
             self.push(env)
-            if name in ('itemize', 'table'):
+            if name in ('itemize', 'table', 'enumerate'):
                 line = line.strip()
                 if line.startswith('@'):
                     commandarg = line[1:]
@@ -521,6 +522,8 @@ class Parser:
                         formattingcommand = \
                                             itemprepend.add_element('formattingcommand')
                         formattingcommand.attrs['command'] = commandarg
+                if name == 'enumerate':
+                    env.attrs['first'] = '1'
             env.attrs['endspaces'] =' '
             self.stack_top.add_text('\n')
             if name in ('smallexample', 'display'):
@@ -529,16 +532,16 @@ class Parser:
             env = line.strip()
             if self.debug:
                 print('@end of env: %r' % env)
-            if env in ('copying', 'titlepage', 'itemize', 'menu',
+            if env in ('copying', 'titlepage', 'itemize', 'enumerate', 'menu',
                        'smallexample', 'table', 'iftex', 'ifnottex',
                        'group', 'display'):
                 if self.debug:
                     print('stack: %r' % (self._stack, ))
                 while 1:
                     inject_newline = False
-                    if env in ('itemize', 'menu', 'smallexample'):
+                    if env in ('itemize', 'enumerate', 'menu', 'smallexample'):
                         inject_newline = True
-                    old_top = self.pop(inject_newline)
+                    old_top = self.pop(inject_newline, why=env)
                     if old_top.kind == env:
                         break
         elif name in ('set', 'clear'):
@@ -576,6 +579,18 @@ class Parser:
                 prepend = listitem.add_element('prepend')
                 prepend.add_entity('bullet') # FIXME
                 self.stack_top.add_text('\n')
+            if self.stack_top.kind == 'enumerate':
+                listitem = self.stack_top.add_element('listitem')
+                self.push(listitem)
+                if self.debug:
+                    print('line: %r' % line)
+                    print(key, value)
+                if line.startswith(' '):
+                    listitem.attrs['spaces'] = ' '
+                    line = line[1:]
+                line += '\n'
+                self.tokens.extendleft(list(self._tokenize(line))[::-1])
+                return
             elif self.stack_top.kind == 'table':
                 table = self.stack_top
                 tableentry = self.stack_top.add_element('tableentry')
@@ -736,15 +751,23 @@ class Parser:
         if element.kind == 'para':
             self.have_para = True
 
-    def pop(self, inject_newline=True):
+    def pop(self, inject_newline=True, why=None):
         old_top = self._stack.pop()
+        if self._stack:
+            self.stack_top = self._stack[-1]
+        else:
+            self.stack_top = None
+        new_top = self.stack_top
         if self.debug:
-            print('popping: %r' % old_top)
+            print('popping: %r, inject_newline=%r new top=%r'
+                  % (old_top, inject_newline, new_top))
         if old_top.kind == 'chapter':
             self.have_chapter = False
         if old_top.kind == 'section':
             self.have_section = False
         if old_top.kind == 'para':
+            if why == 'enumerate':
+                inject_newline = False
             self.have_para = False
         if old_top.kind == 'listitem':
             inject_newline = False
@@ -754,12 +777,9 @@ class Parser:
             inject_newline = True
         if old_top.kind == 'display':
             inject_newline = True
-        if self._stack:
-            self.stack_top = self._stack[-1]
+        if self.stack_top:
             if inject_newline:
                 self.stack_top.add_text('\n')
-        else:
-            self.stack_top = None
         return old_top
 
     def _fixup_nodes(self):
@@ -1134,6 +1154,33 @@ This is item 2
 <para>This is item 2
 </para>
 </listitem></itemize>
+</texinfo>''')
+
+    def test_enumerate(self):
+        self.assert_xml_conversion(
+            '''
+@enumerate
+@item If @var{X} is @code{0xf},
+then the @var{n}-th bit of @var{val} is returned unaltered.
+
+@item If X is in the range 0@dots{}7,
+then the @var{n}-th result bit is set to the @var{X}-th bit of @var{bits}
+
+@item If X is in the range 8@dots{}@code{0xe},
+then the @var{n}-th result bit is undefined.
+@end enumerate
+''',
+            '''<texinfo>
+<enumerate first="1" endspaces=" ">
+<listitem spaces=" "><para>If <var>X</var> is <code>0xf</code>,
+then the <var>n</var>-th bit of <var>val</var> is returned unaltered.
+</para>
+</listitem><listitem spaces=" "><para>If X is in the range 0&dots;7,
+then the <var>n</var>-th result bit is set to the <var>X</var>-th bit of <var>bits</var>
+</para>
+</listitem><listitem spaces=" "><para>If X is in the range 8&dots;<code>0xe</code>,
+then the <var>n</var>-th result bit is undefined.
+</para></listitem></enumerate>
 </texinfo>''')
 
     def test_smallexample(self):

@@ -19,6 +19,7 @@ FULL_LINE_COMMANDS = (
     'defcodeindex',
     'end',
     'findex',
+    'group',
     'ifnottex',
     'ifset',
     'iftex',
@@ -105,6 +106,7 @@ class Parser:
         self.node_dict = OrderedDict()
         self.cur_macro_defn = None
         self.macros = OrderedDict()
+        self.need_pre = False
 
     def parse_file(self, filename):
         with open(filename) as f:
@@ -267,7 +269,14 @@ class Parser:
                 self._handle_inline_markup(command, '')
                 had_newline = 0
                 continue
-            elif self.stack_top.kind == 'pre':
+
+            if self.need_pre:
+                pre = self.stack_top.add_element('pre')
+                pre.attrs['xml:space'] = 'preserve'
+                self.push(pre)
+                self.need_pre = False
+
+            if self.stack_top.kind == 'pre':
                 self.stack_top.add_text(tok0)
                 self.consume_token()
                 had_newline = tok0 == '\n'
@@ -494,7 +503,7 @@ class Parser:
             self.macros[macro_name] = tokens
             return
         elif name in ('copying', 'titlepage', 'itemize', 'menu',
-                      'smallexample', 'table',
+                      'smallexample', 'table', 'group',
                       'iftex', 'ifnottex'):
             if self.debug:
                 print('name: %r' % name)
@@ -514,15 +523,14 @@ class Parser:
             env.attrs['endspaces'] =' '
             self.stack_top.add_text('\n')
             if name == 'smallexample':
-                pre = self.stack_top.add_element('pre')
-                pre.attrs['xml:space'] = 'preserve'
-                self.push(pre)
+                self.need_pre = True
         elif name == 'end':
             env = line.strip()
             if self.debug:
                 print('@end of env: %r' % env)
             if env in ('copying', 'titlepage', 'itemize', 'menu',
-                       'smallexample', 'table', 'iftex', 'ifnottex'):
+                       'smallexample', 'table', 'iftex', 'ifnottex',
+                       'group'):
                 if self.debug:
                     print('stack: %r' % (self._stack, ))
                 while 1:
@@ -741,6 +749,8 @@ class Parser:
             inject_newline = False
         if old_top.kind == 'pre':
             inject_newline = False
+        if old_top.kind == 'group':
+            inject_newline = True
         if self._stack:
             self.stack_top = self._stack[-1]
             if inject_newline:
@@ -1157,6 +1167,28 @@ if (!a &gt; 1) &lbrace; &dots; &rbrace;
 </pre></smallexample>
 </texinfo>''')
 
+    def test_code_with_group(self):
+        self.assert_xml_conversion(
+            '''
+@smallexample
+@group
+float area(float radius)
+@{
+   return 3.14159 * radius * radius;
+@}
+@end group
+@end smallexample
+''',
+            '''<texinfo>
+<smallexample endspaces=" ">
+<group endspaces=" ">
+<pre xml:space="preserve">float area(float radius)
+&lbrace;
+   return 3.14159 * radius * radius;
+&rbrace;
+</pre></group>
+</smallexample>
+</texinfo>''')
 
 class VariableTests(Texi2XmlTests):
     def test_set(self):

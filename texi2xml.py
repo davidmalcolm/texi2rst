@@ -685,7 +685,7 @@ class Parser:
             command_el = command_el.add_element('emailaddress')
         if command == 'uref':
             command_el = command_el.add_element('urefurl')
-        if command == 'xref':
+        if command in ('xref', 'pxref'):
             args = inner.split(',')
             if self.debug:
                 print('xref args: %r' % args)
@@ -1387,6 +1387,20 @@ Introduction, gccint, GNU Compiler Collection (GCC) Internals}''',
 
             '''<texinfo>
 <xref label="Top" manual="gccint"><xrefnodename>Top</xrefnodename><xrefprinteddesc spaces="\\n">Introduction</xrefprinteddesc><xrefinfofile spaces=" ">gccint</xrefinfofile><xrefprintedname spaces=" ">GNU Compiler Collection (GCC) Internals</xrefprintedname></xref></texinfo>''')
+
+    def test_pxref(self):
+        self.assert_xml_conversion(
+            '''
+Using this option is roughly equivalent to adding the
+@code{gnu_inline} function attribute to all inline functions
+(@pxref{Function Attributes}).
+''',
+            '''<texinfo>
+<para>Using this option is roughly equivalent to adding the
+<code>gnu_inline</code> function attribute to all inline functions
+(<pxref label="Function-Attributes"><xrefnodename>Function Attributes</xrefnodename></pxref>).
+</para>
+</texinfo>''')
 
 
 class TableTests(Texi2XmlTests):

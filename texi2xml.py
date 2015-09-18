@@ -17,6 +17,7 @@ FULL_LINE_COMMANDS = (
     'comment',
     'copying',
     'defcodeindex',
+    'display',
     'end',
     'findex',
     'group',
@@ -503,7 +504,7 @@ class Parser:
             self.macros[macro_name] = tokens
             return
         elif name in ('copying', 'titlepage', 'itemize', 'menu',
-                      'smallexample', 'table', 'group',
+                      'smallexample', 'table', 'group', 'display',
                       'iftex', 'ifnottex'):
             if self.debug:
                 print('name: %r' % name)
@@ -522,7 +523,7 @@ class Parser:
                         formattingcommand.attrs['command'] = commandarg
             env.attrs['endspaces'] =' '
             self.stack_top.add_text('\n')
-            if name == 'smallexample':
+            if name in ('smallexample', 'display'):
                 self.need_pre = True
         elif name == 'end':
             env = line.strip()
@@ -530,7 +531,7 @@ class Parser:
                 print('@end of env: %r' % env)
             if env in ('copying', 'titlepage', 'itemize', 'menu',
                        'smallexample', 'table', 'iftex', 'ifnottex',
-                       'group'):
+                       'group', 'display'):
                 if self.debug:
                     print('stack: %r' % (self._stack, ))
                 while 1:
@@ -750,6 +751,8 @@ class Parser:
         if old_top.kind == 'pre':
             inject_newline = False
         if old_top.kind == 'group':
+            inject_newline = True
+        if old_top.kind == 'display':
             inject_newline = True
         if self._stack:
             self.stack_top = self._stack[-1]
@@ -1188,6 +1191,23 @@ float area(float radius)
 &rbrace;
 </pre></group>
 </smallexample>
+</texinfo>''')
+
+    def test_display(self):
+        self.assert_xml_conversion(
+            '''
+@display
+This is an example...
+
+...of multiline text
+@end display
+''',
+            '''<texinfo>
+<display endspaces=" ">
+<pre xml:space="preserve">This is an example...
+
+...of multiline text
+</pre></display>
 </texinfo>''')
 
 class VariableTests(Texi2XmlTests):

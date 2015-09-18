@@ -935,6 +935,7 @@ def fixup_inline_markup(tree):
         =========================  ==================
         XML INPUT                  .rst OUTPUT
         =========================  ==================
+        <accent>TEXT</accent>      TEXT + diacritic
         <command>TEXT</command>    :command:`TEXT`
         <var>TEXT</var>            ``TEXT``
         <code>TEXT</code>          ``TEXT``
@@ -959,6 +960,25 @@ def fixup_inline_markup(tree):
                 element.rst_kind = MatchedInlineMarkup('*')
             elif element.kind == 'samp':
                 element.rst_kind = InlineMarkup('samp')
+
+            new_children = []
+            for child in element.children:
+                if child.is_element('accent'):
+                    if len(child.children) != 1:
+                        raise ValueError()
+                    grandchild = child.children[0]
+                    if not isinstance(grandchild, Text):
+                        raise ValueError()
+                    new_children.append(grandchild)
+                    ACCENTS = {'acute': u'\u0301',
+                               'cedil': u'\u0327',
+                               'tilde': u'\u0303',
+                               'uml':   u'\u0308'}
+                    type_ = child.attrs['type']
+                    grandchild.data += ACCENTS[type_]
+                    continue
+                new_children.append(child)
+            element.children = new_children
 
     v = InlineMarkupFixer()
     v.visit(tree)
@@ -2228,6 +2248,26 @@ class IntegrationTests(Texi2RstTests):
         tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
         self.assertEqual(u'', out)
+
+    def test_accents(self):
+        xml_src = '''<texinfo>
+<para>Fran<accent type="cedil">c</accent>ois
+</para>
+<para>L<accent type="acute" bracketed="off">o</accent>pez-Ib<accent type="acute" bracketed="off">a</accent><accent type="tilde" bracketed="off">n</accent>ez
+</para>
+<para>von L<accent type="uml" bracketed="off">o</accent>wis
+</para>
+</texinfo>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(u'''Franc\u0327ois
+
+Lo\u0301pez-Iba\u0301n\u0303ez
+
+von Lo\u0308wis
+
+''', out)
 
     def test_anchor(self):
         xml_src = u'''<texinfo>

@@ -167,11 +167,12 @@ class Parser:
                 continue
             if tok0 == '@':
                 nextch = tok1[0]
-                if nextch in ('.', ':', '{', '}', '*'):
+                if nextch in ('.', ':', '{', '}', '*', '/'):
                     ENTITIES = {'.': 'eosperiod',
                                 '{': 'lbrace',
                                 '*': 'linebreak',
                                 '}': 'rbrace',
+                                '/': 'slashbreak',
                                 ':': 'noeos'}
                     self.stack_top.add_entity(ENTITIES[nextch])
                     self.consume_n_tokens(2)
@@ -663,6 +664,22 @@ class Parser:
         if command in ('copyright', 'dots'):
             self.stack_top.add_entity(command)
             return
+        ACCENTS = {"'": 'acute',
+                   ',': 'cedil',
+                   '~': 'tilde',
+                   '"': 'uml'}
+        if command in ACCENTS:
+            accent = self.stack_top.add_element('accent', type=ACCENTS[command])
+            accent.add_text(inner)
+            return
+        if not inner:
+            ch = command[0]
+            if ch in ACCENTS:
+                accent = self.stack_top.add_element('accent', type=ACCENTS[ch])
+                accent.attrs['bracketed'] = 'off'
+                accent.add_text(command[1])
+                self.tokens.appendleft(command[2:])
+                return
         command_el = self.stack_top.add_element(command)
         if command == 'email':
             command_el = command_el.add_element('emailaddress')
@@ -1497,6 +1514,34 @@ Printed copies are available for $45 each.
             '''<texinfo>
 <para>Last printed October 2003 for GCC 3.3.1.&linebreak;
 Printed copies are available for $45 each.
+</para>
+</texinfo>''')
+
+    def test_slashbreak(self):
+        self.assert_xml_conversion(
+            '''
+Produce code optimized for the most common IA32/@/AMD64/@/EM64T processors.
+''',
+            '''<texinfo>
+<para>Produce code optimized for the most common IA32/&slashbreak;AMD64/&slashbreak;EM64T processors.
+</para>
+</texinfo>''')
+
+    def test_accents(self):
+        self.assert_xml_conversion(
+            '''
+Fran@,{c}ois
+
+L@'opez-Ib@'a@~nez
+
+von L@"owis
+''',
+            '''<texinfo>
+<para>Fran<accent type="cedil">c</accent>ois
+</para>
+<para>L<accent type="acute" bracketed="off">o</accent>pez-Ib<accent type="acute" bracketed="off">a</accent><accent type="tilde" bracketed="off">n</accent>ez
+</para>
+<para>von L<accent type="uml" bracketed="off">o</accent>wis
 </para>
 </texinfo>''')
 

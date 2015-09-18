@@ -1,5 +1,6 @@
 # A minimal IR for transforming texinfo XML into rst
 from collections import OrderedDict
+import re
 import unittest
 
 class Node:
@@ -82,6 +83,8 @@ class Node:
 
 class Element(Node):
     def __init__(self, kind, attrs=None):
+        if not re.match('[a-zA-Z0-9-_]+', kind):
+            raise ValueError('bad name for element: %r' % kind)
         self.kind = kind
         if attrs:
             self.attrs = OrderedDict(attrs)

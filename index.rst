@@ -11,7 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   gcc.rst
+   output/gcc.rst
 
 
 Indices and tables

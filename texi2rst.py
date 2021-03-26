@@ -1216,7 +1216,8 @@ class TableLayout:
             for idx in range(self.num_columns):
                 column = []
                 for row in comp.rows:
-                    column.append(row.entries[idx])
+                    if idx < len(row.entries):
+                        column.append(row.entries[idx])
                 if debug:
                     print('column: %r' % (column, ))
                 comp.columns.append(column)
@@ -2599,7 +2600,42 @@ Operand  masm=att  masm=intel
 ''',
             out)
 
-
+    def test_table_with_variable_number_of_columns(self):
+        xml_src = '''
+<multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">Modifier</columnprototype> <columnprototype bracketed="on">Print the opcode suffix for the size of th</columnprototype> <columnprototype bracketed="on">Operand</columnprototype> <columnprototype bracketed="on"><samp>att</samp></columnprototype> <columnprototype bracketed="on"><samp>intel</samp></columnprototype></columnprototypes>
+<thead><row><entry command="headitem" spaces=" "><para>Modifier </para></entry><entry command="tab" spaces=" "><para>Description </para></entry><entry command="tab" spaces=" "><para>Operand </para></entry><entry command="tab" spaces=" "><para><samp>att</samp> </para></entry><entry command="tab" spaces=" "><para><samp>intel</samp>
+</para></entry></row></thead>
+<tbody><row><entry command="item" spaces=" "><para><code>P</code>
+</para></entry><entry command="tab" spaces=" "><para>If used for a function, print the PLT suffix and generate PIC code.
+For example, emit <code>foo&arobase;PLT</code> instead of &textrsquo;foo&textrsquo; for the function
+foo(). If used for a constant, drop all syntax-specific prefixes and
+issue the bare constant. See <code>p</code> above.
+</para></entry></row><row><entry command="item" spaces=" "><para><code>q</code>
+</para></entry><entry command="tab" spaces=" "><para>Print the DImode name of the register.
+</para></entry><entry command="tab" spaces=" "><para><code>%q0</code>
+</para></entry><entry command="tab" spaces=" "><para><code>%rax</code>
+</para></entry><entry command="tab" spaces=" "><para><code>rax</code>
+</para></entry></row><row><entry command="item" spaces=" "><para><code>Q</code>
+</para></entry><entry command="tab" spaces=" "><para>print the opcode suffix of q.
+</para></entry><entry command="tab" spaces=" "><para><code>%Q0</code>
+</para></entry><entry command="tab" spaces=" "><para><code>q</code>
+</para></entry><entry command="tab">
+</entry></row></tbody></multitable>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(
+            u'''========  ====================================================================  =======  ===========  =============
+Modifier  Description                                                           Operand  :samp:`att`  :samp:`intel`
+========  ====================================================================  =======  ===========  =============
+``P``     If used for a function, print the PLT suffix and generate PIC code.
+          For example, emit ``foo@PLT`` instead of 'foo' for the function
+          foo(). If used for a constant, drop all syntax-specific prefixes and
+          issue the bare constant. See ``p`` above.
+``q``     Print the DImode name of the register.                                ``%q0``  ``%rax``     ``rax``
+``Q``     print the opcode suffix of q.                                         ``%Q0``  ``q``
+========  ====================================================================  =======  ===========  =============
+''', out)
 
 #
 

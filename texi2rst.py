@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
+
 from collections import OrderedDict
+import io
 import os
 import re
-import StringIO
 import sys
 import unittest
 import xml.dom.minidom
@@ -385,7 +387,7 @@ def fixup_nodes(tree, ctxt):
         edges = list(tree.iter_depth_first_edges())
         for i, (parent, child) in enumerate(edges):
                 if ctxt.debug:
-                    print i, parent, child
+                    print(i, parent, child)
                 if child.is_element('node') or child.is_element('anchor'):
 
                     def get_next_child_element():
@@ -1257,7 +1259,7 @@ class TableLayout:
 
     def _render_entry(self, entry):
         # Nested writer
-        w = RstWriter(StringIO.StringIO())
+        w = RstWriter(io.StringIO())
         w.visit(entry)
         w.finish()
         result = w.f_out.getvalue()

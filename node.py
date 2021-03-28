@@ -49,7 +49,7 @@ class Node:
             else:
                 result = ''
             result += '<%s' % self.kind
-            for k, v in self.attrs.iteritems():
+            for k, v in self.attrs.items():
                 result += ' %s="%s"' % (k, v)
             if self.children:
                 result += '>'
@@ -70,7 +70,7 @@ class Node:
     def to_dom_node(self, dom_doc):
         if isinstance(self, Element):
             dom_node = dom_doc.createElement(self.kind)
-            for k, v in self.attrs.iteritems():
+            for k, v in self.attrs.items():
                 dom_node.setAttribute(k, v)
             for child in self.children:
                 dom_node.appendChild(child.to_dom_node(dom_doc))

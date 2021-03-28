@@ -1461,7 +1461,7 @@ class Texi2RstTests(unittest.TestCase):
         self.ctxt = Context()
 
     def make_rst_string(self, doc):
-        w = RstWriter(StringIO.StringIO())
+        w = RstWriter(io.StringIO())
         w.visit(doc)
         w.finish()
         return w.f_out.getvalue()
@@ -1471,7 +1471,7 @@ class Texi2RstTests(unittest.TestCase):
             def __init__(self):
                 self.dict_ = OrderedDict()
             def open(self, output_file):
-                f_out = StringIO.StringIO()
+                f_out = io.StringIO()
                 self.dict_[output_file] = f_out
                 return f_out
             def close(self, f_out):
@@ -2451,14 +2451,14 @@ class TestIter(Texi2RstTests):
         tree = from_xml_string(xml_src)
         dfs = list(tree.iter_depth_first())
         self.assertEqual(len(dfs), 8)
-        self.assert_(dfs[0].is_element('document'))
-        self.assert_(dfs[1].is_element('A'))
-        self.assert_(dfs[2].is_element('B-1'))
-        self.assert_(dfs[3].is_element('C-1'))
-        self.assert_(dfs[4].is_element('C-2'))
-        self.assert_(dfs[5].is_element('B-2'))
-        self.assert_(dfs[6].is_element('C-3'))
-        self.assert_(dfs[7].is_element('C-4'))
+        self.assertTrue(dfs[0].is_element('document'))
+        self.assertTrue(dfs[1].is_element('A'))
+        self.assertTrue(dfs[2].is_element('B-1'))
+        self.assertTrue(dfs[3].is_element('C-1'))
+        self.assertTrue(dfs[4].is_element('C-2'))
+        self.assertTrue(dfs[5].is_element('B-2'))
+        self.assertTrue(dfs[6].is_element('C-3'))
+        self.assertTrue(dfs[7].is_element('C-4'))
 
         dfs_edges = list(tree.iter_depth_first_edges())
         self.assertEqual(len(dfs_edges), 7)

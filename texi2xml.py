@@ -821,7 +821,7 @@ class Parser:
 
         if self.debug:
             for k in self.node_dict:
-                print repr(k), repr(self.node_dict[k])
+                print(repr(k), repr(self.node_dict[k]))
 
     def _strip_conditionals(self):
         """

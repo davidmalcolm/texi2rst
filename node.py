@@ -151,6 +151,14 @@ class Element(Node):
                 return
         self.children.append(Text(data))
 
+    def prepend_text(self, data):
+        if self.children:
+            first_child = self.children[0]
+            if isinstance(first_child, Text):
+                first_child.data = data + first_child.data
+                return
+        self.children.insert(0, Text(data))
+
     def add_entity(self, name):
         self.children.append(Entity(name))
 
@@ -187,14 +195,14 @@ class Entity(Node):
 # Visitor base class
 
 class Visitor:
-    def visit(self, node):
+    def visit(self, node, parent=None):
         if isinstance(node, Element):
             early_exit = self.previsit_element(node)
             if early_exit:
                 return
-            for child in node.children:
-                self.visit(child)
-            self.postvisit_element(node)
+            for child in list(node.children):
+                self.visit(child, node)
+            self.postvisit_element(node, parent)
         elif isinstance(node, Comment):
             self.visit_comment(node)
         elif isinstance(node, Text):
@@ -207,7 +215,7 @@ class Visitor:
     def previsit_element(self, element):
         raise NotImplementedError
 
-    def postvisit_element(self, element):
+    def postvisit_element(self, element, parent):
         raise NotImplementedError
 
     def visit_comment(self, comment):
@@ -223,7 +231,7 @@ class NoopVisitor(Visitor):
     def previsit_element(self, element):
         pass
 
-    def postvisit_element(self, element):
+    def postvisit_element(self, element, parent):
         pass
 
     def visit_comment(self, comment):

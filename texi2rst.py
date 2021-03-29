@@ -854,6 +854,8 @@ def fixup_examples(tree):
         def handle_option_listing(self, element, pre):
             class OptionWrappingVisitor(NoopVisitor):
                 def postvisit_element(self, element, parent):
+                    if element.kind == 'var':
+                        return
                     new_children = []
                     for child in element.children:
                         if isinstance(child, Text):
@@ -1919,6 +1921,16 @@ types.)
 
 ''',
             out)
+
+    def test_option_listing_with_vars(self):
+        xml_src = ('''
+<smallexample endspaces=" ">
+<pre xml:space="preserve">-Walloca-larger-than=<var>byte-size</var></pre></smallexample>
+''')
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual(':option:`-Walloca-larger-than`:samp:`=byte-size`', out)
 
 class TableEntryTests(Texi2RstTests):
     def test_generating_definition_list(self):

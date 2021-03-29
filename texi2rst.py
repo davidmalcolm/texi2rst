@@ -436,6 +436,83 @@ def fixup_option_refs(tree):
     v.visit(tree)
     return tree
 
+def fixup_empty_texts(tree):
+    class EmptyTextFixer(NoopVisitor):
+        # Remove all empty Text elements.
+        def previsit_element(self, element):
+            element.children = [c for c in element.children if not isinstance(c, Text) or c.data]
+
+    v = EmptyTextFixer()
+    v.visit(tree)
+    return tree
+
+def fixup_element_spacing(tree):
+    class ElementSpacingFixer(NoopVisitor):
+        ALLOWED_CHARS = (' ', '\n', '.')
+        # Wrap option and var elements with a space character
+        def postvisit_element(self, element, parent):
+            if element.kind in ('option', 'var'):
+                i = parent.children.index(element)
+                if i + 1 < len(parent.children):
+                    rsibling = parent.children[i + 1]
+                    if isinstance(rsibling, Text):
+                        if not rsibling.data[0] in self.ALLOWED_CHARS:
+                            print('"' + rsibling.data[0] + '"')
+                            rsibling.data = ' ' + rsibling.data
+                    elif rsibling.is_element('r'):
+                        parent.children.insert(i + 1, Text(' '))
+                if i > 0:
+                    lsibling = parent.children[i - 1]
+                    if isinstance(lsibling, Text):
+                        if not lsibling.data[-1] in self.ALLOWED_CHARS:
+                            lsibling.data += ' '
+                    elif lsibling.is_element('r'):
+                        parent.children.insert(i - 1, Text(' '))
+
+    v = ElementSpacingFixer()
+    v.visit(tree)
+    return tree
+
+
+def fixup_wrapped_options(tree):
+    class WrapperOptionFixer(NoopVisitor):
+        # Move out all inner elements in option nodes as siblings:
+        # <option>-foo=<var>n</var></option>.
+        def postvisit_element(self, element, parent):
+            if element.kind == 'option':
+                i = parent.children.index(element)
+                parent.children = parent.children[:i + 1] + element.children[1:] + parent.children[i + 1:]
+                element.children = element.children[:1]
+
+    v = WrapperOptionFixer()
+    v.visit(tree)
+    return tree
+
+def fixup_trailing_sign_for_options(tree):
+    class TrailingSignForOptionFixer(NoopVisitor):
+        # Move trailing '=' character to sibling, otherwise options
+        # link is not generated.
+        def postvisit_element(self, element, parent):
+            if element.kind == 'option' and element.children:
+                firstchild = element.children[0]
+                if isinstance(firstchild, Text) and firstchild.data.endswith('='):
+                    firstchild.data = firstchild.data[:-1]
+                    i = parent.children.index(element)
+                    if i + 1 < len(parent.children):
+                        sibling = parent.children[i + 1]
+                        if isinstance(sibling, Text):
+                            sibling.data = ' =' + sibling.data
+                        else:
+                            sibling.prepend_text('=')
+                            return
+                    else:
+                        element.children.add(Text('='))
+
+    v = TrailingSignForOptionFixer()
+    v.visit(tree)
+    return tree
+
+
 def fixup_table_entry(tree):
     """
     Fixup <tableentry> elements.
@@ -607,6 +684,7 @@ def fixup_table_entry(tree):
                 # Then it is a description of an option, mark it as such,
                 # using all the option names found, and purge the
                 # <indexcommand> instances:
+                tableentry.kind = 'option'
                 tableentry.rst_kind = Directive('option',
                                                 ', '.join(options))
                 tableentry.children = new_children
@@ -707,7 +785,7 @@ def fixup_multitables(tree, ctxt):
                 element.rst_kind = Table(element, ctxt)
             element.delete_children_named('columnprototypes')
 
-        def postvisit_element(self, element):
+        def postvisit_element(self, element, parent):
             if ctxt.debug:
                 if element.kind == 'multitable':
                     element.dump(sys.stdout)
@@ -760,7 +838,7 @@ def fixup_examples(tree):
                         lang = self.guess_language(text.data)
                         example.rst_kind = Directive('code-block', lang)
 
-        def postvisit_element(self, element):
+        def postvisit_element(self, element, parent):
             if hasattr(element, 'default_language'):
                 self.default_lang_stack.pop()
 
@@ -775,7 +853,7 @@ def fixup_examples(tree):
 
         def handle_option_listing(self, element, pre):
             class OptionWrappingVisitor(NoopVisitor):
-                def postvisit_element(self, element):
+                def postvisit_element(self, element, parent):
                     new_children = []
                     for child in element.children:
                         if isinstance(child, Text):
@@ -951,7 +1029,7 @@ def fixup_inline_markup(tree):
             if element.kind == 'command':
                 element.rst_kind = InlineMarkup('command')
             elif element.kind == 'var':
-                element.rst_kind = MatchedInlineMarkup('``')
+                element.rst_kind = InlineMarkup('samp')
             elif element.kind == 'code':
                 element.rst_kind = MatchedInlineMarkup('``')
             elif element.kind == 'dfn':
@@ -1004,6 +1082,10 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_xrefs(tree)
     tree = fixup_lists(tree)
     tree = fixup_inline_markup(tree)
+    tree = fixup_empty_texts(tree)
+    tree = fixup_wrapped_options(tree)
+    tree = fixup_trailing_sign_for_options(tree)
+    tree = fixup_element_spacing(tree)
     return tree
 
 # Policies for converting elements to rst (element.rst_kind):
@@ -1413,7 +1495,7 @@ class RstWriter(Visitor):
             if 0:
                 print('unhandled element: %r' % (element, ))
 
-    def postvisit_element(self, element):
+    def postvisit_element(self, element, parent):
         if element.rst_kind:
             element.rst_kind.after(self)
         if element.kind == 'para':
@@ -1593,7 +1675,7 @@ class InlineMarkupTests(Texi2RstTests):
         doc = from_xml_string(xml_src)
         doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
-        self.assertEqual(u'Before ``gcc`` after', out)
+        self.assertEqual(u'Before :samp:`gcc` after', out)
 
     def test_code(self):
         xml_src = '<texinfo>Before <code>gcc</code> after</texinfo>'
@@ -1657,6 +1739,20 @@ some chapter text
         out = self.make_rst_string(doc)
         self.assertEqual(u'A sub-sub-heading\n^^^^^^^^^^^^^^^^^\n\nsome text\n\n',
                          out)
+
+    def test_option_ref_with_var(self):
+        xml_src = '<para>This is similar to how <option>-Walloca-larger-than=</option><var>byte-size</var> works.</para>'
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual('This is similar to how :option:`-Walloca-larger-than`:samp:`=byte-size` works.\n\n', out)
+
+    def test_option_ref_with_var2(self):
+        xml_src = '<para>See also <option>-Walloca-larger-than=<var>byte-size</var></option>.</para>'
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual('See also :option:`-Walloca-larger-than`:samp:`=byte-size`.\n\n', out)
 
 class OptionTests(Texi2RstTests):
     def test_valid_option_ref(self):

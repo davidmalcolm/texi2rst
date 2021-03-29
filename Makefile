@@ -1,4 +1,4 @@
 test:
-	python node.py
-	python texi2rst.py
-	python texi2xml.py
+	python3 node.py
+	python3 texi2rst.py
+	python3 texi2xml.py

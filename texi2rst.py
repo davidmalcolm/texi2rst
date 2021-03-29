@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
+
 from collections import OrderedDict
+import io
 import os
 import re
-import StringIO
 import sys
 import unittest
 import xml.dom.minidom
@@ -385,7 +387,7 @@ def fixup_nodes(tree, ctxt):
         edges = list(tree.iter_depth_first_edges())
         for i, (parent, child) in enumerate(edges):
                 if ctxt.debug:
-                    print i, parent, child
+                    print(i, parent, child)
                 if child.is_element('node') or child.is_element('anchor'):
 
                     def get_next_child_element():
@@ -1214,7 +1216,8 @@ class TableLayout:
             for idx in range(self.num_columns):
                 column = []
                 for row in comp.rows:
-                    column.append(row.entries[idx])
+                    if idx < len(row.entries):
+                        column.append(row.entries[idx])
                 if debug:
                     print('column: %r' % (column, ))
                 comp.columns.append(column)
@@ -1257,7 +1260,7 @@ class TableLayout:
 
     def _render_entry(self, entry):
         # Nested writer
-        w = RstWriter(StringIO.StringIO())
+        w = RstWriter(io.StringIO())
         w.visit(entry)
         w.finish()
         result = w.f_out.getvalue()
@@ -1458,7 +1461,7 @@ class Texi2RstTests(unittest.TestCase):
         self.ctxt = Context()
 
     def make_rst_string(self, doc):
-        w = RstWriter(StringIO.StringIO())
+        w = RstWriter(io.StringIO())
         w.visit(doc)
         w.finish()
         return w.f_out.getvalue()
@@ -1468,7 +1471,7 @@ class Texi2RstTests(unittest.TestCase):
             def __init__(self):
                 self.dict_ = OrderedDict()
             def open(self, output_file):
-                f_out = StringIO.StringIO()
+                f_out = io.StringIO()
                 self.dict_[output_file] = f_out
                 return f_out
             def close(self, f_out):
@@ -2448,14 +2451,14 @@ class TestIter(Texi2RstTests):
         tree = from_xml_string(xml_src)
         dfs = list(tree.iter_depth_first())
         self.assertEqual(len(dfs), 8)
-        self.assert_(dfs[0].is_element('document'))
-        self.assert_(dfs[1].is_element('A'))
-        self.assert_(dfs[2].is_element('B-1'))
-        self.assert_(dfs[3].is_element('C-1'))
-        self.assert_(dfs[4].is_element('C-2'))
-        self.assert_(dfs[5].is_element('B-2'))
-        self.assert_(dfs[6].is_element('C-3'))
-        self.assert_(dfs[7].is_element('C-4'))
+        self.assertTrue(dfs[0].is_element('document'))
+        self.assertTrue(dfs[1].is_element('A'))
+        self.assertTrue(dfs[2].is_element('B-1'))
+        self.assertTrue(dfs[3].is_element('C-1'))
+        self.assertTrue(dfs[4].is_element('C-2'))
+        self.assertTrue(dfs[5].is_element('B-2'))
+        self.assertTrue(dfs[6].is_element('C-3'))
+        self.assertTrue(dfs[7].is_element('C-4'))
 
         dfs_edges = list(tree.iter_depth_first_edges())
         self.assertEqual(len(dfs_edges), 7)
@@ -2597,7 +2600,42 @@ Operand  masm=att  masm=intel
 ''',
             out)
 
-
+    def test_table_with_variable_number_of_columns(self):
+        xml_src = '''
+<multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">Modifier</columnprototype> <columnprototype bracketed="on">Print the opcode suffix for the size of th</columnprototype> <columnprototype bracketed="on">Operand</columnprototype> <columnprototype bracketed="on"><samp>att</samp></columnprototype> <columnprototype bracketed="on"><samp>intel</samp></columnprototype></columnprototypes>
+<thead><row><entry command="headitem" spaces=" "><para>Modifier </para></entry><entry command="tab" spaces=" "><para>Description </para></entry><entry command="tab" spaces=" "><para>Operand </para></entry><entry command="tab" spaces=" "><para><samp>att</samp> </para></entry><entry command="tab" spaces=" "><para><samp>intel</samp>
+</para></entry></row></thead>
+<tbody><row><entry command="item" spaces=" "><para><code>P</code>
+</para></entry><entry command="tab" spaces=" "><para>If used for a function, print the PLT suffix and generate PIC code.
+For example, emit <code>foo&arobase;PLT</code> instead of &textrsquo;foo&textrsquo; for the function
+foo(). If used for a constant, drop all syntax-specific prefixes and
+issue the bare constant. See <code>p</code> above.
+</para></entry></row><row><entry command="item" spaces=" "><para><code>q</code>
+</para></entry><entry command="tab" spaces=" "><para>Print the DImode name of the register.
+</para></entry><entry command="tab" spaces=" "><para><code>%q0</code>
+</para></entry><entry command="tab" spaces=" "><para><code>%rax</code>
+</para></entry><entry command="tab" spaces=" "><para><code>rax</code>
+</para></entry></row><row><entry command="item" spaces=" "><para><code>Q</code>
+</para></entry><entry command="tab" spaces=" "><para>print the opcode suffix of q.
+</para></entry><entry command="tab" spaces=" "><para><code>%Q0</code>
+</para></entry><entry command="tab" spaces=" "><para><code>q</code>
+</para></entry><entry command="tab">
+</entry></row></tbody></multitable>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(
+            u'''========  ====================================================================  =======  ===========  =============
+Modifier  Description                                                           Operand  :samp:`att`  :samp:`intel`
+========  ====================================================================  =======  ===========  =============
+``P``     If used for a function, print the PLT suffix and generate PIC code.
+          For example, emit ``foo@PLT`` instead of 'foo' for the function
+          foo(). If used for a constant, drop all syntax-specific prefixes and
+          issue the bare constant. See ``p`` above.
+``q``     Print the DImode name of the register.                                ``%q0``  ``%rax``     ``rax``
+``Q``     print the opcode suffix of q.                                         ``%Q0``  ``q``
+========  ====================================================================  =======  ===========  =============
+''', out)
 
 #
 

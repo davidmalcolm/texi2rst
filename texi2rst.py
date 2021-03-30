@@ -1032,6 +1032,9 @@ def fixup_inline_markup(tree):
                 element.rst_kind = InlineMarkup('command')
             elif element.kind == 'var':
                 element.rst_kind = InlineMarkup('samp')
+                # wrap the variable in braces
+                element.prepend_text('{')
+                element.add_text('}')
             elif element.kind == 'code':
                 element.rst_kind = MatchedInlineMarkup('``')
             elif element.kind == 'dfn':
@@ -1677,7 +1680,7 @@ class InlineMarkupTests(Texi2RstTests):
         doc = from_xml_string(xml_src)
         doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
-        self.assertEqual(u'Before :samp:`gcc` after', out)
+        self.assertEqual(u'Before :samp:`{gcc}` after', out)
 
     def test_code(self):
         xml_src = '<texinfo>Before <code>gcc</code> after</texinfo>'
@@ -1747,14 +1750,14 @@ some chapter text
         doc = from_xml_string(xml_src)
         doc = convert_to_rst(doc, self.ctxt)
         out = self.make_rst_string(doc)
-        self.assertEqual('This is similar to how :option:`-Walloca-larger-than`:samp:`=byte-size` works.\n\n', out)
+        self.assertEqual('This is similar to how :option:`-Walloca-larger-than`:samp:`={byte-size}` works.\n\n', out)
 
     def test_option_ref_with_var2(self):
         xml_src = '<para>See also <option>-Walloca-larger-than=<var>byte-size</var></option>.</para>'
         doc = from_xml_string(xml_src)
         doc = convert_to_rst(doc, self.ctxt)
         out = self.make_rst_string(doc)
-        self.assertEqual('See also :option:`-Walloca-larger-than`:samp:`=byte-size`.\n\n', out)
+        self.assertEqual('See also :option:`-Walloca-larger-than`:samp:`={byte-size}`.\n\n', out)
 
 class OptionTests(Texi2RstTests):
     def test_valid_option_ref(self):
@@ -1930,7 +1933,7 @@ types.)
         doc = from_xml_string(xml_src)
         doc = convert_to_rst(doc, self.ctxt)
         out = self.make_rst_string(doc)
-        self.assertEqual(':option:`-Walloca-larger-than`:samp:`=byte-size`', out)
+        self.assertEqual(':option:`-Walloca-larger-than`:samp:`={byte-size}`', out)
 
 class TableEntryTests(Texi2RstTests):
     def test_generating_definition_list(self):

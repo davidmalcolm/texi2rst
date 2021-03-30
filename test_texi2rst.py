@@ -815,6 +815,12 @@ See :ref:`c++-dialect-options`.
 '''),
         out)
 
+    def test_xref_with_var(self):
+        xml_src = '<xref label="Range-checks-on-poly_005fints"><xrefnodename>Range checks on <code>poly_int</code>s</xrefnodename></xref>'
+        doc = from_xml_string(xml_src)
+        doc = fixup_xrefs(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual('See :ref:`range-checks-on-poly_ints`', out)
 
 class IntegrationTests(Texi2RstTests):
     def test_empty(self):

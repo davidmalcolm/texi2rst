@@ -72,6 +72,7 @@ def from_xml_string(xml_src):
     xml_src = xml_src.replace('&bullet;', '*')
     xml_src = xml_src.replace('&copyright;', "(C)")
     xml_src = xml_src.replace('&dots;', '...')
+    xml_src = xml_src.replace('&enddots;', '…')
     xml_src = xml_src.replace('&eosperiod;', '.')
     xml_src = xml_src.replace('&equiv;', '==')
     xml_src = xml_src.replace('&lbrace;', '{')
@@ -88,6 +89,7 @@ def from_xml_string(xml_src):
     xml_src = xml_src.replace('&textrdquo;', "'")
     xml_src = xml_src.replace('&textlsquo;', "'")
     xml_src = xml_src.replace('&textrsquo;', "'")
+    xml_src = xml_src.replace('&eosquest;', "?")
 
     # Complain about any entities still present
     for m in re.finditer('(&[a-z]+;)', xml_src):
@@ -245,7 +247,7 @@ def fixup_menus(tree):
                             if node.data.endswith('\n'):
                                 node.data = node.data[:-1]
                     # FIXME: express this cross-reference at the Node level:
-                    data = menunode.get_first_text().data
+                    data = menunode.get_all_text()
                     label = convert_text_to_label(data)
                     element.children += [Text(' <%s>' % label)]
 
@@ -456,7 +458,6 @@ def fixup_element_spacing(tree):
                     rsibling = parent.children[i + 1]
                     if isinstance(rsibling, Text):
                         if not rsibling.data[0] in self.ALLOWED_CHARS:
-                            print('"' + rsibling.data[0] + '"')
                             rsibling.data = ' ' + rsibling.data
                     elif rsibling.is_element('r'):
                         parent.children.insert(i + 1, Text(' '))
@@ -952,7 +953,7 @@ def fixup_xrefs(tree):
                 xrefnodename = element.first_element_named('xrefnodename')
                 xrefprinteddesc = element.first_element_named('xrefprinteddesc')
                 ref_desc = self.get_desc(element)
-                ref_name = convert_text_to_label(xrefnodename.get_sole_text().data)
+                ref_name = convert_text_to_label(xrefnodename.get_all_text())
                 ref = Element('ref', {})
                 ref.rst_kind = Ref(ref_desc, ref_name)
                 if element.kind == 'xref':

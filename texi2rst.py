@@ -1080,9 +1080,9 @@ def fixup_deftype(tree):
                     declaration = ''
                     for child in element.first_element_named('definitionterm').children:
                         text = child.get_all_text()
-                        if child.kind in ('deftype', 'defparamtype'):
-                            declaration += text + ' '
-                        elif child.kind in ('deffunction', 'defdelimiter', 'defparamtype', 'defparam'):
+                        if (child.kind  == 'defdelimiter' and text == ',') or child.kind in ('defparamtype', 'deftype'):
+                            declaration = declaration.rstrip() + text + ' '
+                        elif child.kind in ('deffunction', 'defdelimiter', 'defparam'):
                             declaration += text
 
                     definitionitem = element.first_element_named('definitionitem')

@@ -1216,6 +1216,12 @@ Modifier  Description                                                           
 ''', out)
 
 class TestFunctionDefinitions(Texi2RstTests):
+    def test_spacing_in_between_nodes(self):
+        xml_src = '<definitionitem><deftype>tree</deftype> <deffunction>gimple_asm_clobber_op</deffunction> <defdelimiter>(</defdelimiter><defparamtype>const</defparamtype></definitionitem>'
+        tree = from_xml_string(xml_src)
+        for child in tree.children[0].children:
+            assert isinstance(child, Element)
+
     def test_function(self):
         xml_src = '''
 <deftypefn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1924" mergedindex="cp">gimple_asm_clobber_op</indexterm><defcategory bracketed="on">GIMPLE function</defcategory> <deftype>tree</deftype> <deffunction>gimple_asm_clobber_op</deffunction> <defdelimiter>(</defdelimiter><defparamtype>const</defparamtype> <defparam>gasm</defparam> <defparamtype>*g</defparamtype><defdelimiter>,</defdelimiter> <defparamtype>unsigned</defparamtype> <defparam>index</defparam><defdelimiter>)</defdelimiter></definitionterm>
@@ -1224,9 +1230,8 @@ class TestFunctionDefinitions(Texi2RstTests):
         tree = from_xml_string(xml_src)
         tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
-        print(out)
         self.assertEqual(
-            '''.. function:: tree gimple_asm_clobber_op(const gasm*g ,unsigned index)
+            '''.. function:: tree gimple_asm_clobber_op(const gasm*g,unsigned index)
 
   Return clobber operand ``INDEX`` of ``GIMPLE_ASM`` ``G``.
 

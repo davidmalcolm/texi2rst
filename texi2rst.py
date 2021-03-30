@@ -1589,6 +1589,8 @@ if __name__ == '__main__':
             tree = from_xml_string(xml_src)
         tree = convert_to_rst(tree, GccContext())
         if 1:
+            if not os.path.exists('output'):
+                os.mkdir('output')
             with open('output/gcc.rst', 'w') as f_out:
                 w = RstWriter(f_out, FileOpener('output'))
                 w.visit(tree)

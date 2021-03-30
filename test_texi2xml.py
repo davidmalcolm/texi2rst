@@ -48,7 +48,7 @@ class PreambleTests(Texi2XmlTests):
     def test_preamble(self):
         self.assert_xml_conversion(
             '''
-\input texinfo  @c -*-texinfo-*-
+\\input texinfo  @c -*-texinfo-*-
 @c %**start of header
 @setfilename gcc.info
 ''',

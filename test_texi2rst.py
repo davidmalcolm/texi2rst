@@ -885,6 +885,20 @@ Some text about goto labels.
 
 ''', out)
 
+    def test_subsection_with_code(self):
+        xml_src = '''<subsection spaces=" "><sectiontitle><code>GIMPLE_ASM</code></sectiontitle>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="116"><code>GIMPLE_ASM</code></indexterm></cindex>
+</subsection>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual('''``GIMPLE_ASM``
+^^^^^^^^^^^^^^
+
+.. index:: GIMPLE_ASM
+
+''', out)
+
     def test_splitting(self):
         xml_src = u'''<texinfo>
 <top>

@@ -1187,10 +1187,11 @@ class Title(RstKind):
         w.write('\n')
 
     def after(self, w):
-        if len(self.element.children) == 1:
-            if isinstance(self.element.children[0], Text):
-                len_ = len(self.element.children[0].data)
-                w.write('\n%s\n\n' % (self.underline * len_))
+        tmpw = RstWriter(io.StringIO())
+        for child in self.element.children:
+            tmpw.visit(child)
+        tmpw.finish()
+        w.write('\n%s\n\n' % (self.underline * len(tmpw.f_out.getvalue())))
 
 class Directive(RstKind):
     def __init__(self, name, args):

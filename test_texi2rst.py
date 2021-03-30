@@ -1214,3 +1214,20 @@ Modifier  Description                                                           
 ``Q``     print the opcode suffix of q.                                         ``%Q0``  ``q``
 ========  ====================================================================  =======  ===========  =============
 ''', out)
+
+class TestFunctionDefinitions(Texi2RstTests):
+    def test_function(self):
+        xml_src = '''
+<deftypefn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1924" mergedindex="cp">gimple_asm_clobber_op</indexterm><defcategory bracketed="on">GIMPLE function</defcategory> <deftype>tree</deftype> <deffunction>gimple_asm_clobber_op</deffunction> <defdelimiter>(</defdelimiter><defparamtype>const</defparamtype> <defparam>gasm</defparam> <defparamtype>*g</defparamtype><defdelimiter>,</defdelimiter> <defparamtype>unsigned</defparamtype> <defparam>index</defparam><defdelimiter>)</defdelimiter></definitionterm>
+<definitionitem><para>Return clobber operand <code>INDEX</code> of <code>GIMPLE_ASM</code> <code>G</code>.
+</para></definitionitem></deftypefn>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        print(out)
+        self.assertEqual(
+            '''.. function:: tree gimple_asm_clobber_op(const gasm*g ,unsigned index)
+
+  Return clobber operand ``INDEX`` of ``GIMPLE_ASM`` ``G``.
+
+''', out)

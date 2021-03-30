@@ -1069,6 +1069,32 @@ def fixup_inline_markup(tree):
     v.visit(tree)
     return tree
 
+def fixup_deftype(tree):
+    class DefTypeFixup(NoopVisitor):
+        """
+        Look for <deftypefn> elements..
+        """
+        def previsit_element(self, element):
+            if isinstance(element, Element):
+                if element.kind == 'deftypefn':
+                    declaration = ''
+                    for child in element.first_element_named('definitionterm').children:
+                        text = child.get_all_text()
+                        if child.kind in ('deftype', 'defparamtype'):
+                            declaration += text + ' '
+                        elif child.kind in ('deffunction', 'defdelimiter', 'defparamtype', 'defparam'):
+                            declaration += text
+
+                    definitionitem = element.first_element_named('definitionitem')
+                    element.children = []
+                    if definitionitem:
+                        element.children.append(definitionitem)
+                    element.rst_kind = Directive('function', declaration)
+    v = DefTypeFixup()
+    v.visit(tree)
+    return tree
+
+
 # Top-level conversion routine
 
 def convert_to_rst(tree, ctxt):
@@ -1085,6 +1111,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_titles(tree)
     tree = fixup_index(tree)
     tree = fixup_xrefs(tree)
+    tree = fixup_deftype(tree)
     tree = fixup_lists(tree)
     tree = fixup_inline_markup(tree)
     tree = fixup_empty_texts(tree)

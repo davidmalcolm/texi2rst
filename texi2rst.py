@@ -865,7 +865,7 @@ def fixup_examples(tree):
                 def split_text(self, text):
                     result = []
                     last_idx = 0
-                    for m in re.finditer('(-\S+)', text.data):
+                    for m in re.finditer(r'(-\S+)', text.data):
                         if m.start(1) > 0:
                             result.append(Text(text.data[last_idx:m.start(1)]))
                         option = Element('option', {})

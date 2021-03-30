@@ -159,7 +159,7 @@ class Parser:
                 print('  tok2: %r' % tok2)
             if tok0 is None:
                 break
-            if tok0.startswith('\input texinfo'):
+            if tok0.startswith('\\input texinfo'):
                 line = tok0
                 self.consume_token()
                 tok = self.consume_token()
@@ -210,7 +210,7 @@ class Parser:
                     continue
                 if tok1 and had_newline:
                     # Do we have a full-line command?
-                    m = re.match('^([a-z]*)(\s*.*)$', tok1)
+                    m = re.match(r'^([a-z]*)(\s*.*)$', tok1)
                     if self.debug:
                         print(m.groups())
                     if m and m.group(1) in FULL_LINE_COMMANDS:
@@ -262,7 +262,7 @@ class Parser:
                 self.consume_n_tokens(2)
                 if self.debug:
                     print('tok1: %r' % tok1)
-                m = re.match('(\S+)(.*)', tok1)
+                m = re.match(r'(\S+)(.*)', tok1)
                 if not m:
                     raise ValueError('tok1: %r' % tok1)
                 command = m.group(1)
@@ -637,7 +637,7 @@ class Parser:
     def _parse_command_args(self, line):
         if self.debug:
             print('line: %r' % line)
-        m = re.match('^\s*(\S+)\s+(.*)$', line)
+        m = re.match(r'^\s*(\S+)\s+(.*)$', line)
         if m:
             key, value = m.groups()
             value = value.rstrip()

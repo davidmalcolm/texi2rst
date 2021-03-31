@@ -1236,3 +1236,61 @@ class TestFunctionDefinitions(Texi2RstTests):
   Return clobber operand ``INDEX`` of ``GIMPLE_ASM`` ``G``.
 
 ''', out)
+
+
+    def test_function_deftypefun(self):
+        xml_src = '''
+<defmac spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="3744" mergedindex="cp">HANDLE_PRAGMA_PACK_WITH_EXPANSION</indexterm><defcategory automatic="on" bracketed="on">Macro</defcategory> <deffunction>HANDLE_PRAGMA_PACK_WITH_EXPANSION</deffunction></definitionterm>
+<definitionitem><para>Define this macro if macros should be expanded in the
+arguments of <samp>#pragma pack</samp>.
+</para></definitionitem></defmac>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(
+            '''.. macro:: HANDLE_PRAGMA_PACK_WITH_EXPANSION
+
+  Define this macro if macros should be expanded in the
+  arguments of :samp:`#pragma pack`.
+
+''', out)
+
+    def test_deftypevr(self):
+        xml_src = '''
+<deftypevr spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="65" mergedindex="cp">TARGET_HAVE_COUNT_REG_DECR_P</indexterm><defcategory bracketed="on">Target Hook</defcategory> <deftype>bool</deftype> <defvariable>TARGET_HAVE_COUNT_REG_DECR_P</defvariable></definitionterm>
+<definitionitem><para>Return true if the target supports hardware count register for decrement
+and branch.
+The default value is false.
+</para></definitionitem></deftypevr>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(
+            '''.. c:var:: bool TARGET_HAVE_COUNT_REG_DECR_P
+
+  Return true if the target supports hardware count register for decrement
+  and branch.
+  The default value is false.
+
+''', out)
+
+    def test_deftypefun(self):
+        xml_src = '''
+<deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="2697" mergedindex="cp">constraint_satisfied_p</indexterm><defcategory automatic="on" bracketed="on">Function</defcategory> <deftype>bool</deftype> <deffunction>constraint_satisfied_p</deffunction> <defdelimiter>(</defdelimiter><defparamtype>rtx</defparamtype> <defparam><var>exp</var></defparam><defdelimiter>,</defdelimiter> <defparamtype>enum</defparamtype> <defparam>constraint_num</defparam> <defparam><var>c</var></defparam><defdelimiter>)</defdelimiter></definitionterm>
+<definitionitem><para>Like the <code>satisfies_constraint_<var>m</var></code> functions, but the
+constraint to test is given as an argument, <var>c</var>.  If <var>c</var>
+specifies a register constraint, this function will always return
+<code>false</code>.
+</para></definitionitem></deftypefun>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(
+            '''.. function:: bool constraint_satisfied_p(rtx exp,enum constraint_numc)
+
+  Like the ``satisfies_constraint_ :samp:`{m}``` functions, but the
+  constraint to test is given as an argument, :samp:`{c}`.  If :samp:`{c}`
+  specifies a register constraint, this function will always return
+  ``false``.
+
+''', out)

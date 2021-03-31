@@ -1076,20 +1076,24 @@ def fixup_deftype(tree):
         """
         def previsit_element(self, element):
             if isinstance(element, Element):
-                if element.kind == 'deftypefn':
+                MAPPING = {'deftypefn': 'function',
+                            'deftypefun': 'function',
+                            'defmac': 'macro',
+                            'deftypevr': 'c:var'}
+                if element.kind in MAPPING:
                     declaration = ''
                     for child in element.first_element_named('definitionterm').children:
                         text = child.get_all_text()
                         if (child.kind  == 'defdelimiter' and text == ',') or child.kind in ('defparamtype', 'deftype'):
                             declaration = declaration.rstrip() + text + ' '
-                        elif child.kind in ('deffunction', 'defdelimiter', 'defparam'):
+                        elif child.kind in ('deffunction', 'defdelimiter', 'defparam', 'defvariable'):
                             declaration += text
 
                     definitionitem = element.first_element_named('definitionitem')
                     element.children = []
                     if definitionitem:
                         element.children.append(definitionitem)
-                    element.rst_kind = Directive('function', declaration)
+                    element.rst_kind = Directive(MAPPING[element.kind], declaration)
     v = DefTypeFixup()
     v.visit(tree)
     return tree

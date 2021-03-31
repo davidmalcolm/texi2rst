@@ -1036,6 +1036,8 @@ def fixup_inline_markup(tree):
                 element.prepend_text('{')
                 element.add_text('}')
             elif element.kind == 'code':
+                # we cannot support e.g. <var> in a <code> element
+                element.collapse_to_text()
                 element.rst_kind = MatchedInlineMarkup('``')
             elif element.kind == 'dfn':
                 element.rst_kind = InlineMarkup('dfn')

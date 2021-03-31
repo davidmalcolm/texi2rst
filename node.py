@@ -128,6 +128,9 @@ class Element(Node):
                 result += child.get_all_text()
         return result
 
+    def collapse_to_text(self):
+        self.children = [Text(self.get_all_text())]
+
     def delete_children_named(self, name):
         new_children = []
         for child in self.children:

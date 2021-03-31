@@ -150,6 +150,13 @@ class InlineMarkupTests(Texi2RstTests):
         out = self.make_rst_string(doc)
         self.assertEqual(u'Before ``gcc`` after', out)
 
+    def test_code_with_vars(self):
+        xml_src = '<para>Target has the <code>_Float<var>n</var></code> type.</para>'
+        doc = from_xml_string(xml_src)
+        doc = fixup_inline_markup(doc)
+        out = self.make_rst_string(doc)
+        self.assertEqual(u'Target has the ``_Floatn`` type.\n\n', out)
+
     def test_dfn(self):
         xml_src = (u'<para>An <dfn>attribute specifier list</dfn> is...</para>')
         doc = from_xml_string(xml_src)

@@ -846,6 +846,7 @@ def fixup_examples(tree):
                             self.handle_option_listing(element, pre)
                             return
                         lang = self.guess_language(text.data)
+                        example.collapse_to_text()
                         example.rst_kind = Directive('code-block', lang)
 
         def postvisit_element(self, element, parent):

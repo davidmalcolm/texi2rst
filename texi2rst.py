@@ -74,6 +74,7 @@ def from_xml_string(xml_src):
     xml_src = xml_src.replace('&dots;', '...')
     xml_src = xml_src.replace('&enddots;', '…')
     xml_src = xml_src.replace('&eosperiod;', '.')
+    xml_src = xml_src.replace('&comma;', ',')
     xml_src = xml_src.replace('&equiv;', '==')
     xml_src = xml_src.replace('&lbrace;', '{')
     xml_src = xml_src.replace('&linebreak;', "\n")
@@ -90,6 +91,9 @@ def from_xml_string(xml_src):
     xml_src = xml_src.replace('&textlsquo;', "'")
     xml_src = xml_src.replace('&textrsquo;', "'")
     xml_src = xml_src.replace('&eosquest;', "?")
+    xml_src = xml_src.replace('&expansion;', '→')
+    xml_src = xml_src.replace('&result;', '⇒')
+    xml_src = xml_src.replace('&errorglyph;', 'error')
 
     # Complain about any entities still present
     for m in re.finditer('(&[a-z]+;)', xml_src):
@@ -1059,6 +1063,8 @@ def fixup_inline_markup(tree):
                         raise ValueError()
                     new_children.append(grandchild)
                     ACCENTS = {'acute': u'\u0301',
+                               'circ': u'\u0302',
+                               'grave': u'\u0304',
                                'cedil': u'\u0327',
                                'tilde': u'\u0303',
                                'uml':   u'\u0308'}

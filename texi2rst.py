@@ -266,8 +266,11 @@ def split(tree):
                 if sectiontitle:
                     text = sectiontitle.get_all_text()
                     text = text.lower()
-                    text = text.replace(' ', '-')
-                    text = text.replace('/', '-')
+                    for c in ' /':
+                        text = text.replace(c, '-')
+                    for c in '()?\',.:_':
+                        text = text.replace(c, '')
+                    text = text.strip('+')
                     element.rst_kind = OutputFile(text)
 
     class ToctreeAdder(NoopVisitor):

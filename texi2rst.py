@@ -677,6 +677,9 @@ def fixup_table_entry(tree):
                                     note = Element('note', {})
                                     note.rst_kind = Directive('note', None)
                                     note.children = [r]
+                                    rtext = r.children[0]
+                                    if rtext.data.startswith('(') and rtext.data.endswith(')'):
+                                        rtext.data = rtext.data[1:-1]
 
                                     tableitem.children = \
                                         [note] + tableitem.children

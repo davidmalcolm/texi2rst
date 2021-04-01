@@ -279,7 +279,7 @@ types.)
 
   .. note::
 
-    (C and Objective-C only)
+    C and Objective-C only
 
   Warn if a function is declared or defined without specifying the
   argument types.  (An old-style function definition is permitted without

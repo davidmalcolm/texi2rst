@@ -483,6 +483,23 @@ def fixup_element_spacing(tree):
     v.visit(tree)
     return tree
 
+def fixup_machine_dependant_options(tree):
+    class MachineDependantOptionFixer(NoopVisitor):
+        def __init__(self):
+            self.parent_seen = False
+
+        def postvisit_element(self, element, parent):
+            # add newline before all Machine-Dependent Options subsections
+            text = element.get_all_text()
+            if element.kind == 'emph' and text.endswith('Options'):
+                if text == 'Machine-Dependent Options':
+                    self.parent_seen = True
+                elif self.parent_seen:
+                    parent.children.insert(parent.children.index(element) - 2, Text('\n'))
+
+    v = MachineDependantOptionFixer()
+    v.visit(tree)
+    return tree
 
 def fixup_wrapped_options(tree):
     class WrapperOptionFixer(NoopVisitor):
@@ -1130,6 +1147,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_wrapped_options(tree)
     tree = fixup_trailing_sign_for_options(tree)
     tree = fixup_element_spacing(tree)
+    tree = fixup_machine_dependant_options(tree)
     return tree
 
 # Policies for converting elements to rst (element.rst_kind):

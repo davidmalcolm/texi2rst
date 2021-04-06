@@ -1250,17 +1250,33 @@ class Title(RstKind):
         w.write('\n%s\n\n' % (self.underline * len(tmpw.f_out.getvalue())))
 
 class Directive(RstKind):
+    OPTION_LIMIT = 70
+
     def __init__(self, name, args):
         self.name = name
-        self.args = args
+        self.args = args if args else ''
 
     def __repr__(self):
         return 'Directive(%r, %r)' % (self.name, self.args)
 
+    def write_part(self, w, part):
+        w.write('\n.. %s::' % self.name)
+        if part:
+            w.write(' %s' % part)
+
     def before(self, w):
-        w.write('\n.. %s::' % (self.name, ))
-        if self.args:
-            w.write(' %s' % (self.args, ))
+        if self.name == 'option':
+            args = self.args.split(', ')
+            while args:
+                part = ''
+                while args and len(part) + len(args[0]) < self.OPTION_LIMIT:
+                    if part:
+                        part += ', '
+                    part += args[0]
+                    args = args[1:]
+                self.write_part(w, part)
+        else:
+            self.write_part(w, self.args)
         w.indent += 1
         w.write('\n\n')
 

@@ -842,7 +842,7 @@ def fixup_examples(tree):
                 if pre:
                     text = pre.get_first_text()
                     if text:
-                        if text.data.startswith('-'):
+                        if text.data.startswith('-') or text.data.lstrip().startswith('-W'):
                             self.handle_option_listing(element, pre)
                             return
                         lang = self.guess_language(text.data)

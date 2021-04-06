@@ -284,7 +284,7 @@ This warning is enabled by <option>-Wall</option>.
     def test_option_description_with_r(self):
         xml_src = ('''<texinfo>
 <tableentry><tableterm><item spaces=" "><itemformat command="code">-Wstrict-prototypes <r>(C and Objective-C only)</r></itemformat></item>
-</tableterm><tableitem><indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="417" incode="1">Wstrict-prototypes</indexterm></indexcommand>
+</tableterm><tableitem><indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="417" incode="1">Wstrict-prototypes-foo-foo-foo-foo</indexterm></indexcommand>
 <indexcommand command="opindex" index="op" spaces=" "><indexterm index="op" number="418" incode="1">Wno-strict-prototypes</indexterm></indexcommand>
 <para>Warn if a function is declared or defined without specifying the
 argument types.  (An old-style function definition is permitted without
@@ -296,7 +296,8 @@ types.)
         doc = fixup_table_entry(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            u'''.. option:: -Wstrict-prototypes , -Wstrict-prototypes, -Wno-strict-prototypes
+            u'''.. option:: -Wstrict-prototypes , -Wstrict-prototypes-foo-foo-foo-foo
+.. option:: -Wno-strict-prototypes
 
   .. note::
 

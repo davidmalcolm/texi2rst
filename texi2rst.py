@@ -1359,6 +1359,10 @@ class TableLayout:
                     if h > comp.height_needed_for_y.get(y, 0):
                         comp.height_needed_for_y[y] = h
 
+        for x in range(self.num_columns):
+            if not x in self.width_needed_for_x:
+                self.width_needed_for_x[x] = 0
+
     def _entry_needs_grid_table(self, entry):
         for desc in entry.iter_depth_first():
             if isinstance(desc, Element):

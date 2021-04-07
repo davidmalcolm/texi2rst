@@ -1229,6 +1229,34 @@ Modifier  Description                                                           
 ========  ====================================================================  =======  ===========  =============
 ''', out)
 
+    def test_table_with_empty_column(self):
+        xml_src = '''
+<multitable spaces=" " endspaces=" "><columnfractions line=".15 .30 .40"><columnfraction value=".15"></columnfraction><columnfraction value=".30"></columnfraction><columnfraction value=".40"></columnfraction></columnfractions>
+<tbody><row><entry command="item" spaces=" "></entry><entry command="tab" spaces=" "><para><code>VALUE(1)</code></para></entry><entry command="tab" spaces=" "><para>The year
+</para></entry></row><row><entry command="item" spaces=" "></entry><entry command="tab" spaces=" "><para><code>VALUE(2)</code></para></entry><entry command="tab" spaces=" "><para>The month
+</para></entry></row><row><entry command="item" spaces=" "></entry><entry command="tab" spaces=" "><para><code>VALUE(3)</code></para></entry><entry command="tab" spaces=" "><para>The day of the month
+</para></entry></row><row><entry command="item" spaces=" "></entry><entry command="tab" spaces=" "><para><code>VALUE(4)</code></para></entry><entry command="tab" spaces=" "><para>Time difference with UTC in minutes
+</para></entry></row><row><entry command="item" spaces=" "></entry><entry command="tab" spaces=" "><para><code>VALUE(5)</code></para></entry><entry command="tab" spaces=" "><para>The hour of the day
+</para></entry></row><row><entry command="item" spaces=" "></entry><entry command="tab" spaces=" "><para><code>VALUE(6)</code></para></entry><entry command="tab" spaces=" "><para>The minutes of the hour
+</para></entry></row><row><entry command="item" spaces=" "></entry><entry command="tab" spaces=" "><para><code>VALUE(7)</code></para></entry><entry command="tab" spaces=" "><para>The seconds of the minute
+</para></entry></row><row><entry command="item" spaces=" "></entry><entry command="tab" spaces=" "><para><code>VALUE(8)</code></para></entry><entry command="tab" spaces=" "><para>The milliseconds of the second
+</para></entry></row></tbody></multitable>'''
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual('''  ============  ===================================
+  ``VALUE(1)``  The year
+  ============  ===================================
+  ``VALUE(2)``  The month
+  ``VALUE(3)``  The day of the month
+  ``VALUE(4)``  Time difference with UTC in minutes
+  ``VALUE(5)``  The hour of the day
+  ``VALUE(6)``  The minutes of the hour
+  ``VALUE(7)``  The seconds of the minute
+  ``VALUE(8)``  The milliseconds of the second
+  ============  ===================================
+''', out)
+
 class TestFunctionDefinitions(Texi2RstTests):
     def test_function(self):
         xml_src = '''

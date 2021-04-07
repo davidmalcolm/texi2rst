@@ -1615,6 +1615,7 @@ if __name__ == '__main__':
         print('Usage: texi2rst.py xml_file')
         sys.exit(1)
     else:
+        base, _ = os.path.splitext(os.path.basename(sys.argv[1]))
         with open(sys.argv[1]) as f_in:
             xml_src = f_in.read()
             tree = from_xml_string(xml_src)
@@ -1622,7 +1623,7 @@ if __name__ == '__main__':
         if 1:
             if not os.path.exists('output'):
                 os.mkdir('output')
-            with open('output/gcc.rst', 'w') as f_out:
+            with open('output/' + base + '.rst', 'w') as f_out:
                 w = RstWriter(f_out, FileOpener('output'))
                 w.visit(tree)
         else:

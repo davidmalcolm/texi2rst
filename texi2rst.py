@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from collections import OrderedDict
+import argparse
 import io
 import os
 import re
@@ -17,6 +18,8 @@ makeinfo --xml -I ABSPATH_OF_SRC/gcc/doc/ -I ABSPATH_OF_SRC/gcc/doc/include ABSP
 TODO:
   map back to the include structure of the underlying .texi files
 """
+
+args = None
 
 # Convert from XML nodes to our easier-to-work-with data structure
 
@@ -819,7 +822,7 @@ def fixup_examples(tree):
     """
     class ExampleFixer(NoopVisitor):
         def __init__(self):
-            self.default_lang_stack = ['c++']
+            self.default_lang_stack = [args.default_language if args else 'c++']
 
         def previsit_element(self, element):
             if hasattr(element, 'default_language'):
@@ -1608,24 +1611,25 @@ class GccContext(Context):
         v.visit(tree)
         return tree
 
+parser = argparse.ArgumentParser(description='Convert TEXINFO xml file into RST files')
+parser.add_argument('xml_file', help='Input XML file')
+parser.add_argument('--default-language', default='c++', help='Default language for code blocks')
+
 # Entrypoint
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print('Usage: texi2rst.py xml_file')
-        sys.exit(1)
-    else:
-        base, _ = os.path.splitext(os.path.basename(sys.argv[1]))
-        with open(sys.argv[1]) as f_in:
-            xml_src = f_in.read()
-            tree = from_xml_string(xml_src)
-        tree = convert_to_rst(tree, GccContext())
-        if 1:
-            if not os.path.exists('output'):
-                os.mkdir('output')
-            with open('output/' + base + '.rst', 'w') as f_out:
-                w = RstWriter(f_out, FileOpener('output'))
-                w.visit(tree)
-        else:
-            w = RstWriter(sys.stdout)
+    args = parser.parse_args()
+    base, _ = os.path.splitext(os.path.basename(args.xml_file))
+    with open(args.xml_file) as f_in:
+        xml_src = f_in.read()
+        tree = from_xml_string(xml_src)
+    tree = convert_to_rst(tree, GccContext())
+    if 1:
+        if not os.path.exists('output'):
+            os.mkdir('output')
+        with open('output/' + base + '.rst', 'w') as f_out:
+            w = RstWriter(f_out, FileOpener('output'))
             w.visit(tree)
+    else:
+        w = RstWriter(sys.stdout)
+        w.visit(tree)

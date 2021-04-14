@@ -7,10 +7,52 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
       - run: pip install pytest
       - run: python -m pytest
+
+  generate_rst:
+    runs-on: ubuntu-latest
+    container: "opensuse/tumbleweed"
+
+    steps:
+      - run: zypper -n install git python3 makeinfo sphinx
+      - uses: actions/checkout@v2
+      - name: Clone GCC
+        run: git clone --depth 1 --branch devel/sphinx git://gcc.gnu.org/git/gcc.git
+        working-directory: scripts
+      - name: Generate XML files from TEXI
+        run: ./generate-xml.py gcc objdir xml
+        working-directory: scripts
+      - name: Generate RST files from XML
+        run: ./generate-rst.py xml sphinx
+        working-directory: scripts
+      - run: du -hs sphinx
+        working-directory: scripts
+      - name: Setup git config
+        run: |
+          git config --global user.email mliska@suse.cz
+          git config --global user.name marxin
+      - name: Clone generated repository
+        run: git clone https://${{ secrets.API_TOKEN_GITHUB }}@github.com/marxin/texi2rst-generated.git
+      - name: Change branch
+        run: |
+          git checkout -b ${{ github.head_ref }}
+          git push --set-upstream origin ${{ github.head_ref }} -f
+        if: github.ref != 'refs/heads/master'
+        working-directory: texi2rst-generated
+      - name: Modify generated repository
+        run: |
+          rm -rf sphinx
+          cp -r ../scripts/sphinx .
+          git add sphinx/*
+          echo ${{ github.sha }} > REVISION
+          git add REVISION
+          git commit -a -m "Built from ${{ github.repository }}@${{ github.sha }}"
+          git push
+          echo "output_sha=`git rev-parse HEAD`" >> $GITHUB_ENV
+        working-directory: texi2rst-generated

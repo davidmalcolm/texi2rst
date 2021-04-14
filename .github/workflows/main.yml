@@ -56,3 +56,10 @@ jobs:
           git push
           echo "output_sha=`git rev-parse HEAD`" >> $GITHUB_ENV
         working-directory: texi2rst-generated
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{github.event.number}}
+          body: |
+            It is published here: https://github.com/marxin/texi2rst-generated/commit/${{ env.output_sha }}
+        if: github.ref != 'refs/heads/master'

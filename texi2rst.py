@@ -489,7 +489,7 @@ def fixup_wrapped_options(tree):
         # Move out all inner elements in option nodes as siblings:
         # <option>-foo=<var>n</var></option>.
         def postvisit_element(self, element, parent):
-            if element.kind == 'option':
+            if isinstance(element.rst_kind, InlineMarkup) and element.kind == 'option':
                 i = parent.children.index(element)
                 parent.children = parent.children[:i + 1] + element.children[1:] + parent.children[i + 1:]
                 element.children = element.children[:1]

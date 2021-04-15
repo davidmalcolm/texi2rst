@@ -171,6 +171,14 @@ class InlineMarkupTests(Texi2RstTests):
         out = self.make_rst_string(doc)
         self.assertEqual(u'The default :envvar:`GCC_COLORS` is...\n\n', out)
 
+    def test_gcc_variable_replacement(self):
+        xml_src = '<para>$$VERSION_PACKAGE$$</para>'
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual('|package_version|\n\n', out)
+
+
 class TitleTests(Texi2RstTests):
     def test_section_title(self):
         xml_src = ('<texinfo><sectiontitle>A section title</sectiontitle>'

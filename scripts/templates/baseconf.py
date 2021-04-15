@@ -20,7 +20,8 @@ import os
 # The full version, including alpha/beta/rc tags
 
 # FIXME
-gcc_srcdir = '/home/marxin/Programming/gcc/gcc'
+folder = os.path.dirname(os.path.realpath(__file__))
+gcc_srcdir = os.path.join(folder, '../objdir')
 
 def __read_file(name):
     path = os.path.join(gcc_srcdir, name)

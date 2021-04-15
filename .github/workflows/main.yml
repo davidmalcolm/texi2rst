@@ -20,7 +20,7 @@ jobs:
     container: "opensuse/tumbleweed"
 
     steps:
-      - run: zypper -n install git python3 makeinfo sphinx python3-Sphinx make
+      - run: zypper -n install git python3 makeinfo sphinx python3-Sphinx make groff
       - uses: actions/checkout@v2
       - name: Clone GCC
         run: git clone --depth 1 --branch devel/sphinx git://gcc.gnu.org/git/gcc.git
@@ -67,6 +67,10 @@ jobs:
         working-directory: scripts/sphinx
         if: github.ref == 'refs/heads/master'
       - run: make man
+        working-directory: scripts/sphinx
+        if: github.ref == 'refs/heads/master'
+      - name: Convert man pages to HTML
+        run: find . -name '*.1' | xargs -i bash -c "groff -mandoc -Thtml {} > {}.html"
         working-directory: scripts/sphinx
         if: github.ref == 'refs/heads/master'
       - name: Upload generated files

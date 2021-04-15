@@ -69,3 +69,12 @@ jobs:
       - run: make man
         working-directory: scripts/sphinx
         if: github.ref == 'refs/heads/master'
+      - name: Upload generated files
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          source: "scripts/sphinx"
+          target: "/srv/www/htdocs/splichaleu/"
+        if: github.ref == 'refs/heads/master'

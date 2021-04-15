@@ -63,3 +63,9 @@ jobs:
           body: |
             It is published here: https://github.com/marxin/texi2rst-generated/commit/${{ env.output_sha }}
         if: github.ref != 'refs/heads/master'
+      - run: make html
+        working-directory: scripts/sphinx
+        if: github.ref == 'refs/heads/master'
+      - run: make man
+        working-directory: scripts/sphinx
+        if: github.ref == 'refs/heads/master'

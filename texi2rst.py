@@ -495,11 +495,15 @@ def fixup_vars_in_samps(tree):
 
 def fixup_element_spacing(tree):
     class ElementSpacingFixer(NoopVisitor):
-        ALLOWED_CHARS = (' ', '\n', '.')
+        ALLOWED_CHARS = (' ', '\n', '.', ',')
+
+        @staticmethod
+        def element_needs_space_p(element):
+            return element.is_element('r') or (isinstance(element, Element) and element.kind == 'code')
 
         # Wrap option and var elements with a space character
         def postvisit_element(self, element, parents):
-            if element.kind in ('option', 'var'):
+            if element.kind in ('option', 'var', 'code'):
                 parent = parents[-1]
                 i = parent.children.index(element)
                 if i + 1 < len(parent.children):
@@ -507,14 +511,14 @@ def fixup_element_spacing(tree):
                     if isinstance(rsibling, Text):
                         if not rsibling.data[0] in self.ALLOWED_CHARS:
                             rsibling.data = ' ' + rsibling.data
-                    elif rsibling.is_element('r'):
+                    elif self.element_needs_space_p(rsibling):
                         parent.children.insert(i + 1, Text(' '))
                 if i > 0:
                     lsibling = parent.children[i - 1]
                     if isinstance(lsibling, Text):
                         if not lsibling.data[-1] in self.ALLOWED_CHARS:
                             lsibling.data += ' '
-                    elif lsibling.is_element('r'):
+                    elif self.element_needs_space_p(lsibling):
                         parent.children.insert(i - 1, Text(' '))
 
     v = ElementSpacingFixer()

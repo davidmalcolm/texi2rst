@@ -267,11 +267,20 @@ def split(tree):
         def __init__(self):
             self.split_kinds = ('chapter', 'section', )
 
-        def previsit_element(self, element):
+        def should_split(self, element, text):
             if element.kind in self.split_kinds:
-                sectiontitle = element.first_element_named('sectiontitle')
-                if sectiontitle:
-                    text = sectiontitle.get_all_text()
+                return True
+            # split '$target Option' subsections
+            elif args and 'gcc.xml' in args.xml_file and element.kind == 'subsection' and text.endswith('Options'):
+                return True
+            else:
+                return False
+
+        def previsit_element(self, element):
+            sectiontitle = element.first_element_named('sectiontitle')
+            text = sectiontitle.get_all_text() if sectiontitle else None
+            if self.should_split(element, text):
+                if text:
                     text = text.lower()
                     for c in ' /':
                         text = text.replace(c, '-')

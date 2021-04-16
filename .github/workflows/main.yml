@@ -22,7 +22,7 @@ jobs:
     steps:
       - run: zypper -n install git python3 makeinfo sphinx python3-Sphinx
         # FIXME: remove once https://bugzilla.opensuse.org/show_bug.cgi?id=1184850 is fixed
-      - run: zypper -n install make groff-full || true
+      - run: zypper -n install make groff-full python38-Sphinx-latex || true
         if: github.ref == 'refs/heads/master'
       - uses: actions/checkout@v2
       - name: Clone GCC

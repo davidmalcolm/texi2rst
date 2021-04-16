@@ -17,13 +17,9 @@ jobs:
 
   generate_rst:
     runs-on: ubuntu-latest
-    container: "opensuse/tumbleweed"
+    container: "marxin/opensuse-texi2rst"
 
     steps:
-      - run: zypper -n install git python3 makeinfo sphinx python3-Sphinx
-        # FIXME: remove once https://bugzilla.opensuse.org/show_bug.cgi?id=1184850 is fixed
-      - run: zypper -n install make groff-full python3-Sphinx-latex || true
-        if: github.ref == 'refs/heads/master'
       - uses: actions/checkout@v2
       - name: Clone GCC
         run: git clone --depth 1 --branch devel/sphinx git://gcc.gnu.org/git/gcc.git

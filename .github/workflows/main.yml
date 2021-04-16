@@ -59,6 +59,8 @@ jobs:
           git push
           echo "output_sha=`git rev-parse HEAD`" >> $GITHUB_ENV
         working-directory: texi2rst-generated
+      - run: cp templates/index.html sphinx
+        working-directory: scripts
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v1
         with:
@@ -67,6 +69,10 @@ jobs:
             It is published here: https://github.com/marxin/texi2rst-generated/commit/${{ env.output_sha }}
         if: github.ref != 'refs/heads/master'
       - run: make html
+        working-directory: scripts/sphinx
+        if: github.ref == 'refs/heads/master'
+        # FIXME: remove all Warnings that make latexpdf return non-zero error code
+      - run: make latexpdf || true
         working-directory: scripts/sphinx
         if: github.ref == 'refs/heads/master'
       - run: make man

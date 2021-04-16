@@ -86,3 +86,6 @@ html_static_path = ['_static']
 html_theme_options = {
     'prev_next_buttons_location': 'both'
 }
+
+# By default, do not generate any manual pages
+man_pages = []

@@ -20,7 +20,9 @@ jobs:
     container: "opensuse/tumbleweed"
 
     steps:
-      - run: zypper -n install git python3 makeinfo sphinx python3-Sphinx make groff-full
+      - run: zypper -n install git python3 makeinfo sphinx python3-Sphinx
+      - run: zypper -n make groff-full
+        if: github.ref == 'refs/heads/master'
       - uses: actions/checkout@v2
       - name: Clone GCC
         run: git clone --depth 1 --branch devel/sphinx git://gcc.gnu.org/git/gcc.git

@@ -1,7 +1,7 @@
 # About
 
-The project aims converting [texinfo](https://www.gnu.org/software/texinfo/) files
-into reStructuredText format (used by [Sphinx](https://www.sphinx-doc.org/)).
+The project aims to convert [texinfo](https://www.gnu.org/software/texinfo/) files
+into reStructuredText (the format used by [Sphinx](https://www.sphinx-doc.org/)).
 
 ## GCC usage
 

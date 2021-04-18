@@ -227,6 +227,20 @@ some chapter text
         out = self.make_rst_string(doc)
         self.assertEqual('See also :option:`-Walloca-larger-than`:samp:`={byte-size}`.\n\n', out)
 
+    def test_option_with_var_and_space(self):
+        xml_src = '<para>same <option>-G <var>num</var></option> value</para>'
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual('same :option:`-G `:samp:`{num}` value\n\n', out)
+
+    def test_option_with_var_and_space2(self):
+        xml_src = "<para><option>-fmodule-mapper='|ncat <var>ipv4host</var> <var>port</var>'</option>.</para>"
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual(":option:`-fmodule-mapper='|ncat `:samp:`{ipv4host}`:samp:`{port}` '.\n\n", out)
+
 class OptionTests(Texi2RstTests):
     def test_valid_option_ref(self):
         xml_src = ('<texinfo><option>--some-opt</option></texinfo>')
@@ -1245,7 +1259,6 @@ class TestFunctionDefinitions(Texi2RstTests):
         tree = from_xml_string(xml_src)
         tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
-        print(out)
         self.assertEqual(
             '''.. function:: tree gimple_asm_clobber_op(const gasm*g ,unsigned index)
 

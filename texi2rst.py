@@ -97,6 +97,8 @@ def from_xml_string(xml_src):
     xml_src = xml_src.replace('&expansion;', '→')
     xml_src = xml_src.replace('&result;', '⇒')
     xml_src = xml_src.replace('&errorglyph;', 'error')
+    xml_src = xml_src.replace('\\u2018', '‘')
+    xml_src = xml_src.replace('\\u2019', '’')
 
     # Complain about any entities still present
     for m in re.finditer('(&[a-z]+;)', xml_src):

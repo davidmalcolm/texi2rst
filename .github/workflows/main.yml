@@ -75,6 +75,8 @@ jobs:
       - run: make man -j`nproc`
         working-directory: scripts/sphinx
         if: github.ref == 'refs/heads/master'
+      - run: du -hs scripts/sphinx
+        if: github.ref == 'refs/heads/master'
       - name: Convert man pages to HTML
         run: find . -name '*.1' | xargs -i bash -c "groff -mandoc -Thtml {} > {}.html"
         working-directory: scripts/sphinx

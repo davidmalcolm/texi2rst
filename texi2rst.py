@@ -121,7 +121,7 @@ def fixup_whitespace(tree):
         """
         Strip redundant Text nodes
         """
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if element.kind == 'pre':
                 return
 
@@ -161,7 +161,7 @@ def convert_comments(tree):
 
 def combine_commments(tree):
     class CommentCombiner(NoopVisitor):
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             # Attempt to merge
             #   COMMENT(x) COMMENT(y)
             # into
@@ -188,7 +188,7 @@ def fixup_comments(tree):
 
 def prune(tree):
     class Pruner(NoopVisitor):
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             new_children = []
             for child in element.children:
                 if self.should_strip(child):
@@ -238,7 +238,7 @@ def fixup_menus(tree):
         be rendered using the given descriptions.
     """
     class MenuFixer(NoopVisitor):
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if element.kind == 'menu':
                 element.rst_kind = Directive('toctree', None)
 
@@ -276,7 +276,7 @@ def split(tree):
             else:
                 return False
 
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             sectiontitle = element.first_element_named('sectiontitle')
             text = sectiontitle.get_all_text() if sectiontitle else None
             if self.should_split(element, text):
@@ -293,7 +293,7 @@ def split(tree):
         """
         Add toctree directives referencing the split content
         """
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             new_children = []
             toctree = None
             for child in element.children:
@@ -382,7 +382,7 @@ def fixup_nodes(tree, ctxt):
         ...content...
     """
     class NodeFixer(NoopVisitor):
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if element.kind == 'node':
                 nodename = element.first_element_named('nodename')
                 text = nodename.get_sole_text()
@@ -445,7 +445,7 @@ def fixup_option_refs(tree):
         # have a leading dash.
         # Conditionally retain options (or else they will be
         # stripped at output)
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if element.kind == 'option':
                 firstchild = element.children[0]
                 if isinstance(firstchild, Text):
@@ -459,7 +459,7 @@ def fixup_option_refs(tree):
 def fixup_empty_texts(tree):
     class EmptyTextFixer(NoopVisitor):
         # Remove all empty Text elements.
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             element.children = [c for c in element.children if not isinstance(c, Text) or c.data]
 
     v = EmptyTextFixer()
@@ -468,7 +468,7 @@ def fixup_empty_texts(tree):
 
 def fixup_vars_in_samps(tree):
     class VarsInSampsFixer(NoopVisitor):
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if element.kind == 'samp':
                 for i, child in enumerate(element.children):
                     if isinstance(child, Element) and child.kind == 'var':
@@ -483,8 +483,9 @@ def fixup_element_spacing(tree):
     class ElementSpacingFixer(NoopVisitor):
         ALLOWED_CHARS = (' ', '\n', '.')
         # Wrap option and var elements with a space character
-        def postvisit_element(self, element, parent):
+        def postvisit_element(self, element, parents):
             if element.kind in ('option', 'var'):
+                parent = parents[-1]
                 i = parent.children.index(element)
                 if i + 1 < len(parent.children):
                     rsibling = parent.children[i + 1]
@@ -510,10 +511,11 @@ def fixup_machine_dependant_options(tree):
         def __init__(self):
             self.parent_seen = False
 
-        def postvisit_element(self, element, parent):
+        def postvisit_element(self, element, parents):
             # add newline before all Machine-Dependent Options subsections
             text = element.get_all_text()
             if element.kind == 'emph' and text.endswith('Options'):
+                parent = parents[-1]
                 if text == 'Machine-Dependent Options':
                     self.parent_seen = True
                 elif self.parent_seen:
@@ -528,13 +530,13 @@ def fixup_params(tree):
         def __init__(self):
             self.in_param_option = False
 
-        def postvisit_element(self, element, parent):
+        def postvisit_element(self, element, parents):
             if element.kind == 'option' and isinstance(element.rst_kind, Directive) and element.rst_kind.name == 'option':
                 if '--param' in element.rst_kind.args:
                     self.in_param_option = True
                 else:
                     self.in_param_option = False
-            elif self.in_param_option and element.kind == 'code' and parent.kind == 'item':
+            elif self.in_param_option and element.kind == 'code' and parents[-1].kind == 'item':
                 element.rst_kind = Directive('option', element.get_all_text())
                 element.children = []
 
@@ -546,8 +548,9 @@ def fixup_wrapped_options(tree):
     class WrapperOptionFixer(NoopVisitor):
         # Move out all inner elements in option nodes as siblings:
         # <option>-foo=<var>n</var></option>.
-        def postvisit_element(self, element, parent):
+        def postvisit_element(self, element, parents):
             if isinstance(element.rst_kind, InlineMarkup) and element.kind == 'option':
+                parent = parents[-1]
                 i = parent.children.index(element)
                 parent.children = parent.children[:i + 1] + element.children[1:] + parent.children[i + 1:]
                 element.children = element.children[:1]
@@ -560,8 +563,9 @@ def fixup_trailing_sign_for_options(tree):
     class TrailingSignForOptionFixer(NoopVisitor):
         # Move trailing '=' character to sibling, otherwise options
         # link is not generated.
-        def postvisit_element(self, element, parent):
+        def postvisit_element(self, element, parents):
             if element.kind == 'option' and element.children:
+                parent = parents[-1]
                 firstchild = element.children[0]
                 if isinstance(firstchild, Text) and firstchild.data.endswith('='):
                     firstchild.data = firstchild.data[:-1]
@@ -627,7 +631,7 @@ def fixup_table_entry(tree):
     Transform this to a definition list.
     """
     class TableEntryFixer(NoopVisitor):
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             # Convert:
             #   <itemformat command="COMMAND">TEXT</itemformat>
             # into:
@@ -851,12 +855,12 @@ def fixup_multitables(tree, ctxt):
     convert to a .rst table
     """
     class MultitableFixer(NoopVisitor):
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if element.kind == 'multitable':
                 element.rst_kind = Table(element, ctxt)
             element.delete_children_named('columnprototypes')
 
-        def postvisit_element(self, element, parent):
+        def postvisit_element(self, element, parents):
             if ctxt.debug:
                 if element.kind == 'multitable':
                     element.dump(sys.stdout)
@@ -889,7 +893,7 @@ def fixup_examples(tree):
         def __init__(self):
             self.default_lang_stack = [args.default_language if args else 'c++']
 
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if hasattr(element, 'default_language'):
                 self.default_lang_stack.append(element.default_language)
 
@@ -910,7 +914,7 @@ def fixup_examples(tree):
                         example.collapse_to_text()
                         example.rst_kind = Directive('code-block', lang)
 
-        def postvisit_element(self, element, parent):
+        def postvisit_element(self, element, parents):
             if hasattr(element, 'default_language'):
                 self.default_lang_stack.pop()
 
@@ -933,7 +937,7 @@ def fixup_examples(tree):
 
         def handle_option_listing(self, element, pre):
             class OptionWrappingVisitor(NoopVisitor):
-                def postvisit_element(self, element, parent):
+                def postvisit_element(self, element, parents):
                     if element.kind == 'var':
                         return
                     new_children = []
@@ -977,7 +981,7 @@ def fixup_titles(tree):
                 'unnumbered'    : '=',
                 'unnumberedsec' : '='}
 
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if element.kind in self.section_kinds:
                 self.cur_section_level = element.kind
 
@@ -1000,7 +1004,7 @@ def fixup_index(tree):
         """
         Look for <cindex><indexterm>TEXT</indexterm></cindex>
         """
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if isinstance(element, Element):
                 if element.kind == 'indexterm':
                     text = element.get_all_text()
@@ -1028,7 +1032,7 @@ def fixup_xrefs(tree):
         (see http://sphinx-doc.org/markup/inline.html#role-ref)
         Note that the XML already contains a trailing period.
         """
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if element.kind in ('xref', 'pxref'):
                 xrefnodename = element.first_element_named('xrefnodename')
                 xrefprinteddesc = element.first_element_named('xrefprinteddesc')
@@ -1069,7 +1073,7 @@ def fixup_lists(tree):
              ...ELEMENTS...
           </listitem>
         """
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if element.kind == 'listitem':
                 new_children = []
                 element.rst_kind = ListItem('*')
@@ -1107,7 +1111,7 @@ def fixup_inline_markup(tree):
         <samp>TEXT</samp>          :samp:`TEXT`
         =========================  ==================
         """
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if element.kind == 'command':
                 element.rst_kind = InlineMarkup('command')
             elif element.kind == 'var':
@@ -1158,7 +1162,7 @@ def fixup_deftype(tree):
         """
         Look for <deftypefn> elements..
         """
-        def previsit_element(self, element):
+        def previsit_element(self, element, parents):
             if isinstance(element, Element):
                 if element.kind == 'deftypefn':
                     declaration = ''
@@ -1624,14 +1628,14 @@ class RstWriter(Visitor):
         self.curline = ''
         return True
 
-    def previsit_element(self, element):
+    def previsit_element(self, element, parents):
         if element.rst_kind:
             return element.rst_kind.before(self)
         else:
             if 0:
                 print('unhandled element: %r' % (element, ))
 
-    def postvisit_element(self, element, parent):
+    def postvisit_element(self, element, parents):
         if element.rst_kind:
             element.rst_kind.after(self)
         if element.kind == 'para':
@@ -1689,7 +1693,7 @@ class FileOpener(RstOpener):
 class GccContext(Context):
     def preprocess(self, tree):
         class GccVisitor(NoopVisitor):
-            def previsit_element(self, element):
+            def previsit_element(self, element, parents):
                 if element.kind == 'chapter':
                     for child in element.children:
                         if child.is_element('sectiontitle'):

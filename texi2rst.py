@@ -895,10 +895,18 @@ def fixup_examples(tree):
         def guess_language(self, data):
             if 'DO ' in data:
                 return 'fortran'
-            if data.startswith('gcc ') or data.startswith('% gcc '):
+            elif data.startswith('gcc ') or data.startswith('% gcc '):
                 return 'bash'
-            if data.startswith('--'):
+            elif data.startswith('--'):
                 return 'bash'
+
+            data = data.strip()
+            if data and data[0] == '{' and data[1:].lstrip().startswith('"'):
+                # JSON dictionary object {"foo": 123}
+                return 'json'
+            elif data and data[0] == '[' and data[1:].lstrip().startswith('{'):
+                # JSON list of objects [{"foo": 123}]
+                return 'json'
             return self.default_lang_stack[-1]
 
         def handle_option_listing(self, element, pre):

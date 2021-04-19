@@ -241,6 +241,13 @@ some chapter text
         out = self.make_rst_string(doc)
         self.assertEqual(":option:`-fmodule-mapper='|ncat `:samp:`{ipv4host}`:samp:`{port}` '.\n\n", out)
 
+    def test_samp_with_var(self):
+        xml_src = '<para>form <samp><var>n</var>f2_1</samp></para>'
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual('form :samp:`{n}f2_1`\n\n', out)
+
 class OptionTests(Texi2RstTests):
     def test_valid_option_ref(self):
         xml_src = ('<texinfo><option>--some-opt</option></texinfo>')

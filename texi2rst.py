@@ -457,6 +457,19 @@ def fixup_empty_texts(tree):
     v.visit(tree)
     return tree
 
+def fixup_vars_in_samps(tree):
+    class VarsInSampsFixer(NoopVisitor):
+        def previsit_element(self, element):
+            if element.kind == 'samp':
+                for i, child in enumerate(element.children):
+                    if isinstance(child, Element) and child.kind == 'var':
+                        element.children[i] = Text(child.get_all_text())
+
+    v = VarsInSampsFixer()
+    v.visit(tree)
+    return tree
+
+
 def fixup_element_spacing(tree):
     class ElementSpacingFixer(NoopVisitor):
         ALLOWED_CHARS = (' ', '\n', '.')
@@ -1169,6 +1182,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_lists(tree)
     tree = fixup_inline_markup(tree)
     tree = fixup_empty_texts(tree)
+    tree = fixup_vars_in_samps(tree)
     tree = fixup_wrapped_options(tree)
     tree = fixup_trailing_sign_for_options(tree)
     tree = fixup_element_spacing(tree)

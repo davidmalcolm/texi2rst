@@ -1304,7 +1304,7 @@ class Directive(RstKind):
             args = self.args.split(', ')
             while args:
                 part = ''
-                while args and len(part) + len(args[0]) < self.OPTION_LIMIT:
+                while args and (not part or len(part) + len(args[0]) < self.OPTION_LIMIT):
                     if part:
                         part += ', '
                     part += args[0]

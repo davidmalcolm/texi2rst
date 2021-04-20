@@ -547,7 +547,7 @@ def fixup_params(tree):
         def __init__(self):
             self.in_param_option = False
 
-        def postvisit_element(self, element, parents):
+        def previsit_element(self, element, parents):
             if (element.kind == 'option' and isinstance(element.rst_kind, Directive)
                     and element.rst_kind.name == 'option'):
                 if '--param' in element.rst_kind.args:

@@ -893,6 +893,13 @@ def fixup_examples(tree):
         def __init__(self):
             self.default_lang_stack = [args.default_language if args else 'c++']
 
+        @staticmethod
+        def is_an_option(text):
+            if text.startswith('---'):
+                # likely a diff
+                return False
+            return text.startswith('-') or text.lstrip().startswith('-W')
+
         def previsit_element(self, element, parents):
             if hasattr(element, 'default_language'):
                 self.default_lang_stack.append(element.default_language)
@@ -907,7 +914,7 @@ def fixup_examples(tree):
                 if pre:
                     text = pre.get_first_text()
                     if text:
-                        if text.data.startswith('-') or text.data.lstrip().startswith('-W'):
+                        if self.is_an_option(text.data):
                             self.handle_option_listing(element, pre)
                             return
                         lang = self.guess_language(text.data)

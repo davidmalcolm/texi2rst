@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 
 # A minimal IR for transforming texinfo XML into rst
-from collections import OrderedDict
 import re
+from collections import OrderedDict
+
 
 class Node:
     def __repr__(self):
         return 'Node()'
 
     def dump(self, f_out, depth=0):
-        f_out.write('%s%r\n' %  (' ' * depth, self))
+        f_out.write('%s%r\n' % (' ' * depth, self))
 
     def is_element(self, kind):
         if isinstance(self, Element):
@@ -38,7 +39,7 @@ class Node:
         """
         def escape(data):
             data = data.replace('&', '&amp;')
-            #data = data.replace('"', '&quot;')
+            # data = data.replace('"', '&quot;')
             data = data.replace('>', '&gt;')
             data = data.replace('<', '&lt;')
             return data
@@ -82,6 +83,7 @@ class Node:
             assert isinstance(self, Text)
             return dom_doc.createTextNode(self.data)
 
+
 class Element(Node):
     def __init__(self, kind, attrs=None):
         if not re.match('[a-zA-Z0-9-_]+', kind):
@@ -98,7 +100,7 @@ class Element(Node):
         return 'Element(%r, %r, %r)' % (self.kind, self.attrs, self.rst_kind)
 
     def dump(self, f_out, depth=0):
-        f_out.write('%s%r\n' %  (' ' * depth, self))
+        f_out.write('%s%r\n' % (' ' * depth, self))
         for child in self.children:
             child.dump(f_out, depth + 1)
 
@@ -175,12 +177,14 @@ class Element(Node):
             top_element.appendChild(child.to_dom_node(dom_doc))
         return dom_doc
 
+
 class Comment(Node):
     def __init__(self, data):
         self.data = data
 
     def __repr__(self):
         return 'Comment(%r)' % self.data
+
 
 class Text(Node):
     def __init__(self, data):
@@ -189,6 +193,7 @@ class Text(Node):
     def __repr__(self):
         return 'Text(%r)' % self.data
 
+
 class Entity(Node):
     def __init__(self, name):
         self.name = name
@@ -196,15 +201,15 @@ class Entity(Node):
     def __repr__(self):
         return 'Entity(%r)' % self.name
 
-# Visitor base class
 
+# Visitor base class
 class Visitor:
     def visit(self, node, parents=()):
         if isinstance(node, Element):
             early_exit = self.previsit_element(node, parents)
             if early_exit:
                 return
-            newparents = parents + tuple([node])
+            newparents = parents + (node,)
             for child in list(node.children):
                 self.visit(child, newparents)
             self.postvisit_element(node, parents)
@@ -231,6 +236,7 @@ class Visitor:
 
     def visit_entity(self, entity):
         raise NotImplementedError
+
 
 class NoopVisitor(Visitor):
     def previsit_element(self, element, parents):

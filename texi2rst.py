@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 
-from collections import OrderedDict
 import argparse
 import io
 import os
 import re
 import sys
 import xml.dom.minidom
+from collections import OrderedDict
 
-from node import Node, Element, Comment, Text, Visitor, NoopVisitor
+from node import Comment, Element, NoopVisitor, Text, Visitor
 
 """
 gcc.xml created from a gcc build/gcc tree using:
 
-makeinfo --xml -I ABSPATH_OF_SRC/gcc/doc/ -I ABSPATH_OF_SRC/gcc/doc/include ABSPATH_OF_SRC/gcc/doc/gcc.texi 
+makeinfo --xml -I ABSPATH_OF_SRC/gcc/doc/ -I ABSPATH_OF_SRC/gcc/doc/include ABSPATH_OF_SRC/gcc/doc/gcc.texi
 
 TODO:
   map back to the include structure of the underlying .texi files
@@ -21,8 +21,8 @@ TODO:
 
 args = None
 
-# Convert from XML nodes to our easier-to-work-with data structure
 
+# Convert from XML nodes to our easier-to-work-with data structure
 def convert_attrs_from_xml(namednodemap):
     result = OrderedDict()
     if namednodemap:
@@ -30,6 +30,7 @@ def convert_attrs_from_xml(namednodemap):
             attr = namednodemap.item(i)
             result[attr.name] = attr.value
     return result
+
 
 def convert_from_xml(xmlnode):
     kind = xmlnode.nodeType
@@ -66,23 +67,24 @@ def convert_from_xml(xmlnode):
                 new_node.children.append(child)
     return new_node
 
+
 def from_xml_string(xml_src):
     # Hack: not sure how to correctly handle entities using
     # xml.dom.minidom (if it is indeed possible), so do a textual
     # substitution first:
     # FIXME: use correct unicode chars for the results
-    xml_src = xml_src.replace('&arobase;', "@")
+    xml_src = xml_src.replace('&arobase;', '@')
     xml_src = xml_src.replace('&bullet;', '*')
-    xml_src = xml_src.replace('&copyright;', "(C)")
+    xml_src = xml_src.replace('&copyright;', '(C)')
     xml_src = xml_src.replace('&dots;', '...')
     xml_src = xml_src.replace('&enddots;', '…')
     xml_src = xml_src.replace('&eosperiod;', '.')
     xml_src = xml_src.replace('&comma;', ',')
     xml_src = xml_src.replace('&equiv;', '==')
     xml_src = xml_src.replace('&lbrace;', '{')
-    xml_src = xml_src.replace('&linebreak;', "\n")
+    xml_src = xml_src.replace('&linebreak;', '\n')
     xml_src = xml_src.replace('&rbrace;', '}')
-    xml_src = xml_src.replace('&slashbreak;', "/")
+    xml_src = xml_src.replace('&slashbreak;', '/')
     xml_src = xml_src.replace('&minus;', '-')
     xml_src = xml_src.replace('&nbsp;', ' ')
     xml_src = xml_src.replace('&noeos;', '')
@@ -93,7 +95,7 @@ def from_xml_string(xml_src):
     xml_src = xml_src.replace('&textrdquo;', "'")
     xml_src = xml_src.replace('&textlsquo;', "'")
     xml_src = xml_src.replace('&textrsquo;', "'")
-    xml_src = xml_src.replace('&eosquest;', "?")
+    xml_src = xml_src.replace('&eosquest;', '?')
     xml_src = xml_src.replace('&expansion;', '→')
     xml_src = xml_src.replace('&result;', '⇒')
     xml_src = xml_src.replace('&errorglyph;', 'error')
@@ -109,12 +111,14 @@ def from_xml_string(xml_src):
     tree = fixup_whitespace(tree)
     return tree
 
+
 def for_each_node_below(node):
     if isinstance(node, Element):
         for child in node.children:
             yield child
             for node in for_each_node_below(child):
                 yield node
+
 
 def fixup_whitespace(tree):
     class WhitespaceFixer(NoopVisitor):
@@ -149,8 +153,8 @@ def fixup_whitespace(tree):
     v.visit(tree)
     return tree
 
-# Conversion pipeline
 
+# Conversion pipeline
 def convert_comments(tree):
     class CommentConverter(NoopVisitor):
         def visit_comment(self, comment):
@@ -158,6 +162,7 @@ def convert_comments(tree):
                 comment.data = comment.data[3:]
     CommentConverter().visit(tree)
     return tree
+
 
 def combine_commments(tree):
     class CommentCombiner(NoopVisitor):
@@ -181,10 +186,12 @@ def combine_commments(tree):
     v.visit(tree)
     return tree
 
+
 def fixup_comments(tree):
     tree = convert_comments(tree)
     tree = combine_commments(tree)
     return tree
+
 
 def prune(tree):
     class Pruner(NoopVisitor):
@@ -214,12 +221,14 @@ def prune(tree):
     v.visit(tree)
     return tree
 
+
 def convert_text_to_label(data):
     data = data.replace(' ', '-')
     data = data.replace('\n', '-')
     data = data.replace('/', '-')
     data = data.lower()
     return data
+
 
 def fixup_menus(tree):
     """
@@ -262,6 +271,7 @@ def fixup_menus(tree):
     v.visit(tree)
     return tree
 
+
 def split(tree):
     class Splitter(NoopVisitor):
         def __init__(self):
@@ -284,7 +294,7 @@ def split(tree):
                     text = text.lower()
                     for c in ' /':
                         text = text.replace(c, '-')
-                    for c in '()?\',.:_':
+                    for c in "()?',.:_":
                         text = text.replace(c, '')
                     text = text.strip('+')
                     element.rst_kind = OutputFile(text)
@@ -323,6 +333,7 @@ def split(tree):
     v = ToctreeAdder()
     v.visit(tree)
     return tree
+
 
 def fixup_nodes(tree, ctxt):
     """
@@ -406,22 +417,22 @@ def fixup_nodes(tree, ctxt):
 
         edges = list(tree.iter_depth_first_edges())
         for i, (parent, child) in enumerate(edges):
-                if ctxt.debug:
-                    print(i, parent, child)
-                if child.is_element('node') or child.is_element('anchor'):
+            if ctxt.debug:
+                print(i, parent, child)
+            if child.is_element('node') or child.is_element('anchor'):
 
-                    def get_next_child_element():
-                        for cand_parent, cand_child in edges[i + 1:]:
-                            if isinstance(cand_child, Element):
-                                return cand_child
+                def get_next_child_element():
+                    for _, cand_child in edges[i + 1:]:
+                        if isinstance(cand_child, Element):
+                            return cand_child
 
-                    next_parent = get_next_child_element()
-                    if next_parent:
-                        if ctxt.debug:
-                            print('\nMOVING %r from %r to %r\n'
-                                  % (child, parent, next_parent))
-                        parent.children.remove(child)
-                        next_parent.children.insert(0, child)
+                next_parent = get_next_child_element()
+                if next_parent:
+                    if ctxt.debug:
+                        print('\nMOVING %r from %r to %r\n'
+                              % (child, parent, next_parent))
+                    parent.children.remove(child)
+                    next_parent.children.insert(0, child)
 
     v = NodeFixer()
     v.visit(tree)
@@ -437,6 +448,7 @@ def fixup_nodes(tree, ctxt):
         print
 
     return tree
+
 
 def fixup_option_refs(tree):
     class OptionRefFixer(NoopVisitor):
@@ -456,6 +468,7 @@ def fixup_option_refs(tree):
     v.visit(tree)
     return tree
 
+
 def fixup_empty_texts(tree):
     class EmptyTextFixer(NoopVisitor):
         # Remove all empty Text elements.
@@ -465,6 +478,7 @@ def fixup_empty_texts(tree):
     v = EmptyTextFixer()
     v.visit(tree)
     return tree
+
 
 def fixup_vars_in_samps(tree):
     class VarsInSampsFixer(NoopVisitor):
@@ -482,6 +496,7 @@ def fixup_vars_in_samps(tree):
 def fixup_element_spacing(tree):
     class ElementSpacingFixer(NoopVisitor):
         ALLOWED_CHARS = (' ', '\n', '.')
+
         # Wrap option and var elements with a space character
         def postvisit_element(self, element, parents):
             if element.kind in ('option', 'var'):
@@ -506,6 +521,7 @@ def fixup_element_spacing(tree):
     v.visit(tree)
     return tree
 
+
 def fixup_machine_dependant_options(tree):
     class MachineDependantOptionFixer(NoopVisitor):
         def __init__(self):
@@ -525,13 +541,15 @@ def fixup_machine_dependant_options(tree):
     v.visit(tree)
     return tree
 
+
 def fixup_params(tree):
     class ParamFixer(NoopVisitor):
         def __init__(self):
             self.in_param_option = False
 
         def postvisit_element(self, element, parents):
-            if element.kind == 'option' and isinstance(element.rst_kind, Directive) and element.rst_kind.name == 'option':
+            if (element.kind == 'option' and isinstance(element.rst_kind, Directive)
+                    and element.rst_kind.name == 'option'):
                 if '--param' in element.rst_kind.args:
                     self.in_param_option = True
                 else:
@@ -543,6 +561,7 @@ def fixup_params(tree):
     v = ParamFixer()
     v.visit(tree)
     return tree
+
 
 def fixup_wrapped_options(tree):
     class WrapperOptionFixer(NoopVisitor):
@@ -558,6 +577,7 @@ def fixup_wrapped_options(tree):
     v = WrapperOptionFixer()
     v.visit(tree)
     return tree
+
 
 def fixup_trailing_sign_for_options(tree):
     class TrailingSignForOptionFixer(NoopVisitor):
@@ -791,6 +811,7 @@ def fixup_table_entry(tree):
     v.visit(tree)
     return tree
 
+
 def fixup_multitables(tree, ctxt):
     """
     Given:
@@ -833,7 +854,8 @@ def fixup_multitables(tree, ctxt):
                   </para>
                 </entry>
                 <entry command="tab" spaces=" ">
-                  <para>Print the opcode suffix for the size of the current integer operand (one of <code>b</code>/<code>w</code>/<code>l</code>/<code>q</code>).
+                  <para>Print the opcode suffix for the size of the current integer operand (one of
+                  <code>b</code>/<code>w</code>/<code>l</code>/<code>q</code>).
 </para>
                 </entry>
                 <entry command="tab" spaces=" ">
@@ -868,6 +890,7 @@ def fixup_multitables(tree, ctxt):
     v = MultitableFixer()
     v.visit(tree)
     return tree
+
 
 def fixup_examples(tree):
     """
@@ -954,6 +977,7 @@ def fixup_examples(tree):
                         else:
                             new_children.append(child)
                     element.children = new_children
+
                 def split_text(self, text):
                     result = []
                     last_idx = 0
@@ -975,18 +999,19 @@ def fixup_examples(tree):
     v.visit(tree)
     return tree
 
+
 def fixup_titles(tree):
     class TitleFixer(NoopVisitor):
         def __init__(self):
             self.cur_section_level = None
             self.section_kinds = {
-                'top'           : '=',
-                'chapter'       : '-',
-                'section'       : '*',
-                'subsection'    : '^',
-                'subsubsection' : '~',
-                'unnumbered'    : '=',
-                'unnumberedsec' : '='}
+                'top': '=',
+                'chapter': '-',
+                'section': '*',
+                'subsection': '^',
+                'subsubsection': '~',
+                'unnumbered': '=',
+                'unnumberedsec': '='}
 
         def previsit_element(self, element, parents):
             if element.kind in self.section_kinds:
@@ -1006,6 +1031,7 @@ def fixup_titles(tree):
     v.visit(tree)
     return tree
 
+
 def fixup_index(tree):
     class IndexFixer(NoopVisitor):
         """
@@ -1021,6 +1047,7 @@ def fixup_index(tree):
     v = IndexFixer()
     v.visit(tree)
     return tree
+
 
 def fixup_xrefs(tree):
     class XRefFixer(NoopVisitor):
@@ -1042,7 +1069,6 @@ def fixup_xrefs(tree):
         def previsit_element(self, element, parents):
             if element.kind in ('xref', 'pxref'):
                 xrefnodename = element.first_element_named('xrefnodename')
-                xrefprinteddesc = element.first_element_named('xrefprinteddesc')
                 ref_desc = self.get_desc(element)
                 ref_name = convert_text_to_label(xrefnodename.get_all_text())
                 ref = Element('ref', {})
@@ -1066,6 +1092,7 @@ def fixup_xrefs(tree):
     v = XRefFixer()
     v.visit(tree)
     return tree
+
 
 def fixup_lists(tree):
     class ListFixer(NoopVisitor):
@@ -1100,6 +1127,7 @@ def fixup_lists(tree):
     v = ListFixer()
     v.visit(tree)
     return tree
+
 
 def fixup_inline_markup(tree):
     class InlineMarkupFixer(NoopVisitor):
@@ -1164,6 +1192,7 @@ def fixup_inline_markup(tree):
     v.visit(tree)
     return tree
 
+
 def fixup_deftype(tree):
     class DefTypeFixup(NoopVisitor):
         """
@@ -1191,7 +1220,6 @@ def fixup_deftype(tree):
 
 
 # Top-level conversion routine
-
 def convert_to_rst(tree, ctxt):
     tree = ctxt.preprocess(tree)
     tree = fixup_comments(tree)
@@ -1218,14 +1246,15 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_params(tree)
     return tree
 
-# Policies for converting elements to rst (element.rst_kind):
 
+# Policies for converting elements to rst (element.rst_kind):
 class RstKind:
     def before(self, w):
         pass
 
     def after(self, w):
         pass
+
 
 class InlineMarkup(RstKind):
     def __init__(self, name):
@@ -1239,6 +1268,7 @@ class InlineMarkup(RstKind):
 
     def after(self, w):
         w.write('`')
+
 
 class MatchedInlineMarkup(RstKind):
     """
@@ -1255,6 +1285,7 @@ class MatchedInlineMarkup(RstKind):
 
     def after(self, w):
         w.write(self.tag)
+
 
 class Ref(RstKind):
     def __init__(self, desc, name):
@@ -1273,6 +1304,7 @@ class Ref(RstKind):
     def after(self, w):
         pass
 
+
 class Title(RstKind):
     def __init__(self, element, underline):
         self.element = element
@@ -1290,6 +1322,7 @@ class Title(RstKind):
             tmpw.visit(child)
         tmpw.finish()
         w.write('\n%s\n\n' % (self.underline * len(tmpw.f_out.getvalue())))
+
 
 class Directive(RstKind):
     OPTION_LIMIT = 70
@@ -1326,6 +1359,7 @@ class Directive(RstKind):
         w.indent -= 1
         w.write('\n\n')
 
+
 class ListItem(RstKind):
     def __init__(self, bullet):
         self.bullet = bullet
@@ -1341,6 +1375,7 @@ class ListItem(RstKind):
         w.indent -= 1
         w.write('\n\n')
 
+
 class DefinitionListHeader(RstKind):
     """
     http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#definition-lists
@@ -1353,6 +1388,7 @@ class DefinitionListHeader(RstKind):
 
     def after(self, w):
         pass
+
 
 class DefinitionListBody(RstKind):
     """
@@ -1368,12 +1404,14 @@ class DefinitionListBody(RstKind):
     def after(self, w):
         w.indent -= 1
 
+
 class ToctreeEntry(RstKind):
     def __init__(self):
         pass
 
     def after(self, w):
         w.write('\n')
+
 
 class Label(RstKind):
     def __init__(self, title):
@@ -1384,6 +1422,7 @@ class Label(RstKind):
 
     def before(self, w):
         w.write('.. _%s:\n' % (self.title, ))
+
 
 class OutputFile(RstKind):
     def __init__(self, name):
@@ -1397,6 +1436,7 @@ class OutputFile(RstKind):
 
     def after(self, w):
         w.pop_output_file(self)
+
 
 class TableLayout:
     def __init__(self, table_element, debug):
@@ -1457,7 +1497,7 @@ class TableLayout:
         self.width_needed_for_x = {}
         for x in range(self.num_columns):
             for comp in self.components:
-                for y, entry in enumerate(comp.columns[x]):
+                for entry in comp.columns[x]:
                     w, h = self._get_requisition(entry)
                     if w > self.width_needed_for_x.get(x, 0):
                         self.width_needed_for_x[x] = w
@@ -1516,7 +1556,7 @@ class TableLayout:
 
                 for line_idx in range(comp.height_needed_for_y[y]):
                     w.write('|')
-                    for x, entry in enumerate(row.entries):
+                    for x, _ in enumerate(row.entries):
                         lines = lines_at_x[x]
                         if line_idx < len(lines):
                             text = lines[line_idx]
@@ -1553,12 +1593,12 @@ class TableLayout:
                     # non-empty entry, to avoid surplus whitespace
                     # to the right of it.
                     final_x_with_text = 0
-                    for x, entry in enumerate(row.entries):
+                    for x, _ in enumerate(row.entries):
                         if line_idx < len(lines_at_x[x]):
                             if lines_at_x[x][line_idx]:
                                 final_x_with_text = x
 
-                    for x, entry in enumerate(row.entries):
+                    for x, _ in enumerate(row.entries):
                         if x and x <= final_x_with_text:
                             w.write('  ')
                         lines = lines_at_x[x]
@@ -1580,6 +1620,7 @@ class TableLayout:
             w.write('=' * self.width_needed_for_x[x])
         w.write('\n')
 
+
 class Table(RstKind):
     def __init__(self, element, ctxt):
         self.element = element
@@ -1592,8 +1633,8 @@ class Table(RstKind):
         # Don't traverse children; we've already rendered them
         return True
 
-# Output of a converted tree to .rst file
 
+# Output of a converted tree to .rst file
 class RstWriter(Visitor):
     def __init__(self, f_out, opener=None):
         self.f_out = f_out
@@ -1602,7 +1643,7 @@ class RstWriter(Visitor):
         self.had_nonempty_line = False
         self.opener = opener
         if self.f_out is None:
-            self.f_out = self.opener.open(None)
+            self.f_out = self.opener.open_file(None)
         self.output_file_stack = [self.f_out]
 
     def finish(self):
@@ -1659,22 +1700,25 @@ class RstWriter(Visitor):
         self.write(text.data)
 
     def push_output_file(self, output_file):
-        self.f_out = self.opener.open(output_file)
+        self.f_out = self.opener.open_file(output_file)
         self.output_file_stack.append(self.f_out)
 
     def pop_output_file(self, output_file):
-        self.opener.close(self.f_out)
+        self.opener.close_file(self.f_out)
         self.output_file_stack.pop()
         self.f_out = self.output_file_stack[-1]
+
 
 class RstOpener:
     """
     Policy for how RstWriter should handle OutputFile instances
     """
-    def open(self, output_file):
+    def open_file(self, output_file):
         raise NotImplementedError
-    def close(self, f_out):
+
+    def close_file(self, f_out):
         raise NotImplementedError
+
 
 class Context:
     def __init__(self):
@@ -1683,19 +1727,21 @@ class Context:
     def preprocess(self, tree):
         return tree
 
+
 class FileOpener(RstOpener):
     def __init__(self, output_dir):
         self.output_dir = output_dir
 
-    def open(self, output_file):
+    def open_file(self, output_file):
         path = os.path.join(self.output_dir, '%s.rst' % output_file.name)
         print('opening: %s' % path)
         f_out = open(path, 'w')
         return f_out
 
-    def close(self, f_out):
+    def close_file(self, f_out):
         print('closing')
         f_out.close()
+
 
 class GccContext(Context):
     def preprocess(self, tree):
@@ -1719,12 +1765,12 @@ class GccContext(Context):
         v.visit(tree)
         return tree
 
+
 parser = argparse.ArgumentParser(description='Convert TEXINFO xml file into RST files')
 parser.add_argument('xml_file', help='Input XML file')
 parser.add_argument('--default-language', default='c++', help='Default language for code blocks')
 
 # Entrypoint
-
 if __name__ == '__main__':
     args = parser.parse_args()
     base, _ = os.path.splitext(os.path.basename(args.xml_file))

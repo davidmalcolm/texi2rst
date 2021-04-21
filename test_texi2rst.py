@@ -18,11 +18,11 @@ class Texi2RstTests(unittest.TestCase):
         class StringOpener(RstOpener):
             def __init__(self):
                 self.dict_ = OrderedDict()
-            def open(self, output_file):
+            def open_file(self, output_file):
                 f_out = io.StringIO()
                 self.dict_[output_file] = f_out
                 return f_out
-            def close(self, f_out):
+            def close_file(self, f_out):
                 pass # don't close; we need to call getvalue on it
 
         opener = StringOpener()

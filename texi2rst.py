@@ -100,6 +100,9 @@ def from_xml_string(xml_src):
     xml_src = xml_src.replace('&result;', '⇒')
     xml_src = xml_src.replace('&errorglyph;', 'error')
 
+    # It is used in manual pages
+    xml_src = xml_src.replace('@dots{}', '...')
+
     # Complain about any entities still present
     for m in re.finditer('(&[a-z]+;)', xml_src):
         BUILTIN_XML_ENTITIES = ('&quot;', '&amp;', '&apos;', '&lt;', '&gt;')
@@ -1129,6 +1132,37 @@ def fixup_lists(tree):
     return tree
 
 
+def fixup_man_options(tree):
+    class ManOptionsFixer(NoopVisitor):
+        def __init__(self, name):
+            self.name = name
+            self.needle = '@' + name + '{'
+
+        def previsit_element(self, element, parents):
+            for child in list(element.children):
+                if isinstance(child, Text) and self.needle in child.data:
+                    replacement = []
+                    text = child.data
+                    while self.needle in text:
+                        start = text.index(self.needle)
+                        end = text.index('}', start + len(self.needle))
+                        replacement.append(Text(text[:start]))
+                        option = Element(self.name)
+                        if self.name == 'option':
+                            option.rst_kind = InlineMarkup('option')
+                        option.children = [Text(text[start + len(self.needle):end])]
+                        replacement.append(option)
+                        text = text[end + 1:]
+                    if text:
+                        replacement.append(Text(text))
+                    i = element.children.index(child)
+                    element.children = element.children[:i] + replacement + element.children[i + 1:]
+
+    ManOptionsFixer('option').visit(tree)
+    ManOptionsFixer('var').visit(tree)
+    return tree
+
+
 def fixup_inline_markup(tree):
     class InlineMarkupFixer(NoopVisitor):
         """
@@ -1236,6 +1270,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_xrefs(tree)
     tree = fixup_deftype(tree)
     tree = fixup_lists(tree)
+    tree = fixup_man_options(tree)
     tree = fixup_inline_markup(tree)
     tree = fixup_empty_texts(tree)
     tree = fixup_vars_in_samps(tree)

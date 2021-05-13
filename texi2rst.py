@@ -1258,9 +1258,9 @@ def fixup_deftype(tree):
         def previsit_element(self, element, parents):
             if isinstance(element, Element):
                 MAPPING = {'deftypefn': 'function',
-                            'deftypefun': 'function',
-                            'defmac': 'macro',
-                            'deftypevr': 'c:var'}
+                           'deftypefun': 'function',
+                           'defmac': 'macro',
+                           'deftypevr': 'c:var'}
                 if element.kind in MAPPING:
                     declaration = ''
                     for child in element.first_element_named('definitionterm').children:

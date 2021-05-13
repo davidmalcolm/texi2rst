@@ -726,14 +726,14 @@ def fixup_table_entry(tree):
                                         [note] + tableitem.children
 
                             if self.convert_to_option(element, tableitem,
-                                                      itemformat):
+                                                      itemformat, parents):
                                 return
                             else:
                                 self.convert_to_definition_list(tableterm,
                                                                 tableitem)
 
         def convert_to_option(self, tableentry, tableitem,
-                              itemformat):
+                              itemformat, parents):
             text = itemformat.get_all_text()
             if text:
                 options = [text]
@@ -789,6 +789,16 @@ def fixup_table_entry(tree):
                 # any <findex> element below <tableitem>.
                 tableentry.delete_children_named('findex')
                 return True
+            else:
+                section = parents[-2].first_element_named('sectiontitle')
+                if section:
+                    section_name = section.get_all_text()
+                    for needle in ('Function Attributes', 'Variable Attributes', 'Type Attributes'):
+                        if section_name.endswith(needle):
+                            tableentry.rst_kind = Directive('option', text)
+                            tableentry.children = new_children
+                            tableentry.delete_children_named('findex')
+                            return True
 
         def convert_to_definition_list(self, tableterm, tableitem):
             tableterm.rst_kind = DefinitionListHeader()
@@ -1371,7 +1381,7 @@ class Directive(RstKind):
             args = self.args.split(', ')
             while args:
                 part = ''
-                while args and len(part) + len(args[0]) < self.OPTION_LIMIT:
+                while args and (not part or len(part) + len(args[0]) < self.OPTION_LIMIT):
                     if part:
                         part += ', '
                     part += args[0]

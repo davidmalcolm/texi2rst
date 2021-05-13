@@ -117,14 +117,6 @@ def from_xml_string(xml_src):
     return tree
 
 
-def for_each_node_below(node):
-    if isinstance(node, Element):
-        for child in node.children:
-            yield child
-            for node in for_each_node_below(child):
-                yield node
-
-
 def fixup_whitespace(tree):
     class WhitespaceFixer(NoopVisitor):
         """
@@ -263,10 +255,8 @@ def fixup_menus(tree):
                     # Prune the menuentry, giving it an explicit title.
                     element.rst_kind = ToctreeEntry()
                     element.children = menudescription.children
-                    for node in for_each_node_below(element):
-                        if isinstance(node, Text):
-                            if node.data.endswith('\n'):
-                                node.data = node.data[:-1]
+                    element.collapse_to_text()
+                    element.children[0].data = element.children[0].data.strip()
                     # FIXME: express this cross-reference at the Node level:
                     data = menunode.get_all_text()
                     label = convert_text_to_label(data)

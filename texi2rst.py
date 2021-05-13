@@ -562,6 +562,23 @@ def fixup_params(tree):
     return tree
 
 
+def fixup_text_variables(tree):
+    class TextVariableFixer(NoopVisitor):
+        REPLACEMENTS = (('$$VERSION_PACKAGE$$', '|package_version|'),
+                        ('$$version-GCC$$', '|gcc_version|',),
+                        ('$$BUGURL$$', '|bugurl|'))
+
+        def previsit_element(self, element, parents):
+            for child in element.children:
+                if isinstance(child, Text):
+                    for k, v in self.REPLACEMENTS:
+                        child.data = child.data.replace(k, v)
+
+    v = TextVariableFixer()
+    v.visit(tree)
+    return tree
+
+
 def fixup_wrapped_options(tree):
     class WrapperOptionFixer(NoopVisitor):
         # Move out all inner elements in option nodes as siblings:
@@ -1285,6 +1302,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_element_spacing(tree)
     tree = fixup_machine_dependant_options(tree)
     tree = fixup_params(tree)
+    tree = fixup_text_variables(tree)
     return tree
 
 

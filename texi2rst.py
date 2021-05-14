@@ -1796,12 +1796,12 @@ class FileOpener(RstOpener):
 
     def open_file(self, output_file):
         path = os.path.join(self.output_dir, '%s.rst' % output_file.name)
-        print('opening: %s' % path)
+        print(' (%s' % path, end='')
         f_out = open(path, 'w')
         return f_out
 
     def close_file(self, f_out):
-        print('closing')
+        print(') ', end='')
         f_out.close()
 
 
@@ -1844,8 +1844,10 @@ if __name__ == '__main__':
         if not os.path.exists('output'):
             os.mkdir('output')
         with open('output/' + base + '.rst', 'w') as f_out:
+            print('Creating files:', end='')
             w = RstWriter(f_out, FileOpener('output'))
             w.visit(tree)
+            print()
     else:
         w = RstWriter(sys.stdout)
         w.visit(tree)

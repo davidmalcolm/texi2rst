@@ -826,6 +826,10 @@ def fixup_table_entry(tree):
                             tableentry.children = new_children
                             tableentry.delete_children_named('findex')
                             return True
+                    if text.startswith('--') and section_name == 'Configuration':
+                        tableentry.rst_kind = Directive('option', text)
+                        tableentry.children = new_children
+                        return True
 
         def convert_to_definition_list(self, tableterm, tableitem):
             tableterm.rst_kind = DefinitionListHeader()

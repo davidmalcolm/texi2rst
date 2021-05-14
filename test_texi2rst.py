@@ -109,13 +109,13 @@ class MenuTests(Texi2RstTests):
         self.maxDiff = 2000
         self.assertEqual(u'''.. toctree::
 
-  You can compile C or C++ programs. <g++-and-gcc>
-  Language standards supported by GCC. <standards>
-  Command options supported by gcc. <invoking-gcc>
-  How GCC implements the ISO C specification. <c-implementation>
-  How GCC implements the ISO C++ specification. <c++-implementation>
-  GNU extensions to the C language family. <c-extensions>
-  GNU extensions to the C++ language. <c++-extensions>
+  g++-and-gcc
+  standards
+  invoking-gcc
+  c-implementation
+  c++-implementation
+  c-extensions
+  c++-extensions
 
 ''',
                          out)

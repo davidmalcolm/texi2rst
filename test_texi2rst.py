@@ -1359,3 +1359,26 @@ specifies a register constraint, this function will always return
   ``false``.
 
 ''', out)
+
+
+class TestLinks(Texi2RstTests):
+    def test_url(self):
+        xml_src = '<para>The <uref><urefurl>https://sourceware.org/cygwin/</urefurl><urefreplacement>Cygwin</urefreplacement></uref> project;</para>'
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(
+                '''The `Cygwin <https://sourceware.org/cygwin/>`_ project;
+
+''', out)
+
+
+    def test_url_urefdesc(self):
+        xml_src = '<para><uref><urefurl>https://www.openacc.org</urefurl><urefdesc spaces=" ">OpenACC</urefdesc></uref> Application Programming</para>'
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(
+                '''`OpenACC <https://www.openacc.org>`_ Application Programming
+
+''', out)

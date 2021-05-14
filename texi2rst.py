@@ -1086,6 +1086,22 @@ def fixup_index(tree):
     return tree
 
 
+def fixup_urefs(tree):
+    class URefFixer(NoopVisitor):
+        def previsit_element(self, element, parents):
+            if element.kind == 'uref':
+                url = element.first_element_named('urefurl')
+                title = element.first_element_named('urefreplacement')
+                if not title:
+                    title = element.first_element_named('urefdesc')
+                if title and url.get_all_text().startswith('http'):
+                    element.rst_kind = EmbeddedUrl(title.get_all_text(), url.get_all_text())
+                    element.children = []
+
+    URefFixer().visit(tree)
+    return tree
+
+
 def fixup_xrefs(tree):
     class XRefFixer(NoopVisitor):
         """
@@ -1304,6 +1320,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_examples(tree)
     tree = fixup_titles(tree)
     tree = fixup_index(tree)
+    tree = fixup_urefs(tree)
     tree = fixup_xrefs(tree)
     tree = fixup_deftype(tree)
     tree = fixup_lists(tree)
@@ -1493,6 +1510,18 @@ class Label(RstKind):
 
     def before(self, w):
         w.write('.. _%s:\n' % (self.title, ))
+
+
+class EmbeddedUrl(RstKind):
+    def __init__(self, title, url):
+        self.title = title
+        self.url = url
+
+    def __repr__(self):
+        return 'EmbeddedUrl(%r, %r)' % (self.title, self.url)
+
+    def before(self, w):
+        w.write(f'`{self.title} <{self.url}>`_')
 
 
 class OutputFile(RstKind):

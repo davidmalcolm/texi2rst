@@ -255,12 +255,10 @@ def fixup_menus(tree):
                     # Prune the menuentry, giving it an explicit title.
                     element.rst_kind = ToctreeEntry()
                     element.children = menudescription.children
-                    element.collapse_to_text()
-                    element.children[0].data = element.children[0].data.strip()
                     # FIXME: express this cross-reference at the Node level:
                     data = menunode.get_all_text()
                     label = convert_text_to_label(data)
-                    element.children += [Text(' <%s>' % label)]
+                    element.children = [Text(label)]
 
     v = MenuFixer()
     v.visit(tree)
@@ -303,7 +301,7 @@ def split(tree):
             toctree = None
             for child in element.children:
                 if isinstance(child, Element):
-                    if child.kind == 'toctree':
+                    if isinstance(child.rst_kind, Directive) and child.rst_kind.name == 'toctree':
                         toctree = child
                     if isinstance(child.rst_kind, OutputFile):
                         toctree_element = Element('toctree-element', {})
@@ -312,7 +310,8 @@ def split(tree):
                         # Try to consolidate all toctree entries into one
                         # toctree:
                         if toctree:
-                            toctree.children.append(toctree_element)
+                            if not self.contains_toc_element(toctree, toctree_element.get_all_text()):
+                                toctree.children.append(toctree_element)
                         else:
                             toctree = Element('toctree', {})
                             toctree.rst_kind = Directive('toctree', None)
@@ -321,6 +320,13 @@ def split(tree):
 
                 new_children.append(child)
             element.children = new_children
+
+        @staticmethod
+        def contains_toc_element(toctree, refname):
+            for child in toctree.children:
+                if child.get_all_text() == refname:
+                    return True
+            return False
 
     v = Splitter()
     v.visit(tree)

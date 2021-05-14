@@ -943,8 +943,8 @@ Some text about goto labels.
         tree = from_xml_string(xml_src)
         tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
-        self.assertEqual('''``GIMPLE_ASM``
-^^^^^^^^^^^^^^
+        self.assertEqual('''GIMPLE_ASM
+^^^^^^^^^^
 
 .. index:: GIMPLE_ASM
 

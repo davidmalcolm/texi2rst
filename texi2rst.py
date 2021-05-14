@@ -1055,9 +1055,10 @@ def fixup_titles(tree):
                 else:
                     underline = '='
                 element.rst_kind = Title(element, underline)
-
+                element.collapse_to_text()
             elif element.kind == 'subsubheading':
                 element.rst_kind = Title(element, '^')
+                element.collapse_to_text()
 
     v = TitleFixer()
     v.visit(tree)
@@ -1385,11 +1386,9 @@ class Title(RstKind):
         w.write('\n')
 
     def after(self, w):
-        tmpw = RstWriter(io.StringIO())
-        for child in self.element.children:
-            tmpw.visit(child)
-        tmpw.finish()
-        w.write('\n%s\n\n' % (self.underline * len(tmpw.f_out.getvalue())))
+        if self.element.children:
+            len_ = len(self.element.children[0].data)
+            w.write('\n%s\n\n' % (self.underline * len_))
 
 
 class Directive(RstKind):

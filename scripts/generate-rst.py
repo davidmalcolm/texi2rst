@@ -18,7 +18,10 @@ shutil.copy('templates/Makefile.root', os.path.join(args.output, 'Makefile'))
 for xml in os.listdir(args.xml_dir):
     base, _ = os.path.splitext(xml)
     shutil.rmtree('output', ignore_errors=True)
-    r = subprocess.check_output(f'../texi2rst.py {args.xml_dir}/{xml}', shell=True, encoding='utf8')
+    cmd = f'../texi2rst.py {args.xml_dir}/{xml}'
+    if xml == 'install.xml':
+        cmd += ' --default-language=bash'
+    r = subprocess.check_output(cmd, shell=True, encoding='utf8')
     shutil.move('output', os.path.join(args.output, base))
     config = f'templates/{base}/conf.py'
     shutil.copy(config, os.path.join(args.output, base))

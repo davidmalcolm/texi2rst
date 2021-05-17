@@ -24,7 +24,10 @@ for xml in os.listdir(args.xml_dir):
     r = subprocess.check_output(cmd, shell=True, encoding='utf8')
     shutil.move('output', os.path.join(args.output, base))
     config = f'templates/{base}/conf.py'
+    outdir = os.path.join(args.output, base)
     shutil.copy(config, os.path.join(args.output, base))
-    shutil.copy('templates/Makefile', os.path.join(args.output, base))
+    shutil.copy('templates/Makefile', outdir)
+    shutil.copy('templates/gnu_free_documentation_license.rst', outdir)
+    shutil.copy('templates/gpl-3.0.rst', outdir)
     with open(os.path.join(args.output, base, 'index.rst'), 'w') as w:
         w.write(open('templates/index.rst').read().replace('__doc__', base))

@@ -585,6 +585,34 @@ def fixup_text_variables(tree):
     return tree
 
 
+def fixup_licenses(tree):
+    class LicenseFixer(NoopVisitor):
+        def previsit_element(self, element, parents):
+            # skip ignores with License description
+            if element.kind == 'ignore':
+                text = element.get_all_text()
+                if ('@settitle GNU Free Documentation License' in text
+                        or '@settitle GNU General Public License' in text):
+                    element.children = []
+            elif element.kind == 'unnumbered':
+                sectiontitle = element.first_element_named('sectiontitle')
+                section = sectiontitle.get_all_text()
+                if (section == 'GNU Free Documentation License'
+                        or section == 'GNU General Public License'):
+                    element.children = []
+
+            # Rename license files
+            elif isinstance(element.rst_kind, ToctreeEntry):
+                name = element.get_all_text()
+                if name == 'copying':
+                    element.children = [Text('gpl-3.0')]
+                elif name == 'gnu-free-documentation-license':
+                    element.children = [Text('gnu_free_documentation_license')]
+
+    LicenseFixer().visit(tree)
+    return tree
+
+
 def fixup_wrapped_options(tree):
     class WrapperOptionFixer(NoopVisitor):
         # Move out all inner elements in option nodes as siblings:
@@ -1342,6 +1370,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_machine_dependant_options(tree)
     tree = fixup_params(tree)
     tree = fixup_text_variables(tree)
+    tree = fixup_licenses(tree)
     return tree
 
 

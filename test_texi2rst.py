@@ -1382,3 +1382,14 @@ class TestLinks(Texi2RstTests):
                 '''`OpenACC <https://www.openacc.org>`_ Application Programming
 
 ''', out)
+
+class TestBullets(Texi2RstTests):
+    def test_bullets(self):
+        xml_src = '<itemize commandarg="bullet" endspaces=" "><itemprepend>&bullet;</itemprepend><listitem><prepend>&bullet;</prepend><para><uref><urefurl>https://example.com</urefurl></uref></para></listitem></itemize>'
+        tree = from_xml_string(xml_src)
+        tree = convert_to_rst(tree, self.ctxt)
+        out = self.make_rst_string(tree)
+        self.assertEqual(
+                '''* https://example.com
+
+''', out)

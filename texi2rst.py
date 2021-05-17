@@ -338,6 +338,30 @@ def split(tree):
     return tree
 
 
+def fixup_merge_toctree(tree):
+    class MergeToctreeFixer(NoopVisitor):
+        def __init__(self):
+            self.seen_toctree_entries = set()
+
+        def previsit_element(self, element, parents):
+            if isinstance(element.rst_kind, ToctreeEntry):
+                name = element.get_all_text()
+                if name in self.seen_toctree_entries:
+                    parents[-1].children.remove(element)
+                else:
+                    self.seen_toctree_entries.add(name)
+
+    class MergeTreeRootFixer(NoopVisitor):
+        def previsit_element(self, element, parents):
+            if isinstance(element.rst_kind, Directive) and element.rst_kind.name == 'toctree':
+                if not element.children:
+                    parents[-1].children.remove(element)
+
+    MergeToctreeFixer().visit(tree)
+    MergeTreeRootFixer().visit(tree)
+    return tree
+
+
 def fixup_nodes(tree, ctxt):
     """
     Given:
@@ -1353,6 +1377,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_nodes(tree, ctxt)
     tree = fixup_menus(tree)
     tree = split(tree)
+    tree = fixup_merge_toctree(tree)
     tree = fixup_option_refs(tree)
     tree = fixup_table_entry(tree)
     tree = fixup_multitables(tree, ctxt)

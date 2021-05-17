@@ -759,6 +759,23 @@ def fixup_table_entry(tree):
                                 self.convert_to_definition_list(tableterm,
                                                                 tableitem)
 
+        @staticmethod
+        def handle_as_option(text, parents):
+            section = parents[-2].first_element_named('sectiontitle')
+            if section:
+                section_name = section.get_all_text()
+                for needle in ('Function Attributes', 'Variable Attributes', 'Type Attributes'):
+                    if section_name.endswith(needle):
+                        return True
+
+            for parent in parents[1:]:
+                section = parent.first_element_named('sectiontitle')
+                if section:
+                    section_name = section.get_all_text()
+                    if text.startswith('--') and section_name == 'Configuration':
+                        return True
+            return False
+
         def convert_to_option(self, tableentry, tableitem,
                               itemformat, parents):
             text = itemformat.get_all_text()
@@ -816,20 +833,11 @@ def fixup_table_entry(tree):
                 # any <findex> element below <tableitem>.
                 tableentry.delete_children_named('findex')
                 return True
-            else:
-                section = parents[-2].first_element_named('sectiontitle')
-                if section:
-                    section_name = section.get_all_text()
-                    for needle in ('Function Attributes', 'Variable Attributes', 'Type Attributes'):
-                        if section_name.endswith(needle):
-                            tableentry.rst_kind = Directive('option', text)
-                            tableentry.children = new_children
-                            tableentry.delete_children_named('findex')
-                            return True
-                    if text.startswith('--') and section_name == 'Configuration':
-                        tableentry.rst_kind = Directive('option', text)
-                        tableentry.children = new_children
-                        return True
+            elif self.handle_as_option(text, parents):
+                tableentry.rst_kind = Directive('option', text)
+                tableentry.children = new_children
+                tableentry.delete_children_named('findex')
+                return True
 
         def convert_to_definition_list(self, tableterm, tableitem):
             tableterm.rst_kind = DefinitionListHeader()

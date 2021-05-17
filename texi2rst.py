@@ -598,7 +598,8 @@ def fixup_licenses(tree):
                 sectiontitle = element.first_element_named('sectiontitle')
                 section = sectiontitle.get_all_text()
                 if (section == 'GNU Free Documentation License'
-                        or section == 'GNU General Public License'):
+                        or section == 'GNU General Public License'
+                        or section == 'Funding Free Software'):
                     element.children = []
 
             # Rename license files

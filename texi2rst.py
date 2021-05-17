@@ -507,6 +507,17 @@ def fixup_empty_texts(tree):
     return tree
 
 
+def fixup_bullets(tree):
+    class BulletFixer(NoopVisitor):
+        # Remove all <itemprepend>&bullet;</itemprepend>
+        def previsit_element(self, element, parents):
+            if element.kind == 'itemprepend':
+                parents[-1].children.remove(element)
+
+    BulletFixer().visit(tree)
+    return tree
+
+
 def fixup_vars_in_samps(tree):
     class VarsInSampsFixer(NoopVisitor):
         def previsit_element(self, element, parents):
@@ -1391,6 +1402,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_man_options(tree)
     tree = fixup_inline_markup(tree)
     tree = fixup_empty_texts(tree)
+    tree = fixup_bullets(tree)
     tree = fixup_vars_in_samps(tree)
     tree = fixup_wrapped_options(tree)
     tree = fixup_trailing_sign_for_options(tree)

@@ -1137,6 +1137,9 @@ def fixup_titles(tree):
             elif element.kind == 'subsubheading':
                 element.rst_kind = Title(element, '^')
                 element.collapse_to_text()
+            elif element.kind == 'heading':
+                element.rst_kind = Title(element, '=')
+                element.collapse_to_text()
 
     v = TitleFixer()
     v.visit(tree)

@@ -270,6 +270,17 @@ some chapter text
         out = self.make_rst_string(doc)
         self.assertEqual('[ :option:`-f`:samp:`{option}`...] [ :option:`-m`:samp:`{machine-option}`...]\n\n', out)
 
+    def test_heading(self):
+        xml_src = '<heading spaces=" ">Tools/packages necessary for building GCC</heading>'
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual("""Tools/packages necessary for building GCC
+=========================================
+
+""", out)
+
+
 class OptionTests(Texi2RstTests):
     def test_valid_option_ref(self):
         xml_src = ('<texinfo><option>--some-opt</option></texinfo>')

@@ -1032,7 +1032,13 @@ def fixup_examples(tree):
             if text.startswith('---'):
                 # likely a diff
                 return False
-            return text.startswith('-') or text.lstrip().startswith('-W')
+            elif text.startswith('-') or text.lstrip().startswith('-W'):
+                return True
+            elif text.lstrip().startswith('object-file-name'):
+                # Linker Options
+                return True
+            else:
+                return False
 
         def previsit_element(self, element, parents):
             if hasattr(element, 'default_language'):
@@ -1046,12 +1052,12 @@ def fixup_examples(tree):
                     element = group
                 pre = element.first_element_named('pre')
                 if pre:
-                    text = pre.get_first_text()
+                    text = pre.get_all_text()
                     if text:
-                        if self.is_an_option(text.data):
+                        if self.is_an_option(text):
                             self.handle_option_listing(element, pre)
                             return
-                        lang = self.guess_language(text.data)
+                        lang = self.guess_language(text)
                         example.collapse_to_text()
                         example.rst_kind = Directive('code-block', lang)
 

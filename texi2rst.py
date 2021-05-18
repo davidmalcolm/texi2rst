@@ -1948,6 +1948,7 @@ class GccContext(Context):
 
 parser = argparse.ArgumentParser(description='Convert TEXINFO xml file into RST files')
 parser.add_argument('xml_file', help='Input XML file')
+parser.add_argument('--output', '-o', default='output', help='Output directory')
 parser.add_argument('--default-language', default='c++', help='Default language for code blocks')
 
 # Entrypoint
@@ -1959,11 +1960,11 @@ if __name__ == '__main__':
         tree = from_xml_string(xml_src)
     tree = convert_to_rst(tree, GccContext())
     if 1:
-        if not os.path.exists('output'):
-            os.mkdir('output')
-        with open('output/' + base + '.rst', 'w') as f_out:
+        if not os.path.exists(args.output):
+            os.mkdir(args.output)
+        with open(os.path.join(args.output, base + '.rst'), 'w') as f_out:
             print('Creating files:', end='')
-            w = RstWriter(f_out, FileOpener('output'))
+            w = RstWriter(f_out, FileOpener(args.output))
             w.visit(tree)
             print()
     else:

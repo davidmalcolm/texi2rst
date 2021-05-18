@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import concurrent.futures
 import os
 import shutil
 import subprocess
@@ -15,16 +16,15 @@ os.mkdir(args.output)
 shutil.copy('templates/baseconf.py', args.output)
 shutil.copy('templates/Makefile.root', os.path.join(args.output, 'Makefile'))
 
-for xml in os.listdir(args.xml_dir):
+
+def generate(xml):
     base, _ = os.path.splitext(xml)
-    shutil.rmtree('output', ignore_errors=True)
-    cmd = f'../texi2rst.py {args.xml_dir}/{xml}'
+    outdir = os.path.join(args.output, base)
+    cmd = f'../texi2rst.py {args.xml_dir}/{xml} -o {outdir}'
     if xml == 'install.xml':
         cmd += ' --default-language=bash'
-    r = subprocess.check_output(cmd, shell=True, encoding='utf8')
-    shutil.move('output', os.path.join(args.output, base))
+    subprocess.check_output(cmd, shell=True, encoding='utf8')
     config = f'templates/{base}/conf.py'
-    outdir = os.path.join(args.output, base)
     shutil.copy(config, os.path.join(args.output, base))
     shutil.copy('templates/Makefile', outdir)
     shutil.copy('templates/gnu_free_documentation_license.rst', outdir)
@@ -32,3 +32,10 @@ for xml in os.listdir(args.xml_dir):
     shutil.copy('templates/funding.rst', outdir)
     with open(os.path.join(args.output, base, 'index.rst'), 'w') as w:
         w.write(open('templates/index.rst').read().replace('__doc__', base))
+
+
+with concurrent.futures.ProcessPoolExecutor() as executor:
+    futures = []
+    for xml in os.listdir(args.xml_dir):
+        futures.append(executor.submit(generate, xml))
+    concurrent.futures.wait(futures)

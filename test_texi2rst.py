@@ -280,6 +280,16 @@ some chapter text
 
 """, out)
 
+    def test_section_with_asterisk(self):
+        xml_src = '<heading spaces=" ">powerpcle-*-eabi</heading>'
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual("""powerpcle-\\*-eabi
+=================
+
+""", out)
+
 
 class OptionTests(Texi2RstTests):
     def test_valid_option_ref(self):

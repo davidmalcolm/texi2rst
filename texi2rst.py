@@ -533,7 +533,8 @@ def fixup_vars_in_samps(tree):
 
 def fixup_element_spacing(tree):
     class ElementSpacingFixer(NoopVisitor):
-        ALLOWED_CHARS = (' ', '\n', '.', ',')
+        ALLOWED_CHARS_AFTER = (' ', '\n', '.', ',')
+        ALLOWED_CHARS_BEFORE = (' ', '\n')
 
         @staticmethod
         def element_needs_space_p(element):
@@ -547,14 +548,14 @@ def fixup_element_spacing(tree):
                 if i + 1 < len(parent.children):
                     rsibling = parent.children[i + 1]
                     if isinstance(rsibling, Text):
-                        if not rsibling.data[0] in self.ALLOWED_CHARS:
+                        if not rsibling.data[0] in self.ALLOWED_CHARS_AFTER:
                             rsibling.data = ' ' + rsibling.data
                     elif self.element_needs_space_p(rsibling):
                         parent.children.insert(i + 1, Text(' '))
                 if i > 0:
                     lsibling = parent.children[i - 1]
                     if isinstance(lsibling, Text):
-                        if not lsibling.data[-1] in self.ALLOWED_CHARS:
+                        if not lsibling.data[-1] in self.ALLOWED_CHARS_BEFORE:
                             lsibling.data += ' '
                     elif self.element_needs_space_p(lsibling):
                         parent.children.insert(i - 1, Text(' '))

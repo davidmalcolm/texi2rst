@@ -291,6 +291,13 @@ some chapter text
 """, out)
 
 
+    def test_code_spacing(self):
+        xml_src = '<para><code>v0</code>...<code>v32</code></para>'
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual('``v0``... ``v32``\n\n', out)
+
 class OptionTests(Texi2RstTests):
     def test_valid_option_ref(self):
         xml_src = ('<texinfo><option>--some-opt</option></texinfo>')

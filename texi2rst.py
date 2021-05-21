@@ -634,11 +634,12 @@ def fixup_licenses(tree):
                     element.children = []
             elif element.kind == 'unnumbered':
                 sectiontitle = element.first_element_named('sectiontitle')
-                section = sectiontitle.get_all_text()
-                if (section == 'GNU Free Documentation License'
-                        or section == 'GNU General Public License'
-                        or section == 'Funding Free Software'):
-                    element.children = []
+                if sectiontitle:
+                    section = sectiontitle.get_all_text()
+                    if (section == 'GNU Free Documentation License'
+                            or section == 'GNU General Public License'
+                            or section == 'Funding Free Software'):
+                        element.children = []
 
             # Rename license files
             elif isinstance(element.rst_kind, ToctreeEntry):

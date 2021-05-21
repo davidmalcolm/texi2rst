@@ -43,3 +43,5 @@ with concurrent.futures.ProcessPoolExecutor() as executor:
     for cmd in cmds:
         futures.append(executor.submit(generate, cmd))
     concurrent.futures.wait(futures)
+    for future in futures:
+        assert not future.exception()

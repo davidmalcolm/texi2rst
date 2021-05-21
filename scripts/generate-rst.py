@@ -39,3 +39,5 @@ with concurrent.futures.ProcessPoolExecutor() as executor:
     for xml in os.listdir(args.xml_dir):
         futures.append(executor.submit(generate, xml))
     concurrent.futures.wait(futures)
+    for future in futures:
+        assert not future.exception()

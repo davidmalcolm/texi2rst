@@ -40,4 +40,6 @@ with concurrent.futures.ProcessPoolExecutor() as executor:
         futures.append(executor.submit(generate, xml))
     concurrent.futures.wait(futures)
     for future in futures:
-        assert not future.exception()
+        ex = future.exception()
+        if ex:
+            raise ex

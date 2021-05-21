@@ -509,14 +509,15 @@ def fixup_empty_texts(tree):
 
 def fixup_ignored_strings(tree):
     class IgnoredTextFixer(NoopVisitor):
+        IGNORED = ('Keyword Index', 'Concept Index', 'Index of Directives', 'Library Index')
+
         def __init__(self):
             self.first_section_seen = False
 
         def previsit_element(self, element, parents):
             # Remove all <itemprepend>&bullet;</itemprepend>
             if (element.kind == 'itemprepend'
-                    or (element.kind == 'sectiontitle'
-                        and element.get_all_text() in ('Keyword Index', 'Concept Index'))):
+                    or (element.kind == 'sectiontitle' and element.get_all_text() in self.IGNORED)):
                 parents[-1].children.remove(element)
             elif element.kind == 'sectiontitle':
                 self.first_section_seen = True

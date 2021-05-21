@@ -91,6 +91,9 @@ jobs:
         run: find . -name '*.1' | xargs -i bash -c "groff -mandoc -Thtml {} > {}.html"
         working-directory: scripts/sphinx
         if: github.ref == 'refs/heads/master'
+      - run: make info -j`nproc`
+        working-directory: scripts/sphinx
+        if: github.ref == 'refs/heads/master'
       - name: Upload generated files
         uses: appleboy/scp-action@master
         with:

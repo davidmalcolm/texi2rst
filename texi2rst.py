@@ -274,7 +274,8 @@ def split(tree):
             if element.kind in self.split_kinds:
                 return True
             # split '$target Option' subsections
-            elif args and 'gcc.xml' in args.xml_file and element.kind == 'subsection' and text.endswith('Options'):
+            elif (args and 'gcc.xml' in args.xml_file and element.kind == 'subsection'
+                    and (text.endswith('Options') or text == 'Options for System V')):
                 return True
             elif text == 'Contributors to GCC':
                 return True

@@ -507,14 +507,16 @@ def fixup_empty_texts(tree):
     return tree
 
 
-def fixup_bullets(tree):
-    class BulletFixer(NoopVisitor):
-        # Remove all <itemprepend>&bullet;</itemprepend>
+def fixup_ignored_strings(tree):
+    class IgnoredTextFixer(NoopVisitor):
         def previsit_element(self, element, parents):
-            if element.kind == 'itemprepend':
+            # Remove all <itemprepend>&bullet;</itemprepend>
+            if (element.kind == 'itemprepend'
+                    or (element.kind == 'sectiontitle'
+                        and element.get_all_text() in ('Keyword Index', 'Concept Index'))):
                 parents[-1].children.remove(element)
 
-    BulletFixer().visit(tree)
+    IgnoredTextFixer().visit(tree)
     return tree
 
 
@@ -1416,7 +1418,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_man_options(tree)
     tree = fixup_inline_markup(tree)
     tree = fixup_empty_texts(tree)
-    tree = fixup_bullets(tree)
+    tree = fixup_ignored_strings(tree)
     tree = fixup_vars_in_samps(tree)
     tree = fixup_wrapped_options(tree)
     tree = fixup_trailing_sign_for_options(tree)

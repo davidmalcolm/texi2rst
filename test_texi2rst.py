@@ -254,7 +254,7 @@ some chapter text
         doc = from_xml_string(xml_src)
         doc = convert_to_rst(doc, self.ctxt)
         out = self.make_rst_string(doc)
-        self.assertEqual(":option:`-fmodule-mapper='|ncat `:samp:`{ipv4host}`:samp:`{port}` '.\n\n", out)
+        self.assertEqual(":option:`-fmodule-mapper`:samp:`='|ncat {ipv4host}`:samp:`{port}` '.\n\n", out)
 
     def test_samp_with_var(self):
         xml_src = '<para>form <samp><var>n</var>f2_1</samp></para>'

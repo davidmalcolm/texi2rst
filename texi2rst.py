@@ -703,7 +703,7 @@ def fixup_trailing_sign_for_options(tree):
                                 # more complex expression, create a samp
                                 samp = Element('samp')
                                 samp.rst_kind = InlineMarkup('samp')
-                                samp.children = [Text('={' + suffix[1:] + '}')]
+                                samp.children = [Text(suffix)]
                                 parent.children.insert(i + 1, samp)
                         else:
                             sibling.prepend_text(suffix)

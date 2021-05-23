@@ -353,8 +353,7 @@ types.)
         doc = fixup_table_entry(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            u'''.. option:: -Wstrict-prototypes , -Wstrict-prototypes-foo-foo-foo-foo
-.. option:: -Wno-strict-prototypes
+            u'''.. option:: -Wstrict-prototypes , -Wstrict-prototypes-foo-foo-foo-foo, -Wno-strict-prototypes
 
   .. note::
 

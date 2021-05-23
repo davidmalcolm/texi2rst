@@ -1529,7 +1529,7 @@ class Directive(RstKind):
 
     def __init__(self, name, args):
         self.name = name
-        self.args = args if args else ''
+        self.args = args
 
     def __repr__(self):
         return 'Directive(%r, %r)' % (self.name, self.args)
@@ -1540,18 +1540,9 @@ class Directive(RstKind):
             w.write(' %s' % part)
 
     def before(self, w):
-        if self.name == 'option':
-            args = self.args.split(', ')
-            while args:
-                part = ''
-                while args and (not part or len(part) + len(args[0]) < self.OPTION_LIMIT):
-                    if part:
-                        part += ', '
-                    part += args[0]
-                    args = args[1:]
-                self.write_part(w, part)
-        else:
-            self.write_part(w, self.args)
+        w.write('\n.. %s::' % (self.name, ))
+        if self.args:
+            w.write(' %s' % (self.args, ))
         w.indent += 1
         w.write('\n\n')
 

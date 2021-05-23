@@ -9,18 +9,9 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    container: opensuse/tumbleweed
+    container: "marxin/opensuse-texi2rst"
 
     steps:
-      - run: zypper -n install
-              python3-flake8
-              python3-flake8-builtins
-              python3-flake8-bugbear
-              python3-flake8-import-order
-              python3-flake8-quotes
-              python3-pytest
-              python3-pytest-flake8
-              tar git
       - uses: actions/checkout@v2
       - run: pytest
       - run: flake8 node.py texi2rst.py

@@ -44,8 +44,7 @@ release = ('%s (%s %s%s)'
               (' %s' % gcc_REVISION) if gcc_REVISION else ''))
 
 
-# FIXME
-rst_prolog = f'''
+rst_epilog = f'''
 .. |gcc_version| replace:: {gcc_BASEVER}
 .. |package_version| replace:: (GCC)
 .. |bugurl| replace:: https://gcc.gnu.org/bugs/

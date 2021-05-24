@@ -263,13 +263,6 @@ some chapter text
         out = self.make_rst_string(doc)
         self.assertEqual('form :samp:`{n}f2_1`\n\n', out)
 
-    def test_man_options_and_variables(self):
-        xml_src = '<para>[@option{-f}@var{option}@dots{}] [@option{-m}@var{machine-option}@dots{}]</para>'
-        doc = from_xml_string(xml_src)
-        doc = convert_to_rst(doc, self.ctxt)
-        out = self.make_rst_string(doc)
-        self.assertEqual('[ :option:`-f`:samp:`{option}`...] [ :option:`-m`:samp:`{machine-option}`...]\n\n', out)
-
     def test_heading(self):
         xml_src = '<heading spaces=" ">Tools/packages necessary for building GCC</heading>'
         doc = from_xml_string(xml_src)

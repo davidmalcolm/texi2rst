@@ -146,8 +146,7 @@ def fixup_whitespace(tree):
         def visit_comment(self, comment):
             comment.data = comment.data.rstrip()
 
-    v = WhitespaceFixer()
-    v.visit(tree)
+    WhitespaceFixer().visit(tree)
     return tree
 
 
@@ -179,8 +178,7 @@ def combine_commments(tree):
                 new_children.append(child)
             element.children = new_children
 
-    v = CommentCombiner()
-    v.visit(tree)
+    CommentCombiner().visit(tree)
     return tree
 
 
@@ -214,8 +212,7 @@ def prune(tree):
             else:
                 return False
 
-    v = Pruner()
-    v.visit(tree)
+    Pruner().visit(tree)
     return tree
 
 
@@ -260,8 +257,7 @@ def fixup_menus(tree):
                     label = convert_text_to_label(data)
                     element.children = [Text(label)]
 
-    v = MenuFixer()
-    v.visit(tree)
+    MenuFixer().visit(tree)
     return tree
 
 
@@ -331,11 +327,8 @@ def split(tree):
                     return True
             return False
 
-    v = Splitter()
-    v.visit(tree)
-
-    v = ToctreeAdder()
-    v.visit(tree)
+    Splitter().visit(tree)
+    ToctreeAdder().visit(tree)
     return tree
 
 
@@ -462,8 +455,7 @@ def fixup_nodes(tree, ctxt):
                     parent.children.remove(child)
                     next_parent.children.insert(0, child)
 
-    v = NodeFixer()
-    v.visit(tree)
+    NodeFixer().visit(tree)
 
     if ctxt.debug:
         print
@@ -492,8 +484,7 @@ def fixup_option_refs(tree):
                     if firstchild.data.startswith('-'):
                         element.rst_kind = InlineMarkup('option')
 
-    v = OptionRefFixer()
-    v.visit(tree)
+    OptionRefFixer().visit(tree)
     return tree
 
 
@@ -503,8 +494,7 @@ def fixup_empty_texts(tree):
         def previsit_element(self, element, parents):
             element.children = [c for c in element.children if not isinstance(c, Text) or c.data]
 
-    v = EmptyTextFixer()
-    v.visit(tree)
+    EmptyTextFixer().visit(tree)
     return tree
 
 
@@ -538,8 +528,7 @@ def fixup_vars_in_samps(tree):
                     if isinstance(child, Element) and child.kind == 'var':
                         element.children[i] = Text(child.get_all_text())
 
-    v = VarsInSampsFixer()
-    v.visit(tree)
+    VarsInSampsFixer().visit(tree)
     return tree
 
 
@@ -572,8 +561,7 @@ def fixup_element_spacing(tree):
                     elif self.element_needs_space_p(lsibling):
                         parent.children.insert(i - 1, Text(' '))
 
-    v = ElementSpacingFixer()
-    v.visit(tree)
+    ElementSpacingFixer().visit(tree)
     return tree
 
 
@@ -592,8 +580,7 @@ def fixup_machine_dependant_options(tree):
                 elif self.parent_seen:
                     parent.children.insert(parent.children.index(element) - 2, Text('\n'))
 
-    v = MachineDependantOptionFixer()
-    v.visit(tree)
+    MachineDependantOptionFixer().visit(tree)
     return tree
 
 
@@ -613,8 +600,7 @@ def fixup_params(tree):
                 element.rst_kind = Directive('option', element.get_all_text())
                 element.children = []
 
-    v = ParamFixer()
-    v.visit(tree)
+    ParamFixer().visit(tree)
     return tree
 
 
@@ -630,8 +616,7 @@ def fixup_text_variables(tree):
                     for k, v in self.REPLACEMENTS:
                         child.data = child.data.replace(k, v)
 
-    v = TextVariableFixer()
-    v.visit(tree)
+    TextVariableFixer().visit(tree)
     return tree
 
 
@@ -676,8 +661,7 @@ def fixup_wrapped_options(tree):
                 parent.children = parent.children[:i + 1] + element.children[1:] + parent.children[i + 1:]
                 element.children = element.children[:1]
 
-    v = WrapperOptionFixer()
-    v.visit(tree)
+    WrapperOptionFixer().visit(tree)
     return tree
 
 
@@ -711,8 +695,7 @@ def fixup_trailing_sign_for_options(tree):
                     else:
                         element.children.append(Text(suffix))
 
-    v = TrailingSignForOptionFixer()
-    v.visit(tree)
+    TrailingSignForOptionFixer().visit(tree)
     return tree
 
 
@@ -940,8 +923,7 @@ def fixup_table_entry(tree):
                 new_children.append(child)
             tableterm.children = new_children
 
-    v = TableEntryFixer()
-    v.visit(tree)
+    TableEntryFixer().visit(tree)
     return tree
 
 
@@ -1020,8 +1002,7 @@ def fixup_multitables(tree, ctxt):
                 if element.kind == 'multitable':
                     element.dump(sys.stdout)
 
-    v = MultitableFixer()
-    v.visit(tree)
+    MultitableFixer().visit(tree)
     return tree
 
 
@@ -1134,8 +1115,7 @@ def fixup_examples(tree):
                     return result
             OptionWrappingVisitor().visit(pre)
 
-    v = ExampleFixer()
-    v.visit(tree)
+    ExampleFixer().visit(tree)
     return tree
 
 
@@ -1173,8 +1153,7 @@ def fixup_titles(tree):
             # escape asterisks
             element.children[0].data = element.children[0].data.replace('*', '\\*')
 
-    v = TitleFixer()
-    v.visit(tree)
+    TitleFixer().visit(tree)
     return tree
 
 
@@ -1190,8 +1169,7 @@ def fixup_index(tree):
                     if text:
                         element.rst_kind = Directive('index', text)
                         element.children = []
-    v = IndexFixer()
-    v.visit(tree)
+    IndexFixer().visit(tree)
     return tree
 
 
@@ -1251,8 +1229,7 @@ def fixup_xrefs(tree):
                 return None
             return desc.data
 
-    v = XRefFixer()
-    v.visit(tree)
+    XRefFixer().visit(tree)
     return tree
 
 
@@ -1286,8 +1263,7 @@ def fixup_lists(tree):
                     new_children.append(child)
                 element.children = new_children
 
-    v = ListFixer()
-    v.visit(tree)
+    ListFixer().visit(tree)
     return tree
 
 
@@ -1381,8 +1357,7 @@ def fixup_inline_markup(tree):
                 new_children.append(child)
             element.children = new_children
 
-    v = InlineMarkupFixer()
-    v.visit(tree)
+    InlineMarkupFixer().visit(tree)
     return tree
 
 
@@ -1410,8 +1385,7 @@ def fixup_deftype(tree):
                     if definitionitem:
                         element.children.append(definitionitem)
                     element.rst_kind = Directive(MAPPING[element.kind], declaration.strip())
-    v = DefTypeFixup()
-    v.visit(tree)
+    DefTypeFixup().visit(tree)
     return tree
 
 
@@ -1964,8 +1938,7 @@ class GccContext(Context):
                         element.kind = 'samp'
                         element.children = [Text(all_text)]
 
-        v = GccVisitor()
-        v.visit(tree)
+        GccVisitor().visit(tree)
         return tree
 
 

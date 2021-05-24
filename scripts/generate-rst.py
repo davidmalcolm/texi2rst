@@ -30,6 +30,8 @@ def generate(xml):
     shutil.copy('templates/gnu_free_documentation_license.rst', outdir)
     shutil.copy('templates/gpl-3.0.rst', outdir)
     shutil.copy('templates/funding.rst', outdir)
+    if base == 'gcc':
+        shutil.copy('templates/gcc/gcc-man.rst', outdir)
     with open(os.path.join(args.output, base, 'index.rst'), 'w') as w:
         w.write(open('templates/index.rst').read().replace('__doc__', base))
 

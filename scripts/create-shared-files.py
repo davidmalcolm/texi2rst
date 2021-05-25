@@ -17,6 +17,7 @@ def include_rst(path, link):
     with open(path, 'w') as f:
         f.write(f'.. include:: {link}\n')
 
+
 # Licence files
 shutil.copy('templates/gnu_free_documentation_license.rst', share)
 shutil.copy('templates/gpl-3.0.rst', share)

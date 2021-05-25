@@ -645,9 +645,7 @@ def fixup_licenses(tree):
             elif isinstance(element.rst_kind, ToctreeEntry):
                 name = element.get_all_text()
                 if name == 'copying':
-                    element.children = [Text('gpl-3.0')]
-                elif name == 'gnu-free-documentation-license':
-                    element.children = [Text('gnu_free_documentation_license')]
+                    element.children = [Text('general-public-license-3')]
 
     LicenseFixer().visit(tree)
     return tree

@@ -13,9 +13,27 @@ shutil.rmtree(share, ignore_errors=True)
 os.mkdir(share)
 
 
-def include_rst(path, link):
-    with open(path, 'w') as f:
-        f.write(f'.. include:: {link}\n')
+def include_rst(path, link, start_line=None, end_line=None):
+    assert not link.startswith('..')
+    if not start_line or not end_line:
+        with open(path, 'w') as f:
+            f.write(f'.. include:: ../{link}\n')
+    else:
+        lines = open(path).read().splitlines()
+        with open(path, 'w') as f:
+            with open(link, 'w') as shared:
+                in_shared = False
+                for line in lines:
+                    if line == start_line:
+                        in_shared = True
+                        f.write(f'.. include:: ../{link}\n\n')
+                    elif line == end_line:
+                        in_shared = False
+
+                    if in_shared:
+                        shared.write(line + '\n')
+                    else:
+                        f.write(line + '\n')
 
 
 # Licence files
@@ -28,10 +46,19 @@ os.chdir(args.rst_dir)
 
 for folder in os.listdir('.'):
     if os.path.isdir(folder) and folder != 'share':
-        include_rst(f'{folder}/general-public-license-3.rst', '../share/gpl-3.0.rst')
-        include_rst(f'{folder}/gnu-free-documentation-license.rst', '../share/gnu_free_documentation_license.rst')
-        include_rst(f'{folder}/funding.rst', '../share/funding.rst')
+        include_rst(f'{folder}/general-public-license-3.rst', 'share/gpl-3.0.rst')
+        include_rst(f'{folder}/gnu-free-documentation-license.rst', 'share/gnu_free_documentation_license.rst')
+        include_rst(f'{folder}/funding.rst', 'share/funding.rst')
 
 shutil.copy('gcc/contributors-to-gcc.rst', 'share/contrib.rst')
-include_rst('gcc/contributors-to-gcc.rst', '../share/contrib.rst')
-include_rst('gccint/contributors-to-gcc.rst', '../share/contrib.rst')
+include_rst('gcc/contributors-to-gcc.rst', 'share/contrib.rst')
+include_rst('gccint/contributors-to-gcc.rst', 'share/contrib.rst')
+
+shutil.copy('gcc/contributing-to-gcc-development.rst', 'share/contribute.rst')
+include_rst('gcc/contributing-to-gcc-development.rst', 'share/contribute.rst')
+include_rst('gccint/contributing-to-gcc-development.rst', 'share/contribute.rst')
+
+start_line = '.. _gnu-project:'
+end_line = '.. _option-index:'
+include_rst('gcc/gcc.rst', 'share/gnu.rst', start_line, end_line)
+include_rst('gccint/gccint.rst', 'share/gnu.rst', start_line, end_line)

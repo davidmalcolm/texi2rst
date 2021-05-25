@@ -170,10 +170,13 @@ def combine_commments(tree):
             new_children = []
             for child in element.children:
                 if isinstance(child, Comment):
+                    text = child.data
+                    if text.lstrip().startswith('comment') or text.startswith('man '):
+                        continue
                     if len(new_children) >= 1:
                         last = new_children[-1]
                         if isinstance(last, Comment):
-                            last.data = last.data + '\n' + child.data
+                            last.data = last.data + '\n' + text
                             continue
                 new_children.append(child)
             element.children = new_children

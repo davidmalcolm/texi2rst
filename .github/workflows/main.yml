@@ -32,6 +32,9 @@ jobs:
       - name: Generate RST files from XML
         run: ./generate-rst.py xml sphinx
         working-directory: scripts
+      - name: Create shared RST files
+        run: ./create-shared-files.py sphinx
+        working-directory: scripts
       - run: du -hs sphinx
         working-directory: scripts
       - name: Setup git config

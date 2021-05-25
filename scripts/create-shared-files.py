@@ -62,3 +62,10 @@ start_line = '.. _gnu-project:'
 end_line = '.. _option-index:'
 include_rst('gcc/gcc.rst', 'share/gnu.rst', start_line, end_line)
 include_rst('gccint/gccint.rst', 'share/gnu.rst', start_line, end_line)
+
+start_line = '.. option:: -I dir, -I, -iquote, -isystem, -idirafter'
+end_line = '.. option:: -iplugindir=dir'
+include_rst('gcc/options-for-directory-search.rst', 'share/cppdiropts.texi', start_line, end_line)
+
+end_line = '  .. Copyright (C) 1999-2021 Free Software Foundation, Inc.'
+include_rst('cpp/invocation.rst', 'share/cppdiropts.texi', start_line, end_line)

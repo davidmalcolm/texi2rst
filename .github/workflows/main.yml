@@ -35,6 +35,9 @@ jobs:
       - name: Create shared RST files
         run: ./create-shared-files.py sphinx
         working-directory: scripts
+      - name: Manual changes
+        run: ./manually-modify.py sphinx
+        working-directory: scripts
       - run: du -hs sphinx
         working-directory: scripts
       - name: Setup git config

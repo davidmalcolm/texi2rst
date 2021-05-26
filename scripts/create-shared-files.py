@@ -13,7 +13,7 @@ shutil.rmtree(share, ignore_errors=True)
 os.mkdir(share)
 
 
-def include_rst(path, link, start_line=None, end_line=None):
+def include_rst(path, link, start_line=None, end_line=None, include_end=False):
     assert not link.startswith('..')
     if not start_line or not end_line:
         with open(path, 'w') as f:
@@ -29,6 +29,9 @@ def include_rst(path, link, start_line=None, end_line=None):
                         f.write(f'.. include:: ../{link}\n\n')
                     elif line == end_line:
                         in_shared = False
+                        if include_end:
+                            shared.write(line + '\n')
+                            continue
 
                     if in_shared:
                         shared.write(line + '\n')
@@ -72,20 +75,20 @@ include_rst('cpp/invocation.rst', 'share/cppdiropts.rst', start_line, end_line)
 
 start_line = '.. envvar:: CPATHCPATH'
 end_line = '  process.'
-include_rst('gcc/environment-variables-affecting-gcc.rst', 'share/cppenv.rst', start_line, end_line)
-include_rst('cpp/environment-variables.rst', 'share/cppenv.rst', start_line, end_line)
+include_rst('gcc/environment-variables-affecting-gcc.rst', 'share/cppenv.rst', start_line, end_line, True)
+include_rst('cpp/environment-variables.rst', 'share/cppenv.rst', start_line, end_line, True)
 
 start_line = '.. option:: -D name, -D'
 end_line = '  When used from GCC without :option:`-E`, this option has no effect.'
-include_rst('gcc/options-controlling-the-preprocessor.rst', 'share/cppopts.rst', start_line, end_line)
-include_rst('cpp/invocation.rst', 'share/cppopts.rst', start_line, end_line)
+include_rst('gcc/options-controlling-the-preprocessor.rst', 'share/cppopts.rst', start_line, end_line, True)
+include_rst('cpp/invocation.rst', 'share/cppopts.rst', start_line, end_line, True)
 
 start_line = '.. option:: -Wcomment, -Wcomments'
 end_line = '  This warning is on by default.'
-include_rst('gcc/options-to-request-or-suppress-warnings.rst', 'share/cppwarnopts.rst', start_line, end_line)
-include_rst('cpp/invocation.rst', 'share/cppwarnopts.rst', start_line, end_line)
+include_rst('gcc/options-to-request-or-suppress-warnings.rst', 'share/cppwarnopts.rst', start_line, end_line, True)
+include_rst('cpp/invocation.rst', 'share/cppwarnopts.rst', start_line, end_line, True)
 
 start_line = '.. _simple-constraints:'
 end_line = '    Unsigned constant valid for BccUI instructions'
-include_rst('gcc/how-to-use-inline-assembly-language-in-c-code.rst', 'share/md.rst', start_line, end_line)
-include_rst('gccint/operand-constraints.rst', 'share/md.rst', start_line, end_line)
+include_rst('gcc/how-to-use-inline-assembly-language-in-c-code.rst', 'share/md.rst', start_line, end_line, True)
+include_rst('gccint/operand-constraints.rst', 'share/md.rst', start_line, end_line, True)

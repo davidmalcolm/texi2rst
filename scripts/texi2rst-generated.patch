@@ -12,7 +12,7 @@ index 6a1a3f7..06f581b 100644
  Disable insn alternatives using the enabled attribute
  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 diff --git a/sphinx/gfc-internals/gfc-internals.rst b/sphinx/gfc-internals/gfc-internals.rst
-index 2cc1a13..4a04439 100644
+index 2cc1a13..d76077a 100644
 --- a/sphinx/gfc-internals/gfc-internals.rst
 +++ b/sphinx/gfc-internals/gfc-internals.rst
 @@ -30,9 +30,12 @@ Introduction
@@ -24,7 +24,28 @@ index 2cc1a13..4a04439 100644
 -not accurately reflect the status of the most recent GNU Fortran compiler.
 +.. only:: development
 +
-+  .. warning:
++  .. warning::
++    This document, and the compiler it describes, are still
++    under development.  While efforts are made to keep it up-to-date, it might
++    not accurately reflect the status of the most recent GNU Fortran compiler.
+ 
+ .. toctree::
+ 
+diff --git a/sphinx/gfortran/gfortran.rst b/sphinx/gfortran/gfortran.rst
+index 9a72dd4..356c9fe 100644
+--- a/sphinx/gfortran/gfortran.rst
++++ b/sphinx/gfortran/gfortran.rst
+@@ -42,9 +42,13 @@ This manual documents the use of :command:`gfortran`,
+ the GNU Fortran compiler.  You can find in this manual how to invoke
+ :command:`gfortran`, as well as its features and incompatibilities.
+ 
+-*Warning:* This document, and the compiler it describes, are still
+-under development.  While efforts are made to keep it up-to-date, it might
+-not accurately reflect the status of the most recent GNU Fortran compiler.
++.. only:: development
++
++  .. warning::
++
 +    This document, and the compiler it describes, are still
 +    under development.  While efforts are made to keep it up-to-date, it might
 +    not accurately reflect the status of the most recent GNU Fortran compiler.

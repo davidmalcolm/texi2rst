@@ -38,9 +38,6 @@ jobs:
       - name: Manual changes
         run: ./manually-modify.py sphinx
         working-directory: scripts
-      - name: Create conditional
-        run: ./create-conditional.py sphinx
-        working-directory: scripts
       - run: du -hs sphinx
         working-directory: scripts
       - name: Setup git config

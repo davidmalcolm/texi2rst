@@ -65,7 +65,12 @@ include_rst('gccint/gccint.rst', 'share/gnu.rst', start_line, end_line)
 
 start_line = '.. option:: -I dir, -I, -iquote, -isystem, -idirafter'
 end_line = '.. option:: -iplugindir=dir'
-include_rst('gcc/options-for-directory-search.rst', 'share/cppdiropts.texi', start_line, end_line)
+include_rst('gcc/options-for-directory-search.rst', 'share/cppdiropts.rst', start_line, end_line)
 
 end_line = '  .. Copyright (C) 1999-2021 Free Software Foundation, Inc.'
 include_rst('cpp/invocation.rst', 'share/cppdiropts.texi', start_line, end_line)
+
+start_line = '.. envvar:: CPATHCPATH'
+end_line = '  process.'
+include_rst('gcc/environment-variables-affecting-gcc.rst', 'share/cppenv.rst', start_line, end_line)
+include_rst('cpp/environment-variables.rst', 'share/cppenv.rst', start_line, end_line)

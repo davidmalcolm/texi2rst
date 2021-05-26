@@ -21,3 +21,5 @@ latex_documents = [
 man_pages = [
     ('gnu-fortran-command-options', 'gfortran', 'GNU Fortran compiler', [authors], 1),
 ]
+
+tags.add('gfortran')

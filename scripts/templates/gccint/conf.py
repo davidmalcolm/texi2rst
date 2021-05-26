@@ -15,3 +15,5 @@ authors = 'Richard M. Stallman and the GCC Developer Community'
 latex_documents = [
   ('index', 'gccint.tex', project, authors, 'manual'),
 ]
+
+tags.add('gccint')

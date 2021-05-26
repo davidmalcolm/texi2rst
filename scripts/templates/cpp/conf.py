@@ -21,3 +21,5 @@ latex_documents = [
 man_pages = [
     ('invocation', 'cpp', project, [authors], 1),
 ]
+
+tags.add('cpp')

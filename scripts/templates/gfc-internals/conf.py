@@ -15,3 +15,5 @@ authors = 'The gfortran team'
 latex_documents = [
   ('index', 'gfc-internals.tex', project, authors, 'manual'),
 ]
+
+tags.add('gfc-internals')

@@ -15,3 +15,5 @@ authors = 'GCC Developer Community'
 latex_documents = [
   ('index', 'libgomp.tex', project, authors, 'manual'),
 ]
+
+tags.add('libgomp')

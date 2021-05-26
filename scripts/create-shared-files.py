@@ -74,3 +74,13 @@ start_line = '.. envvar:: CPATHCPATH'
 end_line = '  process.'
 include_rst('gcc/environment-variables-affecting-gcc.rst', 'share/cppenv.rst', start_line, end_line)
 include_rst('cpp/environment-variables.rst', 'share/cppenv.rst', start_line, end_line)
+
+start_line = '.. option:: -D name, -D'
+end_line = '  When used from GCC without :option:`-E`, this option has no effect.'
+include_rst('gcc/options-controlling-the-preprocessor.rst', 'share/cppopts.rst', start_line, end_line)
+include_rst('cpp/invocation.rst', 'share/cppopts.rst', start_line, end_line)
+
+start_line = '.. option:: -Wcomment, -Wcomments'
+end_line = '  This warning is on by default.'
+include_rst('gcc/options-to-request-or-suppress-warnings.rst', 'share/cppwarnopts.rst', start_line, end_line)
+include_rst('cpp/invocation.rst', 'share/cppwarnopts.rst', start_line, end_line)

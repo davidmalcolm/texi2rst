@@ -17,3 +17,6 @@ latex_documents = [
 ]
 
 tags.add('gfc-internals')
+
+if gcc_DEVPHASE == 'experimental':
+    tags.add('development')

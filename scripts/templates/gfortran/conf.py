@@ -23,3 +23,6 @@ man_pages = [
 ]
 
 tags.add('gfortran')
+
+if gcc_DEVPHASE == 'experimental':
+    tags.add('development')

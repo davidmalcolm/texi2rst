@@ -35,9 +35,6 @@ jobs:
       - name: Create shared RST files
         run: ./create-shared-files.py sphinx
         working-directory: scripts
-      - name: Apply local patch
-        run: patch -p1 < texi2rst-generated.patch
-        working-directory: scripts
       - run: du -hs sphinx
         working-directory: scripts
       - name: Setup git config
@@ -65,6 +62,9 @@ jobs:
           git push
           echo "output_sha=`git rev-parse HEAD`" >> $GITHUB_ENV
         working-directory: texi2rst-generated
+      - name: Apply local patch
+        run: patch -p1 < texi2rst-generated.patch
+        working-directory: scripts
       - run: cp templates/index.html sphinx
         working-directory: scripts
       - name: Create comment

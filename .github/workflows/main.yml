@@ -35,6 +35,9 @@ jobs:
       - name: Create shared RST files
         run: ./create-shared-files.py sphinx
         working-directory: scripts
+      - name: Apply local patch
+        run: patch -p1 < texi2rst-generated.patch
+        working-directory: scripts
       - run: du -hs sphinx
         working-directory: scripts
       - name: Setup git config

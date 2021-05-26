@@ -15,3 +15,5 @@ authors = 'Neil Booth'
 latex_documents = [
   ('index', 'cppinternals.tex', project, authors, 'manual'),
 ]
+
+tags.add('cppinternals')

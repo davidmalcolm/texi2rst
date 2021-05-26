@@ -21,3 +21,5 @@ latex_documents = [
 man_pages = [
     ('invoking-gccgo', 'gccgo', 'A GCC-based compiler for the Go language', [authors], 1),
 ]
+
+tags.add('gccgo')

@@ -15,3 +15,5 @@ authors = 'Phil Edwards et al.'
 latex_documents = [
   ('index', 'libiberty.tex', project, authors, 'manual'),
 ]
+
+tags.add('libiberty')

@@ -25,3 +25,5 @@ man_pages = [
     ('invoking-gcov-tool', 'gcov-tool', 'offline gcda profile processing tool', [authors], 1),
     ('invoking-lto-dump', 'lto-dump', 'Tool for dumping LTO object files', [authors], 1),
 ]
+
+tags.add('gcc')

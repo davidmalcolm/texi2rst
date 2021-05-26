@@ -108,3 +108,199 @@ index ca0618a..e9ad351 100644
  
  .. option:: -iprefix prefix, -iprefix
  
+diff --git a/sphinx/share/cppenv.rst b/sphinx/share/cppenv.rst
+index 28ac2d5..22ee100 100644
+--- a/sphinx/share/cppenv.rst
++++ b/sphinx/share/cppenv.rst
+@@ -25,7 +25,9 @@
+   :envvar:`CPATH` is ``:/special/include``, that has the same
+   effect as :samp:`-I. -I/special/include`.
+ 
+-  See also Search Path.
++  .. only:: cpp
++
++    See also Search Path.
+ 
+ .. envvar:: DEPENDENCIES_OUTPUTDEPENDENCIES_OUTPUT
+ 
+@@ -44,7 +46,15 @@
+ 
+   In other words, this environment variable is equivalent to combining
+   the options :option:`-MM` and :option:`-MF`
+-  (see :ref:`invocation`),
++
++  .. only:: cpp
++
++    (see :ref:`invocation`),
++
++  .. only:: not cpp
++
++    (see :ref:`preprocessor-options`),
++
+   with an optional :option:`-MT` switch too.
+ 
+ .. envvar:: SUNPRO_DEPENDENCIESSUNPRO_DEPENDENCIES
+@@ -55,7 +65,14 @@
+   except that system header files are not ignored, so it implies
+   :option:`-M` rather than :option:`-MM`.  However, the dependence on the
+   main input file is omitted.
+-  See :ref:`invocation`.
++
++  .. only:: cpp
++
++    See :ref:`invocation`.
++
++  .. only:: not cpp
++
++    See :ref:`preprocessor-options`.
+ 
+ .. envvar:: SOURCE_DATE_EPOCHSOURCE_DATE_EPOCH
+ 
+diff --git a/sphinx/share/cppopts.rst b/sphinx/share/cppopts.rst
+index 67885c8..0ed71d2 100644
+--- a/sphinx/share/cppopts.rst
++++ b/sphinx/share/cppopts.rst
+@@ -54,7 +54,10 @@
+ 
+   Do not predefine any system-specific or GCC-specific macros.  The
+   standard predefined macros remain defined.
+-  See :ref:`standard-predefined-macros`.
++
++  .. only:: cpp
++
++    See :ref:`standard-predefined-macros`.
+ 
+ .. option:: -pthread
+ 
+@@ -238,7 +241,10 @@
+ 
+   .. _fdollars-in-identifiers:
+   Accept :samp:`$` in identifiers.
+-  See :ref:`identifier-characters`.
++
++  .. only:: cpp
++
++    See :ref:`identifier-characters`.
+ 
+ .. option:: -fextended-identifiers
+ 
+@@ -322,6 +328,34 @@
+   precedence if there's a conflict.  :samp:`{charset}` can be any encoding
+   supported by the system's ``iconv`` library routine.
+ 
++.. only:: not cpp
++
++  .. option:: -fpch-deps
++
++    When using precompiled headers (see :ref:`precompiled-headers`), this flag
++    causes the dependency-output flags to also list the files from the
++    precompiled header's dependencies.  If not specified, only the
++    precompiled header are listed and not the files that were used to
++    create it, because those files are not consulted when a precompiled
++    header is used.
++
++  .. option:: -fpch-preprocess
++
++    This option allows use of a precompiled header (see :ref:`precompiled-headers`) together with :option:`-E`.  It inserts a special ``#pragma``,
++    ``#pragma GCC pch_preprocess "filename"`` in the output to mark
++    the place where the precompiled header was found, and its :samp:`{filename}`.
++    When :option:`-fpreprocessed` is in use, GCC recognizes this ``#pragma``
++    and loads the PCH.
++
++    This option is off by default, because the resulting preprocessed output
++    is only really suitable as input to GCC.  It is switched on by
++    :option:`-save-temps`.
++
++    You should not write this ``#pragma`` in your own code, but it is
++    safe to edit the filename if the PCH file is available in a different
++    location.  The filename may be absolute or it may be relative to GCC's
++    current directory.
++
+ .. option:: -fworking-directory, -fno-working-directory
+ 
+   Enable generation of linemarkers in the preprocessor output that
+@@ -343,7 +377,10 @@
+   :samp:`{answer}`.  This form is preferred to the older form :option:`-A
+   `:samp:`{predicate}` ( :samp:`{answer}` ), which is still supported, because
+   it does not use shell special characters.
+-  See :ref:`obsolete-features`.
++
++  .. only:: cpp
++
++    See :ref:`obsolete-features`.
+ 
+ :samp:`-A -{predicate}={answer}`
+   Cancel an assertion with the predicate :samp:`{predicate}` and answer
+@@ -381,7 +418,10 @@
+   This might be useful when running the preprocessor on something that is
+   not C code, and will be sent to a program which might be confused by the
+   linemarkers.
+-  See :ref:`preprocessor-output`.
++
++  .. only:: cpp
++
++    See :ref:`preprocessor-output`.
+ 
+   .. index:: traditional C language
+ 
+@@ -391,7 +431,14 @@
+ 
+   Try to imitate the behavior of pre-standard C preprocessors, as
+   opposed to ISO C preprocessors.
+-  See :ref:`traditional-mode`.
++
++  .. only:: cpp
++
++    See :ref:`traditional-mode`.
++
++  .. only:: not cpp
++
++    See the GNU CPP manual for details.
+ 
+   Note that GCC does not otherwise attempt to emulate a pre-standard 
+   C compiler, and these options are only supported with the :option:`-E` 
+@@ -404,7 +451,19 @@
+   are defined by ISO C to stand for single characters.  For example,
+   :samp:`??/` stands for :samp:`\`, so :samp:`'??/n'` is a character
+   constant for a newline.
+-  See :ref:`initial-processing`.
++
++  .. only:: cpp
++
++    See :ref:`initial-processing`.
++
++  .. only:: not cpp
++
++    The nine trigraphs and their replacements are
++
++    .. code-block:: c++
++
++      Trigraph:       ??(  ??)  ??<  ??>  ??=  ??/  ??'  ??!  ??-
++      Replacement:      [    ]    {    }    #    \    ^    |    ~
+ 
+   By default, GCC ignores trigraphs, but in
+   standard-conforming modes it converts them.  See the :option:`-std` and
+@@ -432,6 +491,10 @@
+   are silently ignored.  If you specify :samp:`{letters}` whose behavior
+   conflicts, the result is undefined.
+ 
++  .. only:: not cpp
++
++    See :ref:`developer-options`, for more information.
++
+   .. option:: -dM
+ 
+     Instead of the normal output, generate a list of :samp:`#define`
+@@ -446,6 +509,12 @@
+ 
+     shows all the predefined macros.
+ 
++    .. only:: cpp
++
++      If you use :option:`-dM` without the :option:`-E` option, :option:`-dM` is
++      interpreted as a synonym for :option:`-fdump-rtl-mach`.
++      See :ref:`developer-options`.
++
+   .. option:: -dD
+ 
+     Like :option:`-dM` except in two respects: it does *not* include the

@@ -60,6 +60,7 @@ jobs:
           echo ${{ github.sha }} > REVISION
           git add REVISION
           git commit -a -m "Built (${{ github.event_name }}) ${{ github.repository }}@${{ github.sha }}"
+          git merge origin/manual-changes
           git push
           echo "output_sha=`git rev-parse HEAD`" >> $GITHUB_ENV
         working-directory: texi2rst-generated

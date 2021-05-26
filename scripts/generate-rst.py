@@ -15,6 +15,7 @@ shutil.rmtree(args.output, ignore_errors=True)
 os.mkdir(args.output)
 shutil.copy('templates/baseconf.py', args.output)
 shutil.copy('templates/Makefile.root', os.path.join(args.output, 'Makefile'))
+shutil.copytree('objdir', os.path.join(args.output, 'objdir'))
 
 
 def generate(xml):

@@ -48,7 +48,7 @@ shutil.copy('templates/funding.rst', share)
 os.chdir(args.rst_dir)
 
 for folder in os.listdir('.'):
-    if os.path.isdir(folder) and folder != 'share':
+    if os.path.isdir(folder) and folder not in ('share', 'objdir'):
         include_rst(f'{folder}/general-public-license-3.rst', 'share/gpl-3.0.rst')
         include_rst(f'{folder}/gnu-free-documentation-license.rst', 'share/gnu_free_documentation_license.rst')
         include_rst(f'{folder}/funding.rst', 'share/funding.rst')

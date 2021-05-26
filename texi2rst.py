@@ -1348,7 +1348,7 @@ def fixup_deftype(tree):
             if isinstance(element, Element):
                 MAPPING = {'deftypefn': 'function',
                            'deftypefun': 'function',
-                           'defmac': 'macro',
+                           'defmac': 'c:macro',
                            'deftypevr': 'c:var'}
                 if element.kind in MAPPING:
                     declaration = ''

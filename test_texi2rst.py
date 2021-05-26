@@ -1333,7 +1333,7 @@ arguments of <samp>#pragma pack</samp>.
         tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
         self.assertEqual(
-            '''.. macro:: HANDLE_PRAGMA_PACK_WITH_EXPANSION
+            '''.. c:macro:: HANDLE_PRAGMA_PACK_WITH_EXPANSION
 
   Define this macro if macros should be expanded in the
   arguments of :samp:`#pragma pack`.

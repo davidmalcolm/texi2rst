@@ -84,3 +84,8 @@ start_line = '.. option:: -Wcomment, -Wcomments'
 end_line = '  This warning is on by default.'
 include_rst('gcc/options-to-request-or-suppress-warnings.rst', 'share/cppwarnopts.rst', start_line, end_line)
 include_rst('cpp/invocation.rst', 'share/cppwarnopts.rst', start_line, end_line)
+
+start_line = '.. _simple-constraints:'
+end_line = '    Unsigned constant valid for BccUI instructions'
+include_rst('gcc/how-to-use-inline-assembly-language-in-c-code.rst', 'share/md.rst', start_line, end_line)
+include_rst('gccint/operand-constraints.rst', 'share/md.rst', start_line, end_line)

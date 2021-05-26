@@ -58,7 +58,7 @@ jobs:
           git add REVISION
           git commit -a -m "Built (${{ github.event_name }}) ${{ github.repository }}@${{ github.sha }}"
           patch -p1 < ../scripts/texi2rst-generated.patch
-          git commit -a -m "Apply local modifications"
+          git commit -a -m "Apply local modifications ${{ github.repository }}@${{ github.sha }}"
           git push
           echo "output_sha=`git rev-parse HEAD`" >> $GITHUB_ENV
         working-directory: texi2rst-generated

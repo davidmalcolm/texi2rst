@@ -43,6 +43,8 @@ release = ('%s (%s %s%s)'
            % (gcc_BASEVER, gcc_DEVPHASE, gcc_DATESTAMP,
               (' %s' % gcc_REVISION) if gcc_REVISION else ''))
 
+if gcc_DEVPHASE == 'experimental':
+    tags.add('development')
 
 rst_epilog = f'''
 .. |gcc_version| replace:: {gcc_BASEVER}

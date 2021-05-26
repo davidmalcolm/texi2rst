@@ -11,3 +11,79 @@ index 6a1a3f7..06f581b 100644
  
  Disable insn alternatives using the enabled attribute
  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+diff --git a/sphinx/gfc-internals/gfc-internals.rst b/sphinx/gfc-internals/gfc-internals.rst
+index 2cc1a13..4a04439 100644
+--- a/sphinx/gfc-internals/gfc-internals.rst
++++ b/sphinx/gfc-internals/gfc-internals.rst
+@@ -30,9 +30,12 @@ Introduction
+ This manual documents the internals of :command:`gfortran`, 
+ the GNU Fortran compiler.
+ 
+-*Warning:* This document, and the compiler it describes, are still
+-under development.  While efforts are made to keep it up-to-date, it might
+-not accurately reflect the status of the most recent GNU Fortran compiler.
++.. only:: development
++
++  .. warning:
++    This document, and the compiler it describes, are still
++    under development.  While efforts are made to keep it up-to-date, it might
++    not accurately reflect the status of the most recent GNU Fortran compiler.
+ 
+ .. toctree::
+ 
+diff --git a/sphinx/share/cppdiropts.rst b/sphinx/share/cppdiropts.rst
+index ca0618a..e9ad351 100644
+--- a/sphinx/share/cppdiropts.rst
++++ b/sphinx/share/cppdiropts.rst
+@@ -2,7 +2,11 @@
+ 
+   Add the directory :samp:`{dir}` to the list of directories to be searched
+   for header files during preprocessing.
+-  See :ref:`search-path`.
++
++  .. only:: cpp
++
++    See :ref:`search-path`.
++
+   If :samp:`{dir}` begins with :samp:`=` or ``$SYSROOT``, then the :samp:`=`
+   or ``$SYSROOT`` is replaced by the sysroot prefix; see
+   :option:`--sysroot` and :option:`-isysroot`.
+@@ -46,7 +50,11 @@
+   The :option:`-isystem` and :option:`-idirafter` options also mark the directory
+   as a system directory, so that it gets the same special treatment that
+   is applied to the standard system directories.
+-  See :ref:`system-headers`.
++
++  .. only:: cpp
++
++    See :ref:`system-headers`.
++
+ 
+   If a standard system include directory, or a directory specified with
+   :option:`-isystem`, is also specified with :option:`-I`, the :option:`-I`
+@@ -57,7 +65,11 @@
+   changed.
+   If you really need to change the search order for system directories,
+   use the :option:`-nostdinc` and/or :option:`-isystem` options.
+-  See :ref:`system-headers`.
++
++  .. only:: cpp
++
++    See :ref:`system-headers`.
++
+ 
+ .. option:: -I-
+ 
+@@ -76,7 +88,11 @@
+   In addition, :option:`-I-` inhibits the use of the directory of the current
+   file directory as the first search directory for ``#include
+   "file"``.  There is no way to override this effect of :option:`-I-`.
+-  See :ref:`search-path`.
++
++  .. only:: cpp
++
++    See :ref:`search-path`.
++
+ 
+ .. option:: -iprefix prefix, -iprefix
+ 

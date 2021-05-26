@@ -162,6 +162,12 @@ def convert_comments(tree):
 
 def combine_commments(tree):
     class CommentCombiner(NoopVisitor):
+        def ignore_comment(self, line):
+            if (line.startswith('Copyright ') or line.startswith('This is part')
+                    or line.startswith('For copying conditions')):
+                return True
+            return False
+
         def previsit_element(self, element, parents):
             # Attempt to merge
             #   COMMENT(x) COMMENT(y)
@@ -171,6 +177,8 @@ def combine_commments(tree):
             for child in element.children:
                 if isinstance(child, Comment):
                     text = child.data
+                    if self.ignore_comment(text):
+                        continue
                     if text.lstrip().startswith('comment') or text.startswith('man '):
                         continue
                     if len(new_children) >= 1:

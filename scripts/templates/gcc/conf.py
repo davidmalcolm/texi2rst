@@ -19,7 +19,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('gcc-man', 'gcc', 'GNU project C and C++ compiler', [authors], 1),
+    ('gcc-command-options', 'gcc', 'GNU project C and C++ compiler', [authors], 1),
     ('invoking-gcov', 'gcov', 'coverage testing tool', [authors], 1),
     ('invoking-gcov-dump', 'gcov-dump', 'offline gcda and gcno profile dump tool', [authors], 1),
     ('invoking-gcov-tool', 'gcov-tool', 'offline gcda profile processing tool', [authors], 1),

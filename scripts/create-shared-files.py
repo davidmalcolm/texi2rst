@@ -44,7 +44,9 @@ def make_conditional(path, condition):
     with open(path, 'w') as f:
         f.write(f'.. only:: {condition}\n\n')
         for line in lines:
-            f.write('  ' + line + '\n')
+            if line:
+                line = '  ' + line
+            f.write(line + '\n')
 
 
 # Licence files

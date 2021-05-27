@@ -39,6 +39,14 @@ def include_rst(path, link, start_line=None, end_line=None, include_end=False):
                         f.write(line + '\n')
 
 
+def make_conditional(path, condition):
+    lines = open(path).read().splitlines()
+    with open(path, 'w') as f:
+        f.write(f'.. only:: {condition}\n\n')
+        for line in lines:
+            f.write('  ' + line + '\n')
+
+
 # Licence files
 shutil.copy('templates/gnu_free_documentation_license.rst', share)
 shutil.copy('templates/gpl-3.0.rst', share)
@@ -92,3 +100,7 @@ start_line = '.. _simple-constraints:'
 end_line = '    Unsigned constant valid for BccUI instructions'
 include_rst('gcc/how-to-use-inline-assembly-language-in-c-code.rst', 'share/md.rst', start_line, end_line, True)
 include_rst('gccint/operand-constraints.rst', 'share/md.rst', start_line, end_line, True)
+
+# make entire files conditional
+make_conditional('gcc/using-precompiled-headers.rst', 'not man')
+make_conditional('gcc/specifying-subprocesses-and-the-switches-to-pass-to-them.rst', 'not man')

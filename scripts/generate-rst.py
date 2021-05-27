@@ -28,8 +28,6 @@ def generate(xml):
     config = f'templates/{base}/conf.py'
     shutil.copy(config, os.path.join(args.output, base))
     shutil.copy('templates/Makefile', outdir)
-    if base == 'gcc':
-        shutil.copy('templates/gcc/gcc-man.rst', outdir)
     with open(os.path.join(args.output, base, 'index.rst'), 'w') as w:
         w.write(open('templates/index.rst').read().replace('__doc__', base))
 

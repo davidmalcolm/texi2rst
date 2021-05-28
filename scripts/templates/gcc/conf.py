@@ -22,7 +22,7 @@ man_pages = [
     ('gcc-command-options', 'gcc', 'GNU project C and C++ compiler', [authors], 1),
     ('gcov-a-test-coverage-program', 'gcov', 'coverage testing tool', [authors], 1),
     ('gcov-dump-an-offline-gcda-and-gcno-profile-dump-tool', 'gcov-dump', 'offline gcda and gcno profile dump tool', [authors], 1),
-    ('gcov-tool-an-offline-gcda-profile-processing-tool.rst', 'gcov-tool', 'offline gcda profile processing tool', [authors], 1),
+    ('gcov-tool-an-offline-gcda-profile-processing-tool', 'gcov-tool', 'offline gcda profile processing tool', [authors], 1),
     ('lto-dump-tool-for-dumping-lto-object-files', 'lto-dump', 'Tool for dumping LTO object files', [authors], 1),
 ]
 

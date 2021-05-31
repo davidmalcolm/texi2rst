@@ -108,6 +108,7 @@ class MenuTests(Texi2RstTests):
         out = self.make_rst_string(doc)
         self.maxDiff = 2000
         self.assertEqual(u'''.. toctree::
+  :maxdepth: 2
 
   g++-and-gcc
   standards
@@ -1013,6 +1014,7 @@ Some text about goto labels.
              u'''
 
 .. toctree::
+  :maxdepth: 2
 
   chapter-1-title
   chapter-2-title
@@ -1025,6 +1027,7 @@ Some text about goto labels.
              u'''
 
 .. toctree::
+  :maxdepth: 2
 
   chapter-1-section-1-title
   chapter-1-section-2-title
@@ -1070,6 +1073,7 @@ Some text about goto labels.
             u'''Top level para.  See :ref:`standards` and See :ref:`function-attributes`.
 
 .. toctree::
+  :maxdepth: 2
 
   language-standards-supported-by-gcc
   declaring-attributes-of-functions

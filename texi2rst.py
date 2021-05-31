@@ -1485,11 +1485,6 @@ class Directive(RstKind):
     def __repr__(self):
         return 'Directive(%r, %r)' % (self.name, self.args)
 
-    def write_part(self, w, part):
-        w.write('\n.. %s::' % self.name)
-        if part:
-            w.write(' %s' % part)
-
     def before(self, w):
         w.write('\n.. %s::' % (self.name, ))
         if self.args:

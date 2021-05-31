@@ -277,6 +277,19 @@ def split(tree):
         def __init__(self):
             self.split_kinds = ('chapter', 'section', )
 
+        @classmethod
+        def _prune_filename(cls, text):
+            text = text.lower()
+            for c in ' /':
+                text = text.replace(c, '-')
+            for c in "()?',.:_":
+                text = text.replace(c, '')
+            text = text.strip('+')
+            text = text.replace('[no-changes]-', '')
+            text = text.replace('[new]-', '')
+            text = re.sub(r'-+', '-', text)
+            return text
+
         def should_split(self, element, text):
             if element.kind in self.split_kinds:
                 return True
@@ -294,13 +307,7 @@ def split(tree):
             text = sectiontitle.get_all_text() if sectiontitle else None
             if self.should_split(element, text):
                 if text:
-                    text = text.lower()
-                    for c in ' /':
-                        text = text.replace(c, '-')
-                    for c in "()?',.:_":
-                        text = text.replace(c, '')
-                    text = text.strip('+')
-                    element.rst_kind = OutputFile(text)
+                    element.rst_kind = OutputFile(self._prune_filename(text))
 
     class ToctreeAdder(NoopVisitor):
         """

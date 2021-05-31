@@ -16,4 +16,8 @@ latex_documents = [
   ('index', 'gccint.tex', project, authors, 'manual'),
 ]
 
+texinfo_documents = [
+  ('index', 'gccint', project, authors, None, None, None, True)
+]
+
 tags.add('gccint')

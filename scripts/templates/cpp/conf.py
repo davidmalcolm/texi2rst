@@ -22,4 +22,8 @@ man_pages = [
     ('invocation', 'cpp', project, [authors], 1),
 ]
 
+texinfo_documents = [
+  ('index', 'cpp', project, authors, None, None, None, True)
+]
+
 tags.add('cpp')

@@ -16,4 +16,8 @@ latex_documents = [
   ('index', 'libgomp.tex', project, authors, 'manual'),
 ]
 
+texinfo_documents = [
+  ('index', 'libgomp', project, authors, None, None, None, True)
+]
+
 tags.add('libgomp')

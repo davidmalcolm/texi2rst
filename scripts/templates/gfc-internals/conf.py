@@ -16,6 +16,10 @@ latex_documents = [
   ('index', 'gfc-internals.tex', project, authors, 'manual'),
 ]
 
+texinfo_documents = [
+  ('index', 'gfc-internals', project, authors, None, None, None, True)
+]
+
 tags.add('gfc-internals')
 
 if gcc_DEVPHASE == 'experimental':

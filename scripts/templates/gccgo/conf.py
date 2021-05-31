@@ -22,4 +22,8 @@ man_pages = [
     ('invoking-gccgo', 'gccgo', 'A GCC-based compiler for the Go language', [authors], 1),
 ]
 
+texinfo_documents = [
+  ('index', 'gccgo', project, authors, None, None, None, True)
+]
+
 tags.add('gccgo')

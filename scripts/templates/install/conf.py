@@ -16,4 +16,8 @@ latex_documents = [
   ('index', 'install.tex', project, authors, 'manual'),
 ]
 
+texinfo_documents = [
+  ('index', 'install', project, authors, None, None, None, True)
+]
+
 tags.add('install')

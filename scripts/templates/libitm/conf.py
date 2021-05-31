@@ -16,4 +16,8 @@ latex_documents = [
   ('index', 'libitm.tex', project, authors, 'manual'),
 ]
 
+texinfo_documents = [
+  ('index', 'libitm', project, authors, None, None, None, True)
+]
+
 tags.add('libitm')

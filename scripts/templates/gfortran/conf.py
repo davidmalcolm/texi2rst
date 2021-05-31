@@ -22,6 +22,10 @@ man_pages = [
     ('gnu-fortran-command-options', 'gfortran', 'GNU Fortran compiler', [authors], 1),
 ]
 
+texinfo_documents = [
+  ('index', 'gfortran', project, authors, None, None, None, True)
+]
+
 tags.add('gfortran')
 
 if gcc_DEVPHASE == 'experimental':

@@ -16,4 +16,8 @@ latex_documents = [
   ('index', 'libquadmath.tex', project, authors, 'manual'),
 ]
 
+texinfo_documents = [
+  ('index', 'libquadmath', project, authors, None, None, None, True)
+]
+
 tags.add('libquadmath')

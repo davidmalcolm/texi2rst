@@ -16,4 +16,9 @@ latex_documents = [
   ('index', 'libiberty.tex', project, authors, 'manual'),
 ]
 
+
+texinfo_documents = [
+  ('index', 'libiberty', project, authors, None, None, None, True)
+]
+
 tags.add('libiberty')

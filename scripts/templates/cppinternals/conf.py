@@ -16,4 +16,8 @@ latex_documents = [
   ('index', 'cppinternals.tex', project, authors, 'manual'),
 ]
 
+texinfo_documents = [
+  ('index', 'cppinternals', project, authors, None, None, None, True)
+]
+
 tags.add('cppinternals')

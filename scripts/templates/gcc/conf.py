@@ -26,4 +26,8 @@ man_pages = [
     ('lto-dump-tool-for-dumping-lto-object-files', 'lto-dump', 'Tool for dumping LTO object files', [authors], 1),
 ]
 
+texinfo_documents = [
+  ('index', 'gcc', project, authors, None, None, None, True)
+]
+
 tags.add('gcc')

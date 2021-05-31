@@ -284,7 +284,7 @@ def split(tree):
                 text = text.replace(c, '-')
             for c in "()?',.:_":
                 text = text.replace(c, '')
-            text = text.strip('+')
+            text = text.strip('+').strip('-')
             text = text.replace('[no-changes]-', '')
             text = text.replace('[new]-', '')
             text = re.sub(r'-+', '-', text)

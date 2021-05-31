@@ -78,31 +78,35 @@ include_rst('gccint/gccint.rst', 'share/gnu.rst', start_line, end_line)
 
 start_line = '.. option:: -I dir, -I, -iquote, -isystem, -idirafter'
 end_line = '.. option:: -iplugindir=dir'
-include_rst('gcc/options-for-directory-search.rst', 'share/cppdiropts.rst', start_line, end_line)
+include_rst('gcc/gcc-command-options/options-for-directory-search.rst', 'share/cppdiropts.rst', start_line, end_line)
 
 end_line = '  .. Copyright (C) 1999-2021 Free Software Foundation, Inc.'
 include_rst('cpp/invocation.rst', 'share/cppdiropts.rst', start_line, end_line)
 
 start_line = '.. envvar:: CPATHCPATH'
 end_line = '  process.'
-include_rst('gcc/environment-variables-affecting-gcc.rst', 'share/cppenv.rst', start_line, end_line, True)
+include_rst('gcc/gcc-command-options/environment-variables-affecting-gcc.rst', 'share/cppenv.rst',
+            start_line, end_line, True)
 include_rst('cpp/environment-variables.rst', 'share/cppenv.rst', start_line, end_line, True)
 
 start_line = '.. option:: -D name, -D'
 end_line = '  When used from GCC without :option:`-E`, this option has no effect.'
-include_rst('gcc/options-controlling-the-preprocessor.rst', 'share/cppopts.rst', start_line, end_line, True)
+include_rst('gcc/gcc-command-options/options-controlling-the-preprocessor.rst', 'share/cppopts.rst',
+            start_line, end_line, True)
 include_rst('cpp/invocation.rst', 'share/cppopts.rst', start_line, end_line, True)
 
 start_line = '.. option:: -Wcomment, -Wcomments'
 end_line = '  This warning is on by default.'
-include_rst('gcc/options-to-request-or-suppress-warnings.rst', 'share/cppwarnopts.rst', start_line, end_line, True)
+include_rst('gcc/gcc-command-options/options-to-request-or-suppress-warnings.rst', 'share/cppwarnopts.rst',
+            start_line, end_line, True)
 include_rst('cpp/invocation.rst', 'share/cppwarnopts.rst', start_line, end_line, True)
 
 start_line = '.. _simple-constraints:'
 end_line = '    Unsigned constant valid for BccUI instructions'
-include_rst('gcc/how-to-use-inline-assembly-language-in-c-code.rst', 'share/md.rst', start_line, end_line, True)
-include_rst('gccint/operand-constraints.rst', 'share/md.rst', start_line, end_line, True)
+include_rst('gcc/extensions-to-the-c-language-family/how-to-use-inline-assembly-language-in-c-code.rst',
+            'share/md.rst', start_line, end_line, True)
+include_rst('gccint/machine-descriptions/operand-constraints.rst', 'share/md.rst', start_line, end_line, True)
 
 # make entire files conditional
-make_conditional('gcc/using-precompiled-headers.rst', 'not man')
-make_conditional('gcc/specifying-subprocesses-and-the-switches-to-pass-to-them.rst', 'not man')
+make_conditional('gcc/gcc-command-options/using-precompiled-headers.rst', 'not man')
+make_conditional('gcc/gcc-command-options/specifying-subprocesses-and-the-switches-to-pass-to-them.rst', 'not man')

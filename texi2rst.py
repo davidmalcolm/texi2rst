@@ -369,8 +369,46 @@ def fixup_merge_toctree(tree):
                 if not element.children:
                     parents[-1].children.remove(element)
 
+    class ToctreeFolderVisitor(NoopVisitor):
+        def __init__(self):
+            self.output_file = None
+            self.mapping = {}
+
+        def previsit_element(self, element, parents):
+            if isinstance(element.rst_kind, OutputFile):
+                self.output_file = element.rst_kind.name
+            elif isinstance(element.rst_kind, ToctreeEntry):
+                name = element.get_all_text()
+                self.mapping.setdefault(self.output_file, []).append(name)
+
+    class ToctreeFolderCreator(NoopVisitor):
+        def __init__(self, mapping):
+            self.mapping = mapping
+
+        @classmethod
+        def _get_components(cls, parents):
+            return [o.rst_kind.name for o in parents if isinstance(o.rst_kind, OutputFile) and o.rst_kind.folder]
+
+        def previsit_element(self, element, parents):
+            if isinstance(element.rst_kind, OutputFile):
+                name = element.rst_kind.name
+                if name in self.mapping and len(self.mapping[name]) >= 5:
+                    element.rst_kind.folder = True
+                element.rst_kind.path_components = self._get_components(parents)
+            elif isinstance(element.rst_kind, ToctreeEntry):
+                for parent in reversed(parents):
+                    if isinstance(parent.rst_kind, OutputFile):
+                        if parent.rst_kind.folder:
+                            text = element.get_first_text()
+                            text.data = parent.rst_kind.name + '/' + text.data
+                        break
+
     MergeToctreeFixer().visit(tree)
     MergeTreeRootFixer().visit(tree)
+
+    foldercreator = ToctreeFolderVisitor()
+    foldercreator.visit(tree)
+    ToctreeFolderCreator(foldercreator.mapping).visit(tree)
     return tree
 
 
@@ -1587,6 +1625,8 @@ class EmbeddedUrl(RstKind):
 class OutputFile(RstKind):
     def __init__(self, name):
         self.name = name
+        self.folder = False
+        self.path_components = []
 
     def __repr__(self):
         return 'OutputFile(%r)' % self.name
@@ -1893,7 +1933,13 @@ class FileOpener(RstOpener):
         self.output_dir = output_dir
 
     def open_file(self, output_file):
-        path = os.path.join(self.output_dir, '%s.rst' % output_file.name)
+        path_prefix = self.output_dir
+        if output_file.path_components:
+            prefix = os.path.join(*output_file.path_components)
+            path_prefix = os.path.join(path_prefix, prefix)
+            if not os.path.exists(path_prefix):
+                os.makedirs(path_prefix)
+        path = os.path.join(path_prefix, '%s.rst' % output_file.name)
         print(' (%s' % path, end='')
         f_out = open(path, 'w')
         return f_out

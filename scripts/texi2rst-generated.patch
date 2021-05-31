@@ -1,7 +1,7 @@
-diff --git a/sphinx/gccint/operand-constraints.rst b/sphinx/gccint/operand-constraints.rst
+diff --git a/sphinx/gccint/machine-descriptions/operand-constraints.rst b/sphinx/gccint/machine-descriptions/operand-constraints.rst
 index 6a1a3f7..06f581b 100644
---- a/sphinx/gccint/operand-constraints.rst
-+++ b/sphinx/gccint/operand-constraints.rst
+--- a/sphinx/gccint/machine-descriptions/operand-constraints.rst
++++ b/sphinx/gccint/machine-descriptions/operand-constraints.rst
 @@ -36,7 +36,7 @@ the addressing register.
  .. include:: ../share/md.rst
  

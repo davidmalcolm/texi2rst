@@ -1490,6 +1490,10 @@ class Directive(RstKind):
         if self.args:
             w.write(' %s' % (self.args, ))
         w.indent += 1
+
+        if self.name == 'toctree':
+            w.write('\n:maxdepth: 2\n')
+
         w.write('\n\n')
 
     def after(self, w):

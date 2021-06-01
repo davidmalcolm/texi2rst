@@ -27,7 +27,7 @@ man_pages = [
 ]
 
 texinfo_documents = [
-  ('index', 'gcc', project, authors, None, None, None, True)
+  ('gcc-command-options', 'gcc', project, authors, None, None, None, True)
 ]
 
 tags.add('gcc')

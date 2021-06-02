@@ -26,7 +26,8 @@ def include_rst(path, link, start_line=None, end_line=None, include_end=False):
                 for line in lines:
                     if line == start_line:
                         in_shared = True
-                        f.write(f'.. include:: ../{link}\n\n')
+                        prefix = '/'.join(['..'] * path.count('/'))
+                        f.write(f'.. include:: {prefix}/{link}\n\n')
                     elif line == end_line:
                         in_shared = False
                         if include_end:

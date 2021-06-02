@@ -1,9 +1,130 @@
+diff --git a/sphinx/gcc/gcc.rst b/sphinx/gcc/gcc.rst
+index 966c43c..46d910b 100644
+--- a/sphinx/gcc/gcc.rst
++++ b/sphinx/gcc/gcc.rst
+@@ -40,76 +40,3 @@ version |gcc_version|.
+ The internals of the GNU compilers, including how to port them to new
+ targets and some information about how to write front ends for new
+ languages, are documented in a separate manual.  See :ref:`Introduction <top>`.
+-
+-.. toctree::
+-  :maxdepth: 2
+-
+-  g++-and-gcc
+-  standards
+-  invoking-gcc
+-  c-implementation
+-  c++-implementation
+-  c-extensions
+-  c++-extensions
+-  objective-c
+-  compatibility
+-  gcov
+-  gcov-tool
+-  gcov-dump
+-  lto-dump
+-  trouble
+-  bugs
+-  service
+-  contributing
+-
+-  funding
+-  gnu-project
+-
+-  general-public-license-3
+-  gnu-free-documentation-license
+-  contributors
+-
+-  option-index
+-  keyword-index
+-
+-.. toctree::
+-  :maxdepth: 2
+-
+-  programming-languages-supported-by-gcc
+-  language-standards-supported-by-gcc
+-  gcc-command-options
+-  c-implementation-defined-behavior
+-  c++-implementation-defined-behavior
+-  extensions-to-the-c-language-family
+-  extensions-to-the-c++-language
+-  gnu-objective-c-features
+-  binary-compatibility
+-  gcov-a-test-coverage-program
+-  gcov-tool-an-offline-gcda-profile-processing-tool
+-  gcov-dump-an-offline-gcda-and-gcno-profile-dump-tool
+-  lto-dump-tool-for-dumping-lto-object-files
+-  known-causes-of-trouble-with-gcc
+-  reporting-bugs
+-  how-to-get-help-with-gcc
+-  contributing-to-gcc-development
+-  contributors-to-gcc
+-
+-.. include:: ../share/gnu.rst
+-
+-.. _option-index:
+-
+-Option Index
+-============
+-
+-GCC's command line options are indexed here without any initial :samp:`-`
+-or :samp:`--`.  Where an option has both positive and negative forms
+-(such as :option:`-f`:samp:`{option}` and :option:`-fno-`:samp:`{option}` ),
+-relevant entries in the manual are indexed under the most appropriate
+-form; it may sometimes be useful to look up both forms.
+-
+-.. _keyword-index:
+-
+-.. -
+-   Epilogue
+-   -
+-
+diff --git a/sphinx/gcc/index.rst b/sphinx/gcc/index.rst
+index 449c7b0..1fecde2 100644
+--- a/sphinx/gcc/index.rst
++++ b/sphinx/gcc/index.rst
+@@ -4,10 +4,33 @@ Welcome to gcc documentation!
+ Contents:
+ 
+ .. toctree::
+-   :maxdepth: 2
++  :maxdepth: 2
+ 
+-   gcc.rst
++  gcc.rst
++  programming-languages-supported-by-gcc
++  language-standards-supported-by-gcc
++  gcc-command-options
++  c-implementation-defined-behavior
++  c++-implementation-defined-behavior
++  extensions-to-the-c-language-family
++  extensions-to-the-c++-language
++  gnu-objective-c-features
++  binary-compatibility
++  gcov-a-test-coverage-program
++  gcov-tool-an-offline-gcda-profile-processing-tool
++  gcov-dump-an-offline-gcda-and-gcno-profile-dump-tool
++  lto-dump-tool-for-dumping-lto-object-files
++  known-causes-of-trouble-with-gcc
++  reporting-bugs
++  how-to-get-help-with-gcc
++  contributing-to-gcc-development
++  contributors-to-gcc
+ 
++  funding
++  general-public-license-3
++  gnu-free-documentation-license
++
++.. include:: ../share/gnu.rst
+ 
+ Indices and tables
+ ==================
 diff --git a/sphinx/gccint/machine-descriptions/operand-constraints.rst b/sphinx/gccint/machine-descriptions/operand-constraints.rst
-index 6a1a3f7..06f581b 100644
+index bef235d..8f1a3f9 100644
 --- a/sphinx/gccint/machine-descriptions/operand-constraints.rst
 +++ b/sphinx/gccint/machine-descriptions/operand-constraints.rst
-@@ -36,7 +36,7 @@ the addressing register.
- .. include:: ../share/md.rst
+@@ -37,7 +37,7 @@ the addressing register.
+ .. include:: ../../share/md.rst
  
  
 -    .. _disable-insn-alternatives:
@@ -12,7 +133,7 @@ index 6a1a3f7..06f581b 100644
  Disable insn alternatives using the enabled attribute
  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 diff --git a/sphinx/gfc-internals/gfc-internals.rst b/sphinx/gfc-internals/gfc-internals.rst
-index 2cc1a13..d76077a 100644
+index dff1a1b..7f34b77 100644
 --- a/sphinx/gfc-internals/gfc-internals.rst
 +++ b/sphinx/gfc-internals/gfc-internals.rst
 @@ -30,9 +30,12 @@ Introduction
@@ -30,9 +151,9 @@ index 2cc1a13..d76077a 100644
 +    not accurately reflect the status of the most recent GNU Fortran compiler.
  
  .. toctree::
- 
+   :maxdepth: 2
 diff --git a/sphinx/gfortran/gfortran.rst b/sphinx/gfortran/gfortran.rst
-index 9a72dd4..356c9fe 100644
+index 6ceace4..8f8447a 100644
 --- a/sphinx/gfortran/gfortran.rst
 +++ b/sphinx/gfortran/gfortran.rst
 @@ -42,9 +42,13 @@ This manual documents the use of :command:`gfortran`,
@@ -51,7 +172,7 @@ index 9a72dd4..356c9fe 100644
 +    not accurately reflect the status of the most recent GNU Fortran compiler.
  
  .. toctree::
- 
+   :maxdepth: 2
 diff --git a/sphinx/share/cppdiropts.rst b/sphinx/share/cppdiropts.rst
 index ca0618a..e9ad351 100644
 --- a/sphinx/share/cppdiropts.rst

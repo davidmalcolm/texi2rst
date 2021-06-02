@@ -1,11 +1,12 @@
 diff --git a/sphinx/gcc/gcc.rst b/sphinx/gcc/gcc.rst
-index 966c43c..46d910b 100644
+index 966c43c..dc5b657 100644
 --- a/sphinx/gcc/gcc.rst
 +++ b/sphinx/gcc/gcc.rst
-@@ -40,76 +40,3 @@ version |gcc_version|.
+@@ -39,77 +39,4 @@ bugs.  It corresponds to the compilers
+ version |gcc_version|.
  The internals of the GNU compilers, including how to port them to new
  targets and some information about how to write front ends for new
- languages, are documented in a separate manual.  See :ref:`Introduction <top>`.
+-languages, are documented in a separate manual.  See :ref:`Introduction <top>`.
 -
 -.. toctree::
 -  :maxdepth: 2
@@ -79,6 +80,7 @@ index 966c43c..46d910b 100644
 -   Epilogue
 -   -
 -
++languages, are documented in a separate manual.
 diff --git a/sphinx/gcc/index.rst b/sphinx/gcc/index.rst
 index 449c7b0..1fecde2 100644
 --- a/sphinx/gcc/index.rst

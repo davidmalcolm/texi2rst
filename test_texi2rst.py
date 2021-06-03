@@ -800,13 +800,13 @@ The authoritative manual on traditional Objective-C (1.0) is
 'Object-Oriented Programming and the Objective-C Language',
 available at a number of web sites:
 
-* http://www.gnustep.org//resources//documentation//ObjectivCBook.pdf
+* http://www.gnustep.org/resources/documentation/ObjectivCBook.pdf
   is the original NeXTstep document;
 
 * http://objc.toodarkpark.net
   is the same document in another format;
 
-* http://developer.apple.com//mac//library//documentation//Cocoa//Conceptual//ObjectiveC/
+* http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/ObjectiveC/
   has an updated version but make sure you search for 'Object Oriented Programming and the Objective-C Programming Language 1.0',
   not documentation on the newer 'Objective-C 2.0' language
 

@@ -77,7 +77,7 @@ end_line = '.. _option-index:'
 include_rst('gcc/gcc.rst', 'share/gnu.rst', start_line, end_line)
 include_rst('gccint/gccint.rst', 'share/gnu.rst', start_line, end_line)
 
-start_line = '.. option:: -I dir, -I, -iquote, -isystem, -idirafter'
+start_line = '.. option:: -I dir, -iquote dir, -isystem dir, -idirafter dir'
 end_line = '.. option:: -iplugindir=dir'
 include_rst('gcc/gcc-command-options/options-for-directory-search.rst', 'share/cppdiropts.rst', start_line, end_line)
 
@@ -90,7 +90,7 @@ include_rst('gcc/gcc-command-options/environment-variables-affecting-gcc.rst', '
             start_line, end_line, True)
 include_rst('cpp/environment-variables.rst', 'share/cppenv.rst', start_line, end_line, True)
 
-start_line = '.. option:: -D name, -D'
+start_line = '.. option:: -D name'
 end_line = '  When used from GCC without :option:`-E`, this option has no effect.'
 include_rst('gcc/gcc-command-options/options-controlling-the-preprocessor.rst', 'share/cppopts.rst',
             start_line, end_line, True)

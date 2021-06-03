@@ -70,8 +70,8 @@ jobs:
       - name: Update master and push
         run: |
           git checkout master
-          git merge raw
-          git push
+          git rebase raw
+          git push origin master -f
         working-directory: texi2rst-generated
         if: github.ref == 'refs/heads/master'
       - name: Create comment
@@ -107,5 +107,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           source: "texi2rst-generated/sphinx"
-          target: "/srv/www/htdocs/splichaleu/scripts/"
+          target: "/srv/www/htdocs/splichaleu/"
         if: github.ref == 'refs/heads/master'

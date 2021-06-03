@@ -51,8 +51,7 @@ jobs:
         working-directory: texi2rst-generated
       - name: Change branch (raw)
         run: |
-          git checkout -b raw
-          git push --set-upstream origin raw
+          git checkout raw
         if: github.ref == 'refs/heads/master'
         working-directory: texi2rst-generated
       - name: Modify generated repository
@@ -70,8 +69,8 @@ jobs:
       - name: Update master and push
         run: |
           git checkout master
-          git rebase raw
-          git push origin master -f
+          git merge raw
+          git push origin master
         working-directory: texi2rst-generated
         if: github.ref == 'refs/heads/master'
       - name: Create comment

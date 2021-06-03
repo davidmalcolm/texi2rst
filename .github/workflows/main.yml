@@ -49,9 +49,10 @@ jobs:
           git push --set-upstream origin ${{ github.head_ref }} -f
         if: github.ref != 'refs/heads/master'
         working-directory: texi2rst-generated
-      - name: Change branch
+      - name: Change branch (raw)
         run: |
           git checkout -b raw
+          git push --set-upstream origin raw
         if: github.ref == 'refs/heads/master'
         working-directory: texi2rst-generated
       - name: Modify generated repository

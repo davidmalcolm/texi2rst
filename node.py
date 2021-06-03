@@ -177,6 +177,15 @@ class Element(Node):
             top_element.appendChild(child.to_dom_node(dom_doc))
         return dom_doc
 
+    def get_all_elements(self, name):
+        result = []
+        for child in self.children:
+            if isinstance(child, Element):
+                if child.kind == name:
+                    result.append(child)
+                result += child.get_all_elements(name)
+        return result
+
 
 class Comment(Node):
     def __init__(self, data):

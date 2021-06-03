@@ -856,6 +856,7 @@ def fixup_table_entry(tree):
                     if item:
                         itemformat = item.first_element_named('itemformat')
                         if itemformat:
+                            itemformats = tableterm.get_all_elements('itemformat')
                             # Detect:
                             #   <itemformat>
                             #     TEXT
@@ -879,7 +880,7 @@ def fixup_table_entry(tree):
                                         [note] + tableitem.children
 
                             if self.convert_to_option(element, tableitem,
-                                                      itemformat, parents):
+                                                      itemformats, parents):
                                 return
                             else:
                                 self.convert_to_definition_list(tableterm,
@@ -902,13 +903,24 @@ def fixup_table_entry(tree):
                         return True
             return False
 
+        @staticmethod
+        def maybe_add_option_to_options(options, option):
+            # Add only -fno-foo -ffoo option (and vise versa)
+            if option not in options:
+                needle1 = option.replace('no-', '')
+                needle2 = option[:2] + 'no-' + option[2:]
+                if needle1 in options or needle2 in options:
+                    options.append(option)
+
         def convert_to_option(self, tableentry, tableitem,
-                              itemformat, parents):
-            text = itemformat.get_all_text()
-            if text:
-                options = [text]
-            else:
-                options = []
+                              itemformats, parents):
+            text = itemformats[0].get_all_text()
+            options = []
+
+            for itemformat in itemformats:
+                itemtext = itemformat.get_all_text().strip()
+                if itemtext:
+                    options.append(itemtext)
 
             # This might be a description of an option.
             # Scan below <tableitem> looking for <indexcommand>,
@@ -927,8 +939,7 @@ def fixup_table_entry(tree):
                                 option = text.data
                                 if not option.startswith('-'):
                                     option = '-' + option
-                                if option not in options:
-                                    options.append(option)
+                                self.maybe_add_option_to_options(options, option)
                                 # Drop this <indexcommand>
                                 continue
                 new_children.append(child)

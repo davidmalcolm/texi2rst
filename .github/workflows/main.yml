@@ -63,6 +63,8 @@ jobs:
           git add sphinx/*
           echo ${{ github.sha }} > REVISION
           git add REVISION
+          date > DATESTAMP
+          git add DATESTAMP
           git commit -a -m "Built (${{ github.event_name }}) ${{ github.repository }}@${{ github.sha }}"
           git push
           echo "output_sha=`git rev-parse HEAD`" >> $GITHUB_ENV

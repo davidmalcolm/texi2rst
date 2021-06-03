@@ -57,14 +57,9 @@ jobs:
           echo ${{ github.sha }} > REVISION
           git add REVISION
           git commit -a -m "Built (${{ github.event_name }}) ${{ github.repository }}@${{ github.sha }}"
-          patch -p1 < ../scripts/texi2rst-generated.patch
-          git commit -a -m "Apply local modifications ${{ github.repository }}@${{ github.sha }}"
           git push
           echo "output_sha=`git rev-parse HEAD`" >> $GITHUB_ENV
         working-directory: texi2rst-generated
-      - name: Apply local patch
-        run: patch -p1 < texi2rst-generated.patch
-        working-directory: scripts
       - run: cp templates/index.html sphinx
         working-directory: scripts
       - name: Create comment

@@ -45,6 +45,7 @@ jobs:
         run: git clone https://${{ secrets.API_TOKEN_GITHUB }}@github.com/marxin/texi2rst-generated.git
       - name: Change branch (pull request)
         run: |
+          git checkout raw
           git checkout -b ${{ github.head_ref }}
           git push --set-upstream origin ${{ github.head_ref }} -f
         if: github.ref != 'refs/heads/master'

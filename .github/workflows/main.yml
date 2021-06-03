@@ -81,6 +81,10 @@ jobs:
           body: |
             It is published here: https://github.com/marxin/texi2rst-generated/commit/${{ env.output_sha }}
         if: github.ref != 'refs/heads/master'
+      - name: Dry merge with master
+        run: git merge master
+        if: github.ref != 'refs/heads/master'
+        working-directory: texi2rst-generated
       - run: make html -j`nproc`
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'

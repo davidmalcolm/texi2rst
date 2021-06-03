@@ -104,12 +104,14 @@ jobs:
       - run: make info -j`nproc`
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
+      - run: mv texi2rst-generated scripts
+        if: github.ref == 'refs/heads/master'
       - name: Upload generated files
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: "texi2rst-generated/sphinx"
+          source: "scripts/sphinx"
           target: "/srv/www/htdocs/splichaleu/"
         if: github.ref == 'refs/heads/master'

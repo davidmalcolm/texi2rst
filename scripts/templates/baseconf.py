@@ -89,3 +89,6 @@ man_pages = []
 suppress_warnings = [
     'ref.option'
 ]
+
+# RTD template requires at least Sphinx 1.6
+needs_sphinx = '1.6'

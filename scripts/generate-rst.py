@@ -24,6 +24,8 @@ def generate(xml):
     cmd = f'../texi2rst.py {args.xml_dir}/{xml} -o {outdir}'
     if xml == 'install.xml':
         cmd += ' --default-language=bash'
+    elif xml in ('gfortran.xml', 'gfc-internals'):
+        cmd += ' --default-language=fortran'
     subprocess.check_output(cmd, shell=True, encoding='utf8')
     config = f'templates/{base}/conf.py'
     shutil.copy(config, os.path.join(args.output, base))

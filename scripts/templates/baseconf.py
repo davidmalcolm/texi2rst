@@ -43,11 +43,11 @@ release = ('%s (%s %s%s)'
            % (gcc_BASEVER, gcc_DEVPHASE, gcc_DATESTAMP,
               (' %s' % gcc_REVISION) if gcc_REVISION else ''))
 
-rst_epilog = f'''
-.. |gcc_version| replace:: {gcc_BASEVER}
+rst_epilog = '''
+.. |gcc_version| replace:: %s
 .. |package_version| replace:: (GCC)
 .. |bugurl| replace:: https://gcc.gnu.org/bugs/
-'''
+''' % gcc_BASEVER
 
 # -- General configuration ---------------------------------------------------
 
@@ -84,3 +84,8 @@ html_theme_options = {
 
 # By default, do not generate any manual pages
 man_pages = []
+
+# FIXME: handle WARNING: unknown option issues
+suppress_warnings = [
+    'ref.option'
+]

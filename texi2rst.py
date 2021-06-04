@@ -1680,14 +1680,6 @@ class TableLayout:
                 if debug:
                     print('row.entries: %r' % (row.entries, ))
 
-        # If we just have a body, turn the first row into a header:
-        if len(self.components) == 1:
-            thead = Element('thead', {})
-            first_row = self.components[0].rows[0]
-            thead.rows = [first_row]
-            self.components[0].rows = self.components[0].rows[1:]
-            self.components.insert(0, thead)
-
         self.num_columns = len(self.components[0].rows[0].entries)
         if debug:
             print('self.num_columns: %r' % self.num_columns)
@@ -1778,7 +1770,7 @@ class TableLayout:
                                 (self.width_needed_for_x[x] - len(text)))
                         w.write('|')
                     w.write('\n')
-                if comp_idx == 0:
+                if comp_idx == 0 and comp.kind == 'thead':
                     self.draw_grid_table_border(w, '=')
                 else:
                     self.draw_grid_table_border(w, '-')

@@ -295,7 +295,8 @@ def split(tree):
                 return True
             # split '$target Option' subsections
             elif (args and 'gcc.xml' in args.xml_file and element.kind == 'subsection'
-                    and (text.endswith('Options') or text == 'Options for System V')):
+                    and (text.endswith('Options') or text.endswith('Function Attributes')
+                         or text == 'Options for System V')):
                 return True
             elif text == 'Contributors to GCC':
                 return True

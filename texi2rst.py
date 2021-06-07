@@ -1745,8 +1745,12 @@ class TableLayout:
         if debug:
             table_element.dump(sys.stdout)
         self.components = []
+        self.has_thead = False
         for child in table_element.children:
-            if child.is_element('thead') or child.is_element('tbody'):
+            if child.is_element('thead'):
+                self.has_thead = True
+                self.components.append(child)
+            elif child.is_element('tbody'):
                 self.components.append(child)
         if debug:
             print('self.components: %r' % (self.components, ))
@@ -1874,6 +1878,8 @@ class TableLayout:
         w.write('\n')
 
     def render_simple_table(self, w):
+        if not self.has_thead:
+            w.write('\n')
         self.draw_simple_table_border(w)
         for comp in self.components:
             for y, row in enumerate(comp.rows):
@@ -1906,6 +1912,8 @@ class TableLayout:
                                     (self.width_needed_for_x[x] - len(text)))
                     w.write('\n')
             self.draw_simple_table_border(w)
+            if not self.has_thead:
+                w.write('\n')
 
     def draw_simple_table_border(self, w):
         for x in range(self.num_columns):

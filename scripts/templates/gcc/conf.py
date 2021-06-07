@@ -25,7 +25,7 @@ man_pages = [
     ('gcov-tool-an-offline-gcda-profile-processing-tool', 'gcov-tool', 'offline gcda profile processing tool', [authors], 1),
     ('lto-dump-tool-for-dumping-lto-object-files', 'lto-dump', 'Tool for dumping LTO object files', [authors], 1),
     ('general-public-license-3', 'gpl', 'GNU General Public License', [], 1),
-    ('gnu-free-documentation-license', 'gfdl', 'GNU Free Documentation License', [], 1)
+    ('gnu-free-documentation-license', 'gfdl', 'GNU Free Documentation License', [], 1),
     ('funding', 'fsf-funding', 'Funding Free Software', [], 1)
 ]
 

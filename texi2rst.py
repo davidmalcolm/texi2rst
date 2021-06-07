@@ -254,7 +254,7 @@ def fixup_menus(tree):
     class MenuFixer(NoopVisitor):
         def previsit_element(self, element, parents):
             if element.kind == 'menu':
-                element.rst_kind = Directive('toctree', None)
+                element.rst_kind = Directive('toctree')
 
             if element.kind == 'menuentry':
                 menunode = element.first_element_named('menunode')
@@ -334,7 +334,7 @@ def split(tree):
                                 toctree.children.append(toctree_element)
                         else:
                             toctree = Element('toctree', {})
-                            toctree.rst_kind = Directive('toctree', None)
+                            toctree.rst_kind = Directive('toctree')
                             toctree.children = [toctree_element]
                             new_children.append(toctree)
 
@@ -702,7 +702,7 @@ def fixup_fortran_functions(tree):
                     for table in tableentry.children:
                         assert table.kind == 'tableentry'
                         if isinstance(table.rst_kind, Directive) and table.rst_kind.name == 'envvar':
-                            table.rst_kind = Directive('note', None)
+                            table.rst_kind = Directive('note')
                             newchildren2.append(table)
                             continue
                         tterm = table.first_element_named('tableterm')
@@ -944,7 +944,7 @@ def fixup_table_entry(tree):
                                     itemformat.children = \
                                         itemformat.children[:-1]
                                     note = Element('note', {})
-                                    note.rst_kind = Directive('note', None)
+                                    note.rst_kind = Directive('note')
                                     note.children = [r]
                                     rtext = r.children[0]
                                     if rtext.data.startswith('(') and rtext.data.endswith(')'):
@@ -1609,7 +1609,7 @@ class Title(RstKind):
 class Directive(RstKind):
     OPTION_LIMIT = 70
 
-    def __init__(self, name, args):
+    def __init__(self, name, args=None):
         self.name = name
         self.args = args
 

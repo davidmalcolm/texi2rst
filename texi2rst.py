@@ -701,6 +701,10 @@ def fixup_fortran_functions(tree):
                     newchildren2 = []
                     for table in tableentry.children:
                         assert table.kind == 'tableentry'
+                        if isinstance(table.rst_kind, Directive) and table.rst_kind.name == 'envvar':
+                            table.rst_kind = Directive('note', None)
+                            newchildren2.append(table)
+                            continue
                         tterm = table.first_element_named('tableterm')
                         titem = table.first_element_named('tableitem')
                         if not tterm:

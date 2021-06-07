@@ -739,8 +739,16 @@ def fixup_fortran_functions(tree):
                                     newchildren.append(param)
                             else:
                                 newchildren2.append(table)
-                        elif termname == 'Syntax' and stitle.startswith('_gfortran_'):
-                            tableentry.rst_kind.args = titem.get_all_text().replace('\n', ' ')
+                        elif termname == 'Syntax':
+                            if stitle.startswith('_gfortran_'):
+                                tableentry.rst_kind.args = titem.get_all_text().replace('\n', ' ')
+                            else:
+                                code = Element('syntax')
+                                code.rst_kind = Directive('code-block', 'fortran')
+                                code.children = [Text(titem.get_all_text())]
+                                newchildren2.append(tterm)
+                                newchildren2.append(Text('\n'))
+                                newchildren2.append(code)
                         else:
                             newchildren2.append(table)
 

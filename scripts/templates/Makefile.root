@@ -17,3 +17,7 @@ latexpdf:
 .PHONY: info
 info:
 	for dir in $(FOLDERS); do $(MAKE) -C $$dir info; done
+
+.PHONY: clean
+clean:
+	for dir in $(FOLDERS); do $(MAKE) -C $$dir clean; done

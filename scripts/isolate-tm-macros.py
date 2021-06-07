@@ -6,6 +6,7 @@ import os
 parser = argparse.ArgumentParser(description='Parse and modify target .def files')
 parser.add_argument('rst_dir', help='Directory with RST files')
 parser.add_argument('gcc_dir', help='Directory GCC source')
+parser.add_argument('--replace', action='store_true', help='Replace .def files in a repo')
 args = parser.parse_args()
 
 folder = os.path.join(args.rst_dir, 'gccint/target-description-macros-and-functions')
@@ -37,7 +38,9 @@ for filename in files:
     prefix = None
     hooknow = True
 
-    with open(os.path.join(folder, filename + '.new'), 'w') as f:
+    if not args.replace:
+        filename += '.new'
+    with open(os.path.join(folder, filename), 'w') as f:
         i = 0
         while i < len(lines):
             line = lines[i]

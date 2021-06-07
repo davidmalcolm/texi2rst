@@ -679,6 +679,61 @@ def fixup_text_variables(tree):
     return tree
 
 
+def fixup_fortran_functions(tree):
+    class FortranFunctionFixer(NoopVisitor):
+        def previsit_element(self, element, parents):
+            if parents:
+                sectiontitle = parents[-1].first_element_named('sectiontitle')
+                if (sectiontitle and sectiontitle.get_all_text() == 'Intrinsic Procedures'
+                        and element.kind == 'section'):
+                    stitle = element.first_element_named('sectiontitle').get_all_text()
+                    if '---' in stitle:
+                        tableentry = element.first_element_named('table')
+                        function = stitle.split('---')[0].strip()
+                        tableentry.rst_kind = Directive('function', function)
+                        newchildren = []
+                        newchildren2 = []
+                        for table in tableentry.children:
+                            assert table.kind == 'tableentry'
+                            tterm = table.first_element_named('tableterm')
+                            titem = table.first_element_named('tableitem')
+                            termname = tterm.get_all_text().strip('{}:')
+                            if termname == 'Description':
+                                para = titem.first_element_named('para')
+                                newchildren.append(para)
+                                code = para.first_element_named('code')
+                                if code:
+                                    code = code.get_all_text()
+                                    if code.startswith(function):
+                                        tableentry.rst_kind.args = code
+                            elif termname == 'Return value':
+                                ret = Element('param')
+                                ret.rst_kind = FnDirective('return')
+                                ret.children = [titem.first_element_named('para')]
+                                newchildren.append(ret)
+                            elif termname == 'Arguments':
+                                body = titem.get_all_elements('tbody')
+                                if body:
+                                    body = body[0]
+                                    for row in body.children:
+                                        if len(row.children) != 2:
+                                            continue
+                                        name = row.children[0].get_all_text().strip('{} ')
+                                        value = row.children[1].first_element_named('para')
+                                        param = Element('param')
+                                        param.rst_kind = FnDirective(f'param {name}')
+                                        param.children = [value]
+                                        newchildren.append(param)
+                                else:
+                                    newchildren2.append(table)
+                            else:
+                                newchildren2.append(table)
+                            tableentry.children = newchildren + newchildren2
+
+    FortranFunctionFixer().visit(tree)
+    return tree
+
+
 def fixup_licenses(tree):
     class LicenseFixer(NoopVisitor):
         def previsit_element(self, element, parents):
@@ -1455,6 +1510,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_machine_dependant_options(tree)
     tree = fixup_params(tree)
     tree = fixup_text_variables(tree)
+    tree = fixup_fortran_functions(tree)
     tree = fixup_licenses(tree)
     return tree
 
@@ -1554,6 +1610,20 @@ class Directive(RstKind):
             w.write('\n:maxdepth: 2\n')
 
         w.write('\n\n')
+
+    def after(self, w):
+        w.indent -= 1
+        w.write('\n\n')
+
+
+class FnDirective(RstKind):
+    def __init__(self, name):
+        self.name = name
+
+    def before(self, w):
+        w.write('\n:%s:' % (self.name))
+        w.indent += 1
+        w.write('\n')
 
     def after(self, w):
         w.indent -= 1

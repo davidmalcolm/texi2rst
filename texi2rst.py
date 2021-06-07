@@ -1443,6 +1443,8 @@ def fixup_inline_markup(tree):
                 element.rst_kind = MatchedInlineMarkup('*')
             elif element.kind == 'samp':
                 element.rst_kind = InlineMarkup('samp')
+            elif element.kind == 'verbatim':
+                element.rst_kind = Directive('code-block', 'c++')
 
             new_children = []
             for child in element.children:

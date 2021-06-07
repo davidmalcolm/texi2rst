@@ -54,6 +54,7 @@ def make_conditional(path, condition):
 shutil.copy('templates/gnu_free_documentation_license.rst', share)
 shutil.copy('templates/gpl-3.0.rst', share)
 shutil.copy('templates/funding.rst', share)
+shutil.copy('templates/copyright.rst', share)
 
 # Modify generated files
 os.chdir(args.rst_dir)

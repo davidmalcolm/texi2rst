@@ -231,6 +231,7 @@ def convert_text_to_label(data):
     data = data.replace(' ', '-')
     data = data.replace('\n', '-')
     data = data.replace('/', '-')
+    data = data.lstrip('_')
     data = data.lower()
     return data
 

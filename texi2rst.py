@@ -2043,6 +2043,13 @@ class FileOpener(RstOpener):
     def __init__(self, output_dir):
         self.output_dir = output_dir
 
+    def append_copyright_header(self, f_out):
+        f_out.write('..\n')
+        f_out.write('  Copyright 1988-2021 Free Software Foundation, Inc.\n')
+        f_out.write('  This is part of the GCC manual.\n')
+        f_out.write('  For copying conditions, see the GPL license file\n')
+        f_out.write('\n')
+
     def open_file(self, output_file):
         path_prefix = self.output_dir
         if output_file.path_components:
@@ -2053,6 +2060,7 @@ class FileOpener(RstOpener):
         path = os.path.join(path_prefix, '%s.rst' % output_file.name)
         print(' (%s' % path, end='')
         f_out = open(path, 'w')
+        self.append_copyright_header(f_out)
         return f_out
 
     def close_file(self, f_out):

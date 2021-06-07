@@ -735,6 +735,8 @@ def fixup_fortran_functions(tree):
                                     newchildren.append(param)
                             else:
                                 newchildren2.append(table)
+                        elif termname == 'Syntax' and stitle.startswith('_gfortran_'):
+                            tableentry.rst_kind.args = titem.get_all_text().replace('\n', ' ')
                         else:
                             newchildren2.append(table)
 

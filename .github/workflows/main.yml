@@ -21,8 +21,6 @@ jobs:
     container: "marxin/opensuse-texi2rst"
 
     steps:
-      # TODO: remove
-      - run: zypper in -y texlive-xetex-bin
       - uses: actions/checkout@v2
       - run: nproc
       - name: Clone GCC

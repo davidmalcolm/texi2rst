@@ -44,7 +44,6 @@ jobs:
         run: |
           git config --global user.email mliska@suse.cz
           git config --global user.name marxin
-          git pull
       - name: Clone generated repository
         run: git clone https://${{ secrets.API_TOKEN_GITHUB }}@github.com/marxin/texi2rst-generated.git
       - name: Change branch (pull request)

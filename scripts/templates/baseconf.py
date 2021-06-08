@@ -95,4 +95,4 @@ suppress_warnings = [
 needs_sphinx = '1.6'
 
 # Use xelatex by default
-latex_engine = 'xalatex'
+latex_engine = 'xelatex'

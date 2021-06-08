@@ -93,3 +93,6 @@ suppress_warnings = [
 
 # RTD template requires at least Sphinx 1.6
 needs_sphinx = '1.6'
+
+# Use xelatex by default
+latex_engine = 'xalatex'

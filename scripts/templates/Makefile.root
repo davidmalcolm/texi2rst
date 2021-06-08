@@ -1,6 +1,6 @@
 FOLDERS = cpp cppinternals gcc gccgo gccint gfortran libgomp libitm libquadmath install gfc-internals libiberty
 
-default: html man xelatexpdf info
+default: html man latexpdf info
 
 .PHONY: html
 html:
@@ -10,9 +10,9 @@ html:
 man:
 	for dir in $(FOLDERS); do $(MAKE) -C $$dir man; done
 
-.PHONY: xelatexpdf
-xelatexpdf:
-	for dir in $(FOLDERS); do $(MAKE) -C $$dir xelatexpdf; done
+.PHONY: latexpdf
+latexpdf:
+	for dir in $(FOLDERS); do $(MAKE) -C $$dir latexpdf; done
 
 .PHONY: info
 info:

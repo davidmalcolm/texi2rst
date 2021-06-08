@@ -85,9 +85,10 @@ html_theme_options = {
 # By default, do not generate any manual pages
 man_pages = []
 
-# FIXME: handle WARNING: unknown option issues
+# FIXME: handle WARNINGs: unknown option issues and cross refs
 suppress_warnings = [
-    'ref.option'
+    'ref.option',
+    'ref.ref'
 ]
 
 # RTD template requires at least Sphinx 1.6

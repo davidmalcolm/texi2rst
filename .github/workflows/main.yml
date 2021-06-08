@@ -93,8 +93,7 @@ jobs:
       - run: make html -j`nproc`
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
-        # FIXME: remove all Warnings that make latexpdf return non-zero error code
-      - run: make latexpdf -j`nproc` || true
+      - run: make xelatexpdf -j`nproc`
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
       - run: make man -j`nproc`

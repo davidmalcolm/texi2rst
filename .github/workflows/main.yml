@@ -93,7 +93,7 @@ jobs:
       - run: make html -j`nproc`
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
-      - run: make xelatexpdf -j`nproc`
+      - run: make latexpdf -j`nproc`
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
       - run: make man -j`nproc`

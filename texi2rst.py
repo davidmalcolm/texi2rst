@@ -787,7 +787,7 @@ def fixup_libquadmath(tree):
                             samp = Element('samp')
                             samp.rst_kind = InlineMarkup('samp')
                             samp.children = [Text(f'{parts[0]}:')]
-                            item.children = [samp, Text(parts[1] + '\n\n')]
+                            item.children = [Text('* '), samp, Text(parts[1] + '\n')]
 
     LibQuadMathFixer().visit(tree)
     return tree

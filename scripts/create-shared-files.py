@@ -91,7 +91,7 @@ include_rst('gcc/gcc-command-options/options-for-directory-search.rst', 'share/c
 end_line = '  .. Copyright (C) 1999-2021 Free Software Foundation, Inc.'
 include_rst('cpp/invocation.rst', 'share/cppdiropts.rst', start_line, end_line)
 
-start_line = '.. envvar:: CPATHCPATH'
+start_line = '.. envvar:: CPATH'
 end_line = '  process.'
 include_rst('gcc/gcc-command-options/environment-variables-affecting-gcc.rst', 'share/cppenv.rst',
             start_line, end_line, True)

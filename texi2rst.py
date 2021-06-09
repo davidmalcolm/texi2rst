@@ -1027,6 +1027,7 @@ def fixup_table_entry(tree):
 
         def convert_to_option(self, tableentry, tableitem,
                               itemformats, parents):
+            itemformats[0].delete_children_named('indexterm')
             text = itemformats[0].get_all_text()
             options = []
 

@@ -756,7 +756,20 @@ def fixup_fortran_functions(tree):
 
                     tableentry.children = newchildren + newchildren2
 
+    class OpenMPFixer(NoopVisitor):
+        def previsit_element(self, element, parents):
+            if parents:
+                sectiontitle = parents[-1].first_element_named('sectiontitle')
+                if (sectiontitle and sectiontitle.get_all_text() == 'OpenMP Modules OMP_LIB and OMP_LIB_KINDS'):
+                    if element.kind == 'table':
+                        text = '\n'.join(x.get_all_text() for x in element.get_all_elements('asis'))
+                        code_block = Element('cb')
+                        code_block.rst_kind = Directive('code-block')
+                        code_block.children = [Text(text)]
+                        element.children = [code_block]
+
     FortranFunctionFixer().visit(tree)
+    OpenMPFixer().visit(tree)
     return tree
 
 

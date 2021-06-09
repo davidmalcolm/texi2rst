@@ -683,10 +683,11 @@ def fixup_text_variables(tree):
 def fixup_fortran_functions(tree):
     class FortranFunctionFixer(NoopVisitor):
         def _convert_section(self, element, parents):
+            NEEDLES = ('Function ABI Documentation', 'Intrinsic Procedures', 'Non-Fortran Main Program')
             if parents:
                 sectiontitle = parents[-1].first_element_named('sectiontitle')
                 if (sectiontitle
-                        and sectiontitle.get_all_text() in ('Function ABI Documentation', 'Intrinsic Procedures')
+                        and sectiontitle.get_all_text() in NEEDLES
                         and element.kind in ('section', 'subsection')):
                     return True
             return False

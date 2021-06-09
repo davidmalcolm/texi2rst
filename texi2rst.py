@@ -683,7 +683,8 @@ def fixup_text_variables(tree):
 def fixup_fortran_functions(tree):
     class FortranFunctionFixer(NoopVisitor):
         def _convert_section(self, element, parents):
-            NEEDLES = ('Function ABI Documentation', 'Intrinsic Procedures', 'Non-Fortran Main Program')
+            NEEDLES = ('Function ABI Documentation', 'Intrinsic Procedures',
+                       'Non-Fortran Main Program', 'OpenMP Runtime Library Routines')
             if parents:
                 sectiontitle = parents[-1].first_element_named('sectiontitle')
                 if (sectiontitle
@@ -695,7 +696,7 @@ def fixup_fortran_functions(tree):
         def previsit_element(self, element, parents):
             if self._convert_section(element, parents):
                 stitle = element.first_element_named('sectiontitle').get_all_text()
-                if '---' in stitle:
+                if '--' in stitle:
                     tableentry = element.first_element_named('table')
                     function = stitle.split('---')[0].strip()
                     tableentry.rst_kind = Directive('function', function)

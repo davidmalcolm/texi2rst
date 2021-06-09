@@ -39,7 +39,7 @@ jobs:
         run: ./add-copyright.py sphinx
         working-directory: scripts
       - name: Copy demo project
-        run: cp -r templates/demo sphinx
+        run: cp -r templates/demo sphinx && cp templates/Makefile sphinx/demo
         working-directory: scripts
       - run: du -hs sphinx
         working-directory: scripts

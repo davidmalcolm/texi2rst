@@ -782,8 +782,12 @@ def fixup_libquadmath(tree):
                 if sectiontitle and sectiontitle.get_all_text() in NEEDLES:
                     if element.kind == 'table':
                         for item in element.get_all_elements('item'):
-                            item.prepend_text('* ')
-                            item.add_text('\n')
+                            parts = item.get_all_text().split(':')
+                            assert len(parts) == 2
+                            samp = Element('samp')
+                            samp.rst_kind = InlineMarkup('samp')
+                            samp.children = [Text(f'{parts[0]}:')]
+                            item.children = [samp, Text(parts[1] + '\n')]
 
     LibQuadMathFixer().visit(tree)
     return tree

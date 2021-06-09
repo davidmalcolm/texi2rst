@@ -53,8 +53,10 @@ def make_conditional(path, condition):
 # Licence files
 shutil.copy('templates/gnu_free_documentation_license.rst', share)
 shutil.copy('templates/gpl-3.0.rst', share)
+shutil.copy('templates/lgpl-2.1.rst', share)
 shutil.copy('templates/funding.rst', share)
 shutil.copy('templates/copyright.rst', share)
+shutil.copy('templates/bsd.rst', share)
 
 # Modify generated files
 os.chdir(args.rst_dir)
@@ -64,6 +66,10 @@ for folder in os.listdir('.'):
         include_rst(f'{folder}/general-public-license-3.rst', 'share/gpl-3.0.rst')
         include_rst(f'{folder}/gnu-free-documentation-license.rst', 'share/gnu_free_documentation_license.rst')
         include_rst(f'{folder}/funding.rst', 'share/funding.rst')
+        if folder == 'libiberty':
+            include_rst(f'{folder}/lesser-general-public-license-2.1.rst', 'share/lgpl-2.1.rst')
+            include_rst(f'{folder}/bsd.rst', 'share/bsd.rst')
+
 
 shutil.copy('gcc/contributors-to-gcc.rst', 'share/contrib.rst')
 include_rst('gcc/contributors-to-gcc.rst', 'share/contrib.rst')

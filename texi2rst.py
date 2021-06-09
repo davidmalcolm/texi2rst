@@ -773,6 +773,22 @@ def fixup_fortran_functions(tree):
     return tree
 
 
+def fixup_libquadmath(tree):
+    class LibQuadMathFixer(NoopVisitor):
+        def previsit_element(self, element, parents):
+            NEEDLES = ('Typedef and constants', 'Math Library Routines')
+            if parents:
+                sectiontitle = parents[-1].first_element_named('sectiontitle')
+                if sectiontitle and sectiontitle.get_all_text() in NEEDLES:
+                    if element.kind == 'table':
+                        for item in element.get_all_elements('item'):
+                            item.prepend_text('* ')
+                            item.add_text('\n')
+
+    LibQuadMathFixer().visit(tree)
+    return tree
+
+
 def fixup_licenses(tree):
     class LicenseFixer(NoopVisitor):
         def previsit_element(self, element, parents):
@@ -1552,6 +1568,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_params(tree)
     tree = fixup_text_variables(tree)
     tree = fixup_fortran_functions(tree)
+    tree = fixup_libquadmath(tree)
     tree = fixup_licenses(tree)
     return tree
 

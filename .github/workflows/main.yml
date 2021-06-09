@@ -38,6 +38,9 @@ jobs:
       - name: Add copyright
         run: ./add-copyright.py sphinx
         working-directory: scripts
+      - name: Copy demo project
+        run: cp -r demo sphinx
+        working-directory: scripts
       - run: du -hs sphinx
         working-directory: scripts
       - name: Setup git config

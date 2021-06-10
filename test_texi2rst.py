@@ -322,12 +322,16 @@ This warning is enabled by <option>-Wall</option>.
         doc = fixup_inline_markup(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            u'''.. option:: -Wunused-label, -Wno-unused-label
+            u'''.. option:: -Wunused-label
 
   Warn whenever a label is declared but not used.
   This warning is enabled by -Wall.
 
   To suppress this warning use the ``unused`` attribute.
+
+.. option:: -Wno-unused-label
+
+  Default option value for :option:`-Wunused-label`.
 
 ''',
             out)
@@ -347,7 +351,7 @@ types.)
         doc = fixup_table_entry(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            u'''.. option:: -Wstrict-prototypes, -Wno-strict-prototypes
+            u'''.. option:: -Wstrict-prototypes
 
   .. note::
 
@@ -357,6 +361,10 @@ types.)
   argument types.  (An old-style function definition is permitted without
   a warning if preceded by a declaration that specifies the argument
   types.)
+
+.. option:: -Wno-strict-prototypes
+
+  Default option value for :option:`-Wstrict-prototypes`.
 
 ''',
             out)

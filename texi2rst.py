@@ -1020,20 +1020,26 @@ def fixup_table_entry(tree):
                         return True
             return False
 
-        @staticmethod
-        def maybe_add_option_to_options(options, option):
-            # Add only -fno-foo -ffoo option (and vise versa)
+        @classmethod
+        def get_opposite_option(cls, option):
+            if 'no-' in option:
+                return option.replace('no-', '')
+            else:
+                return option[:2] + 'no-' + option[2:]
+
+        @classmethod
+        def maybe_add_option_to_options(cls, options, default_options, option):
             if option not in options:
-                needle1 = option.replace('no-', '')
-                needle2 = option[:2] + 'no-' + option[2:]
-                if needle1 in options or needle2 in options:
-                    options.append(option)
+                opposite = cls.get_opposite_option(option)
+                if opposite in options:
+                    default_options.append(option)
 
         def convert_to_option(self, tableentry, tableitem,
                               itemformats, parents):
             itemformats[0].delete_children_named('indexterm')
             text = itemformats[0].get_all_text()
             options = []
+            default_options = []
 
             for itemformat in itemformats:
                 itemtext = itemformat.get_all_text().strip()
@@ -1057,7 +1063,7 @@ def fixup_table_entry(tree):
                                 option = text.data
                                 if not option.startswith('-'):
                                     option = '-' + option
-                                self.maybe_add_option_to_options(options, option)
+                                self.maybe_add_option_to_options(options, default_options, option)
                                 # Drop this <indexcommand>
                                 continue
                 new_children.append(child)
@@ -1070,6 +1076,22 @@ def fixup_table_entry(tree):
                     options = [options[0]]
 
             if found_indexcommand:
+                # Add negative form as a new option entry:
+                if len(default_options) == 1:
+                    parent = parents[-1]
+                    assert tableentry in parent.children
+                    index = parent.children.index(tableentry)
+                    negative = Element('negative-option')
+                    negative.rst_kind = Directive('option', default_options[0])
+                    nopt = Element('opt')
+                    nopt.rst_kind = InlineMarkup('option')
+                    nopt.children = [Text(self.get_opposite_option(default_options[-1]))]
+                    negative.children = [Text('Default option value for '), nopt, Text('.')]
+                    parent.children.insert(index + 1, negative)
+                else:
+                    # FIXME: handle it
+                    options += default_options
+
                 # Then it is a description of an option, mark it as such,
                 # using all the option names found, and purge the
                 # <indexcommand> instances:

@@ -92,7 +92,8 @@ suppress_warnings = [
 ]
 
 # RTD template requires at least Sphinx 1.6
-needs_sphinx = '1.6'
+# sphinx-build -j auto is supported since 1.7
+needs_sphinx = '1.7'
 
 # Use xelatex by default
 latex_engine = 'xelatex'

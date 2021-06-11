@@ -35,6 +35,9 @@ gcc_DEVPHASE = __read_file('DEV-PHASE')
 gcc_DATESTAMP = __read_file('DATESTAMP')
 gcc_REVISION = __read_file('REVISION')
 
+VERSION_PACKAGE = os.getenv('VERSION_PACKAGE', '(GCC)')
+BUGURL = os.getenv('BUGURL', 'https://gcc.gnu.org/bugs/')
+
 # The short X.Y version.
 version = gcc_BASEVER
 
@@ -45,9 +48,9 @@ release = ('%s (%s %s%s)'
 
 rst_epilog = '''
 .. |gcc_version| replace:: %s
-.. |package_version| replace:: (GCC)
-.. |bugurl| replace:: https://gcc.gnu.org/bugs/
-''' % gcc_BASEVER
+.. |package_version| replace:: %s
+.. |bugurl| replace:: %s
+''' % (gcc_BASEVER, VERSION_PACKAGE, BUGURL)
 
 # -- General configuration ---------------------------------------------------
 

@@ -5,20 +5,20 @@ default: html man latexpdf info
 
 .PHONY: html
 html:
-	for dir in $(FOLDERS); do $(MAKE) -C $$dir html $MAKEOPTS; done
+	for dir in $(FOLDERS); do $(MAKE) -C $$dir html $(MAKEOPTS); done
 
 .PHONY: man
 man:
-	for dir in $(FOLDERS); do $(MAKE) -C $$dir man $MAKEOPTS; done
+	for dir in $(FOLDERS); do $(MAKE) -C $$dir man $(MAKEOPTS); done
 
 .PHONY: latexpdf
 latexpdf:
-	for dir in $(FOLDERS); do $(MAKE) -C $$dir latexpdf $MAKEOPTS; done
+	for dir in $(FOLDERS); do $(MAKE) -C $$dir latexpdf $(MAKEOPTS); done
 
 .PHONY: info
 info:
-	for dir in $(FOLDERS); do $(MAKE) -C $$dir info $MAKEOPTS; done
+	for dir in $(FOLDERS); do $(MAKE) -C $$dir info $(MAKEOPTS); done
 
 .PHONY: clean
 clean:
-	for dir in $(FOLDERS); do $(MAKE) -C $$dir clean $MAKEOPTS; done
+	for dir in $(FOLDERS); do $(MAKE) -C $$dir clean $(MAKEOPTS); done

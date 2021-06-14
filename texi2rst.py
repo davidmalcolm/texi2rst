@@ -1521,7 +1521,7 @@ def fixup_inline_markup(tree):
                 element.rst_kind = MatchedInlineMarkup('*')
             elif element.kind == 'strong':
                 element.rst_kind = MatchedInlineMarkup('**')
-            elif element.kind == 'samp':
+            elif element.kind in ('samp', 'file'):
                 element.rst_kind = InlineMarkup('samp')
             elif element.kind == 'verbatim':
                 element.rst_kind = Directive('code-block', 'c++')

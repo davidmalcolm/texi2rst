@@ -825,9 +825,11 @@ def fixup_quoting(tree):
     class QuoteFixer(NoopVisitor):
         def previsit_element(self, element, parents):
             for child in element.children:
-                if (isinstance(child, Text) and '*' in child.data
-                        and (isinstance(element.rst_kind, Title) or not element.rst_kind)):
-                    child.data = child.data.replace('*', '\\*')
+                if isinstance(child, Text):
+                    if isinstance(element.rst_kind, Title) or not element.rst_kind:
+                        child.data = child.data.replace('*', '\\*')
+                    elif isinstance(element.rst_kind, InlineMarkup):
+                        child.data = child.data.replace('\\', '\\\\')
 
     QuoteFixer().visit(tree)
     return tree

@@ -200,6 +200,7 @@ class InlineMarkupTests(Texi2RstTests):
         out = self.make_rst_string(doc)
         self.assertEqual('x86-\\*-\\*\n\n', out)
 
+
 class TitleTests(Texi2RstTests):
     def test_section_title(self):
         xml_src = ('<texinfo><sectiontitle>A section title</sectiontitle>'

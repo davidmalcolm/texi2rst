@@ -193,6 +193,13 @@ class InlineMarkupTests(Texi2RstTests):
         out = self.make_rst_string(doc)
         self.assertEqual('**I am strong**\n\n', out)
 
+    def test_escaping(self):
+        xml_src = '<para>x86-*-*</para>'
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual('x86-\\*-\\*\n\n', out)
+
 class TitleTests(Texi2RstTests):
     def test_section_title(self):
         xml_src = ('<texinfo><sectiontitle>A section title</sectiontitle>'

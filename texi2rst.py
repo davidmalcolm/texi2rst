@@ -821,6 +821,17 @@ def fixup_licenses(tree):
     return tree
 
 
+def fixup_quoting(tree):
+    class QuoteFixer(NoopVisitor):
+        def previsit_element(self, element, parents):
+            for child in element.children:
+                if isinstance(child, Text) and not element.rst_kind and '*' in child.data:
+                    child.data = child.data.replace('*', '\\*')
+
+    QuoteFixer().visit(tree)
+    return tree
+
+
 def fixup_wrapped_options(tree):
     class WrapperOptionFixer(NoopVisitor):
         # Move out all inner elements in option nodes as siblings:
@@ -1596,6 +1607,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_machine_dependant_options(tree)
     tree = fixup_params(tree)
     tree = fixup_text_variables(tree)
+    tree = fixup_quoting(tree)
     tree = fixup_fortran_functions(tree)
     tree = fixup_libquadmath(tree)
     tree = fixup_licenses(tree)

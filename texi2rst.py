@@ -1507,6 +1507,8 @@ def fixup_inline_markup(tree):
                 element.rst_kind = InlineMarkup('envvar')
             elif element.kind == 'emph':
                 element.rst_kind = MatchedInlineMarkup('*')
+            elif element.kind == 'strong':
+                element.rst_kind = MatchedInlineMarkup('**')
             elif element.kind == 'samp':
                 element.rst_kind = InlineMarkup('samp')
             elif element.kind == 'verbatim':

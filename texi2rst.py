@@ -825,7 +825,9 @@ def fixup_quoting(tree):
     class QuoteFixer(NoopVisitor):
         def previsit_element(self, element, parents):
             for child in element.children:
-                if isinstance(child, Text) and not element.rst_kind and '*' in child.data:
+                print(type(element.rst_kind))
+                if (isinstance(child, Text) and '*' in child.data
+                        and (isinstance(element.rst_kind, Title) or not element.rst_kind)):
                     child.data = child.data.replace('*', '\\*')
 
     QuoteFixer().visit(tree)
@@ -1366,8 +1368,6 @@ def fixup_titles(tree):
                 return False
 
             element.collapse_to_text()
-            # escape asterisks
-            element.children[0].data = element.children[0].data.replace('*', '\\*')
 
     TitleFixer().visit(tree)
     return tree

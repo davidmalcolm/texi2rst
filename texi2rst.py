@@ -583,7 +583,7 @@ def fixup_ignored_strings(tree):
 def fixup_vars_in_samps(tree):
     class VarsInSampsFixer(NoopVisitor):
         def previsit_element(self, element, parents):
-            if element.kind == 'samp':
+            if element.kind in ('samp', 'file'):
                 for i, child in enumerate(element.children):
                     if isinstance(child, Element) and child.kind == 'var':
                         element.children[i] = Text(child.get_all_text())

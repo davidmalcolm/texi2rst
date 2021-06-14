@@ -1349,7 +1349,7 @@ def fixup_titles(tree):
                 element.rst_kind = Title(element, underline)
             elif element.kind == 'subsubheading':
                 element.rst_kind = Title(element, '^')
-            elif element.kind == 'heading':
+            elif element.kind in ('heading', 'subheading'):
                 element.rst_kind = Title(element, '=')
             else:
                 return False

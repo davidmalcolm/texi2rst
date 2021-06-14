@@ -825,7 +825,6 @@ def fixup_quoting(tree):
     class QuoteFixer(NoopVisitor):
         def previsit_element(self, element, parents):
             for child in element.children:
-                print(type(element.rst_kind))
                 if (isinstance(child, Text) and '*' in child.data
                         and (isinstance(element.rst_kind, Title) or not element.rst_kind)):
                     child.data = child.data.replace('*', '\\*')

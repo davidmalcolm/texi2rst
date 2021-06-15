@@ -1292,10 +1292,8 @@ def fixup_examples(tree):
         def guess_language(self, data):
             if 'DO ' in data:
                 return 'fortran'
-            elif data.startswith('gcc ') or data.startswith('% gcc '):
-                return 'bash'
-            elif data.startswith('--'):
-                return 'bash'
+            elif data.startswith('gcc ') or data.startswith('% gcc ') or data.startswith('--'):
+                return 'shell-session'
 
             data = data.strip()
             if data and data[0] == '{' and data[1:].lstrip().startswith('"'):

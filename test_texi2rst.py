@@ -646,7 +646,7 @@ diff /tmp/O2-opts /tmp/O3-opts | grep enabled
         doc = fixup_examples(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            (u'''.. code-block:: bash
+            (u'''.. code-block:: shell-session
 
   gcc -c -Q -O3 --help=optimizers > /tmp/O3-opts
   gcc -c -Q -O2 --help=optimizers > /tmp/O2-opts

@@ -1553,28 +1553,53 @@ def fixup_inline_markup(tree):
 
 def fixup_deftype(tree):
     class DefTypeFixup(NoopVisitor):
+        MAPPING = {'deftypefn': 'function',
+                   'deftypefun': 'function',
+                   'deftypefnx': 'function',
+                   'defmac': 'c:macro',
+                   'deftypevr': 'c:var'}
+
+        def _parse_element(self, element):
+            if element.kind in self.MAPPING:
+                declaration = ''
+                definitionterm = element.first_element_named('definitionterm')
+                if not definitionterm:
+                    return None
+                for child in definitionterm.children:
+                    if isinstance(child, Text):
+                        declaration += child.data
+                    elif child.kind != 'defcategory':
+                        declaration += child.get_all_text()
+                return declaration
+            else:
+                return None
+
         """
         Look for <deftypefn> elements..
         """
         def previsit_element(self, element, parents):
             if isinstance(element, Element):
-                MAPPING = {'deftypefn': 'function',
-                           'deftypefun': 'function',
-                           'defmac': 'c:macro',
-                           'deftypevr': 'c:var'}
-                if element.kind in MAPPING:
-                    declaration = ''
-                    for child in element.first_element_named('definitionterm').children:
-                        if isinstance(child, Text):
-                            declaration += child.data
-                        elif child.kind != 'defcategory':
-                            declaration += child.get_all_text()
-
+                declaration = self._parse_element(element)
+                lastfn = None
+                if declaration:
                     definitionitem = element.first_element_named('definitionitem')
+                    fns = element.get_all_elements('deftypefnx')
+                    lastfn = element
+                    element.rst_kind = Directive(self.MAPPING[element.kind], declaration.strip())
+
+                    # process deftypefnx elements
+                    for fn in fns:
+                        declaration = self._parse_element(fn)
+                        fnelement = Element('deftypefnx')
+                        fnelement.rst_kind = Directive(self.MAPPING[fnelement.kind], declaration.strip())
+                        i = parents[-1].children.index(lastfn)
+                        parents[-1].children.insert(i + 1, fnelement)
+                        lastfn = fnelement
+
                     element.children = []
                     if definitionitem:
-                        element.children.append(definitionitem)
-                    element.rst_kind = Directive(MAPPING[element.kind], declaration.strip())
+                        lastfn.children = [definitionitem]
+
     DefTypeFixup().visit(tree)
     return tree
 

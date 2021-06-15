@@ -291,15 +291,15 @@ def split(tree):
             text = re.sub(r'-+', '-', text)
             return text
 
-        def should_split(self, element, text):
+        def should_split(self, element, text, parent_text):
             if element.kind in self.split_kinds:
                 return True
             # split '$target Option' subsections
             elif (args and 'gcc.xml' in args.xml_file and element.kind == 'subsection'
                     and (text.endswith('Options')
                          or text.endswith('Function Attributes')
-                         or text.endswith('Built-in Functions')
-                         or text == 'Options for System V')):
+                         or text == 'Options for System V'
+                         or parent_text == 'Built-in Functions Specific to Particular Target Machines')):
                 return True
             elif text == 'Contributors to GCC':
                 return True
@@ -309,7 +309,9 @@ def split(tree):
         def previsit_element(self, element, parents):
             sectiontitle = element.first_element_named('sectiontitle')
             text = sectiontitle.get_all_text() if sectiontitle else None
-            if self.should_split(element, text):
+            psectiontitle = parents[-1].first_element_named('sectiontitle') if parents else None
+            parent_text = psectiontitle.get_all_text() if psectiontitle else None
+            if self.should_split(element, text, parent_text):
                 if text:
                     element.rst_kind = OutputFile(self._prune_filename(text))
 

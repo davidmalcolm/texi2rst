@@ -1024,7 +1024,10 @@ def fixup_table_entry(tree):
             section = parents[-2].first_element_named('sectiontitle')
             if section:
                 section_name = section.get_all_text()
-                for needle in ('Function Attributes', 'Variable Attributes', 'Type Attributes'):
+                for needle in ('Function Attributes', 'Variable Attributes', 'Type Attributes',
+                               'Invoking gcov', 'Invoking gcov-tool',
+                               'gcov-dump---an Offline Gcda and Gcno Profile Dump Tool',
+                               'lto-dump---Tool for dumping LTO object files.'):
                     if section_name.endswith(needle):
                         return True
 

@@ -200,6 +200,13 @@ class InlineMarkupTests(Texi2RstTests):
         out = self.make_rst_string(doc)
         self.assertEqual('x86-\\*-\\*\n\n', out)
 
+    def test_t(self):
+        xml_src = '<para><t><w>&quot;p = \\&quot;foo\\\\n\\&quot;;&quot;</w></t></para>'
+        doc = from_xml_string(xml_src)
+        doc = convert_to_rst(doc, self.ctxt)
+        out = self.make_rst_string(doc)
+        self.assertEqual('``"p = \\"foo\\\\n\\";"``\n\n', out)
+
 
 class TitleTests(Texi2RstTests):
     def test_section_title(self):

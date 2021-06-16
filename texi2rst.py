@@ -1563,7 +1563,8 @@ def fixup_deftype(tree):
                    'deftypefnx': 'function',
                    'defmac': 'c:macro',
                    'defmacx': 'c:macro',
-                   'deftypevr': 'c:var'}
+                   'deftypevr': 'c:var',
+                   'deftypevrx': 'c:var'}
 
         def _parse_element(self, element):
             if element.kind in self.MAPPING:
@@ -1593,7 +1594,8 @@ def fixup_deftype(tree):
                     element.rst_kind = Directive(self.MAPPING[element.kind], declaration.strip())
 
                     # process deftypefnx and defmacx elements
-                    for fn in element.get_all_elements('deftypefnx') + element.get_all_elements('defmacx'):
+                    for fn in (element.get_all_elements('deftypefnx') + element.get_all_elements('defmacx')
+                               + element.get_all_elements('deftypevrx')):
                         declaration = self._parse_element(fn)
                         subelement = Element(fn.kind)
                         subelement.rst_kind = Directive(self.MAPPING[subelement.kind], declaration.strip())

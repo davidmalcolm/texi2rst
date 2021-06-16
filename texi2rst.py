@@ -1509,7 +1509,7 @@ def fixup_inline_markup(tree):
                 # wrap the variable in braces
                 element.prepend_text('{')
                 element.add_text('}')
-            elif element.kind == 'code':
+            elif element.kind in ('t', 'code'):
                 # we cannot support e.g. <var> in a <code> element
                 element.collapse_to_text()
                 element.rst_kind = MatchedInlineMarkup('``')

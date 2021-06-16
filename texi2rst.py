@@ -1562,6 +1562,7 @@ def fixup_deftype(tree):
                    'deftypefun': 'function',
                    'deftypefnx': 'function',
                    'defmac': 'c:macro',
+                   'defmacx': 'c:macro',
                    'deftypevr': 'c:var'}
 
         def _parse_element(self, element):
@@ -1588,18 +1589,17 @@ def fixup_deftype(tree):
                 lastfn = None
                 if declaration:
                     definitionitem = element.first_element_named('definitionitem')
-                    fns = element.get_all_elements('deftypefnx')
                     lastfn = element
                     element.rst_kind = Directive(self.MAPPING[element.kind], declaration.strip())
 
-                    # process deftypefnx elements
-                    for fn in fns:
+                    # process deftypefnx and defmacx elements
+                    for fn in element.get_all_elements('deftypefnx') + element.get_all_elements('defmacx'):
                         declaration = self._parse_element(fn)
-                        fnelement = Element('deftypefnx')
-                        fnelement.rst_kind = Directive(self.MAPPING[fnelement.kind], declaration.strip())
+                        subelement = Element(fn.kind)
+                        subelement.rst_kind = Directive(self.MAPPING[subelement.kind], declaration.strip())
                         i = parents[-1].children.index(lastfn)
-                        parents[-1].children.insert(i + 1, fnelement)
-                        lastfn = fnelement
+                        parents[-1].children.insert(i + 1, subelement)
+                        lastfn = subelement
 
                     element.children = []
                     if definitionitem:

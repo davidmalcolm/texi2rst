@@ -301,6 +301,11 @@ def split(tree):
                          or text == 'Options for System V'
                          or parent_text == 'Built-in Functions Specific to Particular Target Machines')):
                 return True
+            elif (args and 'gccint.xml' in args.xml_file and element.kind == 'subsection'
+                    and parent_text in ('The gcc Subdirectory', 'Directives used within DejaGnu tests',
+                                        'Tuple specific accessors', 'Operand Constraints'
+                                        'Stack Layout and Calling Conventions')):
+                return True
             elif text == 'Contributors to GCC':
                 return True
             else:

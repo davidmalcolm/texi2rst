@@ -303,7 +303,7 @@ def split(tree):
                 return True
             elif (args and 'gccint.xml' in args.xml_file and element.kind == 'subsection'
                     and parent_text in ('The gcc Subdirectory', 'Directives used within DejaGnu tests',
-                                        'Tuple specific accessors', 'Operand Constraints'
+                                        'Tuple specific accessors',
                                         'Stack Layout and Calling Conventions')):
                 return True
             elif text == 'Contributors to GCC':

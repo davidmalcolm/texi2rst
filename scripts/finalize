@@ -33,6 +33,7 @@ cp -r $SRC/libiberty $DST/libiberty/doc
 
 mkdir -p $DST/doc
 cp -r $SRC/share/* $DST/doc
+cp $SRC/baseconf.py $DST/doc
 
 ./strip.py $DST
 

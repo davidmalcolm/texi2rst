@@ -2,7 +2,7 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS   ?=
+SPHINXOPTS   ?= -j auto -q
 SPHINXBUILD  ?= sphinx-build
 PAPER        ?=
 SOURCEDIR     = .

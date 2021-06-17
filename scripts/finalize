@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+SRC=/home/marxin/Programming/texi2rst-generated/sphinx/
+DST=gccroot/
+
+rm -rf $DST
+
+mkdir -p $DST/gcc/doc
+cp -r $SRC/gcc $DST/gcc/doc
+cp -r $SRC/gccint $DST/gcc/doc
+cp -r $SRC/cpp $DST/gcc/doc
+cp -r $SRC/cppinternals $DST/gcc/doc
+cp -r $SRC/install $DST/gcc/doc
+
+mkdir -p $DST/gcc/go
+cp -r $SRC/gccgo $DST/gcc/go/doc
+
+mkdir -p $DST/gcc/fortran/doc
+cp -r $SRC/gfortran $DST/gcc/fortran/doc
+cp -r $SRC/gfc-internals $DST/gcc/fortran/doc/
+
+mkdir -p $DST/libgomp
+cp -r $SRC/libgomp $DST/libgomp/doc
+
+mkdir -p $DST/libitm
+cp -r $SRC/libitm $DST/libitm/doc
+
+mkdir -p $DST/libquadmath
+cp -r $SRC/libquadmath $DST/libquadmath/doc
+
+mkdir -p $DST/libiberty
+cp -r $SRC/libiberty $DST/libiberty/doc
+
+cp -r $SRC/share $DST
+
+./strip.py $DST

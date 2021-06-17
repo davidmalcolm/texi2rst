@@ -36,6 +36,6 @@ cp -r $SRC/share/* $DST/doc
 
 ./strip.py $DST
 
-mv $SRC/gcc/Makefile /tmp/Makefile
+cp $SRC/gcc/Makefile /tmp/Makefile
 find $DST -name Makefile | xargs rm
 mv /tmp/Makefile $DST/doc

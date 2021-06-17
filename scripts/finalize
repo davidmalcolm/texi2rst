@@ -31,6 +31,11 @@ cp -r $SRC/libquadmath $DST/libquadmath/doc
 mkdir -p $DST/libiberty
 cp -r $SRC/libiberty $DST/libiberty/doc
 
-cp -r $SRC/share $DST
+mkdir -p $DST/doc
+cp -r $SRC/share/* $DST/doc
 
 ./strip.py $DST
+
+mv $SRC/gcc/Makefile /tmp/Makefile
+find $DST -name Makefile | xargs rm
+mv /tmp/Makefile $DST/doc

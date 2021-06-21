@@ -105,7 +105,7 @@ jobs:
       - run: du -hs texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
       - name: Convert man pages to HTML
-        run: find . -name '*.1' | xargs -i bash -c "groff -mandoc -Thtml {} > {}.html"
+        run: find . -name '*.[17]' | xargs -i bash -c "groff -mandoc -Thtml {} > {}.html"
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
       - run: make info -j`nproc`

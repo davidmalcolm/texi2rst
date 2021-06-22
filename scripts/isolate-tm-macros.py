@@ -13,22 +13,23 @@ folder = os.path.join(args.rst_dir, 'gccint/target-description-macros-and-functi
 
 d = {}
 
-for filename in os.listdir(folder):
-    lines = open(os.path.join(folder, filename)).read().splitlines()
+for root, _, files in os.walk(folder):
+    for filename in files:
+        lines = open(os.path.join(root, filename)).read().splitlines()
 
-    name = None
-    for line in lines:
-        line = line.lstrip()
-        if line.startswith('xxxHOOK'):
-            name = line.split(':')[-1]
-            assert name not in d
-            d[name] = []
-        elif line.startswith('yyyHOOK'):
-            assert name
-            name = None
-        elif name:
-            assert '.. function' not in line
-            d[name].append(line)
+        name = None
+        for line in lines:
+            line = line.lstrip()
+            if line.startswith('xxxHOOK'):
+                name = line.split(':')[-1]
+                assert name not in d
+                d[name] = []
+            elif line.startswith('yyyHOOK'):
+                assert name
+                name = None
+            elif name:
+                assert '.. function' not in line
+                d[name].append(line)
 
 folder = os.path.join(args.gcc_dir, 'gcc')
 files = ('target.def', 'c-family/c-target.def', 'common/common-target.def', 'd/d-target.def')

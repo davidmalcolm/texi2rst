@@ -27,7 +27,7 @@ for root, _, files in os.walk(folder):
                 newlines.append('')
             elif line.lstrip().startswith('.. hook-end'):
                 name = None
-            else:
+            elif not name:
                 newlines.append(line)
 
         with open(full, 'w') as f:

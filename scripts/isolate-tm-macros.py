@@ -66,7 +66,7 @@ for filename in files:
                 while newlines and not newlines[-1]:
                     newlines = newlines[:-1]
                 for j in range(len(newlines)):
-                    newlines[j] = newlines[j].replace('"', '\\"')
+                    newlines[j] = newlines[j].replace('\\', '\\\\').replace('"', '\\"')
 
                 f.write('\\n\\\n'.join(newlines))
                 f.write('",\n')

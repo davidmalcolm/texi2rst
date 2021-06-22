@@ -176,6 +176,8 @@ def combine_commments(tree):
             new_children = []
             for child in element.children:
                 if isinstance(child, Comment):
+                    if 'hook-start' in child.data or 'hook-end' in child.data:
+                        return
                     text = child.data
                     if self.ignore_comment(text):
                         continue

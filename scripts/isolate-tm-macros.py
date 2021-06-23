@@ -9,7 +9,7 @@ parser.add_argument('gcc_dir', help='Directory GCC source')
 parser.add_argument('--replace', action='store_true', help='Replace .def files in a repo')
 args = parser.parse_args()
 
-folder = os.path.join(args.rst_dir, 'gccint/target-description-macros-and-functions')
+folder = os.path.join(args.rst_dir, 'gccint/target-macros')
 
 d = {}
 

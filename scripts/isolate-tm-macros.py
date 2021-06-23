@@ -54,7 +54,7 @@ for filename in files:
                 f.write(lines[i + 1] + '\n')
                 i += 2
                 assert hookname.startswith('(') and hookname.endswith(',')
-                fullname = prefix + hookname[1:-1]
+                fullname = (prefix + hookname[1:-1]).upper()
                 while not lines[i].endswith('",'):
                     assert lines[i].endswith('\\n\\')
                     assert 'DEFHOOK' not in lines[i]

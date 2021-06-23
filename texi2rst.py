@@ -277,11 +277,19 @@ def fixup_menus(tree):
 
 def split(tree):
     class Splitter(NoopVisitor):
+        MAPPING = {
+                'target-description-macros-and-functions': 'target-macros',
+                'built-in-functions-specific-to-particular-target-machines': 'target-builtins',
+                'runtime-influencing-runtime-behavior-with-environment-variables': 'runtime'
+        }
+
         def __init__(self):
             self.split_kinds = ('chapter', 'section', )
 
         @classmethod
         def _prune_filename(cls, text):
+            if '--' in text:
+                text = text.split('--')[0]
             text = text.lower()
             for c in ' /':
                 text = text.replace(c, '-')
@@ -291,6 +299,10 @@ def split(tree):
             text = text.replace('[no-changes]-', '')
             text = text.replace('[new]-', '')
             text = re.sub(r'-+', '-', text)
+
+            if text in cls.MAPPING:
+                return cls.MAPPING[text]
+
             return text
 
         def should_split(self, element, text, parent_text):

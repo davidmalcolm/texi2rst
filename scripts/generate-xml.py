@@ -38,6 +38,7 @@ with concurrent.futures.ProcessPoolExecutor() as executor:
     cmds.append(f'{cmd} {includes} {args.gcc_dir}/gcc/doc/cppinternals.texi -o {args.output}/cppinternals.xml')
     cmds.append(f'{cmd} {includes} {args.gcc_dir}/gcc/fortran/gfc-internals.texi -o '
                 f'{args.output}/gfc-internals.xml')
+    cmds.append(f'{cmd} {includes} {args.gcc_dir}/gcc/d/gdc.texi -o {args.output}/gdc.xml')
     cmds.append(f'{cmd} {includes} {args.gcc_dir}/libiberty/libiberty.texi -o {args.output}/libiberty.xml')
 
     for cmd in cmds:

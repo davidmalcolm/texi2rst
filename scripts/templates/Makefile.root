@@ -1,4 +1,4 @@
-FOLDERS = cpp cppinternals gcc gccgo gccint gfortran libgomp libitm libquadmath install gfc-internals libiberty demo
+FOLDERS = cpp cppinternals gcc gccgo gccint gfortran libgomp libitm libquadmath install gfc-internals libiberty demo gdc
 MAKEOPTS = SPHINXOPTS="-j auto"
 
 default: html man latexpdf info

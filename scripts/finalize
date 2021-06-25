@@ -20,7 +20,7 @@ cp -r $SRC/gfortran $DST/gcc/fortran/doc
 cp -r $SRC/gfc-internals $DST/gcc/fortran/doc/
 
 mkdir -p $DST/gcc/d
-cp -r $SRC/gccgo $DST/gcc/d/doc
+cp -r $SRC/gdc $DST/gcc/d/doc
 
 mkdir -p $DST/libgomp
 cp -r $SRC/libgomp $DST/libgomp/doc

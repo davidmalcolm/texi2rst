@@ -8,7 +8,7 @@ for root, _, files in os.walk(sys.argv[1]):
         full = os.path.join(root, f)
         parts = root.split('/')
         up2 = '../' * (len(parts) - 1)
-        print(full)
+        # print(full)
         while parts:
             if os.path.exists(os.path.join(*parts, 'conf.py')):
                 break

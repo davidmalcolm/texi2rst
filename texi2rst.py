@@ -233,7 +233,6 @@ def convert_text_to_label(data):
     data = data.replace(' ', '-')
     data = data.replace('\n', '-')
     data = data.replace('/', '-')
-    data = data.replace('#', '')
     data = data.lstrip('_')
     data = data.lower()
     return data
@@ -299,6 +298,7 @@ def split(tree):
             text = text.strip('+').strip('-')
             text = text.replace('[no-changes]-', '')
             text = text.replace('[new]-', '')
+            text = text.replace('#', '')
             text = re.sub(r'-+', '-', text)
 
             if text in cls.MAPPING:

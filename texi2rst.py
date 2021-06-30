@@ -1487,19 +1487,28 @@ def fixup_lists(tree):
         def previsit_element(self, element, parents):
             if element.kind == 'listitem':
                 new_children = []
+                indices = []
                 element.rst_kind = ListItem('*')
                 skip_ws = True
                 for child in element.children:
                     if isinstance(child, Element):
                         if child.kind == 'prepend':
                             continue
-                    if isinstance(child, Text):
+                        elif child.kind == 'cindex' and not new_children:
+                            indices.append(child)
+                            continue
+                    elif isinstance(child, Text):
                         if child.data.isspace():
                             if skip_ws:
                                 continue
+
                     skip_ws = False
                     new_children.append(child)
                 element.children = new_children
+
+                parent = parents[-1]
+                index = parent.children.index(element)
+                parent.children = parent.children[:index] + indices + parent.children[index:]
 
     ListFixer().visit(tree)
     return tree

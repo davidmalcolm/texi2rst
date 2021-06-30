@@ -617,8 +617,8 @@ def fixup_vars_in_samps(tree):
 
 def fixup_element_spacing(tree):
     class ElementSpacingFixer(NoopVisitor):
-        ALLOWED_CHARS_AFTER = (' ', '\n', '.', ',')
-        ALLOWED_CHARS_BEFORE = (' ', '\n')
+        ALLOWED_CHARS_AFTER = (' ', '\n', '.', ',', ')')
+        ALLOWED_CHARS_BEFORE = (' ', '\n', '(')
 
         @staticmethod
         def element_needs_space_p(element):

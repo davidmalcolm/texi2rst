@@ -1152,9 +1152,7 @@ def fixup_table_entry(tree):
                 tableentry.delete_children_named('findex')
                 return True
             elif self.handle_as_option(text, parents):
-                # For now skip 'vector' and 'const' attributes that are also keywords
-                if text not in ('vector', 'const'):
-                    detected_option_directives.add(text)
+                detected_option_directives.add(text)
                 tableentry.rst_kind = Directive('option', text)
                 tableentry.children = new_children
                 tableentry.delete_children_named('findex')

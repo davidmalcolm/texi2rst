@@ -20,6 +20,7 @@ TODO:
 """
 
 args = None
+detected_option_directives = set()
 
 
 # Convert from XML nodes to our easier-to-work-with data structure
@@ -953,6 +954,9 @@ def fixup_table_entry(tree):
     Transform this to a definition list.
     """
     class TableEntryFixer(NoopVisitor):
+        def __init__(self):
+            self.detected_option_directives = set()
+
         def previsit_element(self, element, parents):
             # Convert:
             #   <itemformat command="COMMAND">TEXT</itemformat>
@@ -1148,6 +1152,9 @@ def fixup_table_entry(tree):
                 tableentry.delete_children_named('findex')
                 return True
             elif self.handle_as_option(text, parents):
+                # For now skip 'vector' and 'const' attributes that are also keywords
+                if text not in ('vector', 'const'):
+                    detected_option_directives.add(text)
                 tableentry.rst_kind = Directive('option', text)
                 tableentry.children = new_children
                 tableentry.delete_children_named('findex')
@@ -1542,7 +1549,10 @@ def fixup_inline_markup(tree):
             elif element.kind in ('t', 'code'):
                 # we cannot support e.g. <var> in a <code> element
                 element.collapse_to_text()
-                element.rst_kind = MatchedInlineMarkup('``')
+                if element.kind == 'code' and element.get_all_text() in detected_option_directives:
+                    element.rst_kind = InlineMarkup('option')
+                else:
+                    element.rst_kind = MatchedInlineMarkup('``')
             elif element.kind == 'dfn':
                 element.rst_kind = InlineMarkup('dfn')
             elif element.kind == 'env':

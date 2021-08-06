@@ -1123,7 +1123,7 @@ def fixup_table_entry(tree):
                     nopt = Element('opt')
                     nopt.rst_kind = InlineMarkup('option')
                     nopt.children = [Text(self.get_opposite_option(default_options[-1]))]
-                    negative.children = [Text('Default option value for '), nopt, Text('.')]
+                    negative.children = [Text('Default setting; overrides '), nopt, Text('.')]
                     parent.children.insert(index + 1, negative)
                 else:
                     # FIXME: handle it

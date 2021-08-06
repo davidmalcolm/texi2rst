@@ -352,7 +352,7 @@ This warning is enabled by <option>-Wall</option>.
 
 .. option:: -Wno-unused-label
 
-  Default option value for :option:`-Wunused-label`.
+  Default setting; overrides :option:`-Wunused-label`.
 
 ''',
             out)
@@ -385,7 +385,7 @@ types.)
 
 .. option:: -Wno-strict-prototypes
 
-  Default option value for :option:`-Wstrict-prototypes`.
+  Default setting; overrides :option:`-Wstrict-prototypes`.
 
 ''',
             out)

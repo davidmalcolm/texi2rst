@@ -72,6 +72,9 @@ exclude_patterns = ['_build']
 # For legacy Sphinx versions (< 2.0)
 master_doc = 'index'
 
+# Do not highlight by default
+highlight_language = 'none'
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

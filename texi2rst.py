@@ -20,7 +20,7 @@ TODO:
 """
 
 args = None
-detected_option_directives = set()
+detected_option_directives = {}
 
 
 # Convert from XML nodes to our easier-to-work-with data structure
@@ -681,7 +681,7 @@ def fixup_params(tree):
                 else:
                     self.in_param_option = False
             elif self.in_param_option and element.kind == 'code' and parents[-1].kind == 'item':
-                element.rst_kind = Directive('option', element.get_all_text())
+                element.rst_kind = Directive('gcc-param', element.get_all_text())
                 element.children = []
 
     ParamFixer().visit(tree)
@@ -954,9 +954,6 @@ def fixup_table_entry(tree):
     Transform this to a definition list.
     """
     class TableEntryFixer(NoopVisitor):
-        def __init__(self):
-            self.detected_option_directives = set()
-
         def previsit_element(self, element, parents):
             # Convert:
             #   <itemformat command="COMMAND">TEXT</itemformat>
@@ -1051,15 +1048,15 @@ def fixup_table_entry(tree):
                 section_name = section.get_all_text()
                 for needle in ('Function Attributes', 'Variable Attributes', 'Type Attributes'):
                     if section_name.endswith(needle):
-                        return True
+                        return 'gcc-attr'
 
             for parent in parents[1:]:
                 section = parent.first_element_named('sectiontitle')
                 if section:
                     section_name = section.get_all_text()
                     if text.startswith('--') and section_name == 'Configuration':
-                        return True
-            return False
+                        return 'option'
+            return None
 
         @classmethod
         def get_opposite_option(cls, option):
@@ -1151,14 +1148,16 @@ def fixup_table_entry(tree):
                 # any <findex> element below <tableitem>.
                 tableentry.delete_children_named('findex')
                 return True
-            elif self.handle_as_option(text, parents):
-                # For now skip 'vector' and 'const' attributes that are also keywords
-                if text not in ('vector', 'const'):
-                    detected_option_directives.add(text)
-                tableentry.rst_kind = Directive('option', text)
-                tableentry.children = new_children
-                tableentry.delete_children_named('findex')
-                return True
+            else:
+                directive = self.handle_as_option(text, parents)
+                if directive:
+                    # For now skip 'vector' and 'const' attributes that are also keywords
+                    if text not in ('vector', 'const'):
+                        detected_option_directives[text] = directive
+                    tableentry.rst_kind = Directive(directive, text)
+                    tableentry.children = new_children
+                    tableentry.delete_children_named('findex')
+                    return True
 
         def convert_to_definition_list(self, tableterm, tableitem):
             tableterm.rst_kind = DefinitionListHeader()
@@ -1549,8 +1548,9 @@ def fixup_inline_markup(tree):
             elif element.kind in ('t', 'code'):
                 # we cannot support e.g. <var> in a <code> element
                 element.collapse_to_text()
-                if element.kind == 'code' and element.get_all_text() in detected_option_directives:
-                    element.rst_kind = InlineMarkup('option')
+                text = element.get_all_text()
+                if element.kind == 'code' and text in detected_option_directives:
+                    element.rst_kind = InlineMarkup(detected_option_directives[text])
                 else:
                     element.rst_kind = MatchedInlineMarkup('``')
             elif element.kind == 'dfn':

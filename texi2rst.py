@@ -1453,28 +1453,18 @@ def fixup_xrefs(tree):
         def previsit_element(self, element, parents):
             if element.kind in ('xref', 'pxref'):
                 xrefnodename = element.first_element_named('xrefnodename')
-                ref_desc = self.get_desc(element)
                 ref_file = element.first_element_named('xrefinfofile')
                 ref_name = convert_text_to_label(xrefnodename.get_all_text())
                 ref = Element('ref', {})
                 if ref_file:
                     ref_name = ref_file.get_all_text() + ':' + ref_name
-                ref.rst_kind = Ref(ref_desc, ref_name)
+                ref.rst_kind = Ref(ref_name)
                 if element.kind == 'xref':
                     text = 'See '
                 else:
                     assert element.kind == 'pxref'
                     text = 'see '
                 element.children = [Text(text), ref]
-
-        def get_desc(self, element):
-            xrefprinteddesc = element.first_element_named('xrefprinteddesc')
-            if not xrefprinteddesc:
-                return None
-            desc = xrefprinteddesc.get_sole_text()
-            if not desc:
-                return None
-            return desc.data
 
     XRefFixer().visit(tree)
     return tree
@@ -1726,18 +1716,14 @@ class MatchedInlineMarkup(RstKind):
 
 
 class Ref(RstKind):
-    def __init__(self, desc, name):
-        self.desc = desc
+    def __init__(self, name):
         self.name = name
 
     def __repr__(self):
-        return 'Ref(%r, %r)' % (self.desc, self.name)
+        return 'Ref(%r)' % self.name
 
     def before(self, w):
-        if self.desc:
-            w.write(':ref:`%s <%s>`' % (self.desc, self.name))
-        else:
-            w.write(':ref:`%s`' % self.name)
+        w.write(':ref:`%s`' % self.name)
 
     def after(self, w):
         pass

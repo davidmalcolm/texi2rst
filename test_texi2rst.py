@@ -896,7 +896,7 @@ class XRefTests(Texi2RstTests):
         self.maxDiff = 2000
         self.assertEqual(
             (u'''Some text.
-See :ref:`Options Controlling C Dialect <c-dialect-options>`.
+See :ref:`c-dialect-options`.
 
 '''),
         out)

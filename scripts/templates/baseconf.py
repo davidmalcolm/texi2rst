@@ -58,7 +58,8 @@ rst_epilog = '''
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'gcc_sphinx'
+    'gcc_sphinx',
+    'sphinx.ext.intersphinx'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -110,3 +111,9 @@ texinfo_elements = { 'preamble': """
 @definfoenclose emph,','
 """
 }
+
+# Cross manual reference mapping
+for manual in ['cpp', 'cppinternals', 'fortran', 'gcc', 'gccgo', 'gccint', 'gdc',
+               'gfc-internals', 'gnat-style', 'gnat_rm', 'gnat_ugn', 'install',
+               'libgccjit', 'libgomp', 'libiberty', 'libitm', 'libquadmath']:
+    intersphinx_mapping[manual] = ('https://splichal.eu/scripts/sphinx/{manual}/_build/html/', None)

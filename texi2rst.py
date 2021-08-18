@@ -1454,8 +1454,11 @@ def fixup_xrefs(tree):
             if element.kind in ('xref', 'pxref'):
                 xrefnodename = element.first_element_named('xrefnodename')
                 ref_desc = self.get_desc(element)
+                ref_file = element.first_element_named('xrefinfofile')
                 ref_name = convert_text_to_label(xrefnodename.get_all_text())
                 ref = Element('ref', {})
+                if ref_file:
+                    ref_name = ref_file.get_all_text() + ':' + ref_name
                 ref.rst_kind = Ref(ref_desc, ref_name)
                 if element.kind == 'xref':
                     text = 'See '

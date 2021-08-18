@@ -117,4 +117,4 @@ intersphinx_mapping = {}
 for manual in ['cpp', 'cppinternals', 'fortran', 'gcc', 'gccgo', 'gccint', 'gdc',
                'gfc-internals', 'gnat-style', 'gnat_rm', 'gnat_ugn', 'install',
                'libgccjit', 'libgomp', 'libiberty', 'libitm', 'libquadmath']:
-    intersphinx_mapping[manual] = ('https://splichal.eu/scripts/sphinx/{manual}/_build/html/', None)
+    intersphinx_mapping[manual] = (f'https://splichal.eu/scripts/sphinx/{manual}/_build/html/', None)

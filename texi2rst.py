@@ -725,6 +725,7 @@ def fixup_fortran_functions(tree):
                     tableentry.rst_kind = Directive('function', function)
                     newchildren = []
                     newchildren2 = []
+                    fname_fixed = False
                     for table in tableentry.children:
                         assert table.kind == 'tableentry'
                         if isinstance(table.rst_kind, Directive) and table.rst_kind.name == 'envvar':
@@ -745,6 +746,7 @@ def fixup_fortran_functions(tree):
                                 code = code.get_all_text()
                                 if code.startswith(function):
                                     tableentry.rst_kind.args = code
+                                    fname_fixed = True
                         elif termname == 'Return value':
                             ret = Element('param')
                             ret.rst_kind = FnDirective('return')
@@ -769,6 +771,15 @@ def fixup_fortran_functions(tree):
                             if stitle.startswith('_gfortran_'):
                                 tableentry.rst_kind.args = titem.get_all_text().replace('\n', ' ')
                             else:
+                                last = titem.get_all_text().strip().splitlines()[-1]
+                                # Handle things like: RESULT = MINLOC(ARRAY [, MASK], [,KIND] [,BACK])
+                                if not fname_fixed:
+                                    last = last.replace('CALL ', '')
+                                    if '=' in last:
+                                        last = last.split('=')[-1].strip()
+                                    last = last.replace('[', '').replace(']', '')
+                                    tableentry.rst_kind.args = last
+                                    fname_fixed = True
                                 code = Element('syntax')
                                 code.rst_kind = Directive('code-block', 'fortran')
                                 code.children = [Text(titem.get_all_text())]

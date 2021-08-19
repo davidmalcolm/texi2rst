@@ -79,6 +79,8 @@ highlight_language = 'none'
 # Select C++ as a primary domain
 primary_domain = 'cpp'
 
+cpp_id_attributes = ['HOST_WIDE_INT']
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

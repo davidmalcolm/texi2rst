@@ -76,6 +76,9 @@ master_doc = 'index'
 # Do not highlight by default
 highlight_language = 'none'
 
+# Select C++ as a primary domain
+primary_domain = 'cpp'
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

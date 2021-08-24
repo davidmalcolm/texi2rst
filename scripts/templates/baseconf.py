@@ -79,7 +79,7 @@ highlight_language = 'none'
 # Select C++ as a primary domain
 primary_domain = 'cpp'
 
-cpp_id_attributes = ['HOST_WIDE_INT']
+cpp_id_attributes = ['HOST_WIDE_INT', '__memx']
 
 # -- Options for HTML output -------------------------------------------------
 

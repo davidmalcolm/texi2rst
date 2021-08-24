@@ -1322,6 +1322,16 @@ def fixup_examples(tree):
                         lang = self.guess_language(text)
                         example.collapse_to_text()
                         example.rst_kind = Directive('code-block', lang)
+                else:
+                    exdents = []
+                    for child in element.children:
+                        if child.kind == 'exdent':
+                            exdents.append(child.get_all_text())
+                    if exdents:
+                        text = '\n'.join(exdents)
+                        lang = self.guess_language(text)
+                        example.children = [Text(text)]
+                        example.rst_kind = Directive('code-block', lang)
 
         def postvisit_element(self, element, parents):
             if hasattr(element, 'default_language'):

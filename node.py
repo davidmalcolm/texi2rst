@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # A minimal IR for transforming texinfo XML into rst
+
 import re
 from collections import OrderedDict
 

@@ -9,7 +9,9 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    container: "marxin/opensuse-texi2rst"
+    container:
+      image: marxin/opensuse-texi2rst
+      options: --privileged
 
     steps:
       - uses: actions/checkout@v2
@@ -18,7 +20,9 @@ jobs:
 
   generate_rst:
     runs-on: ubuntu-latest
-    container: "marxin/opensuse-texi2rst"
+    container:
+      image: marxin/opensuse-texi2rst
+      options: --privileged
 
     steps:
       - uses: actions/checkout@v2

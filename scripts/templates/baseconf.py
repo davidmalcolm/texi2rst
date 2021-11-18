@@ -11,6 +11,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+import subprocess
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
@@ -29,6 +30,16 @@ def __read_file(name):
         return open(path).read().strip()
     else:
         return ''
+
+
+def __get_git_revision():
+    try:
+        r = subprocess.check_output('git rev-parse --short HEAD aa', shell=True, encoding='utf8',
+                                    stderr=subprocess.DEVNULL)
+        return r.strip()
+    except subprocess.CalledProcessError:
+        return None
+
 
 gcc_BASEVER = __read_file('BASE-VER')
 gcc_DEVPHASE = __read_file('DEV-PHASE')
@@ -93,6 +104,12 @@ html_theme = 'sphinx_rtd_theme'
 # documentation.
 html_theme_options = {
     'prev_next_buttons_location': 'both'
+}
+
+html_last_updated_fmt = ''
+
+html_context = {
+    'commit': __get_git_revision ()
 }
 
 # By default, do not generate any manual pages

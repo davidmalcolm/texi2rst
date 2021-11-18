@@ -34,7 +34,7 @@ def __read_file(name):
 
 def __get_git_revision():
     try:
-        r = subprocess.check_output('git rev-parse --short HEAD aa', shell=True, encoding='utf8',
+        r = subprocess.check_output('git rev-parse --short HEAD', shell=True, encoding='utf8',
                                     stderr=subprocess.DEVNULL)
         return r.strip()
     except subprocess.CalledProcessError:

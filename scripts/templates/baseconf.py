@@ -118,7 +118,6 @@ man_pages = []
 # FIXME: handle WARNINGs: unknown option issues and cross refs
 suppress_warnings = [
     'ref.option',
-    'ref.ref'
 ]
 
 # RTD template requires at least Sphinx 1.6

@@ -1474,20 +1474,34 @@ def fixup_xrefs(tree):
         Note that the XML already contains a trailing period.
         """
         def previsit_element(self, element, parents):
-            if element.kind in ('xref', 'pxref'):
+            if any(p.kind == 'row' for p in parents):
+                return
+
+            if element.kind in ('xref', 'pxref', 'ref'):
                 xrefnodename = element.first_element_named('xrefnodename')
-                ref_file = element.first_element_named('xrefinfofile')
-                ref_name = convert_text_to_label(xrefnodename.get_all_text())
-                ref = Element('ref', {})
-                if ref_file:
-                    ref_name = ref_file.get_all_text() + ':' + ref_name
-                ref.rst_kind = Ref(ref_name)
-                if element.kind == 'xref':
-                    text = 'See '
-                else:
-                    assert element.kind == 'pxref'
-                    text = 'see '
-                element.children = [Text(text), ref]
+                if xrefnodename:
+                    ref_file = element.first_element_named('xrefinfofile')
+                    reftarget = xrefnodename.get_all_text()
+                    ref_name = convert_text_to_label(reftarget)
+                    if element.kind == 'ref':
+                        if reftarget.upper() == reftarget:
+                            ref_name = ref_name.upper()
+
+                    ref = Element('ref', {})
+                    if ref_file:
+                        ref_name = ref_file.get_all_text() + ':' + ref_name
+                    ref.rst_kind = Ref(ref_name)
+                    if element.kind == 'xref':
+                        text = 'See '
+                    elif element.kind == 'pxref':
+                        text = 'see '
+                    else:
+                        text = None
+
+                    if text:
+                        element.children = [Text(text), ref]
+                    else:
+                        element.children = [ref]
 
     XRefFixer().visit(tree)
     return tree

@@ -1165,6 +1165,8 @@ def fixup_table_entry(tree):
                     # For now skip 'vector' and 'const' attributes that are also keywords
                     if text not in ('vector', 'const'):
                         detected_option_directives[text] = directive
+                    if directive == 'gcc-attr':
+                        text = ', '.join(options)
                     tableentry.rst_kind = Directive(directive, text)
                     tableentry.children = new_children
                     tableentry.delete_children_named('findex')

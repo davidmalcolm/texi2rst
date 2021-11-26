@@ -106,6 +106,8 @@ html_theme_options = {
     'prev_next_buttons_location': 'both'
 }
 
+html_logo = '../logo.svg'
+
 html_last_updated_fmt = ''
 
 html_context = {
@@ -126,6 +128,8 @@ needs_sphinx = '1.7'
 
 # Use xelatex by default
 latex_engine = 'xelatex'
+
+latex_logo = '../logo.svg'
 
 texinfo_elements = { 'preamble': """
 @definfoenclose strong,*,*

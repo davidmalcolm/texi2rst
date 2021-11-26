@@ -129,7 +129,7 @@ needs_sphinx = '1.7'
 # Use xelatex by default
 latex_engine = 'xelatex'
 
-latex_logo = '../logo.svg'
+latex_logo = '../logo.pdf'
 
 texinfo_elements = { 'preamble': """
 @definfoenclose strong,*,*

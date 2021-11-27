@@ -654,6 +654,17 @@ def fixup_machine_dependant_options(tree):
         def __init__(self):
             self.parent_seen = False
 
+        def previsit_element(self, element, parents):
+            if isinstance(element.rst_kind, OutputFile):
+                if (isinstance(parents[-1].rst_kind, OutputFile)
+                        and parents[-1].rst_kind.name == 'machine-dependent-options'):
+                    name = element.children[1].get_all_text()
+                    name = name.replace(' Options', '').replace('Options for ', '')
+
+                    program = Element('program', {})
+                    program.rst_kind = Directive('program', name)
+                    element.children.insert(0, program)
+
         def postvisit_element(self, element, parents):
             # add newline before all Machine-Dependent Options subsections
             text = element.get_all_text()

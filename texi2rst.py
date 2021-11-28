@@ -839,6 +839,24 @@ def fixup_libquadmath(tree):
     return tree
 
 
+def fixup_merge_functions(tree):
+    class MergeFunctionFixer(NoopVisitor):
+        def previsit_element(self, element, parents):
+            if (isinstance(element.rst_kind, Directive) and element.rst_kind.name == 'function'
+                    and not element.children):
+                children = parents[-1].children
+                i = children.index(element)
+                if i + 1 < len(children):
+                    sibling = children[i + 1]
+                    if isinstance(sibling.rst_kind, Directive) and sibling.rst_kind.name == 'function':
+                        spaces = len(sibling.rst_kind.name) + 6
+                        sibling.rst_kind.args = element.rst_kind.args + f'\n{" " * spaces}' + sibling.rst_kind.args
+                        element.rst_kind = None
+
+    MergeFunctionFixer().visit(tree)
+    return tree
+
+
 def fixup_licenses(tree):
     class LicenseFixer(NoopVisitor):
         def previsit_element(self, element, parents):
@@ -1719,6 +1737,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_quoting(tree)
     tree = fixup_fortran_functions(tree)
     tree = fixup_libquadmath(tree)
+    tree = fixup_merge_functions(tree)
     tree = fixup_licenses(tree)
     return tree
 

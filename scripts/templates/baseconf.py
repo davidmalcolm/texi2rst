@@ -12,9 +12,11 @@
 #
 import os
 import subprocess
-# import sys
+import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+# gccint needs a deeper stack limit
+sys.setrecursionlimit(2000)
 
 # -- Project information -----------------------------------------------------
 

@@ -866,15 +866,18 @@ def fixup_option_listing(tree):
             if element.kind == 'tableitem' and 'AArch64 Options' in element.get_all_text() and not self.seen:
                 self.seen = True
                 target = None
-                for child in element.children:
+                for child in list(element.children):
                     if child.kind == 'para':
                         target = child.get_all_text().strip()
                         target = target.replace(' Options', '').replace('Options for ', '')
-                    else:
-                        for child2 in child.children[0].children:
-                            if isinstance(child2, Element) and child2.kind == 'option':
-                                assert target
-                                child2.children[0].data = target + ' ' + child2.children[0].data
+                        i = element.children.index(child)
+                        program = Element('program')
+                        program.rst_kind = Directive('program', target)
+                        element.children.insert(i + 1, program)
+
+                program = Element('program')
+                program.rst_kind = Directive('program', 'None')
+                element.children.append(program)
 
     OptionListingFixer().visit(tree)
     return tree

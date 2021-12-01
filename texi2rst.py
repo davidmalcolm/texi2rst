@@ -857,6 +857,29 @@ def fixup_merge_functions(tree):
     return tree
 
 
+def fixup_option_listing(tree):
+    class OptionListingFixer(NoopVisitor):
+        def __init__(self):
+            self.seen = False
+
+        def previsit_element(self, element, parents):
+            if element.kind == 'tableitem' and 'AArch64 Options' in element.get_all_text() and not self.seen:
+                self.seen = True
+                target = None
+                for child in element.children:
+                    if child.kind == 'para':
+                        target = child.get_all_text().strip()
+                        target = target.replace(' Options', '').replace('Options for ', '')
+                    else:
+                        for child2 in child.children[0].children:
+                            if isinstance(child2, Element) and child2.kind == 'option':
+                                assert target
+                                child2.children[0].data = target + ' ' + child2.children[0].data
+
+    OptionListingFixer().visit(tree)
+    return tree
+
+
 def fixup_licenses(tree):
     class LicenseFixer(NoopVisitor):
         def previsit_element(self, element, parents):
@@ -1738,6 +1761,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_fortran_functions(tree)
     tree = fixup_libquadmath(tree)
     tree = fixup_merge_functions(tree)
+    tree = fixup_option_listing(tree)
     tree = fixup_licenses(tree)
     return tree
 

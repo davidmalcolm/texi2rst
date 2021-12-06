@@ -59,6 +59,12 @@ release = ('%s (%s %s%s)'
            % (gcc_BASEVER, gcc_DEVPHASE, gcc_DATESTAMP,
               (' %s' % gcc_REVISION) if gcc_REVISION else ''))
 
+rst_prolog = r'''
+.. |gol| raw:: latex
+
+               \\
+'''
+
 rst_epilog = '''
 .. |gcc_version| replace:: %s
 .. |package_version| replace:: %s

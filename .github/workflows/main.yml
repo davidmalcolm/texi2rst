@@ -29,9 +29,9 @@ jobs:
       - run: virtualenv /tmp/venv
       - run: . /tmp/venv/bin/activate
       - run: |
-        git clone https://github.com/sphinx-doc/sphinx.git
-        cd sphinx
-        pip install -e .
+          git clone https://github.com/sphinx-doc/sphinx.git
+          cd sphinx
+          pip install -e .
       - name: Clone GCC
         run: git clone --depth 1 --branch devel/sphinx git://gcc.gnu.org/git/gcc.git
         working-directory: scripts

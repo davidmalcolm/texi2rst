@@ -19,10 +19,6 @@ shutil.copy('templates/logo.pdf', args.output)
 shutil.copy('templates/favicon.ico', args.output)
 shutil.copy('templates/gcc_sphinx.py', args.output)
 
-static = os.path.join(args.output, '_static')
-os.mkdir(static)
-shutil.copy('templates/custom.css', static)
-
 shutil.copy('templates/Makefile.root', os.path.join(args.output, 'Makefile'))
 shutil.copytree('objdir', os.path.join(args.output, 'objdir'))
 

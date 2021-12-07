@@ -21,15 +21,16 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: marxin/opensuse-texi2rst
+    env:
+      SPHINXBUILD=/tmp/venv/bin/sphinx-build
 
     steps:
       - uses: actions/checkout@v2
       - run: nproc
       - run: xindy --version || true
       - run: virtualenv /tmp/venv
-      - run: . /tmp/venv/bin/activate
       - run: |
-          git clone https://github.com/sphinx-doc/sphinx.git
+          git clone --depth 1 https://github.com/sphinx-doc/sphinx.git
           cd sphinx
           /tmp/venv/bin/pip install -e .
       - name: Clone GCC
@@ -102,13 +103,13 @@ jobs:
         run: git merge master
         if: github.ref != 'refs/heads/master'
         working-directory: texi2rst-generated
-      - run: make html -j`nproc`
+      - run: make html -j`nproc` ${{ env.SPHINXBUILD }}
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
-      - run: make latexpdf -j`nproc`
+      - run: make latexpdf -j`nproc ${{ env.SPHINXBUILD }}`
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
-      - run: make man -j`nproc`
+      - run: make man -j`nproc ${{ env.SPHINXBUILD }}`
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
       - run: du -hs texi2rst-generated/sphinx
@@ -117,7 +118,7 @@ jobs:
         run: find . -name '*.[17]' | xargs -i bash -c "groff -mandoc -Thtml {} > {}.html"
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
-      - run: make info -j`nproc`
+      - run: make info -j`nproc ${{ env.SPHINXBUILD }}`
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
       - run: rm -rf scripts && mv texi2rst-generated scripts

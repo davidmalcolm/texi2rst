@@ -149,11 +149,6 @@ latex_engine = 'xelatex'
 
 latex_logo = '../logo.pdf'
 
-# TODO: workaround for https://github.com/sphinx-doc/sphinx/issues/9925
-latex_elements = {
-    'preamble': r'\def\sphinxhyphen{\mbox{-}}',
-}
-
 texinfo_elements = { 'preamble': """
 @definfoenclose strong,*,*
 @definfoenclose emph,','

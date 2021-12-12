@@ -149,6 +149,8 @@ latex_engine = 'xelatex'
 
 latex_logo = '../logo.pdf'
 
+texinfo_cross_references = False
+
 texinfo_elements = { 'preamble': """
 @definfoenclose strong,*,*
 @definfoenclose emph,','

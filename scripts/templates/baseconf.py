@@ -154,6 +154,9 @@ texinfo_elements = { 'preamble': """
 """
 }
 
+# Use default as RTD theme uses default as well
+pygments_style = 'default'
+
 # Cross manual reference mapping
 intersphinx_mapping = {}
 for manual in ['cpp', 'cppinternals', 'gfortran', 'gcc', 'gccgo', 'gccint', 'gdc',

@@ -146,6 +146,12 @@ needs_sphinx = '1.7'
 
 latex_logo = '../logo.pdf'
 
+latex_elements = {
+    'preamble': r'''
+\fvset{formatcom=\let\textbf\relax}
+''',
+}
+
 texinfo_cross_references = False
 
 texinfo_elements = { 'preamble': """

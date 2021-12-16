@@ -18,7 +18,8 @@ for root, _, files in os.walk(args.rst_dir):
                 with open(full, 'w') as out:
                     options = []
                     for i, line in enumerate(lines):
+                        last = line.rstrip()[-1]
                         if (line.startswith('  :option:') and lines[i + 1].strip()
-                                and '|gol|' not in line and line.rstrip().endswith('`')):
+                                and '|gol|' not in line and last in ('`', ']')):
                             line = line.rstrip() + ' |gol|'
                         out.write(line + '\n')

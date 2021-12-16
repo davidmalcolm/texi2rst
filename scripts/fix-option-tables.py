@@ -21,4 +21,3 @@ for root, _, files in os.walk(args.rst_dir):
                         if line.startswith('  :option:') and lines[i + 1].strip():
                             line = line.rstrip() + ' |gol|'
                         out.write(line + '\n')
-

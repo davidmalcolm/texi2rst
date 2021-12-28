@@ -32,6 +32,7 @@ jobs:
       - run: |
           git clone --depth 1 https://github.com/sphinx-doc/sphinx.git
           cd sphinx
+          git checkout master
           /tmp/venv/bin/pip install -e .
           /tmp/venv/bin/pip install sphinx_rtd_theme
       - name: Clone GCC

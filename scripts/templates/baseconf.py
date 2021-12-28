@@ -89,9 +89,6 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build']
 
-# For legacy Sphinx versions (< 2.0)
-master_doc = 'index'
-
 # Do not highlight by default
 highlight_language = 'none'
 
@@ -140,9 +137,7 @@ suppress_warnings = [
     'ref.option',
 ]
 
-# RTD template requires at least Sphinx 1.6
-# sphinx-build -j auto is supported since 1.7
-needs_sphinx = '1.7'
+needs_sphinx = '5.0'
 
 # Use xelatex by default
 latex_engine = 'xelatex'

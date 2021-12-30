@@ -794,9 +794,11 @@ def fixup_fortran_functions(tree):
                                 code = Element('syntax')
                                 code.rst_kind = Directive('code-block', 'fortran')
                                 code.children = [Text(titem.get_all_text())]
+                                block = Element('block')
+                                block.rst_kind = DefinitionListBody()
+                                block.children = [code]
+                                tterm.children.append(block)
                                 newchildren2.append(tterm)
-                                newchildren2.append(Text('\n'))
-                                newchildren2.append(code)
                         else:
                             newchildren2.append(table)
 

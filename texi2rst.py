@@ -1057,6 +1057,13 @@ def fixup_table_entry(tree):
                                     new_text += '{%s}' % child.get_all_text()
                                 elif isinstance(child, Text):
                                     new_text += child.data
+
+                            # Fix RTL macros like:
+                            # <itemformat command="code">(match_operand:<var>m</var> <var>n</var> ...
+                            print(new_text)
+                            if new_text.startswith('(') and new_text.endswith(')'):
+                                new_text = new_text.replace('}{', '} {')
+
                             element.children = [Text(new_text)]
                             if 0:
                                 print('flattened %s to %s'

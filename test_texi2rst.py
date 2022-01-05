@@ -400,7 +400,7 @@ types.)
         doc = fixup_table_entry(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            u'''.. option:: -fabi-version=n
+            u'''.. option:: -fabi-version={n}
 
   DESCRIPTION WOULD GO HERE
 

@@ -24,11 +24,13 @@ def include_rst(path, link, start_line=None, end_line=None, include_end=False):
             with open(link, 'w') as shared:
                 in_shared = False
                 for line in lines:
-                    if line == start_line:
+                    # HACK: fix option wrapping
+                    unwrapped = line.replace('{', '').replace('}', '')
+                    if unwrapped == start_line:
                         in_shared = True
                         prefix = '/'.join(['..'] * path.count('/'))
                         f.write(f'.. include:: {prefix}/{link}\n\n')
-                    elif line == end_line:
+                    elif unwrapped == end_line:
                         in_shared = False
                         if include_end:
                             shared.write(line + '\n')

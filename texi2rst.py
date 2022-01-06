@@ -1161,7 +1161,8 @@ def fixup_table_entry(tree):
                 else:
                     text += child.data
             if var_added:
-                print(text)
+                if not text.startswith('-'):
+                    text = option.get_all_text().strip()
             return text.strip()
 
         def convert_to_option(self, tableentry, tableitem,

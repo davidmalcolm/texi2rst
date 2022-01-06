@@ -1060,7 +1060,6 @@ def fixup_table_entry(tree):
 
                             # Fix RTL macros like:
                             # <itemformat command="code">(match_operand:<var>m</var> <var>n</var> ...
-                            print(new_text)
                             if new_text.startswith('(') and new_text.endswith(')'):
                                 new_text = new_text.replace('}{', '} {')
 
@@ -1147,6 +1146,25 @@ def fixup_table_entry(tree):
                 if opposite in options:
                     default_options.append(option)
 
+        @classmethod
+        def get_option_name(cls, option):
+            text = ''
+            assert option.children
+            var_added = False
+            for child in option.children:
+                if isinstance(child, Element):
+                    t = child.get_all_text()
+                    if child.kind == 'var' and (' ' in text or '=' in text):
+                        t = f'{{{t}}}'
+                        var_added = True
+                    text += t
+                else:
+                    text += child.data
+            if var_added:
+                if not text.startswith('-'):
+                    text = option.get_all_text().strip()
+            return text.strip()
+
         def convert_to_option(self, tableentry, tableitem,
                               itemformats, parents):
             itemformats[0].delete_children_named('indexterm')
@@ -1155,7 +1173,7 @@ def fixup_table_entry(tree):
             default_options = []
 
             for itemformat in itemformats:
-                itemtext = itemformat.get_all_text().strip()
+                itemtext = self.get_option_name(itemformat)
                 if itemtext:
                     options.append(itemtext)
 

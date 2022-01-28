@@ -6,7 +6,7 @@ sys.path.append('..')
 from baseconf import *
 
 project = 'The GNU D Compiler'
-copyright = '2006-2021 Free Software Foundation, Inc.'
+copyright = '2006-2022 Free Software Foundation, Inc.'
 authors = 'David Friedman, Iain Buclaw'
 
 # Grouping the document tree into Texinfo files. List of tuples

@@ -6,7 +6,7 @@ sys.path.append('..')
 from baseconf import *
 
 project = 'Using the GNU Compiler Collection'
-copyright = '1988-2021 Free Software Foundation, Inc.'
+copyright = '1988-2022 Free Software Foundation, Inc.'
 authors = 'Richard M. Stallman and the GCC Developer Community'
 
 # Grouping the document tree into Texinfo files. List of tuples

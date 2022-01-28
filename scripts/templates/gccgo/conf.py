@@ -6,7 +6,7 @@ sys.path.append('..')
 from baseconf import *
 
 project = 'The GNU Go Compiler'
-copyright = '2010-2021 Free Software Foundation, Inc.'
+copyright = '2010-2022 Free Software Foundation, Inc.'
 authors = 'Ian Lance Taylor'
 
 # Grouping the document tree into Texinfo files. List of tuples

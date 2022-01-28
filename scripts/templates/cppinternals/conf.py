@@ -6,7 +6,7 @@ sys.path.append('..')
 from baseconf import *
 
 project = 'Cpplib Internals'
-copyright = '2000-2021 Free Software Foundation, Inc.'
+copyright = '2000-2022 Free Software Foundation, Inc.'
 authors = 'Neil Booth'
 
 # Grouping the document tree into Texinfo files. List of tuples

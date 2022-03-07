@@ -58,6 +58,7 @@ shutil.copy('templates/gpl-3.0.rst', share)
 shutil.copy('templates/lgpl-2.1.rst', share)
 shutil.copy('templates/funding.rst', share)
 shutil.copy('templates/copyright.rst', share)
+shutil.copy('templates/copyright_without_invariants.rst', share)
 shutil.copy('templates/bsd.rst', share)
 
 # Modify generated files

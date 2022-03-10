@@ -669,7 +669,7 @@ def fixup_machine_dependant_options(tree):
                         and parents[-1].rst_kind.name == 'machine-dependent-options'):
                     # Skip anchor and maybe index elements
                     start = 1
-                    if is_movable_index(element.children[start]):
+                    while start < len(elements.children) and is_movable_index(element.children[start]):
                         start += 1
                     name = element.children[start].get_all_text()
                     name = name.replace(' Options', '').replace('Options for ', '')

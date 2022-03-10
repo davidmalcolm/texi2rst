@@ -1528,7 +1528,22 @@ def fixup_index(tree):
                         if text:
                             element.rst_kind = Directive('index', text)
                             element.children = []
+
+    class MoveIndicesFixer(NoopVisitor):
+        def previsit_element(self, element, parents):
+            if not parents:
+                return
+            parent = parents[-1]
+            if is_directive(element, 'index'):
+                i = parent.children.index(element)
+                if i > 0:
+                    prev = parent.children[i - 1]
+                    if isinstance(prev, Element) and isinstance(prev.rst_kind, Title):
+                        parent.children[i] = prev
+                        parent.children[i - 1] = element
+
     IndexFixer().visit(tree)
+    MoveIndicesFixer().visit(tree)
     return tree
 
 

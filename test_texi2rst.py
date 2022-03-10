@@ -861,14 +861,14 @@ class IndexTests(Texi2RstTests):
         doc = fixup_index(doc)
         out = self.make_rst_string(doc)
         self.assertEqual(
-            (u'''GCC Command Options
-===================
-
-.. index:: GCC command options
+            (u'''.. index:: GCC command options
 
 .. index:: command options
 
 .. index:: options, GCC command
+
+GCC Command Options
+===================
 
 Some text about GCC command options.
 
@@ -977,10 +977,10 @@ Some text about qualifiers.  See :ref:`gotolabels`.
 
 .. _gotolabels:
 
+.. index:: asm goto labels
+
 Goto Labels
 ~~~~~~~~~~~
-
-.. index:: asm goto labels
 
 Some text about goto labels.
 
@@ -993,10 +993,10 @@ Some text about goto labels.
         tree = from_xml_string(xml_src)
         tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
-        self.assertEqual('''GIMPLE_ASM
-^^^^^^^^^^
+        self.assertEqual('''.. index:: GIMPLE_ASM
 
-.. index:: GIMPLE_ASM
+GIMPLE_ASM
+^^^^^^^^^^
 
 ''', out)
 

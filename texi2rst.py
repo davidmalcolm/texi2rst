@@ -244,6 +244,11 @@ def is_directive(element, name):
     return isinstance(element.rst_kind, Directive) and element.rst_kind.name == name
 
 
+def is_movable_index(element):
+    return (element.kind in ('cindex', 'findex', 'vindex', 'kindex', 'indexcommand')
+            and len(element.children) == 1 and is_directive(element.children[0], 'index'))
+
+
 def fixup_menus(tree):
     """
     Given:
@@ -662,7 +667,11 @@ def fixup_machine_dependant_options(tree):
             if isinstance(element.rst_kind, OutputFile):
                 if (isinstance(parents[-1].rst_kind, OutputFile)
                         and parents[-1].rst_kind.name == 'machine-dependent-options'):
-                    name = element.children[1].get_all_text()
+                    # Skip anchor and maybe index elements
+                    start = 1
+                    if is_movable_index(element.children[start]):
+                        start += 1
+                    name = element.children[start].get_all_text()
                     name = name.replace(' Options', '').replace('Options for ', '')
 
                     program = Element('program', {})
@@ -1520,7 +1529,30 @@ def fixup_index(tree):
                     if text:
                         element.rst_kind = Directive('index', text)
                         element.children = []
+
+    class MoveIndicesFixer(NoopVisitor):
+        def previsit_element(self, element, parents):
+            if not parents:
+                return
+
+            parent = parents[-1]
+            if is_movable_index(element):
+                i = parent.children.index(element)
+
+                # Move before parent if it is a Directive
+                if isinstance(parent.rst_kind, Directive) and i == 0:
+                    i2 = parents[-2].children.index(parent)
+                    parent.children = parent.children[1:]
+                    parents[-2].children.insert(i2, element)
+                # Move before a Title if it is our sibling
+                elif i > 0:
+                    prev = parent.children[i - 1]
+                    if isinstance(prev, Element) and isinstance(prev.rst_kind, Title):
+                        parent.children[i] = prev
+                        parent.children[i - 1] = element
+
     IndexFixer().visit(tree)
+    MoveIndicesFixer().visit(tree)
     return tree
 
 

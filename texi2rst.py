@@ -1516,10 +1516,12 @@ def fixup_index(tree):
         def previsit_element(self, element, parents):
             if isinstance(element, Element):
                 if element.kind == 'indexterm':
-                    text = element.get_all_text()
-                    if text:
-                        element.rst_kind = Directive('index', text)
-                        element.children = []
+                    parent = parents[-1]
+                    if parent.kind in ('cindex', 'findex', 'vindex', 'kindex', 'indexcommand'):
+                        text = parent.get_all_text()
+                        if text:
+                            parent.rst_kind = Directive('index', text)
+                            parent.children = []
     IndexFixer().visit(tree)
     return tree
 

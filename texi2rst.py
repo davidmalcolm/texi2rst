@@ -240,6 +240,10 @@ def convert_text_to_label(data):
     return data
 
 
+def is_directive(element, name):
+    return isinstance(element.rst_kind, Directive) and element.rst_kind.name == name
+
+
 def fixup_menus(tree):
     """
     Given:
@@ -346,7 +350,7 @@ def split(tree):
             toctree = None
             for child in element.children:
                 if isinstance(child, Element):
-                    if isinstance(child.rst_kind, Directive) and child.rst_kind.name == 'toctree':
+                    if is_directive(child, 'toctree'):
                         toctree = child
                     if isinstance(child.rst_kind, OutputFile):
                         toctree_element = Element('toctree-element', {})
@@ -393,7 +397,7 @@ def fixup_merge_toctree(tree):
 
     class MergeTreeRootFixer(NoopVisitor):
         def previsit_element(self, element, parents):
-            if isinstance(element.rst_kind, Directive) and element.rst_kind.name == 'toctree':
+            if is_directive(element, 'toctree'):
                 if not element.children:
                     parents[-1].children.remove(element)
 
@@ -685,8 +689,7 @@ def fixup_params(tree):
             self.in_param_option = False
 
         def previsit_element(self, element, parents):
-            if (element.kind == 'option' and isinstance(element.rst_kind, Directive)
-                    and element.rst_kind.name == 'option'):
+            if (element.kind == 'option' and is_directive(element, 'option')):
                 if '--param' in element.rst_kind.args:
                     self.in_param_option = True
                 else:
@@ -739,7 +742,7 @@ def fixup_fortran_functions(tree):
                     fname_fixed = False
                     for table in tableentry.children:
                         assert table.kind == 'tableentry'
-                        if isinstance(table.rst_kind, Directive) and table.rst_kind.name == 'envvar':
+                        if is_directive(table, 'envvar'):
                             table.rst_kind = Directive('note')
                             newchildren2.append(table)
                             continue
@@ -844,13 +847,12 @@ def fixup_libquadmath(tree):
 def fixup_merge_functions(tree):
     class MergeFunctionFixer(NoopVisitor):
         def previsit_element(self, element, parents):
-            if (isinstance(element.rst_kind, Directive) and element.rst_kind.name == 'function'
-                    and not element.children):
+            if is_directive(element, 'function') and not element.children:
                 children = parents[-1].children
                 i = children.index(element)
                 if i + 1 < len(children):
                     sibling = children[i + 1]
-                    if isinstance(sibling.rst_kind, Directive) and sibling.rst_kind.name == 'function':
+                    if is_directive(sibling, 'function'):
                         spaces = len(sibling.rst_kind.name) + 6
                         sibling.rst_kind.args = element.rst_kind.args + f'\n{" " * spaces}' + sibling.rst_kind.args
                         element.rst_kind = None

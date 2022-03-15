@@ -38,6 +38,10 @@ mkdir -p $DST/doc
 cp -r $SRC/share/* $DST/doc
 cp $SRC/baseconf.py $DST/doc
 cp $SRC/gcc_sphinx.py $DST/doc
+cp $SRC/logo* $DST/doc
+cp $SRC/favicon.ico $DST/doc
+mkdir -p $DST/doc/_static
+cp $SRC/_static/custom.css $DST/doc/_static
 
 ./strip.py $DST
 

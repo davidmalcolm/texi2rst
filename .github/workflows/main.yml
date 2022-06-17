@@ -30,9 +30,8 @@ jobs:
       - run: xindy --version || true
       - run: virtualenv /tmp/venv
       - run: |
-          git clone https://github.com/marxin/sphinx.git
+          git clone https://github.com/sphinx-doc/sphinx.git
           cd sphinx
-          git checkout origin/devel
           /tmp/venv/bin/pip install -e .
           /tmp/venv/bin/pip install sphinx_rtd_theme
       - name: Clone GCC

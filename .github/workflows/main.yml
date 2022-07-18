@@ -33,7 +33,7 @@ jobs:
           git clone https://github.com/sphinx-doc/sphinx.git
           cd sphinx
           /tmp/venv/bin/pip install -e .
-          /tmp/venv/bin/pip install sphinx_rtd_theme
+          /tmp/venv/bin/pip install sphinx_rtd_theme furo
       - name: Clone GCC
         run: git clone --depth 1 --branch devel/sphinx git://gcc.gnu.org/git/gcc.git
         working-directory: scripts

@@ -1897,7 +1897,9 @@ class Title(RstKind):
 
     def after(self, w):
         if self.element.children:
-            len_ = len(self.element.children[0].data)
+            text = self.element.children[0].data
+            assert not text.endswith(':')
+            len_ = len(text)
             w.write('\n%s\n\n' % (self.underline * len_))
 
 

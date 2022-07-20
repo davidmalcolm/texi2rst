@@ -1194,15 +1194,24 @@ class TableTests(Texi2RstTests):
         tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
         self.assertEqual(
-            u'''=======  ========  ===================
-Operand  masm=att  masm=intel
-=======  ========  ===================
-``%0``   ``%eax``  ``eax``
-``%1``   ``$2``    ``2``
-``%2``   ``$.L2``  ``OFFSET FLAT:.L2``
-=======  ========  ===================
-''',
-            out)
+u'''.. list-table::
+   :header-rows: 1
+
+   * - Operand
+     - masm=att
+     - masm=intel
+
+   * - ``%0``
+     - ``%eax``
+     - ``eax``
+   * - ``%1``
+     - ``$2``
+     - ``2``
+   * - ``%2``
+     - ``$.L2``
+     - ``OFFSET FLAT:.L2``
+
+''', out)
 
     def test_multitable_without_header(self):
         xml_src = u'''<multitable spaces=" " endspaces=" ">
@@ -1320,17 +1329,31 @@ issue the bare constant. See <code>p</code> above.
         tree = from_xml_string(xml_src)
         tree = convert_to_rst(tree, self.ctxt)
         out = self.make_rst_string(tree)
-        self.assertEqual(
-            u'''========  ====================================================================  =======  ===========  =============
-Modifier  Description                                                           Operand  :samp:`att`  :samp:`intel`
-========  ====================================================================  =======  ===========  =============
-``P``     If used for a function, print the PLT suffix and generate PIC code.
-          For example, emit ``foo@PLT`` instead of 'foo' for the function
-          foo(). If used for a constant, drop all syntax-specific prefixes and
-          issue the bare constant. See ``p`` above.
-``q``     Print the DImode name of the register.                                ``%q0``  ``%rax``     ``rax``
-``Q``     print the opcode suffix of q.                                         ``%Q0``  ``q``
-========  ====================================================================  =======  ===========  =============
+        self.assertEqual(u'''.. list-table::
+   :header-rows: 1
+
+   * - Modifier
+     - Description
+     - Operand
+     - :samp:`att`
+     - :samp:`intel`
+
+   * - ``P``
+     - If used for a function, print the PLT suffix and generate PIC code. For example, emit ``foo@PLT`` instead of 'foo' for the function foo(). If used for a constant, drop all syntax-specific prefixes and issue the bare constant. See ``p`` above.
+     -
+     -
+     -
+   * - ``q``
+     - Print the DImode name of the register.
+     - ``%q0``
+     - ``%rax``
+     - ``rax``
+   * - ``Q``
+     - print the opcode suffix of q.
+     - ``%Q0``
+     - ``q``
+     -
+
 ''', out)
 
 class TestFunctionDefinitions(Texi2RstTests):

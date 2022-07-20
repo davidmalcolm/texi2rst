@@ -2173,42 +2173,27 @@ class TableLayout:
         w.write('\n')
 
     def render_simple_table(self, w):
-        if not self.has_thead:
-            w.write('\n')
-        self.draw_simple_table_border(w)
+        w.write('\n.. list-table::\n')
+        if self.has_thead:
+            w.write('   :header-rows: 1\n')
+        w.write('\n')
         for comp in self.components:
-            for y, row in enumerate(comp.rows):
-                # Cope with newlines in "text":
-                lines_at_x = {}
-                for x, entry in enumerate(row.entries):
-                    lines_at_x[x] = self._render_entry(entry).splitlines()
+            for row in comp.rows:
+                values = []
+                for entry in row.entries:
+                    texts = [x.strip() for x in self._render_entry(entry).splitlines()]
+                    values.append(' '.join(texts))
+                for _ in range(len(values), self.num_columns):
+                    values.append('')
 
-                for line_idx in range(comp.height_needed_for_y[y]):
-                    # Determine within this line which is the final
-                    # non-empty entry, to avoid surplus whitespace
-                    # to the right of it.
-                    final_x_with_text = 0
-                    for x, _ in enumerate(row.entries):
-                        if line_idx < len(lines_at_x[x]):
-                            if lines_at_x[x][line_idx]:
-                                final_x_with_text = x
-
-                    for x, _ in enumerate(row.entries):
-                        if x and x <= final_x_with_text:
-                            w.write('  ')
-                        lines = lines_at_x[x]
-                        if line_idx < len(lines):
-                            text = lines[line_idx]
-                        else:
-                            text = ''
-                        w.write(text)
-                        if x < final_x_with_text:
-                            w.write(' ' *
-                                    (self.width_needed_for_x[x] - len(text)))
+                for x, text in enumerate(values):
+                    c = '*' if x == 0 else ' '
+                    output = f'   {c} -'
+                    if text:
+                        output += ' ' + text
+                    w.write(output)
                     w.write('\n')
-            self.draw_simple_table_border(w)
-            if not self.has_thead:
-                w.write('\n')
+            w.write('\n')
 
     def draw_simple_table_border(self, w):
         for x in range(self.num_columns):

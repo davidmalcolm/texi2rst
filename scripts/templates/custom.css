@@ -1,20 +1,3 @@
-.sidebar-container {
-  width: 20em;
-  padding-left: 50px;
-}
-
-.sidebar-drawer {
-  width: 20em;
-}
-
-.content {
-  width: 55em;
-}
-
-.toc-drawer {
-  width: 20em;
-}
-
 .sidebar-brand-text {
   font-size: 13pt;
 }

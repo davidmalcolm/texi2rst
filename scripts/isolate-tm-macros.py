@@ -19,17 +19,19 @@ for root, _, files in os.walk(folder):
 
         name = None
         for line in lines:
-            line = line.lstrip()
-            if line.startswith('.. hook-start:'):
-                name = line.split(':')[-1]
+            lline = line.lstrip()
+            if lline.startswith('.. hook-start:'):
+                name = lline.split(':')[-1]
                 assert name not in d
                 d[name] = []
-            elif line.startswith('.. hook-end'):
+            elif lline.startswith('.. hook-end'):
                 assert name
                 name = None
             elif name:
                 assert '.. function' not in line
                 if line or d[name]:
+                    if line.startswith('  '):
+                        line = line[2:]
                     d[name].append(line)
 
 folder = os.path.join(args.gcc_dir, 'gcc')

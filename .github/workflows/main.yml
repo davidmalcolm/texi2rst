@@ -21,19 +21,13 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: marxin/opensuse-texi2rst
-    env:
-      SPHINXBUILD: /tmp/venv/bin/sphinx-build
 
     steps:
       - uses: actions/checkout@v2
       - run: nproc
       - run: xindy --version || true
       - run: virtualenv /tmp/venv
-      - run: |
-          git clone https://github.com/sphinx-doc/sphinx.git
-          cd sphinx
-          /tmp/venv/bin/pip install -e .
-          /tmp/venv/bin/pip install sphinx_rtd_theme furo sphinx-copybutton
+      - run: pip install furo sphinx-copybutton
       - name: Clone GCC
         run: git clone --depth 1 --branch devel/sphinx git://gcc.gnu.org/git/gcc.git
         working-directory: scripts

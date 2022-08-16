@@ -170,7 +170,7 @@ option_emphasise_placeholders = True
 # Ignore GitHub domain for link checking:
 # https://github.com/sphinx-doc/sphinx/issues/9016
 linkcheck_ignore = [
-    'https://github.com/.*'
+    'https://github.com/.*#.*'
 ]
 
 # Cross manual reference mapping

@@ -167,6 +167,12 @@ pygments_style = 'default'
 
 option_emphasise_placeholders = True
 
+# Ignore GitHub domain for link checking:
+# https://github.com/sphinx-doc/sphinx/issues/9016
+linkcheck_ignore = [
+    'https://github.com/.*'
+]
+
 # Cross manual reference mapping
 intersphinx_mapping = {}
 for manual in ['cpp', 'cppinternals', 'gfortran', 'gcc', 'gccgo', 'gccint', 'gdc',

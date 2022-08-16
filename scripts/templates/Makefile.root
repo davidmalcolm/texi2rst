@@ -19,6 +19,10 @@ latexpdf:
 info:
 	for dir in $(FOLDERS); do $(MAKE) -C $$dir info $(MAKEOPTS); done
 
+.PHONY: linkcheck
+linkcheck:
+	for dir in $(FOLDERS); do $(MAKE) -C $$dir linkcheck $(MAKEOPTS); done
+
 .PHONY: clean
 clean:
 	for dir in $(FOLDERS); do $(MAKE) -C $$dir clean $(MAKEOPTS); done

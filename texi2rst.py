@@ -536,7 +536,7 @@ def fixup_nodes(tree, ctxt):
             if child.is_element('node') or child.is_element('anchor'):
 
                 def get_next_child_element():
-                    for _, cand_child in edges[i + 1:]:
+                    for _, cand_child in edges[i + 1:]:  # noqa: B023
                         if isinstance(cand_child, Element):
                             return cand_child
 

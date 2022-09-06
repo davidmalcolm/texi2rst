@@ -334,6 +334,8 @@ def split(tree):
                 return True
             elif text == 'Contributors to GCC':
                 return True
+            elif (args and 'gm2.xml' in args.xml_file and element.kind == 'subsection'):
+                return True
             else:
                 return False
 

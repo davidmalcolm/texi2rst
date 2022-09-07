@@ -1561,7 +1561,7 @@ def fixup_index(tree):
 def fixup_urefs(tree):
     class URefFixer(NoopVisitor):
         def previsit_element(self, element, parents):
-            if element.kind == 'uref':
+            if element.kind in ('uref', 'ref'):
                 url = element.first_element_named('urefurl')
                 title = element.first_element_named('urefreplacement')
                 if not title:

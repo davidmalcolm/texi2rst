@@ -145,6 +145,7 @@ latex_engine = 'xelatex'
 latex_logo = '../logo.pdf'
 
 latex_elements = {
+    'pointsize': '11pt',
     'fontpkg': r'''
 \setmonofont[Scale=0.8]{DejaVu Sans Mono}
 ''',

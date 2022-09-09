@@ -22,7 +22,7 @@ jobs:
     container:
       image: marxin/opensuse-texi2rst
     env:
-      SPHINXBUILD: /tmp/venv/bin/sphinx-build
+      SPHINXBUILD: SPHINXBUILD=/tmp/venv/bin/sphinx-build
 
     steps:
       - uses: actions/checkout@v2

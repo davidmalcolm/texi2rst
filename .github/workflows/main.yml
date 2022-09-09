@@ -32,7 +32,7 @@ jobs:
       - run: |
           git config --global --add safe.directory /__w/texi2rst/texi2rst
           git clone https://github.com/sphinx-doc/sphinx.git
-          git checkout master
+          git checkout origin/master
           cd sphinx
           /tmp/venv/bin/pip install -e .
           /tmp/venv/bin/pip install sphinx_rtd_theme furo sphinx-copybutton

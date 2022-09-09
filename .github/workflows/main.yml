@@ -36,6 +36,7 @@ jobs:
           git checkout master
           /tmp/venv/bin/pip install -e .
           /tmp/venv/bin/pip install sphinx_rtd_theme furo sphinx-copybutton
+          /tmp/venv/bin/sphinx-build --version
       - name: Clone GCC
         run: git clone --depth 1 --branch devel/sphinx git://gcc.gnu.org/git/gcc.git
         working-directory: scripts

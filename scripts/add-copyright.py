@@ -16,6 +16,6 @@ for root, _, files in os.walk(args.rst_dir):
                 out.write('..\n')
                 out.write('  Copyright 1988-2022 Free Software Foundation, Inc.\n')
                 out.write('  This is part of the GCC manual.\n')
-                out.write('  For copying conditions, see the GPL license file\n')
+                out.write('  For copying conditions, see the copyright.rst file.\n')
                 out.write('\n')
                 out.write(data)

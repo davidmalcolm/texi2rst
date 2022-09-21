@@ -21,6 +21,9 @@ for file in files:
     print(f"('{target_name}', '{base}'), ", end='')
 
     with open(path, 'w') as f:
+        base += '-'
+        if base == 'common-':
+            base = ''
         for line in lines:
-            line = line.replace('gcc-attr', f'{base}-fn-attr')
+            line = line.replace('gcc-attr', f'{base}fn-attr')
             f.write(line + '\n')

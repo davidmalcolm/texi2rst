@@ -251,32 +251,25 @@ some chapter text
                          out)
 
     def test_option_ref_with_var(self):
-        xml_src = '<para>This is similar to how <option>-Walloca-larger-than=</option><var>byte-size</var> works.</para>'
-        doc = from_xml_string(xml_src)
-        doc = convert_to_rst(doc, self.ctxt)
-        out = self.make_rst_string(doc)
-        self.assertEqual('This is similar to how :option:`-Walloca-larger-than`:samp:`={byte-size}` works.\n\n', out)
-
-    def test_option_ref_with_var2(self):
         xml_src = '<para>See also <option>-Walloca-larger-than=<var>byte-size</var></option>.</para>'
         doc = from_xml_string(xml_src)
         doc = convert_to_rst(doc, self.ctxt)
         out = self.make_rst_string(doc)
-        self.assertEqual('See also :option:`-Walloca-larger-than`:samp:`={byte-size}`.\n\n', out)
+        self.assertEqual('See also :option:`-Walloca-larger-than=byte-size`.\n\n', out)
 
     def test_option_with_var_and_space(self):
         xml_src = '<para>same <option>-G <var>num</var></option> value</para>'
         doc = from_xml_string(xml_src)
         doc = convert_to_rst(doc, self.ctxt)
         out = self.make_rst_string(doc)
-        self.assertEqual('same :option:`-G `:samp:`{num}` value\n\n', out)
+        self.assertEqual('same :option:`-G num` value\n\n', out)
 
     def test_option_with_var_and_space2(self):
         xml_src = "<para><option>-fmodule-mapper='|ncat <var>ipv4host</var> <var>port</var>'</option>.</para>"
         doc = from_xml_string(xml_src)
         doc = convert_to_rst(doc, self.ctxt)
         out = self.make_rst_string(doc)
-        self.assertEqual(":option:`-fmodule-mapper`:samp:`='|ncat {ipv4host}`:samp:`{port}` '.\n\n", out)
+        self.assertEqual(":option:`-fmodule-mapper='|ncat ipv4hostport'`.\n\n", out)
 
     def test_samp_with_var(self):
         xml_src = '<para>form <samp><var>n</var>f2_1</samp></para>'
@@ -495,7 +488,7 @@ types.)
         doc = from_xml_string(xml_src)
         doc = convert_to_rst(doc, self.ctxt)
         out = self.make_rst_string(doc)
-        self.assertEqual(':option:`-Walloca-larger-than`:samp:`={byte-size}`', out)
+        self.assertEqual(':option:`-Walloca-larger-than=byte-size`', out)
 
 class TableEntryTests(Texi2RstTests):
     def test_generating_definition_list(self):

@@ -946,46 +946,30 @@ def fixup_wrapped_options(tree):
         # <option>-foo=<var>n</var></option>.
         def postvisit_element(self, element, parents):
             if isinstance(element.rst_kind, InlineMarkup) and element.kind == 'option':
-                parent = parents[-1]
-                i = parent.children.index(element)
-                parent.children = parent.children[:i + 1] + element.children[1:] + parent.children[i + 1:]
-                element.children = element.children[:1]
+                element.children = [Text(element.get_all_text())]
 
     WrapperOptionFixer().visit(tree)
     return tree
 
 
-def fixup_trailing_sign_for_options(tree):
-    class TrailingSignForOptionFixer(NoopVisitor):
-        # Move trailing '=' character to sibling, otherwise options
-        # link is not generated.
+def fixup_inline_option(tree):
+    class InlineOptionFixer(NoopVisitor):
         def postvisit_element(self, element, parents):
-            if element.kind == 'option' and element.children:
+            if element.kind == 'option':
                 parent = parents[-1]
-                firstchild = element.children[0]
-                if isinstance(firstchild, Text) and '=' in firstchild.data:
-                    i = firstchild.data.find('=')
-                    suffix = firstchild.data[i:]
-                    firstchild.data = firstchild.data[:i]
-                    i = parent.children.index(element)
-                    if i + 1 < len(parent.children):
-                        sibling = parent.children[i + 1]
-                        if isinstance(sibling, Text):
-                            if suffix == '=':
-                                sibling.data = ' ' + suffix + sibling.data
-                            else:
-                                # more complex expression, create a samp
-                                samp = Element('samp')
-                                samp.rst_kind = InlineMarkup('samp')
-                                samp.children = [Text(suffix)]
-                                parent.children.insert(i + 1, samp)
-                        else:
-                            sibling.prepend_text(suffix)
-                            return
-                    else:
-                        element.children.append(Text(suffix))
+                i = parent.children.index(element)
+                if i == len(parent.children) - 1:
+                    return
+                sib = parent.children[i + 1]
+                if not isinstance(sib, Text) and isinstance(sib.rst_kind, InlineMarkup):
+                    text = sib.get_all_text()
+                    # TODO: a bit hack
+                    if text[0] == '{' and text[-1] == '}':
+                        text = text[1:-1]
+                    element.children += [Text(text)]
+                    parent.children.remove(sib)
 
-    TrailingSignForOptionFixer().visit(tree)
+    InlineOptionFixer().visit(tree)
     return tree
 
 
@@ -1686,13 +1670,17 @@ def fixup_inline_markup(tree):
         =========================  ==================
         """
         def previsit_element(self, element, parents):
+            parent = parents[-1] if parents else None
             if element.kind == 'command':
                 element.rst_kind = InlineMarkup('command')
             elif element.kind == 'var':
                 element.rst_kind = InlineMarkup('samp')
-                # wrap the variable in braces
-                element.prepend_text('{')
-                element.add_text('}')
+                if isinstance(parent.rst_kind, InlineMarkup) and parent.kind == 'option':
+                    pass
+                else:
+                    # wrap the variable in braces
+                    element.prepend_text('{')
+                    element.add_text('}')
             elif element.kind in ('t', 'code'):
                 # we cannot support e.g. <var> in a <code> element
                 element.collapse_to_text()
@@ -1818,7 +1806,7 @@ def convert_to_rst(tree, ctxt):
     tree = fixup_ignored_strings(tree)
     tree = fixup_vars_in_samps(tree)
     tree = fixup_wrapped_options(tree)
-    tree = fixup_trailing_sign_for_options(tree)
+    tree = fixup_inline_option(tree)
     tree = fixup_element_spacing(tree)
     tree = fixup_machine_dependant_options(tree)
     tree = fixup_params(tree)

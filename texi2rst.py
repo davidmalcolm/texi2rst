@@ -87,7 +87,7 @@ def from_xml_string(xml_src):
     xml_src = xml_src.replace('&rbrace;', '}')
     xml_src = xml_src.replace('&slashbreak;', '')
     xml_src = xml_src.replace('&minus;', '-')
-    xml_src = xml_src.replace('&nbsp;', ' ')
+    xml_src = xml_src.replace('&nbsp;', ' |nbsp| ')
     xml_src = xml_src.replace('&noeos;', '')
     xml_src = xml_src.replace('&tex;', 'Tex')
     xml_src = xml_src.replace('&textmdash;', '---')

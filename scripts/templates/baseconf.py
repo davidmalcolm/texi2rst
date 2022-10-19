@@ -63,6 +63,8 @@ rst_prolog = r'''
 .. |gol| raw:: latex
 
                \\
+.. |nbsp| unicode:: 0xA0
+  :trim:
 '''
 
 rst_epilog = '''

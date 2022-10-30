@@ -129,9 +129,6 @@ jobs:
       - run: make info -j`nproc ${{ env.SPHINXBUILD }}`
         working-directory: texi2rst-generated/sphinx
         if: github.ref == 'refs/heads/master'
-      - run: make epub -j`nproc ${{ env.SPHINXBUILD }}`
-        working-directory: texi2rst-generated/sphinx
-        if: github.ref == 'refs/heads/master'
       - run: rm -rf scripts && mv texi2rst-generated scripts
         if: github.ref == 'refs/heads/master'
       - name: Upload generated files

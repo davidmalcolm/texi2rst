@@ -30,9 +30,8 @@ jobs:
       - run: virtualenv /tmp/venv
       - run: |
           git config --global --add safe.directory /__w/texi2rst/texi2rst
-          git clone https://github.com/marxin/furo.git
+          git clone https://github.com/pradyunsg/furo.git
           cd furo
-          git checkout sphinx-6
           /tmp/venv/bin/pip install -e .
           cd ..
           git clone https://github.com/sphinx-doc/sphinx.git
